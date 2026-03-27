@@ -18,14 +18,24 @@ export default async function MissionCenterPage({ params }: MissionCenterProps) 
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/${locale}/login?next=/${locale}/missions`);
 
-  // 1. 구매한 코스 조회
+  // 1. 구매한 코스 조회 (kit_products -> courses 조인)
   const { data: orders } = await supabase
     .from('orders')
-    .select('*, kit_products(course_id, title)')
+    .select(`
+      *,
+      kit_products (
+        course_id,
+        courses (
+          id,
+          title
+        )
+      )
+    `)
     .eq('user_id', user.id)
     .eq('payment_status', 'paid');
 
   if (!orders || orders.length === 0) {
+    // ... (same as before)
     return (
       <div className="container max-w-2xl mx-auto py-20 px-4 text-center">
         <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -40,11 +50,20 @@ export default async function MissionCenterPage({ params }: MissionCenterProps) 
     );
   }
 
-  // 2. 각 코스별 진행도 계산
-  const courseIds = orders.map(o => {
-    const kit = o.kit_products as any;
-    return Array.isArray(kit) ? kit[0]?.course_id : kit?.course_id;
-  }).filter(Boolean);
+  // 2. 유니크한 코스 ID 추출 및 통계 계산
+  const courseMap = new Map();
+  orders.forEach(order => {
+    const kit = order.kit_products as any;
+    const course = kit?.courses;
+    if (course && !courseMap.has(course.id)) {
+      courseMap.set(course.id, {
+        id: course.id,
+        title: course.title?.[locale] || course.title?.ko || '알 수 없는 코스'
+      });
+    }
+  });
+
+  const courseIds = Array.from(courseMap.keys());
 
   const { data: missions } = await supabase
     .from('missions')
@@ -60,17 +79,15 @@ export default async function MissionCenterPage({ params }: MissionCenterProps) 
   const completedMissionIds = new Set(progress?.map(p => p.mission_id) || []);
 
   const courseStats = courseIds.map(cid => {
+    const courseInfo = courseMap.get(cid);
     const courseMissions = missions?.filter(m => m.course_id === cid && !m.is_hidden) || [];
     const completed = courseMissions.filter(m => completedMissionIds.has(m.id)).length;
+    
     return {
       id: cid,
-      total: courseMissions.length,
+      total: courseMissions.length || 1, // Avoid division by zero
       completed,
-      title: orders.find(o => {
-        const kit = o.kit_products as any;
-        const o_cid = Array.isArray(kit) ? kit[0]?.course_id : kit?.course_id;
-        return o_cid === cid;
-      })?.kit_products?.title?.ko || '알 수 없는 코스'
+      title: courseInfo.title
     };
   });
 

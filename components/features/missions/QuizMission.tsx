@@ -28,6 +28,7 @@ interface QuizMissionProps {
   hints: string[];
   lpReward: number;
   initialStatus?: string;
+  locale: string;
 }
 
 export function QuizMission({ 
@@ -36,7 +37,8 @@ export function QuizMission({
   question, 
   hints, 
   lpReward, 
-  initialStatus = 'unlocked' 
+  initialStatus = 'unlocked',
+  locale
 }: QuizMissionProps) {
   const t = useTranslations('mission');
   const [answer, setAnswer] = useState('');
@@ -158,14 +160,31 @@ export function QuizMission({
       
       <CardContent className="p-8">
         {status === 'completed' ? (
-          <div className="flex flex-col items-center justify-center py-10 text-center animate-in fade-in zoom-in duration-700">
-            <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6 shadow-inner">
-              <Sparkles className="w-12 h-12 text-green-600" />
+          <div className="flex flex-col items-center justify-center py-10 text-center animate-in fade-in zoom-in duration-700 relative">
+            {/* CSS Celebration Effect */}
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
+                {[...Array(12)].map((_, i) => (
+                    <div 
+                        key={i} 
+                        className="absolute w-2 h-2 rounded-full animate-ping opacity-0"
+                        style={{ 
+                            backgroundColor: ['#FBBF24', '#34D399', '#60A5FA', '#F471B5'][i % 4],
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            animationDelay: `${Math.random() * 2}s`,
+                            animationDuration: `${1 + Math.random() * 2}s`
+                        }}
+                    />
+                ))}
             </div>
-            <h3 className="text-3xl font-black text-green-700 mb-2">{t('missionComplete') || '정답입니다!'}</h3>
-            <p className="text-muted-foreground font-bold text-lg mb-8">{t('lpEarned', { lp: lpReward }) || `${lpReward} LP 획득`}</p>
-            <Button size="lg" className="h-14 px-10 rounded-2xl shadow-lg" asChild>
-              <Link href="./">미션 목록으로</Link>
+            
+            <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6 shadow-inner relative z-10 scale-110">
+              <Sparkles className="w-12 h-12 text-green-600 animate-bounce" />
+            </div>
+            <h3 className="text-4xl font-black text-green-700 mb-2 relative z-10">{t('missionComplete') || '정답입니다!'}</h3>
+            <p className="text-muted-foreground font-bold text-xl mb-10 relative z-10">{t('lpEarned', { lp: lpReward }) || `${lpReward} LP 획득`}</p>
+            <Button size="lg" className="h-14 px-12 rounded-[2rem] shadow-xl hover:scale-105 transition-transform relative z-10" asChild>
+              <Link href="./">다음 여정으로</Link>
             </Button>
           </div>
         ) : (
@@ -262,6 +281,7 @@ export function QuizMission({
         onClose={() => setShowCompletion(false)} 
         courseName={courseName}
         totalLp={totalEarned} 
+        locale={locale}
       />
     </Card>
   );

@@ -20,6 +20,7 @@ interface PhotoMissionProps {
   initialStatus?: string;
   isBoss?: boolean;
   isHidden?: boolean;
+  locale: string;
 }
 
 export function PhotoMission({ 
@@ -29,7 +30,8 @@ export function PhotoMission({
   lpReward, 
   initialStatus = 'unlocked',
   isBoss = false,
-  isHidden = false
+  isHidden = false,
+  locale
 }: PhotoMissionProps) {
   const t = useTranslations('mission');
   const [status, setStatus] = useState(initialStatus);
@@ -138,14 +140,29 @@ export function PhotoMission({
       
       <CardContent className="p-8">
         {status === 'completed' ? (
-          <div className="flex flex-col items-center justify-center py-10 text-center animate-in fade-in zoom-in duration-700">
-            <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-inner ${isBoss ? 'bg-amber-100' : isHidden ? 'bg-purple-100' : 'bg-green-100'}`}>
-              <CheckCircle2 className={`w-12 h-12 ${isBoss ? 'text-amber-600' : isHidden ? 'text-purple-600' : 'text-green-600'}`} />
+          <div className="flex flex-col items-center justify-center py-10 text-center animate-in fade-in zoom-in duration-700 relative">
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
+                {[...Array(12)].map((_, i) => (
+                    <div 
+                        key={i} 
+                        className="absolute w-2 h-2 rounded-full animate-ping opacity-0"
+                        style={{ 
+                            backgroundColor: ['#FBBF24', '#34D399', '#60A5FA', '#F471B5'][i % 4],
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            animationDelay: `${Math.random() * 2}s`,
+                            animationDuration: `${1 + Math.random() * 2}s`
+                        }}
+                    />
+                ))}
             </div>
-            <h3 className="text-3xl font-black mb-2">미션 완료!</h3>
-            <p className="text-muted-foreground font-bold text-lg mb-8">{lpReward} LP를 획득했습니다.</p>
-            <Button size="lg" className="h-14 px-10 rounded-2xl shadow-lg" asChild>
-              <Link href="./">미션 목록으로</Link>
+            <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-inner relative z-10 scale-110 ${isBoss ? 'bg-amber-100' : isHidden ? 'bg-purple-100' : 'bg-green-100'}`}>
+              <CheckCircle2 className={`w-12 h-12 ${isBoss ? 'text-amber-600' : isHidden ? 'text-purple-600' : 'text-green-600'} animate-bounce`} />
+            </div>
+            <h3 className="text-4xl font-black mb-2 relative z-10 text-slate-800">미션 완료!</h3>
+            <p className="text-muted-foreground font-bold text-xl mb-10 relative z-10">{lpReward} LP를 획득했습니다.</p>
+            <Button size="lg" className="h-14 px-12 rounded-[2rem] shadow-xl hover:scale-105 transition-transform relative z-10" asChild>
+              <Link href="./">다음 여정으로</Link>
             </Button>
           </div>
         ) : (
@@ -235,6 +252,7 @@ export function PhotoMission({
         onClose={() => setShowCompletion(false)} 
         courseName={courseName}
         totalLp={totalEarned} 
+        locale={locale}
       />
     </Card>
   );

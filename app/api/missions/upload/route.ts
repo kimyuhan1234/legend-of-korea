@@ -39,7 +39,12 @@ export async function POST(req: Request) {
       .from('mission-photos')
       .getPublicUrl(filePath);
 
-    return Response.json({ success: true, url: publicUrl, path: filePath });
+    return Response.json({ 
+      success: true, 
+      url: publicUrl, 
+      publicUrl, 
+      path: filePath 
+    });
 
   } catch (error) {
     console.error('Upload API Error:', error);

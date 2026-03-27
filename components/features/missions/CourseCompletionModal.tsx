@@ -19,13 +19,15 @@ interface CourseCompletionModalProps {
   onClose: () => void;
   courseName: string;
   totalLp: number;
+  locale: string;
 }
 
 export function CourseCompletionModal({ 
   isOpen, 
   onClose, 
   courseName, 
-  totalLp 
+  totalLp,
+  locale
 }: CourseCompletionModalProps) {
   const router = useRouter();
 
@@ -63,18 +65,20 @@ export function CourseCompletionModal({
               </div>
            </div>
 
-           <div className="space-y-3">
-              <Button className="w-full h-14 rounded-2xl font-black text-lg gap-2" asChild>
-                 <Link href="/community">
-                    <MessageSquare className="w-5 h-5" />
-                    커뮤니티에 완주 기록 남기기
-                 </Link>
-              </Button>
-              <Button variant="outline" className="w-full h-14 rounded-2xl font-black text-lg gap-2 border-2" onClick={onClose}>
-                 다음 코스 둘러보기
-                 <ArrowRight className="w-5 h-5" />
-              </Button>
-           </div>
+            <div className="space-y-3">
+               <Button className="w-full h-14 rounded-2xl font-black text-lg gap-2" asChild>
+                  <Link href={`/${locale}/community`}>
+                     <MessageSquare className="w-5 h-5" />
+                     커뮤니티에 완주 기록 남기기
+                  </Link>
+               </Button>
+               <Button variant="outline" className="w-full h-14 rounded-2xl font-black text-lg gap-2 border-2" asChild>
+                  <Link href={`/${locale}/courses`}>
+                    다음 코스 둘러보기
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+               </Button>
+            </div>
         </div>
       </DialogContent>
     </Dialog>

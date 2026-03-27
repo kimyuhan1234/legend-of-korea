@@ -24,13 +24,23 @@ export async function POST(req: NextRequest) {
       .select('status')
       .eq('user_id', user.id)
       .eq('mission_id', missionId)
-      .single();
+      .maybeSingle();
 
     if (progress?.status === 'completed') {
-      return NextResponse.json({ message: '이미 완료된 미션입니다.', alreadyCompleted: true });
+      return NextResponse.json({ message: '이미 완료된 미션입니다.', alreadyCompleted: true, success: true });
     }
 
-    // 3. 완료 처리 및 LP 지급 (Atomic Transaction or sequential updates)
+    // 2-1. 퀴즈 정답 검증 (퀴즈 타입인 경우)
+    if (type === 'quiz' && mission.correct_answer) {
+      const normalizedUserAnswer = (answer || '').replace(/\s+/g, '').toLowerCase();
+      const normalizedCorrectAnswer = mission.correct_answer.replace(/\s+/g, '').toLowerCase();
+
+      if (normalizedUserAnswer !== normalizedCorrectAnswer) {
+        return NextResponse.json({ error: '정답이 아닙니다. 다시 시도해보세요.', success: false }, { status: 400 });
+      }
+    }
+
+    // 3. 완료 처리 및 LP 지급
     // 3-1. progress 업데이트
     const { error: upError } = await supabase
       .from('mission_progress')
@@ -48,21 +58,21 @@ export async function POST(req: NextRequest) {
 
     // 3-2. User LP 업데이트
     const { data: userData } = await supabase.from('users').select('total_lp, current_tier').eq('id', user.id).single();
-    const newLp = (userData?.total_lp || 0) + mission.lp_reward;
+    const currentLp = userData?.total_lp || 0;
+    const addedLp = mission.lp_reward;
+    let newLp = currentLp + addedLp;
     
-    await supabase.from('users').update({ total_lp: newLp }).eq('id', user.id);
-
     // 3-3. LP 트랜잭션 기록
     await supabase.from('lp_transactions').insert({
       user_id: user.id,
-      amount: mission.lp_reward,
+      amount: addedLp,
       type: 'mission',
       reference_id: missionId,
       description: `${mission.title.ko} 완료`
     });
 
     // 3-4. 커뮤니티 동기화 (오픈형 등에서 체크 시)
-    if (syncCommunity && (type === 'open' || type === 'boss' || type === 'photo')) {
+    if (syncCommunity && (type === 'open' || type === 'boss' || type === 'photo' || type === 'hidden')) {
       await supabase.from('community_posts').insert({
         user_id: user.id,
         course_id: mission.course_id,
@@ -73,7 +83,7 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 4. 티어 재계산 및 보너스 체크 (간략 버전)
+    // 4. 티어 재계산
     const { data: nextTiers } = await supabase.from('tiers').select('*').lte('min_lp', newLp).order('level', { ascending: false }).limit(1);
     const newTier = nextTiers?.[0]?.level || 1;
     
@@ -83,9 +93,16 @@ export async function POST(req: NextRequest) {
        tierUp = true;
     }
 
-    // 5. 다음 미션 해제 (자동화)
+    // 5. 다음 미션 해제 (is_hidden 제외한 순차적 미션 중 다음 단계)
     const nextSeq = mission.sequence + 1;
-    const { data: nextMission } = await supabase.from('missions').select('id').eq('course_id', mission.course_id).eq('sequence', nextSeq).single();
+    const { data: nextMission } = await supabase
+        .from('missions')
+        .select('id')
+        .eq('course_id', mission.course_id)
+        .eq('sequence', nextSeq)
+        .eq('is_hidden', false) // 히든 미션은 자동으로 해제되지 않음
+        .maybeSingle();
+
     if (nextMission) {
       await supabase.from('mission_progress').upsert({
         user_id: user.id,
@@ -94,40 +111,53 @@ export async function POST(req: NextRequest) {
       }, { onConflict: 'user_id, mission_id' });
     }
 
-    // 6. 코스 완주 체크
-    const { data: allCourseMissions } = await supabase.from('missions').select('id').eq('course_id', mission.course_id).eq('is_hidden', false);
-    const totalMissions = allCourseMissions?.length || 0;
+    // 6. 코스 완주 체크 (일반 미션 전체 완료 여부)
+    const { data: allNormalMissions } = await supabase.from('missions').select('id').eq('course_id', mission.course_id).eq('is_hidden', false);
+    const totalMissions = allNormalMissions?.length || 0;
     
-    const { data: completedMissions } = await supabase
+    const { data: completedNormalProgress } = await supabase
         .from('mission_progress')
         .select('mission_id')
         .eq('user_id', user.id)
         .eq('status', 'completed')
-        .in('mission_id', allCourseMissions?.map(m => m.id) || []);
+        .in('mission_id', allNormalMissions?.map(m => m.id) || []);
     
-    const isCourseCompleted = (completedMissions?.length || 0) === totalMissions;
+    const isCourseCompleted = (completedNormalProgress?.length || 0) === totalMissions;
     let bonusLp = 0;
 
     if (isCourseCompleted) {
-        // 이미 완주 보너스를 받았는지 확인 필요 (여기서는 단순화)
-        bonusLp = 500;
-        const currentTotal = newLp + bonusLp;
-        await supabase.from('users').update({ total_lp: currentTotal }).eq('id', user.id);
-        
-        await supabase.from('lp_transactions').insert({
-            user_id: user.id,
-            amount: bonusLp,
-            type: 'mission',
-            reference_id: mission.course_id,
-            description: `코스 완주 보너스 (500 LP)`
-        });
+        // 완주 보너스 중복 지급 방지 (reference_id가 course_id인 트랜잭션 체크)
+        const { data: existingBonus } = await supabase
+            .from('lp_transactions')
+            .select('id')
+            .eq('user_id', user.id)
+            .eq('reference_id', mission.course_id)
+            .eq('description', '코스 완주 보너스 (500 LP)')
+            .maybeSingle();
+
+        if (!existingBonus) {
+            bonusLp = 500;
+            newLp += bonusLp;
+            await supabase.from('users').update({ total_lp: newLp }).eq('id', user.id);
+            
+            await supabase.from('lp_transactions').insert({
+                user_id: user.id,
+                amount: bonusLp,
+                type: 'mission',
+                reference_id: mission.course_id,
+                description: `코스 완주 보너스 (500 LP)`
+            });
+        }
     }
+
+    // 최종 User LP 업데이트 (이미 부분적으로 업데이트했지만 동기화 보장)
+    await supabase.from('users').update({ total_lp: newLp }).eq('id', user.id);
 
     return NextResponse.json({
       success: true,
-      lpEarned: mission.lp_reward,
+      lpEarned: addedLp,
       bonusLp,
-      newTotalLp: newLp + bonusLp,
+      newTotalLp: newLp,
       tierUp,
       newTier,
       courseCompleted: isCourseCompleted
@@ -135,6 +165,6 @@ export async function POST(req: NextRequest) {
 
   } catch (error) {
     console.error('Mission Complete Error:', error);
-    return NextResponse.json({ error: '서버 오류가 발생했습니다.' }, { status: 500 });
+    return NextResponse.json({ error: '서버 오류가 발생했습니다.', success: false }, { status: 500 });
   }
 }

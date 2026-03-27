@@ -3,7 +3,7 @@ import { notFound, redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { QuizMission } from '@/components/features/missions/QuizMission';
 import { PhotoMission } from '@/components/features/missions/PhotoMission';
-// import { OpenMission } from '@/components/features/missions/OpenMission'; 
+import { OpenMission } from '@/components/features/missions/OpenMission'; 
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, Info, Trophy, Sparkles } from 'lucide-react';
 import Link from 'next/link';
@@ -27,17 +27,24 @@ export default async function MissionExecutionPage({ params }: MissionExecutionP
   // 미션 및 코스 정보 조회
   const { data: mission, error } = await supabase
     .from('missions')
-    .select('*, mission_progress!left(*), kit_products!inner(title)')
+    .select(`
+      *,
+      mission_progress!left(*),
+      courses!inner (
+        title
+      )
+    `)
     .eq('id', missionId)
     .single();
 
   if (error || !mission) notFound();
 
-  const progress = mission.mission_progress?.[0];
-  const courseName = (mission.kit_products as any)?.title?.[locale] || (mission.kit_products as any)?.title?.ko || '코스';
+  // 사용자 본인의 진행 상태만 필터링
+  const progress = mission.mission_progress?.find((p: any) => p.user_id === user.id) || { status: 'locked' };
+  const courseName = (mission.courses as any)?.title?.[locale] || (mission.courses as any)?.title?.ko || '코스';
   
   // 접근 제한: locked 상태면 맵으로 튕기기 (히든 미션은 예외로 스캔 직후엔 보임)
-  if (!progress || (progress.status === 'locked' && !mission.is_hidden)) {
+  if (progress.status === 'locked' && !mission.is_hidden) {
     redirect(`/${locale}/missions/${courseId}`);
   }
 
@@ -46,25 +53,25 @@ export default async function MissionExecutionPage({ params }: MissionExecutionP
   const isHidden = mission.is_hidden;
 
   return (
-    <div className="container max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <div className="container max-w-2xl mx-auto py-8 px-4 min-h-screen bg-slate-50/20">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
-        <Button variant="ghost" asChild className="pl-0 hover:bg-transparent -ml-2">
+        <Button variant="ghost" asChild className="pl-0 hover:bg-transparent -ml-2 text-slate-600">
           <Link href={`/${locale}/missions/${courseId}`} className="flex items-center gap-1 font-bold">
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
             {t('back')}
           </Link>
         </Button>
         
         <div className="flex gap-2">
           {isBoss && (
-            <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-yellow-400 to-amber-600 text-white text-xs font-black shadow-lg">
+            <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-yellow-400 to-amber-600 text-white text-xs font-black shadow-lg animate-bounce">
               <Trophy className="w-3.5 h-3.5" />
               보스 미션
             </div>
           )}
           {isHidden && (
-            <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs font-black shadow-lg">
+            <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs font-black shadow-lg animate-pulse">
               <Sparkles className="w-3.5 h-3.5" />
               히든 미션
             </div>
@@ -74,9 +81,13 @@ export default async function MissionExecutionPage({ params }: MissionExecutionP
 
       {/* Title Section */}
       <div className="mb-10">
-         <h1 className="text-3xl font-black mb-2">{mission.title[lang] || mission.title.ko}</h1>
-         <p className="text-muted-foreground font-medium">
-            {isBoss ? '최종 관문을 통과하고 대량의 LP를 획득하세요!' : isHidden ? '비밀의 장소에서 특별한 보상을 발견했습니다.' : '미션을 수행하고 다음 단계로 나아가세요.'}
+         <h1 className="text-4xl font-black mb-4 tracking-tight text-slate-800">{mission.title[lang] || mission.title.ko}</h1>
+         <p className="text-lg text-slate-500 font-bold leading-relaxed">
+            {isBoss 
+              ? '최종 관문을 통과하고 대량의 LP를 획득하세요!' 
+              : isHidden 
+                ? '비밀의 장소에서 특별한 보상을 발견했습니다.' 
+                : (mission.description[lang] || mission.description.ko)}
          </p>
       </div>
 
@@ -86,46 +97,64 @@ export default async function MissionExecutionPage({ params }: MissionExecutionP
           <QuizMission 
             missionId={mission.id}
             courseName={courseName}
-            question={mission.title}
+            question={mission.title[lang] || mission.title.ko}
             hints={[
-              mission.quiz_hint_1,
-              mission.quiz_hint_2,
-              mission.quiz_hint_3
+              mission.hint_1?.[lang] || mission.hint_1?.ko,
+              mission.hint_2?.[lang] || mission.hint_2?.ko,
+              mission.hint_3?.[lang] || mission.hint_3?.ko
             ].filter(Boolean)}
             lpReward={mission.lp_reward}
             initialStatus={progress.status}
+            locale={locale}
           />
         )}
 
-        {(mission.type === 'photo' || mission.type === 'boss' || mission.type === 'hidden') && (
+        {mission.type === 'photo' && (
           <PhotoMission 
             missionId={mission.id}
             courseName={courseName}
-            description={mission.description}
+            description={mission.description[lang] || mission.description.ko}
             lpReward={mission.lp_reward}
             initialStatus={progress.status}
-            isBoss={mission.type === 'boss'}
-            isHidden={mission.type === 'hidden'}
+            isBoss={false}
+            isHidden={false}
+            locale={locale}
           />
         )}
-        {!(mission.type === 'quiz' || mission.type === 'photo' || mission.type === 'boss' || mission.type === 'hidden') && (
-          /* Open type placeholder */
-          <div className="p-10 border-2 border-dashed border-primary/20 rounded-3xl bg-primary/5 text-center">
-             <Info className="w-12 h-12 text-primary/40 mx-auto mb-4" />
-             <h3 className="text-xl font-bold mb-2">오픈형 미션 준비 중</h3>
-             <p className="text-muted-foreground">곧 업데이트될 예정입니다.</p>
-          </div>
+
+        {(mission.type === 'open' || mission.type === 'boss' || mission.type === 'hidden') && (
+          <OpenMission 
+            missionId={mission.id}
+            courseName={courseName}
+            title={mission.title[lang] || mission.title.ko}
+            description={mission.description[lang] || mission.description.ko}
+            lpReward={mission.lp_reward}
+            type={mission.type as 'open' | 'boss' | 'hidden'}
+            initialStatus={progress.status}
+            locale={locale}
+          />
         )}
 
         {/* Info Box */}
-        <div className="p-6 rounded-[2rem] bg-slate-50 border border-slate-100 flex items-start gap-4">
-           <Info className="w-5 h-5 text-slate-400 mt-1" />
-           <div className="text-sm text-slate-500 leading-relaxed font-medium">
-             <p className="mb-2"><strong>미션 안내:</strong></p>
-             <ul className="list-disc list-inside space-y-1">
-                <li>미션 완료 시 자동으로 다음 미션이 활성화됩니다.</li>
-                <li>오답이나 업로드 오류 시에도 여러 번 재시도가 가능합니다.</li>
-                <li>획득한 LP는 마이페이지의 티어 반영에 즉시 사용됩니다.</li>
+        <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm flex items-start gap-5">
+           <div className="w-10 h-10 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0">
+             <Info className="w-5 h-5 text-slate-400" />
+           </div>
+           <div className="text-sm text-slate-500 leading-relaxed font-bold">
+             <p className="mb-3 text-slate-800 text-base">미션 가이드</p>
+             <ul className="space-y-2 list-none">
+                <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    미션 완료 시 자동으로 다음 단계가 해제됩니다.
+                </li>
+                <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    오답이나 업로드 오류 시에도 무제한 재시도가 가능합니다.
+                </li>
+                <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    획득한 LP는 실시간으로 마이페이지 티어에 반영됩니다.
+                </li>
              </ul>
            </div>
         </div>

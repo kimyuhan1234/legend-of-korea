@@ -31,15 +31,6 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
   if (mError || !missions || missions.length === 0) notFound();
 
   // 2. 진행 상태 가공
-  // 이전 미션이 완료되어야 다음 미션 해제 (sequential logic)
-  let lastCompleted = true;
-  const missionList = missions.map((m, idx) => {
-    const progress = m.mission_progress?.[0]; // Filter by user_id in SQL if needed, but select from missions already filtered by userId? 
-    // Wait, the SQL query above doesn't filter progress by user_id. Let's fix it.
-    return m;
-  });
-
-  // Re-fetch with join filter if possible, or manual filter
   const { data: userProgress } = await supabase
     .from('mission_progress')
     .select('*')
@@ -57,90 +48,97 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
   const completedCount = missions.filter(m => !m.is_hidden && progressMap.get(m.id) === 'completed').length;
   const totalCount = missions.filter(m => !m.is_hidden).length;
 
+  // 다음 수행할 미션 찾기 (is_hidden 제외한 순차적 미션 중 첫 번째 미완료)
+  const firstIncomplete = missions.find(m => !m.is_hidden && progressMap.get(m.id) !== 'completed');
+
   return (
-    <div className="container max-w-3xl mx-auto py-10 px-4 pb-32">
-      <div className="mb-10 text-center">
-        <h1 className="text-3xl font-black mb-2">미션 맵</h1>
-        <div className="flex items-center justify-center gap-4 text-muted-foreground font-medium">
-           <div className="flex items-center gap-1.5">
-             <Trophy className="w-4 h-4 text-primary" />
-             {completedCount} / {totalCount} 미션 완료
-           </div>
+    <div className="container max-w-3xl mx-auto py-10 px-4 pb-32 min-h-screen bg-slate-50/30">
+      <div className="mb-12 text-center">
+        <h1 className="text-4xl font-black mb-4 tracking-tight">전설의 여정</h1>
+        <div className="flex items-center justify-center gap-4 text-slate-500 font-bold mb-6">
+           <Trophy className={`w-5 h-5 ${completedCount === totalCount ? 'text-amber-500' : 'text-primary'}`} />
+           {completedCount} / {totalCount} 미션 완료
         </div>
-        <div className="mt-4 h-3 bg-primary/10 rounded-full max-w-sm mx-auto overflow-hidden">
+        <div className="h-4 bg-slate-200 rounded-full max-w-md mx-auto overflow-hidden shadow-inner border border-white">
           <div 
-            className="h-full bg-primary" 
+            className="h-full bg-gradient-to-r from-primary to-primary-foreground shadow-lg transition-all duration-1000" 
             style={{ width: `${(completedCount / totalCount) * 100}%` }}
           />
         </div>
       </div>
 
-      <div className="relative space-y-12">
-        {/* 점선 연결선 (배경) */}
-        <div className="absolute left-8 md:left-1/2 top-4 bottom-4 w-0.5 border-l-2 border-dashed border-primary/20 -translate-x-1/2 hidden md:block" />
+      <div className="relative space-y-10">
+        {/* Timeline Line */}
+        <div className="absolute left-8 md:left-1/2 top-4 bottom-4 w-1 bg-gradient-to-b from-primary/10 via-primary/5 to-transparent -translate-x-1/2 hidden md:block" />
 
         {visibleMissions.map((m, idx) => {
           const status = progressMap.get(m.id) || 'locked';
-          const isCurrent = status === 'unlocked' || (idx > 0 && progressMap.get(visibleMissions[idx-1].id) === 'completed' && status === 'locked');
           const isCompleted = status === 'completed';
+          const isCurrent = firstIncomplete?.id === m.id;
+          const isLocked = !isCompleted && !isCurrent && !m.is_hidden;
           const isBoss = m.type === 'boss';
           const isHidden = m.is_hidden;
 
+          const cardTheme = isCompleted 
+            ? 'bg-green-50/80 border-green-200' 
+            : isCurrent 
+              ? 'bg-white border-amber-400 shadow-[0_20px_50px_-15px_rgba(251,191,36,0.2)]' 
+              : 'bg-slate-100/50 border-slate-200 opacity-70';
+
           return (
-            <div key={m.id} className={`relative flex flex-col md:flex-row items-center gap-6 ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <div key={m.id} className={`relative flex flex-col md:flex-row items-center gap-8 ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
               
-              {/* 타임라인 노드 */}
-              <div className={`absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 z-10 hidden md:block ${
-                isCompleted ? 'bg-green-500 border-green-200' : isCurrent ? 'bg-primary border-primary/30' : 'bg-slate-300 border-slate-100'
+              {/* Timeline Node */}
+              <div className={`absolute left-8 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full border-4 z-10 hidden md:block transition-colors duration-500 shadow-sm ${
+                isCompleted ? 'bg-green-500 border-white' : isCurrent ? 'bg-amber-400 border-white animate-pulse' : 'bg-slate-300 border-white'
               }`} />
 
-              {/* 미션 카드 */}
-              <div className={`w-full md:w-[45%] rounded-[2rem] p-6 border-2 transition-all duration-300 ${
-                isCompleted 
-                  ? 'bg-green-50/50 border-green-200 grayscale-[0.5]' 
-                  : isCurrent 
-                    ? 'bg-white border-primary shadow-[0_10px_40px_-10px_rgba(255,165,0,0.3)] scale-105 z-20' 
-                    : 'bg-slate-50 border-slate-200 opacity-60'
-              }`}>
-                <div className="flex justify-between items-start mb-4">
-                  <Badge variant={isCompleted ? "secondary" : "outline"} className={isCompleted ? "bg-green-100 text-green-700 border-none" : ""}>
+              {/* Mission Card */}
+              <div className={`w-full md:w-[46%] rounded-[2.5rem] p-8 border-2 transition-all duration-500 hover:translate-y-[-4px] ${cardTheme}`}>
+                <div className="flex justify-between items-center mb-6">
+                  <Badge variant="outline" className={`py-1 px-3 border-none font-black ${
+                      isCompleted ? 'bg-green-100 text-green-700' : isCurrent ? 'bg-amber-100 text-amber-700' : 'bg-slate-200 text-slate-500'
+                  }`}>
                     {isHidden ? (
-                      <span className="flex items-center gap-1"><Sparkles className="w-3 h-3" /> 히든</span>
+                      <span className="flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5" /> HIDDEN</span>
                     ) : isBoss ? (
-                      <span className="flex items-center gap-1"><Trophy className="w-3 h-3" /> 보스</span>
+                      <span className="flex items-center gap-1.5"><Trophy className="w-3.5 h-3.5" /> BOSS</span>
                     ) : (
                       `Mission ${m.sequence}`
                     )}
                   </Badge>
-                  <span className={`text-sm font-bold ${isCompleted ? 'text-green-600' : 'text-primary'}`}>
+                  <span className={`text-lg font-black ${isCompleted ? 'text-green-600' : 'text-slate-800'}`}>
                     +{m.lp_reward} LP
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold mb-4 line-clamp-1">
-                  {status === 'locked' && !isCurrent ? '???' : (m.title[locale as 'ko'] || m.title.ko)}
+                <h3 className={`text-2xl font-black mb-6 leading-tight ${isLocked ? 'text-slate-400 italic' : 'text-slate-800'}`}>
+                  {isLocked ? '잠겨있는 미션' : (m.title[locale] || m.title.ko)}
                 </h3>
 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mt-auto">
                   {isCompleted ? (
-                    <div className="flex items-center gap-1.5 text-green-600 font-bold">
-                      <CheckCircle2 className="w-5 h-5" />
-                      완료됨
+                    <div className="flex items-center gap-2 text-green-600 font-black text-lg">
+                      <CheckCircle2 className="w-6 h-6" />
+                      성공!
                     </div>
-                  ) : isCurrent ? (
-                    <Button asChild className="rounded-full px-6 shadow-md hover:shadow-primary/30">
-                      <Link href={`/${locale}/missions/${courseId}/${m.id}`}>수행하기</Link>
+                  ) : isCurrent || isHidden ? (
+                    <Button asChild size="lg" className="rounded-2xl h-14 px-10 shadow-xl hover:shadow-primary/30 font-black text-lg group">
+                      <Link href={`/${locale}/missions/${courseId}/${m.id}`}>
+                        미션 수행
+                        <PlayCircle className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Link>
                     </Button>
                   ) : (
-                    <div className="flex items-center gap-1.5 text-muted-foreground font-medium">
-                      <Lock className="w-4 h-4" />
-                      잠김
+                    <div className="flex items-center gap-2 text-slate-400 font-bold">
+                      <Lock className="w-5 h-5" />
+                      이전 미션 완료 필요
                     </div>
                   )}
                 </div>
               </div>
               
-              <div className="hidden md:block w-0 md:w-[45%]" />
+              <div className="hidden md:block w-0 md:w-[46%]" />
             </div>
           );
         })}

@@ -21,28 +21,13 @@ export async function POST(req: NextRequest) {
       .from('missions')
       .select('*')
       .or(`qr_code.eq."${qrCode}",qr_code.eq."${qrCode.toUpperCase()}"`)
-      .single();
+      .maybeSingle();
 
     if (missionError || !mission) {
-      return NextResponse.json({ error: '유효하지 않은 QR 코드입니다.' }, { status: 404 });
+      return NextResponse.json({ error: '유효하지 않은 QR 코드입니다.', success: false }, { status: 404 });
     }
 
     // 3. 사용자의 코스 참여 권한 확인 (결제 완료 여부)
-    // orders -> kit_products -> courses
-    const { data: order, error: orderError } = await supabase
-      .from('orders')
-      .select('id')
-      .eq('user_id', user.id)
-      .eq('payment_status', 'paid')
-      .innerJoin('kit_products', 'kit_id', 'id')
-      .eq('kit_products.course_id', mission.course_id)
-      .limit(1);
-
-    // Note: If innerJoin is not supported directly in this version of supabase-js, 
-    // we might need to query orders and then filter by kit_id. 
-    // But usually standard join via select('..., kit_products!inner(course_id)') works.
-    
-    // Correct way for Supabase JS join with filter:
     const { data: validOrders, error: veError } = await supabase
       .from('orders')
       .select(`
@@ -52,12 +37,13 @@ export async function POST(req: NextRequest) {
         )
       `)
       .eq('user_id', user.id)
-      .eq('payment_status', 'paid')
+      .eq('status', 'paid') 
       .eq('kit_products.course_id', mission.course_id);
 
     if (veError || !validOrders || validOrders.length === 0) {
       return NextResponse.json({ 
-        error: '해당 코스의 미션 키트를 구매해야 미션을 진행할 수 있습니다.' 
+        error: '해당 코스의 미션 키트를 구매해야 미션을 진행할 수 있습니다.',
+        success: false
       }, { status: 403 });
     }
 
@@ -67,34 +53,27 @@ export async function POST(req: NextRequest) {
       .upsert({
         user_id: user.id,
         mission_id: mission.id,
-        status: 'unlocked', // 스캔 시 일단 unlocked 또는 in_progress로 설정
-        started_at: new Date().toISOString(),
+        status: 'unlocked'
       }, { onConflict: 'user_id, mission_id' })
       .select()
       .single();
 
     if (progressError) {
       console.error('Progress update error:', progressError);
-      return NextResponse.json({ error: '미션 상태 업데이트에 실패했습니다.' }, { status: 500 });
+      return NextResponse.json({ error: '미션 상태 업데이트에 실패했습니다.', success: false }, { status: 500 });
     }
 
-    // 5. 로그 기록 (Phase 7 제안 사항)
-    await supabase.from('mission_logs').insert({
-      user_id: user.id,
-      mission_id: mission.id,
-      action: 'scan',
-      payload: { qrCode },
-      is_success: true
-    });
-
     return NextResponse.json({
+      success: true,
       missionId: mission.id,
-      missionTitle: mission.title.ko, // 기본으로 한국어 제목 반환 (클라이언트에서 처리 가능)
+      courseId: mission.course_id,
+      missionTitle: mission.title, // 클라이언트에서 locale에 맞춰 선택
+      is_hidden: mission.is_hidden,
       status: 'unlocked'
     });
 
   } catch (error) {
     console.error('Scan API Error:', error);
-    return NextResponse.json({ error: '서버 내부 오류가 발생했습니다.' }, { status: 500 });
+    return NextResponse.json({ error: '서버 내부 오류가 발생했습니다.', success: false }, { status: 500 });
   }
 }
