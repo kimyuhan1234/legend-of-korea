@@ -14,6 +14,8 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
 
+import { Toaster } from "@/components/ui/toaster"
+
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale } = params
 
@@ -27,6 +29,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <Navbar locale={locale} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale} />
+        <Toaster />
       </NextIntlClientProvider>
     </div>
   )
