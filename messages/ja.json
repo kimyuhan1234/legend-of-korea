@@ -132,6 +132,12 @@
       "seoul": "ソウル",
       "busan": "釜山",
       "jeju": "済州"
+    },
+    "difficulties": {
+      "all": "すべて",
+      "easy": "初級",
+      "medium": "中級",
+      "hard": "上級"
     }
   },
   "mission": {

@@ -132,6 +132,12 @@
       "seoul": "서울",
       "busan": "부산",
       "jeju": "제주"
+    },
+    "difficulties": {
+      "all": "전체",
+      "easy": "초급",
+      "medium": "중급",
+      "hard": "고급"
     }
   },
   "mission": {

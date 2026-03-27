@@ -132,6 +132,12 @@
       "seoul": "Seoul",
       "busan": "Busan",
       "jeju": "Jeju"
+    },
+    "difficulties": {
+      "all": "All",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
     }
   },
   "mission": {
