@@ -55,7 +55,7 @@ export async function Navbar({ locale }: NavbarProps) {
         {/* 로고 */}
         <Link href={`/${locale}`} className="flex items-center gap-2 shrink-0">
           <div className="w-8 h-8 rounded-lg bg-[#1B2A4A] flex items-center justify-center">
-            <span className="text-[#D4A843] font-black text-sm">伝</span>
+            <span className="text-lg leading-none">👹</span>
           </div>
           <span className="font-bold text-[#1B2A4A] text-base hidden sm:block">
             Legend of Korea

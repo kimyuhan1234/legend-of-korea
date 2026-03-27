@@ -7,12 +7,20 @@
 
 /* ── 테마 변수 ──────────────────────────────── */
 @theme {
-  /* LOK 브랜드 컬러 */
-  --color-lok-navy:  #1B2A4A;
-  --color-lok-gold:  #D4A843;
-  --color-lok-cream: #F5F0E8;
-  --color-lok-brown: #7a6a58;
-  --color-lok-border: #e8ddd0;
+  /* LOK 브랜드 컬러 - 확장 팔레트 */
+  --color-lok-navy:        #1B2A4A;
+  --color-lok-navy-light:  #2D4A7A;
+  --color-lok-gold:        #D4A843;
+  --color-lok-gold-light:  #E8C96A;
+  --color-lok-gold-dark:   #B8902F;
+  --color-lok-cream:       #F5F0E8;
+  --color-lok-cream-dark:  #EDE5D8;
+  --color-lok-brown:       #7a6a58;
+  --color-lok-brown-dark:  #5a4a38;
+  --color-lok-border:      #e8ddd0;
+  --color-lok-text:        #3a3028;
+  --color-lok-success:     #4CAF50;
+  --color-lok-error:       #E53935;
 
   /* shadcn/ui 호환 */
   --color-background: #F5F0E8;

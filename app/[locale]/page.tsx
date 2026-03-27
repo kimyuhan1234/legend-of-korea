@@ -1,7 +1,11 @@
-import { useTranslations } from "next-intl"
 import { getTranslations } from "next-intl/server"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
+import Image from "next/image"
 import { Metadata } from "next"
+import { createClient } from "@/lib/supabase/server"
+import { DifficultyBadge } from "@/components/shared/DifficultyBadge"
+import type { I18nText } from "@/lib/supabase/types"
 
 interface Props {
   params: { locale: string }
@@ -14,12 +18,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function HomePage({ params }: Props) {
-  const locale = params.locale
-  return <HomeContent locale={locale} />
+function getI18n(field: I18nText, locale: string): string {
+  return (field as unknown as Record<string, string>)[locale] || field.ko || ""
 }
 
-function HomeContent({ locale }: { locale: string }) {
+export default async function HomePage({ params }: Props) {
+  const { locale } = params
+  const supabase = await createClient()
+
+  // 추천 코스 (최대 3개)
+  const { data: courses } = await supabase
+    .from("courses")
+    .select("id, title, description, thumbnail_url, difficulty, region, duration_text, price_1p")
+    .eq("is_active", true)
+    .limit(3)
+
+  // 최근 커뮤니티 포스트 (최대 3개)
+  const { data: posts } = await supabase
+    .from("community_posts")
+    .select("id, content, photos, likes_count, created_at, users(nickname, current_tier)")
+    .order("created_at", { ascending: false })
+    .limit(3)
+
+  return <HomeContent locale={locale} courses={courses || []} posts={posts || []} />
+}
+
+function HomeContent({
+  locale,
+  courses,
+  posts,
+}: {
+  locale: string
+  courses: any[]
+  posts: any[]
+}) {
   const t = useTranslations("home")
   const tc = useTranslations("common")
 
@@ -60,29 +92,132 @@ function HomeContent({ locale }: { locale: string }) {
         </div>
       </section>
 
-      {/* 이용 방법 */}
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1B2A4A] mb-4">
-          {t("howItWorks")}
-        </h2>
-        <p className="text-center text-[#7a6a58] mb-12">
-          {t("heroSubtitle")}
-        </p>
-
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {steps.map((item) => (
-            <div
-              key={item.step}
-              className="bg-white rounded-3xl p-6 shadow-sm border border-[#e8ddd0] text-center hover:shadow-md hover:border-[#D4A843]/40 transition-all"
+      {/* 추천 코스 */}
+      {courses.length > 0 && (
+        <section className="max-w-6xl mx-auto px-4 py-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1B2A4A]">
+              {t("featuredCourse")}
+            </h2>
+            <Link
+              href={`/${locale}/courses`}
+              className="text-sm text-[#D4A843] hover:underline font-medium"
             >
-              <div className="text-4xl mb-3">{item.icon}</div>
-              <div className="text-xs font-bold text-[#D4A843] mb-2 tracking-wider">STEP {item.step}</div>
-              <h3 className="text-base font-bold text-[#1B2A4A] mb-2">{item.title}</h3>
-              <p className="text-sm text-[#7a6a58] leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
+              {tc("viewMore")} →
+            </Link>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {courses.map((course) => (
+              <Link
+                key={course.id}
+                href={`/${locale}/courses/${course.id}`}
+                className="group block bg-white rounded-3xl overflow-hidden border border-[#e8ddd0] shadow-sm hover:shadow-md hover:border-[#D4A843]/40 transition-all"
+              >
+                <div className="relative h-48 bg-[#1B2A4A]/10">
+                  {course.thumbnail_url ? (
+                    <Image
+                      src={course.thumbnail_url}
+                      alt={getI18n(course.title, locale)}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-5xl">
+                      👹
+                    </div>
+                  )}
+                  <div className="absolute top-3 left-3">
+                    <DifficultyBadge difficulty={course.difficulty} locale={locale} />
+                  </div>
+                </div>
+                <div className="p-5">
+                  <p className="text-xs text-[#7a6a58] mb-2">📍 {course.region}</p>
+                  <h3 className="font-bold text-[#1B2A4A] mb-1">
+                    {getI18n(course.title, locale)}
+                  </h3>
+                  <p className="text-sm text-[#7a6a58] line-clamp-2">
+                    {getI18n(course.description, locale)}
+                  </p>
+                  <p className="mt-3 text-sm font-bold text-[#1B2A4A]">
+                    ₩{course.price_1p?.toLocaleString()}~
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 이용 방법 */}
+      <section className="bg-white py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1B2A4A] mb-4">
+            {t("howItWorks")}
+          </h2>
+          <p className="text-center text-[#7a6a58] mb-12">
+            {t("heroSubtitle")}
+          </p>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {steps.map((item) => (
+              <div
+                key={item.step}
+                className="bg-[#F5F0E8] rounded-3xl p-6 text-center hover:shadow-md hover:border-[#D4A843]/40 border border-[#e8ddd0] transition-all"
+              >
+                <div className="text-4xl mb-3">{item.icon}</div>
+                <div className="text-xs font-bold text-[#D4A843] mb-2 tracking-wider">
+                  STEP {item.step}
+                </div>
+                <h3 className="text-base font-bold text-[#1B2A4A] mb-2">{item.title}</h3>
+                <p className="text-sm text-[#7a6a58] leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* 최근 모험 기록 */}
+      {posts.length > 0 && (
+        <section className="max-w-6xl mx-auto px-4 py-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1B2A4A]">
+              {t("recentPosts")}
+            </h2>
+            <Link
+              href={`/${locale}/community`}
+              className="text-sm text-[#D4A843] hover:underline font-medium"
+            >
+              {tc("viewMore")} →
+            </Link>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {posts.map((post: any) => (
+              <div
+                key={post.id}
+                className="bg-white rounded-2xl border border-[#e8ddd0] overflow-hidden hover:shadow-sm transition-shadow"
+              >
+                {post.photos?.[0] && (
+                  <div className="h-36 bg-[#F5F0E8] overflow-hidden">
+                    <img
+                      src={post.photos[0]}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="p-4">
+                  <p className="text-xs text-[#D4A843] font-semibold mb-1">
+                    {post.users?.nickname || "모험가"}
+                  </p>
+                  <p className="text-sm text-[#3a3028] line-clamp-3">{post.content}</p>
+                  <p className="text-xs text-[#7a6a58] mt-2">👏 {post.likes_count}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA 배너 */}
       <section className="max-w-6xl mx-auto px-4 pb-20">
