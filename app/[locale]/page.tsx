@@ -75,10 +75,10 @@ function HomeContent({
   const comingSoon = COMING_SOON[locale as keyof typeof COMING_SOON] || COMING_SOON.ko
 
   const steps = [
-    { icon: "📦", title: t("step1Title"), desc: t("step1Desc"), step: "01" },
-    { icon: "🗺️", title: t("step2Title"), desc: t("step2Desc"), step: "02" },
-    { icon: "📱", title: t("step3Title"), desc: t("step3Desc"), step: "03" },
-    { icon: "⚡", title: t("step4Title"), desc: t("step4Desc"), step: "04" },
+    { icon: "📦", title: t("step1Title"), desc: t("step1Desc"), step: "01", img: "/images/step1-kit-delivery.jpg", alt: "미션 키트 수령" },
+    { icon: "🗺️", title: t("step2Title"), desc: t("step2Desc"), step: "02", img: "/images/step2-adventure-start.jpg", alt: "전설의 장소로 출발" },
+    { icon: "📱", title: t("step3Title"), desc: t("step3Desc"), step: "03", img: "/images/step3-mission.jpg", alt: "QR 미션 수행" },
+    { icon: "⚡", title: t("step4Title"), desc: t("step4Desc"), step: "04", img: "/images/step4-hero.jpg", alt: "전설의 영웅 등극" },
   ]
 
   return (
@@ -222,14 +222,27 @@ function HomeContent({
             {steps.map((item) => (
               <div
                 key={item.step}
-                className="bg-[#F5F0E8] rounded-3xl p-6 text-center hover:shadow-md hover:border-[#D4A843]/40 border border-[#e8ddd0] transition-all"
+                className="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl border border-[#e8ddd0] hover:border-[#D4A843]/40 transition-all duration-300"
               >
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <div className="text-xs font-bold text-[#D4A843] mb-2 tracking-wider">
-                  STEP {item.step}
+                {/* 이미지 영역 */}
+                <div className="relative h-48 overflow-hidden bg-[#1B2A4A]/10">
+                  <Image
+                    src={item.img}
+                    alt={item.alt}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <span className="absolute top-3 left-3 bg-[#D4A843] text-[#1B2A4A] text-xs font-bold px-3 py-1 rounded-full">
+                    STEP {item.step}
+                  </span>
+                  <span className="absolute bottom-3 right-3 text-2xl">{item.icon}</span>
                 </div>
-                <h3 className="text-base font-bold text-[#1B2A4A] mb-2">{item.title}</h3>
-                <p className="text-sm text-[#7a6a58] leading-relaxed">{item.desc}</p>
+                {/* 텍스트 영역 */}
+                <div className="p-5 text-center">
+                  <h3 className="text-base font-bold text-[#1B2A4A] mb-2">{item.title}</h3>
+                  <p className="text-sm text-[#7a6a58] leading-relaxed">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
