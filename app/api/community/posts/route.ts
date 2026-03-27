@@ -1,0 +1,98 @@
+import { createClient } from '@/lib/supabase/server';
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function GET(req: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const { searchParams } = new URL(req.url);
+    const cursor = searchParams.get('cursor');
+    const courseId = searchParams.get('courseId');
+    const limit = 10;
+
+    let query = supabase
+      .from('community_posts')
+      .select(`
+        *,
+        user:users (nickname, avatar_url, current_tier),
+        course:courses (title)
+      `)
+      .order('created_at', { ascending: false })
+      .limit(limit);
+
+    if (cursor) {
+      query = query.lt('created_at', cursor);
+    }
+
+    if (courseId && courseId !== 'all') {
+      query = query.eq('course_id', courseId);
+    }
+
+    const { data: posts, error } = await query;
+
+    if (error) throw error;
+
+    const nextCursor = posts.length === limit ? posts[posts.length - 1].created_at : null;
+
+    return NextResponse.json({ 
+      success: true, 
+      posts, 
+      nextCursor 
+    });
+  } catch (error) {
+    console.error('Community GET Error:', error);
+    return NextResponse.json({ error: '데이터를 불러오는 중 오류가 발생했습니다.', success: false }, { status: 500 });
+  }
+}
+
+export async function POST(req: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return NextResponse.json({ error: '로그인이 필요합니다.' }, { status: 401 });
+
+    const { text, photos, courseId, isSpoiler } = await req.json();
+
+    if (!text || text.length < 5) {
+      return NextResponse.json({ error: '내용을 5자 이상 입력해주세요.' }, { status: 400 });
+    }
+
+    const { data: post, error } = await supabase
+      .from('community_posts')
+      .insert({
+        user_id: user.id,
+        text,
+        photos: photos || [],
+        course_id: courseId || null,
+        is_spoiler: isSpoiler || false,
+        likes_count: 0
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    // LP 지급 (사진 포함 여부에 따라 다름)
+    const lpAmount = photos && photos.length > 0 ? 30 : 50; // COMMUNITY_PHOTO=30, COMMUNITY_REVIEW=50 (from prompt)
+    const lpType = photos && photos.length > 0 ? 'COMMUNITY_PHOTO' : 'COMMUNITY_REVIEW';
+
+    // User LP 업데이트
+    const { data: userData } = await supabase.from('users').select('total_lp').eq('id', user.id).single();
+    const newLp = (userData?.total_lp || 0) + lpAmount;
+    
+    await supabase.from('users').update({ total_lp: newLp }).eq('id', user.id);
+    
+    // LP 트랜잭션 기록
+    await supabase.from('lp_transactions').insert({
+      user_id: user.id,
+      amount: lpAmount,
+      type: lpType,
+      reference_id: post.id,
+      description: '커뮤니티 기록 작성 보너스'
+    });
+
+    return NextResponse.json({ success: true, post });
+  } catch (error) {
+    console.error('Community POST Error:', error);
+    return NextResponse.json({ error: '기록 등록 중 오류가 발생했습니다.', success: false }, { status: 500 });
+  }
+}

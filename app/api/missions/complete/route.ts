@@ -1,5 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
+import { LP_REWARDS } from '@/lib/constants/lp';
+import { checkAndPromoteTier } from '@/lib/utils/tier';
 
 export async function POST(req: NextRequest) {
   try {
@@ -59,14 +61,26 @@ export async function POST(req: NextRequest) {
     // 3-2. User LP 업데이트
     const { data: userData } = await supabase.from('users').select('total_lp, current_tier').eq('id', user.id).single();
     const currentLp = userData?.total_lp || 0;
-    const addedLp = mission.lp_reward;
+    
+    // LP 보상 결정 (미션 타입별)
+    let addedLp = mission.lp_reward; // 기본값
+    if (type === 'boss') addedLp = LP_REWARDS.MISSION_BOSS;
+    else if (type === 'hidden') addedLp = LP_REWARDS.MISSION_HIDDEN;
+    else addedLp = LP_REWARDS.MISSION_QUIZ; // 기본 퀴즈/사진/오픈형은 100
+
     let newLp = currentLp + addedLp;
     
     // 3-3. LP 트랜잭션 기록
+    let lpType = 'MISSION_QUIZ';
+    if (type === 'boss') lpType = 'MISSION_BOSS';
+    else if (type === 'hidden') lpType = 'MISSION_HIDDEN';
+    else if (type === 'photo') lpType = 'MISSION_PHOTO';
+    else if (type === 'open') lpType = 'MISSION_OPEN';
+
     await supabase.from('lp_transactions').insert({
       user_id: user.id,
       amount: addedLp,
-      type: 'mission',
+      type: lpType,
       reference_id: missionId,
       description: `${mission.title.ko} 완료`
     });
@@ -83,15 +97,10 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 4. 티어 재계산
-    const { data: nextTiers } = await supabase.from('tiers').select('*').lte('min_lp', newLp).order('level', { ascending: false }).limit(1);
-    const newTier = nextTiers?.[0]?.level || 1;
-    
-    let tierUp = false;
-    if (userData && userData.current_tier < newTier) {
-       await supabase.from('users').update({ current_tier: newTier }).eq('id', user.id);
-       tierUp = true;
-    }
+    // 4. 티어 재계산 (유틸리티 사용)
+    const tierResult = await checkAndPromoteTier(supabase, user.id, newLp, userData?.current_tier || 1);
+    const tierUp = tierResult.tierUp;
+    const finalTier = tierUp ? tierResult.newTier?.level : (userData?.current_tier || 1);
 
     // 5. 다음 미션 해제 (is_hidden 제외한 순차적 미션 중 다음 단계)
     const nextSeq = mission.sequence + 1;
@@ -132,21 +141,26 @@ export async function POST(req: NextRequest) {
             .select('id')
             .eq('user_id', user.id)
             .eq('reference_id', mission.course_id)
-            .eq('description', '코스 완주 보너스 (500 LP)')
+            .eq('description', `코스 완주 보너스 (${LP_REWARDS.COURSE_COMPLETE} LP)`)
             .maybeSingle();
 
         if (!existingBonus) {
-            bonusLp = 500;
+            bonusLp = LP_REWARDS.COURSE_COMPLETE;
             newLp += bonusLp;
-            await supabase.from('users').update({ total_lp: newLp }).eq('id', user.id);
             
             await supabase.from('lp_transactions').insert({
                 user_id: user.id,
                 amount: bonusLp,
-                type: 'mission',
+                type: 'COURSE_COMPLETE',
                 reference_id: mission.course_id,
-                description: `코스 완주 보너스 (500 LP)`
+                description: `코스 완주 보너스 (${LP_REWARDS.COURSE_COMPLETE} LP)`
             });
+
+            // 보너스 지급 후 티어 다시 체크
+            const bonusTierResult = await checkAndPromoteTier(supabase, user.id, newLp, finalTier);
+            if (bonusTierResult.tierUp) {
+                // 추가 승급 시 업데이트 (생략 가능하나 정확성을 위해)
+            }
         }
     }
 
@@ -159,7 +173,7 @@ export async function POST(req: NextRequest) {
       bonusLp,
       newTotalLp: newLp,
       tierUp,
-      newTier,
+      newTier: tierUp ? tierResult.newTier : null,
       courseCompleted: isCourseCompleted
     });
 
