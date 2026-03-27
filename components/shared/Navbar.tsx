@@ -81,13 +81,13 @@ export async function Navbar({ locale }: NavbarProps) {
           <div className="hidden md:block">
             <LocaleSwitcher currentLocale={locale} />
           </div>
-          {user && profile ? (
+          {user ? (
             <div className="hidden md:flex items-center gap-3">
               {/* LP 뱃지 */}
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1B2A4A]/5 border border-[#1B2A4A]/10">
                 <span className="text-xs text-[#D4A843]">⚡</span>
                 <span className="text-xs font-bold text-[#1B2A4A]">
-                  {profile.total_lp.toLocaleString()} {t.lp}
+                  {(profile?.total_lp ?? 0).toLocaleString()} {t.lp}
                 </span>
               </div>
 
@@ -96,17 +96,17 @@ export async function Navbar({ locale }: NavbarProps) {
                 <button className="flex items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-[#F5F0E8] transition-colors">
                   {/* 아바타 */}
                   <div className="w-7 h-7 rounded-full bg-[#1B2A4A] flex items-center justify-center text-white text-xs font-bold">
-                    {profile.avatar_url ? (
+                    {profile?.avatar_url ? (
                       <img
                         src={profile.avatar_url}
-                        alt={profile.nickname}
+                        alt={profile?.nickname ?? ""}
                         className="w-7 h-7 rounded-full object-cover"
                       />
                     ) : (
-                      profile.nickname?.[0]?.toUpperCase() || "U"
+                      profile?.nickname?.[0]?.toUpperCase() || "U"
                     )}
                   </div>
-                  <span className="text-sm font-medium text-[#1B2A4A]">{profile.nickname}</span>
+                  <span className="text-sm font-medium text-[#1B2A4A]">{profile?.nickname ?? t.mypage}</span>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-[#7a6a58]">
                     <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>

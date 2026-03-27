@@ -40,7 +40,13 @@ const DIFFICULTY_OPTIONS = [
   { value: "hard", ko: "고급", ja: "上級", en: "Hard" },
 ]
 
-const REGIONS = ["전주", "경주", "서울", "부산", "제주"]
+const REGIONS = [
+  { code: "jeonju", ko: "전주", ja: "全州", en: "Jeonju" },
+  { code: "gyeongju", ko: "경주", ja: "慶州", en: "Gyeongju" },
+  { code: "seoul", ko: "서울", ja: "ソウル", en: "Seoul" },
+  { code: "busan", ko: "부산", ja: "釜山", en: "Busan" },
+  { code: "jeju", ko: "제주", ja: "済州", en: "Jeju" },
+]
 
 const LABEL = {
   ko: {
@@ -141,18 +147,19 @@ export default async function CoursesPage({ params, searchParams }: Props) {
             {label.allRegion}
           </a>
           {REGIONS.map((r) => {
-            const isActive = region === r
+            const isActive = region === r.code
+            const rLabel = r[locale as "ko" | "ja" | "en"] || r.ko
             return (
               <a
-                key={r}
-                href={`/${locale}/courses?${difficulty ? `difficulty=${difficulty}&` : ""}region=${r}`}
+                key={r.code}
+                href={`/${locale}/courses?${difficulty ? `difficulty=${difficulty}&` : ""}region=${r.code}`}
                 className={`px-4 py-2 rounded-xl text-sm font-medium border transition-colors ${
                   isActive
                     ? "bg-[#D4A843] text-[#1B2A4A] border-[#D4A843]"
                     : "bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#D4A843]/40"
                 }`}
               >
-                📍 {r}
+                📍 {rLabel}
               </a>
             )
           })}

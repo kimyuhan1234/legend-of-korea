@@ -52,6 +52,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
       const res = await fetch(url.toString());
       const data = await res.json();
+      if (!data.success) console.error('CommunityFeed fetch failed:', data);
 
       if (data.success) {
         if (isNewFilter) {
