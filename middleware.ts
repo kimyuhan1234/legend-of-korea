@@ -1,48 +1,53 @@
 import { type NextRequest, NextResponse } from "next/server"
+import createMiddleware from "next-intl/middleware"
 import { updateSession } from "@/lib/supabase/middleware"
+import { locales, defaultLocale } from "@/i18n"
 
-// 지원 로케일
-const LOCALES = ["ko", "ja", "en"]
-const DEFAULT_LOCALE = "ko"
+const intlMiddleware = createMiddleware({
+  locales,
+  defaultLocale,
+  localePrefix: "always",
+})
 
-// 로그인 필요 경로
+// 로그인 필요 경로 (locale 제외한 부분)
 const PROTECTED_PATHS = ["/mypage", "/community/write", "/shop"]
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
-  // ── 1. 로케일 리다이렉트 ──────────────────────
-  // 루트(/) 접근 시 기본 로케일로 리다이렉트
-  if (pathname === "/") {
-    return NextResponse.redirect(new URL(`/${DEFAULT_LOCALE}`, request.url))
+  // 정적 파일 및 API 패스스루
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api") ||
+    pathname.match(/\.(ico|svg|png|jpg|jpeg|gif|webp|woff|woff2)$/)
+  ) {
+    return NextResponse.next()
   }
 
-  // 로케일 없는 경로 → 기본 로케일 추가
-  const pathnameHasLocale = LOCALES.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  )
+  // 1. Supabase 세션 갱신
+  const sessionResponse = await updateSession(request)
 
-  if (!pathnameHasLocale && !pathname.startsWith("/_next") && !pathname.startsWith("/api")) {
-    return NextResponse.redirect(new URL(`/${DEFAULT_LOCALE}${pathname}`, request.url))
+  // 2. next-intl 로케일 처리
+  const intlResponse = intlMiddleware(request)
+
+  // intl이 리다이렉트를 반환하면 그것을 우선 적용
+  if (intlResponse.status === 307 || intlResponse.status === 308) {
+    return intlResponse
   }
 
-  // ── 2. Supabase 세션 갱신 ──────────────────────
-  const response = await updateSession(request)
-
-  // ── 3. 보호된 라우트 처리 ──────────────────────
+  // 3. 보호된 라우트 체크
   const localeMatch = pathname.match(/^\/([a-z]{2})(.*)$/)
   if (localeMatch) {
     const locale = localeMatch[1]
-    const restPath = localeMatch[2]
+    const restPath = localeMatch[2] || "/"
 
-    const isProtected = PROTECTED_PATHS.some((p) => restPath.startsWith(p))
+    if (PROTECTED_PATHS.some((p) => restPath.startsWith(p))) {
+      // 세션 쿠키 확인
+      const authCookie = request.cookies.get(
+        `sb-${process.env.NEXT_PUBLIC_SUPABASE_URL?.split("//")[1]?.split(".")[0]}-auth-token`
+      ) || request.cookies.get("sb-isixbzxophgxrfgjesaa-auth-token")
 
-    if (isProtected) {
-      // 세션 쿠키 존재 여부로 인증 확인 (updateSession이 이미 처리)
-      const supabaseCookie = request.cookies.get("sb-isixbzxophgxrfgjesaa-auth-token")
-      const hasSession = !!supabaseCookie
-
-      if (!hasSession) {
+      if (!authCookie) {
         const loginUrl = new URL(`/${locale}/auth/login`, request.url)
         loginUrl.searchParams.set("next", restPath)
         return NextResponse.redirect(loginUrl)
@@ -50,11 +55,17 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // 세션 쿠키를 intl 응답에 병합
+  const response = intlResponse || sessionResponse
+  sessionResponse.cookies.getAll().forEach((cookie) => {
+    response.cookies.set(cookie.name, cookie.value, cookie)
+  })
+
   return response
 }
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff|woff2)$).*)",
   ],
 }

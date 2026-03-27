@@ -2,6 +2,7 @@ import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { LogoutButton } from "@/components/features/auth/LogoutButton"
 import { NavbarMobileMenu } from "@/components/shared/NavbarMobileMenu"
+import { LocaleSwitcher } from "@/components/shared/LocaleSwitcher"
 
 interface NavbarProps {
   locale: string
@@ -76,6 +77,10 @@ export async function Navbar({ locale }: NavbarProps) {
 
         {/* 우측 유저 영역 */}
         <div className="flex items-center gap-2">
+          {/* 언어 전환 (데스크탑) */}
+          <div className="hidden md:block">
+            <LocaleSwitcher currentLocale={locale} />
+          </div>
           {user && profile ? (
             <div className="hidden md:flex items-center gap-3">
               {/* LP 뱃지 */}
