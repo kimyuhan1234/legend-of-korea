@@ -123,7 +123,16 @@
     "byeoljubuRegion": "통영·거제",
     "byeoljubuDate": "2027년 상반기 예정",
     "thirdLegend": "세 번째 전설",
-    "thirdLegendDesc": "준비 중"
+    "thirdLegendDesc": "준비 중",
+    "regions": {
+      "all": "전체",
+      "jeonju": "전주",
+      "tongyeong": "통영",
+      "gyeongju": "경주",
+      "seoul": "서울",
+      "busan": "부산",
+      "jeju": "제주"
+    }
   },
   "mission": {
     "missionCenter": "미션 센터",

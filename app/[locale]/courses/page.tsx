@@ -42,6 +42,7 @@ const DIFFICULTY_OPTIONS = [
 
 const REGIONS = [
   { code: "jeonju", ko: "전주", ja: "全州", en: "Jeonju" },
+  { code: "tongyeong", ko: "통영", ja: "統営", en: "Tongyeong" },
   { code: "gyeongju", ko: "경주", ja: "慶州", en: "Gyeongju" },
   { code: "seoul", ko: "서울", ja: "ソウル", en: "Seoul" },
   { code: "busan", ko: "부산", ja: "釜山", en: "Busan" },

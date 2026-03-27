@@ -123,7 +123,16 @@
     "byeoljubuRegion": "Tongyeong·Geoje",
     "byeoljubuDate": "Coming in early 2027",
     "thirdLegend": "The Third Legend",
-    "thirdLegendDesc": "In preparation"
+    "thirdLegendDesc": "In preparation",
+    "regions": {
+      "all": "All",
+      "jeonju": "Jeonju",
+      "tongyeong": "Tongyeong",
+      "gyeongju": "Gyeongju",
+      "seoul": "Seoul",
+      "busan": "Busan",
+      "jeju": "Jeju"
+    }
   },
   "mission": {
     "missionCenter": "Mission Center",

@@ -123,7 +123,16 @@
     "byeoljubuRegion": "統営・巨済",
     "byeoljubuDate": "2027年上半期予定",
     "thirdLegend": "第三の伝説",
-    "thirdLegendDesc": "準備中"
+    "thirdLegendDesc": "準備中",
+    "regions": {
+      "all": "すべて",
+      "jeonju": "全州",
+      "tongyeong": "統営",
+      "gyeongju": "慶州",
+      "seoul": "ソウル",
+      "busan": "釜山",
+      "jeju": "済州"
+    }
   },
   "mission": {
     "missionCenter": "ミッションセンター",
