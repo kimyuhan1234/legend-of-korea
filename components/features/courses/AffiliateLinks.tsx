@@ -7,10 +7,12 @@ import { useState, useEffect } from "react"
 
 interface AffiliateLink {
   id: string
-  type: string
+  type?: string
+  category?: string
   title: I18nText
   description: I18nText | null
-  url: string
+  url?: string
+  target_url?: string
   image_url: string | null
 }
 
@@ -22,22 +24,28 @@ interface AffiliateLinksProps {
 const SECTION_LABEL = {
   ko: {
     stay: "추천 숙소",
+    accommodation: "추천 숙소",
     transport: "추천 교통",
     food: "추천 맛집",
+    restaurant: "추천 맛집",
     other: "제휴 정보",
     external: "외부 사이트로 이동",
   },
   ja: {
     stay: "おすすめ宿泊",
+    accommodation: "おすすめ宿泊",
     transport: "おすすめ交通",
     food: "おすすめグルメ",
+    restaurant: "おすすめグルメ",
     other: "提携情報",
     external: "外部サイトへ",
   },
   en: {
     stay: "Recommended Stays",
+    accommodation: "Recommended Stays",
     transport: "Recommended Transport",
     food: "Recommended Food",
+    restaurant: "Recommended Food",
     other: "Partner Info",
     external: "Visit external site",
   },
@@ -50,8 +58,10 @@ function getI18n(field: I18nText | null, locale: string): string {
 
 const TYPE_ICON: Record<string, string> = {
   stay: "🏨",
-  transport: "🚌",
+  accommodation: "🏨",
+  transport: "🚄",
   food: "🍜",
+  restaurant: "🍽️",
   other: "🔗",
 }
 
@@ -72,7 +82,7 @@ export function AffiliateLinks({ links, locale }: AffiliateLinksProps) {
   if (links.length === 0) return null
 
   const grouped = links.reduce<Record<string, AffiliateLink[]>>((acc, link) => {
-    const type = link.type || "other"
+    const type = link.category || link.type || "other"
     if (!acc[type]) acc[type] = []
     acc[type].push(link)
     return acc
@@ -92,7 +102,7 @@ export function AffiliateLinks({ links, locale }: AffiliateLinksProps) {
   }
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-12">
+    <div>
       <h2 className="text-xl md:text-2xl font-bold text-[#1B2A4A] mb-2">
         🗺️ {locale === "ko" ? "여행 준비" : locale === "ja" ? "旅行準備" : "Travel Prep"}
       </h2>
@@ -113,10 +123,10 @@ export function AffiliateLinks({ links, locale }: AffiliateLinksProps) {
                 {items.map((link) => (
                   <a
                     key={link.id}
-                    href={link.url}
+                    href={link.target_url || link.url || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => handleLinkClick(link.id, link.url)}
+                    onClick={() => handleLinkClick(link.id, link.target_url || link.url || "")}
                     className="group flex items-start gap-4 bg-white rounded-2xl p-4 border border-[#e8ddd0] hover:border-[#D4A843]/50 hover:shadow-sm transition-all"
                   >
                     {link.image_url ? (
@@ -150,6 +160,6 @@ export function AffiliateLinks({ links, locale }: AffiliateLinksProps) {
           )
         })}
       </div>
-    </section>
+    </div>
   )
 }

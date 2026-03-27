@@ -62,7 +62,7 @@ export function KitPurchaseCard({ courseId, kits, locale }: KitPurchaseCardProps
   const coupleKit = kits.find((k) => k.option_type === "couple")
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-12">
+    <div>
       <div className="bg-white rounded-3xl border border-[#e8ddd0] overflow-hidden shadow-sm">
         <div className="grid md:grid-cols-2 gap-0">
           {/* 왼쪽: 설명 */}
@@ -113,7 +113,7 @@ export function KitPurchaseCard({ courseId, kits, locale }: KitPurchaseCardProps
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

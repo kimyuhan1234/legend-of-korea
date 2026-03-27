@@ -129,11 +129,13 @@ export default async function CourseDetailPage({ params }: Props) {
       {/* 3. 미션 미리보기 */}
       <MissionPreview missions={missions as any} locale={locale} />
 
-      {/* 4. 키트 구매 */}
-      <KitPurchaseCard courseId={courseId} kits={kits as any} locale={locale} />
-
-      {/* 5. 제휴 링크 (숙소·교통) */}
-      <AffiliateLinks links={affiliateLinks as any} locale={locale} />
+      {/* 4. 키트 구매 + 제휴 링크 */}
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <KitPurchaseCard courseId={courseId} kits={kits as any} locale={locale} />
+          <AffiliateLinks links={affiliateLinks as any} locale={locale} />
+        </div>
+      </section>
 
       {/* 6. 커뮤니티 후기 */}
       <CourseReviews posts={reviews as any} courseId={courseId} locale={locale} />
