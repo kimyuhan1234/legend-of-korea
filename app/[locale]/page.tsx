@@ -85,9 +85,16 @@ function HomeContent({
     <div>
       {/* 히어로 섹션 */}
       <section className="relative bg-[#1B2A4A] text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-[#D4A843]" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-[#D4A843] -translate-x-1/2 translate-y-1/2" />
+        {/* 히어로 배경 이미지 */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/dokkaebi-hero.jpg"
+            alt="전주 한옥마을에서 도깨비 모험을 즐기는 여행자들"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#1B2A4A]/80" />
         </div>
 
         <div className="relative max-w-6xl mx-auto px-4 py-24 md:py-36 text-center">

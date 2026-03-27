@@ -59,9 +59,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       url: `${siteUrl}/${locale}`,
       images: [
         {
-          url: "/icons/icon-512x512.png",
-          width: 512,
-          height: 512,
+          url: "/images/dokkaebi-hero.jpg",
+          width: 1200,
+          height: 630,
         }
       ]
     },
@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       card: "summary_large_image",
       title: titles[locale] || titles.ko,
       description: descriptions[locale] || descriptions.ko,
-      images: ["/icons/icon-512x512.png"],
+      images: ["/images/dokkaebi-hero.jpg"],
     },
     alternates: {
       languages: {

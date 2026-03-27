@@ -40,20 +40,13 @@ export function CourseCard({ course, locale }: CourseCardProps) {
       className="group block bg-white rounded-3xl overflow-hidden border border-[#e8ddd0] shadow-sm hover:shadow-md hover:border-[#D4A843]/40 transition-all duration-200"
     >
       {/* 썸네일 */}
-      <div className="relative h-52 bg-[#1B2A4A]/10 overflow-hidden">
-        {course.thumbnail_url ? (
-          <Image
-            src={course.thumbnail_url}
-            alt={title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-            <span className="text-5xl">👹</span>
-            <span className="text-xs text-[#7a6a58]">{course.region}</span>
-          </div>
-        )}
+      <div className="relative aspect-video bg-[#1B2A4A]/10 overflow-hidden">
+        <Image
+          src={course.thumbnail_url || "/images/dokkaebi-hero.jpg"}
+          alt={title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+        />
         {/* 난이도 뱃지 */}
         <div className="absolute top-3 left-3">
           <DifficultyBadge difficulty={course.difficulty} locale={locale} />

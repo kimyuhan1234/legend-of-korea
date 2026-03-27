@@ -36,22 +36,16 @@ export function CourseHero({ course, missionCount, locale }: CourseHeroProps) {
   return (
     <section className="relative bg-[#1B2A4A] text-white overflow-hidden">
       {/* 배경 이미지 */}
-      {course.thumbnail_url && (
-        <div className="absolute inset-0">
-          <Image
-            src={course.thumbnail_url}
-            alt={title}
-            fill
-            className="object-cover opacity-30"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1B2A4A]/60 via-[#1B2A4A]/50 to-[#1B2A4A]" />
-        </div>
-      )}
-
-      {/* 장식 원 */}
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#D4A843]/5 -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[#D4A843]/5 translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute inset-0">
+        <Image
+          src={course.thumbnail_url || "/images/dokkaebi-hero.jpg"}
+          alt={title}
+          fill
+          className="object-cover opacity-30"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#1B2A4A]/80" />
+      </div>
 
       <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
         <div className="max-w-2xl">
