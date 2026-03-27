@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { CommunityFeed } from '@/components/features/community/CommunityFeed';
 import { Navbar } from '@/components/shared/Navbar';
 import { Footer } from '@/components/shared/Footer';

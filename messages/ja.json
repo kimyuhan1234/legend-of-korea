@@ -116,7 +116,14 @@
     "missionCount": "{count}個のミッション",
     "startCourse": "この伝説に挑む",
     "learnMore": "詳しく見る",
-    "noCourses": "現在アクティブなコースはありません"
+    "noCourses": "現在アクティブなコースはありません",
+    "comingSoon": "近日公開",
+    "comingSoonDesc": "新しい伝説を準備中です。お楽しみに！",
+    "byeoljubuTitle": "別主簿伝コース",
+    "byeoljubuRegion": "統営・巨済",
+    "byeoljubuDate": "2027年上半期予定",
+    "thirdLegend": "第三の伝説",
+    "thirdLegendDesc": "準備中"
   },
   "mission": {
     "missionCenter": "ミッションセンター",

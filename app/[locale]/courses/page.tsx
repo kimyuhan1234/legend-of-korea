@@ -1,7 +1,24 @@
+export const dynamic = 'force-dynamic'
+
 import { getTranslations } from "next-intl/server"
 import { Metadata } from "next"
 import { createClient } from "@/lib/supabase/server"
 import { CourseCard } from "@/components/features/courses/CourseCard"
+
+const COMING_SOON_COURSES = {
+  ko: [
+    { title: "별주부전 코스", region: "통영·거제", date: "2027년 상반기 예정", emoji: "🐢" },
+    { title: "세 번째 전설", region: "준비 중", date: "미정", emoji: "🌙" },
+  ],
+  ja: [
+    { title: "別主簿伝コース", region: "統営・巨済", date: "2027年上半期予定", emoji: "🐢" },
+    { title: "第三の伝説", region: "準備中", date: "未定", emoji: "🌙" },
+  ],
+  en: [
+    { title: "Tale of Byeoljubu Course", region: "Tongyeong·Geoje", date: "Coming in early 2027", emoji: "🐢" },
+    { title: "The Third Legend", region: "In preparation", date: "TBD", emoji: "🌙" },
+  ],
+}
 
 interface Props {
   params: { locale: string }
@@ -62,6 +79,8 @@ export default async function CoursesPage({ params, searchParams }: Props) {
   const { locale } = params
   const { difficulty = "", region = "" } = searchParams
   const label = LABEL[locale as keyof typeof LABEL] || LABEL.ko
+  const t = await getTranslations({ locale, namespace: "course" })
+  const comingSoon = COMING_SOON_COURSES[locale as keyof typeof COMING_SOON_COURSES] || COMING_SOON_COURSES.ko
 
   const supabase = await createClient()
 
@@ -156,6 +175,37 @@ export default async function CoursesPage({ params, searchParams }: Props) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course) => (
             <CourseCard key={course.id} course={course as any} locale={locale} />
+          ))}
+
+          {/* Coming Soon 카드 */}
+          {comingSoon.map((item, i) => (
+            <div
+              key={i}
+              className="relative bg-white/60 rounded-3xl overflow-hidden border border-[#e8ddd0]/60 shadow-sm opacity-70 backdrop-blur-sm cursor-not-allowed"
+            >
+              <div className="relative h-48 bg-[#1B2A4A]/5 flex items-center justify-center">
+                <span className="text-6xl grayscale">{item.emoji}</span>
+                <div className="absolute inset-0 flex items-center justify-center bg-[#1B2A4A]/10">
+                  <div className="bg-white/90 rounded-full p-3 shadow-md">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#1B2A4A]">
+                      <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="2" />
+                      <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute top-3 left-3">
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-[#1B2A4A] text-white">
+                    {t("comingSoon")}
+                  </span>
+                </div>
+              </div>
+              <div className="p-5">
+                <p className="text-xs text-[#7a6a58] mb-2">📍 {item.region}</p>
+                <h3 className="font-bold text-[#1B2A4A] mb-1">{item.title}</h3>
+                <p className="text-sm text-[#D4A843] font-medium">{item.date}</p>
+                <p className="mt-3 text-sm text-[#7a6a58]">{t("comingSoonDesc")}</p>
+              </div>
+            </div>
           ))}
         </div>
       )}

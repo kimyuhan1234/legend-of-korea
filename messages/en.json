@@ -116,7 +116,14 @@
     "missionCount": "{count} missions",
     "startCourse": "Take on this Legend",
     "learnMore": "Learn more",
-    "noCourses": "No active courses available"
+    "noCourses": "No active courses available",
+    "comingSoon": "Coming Soon",
+    "comingSoonDesc": "A new legend is being prepared. Stay tuned!",
+    "byeoljubuTitle": "Tale of Byeoljubu Course",
+    "byeoljubuRegion": "Tongyeong·Geoje",
+    "byeoljubuDate": "Coming in early 2027",
+    "thirdLegend": "The Third Legend",
+    "thirdLegendDesc": "In preparation"
   },
   "mission": {
     "missionCenter": "Mission Center",

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { Metadata } from "next"
 import { SignupForm } from "@/components/features/auth/SignupForm"
 import { SocialLoginButtons } from "@/components/features/auth/SocialLoginButtons"

@@ -3,7 +3,7 @@
 import { Mission, MissionProgress } from '@/lib/supabase/types';
 import { useTranslations } from 'next-intl';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/button'; // Using button as a badge placeholder or create Badge.tsx
+import { Badge } from '@/components/ui/badge';
 import { MapPin, Trophy, Clock, AlertCircle } from 'lucide-react';
 
 interface MissionCardProps {

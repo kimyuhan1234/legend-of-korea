@@ -103,7 +103,7 @@ export function QuizMission({
     }
   };
 
-  const useHint = async (level: number) => {
+  const handleHint = async (level: number) => {
     if (unlockedHints.includes(level)) return;
 
     // 1단계는 무료, 2단계 30, 3단계 50
@@ -261,7 +261,7 @@ export function QuizMission({
                            <Button variant="ghost" className="rounded-xl px-6" onClick={() => {}}>취소</Button>
                            <Button 
                              className="rounded-xl px-8" 
-                             onClick={() => useHint(level)}
+                             onClick={() => handleHint(level)}
                              disabled={isHintLoading}
                            >
                               확인
