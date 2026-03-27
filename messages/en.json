@@ -1,4 +1,16 @@
 {
+  "seo": {
+    "title": "Legend of Korea - Mission Adventure following Korean Legends",
+    "description": "A premium adventure service where you explore legendary places in Korea and solve missions."
+  },
+  "error": {
+    "title": "A problem occurred in the legend",
+    "description": "A Dokkaebi must be playing tricks. Please try again later.",
+    "notFound": "Lost in the legends...",
+    "notFoundDesc": "A Dokkaebi seems to have hidden this page 👹",
+    "goHome": "Go back home",
+    "retry": "Try again"
+  },
   "common": {
     "siteName": "Legend of Korea",
     "siteDescription": "A mission adventure through Korean legends",

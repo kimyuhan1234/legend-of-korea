@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Legend of Korea (전설의 한국)
 
-## Getting Started
+"Follow the Legends, Become the Hero." — Explore Korean folklore through an immersive mission adventure.
 
-First, run the development server:
+Legend of Korea is a premium PWA-based adventure platform that combines offline exploration (Mission Kits) with online mission-solving (QR-based engine).
 
+## 🚀 Built With
+- **Framework**: [Next.js 14 App Router](https://nextjs.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **Backend**: [Supabase](https://supabase.com/) (Auth, DB, Storage)
+- **Localizaton**: [next-intl](https://next-intl-docs.vercel.app/) (KO, JA, EN)
+- **Payments**: [Toss Payments](https://toss.im/payments) & [Stripe](https://stripe.com/)
+- **Charts**: [Recharts](https://recharts.org/)
+
+## 🛠️ Getting Started
+
+### 1. Prerequisites
+- Node.js 18+
+- pnpm
+
+### 2. Environment Setup
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+cp .env.example .env.local
+```
+Fill in the Supabase and Payment gateway credentials.
+
+### 3. Execution
+```bash
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📦 Supabase Setup
+- Run the SQL migrations found in the `/supabase/migrations` folder.
+- Enable RLS on all tables as documented in `DEPLOYMENT.md`.
+- Create Storage buckets: `mission-photos`, `community-photos`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Core Features
+- **PWA Support**: Full mobile-first experience with offline capabilities.
+- **Multilingual Support**: Fully localized in Korean, English, and Japanese.
+- **QR Mission Engine**: Scoped mission progress tracking and hint systems.
+- **Admin Dashboard**: Real-time sales analytics, B2B order management, and community moderation.
+- **Progression System**: LP (Legend Points) earning and Tier-based status upgrades.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+MIT License. © 2025 Legend of Korea.

@@ -22,15 +22,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const supabase = await createClient()
   const { data: course } = await supabase
     .from("courses")
-    .select("title, description")
+    .select("title, description, thumbnail_url")
     .eq("id", courseId)
     .single()
 
   if (!course) return { title: "Not Found" }
 
+  const title = getI18n(course.title as I18nText, locale)
+  const description = getI18n(course.description as I18nText, locale)
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legendofkorea.com'
+
   return {
-    title: `${getI18n(course.title as I18nText, locale)} | Legend of Korea`,
-    description: getI18n(course.description as I18nText, locale),
+    title: `${title} | Legend of Korea`,
+    description: description,
+    openGraph: {
+      title: `${title} | Legend of Korea`,
+      description: description,
+      url: `${siteUrl}/${locale}/courses/${courseId}`,
+      images: course.thumbnail_url ? [{ url: course.thumbnail_url }] : [],
+    },
+    alternates: {
+      canonical: `${siteUrl}/${locale}/courses/${courseId}`,
+      languages: {
+        'ko-KR': `/ko/courses/${courseId}`,
+        'ja-JP': `/ja/courses/${courseId}`,
+        'en-US': `/en/courses/${courseId}`,
+      },
+    },
   }
 }
 

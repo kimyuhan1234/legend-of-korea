@@ -1,4 +1,16 @@
 {
+  "seo": {
+    "title": "Legend of Korea - 韓国の伝説を辿るミッションアドベンチャー",
+    "description": "韓国의伝説的な場所を探索し、ミッションを解決するプレミアムアドベンチャーサービスです。"
+  },
+  "error": {
+    "title": "伝説の中で問題が発生しました",
+    "description": "トッケビがいたずらをしたようです。しばらくしてからもう一度お試しください。",
+    "notFound": "伝説の中で道に迷いました...",
+    "notFoundDesc": "トッケビがこのページを隠したようです 👹",
+    "goHome": "ホームに戻る",
+    "retry": "再試行"
+  },
   "common": {
     "siteName": "Legend of Korea",
     "siteDescription": "韓国の伝説をたどるミッションアドベンチャー",

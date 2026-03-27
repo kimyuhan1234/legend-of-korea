@@ -1,4 +1,16 @@
 {
+  "seo": {
+    "title": "Legend of Korea - 한국 전설을 따라가는 미션 어드벤처",
+    "description": "한국의 전설 속 장소를 직접 탐험하며 미션을 해결하는 프리미엄 어드벤처 서비스입니다."
+  },
+  "error": {
+    "title": "전설 속에서 문제가 발생했습니다",
+    "description": "도깨비가 장난을 쳤나 봅니다. 잠시 후 다시 시도해 주세요.",
+    "notFound": "전설 속에서 길을 잃었습니다...",
+    "notFoundDesc": "도깨비가 이 페이지를 숨겼나 봅니다 👹",
+    "goHome": "홈으로 돌아가기",
+    "retry": "다시 시도"
+  },
   "common": {
     "siteName": "Legend of Korea",
     "siteDescription": "한국 전설을 따라가는 미션 어드벤처",
