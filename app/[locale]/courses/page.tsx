@@ -2,21 +2,22 @@ export const dynamic = 'force-dynamic'
 
 import { getTranslations } from "next-intl/server"
 import { Metadata } from "next"
+import Image from "next/image"
 import { createClient } from "@/lib/supabase/server"
 import { CourseCard } from "@/components/features/courses/CourseCard"
 
 const COMING_SOON_COURSES = {
   ko: [
-    { title: "별주부전 코스", region: "통영·거제", date: "2027년 상반기 예정", emoji: "🐢" },
-    { title: "세 번째 전설", region: "준비 중", date: "미정", emoji: "🌙" },
+    { title: "별주부전 코스", region: "통영·거제", date: "2027년 상반기 예정", img: "/images/byeoljubu-coming.jpg", alt: "별주부전 코스 - 곧 공개됩니다" },
+    { title: "세 번째 전설", region: "준비 중", date: "미정", img: "/images/third-legend-coming.jpg", alt: "세 번째 전설 - 곧 공개됩니다" },
   ],
   ja: [
-    { title: "別主簿伝コース", region: "統営・巨済", date: "2027年上半期予定", emoji: "🐢" },
-    { title: "第三の伝説", region: "準備中", date: "未定", emoji: "🌙" },
+    { title: "別主簿伝コース", region: "統営・巨済", date: "2027年上半期予定", img: "/images/byeoljubu-coming.jpg", alt: "鼈主簿伝コース - 近日公開" },
+    { title: "第三の伝説", region: "準備中", date: "未定", img: "/images/third-legend-coming.jpg", alt: "第三の伝説 - 近日公開" },
   ],
   en: [
-    { title: "Tale of Byeoljubu Course", region: "Tongyeong·Geoje", date: "Coming in early 2027", emoji: "🐢" },
-    { title: "The Third Legend", region: "In preparation", date: "TBD", emoji: "🌙" },
+    { title: "Tale of Byeoljubu Course", region: "Tongyeong·Geoje", date: "Coming in early 2027", img: "/images/byeoljubu-coming.jpg", alt: "Byeoljubu Course - Coming Soon" },
+    { title: "The Third Legend", region: "In preparation", date: "TBD", img: "/images/third-legend-coming.jpg", alt: "The Third Legend - Coming Soon" },
   ],
 }
 
@@ -189,22 +190,28 @@ export default async function CoursesPage({ params, searchParams }: Props) {
           {comingSoon.map((item, i) => (
             <div
               key={i}
-              className="relative bg-white/60 rounded-3xl overflow-hidden border border-[#e8ddd0]/60 shadow-sm opacity-70 backdrop-blur-sm cursor-not-allowed"
+              className="relative bg-white rounded-3xl overflow-hidden border border-[#e8ddd0]/60 shadow-sm opacity-80 cursor-not-allowed"
             >
-              <div className="relative h-48 bg-[#1B2A4A]/5 flex items-center justify-center">
-                <span className="text-6xl grayscale">{item.emoji}</span>
-                <div className="absolute inset-0 flex items-center justify-center bg-[#1B2A4A]/10">
-                  <div className="bg-white/90 rounded-full p-3 shadow-md">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#1B2A4A]">
-                      <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="2" />
-                      <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                </div>
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={item.img}
+                  alt={item.alt}
+                  fill
+                  className="object-cover brightness-75"
+                />
+                <div className="absolute inset-0 bg-black/30" />
                 <div className="absolute top-3 left-3">
                   <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-[#1B2A4A] text-white">
                     {t("comingSoon")}
                   </span>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-white">
+                      <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="2" />
+                      <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  </div>
                 </div>
               </div>
               <div className="p-5">

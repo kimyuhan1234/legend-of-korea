@@ -9,6 +9,24 @@ Follow this guide to transition Legend of Korea from development to production.
 
 ## 2. Supabase Production Checklist
 - **RLS Policies**: Ensure all tables have Row Level Security enabled.
+
+### courses 테이블 RLS 설정 (배포 전 반드시 실행)
+개발 중 RLS를 비활성화한 경우, 배포 전 아래 SQL을 Supabase SQL Editor에서 실행하세요:
+
+```sql
+ALTER TABLE courses ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Anyone can read active courses"
+  ON courses FOR SELECT
+  USING (is_active = true);
+
+CREATE POLICY "Admins full access"
+  ON courses FOR ALL
+  USING (EXISTS (
+    SELECT 1 FROM users u
+    WHERE u.id = auth.uid() AND u.role = 'admin'
+  ));
+```
 - **Authentication**: Update 카카오, 구글, LINE providers with the production domain (`https://legendofkorea.com/auth/callback`).
 - **Storage CORS**: Configure allowed origins to include the production domain.
 - **Bucket Creation**: Create public buckets `mission-photos` and `community-photos`.
