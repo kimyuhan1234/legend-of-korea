@@ -1,40 +1,77 @@
 @import "tailwindcss";
 
-@theme {
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(0 0% 3.9%);
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(0 0% 3.9%);
-  --color-popover: hsl(0 0% 100%);
-  --color-popover-foreground: hsl(0 0% 3.9%);
-  --color-primary: hsl(0 72.2% 50.6%);
-  --color-primary-foreground: hsl(0 85.7% 97.3%);
-  --color-secondary: hsl(0 0% 96.1%);
-  --color-secondary-foreground: hsl(0 0% 9%);
-  --color-muted: hsl(0 0% 96.1%);
-  --color-muted-foreground: hsl(0 0% 45.1%);
-  --color-accent: hsl(0 0% 96.1%);
-  --color-accent-foreground: hsl(0 0% 9%);
-  --color-destructive: hsl(0 84.2% 60.2%);
-  --color-destructive-foreground: hsl(0 0% 98%);
-  --color-border: hsl(0 0% 89.8%);
-  --color-input: hsl(0 0% 89.8%);
-  --color-ring: hsl(0 72.2% 50.6%);
-  --radius: 0.5rem;
-
-  /* LOK 커스텀 */
-  --color-lok-red: #C0392B;
-  --color-lok-gold: #D4AF37;
-  --color-lok-dark: #1A1A2E;
-  --color-lok-cream: #E8D5B7;
+/* ── 폰트 설정 ──────────────────────────────── */
+:root {
+  --font-sans: "Noto Sans KR", "Noto Sans JP", system-ui, sans-serif;
 }
 
+/* ── 테마 변수 ──────────────────────────────── */
+@theme {
+  /* LOK 브랜드 컬러 */
+  --color-lok-navy:  #1B2A4A;
+  --color-lok-gold:  #D4A843;
+  --color-lok-cream: #F5F0E8;
+  --color-lok-brown: #7a6a58;
+  --color-lok-border: #e8ddd0;
+
+  /* shadcn/ui 호환 */
+  --color-background: #F5F0E8;
+  --color-foreground: #1B2A4A;
+  --color-primary:    #1B2A4A;
+  --color-primary-foreground: #ffffff;
+  --color-secondary:  #F5F0E8;
+  --color-secondary-foreground: #1B2A4A;
+  --color-muted:      #e8ddd0;
+  --color-muted-foreground: #7a6a58;
+  --color-accent:     #D4A843;
+  --color-accent-foreground: #1B2A4A;
+  --color-border:     #e8ddd0;
+  --color-input:      #e8ddd0;
+  --color-ring:       #D4A843;
+  --radius: 0.75rem;
+}
+
+/* ── 기본 스타일 ──────────────────────────────── */
 * {
-  border-color: var(--color-border);
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-color: #F5F0E8;
+  color: #1B2A4A;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 언어별 폰트 */
+:lang(ko) { font-family: "Noto Sans KR", system-ui, sans-serif; }
+:lang(ja) { font-family: "Noto Sans JP", system-ui, sans-serif; }
+:lang(en) { font-family: system-ui, sans-serif; }
+
+/* ── 스크롤바 ──────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F0E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #d5c9b8;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b0a090;
+}
+
+/* ── 선택 영역 ──────────────────────────────── */
+::selection {
+  background: #D4A843;
+  color: #1B2A4A;
 }
