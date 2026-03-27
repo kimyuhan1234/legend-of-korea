@@ -61,36 +61,38 @@ export function KitPurchaseCard({ courseId, kits, locale }: KitPurchaseCardProps
   const soloKit = kits.find((k) => k.option_type === "solo")
   const coupleKit = kits.find((k) => k.option_type === "couple")
 
+  const hasKits = soloKit || coupleKit
+
   return (
-    <div>
-      <div className="bg-white rounded-3xl border border-[#e8ddd0] overflow-hidden shadow-sm">
-        <div className="grid md:grid-cols-2 gap-0">
-          {/* 왼쪽: 설명 */}
-          <div className="p-8 bg-[#1B2A4A] text-white">
-            <h2 className="text-2xl font-black mb-2">📦 {label.title}</h2>
-            <p className="text-white/70 mb-8">{label.subtitle}</p>
+    <div className="bg-white rounded-3xl border border-[#e8ddd0] overflow-hidden shadow-sm">
+      <div className={hasKits ? "grid md:grid-cols-2 gap-0" : ""}>
+        {/* 왼쪽: 설명 */}
+        <div className="p-8 bg-[#1B2A4A] text-white">
+          <h2 className="text-2xl font-black mb-2">📦 {label.title}</h2>
+          <p className="text-white/70 mb-8">{label.subtitle}</p>
 
-            <div>
-              <p className="text-xs font-bold text-[#D4A843] uppercase tracking-wider mb-3">
-                {label.includes}
-              </p>
-              <ul className="space-y-2">
-                {label.includeItems.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm text-white/80">
-                    <span className="text-[#D4A843]">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-8 flex items-center gap-2 text-sm text-white/60">
-              <span>🚚</span>
-              <span>{label.delivery}</span>
-            </div>
+          <div>
+            <p className="text-xs font-bold text-[#D4A843] uppercase tracking-wider mb-3">
+              {label.includes}
+            </p>
+            <ul className="space-y-2">
+              {label.includeItems.map((item, i) => (
+                <li key={i} className="flex items-center gap-2 text-sm text-white/80">
+                  <span className="text-[#D4A843]">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* 오른쪽: 구매 옵션 */}
+          <div className="mt-8 flex items-center gap-2 text-sm text-white/60">
+            <span>🚚</span>
+            <span>{label.delivery}</span>
+          </div>
+        </div>
+
+        {/* 오른쪽: 구매 옵션 (kit이 있을 때만 렌더링) */}
+        {hasKits && (
           <div className="p-8 flex flex-col gap-4 justify-center">
             {soloKit && (
               <KitOption
@@ -111,7 +113,7 @@ export function KitPurchaseCard({ courseId, kits, locale }: KitPurchaseCardProps
               />
             )}
           </div>
-        </div>
+        )}
       </div>
     </div>
   )
