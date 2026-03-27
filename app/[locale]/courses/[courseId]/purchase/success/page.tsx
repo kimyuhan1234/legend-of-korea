@@ -3,6 +3,8 @@ import { getTranslations } from "next-intl/server"
 import { Metadata } from "next"
 import { createClient } from "@/lib/supabase/server"
 
+import { Disclaimer } from "@/components/shared/Disclaimer"
+
 interface Props {
   params: { locale: string; courseId: string }
   searchParams: {
@@ -101,7 +103,7 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
             : "Your kit will be shipped to the address you provided. Track your shipment in My Page."}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
           <Link
             href={`/${locale}/courses/${courseId}#affiliate`}
             className="px-6 py-3.5 rounded-xl bg-white border border-[#e8ddd0] text-[#1B2A4A] font-semibold hover:bg-[#F5F0E8] transition-colors"
@@ -115,6 +117,8 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
             {t("trackShipping")} →
           </Link>
         </div>
+
+        <Disclaimer locale={locale} className="mb-10 text-center" />
 
         <div className="mt-6">
           <Link

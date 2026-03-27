@@ -268,5 +268,30 @@
     "loginRequired": "로그인 후 구매하실 수 있습니다",
     "orderSuccess": "주문이 완료되었습니다",
     "backToCourse": "코스로 돌아가기"
+  },
+  "admin": {
+    "dashboard": "대시보드",
+    "orders": "주문 관리",
+    "b2b": "B2B 관리",
+    "missions": "미션 관리",
+    "community": "커뮤니티 관리",
+    "stats": "통계 분석",
+    "settings": "설정",
+    "logout": "관리자 로그아웃",
+    "todaySales": "오늘 매출",
+    "monthSales": "이번 달 매출",
+    "totalOrders": "총 주문 수",
+    "totalUsers": "총 회원 수",
+    "recentOrders": "최근 주문 내역",
+    "recentPosts": "방금 올라온 글",
+    "shippingStatus": {
+      "preparing": "준비 중",
+      "shipped": "배송 중",
+      "delivered": "배송 완료",
+      "refunded": "환불 완료"
+    },
+    "trackingNumber": "운송장 번호",
+    "save": "저장",
+    "status": "상태"
   }
 }

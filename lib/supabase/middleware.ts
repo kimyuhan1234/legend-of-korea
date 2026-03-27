@@ -35,15 +35,28 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   // 보호된 경로 처리
-  const protectedPaths = ["/mypage", "/missions", "/admin"]
-  const isProtectedPath = protectedPaths.some((path) =>
-    request.nextUrl.pathname.startsWith(path)
+  const isProtectedPath = ["/mypage", "/missions"].some((path) =>
+    request.nextUrl.pathname.includes(path)
   )
+  const isAdminPath = request.nextUrl.pathname.includes("/admin")
 
-  if (!user && isProtectedPath) {
-    const url = request.nextUrl.clone()
-    url.pathname = "/login"
+  if (!user && (isProtectedPath || isAdminPath)) {
+    const locale = request.nextUrl.pathname.split("/")[1] || "ko"
+    const url = new URL(`/${locale}/auth/login`, request.url)
     return NextResponse.redirect(url)
+  }
+
+  if (user && isAdminPath) {
+    const { data: profile } = await supabase
+      .from("users")
+      .select("role")
+      .eq("id", user.id)
+      .single()
+
+    if (profile?.role !== "admin") {
+      const locale = request.nextUrl.pathname.split("/")[1] || "ko"
+      return NextResponse.redirect(new URL(`/${locale}`, request.url))
+    }
   }
 
   return supabaseResponse

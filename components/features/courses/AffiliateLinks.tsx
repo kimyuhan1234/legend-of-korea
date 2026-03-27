@@ -1,5 +1,9 @@
+"use client"
+
 import { Disclaimer } from "@/components/shared/Disclaimer"
 import type { I18nText } from "@/lib/supabase/types"
+import { createClient } from "@/lib/supabase/client"
+import { useState, useEffect } from "react"
 
 interface AffiliateLink {
   id: string
@@ -52,15 +56,40 @@ const TYPE_ICON: Record<string, string> = {
 }
 
 export function AffiliateLinks({ links, locale }: AffiliateLinksProps) {
+  const [userId, setUserId] = useState<string | null>(null)
+  const supabase = createClient()
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) setUserId(user.id)
+    }
+    getUser()
+  }, [supabase])
+
   const label = SECTION_LABEL[locale as keyof typeof SECTION_LABEL] || SECTION_LABEL.ko
 
   if (links.length === 0) return null
 
   const grouped = links.reduce<Record<string, AffiliateLink[]>>((acc, link) => {
-    if (!acc[link.type]) acc[link.type] = []
-    acc[link.type].push(link)
+    const type = link.type || "other"
+    if (!acc[type]) acc[type] = []
+    acc[type].push(link)
     return acc
   }, {})
+
+  const handleLinkClick = async (linkId: string, url: string) => {
+    try {
+      // 비동기로 클릭 로그 기록 (페이지 이동을 방해하지 않음)
+      fetch("/api/affiliate/click", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ link_id: linkId, user_id: userId }),
+      })
+    } catch (error) {
+      console.error("Click Tracking Error:", error)
+    }
+  }
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">
@@ -87,6 +116,7 @@ export function AffiliateLinks({ links, locale }: AffiliateLinksProps) {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => handleLinkClick(link.id, link.url)}
                     className="group flex items-start gap-4 bg-white rounded-2xl p-4 border border-[#e8ddd0] hover:border-[#D4A843]/50 hover:shadow-sm transition-all"
                   >
                     {link.image_url ? (
