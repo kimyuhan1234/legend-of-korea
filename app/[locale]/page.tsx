@@ -28,14 +28,12 @@ export default async function HomePage({ params }: Props) {
   const { locale } = params
   const supabase = await createClient()
 
-  // 추천 코스 (최대 3개)
   const { data: courses } = await supabase
     .from("courses")
     .select("id, title, description, thumbnail_url, difficulty, region, duration_text, price_1p")
     .eq("is_active", true)
     .limit(3)
 
-  // 최근 커뮤니티 포스트 (최대 3개)
   const { data: posts } = await supabase
     .from("community_posts")
     .select("id, content, photos, likes_count, created_at, users(nickname, current_tier)")
@@ -81,11 +79,30 @@ function HomeContent({
     { icon: "⚡", title: t("step4Title"), desc: t("step4Desc"), step: "04", img: "/images/step4-hero.jpg", alt: "전설의 영웅 등극" },
   ]
 
+  const stats = [
+    { value: t("stat1Value"), label: t("stat1Label") },
+    { value: t("stat2Value"), label: t("stat2Label") },
+    { value: t("stat3Value"), label: t("stat3Label") },
+    { value: t("stat4Value"), label: t("stat4Label") },
+  ]
+
+  const whyCards = [
+    { icon: t("why1Icon"), title: t("why1Title"), desc: t("why1Desc") },
+    { icon: t("why2Icon"), title: t("why2Title"), desc: t("why2Desc") },
+    { icon: t("why3Icon"), title: t("why3Title"), desc: t("why3Desc") },
+  ]
+
+  const faqs = [
+    { q: t("faq1Q"), a: t("faq1A") },
+    { q: t("faq2Q"), a: t("faq2A") },
+    { q: t("faq3Q"), a: t("faq3A") },
+    { q: t("faq4Q"), a: t("faq4A") },
+  ]
+
   return (
     <div>
-      {/* 히어로 섹션 */}
-      <section className="relative bg-[#1B2A4A] text-white overflow-hidden">
-        {/* 히어로 배경 이미지 */}
+      {/* ── 1. 히어로 섹션 ── */}
+      <section className="relative min-h-screen flex flex-col justify-center bg-[#1B2A4A] text-white overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/dokkaebi-hero.jpg"
@@ -94,31 +111,113 @@ function HomeContent({
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#1B2A4A]/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#1B2A4A]" />
         </div>
 
-        <div className="relative max-w-6xl mx-auto px-4 py-24 md:py-36 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4A843]/20 border border-[#D4A843]/30 mb-6">
+        <div className="relative max-w-6xl mx-auto px-4 py-32 md:py-44 text-center flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4A843]/20 border border-[#D4A843]/40 mb-8">
             <span className="text-[#D4A843] text-sm font-medium">{t("openBadge")}</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-black leading-tight whitespace-pre-line mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight whitespace-pre-line mb-6">
             {t("heroTitle")}
           </h1>
-          <p className="text-white/70 text-lg md:text-xl max-w-xl mx-auto mb-10">
+          <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-12">
             {t("heroSubtitle")}
           </p>
 
-          <Link
-            href={`/${locale}/courses`}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-[#D4A843] text-[#1B2A4A] font-bold text-lg hover:bg-[#e0b84e] transition-colors shadow-lg shadow-[#D4A843]/30"
-          >
-            {t("ctaButton")} →
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href={`/${locale}/courses`}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-[#D4A843] text-[#1B2A4A] font-bold text-lg hover:bg-[#e0b84e] transition-colors shadow-lg shadow-[#D4A843]/30"
+            >
+              {t("ctaButton")} →
+            </Link>
+            <a
+              href="#how-it-works"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white/10 text-white font-semibold text-lg hover:bg-white/20 transition-colors border border-white/30 backdrop-blur-sm"
+            >
+              {t("learnMore")}
+            </a>
+          </div>
+        </div>
+
+        {/* 통계 바 */}
+        <div className="relative bg-black/30 backdrop-blur-sm border-t border-white/10">
+          <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <p className="text-3xl font-black text-[#D4A843]">{s.value}</p>
+                <p className="text-sm text-white/60 mt-1">{s.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 추천 코스 */}
+      {/* ── 2. Why us ── */}
+      <section className="bg-[#F5F0E8] py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-black text-[#1B2A4A] mb-3">
+              {t("whyTitle")}
+            </h2>
+            <p className="text-[#7a6a58] text-lg">{t("whySubtitle")}</p>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-6">
+            {whyCards.map((card) => (
+              <div
+                key={card.title}
+                className="bg-white rounded-3xl p-8 border border-[#e8ddd0] hover:shadow-md hover:border-[#D4A843]/40 transition-all"
+              >
+                <div className="text-4xl mb-5">{card.icon}</div>
+                <h3 className="text-lg font-bold text-[#1B2A4A] mb-3">{card.title}</h3>
+                <p className="text-sm text-[#7a6a58] leading-relaxed">{card.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. 이용 방법 ── */}
+      <section id="how-it-works" className="bg-white py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-center text-2xl md:text-3xl font-black text-[#1B2A4A] mb-4">
+            {t("howItWorks")}
+          </h2>
+          <p className="text-center text-[#7a6a58] mb-12">{t("heroSubtitle")}</p>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {steps.map((item) => (
+              <div
+                key={item.step}
+                className="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl border border-[#e8ddd0] hover:border-[#D4A843]/40 transition-all duration-300"
+              >
+                <div className="relative h-48 overflow-hidden bg-[#1B2A4A]/10">
+                  <Image
+                    src={item.img}
+                    alt={item.alt}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <span className="absolute top-3 left-3 bg-[#D4A843] text-[#1B2A4A] text-xs font-bold px-3 py-1 rounded-full">
+                    STEP {item.step}
+                  </span>
+                  <span className="absolute bottom-3 right-3 text-2xl">{item.icon}</span>
+                </div>
+                <div className="p-5 text-center">
+                  <h3 className="text-base font-bold text-[#1B2A4A] mb-2">{item.title}</h3>
+                  <p className="text-sm text-[#7a6a58] leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. 추천 코스 ── */}
       {courses.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 py-16">
           <div className="flex items-center justify-between mb-8">
@@ -172,7 +271,6 @@ function HomeContent({
               </Link>
             ))}
 
-            {/* Coming Soon 카드 */}
             {comingSoon.map((item, i) => (
               <div
                 key={i}
@@ -212,48 +310,7 @@ function HomeContent({
         </section>
       )}
 
-      {/* 이용 방법 */}
-      <section className="bg-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1B2A4A] mb-4">
-            {t("howItWorks")}
-          </h2>
-          <p className="text-center text-[#7a6a58] mb-12">
-            {t("heroSubtitle")}
-          </p>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {steps.map((item) => (
-              <div
-                key={item.step}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl border border-[#e8ddd0] hover:border-[#D4A843]/40 transition-all duration-300"
-              >
-                {/* 이미지 영역 */}
-                <div className="relative h-48 overflow-hidden bg-[#1B2A4A]/10">
-                  <Image
-                    src={item.img}
-                    alt={item.alt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <span className="absolute top-3 left-3 bg-[#D4A843] text-[#1B2A4A] text-xs font-bold px-3 py-1 rounded-full">
-                    STEP {item.step}
-                  </span>
-                  <span className="absolute bottom-3 right-3 text-2xl">{item.icon}</span>
-                </div>
-                {/* 텍스트 영역 */}
-                <div className="p-5 text-center">
-                  <h3 className="text-base font-bold text-[#1B2A4A] mb-2">{item.title}</h3>
-                  <p className="text-sm text-[#7a6a58] leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 최근 모험 기록 */}
+      {/* ── 5. 최근 모험 기록 ── */}
       {posts.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 py-16">
           <div className="flex items-center justify-between mb-8">
@@ -295,25 +352,51 @@ function HomeContent({
         </section>
       )}
 
-      {/* CTA 배너 */}
-      <section className="max-w-6xl mx-auto px-4 pb-20">
-        <div className="relative bg-[#1B2A4A] rounded-3xl px-8 py-12 text-center overflow-hidden">
-          <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-[#D4A843]/10 -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-[#D4A843]/10 translate-y-1/2 -translate-x-1/2" />
-          <h2 className="relative text-2xl md:text-3xl font-black text-white mb-4">
+      {/* ── 6. FAQ ── */}
+      <section className="bg-[#F5F0E8] py-20">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-black text-[#1B2A4A] text-center mb-10">
+            {t("faqTitle")}
+          </h2>
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <details
+                key={i}
+                className="group bg-white rounded-2xl border border-[#e8ddd0] overflow-hidden"
+              >
+                <summary className="flex items-center justify-between px-6 py-5 cursor-pointer font-semibold text-[#1B2A4A] list-none select-none hover:text-[#D4A843] transition-colors">
+                  <span>{faq.q}</span>
+                  <span className="ml-4 shrink-0 text-[#D4A843] transition-transform group-open:rotate-180 text-lg">▾</span>
+                </summary>
+                <div className="px-6 pb-5 text-sm text-[#7a6a58] leading-relaxed border-t border-[#e8ddd0] pt-4">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. 파이널 CTA ── */}
+      <section className="max-w-6xl mx-auto px-4 py-20">
+        <div className="relative bg-[#1B2A4A] rounded-3xl px-8 py-16 text-center overflow-hidden">
+          <div className="absolute top-0 right-0 w-56 h-56 rounded-full bg-[#D4A843]/10 -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-44 h-44 rounded-full bg-[#D4A843]/10 translate-y-1/2 -translate-x-1/2" />
+          <div className="absolute top-1/2 left-1/2 w-96 h-96 rounded-full bg-[#D4A843]/5 -translate-x-1/2 -translate-y-1/2" />
+          <h2 className="relative text-2xl md:text-4xl font-black text-white mb-4">
             {t("startAdventure")}
           </h2>
-          <p className="relative text-white/60 mb-8">{t("heroSubtitle")}</p>
-          <div className="relative flex flex-col sm:flex-row gap-3 justify-center">
+          <p className="relative text-white/60 mb-10 text-lg">{t("heroSubtitle")}</p>
+          <div className="relative flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={`/${locale}/courses`}
-              className="px-8 py-3.5 rounded-xl bg-[#D4A843] text-[#1B2A4A] font-bold hover:bg-[#e0b84e] transition-colors"
+              className="px-10 py-4 rounded-2xl bg-[#D4A843] text-[#1B2A4A] font-bold text-lg hover:bg-[#e0b84e] transition-colors shadow-lg shadow-[#D4A843]/30"
             >
               {tc("courses")} →
             </Link>
             <Link
               href={`/${locale}/auth/signup`}
-              className="px-8 py-3.5 rounded-xl bg-white/10 text-white font-semibold hover:bg-white/20 transition-colors border border-white/20"
+              className="px-10 py-4 rounded-2xl bg-white/10 text-white font-semibold text-lg hover:bg-white/20 transition-colors border border-white/20"
             >
               {tc("signup")}
             </Link>
