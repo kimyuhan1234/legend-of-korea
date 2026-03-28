@@ -1,16 +1,16 @@
 import { Metadata } from "next"
+import Link from "next/link"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
-import { DupeCard } from "@/components/features/food/DupeCard"
-import { dupePairs } from "@/lib/data/food-dupes"
+import { regions } from "@/lib/data/food-dupes"
 
 interface Props {
   params: { locale: string }
 }
 
 const META = {
-  ko: { title: "맛 듀프 | Legend of Korea", desc: "좋아하는 그 맛, 한국에도 있었어요" },
-  ja: { title: "味のデュープ | Legend of Korea", desc: "好きなあの味、韓国にもありました" },
-  en: { title: "Taste Dupe | Legend of Korea", desc: "The flavors you love — found in Korea" },
+  ko: { title: "지역별 맛 듀프 | Legend of Korea", desc: "지역을 선택하고 한국 음식의 맛 유사성을 발견하세요" },
+  ja: { title: "地域別味デュープ | Legend of Korea", desc: "地域を選んで韓国料理の味の類似性を発見しよう" },
+  en: { title: "Regional Taste Dupe | Legend of Korea", desc: "Pick a region and discover Korean food flavor connections" },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -21,27 +21,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const HERO = {
   ko: {
     badge: "🔗 맛의 유사성 발견",
-    title: "그 맛, 한국에도 있어요",
+    title: "어느 지역의 맛이\n궁금하세요?",
     subtitle: "좋아하는 맛은 이미 알고 있잖아요,\n나머지는 저희가 연결해 드려요",
-    count: "쌍의 맛 연결",
   },
   ja: {
     badge: "🔗 味の類似性を発見",
-    title: "その味、韓国にもあります",
+    title: "どの地域の味が\n気になりますか？",
     subtitle: "好きな味はもう知っている\nあとは私たちがつなぎます",
-    count: "組の味つながり",
   },
   en: {
     badge: "🔗 Discover Flavor Similarities",
-    title: "That flavor? Korea has it too.",
+    title: "Which region's flavors\ncall to you?",
     subtitle: "You already know your favorite taste.\nWe'll connect the rest.",
-    count: "flavor connections",
   },
+}
+
+const COMING_SOON = {
+  ko: "준비 중",
+  ja: "準備中",
+  en: "Coming Soon",
+}
+
+function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
+  return field[locale as "ko" | "ja" | "en"] || field.ko
 }
 
 export default function DupePage({ params }: Props) {
   const { locale } = params
   const h = HERO[locale as keyof typeof HERO] || HERO.ko
+  const comingSoon = COMING_SOON[locale as keyof typeof COMING_SOON] || COMING_SOON.ko
 
   return (
     <div>
@@ -53,20 +61,54 @@ export default function DupePage({ params }: Props) {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4A843]/20 border border-[#D4A843]/30 mb-5">
             <span className="text-[#D4A843] text-sm font-medium">{h.badge}</span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-black mb-4">{h.title}</h1>
+          <h1 className="text-3xl md:text-4xl font-black mb-4 whitespace-pre-line">{h.title}</h1>
           <p className="text-white/70 text-lg whitespace-pre-line max-w-xl mx-auto">{h.subtitle}</p>
-          <p className="mt-6 text-[#D4A843] font-bold text-lg">
-            {dupePairs.length} {h.count}
-          </p>
         </div>
       </section>
 
-      {/* 카드 그리드 */}
+      {/* 지역 선택 그리드 */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {dupePairs.map((pair) => (
-            <DupeCard key={pair.id} pair={pair} locale={locale} />
-          ))}
+          {regions.map((region) => {
+            const hasFood = region.foods.length > 0
+            return hasFood ? (
+              <Link
+                key={region.code}
+                href={`/${locale}/food/dupe/${region.code}`}
+                className="group bg-white rounded-3xl border border-[#e8ddd0] hover:border-[#D4A843]/50 hover:shadow-md transition-all p-7"
+              >
+                <div className="text-5xl mb-4">{region.icon}</div>
+                <h2 className="text-xl font-black text-[#1B2A4A] mb-2">
+                  {getL(region.name, locale)}
+                </h2>
+                <p className="text-sm text-[#7a6a58] leading-relaxed mb-4">
+                  {getL(region.description, locale)}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#D4A843]">
+                    {region.foods.length}{locale === "ko" ? "가지 음식" : locale === "ja" ? "品" : " dishes"}
+                  </span>
+                  <span className="text-[#D4A843] group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </Link>
+            ) : (
+              <div
+                key={region.code}
+                className="bg-white rounded-3xl border border-[#e8ddd0]/60 p-7 opacity-60 cursor-not-allowed"
+              >
+                <div className="text-5xl mb-4 grayscale">{region.icon}</div>
+                <h2 className="text-xl font-black text-[#1B2A4A] mb-2">
+                  {getL(region.name, locale)}
+                </h2>
+                <p className="text-sm text-[#7a6a58] leading-relaxed mb-4">
+                  {getL(region.description, locale)}
+                </p>
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#F5F0E8] text-xs text-[#7a6a58] font-medium">
+                  🕐 {comingSoon}
+                </span>
+              </div>
+            )
+          })}
         </div>
       </section>
     </div>
