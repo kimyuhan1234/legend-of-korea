@@ -186,8 +186,8 @@ export default async function CoursesPage({ params, searchParams }: Props) {
             <CourseCard key={course.id} course={course as any} locale={locale} />
           ))}
 
-          {/* Coming Soon 카드 */}
-          {comingSoon.map((item, i) => (
+          {/* Coming Soon 카드: 필터 없을 때(전체)만 표시 */}
+          {!region && !difficulty && comingSoon.map((item, i) => (
             <div
               key={i}
               className="relative bg-white rounded-3xl overflow-hidden border border-[#e8ddd0]/60 shadow-sm opacity-80 cursor-not-allowed"
