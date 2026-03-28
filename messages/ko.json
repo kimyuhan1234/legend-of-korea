@@ -167,7 +167,14 @@
       "easy": "초급",
       "medium": "중급",
       "hard": "고급"
-    }
+    },
+    "storyIntro": "옛날 옛적, 전주 한옥마을에는 장난꾸러기 도깨비들이 살고 있었습니다. 그들은 밤마다 방망이를 두드리며 마을 곳곳에 보물을 숨겨놓았지요. 경기전의 오래된 나무 아래, 전동성당의 종소리 속에, 오목대에서 바라본 노을 속에... 당신은 도깨비의 흔적을 따라 전주의 숨겨진 이야기를 발견하게 될 것입니다.",
+    "videoPlaceholder": "소개 영상 준비 중",
+    "videoPlaceholderDesc": "곧 만나보실 수 있습니다",
+    "videoCaption": "전주 도깨비 코스 소개 영상",
+    "infoRegion": "지역",
+    "infoDuration": "소요시간",
+    "infoMissions": "미션"
   },
   "mission": {
     "missionCenter": "미션 센터",

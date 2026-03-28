@@ -167,7 +167,14 @@
       "easy": "Easy",
       "medium": "Medium",
       "hard": "Hard"
-    }
+    },
+    "storyIntro": "Long ago, mischievous dokkaebi lived in Jeonju Hanok Village. Every night, they would tap their magical clubs and hide treasures throughout the village. Under the ancient trees of Gyeonggijeon, within the bells of Jeondong Cathedral, in the sunset viewed from Omokdae... You will follow the dokkaebi traces and discover the hidden stories of Jeonju.",
+    "videoPlaceholder": "Introduction Video Coming Soon",
+    "videoPlaceholderDesc": "Available shortly",
+    "videoCaption": "Jeonju Dokkaebi Course Introduction",
+    "infoRegion": "Region",
+    "infoDuration": "Duration",
+    "infoMissions": "Missions"
   },
   "mission": {
     "missionCenter": "Mission Center",
