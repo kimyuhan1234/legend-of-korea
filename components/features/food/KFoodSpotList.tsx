@@ -1,0 +1,130 @@
+import { kfoodSpots, CITIES, CATEGORY_LABEL, type KFoodSpot } from "@/lib/data/kfood-spots"
+import Link from "next/link"
+
+interface KFoodSpotListProps {
+  locale: string
+  cityFilter: string
+}
+
+function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
+  return field[locale as "ko" | "ja" | "en"] || field.ko
+}
+
+function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: string): string[] {
+  return field[locale as "ko" | "ja" | "en"] || field.ko
+}
+
+const PRICE_COLOR: Record<string, string> = {
+  "₩": "text-green-600",
+  "₩₩": "text-[#D4A843]",
+  "₩₩₩": "text-orange-500",
+}
+
+const CATEGORY_ICON: Record<string, string> = {
+  restaurant: "🍽️",
+  market: "🏪",
+  street: "🛤️",
+  cafe: "☕",
+}
+
+export function KFoodSpotList({ locale, cityFilter }: KFoodSpotListProps) {
+  const cities = CITIES
+  const catLabel = CATEGORY_LABEL[locale as keyof typeof CATEGORY_LABEL] || CATEGORY_LABEL.ko
+
+  const filtered =
+    cityFilter && cityFilter !== "all"
+      ? kfoodSpots.filter((s) => s.cityCode === cityFilter)
+      : kfoodSpots
+
+  return (
+    <div>
+      {/* 도시 필터 */}
+      <div className="flex flex-wrap gap-2 mb-8">
+        {cities.map((city) => {
+          const isActive = (cityFilter || "all") === city.code
+          const label = city[locale as "ko" | "ja" | "en"] || city.ko
+          return (
+            <Link
+              key={city.code}
+              href={`?city=${city.code}`}
+              className={`px-4 py-2 rounded-xl text-sm font-medium border transition-colors ${
+                isActive
+                  ? "bg-[#1B2A4A] text-white border-[#1B2A4A]"
+                  : "bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#1B2A4A]/40"
+              }`}
+            >
+              {label}
+            </Link>
+          )
+        })}
+      </div>
+
+      {/* 스팟 목록 */}
+      {filtered.length === 0 ? (
+        <div className="text-center py-16 text-[#7a6a58]">
+          <p className="text-4xl mb-3">🍜</p>
+          <p className="font-medium">준비 중입니다</p>
+        </div>
+      ) : (
+        <div className="grid sm:grid-cols-2 gap-5">
+          {filtered.map((spot) => (
+            <SpotCard key={spot.id} spot={spot} locale={locale} catLabel={catLabel} />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function SpotCard({
+  spot,
+  locale,
+  catLabel,
+}: {
+  spot: KFoodSpot
+  locale: string
+  catLabel: Record<string, string>
+}) {
+  return (
+    <div className="bg-white rounded-3xl border border-[#e8ddd0] hover:border-[#D4A843]/40 hover:shadow-md transition-all overflow-hidden">
+      {/* 헤더 */}
+      <div className="p-6 pb-4">
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-base">{CATEGORY_ICON[spot.category]}</span>
+              <span className="text-xs text-[#7a6a58]">{catLabel[spot.category]}</span>
+              <span className={`text-xs font-bold ${PRICE_COLOR[spot.priceRange]}`}>{spot.priceRange}</span>
+            </div>
+            <h3 className="font-black text-[#1B2A4A] text-base">{getL(spot.name, locale)}</h3>
+            <p className="text-xs text-[#D4A843] font-semibold mt-0.5">{getL(spot.speciality, locale)}</p>
+          </div>
+          <span className="text-2xl shrink-0">
+            {spot.cityCode === "jeonju" ? "🏯" : spot.cityCode === "seoul" ? "🗼" : spot.cityCode === "busan" ? "🌊" : "📍"}
+          </span>
+        </div>
+        <p className="text-sm text-[#7a6a58] leading-relaxed">{getL(spot.description, locale)}</p>
+      </div>
+
+      {/* 머스트 트라이 */}
+      <div className="px-6 pb-4">
+        <p className="text-xs font-bold text-[#1B2A4A] mb-2">
+          {locale === "ko" ? "꼭 먹어봐야 할 것" : locale === "ja" ? "必食メニュー" : "Must try"}
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {getLA(spot.mustTry, locale).map((item: string) => (
+            <span key={item} className="px-2.5 py-1 rounded-full bg-[#F5F0E8] text-xs text-[#3a3028]">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* 푸터 */}
+      <div className="px-6 py-3 border-t border-[#F5F0E8] flex items-center justify-between">
+        <p className="text-xs text-[#7a6a58]">📍 {spot.address}</p>
+        <p className="text-xs text-[#7a6a58] whitespace-nowrap ml-2">🕐 {spot.openHours}</p>
+      </div>
+    </div>
+  )
+}
