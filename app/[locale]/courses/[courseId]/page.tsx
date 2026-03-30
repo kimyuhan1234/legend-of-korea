@@ -3,7 +3,6 @@ import { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { createClient } from "@/lib/supabase/server"
 import { CourseHero } from "@/components/features/courses/CourseHero"
-import { MissionPreview } from "@/components/features/courses/MissionPreview"
 import { KitPurchaseCard } from "@/components/features/courses/KitPurchaseCard"
 import { AffiliateLinks } from "@/components/features/courses/AffiliateLinks"
 import { CourseReviews } from "@/components/features/courses/CourseReviews"
@@ -180,10 +179,7 @@ export default async function CourseDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* 3. 미션 미리보기 (전체 너비) */}
-      <MissionPreview missions={missions as any} locale={locale} />
-
-      {/* 4. 미션 키트 구매 + 여행 준비 (2컬럼, 높이 동일) */}
+      {/* 3. 미션 키트 소개 + 여행 준비 (2컬럼, 높이 동일) */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           <div className="flex flex-col h-full">

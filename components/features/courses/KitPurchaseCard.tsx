@@ -17,7 +17,7 @@ interface KitPurchaseCardProps {
 
 const LABEL = {
   ko: {
-    title: "미션 키트 구매",
+    title: "미션 키트 소개",
     subtitle: "키트를 받고 전설 속으로 떠나세요",
     solo: "1인 키트",
     couple: "2인 키트",
@@ -30,7 +30,7 @@ const LABEL = {
     perPerson: "/ 인",
   },
   ja: {
-    title: "ミッションキット購入",
+    title: "ミッションキット紹介",
     subtitle: "キットを受け取って伝説の旅へ",
     solo: "1人キット",
     couple: "2人キット",
@@ -43,7 +43,7 @@ const LABEL = {
     perPerson: "/ 人",
   },
   en: {
-    title: "Mission Kit Purchase",
+    title: "Mission Kit",
     subtitle: "Get your kit and step into the legend",
     solo: "Solo Kit",
     couple: "Couple Kit",
