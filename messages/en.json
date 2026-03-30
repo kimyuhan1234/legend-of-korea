@@ -338,5 +338,18 @@
     "loginRequired": "Please sign in to purchase",
     "orderSuccess": "Order placed successfully",
     "backToCourse": "Back to Course"
+  },
+  "goods": {
+    "title": "Goods Shop",
+    "subtitle": "Special souvenirs from legendary lands, coming soon",
+    "description": "We're carefully preparing exclusive Legend of Korea goods. Souvenirs carrying the legends and stories of each region are on their way. Stay tuned!",
+    "comingSoon": "COMING SOON",
+    "notifyTitle": "Get notified when we launch",
+    "notifyButton": "Notify me",
+    "notifyPlaceholder": "Enter your email",
+    "notifySuccess": "You're on the list! We'll let you know as soon as we launch.",
+    "notifyError": "Please enter a valid email address.",
+    "notifyDisclaimer": "Your email will only be used for launch notifications.",
+    "backToCourses": "Browse courses"
   }
 }

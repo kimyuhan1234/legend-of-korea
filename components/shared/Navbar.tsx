@@ -12,18 +12,21 @@ const NAV_LINKS = {
   ko: [
     { href: "/courses", label: "코스 탐색" },
     { href: "/food", label: "맛 연결" },
+    { href: "/goods", label: "굿즈샵" },
     { href: "/community", label: "기록관" },
     { href: "/shop", label: "전설 상점" },
   ],
   ja: [
     { href: "/courses", label: "コース探索" },
     { href: "/food", label: "味つながり" },
+    { href: "/goods", label: "グッズ" },
     { href: "/community", label: "記録館" },
     { href: "/shop", label: "伝説ショップ" },
   ],
   en: [
     { href: "/courses", label: "Courses" },
     { href: "/food", label: "Taste Link" },
+    { href: "/goods", label: "Goods" },
     { href: "/community", label: "Gallery" },
     { href: "/shop", label: "Legend Shop" },
   ],
