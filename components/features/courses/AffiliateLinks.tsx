@@ -19,6 +19,7 @@ interface AffiliateLink {
 interface AffiliateLinksProps {
   links: AffiliateLink[]
   locale: string
+  className?: string
 }
 
 const SECTION_LABEL = {
@@ -65,7 +66,7 @@ const TYPE_ICON: Record<string, string> = {
   other: "🔗",
 }
 
-export function AffiliateLinks({ links, locale }: AffiliateLinksProps) {
+export function AffiliateLinks({ links, locale, className }: AffiliateLinksProps) {
   const [userId, setUserId] = useState<string | null>(null)
   const supabase = createClient()
 
@@ -102,7 +103,7 @@ export function AffiliateLinks({ links, locale }: AffiliateLinksProps) {
   }
 
   return (
-    <div>
+    <div className={`h-full flex flex-col${className ? ` ${className}` : ""}`}>
       <h2 className="text-xl md:text-2xl font-bold text-[#1B2A4A] mb-2">
         🗺️ {locale === "ko" ? "여행 준비" : locale === "ja" ? "旅行準備" : "Travel Prep"}
       </h2>

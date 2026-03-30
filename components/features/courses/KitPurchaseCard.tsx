@@ -12,6 +12,7 @@ interface KitPurchaseCardProps {
   courseId: string
   kits: KitProduct[]
   locale: string
+  className?: string
 }
 
 const LABEL = {
@@ -56,7 +57,7 @@ const LABEL = {
   },
 }
 
-export function KitPurchaseCard({ courseId, kits, locale }: KitPurchaseCardProps) {
+export function KitPurchaseCard({ courseId, kits, locale, className }: KitPurchaseCardProps) {
   const label = LABEL[locale as keyof typeof LABEL] || LABEL.ko
   const soloKit = kits.find((k) => k.option_type === "solo")
   const coupleKit = kits.find((k) => k.option_type === "couple")
@@ -64,8 +65,8 @@ export function KitPurchaseCard({ courseId, kits, locale }: KitPurchaseCardProps
   const hasKits = soloKit || coupleKit
 
   return (
-    <div className="bg-white rounded-3xl border border-[#e8ddd0] overflow-hidden shadow-sm">
-      <div className={hasKits ? "grid md:grid-cols-2 gap-0" : ""}>
+    <div className={`bg-white rounded-3xl border border-[#e8ddd0] overflow-hidden shadow-sm h-full flex flex-col${className ? ` ${className}` : ""}`}>
+      <div className={`flex-1 ${hasKits ? "grid md:grid-cols-2 gap-0" : ""}`}>
         {/* 왼쪽: 설명 */}
         <div className="p-8 bg-[#1B2A4A] text-white">
           <h2 className="text-2xl font-black mb-2">📦 {label.title}</h2>

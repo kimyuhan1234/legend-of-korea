@@ -183,11 +183,15 @@ export default async function CourseDetailPage({ params }: Props) {
       {/* 3. 미션 미리보기 (전체 너비) */}
       <MissionPreview missions={missions as any} locale={locale} />
 
-      {/* 4. 미션 키트 구매 + 여행 준비 (2컬럼) */}
+      {/* 4. 미션 키트 구매 + 여행 준비 (2컬럼, 높이 동일) */}
       <section className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          <KitPurchaseCard courseId={courseId} kits={kits as any} locale={locale} />
-          <AffiliateLinks links={affiliateLinks as any} locale={locale} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <div className="flex flex-col h-full">
+            <KitPurchaseCard courseId={courseId} kits={kits as any} locale={locale} className="flex-1" />
+          </div>
+          <div className="flex flex-col h-full">
+            <AffiliateLinks links={affiliateLinks as any} locale={locale} className="flex-1" />
+          </div>
         </div>
       </section>
 
