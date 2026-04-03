@@ -26,7 +26,8 @@ const LABEL = {
     delivery: "예약 숙소로 무료 배송",
     outOfStock: "품절",
     restock: "재입고 알림",
-    buyNow: "지금 구매하기",
+    buyNow: "구매하기",
+    buyNowLogin: "로그인 후 구매하기",
     perPerson: "/ 인",
   },
   ja: {
@@ -39,7 +40,8 @@ const LABEL = {
     delivery: "ご予約の宿泊施設へ無料配送",
     outOfStock: "品切れ",
     restock: "再入荷通知",
-    buyNow: "今すぐ購入",
+    buyNow: "購入する",
+    buyNowLogin: "ログイン後に購入",
     perPerson: "/ 人",
   },
   en: {
@@ -53,26 +55,33 @@ const LABEL = {
     outOfStock: "Out of Stock",
     restock: "Notify me",
     buyNow: "Buy Now",
+    buyNowLogin: "Sign in to Buy",
     perPerson: "/ person",
   },
 }
 
-export function KitPurchaseCard({ courseId, kits, locale, className }: KitPurchaseCardProps) {
+interface KitPurchaseCardProps {
+  courseId: string
+  kits: KitProduct[]
+  locale: string
+  isLoggedIn: boolean
+  className?: string
+}
+
+export function KitPurchaseCard({ courseId, kits, locale, isLoggedIn, className }: KitPurchaseCardProps) {
   const label = LABEL[locale as keyof typeof LABEL] || LABEL.ko
   const soloKit = kits.find((k) => k.option_type === "solo")
   const coupleKit = kits.find((k) => k.option_type === "couple")
 
-  const hasKits = soloKit || coupleKit
-
   return (
     <div className={`bg-white rounded-3xl border border-[#e8ddd0] overflow-hidden shadow-sm h-full flex flex-col${className ? ` ${className}` : ""}`}>
-      <div className={`flex-1 ${hasKits ? "grid md:grid-cols-2 gap-0" : ""}`}>
+      <div className="flex-1 grid md:grid-cols-2 gap-0">
         {/* 왼쪽: 설명 */}
-        <div className="p-8 bg-[#1B2A4A] text-white">
+        <div className="p-8 bg-[#1B2A4A] text-white flex flex-col">
           <h2 className="text-2xl font-black mb-2">📦 {label.title}</h2>
           <p className="text-white/70 mb-8">{label.subtitle}</p>
 
-          <div>
+          <div className="flex-1">
             <p className="text-xs font-bold text-[#D4A843] uppercase tracking-wider mb-3">
               {label.includes}
             </p>
@@ -92,29 +101,42 @@ export function KitPurchaseCard({ courseId, kits, locale, className }: KitPurcha
           </div>
         </div>
 
-        {/* 오른쪽: 구매 옵션 (kit이 있을 때만 렌더링) */}
-        {hasKits && (
-          <div className="p-8 flex flex-col gap-4 justify-center">
-            {soloKit && (
-              <KitOption
-                kit={soloKit}
-                label={label}
-                optionLabel={label.solo}
-                courseId={courseId}
-                locale={locale}
-              />
-            )}
-            {coupleKit && (
-              <KitOption
-                kit={coupleKit}
-                label={label}
-                optionLabel={label.couple}
-                courseId={courseId}
-                locale={locale}
-              />
-            )}
-          </div>
-        )}
+        {/* 오른쪽: 가격 + 구매 버튼 */}
+        <div className="p-8 flex flex-col gap-4 justify-center">
+          {soloKit && (
+            <KitOption
+              kit={soloKit}
+              label={label}
+              optionLabel={label.solo}
+              courseId={courseId}
+              locale={locale}
+              isLoggedIn={isLoggedIn}
+            />
+          )}
+          {coupleKit && (
+            <KitOption
+              kit={coupleKit}
+              label={label}
+              optionLabel={label.couple}
+              courseId={courseId}
+              locale={locale}
+              isLoggedIn={isLoggedIn}
+            />
+          )}
+          {/* kit 데이터 없을 때도 구매 버튼 표시 */}
+          {!soloKit && !coupleKit && (
+            <Link
+              href={
+                isLoggedIn
+                  ? `/${locale}/courses/${courseId}/purchase`
+                  : `/${locale}/auth/login?next=/${locale}/courses/${courseId}/purchase`
+              }
+              className="block w-full text-center py-4 rounded-xl bg-[#D4A843] text-[#1B2A4A] font-bold text-lg hover:bg-[#e0b84e] transition-colors"
+            >
+              {isLoggedIn ? label.buyNow : label.buyNowLogin}
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   )
@@ -126,14 +148,19 @@ function KitOption({
   optionLabel,
   courseId,
   locale,
+  isLoggedIn,
 }: {
   kit: KitProduct
   label: (typeof LABEL)["ko"]
   optionLabel: string
   courseId: string
   locale: string
+  isLoggedIn: boolean
 }) {
   const inStock = kit.stock > 0 && kit.is_active
+  const purchaseHref = isLoggedIn
+    ? `/${locale}/courses/${courseId}/purchase?kit=${kit.id}`
+    : `/${locale}/auth/login?next=/${locale}/courses/${courseId}/purchase?kit=${kit.id}`
 
   return (
     <div className="rounded-2xl border border-[#e8ddd0] p-5 hover:border-[#D4A843]/60 transition-colors">
@@ -152,10 +179,10 @@ function KitOption({
 
       {inStock ? (
         <Link
-          href={`/${locale}/courses/${courseId}/order?kit=${kit.id}`}
-          className="block w-full text-center px-6 py-3 rounded-xl bg-[#D4A843] text-[#1B2A4A] font-bold hover:bg-[#e0b84e] transition-colors"
+          href={purchaseHref}
+          className="block w-full text-center py-4 rounded-xl bg-[#D4A843] text-[#1B2A4A] font-bold text-lg hover:bg-[#e0b84e] transition-colors"
         >
-          {label.buyNow}
+          {isLoggedIn ? label.buyNow : label.buyNowLogin}
         </Link>
       ) : (
         <button className="w-full px-6 py-3 rounded-xl bg-[#F5F0E8] text-[#7a6a58] font-medium border border-[#e8ddd0] hover:bg-[#eee5d8] transition-colors">

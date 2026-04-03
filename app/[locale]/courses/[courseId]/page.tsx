@@ -63,6 +63,9 @@ export default async function CourseDetailPage({ params }: Props) {
   const supabase = await createClient()
   const t = await getTranslations({ locale, namespace: "course" })
 
+  const { data: { user } } = await supabase.auth.getUser()
+  const isLoggedIn = !!user
+
   const [courseRes, kitRes, missionRes, affiliateRes, reviewRes] = await Promise.all([
     supabase
       .from("courses")
@@ -183,7 +186,7 @@ export default async function CourseDetailPage({ params }: Props) {
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           <div className="flex flex-col h-full">
-            <KitPurchaseCard courseId={courseId} kits={kits as any} locale={locale} className="flex-1" />
+            <KitPurchaseCard courseId={courseId} kits={kits as any} locale={locale} isLoggedIn={isLoggedIn} className="flex-1" />
           </div>
           <div className="flex flex-col h-full">
             <AffiliateLinks links={affiliateLinks as any} locale={locale} className="flex-1" />
