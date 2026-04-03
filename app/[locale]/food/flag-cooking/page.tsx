@@ -49,7 +49,6 @@ const UI = {
     cookTime: "분",
     servings: "인분",
     empty: "위에서 국기를 선택하면 퓨전 레시피가 나타납니다",
-    tryIt: "전주에서 직접 맛보기 →",
   },
   ja: {
     gridTitle: "どの国の料理が好きですか？",
@@ -59,7 +58,6 @@ const UI = {
     cookTime: "分",
     servings: "人前",
     empty: "上から国旗を選ぶとフュージョンレシピが表示されます",
-    tryIt: "全州で直接味わう →",
   },
   en: {
     gridTitle: "Which country's food do you love?",
@@ -69,7 +67,6 @@ const UI = {
     cookTime: "min",
     servings: "servings",
     empty: "Select a flag above to reveal fusion recipes",
-    tryIt: "Taste it in Jeonju →",
   },
 }
 
@@ -212,14 +209,6 @@ export default function FlagCookingPage() {
               ))}
             </div>
 
-            <div className="pt-2 text-center">
-              <a
-                href={`/${locale}/courses`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#D4A843] text-[#1B2A4A] font-bold hover:bg-[#e0b84e] transition-colors text-sm"
-              >
-                {t.tryIt}
-              </a>
-            </div>
           </div>
         )}
       </section>
