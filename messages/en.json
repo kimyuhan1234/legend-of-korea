@@ -339,6 +339,17 @@
     "orderSuccess": "Order placed successfully",
     "backToCourse": "Back to Course"
   },
+  "food": {
+    "flagCookingRecipeHeader": "Fusion Recipes",
+    "flagCookingSelectPrompt": "Select a flag above to see fusion recipes",
+    "flagCookingKoreanElement": "Korean Element",
+    "flagCookingForeignElement": "Foreign Element",
+    "flagCookingTime": "Cook Time",
+    "flagCookingServings": "Servings",
+    "flagCookingDifficultyEasy": "Easy",
+    "flagCookingDifficultyMedium": "Medium",
+    "flagCookingDifficultyHard": "Hard"
+  },
   "goods": {
     "title": "Goods Shop",
     "subtitle": "Special souvenirs from legendary lands, coming soon",

@@ -1,14 +1,21 @@
+export interface FusionRecipe {
+  id: string
+  countryCode: string
+  emoji: string
+  name: { ko: string; ja: string; en: string }
+  description: { ko: string; ja: string; en: string }
+  koreanBase: { ko: string; ja: string; en: string }
+  foreignElement: { ko: string; ja: string; en: string }
+  difficulty: "easy" | "medium" | "hard"
+  cookTime: number // minutes
+  servings: number
+}
+
 export interface FlagCountry {
   code: string
   flag: string
   name: { ko: string; ja: string; en: string }
-  cuisineStyle: { ko: string; ja: string; en: string }
-  flavorProfile: { sweet: number; salty: number; spicy: number; umami: number; sour: number }
-  recommendations: {
-    koreanFoodName: { ko: string; ja: string; en: string }
-    reason: { ko: string; ja: string; en: string }
-    dupeId?: string
-  }[]
+  tagline: { ko: string; ja: string; en: string }
 }
 
 export const flagCountries: FlagCountry[] = [
@@ -16,108 +23,714 @@ export const flagCountries: FlagCountry[] = [
     code: "jp",
     flag: "🇯🇵",
     name: { ko: "일본", ja: "日本", en: "Japan" },
-    cuisineStyle: { ko: "감칠맛과 은은한 맛", ja: "旨味とさりげない味わい", en: "Umami & subtle depth" },
-    flavorProfile: { sweet: 25, salty: 55, spicy: 8, umami: 90, sour: 10 },
-    recommendations: [
-      { koreanFoodName: { ko: "불고기", ja: "プルコギ", en: "Bulgogi" }, reason: { ko: "달콤한 간장 양념이 스키야키와 닮았어요", ja: "甘い醤油ダレがすき焼きに似ています", en: "Sweet soy marinade similar to sukiyaki" }, dupeId: "dupe-002" },
-      { koreanFoodName: { ko: "된장찌개", ja: "テンジャンチゲ", en: "Doenjang Jjigae" }, reason: { ko: "된장 특유의 감칠맛이 미소시루와 통해요", ja: "味噌特有の旨味が味噌汁に通じます", en: "Fermented paste umami matches miso soup" } },
-      { koreanFoodName: { ko: "잡채", ja: "チャプチェ", en: "Japchae" }, reason: { ko: "달콤한 간장 볶음이 친숙하게 느껴질 거예요", ja: "甘い醤油炒めが馴染みやすいです", en: "Sweet soy stir-fry feels familiar" }, dupeId: "dupe-006" },
-    ]
+    tagline: { ko: "감칠맛 × 발효의 만남", ja: "旨味×発酵の出会い", en: "Umami × Fermentation" },
   },
   {
     code: "it",
     flag: "🇮🇹",
     name: { ko: "이탈리아", ja: "イタリア", en: "Italy" },
-    cuisineStyle: { ko: "산미와 허브, 진한 소스", ja: "酸味とハーブ、濃厚ソース", en: "Acidity, herbs & rich sauce" },
-    flavorProfile: { sweet: 25, salty: 50, spicy: 35, umami: 65, sour: 55 },
-    recommendations: [
-      { koreanFoodName: { ko: "떡볶이", ja: "トッポッキ", en: "Tteokbokki" }, reason: { ko: "매콤달콤 소스 + 탄수화물, 아라비아타처럼 중독적이에요", ja: "甘辛ソース + 炭水化物、アラビアータのようにクセになります", en: "Spicy-sweet sauce + carbs, as addictive as arrabbiata" }, dupeId: "dupe-003" },
-      { koreanFoodName: { ko: "파전", ja: "パジョン", en: "Pajeon" }, reason: { ko: "고소한 반죽과 채소의 조화가 포카치아를 떠올려요", ja: "香ばしい生地と野菜の調和がフォカッチャを思わせます", en: "Savory batter with vegetables echoes focaccia" } },
-      { koreanFoodName: { ko: "순대", ja: "スンデ", en: "Sundae" }, reason: { ko: "속을 채운 소시지 스타일, 살시차와 비슷한 매력", ja: "詰め物ソーセージスタイル、サルシッチャと似た魅力", en: "Stuffed sausage style, similar charm to salsiccia" } },
-    ]
+    tagline: { ko: "허브 × 매운 소스의 조화", ja: "ハーブ×辛いソースの調和", en: "Herbs × Spicy Sauce" },
   },
   {
     code: "mx",
     flag: "🇲🇽",
     name: { ko: "멕시코", ja: "メキシコ", en: "Mexico" },
-    cuisineStyle: { ko: "매콤하고 새콤한 조화", ja: "辛さと酸味のハーモニー", en: "Spicy & tangy harmony" },
-    flavorProfile: { sweet: 15, salty: 50, spicy: 80, umami: 55, sour: 60 },
-    recommendations: [
-      { koreanFoodName: { ko: "삼겹살", ja: "サムギョプサル", en: "Samgyeopsal" }, reason: { ko: "구운 고기를 쌈에 싸 먹는 방식이 타코와 똑 닮았어요", ja: "焼き肉をサムで包む食べ方がタコスにそっくりです", en: "Wrapping grilled meat is just like a taco" }, dupeId: "dupe-005" },
-      { koreanFoodName: { ko: "떡볶이", ja: "トッポッキ", en: "Tteokbokki" }, reason: { ko: "살사처럼 강렬한 고추장 소스의 매운 쾌감", ja: "サルサのような激しいコチュジャンソースの辛さの快感", en: "Gochujang sauce hits like salsa — intense and satisfying" }, dupeId: "dupe-003" },
-      { koreanFoodName: { ko: "김치", ja: "キムチ", en: "Kimchi" }, reason: { ko: "발효된 채소 반찬, 피클 살사와 같은 역할을 해요", ja: "発酵野菜のおかず、ピクルスサルサと同じ役割", en: "Fermented veggie side, just like pickled salsa" } },
-    ]
+    tagline: { ko: "살사 × 쌈의 향연", ja: "サルサ×包みの饗宴", en: "Salsa × Wrap Culture" },
   },
   {
     code: "th",
     flag: "🇹🇭",
     name: { ko: "태국", ja: "タイ", en: "Thailand" },
-    cuisineStyle: { ko: "새콤달콤 매운 향신료", ja: "甘酸っぱくスパイシー", en: "Sweet-sour-spicy herbs" },
-    flavorProfile: { sweet: 55, salty: 50, spicy: 70, umami: 60, sour: 65 },
-    recommendations: [
-      { koreanFoodName: { ko: "잡채", ja: "チャプチェ", en: "Japchae" }, reason: { ko: "투명 면 + 채소 볶음, 팟타이와 같은 DNA", ja: "透明麺 + 野菜炒め、パッタイと同じDNA", en: "Translucent noodles + veggie stir-fry — same DNA as pad thai" }, dupeId: "dupe-006" },
-      { koreanFoodName: { ko: "불닭", ja: "プルダク", en: "Buldak" }, reason: { ko: "새콤달콤 매운맛 시너지가 태국 요리와 딱 맞아요", ja: "甘酸っぱい辛味のシナジーがタイ料理にぴったり", en: "Sweet-sour-spicy synergy is your flavor zone" } },
-      { koreanFoodName: { ko: "비빔밥", ja: "ビビンバ", en: "Bibimbap" }, reason: { ko: "다양한 재료를 비비는 스타일이 태국 샐러드 문화와 비슷", ja: "様々な食材を混ぜるスタイルがタイのサラダ文化に似ている", en: "Mix-it-yourself style mirrors Thai salad culture" }, dupeId: "dupe-004" },
-    ]
+    tagline: { ko: "향신료 × 발효의 시너지", ja: "スパイス×発酵のシナジー", en: "Spice × Ferment Synergy" },
   },
   {
     code: "us",
     flag: "🇺🇸",
     name: { ko: "미국", ja: "アメリカ", en: "USA" },
-    cuisineStyle: { ko: "묵직하고 스모키한 BBQ", ja: "どっしりとしたスモーキーBBQ", en: "Hearty & smoky BBQ" },
-    flavorProfile: { sweet: 40, salty: 60, spicy: 30, umami: 65, sour: 15 },
-    recommendations: [
-      { koreanFoodName: { ko: "삼겹살", ja: "サムギョプサル", en: "Samgyeopsal" }, reason: { ko: "직화 구운 고기의 스모키함이 BBQ와 통해요", ja: "直火焼き肉のスモーキーさがBBQに通じます", en: "Open-flame smokiness connects to BBQ culture" }, dupeId: "dupe-005" },
-      { koreanFoodName: { ko: "치킨", ja: "韓国チキン", en: "Korean Fried Chicken" }, reason: { ko: "바삭한 프라이드 치킨의 업그레이드 버전", ja: "カリカリのフライドチキンのアップグレード版", en: "The ultimate upgrade to fried chicken you know" }, dupeId: "dupe-008" },
-      { koreanFoodName: { ko: "불고기", ja: "プルコギ", en: "Bulgogi" }, reason: { ko: "달콤한 마리네이드 BBQ — 한국판 아메리칸 스타일", ja: "甘いマリネのBBQ — 韓国版アメリカンスタイル", en: "Sweet-marinated BBQ — Korean take on American grilling" }, dupeId: "dupe-002" },
-    ]
+    tagline: { ko: "BBQ × 불맛의 결합", ja: "BBQ×火の味の融合", en: "BBQ × Fire Flavor" },
   },
   {
     code: "fr",
     flag: "🇫🇷",
     name: { ko: "프랑스", ja: "フランス", en: "France" },
-    cuisineStyle: { ko: "섬세하고 풍부한 소스", ja: "繊細で豊かなソース", en: "Delicate & rich sauces" },
-    flavorProfile: { sweet: 20, salty: 55, spicy: 10, umami: 80, sour: 30 },
-    recommendations: [
-      { koreanFoodName: { ko: "갈비찜", ja: "カルビチム", en: "Galbi-jjim" }, reason: { ko: "느리게 조리한 갈비의 깊은 풍미가 브레이즈와 같은 격이에요", ja: "じっくり煮込んだカルビの深い風味がブレゼと同格です", en: "Slow-braised short ribs match the depth of French braise" } },
-      { koreanFoodName: { ko: "된장찌개", ja: "テンジャンチゲ", en: "Doenjang Jjigae" }, reason: { ko: "발효의 복잡한 향, 블루치즈나 카망베르에 통하는 향미", ja: "発酵の複雑な香り、ブルーチーズやカマンベールに通じる風味", en: "Fermented complexity rivals aged cheese aromas" } },
-      { koreanFoodName: { ko: "잡채", ja: "チャプチェ", en: "Japchae" }, reason: { ko: "섬세하게 균형 잡힌 맛의 조화가 프렌치 감각과 비슷해요", ja: "繊細にバランスの取れた味の調和がフレンチの感覚に似ています", en: "Delicately balanced harmony resonates with French sensibility" }, dupeId: "dupe-006" },
-    ]
+    tagline: { ko: "소스 × 발효의 격조", ja: "ソース×発酵の品格", en: "Sauce × Fermented Depth" },
   },
   {
     code: "cn",
     flag: "🇨🇳",
     name: { ko: "중국", ja: "中国", en: "China" },
-    cuisineStyle: { ko: "기름진 볶음과 진한 양념", ja: "脂っこい炒め物と濃い味付け", en: "Rich stir-fry & bold seasoning" },
-    flavorProfile: { sweet: 30, salty: 65, spicy: 50, umami: 75, sour: 20 },
-    recommendations: [
-      { koreanFoodName: { ko: "제육볶음", ja: "チェユクポックム", en: "Jeyuk Bokkeum" }, reason: { ko: "매콤한 돼지고기 볶음, 회궈와 비슷한 진한 자극", ja: "ピリ辛の豚肉炒め、火鍋に似た濃い刺激", en: "Spicy pork stir-fry with the bold kick of mapo-style" } },
-      { koreanFoodName: { ko: "잡채", ja: "チャプチェ", en: "Japchae" }, reason: { ko: "당면 볶음은 중국 당면 요리와 뿌리가 같아요", ja: "春雨炒めは中国の春雨料理と同じルーツです", en: "Glass noodle stir-fry shares roots with Chinese traditions" }, dupeId: "dupe-006" },
-      { koreanFoodName: { ko: "순두부찌개", ja: "スンドゥブチゲ", en: "Sundubu Jjigae" }, reason: { ko: "부드러운 두부 + 매운 국물이 마파두부와 통해요", ja: "柔らかい豆腐 + 辛いスープが麻婆豆腐に通じます", en: "Silken tofu in spicy broth mirrors mapo tofu vibes" }, dupeId: "dupe-007" },
-    ]
-  },
-  {
-    code: "in",
-    flag: "🇮🇳",
-    name: { ko: "인도", ja: "インド", en: "India" },
-    cuisineStyle: { ko: "향신료 가득한 깊은 맛", ja: "スパイスたっぷりの深い味わい", en: "Spice-layered deep flavors" },
-    flavorProfile: { sweet: 15, salty: 45, spicy: 90, umami: 60, sour: 25 },
-    recommendations: [
-      { koreanFoodName: { ko: "떡볶이", ja: "トッポッキ", en: "Tteokbokki" }, reason: { ko: "강렬한 매운맛이 인도 마살라 소스처럼 중독적이에요", ja: "激しい辛さがインドのマサラソースのように癖になります", en: "Intense heat is as addictive as masala sauce" }, dupeId: "dupe-003" },
-      { koreanFoodName: { ko: "불닭볶음면", ja: "プルダク炒め麺", en: "Buldak Noodles" }, reason: { ko: "매운맛 도전을 즐기는 분께 딱인 한국의 불맛 라면", ja: "辛さに挑戦する方にぴったりな韓国の火の味ラーメン", en: "For those who live for the heat challenge" } },
-      { koreanFoodName: { ko: "순두부찌개", ja: "スンドゥブチゲ", en: "Sundubu Jjigae" }, reason: { ko: "크리미한 두부에 강한 양념, 사그 파니르와 비슷한 구조", ja: "クリーミーな豆腐に強い調味料、サグパニールに似た構造", en: "Creamy tofu with bold seasoning mirrors saag paneer" }, dupeId: "dupe-007" },
-    ]
+    tagline: { ko: "마라 × 발효의 강렬함", ja: "麻辣×発酵の強烈さ", en: "Mala × Bold Ferment" },
   },
   {
     code: "vn",
     flag: "🇻🇳",
     name: { ko: "베트남", ja: "ベトナム", en: "Vietnam" },
-    cuisineStyle: { ko: "신선하고 가벼운 허브", ja: "フレッシュで軽やかなハーブ", en: "Fresh & light herb-forward" },
-    flavorProfile: { sweet: 30, salty: 55, spicy: 40, umami: 65, sour: 50 },
-    recommendations: [
-      { koreanFoodName: { ko: "잡채", ja: "チャプチェ", en: "Japchae" }, reason: { ko: "투명 면 + 채소, 쌀국수 문화와 비슷한 가벼움", ja: "透明麺 + 野菜、フォー文化に似た軽やかさ", en: "Translucent noodles + veggies echo pho-culture lightness" }, dupeId: "dupe-006" },
-      { koreanFoodName: { ko: "비빔밥", ja: "ビビンバ", en: "Bibimbap" }, reason: { ko: "신선한 재료를 담은 원볼, 분짜와 비슷한 개념", ja: "新鮮な食材を入れたワンボウル、ブンチャーに似た概念", en: "Fresh one-bowl concept mirrors bun cha spirit" }, dupeId: "dupe-004" },
-      { koreanFoodName: { ko: "파전", ja: "パジョン", en: "Pajeon" }, reason: { ko: "고소한 해물 전, 반쎄오와 비슷한 바삭함", ja: "香ばしい海鮮チヂミ、バインセオに似たサクサク感", en: "Savory seafood pancake shares banh xeo crispiness" } },
-    ]
+    tagline: { ko: "라임 × 신선함의 가벼움", ja: "ライム×フレッシュな軽やかさ", en: "Lime × Fresh Lightness" },
   },
 ]
+
+export const fusionRecipes: FusionRecipe[] = [
+  // ── Japan ──
+  {
+    id: "jp-001",
+    countryCode: "jp",
+    emoji: "🍲",
+    name: { ko: "미소 된장 부대찌개", ja: "味噌テンジャンプデチゲ", en: "Miso Doenjang Budae Jjigae" },
+    description: {
+      ko: "된장과 일본 미소를 블렌딩한 국물에 소시지와 두부를 넣은 퓨전 전골",
+      ja: "テンジャンと日本の味噌をブレンドしたスープにソーセージと豆腐を入れたフュージョン鍋",
+      en: "A fusion hot pot with doenjang-miso blended broth, sausages, and silken tofu",
+    },
+    koreanBase: { ko: "부대찌개", ja: "プデチゲ", en: "Budae Jjigae" },
+    foreignElement: { ko: "일본 미소", ja: "日本の味噌", en: "Japanese Miso" },
+    difficulty: "easy",
+    cookTime: 25,
+    servings: 2,
+  },
+  {
+    id: "jp-002",
+    countryCode: "jp",
+    emoji: "🥩",
+    name: { ko: "다시 스모크 삼겹살", ja: "出汁スモークサムギョプサル", en: "Dashi-Smoked Samgyeopsal" },
+    description: {
+      ko: "다시마와 가쓰오부시로 우린 육수에 하룻밤 재운 삼겹살을 그릴에 직화로 구운 요리",
+      ja: "昆布とかつお節で取ったダシに一晩漬けた豚バラ肉を直火で焼いた料理",
+      en: "Pork belly marinated overnight in kombu-katsuobushi dashi, then grilled over open flame",
+    },
+    koreanBase: { ko: "삼겹살 구이", ja: "サムギョプサル焼き", en: "Grilled Samgyeopsal" },
+    foreignElement: { ko: "일본 다시", ja: "日本のダシ", en: "Japanese Dashi" },
+    difficulty: "medium",
+    cookTime: 40,
+    servings: 3,
+  },
+  {
+    id: "jp-003",
+    countryCode: "jp",
+    emoji: "🫕",
+    name: { ko: "스키야키 불고기 전골", ja: "すき焼きプルコギ鍋", en: "Sukiyaki Bulgogi Hot Pot" },
+    description: {
+      ko: "불고기 마리네이드와 스키야키 소스를 합쳐 두부·파·버섯과 함께 끓이는 원팟 전골",
+      ja: "プルコギマリネとすき焼きソースを合わせ、豆腐・ネギ・キノコと一緒に煮込む一鍋料理",
+      en: "Bulgogi marinade meets sukiyaki sauce in a one-pot stew with tofu, scallions, and mushrooms",
+    },
+    koreanBase: { ko: "불고기", ja: "プルコギ", en: "Bulgogi" },
+    foreignElement: { ko: "스키야키 소스", ja: "すき焼きソース", en: "Sukiyaki Sauce" },
+    difficulty: "easy",
+    cookTime: 30,
+    servings: 2,
+  },
+  {
+    id: "jp-004",
+    countryCode: "jp",
+    emoji: "🌿",
+    name: { ko: "유자 삼계탕", ja: "ゆずサムゲタン", en: "Yuzu Samgyetang" },
+    description: {
+      ko: "전통 삼계탕 국물에 유자즙과 유자 껍질을 넣어 향긋하고 산뜻하게 업그레이드",
+      ja: "伝統的なサムゲタンのスープにゆず果汁と皮を加えて、香り豊かにアップグレード",
+      en: "Classic ginseng chicken soup elevated with yuzu juice and zest for a bright, fragrant finish",
+    },
+    koreanBase: { ko: "삼계탕", ja: "サムゲタン", en: "Samgyetang" },
+    foreignElement: { ko: "일본 유자", ja: "日本のゆず", en: "Japanese Yuzu" },
+    difficulty: "hard",
+    cookTime: 90,
+    servings: 2,
+  },
+  {
+    id: "jp-005",
+    countryCode: "jp",
+    emoji: "🍱",
+    name: { ko: "고추냉이 비빔밥", ja: "わさびビビンバ", en: "Wasabi Bibimbap" },
+    description: {
+      ko: "비빔 고추장 소스에 와사비를 더해 코를 찌르는 자극적인 매운맛을 즐기는 비빔밥",
+      ja: "ビビムコチュジャンソースにわさびを加えて、鼻にツンとくる刺激的な辛さを楽しむビビンバ",
+      en: "Bibimbap with gochujang sauce boosted by wasabi for a sharp, sinus-clearing heat",
+    },
+    koreanBase: { ko: "비빔밥", ja: "ビビンバ", en: "Bibimbap" },
+    foreignElement: { ko: "와사비", ja: "わさび", en: "Wasabi" },
+    difficulty: "easy",
+    cookTime: 20,
+    servings: 1,
+  },
+
+  // ── Italy ──
+  {
+    id: "it-001",
+    countryCode: "it",
+    emoji: "🍅",
+    name: { ko: "토마토 아라비아타 떡볶이", ja: "トマトアラビアータトッポッキ", en: "Arrabbiata Tteokbokki" },
+    description: {
+      ko: "고추장 대신 토마토 아라비아타 소스로 끓인 매콤한 떡볶이, 바질 토핑으로 마무리",
+      ja: "コチュジャンの代わりにトマトアラビアータソースで煮込んだ辛いトッポッキ、バジルのトッピングで仕上げ",
+      en: "Spicy rice cakes simmered in arrabbiata instead of gochujang, finished with fresh basil",
+    },
+    koreanBase: { ko: "떡볶이", ja: "トッポッキ", en: "Tteokbokki" },
+    foreignElement: { ko: "아라비아타 소스", ja: "アラビアータソース", en: "Arrabbiata Sauce" },
+    difficulty: "easy",
+    cookTime: 20,
+    servings: 2,
+  },
+  {
+    id: "it-002",
+    countryCode: "it",
+    emoji: "🌿",
+    name: { ko: "바질 페스토 비빔냉면", ja: "バジルペストビビン冷麺", en: "Pesto Bibim Naengmyeon" },
+    description: {
+      ko: "냉면 면에 비빔장 대신 바질 페스토와 참기름을 섞어 비빈 이탈리아식 냉채 국수",
+      ja: "冷麺麺にビビムタレの代わりにバジルペストとごま油を混ぜた、イタリア風冷製麺",
+      en: "Cold buckwheat noodles tossed with basil pesto and sesame oil instead of the classic spicy dressing",
+    },
+    koreanBase: { ko: "비빔냉면", ja: "ビビン冷麺", en: "Bibim Naengmyeon" },
+    foreignElement: { ko: "바질 페스토", ja: "バジルペスト", en: "Basil Pesto" },
+    difficulty: "easy",
+    cookTime: 15,
+    servings: 1,
+  },
+  {
+    id: "it-003",
+    countryCode: "it",
+    emoji: "🥓",
+    name: { ko: "판체타 삼겹살 구이", ja: "パンチェッタサムギョプサル焼き", en: "Pancetta Samgyeopsal" },
+    description: {
+      ko: "삼겹살에 이탈리아 판체타 향신료(로즈마리·흑후추)를 문질러 재운 뒤 철판에 굽는 요리",
+      ja: "豚バラ肉にイタリアのパンチェッタ香辛料（ローズマリー・黒胡椒）をすり込んで漬け込み、鉄板で焼く料理",
+      en: "Pork belly rubbed with pancetta-style herbs and black pepper, then seared on a cast-iron griddle",
+    },
+    koreanBase: { ko: "삼겹살 구이", ja: "サムギョプサル焼き", en: "Grilled Samgyeopsal" },
+    foreignElement: { ko: "이탈리아 허브 믹스", ja: "イタリアンハーブミックス", en: "Italian Herb Mix" },
+    difficulty: "medium",
+    cookTime: 30,
+    servings: 3,
+  },
+  {
+    id: "it-004",
+    countryCode: "it",
+    emoji: "🧀",
+    name: { ko: "모차렐라 해물 파전", ja: "モッツァレラ海鮮パジョン", en: "Mozzarella Seafood Pajeon" },
+    description: {
+      ko: "해물 파전 반죽에 생모차렐라를 얹어 치즈가 흘러내리게 구운 이탈리안 스타일 전",
+      ja: "海鮮チヂミの生地にモッツァレラを乗せてチーズが溶け出すように焼いたイタリアンスタイルのチヂミ",
+      en: "Seafood scallion pancake topped with fresh mozzarella and pan-fried until the cheese melts over the edges",
+    },
+    koreanBase: { ko: "해물 파전", ja: "海鮮パジョン", en: "Seafood Pajeon" },
+    foreignElement: { ko: "생 모차렐라", ja: "フレッシュモッツァレラ", en: "Fresh Mozzarella" },
+    difficulty: "medium",
+    cookTime: 25,
+    servings: 2,
+  },
+  {
+    id: "it-005",
+    countryCode: "it",
+    emoji: "🍚",
+    name: { ko: "리소토 스타일 전복죽", ja: "リゾットスタイルアワビ粥", en: "Risotto-Style Abalone Juk" },
+    description: {
+      ko: "전복죽에 파르미지아노 레지아노와 버터를 마무리로 넣어 크리미한 리소토 질감을 내는 요리",
+      ja: "アワビ粥にパルミジャーノ・レッジャーノとバターを仕上げに加え、クリーミーなリゾットの食感を出す料理",
+      en: "Korean abalone rice porridge finished with Parmigiano-Reggiano and butter for a risotto-like creaminess",
+    },
+    koreanBase: { ko: "전복죽", ja: "アワビ粥", en: "Abalone Juk" },
+    foreignElement: { ko: "파르미지아노 + 버터", ja: "パルミジャーノ+バター", en: "Parmigiano + Butter" },
+    difficulty: "hard",
+    cookTime: 50,
+    servings: 2,
+  },
+
+  // ── Mexico ──
+  {
+    id: "mx-001",
+    countryCode: "mx",
+    emoji: "🌮",
+    name: { ko: "코리안 타코 쌈", ja: "コリアンタコスサム", en: "Korean Taco Ssam" },
+    description: {
+      ko: "삼겹살 쌈에 과카몰레와 살사를 곁들여 한국식 타코처럼 즐기는 퓨전 요리",
+      ja: "豚バラサムにグアカモーレとサルサを添えて、韓国式タコスのように楽しむフュージョン料理",
+      en: "Grilled pork belly wraps served with guacamole and fresh salsa for a Korean take on tacos",
+    },
+    koreanBase: { ko: "삼겹살 쌈", ja: "サムギョプサルサム", en: "Samgyeopsal Ssam" },
+    foreignElement: { ko: "과카몰레 + 살사", ja: "グアカモーレ+サルサ", en: "Guacamole + Salsa" },
+    difficulty: "easy",
+    cookTime: 30,
+    servings: 3,
+  },
+  {
+    id: "mx-002",
+    countryCode: "mx",
+    emoji: "🥑",
+    name: { ko: "과카몰레 비빔밥", ja: "グアカモーレビビンバ", en: "Guacamole Bibimbap" },
+    description: {
+      ko: "비빔밥 고명으로 아보카도와 라임을 넣고, 고추장 대신 치폴레 소스를 곁들인 그린 비빔밥",
+      ja: "ビビンバの具材としてアボカドとライムを入れ、コチュジャンの代わりにチポトレソースを添えたグリーンビビンバ",
+      en: "Bibimbap topped with avocado and lime, drizzled with chipotle sauce instead of gochujang",
+    },
+    koreanBase: { ko: "비빔밥", ja: "ビビンバ", en: "Bibimbap" },
+    foreignElement: { ko: "아보카도 + 치폴레", ja: "アボカド+チポトレ", en: "Avocado + Chipotle" },
+    difficulty: "easy",
+    cookTime: 20,
+    servings: 1,
+  },
+  {
+    id: "mx-003",
+    countryCode: "mx",
+    emoji: "🌶️",
+    name: { ko: "살사 베르데 떡볶이", ja: "サルサベルデトッポッキ", en: "Salsa Verde Tteokbokki" },
+    description: {
+      ko: "고추장 소스에 살사 베르데와 할라피뇨를 더해 새콤하고 강렬한 매운맛을 낸 떡볶이",
+      ja: "コチュジャンソースにサルサベルデとハラペーニョを加えて、酸っぱくて強烈な辛さを出したトッポッキ",
+      en: "Tteokbokki with gochujang sauce spiked with salsa verde and jalapeño for tangy, layered heat",
+    },
+    koreanBase: { ko: "떡볶이", ja: "トッポッキ", en: "Tteokbokki" },
+    foreignElement: { ko: "살사 베르데 + 할라피뇨", ja: "サルサベルデ+ハラペーニョ", en: "Salsa Verde + Jalapeño" },
+    difficulty: "easy",
+    cookTime: 20,
+    servings: 2,
+  },
+  {
+    id: "mx-004",
+    countryCode: "mx",
+    emoji: "🫔",
+    name: { ko: "엔칠라다 스타일 김밥", ja: "エンチラーダスタイルキンパ", en: "Enchilada-Style Gimbap" },
+    description: {
+      ko: "김밥을 엔칠라다 소스에 담가 치즈를 얹어 오븐에 구운 한국×멕시코 오리지널 퓨전",
+      ja: "キンパをエンチラーダソースに浸してチーズを乗せてオーブンで焼いた韓国×メキシコオリジナルフュージョン",
+      en: "Gimbap rolls submerged in enchilada sauce, topped with cheese, and baked until bubbly",
+    },
+    koreanBase: { ko: "김밥", ja: "キンパ", en: "Gimbap" },
+    foreignElement: { ko: "엔칠라다 소스 + 치즈", ja: "エンチラーダソース+チーズ", en: "Enchilada Sauce + Cheese" },
+    difficulty: "medium",
+    cookTime: 35,
+    servings: 2,
+  },
+  {
+    id: "mx-005",
+    countryCode: "mx",
+    emoji: "🍳",
+    name: { ko: "우에보스 란체로스 순두부", ja: "ウエボスランチェロススンドゥブ", en: "Huevos Rancheros Sundubu" },
+    description: {
+      ko: "순두부 뚝배기에 계란을 깨어 넣고 토마토 살사와 할라피뇨를 넣어 끓인 멕시칸 스타일 찌개",
+      ja: "スンドゥブ土鍋に卵を割り入れ、トマトサルサとハラペーニョを加えて煮立てたメキシカンスタイルのチゲ",
+      en: "Silken tofu jjigae with an egg cracked in, simmered with tomato salsa and jalapeño",
+    },
+    koreanBase: { ko: "순두부찌개", ja: "スンドゥブチゲ", en: "Sundubu Jjigae" },
+    foreignElement: { ko: "토마토 살사 + 계란", ja: "トマトサルサ+卵", en: "Tomato Salsa + Egg" },
+    difficulty: "easy",
+    cookTime: 20,
+    servings: 1,
+  },
+
+  // ── Thailand ──
+  {
+    id: "th-001",
+    countryCode: "th",
+    emoji: "🍜",
+    name: { ko: "팟타이 잡채", ja: "パッタイチャプチェ", en: "Pad Thai Japchae" },
+    description: {
+      ko: "당면 잡채에 팟타이 핵심 재료인 타마린드·피쉬소스·땅콩을 더한 한·태 퓨전 볶음면",
+      ja: "春雨チャプチェにパッタイの主要素材であるタマリンド・ナンプラー・ピーナッツを加えた韓×タイフュージョン炒め麺",
+      en: "Glass noodle japchae with tamarind, fish sauce, and crushed peanuts for a pad thai crossover",
+    },
+    koreanBase: { ko: "잡채", ja: "チャプチェ", en: "Japchae" },
+    foreignElement: { ko: "타마린드 + 피쉬소스", ja: "タマリンド+ナンプラー", en: "Tamarind + Fish Sauce" },
+    difficulty: "medium",
+    cookTime: 25,
+    servings: 2,
+  },
+  {
+    id: "th-002",
+    countryCode: "th",
+    emoji: "🍛",
+    name: { ko: "그린 커리 순두부찌개", ja: "グリーンカレースンドゥブチゲ", en: "Green Curry Sundubu Jjigae" },
+    description: {
+      ko: "순두부찌개 국물에 태국 그린 커리 페이스트를 풀어넣어 코코넛밀크와 함께 끓인 이색 찌개",
+      ja: "スンドゥブチゲのスープにタイのグリーンカレーペーストを溶かし、ココナッツミルクと一緒に煮立てた変わり種チゲ",
+      en: "Sundubu jjigae with Thai green curry paste and coconut milk stirred into the broth",
+    },
+    koreanBase: { ko: "순두부찌개", ja: "スンドゥブチゲ", en: "Sundubu Jjigae" },
+    foreignElement: { ko: "그린 커리 페이스트", ja: "グリーンカレーペースト", en: "Green Curry Paste" },
+    difficulty: "easy",
+    cookTime: 25,
+    servings: 2,
+  },
+  {
+    id: "th-003",
+    countryCode: "th",
+    emoji: "🍗",
+    name: { ko: "레몬그라스 삼계탕", ja: "レモングラスサムゲタン", en: "Lemongrass Samgyetang" },
+    description: {
+      ko: "삼계탕 국물에 레몬그라스·고수·갈랑갈을 넣어 태국 탐카 수프의 향미를 입힌 보양 요리",
+      ja: "サムゲタンのスープにレモングラス・コリアンダー・ガランガルを加えて、タイのトムカースープの風味を纏わせた滋養料理",
+      en: "Ginseng chicken soup infused with lemongrass, galangal, and coriander for a tom kha-inspired depth",
+    },
+    koreanBase: { ko: "삼계탕", ja: "サムゲタン", en: "Samgyetang" },
+    foreignElement: { ko: "레몬그라스 + 갈랑갈", ja: "レモングラス+ガランガル", en: "Lemongrass + Galangal" },
+    difficulty: "hard",
+    cookTime: 90,
+    servings: 2,
+  },
+  {
+    id: "th-004",
+    countryCode: "th",
+    emoji: "🥭",
+    name: { ko: "망고 빙수", ja: "マンゴーかき氷", en: "Mango Bingsu" },
+    description: {
+      ko: "팥빙수 대신 생 망고와 코코넛 밀크 시럽을 얹은 태국 스타일 한국 빙수 디저트",
+      ja: "あずきかき氷の代わりに生マンゴーとココナッツミルクシロップを乗せたタイスタイルの韓国かき氷デザート",
+      en: "Korean shaved ice topped with fresh mango and coconut milk syrup instead of the classic red bean",
+    },
+    koreanBase: { ko: "빙수", ja: "かき氷", en: "Bingsu" },
+    foreignElement: { ko: "생 망고 + 코코넛밀크", ja: "生マンゴー+ココナッツミルク", en: "Fresh Mango + Coconut Milk" },
+    difficulty: "easy",
+    cookTime: 15,
+    servings: 2,
+  },
+  {
+    id: "th-005",
+    countryCode: "th",
+    emoji: "🌶️",
+    name: { ko: "솜땀 무생채", ja: "ソムタムムセンチェ", en: "Som Tam Musaengchae" },
+    description: {
+      ko: "무생채 무침 양념에 라임즙·피쉬소스·건새우를 더해 솜땀 풍미를 낸 새콤한 반찬",
+      ja: "ムセンチェの和え衣にライム汁・ナンプラー・干しエビを加えてソムタムの風味を出した酸っぱいおかず",
+      en: "Shredded radish salad dressed with lime juice, fish sauce, and dried shrimp for a som tam-inspired kick",
+    },
+    koreanBase: { ko: "무생채", ja: "ムセンチェ", en: "Musaengchae" },
+    foreignElement: { ko: "라임 + 피쉬소스", ja: "ライム+ナンプラー", en: "Lime + Fish Sauce" },
+    difficulty: "easy",
+    cookTime: 10,
+    servings: 2,
+  },
+
+  // ── USA ──
+  {
+    id: "us-001",
+    countryCode: "us",
+    emoji: "🍔",
+    name: { ko: "코리안 BBQ 버거", ja: "コリアンBBQバーガー", en: "Korean BBQ Burger" },
+    description: {
+      ko: "불고기 패티에 김치 코울슬로와 고추장 마요를 얹은 한국식 스모키 버거",
+      ja: "プルコギパティにキムチコールスローとコチュジャンマヨを乗せた韓国式スモーキーバーガー",
+      en: "Bulgogi-seasoned patty topped with kimchi slaw and gochujang mayo on a toasted bun",
+    },
+    koreanBase: { ko: "불고기", ja: "プルコギ", en: "Bulgogi" },
+    foreignElement: { ko: "버거 번 + BBQ 소스", ja: "バーガーバン+BBQソース", en: "Burger Bun + BBQ Sauce" },
+    difficulty: "medium",
+    cookTime: 30,
+    servings: 2,
+  },
+  {
+    id: "us-002",
+    countryCode: "us",
+    emoji: "🍗",
+    name: { ko: "버팔로 양념 치킨 전", ja: "バッファローヤンニョムチキン煎", en: "Buffalo Yangnyeom Chicken Jeon" },
+    description: {
+      ko: "양념치킨 소스에 버팔로 핫소스를 블렌딩해 부친 바삭한 치킨 전, 블루치즈 딥 소스와 함께",
+      ja: "ヤンニョムチキンソースにバッファローホットソースをブレンドして焼いたカリカリのチキン煎、ブルーチーズディップと共に",
+      en: "Crispy chicken jeon glazed with yangnyeom-buffalo sauce blend, served with blue cheese dip",
+    },
+    koreanBase: { ko: "닭 전", ja: "チキン煎", en: "Chicken Jeon" },
+    foreignElement: { ko: "버팔로 핫소스", ja: "バッファローホットソース", en: "Buffalo Hot Sauce" },
+    difficulty: "medium",
+    cookTime: 35,
+    servings: 2,
+  },
+  {
+    id: "us-003",
+    countryCode: "us",
+    emoji: "🧀",
+    name: { ko: "치즈 폭탄 떡볶이", ja: "チーズ爆弾トッポッキ", en: "Cheese Bomb Tteokbokki" },
+    description: {
+      ko: "떡볶이 위에 모차렐라와 체다 두 종류 치즈를 듬뿍 올려 치즈가 쭉 늘어나게 마무리한 요리",
+      ja: "トッポッキの上にモッツァレラとチェダーの2種類のチーズをたっぷり乗せてチーズが伸びるように仕上げた料理",
+      en: "Tteokbokki blanketed in mozzarella and cheddar, broiled until the cheese pulls dramatically",
+    },
+    koreanBase: { ko: "떡볶이", ja: "トッポッキ", en: "Tteokbokki" },
+    foreignElement: { ko: "모차렐라 + 체다 치즈", ja: "モッツァレラ+チェダーチーズ", en: "Mozzarella + Cheddar" },
+    difficulty: "easy",
+    cookTime: 20,
+    servings: 2,
+  },
+  {
+    id: "us-004",
+    countryCode: "us",
+    emoji: "🥩",
+    name: { ko: "스모크 갈비찜", ja: "スモークカルビチム", en: "Smoked Galbi-Jjim" },
+    description: {
+      ko: "갈비찜을 조리하기 전 훈제 칩으로 저온 스모킹하여 미국식 BBQ의 깊은 연기향을 입힌 요리",
+      ja: "カルビチムを調理する前にスモークチップで低温スモーキングし、アメリカンBBQの深い燻製香を纏わせた料理",
+      en: "Short rib jjigae slow-smoked with wood chips before braising for deep American BBQ smokiness",
+    },
+    koreanBase: { ko: "갈비찜", ja: "カルビチム", en: "Galbi-Jjim" },
+    foreignElement: { ko: "훈제 기법", ja: "スモーキング技法", en: "Low & Slow Smoking" },
+    difficulty: "hard",
+    cookTime: 180,
+    servings: 4,
+  },
+  {
+    id: "us-005",
+    countryCode: "us",
+    emoji: "🥗",
+    name: { ko: "코울슬로 겉절이", ja: "コールスローコッチョリ", en: "Coleslaw Geotjeori" },
+    description: {
+      ko: "배추겉절이 양념에 마요네즈와 사과 식초를 더해 미국 코울슬로처럼 크리미하게 만든 한국식 샐러드",
+      ja: "白菜コッチョリの合わせ調味料にマヨネーズとリンゴ酢を加えて、アメリカのコールスローのようにクリーミーに仕上げた韓国式サラダ",
+      en: "Napa cabbage geotjeori dressed with mayonnaise and apple cider vinegar for an American-style creamy slaw",
+    },
+    koreanBase: { ko: "배추 겉절이", ja: "白菜コッチョリ", en: "Napa Geotjeori" },
+    foreignElement: { ko: "마요네즈 + 사과식초", ja: "マヨネーズ+リンゴ酢", en: "Mayo + Apple Cider Vinegar" },
+    difficulty: "easy",
+    cookTime: 10,
+    servings: 3,
+  },
+
+  // ── France ──
+  {
+    id: "fr-001",
+    countryCode: "fr",
+    emoji: "🥐",
+    name: { ko: "크루아상 호떡", ja: "クロワッサンホトック", en: "Croissant Hotteok" },
+    description: {
+      ko: "호떡 반죽에 버터를 레이어링하여 크루아상처럼 결을 만들고 흑설탕·시나몬 소를 채운 디저트",
+      ja: "ホトックの生地にバターをレイヤリングしてクロワッサンのように層を作り、黒砂糖・シナモンの具を詰めたデザート",
+      en: "Hotteok dough laminated with butter croissant-style, filled with brown sugar and cinnamon",
+    },
+    koreanBase: { ko: "호떡", ja: "ホトック", en: "Hotteok" },
+    foreignElement: { ko: "버터 레이어링", ja: "バターレイヤリング", en: "Butter Lamination" },
+    difficulty: "hard",
+    cookTime: 60,
+    servings: 6,
+  },
+  {
+    id: "fr-002",
+    countryCode: "fr",
+    emoji: "🫕",
+    name: { ko: "된장 뵈프 부르기뇽", ja: "テンジャンブッフブルギニョン", en: "Doenjang Bœuf Bourguignon" },
+    description: {
+      ko: "레드와인 브레이즈에 된장을 더해 프랑스 부르기뇽의 깊이와 발효 감칠맛을 동시에 낸 소고기 조림",
+      ja: "赤ワインブレーズにテンジャンを加えて、フランスのブルギニョンの深みと発酵旨味を同時に出した牛肉の煮込み",
+      en: "Red-wine beef braise with doenjang stirred in for Korean fermented depth alongside classic Burgundy richness",
+    },
+    koreanBase: { ko: "소고기 조림", ja: "牛肉の煮込み", en: "Braised Beef" },
+    foreignElement: { ko: "레드와인 + 허브", ja: "赤ワイン+ハーブ", en: "Red Wine + Bouquet Garni" },
+    difficulty: "hard",
+    cookTime: 120,
+    servings: 4,
+  },
+  {
+    id: "fr-003",
+    countryCode: "fr",
+    emoji: "🥞",
+    name: { ko: "크레페 파전", ja: "クレープパジョン", en: "Crêpe Pajeon" },
+    description: {
+      ko: "파전 반죽을 얇게 펴 크레페처럼 굽고 해물을 채워 가볍게 접어 먹는 프렌치 스타일 전",
+      ja: "チヂミの生地を薄く伸ばしてクレープのように焼き、海鮮を詰めて軽く折り畳んで食べるフレンチスタイルのチヂミ",
+      en: "Thin pajeon batter cooked crêpe-style, filled with seafood and folded into elegant triangles",
+    },
+    koreanBase: { ko: "파전", ja: "パジョン", en: "Pajeon" },
+    foreignElement: { ko: "크레페 기법", ja: "クレープ技法", en: "Crêpe Technique" },
+    difficulty: "medium",
+    cookTime: 30,
+    servings: 2,
+  },
+  {
+    id: "fr-004",
+    countryCode: "fr",
+    emoji: "🧅",
+    name: { ko: "프렌치 어니언 갈비탕", ja: "フレンチオニオンカルビタン", en: "French Onion Galbi-tang" },
+    description: {
+      ko: "갈비탕 국물에 캐러멜라이즈드 양파를 녹여 넣고 그뤼에르 크루통을 띄운 앙상블 수프",
+      ja: "カルビタンのスープにキャラメライズドオニオンを溶かし入れ、グリュイエールクルトンを浮かべたアンサンブルスープ",
+      en: "Short rib broth enriched with caramelized onion, topped with Gruyère-laden croutons",
+    },
+    koreanBase: { ko: "갈비탕", ja: "カルビタン", en: "Galbi-tang" },
+    foreignElement: { ko: "캐러멜라이즈드 양파 + 그뤼에르", ja: "キャラメライズドオニオン+グリュイエール", en: "Caramelized Onion + Gruyère" },
+    difficulty: "medium",
+    cookTime: 60,
+    servings: 2,
+  },
+  {
+    id: "fr-005",
+    countryCode: "fr",
+    emoji: "🍮",
+    name: { ko: "식혜 크렘 브륄레", ja: "シッケクレームブリュレ", en: "Sikhye Crème Brûlée" },
+    description: {
+      ko: "식혜를 베이스로 만든 커스터드에 설탕 카라멜 크러스트를 입힌 한·프 디저트 하이브리드",
+      ja: "シッケをベースにしたカスタードに砂糖のカラメルクラストを付けた韓×仏デザートハイブリッド",
+      en: "Crème brûlée custard made with sikhye (sweet rice drink) as the base, topped with a caramel crust",
+    },
+    koreanBase: { ko: "식혜", ja: "シッケ", en: "Sikhye" },
+    foreignElement: { ko: "커스터드 + 카라멜 크러스트", ja: "カスタード+カラメルクラスト", en: "Custard + Caramel Crust" },
+    difficulty: "hard",
+    cookTime: 60,
+    servings: 4,
+  },
+
+  // ── China ──
+  {
+    id: "cn-001",
+    countryCode: "cn",
+    emoji: "🌶️",
+    name: { ko: "마라 떡볶이", ja: "麻辣トッポッキ", en: "Mala Tteokbokki" },
+    description: {
+      ko: "고추장 소스에 화자오와 두반장을 더해 마라 특유의 얼얼하고 매운 맛을 살린 떡볶이",
+      ja: "コチュジャンソースに花椒と豆板醤を加えて、麻辣特有のしびれる辛さを活かしたトッポッキ",
+      en: "Tteokbokki sauce blended with doubanjiang and Sichuan peppercorn for tongue-numbing mala heat",
+    },
+    koreanBase: { ko: "떡볶이", ja: "トッポッキ", en: "Tteokbokki" },
+    foreignElement: { ko: "화자오 + 두반장", ja: "花椒+豆板醤", en: "Sichuan Peppercorn + Doubanjiang" },
+    difficulty: "easy",
+    cookTime: 20,
+    servings: 2,
+  },
+  {
+    id: "cn-002",
+    countryCode: "cn",
+    emoji: "🥟",
+    name: { ko: "딤섬 스타일 왕만두", ja: "飲茶スタイル王餃子", en: "Dim Sum-Style Wang Mandu" },
+    description: {
+      ko: "왕만두 피를 얇게 밀어 딤섬처럼 투명하게 만들고 새우·고수를 속에 넣은 찜만두",
+      ja: "王餃子の皮を薄く伸ばして飲茶のように透明に仕上げ、エビ・コリアンダーを具材に入れた蒸し餃子",
+      en: "Large steamed mandu with translucent dim-sum-style wrappers, filled with shrimp and coriander",
+    },
+    koreanBase: { ko: "왕만두", ja: "王餃子", en: "Wang Mandu" },
+    foreignElement: { ko: "딤섬 피 기법 + 새우", ja: "点心皮技法+エビ", en: "Dim Sum Wrapper + Shrimp" },
+    difficulty: "hard",
+    cookTime: 60,
+    servings: 4,
+  },
+  {
+    id: "cn-003",
+    countryCode: "cn",
+    emoji: "🫙",
+    name: { ko: "흑초 돼지 갈비찜", ja: "黒酢豚カルビチム", en: "Black Vinegar Pork Galbi-Jjim" },
+    description: {
+      ko: "갈비찜 양념에 중국 진강 흑초를 더해 새콤달콤하면서 깊은 감칠맛을 내는 돼지갈비 요리",
+      ja: "カルビチムの合わせ調味料に中国鎮江黒酢を加えて、甘酸っぱくて深い旨味を出す豚スペアリブ料理",
+      en: "Pork galbi-jjim braised with Zhenjiang black vinegar for sweet-sour depth",
+    },
+    koreanBase: { ko: "돼지갈비찜", ja: "豚カルビチム", en: "Pork Galbi-Jjim" },
+    foreignElement: { ko: "진강 흑초", ja: "鎮江黒酢", en: "Zhenjiang Black Vinegar" },
+    difficulty: "medium",
+    cookTime: 60,
+    servings: 3,
+  },
+  {
+    id: "cn-004",
+    countryCode: "cn",
+    emoji: "🥩",
+    name: { ko: "오향 불고기", ja: "五香プルコギ", en: "Five-Spice Bulgogi" },
+    description: {
+      ko: "불고기 마리네이드에 중국 오향 파우더를 더해 이국적이고 복합적인 향을 입힌 구이 요리",
+      ja: "プルコギマリネに中国の五香粉を加えて、エキゾチックで複雑な香りを纏わせた焼き料理",
+      en: "Bulgogi marinated with five-spice powder for an exotic, layered aromatic depth",
+    },
+    koreanBase: { ko: "불고기", ja: "プルコギ", en: "Bulgogi" },
+    foreignElement: { ko: "오향 파우더", ja: "五香粉", en: "Five-Spice Powder" },
+    difficulty: "easy",
+    cookTime: 25,
+    servings: 3,
+  },
+  {
+    id: "cn-005",
+    countryCode: "cn",
+    emoji: "🫕",
+    name: { ko: "마파 순두부찌개", ja: "麻婆スンドゥブチゲ", en: "Mapo Sundubu Jjigae" },
+    description: {
+      ko: "순두부찌개에 두반장과 화자오를 더해 마파두부 스타일로 변신한 얼얼하고 매운 두부 요리",
+      ja: "スンドゥブチゲに豆板醤と花椒を加えて麻婆豆腐スタイルに変身した、しびれる辛い豆腐料理",
+      en: "Sundubu jjigae spiked with doubanjiang and Sichuan peppercorn to mirror mapo tofu",
+    },
+    koreanBase: { ko: "순두부찌개", ja: "スンドゥブチゲ", en: "Sundubu Jjigae" },
+    foreignElement: { ko: "두반장 + 화자오", ja: "豆板醤+花椒", en: "Doubanjiang + Sichuan Peppercorn" },
+    difficulty: "easy",
+    cookTime: 20,
+    servings: 2,
+  },
+
+  // ── Vietnam ──
+  {
+    id: "vn-001",
+    countryCode: "vn",
+    emoji: "🍜",
+    name: { ko: "포 스타일 설렁탕", ja: "フォースタイルソルロンタン", en: "Pho-Style Seolleongtang" },
+    description: {
+      ko: "설렁탕 국물에 스타아니스와 계피를 더해 베트남 포의 향긋한 향신료 향을 입힌 요리",
+      ja: "ソルロンタンのスープにスターアニスとシナモンを加えて、ベトナムのフォーの芳しいスパイスの香りを纏わせた料理",
+      en: "Milky bone broth seolleongtang infused with star anise and cinnamon for pho-inspired aromatics",
+    },
+    koreanBase: { ko: "설렁탕", ja: "ソルロンタン", en: "Seolleongtang" },
+    foreignElement: { ko: "스타아니스 + 계피", ja: "スターアニス+シナモン", en: "Star Anise + Cinnamon" },
+    difficulty: "hard",
+    cookTime: 180,
+    servings: 4,
+  },
+  {
+    id: "vn-002",
+    countryCode: "vn",
+    emoji: "🌿",
+    name: { ko: "라임 고수 냉면", ja: "ライムコリアンダー冷麺", en: "Lime & Coriander Naengmyeon" },
+    description: {
+      ko: "냉면 육수에 라임즙과 고수·민트를 더해 베트남 분짜처럼 새콤하고 허브향 가득한 냉채 국수",
+      ja: "冷麺のスープにライム汁とコリアンダー・ミントを加えて、ベトナムのブンチャーのように爽やかでハーブ香豊かな冷製麺",
+      en: "Naengmyeon broth brightened with lime juice and fresh coriander and mint, evoking Vietnamese bun cha",
+    },
+    koreanBase: { ko: "물냉면", ja: "水冷麺", en: "Mul Naengmyeon" },
+    foreignElement: { ko: "라임즙 + 고수 + 민트", ja: "ライム汁+コリアンダー+ミント", en: "Lime Juice + Coriander + Mint" },
+    difficulty: "easy",
+    cookTime: 15,
+    servings: 1,
+  },
+  {
+    id: "vn-003",
+    countryCode: "vn",
+    emoji: "🥖",
+    name: { ko: "반미 스타일 김밥", ja: "バインミースタイルキンパ", en: "Bánh Mì-Style Gimbap" },
+    description: {
+      ko: "김밥 속에 피클 당근·무·고수·매운 고추를 넣어 베트남 반미의 상큼한 맛을 김밥으로 재현",
+      ja: "キンパの具材にピクルスにんじん・大根・コリアンダー・唐辛子を入れて、ベトナムのバインミーの爽やかな味をキンパで再現",
+      en: "Gimbap filled with pickled carrot, daikon, coriander, and chili to capture bánh mì's bright flavors",
+    },
+    koreanBase: { ko: "김밥", ja: "キンパ", en: "Gimbap" },
+    foreignElement: { ko: "피클 당근 + 고수", ja: "ピクルスにんじん+コリアンダー", en: "Pickled Carrot + Coriander" },
+    difficulty: "medium",
+    cookTime: 40,
+    servings: 2,
+  },
+  {
+    id: "vn-004",
+    countryCode: "vn",
+    emoji: "🌿",
+    name: { ko: "고이꾸온 삼겹살 쌈", ja: "ゴイクオンサムギョプサルサム", en: "Gỏi Cuốn Samgyeopsal Ssam" },
+    description: {
+      ko: "삼겹살 구이를 라이스 페이퍼에 싸서 베트남 고이꾸온 스타일로 채소·허브와 함께 즐기는 요리",
+      ja: "サムギョプサル焼きをライスペーパーに包んでベトナムのゴイクオンスタイルで野菜・ハーブと一緒に楽しむ料理",
+      en: "Grilled pork belly rolled in rice paper with fresh herbs and vegetables, gỏi cuốn-style",
+    },
+    koreanBase: { ko: "삼겹살 구이", ja: "サムギョプサル焼き", en: "Grilled Samgyeopsal" },
+    foreignElement: { ko: "라이스 페이퍼 + 허브", ja: "ライスペーパー+ハーブ", en: "Rice Paper + Fresh Herbs" },
+    difficulty: "easy",
+    cookTime: 25,
+    servings: 2,
+  },
+  {
+    id: "vn-005",
+    countryCode: "vn",
+    emoji: "🥞",
+    name: { ko: "반쎄오 스타일 파전", ja: "バインセオスタイルパジョン", en: "Bánh Xèo-Style Pajeon" },
+    description: {
+      ko: "파전 반죽에 강황 가루를 넣어 노란색으로 만들고 숙주나물을 가득 채워 바삭하게 부친 전",
+      ja: "チヂミの生地にターメリックを加えて黄色に仕上げ、もやしをたっぷり詰めてカリカリに焼いたチヂミ",
+      en: "Turmeric-yellow pajeon batter stuffed with bean sprouts and pan-fried until shatteringly crisp",
+    },
+    koreanBase: { ko: "파전", ja: "パジョン", en: "Pajeon" },
+    foreignElement: { ko: "강황 + 숙주나물", ja: "ターメリック+もやし", en: "Turmeric + Bean Sprouts" },
+    difficulty: "medium",
+    cookTime: 25,
+    servings: 2,
+  },
+]
+
+export function getRecipesByCountry(countryCode: string): FusionRecipe[] {
+  return fusionRecipes.filter((r) => r.countryCode === countryCode)
+}
+
+export function getFlagCountry(countryCode: string): FlagCountry | undefined {
+  return flagCountries.find((c) => c.code === countryCode)
+}

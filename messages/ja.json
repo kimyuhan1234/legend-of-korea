@@ -339,6 +339,17 @@
     "orderSuccess": "注文が完了しました",
     "backToCourse": "コースに戻る"
   },
+  "food": {
+    "flagCookingRecipeHeader": "フュージョンレシピ",
+    "flagCookingSelectPrompt": "上で国旗を選択するとフュージョンレシピが表示されます",
+    "flagCookingKoreanElement": "韓国の要素",
+    "flagCookingForeignElement": "相手国の要素",
+    "flagCookingTime": "調理時間",
+    "flagCookingServings": "人前",
+    "flagCookingDifficultyEasy": "簡単",
+    "flagCookingDifficultyMedium": "普通",
+    "flagCookingDifficultyHard": "難しい"
+  },
   "goods": {
     "title": "グッズショップ",
     "subtitle": "伝説の地から届く特別な記念品、もうすぐ登場",

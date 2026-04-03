@@ -364,6 +364,17 @@
     "save": "저장",
     "status": "상태"
   },
+  "food": {
+    "flagCookingRecipeHeader": "퓨전 레시피",
+    "flagCookingSelectPrompt": "위에서 국기를 선택하면 퓨전 레시피가 나타납니다",
+    "flagCookingKoreanElement": "한국 요소",
+    "flagCookingForeignElement": "상대국 요소",
+    "flagCookingTime": "조리시간",
+    "flagCookingServings": "인분",
+    "flagCookingDifficultyEasy": "쉬움",
+    "flagCookingDifficultyMedium": "보통",
+    "flagCookingDifficultyHard": "어려움"
+  },
   "goods": {
     "title": "굿즈샵",
     "subtitle": "전설의 땅에서 온 특별한 기념품, 곧 만나요",
