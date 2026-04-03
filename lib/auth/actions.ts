@@ -10,6 +10,7 @@ export async function loginWithEmail(formData: FormData) {
   const email = formData.get("email") as string
   const password = formData.get("password") as string
   const locale = (formData.get("locale") as string) || "ko"
+  const next = (formData.get("next") as string) || ""
 
   const supabase = await createClient()
 
@@ -19,7 +20,9 @@ export async function loginWithEmail(formData: FormData) {
     return { error: error.message }
   }
 
-  redirect(`/${locale}`)
+  // next가 있으면 해당 경로로, 없으면 홈으로
+  const destination = next && next.startsWith("/") ? next : `/${locale}`
+  redirect(destination)
 }
 
 // ──────────────────────────────────────────

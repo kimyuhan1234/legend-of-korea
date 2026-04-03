@@ -1,12 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { loginWithEmail } from "@/lib/auth/actions"
 
 interface LoginFormProps {
   locale: string
+  next?: string
 }
 
 const TEXT = {
@@ -42,10 +42,9 @@ const TEXT = {
   },
 }
 
-export function LoginForm({ locale }: LoginFormProps) {
+export function LoginForm({ locale, next }: LoginFormProps) {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-  const router = useRouter()
 
   const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
 
@@ -56,6 +55,7 @@ export function LoginForm({ locale }: LoginFormProps) {
 
     const formData = new FormData(e.currentTarget)
     formData.set("locale", locale)
+    if (next) formData.set("next", next)
 
     const result = await loginWithEmail(formData)
     if (result?.error) {

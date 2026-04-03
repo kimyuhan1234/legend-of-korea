@@ -7,28 +7,42 @@ interface GoodsNotifyFormProps {
   buttonLabel: string
   successMsg: string
   errorMsg: string
+  locale: string
 }
-
-// TODO: Supabase goods_notify 테이블 연동
 
 export function GoodsNotifyForm({
   placeholder,
   buttonLabel,
   successMsg,
   errorMsg,
+  locale,
 }: GoodsNotifyFormProps) {
   const [email, setEmail] = useState("")
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
     if (!valid) {
       setStatus("error")
       return
     }
-    setStatus("success")
-    setEmail("")
+    setStatus("loading")
+    try {
+      const res = await fetch("/api/goods-notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), locale }),
+      })
+      if (res.ok) {
+        setStatus("success")
+        setEmail("")
+      } else {
+        setStatus("error")
+      }
+    } catch {
+      setStatus("error")
+    }
   }
 
   if (status === "success") {
@@ -59,9 +73,10 @@ export function GoodsNotifyForm({
         />
         <button
           type="submit"
-          className="px-6 py-3 rounded-xl bg-[#D4A843] hover:bg-[#e0b84e] text-[#1B2A4A] font-bold text-sm transition-colors whitespace-nowrap"
+          disabled={status === "loading"}
+          className="px-6 py-3 rounded-xl bg-[#D4A843] hover:bg-[#e0b84e] text-[#1B2A4A] font-bold text-sm transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          {buttonLabel}
+          {status === "loading" ? "..." : buttonLabel}
         </button>
       </div>
       {status === "error" && (

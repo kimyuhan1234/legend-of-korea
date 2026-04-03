@@ -5,6 +5,7 @@ import Image from "next/image"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
 import { TasteRadarChart } from "@/components/features/food/TasteRadarChart"
 import { regions } from "@/lib/data/food-dupes"
+import { kfoodSpots } from "@/lib/data/kfood-spots"
 
 interface Props {
   params: { locale: string; region: string; foodId: string }
@@ -34,6 +35,8 @@ const UI = {
     dupeTitle: "비슷한 외국 음식",
     similarity: "유사도",
     why: "왜 닮았나요?",
+    spotsTitle: "이 음식을 맛볼 수 있는 곳",
+    spotsLink: "맛집 전체 보기 →",
     tryCta: "전주에서 직접 맛보기 →",
     tryDesc: "전주 도깨비 코스에서 한국 음식의 진짜 맛을 경험해보세요",
   },
@@ -45,6 +48,8 @@ const UI = {
     dupeTitle: "似ている外国料理",
     similarity: "類似度",
     why: "なぜ似ているの？",
+    spotsTitle: "この料理が食べられる場所",
+    spotsLink: "グルメスポット一覧 →",
     tryCta: "全州で実際に味わう →",
     tryDesc: "全州トッケビコースで韓国料理の本当の味を体験してください",
   },
@@ -56,6 +61,8 @@ const UI = {
     dupeTitle: "Similar Foreign Foods",
     similarity: "Similarity",
     why: "Why are they alike?",
+    spotsTitle: "Where to taste this dish",
+    spotsLink: "See all food spots →",
     tryCta: "Taste it in Jeonju →",
     tryDesc: "Experience authentic Korean flavors on the Jeonju Dokkaebi Course",
   },
@@ -77,6 +84,9 @@ export default function FoodDetailPage({ params }: Props) {
   if (!food) notFound()
 
   const t = UI[locale as keyof typeof UI] || UI.ko
+
+  // 같은 도시의 K-Food Spot 최대 3개
+  const relatedSpots = kfoodSpots.filter((s) => s.cityCode === food.region).slice(0, 3)
 
   return (
     <div>
@@ -194,6 +204,37 @@ export default function FoodDetailPage({ params }: Props) {
             ))}
           </div>
         </div>
+
+        {/* K-Food Spot 연결 */}
+        {relatedSpots.length > 0 && (
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-black text-[#1B2A4A]">🍽️ {t.spotsTitle}</h2>
+              <Link
+                href={`/${locale}/food/kfood-spot?city=${food.region}`}
+                className="text-sm text-[#D4A843] font-bold hover:underline"
+              >
+                {t.spotsLink}
+              </Link>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {relatedSpots.map((spot) => (
+                <div
+                  key={spot.id}
+                  className="bg-white rounded-2xl border border-[#e8ddd0] p-4 hover:border-[#D4A843]/50 hover:shadow-sm transition-all"
+                >
+                  <p className="font-bold text-[#1B2A4A] text-sm mb-1">
+                    {getL(spot.name, locale)}
+                  </p>
+                  <p className="text-xs text-[#7a6a58] line-clamp-2">
+                    {getL(spot.speciality, locale)}
+                  </p>
+                  <p className="text-xs text-[#b0a090] mt-2">{spot.priceRange} · {spot.openHours}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* CTA */}
         <div className="bg-[#1B2A4A] rounded-3xl p-8 text-center text-white">

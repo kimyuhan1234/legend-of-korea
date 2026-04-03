@@ -62,6 +62,7 @@ export default async function GoodsPage({ params }: Props) {
               buttonLabel={t("notifyButton")}
               successMsg={t("notifySuccess")}
               errorMsg={t("notifyError")}
+              locale={locale}
             />
             <p className="text-xs text-[#7a6a58] mt-4 text-center leading-relaxed">
               {t("notifyDisclaimer")}

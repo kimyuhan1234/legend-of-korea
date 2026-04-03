@@ -34,6 +34,7 @@ export interface Region {
   code: string
   name: { ko: string; ja: string; en: string }
   icon: string
+  image: string
   description: { ko: string; ja: string; en: string }
   foods: RegionalFood[]
 }
@@ -43,6 +44,7 @@ export const regions: Region[] = [
     code: "jeonju",
     name: { ko: "전주", ja: "全州", en: "Jeonju" },
     icon: "🏛️",
+    image: "/images/village/jeonju.jpg",
     description: {
       ko: "한국 음식의 수도, 맛의 고장 전주",
       ja: "韓国料理の首都、味の故郷・全州",
@@ -329,6 +331,7 @@ export const regions: Region[] = [
     code: "seoul",
     name: { ko: "서울", ja: "ソウル", en: "Seoul" },
     icon: "🏙️",
+    image: "/images/village/seoul.jpg",
     description: { ko: "천 가지 맛이 공존하는 대한민국의 수도", ja: "千の味が共存する大韓民国の首都", en: "Korea's capital where a thousand flavors coexist" },
     foods: []
   },
@@ -336,6 +339,7 @@ export const regions: Region[] = [
     code: "tongyeong",
     name: { ko: "통영", ja: "統営", en: "Tongyeong" },
     icon: "🌊",
+    image: "/images/village/tongyeong.jpg",
     description: { ko: "바다의 맛을 품은 남해안의 보석", ja: "海の味を抱く南海岸の宝石", en: "A gem of the southern coast embracing ocean flavors" },
     foods: []
   },
@@ -343,6 +347,7 @@ export const regions: Region[] = [
     code: "jeju",
     name: { ko: "제주", ja: "済州", en: "Jeju" },
     icon: "🏝️",
+    image: "/images/village/jeju.jpg",
     description: { ko: "섬이 키운 독특한 맛의 세계", ja: "島が育んだ独特な味の世界", en: "A world of unique flavors nurtured by the island" },
     foods: []
   },
@@ -350,6 +355,7 @@ export const regions: Region[] = [
     code: "busan",
     name: { ko: "부산", ja: "釜山", en: "Busan" },
     icon: "🌉",
+    image: "/images/village/busan.jpg",
     description: { ko: "항구 도시의 호쾌한 맛", ja: "港町の豪快な味", en: "Bold flavors of the port city" },
     foods: []
   },
@@ -357,6 +363,7 @@ export const regions: Region[] = [
     code: "gyeongju",
     name: { ko: "경주", ja: "慶州", en: "Gyeongju" },
     icon: "👑",
+    image: "/images/village/gyeongju.jpg",
     description: { ko: "천년 고도의 전통 맛", ja: "千年古都の伝統の味", en: "Traditional flavors of the ancient capital" },
     foods: []
   }

@@ -43,9 +43,15 @@ export function PhotoMission({
   const [totalEarned, setTotalEarned] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"]
+
   const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      if (!ALLOWED_TYPES.includes(file.type)) {
+        toast({ variant: 'destructive', title: '지원하지 않는 형식', description: 'JPEG, PNG, WebP 형식만 업로드 가능합니다.' });
+        return;
+      }
       if (file.size > 5 * 1024 * 1024) {
         toast({ variant: 'destructive', title: '파일 크기 초과', description: '5MB 이하의 이미지만 업로드 가능합니다.' });
         return;

@@ -604,6 +604,26 @@ export interface Database {
           }
         ]
       }
+      goods_notify_subscribers: {
+        Row: {
+          id: string
+          email: string
+          locale: string
+          subscribed_at: string
+          is_notified: boolean
+        }
+        Insert: {
+          id?: string
+          email: string
+          locale?: string
+          subscribed_at?: string
+          is_notified?: boolean
+        }
+        Update: {
+          is_notified?: boolean
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

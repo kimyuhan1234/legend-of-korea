@@ -7,7 +7,7 @@ import { SocialLoginButtons } from "@/components/features/auth/SocialLoginButton
 
 interface Props {
   params: { locale: string }
-  searchParams: { error?: string }
+  searchParams: { error?: string; next?: string }
 }
 
 const META = {
@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default function LoginPage({ params, searchParams }: Props) {
   const locale = params.locale || "ko"
+  const next = searchParams.next || ""
   const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
 
   return (
@@ -78,7 +79,7 @@ export default function LoginPage({ params, searchParams }: Props) {
             </div>
 
             {/* 이메일 로그인 */}
-            <LoginForm locale={locale} />
+            <LoginForm locale={locale} next={next} />
           </div>
         </div>
 
