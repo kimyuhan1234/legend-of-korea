@@ -8,16 +8,12 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { TierBadge } from '@/components/features/community/TierBadge';
 import {
-  User,
   ShoppingBag,
-  Map,
   History,
   Ticket,
-  ChevronRight,
   LogOut,
   Settings,
   ShieldCheck,
-  Trophy,
   ArrowUpRight,
   ArrowDownLeft,
   Calendar,
@@ -25,7 +21,7 @@ import {
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
+import MissionRegister from '@/components/features/mypage/MissionRegister';
 
 interface MyPageClientProps {
   locale: string;
@@ -172,7 +168,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                   {t('orders')}
                 </TabsTrigger>
                 <TabsTrigger value="progress" className="data-[state=active]:text-indigo-600 data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-indigo-600 after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
-                  {t('missionProgress')}
+                  {t('missionCenter')}
                 </TabsTrigger>
               </TabsList>
             </CardHeader>
@@ -286,42 +282,40 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                  )}
               </TabsContent>
 
-              {/* Progress Tab */}
-              <TabsContent value="progress" className="m-0 flex flex-col items-center justify-center gap-6 py-12">
-                 <div className="w-24 h-24 bg-amber-50 rounded-[2rem] flex items-center justify-center shadow-xl shadow-amber-100/50 border border-amber-100">
-                   <Map className="w-12 h-12 text-amber-500" />
-                 </div>
-                 <div className="text-center space-y-2">
-                   <h3 className="text-2xl font-black text-slate-800">미션 요약</h3>
-                   <p className="text-slate-400 font-bold">참여 중인 전설의 전체 진행 상황입니다.</p>
-                 </div>
+              {/* Mission Center Tab */}
+              <TabsContent value="progress" className="m-0 space-y-6">
+                {/* 미션 요약 헤더 */}
+                <div className="text-center py-6">
+                  <div className="text-5xl mb-3">🏛️</div>
+                  <h3 className="text-lg font-bold text-[#2D1B69]">
+                    {t('missionSummary')}
+                  </h3>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {t('missionSummaryDesc')}
+                  </p>
+                </div>
 
-                 <div className="w-full grid sm:grid-cols-3 gap-6 mt-4">
-                    <div className="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center space-y-1">
-                      <Trophy className="w-8 h-8 text-indigo-400 mx-auto mb-2" />
-                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Achieved</p>
-                      <p className="text-3xl font-black text-slate-800">12</p>
-                      <p className="text-[10px] text-slate-400 font-bold tracking-tight">Missions</p>
-                    </div>
-                    <div className="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 text-center space-y-1">
-                      <Map className="w-8 h-8 text-amber-400 mx-auto mb-2" />
-                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Ongoing</p>
-                      <p className="text-3xl font-black text-slate-800">2</p>
-                      <p className="text-[10px] text-slate-400 font-bold tracking-tight">Courses</p>
-                    </div>
-                    <div className="p-6 bg-indigo-600 rounded-[2rem] text-center space-y-1 text-white shadow-xl shadow-indigo-100">
-                      <ShieldCheck className="w-8 h-8 text-indigo-200 mx-auto mb-2" />
-                      <p className="text-[10px] font-black text-indigo-100/60 uppercase tracking-widest">Rank</p>
-                      <p className="text-3xl font-black tracking-tight">{user?.current_tier}</p>
-                      <p className="text-[10px] font-bold tracking-tight">Legend Tier</p>
-                    </div>
-                 </div>
+                {/* 통계 카드 */}
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="bg-white rounded-xl p-4 text-center border border-gray-100">
+                    <div className="text-2xl mb-1">📋</div>
+                    <p className="text-xs text-gray-500">{t('totalMissions')}</p>
+                    <p className="text-2xl font-bold text-[#2D1B69]">12</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 text-center border border-gray-100">
+                    <div className="text-2xl mb-1">🏆</div>
+                    <p className="text-xs text-gray-500">{t('completedMissions')}</p>
+                    <p className="text-2xl font-bold text-[#2D1B69]">2</p>
+                  </div>
+                  <div className="bg-[#2D1B69] rounded-xl p-4 text-center text-white">
+                    <div className="text-2xl mb-1">✅</div>
+                    <p className="text-xs text-white/70">{t('earnedLP')}</p>
+                    <p className="text-2xl font-bold">600</p>
+                  </div>
+                </div>
 
-                 <Button asChild size="lg" className="w-full h-16 rounded-2xl font-black mt-4 shadow-xl shadow-indigo-100 hover:scale-[1.01] active:scale-[0.99] transition-all">
-                   <Link href={`/${locale}/missions`}>
-                     미션 센터에서 상세 보기 <ChevronRight className="w-6 h-6 ml-2" />
-                   </Link>
-                 </Button>
+                {/* 완료된 미션 등록하기 */}
+                <MissionRegister locale={locale} />
               </TabsContent>
 
             </div>
