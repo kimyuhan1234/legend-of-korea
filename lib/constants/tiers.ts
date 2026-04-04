@@ -21,7 +21,7 @@ export const TIERS: Tier[] = [
     name: { ko: '여행자', ja: '旅行者', en: 'Traveler' },
     emoji: '🎒',
     requiredLP: 500,
-    benefits: { ko: '전설 상점 5% 할인', ja: '伝説ショップ5%割引', en: 'Legend Shop 5% off' },
+    benefits: { ko: '굿즈샵 5% 할인', ja: 'グッズショップ5%割引', en: 'Goods Shop 5% off' },
     discount: 5,
   },
   {
@@ -29,7 +29,7 @@ export const TIERS: Tier[] = [
     name: { ko: '모험가', ja: '冒険者', en: 'Adventurer' },
     emoji: '⚔️',
     requiredLP: 1500,
-    benefits: { ko: '전설 상점 10% 할인 + 히든 미션 힌트', ja: '10%割引 + 隠しミッションヒント', en: '10% off + Hidden mission hints' },
+    benefits: { ko: '굿즈샵 10% 할인', ja: 'グッズショップ10%割引', en: 'Goods Shop 10% off' },
     discount: 10,
   },
   {
@@ -37,7 +37,7 @@ export const TIERS: Tier[] = [
     name: { ko: '영웅', ja: '英雄', en: 'Hero' },
     emoji: '🛡️',
     requiredLP: 3000,
-    benefits: { ko: '전설 상점 15% 할인 + 전용 굿즈', ja: '15%割引 + 限定グッズ', en: '15% off + Exclusive goods' },
+    benefits: { ko: '굿즈샵 15% 할인 + 전용 굿즈', ja: 'グッズショップ15%割引 + 限定グッズ', en: 'Goods Shop 15% off + Exclusive goods' },
     discount: 15,
   },
   {
@@ -45,7 +45,7 @@ export const TIERS: Tier[] = [
     name: { ko: '전설', ja: '伝説', en: 'Legend' },
     emoji: '👑',
     requiredLP: 6000,
-    benefits: { ko: '전설 상점 20% 할인 + 한정판 키트', ja: '20%割引 + 限定キット', en: '20% off + Limited kit' },
+    benefits: { ko: '굿즈샵 20% 할인 + 한정판 키트', ja: 'グッズショップ20%割引 + 限定キット', en: 'Goods Shop 20% off + Limited kit' },
     discount: 20,
   },
   {
@@ -53,7 +53,7 @@ export const TIERS: Tier[] = [
     name: { ko: '신화', ja: '神話', en: 'Myth' },
     emoji: '🌟',
     requiredLP: 10000,
-    benefits: { ko: '전 상품 25% 할인 + VIP 체험 초대', ja: '全商品25%割引 + VIP招待', en: '25% off all + VIP invitation' },
+    benefits: { ko: '굿즈샵 25% 할인 + VIP 체험 초대', ja: 'グッズショップ25%割引 + VIP招待', en: 'Goods Shop 25% off + VIP invitation' },
     discount: 25,
   },
 ];
