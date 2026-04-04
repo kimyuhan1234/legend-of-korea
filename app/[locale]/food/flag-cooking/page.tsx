@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import Image from "next/image"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
 import { TasteRadarChart } from "@/components/features/food/TasteRadarChart"
@@ -166,6 +166,7 @@ export default function FlagCookingPage() {
   const t = UI[locale as keyof typeof UI] || UI.ko
   const diffLabel = DIFFICULTY_LABEL[locale as keyof typeof DIFFICULTY_LABEL] || DIFFICULTY_LABEL.ko
 
+  const router = useRouter()
   const country = selectedCountry ? getFlagCountry(selectedCountry) : null
   const recipes: FusionRecipe[] = selectedCountry ? getRecipesByCountry(selectedCountry) : []
   const recipeCountry = selectedRecipe ? getFlagCountry(selectedRecipe.countryCode) : null
@@ -247,6 +248,15 @@ export default function FlagCookingPage() {
                   onSelect={setSelectedRecipe}
                 />
               ))}
+              {/* 레시피 등록 빈 카드 */}
+              <div
+                className="border-2 border-dashed border-gray-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#FF6B35] hover:bg-orange-50 transition-all"
+                onClick={() => router.push(`/${locale}/community/recipe/write`)}
+              >
+                <span className="text-4xl mb-2">✏️</span>
+                <p className="font-bold text-[#2D1B69]">나만의 레시피 등록</p>
+                <p className="text-sm text-gray-500 mt-1">나만의 퓨전 요리를 공유해보세요!</p>
+              </div>
             </div>
           </div>
         )}

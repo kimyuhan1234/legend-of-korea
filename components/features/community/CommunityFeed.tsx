@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { PostCard, PostType } from './PostCard';
 import { AdCard } from './AdCard';
 import { CategoryTabs } from './CategoryTabs';
+import { RecipeFeed } from './RecipeFeed';
 import { Button } from '@/components/ui/button';
 import { Loader2, PenLine } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -60,6 +61,8 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
   const [regionFilter, setRegionFilter] = useState('all');
   const [hasMore, setHasMore] = useState(true);
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+
+  const isRecipeTab = regionFilter === 'recipe';
 
   const observerTarget = useRef(null);
 
@@ -167,7 +170,10 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
         locale={locale}
       />
 
-      {loading ? (
+      {/* Recipe tab */}
+      {isRecipeTab ? (
+        <RecipeFeed locale={locale} />
+      ) : loading ? (
         <div className="py-20 flex flex-col items-center gap-4">
           <Loader2 className="w-10 h-10 animate-spin text-indigo-500" />
           <p className="text-slate-400 font-bold animate-pulse">{t('loading', { defaultValue: 'Loading adventures...' })}</p>
