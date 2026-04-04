@@ -155,12 +155,24 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
       {/* Header & Write Button */}
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-3xl font-black text-slate-800 tracking-tight">{t('title')}</h1>
-        <Link href={`/${locale}/community/write`} className="hidden md:block">
-          <Button className="rounded-xl px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 bg-indigo-600 hover:bg-indigo-700">
-            <PenLine className="w-4 h-4 mr-2" />
-            {t('writePost', { defaultValue: 'Write Post' })}
-          </Button>
-        </Link>
+        <div className="hidden md:flex items-center gap-2">
+          <button
+            onClick={() => setRegionFilter('recipe')}
+            className={`px-4 py-2 rounded-full font-medium text-sm transition-colors
+              ${regionFilter === 'recipe'
+                ? 'bg-[#E55A2B] text-white'
+                : 'bg-[#FF6B35] text-white hover:bg-[#E55A2B]'
+              }`}
+          >
+            🍳 요리 레시피
+          </button>
+          <Link href={`/${locale}/community/write`}>
+            <Button className="rounded-xl px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 bg-indigo-600 hover:bg-indigo-700">
+              <PenLine className="w-4 h-4 mr-2" />
+              {t('writePost', { defaultValue: 'Write Post' })}
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {/* Category Tabs */}
