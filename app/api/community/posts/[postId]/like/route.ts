@@ -2,24 +2,45 @@ import { createClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(
-  req: NextRequest,
+  request: NextRequest,
   { params }: { params: { postId: string } }
 ) {
   try {
     const supabase = await createClient();
-    const { postId } = params;
-
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: '로그인이 필요합니다.' }, { status: 401 });
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    // Use RPC for atomic increment
-    const { error } = await supabase.rpc('increment_likes', { post_id: postId });
+    const postId = params.postId;
 
-    if (error) throw error;
+    // Check if like exists
+    const { data: existingLike } = await supabase
+      .from('community_likes')
+      .select('id')
+      .eq('user_id', user.id)
+      .eq('post_id', postId)
+      .single();
 
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error('Like Error:', error);
-    return NextResponse.json({ error: '좋아요 반영 중 오류가 발생했습니다.', success: false }, { status: 500 });
+    if (existingLike) {
+      // Unlike
+      await supabase.from('community_likes').delete().eq('id', existingLike.id);
+      
+      const { data: post } = await supabase.from('community_posts').select('likes_count').eq('id', postId).single();
+      const currentLikes = Math.max((post?.likes_count || 0) - 1, 0);
+      await supabase.from('community_posts').update({ likes_count: currentLikes }).eq('id', postId);
+      
+      return NextResponse.json({ success: true, action: 'unliked', likes_count: currentLikes });
+    } else {
+      // Like
+      await supabase.from('community_likes').insert({ user_id: user.id, post_id: postId });
+      
+      const { data: post } = await supabase.from('community_posts').select('likes_count').eq('id', postId).single();
+      const currentLikes = (post?.likes_count || 0) + 1;
+      await supabase.from('community_posts').update({ likes_count: currentLikes }).eq('id', postId);
+      
+      return NextResponse.json({ success: true, action: 'liked', likes_count: currentLikes });
+    }
+  } catch (err: any) {
+    console.error('Like toggle error:', err);
+    return NextResponse.json({ error: err.message || '서버 오류' }, { status: 500 });
   }
 }
