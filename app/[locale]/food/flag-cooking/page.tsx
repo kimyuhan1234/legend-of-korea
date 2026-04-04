@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
+import Image from "next/image"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
 import { TasteRadarChart } from "@/components/features/food/TasteRadarChart"
 import { flagCountries, getRecipesByCountry, getFlagCountry } from "@/lib/data/flag-cooking"
@@ -292,7 +293,18 @@ export default function FlagCookingPage() {
               >
                 ✕
               </button>
-              <span className="text-6xl">{selectedRecipe.emoji}</span>
+              {selectedRecipe.image ? (
+                <div className="relative w-full h-48 rounded-xl overflow-hidden mb-4">
+                  <Image
+                    src={selectedRecipe.image}
+                    alt={getL(selectedRecipe.name, locale)}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <span className="text-6xl">{selectedRecipe.emoji}</span>
+              )}
               <h2 className="text-2xl font-black text-[#1B2A4A] mt-4">
                 {getL(selectedRecipe.name, locale)}
               </h2>

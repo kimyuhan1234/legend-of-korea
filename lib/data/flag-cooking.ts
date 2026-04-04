@@ -1,4 +1,4 @@
-export interface TasteProfile5 {
+﻿export interface TasteProfile5 {
   sweet: number   // 0-5
   salty: number
   spicy: number
@@ -85,6 +85,7 @@ export const fusionRecipes: FusionRecipe[] = [
   // ── Japan ──
   {
     id: "jp-001",
+    image: '/images/flagfd/jp-001.png',
     countryCode: "jp",
     emoji: "🥞",
     name: { ko: "김치 오코노미야키", ja: "キムチお好み焼き", en: "Kimchi Okonomiyaki" },
@@ -114,6 +115,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "jp-002",
+    image: '/images/flagfd/jp-002.png',
     countryCode: "jp",
     emoji: "🍜",
     name: { ko: "불고기 우동", ja: "プルコギうどん", en: "Bulgogi Udon" },
@@ -143,6 +145,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "jp-003",
+    image: '/images/flagfd/jp-003.png',
     countryCode: "jp",
     emoji: "🍜",
     name: { ko: "떡볶이 라멘", ja: "トッポッキラーメン", en: "Tteokbokki Ramen" },
@@ -172,6 +175,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "jp-004",
+    image: '/images/flagfd/jp-004.png',
     countryCode: "jp",
     emoji: "🍚",
     name: { ko: "비빔밥 돈부리", ja: "ビビンバ丼", en: "Bibimbap Donburi" },
@@ -201,6 +205,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "jp-005",
+    image: '/images/flagfd/jp-005.png',
     countryCode: "jp",
     emoji: "🍙",
     name: { ko: "고추장 참치 오니기리", ja: "コチュジャンツナおにぎり", en: "Gochujang Tuna Onigiri" },
@@ -230,6 +235,7 @@ export const fusionRecipes: FusionRecipe[] = [
   // ── Italy ──
   {
     id: "it-001",
+    image: '/images/flagfd/it-001.png',
     countryCode: "it",
     emoji: "🍚",
     name: { ko: "고추장 리소토", ja: "コチュジャンリゾット", en: "Gochujang Risotto" },
@@ -259,6 +265,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "it-002",
+    image: '/images/flagfd/it-002.png',
     countryCode: "it",
     emoji: "🍕",
     name: { ko: "김치 불고기 피자", ja: "キムチプルコギピザ", en: "Kimchi Bulgogi Pizza" },
@@ -288,6 +295,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "it-003",
+    image: '/images/flagfd/it-003.png',
     countryCode: "it",
     emoji: "🍝",
     name: { ko: "잡채 파스타", ja: "チャプチェパスタ", en: "Japchae Pasta" },
@@ -316,6 +324,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "it-004",
+    image: '/images/flagfd/it-004.png',
     countryCode: "it",
     emoji: "🥖",
     name: { ko: "된장 브루스케타", ja: "テンジャンブルスケッタ", en: "Doenjang Bruschetta" },
@@ -344,6 +353,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "it-005",
+    image: '/images/flagfd/it-005.png',
     countryCode: "it",
     emoji: "🧆",
     name: { ko: "김치 아란치니", ja: "キムチアランチーニ", en: "Kimchi Arancini" },
@@ -375,6 +385,7 @@ export const fusionRecipes: FusionRecipe[] = [
   // ── Mexico ──
   {
     id: "mx-001",
+    image: '/images/flagfd/mx-001.png',
     countryCode: "mx",
     emoji: "🌯",
     name: { ko: "불고기 부리토", ja: "プルコギブリトー", en: "Bulgogi Burrito" },
@@ -403,6 +414,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "mx-002",
+    image: '/images/flagfd/mx-002.png',
     countryCode: "mx",
     emoji: "🧀",
     name: { ko: "김치 퀘사디아", ja: "キムチケサディア", en: "Kimchi Quesadilla" },
@@ -430,6 +442,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "mx-003",
+    image: '/images/flagfd/mx-003.png',
     countryCode: "mx",
     emoji: "🌮",
     name: { ko: "떡볶이 나초", ja: "トッポッキナチョス", en: "Tteokbokki Nachos" },
@@ -458,6 +471,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "mx-004",
+    image: '/images/flagfd/mx-004.png',
     countryCode: "mx",
     emoji: "🌮",
     name: { ko: "갈비 타코", ja: "カルビタコス", en: "Galbi Taco" },
@@ -487,6 +501,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "mx-005",
+    image: '/images/flagfd/mx-005.png',
     countryCode: "mx",
     emoji: "🥑",
     name: { ko: "고추장 과카몰리", ja: "コチュジャンワカモレ", en: "Gochujang Guacamole" },
@@ -516,6 +531,7 @@ export const fusionRecipes: FusionRecipe[] = [
   // ── Thailand ──
   {
     id: "th-001",
+    image: '/images/flagfd/th-001.png',
     countryCode: "th",
     emoji: "🍜",
     name: { ko: "김치 팟타이", ja: "キムチパッタイ", en: "Kimchi Pad Thai" },
@@ -545,6 +561,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "th-002",
+    image: '/images/flagfd/th-002.png',
     countryCode: "th",
     emoji: "🍲",
     name: { ko: "고추장 똠양꿍", ja: "コチュジャントムヤムクン", en: "Gochujang Tom Yum Goong" },
@@ -574,6 +591,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "th-003",
+    image: '/images/flagfd/th-003.png',
     countryCode: "th",
     emoji: "🍢",
     name: { ko: "불고기 사테이", ja: "プルコギサテー", en: "Bulgogi Satay" },
@@ -601,6 +619,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "th-004",
+    image: '/images/flagfd/th-004.png',
     countryCode: "th",
     emoji: "🍛",
     name: { ko: "된장 그린커리", ja: "テンジャングリーンカレー", en: "Doenjang Green Curry" },
@@ -629,6 +648,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "th-005",
+    image: '/images/flagfd/th-005.png',
     countryCode: "th",
     emoji: "🥟",
     name: { ko: "잡채 스프링롤", ja: "チャプチェ春巻き", en: "Japchae Spring Rolls" },
@@ -659,6 +679,7 @@ export const fusionRecipes: FusionRecipe[] = [
   // ── USA ──
   {
     id: "us-001",
+    image: '/images/flagfd/us-001.png',
     countryCode: "us",
     emoji: "🍔",
     name: { ko: "갈비 버거", ja: "カルビバーガー", en: "Galbi Burger" },
@@ -688,6 +709,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "us-002",
+    image: '/images/flagfd/us-002.png',
     countryCode: "us",
     emoji: "🧀",
     name: { ko: "김치 맥앤치즈", ja: "キムチマック＆チーズ", en: "Kimchi Mac & Cheese" },
@@ -715,6 +737,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "us-003",
+    image: '/images/flagfd/us-003.png',
     countryCode: "us",
     emoji: "🥗",
     name: { ko: "비빔밥 포케볼", ja: "ビビンバポキボウル", en: "Bibimbap Poke Bowl" },
@@ -743,6 +766,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "us-004",
+    image: '/images/flagfd/us-004.png',
     countryCode: "us",
     emoji: "🌭",
     name: { ko: "떡 핫도그", ja: "トックコーンドッグ", en: "Tteok Corn Dog" },
@@ -771,6 +795,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "us-005",
+    image: '/images/flagfd/us-005.png',
     countryCode: "us",
     emoji: "🍖",
     name: { ko: "고추장 BBQ 립", ja: "コチュジャンBBQリブ", en: "Gochujang BBQ Ribs" },
@@ -801,6 +826,7 @@ export const fusionRecipes: FusionRecipe[] = [
   // ── France ──
   {
     id: "fr-001",
+    image: '/images/flagfd/fr-001.png',
     countryCode: "fr",
     emoji: "🥞",
     name: { ko: "김치 크레이프", ja: "キムチクレープ", en: "Kimchi Crêpe" },
@@ -829,6 +855,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "fr-002",
+    image: '/images/flagfd/fr-002.png',
     countryCode: "fr",
     emoji: "🍲",
     name: { ko: "된장 양파 수프", ja: "テンジャンオニオンスープ", en: "Doenjang French Onion Soup" },
@@ -858,6 +885,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "fr-003",
+    image: '/images/flagfd/fr-003.png',
     countryCode: "fr",
     emoji: "🥧",
     name: { ko: "불고기 키슈", ja: "プルコギキッシュ", en: "Bulgogi Quiche" },
@@ -887,6 +915,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "fr-004",
+    image: '/images/flagfd/fr-004.png',
     countryCode: "fr",
     emoji: "🥐",
     name: { ko: "고추장 크로와상", ja: "コチュジャンクロワッサン", en: "Gochujang Croissant" },
@@ -915,6 +944,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "fr-005",
+    image: '/images/flagfd/fr-005.png',
     countryCode: "fr",
     emoji: "🍖",
     name: { ko: "갈비 콩피", ja: "カルビコンフィ", en: "Galbi Confit" },
@@ -944,6 +974,7 @@ export const fusionRecipes: FusionRecipe[] = [
   // ── India ──
   {
     id: "in-001",
+    image: '/images/flagfd/in-001.png',
     countryCode: "in",
     emoji: "🫓",
     name: { ko: "김치 난", ja: "キムチナン", en: "Kimchi Naan" },
@@ -971,6 +1002,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "in-002",
+    image: '/images/flagfd/in-002.png',
     countryCode: "in",
     emoji: "🍗",
     name: { ko: "고추장 티카 치킨", ja: "コチュジャンティッカチキン", en: "Gochujang Tikka Chicken" },
@@ -1000,6 +1032,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "in-003",
+    image: '/images/flagfd/in-003.png',
     countryCode: "in",
     emoji: "🍛",
     name: { ko: "비빔 비리야니", ja: "ビビムビリヤニ", en: "Bibim Biryani" },
@@ -1029,6 +1062,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "in-004",
+    image: '/images/flagfd/in-004.png',
     countryCode: "in",
     emoji: "🥟",
     name: { ko: "떡 사모사", ja: "トック・サモサ", en: "Tteok Samosa" },
@@ -1058,6 +1092,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "in-005",
+    image: '/images/flagfd/in-005.png',
     countryCode: "in",
     emoji: "🍲",
     name: { ko: "된장 달", ja: "テンジャン・ダール", en: "Doenjang Dal" },
@@ -1088,6 +1123,7 @@ export const fusionRecipes: FusionRecipe[] = [
   // ── Vietnam ──
   {
     id: "vn-001",
+    image: '/images/flagfd/vn-001.png',
     countryCode: "vn",
     emoji: "🍜",
     name: { ko: "불고기 쌀국수", ja: "プルコギフォー", en: "Bulgogi Pho" },
@@ -1117,6 +1153,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "vn-002",
+    image: '/images/flagfd/vn-002.png',
     countryCode: "vn",
     emoji: "🥖",
     name: { ko: "김치 반미", ja: "キムチバインミー", en: "Kimchi Bánh Mì" },
@@ -1145,6 +1182,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "vn-003",
+    image: '/images/flagfd/vn-003.png',
     countryCode: "vn",
     emoji: "🍖",
     name: { ko: "고추장 분짜", ja: "コチュジャンブンチャー", en: "Gochujang Bun Cha" },
@@ -1174,6 +1212,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "vn-004",
+    image: '/images/flagfd/vn-004.png',
     countryCode: "vn",
     emoji: "🥟",
     name: { ko: "잡채 월남쌈", ja: "チャプチェ生春巻き", en: "Japchae Summer Rolls" },
@@ -1202,6 +1241,7 @@ export const fusionRecipes: FusionRecipe[] = [
   },
   {
     id: "vn-005",
+    image: '/images/flagfd/vn-005.png',
     countryCode: "vn",
     emoji: "🍲",
     name: { ko: "된장 까인추아", ja: "テンジャン・カインチュア", en: "Doenjang Canh Chua" },
