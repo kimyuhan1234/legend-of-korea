@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { TierBadge } from '@/components/features/community/TierBadge';
 import { toast } from '@/components/ui/use-toast';
 import { Loader2, Ticket, ChevronRight, Coins, History, Calendar, CheckCircle2, Sparkles } from 'lucide-react';
+import TierCard from '@/components/features/shop/TierCard';
 
 interface Coupon {
   id: string;
@@ -116,6 +117,20 @@ export function ShopClient({ locale }: ShopClientProps) {
           </div>
         </div>
       </section>
+
+      {/* Tier Card */}
+      {user && (
+        <section>
+          <TierCard
+            currentTierLevel={user.current_tier}
+            currentLP={user.total_lp}
+            locale={locale}
+            onUpgradeSuccess={(newTier, newLP) =>
+              setUser(prev => prev ? { ...prev, current_tier: newTier, total_lp: newLP } : null)
+            }
+          />
+        </section>
+      )}
 
       {/* Exchange Grid */}
       <section className="space-y-6">
