@@ -6,32 +6,43 @@ export async function GET(req: NextRequest) {
     const supabase = await createClient();
     const { searchParams } = new URL(req.url);
     const cursor = searchParams.get('cursor');
-    const courseId = searchParams.get('courseId');
-    const limit = 10;
+    const region = searchParams.get('region');
+    const sort = searchParams.get('sort');
+    const limitParam = searchParams.get('limit');
+    
+    // Sort logic
+    const limit = limitParam ? parseInt(limitParam) : 10;
+    const isPopular = sort === 'popular';
 
     let query = supabase
       .from('community_posts')
       .select(`
         *,
-        user:users (nickname, avatar_url, current_tier),
-        course:courses (title)
-      `)
-      .order('created_at', { ascending: false })
-      .limit(limit);
+        user:users (nickname, avatar_url, current_tier)
+      `);
 
-    if (cursor) {
+    // Popular sort
+    if (isPopular) {
+      query = query.order('likes_count', { ascending: false }).order('created_at', { ascending: false });
+    } else {
+      query = query.order('created_at', { ascending: false });
+    }
+    
+    query = query.limit(limit);
+
+    if (cursor && !isPopular) {
       query = query.lt('created_at', cursor);
     }
 
-    if (courseId && courseId !== 'all') {
-      query = query.eq('course_id', courseId);
+    if (region && region !== 'all') {
+      query = query.eq('region', region);
     }
 
     const { data: posts, error } = await query;
 
     if (error) throw error;
 
-    const nextCursor = posts.length === limit ? posts[posts.length - 1].created_at : null;
+    const nextCursor = !isPopular && posts.length === limit ? posts[posts.length - 1].created_at : null;
 
     return NextResponse.json({ 
       success: true, 
@@ -50,20 +61,25 @@ export async function POST(req: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: '로그인이 필요합니다.' }, { status: 401 });
 
-    const { text, photos, courseId, isSpoiler } = await req.json();
+    const { title, text, photos, region, tags } = await req.json();
 
     if (!text || text.length < 5) {
       return NextResponse.json({ error: '내용을 5자 이상 입력해주세요.' }, { status: 400 });
+    }
+
+    if (!title) {
+      return NextResponse.json({ error: '제목을 입력해주세요.' }, { status: 400 });
     }
 
     const { data: post, error } = await supabase
       .from('community_posts')
       .insert({
         user_id: user.id,
+        title,
         text,
+        region: region || 'all',
+        tags: tags || [],
         photos: photos || [],
-        course_id: courseId || null,
-        is_spoiler: isSpoiler || false,
         likes_count: 0
       })
       .select()
@@ -72,7 +88,7 @@ export async function POST(req: NextRequest) {
     if (error) throw error;
 
     // LP 지급 (사진 포함 여부에 따라 다름)
-    const lpAmount = photos && photos.length > 0 ? 30 : 50; // COMMUNITY_PHOTO=30, COMMUNITY_REVIEW=50 (from prompt)
+    const lpAmount = photos && photos.length > 0 ? 30 : 50; // COMMUNITY_PHOTO=30, COMMUNITY_REVIEW=50
     const lpType = photos && photos.length > 0 ? 'COMMUNITY_PHOTO' : 'COMMUNITY_REVIEW';
 
     // User LP 업데이트

@@ -237,7 +237,12 @@
     "photoRequired": "Please upload at least one photo",
     "selectCourse": "Select course (optional)",
     "writePlaceholder": "Tell the story of this place...",
-    "noPosts": "No posts yet. Be the first adventurer!"
+    "noPosts": "No posts yet. Be the first adventurer!",
+    "popularPosts": "Popular Legends This Week",
+    "beFirst": "Be the first legendary hero",
+    "adLabel": "Ad",
+    "sponsored": "Sponsored",
+    "viewDetail": "Learn More"
   },
   "shop": {
     "title": "Legend Shop",

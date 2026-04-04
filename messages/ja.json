@@ -237,7 +237,12 @@
     "photoRequired": "写真を1枚以上アップロードしてください",
     "selectCourse": "コースを選択（任意）",
     "writePlaceholder": "この場所での物語を書いてください...",
-    "noPosts": "まだ記録がありません。最初の冒険者になりましょう！"
+    "noPosts": "まだ記録がありません。最初の冒険者になりましょう！",
+    "popularPosts": "今週の人気伝説",
+    "beFirst": "最初の伝説になりましょう",
+    "adLabel": "広告",
+    "sponsored": "スポンサー",
+    "viewDetail": "詳細を見る"
   },
   "shop": {
     "title": "伝説ショップ",

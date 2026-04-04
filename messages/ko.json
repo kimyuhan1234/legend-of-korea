@@ -237,7 +237,12 @@
     "photoRequired": "사진을 1장 이상 올려주세요",
     "selectCourse": "코스 선택 (선택)",
     "writePlaceholder": "이 장소에서의 이야기를 적어주세요...",
-    "noPosts": "아직 기록이 없습니다. 첫 모험가가 되어보세요!"
+    "noPosts": "아직 기록이 없습니다. 첫 모험가가 되어보세요!",
+    "popularPosts": "이번주 인기 전설",
+    "beFirst": "첫 번째 전설이 되어보세요",
+    "adLabel": "광고",
+    "sponsored": "스폰서쉽",
+    "viewDetail": "자세히 보기"
   },
   "shop": {
     "title": "전설 상점",
