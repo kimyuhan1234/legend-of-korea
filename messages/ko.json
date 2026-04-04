@@ -344,7 +344,11 @@
     "lpApplied": "적용완료",
     "lpApplySuccess": "LP가 잔액에 적용되었습니다!",
     "lpApplyFail": "LP 적용에 실패했습니다. 다시 시도해주세요.",
-    "lpAlreadyApplied": "이미 적용된 LP입니다."
+    "lpAlreadyApplied": "이미 적용된 LP입니다.",
+    "editAvatarLabel": "프로필 사진 변경",
+    "editNicknameLabel": "닉네임",
+    "profileSaved": "프로필이 수정되었습니다",
+    "profileSaveFail": "프로필 수정에 실패했습니다"
   },
   "tier": {
     "1": "마을 주민",

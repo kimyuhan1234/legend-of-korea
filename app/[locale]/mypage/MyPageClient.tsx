@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -19,11 +19,14 @@ import {
   Calendar,
   Loader2,
   CheckCircle2,
+  Camera,
+  X,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import MissionRegister from '@/components/features/mypage/MissionRegister';
+import { toast } from '@/components/ui/use-toast';
 
 interface MyPageClientProps {
   locale: string;
@@ -45,6 +48,14 @@ export function MyPageClient({ locale }: MyPageClientProps) {
   const [lpBalance, setLpBalance] = useState<number>(0);
   const [appliedIds, setAppliedIds] = useState<Set<string>>(new Set());
   const [applyingId, setApplyingId] = useState<string | null>(null);
+
+  // Profile edit modal states
+  const [isEditProfile, setIsEditProfile] = useState(false);
+  const [editNickname, setEditNickname] = useState('');
+  const [editAvatarFile, setEditAvatarFile] = useState<File | null>(null);
+  const [editAvatarPreview, setEditAvatarPreview] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
+  const avatarInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -120,6 +131,47 @@ export function MyPageClient({ locale }: MyPageClientProps) {
     }
   };
 
+  const openEditProfile = () => {
+    setEditNickname(user?.nickname || '');
+    setEditAvatarPreview(user?.avatar_url || '');
+    setEditAvatarFile(null);
+    setIsEditProfile(true);
+  };
+
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setEditAvatarFile(file);
+    setEditAvatarPreview(URL.createObjectURL(file));
+    e.target.value = '';
+  };
+
+  const handleSaveProfile = async () => {
+    if (isSaving) return;
+    if (!editNickname.trim()) return;
+    setIsSaving(true);
+    try {
+      const formData = new FormData();
+      formData.append('nickname', editNickname.trim());
+      if (editAvatarFile) formData.append('avatar', editAvatarFile);
+
+      const res = await fetch('/api/profile', { method: 'PATCH', body: formData });
+      const data = await res.json();
+
+      if (data.success) {
+        setUser((prev: any) => ({ ...prev, ...data.user }));
+        toast({ title: t('profileSaved') });
+        setIsEditProfile(false);
+      } else {
+        toast({ variant: 'destructive', title: t('profileSaveFail'), description: data.error });
+      }
+    } catch {
+      toast({ variant: 'destructive', title: t('profileSaveFail') });
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
@@ -170,7 +222,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
               </div>
 
               <div className="mt-8 space-y-2">
-                <Button variant="outline" className="w-full rounded-2xl font-black border-2 border-slate-100 text-slate-500 hover:bg-slate-50 transition-all gap-2">
+                <Button onClick={openEditProfile} variant="outline" className="w-full rounded-2xl font-black border-2 border-slate-100 text-slate-500 hover:bg-slate-50 transition-all gap-2">
                   <Settings className="w-4 h-4" /> {t('editProfile')}
                 </Button>
                 <Button variant="ghost" onClick={handleLogout} className="w-full rounded-2xl font-black text-rose-400 hover:text-rose-500 hover:bg-rose-50 transition-all gap-2">
@@ -422,6 +474,103 @@ export function MyPageClient({ locale }: MyPageClientProps) {
         </section>
 
       </div>
+
+      {/* ── Profile Edit Modal ── */}
+      {isEditProfile && (
+        <div
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+          onClick={() => setIsEditProfile(false)}
+        >
+          <div
+            className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl"
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-lg font-black text-slate-800">{t('editProfile')}</h2>
+              <button
+                onClick={() => setIsEditProfile(false)}
+                className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Avatar */}
+            <div className="flex flex-col items-center mb-6">
+              <p className="text-xs font-bold text-slate-400 mb-3 uppercase tracking-wide">
+                {t('editAvatarLabel')}
+              </p>
+              <div className="relative group cursor-pointer" onClick={() => avatarInputRef.current?.click()}>
+                <div className="w-24 h-24 rounded-[2rem] border-4 border-slate-100 shadow-lg overflow-hidden bg-slate-100">
+                  {editAvatarPreview ? (
+                    <Image
+                      src={editAvatarPreview}
+                      alt="avatar preview"
+                      width={96}
+                      height={96}
+                      className="w-full h-full object-cover"
+                      unoptimized
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-3xl font-black text-slate-300">
+                      {editNickname?.[0] || '?'}
+                    </div>
+                  )}
+                </div>
+                <div className="absolute inset-0 rounded-[2rem] bg-black/40 flex items-center justify-center
+                                opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Camera className="w-7 h-7 text-white" />
+                </div>
+              </div>
+              <input
+                ref={avatarInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleAvatarChange}
+              />
+              <p className="text-xs text-slate-400 mt-2">JPEG / PNG / WebP · 최대 2MB</p>
+            </div>
+
+            {/* Nickname */}
+            <div className="mb-6">
+              <label className="block text-xs font-bold text-slate-500 mb-2">
+                {t('editNicknameLabel')}
+              </label>
+              <input
+                value={editNickname}
+                onChange={e => setEditNickname(e.target.value)}
+                maxLength={20}
+                placeholder="닉네임 입력"
+                className="w-full border-2 border-slate-200 rounded-xl px-4 py-3 text-sm font-bold
+                           outline-none focus:border-indigo-400 transition-colors"
+              />
+              <p className="text-right text-xs text-slate-400 mt-1">{editNickname.length}/20</p>
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-3">
+              <button
+                onClick={() => setIsEditProfile(false)}
+                className="flex-1 py-3 bg-slate-100 text-slate-600 rounded-xl font-black
+                           hover:bg-slate-200 transition-colors text-sm"
+              >
+                {t('cancelButton')}
+              </button>
+              <button
+                onClick={handleSaveProfile}
+                disabled={isSaving || !editNickname.trim()}
+                className="flex-1 py-3 bg-[#2D1B69] text-white rounded-xl font-black
+                           hover:bg-[#3d2a7a] disabled:opacity-60 disabled:cursor-not-allowed
+                           transition-colors text-sm flex items-center justify-center gap-2"
+              >
+                {isSaving ? <><Loader2 className="w-4 h-4 animate-spin" /> 저장 중...</> : t('saveButton')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

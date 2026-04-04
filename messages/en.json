@@ -344,7 +344,11 @@
     "lpApplied": "Applied",
     "lpApplySuccess": "LP has been applied to your balance!",
     "lpApplyFail": "Failed to apply LP. Please try again.",
-    "lpAlreadyApplied": "This LP has already been applied."
+    "lpAlreadyApplied": "This LP has already been applied.",
+    "editAvatarLabel": "Change Avatar",
+    "editNicknameLabel": "Nickname",
+    "profileSaved": "Profile updated",
+    "profileSaveFail": "Failed to update profile"
   },
   "tier": {
     "1": "Villager",

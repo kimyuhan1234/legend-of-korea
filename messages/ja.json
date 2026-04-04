@@ -344,7 +344,11 @@
     "lpApplied": "適用済み",
     "lpApplySuccess": "LPが残高に適用されました！",
     "lpApplyFail": "LP適用に失敗しました。再度お試しください。",
-    "lpAlreadyApplied": "すでに適用済みのLPです。"
+    "lpAlreadyApplied": "すでに適用済みのLPです。",
+    "editAvatarLabel": "プロフィール写真変更",
+    "editNicknameLabel": "ニックネーム",
+    "profileSaved": "プロフィールが更新されました",
+    "profileSaveFail": "プロフィール更新に失敗しました"
   },
   "tier": {
     "1": "村の住民",
