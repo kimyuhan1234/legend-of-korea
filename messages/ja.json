@@ -348,7 +348,12 @@
     "flagCookingServings": "人前",
     "flagCookingDifficultyEasy": "簡単",
     "flagCookingDifficultyMedium": "普通",
-    "flagCookingDifficultyHard": "難しい"
+    "flagCookingDifficultyHard": "難しい",
+    "flagCookingTasteProfile": "味プロフィール",
+    "flagCookingIngredients": "材料",
+    "flagCookingSteps": "調理手順",
+    "flagCookingKoreanBase": "韓国ベース",
+    "flagCookingForeignBase": "相手国の要素"
   },
   "goods": {
     "title": "グッズショップ",

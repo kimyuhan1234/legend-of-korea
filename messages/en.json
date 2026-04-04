@@ -348,7 +348,12 @@
     "flagCookingServings": "Servings",
     "flagCookingDifficultyEasy": "Easy",
     "flagCookingDifficultyMedium": "Medium",
-    "flagCookingDifficultyHard": "Hard"
+    "flagCookingDifficultyHard": "Hard",
+    "flagCookingTasteProfile": "Taste Profile",
+    "flagCookingIngredients": "Ingredients",
+    "flagCookingSteps": "Steps",
+    "flagCookingKoreanBase": "Korean Base",
+    "flagCookingForeignBase": "Foreign Element"
   },
   "goods": {
     "title": "Goods Shop",

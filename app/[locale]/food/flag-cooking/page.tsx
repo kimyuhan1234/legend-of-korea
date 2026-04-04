@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
+import { TasteRadarChart } from "@/components/features/food/TasteRadarChart"
 import { flagCountries, getRecipesByCountry, getFlagCountry } from "@/lib/data/flag-cooking"
 import type { FusionRecipe } from "@/lib/data/flag-cooking"
 
@@ -49,6 +50,12 @@ const UI = {
     cookTime: "분",
     servings: "인분",
     empty: "위에서 국기를 선택하면 퓨전 레시피가 나타납니다",
+    clickHint: "카드를 클릭하면 상세 레시피를 볼 수 있어요",
+    tasteProfile: "맛 프로필",
+    ingredients: "재료",
+    steps: "조리 순서",
+    koreanBaseLabel: "한국 베이스",
+    foreignBaseLabel: "상대국 요소",
   },
   ja: {
     gridTitle: "どの国の料理が好きですか？",
@@ -58,6 +65,12 @@ const UI = {
     cookTime: "分",
     servings: "人前",
     empty: "上から国旗を選ぶとフュージョンレシピが表示されます",
+    clickHint: "カードをクリックすると詳細レシピが見られます",
+    tasteProfile: "味プロフィール",
+    ingredients: "材料",
+    steps: "調理手順",
+    koreanBaseLabel: "韓国ベース",
+    foreignBaseLabel: "相手国の要素",
   },
   en: {
     gridTitle: "Which country's food do you love?",
@@ -67,7 +80,24 @@ const UI = {
     cookTime: "min",
     servings: "servings",
     empty: "Select a flag above to reveal fusion recipes",
+    clickHint: "Click a card to view the full recipe",
+    tasteProfile: "Taste Profile",
+    ingredients: "Ingredients",
+    steps: "Steps",
+    koreanBaseLabel: "Korean Base",
+    foreignBaseLabel: "Foreign Element",
   },
+}
+
+// TasteRadarChart expects 0-100; our tasteProfile is 0-5 → ×20
+function scaledProfile(tp: FusionRecipe["tasteProfile"]) {
+  return {
+    sweet: tp.sweet * 20,
+    salty: tp.salty * 20,
+    spicy: tp.spicy * 20,
+    umami: tp.umami * 20,
+    sour: tp.sour * 20,
+  }
 }
 
 function RecipeCard({
@@ -75,17 +105,22 @@ function RecipeCard({
   index,
   countryFlag,
   locale,
+  onSelect,
 }: {
   recipe: FusionRecipe
   index: number
   countryFlag: string
   locale: string
+  onSelect: (recipe: FusionRecipe) => void
 }) {
   const t = UI[locale as keyof typeof UI] || UI.ko
   const diffLabel = DIFFICULTY_LABEL[locale as keyof typeof DIFFICULTY_LABEL] || DIFFICULTY_LABEL.ko
 
   return (
-    <div className="bg-white rounded-2xl border border-[#e8ddd0] p-5 flex flex-col gap-4 hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
+    <div
+      onClick={() => onSelect(recipe)}
+      className="cursor-pointer bg-white rounded-2xl border border-[#e8ddd0] p-5 flex flex-col gap-4 hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+    >
       {/* 상단 배지 */}
       <div className="flex items-center justify-between">
         <span className="text-sm font-bold text-[#D4A843]">
@@ -104,7 +139,7 @@ function RecipeCard({
             {getL(recipe.name, locale)}
           </p>
         </div>
-        <p className="text-sm text-[#7a6a58] leading-relaxed">
+        <p className="text-sm text-[#7a6a58] leading-relaxed line-clamp-2">
           {getL(recipe.description, locale)}
         </p>
       </div>
@@ -137,12 +172,34 @@ export default function FlagCookingPage() {
   const params = useParams()
   const locale = (params?.locale as string) || "ko"
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
+  const [selectedRecipe, setSelectedRecipe] = useState<FusionRecipe | null>(null)
 
   const h = HERO[locale as keyof typeof HERO] || HERO.ko
   const t = UI[locale as keyof typeof UI] || UI.ko
+  const diffLabel = DIFFICULTY_LABEL[locale as keyof typeof DIFFICULTY_LABEL] || DIFFICULTY_LABEL.ko
 
   const country = selectedCountry ? getFlagCountry(selectedCountry) : null
   const recipes: FusionRecipe[] = selectedCountry ? getRecipesByCountry(selectedCountry) : []
+  const recipeCountry = selectedRecipe ? getFlagCountry(selectedRecipe.countryCode) : null
+
+  // ESC 키로 모달 닫기
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedRecipe(null)
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
+
+  // 모달 열릴 때 스크롤 잠금
+  useEffect(() => {
+    if (selectedRecipe) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => { document.body.style.overflow = "" }
+  }, [selectedRecipe])
 
   return (
     <div>
@@ -193,9 +250,12 @@ export default function FlagCookingPage() {
           </div>
         ) : (
           <div className="space-y-6">
-            <h3 className="text-xl font-black text-[#1B2A4A]">
-              {country && t.resultHeader(country.flag, getL(country.name, locale))}
-            </h3>
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <h3 className="text-xl font-black text-[#1B2A4A]">
+                {country && t.resultHeader(country.flag, getL(country.name, locale))}
+              </h3>
+              <p className="text-xs text-[#7a6a58]">👆 {t.clickHint}</p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {recipes.map((recipe, i) => (
@@ -205,13 +265,106 @@ export default function FlagCookingPage() {
                   index={i}
                   countryFlag={country?.flag ?? ""}
                   locale={locale}
+                  onSelect={setSelectedRecipe}
                 />
               ))}
             </div>
-
           </div>
         )}
       </section>
+
+      {/* ── 상세 모달 ── */}
+      {selectedRecipe && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
+          onClick={() => setSelectedRecipe(null)}
+        >
+          <div
+            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* 헤더 */}
+            <div className="relative bg-[#1B2A4A]/5 p-8 text-center">
+              <button
+                onClick={() => setSelectedRecipe(null)}
+                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 text-gray-400 hover:text-gray-700 hover:bg-white transition-colors text-lg font-bold"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+              <span className="text-6xl">{selectedRecipe.emoji}</span>
+              <h2 className="text-2xl font-black text-[#1B2A4A] mt-4">
+                {getL(selectedRecipe.name, locale)}
+              </h2>
+              <p className="text-[#7a6a58] mt-2 text-sm leading-relaxed">
+                {getL(selectedRecipe.description, locale)}
+              </p>
+              <div className="flex justify-center gap-4 mt-4 text-sm text-[#7a6a58] flex-wrap">
+                <span>⏱ {selectedRecipe.cookTime}{t.cookTime}</span>
+                <span>👤 {selectedRecipe.servings}{t.servings}</span>
+                <span className={`px-2.5 py-0.5 rounded-full border text-xs font-medium ${DIFFICULTY_COLOR[selectedRecipe.difficulty]}`}>
+                  {diffLabel[selectedRecipe.difficulty]}
+                </span>
+              </div>
+            </div>
+
+            {/* 한국 × 외국 요소 */}
+            <div className="grid grid-cols-2 gap-4 px-6 pt-6">
+              <div className="bg-red-50 rounded-xl p-4 text-center">
+                <span className="text-2xl">🇰🇷</span>
+                <p className="font-semibold text-sm mt-2 text-[#1B2A4A]">{t.koreanBaseLabel}</p>
+                <p className="text-xs text-[#7a6a58] mt-1">{getL(selectedRecipe.koreanBase, locale)}</p>
+              </div>
+              <div className="bg-blue-50 rounded-xl p-4 text-center">
+                <span className="text-2xl">{recipeCountry?.flag ?? "🌍"}</span>
+                <p className="font-semibold text-sm mt-2 text-[#1B2A4A]">{t.foreignBaseLabel}</p>
+                <p className="text-xs text-[#7a6a58] mt-1">{getL(selectedRecipe.foreignElement, locale)}</p>
+              </div>
+            </div>
+
+            {/* 맛 레이더 차트 */}
+            <div className="px-6 pt-6 pb-2">
+              <h3 className="font-bold text-[#1B2A4A] mb-4">{t.tasteProfile}</h3>
+              <div className="max-w-[200px] mx-auto">
+                <TasteRadarChart
+                  profile={scaledProfile(selectedRecipe.tasteProfile)}
+                  locale={locale}
+                  size={200}
+                  color="#D4A843"
+                />
+              </div>
+            </div>
+
+            {/* 재료 */}
+            <div className="px-6 pb-5">
+              <h3 className="font-bold text-[#1B2A4A] mb-3">{t.ingredients}</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {selectedRecipe.ingredients.map((ing, i) => (
+                  <div key={i} className="flex items-start gap-2 text-sm text-[#4a3f35]">
+                    <span className="mt-1.5 w-2 h-2 bg-[#D4A843] rounded-full shrink-0" />
+                    {getL(ing, locale)}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 조리 단계 */}
+            <div className="px-6 pb-8">
+              <h3 className="font-bold text-[#1B2A4A] mb-3">{t.steps}</h3>
+              <div className="space-y-3">
+                {selectedRecipe.steps.map((step, i) => (
+                  <div key={i} className="flex gap-3">
+                    <span className="flex-shrink-0 w-7 h-7 bg-[#D4A843] text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      {i + 1}
+                    </span>
+                    <p className="text-sm text-[#4a3f35] pt-1 leading-relaxed">{getL(step, locale)}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

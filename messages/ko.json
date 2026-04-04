@@ -373,7 +373,12 @@
     "flagCookingServings": "인분",
     "flagCookingDifficultyEasy": "쉬움",
     "flagCookingDifficultyMedium": "보통",
-    "flagCookingDifficultyHard": "어려움"
+    "flagCookingDifficultyHard": "어려움",
+    "flagCookingTasteProfile": "맛 프로필",
+    "flagCookingIngredients": "재료",
+    "flagCookingSteps": "조리 순서",
+    "flagCookingKoreanBase": "한국 베이스",
+    "flagCookingForeignBase": "상대국 요소"
   },
   "goods": {
     "title": "굿즈샵",
