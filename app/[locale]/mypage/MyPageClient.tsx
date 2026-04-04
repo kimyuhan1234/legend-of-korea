@@ -237,7 +237,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
              <ShieldCheck className="w-10 h-10 text-indigo-200 mb-2" />
              <h3 className="text-xl font-black">레전드 멤버십</h3>
              <p className="text-xs text-indigo-100 font-bold leading-relaxed opacity-80">더 높은 등급으로 승급하여 전용 할인 혜택과 특별한 굿즈 기회를 잡으세요.</p>
-             <Button className="w-full rounded-xl bg-white text-indigo-600 font-black hover:bg-indigo-50 mt-4 h-11 border-none">
+             <Button onClick={() => router.push(`/${locale}/goods`)} className="w-full rounded-xl bg-white text-indigo-600 font-black hover:bg-indigo-50 mt-4 h-11 border-none">
                전설 상점 가기
              </Button>
           </div>
