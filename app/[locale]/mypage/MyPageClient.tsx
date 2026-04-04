@@ -17,6 +17,8 @@ import {
   ArrowUpRight,
   ArrowDownLeft,
   Calendar,
+  Loader2,
+  CheckCircle2,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
@@ -38,6 +40,11 @@ export function MyPageClient({ locale }: MyPageClientProps) {
   const [lpHistory, setLpHistory] = useState<any[]>([]);
   const [coupons, setCoupons] = useState<any[]>([]);
   const [orders, setOrders] = useState<any[]>([]);
+
+  // LP apply states
+  const [lpBalance, setLpBalance] = useState<number>(0);
+  const [appliedIds, setAppliedIds] = useState<Set<string>>(new Set());
+  const [applyingId, setApplyingId] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,8 +68,18 @@ export function MyPageClient({ locale }: MyPageClientProps) {
         const cData = await couponsRes.json();
         const oData = await ordersRes.json();
 
-        if (uData.success) setUser(uData.user);
-        if (hData.success) setLpHistory(hData.history);
+        if (uData.success) {
+          setUser(uData.user);
+          setLpBalance(uData.user?.total_lp ?? 0);
+        }
+        if (hData.success) {
+          setLpHistory(hData.history);
+          // Mark already-applied items
+          const applied = new Set<string>(
+            (hData.history as any[]).filter((h: any) => h.applied).map((h: any) => h.id)
+          );
+          setAppliedIds(applied);
+        }
         if (cData.success) setCoupons(cData.coupons);
         if (oData.success) setOrders(oData.orders);
 
@@ -80,6 +97,27 @@ export function MyPageClient({ locale }: MyPageClientProps) {
     await supabase.auth.signOut();
     router.push(`/${locale}`);
     router.refresh();
+  };
+
+  // LP Apply handler
+  const handleApplyLP = async (transactionId: string, amount: number) => {
+    if (appliedIds.has(transactionId) || applyingId) return;
+    setApplyingId(transactionId);
+    try {
+      const res = await fetch('/api/lp/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ transactionId }),
+      });
+      if (!res.ok) throw new Error('Failed to apply LP');
+      const data = await res.json();
+      setLpBalance(data.newBalance);
+      setAppliedIds(prev => { const next = new Set(Array.from(prev)); next.add(transactionId); return next; });
+    } catch (error) {
+      console.error('LP apply failed:', error);
+    } finally {
+      setApplyingId(null);
+    }
   };
 
   if (loading) {
@@ -123,7 +161,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
               <div className="grid grid-cols-2 gap-4 text-left">
                 <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100">
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-tighter mb-0.5">LP Balance</p>
-                  <p className="text-xl font-black text-indigo-600">{user?.total_lp?.toLocaleString()}</p>
+                  <p className="text-xl font-black text-indigo-600 transition-all duration-500">{lpBalance.toLocaleString()}</p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100">
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-tighter mb-0.5">Experience</p>
@@ -183,20 +221,81 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                       <p className="font-black">적립된 LP 내역이 없습니다.</p>
                     </div>
                 ) : (
-                  lpHistory.map((item: any) => (
-                    <div key={item.id} className="flex items-center gap-6 p-6 rounded-[2rem] bg-slate-50 border border-slate-100 hover:border-indigo-100 transition-colors group">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-md shrink-0 transition-transform group-hover:scale-110 ${item.amount > 0 ? 'bg-indigo-50 text-indigo-600' : 'bg-rose-50 text-rose-600'}`}>
-                        {item.amount > 0 ? <ArrowUpRight className="w-7 h-7" /> : <ArrowDownLeft className="w-7 h-7" />}
+                  lpHistory.map((item: any) => {
+                    const isApplied = appliedIds.has(item.id);
+                    const isApplying = applyingId === item.id;
+                    const isPositive = item.amount > 0;
+
+                    return (
+                      <div
+                        key={item.id}
+                        className={`flex items-center gap-4 md:gap-6 p-5 md:p-6 rounded-[2rem] border transition-all duration-300 group
+                          ${isApplied
+                            ? 'bg-slate-50/60 border-slate-100'
+                            : 'bg-slate-50 border-slate-100 hover:border-indigo-200 hover:shadow-sm'
+                          }`}
+                      >
+                        {/* icon */}
+                        <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shadow-md shrink-0 transition-transform group-hover:scale-110
+                          ${isApplied
+                            ? 'bg-emerald-50 text-emerald-500'
+                            : isPositive ? 'bg-indigo-50 text-indigo-600' : 'bg-rose-50 text-rose-600'
+                          }`}
+                        >
+                          {isApplied
+                            ? <CheckCircle2 className="w-6 h-6 md:w-7 md:h-7" />
+                            : isPositive ? <ArrowUpRight className="w-6 h-6 md:w-7 md:h-7" /> : <ArrowDownLeft className="w-6 h-6 md:w-7 md:h-7" />
+                          }
+                        </div>
+
+                        {/* description */}
+                        <div className="flex-1 min-w-0 space-y-0.5">
+                          <h4 className={`font-black tracking-tight truncate ${isApplied ? 'text-slate-400' : 'text-slate-800'}`}>
+                            {item.description}
+                          </h4>
+                          <p className="text-xs text-slate-400 font-bold">
+                            {new Date(item.created_at).toLocaleDateString()} • {item.type}
+                          </p>
+                        </div>
+
+                        {/* amount + apply button */}
+                        <div className="flex items-center gap-2 md:gap-3 shrink-0">
+                          <div className={`text-lg md:text-xl font-black ${isApplied ? 'text-slate-400' : isPositive ? 'text-indigo-600' : 'text-rose-500'}`}>
+                            {isPositive ? '+' : ''}{item.amount.toLocaleString()} <span className="text-[10px]">LP</span>
+                          </div>
+
+                          {isPositive && (
+                            isApplied ? (
+                              <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 bg-emerald-50 text-emerald-500 rounded-xl text-xs font-black">
+                                <CheckCircle2 className="w-3 h-3" />
+                                {t('lpApplied')}
+                              </span>
+                            ) : (
+                              <button
+                                onClick={() => handleApplyLP(item.id, item.amount)}
+                                disabled={isApplying}
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 text-white rounded-xl text-xs font-black
+                                           hover:bg-indigo-700 active:scale-95 transition-all
+                                           disabled:opacity-50 disabled:cursor-not-allowed"
+                              >
+                                {isApplying ? (
+                                  <>
+                                    <Loader2 className="w-3 h-3 animate-spin" />
+                                    {t('lpApplying')}
+                                  </>
+                                ) : (
+                                  <>
+                                    <span>→</span>
+                                    {t('lpApplyButton')}
+                                  </>
+                                )}
+                              </button>
+                            )
+                          )}
+                        </div>
                       </div>
-                      <div className="flex-1 space-y-0.5">
-                        <h4 className="font-black text-slate-800 tracking-tight">{item.description}</h4>
-                        <p className="text-xs text-slate-400 font-bold">{new Date(item.created_at).toLocaleDateString()} • {item.type}</p>
-                      </div>
-                      <div className={`text-xl font-black ${item.amount > 0 ? 'text-indigo-600' : 'text-rose-500'}`}>
-                        {item.amount > 0 ? '+' : ''}{item.amount.toLocaleString()} <span className="text-[10px]">LP</span>
-                      </div>
-                    </div>
-                  ))
+                    );
+                  })
                 )}
               </TabsContent>
 
