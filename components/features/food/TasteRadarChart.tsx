@@ -76,12 +76,18 @@ export function TasteRadarChart({
   const toPath = (points: { x: number; y: number }[]) =>
     points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ") + " Z"
 
-  // 보조 원(20%, 60%)
-  const innerR20 = maxR * 0.2
+  // 보조 오각형 (60%)
   const innerR60 = maxR * 0.6
 
+  const pad = size * 0.12
+
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size}>
+    <svg
+      viewBox={`${-pad} ${-pad} ${size + pad * 2} ${size + pad * 2}`}
+      width={size + pad * 2}
+      height={size + pad * 2}
+      style={{ display: "block", maxWidth: "100%" }}
+    >
       {/* 60% 보조 오각형 */}
       <path
         d={toPath(angles.map((a) => ({ x: cx + innerR60 * Math.cos(toRad(a)), y: cy + innerR60 * Math.sin(toRad(a)) })))}
@@ -118,8 +124,9 @@ export function TasteRadarChart({
             y={lp.y.toFixed(1)}
             textAnchor="middle"
             dominantBaseline="middle"
-            fontSize={size * 0.07}
-            fill="#7a6a58"
+            fontSize={size * 0.095}
+            fill="#1B2A4A"
+            fontWeight="600"
             fontFamily="sans-serif"
           >
             {a.label}
