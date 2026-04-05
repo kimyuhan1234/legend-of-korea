@@ -77,7 +77,6 @@ export default async function StayPage({ params, searchParams }: Props) {
                     alt={stay.name}
                     fill
                     className="object-cover"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                   />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <span className="text-5xl opacity-20">🏨</span>

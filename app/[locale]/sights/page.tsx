@@ -94,7 +94,6 @@ export default async function SightsPage({ params, searchParams }: Props) {
                     alt={sight.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                   />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <span className="text-5xl opacity-20">{CATEGORY_EMOJI[sight.category]}</span>
