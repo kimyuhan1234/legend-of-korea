@@ -259,7 +259,8 @@
     "cancelButton": "キャンセル",
     "saveButton": "保存",
     "editSuccess": "記録が修正されました",
-    "deleteSuccess": "記録が削除されました"
+    "deleteSuccess": "記録が削除されました",
+    "loading": "読み込み中..."
   },
   "shop": {
     "title": "伝説ショップ",

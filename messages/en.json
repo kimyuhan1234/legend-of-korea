@@ -259,7 +259,8 @@
     "cancelButton": "Cancel",
     "saveButton": "Save",
     "editSuccess": "Record updated",
-    "deleteSuccess": "Record deleted"
+    "deleteSuccess": "Record deleted",
+    "loading": "Loading..."
   },
   "shop": {
     "title": "Legend Shop",
