@@ -3,7 +3,10 @@ export const dynamic = 'force-dynamic'
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
-import { StoryClient } from './StoryClient'
+import { StoryTabNav } from './StoryTabNav'
+import { CoursesTab } from './tabs/CoursesTab'
+import { MemoriesTab } from './tabs/MemoriesTab'
+import { PointsTab } from './tabs/PointsTab'
 
 interface Props {
   params: { locale: string }
@@ -18,7 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function StoryPage({ params, searchParams }: Props) {
   const { locale } = params
-  const tab = searchParams.tab || 'mission-kit'
+  const activeTab = searchParams.tab || 'mission-kit'
+
+  const t = await getTranslations({ locale, namespace: 'story' })
 
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -33,11 +38,34 @@ export default async function StoryPage({ params, searchParams }: Props) {
     profile = data
   }
 
+  const tabs = [
+    { id: 'mission-kit', label: t('tabMissionKit') },
+    { id: 'memories',    label: t('tabMemories') },
+    { id: 'points',      label: t('tabPoints') },
+  ]
+
   return (
-    <StoryClient
-      locale={locale}
-      initialTab={tab}
-      user={user ? { id: user.id, ...profile } : null}
-    />
+    <div className="min-h-screen bg-[#FFF8F0]">
+      {/* 헤더 */}
+      <div className="bg-[#2D1B69] text-white py-12 px-4 text-center">
+        <h1 className="text-3xl md:text-4xl font-black mb-2">{t('title')}</h1>
+        <p className="text-white/70">{t('subtitle')}</p>
+      </div>
+
+      {/* 탭 네비게이션 (클라이언트) */}
+      <StoryTabNav locale={locale} activeTab={activeTab} tabs={tabs} />
+
+      {/* 탭 콘텐츠 (서버) */}
+      <div className="max-w-5xl mx-auto px-4 py-8">
+        {activeTab === 'mission-kit' && <CoursesTab locale={locale} />}
+        {activeTab === 'memories'    && <MemoriesTab locale={locale} />}
+        {activeTab === 'points'      && (
+          <PointsTab
+            locale={locale}
+            user={user ? { id: user.id, ...profile } : null}
+          />
+        )}
+      </div>
+    </div>
   )
 }
