@@ -38,6 +38,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
   const [steps, setSteps] = useState<string[]>(['']);
   const [submitting, setSubmitting] = useState(false);
   const [uploadingPhotos, setUploadingPhotos] = useState(false);
+  const [tasteProfile, setTasteProfile] = useState({ sweet: 0, salty: 0, spicy: 0, sour: 0, umami: 0 });
 
   // ── Photo handling ─────────────────────────────────────────
   async function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -127,6 +128,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
           korean_ingredients: koreanIngredients.filter(v => v.trim()),
           foreign_ingredients: foreignIngredients.filter(v => v.trim()),
           steps: steps.filter(v => v.trim()),
+          taste_profile: tasteProfile,
         }),
       });
       const data = await res.json();
@@ -275,6 +277,108 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
           onChange={handlePhotoChange}
         />
         <p className="text-xs text-gray-400">사진은 레시피 등록 후 자동 업로드됩니다</p>
+      </div>
+
+      {/* 맛 프로필 */}
+      <div className="bg-white rounded-2xl shadow p-6 space-y-4">
+        <label className="block text-sm font-bold text-gray-700">🎯 맛 프로필 (0~5)</label>
+        <div className="flex gap-6 items-center">
+          {/* 슬라이더 */}
+          <div className="flex-1 space-y-3">
+            {(
+              [
+                { key: 'sweet', label: '🍯 달콤' },
+                { key: 'salty', label: '🧂 짭조름' },
+                { key: 'spicy', label: '🌶️ 매콤' },
+                { key: 'sour', label: '🍋 새콤' },
+                { key: 'umami', label: '🍄 감칠맛' },
+              ] as { key: keyof typeof tasteProfile; label: string }[]
+            ).map(({ key, label }) => (
+              <div key={key} className="flex items-center gap-3">
+                <span className="text-xs w-20 shrink-0">{label}</span>
+                <input
+                  type="range"
+                  min={0}
+                  max={5}
+                  step={1}
+                  value={tasteProfile[key]}
+                  onChange={e => setTasteProfile(prev => ({ ...prev, [key]: Number(e.target.value) }))}
+                  className="flex-1 accent-[#FF6B35]"
+                />
+                <span className="text-xs w-4 text-right font-bold text-[#FF6B35]">{tasteProfile[key]}</span>
+              </div>
+            ))}
+          </div>
+          {/* SVG 오각형 레이더 */}
+          <div className="shrink-0">
+            <svg width={100} height={100} viewBox="0 0 100 100">
+              {/* 배경 격자 */}
+              {[1, 2, 3, 4, 5].map(level => {
+                const pts = Array.from({ length: 5 }, (_, i) => {
+                  const angle = (-Math.PI / 2) + (2 * Math.PI / 5) * i;
+                  const r = (level / 5) * 40;
+                  return `${50 + r * Math.cos(angle)},${50 + r * Math.sin(angle)}`;
+                }).join(' ');
+                return <polygon key={level} points={pts} fill="none" stroke="#e5e7eb" strokeWidth={0.8} />;
+              })}
+              {/* 축선 */}
+              {Array.from({ length: 5 }, (_, i) => {
+                const angle = (-Math.PI / 2) + (2 * Math.PI / 5) * i;
+                return (
+                  <line
+                    key={i}
+                    x1={50} y1={50}
+                    x2={50 + 40 * Math.cos(angle)}
+                    y2={50 + 40 * Math.sin(angle)}
+                    stroke="#e5e7eb" strokeWidth={0.8}
+                  />
+                );
+              })}
+              {/* 데이터 오각형 */}
+              {(() => {
+                const vals = [tasteProfile.sweet, tasteProfile.salty, tasteProfile.spicy, tasteProfile.sour, tasteProfile.umami];
+                const pts = vals.map((v, i) => {
+                  const angle = (-Math.PI / 2) + (2 * Math.PI / 5) * i;
+                  const r = (v / 5) * 40;
+                  return `${50 + r * Math.cos(angle)},${50 + r * Math.sin(angle)}`;
+                }).join(' ');
+                return (
+                  <polygon
+                    points={pts}
+                    fill="rgba(255,107,53,0.25)"
+                    stroke="#FF6B35"
+                    strokeWidth={1.5}
+                    strokeLinejoin="round"
+                  />
+                );
+              })()}
+              {/* 꼭짓점 라벨 */}
+              {[
+                { label: '달콤', i: 0 },
+                { label: '짭조름', i: 1 },
+                { label: '매콤', i: 2 },
+                { label: '새콤', i: 3 },
+                { label: '감칠맛', i: 4 },
+              ].map(({ label, i }) => {
+                const angle = (-Math.PI / 2) + (2 * Math.PI / 5) * i;
+                const x = 50 + 48 * Math.cos(angle);
+                const y = 50 + 48 * Math.sin(angle);
+                return (
+                  <text
+                    key={i}
+                    x={x} y={y}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fontSize={6}
+                    fill="#6b7280"
+                  >
+                    {label}
+                  </text>
+                );
+              })}
+            </svg>
+          </div>
+        </div>
       </div>
 
       {/* 한국 재료 */}

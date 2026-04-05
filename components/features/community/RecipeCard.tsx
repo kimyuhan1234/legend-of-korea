@@ -37,11 +37,39 @@ export interface RecipeType {
   korean_ingredients: string[];
   foreign_ingredients: string[];
   steps: string[];
+  taste_profile?: { sweet: number; salty: number; spicy: number; sour: number; umami: number };
   likes_count: number;
   comments_count: number;
   created_at: string;
   user_id: string;
   user?: { nickname: string; avatar_url?: string };
+}
+
+function TastePentagon({ profile }: { profile: NonNullable<RecipeType['taste_profile']> }) {
+  const vals = [profile.sweet, profile.salty, profile.spicy, profile.sour, profile.umami];
+  const cx = 40; const cy = 40; const R = 30;
+  const dataPoints = vals.map((v, i) => {
+    const angle = (-Math.PI / 2) + (2 * Math.PI / 5) * i;
+    const r = (v / 5) * R;
+    return `${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`;
+  }).join(' ');
+  return (
+    <svg width={80} height={80} viewBox="0 0 80 80">
+      {[1, 2, 3, 4, 5].map(level => {
+        const pts = Array.from({ length: 5 }, (_, i) => {
+          const angle = (-Math.PI / 2) + (2 * Math.PI / 5) * i;
+          const r = (level / 5) * R;
+          return `${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`;
+        }).join(' ');
+        return <polygon key={level} points={pts} fill="none" stroke="#e5e7eb" strokeWidth={0.8} />;
+      })}
+      {Array.from({ length: 5 }, (_, i) => {
+        const angle = (-Math.PI / 2) + (2 * Math.PI / 5) * i;
+        return <line key={i} x1={cx} y1={cy} x2={cx + R * Math.cos(angle)} y2={cy + R * Math.sin(angle)} stroke="#e5e7eb" strokeWidth={0.8} />;
+      })}
+      <polygon points={dataPoints} fill="rgba(255,107,53,0.25)" stroke="#FF6B35" strokeWidth={1.5} strokeLinejoin="round" />
+    </svg>
+  );
 }
 
 interface RecipeCardProps {
@@ -109,10 +137,15 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
           </div>
         )}
 
-        {/* 시간/인분 */}
-        <div className="flex items-center gap-3 text-xs text-gray-400">
-          <span className="flex items-center gap-1"><Clock size={12} /> {recipe.cooking_time}분</span>
-          <span className="flex items-center gap-1"><Users size={12} /> {recipe.servings}인분</span>
+        {/* 시간/인분 + 맛 프로필 */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3 text-xs text-gray-400">
+            <span className="flex items-center gap-1"><Clock size={12} /> {recipe.cooking_time}분</span>
+            <span className="flex items-center gap-1"><Users size={12} /> {recipe.servings}인분</span>
+          </div>
+          {recipe.taste_profile && (
+            <TastePentagon profile={recipe.taste_profile} />
+          )}
         </div>
 
         {/* 작성자 + 반응 */}

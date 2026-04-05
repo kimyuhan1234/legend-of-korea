@@ -114,7 +114,22 @@
     "faq3Q": "Is it available in Japanese and English?",
     "faq3A": "Yes! All mission cards and web services are available in Korean, Japanese, and English. International travelers are welcome.",
     "faq4Q": "What is the cancellation policy?",
-    "faq4A": "Full refunds are available before the kit is shipped. After shipping, unopened returns are accepted. Please contact customer support."
+    "faq4A": "Full refunds are available before the kit is shipped. After shipping, unopened returns are accepted. Please contact customer support.",
+    "heroTagline": "Time of Legends",
+    "categoryHeading": "A new journey to explore cities through Korean legends",
+    "categoryFood": "Food",
+    "categoryStay": "Stay",
+    "categoryStory": "Story",
+    "categorySights": "Sights",
+    "categoryStyle": "Style",
+    "foodMatchingTitle": "You already know what you like",
+    "foodMatchingSubtitle": "We'll connect you to the rest",
+    "foodMatchingCta": "Explore Food Matching →",
+    "footerCompany": "About Us",
+    "footerTerms": "Terms of Service",
+    "footerPrivacy": "Privacy Policy",
+    "footerPartner": "Partner Inquiry",
+    "footerCopyright": "© 2026 Legend of Korea"
   },
   "course": {
     "difficulty": "Difficulty",
@@ -441,5 +456,50 @@
     "notifyError": "Please enter a valid email address.",
     "notifyDisclaimer": "Your email will only be used for launch notifications.",
     "backToCourses": "Browse courses"
+  },
+  "nav": {
+    "signup": "Sign Up",
+    "login": "Sign In",
+    "faq": "FAQ",
+    "search": "Search",
+    "cart": "Style",
+    "profile": "Profile",
+    "memories": "Memories",
+    "points": "Points",
+    "foodMatching": "Food Matching",
+    "mypage": "My Page",
+    "logout": "Sign Out",
+    "loginRequired": "Please sign in",
+    "loginBtn": "Sign In"
+  },
+  "story": {
+    "title": "Story",
+    "subtitle": "Mission Kits · Memories · Points",
+    "tabMissionKit": "Mission Kits",
+    "tabMemories": "Memories",
+    "tabPoints": "Points",
+    "loginRequired": "Please sign in to view",
+    "loginBtn": "Sign In",
+    "pointsTitle": "My Points",
+    "currentLP": "LP Balance",
+    "currentTier": "Current Tier"
+  },
+  "stay": {
+    "title": "Stay",
+    "subtitle": "Find accommodations for your legendary journey",
+    "filterAll": "All",
+    "bookNow": "Book Now",
+    "comingSoon": "Coming Soon",
+    "comingSoonDesc": "We're preparing stays for this region"
+  },
+  "sights": {
+    "title": "Sights",
+    "subtitle": "Explore hotspots across Korea",
+    "filterAll": "All",
+    "hotspot": "Hotspot",
+    "landmark": "Landmark",
+    "festival": "Festival",
+    "comingSoon": "Coming Soon",
+    "comingSoonDesc": "We're preparing sights for this region"
   }
 }

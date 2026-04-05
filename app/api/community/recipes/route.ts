@@ -35,6 +35,7 @@ export async function POST(req: NextRequest) {
     const {
       name, country_code, difficulty, cooking_time, servings,
       description, photos, korean_ingredients, foreign_ingredients, steps,
+      taste_profile,
     } = await req.json();
 
     if (!name || !name.trim()) {
@@ -55,6 +56,7 @@ export async function POST(req: NextRequest) {
         korean_ingredients: korean_ingredients || [],
         foreign_ingredients: foreign_ingredients || [],
         steps: steps || [],
+        taste_profile: taste_profile || { sweet: 0, salty: 0, spicy: 0, sour: 0, umami: 0 },
       })
       .select()
       .single();
