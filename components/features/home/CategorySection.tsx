@@ -44,8 +44,8 @@ export function CategorySection({ locale, heading, categories }: CategorySection
                     src={cat.image}
                     alt={cat.label}
                     fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
                     className="object-cover"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>

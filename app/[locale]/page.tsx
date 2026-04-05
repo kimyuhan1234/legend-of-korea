@@ -23,11 +23,11 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: 'home' })
 
   const categories = [
-    { id: 'food',   label: t('categoryFood'),   href: '/food',   image: '/images/category-food.jpg',   gradient: 'bg-gradient-to-br from-orange-400 to-red-500' },
-    { id: 'stay',   label: t('categoryStay'),   href: '/stay',   image: '/images/category-stay.jpg',   gradient: 'bg-gradient-to-br from-blue-400 to-indigo-600' },
-    { id: 'story',  label: t('categoryStory'),  href: '/story',  image: '/images/category-story.jpg',  gradient: 'bg-gradient-to-br from-purple-500 to-[#2D1B69]' },
-    { id: 'sights', label: t('categorySights'), href: '/sights', image: '/images/category-sights.jpg', gradient: 'bg-gradient-to-br from-green-400 to-teal-600' },
-    { id: 'style',  label: t('categoryStyle'),  href: '/goods',  image: '/images/category-style.jpg',  gradient: 'bg-gradient-to-br from-pink-400 to-rose-600' },
+    { id: 'food',   label: t('categoryFood'),   href: '/food',   image: '/images/category-food.png',   gradient: 'bg-gradient-to-br from-orange-400 to-red-500' },
+    { id: 'stay',   label: t('categoryStay'),   href: '/stay',   image: '/images/category-stay.png',   gradient: 'bg-gradient-to-br from-blue-400 to-indigo-600' },
+    { id: 'story',  label: t('categoryStory'),  href: '/story',  image: '/images/category-story.png',  gradient: 'bg-gradient-to-br from-purple-500 to-[#2D1B69]' },
+    { id: 'sights', label: t('categorySights'), href: '/sights', image: '/images/category-sights.png', gradient: 'bg-gradient-to-br from-green-400 to-teal-600' },
+    { id: 'style',  label: t('categoryStyle'),  href: '/goods',  image: '/images/category-style.png',  gradient: 'bg-gradient-to-br from-pink-400 to-rose-600' },
   ]
 
   return (
@@ -51,7 +51,6 @@ export default async function HomePage({ params }: Props) {
 
       {/* 섹션 2: HERO */}
       <HeroSection
-        locale={locale}
         tagline={t('heroTagline')}
         title="Legend of Korea"
         cta={t('learnMore')}

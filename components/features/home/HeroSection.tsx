@@ -3,24 +3,22 @@
 import Image from 'next/image'
 
 interface HeroSectionProps {
-  locale: string
   tagline: string
   title: string
   cta: string
 }
 
-export function HeroSection({ locale, tagline, title, cta }: HeroSectionProps) {
+export function HeroSection({ tagline, title, cta }: HeroSectionProps) {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden bg-[#2D1B69]">
-      {/* 배경 이미지 - TODO: 동영상 교체 예정 */}
       <div className="absolute inset-0">
         <Image
-          src="/images/dokkaebi-hero.jpg"
+          src="/images/dokkaebi-hero.png"
           alt="Legend of Korea hero"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
-          onError={() => {}}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#2D1B69]/80" />
       </div>
