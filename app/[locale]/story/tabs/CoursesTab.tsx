@@ -14,17 +14,16 @@ const COMING_SOON_BADGE: Record<string, string> = {
 export async function CoursesTab({ locale }: CoursesTabProps) {
   const supabase = await createClient()
 
-  const { data: activeCourses } = await supabase
+  const { data: allCourses, error } = await supabase
     .from('courses')
-    .select('id, title, description, thumbnail_url, difficulty, region, duration_text, price_1p, price_2p')
-    .eq('is_active', true)
+    .select('id, title, description, thumbnail_url, difficulty, region, duration_text, price_1p, price_2p, is_active')
     .order('created_at', { ascending: true })
 
-  const { data: comingSoonCourses } = await supabase
-    .from('courses')
-    .select('id, title, thumbnail_url, region')
-    .eq('is_active', false)
-    .order('created_at', { ascending: true })
+  console.log('[CoursesTab] allCourses count:', allCourses?.length, 'error:', error?.message)
+  console.log('[CoursesTab] data:', JSON.stringify(allCourses?.map(c => ({ id: c.id, region: c.region, is_active: c.is_active }))))
+
+  const activeCourses = allCourses?.filter(c => c.is_active) ?? []
+  const comingSoonCourses = allCourses?.filter(c => !c.is_active) ?? []
 
   const badge = COMING_SOON_BADGE[locale] ?? COMING_SOON_BADGE.ko
 
@@ -33,7 +32,7 @@ export async function CoursesTab({ locale }: CoursesTabProps) {
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-black text-[#2D1B69]">🗺️ 미션 키트</h2>
       </div>
-      {!activeCourses || activeCourses.length === 0 ? (
+      {activeCourses.length === 0 && comingSoonCourses.length === 0 ? (
         <div className="text-center py-20 text-[#7a6a58]">
           <div className="text-5xl mb-4">🌙</div>
           <p>곧 새로운 전설이 열립니다</p>
@@ -43,7 +42,7 @@ export async function CoursesTab({ locale }: CoursesTabProps) {
           {activeCourses.map(course => (
             <CourseCard key={course.id} course={course as any} locale={locale} />
           ))}
-          {comingSoonCourses?.map(course => {
+          {comingSoonCourses.map(course => {
             const title =
               typeof course.title === 'object' && course.title !== null
                 ? (course.title as Record<string, string>)[locale] ??

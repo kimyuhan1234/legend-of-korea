@@ -28,17 +28,17 @@ const HERO = {
   ko: {
     badge: "🚩 플래그 쿠킹",
     title: "국기를 선택하고\n한국 × 세계 퓨전 레시피를 만나세요",
-    subtitle: "8개국 × 한국 식재료로 만든 창작 퓨전 레시피 40가지",
+    subtitle: "12개국 × 한국 식재료로 만든 창작 퓨전 레시피 69가지",
   },
   ja: {
     badge: "🚩 フラッグ料理",
     title: "国旗を選んで\n韓国×世界のフュージョンレシピを発見",
-    subtitle: "8カ国×韓国食材で作った創作フュージョンレシピ40種",
+    subtitle: "12カ国×韓国食材で作った創作フュージョンレシピ69種",
   },
   en: {
     badge: "🚩 Flag Cooking",
     title: "Pick a flag and discover\nKorea × World fusion recipes",
-    subtitle: "40 original fusion recipes across 8 countries × Korean ingredients",
+    subtitle: "69 original fusion recipes across 12 countries × Korean ingredients",
   },
 }
 
