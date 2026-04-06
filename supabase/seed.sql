@@ -1,15 +1,22 @@
 -- =============================================
 -- COURSES 테이블 시드 데이터 (5개 코스)
--- DB 스키마: id, legend_type, region, difficulty, duration_text,
+-- DB 스키마: id (UUID), legend_type, region, difficulty, duration_text,
 --            title, description, thumbnail_url, video_url,
 --            price_1p, price_2p, is_active, season, created_at
+-- =============================================
+-- Course UUID 매핑:
+--   전주 도깨비          → 11111111-1111-1111-1111-000000000001
+--   통영 별주부전         → 11111111-1111-1111-1111-000000000002
+--   천안 능소전          → 11111111-1111-1111-1111-000000000003
+--   용인 동화            → 11111111-1111-1111-1111-000000000004
+--   이천 선녀와 나무꾼    → 11111111-1111-1111-1111-000000000005
 -- =============================================
 
 INSERT INTO courses (id, legend_type, region, difficulty, duration_text, title, description, thumbnail_url, video_url, price_1p, price_2p, is_active, created_at)
 VALUES
 
 -- 코스 1: 전주 도깨비
-('course-jeonju-dokkaebi',
+('11111111-1111-1111-1111-000000000001',
  'dokkaebi',
  'jeonju',
  'easy',
@@ -25,7 +32,7 @@ VALUES
 ),
 
 -- 코스 2: 통영 별주부전
-('course-tongyeong-byeoljubu',
+('11111111-1111-1111-1111-000000000002',
  'byeoljubu',
  'tongyeong',
  'medium',
@@ -41,7 +48,7 @@ VALUES
 ),
 
 -- 코스 3: 천안 능소전
-('course-cheonan-nungso',
+('11111111-1111-1111-1111-000000000003',
  'nungso',
  'cheonan',
  'easy',
@@ -57,7 +64,7 @@ VALUES
 ),
 
 -- 코스 4: 용인 동화
-('course-yongin-fairytale',
+('11111111-1111-1111-1111-000000000004',
  'fairytale',
  'yongin',
  'easy',
@@ -73,7 +80,7 @@ VALUES
 ),
 
 -- 코스 5: 이천 선녀와 나무꾼
-('course-icheon-fairy',
+('11111111-1111-1111-1111-000000000005',
  'fairy',
  'icheon',
  'easy',
@@ -93,20 +100,25 @@ ON CONFLICT (id) DO NOTHING;
 
 -- =============================================
 -- MISSIONS 테이블 시드 데이터 (38개 미션)
--- DB 스키마: id, course_id, sequence, type, title, description,
---            hint_1, hint_2, hint_3, correct_answer, lp_reward,
---            is_hidden, location_name, location_description,
---            latitude, longitude, qr_code, created_at
+-- DB 스키마: id (UUID), course_id (UUID FK), sequence, type,
+--            title, description, hint_1, correct_answer, lp_reward,
+--            is_hidden, location_name, latitude, longitude, created_at
 -- type: 'quiz' | 'photo' | 'open' | 'boss' | 'hidden'
 -- correct_answer: plain string (Korean)
+-- =============================================
+-- Mission UUID 패턴: 22222222-2222-2222-2222-0000000001YZ
+--   1YZ = 코스번호(1~5) + 미션순번(01~08)
+--   전주(1xx): 101~108 / 통영(2xx): 201~208
+--   천안(3xx): 301~307 / 용인(4xx): 401~408 / 이천(5xx): 501~507
 -- =============================================
 
 INSERT INTO missions (id, course_id, sequence, type, title, description, hint_1, correct_answer, lp_reward, is_hidden, location_name, latitude, longitude)
 VALUES
 
--- ── 전주 도깨비 (8 미션) ──
+-- ── 전주 도깨비 (8 미션, course_id: 11111111-1111-1111-1111-000000000001) ──
 
-('m-jeonju-01', 'course-jeonju-dokkaebi', 1,
+('22222222-2222-2222-2222-000000000101',
+ '11111111-1111-1111-1111-000000000001', 1,
  'quiz',
  '{"ko": "도깨비의 첫 번째 수수께끼", "ja": "トッケビの最初のなぞなぞ", "en": "The Dokkaebi''s First Riddle"}',
  '{"ko": "경기전에 도착해서 도깨비 전래동화의 첫 번째 퀴즈를 풀어보세요.", "ja": "慶基殿に到着して、トッケビ昔話の最初のクイズに挑戦しましょう。", "en": "Arrive at Gyeonggijeon and solve the first quiz about the Dokkaebi fairy tale."}',
@@ -116,7 +128,8 @@ VALUES
  '{"ko": "경기전", "ja": "慶基殿", "en": "Gyeonggijeon"}',
  35.8151, 127.1500),
 
-('m-jeonju-02', 'course-jeonju-dokkaebi', 2,
+('22222222-2222-2222-2222-000000000102',
+ '11111111-1111-1111-1111-000000000001', 2,
  'photo',
  '{"ko": "도깨비숲 탐험", "ja": "トッケビの森探検", "en": "Dokkaebi Forest Expedition"}',
  '{"ko": "전주 도깨비숲에서 도깨비 조형물을 찾아 인증샷을 찍으세요.", "ja": "全州トッケビの森でトッケビの像を見つけて記念撮影しましょう。", "en": "Find the Dokkaebi statue at Jeonju Dokkaebi Forest and take a photo."}',
@@ -126,7 +139,8 @@ VALUES
  '{"ko": "전주 도깨비숲", "ja": "全州トッケビの森", "en": "Jeonju Dokkaebi Forest"}',
  35.8098, 127.1467),
 
-('m-jeonju-03', 'course-jeonju-dokkaebi', 3,
+('22222222-2222-2222-2222-000000000103',
+ '11111111-1111-1111-1111-000000000001', 3,
  'photo',
  '{"ko": "벽화 속 도깨비 찾기", "ja": "壁画の中のトッケビ探し", "en": "Find the Dokkaebi in Murals"}',
  '{"ko": "자만벽화마을 골목을 걸으며 벽화 속에 숨겨진 도깨비를 찾아보세요.", "ja": "自慢壁画村の路地を歩きながら、壁画の中に隠れたトッケビを探しましょう。", "en": "Walk through Jaman Mural Village alleys and find the hidden Dokkaebi in the murals."}',
@@ -136,7 +150,8 @@ VALUES
  '{"ko": "자만벽화마을", "ja": "自慢壁画村", "en": "Jaman Mural Village"}',
  35.8127, 127.1529),
 
-('m-jeonju-04', 'course-jeonju-dokkaebi', 4,
+('22222222-2222-2222-2222-000000000104',
+ '11111111-1111-1111-1111-000000000001', 4,
  'photo',
  '{"ko": "오목대에서 전주를 내려다보다", "ja": "梧木台から全州を見下ろす", "en": "Overlook Jeonju from Omokdae"}',
  '{"ko": "오목대 전망대에 올라 전주 한옥마을 전경을 촬영하세요.", "ja": "梧木台展望台に登り、全州韓屋村の全景を撮影しましょう。", "en": "Climb Omokdae viewpoint and photograph the panoramic view of Jeonju Hanok Village."}',
@@ -146,7 +161,8 @@ VALUES
  '{"ko": "오목대", "ja": "梧木台", "en": "Omokdae"}',
  35.8133, 127.1538),
 
-('m-jeonju-05', 'course-jeonju-dokkaebi', 5,
+('22222222-2222-2222-2222-000000000105',
+ '11111111-1111-1111-1111-000000000001', 5,
  'quiz',
  '{"ko": "도깨비시장의 맛", "ja": "トッケビ市場の味", "en": "Taste of Dokkaebi Market"}',
  '{"ko": "남부시장에서 전주 대표 먹거리를 시식하고 퀴즈를 풀어보세요.", "ja": "南部市場で全州の代表的なグルメを試食してクイズに挑戦しましょう。", "en": "Try Jeonju''s signature street food at Nambu Market and solve the quiz."}',
@@ -156,7 +172,8 @@ VALUES
  '{"ko": "전주 남부시장", "ja": "全州南部市場", "en": "Jeonju Nambu Market"}',
  35.8107, 127.1479),
 
-('m-jeonju-06', 'course-jeonju-dokkaebi', 6,
+('22222222-2222-2222-2222-000000000106',
+ '11111111-1111-1111-1111-000000000001', 6,
  'quiz',
  '{"ko": "한지의 비밀", "ja": "韓紙の秘密", "en": "Secret of Hanji"}',
  '{"ko": "전주한지박물관에서 한지에 대한 퀴즈를 풀어보세요.", "ja": "全州韓紙博物館で韓紙に関するクイズに挑戦しましょう。", "en": "Solve a quiz about Hanji (traditional Korean paper) at the Jeonju Hanji Museum."}',
@@ -166,7 +183,8 @@ VALUES
  '{"ko": "전주한지박물관", "ja": "全州韓紙博物館", "en": "Jeonju Hanji Museum"}',
  35.8143, 127.1521),
 
-('m-jeonju-07', 'course-jeonju-dokkaebi', 7,
+('22222222-2222-2222-2222-000000000107',
+ '11111111-1111-1111-1111-000000000001', 7,
  'photo',
  '{"ko": "한복과 성당", "ja": "韓服と聖堂", "en": "Hanbok and Cathedral"}',
  '{"ko": "한복을 입고 전동성당 앞에서 인증샷을 찍으세요.", "ja": "韓服を着て殿洞聖堂の前で記念撮影しましょう。", "en": "Wear a Hanbok and take a photo in front of Jeondong Cathedral."}',
@@ -176,7 +194,8 @@ VALUES
  '{"ko": "전동성당", "ja": "殿洞聖堂", "en": "Jeondong Cathedral"}',
  35.8147, 127.1497),
 
-('m-jeonju-08', 'course-jeonju-dokkaebi', 8,
+('22222222-2222-2222-2222-000000000108',
+ '11111111-1111-1111-1111-000000000001', 8,
  'boss',
  '{"ko": "도깨비방망이를 찾아라!", "ja": "トッケビの棒を探せ！", "en": "Find the Dokkaebi Club!"}',
  '{"ko": "전주향교에서 최종 보스 미션! 도깨비 전래동화에 대한 종합 퀴즈를 풀어보세요.", "ja": "全州郷校で最終ボスミッション！トッケビ昔話の総合クイズに挑戦しましょう。", "en": "Final boss mission at Jeonju Hyanggyo! Solve the comprehensive quiz about the Dokkaebi fairy tale."}',
@@ -187,9 +206,10 @@ VALUES
  35.8126, 127.1550),
 
 
--- ── 통영 별주부전 (8 미션) ──
+-- ── 통영 별주부전 (8 미션, course_id: 11111111-1111-1111-1111-000000000002) ──
 
-('m-tongyeong-01', 'course-tongyeong-byeoljubu', 1,
+('22222222-2222-2222-2222-000000000201',
+ '11111111-1111-1111-1111-000000000002', 1,
  'quiz',
  '{"ko": "용왕의 부름", "ja": "龍王の呼び声", "en": "The Sea King''s Call"}',
  '{"ko": "강구안 관광안내소에서 별주부전 이야기의 첫 번째 퀴즈를 풀어보세요.", "ja": "カングアン観光案内所でピョルジュブ伝の最初のクイズに挑戦しましょう。", "en": "Solve the first quiz about the Byeoljubu tale at Ganggu-an tourist center."}',
@@ -199,7 +219,8 @@ VALUES
  '{"ko": "강구안", "ja": "カングアン", "en": "Ganggu-an Harbor"}',
  34.8422, 128.4231),
 
-('m-tongyeong-02', 'course-tongyeong-byeoljubu', 2,
+('22222222-2222-2222-2222-000000000202',
+ '11111111-1111-1111-1111-000000000002', 2,
  'photo',
  '{"ko": "동피랑의 토끼와 자라", "ja": "東ピランのウサギとスッポン", "en": "Rabbit & Turtle of Dongpirang"}',
  '{"ko": "동피랑 벽화마을에서 토끼와 자라가 그려진 벽화를 찾아 인증샷을 찍으세요.", "ja": "東ピラン壁画村でウサギとスッポンが描かれた壁画を見つけて記念撮影しましょう。", "en": "Find murals depicting the rabbit and turtle at Dongpirang Mural Village and take a photo."}',
@@ -209,7 +230,8 @@ VALUES
  '{"ko": "동피랑 벽화마을", "ja": "東ピラン壁画村", "en": "Dongpirang Mural Village"}',
  34.8438, 128.4258),
 
-('m-tongyeong-03', 'course-tongyeong-byeoljubu', 3,
+('22222222-2222-2222-2222-000000000203',
+ '11111111-1111-1111-1111-000000000002', 3,
  'photo',
  '{"ko": "용궁으로 가는 길", "ja": "龍宮への道", "en": "Path to the Dragon Palace"}',
  '{"ko": "통영 해저터널을 통과하며 용궁에 들어가는 기분을 느껴보세요. 터널 끝에서 GPS 체크인!", "ja": "統営海底トンネルを通り抜けながら龍宮に入る気分を味わいましょう。トンネルの出口でGPSチェックイン！", "en": "Walk through Tongyeong Undersea Tunnel and feel like you''re entering the Dragon Palace. GPS check-in at the tunnel exit!"}',
@@ -219,7 +241,8 @@ VALUES
  '{"ko": "통영 해저터널", "ja": "統営海底トンネル", "en": "Tongyeong Undersea Tunnel"}',
  34.8396, 128.4194),
 
-('m-tongyeong-04', 'course-tongyeong-byeoljubu', 4,
+('22222222-2222-2222-2222-000000000204',
+ '11111111-1111-1111-1111-000000000002', 4,
  'quiz',
  '{"ko": "바다의 맛", "ja": "海の味", "en": "Taste of the Sea"}',
  '{"ko": "통영 중앙시장에서 충무김밥 또는 꿀빵을 시식하고 퀴즈를 풀어보세요.", "ja": "統営中央市場で忠武キンパまたはハニーブレッドを試食してクイズに挑戦しましょう。", "en": "Try Chungmu Gimbap or honey bread at Tongyeong Central Market and solve the quiz."}',
@@ -229,7 +252,8 @@ VALUES
  '{"ko": "통영 중앙시장", "ja": "統営中央市場", "en": "Tongyeong Central Market"}',
  34.8431, 128.4227),
 
-('m-tongyeong-05', 'course-tongyeong-byeoljubu', 5,
+('22222222-2222-2222-2222-000000000205',
+ '11111111-1111-1111-1111-000000000002', 5,
  'photo',
  '{"ko": "서피랑 99계단", "ja": "西ピラン99段", "en": "Seobirang 99 Steps"}',
  '{"ko": "서피랑 99계단을 올라 꼭대기에서 강구안 전경을 촬영하세요.", "ja": "西ピラン99段を登り、頂上からカングアンの全景を撮影しましょう。", "en": "Climb the 99 steps of Seobirang and photograph the panoramic view of Ganggu-an from the top."}',
@@ -239,7 +263,8 @@ VALUES
  '{"ko": "서피랑 99계단", "ja": "西ピラン99段", "en": "Seobirang 99 Steps"}',
  34.8445, 128.4198),
 
-('m-tongyeong-06', 'course-tongyeong-byeoljubu', 6,
+('22222222-2222-2222-2222-000000000206',
+ '11111111-1111-1111-1111-000000000002', 6,
  'photo',
  '{"ko": "토끼가 날아오른 섬", "ja": "ウサギが飛び立った島", "en": "The Island Where the Rabbit Flew"}',
  '{"ko": "비토섬 토끼섬 트레일을 완주하고 포토를 찍으세요.", "ja": "ビト島のウサギ島トレイルを完走して写真を撮りましょう。", "en": "Complete the Bito Island Rabbit Island trail and take a photo."}',
@@ -249,7 +274,8 @@ VALUES
  '{"ko": "비토섬 토끼섬", "ja": "ビト島ウサギ島", "en": "Bito Island - Rabbit Island"}',
  34.9135, 128.3254),
 
-('m-tongyeong-07', 'course-tongyeong-byeoljubu', 7,
+('22222222-2222-2222-2222-000000000207',
+ '11111111-1111-1111-1111-000000000002', 7,
  'quiz',
  '{"ko": "자라의 속임수", "ja": "スッポンの計略", "en": "The Turtle''s Trick"}',
  '{"ko": "거북섬에서 별주부전 관련 퀴즈를 풀어보세요.", "ja": "亀島でピョルジュブ伝に関するクイズに挑戦しましょう。", "en": "Solve a Byeoljubu tale quiz at Turtle Island."}',
@@ -259,7 +285,8 @@ VALUES
  '{"ko": "비토섬 거북섬", "ja": "ビト島亀島", "en": "Bito Island - Turtle Island"}',
  34.9128, 128.3248),
 
-('m-tongyeong-08', 'course-tongyeong-byeoljubu', 8,
+('22222222-2222-2222-2222-000000000208',
+ '11111111-1111-1111-1111-000000000002', 8,
  'boss',
  '{"ko": "용왕에게 보고하라!", "ja": "龍王に報告せよ！", "en": "Report to the Sea King!"}',
  '{"ko": "별주부전 테마파크에서 최종 보스 미션! 종합 퀴즈를 풀고 용왕에게 보고서를 작성하세요.", "ja": "ピョルジュブ伝テーマパークで最終ボスミッション！総合クイズを解いて龍王に報告書を作成しましょう。", "en": "Final boss mission at the Byeoljubu Theme Park! Solve the comprehensive quiz and write a report to the Sea King."}',
@@ -270,9 +297,10 @@ VALUES
  34.9140, 128.3260),
 
 
--- ── 천안 능소전 (7 미션) ──
+-- ── 천안 능소전 (7 미션, course_id: 11111111-1111-1111-1111-000000000003) ──
 
-('m-cheonan-01', 'course-cheonan-nungso', 1,
+('22222222-2222-2222-2222-000000000301',
+ '11111111-1111-1111-1111-000000000003', 1,
  'quiz',
  '{"ko": "능소전의 시작", "ja": "ヌンソ伝の始まり", "en": "The Beginning of Nungso''s Tale"}',
  '{"ko": "천안삼거리공원 입구에서 능소전 이야기의 첫 번째 퀴즈를 풀어보세요.", "ja": "天安三叉路公園入口でヌンソ伝の最初のクイズに挑戦しましょう。", "en": "Solve the first Nungso tale quiz at the entrance of Cheonan Samgeori Park."}',
@@ -282,7 +310,8 @@ VALUES
  '{"ko": "천안삼거리공원 입구", "ja": "天安三叉路公園入口", "en": "Cheonan Samgeori Park Entrance"}',
  36.7978, 127.1522),
 
-('m-cheonan-02', 'course-cheonan-nungso', 2,
+('22222222-2222-2222-2222-000000000302',
+ '11111111-1111-1111-1111-000000000003', 2,
  'photo',
  '{"ko": "능수버들 아래에서", "ja": "しだれ柳の下で", "en": "Beneath the Weeping Willow"}',
  '{"ko": "능소 조형물과 능수버들 길에서 인증샷을 찍으세요.", "ja": "ヌンソの像としだれ柳の道で記念撮影しましょう。", "en": "Take a photo with the Nungso statue along the weeping willow path."}',
@@ -292,7 +321,8 @@ VALUES
  '{"ko": "능소 조형물 & 능수버들 길", "ja": "ヌンソ像 & しだれ柳の道", "en": "Nungso Statue & Willow Path"}',
  36.7982, 127.1518),
 
-('m-cheonan-03', 'course-cheonan-nungso', 3,
+('22222222-2222-2222-2222-000000000303',
+ '11111111-1111-1111-1111-000000000003', 3,
  'open',
  '{"ko": "능소에게 편지 쓰기", "ja": "ヌンソへの手紙", "en": "Letter to Nungso"}',
  '{"ko": "능소각 정자에서 능소에게 보내는 짧은 편지를 작성하세요.", "ja": "ヌンソ閣の東屋でヌンソに送る短い手紙を書きましょう。", "en": "Write a short letter to Nungso at Nunso-gak pavilion."}',
@@ -302,7 +332,8 @@ VALUES
  '{"ko": "능소각", "ja": "ヌンソ閣", "en": "Nunso-gak Pavilion"}',
  36.7985, 127.1515),
 
-('m-cheonan-04', 'course-cheonan-nungso', 4,
+('22222222-2222-2222-2222-000000000304',
+ '11111111-1111-1111-1111-000000000003', 4,
  'quiz',
  '{"ko": "박현수가 쓰러진 곳", "ja": "パク・ヒョンスが倒れた場所", "en": "Where Park Hyun-su Collapsed"}',
  '{"ko": "영남루 터에서 능소전 스토리 관련 퀴즈를 풀어보세요.", "ja": "嶺南楼跡でヌンソ伝のストーリーに関するクイズに挑戦しましょう。", "en": "Solve a Nungso tale quiz at the Yeongnam-ru site."}',
@@ -312,7 +343,8 @@ VALUES
  '{"ko": "영남루 터", "ja": "嶺南楼跡", "en": "Yeongnam-ru Site"}',
  36.7975, 127.1525),
 
-('m-cheonan-05', 'course-cheonan-nungso', 5,
+('22222222-2222-2222-2222-000000000305',
+ '11111111-1111-1111-1111-000000000003', 5,
  'quiz',
  '{"ko": "천안의 맛", "ja": "天安の味", "en": "Taste of Cheonan"}',
  '{"ko": "천안중앙시장에서 호두과자 또는 병천순대를 시식하고 퀴즈를 풀어보세요.", "ja": "天安中央市場でクルミ菓子または餅天スンデを試食してクイズに挑戦しましょう。", "en": "Try walnut cookies or Byeongcheon sundae at Cheonan Central Market and solve the quiz."}',
@@ -322,7 +354,8 @@ VALUES
  '{"ko": "천안중앙시장", "ja": "天安中央市場", "en": "Cheonan Central Market"}',
  36.8114, 127.1468),
 
-('m-cheonan-06', 'course-cheonan-nungso', 6,
+('22222222-2222-2222-2222-000000000306',
+ '11111111-1111-1111-1111-000000000003', 6,
  'photo',
  '{"ko": "봉서산에서 바라본 천안", "ja": "鳳棲山から見た天安", "en": "Cheonan from Bongseosan"}',
  '{"ko": "봉서산 전망대에서 천안 시내 전경을 촬영하세요.", "ja": "鳳棲山展望台から天安市内の全景を撮影しましょう。", "en": "Photograph the panoramic view of Cheonan from Bongseosan viewpoint."}',
@@ -332,7 +365,8 @@ VALUES
  '{"ko": "봉서산 전망대", "ja": "鳳棲山展望台", "en": "Bongseosan Viewpoint"}',
  36.8048, 127.1445),
 
-('m-cheonan-07', 'course-cheonan-nungso', 7,
+('22222222-2222-2222-2222-000000000307',
+ '11111111-1111-1111-1111-000000000003', 7,
  'boss',
  '{"ko": "흥타령을 완성하라!", "ja": "フンタリョンを完成させよ！", "en": "Complete the Heungtaryeong!"}',
  '{"ko": "흥타령 거리에서 최종 보스 미션! 흥타령 가사 빈칸 채우기와 종합 퀴즈를 풀어보세요.", "ja": "フンタリョン通りで最終ボスミッション！フンタリョンの歌詞の穴埋めと総合クイズに挑戦しましょう。", "en": "Final boss mission on Heungtaryeong Street! Fill in the blanks of the Heungtaryeong lyrics and solve the comprehensive quiz."}',
@@ -343,9 +377,10 @@ VALUES
  36.8020, 127.1500),
 
 
--- ── 용인 동화 (8 미션) ──
+-- ── 용인 동화 (8 미션, course_id: 11111111-1111-1111-1111-000000000004) ──
 
-('m-yongin-01', 'course-yongin-fairytale', 1,
+('22222222-2222-2222-2222-000000000401',
+ '11111111-1111-1111-1111-000000000004', 1,
  'quiz',
  '{"ko": "동화의 문을 열다", "ja": "童話の扉を開く", "en": "Open the Door to Fairy Tales"}',
  '{"ko": "한국민속촌 입구에서 한국 전래동화 5개의 이름을 맞춰보세요.", "ja": "韓国民俗村入口で韓国昔話5作品の名前を当てましょう。", "en": "Name five Korean fairy tales at the Korean Folk Village entrance."}',
@@ -355,7 +390,8 @@ VALUES
  '{"ko": "한국민속촌 정문", "ja": "韓国民俗村正門", "en": "Korean Folk Village Main Gate"}',
  37.2590, 127.1185),
 
-('m-yongin-02', 'course-yongin-fairytale', 2,
+('22222222-2222-2222-2222-000000000402',
+ '11111111-1111-1111-1111-000000000004', 2,
  'photo',
  '{"ko": "콩쥐가 되어보기", "ja": "コンジュになってみよう", "en": "Become Kongjwi"}',
  '{"ko": "콩쥐팥쥐 포토존에서 한복을 입고 인증샷을 찍으세요.", "ja": "コンジュパッジュフォトゾーンで韓服を着て記念撮影しましょう。", "en": "Wear a Hanbok and take a photo at the Kongjwi Patjwi photo zone."}',
@@ -365,7 +401,8 @@ VALUES
  '{"ko": "콩쥐팥쥐 포토존", "ja": "コンジュパッジュフォトゾーン", "en": "Kongjwi Patjwi Photo Zone"}',
  37.2578, 127.1192),
 
-('m-yongin-03', 'course-yongin-fairytale', 3,
+('22222222-2222-2222-2222-000000000403',
+ '11111111-1111-1111-1111-000000000004', 3,
  'photo',
  '{"ko": "흥부의 박 터뜨리기", "ja": "フンブのひょうたん割り", "en": "Heungbu''s Gourd Smash"}',
  '{"ko": "흥부놀부 체험존에서 박 터뜨리기 포토를 찍거나 퀴즈를 풀어보세요.", "ja": "フンブ・ノルブ体験ゾーンでひょうたん割りの写真を撮るかクイズに挑戦しましょう。", "en": "Take a gourd-smashing photo or solve a quiz at the Heungbu Nolbu experience zone."}',
@@ -375,7 +412,8 @@ VALUES
  '{"ko": "흥부놀부 체험존", "ja": "フンブ・ノルブ体験ゾーン", "en": "Heungbu Nolbu Experience Zone"}',
  37.2572, 127.1198),
 
-('m-yongin-04', 'course-yongin-fairytale', 4,
+('22222222-2222-2222-2222-000000000404',
+ '11111111-1111-1111-1111-000000000004', 4,
  'quiz',
  '{"ko": "도깨비가 좋아하는 것", "ja": "トッケビの好きなもの", "en": "What the Dokkaebi Loves"}',
  '{"ko": "혹부리영감 도깨비방망이 포인트에서 퀴즈를 풀어보세요.", "ja": "コブトリ爺さんトッケビの棒ポイントでクイズに挑戦しましょう。", "en": "Solve a quiz at the Old Man Wart Dokkaebi club point."}',
@@ -385,7 +423,8 @@ VALUES
  '{"ko": "혹부리영감 포인트", "ja": "コブトリ爺さんポイント", "en": "Old Man Wart Point"}',
  37.2565, 127.1205),
 
-('m-yongin-05', 'course-yongin-fairytale', 5,
+('22222222-2222-2222-2222-000000000405',
+ '11111111-1111-1111-1111-000000000004', 5,
  'photo',
  '{"ko": "선녀의 깃옷을 찾아라", "ja": "仙女の羽衣を探せ", "en": "Find the Fairy''s Robe"}',
  '{"ko": "선녀와 나무꾼 연못 주변에서 숨겨진 깃옷 포인트를 찾아보세요.", "ja": "仙女と木こりの池の周りで隠された羽衣ポイントを探しましょう。", "en": "Find the hidden feathered robe point around the Fairy and Woodcutter pond."}',
@@ -395,7 +434,8 @@ VALUES
  '{"ko": "선녀와 나무꾼 연못", "ja": "仙女と木こりの池", "en": "Fairy & Woodcutter Pond"}',
  37.2558, 127.1210),
 
-('m-yongin-06', 'course-yongin-fairytale', 6,
+('22222222-2222-2222-2222-000000000406',
+ '11111111-1111-1111-1111-000000000004', 6,
  'quiz',
  '{"ko": "달고나의 추억", "ja": "タルゴナの思い出", "en": "Dalgona Memories"}',
  '{"ko": "전통시장 거리에서 달고나를 만들고 전통 음식 퀴즈를 풀어보세요.", "ja": "伝統市場通りでタルゴナを作り、伝統料理クイズに挑戦しましょう。", "en": "Make dalgona at the traditional market street and solve a traditional food quiz."}',
@@ -405,7 +445,8 @@ VALUES
  '{"ko": "전통시장 거리", "ja": "伝統市場通り", "en": "Traditional Market Street"}',
  37.2582, 127.1175),
 
-('m-yongin-07', 'course-yongin-fairytale', 7,
+('22222222-2222-2222-2222-000000000407',
+ '11111111-1111-1111-1111-000000000004', 7,
  'quiz',
  '{"ko": "풍물놀이의 박자", "ja": "プンムルノリのリズム", "en": "Rhythm of Pungmul"}',
  '{"ko": "풍물놀이 마당에서 공연을 관람하고 악기 이름 퀴즈를 풀어보세요.", "ja": "プンムルノリ広場で公演を観覧し、楽器の名前クイズに挑戦しましょう。", "en": "Watch a performance at the Pungmul yard and solve a musical instrument name quiz."}',
@@ -415,7 +456,8 @@ VALUES
  '{"ko": "풍물놀이 마당", "ja": "プンムルノリ広場", "en": "Pungmul Performance Yard"}',
  37.2575, 127.1168),
 
-('m-yongin-08', 'course-yongin-fairytale', 8,
+('22222222-2222-2222-2222-000000000408',
+ '11111111-1111-1111-1111-000000000004', 8,
  'boss',
  '{"ko": "산신령의 시험", "ja": "山の神の試練", "en": "The Mountain Spirit''s Test"}',
  '{"ko": "금도끼 은도끼 산신령 동상 앞에서 최종 보스 미션! 종합 퀴즈를 풀어보세요.", "ja": "金の斧銀の斧の山の神の像の前で最終ボスミッション！総合クイズに挑戦しましょう。", "en": "Final boss mission at the Gold Axe Silver Axe mountain spirit statue! Solve the comprehensive quiz."}',
@@ -426,9 +468,10 @@ VALUES
  37.2560, 127.1180),
 
 
--- ── 이천 선녀와 나무꾼 (7 미션) ──
+-- ── 이천 선녀와 나무꾼 (7 미션, course_id: 11111111-1111-1111-1111-000000000005) ──
 
-('m-icheon-01', 'course-icheon-fairy', 1,
+('22222222-2222-2222-2222-000000000501',
+ '11111111-1111-1111-1111-000000000005', 1,
  'quiz',
  '{"ko": "사슴의 보은", "ja": "鹿の恩返し", "en": "The Deer''s Gratitude"}',
  '{"ko": "효양산 입구 안내판에서 선녀와 나무꾼 이야기의 첫 번째 퀴즈를 풀어보세요.", "ja": "ヒョヤン山入口の案内板で仙女と木こりの最初のクイズに挑戦しましょう。", "en": "Solve the first Fairy and Woodcutter quiz at the Hyoyangsan entrance sign."}',
@@ -438,7 +481,8 @@ VALUES
  '{"ko": "효양산 입구", "ja": "ヒョヤン山入口", "en": "Hyoyangsan Entrance"}',
  37.2745, 127.4352),
 
-('m-icheon-02', 'course-icheon-fairy', 2,
+('22222222-2222-2222-2222-000000000502',
+ '11111111-1111-1111-1111-000000000005', 2,
  'photo',
  '{"ko": "선녀의 연못", "ja": "仙女の池", "en": "The Fairy''s Pond"}',
  '{"ko": "효양산 선녀 연못 터에서 인증샷을 찍고 날개옷 포인트를 찾아보세요.", "ja": "ヒョヤン山の仙女の池跡で記念撮影し、羽衣ポイントを探しましょう。", "en": "Take a photo at the fairy pond site on Hyoyangsan and look for the feathered robe point."}',
@@ -448,7 +492,8 @@ VALUES
  '{"ko": "선녀 연못 터", "ja": "仙女の池跡", "en": "Fairy Pond Site"}',
  37.2760, 127.4368),
 
-('m-icheon-03', 'course-icheon-fairy', 3,
+('22222222-2222-2222-2222-000000000503',
+ '11111111-1111-1111-1111-000000000005', 3,
  'quiz',
  '{"ko": "삼형제바위의 비밀", "ja": "三兄弟岩の秘密", "en": "Secret of the Three Brothers Rock"}',
  '{"ko": "설봉산 삼형제바위에서 설화 관련 퀴즈를 풀어보세요.", "ja": "雪峰山三兄弟岩で説話に関するクイズに挑戦しましょう。", "en": "Solve a folklore quiz at the Three Brothers Rock on Seolbongsan."}',
@@ -458,7 +503,8 @@ VALUES
  '{"ko": "설봉산 삼형제바위", "ja": "雪峰山三兄弟岩", "en": "Seolbongsan Three Brothers Rock"}',
  37.2698, 127.4401),
 
-('m-icheon-04', 'course-icheon-fairy', 4,
+('22222222-2222-2222-2222-000000000504',
+ '11111111-1111-1111-1111-000000000005', 4,
  'photo',
  '{"ko": "설봉호의 풍경", "ja": "雪峰湖の風景", "en": "Scenery of Seolbongho"}',
  '{"ko": "설봉호 수변공원에서 경치를 감상하고 포토를 찍으세요.", "ja": "雪峰湖水辺公園で景色を楽しみ写真を撮りましょう。", "en": "Enjoy the scenery at Seolbongho lakeside park and take a photo."}',
@@ -468,7 +514,8 @@ VALUES
  '{"ko": "설봉호 수변공원", "ja": "雪峰湖水辺公園", "en": "Seolbongho Lakeside Park"}',
  37.2715, 127.4385),
 
-('m-icheon-05', 'course-icheon-fairy', 5,
+('22222222-2222-2222-2222-000000000505',
+ '11111111-1111-1111-1111-000000000005', 5,
  'quiz',
  '{"ko": "도자기의 고장", "ja": "陶磁器の里", "en": "Home of Ceramics"}',
  '{"ko": "이천 도예마을에서 도자기 관련 퀴즈를 풀어보세요.", "ja": "利川陶芸村で陶磁器に関するクイズに挑戦しましょう。", "en": "Solve a ceramics quiz at Icheon Pottery Village."}',
@@ -478,7 +525,8 @@ VALUES
  '{"ko": "이천 도예마을", "ja": "利川陶芸村", "en": "Icheon Pottery Village"}',
  37.2631, 127.4512),
 
-('m-icheon-06', 'course-icheon-fairy', 6,
+('22222222-2222-2222-2222-000000000506',
+ '11111111-1111-1111-1111-000000000005', 6,
  'quiz',
  '{"ko": "이천 쌀밥의 맛", "ja": "利川ご飯の味", "en": "Taste of Icheon Rice"}',
  '{"ko": "이천 쌀밥거리에서 쌀밥 정식을 시식하고 재료 맞추기 퀴즈를 풀어보세요.", "ja": "利川ご飯通りでご飯定食を試食して食材当てクイズに挑戦しましょう。", "en": "Try Icheon rice set meal on Rice Street and solve a food ingredient quiz."}',
@@ -488,7 +536,8 @@ VALUES
  '{"ko": "이천 쌀밥거리", "ja": "利川ご飯通り", "en": "Icheon Rice Street"}',
  37.2789, 127.4345),
 
-('m-icheon-07', 'course-icheon-fairy', 7,
+('22222222-2222-2222-2222-000000000507',
+ '11111111-1111-1111-1111-000000000005', 7,
  'boss',
  '{"ko": "반룡송의 약속", "ja": "盤龍松の約束", "en": "Promise of the Banyongsong"}',
  '{"ko": "500년 된 소나무 반룡송 앞에서 최종 보스 미션! 나무꾼이 약속을 지켰다면 어떻게 되었을까? 자유롭게 답변하세요.", "ja": "樹齢500年の松・盤龍松の前で最終ボスミッション！木こりが約束を守っていたらどうなっていたでしょう？自由に答えてください。", "en": "Final boss mission at the 500-year-old Banyongsong pine! What would have happened if the woodcutter had kept his promise? Answer freely."}',

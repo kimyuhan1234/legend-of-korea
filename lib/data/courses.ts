@@ -18,7 +18,7 @@ export interface CourseData {
 
 export const courses: CourseData[] = [
   {
-    id: 'course-jeonju-dokkaebi',
+    id: '11111111-1111-1111-1111-000000000001',
     region: 'jeonju',
     title: { ko: '도깨비의 선물', ja: 'トッケビの贈り物', en: 'Gift of the Dokkaebi' },
     subtitle: { ko: '전주 한옥마을에서 도깨비를 만나다', ja: '全州韓屋村でトッケビに出会う', en: 'Meet the Dokkaebi in Jeonju Hanok Village' },
@@ -43,7 +43,7 @@ export const courses: CourseData[] = [
     targetAudience: ['family', 'couple', 'mz']
   },
   {
-    id: 'course-tongyeong-byeoljubu',
+    id: '11111111-1111-1111-1111-000000000002',
     region: 'tongyeong',
     title: { ko: '별주부의 모험', ja: 'ピョルジュブの冒険', en: 'Adventure of Byeoljubu' },
     subtitle: { ko: '토끼와 자라의 바다 용궁 이야기', ja: 'ウサギとスッポンの海の龍宮物語', en: 'The Sea Palace Tale of Rabbit and Turtle' },
@@ -68,7 +68,7 @@ export const courses: CourseData[] = [
     targetAudience: ['couple', 'mz']
   },
   {
-    id: 'course-cheonan-nungso',
+    id: '11111111-1111-1111-1111-000000000003',
     region: 'cheonan',
     title: { ko: '능소의 기다림', ja: 'ヌンソの待ち人', en: "Nungso's Waiting" },
     subtitle: { ko: '천안삼거리 능수버들 아래 사랑 이야기', ja: '天安三叉路のしだれ柳の下の愛の物語', en: 'A Love Story Beneath the Willows of Cheonan' },
@@ -93,7 +93,7 @@ export const courses: CourseData[] = [
     targetAudience: ['couple']
   },
   {
-    id: 'course-yongin-fairytale',
+    id: '11111111-1111-1111-1111-000000000004',
     region: 'yongin',
     title: { ko: '동화 속으로', ja: '童話の中へ', en: 'Into the Fairy Tales' },
     subtitle: { ko: '한국민속촌에서 전래동화 올스타를 만나다', ja: '韓国民俗村で昔話オールスターに出会う', en: 'Meet All-Star Korean Fairy Tales at Folk Village' },
@@ -118,7 +118,7 @@ export const courses: CourseData[] = [
     targetAudience: ['family']
   },
   {
-    id: 'course-icheon-fairy',
+    id: '11111111-1111-1111-1111-000000000005',
     region: 'icheon',
     title: { ko: '선녀의 날개옷', ja: '仙女の羽衣', en: "The Fairy's Feathered Robe" },
     subtitle: { ko: '이천 효양산에서 하고로모 전설을 만나다', ja: '利川ヒョヤン山で羽衣伝説に出会う', en: 'Discover the Hagoromo Legend at Icheon' },
