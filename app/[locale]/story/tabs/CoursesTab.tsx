@@ -14,15 +14,12 @@ const COMING_SOON_BADGE: Record<string, string> = {
 export async function CoursesTab({ locale }: CoursesTabProps) {
   const supabase = await createClient()
 
-  const { data: allCourses, error } = await supabase
+  const { data: allCourses } = await supabase
     .from('courses')
     .select('id, title, description, thumbnail_url, difficulty, region, duration_text, price_1p, price_2p, is_active')
     .order('created_at', { ascending: true })
 
-  console.log('[CoursesTab] allCourses count:', allCourses?.length, 'error:', error?.message)
-  console.log('[CoursesTab] data:', JSON.stringify(allCourses?.map(c => ({ id: c.id, region: c.region, is_active: c.is_active }))))
-
-  const activeCourses = allCourses?.filter(c => c.is_active) ?? []
+const activeCourses = allCourses?.filter(c => c.is_active) ?? []
   const comingSoonCourses = allCourses?.filter(c => !c.is_active) ?? []
 
   const badge = COMING_SOON_BADGE[locale] ?? COMING_SOON_BADGE.ko

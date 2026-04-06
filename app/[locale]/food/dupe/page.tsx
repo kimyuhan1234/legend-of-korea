@@ -70,70 +70,45 @@ export default function DupePage({ params }: Props) {
       {/* 지역 선택 그리드 */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {regions.map((region) => {
-            const hasFood = region.foods.length > 0
-            return hasFood ? (
-              <Link
-                key={region.code}
-                href={`/${locale}/food/dupe/${region.code}`}
-                className="group bg-white rounded-3xl border border-[#e8ddd0] hover:border-[#D4A843]/50 hover:shadow-md transition-all overflow-hidden"
-              >
-                {/* 지역 이미지 */}
-                <div className="relative h-44 overflow-hidden">
-                  <Image
-                    src={region.image}
-                    alt={getL(region.name, locale)}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A]/60 to-transparent" />
-                  <span className="absolute bottom-3 left-4 text-3xl">{region.icon}</span>
-                </div>
-                <div className="p-5">
-                  <h2 className="text-xl font-black text-[#1B2A4A] mb-1">
-                    {getL(region.name, locale)}
-                  </h2>
-                  <p className="text-sm text-[#7a6a58] leading-relaxed mb-4">
-                    {getL(region.description, locale)}
-                  </p>
+          {regions.map((region) => (
+            <Link
+              key={region.code}
+              href={`/${locale}/food/dupe/${region.code}`}
+              className="group bg-white rounded-3xl border border-[#e8ddd0] hover:border-[#D4A843]/50 hover:shadow-md transition-all overflow-hidden"
+            >
+              {/* 지역 이미지 */}
+              <div className="relative h-44 overflow-hidden">
+                <Image
+                  src={region.image}
+                  alt={getL(region.name, locale)}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A]/60 to-transparent" />
+                <span className="absolute bottom-3 left-4 text-3xl">{region.icon}</span>
+              </div>
+              <div className="p-5">
+                <h2 className="text-xl font-black text-[#1B2A4A] mb-1">
+                  {getL(region.name, locale)}
+                </h2>
+                <p className="text-sm text-[#7a6a58] leading-relaxed mb-4">
+                  {getL(region.description, locale)}
+                </p>
+                {region.foods.length > 0 ? (
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-[#D4A843]">
                       {region.foods.length}{locale === "ko" ? "가지 음식" : locale === "ja" ? "品" : " dishes"}
                     </span>
                     <span className="text-[#D4A843] group-hover:translate-x-1 transition-transform">→</span>
                   </div>
-                </div>
-              </Link>
-            ) : (
-              <div
-                key={region.code}
-                className="bg-white rounded-3xl border border-[#e8ddd0]/60 overflow-hidden opacity-60 cursor-not-allowed"
-              >
-                {/* 지역 이미지 (grayscale) */}
-                <div className="relative h-44 overflow-hidden">
-                  <Image
-                    src={region.image}
-                    alt={getL(region.name, locale)}
-                    fill
-                    className="object-cover grayscale"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A]/60 to-transparent" />
-                  <span className="absolute bottom-3 left-4 text-3xl grayscale">{region.icon}</span>
-                </div>
-                <div className="p-5">
-                  <h2 className="text-xl font-black text-[#1B2A4A] mb-1">
-                    {getL(region.name, locale)}
-                  </h2>
-                  <p className="text-sm text-[#7a6a58] leading-relaxed mb-4">
-                    {getL(region.description, locale)}
-                  </p>
+                ) : (
                   <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#F5F0E8] text-xs text-[#7a6a58] font-medium">
                     🕐 {comingSoon}
                   </span>
-                </div>
+                )}
               </div>
-            )
-          })}
+            </Link>
+          ))}
         </div>
       </section>
     </div>
