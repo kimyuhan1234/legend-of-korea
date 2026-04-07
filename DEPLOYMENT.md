@@ -16,9 +16,10 @@ Follow this guide to transition Legend of Korea from development to production.
 ```sql
 ALTER TABLE courses ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Anyone can read active courses"
+-- 모든 코스를 공개 조회 가능 (is_active 필터링은 앱 코드에서 처리)
+CREATE POLICY "Public read all courses"
   ON courses FOR SELECT
-  USING (is_active = true);
+  USING (true);
 
 CREATE POLICY "Admins full access"
   ON courses FOR ALL
@@ -27,6 +28,10 @@ CREATE POLICY "Admins full access"
     WHERE u.id = auth.uid() AND u.role = 'admin'
   ));
 ```
+
+> **변경 이유**: `USING (is_active = true)` 정책은 비활성 코스(준비 중)를 완전히 차단하여
+> 프론트엔드에서 "준비 중" 상태를 표시할 수 없는 문제가 있었습니다.
+> `USING (true)`로 변경 후 앱 코드에서 `is_active` 기준으로 구분하여 처리합니다.
 - **Authentication**: Update 카카오, 구글, LINE providers with the production domain (`https://legendofkorea.com/auth/callback`).
 - **Storage CORS**: Configure allowed origins to include the production domain.
 - **Bucket Creation**: Create public buckets `mission-photos` and `community-photos`.
