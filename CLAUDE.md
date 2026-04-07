@@ -2,6 +2,42 @@
 
 ---
 
+## ✅ 작업 완료 후 GitHub 저장 규칙 (모든 작업의 마지막 단계)
+
+> **모든 작업(디자인 수정, 버그 수정, 기능 추가 등)을 완료한 후 반드시 아래 순서로 GitHub에 Push한다.**
+> 이 단계를 건너뛰면 작업이 완료된 것이 아니다.
+
+1. 변경된 파일을 스테이징한다.
+2. 커밋 메시지는 **한글**로 작업 내용을 구체적으로 작성한다.
+3. 현재 브랜치(보통 `main`)에 Push한다.
+
+```bash
+git add .
+git commit -m "feat: 작업 내용 요약"
+git push origin main
+```
+
+**커밋 메시지 예시:**
+- `feat: 키네틱 에디토리얼 디자인 테마 적용`
+- `fix: 500 에러 및 무한 새로고침 원인 해결`
+- `chore: CLAUDE.md 규칙 업데이트`
+
+> 작업 완료 보고 마지막 줄에는 반드시 **"GitHub 저장 완료"** 를 포함한다.
+
+---
+
+## 🚨 절대 규칙 (모든 작업 전 반드시 읽을 것)
+
+> **이 규칙을 어기면 Next.js dev 서버가 즉시 500 에러를 뿜으며 무한 루프에 빠진다.**
+
+1. **`import`는 반드시 파일 최상단에.** 함수 선언이나 변수 선언 아래에 `import`를 쓰면 Next.js dev 모드 SWC 컴파일러가 즉시 500을 발생시킨다. (실제 사고 발생 이력 있음)
+
+2. **`error.tsx`, `global-error.tsx`는 손대지 마라.** 대규모 컴포넌트 수정 시 가장 먼저 이 파일이 무너진다. 수정 후에는 이 두 파일이 살아있는지 반드시 확인한다.
+
+3. **`error.tsx` / `global-error.tsx` / `loading.tsx` / `not-found.tsx` 에는 `next-intl`, `shadcn/ui`, 외부 컴포넌트를 절대 임포트하지 마라.** 이 파일들은 React Provider 바깥에서 렌더링될 수 있으므로, 오직 `'use client'` + 순수 React + 인라인 스타일만 허용된다.
+
+---
+
 ## [문서 주도 개발 규칙] ← 반드시 준수
 
 > **Rule**: 코드를 작성하거나 데이터베이스를 수정하기 전에,  
@@ -120,6 +156,7 @@ pnpm test:watch    # 파일 변경 감지 모드
 ---
 
 ## 코드 작성 원칙
+- 🚨 **[치명적 주의] 모든 `import` 문은 반드시 파일의 가장 최상단(어떤 함수나 변수 선언보다 위)에 작성해야 한다.** Next.js 개발 모드(dev)의 SWC 컴파일러는 `import` 호이스팅(끌어올리기)을 허용하지 않으며, 파일 중간에 `import`가 있을 경우 즉시 500 Internal Server Error를 발생시킨다.
 - 추가 기능 없이 요청된 것만 수정
 - 보안: SQL Injection, XSS, 민감정보 하드코딩 금지
 - 서버 컴포넌트 기본, 클라이언트 컴포넌트는 `"use client"` 명시
@@ -172,7 +209,13 @@ try {
 
 ---
 
-### 3. 레고 블록 규칙 (Atomic UI Updates)
+### 3. 캐시 청소 규칙 (Cache Harness)
+
+> 대규모 UI 리팩토링(코드 개선)이나 환경설정을 변경한 후에는, 낡은 캐시(임시 저장소) 때문에 에러가 날 확률이 높다. 따라서 작업 완료 보고 시 사용자에게 반드시 `pnpm dev:clean` 명령어로 서버를 켜도록 안내해라.
+
+---
+
+### 4. 레고 블록 규칙 (Atomic UI Updates)
 
 > page.tsx를 통째로 덮어쓰지 않는다.
 
@@ -190,3 +233,93 @@ try {
 2. Write: components/features/story/CourseMissionList.tsx ← 신규 생성
 3. Edit:  app/[locale]/courses/[courseId]/page.tsx      ← 조립만 수정
 ```
+
+---
+
+## 철통 보안 규칙 (Security First Harness)
+
+### 1. 데이터 문지기 (RLS Strict Mode)
+
+> RLS 없는 테이블은 배포 금지.
+
+- **배포 전 필수**: 모든 Supabase 테이블에 `ALTER TABLE {name} ENABLE ROW LEVEL SECURITY;` 적용
+- 정책 분류 기준:
+
+| 데이터 종류 | 테이블 | 허용 정책 |
+|-------------|--------|-----------|
+| 공개 데이터 | `courses`, `missions`, `tiers`, `affiliate_links` | `USING (true)` — 전체 읽기 허용 |
+| 사용자 개인 데이터 | `orders`, `mission_progress`, `lp_transactions` | `USING (auth.uid() = user_id)` — 본인만 |
+| 커뮤니티 | `community_posts`, `community_comments` | 읽기: `USING (is_hidden = false)`, 쓰기: `WITH CHECK (auth.uid() = user_id)` |
+| 관리자 전용 | 모든 테이블 | `USING (EXISTS (SELECT 1 FROM users WHERE id = auth.uid() AND role = 'admin'))` |
+
+- **체크리스트** (신규 테이블 생성 시 반드시 확인):
+  - [ ] `ENABLE ROW LEVEL SECURITY` 적용했는가?
+  - [ ] `SELECT` / `INSERT` / `UPDATE` / `DELETE` 각각의 정책을 명시했는가?
+  - [ ] `service_role` 키 없이 `anon` 키로 직접 접근 테스트를 했는가?
+
+---
+
+### 2. 비밀 금고 분리 (Environment Variables Safety)
+
+> `SECRET` 키는 단 한 줄도 클라이언트 코드에 들어가면 안 된다.
+
+**분류 기준:**
+
+| 접두사 | 노출 범위 | 허용 파일 |
+|--------|-----------|-----------|
+| `NEXT_PUBLIC_` | 브라우저 번들에 포함 (공개) | 모든 파일 |
+| 없음 (SECRET) | 서버 전용 (비공개) | `app/api/**`, `lib/server/**`, Edge Function만 |
+
+**절대 금지 패턴:**
+```typescript
+// WRONG: 클라이언트 컴포넌트에서 SECRET 키 사용
+"use client"
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)  // 빌드 시 번들에 포함됨
+
+// CORRECT: API Route에서만 사용
+// app/api/payment/route.ts (서버 전용)
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+```
+
+**코드 작성 전 확인 질문:**
+- 이 파일에 `"use client"`가 있는가? → `SECRET` 키 사용 불가
+- `NEXT_PUBLIC_` 키에 민감 정보가 담겨 있는가? → 즉시 서버 전용으로 이동
+
+---
+
+### 3. 영수증 이중 확인 (Server-side Validation)
+
+> 클라이언트가 보낸 금액·포인트·쿠폰을 절대 그대로 믿지 않는다.
+
+**결제 서버 검증 필수 항목:**
+```typescript
+// app/api/payment/confirm/route.ts 패턴
+export async function POST(req: Request) {
+  const { paymentKey, orderId, amount } = await req.json()
+
+  // 1. DB에서 실제 주문 금액 조회 (클라이언트 값 무시)
+  const { data: order } = await supabase
+    .from('orders')
+    .select('total_price')
+    .eq('id', orderId)
+    .single()
+
+  // 2. 금액 조작 감지
+  if (order.total_price !== amount) {
+    return NextResponse.json({ error: '금액 불일치' }, { status: 400 })
+  }
+
+  // 3. 중복 결제 방지 (idempotency)
+  if (order.status !== 'pending') {
+    return NextResponse.json({ error: '이미 처리된 주문' }, { status: 409 })
+  }
+
+  // 4. PG사 서버에서 결제 상태 재확인 (Toss/Stripe API 직접 호출)
+  // ...
+}
+```
+
+**LP 적립 서버 검증 필수 항목:**
+- 미션 완료 여부를 `mission_progress` 테이블에서 서버에서 직접 확인
+- 동일 미션 중복 적립 방지: `UNIQUE (user_id, mission_id)` 제약 활용
+- LP 금액은 `missions.lp_reward`에서 서버가 직접 읽어옴 (클라이언트 전달값 무시)
