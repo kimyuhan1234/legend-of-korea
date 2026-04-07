@@ -237,8 +237,9 @@ export const CITIES = [
   { code: "icheon",   ko: "이천", ja: "利川",   en: "Icheon" },
   { code: "seoul",    ko: "서울", ja: "ソウル",  en: "Seoul" },
   { code: "busan",    ko: "부산", ja: "釜山",   en: "Busan" },
-  { code: "gyeongju", ko: "경주", ja: "慶州",   en: "Gyeongju" },
-  { code: "jeju",     ko: "제주", ja: "済州",   en: "Jeju" },
+  { code: "gyeongju",  ko: "경주", ja: "慶州",   en: "Gyeongju" },
+  { code: "jeju",      ko: "제주", ja: "済州",   en: "Jeju" },
+  { code: "tongyeong", ko: "통영", ja: "統営",   en: "Tongyeong" },
 ]
 
 export const CATEGORY_LABEL = {

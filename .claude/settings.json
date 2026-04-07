@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -c \"import sys,json; d=json.load(sys.stdin); fp=d.get('tool_input',{}).get('file_path',''); sys.exit(0 if 'lib/data/' in fp and fp.endswith('.ts') else 1)\" && cd \"C:/Users/ADMIN/Desktop/lok/legend-of-korea\" && pnpm test 2>&1 | tail -12 || true",
+            "timeout": 60,
+            "statusMessage": "lib/data 변경 감지 - 테스트 실행 중..."
+          }
+        ]
+      }
+    ]
+  }
+}
