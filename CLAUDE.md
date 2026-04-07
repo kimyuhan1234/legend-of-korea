@@ -126,3 +126,67 @@ pnpm test:watch    # 파일 변경 감지 모드
 - Supabase 클라이언트: 서버는 `createServerComponentClient`, 클라이언트는 `createClientComponentClient`
 - 이미지는 `next/image` 사용, `alt` 필수
 - 삭제보다 수정을 선호, 기존 패턴 유지
+
+---
+
+## 심화 안전 및 개발 규칙 (Advanced Safety Harness)
+
+### 1. 거울 규칙 (DB-Type Sync)
+
+> DB를 만지면 타입도 반드시 같이 수정한다.
+
+- Supabase SQL(테이블 생성·컬럼 추가·타입 변경·FK 수정)을 적용할 때는,  
+  **반드시 `lib/supabase/types.ts`의 TypeScript 타입 정의를 동시에 동기화**한다.
+- FK 누락, 컬럼 타입 불일치, nullable 불일치는 절대 허용하지 않는다.
+- 체크리스트:
+  - [ ] SQL 변경 사항이 `types.ts`의 `Row` / `Insert` / `Update` 타입에 반영되었는가?
+  - [ ] 새 FK가 `types.ts`의 관계(Relations) 타입에 반영되었는가?
+  - [ ] `pnpm tsc --noEmit`으로 타입 오류가 없는지 확인했는가?
+
+---
+
+### 2. 안전망 규칙 (Error Handling First)
+
+> 성공 로직보다 실패 처리를 먼저 설계한다.
+
+- API 라우트(`app/api/**`) 또는 클라이언트 액션을 작성할 때:
+  1. **try-catch 블록 먼저 작성** → 성공 로직은 그 안에 삽입
+  2. **에러 메시지 분기** 필수: 네트워크 오류 / 인증 오류 / 비즈니스 로직 오류를 구분
+  3. **결제(Toss/Stripe) 연동**은 반드시 아래 Fallback UI를 포함:
+     - 네트워크 오류 → "결제 서버에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요."
+     - 결제 실패 → `/courses/[courseId]/purchase/fail` 페이지로 리다이렉트
+     - 중복 결제 방지 → 버튼 `disabled` + 로딩 스피너 처리
+
+```typescript
+// 올바른 패턴 예시
+try {
+  // 성공 로직
+} catch (error) {
+  if (error instanceof NetworkError) { /* fallback */ }
+  else if (error instanceof PaymentError) { /* redirect to fail */ }
+  else { /* generic error */ }
+} finally {
+  setLoading(false)  // 반드시 로딩 상태 해제
+}
+```
+
+---
+
+### 3. 레고 블록 규칙 (Atomic UI Updates)
+
+> page.tsx를 통째로 덮어쓰지 않는다.
+
+- 기존 페이지를 **대규모 개편**할 때의 필수 절차:
+  1. `components/features/{기능명}/` 아래에 **작은 단위 컴포넌트**를 먼저 생성
+  2. 해당 컴포넌트가 독립적으로 동작하는지 확인
+  3. 최종적으로 `page.tsx`에서 **조립(import)** 방식으로 완성
+
+- **금지 행동**: `page.tsx` 전체를 새 내용으로 한 번에 교체 (`Write` 툴로 통째로 덮어쓰기)
+- **허용 행동**: `Edit` 툴로 특정 섹션만 교체 / 신규 컴포넌트 파일 생성 후 import
+
+```
+# 올바른 작업 순서 예시 (코스 상세 페이지 개편)
+1. Write: components/features/story/CourseHero.tsx      ← 신규 생성
+2. Write: components/features/story/CourseMissionList.tsx ← 신규 생성
+3. Edit:  app/[locale]/courses/[courseId]/page.tsx      ← 조립만 수정
+```
