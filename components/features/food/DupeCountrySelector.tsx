@@ -82,18 +82,8 @@ export function DupeCountrySelector({ food, locale }: Props) {
     <section className="mb-10">
       <h2 className="text-xl font-black text-[#111] mb-5">{t.title}</h2>
 
-      <div className="flex flex-col md:flex-row gap-6">
-        {/* 왼쪽 고정: 한국 음식 맛 프로필 */}
-        <div className="md:w-52 flex-shrink-0">
-          <div className="bg-white rounded-3xl border border-[#e8ddd0] p-5 md:sticky md:top-20">
-            <p className="text-xs font-bold text-[#111] mb-3 text-center">{t.myTaste}</p>
-            <TasteRadarChart profile={food.tasteProfile} locale={locale} size={160} color="#D4A843" />
-            <p className="text-xs text-[#7a6a58] text-center mt-2">{getL(food.name, locale)}</p>
-          </div>
-        </div>
-
-        {/* 오른쪽: 국가 탭 + 콘텐츠 */}
-        <div className="flex-1 min-w-0">
+      {/* 국가 탭 + 콘텐츠 — 전체 너비 */}
+      <div>
           {/* 가로 스크롤 국가 탭 */}
           <div className="overflow-x-auto pb-2 mb-5 -mx-1 px-1">
             <div className="flex gap-2 w-max">
@@ -182,7 +172,6 @@ export function DupeCountrySelector({ food, locale }: Props) {
               </span>
             </div>
           )}
-        </div>
       </div>
     </section>
   )
