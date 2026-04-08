@@ -100,7 +100,7 @@ describe("food-dupes: 음식(RegionalFood) 구조", () => {
     for (const region of regions) {
       for (const food of region.foods) {
         expect(
-          food.dupes.length,
+          Object.keys(food.dupes).length,
           `${food.id}: dupes가 비어있음`
         ).toBeGreaterThan(0)
       }
@@ -110,7 +110,7 @@ describe("food-dupes: 음식(RegionalFood) 구조", () => {
   it("듀프 similarityPercent 는 50~100 사이여야 한다", () => {
     for (const region of regions) {
       for (const food of region.foods) {
-        for (const dupe of food.dupes) {
+        for (const dupe of Object.values(food.dupes)) {
           expect(
             dupe.similarityPercent,
             `${food.id} > ${dupe.name.ko}: similarityPercent = ${dupe.similarityPercent}`

@@ -6,11 +6,10 @@ export interface TasteProfile {
   sour: number
 }
 
+export type CountryCode = 'CN' | 'JP' | 'TH' | 'VN' | 'MY' | 'ID' | 'US' | 'IT' | 'FR' | 'IN' | 'ES' | 'MX'
+
 export interface DupeForeignFood {
   name: { ko: string; ja: string; en: string }
-  country: string
-  countryFlag: string
-  countryName: { ko: string; ja: string; en: string }
   tasteProfile: TasteProfile
   description: { ko: string; ja: string; en: string }
   ingredients: { ko: string[]; ja: string[]; en: string[] }
@@ -27,7 +26,7 @@ export interface RegionalFood {
   storyDescription: { ko: string; ja: string; en: string }
   ingredients: { ko: string[]; ja: string[]; en: string[] }
   tags: string[]
-  dupes: DupeForeignFood[]
+  dupes: Record<string, DupeForeignFood>
 }
 
 export interface Region {
@@ -68,28 +67,24 @@ export const regions: Region[] = [
           en: ["Rice", "Bean sprouts", "Spinach", "Carrot", "Bracken", "Beef", "Gochujang", "Egg", "Sesame oil"]
         },
         tags: ["비비기", "나물", "고추장"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "마제소바", ja: "まぜそば", en: "Mazesoba" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 55, spicy: 30, umami: 80, sour: 10 },
             description: { ko: "국물 없이 면과 토핑을 비벼 먹는 일본식 라멘", ja: "スープなしで麺とトッピングを混ぜて食べる日本式ラーメン", en: "Japanese ramen without soup, mixed with toppings" },
             ingredients: { ko: ["면", "차슈", "계란", "파", "라유"], ja: ["麺", "チャーシュー", "卵", "ネギ", "ラー油"], en: ["Noodles", "Chashu", "Egg", "Green onion", "Chili oil"] },
             similarityPercent: 74,
             matchReason: { ko: "비비는 스타일 + 계란 토핑 + 매콤한 양념의 공통점", ja: "混ぜるスタイル + 卵トッピング + ピリ辛調味料の共通点", en: "Mix-it-up style + egg topping + spicy seasoning" }
           },
-          {
+          US: {
             name: { ko: "포케 볼", ja: "ポケボウル", en: "Poke Bowl" },
-            country: "us", countryFlag: "🇺🇸",
-            countryName: { ko: "미국(하와이)", ja: "アメリカ（ハワイ）", en: "USA (Hawaii)" },
             tasteProfile: { sweet: 15, salty: 50, spicy: 20, umami: 70, sour: 25 },
             description: { ko: "밥 위에 회와 다양한 토핑을 올려 소스와 비벼 먹는 하와이 음식", ja: "ご飯の上に刺身と様々なトッピングをのせてソースと混ぜて食べるハワイ料理", en: "Hawaiian bowl with sashimi and toppings over rice, mixed with sauce" },
             ingredients: { ko: ["밥", "참치회", "아보카도", "망고", "간장소스"], ja: ["ご飯", "マグロ刺身", "アボカド", "マンゴー", "醤油ソース"], en: ["Rice", "Tuna sashimi", "Avocado", "Mango", "Soy sauce"] },
             similarityPercent: 70,
             matchReason: { ko: "밥 위에 다양한 토핑 + 비비는 스타일 + 원볼 구조", ja: "ご飯の上に様々なトッピング + 混ぜるスタイル + ワンボウル構造", en: "Various toppings on rice + mix style + one-bowl structure" }
           }
-        ]
+        }
       },
       {
         id: "jeonju-kongnamul",
@@ -104,18 +99,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["콩나물", "밥", "대파", "계란", "새우젓"], ja: ["もやし", "ご飯", "長ネギ", "卵", "アミの塩辛"], en: ["Bean sprouts", "Rice", "Green onion", "Egg", "Salted shrimp"] },
         tags: ["국밥", "해장", "따뜻함"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "돈지루", ja: "豚汁", en: "Tonjiru" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 65, spicy: 5, umami: 90, sour: 5 },
             description: { ko: "돼지고기와 채소를 된장에 끓인 일본식 국", ja: "豚肉と野菜を味噌で煮込んだ日本の汁物", en: "Japanese miso soup with pork and vegetables" },
             ingredients: { ko: ["돼지고기", "된장", "두부", "당근", "곤약"], ja: ["豚肉", "味噌", "豆腐", "人参", "こんにゃく"], en: ["Pork", "Miso", "Tofu", "Carrot", "Konjac"] },
             similarityPercent: 75,
             matchReason: { ko: "뜨끈한 국물 + 채소 듬뿍 + 발효 양념의 깊은 맛", ja: "温かいスープ + 野菜たっぷり + 発酵調味料の深い味わい", en: "Warm broth + plenty of vegetables + deep fermented flavor" }
           }
-        ]
+        }
       },
       {
         id: "jeonju-hanjeongsik",
@@ -130,18 +123,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["밥", "불고기", "전", "나물", "김치", "찌개", "구이", "회", "떡"], ja: ["ご飯", "プルコギ", "チヂミ", "ナムル", "キムチ", "チゲ", "焼き物", "刺身", "餅"], en: ["Rice", "Bulgogi", "Jeon", "Namul", "Kimchi", "Jjigae", "Grilled dishes", "Sashimi", "Rice cake"] },
         tags: ["정찬", "궁중", "반찬"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "가이세키 요리", ja: "懐石料理", en: "Kaiseki" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 25, salty: 40, spicy: 5, umami: 85, sour: 15 },
             description: { ko: "일본의 전통 코스 요리, 계절 식재료로 만든 예술적인 요리", ja: "日本の伝統コース料理、旬の食材で作る芸術的な料理", en: "Traditional Japanese multi-course cuisine with seasonal ingredients" },
             ingredients: { ko: ["제철 생선", "두부", "채소", "다시마", "미소"], ja: ["旬の魚", "豆腐", "野菜", "昆布", "味噌"], en: ["Seasonal fish", "Tofu", "Vegetables", "Kelp", "Miso"] },
             similarityPercent: 81,
             matchReason: { ko: "다양한 소반찬 구성 + 제철 재료 + 눈으로 먹는 아름다움", ja: "多様な小皿構成 + 旬の食材 + 目で食べる美しさ", en: "Multiple small dishes + seasonal ingredients + visual beauty" }
           }
-        ]
+        }
       },
       {
         id: "jeonju-tteokgalbi",
@@ -156,18 +147,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["소갈비살", "간장", "배", "마늘", "참기름", "꿀"], ja: ["牛カルビ肉", "醤油", "梨", "ニンニク", "ごま油", "蜂蜜"], en: ["Beef rib meat", "Soy sauce", "Pear", "Garlic", "Sesame oil", "Honey"] },
         tags: ["고기", "달콤", "부드러움"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "츠쿠네", ja: "つくね", en: "Tsukune" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 45, salty: 50, spicy: 5, umami: 70, sour: 5 },
             description: { ko: "다진 닭고기를 뭉쳐서 달콤한 타레 소스를 발라 구운 꼬치", ja: "鶏ひき肉を丸めて甘いタレを塗って焼いた串", en: "Minced chicken shaped and grilled with sweet tare sauce" },
             ingredients: { ko: ["닭고기", "간장", "미림", "설탕", "계란"], ja: ["鶏肉", "醤油", "みりん", "砂糖", "卵"], en: ["Chicken", "Soy sauce", "Mirin", "Sugar", "Egg"] },
             similarityPercent: 77,
             matchReason: { ko: "다진 고기를 뭉쳐 구운 스타일 + 달콤짭짤한 간장 양념", ja: "ひき肉を丸めて焼くスタイル + 甘じょっぱい醤油ダレ", en: "Minced meat shaped & grilled + sweet-salty soy glaze" }
           }
-        ]
+        }
       },
       {
         id: "jeonju-kalguksu",
@@ -182,18 +171,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["칼국수면", "들깨가루", "멸치육수", "감자", "호박"], ja: ["カルグクス麺", "エゴマ粉", "煮干しだし", "ジャガイモ", "カボチャ"], en: ["Knife-cut noodles", "Perilla powder", "Anchovy broth", "Potato", "Zucchini"] },
         tags: ["면", "고소함", "들깨"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "크림 우동", ja: "クリームうどん", en: "Cream Udon" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 40, spicy: 0, umami: 80, sour: 5 },
             description: { ko: "크림 소스에 쫄깃한 우동면을 넣은 퓨전 요리", ja: "クリームソースにもちもちうどんを入れたフュージョン料理", en: "Fusion dish with chewy udon in cream sauce" },
             ingredients: { ko: ["우동면", "생크림", "버터", "파르메산", "버섯"], ja: ["うどん", "生クリーム", "バター", "パルメザン", "きのこ"], en: ["Udon", "Heavy cream", "Butter", "Parmesan", "Mushroom"] },
             similarityPercent: 72,
             matchReason: { ko: "진하고 크리미한 국물 + 쫄깃한 면 + 고소한 풍미", ja: "濃厚でクリーミーなスープ + もちもち麺 + 香ばしい風味", en: "Rich creamy broth + chewy noodles + nutty flavor" }
           }
-        ]
+        }
       },
       {
         id: "jeonju-muljjajang",
@@ -208,18 +195,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["중면", "춘장", "해물", "양파", "고추기름", "육수"], ja: ["中華麺", "チュンジャン", "海鮮", "玉ねぎ", "唐辛子油", "スープ"], en: ["Chinese noodles", "Black bean paste", "Seafood", "Onion", "Chili oil", "Broth"] },
         tags: ["면", "매콤", "퓨전"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "탄탄멘", ja: "担々麺", en: "Tantanmen" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 55, spicy: 65, umami: 75, sour: 10 },
             description: { ko: "매콤하고 고소한 참깨 국물의 일본식 라멘", ja: "ピリ辛で香ばしいゴマスープの日本式ラーメン", en: "Japanese ramen with spicy and nutty sesame broth" },
             ingredients: { ko: ["면", "참깨", "고추기름", "다진고기", "청경채"], ja: ["麺", "ゴマ", "ラー油", "ひき肉", "チンゲン菜"], en: ["Noodles", "Sesame", "Chili oil", "Ground pork", "Bok choy"] },
             similarityPercent: 73,
             matchReason: { ko: "매콤한 국물 면 + 고추기름 + 고소한 소스가 면에 감기는 맛", ja: "辛いスープ麺 + ラー油 + 香ばしいソースが麺に絡む味", en: "Spicy broth noodles + chili oil + rich sauce clinging to noodles" }
           }
-        ]
+        }
       },
       {
         id: "jeonju-pisundae",
@@ -234,18 +219,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["돼지 창", "선지", "찹쌀", "배추", "부추", "들깨가루"], ja: ["豚の腸", "牛の血", "もち米", "白菜", "ニラ", "エゴマ粉"], en: ["Pork intestine", "Blood", "Glutinous rice", "Cabbage", "Chive", "Perilla powder"] },
         tags: ["순대", "국밥", "든든함"],
-        dupes: [
-          {
+        dupes: {
+          GB: {
             name: { ko: "블랙 푸딩", ja: "ブラックプディング", en: "Black Pudding" },
-            country: "gb", countryFlag: "🇬🇧",
-            countryName: { ko: "영국", ja: "イギリス", en: "UK" },
             tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 80, sour: 5 },
             description: { ko: "돼지피와 귀리, 지방을 넣어 만든 영국 전통 소시지", ja: "豚の血とオーツ麦、脂肪を入れて作ったイギリスの伝統ソーセージ", en: "Traditional British sausage made with pig's blood, oats, and fat" },
             ingredients: { ko: ["돼지피", "귀리", "돼지기름", "양파", "향신료"], ja: ["豚の血", "オーツ麦", "豚の脂", "玉ねぎ", "スパイス"], en: ["Pig's blood", "Oats", "Pork fat", "Onion", "Spices"] },
             similarityPercent: 79,
             matchReason: { ko: "피와 곡물을 넣어 만든 소시지 + 진하고 든든한 맛", ja: "血と穀物を入れて作るソーセージ + 濃厚で満腹感のある味", en: "Blood & grain sausage + rich, filling flavor" }
           }
-        ]
+        }
       },
       {
         id: "jeonju-omogaritang",
@@ -260,18 +243,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["민물고기", "시래기", "된장", "고추장", "대파", "마늘"], ja: ["川魚", "シレギ", "テンジャン", "コチュジャン", "長ネギ", "ニンニク"], en: ["Freshwater fish", "Dried radish greens", "Doenjang", "Gochujang", "Green onion", "Garlic"] },
         tags: ["생선", "얼큰함", "전통"],
-        dupes: [
-          {
+        dupes: {
+          FR: {
             name: { ko: "부이야베스", ja: "ブイヤベース", en: "Bouillabaisse" },
-            country: "fr", countryFlag: "🇫🇷",
-            countryName: { ko: "프랑스", ja: "フランス", en: "France" },
             tasteProfile: { sweet: 15, salty: 50, spicy: 20, umami: 85, sour: 15 },
             description: { ko: "다양한 생선과 해산물을 토마토 국물에 끓인 프랑스 남부 전통 요리", ja: "様々な魚介類をトマトスープで煮込んだ南フランスの伝統料理", en: "Traditional Southern French stew with various fish in tomato broth" },
             ingredients: { ko: ["생선", "새우", "토마토", "사프란", "마늘"], ja: ["魚", "海老", "トマト", "サフラン", "ニンニク"], en: ["Fish", "Shrimp", "Tomato", "Saffron", "Garlic"] },
             similarityPercent: 72,
             matchReason: { ko: "생선 국물 요리 + 진한 육수 + 전통 토속 요리의 깊은 맛", ja: "魚のスープ料理 + 濃厚なスープ + 伝統郷土料理の深い味", en: "Fish stew + rich broth + deep flavor of traditional local cuisine" }
           }
-        ]
+        }
       },
       {
         id: "jeonju-chocopie",
@@ -286,18 +267,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["초콜릿", "밀가루", "생크림", "딸기잼", "버터"], ja: ["チョコレート", "小麦粉", "生クリーム", "イチゴジャム", "バター"], en: ["Chocolate", "Flour", "Fresh cream", "Strawberry jam", "Butter"] },
         tags: ["디저트", "달콤", "빵"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "도라야키", ja: "どら焼き", en: "Dorayaki" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 85, salty: 5, spicy: 0, umami: 10, sour: 0 },
             description: { ko: "부드러운 카스텔라 반죽 사이에 달콤한 팥소를 넣은 일본 과자", ja: "柔らかいカステラ生地の間に甘いあんこを入れた日本のお菓子", en: "Sweet red bean paste sandwiched between fluffy castella pancakes" },
             ingredients: { ko: ["밀가루", "팥앙금", "계란", "설탕", "꿀"], ja: ["小麦粉", "あんこ", "卵", "砂糖", "蜂蜜"], en: ["Flour", "Red bean paste", "Egg", "Sugar", "Honey"] },
             similarityPercent: 76,
             matchReason: { ko: "부드러운 빵 사이에 달콤한 필링 + 수제 간식의 정겨움", ja: "柔らかいパンの間に甘いフィリング + 手作りおやつの温もり", en: "Sweet filling between soft bread + warmth of handmade snacks" }
           }
-        ]
+        }
       },
       {
         id: "jeonju-baguette-burger",
@@ -312,18 +291,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["바게트", "소고기", "양배추", "고추장", "마요네즈"], ja: ["バゲット", "牛肉", "キャベツ", "コチュジャン", "マヨネーズ"], en: ["Baguette", "Beef", "Cabbage", "Gochujang", "Mayonnaise"] },
         tags: ["간식", "바삭", "퓨전"],
-        dupes: [
-          {
+        dupes: {
+          VN: {
             name: { ko: "반미", ja: "バインミー", en: "Banh Mi" },
-            country: "vn", countryFlag: "🇻🇳",
-            countryName: { ko: "베트남", ja: "ベトナム", en: "Vietnam" },
             tasteProfile: { sweet: 20, salty: 50, spicy: 35, umami: 55, sour: 30 },
             description: { ko: "바게트에 고기, 채소, 소스를 넣은 베트남 대표 샌드위치", ja: "バゲットに肉、野菜、ソースを入れたベトナムの代表的なサンドイッチ", en: "Vietnamese signature sandwich with meat, vegetables, and sauce in a baguette" },
             ingredients: { ko: ["바게트", "돼지고기", "당근절임", "무절임", "고수", "칠리소스"], ja: ["バゲット", "豚肉", "人参の甘酢漬け", "大根の甘酢漬け", "パクチー", "チリソース"], en: ["Baguette", "Pork", "Pickled carrot", "Pickled radish", "Cilantro", "Chili sauce"] },
             similarityPercent: 82,
             matchReason: { ko: "바게트 빵 + 고기 속 재료 + 매콤한 소스의 완벽한 조합", ja: "バゲットパン + 肉の具材 + ピリ辛ソースの完璧な組み合わせ", en: "Baguette bread + meat filling + spicy sauce — perfect combo" }
           }
-        ]
+        }
       }
     ]
   },
@@ -351,19 +328,16 @@ export const regions: Region[] = [
           en: ["Pork belly", "Lettuce", "Perilla leaf", "Garlic", "Ssamjang", "Sesame oil", "Salt", "Doenjang stew"]
         },
         tags: ["구이", "삼겹살", "쌈"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "야키니쿠 철판구이", ja: "焼肉鉄板焼き", en: "Yakiniku Teppanyaki" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 30, salty: 50, spicy: 5, umami: 85, sour: 5 },
             description: { ko: "얇게 저민 고기를 달콤한 타레 소스에 찍어 철판 위에서 구워 먹는 일본식 바비큐", ja: "薄切り肉を甘いタレにつけて鉄板で焼いて食べる日本式バーベキュー", en: "Japanese BBQ of thinly sliced meat grilled on a teppan and dipped in sweet tare sauce" },
             ingredients: { ko: ["소고기", "돼지고기", "간장", "미림", "설탕", "참기름"], ja: ["牛肉", "豚肉", "醤油", "みりん", "砂糖", "ごま油"], en: ["Beef", "Pork", "Soy sauce", "Mirin", "Sugar", "Sesame oil"] },
             similarityPercent: 82,
             matchReason: { ko: "철판 위 직화구이 + 쌈 채소 + 고소한 참기름의 공통된 매력", ja: "鉄板直火焼き + 包み野菜 + 香ばしいごま油の共通の魅力", en: "Direct iron-plate grilling + wrapping greens + shared sesame-oil richness" }
           }
-        ]
+        }
       },
       {
         id: "seoul-tteokbokki",
@@ -382,19 +356,16 @@ export const regions: Region[] = [
           en: ["Rice cake", "Gochujang", "Chili powder", "Sugar", "Fish cake", "Green onion", "Egg", "Anchovy broth"]
         },
         tags: ["분식", "매콤", "길거리"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "모찌 나베", ja: "もち鍋", en: "Mochi Nabe" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 25, salty: 55, spicy: 10, umami: 70, sour: 5 },
             description: { ko: "쫄깃한 모찌를 채소와 두부와 함께 끓여 먹는 일본 겨울 냄비 요리", ja: "もちもちのお餅を野菜や豆腐と一緒に煮て食べる日本の冬の鍋料理", en: "Japanese winter hot pot with chewy mochi simmered alongside vegetables and tofu" },
             ingredients: { ko: ["모찌", "두부", "배추", "버섯", "간장", "다시마"], ja: ["もち", "豆腐", "白菜", "きのこ", "醤油", "昆布"], en: ["Mochi", "Tofu", "Cabbage", "Mushroom", "Soy sauce", "Kelp"] },
             similarityPercent: 70,
             matchReason: { ko: "쫄깃한 떡 형태 + 달콤짭짤한 국물 소스 + 따뜻한 일품 요리", ja: "もちもちの餅形状 + 甘じょっぱいスープソース + 温かい一品料理", en: "Chewy rice-cake texture + sweet-salty sauce broth + warm one-dish comfort" }
           }
-        ]
+        }
       },
       {
         id: "seoul-dakhanmari",
@@ -413,19 +384,16 @@ export const regions: Region[] = [
           en: ["Whole chicken", "Potato", "Green onion", "Garlic", "Knife-cut noodles", "Rice cake", "Soy sauce", "Chili"]
         },
         tags: ["닭", "전골", "동대문"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "미즈타키", ja: "水炊き", en: "Mizutaki" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 35, spicy: 5, umami: 90, sour: 5 },
             description: { ko: "닭고기를 맑은 국물에 푹 끓인 후쿠오카 대표 냄비 요리", ja: "鶏肉を澄んだスープでじっくり煮込んだ福岡の代表的な鍋料理", en: "Fukuoka's signature hot pot of chicken slowly simmered in clear broth" },
             ingredients: { ko: ["닭고기", "두부", "배추", "대파", "폰즈소스", "모미지오로시"], ja: ["鶏肉", "豆腐", "白菜", "長ネギ", "ポン酢", "もみじおろし"], en: ["Chicken", "Tofu", "Cabbage", "Green onion", "Ponzu sauce", "Grated radish chili"] },
             similarityPercent: 83,
             matchReason: { ko: "통닭 맑은 국물 + 테이블 냄비 요리 + 진한 육수의 공통점", ja: "丸鶏の澄んだスープ + テーブル鍋料理 + 濃厚な出汁の共通点", en: "Whole chicken clear broth + tableside hot pot + deeply flavored stock" }
           }
-        ]
+        }
       },
       {
         id: "seoul-seolleongtang",
@@ -444,19 +412,16 @@ export const regions: Region[] = [
           en: ["Beef bone", "Beef", "Rice", "Noodles", "Salt", "Kkakdugi", "Green onion", "Pepper"]
         },
         tags: ["국밥", "뽀얀국물", "해장"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "돈코츠 라멘", ja: "豚骨ラーメン", en: "Tonkotsu Ramen" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 60, spicy: 10, umami: 95, sour: 0 },
             description: { ko: "돼지 뼈를 장시간 끓여 만든 진하고 크리미한 국물의 일본 라멘", ja: "豚骨を長時間煮込んで作った濃厚でクリーミーなスープの日本ラーメン", en: "Japanese ramen with rich, creamy broth made from long-simmered pork bones" },
             ingredients: { ko: ["돼지뼈", "라멘면", "차슈", "반숙달걀", "대파", "생강"], ja: ["豚骨", "ラーメン麺", "チャーシュー", "半熟卵", "長ネギ", "生姜"], en: ["Pork bone", "Ramen noodles", "Chashu", "Soft-boiled egg", "Green onion", "Ginger"] },
             similarityPercent: 80,
             matchReason: { ko: "뽀얀 뼈 국물 + 오랜 시간 우려낸 깊은 맛 + 면이나 밥을 말아 먹는 스타일", ja: "白濁した骨スープ + 長時間煮込んだ深い味わい + 麺やご飯を入れて食べるスタイル", en: "Milky bone broth + long-simmered deep flavor + served with noodles or rice" }
           }
-        ]
+        }
       },
       {
         id: "seoul-street-toast",
@@ -475,19 +440,16 @@ export const regions: Region[] = [
           en: ["White bread", "Egg", "Cabbage", "Carrot", "Butter", "Sugar", "Ketchup", "Mayonnaise"]
         },
         tags: ["길거리", "토스트", "아침"],
-        dupes: [
-          {
+        dupes: {
+          US: {
             name: { ko: "핫 샌드위치", ja: "ホットサンドイッチ", en: "Hot Sandwich" },
-            country: "us",
-            countryFlag: "🇺🇸",
-            countryName: { ko: "미국", ja: "アメリカ", en: "USA" },
             tasteProfile: { sweet: 25, salty: 50, spicy: 10, umami: 55, sour: 15 },
             description: { ko: "철판이나 그릴에 눌러 구운 달걀과 채소가 든 미국식 샌드위치", ja: "鉄板やグリルで押しつけて焼いた卵と野菜入りのアメリカ式サンドイッチ", en: "American-style sandwich pressed and grilled on a griddle with egg and vegetables" },
             ingredients: { ko: ["식빵", "달걀", "치즈", "양상추", "토마토", "머스터드"], ja: ["食パン", "卵", "チーズ", "レタス", "トマト", "マスタード"], en: ["Bread", "Egg", "Cheese", "Lettuce", "Tomato", "Mustard"] },
             similarityPercent: 75,
             matchReason: { ko: "구운 식빵 + 달걀과 채소 속재료 + 빠른 아침 식사의 공통된 역할", ja: "焼いた食パン + 卵と野菜の具材 + 素早い朝食としての共通の役割", en: "Toasted bread + egg and veggie filling + shared role as a quick morning meal" }
           }
-        ]
+        }
       },
       {
         id: "seoul-bindaetteok",
@@ -506,19 +468,16 @@ export const regions: Region[] = [
           en: ["Mung bean", "Pork", "Kimchi", "Bean sprouts", "Chive", "Cooking oil", "Salt", "Pepper"]
         },
         tags: ["전", "시장", "막걸리"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "오코노미야키", ja: "お好み焼き", en: "Okonomiyaki" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 30, salty: 45, spicy: 10, umami: 75, sour: 10 },
             description: { ko: "밀가루 반죽에 양배추와 각종 재료를 넣고 철판에 부쳐 소스를 뿌린 일본 부침개", ja: "小麦粉の生地にキャベツや様々な具材を入れて鉄板で焼いてソースをかけた日本のお好み焼き", en: "Japanese savory pancake with cabbage and various ingredients grilled on a teppan and topped with sauce" },
             ingredients: { ko: ["밀가루", "양배추", "달걀", "돼지고기", "오코노미야키 소스", "가쓰오부시"], ja: ["小麦粉", "キャベツ", "卵", "豚肉", "お好みソース", "鰹節"], en: ["Flour", "Cabbage", "Egg", "Pork", "Okonomiyaki sauce", "Bonito flakes"] },
             similarityPercent: 78,
             matchReason: { ko: "철판 기름 전 + 고기와 채소 혼합 반죽 + 고소하고 바삭한 식감", ja: "鉄板油焼き + 肉と野菜混合生地 + 香ばしくカリカリな食感", en: "Iron-plate oil pancake + meat-vegetable batter + crispy savory texture" }
           }
-        ]
+        }
       },
       {
         id: "seoul-yukhoe",
@@ -537,19 +496,16 @@ export const regions: Region[] = [
           en: ["Beef round", "Asian pear", "Egg yolk", "Soy sauce", "Sesame oil", "Sugar", "Garlic", "Pine nut"]
         },
         tags: ["날것", "소고기", "신선"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "소고기 타타키", ja: "牛肉のたたき", en: "Beef Tataki" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 45, spicy: 10, umami: 80, sour: 25 },
             description: { ko: "소고기 표면만 살짝 구워 얇게 썰어 폰즈 소스로 즐기는 일본 요리", ja: "牛肉の表面だけさっと炙って薄く切り、ポン酢で楽しむ日本料理", en: "Japanese dish of beef seared only on the outside, thinly sliced and served with ponzu sauce" },
             ingredients: { ko: ["소고기", "폰즈소스", "대파", "생강", "무", "참기름"], ja: ["牛肉", "ポン酢", "長ネギ", "生姜", "大根", "ごま油"], en: ["Beef", "Ponzu sauce", "Green onion", "Ginger", "Radish", "Sesame oil"] },
             similarityPercent: 76,
             matchReason: { ko: "생 또는 반생 소고기 + 달콤 짭짤 드레싱 + 신선한 날것의 향미", ja: "生または半生の牛肉 + 甘じょっぱいドレッシング + 新鮮な生の香り", en: "Raw or near-raw beef + sweet-salty dressing + fresh, clean rawness" }
           }
-        ]
+        }
       },
       {
         id: "seoul-hangang-ramen",
@@ -568,19 +524,16 @@ export const regions: Region[] = [
           en: ["Cup ramen", "Hot water", "Boiled egg", "Kimchi", "Canned tuna", "Green onion", "Cheese", "Chili powder"]
         },
         tags: ["라면", "한강", "낭만"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "컵라면 (일본 원조)", ja: "カップラーメン（日本原点）", en: "Cup Noodles (Japanese Original)" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 70, spicy: 20, umami: 65, sour: 5 },
             description: { ko: "뜨거운 물만 부으면 완성되는 세계 최초의 컵 인스턴트 라면", ja: "熱湯を注ぐだけで完成する世界初のカップインスタントラーメン", en: "The world's first cup instant ramen — complete with just a pour of hot water" },
             ingredients: { ko: ["밀가루면", "건조 채소", "건조 새우", "조미 분말", "건조 파"], ja: ["小麦麺", "乾燥野菜", "乾燥えび", "調味粉末", "乾燥ネギ"], en: ["Wheat noodles", "Dried vegetables", "Dried shrimp", "Seasoning powder", "Dried green onion"] },
             similarityPercent: 72,
             matchReason: { ko: "컵에 뜨거운 물을 붓는 간편함 + 야외에서 즐기는 인스턴트 면 문화", ja: "カップに熱湯を注ぐ手軽さ + 屋外で楽しむインスタント麺文化", en: "Cup + hot water simplicity + outdoor instant noodle culture" }
           }
-        ]
+        }
       },
       {
         id: "seoul-jokbal",
@@ -599,19 +552,16 @@ export const regions: Region[] = [
           en: ["Pork trotters", "Soy sauce", "Garlic", "Ginger", "Sugar", "Doenjang", "Cinnamon", "Green onion"]
         },
         tags: ["야식", "족발", "쫄깃"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "차슈", ja: "チャーシュー", en: "Chashu" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 40, salty: 50, spicy: 5, umami: 80, sour: 5 },
             description: { ko: "간장과 미림, 설탕으로 조린 일본 라멘의 대표 토핑 돼지 수육", ja: "醤油とみりん、砂糖で煮込んだ日本ラーメンの代表的なトッピング豚肉", en: "Japanese braised pork in soy, mirin, and sugar — the definitive ramen topping" },
             ingredients: { ko: ["돼지 삼겹살", "간장", "미림", "설탕", "청주", "생강"], ja: ["豚バラ肉", "醤油", "みりん", "砂糖", "清酒", "生姜"], en: ["Pork belly", "Soy sauce", "Mirin", "Sugar", "Sake", "Ginger"] },
             similarityPercent: 78,
             matchReason: { ko: "간장 기반 장시간 조림 + 달콤짭짤한 돼지고기 + 쫄깃 부드러운 식감", ja: "醤油ベースの長時間煮込み + 甘じょっぱい豚肉 + もちもち柔らかい食感", en: "Long soy-based braise + sweet-salty pork + chewy yet tender texture" }
           }
-        ]
+        }
       },
       {
         id: "seoul-kimchi-jjigae",
@@ -630,19 +580,16 @@ export const regions: Region[] = [
           en: ["Aged kimchi", "Pork", "Tofu", "Green onion", "Chili powder", "Garlic", "Sesame oil", "Broth"]
         },
         tags: ["찌개", "김치", "국민"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "나베", ja: "鍋料理", en: "Nabe" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 55, spicy: 15, umami: 85, sour: 10 },
             description: { ko: "다양한 재료를 하나의 냄비에 넣고 끓여 함께 나눠 먹는 일본 전통 냄비 요리", ja: "様々な食材をひとつの鍋に入れて煮込んで一緒に分けて食べる日本の伝統鍋料理", en: "Traditional Japanese hot pot with various ingredients simmered together and shared" },
             ingredients: { ko: ["두부", "배추", "버섯", "돼지고기", "다시마", "미소", "대파"], ja: ["豆腐", "白菜", "きのこ", "豚肉", "昆布", "味噌", "長ネギ"], en: ["Tofu", "Cabbage", "Mushroom", "Pork", "Kelp", "Miso", "Green onion"] },
             similarityPercent: 77,
             matchReason: { ko: "냄비 통째 끓임 + 두부 배추 돼지 조합 + 발효 양념의 진한 국물", ja: "鍋ごと煮込み + 豆腐・白菜・豚肉の組み合わせ + 発酵調味料の濃厚スープ", en: "Pot-simmered + tofu-cabbage-pork combo + fermented seasoning deep broth" }
           }
-        ]
+        }
       }
     ]
   },
@@ -670,19 +617,16 @@ export const regions: Region[] = [
           en: ["Rice", "Seaweed", "Squid", "Kkakdugi", "Chili powder", "Sesame oil", "Salt", "Radish"]
         },
         tags: ["김밥", "바다", "매콤"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "마키스시", ja: "巻き寿司", en: "Maki Sushi" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 45, spicy: 15, umami: 65, sour: 35 },
             description: { ko: "밥과 해산물을 김으로 말아 만든 일본 대표 스시 스타일", ja: "ご飯と海鮮をのりで巻いた日本の代表的な寿司スタイル", en: "Japan's classic sushi style of rice and seafood rolled in seaweed" },
             ingredients: { ko: ["초밥", "김", "참치", "오이", "아보카도", "와사비"], ja: ["酢飯", "のり", "マグロ", "きゅうり", "アボカド", "わさび"], en: ["Sushi rice", "Seaweed", "Tuna", "Cucumber", "Avocado", "Wasabi"] },
             similarityPercent: 73,
             matchReason: { ko: "김으로 만 밥 + 해산물 조합 + 한 입 크기 구성의 공통점", ja: "のりで巻いたご飯 + 海鮮の組み合わせ + ひと口サイズ構成の共通点", en: "Rice wrapped in seaweed + seafood pairing + bite-size format" }
           }
-        ]
+        }
       },
       {
         id: "tongyeong-kkul-ppang",
@@ -701,19 +645,16 @@ export const regions: Region[] = [
           en: ["Flour", "Red bean paste", "Honey", "Sugar", "Egg", "Cooking oil", "Yeast"]
         },
         tags: ["디저트", "달콤", "항구"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "카린토만주", ja: "かりんとう饅頭", en: "Karinto Manju" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 75, salty: 10, spicy: 0, umami: 10, sour: 0 },
             description: { ko: "튀긴 만주 피에 달콤한 팥소를 넣은 일본의 인기 과자", ja: "揚げた饅頭皮に甘いあんこを入れた日本の人気お菓子", en: "Popular Japanese sweet with fried pastry shell and sweet red bean filling" },
             ingredients: { ko: ["밀가루", "흑설탕", "팥앙금", "식용유", "소금"], ja: ["小麦粉", "黒砂糖", "あんこ", "食用油", "塩"], en: ["Flour", "Brown sugar", "Red bean paste", "Cooking oil", "Salt"] },
             similarityPercent: 80,
             matchReason: { ko: "튀긴 반죽 + 팥 필링 + 바삭한 겉과 촉촉한 속의 동일한 구조", ja: "揚げた生地 + あんこフィリング + カリカリの外としっとりした中の同じ構造", en: "Fried dough + red bean filling + same crispy-outside moist-inside structure" }
           }
-        ]
+        }
       },
       {
         id: "tongyeong-meongge-bibimbap",
@@ -732,19 +673,16 @@ export const regions: Region[] = [
           en: ["Sea squirt", "Rice", "Gochujang", "Sesame oil", "Cucumber", "Carrot", "Perilla leaf", "Sesame salt"]
         },
         tags: ["해산물", "비빔밥", "바다"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "호야 덮밥", ja: "ホヤ丼", en: "Hoya Don" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 90, sour: 20 },
             description: { ko: "일본 미야기현에서 즐기는 신선한 호야(멍게)를 얹은 덮밥", ja: "宮城県で楽しむ新鮮なホヤをのせた丼ぶり", en: "A donburi from Miyagi Prefecture topped with fresh sea squirt" },
             ingredients: { ko: ["호야", "초밥", "간장", "미림", "와사비", "오이"], ja: ["ホヤ", "酢飯", "醤油", "みりん", "わさび", "きゅうり"], en: ["Sea squirt", "Sushi rice", "Soy sauce", "Mirin", "Wasabi", "Cucumber"] },
             similarityPercent: 86,
             matchReason: { ko: "멍게(호야) 메인 재료 + 밥 위에 얹어 비비는 스타일 + 진한 바다 향미", ja: "ホヤのメイン食材 + ご飯の上にのせて混ぜるスタイル + 濃厚な海の風味", en: "Sea squirt as the hero ingredient + rice bowl mix style + deep oceanic flavor" }
           }
-        ]
+        }
       },
       {
         id: "tongyeong-oyster-soup",
@@ -763,19 +701,16 @@ export const regions: Region[] = [
           en: ["Oyster", "Rice", "Bean sprouts", "Green onion", "Garlic", "Salt", "Sesame oil", "Pepper"]
         },
         tags: ["굴", "국밥", "바다"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "카키 조스이", ja: "カキ雑炊", en: "Kaki Zosui" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 90, sour: 5 },
             description: { ko: "굴과 밥을 다시마 국물에 부드럽게 끓인 일본 전통 죽", ja: "牡蛎とご飯を昆布出汁でやわらかく煮た日本の伝統雑炊", en: "Traditional Japanese rice porridge softly simmered with oysters in kelp broth" },
             ingredients: { ko: ["굴", "밥", "다시마 육수", "간장", "달걀", "대파"], ja: ["牡蛎", "ご飯", "昆布出汁", "醤油", "卵", "長ネギ"], en: ["Oyster", "Rice", "Kelp broth", "Soy sauce", "Egg", "Green onion"] },
             similarityPercent: 84,
             matchReason: { ko: "굴 + 밥 + 따뜻한 국물의 삼위일체 + 바다 향이 가득한 국물 요리", ja: "牡蛎 + ご飯 + 温かいスープの三位一体 + 海の香りあふれるスープ料理", en: "Oyster + rice + warm broth trinity + ocean-scented soup dish" }
           }
-        ]
+        }
       },
       {
         id: "tongyeong-ujja",
@@ -794,19 +729,16 @@ export const regions: Region[] = [
           en: ["Udon noodles", "Black bean paste", "Pork", "Onion", "Zucchini", "Carrot", "Starch water", "Cooking oil"]
         },
         tags: ["면", "퓨전", "통영"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "자루 우동", ja: "ざるうどん", en: "Zaru Udon" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 50, spicy: 5, umami: 70, sour: 10 },
             description: { ko: "차가운 우동면에 쯔유 소스를 곁들여 먹는 일본의 시원한 여름 면 요리", ja: "冷たいうどん麺にめんつゆを添えて食べる日本の涼しい夏の麺料理", en: "Cold udon noodles served with tsuyu dipping sauce — Japan's refreshing summer noodle dish" },
             ingredients: { ko: ["우동면", "쯔유", "무즙", "파", "와사비", "미림"], ja: ["うどん麺", "めんつゆ", "大根おろし", "ネギ", "わさび", "みりん"], en: ["Udon noodles", "Tsuyu", "Grated radish", "Green onion", "Wasabi", "Mirin"] },
             similarityPercent: 68,
             matchReason: { ko: "쫄깃한 우동 면을 활용한 독특한 소스 조합의 공통 발상", ja: "もちもちうどん麺を活用した独特なソースの組み合わせの共通発想", en: "Shared concept of pairing chewy udon noodles with an unconventional sauce" }
           }
-        ]
+        }
       },
       {
         id: "tongyeong-sirakguk",
@@ -825,19 +757,16 @@ export const regions: Region[] = [
           en: ["Dried radish strips", "Doenjang", "Green onion", "Garlic", "Anchovy broth", "Chili powder", "Sesame oil"]
         },
         tags: ["국", "어민", "된장"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "미소시루", ja: "味噌汁", en: "Miso Soup" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 55, spicy: 0, umami: 85, sour: 5 },
             description: { ko: "다시마 국물에 된장을 풀고 두부나 채소를 넣은 일본의 국민 국", ja: "昆布だしに味噌を溶かして豆腐や野菜を入れた日本の国民的なお汁", en: "Japan's national soup — miso dissolved into dashi broth with tofu or vegetables" },
             ingredients: { ko: ["된장", "다시마육수", "두부", "미역", "대파"], ja: ["味噌", "昆布だし", "豆腐", "わかめ", "長ネギ"], en: ["Miso", "Dashi broth", "Tofu", "Seaweed", "Green onion"] },
             similarityPercent: 76,
             matchReason: { ko: "발효 된장 국물 + 심플한 채소 재료 + 아침 밥상의 든든한 동반자", ja: "発酵味噌スープ + シンプルな野菜食材 + 朝ごはんの心強い相棒", en: "Fermented soybean broth + simple vegetable ingredients + steadfast morning companion" }
           }
-        ]
+        }
       },
       {
         id: "tongyeong-haemul-ttukbaegi",
@@ -856,19 +785,16 @@ export const regions: Region[] = [
           en: ["Octopus", "Shrimp", "Clams", "Blue crab", "Tofu", "Green onion", "Chili powder", "Garlic"]
         },
         tags: ["해산물", "뚝배기", "얼큰"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "해산물 나베", ja: "海鮮鍋", en: "Seafood Nabe" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 50, spicy: 10, umami: 90, sour: 5 },
             description: { ko: "다양한 신선한 해산물을 다시마 국물에 끓여 폰즈로 즐기는 일본 냄비 요리", ja: "様々な新鮮な海鮮を昆布だしで煮てポン酢で楽しむ日本の鍋料理", en: "Japanese hot pot of fresh seafood varieties simmered in kelp broth and enjoyed with ponzu" },
             ingredients: { ko: ["새우", "조개", "게", "두부", "배추", "다시마", "폰즈"], ja: ["海老", "貝", "カニ", "豆腐", "白菜", "昆布", "ポン酢"], en: ["Shrimp", "Clams", "Crab", "Tofu", "Cabbage", "Kelp", "Ponzu"] },
             similarityPercent: 81,
             matchReason: { ko: "신선 해산물 모둠 + 뜨거운 냄비 국물 + 해산물 복합 향의 진한 육수", ja: "新鮮海鮮の盛り合わせ + 熱い鍋スープ + 海鮮複合香の濃厚出汁", en: "Assorted fresh seafood + hot pot broth + rich compound seafood stock" }
           }
-        ]
+        }
       },
       {
         id: "tongyeong-ppaettaegi-juk",
@@ -887,19 +813,16 @@ export const regions: Region[] = [
           en: ["Dried sweet potato", "Glutinous rice", "Water", "Salt", "Perilla", "Soybean"]
         },
         tags: ["죽", "전통", "고구마"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "고구마 죽", ja: "さつまいも粥", en: "Sweet Potato Porridge" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 50, salty: 15, spicy: 0, umami: 30, sour: 0 },
             description: { ko: "고구마를 쌀과 함께 부드럽게 끓인 일본 가정식 죽", ja: "さつまいもをお米と一緒にやわらかく炊いた日本の家庭料理のお粥", en: "Soft Japanese home-style porridge simmered with sweet potato and rice" },
             ingredients: { ko: ["고구마", "쌀", "물", "소금", "미림"], ja: ["さつまいも", "米", "水", "塩", "みりん"], en: ["Sweet potato", "Rice", "Water", "Salt", "Mirin"] },
             similarityPercent: 79,
             matchReason: { ko: "고구마 주재료 + 곡물 죽 형태 + 달콤하고 소박한 맛의 공통점", ja: "さつまいも主食材 + 穀物粥の形態 + 甘くて素朴な味の共通点", en: "Sweet potato as hero + grain porridge format + shared sweet and humble flavor" }
           }
-        ]
+        }
       },
       {
         id: "tongyeong-dacci",
@@ -918,19 +841,16 @@ export const regions: Region[] = [
           en: ["Seasonal sashimi", "Oyster", "Sea squirt", "Shrimp", "Octopus", "Grilled mackerel", "Doenjang soup"]
         },
         tags: ["해산물", "오마카세", "술안주"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "오마카세", ja: "おまかせ", en: "Omakase" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 45, spicy: 5, umami: 95, sour: 20 },
             description: { ko: "주방장이 그날 최선의 식재료로 구성하는 일본 고급 코스 요리", ja: "板前がその日最良の食材で構成する日本の高級コース料理", en: "Japanese premium course cuisine where the chef selects the best ingredients of the day" },
             ingredients: { ko: ["제철 생선", "성게", "킹크랩", "와규", "트러플", "계절 채소"], ja: ["旬の魚", "ウニ", "キングクラブ", "和牛", "トリュフ", "季節野菜"], en: ["Seasonal fish", "Sea urchin", "King crab", "Wagyu", "Truffle", "Seasonal vegetables"] },
             similarityPercent: 77,
             matchReason: { ko: "당일 최선 재료 + 메뉴 없는 주방장 선택 + 해산물 중심의 코스 경험", ja: "当日最良の食材 + メニューなし板前選択 + 海鮮中心のコース体験", en: "Day's best ingredients + no-menu chef selection + seafood-centered course experience" }
           }
-        ]
+        }
       },
       {
         id: "tongyeong-dodari-ssuk",
@@ -949,19 +869,16 @@ export const regions: Region[] = [
           en: ["Flounder", "Mugwort", "Doenjang", "Green onion", "Garlic", "Ginger", "Salt"]
         },
         tags: ["봄", "생선", "쑥"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "카레이 나베", ja: "カレイ鍋", en: "Karei Nabe" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 85, sour: 5 },
             description: { ko: "가자미(카레이)를 맑은 국물에 채소와 함께 끓인 일본 겨울 냄비 요리", ja: "カレイを澄んだスープで野菜と一緒に煮た日本の冬の鍋料理", en: "Japanese winter hot pot of flounder simmered in clear broth with vegetables" },
             ingredients: { ko: ["가자미", "배추", "두부", "대파", "된장", "다시마", "미림"], ja: ["カレイ", "白菜", "豆腐", "長ネギ", "味噌", "昆布", "みりん"], en: ["Flatfish", "Cabbage", "Tofu", "Green onion", "Miso", "Kelp", "Mirin"] },
             similarityPercent: 80,
             matchReason: { ko: "가자미/도다리 흰살 생선 + 맑고 담백한 국물 + 된장 풍미의 공통 구성", ja: "カレイ/ヒラメの白身魚 + 澄んで淡白なスープ + 味噌風味の共通構成", en: "White-fleshed flatfish + clear delicate broth + shared doenjang/miso flavor base" }
           }
-        ]
+        }
       }
     ]
   },
@@ -989,19 +906,16 @@ export const regions: Region[] = [
           en: ["Black pork belly", "Lettuce", "Ssamjang", "Garlic", "Green chili", "Sesame oil", "Salt", "Perilla leaf"]
         },
         tags: ["흑돼지", "구이", "제주"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "쿠로부타 야키", ja: "黒豚焼き", en: "Kurobuta Yakiniku" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 50, spicy: 5, umami: 88, sour: 5 },
             description: { ko: "사츠마 흑돼지를 일본식 야키니쿠 스타일로 구워 먹는 가고시마 명물", ja: "薩摩黒豚を日本式焼肉スタイルで焼いて食べる鹿児島の名物", en: "Kagoshima specialty of grilling prized Satsuma black pork in yakiniku style" },
             ingredients: { ko: ["흑돼지", "간장 타레", "마늘", "참기름", "미림", "생강"], ja: ["黒豚", "醤油タレ", "ニンニク", "ごま油", "みりん", "生姜"], en: ["Black pork", "Soy tare", "Garlic", "Sesame oil", "Mirin", "Ginger"] },
             similarityPercent: 88,
             matchReason: { ko: "같은 흑돼지 품종 + 직화구이 스타일 + 풍부한 육즙과 향미의 공통점", ja: "同じ黒豚品種 + 直火焼きスタイル + 豊かな肉汁と風味の共通点", en: "Same black pig breed + direct-fire grilling + shared richness in juiciness and aroma" }
           }
-        ]
+        }
       },
       {
         id: "jeju-gogi-guksu",
@@ -1020,19 +934,16 @@ export const regions: Region[] = [
           en: ["Thin noodles", "Pork bone broth", "Braised pork", "Green onion", "Ginger", "Salt", "Sesame"]
         },
         tags: ["면", "잔치", "뽀얀국물"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "오키나와 소바", ja: "沖縄そば", en: "Okinawa Soba" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 55, spicy: 5, umami: 85, sour: 5 },
             description: { ko: "돼지고기와 가쓰오 육수에 쫄깃한 면을 말고 삼겹살을 얹은 오키나와 섬의 소울 푸드", ja: "豚肉とカツオだしにもちもちの麺を入れ豚バラをのせた沖縄島のソウルフード", en: "Okinawa island's soul food — chewy noodles in pork-and-bonito broth topped with braised pork belly" },
             ingredients: { ko: ["오키나와 소바면", "돼지 뼈", "가쓰오", "삼겹살", "대파", "생강", "어묵"], ja: ["沖縄そば麺", "豚骨", "鰹節", "豚バラ", "長ネギ", "生姜", "かまぼこ"], en: ["Okinawa soba noodles", "Pork bone", "Bonito", "Pork belly", "Green onion", "Ginger", "Fish cake"] },
             similarityPercent: 85,
             matchReason: { ko: "섬 지역 돼지 뼈 국물 면 + 수육 토핑 + 섬 주민의 일상 소울푸드 공통점", ja: "島地域の豚骨スープ麺 + 煮豚トッピング + 島民の日常ソウルフードの共通点", en: "Island pork-bone soup noodles + braised pork topping + shared everyday island soul food identity" }
           }
-        ]
+        }
       },
       {
         id: "jeju-galchi-jorim",
@@ -1051,19 +962,16 @@ export const regions: Region[] = [
           en: ["Beltfish", "Radish", "Green onion", "Chili powder", "Soy sauce", "Garlic", "Ginger", "Sugar"]
         },
         tags: ["갈치", "조림", "제주"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "타치우오 조림", ja: "太刀魚の煮付け（和風）", en: "Tachiuo Nimono" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 30, salty: 55, spicy: 5, umami: 80, sour: 10 },
             description: { ko: "간장과 미림으로 달콤 짭짤하게 조린 일본식 갈치 요리", ja: "醤油とみりんで甘じょっぱく煮付けた日本式太刀魚料理", en: "Japanese-style beltfish braised sweet and salty with soy sauce and mirin" },
             ingredients: { ko: ["갈치", "간장", "미림", "설탕", "생강", "청주"], ja: ["太刀魚", "醤油", "みりん", "砂糖", "生姜", "清酒"], en: ["Beltfish", "Soy sauce", "Mirin", "Sugar", "Ginger", "Sake"] },
             similarityPercent: 82,
             matchReason: { ko: "같은 갈치 어종 + 달콤 짭짤 조림 방식 + 생강으로 잡내 제거의 공통 기법", ja: "同じ太刀魚の魚種 + 甘じょっぱい煮付け方式 + 生姜で臭み消しの共通技法", en: "Same beltfish species + sweet-salty braise method + shared ginger technique to remove fishiness" }
           }
-        ]
+        }
       },
       {
         id: "jeju-jeonbok-juk",
@@ -1082,19 +990,16 @@ export const regions: Region[] = [
           en: ["Abalone", "Rice", "Abalone viscera", "Sesame oil", "Salt", "Green onion", "Water"]
         },
         tags: ["전복", "죽", "해녀"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "아와비 조스이", ja: "アワビ雑炊", en: "Awabi Zosui" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 45, spicy: 0, umami: 95, sour: 5 },
             description: { ko: "신선한 전복과 밥을 다시 국물에 끓인 일본의 고급 죽 요리", ja: "新鮮なアワビとご飯を出汁で炊いた日本の高級雑炊", en: "Luxurious Japanese rice porridge simmered with fresh abalone in dashi broth" },
             ingredients: { ko: ["전복", "밥", "다시마", "가쓰오", "간장", "미림", "파"], ja: ["アワビ", "ご飯", "昆布", "鰹節", "醤油", "みりん", "ネギ"], en: ["Abalone", "Rice", "Kelp", "Bonito", "Soy sauce", "Mirin", "Green onion"] },
             similarityPercent: 89,
             matchReason: { ko: "전복 주재료 + 내장의 초록색 국물 + 부드러운 쌀 죽 형태의 거의 동일한 구성", ja: "アワビの主食材 + 内臓の緑色スープ + 柔らかい米粥の形状のほぼ同じ構成", en: "Abalone as centerpiece + green viscera-tinted broth + near-identical soft rice porridge form" }
           }
-        ]
+        }
       },
       {
         id: "jeju-momguk",
@@ -1113,19 +1018,16 @@ export const regions: Region[] = [
           en: ["Sargassum seaweed", "Pork", "Doenjang", "Garlic", "Salt", "Sesame oil", "Green onion"]
         },
         tags: ["해조류", "잔치", "제주전통"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "돼지고기 해조 국", ja: "豚肉と海藻のスープ", en: "Pork and Seaweed Soup" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 80, sour: 5 },
             description: { ko: "돼지고기와 미역 또는 해조류를 함께 끓인 일본 가정식 국 요리", ja: "豚肉とわかめや海藻類を一緒に煮た日本の家庭料理のスープ", en: "Japanese home-style soup of pork simmered together with wakame or assorted seaweed" },
             ingredients: { ko: ["돼지고기", "미역", "된장", "대파", "참기름", "마늘"], ja: ["豚肉", "わかめ", "味噌", "長ネギ", "ごま油", "ニンニク"], en: ["Pork", "Wakame", "Miso", "Green onion", "Sesame oil", "Garlic"] },
             similarityPercent: 74,
             matchReason: { ko: "돼지고기 + 해조류 + 된장/미소 발효 국물의 동일한 구성 원리", ja: "豚肉 + 海藻 + テンジャン/味噌発酵スープの同じ構成原理", en: "Pork + seaweed + doenjang/miso fermented broth — same fundamental composition" }
           }
-        ]
+        }
       },
       {
         id: "jeju-dombe",
@@ -1144,19 +1046,16 @@ export const regions: Region[] = [
           en: ["Pork", "Salt", "Salted shrimp", "Green onion", "Garlic", "Water", "Doenjang"]
         },
         tags: ["수육", "제주", "소박함"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "부타카쿠니", ja: "豚の角煮", en: "Buta Kakuni" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 40, salty: 55, spicy: 5, umami: 85, sour: 5 },
             description: { ko: "간장과 설탕, 미림으로 달콤하게 조린 오키나와식 돼지 수육", ja: "醤油と砂糖、みりんで甘く煮込んだ沖縄式豚の煮豚", en: "Okinawa-style braised pork belly sweetly simmered in soy sauce, sugar, and mirin" },
             ingredients: { ko: ["돼지 삼겹살", "간장", "설탕", "미림", "생강", "파"], ja: ["豚バラ肉", "醤油", "砂糖", "みりん", "生姜", "ネギ"], en: ["Pork belly", "Soy sauce", "Sugar", "Mirin", "Ginger", "Green onion"] },
             similarityPercent: 78,
             matchReason: { ko: "삶은 돼지고기 덩이 + 소금 또는 간장 기반 심플한 조리 + 도마 썰기 스타일", ja: "茹でた豚肉塊 + 塩または醤油ベースのシンプル調理 + まな板切りスタイル", en: "Whole boiled pork + simple salt or soy-based preparation + carved-on-board presentation" }
           }
-        ]
+        }
       },
       {
         id: "jeju-mulhoe",
@@ -1175,19 +1074,16 @@ export const regions: Region[] = [
           en: ["Flounder", "Squid", "Cucumber", "Perilla", "Gochujang", "Vinegar", "Sugar", "Ice"]
         },
         tags: ["여름", "회", "차가움"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "차가운 해산물 수프", ja: "冷製シーフードスープ", en: "Cold Seafood Soup" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 45, spicy: 10, umami: 70, sour: 40 },
             description: { ko: "차게 식힌 국물에 신선한 해산물을 넣어 여름에 즐기는 일본식 냉 수프", ja: "冷やしたスープに新鮮な海鮮を入れて夏に楽しむ日本式冷スープ", en: "Japanese summer cold soup with fresh seafood in chilled broth" },
             ingredients: { ko: ["광어", "새우", "다시마 국물", "폰즈", "유자", "오이"], ja: ["ヒラメ", "海老", "昆布だし", "ポン酢", "柚子", "きゅうり"], en: ["Flounder", "Shrimp", "Kelp broth", "Ponzu", "Yuzu", "Cucumber"] },
             similarityPercent: 72,
             matchReason: { ko: "차가운 국물 + 신선 해산물 + 새콤한 양념의 여름 청량 음식 공통 구조", ja: "冷たいスープ + 新鮮な海鮮 + 酸っぱい薬念の夏の爽やか食の共通構造", en: "Cold broth + fresh seafood + sour seasoning — shared summer refreshment structure" }
           }
-        ]
+        }
       },
       {
         id: "jeju-bomal-kalguksu",
@@ -1206,19 +1102,16 @@ export const regions: Region[] = [
           en: ["Knife-cut noodles", "Periwinkle", "Kelp", "Green onion", "Garlic", "Doenjang", "Salt"]
         },
         tags: ["면", "보말", "해산물"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "고둥 우동", ja: "サザエうどん", en: "Turban Shell Udon" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 50, spicy: 5, umami: 88, sour: 5 },
             description: { ko: "사자에(소라)의 진한 국물을 활용한 일본 해안 지역의 우동 요리", ja: "サザエの濃厚な出汁を活用した日本の海岸地域のうどん料理", en: "Coastal Japanese udon made with deeply flavored turban shell broth" },
             ingredients: { ko: ["우동면", "소라", "다시마", "간장", "미림", "파"], ja: ["うどん麺", "サザエ", "昆布", "醤油", "みりん", "ネギ"], en: ["Udon noodles", "Turban shell", "Kelp", "Soy sauce", "Mirin", "Green onion"] },
             similarityPercent: 82,
             matchReason: { ko: "바다 소라류 + 진한 해산물 국물 면 요리 + 깨끗하고 담백한 맛의 공통점", ja: "海のサザエ類 + 濃厚な海鮮スープ麺料理 + きれいで淡白な味の共通点", en: "Marine gastropod + rich shellfish broth noodle dish + shared clean delicate flavor" }
           }
-        ]
+        }
       },
       {
         id: "jeju-omegi-tteok",
@@ -1237,19 +1130,16 @@ export const regions: Region[] = [
           en: ["Foxtail millet", "Sweet red bean powder", "Sugar", "Salt", "Glutinous rice", "Sesame oil"]
         },
         tags: ["떡", "제주", "차조"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "요모기 모찌", ja: "よもぎ餅", en: "Yomogi Mochi" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 55, salty: 5, spicy: 0, umami: 15, sour: 0 },
             description: { ko: "쑥을 반죽에 섞어 만든 쫄깃한 모찌 안에 달콤한 팥소가 든 일본 봄 과자", ja: "ヨモギを生地に混ぜて作ったもちもちのお餅の中に甘いあんこが入った日本の春のお菓子", en: "Japanese spring sweet of chewy mochi kneaded with mugwort and filled with sweet red bean paste" },
             ingredients: { ko: ["찹쌀", "쑥", "팥앙금", "설탕", "소금"], ja: ["もち米", "ヨモギ", "あんこ", "砂糖", "塩"], en: ["Glutinous rice", "Mugwort", "Red bean paste", "Sugar", "Salt"] },
             similarityPercent: 78,
             matchReason: { ko: "자연 재료가 섞인 쫄깃한 떡 + 팥 필링 + 섬과 지역 전통 과자의 공통된 원형", ja: "自然素材が入ったもちもちの餅 + あんこフィリング + 島と地域の伝統菓子の共通の原型", en: "Natural-ingredient-infused chewy cake + red bean filling + shared archetype of island regional sweet" }
           }
-        ]
+        }
       },
       {
         id: "jeju-hallabong",
@@ -1268,19 +1158,16 @@ export const regions: Region[] = [
           en: ["Hallabong citrus", "Sugar", "Heavy cream", "Gelatin", "Flour", "Butter", "Egg"]
         },
         tags: ["디저트", "감귤", "제주"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "유자 디저트", ja: "柚子デザート", en: "Yuzu Dessert" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 65, salty: 5, spicy: 0, umami: 5, sour: 45 },
             description: { ko: "유자 향을 살린 케이크, 젤리, 아이스크림 등 일본의 인기 감귤 디저트 시리즈", ja: "柚子の香りを生かしたケーキ、ゼリー、アイスクリームなど日本の人気柑橘デザートシリーズ", en: "Japan's popular yuzu-scented dessert series — cakes, jellies, ice creams and more" },
             ingredients: { ko: ["유자", "설탕", "생크림", "젤라틴", "밀가루", "버터"], ja: ["柚子", "砂糖", "生クリーム", "ゼラチン", "小麦粉", "バター"], en: ["Yuzu", "Sugar", "Heavy cream", "Gelatin", "Flour", "Butter"] },
             similarityPercent: 81,
             matchReason: { ko: "향긋한 감귤류 + 달콤새콤한 맛 프로파일 + 지역 특산 과일 디저트 활용의 공통점", ja: "香り豊かな柑橘類 + 甘酸っぱいフレーバープロファイル + 地域特産果物デザート活用の共通点", en: "Fragrant citrus + sweet-sour flavor profile + shared use of local specialty fruit in desserts" }
           }
-        ]
+        }
       }
     ]
   },
@@ -1308,19 +1195,16 @@ export const regions: Region[] = [
           en: ["Pork bone", "Pork", "Rice", "Chive", "Salted shrimp", "Green onion", "Garlic", "Salt"]
         },
         tags: ["국밥", "아침", "부산"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "돈코츠 라멘", ja: "豚骨ラーメン", en: "Tonkotsu Ramen" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 60, spicy: 10, umami: 95, sour: 0 },
             description: { ko: "돼지 뼈를 장시간 끓여 만든 진하고 크리미한 국물의 일본 라멘", ja: "豚骨を長時間煮込んだ濃厚でクリーミーなスープの日本ラーメン", en: "Japanese ramen with rich, creamy broth made from long-simmered pork bones" },
             ingredients: { ko: ["돼지뼈", "라멘면", "차슈", "반숙달걀", "대파", "마늘"], ja: ["豚骨", "ラーメン麺", "チャーシュー", "半熟卵", "長ネギ", "ニンニク"], en: ["Pork bone", "Ramen noodles", "Chashu", "Soft-boiled egg", "Green onion", "Garlic"] },
             similarityPercent: 83,
             matchReason: { ko: "돼지 뼈 장시간 끓임 + 뽀얀 진한 국물 + 수육/차슈 토핑의 공통 구성", ja: "豚骨の長時間煮込み + 白濁した濃厚スープ + 煮豚/チャーシュートッピングの共通構成", en: "Long-simmered pork bone + milky rich broth + braised pork topping in common" }
           }
-        ]
+        }
       },
       {
         id: "busan-milmyeon",
@@ -1339,19 +1223,16 @@ export const regions: Region[] = [
           en: ["Wheat noodles", "Broth", "Gochujang", "Vinegar", "Sugar", "Cucumber", "Egg", "Mustard"]
         },
         tags: ["냉면", "부산", "피난"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "냉멘", ja: "冷麺", en: "Hiyashi Chuka" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 25, salty: 45, spicy: 10, umami: 65, sour: 50 },
             description: { ko: "차게 삶은 중화 면에 다양한 토핑과 새콤달콤 소스를 끼얹어 먹는 일본 여름 면 요리", ja: "冷やした中華麺に様々なトッピングと甘酸っぱいソースをかけて食べる日本の夏の麺料理", en: "Japanese summer noodle dish of chilled ramen topped with various toppings and sweet-sour sauce" },
             ingredients: { ko: ["중화면", "햄", "계란", "오이", "토마토", "참깨 드레싱"], ja: ["中華麺", "ハム", "卵", "きゅうり", "トマト", "ゴマドレッシング"], en: ["Ramen noodles", "Ham", "Egg", "Cucumber", "Tomato", "Sesame dressing"] },
             similarityPercent: 75,
             matchReason: { ko: "차가운 면 + 새콤달콤 소스 + 오이 토핑의 공통 여름 면 요리 구성", ja: "冷たい麺 + 甘酸っぱいソース + きゅうりトッピングの共通夏麺料理構成", en: "Cold noodles + sweet-sour sauce + cucumber topping — shared summer noodle format" }
           }
-        ]
+        }
       },
       {
         id: "busan-hotteok",
@@ -1370,19 +1251,16 @@ export const regions: Region[] = [
           en: ["Flour", "Brown sugar", "Sunflower seeds", "Peanuts", "Pine nuts", "Cinnamon", "Yeast", "Cooking oil"]
         },
         tags: ["길거리", "디저트", "시장"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "오반야키", ja: "大判焼き", en: "Obanyaki" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 70, salty: 10, spicy: 0, umami: 15, sour: 0 },
             description: { ko: "둥근 철판에 구운 달콤한 팥소 가득한 일본 길거리 과자", ja: "丸い鉄板で焼いた甘いあんこたっぷりの日本の屋台お菓子", en: "Japanese street sweet of round pastry baked on a cast-iron mold and filled with sweet red bean paste" },
             ingredients: { ko: ["밀가루", "달걀", "설탕", "팥앙금", "베이킹파우더"], ja: ["小麦粉", "卵", "砂糖", "あんこ", "ベーキングパウダー"], en: ["Flour", "Egg", "Sugar", "Red bean paste", "Baking powder"] },
             similarityPercent: 76,
             matchReason: { ko: "달콤한 필링 가득 + 철판 반죽 구이 + 길거리에서 즐기는 따뜻한 간식의 공통점", ja: "甘いフィリングたっぷり + 鉄板生地焼き + 屋台で楽しむ温かいおやつの共通点", en: "Sweet filling packed inside + pan-fried dough + shared warm street-snack experience" }
           }
-        ]
+        }
       },
       {
         id: "busan-mul-tteok",
@@ -1401,19 +1279,16 @@ export const regions: Region[] = [
           en: ["Garaetteok rice cake", "Fish cake broth", "Soy sauce", "Green onion", "Garlic", "Chili"]
         },
         tags: ["떡", "포장마차", "어묵"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "오뎅", ja: "おでん", en: "Oden" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 55, spicy: 5, umami: 80, sour: 5 },
             description: { ko: "다시마 국물에 각종 재료를 오래 끓인 일본의 국민 겨울 음식", ja: "昆布だしに様々な具材を長時間煮込んだ日本の国民的冬料理", en: "Japan's national winter dish of various ingredients long-simmered in kelp broth" },
             ingredients: { ko: ["어묵", "무", "삶은달걀", "두부", "곤약", "다시마"], ja: ["おでん", "大根", "ゆで卵", "豆腐", "こんにゃく", "昆布"], en: ["Fish cake", "Radish", "Boiled egg", "Tofu", "Konjac", "Kelp"] },
             similarityPercent: 79,
             matchReason: { ko: "따뜻한 국물 속 어묵+떡 조합 + 겨울 길거리 음식 + 국물 직접 마시는 문화", ja: "温かいスープの中のおでん+餅の組み合わせ + 冬の屋台料理 + スープを直接飲む文化", en: "Fish cake + rice cake in warm broth + winter street food + culture of drinking the broth directly" }
           }
-        ]
+        }
       },
       {
         id: "busan-naengchae-jokbal",
@@ -1432,19 +1307,16 @@ export const regions: Region[] = [
           en: ["Pork trotters", "Mustard", "Vinegar", "Sugar", "Cucumber", "Carrot", "Lettuce", "Sesame oil"]
         },
         tags: ["족발", "냉채", "여름"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "차슈 샐러드", ja: "チャーシューサラダ", en: "Chashu Salad" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 25, salty: 45, spicy: 5, umami: 70, sour: 40 },
             description: { ko: "얇게 썬 차슈를 신선한 채소와 함께 폰즈 드레싱으로 무친 일본 샐러드", ja: "薄切りチャーシューを新鮮な野菜と一緒にポン酢ドレッシングで和えた日本のサラダ", en: "Japanese salad of thinly sliced chashu tossed with fresh vegetables in ponzu dressing" },
             ingredients: { ko: ["차슈", "상추", "오이", "무순", "폰즈", "참기름"], ja: ["チャーシュー", "サンチュ", "きゅうり", "大根スプラウト", "ポン酢", "ごま油"], en: ["Chashu", "Lettuce", "Cucumber", "Radish sprout", "Ponzu", "Sesame oil"] },
             similarityPercent: 73,
             matchReason: { ko: "차게 낸 돼지고기 + 새콤 드레싱 + 신선 채소의 공통 냉 육류 샐러드 구성", ja: "冷やした豚肉 + 酸っぱいドレッシング + 新鮮野菜の共通冷肉サラダ構成", en: "Chilled pork + sour dressing + fresh vegetables — shared cold meat salad structure" }
           }
-        ]
+        }
       },
       {
         id: "busan-grilled-clams",
@@ -1463,19 +1335,16 @@ export const regions: Region[] = [
           en: ["Clams", "Turban shell", "Pen shell", "Oyster", "Butter", "Garlic", "Salt", "Sake"]
         },
         tags: ["조개", "구이", "해변"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "하마야키", ja: "浜焼き", en: "Hamayaki" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 55, spicy: 5, umami: 90, sour: 5 },
             description: { ko: "해변가에서 신선한 해산물을 직화로 구워 먹는 일본 해안 바비큐 문화", ja: "浜辺で新鮮な海鮮を直火で焼いて食べる日本の海岸バーベキュー文化", en: "Japanese coastal barbecue culture of grilling fresh seafood directly over open fire at the beach" },
             ingredients: { ko: ["조개", "새우", "가리비", "오징어", "소금", "레몬"], ja: ["貝", "海老", "ホタテ", "イカ", "塩", "レモン"], en: ["Clams", "Shrimp", "Scallop", "Squid", "Salt", "Lemon"] },
             similarityPercent: 87,
             matchReason: { ko: "해변가 직화 조개구이 + 바닷가 포장마차 문화 + 신선 해산물 그릴의 공통된 즐거움", ja: "浜辺の直火貝焼き + 海辺の屋台文化 + 新鮮海鮮グリルの共通の楽しさ", en: "Beachside direct-fire shellfish grilling + seaside food stall culture + shared joy of fresh seafood on the grill" }
           }
-        ]
+        }
       },
       {
         id: "busan-eomuk",
@@ -1494,19 +1363,16 @@ export const regions: Region[] = [
           en: ["White fish", "Starch", "Egg", "Salt", "Sugar", "Garlic", "Green onion", "Carrot"]
         },
         tags: ["어묵", "길거리", "부산명물"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "사츠마아게", ja: "さつま揚げ", en: "Satsuma-age" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 50, spicy: 5, umami: 75, sour: 5 },
             description: { ko: "가고시마의 신선한 생선을 갈아 튀겨낸 일본의 전통 어묵", ja: "鹿児島の新鮮な魚を挽いて揚げた日本の伝統的な魚のすり身揚げ", en: "Traditional Japanese fish cake from Kagoshima — fresh fish ground and deep-fried" },
             ingredients: { ko: ["흰살 생선", "전분", "두부", "당근", "우엉", "설탕"], ja: ["白身魚", "でんぷん", "豆腐", "人参", "ごぼう", "砂糖"], en: ["White fish", "Starch", "Tofu", "Carrot", "Burdock", "Sugar"] },
             similarityPercent: 84,
             matchReason: { ko: "생선살 갈아 만든 어묵 + 쫄깃한 식감 + 국물 또는 튀김의 공통 어묵 원형", ja: "魚の身を挽いたかまぼこ + もちもちした食感 + スープまたは揚げの共通魚のすり身の原型", en: "Ground fish cake + chewy texture + shared fish paste archetype as broth ingredient or fried snack" }
           }
-        ]
+        }
       },
       {
         id: "busan-bibim-dangmyeon",
@@ -1525,19 +1391,16 @@ export const regions: Region[] = [
           en: ["Glass noodles", "Gochujang", "Soy sauce", "Sugar", "Vinegar", "Sesame oil", "Green onion", "Sesame"]
         },
         tags: ["당면", "비빔", "분식"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "하루사메 샐러드", ja: "春雨サラダ", en: "Harusame Salad" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 25, salty: 45, spicy: 10, umami: 55, sour: 45 },
             description: { ko: "삶은 당면에 오이, 당근 등 채소와 참깨 드레싱을 버무린 일본 샐러드", ja: "茹でた春雨にきゅうり、人参などの野菜とゴマドレッシングを和えた日本のサラダ", en: "Japanese salad of cooked glass noodles tossed with cucumber, carrot and sesame dressing" },
             ingredients: { ko: ["당면", "오이", "당근", "햄", "식초", "참기름", "간장"], ja: ["春雨", "きゅうり", "人参", "ハム", "酢", "ごま油", "醤油"], en: ["Glass noodles", "Cucumber", "Carrot", "Ham", "Vinegar", "Sesame oil", "Soy sauce"] },
             similarityPercent: 77,
             matchReason: { ko: "투명 당면 + 새콤달콤 드레싱 + 채소와 함께 버무리는 스타일의 공통점", ja: "透き通った春雨 + 甘酸っぱいドレッシング + 野菜と一緒に和えるスタイルの共通点", en: "Translucent glass noodles + sweet-sour dressing + tossed with vegetables style in common" }
           }
-        ]
+        }
       },
       {
         id: "busan-gopchang",
@@ -1556,19 +1419,16 @@ export const regions: Region[] = [
           en: ["Beef intestines", "Beef tripe", "Chive", "Garlic", "Salt", "Sesame oil", "Gochujang", "Sesame"]
         },
         tags: ["곱창", "야식", "구이"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "호르몬야키", ja: "ホルモン焼き", en: "Hormone Yaki" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 55, spicy: 20, umami: 90, sour: 5 },
             description: { ko: "소나 돼지의 내장을 양념에 재워 구워 먹는 일본식 곱창 구이", ja: "牛や豚のホルモンを味付けして焼いて食べる日本式もつ焼き", en: "Japanese-style grilled offal of beef or pork marinated and grilled over charcoal" },
             ingredients: { ko: ["소 내장", "된장", "간장", "마늘", "참기름", "파"], ja: ["牛ホルモン", "味噌", "醤油", "ニンニク", "ごま油", "ネギ"], en: ["Beef offal", "Miso", "Soy sauce", "Garlic", "Sesame oil", "Green onion"] },
             similarityPercent: 85,
             matchReason: { ko: "내장 직화구이 + 고소하고 진한 내장 특유의 향미 + 야식 문화의 공통된 포지션", ja: "ホルモン直火焼き + 香ばしく濃厚なホルモン特有の風味 + 夜食文化の共通ポジション", en: "Offal direct-fire grilling + shared rich, nutty offal aroma + same position in night-eating culture" }
           }
-        ]
+        }
       },
       {
         id: "busan-nakgopsae",
@@ -1587,19 +1447,16 @@ export const regions: Region[] = [
           en: ["Octopus", "Beef intestines", "Shrimp", "Gochujang", "Chili powder", "Garlic", "Green onion", "Sesame oil"]
         },
         tags: ["해산물", "곱창", "야식"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "해산물 전골", ja: "海鮮すき焼き", en: "Seafood Hot Pot" },
-            country: "jp",
-            countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 90, sour: 5 },
             description: { ko: "다양한 해산물을 한 냄비에 끓이는 일본 해산물 전골", ja: "様々な海鮮を一鍋で煮込む日本の海鮮すき焼き", en: "Japanese seafood hot pot of diverse marine ingredients simmered together in one pot" },
             ingredients: { ko: ["문어", "새우", "조개", "게", "두부", "배추", "다시마"], ja: ["タコ", "海老", "貝", "カニ", "豆腐", "白菜", "昆布"], en: ["Octopus", "Shrimp", "Clams", "Crab", "Tofu", "Cabbage", "Kelp"] },
             similarityPercent: 78,
             matchReason: { ko: "다양한 해산물 혼합 냄비 요리 + 진한 해산물 국물 + 매콤 양념 베이스 공통점", ja: "様々な海鮮混合鍋料理 + 濃厚な海鮮スープ + ピリ辛薬念ベースの共通点", en: "Multi-seafood mixed pot + rich seafood broth + shared spicy sauce base" }
           }
-        ]
+        }
       }
     ]
   },
@@ -1623,18 +1480,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["밀가루", "팥", "설탕", "버터", "달걀", "소금"], ja: ["小麦粉", "小豆", "砂糖", "バター", "卵", "塩"], en: ["Wheat flour", "Red beans", "Sugar", "Butter", "Egg", "Salt"] },
         tags: ["전통", "팥", "간식"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "타이야키", ja: "たい焼き", en: "Taiyaki" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 65, salty: 10, spicy: 0, umami: 15, sour: 5 },
             description: { ko: "생선 모양의 틀에 구운 팥소 가득한 일본 전통 과자", ja: "鯛の形の型で焼いた小豆餡たっぷりの日本の伝統菓子", en: "Traditional Japanese pastry baked in a fish-shaped mold, filled with sweet red bean paste" },
             ingredients: { ko: ["밀가루", "팥소", "설탕", "달걀", "베이킹파우더"], ja: ["小麦粉", "小豆餡", "砂糖", "卵", "ベーキングパウダー"], en: ["Wheat flour", "Red bean paste", "Sugar", "Egg", "Baking powder"] },
             similarityPercent: 83,
             matchReason: { ko: "얇은 반죽 + 달콤한 팥소 + 손에 들고 먹는 간식의 형태", ja: "薄い生地 + 甘い小豆餡 + 手に持って食べるおやつの形", en: "Thin pastry shell + sweet red bean filling + handheld snack form" }
           }
-        ]
+        }
       },
       {
         id: "gyeongju-gyori-gimbap",
@@ -1649,18 +1504,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["밥", "김", "시금치", "계란", "당근", "우엉", "어묵", "참기름"], ja: ["ご飯", "のり", "ほうれん草", "卵", "人参", "ごぼう", "練り物", "ごま油"], en: ["Rice", "Seaweed", "Spinach", "Egg", "Carrot", "Burdock", "Fish cake", "Sesame oil"] },
         tags: ["김밥", "도시락", "수제"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "후토마키", ja: "太巻き", en: "Futomaki" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 25, salty: 50, spicy: 0, umami: 60, sour: 15 },
             description: { ko: "다채로운 재료를 듬뿍 넣어 두툼하게 만 일본식 굵은 김밥", ja: "色とりどりの具材をたっぷり入れて太く巻いた日本式の太巻き寿司", en: "Thick Japanese rolled sushi packed with colorful, generous fillings" },
             ingredients: { ko: ["밥", "김", "계란말이", "오이", "박고지", "어묵", "식초"], ja: ["ご飯", "のり", "玉子焼き", "きゅうり", "かんぴょう", "練り物", "酢"], en: ["Rice", "Seaweed", "Tamagoyaki", "Cucumber", "Dried gourd", "Fish cake", "Vinegar"] },
             similarityPercent: 80,
             matchReason: { ko: "두툼한 원통형 + 다채로운 속재료 + 한입에 먹기 좋은 잘라낸 단면", ja: "太い円筒形 + 色とりどりの具材 + 一口で食べやすい切り口", en: "Thick cylindrical roll + colorful fillings + satisfying cross-section slices" }
           }
-        ]
+        }
       },
       {
         id: "gyeongju-tteokgalbi",
@@ -1675,18 +1528,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["소갈비살", "간장", "배", "마늘", "참기름", "설탕", "파"], ja: ["牛カルビ肉", "醤油", "梨", "ニンニク", "ごま油", "砂糖", "ネギ"], en: ["Beef rib meat", "Soy sauce", "Korean pear", "Garlic", "Sesame oil", "Sugar", "Green onion"] },
         tags: ["고기", "달콤", "구이"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "와후 햄버그스테이크", ja: "和風ハンバーグ", en: "Wafu Hamburg Steak" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 40, salty: 50, spicy: 5, umami: 80, sour: 10 },
             description: { ko: "다진 소고기에 간장 기반 소스를 곁들인 일본식 함박스테이크", ja: "ひき牛肉に醤油ベースのソースを添えた日本式ハンバーグステーキ", en: "Japanese-style hamburger steak with minced beef and savory soy-based sauce" },
             ingredients: { ko: ["다진 소고기", "양파", "간장", "미림", "달걀", "빵가루"], ja: ["牛ひき肉", "玉ねぎ", "醤油", "みりん", "卵", "パン粉"], en: ["Ground beef", "Onion", "Soy sauce", "Mirin", "Egg", "Breadcrumbs"] },
             similarityPercent: 82,
             matchReason: { ko: "다진 고기를 뭉쳐 구운 형태 + 달콤짭짤한 간장 소스 + 촉촉한 육즙", ja: "ひき肉を丸めて焼く形状 + 甘辛い醤油ソース + ジューシーな肉汁", en: "Minced meat shaped & grilled + sweet-salty soy glaze + juicy interior" }
           }
-        ]
+        }
       },
       {
         id: "gyeongju-hanwoo-mulhoe",
@@ -1701,18 +1552,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["한우 육회", "오이", "배", "고추장", "식초", "설탕", "얼음"], ja: ["韓牛ユッケ", "きゅうり", "梨", "コチュジャン", "酢", "砂糖", "氷"], en: ["Raw Korean beef", "Cucumber", "Korean pear", "Gochujang", "Vinegar", "Sugar", "Ice"] },
         tags: ["육회", "차가움", "여름"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "히야시 샤부샤부", ja: "冷しゃぶしゃぶ", en: "Hiyashi Shabu-Shabu" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 40, spicy: 10, umami: 65, sour: 35 },
             description: { ko: "얇게 썬 고기를 차게 식혀 폰즈 소스와 함께 먹는 여름 요리", ja: "薄切り肉を冷やしてポン酢ソースと一緒に食べる夏の料理", en: "Thinly sliced chilled meat served cold with ponzu dipping sauce" },
             ingredients: { ko: ["소고기 샤부샤부용", "폰즈 소스", "깻잎", "레몬", "얼음"], ja: ["牛シャブシャブ用肉", "ポン酢", "大葉", "レモン", "氷"], en: ["Beef shabu-shabu slices", "Ponzu sauce", "Perilla", "Lemon", "Ice"] },
             similarityPercent: 75,
             matchReason: { ko: "차갑게 먹는 소고기 + 새콤한 소스 + 여름 별미의 청량감", ja: "冷やして食べる牛肉 + 酸味のあるソース + 夏の珍味の爽やかさ", en: "Cold beef + tangy sauce + refreshing summer dish" }
           }
-        ]
+        }
       },
       {
         id: "gyeongju-ssambap",
@@ -1727,18 +1576,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["상추", "깻잎", "쌈장", "밥", "삼겹살", "마늘", "고추"], ja: ["サンチュ", "エゴマの葉", "サムジャン", "ご飯", "豚バラ", "ニンニク", "唐辛子"], en: ["Lettuce", "Perilla leaves", "Ssamjang", "Rice", "Pork belly", "Garlic", "Green pepper"] },
         tags: ["채소", "쌈", "정식"],
-        dupes: [
-          {
+        dupes: {
+          VN: {
             name: { ko: "베트남 라이스페이퍼 쌈", ja: "ベトナムライスペーパー巻き", en: "Vietnamese Rice Paper Wraps" },
-            country: "vn", countryFlag: "🇻🇳",
-            countryName: { ko: "베트남", ja: "ベトナム", en: "Vietnam" },
             tasteProfile: { sweet: 15, salty: 40, spicy: 25, umami: 55, sour: 30 },
             description: { ko: "라이스페이퍼에 채소와 고기를 싸서 소스에 찍어 먹는 베트남 요리", ja: "ライスペーパーに野菜と肉を巻いてソースに付けて食べるベトナム料理", en: "Vietnamese dish of fresh ingredients wrapped in rice paper, dipped in sauce" },
             ingredients: { ko: ["라이스페이퍼", "새우", "상추", "허브", "쌀국수", "땅콩소스"], ja: ["ライスペーパー", "エビ", "レタス", "ハーブ", "フォー", "ピーナッツソース"], en: ["Rice paper", "Shrimp", "Lettuce", "Fresh herbs", "Rice vermicelli", "Peanut sauce"] },
             similarityPercent: 73,
             matchReason: { ko: "신선한 채소 래핑 + 소스에 찍어 먹기 + 손으로 싸서 한입에 먹는 형태", ja: "新鮮な野菜ラッピング + ソースに付けて食べる + 手で包んで一口で食べる形", en: "Fresh veggie wrapping + dipping sauce + hand-rolled one-bite eating style" }
           }
-        ]
+        }
       },
       {
         id: "gyeongju-sundubu",
@@ -1753,18 +1600,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["순두부", "고춧가루", "바지락", "돼지고기", "계란", "파", "참기름"], ja: ["純豆腐", "唐辛子粉", "アサリ", "豚肉", "卵", "ネギ", "ごま油"], en: ["Soft tofu", "Red pepper powder", "Clams", "Pork", "Egg", "Green onion", "Sesame oil"] },
         tags: ["두부", "매콤", "뚝배기"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "아게다시 두부", ja: "揚げ出し豆腐", en: "Agedashi Tofu" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 45, spicy: 5, umami: 70, sour: 5 },
             description: { ko: "튀긴 두부에 다시 국물을 부어 먹는 일본식 두부 요리", ja: "揚げた豆腐にだし汁をかけて食べる日本式豆腐料理", en: "Deep-fried tofu served in a delicate dashi broth" },
             ingredients: { ko: ["두부", "다시마육수", "간장", "미림", "무", "생강"], ja: ["豆腐", "だし汁", "醤油", "みりん", "大根おろし", "生姜"], en: ["Tofu", "Dashi broth", "Soy sauce", "Mirin", "Grated daikon", "Ginger"] },
             similarityPercent: 69,
             matchReason: { ko: "부드러운 두부가 주인공 + 감칠맛 나는 국물 + 뜨겁게 즐기는 두부 요리", ja: "柔らかい豆腐が主役 + 旨味のある出汁 + 熱々で楽しむ豆腐料理", en: "Silky tofu as star + umami-rich broth + served piping hot" }
           }
-        ]
+        }
       },
       {
         id: "gyeongju-haejangguk",
@@ -1779,18 +1624,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["사골육수", "우거지", "선지", "콩나물", "고춧가루", "된장", "마늘"], ja: ["牛骨スープ", "干し白菜葉", "血豆腐", "もやし", "唐辛子粉", "味噌", "ニンニク"], en: ["Bone broth", "Dried cabbage", "Blood pudding", "Bean sprouts", "Red pepper powder", "Doenjang", "Garlic"] },
         tags: ["해장", "진국", "아침"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "모츠나베", ja: "もつ鍋", en: "Motsu Nabe" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 85, sour: 5 },
             description: { ko: "돼지 내장과 채소를 간장 또는 된장 국물에 끓인 후쿠오카식 나베 요리", ja: "豚の内臓と野菜を醤油または味噌のスープで煮込んだ福岡式鍋料理", en: "Fukuoka-style hotpot of pork offal and vegetables in soy or miso broth" },
             ingredients: { ko: ["돼지 내장", "배추", "부추", "된장", "마늘", "두부"], ja: ["豚もつ", "白菜", "ニラ", "味噌", "ニンニク", "豆腐"], en: ["Pork offal", "Cabbage", "Garlic chives", "Miso", "Garlic", "Tofu"] },
             similarityPercent: 72,
             matchReason: { ko: "진한 발효 국물 + 내장류 재료 + 속을 든든하게 채워주는 푸짐함", ja: "濃い発酵スープ + 内臓系食材 + お腹をしっかり満たす豪快さ", en: "Rich fermented broth + offal ingredients + heartily filling bowl" }
           }
-        ]
+        }
       },
       {
         id: "gyeongju-hanjeongsik",
@@ -1805,18 +1648,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["밥", "나물 반찬", "전", "구이", "찌개", "김치", "해산물", "떡"], ja: ["ご飯", "ナムルおかず", "チヂミ", "焼き物", "チゲ", "キムチ", "海産物", "餅"], en: ["Rice", "Namul side dishes", "Jeon", "Grilled dishes", "Jjigae", "Kimchi", "Seafood", "Rice cake"] },
         tags: ["정찬", "궁중", "전통"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "가이세키 요리", ja: "懐石料理", en: "Kaiseki" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 25, salty: 40, spicy: 5, umami: 85, sour: 15 },
             description: { ko: "일본의 전통 코스 요리로 계절 식재료를 활용한 예술적인 다채 요리", ja: "日本の伝統コース料理で旬の食材を活かした芸術的な多皿料理", en: "Traditional Japanese multi-course cuisine showcasing seasonal ingredients with artistic presentation" },
             ingredients: { ko: ["제철 생선", "두부", "채소", "다시마", "미소"], ja: ["旬の魚", "豆腐", "野菜", "昆布", "味噌"], en: ["Seasonal fish", "Tofu", "Vegetables", "Kelp", "Miso"] },
             similarityPercent: 84,
             matchReason: { ko: "다양한 소반찬 구성 + 제철 재료 + 눈으로 먹는 아름다운 코스 구성", ja: "多様な小皿構成 + 旬の食材 + 目で食べる美しいコース構成", en: "Multiple small dishes + seasonal ingredients + visually stunning course presentation" }
           }
-        ]
+        }
       },
       {
         id: "gyeongju-chalborippang",
@@ -1831,18 +1672,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["찰보리", "밀가루", "팥소", "버터", "설탕", "달걀", "우유"], ja: ["もち麦", "小麦粉", "小豆餡", "バター", "砂糖", "卵", "牛乳"], en: ["Sticky barley", "Wheat flour", "Red bean paste", "Butter", "Sugar", "Egg", "Milk"] },
         tags: ["빵", "보리", "달콤"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "도라야키", ja: "どら焼き", en: "Dorayaki" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 65, salty: 10, spicy: 0, umami: 20, sour: 5 },
             description: { ko: "두 장의 카스텔라 사이에 달콤한 팥소를 넣은 일본 전통 과자", ja: "2枚のカステラ生地の間に甘い小豆餡を挟んだ日本の伝統菓子", en: "Traditional Japanese confection with sweet red bean paste sandwiched between two fluffy pancake-like cakes" },
             ingredients: { ko: ["밀가루", "달걀", "설탕", "꿀", "팥소"], ja: ["小麦粉", "卵", "砂糖", "蜂蜜", "小豆餡"], en: ["Wheat flour", "Egg", "Sugar", "Honey", "Red bean paste"] },
             similarityPercent: 78,
             matchReason: { ko: "쫄깃하고 촉촉한 빵 반죽 + 달콤한 팥 속 재료 + 손에 들고 먹는 간편함", ja: "もちもちしっとりした生地 + 甘い小豆の中身 + 手に持って食べる手軽さ", en: "Chewy moist dough + sweet red bean filling + easy handheld snack" }
           }
-        ]
+        }
       },
       {
         id: "gyeongju-milmyeon",
@@ -1857,18 +1696,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["밀가루 면", "한방 육수", "오이", "계란", "돼지고기", "겨자", "식초"], ja: ["小麦粉麺", "漢方だし", "きゅうり", "卵", "豚肉", "からし", "酢"], en: ["Wheat noodles", "Herbal broth", "Cucumber", "Egg", "Pork", "Mustard", "Vinegar"] },
         tags: ["냉면", "여름", "쫄깃"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "히야시 라멘", ja: "冷やしラーメン", en: "Hiyashi Ramen" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 50, spicy: 20, umami: 65, sour: 30 },
             description: { ko: "차갑게 식혀 먹는 일본식 라멘, 여름철 별미", ja: "冷やして食べる日本式ラーメン、夏の季節の珍味", en: "Ice-cold Japanese ramen served as a summer delicacy" },
             ingredients: { ko: ["라멘 면", "차슈", "차가운 육수", "계란", "오이", "간장"], ja: ["ラーメン麺", "チャーシュー", "冷たいスープ", "卵", "きゅうり", "醤油"], en: ["Ramen noodles", "Chashu pork", "Chilled broth", "Egg", "Cucumber", "Soy sauce"] },
             similarityPercent: 77,
             matchReason: { ko: "차갑게 먹는 밀가루 면 + 시원한 육수 + 토핑을 얹은 여름 국수", ja: "冷やして食べる小麦粉麺 + 冷たいスープ + トッピングを乗せた夏の麺", en: "Cold wheat noodles + chilled broth + topped summer noodle dish" }
           }
-        ]
+        }
       }
     ]
   },
@@ -1896,18 +1733,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["밀가루", "팥소", "호두", "달걀", "버터", "설탕"], ja: ["小麦粉", "小豆餡", "クルミ", "卵", "バター", "砂糖"], en: ["Wheat flour", "Red bean paste", "Walnut", "Egg", "Butter", "Sugar"] },
         tags: ["간식", "호두", "팥"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "닌교야키", ja: "人形焼き", en: "Ningyoyaki" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 68, salty: 10, spicy: 0, umami: 15, sour: 5 },
             description: { ko: "인형 모양 틀에 구운 팥소 달콤한 일본 전통 과자", ja: "人形の形の型で焼いた小豆餡の甘い日本の伝統菓子", en: "Traditional Japanese pastry baked in character-shaped molds, filled with sweet red bean paste" },
             ingredients: { ko: ["밀가루", "팥소", "설탕", "달걀", "베이킹파우더"], ja: ["小麦粉", "小豆餡", "砂糖", "卵", "ベーキングパウダー"], en: ["Wheat flour", "Red bean paste", "Sugar", "Egg", "Baking powder"] },
             similarityPercent: 86,
             matchReason: { ko: "모양 틀에 구운 팥소 빵 + 작고 귀여운 형태 + 달콤한 간식", ja: "型で焼いた小豆餡パン + 小さくてかわいい形 + 甘いおやつ", en: "Mold-baked red bean pastry + small cute shape + sweet snack" }
           }
-        ]
+        }
       },
       {
         id: "cheonan-byeongcheon-sundae",
@@ -1922,18 +1757,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["돼지 소장", "당면", "채소", "선지", "찹쌀", "파", "마늘"], ja: ["豚の小腸", "春雨", "野菜", "血", "もち米", "ネギ", "ニンニク"], en: ["Pork intestine casing", "Glass noodles", "Vegetables", "Blood", "Sticky rice", "Green onion", "Garlic"] },
         tags: ["순대", "전통", "명물"],
-        dupes: [
-          {
+        dupes: {
+          FR: {
             name: { ko: "부댕 누아르", ja: "ブーダンノワール", en: "Boudin Noir" },
-            country: "fr", countryFlag: "🇫🇷",
-            countryName: { ko: "프랑스", ja: "フランス", en: "France" },
             tasteProfile: { sweet: 10, salty: 60, spicy: 10, umami: 80, sour: 5 },
             description: { ko: "돼지 선지와 지방을 창자에 넣어 만든 프랑스 혈소시지", ja: "豚の血と脂肪を腸に詰めて作ったフランスの血のソーセージ", en: "French blood sausage made from pork blood and fat stuffed into intestine casing" },
             ingredients: { ko: ["돼지 선지", "지방", "양파", "소금", "후추", "향신료"], ja: ["豚の血", "脂肪", "玉ねぎ", "塩", "胡椒", "スパイス"], en: ["Pork blood", "Fat", "Onion", "Salt", "Pepper", "Spices"] },
             similarityPercent: 74,
             matchReason: { ko: "창자에 넣어 만든 소시지 형태 + 선지가 들어간 진한 풍미 + 삶아서 먹는 조리법", ja: "腸に詰めて作ったソーセージ形 + 血が入った濃厚な風味 + 茹でて食べる調理法", en: "Intestine-cased sausage + blood-enriched deep flavor + boiled preparation method" }
           }
-        ]
+        }
       },
       {
         id: "cheonan-sundae-soup",
@@ -1948,18 +1781,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["사골육수", "순대", "머리고기", "내장", "파", "고춧가루", "새우젓"], ja: ["豚骨スープ", "スンデ", "豚頭肉", "内臓", "ネギ", "唐辛子粉", "アミの塩辛"], en: ["Pork bone broth", "Sundae", "Head meat", "Offal", "Green onion", "Red pepper", "Salted shrimp"] },
         tags: ["국밥", "순대", "구수함"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "돈코츠 라멘", ja: "豚骨ラーメン", en: "Tonkotsu Ramen" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 60, spicy: 10, umami: 90, sour: 5 },
             description: { ko: "돼지 뼈를 오래 끓여 뽀얗고 진하게 우린 일본 라멘 국물", ja: "豚骨を長時間煮込んで白濁した濃厚な日本ラーメンのスープ", en: "Rich white pork bone broth simmered for hours, the soul of Japanese Tonkotsu ramen" },
             ingredients: { ko: ["돼지 뼈", "라멘 면", "차슈", "달걀", "파", "마늘"], ja: ["豚骨", "ラーメン麺", "チャーシュー", "卵", "ネギ", "ニンニク"], en: ["Pork bones", "Ramen noodles", "Chashu", "Egg", "Green onion", "Garlic"] },
             similarityPercent: 78,
             matchReason: { ko: "뽀얀 돼지 뼈 육수 + 구수하고 진한 국물 + 돼지 부산물 활용", ja: "白濁した豚骨スープ + 香ばしく濃厚なスープ + 豚の副産物活用", en: "Milky pork bone broth + savory rich depth + use of pork by-products" }
           }
-        ]
+        }
       },
       {
         id: "cheonan-charcoal-dakgalbi",
@@ -1974,18 +1805,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["닭고기", "고추장", "간장", "설탕", "마늘", "참기름", "파"], ja: ["鶏肉", "コチュジャン", "醤油", "砂糖", "ニンニク", "ごま油", "ネギ"], en: ["Chicken", "Gochujang", "Soy sauce", "Sugar", "Garlic", "Sesame oil", "Green onion"] },
         tags: ["숯불", "닭갈비", "매콤"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "야키토리", ja: "焼き鳥", en: "Yakitori" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 40, salty: 45, spicy: 5, umami: 70, sour: 5 },
             description: { ko: "숯불에 구운 닭 꼬치에 달콤짭짤한 타레 소스를 발라 먹는 일본 요리", ja: "炭火で焼いた鶏の串焼きに甘辛いタレを塗って食べる日本料理", en: "Japanese grilled chicken skewers coated with sweet-savory tare sauce over charcoal" },
             ingredients: { ko: ["닭고기", "간장", "미림", "설탕", "생강"], ja: ["鶏肉", "醤油", "みりん", "砂糖", "生姜"], en: ["Chicken", "Soy sauce", "Mirin", "Sugar", "Ginger"] },
             similarityPercent: 76,
             matchReason: { ko: "숯불 그릴 조리 + 달콤짭짤한 닭 양념 + 불 향기가 배어든 풍미", ja: "炭火グリル調理 + 甘辛い鶏の味付け + 火の香りが染み込んだ風味", en: "Charcoal grill cooking + sweet-salty chicken marinade + smoky flame-kissed flavor" }
           }
-        ]
+        }
       },
       {
         id: "cheonan-spicy-catfish",
@@ -2000,18 +1829,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["빠가사리", "고춧가루", "된장", "두부", "호박", "파", "마늘", "들깨"], ja: ["ナマズ", "唐辛子粉", "味噌", "豆腐", "カボチャ", "ネギ", "ニンニク", "エゴマ"], en: ["Catfish", "Red pepper powder", "Doenjang", "Tofu", "Zucchini", "Green onion", "Garlic", "Perilla"] },
         tags: ["매운탕", "민물고기", "얼큰"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "아라나베", ja: "あら鍋", en: "Ara Nabe" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 50, spicy: 15, umami: 80, sour: 10 },
             description: { ko: "생선 머리와 뼈를 된장 또는 간장 베이스로 끓인 일본 냄비 요리", ja: "魚の頭や骨を味噌または醤油ベースで煮込んだ日本の鍋料理", en: "Japanese hotpot made by simmering fish heads and bones in miso or soy broth" },
             ingredients: { ko: ["생선 머리", "두부", "파", "된장", "생강"], ja: ["魚の頭", "豆腐", "ネギ", "味噌", "生姜"], en: ["Fish head", "Tofu", "Green onion", "Miso", "Ginger"] },
             similarityPercent: 71,
             matchReason: { ko: "생선 전체를 활용한 진한 육수 + 두부와 채소가 함께하는 냄비 요리 + 얼큰한 양념", ja: "魚全体を活用した濃厚なだし + 豆腐と野菜が一緒の鍋料理 + ピリ辛の味付け", en: "Whole-fish rich broth + tofu and veggie hotpot + boldly seasoned" }
           }
-        ]
+        }
       },
       {
         id: "cheonan-hanwoo-yukhoe",
@@ -2026,18 +1853,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["한우 육회", "밥", "나물", "달걀 노른자", "고추장", "참기름", "배"], ja: ["韓牛ユッケ", "ご飯", "ナムル", "卵の黄身", "コチュジャン", "ごま油", "梨"], en: ["Raw Korean beef", "Rice", "Namul", "Egg yolk", "Gochujang", "Sesame oil", "Korean pear"] },
         tags: ["육회", "비빔밥", "한우"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "규동 + 타르타르", ja: "牛丼＋タルタル", en: "Gyudon with Tartar" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 30, salty: 50, spicy: 10, umami: 80, sour: 15 },
             description: { ko: "소고기 덮밥에 날달걀 토핑이 올려진 일본식 원볼 요리", ja: "牛丼に生卵のトッピングを乗せた日本式ワンボウル料理", en: "Japanese beef bowl topped with raw egg — a classic one-bowl comfort dish" },
             ingredients: { ko: ["소고기", "밥", "간장", "미림", "달걀", "파"], ja: ["牛肉", "ご飯", "醤油", "みりん", "卵", "ネギ"], en: ["Beef", "Rice", "Soy sauce", "Mirin", "Egg", "Green onion"] },
             similarityPercent: 73,
             matchReason: { ko: "밥 위에 올려진 소고기 + 날달걀 토핑 + 간장 베이스 원볼 구조", ja: "ご飯の上に乗せた牛肉 + 生卵トッピング + 醤油ベースのワンボウル構造", en: "Beef on rice + raw egg topping + soy-based one-bowl structure" }
           }
-        ]
+        }
       },
       {
         id: "cheonan-fruit-mochi",
@@ -2052,18 +1877,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["찹쌀가루", "생딸기", "생크림", "설탕", "전분", "팥소"], ja: ["もち米粉", "生いちご", "生クリーム", "砂糖", "でんぷん", "小豆餡"], en: ["Glutinous rice flour", "Fresh strawberry", "Heavy cream", "Sugar", "Starch", "Red bean paste"] },
         tags: ["디저트", "과일", "모찌"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "이치고 다이후쿠", ja: "いちご大福", en: "Ichigo Daifuku" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 72, salty: 5, spicy: 0, umami: 8, sour: 18 },
             description: { ko: "찹쌀 떡 안에 통 딸기와 팥소를 넣은 일본 전통 화과자", ja: "もち米の皮の中に丸ごといちごと小豆餡を入れた日本の伝統和菓子", en: "Traditional Japanese wagashi with a whole strawberry and red bean paste inside soft mochi" },
             ingredients: { ko: ["찹쌀", "팥소", "생딸기", "설탕"], ja: ["もち米", "小豆餡", "生いちご", "砂糖"], en: ["Glutinous rice", "Red bean paste", "Fresh strawberry", "Sugar"] },
             similarityPercent: 93,
             matchReason: { ko: "찹쌀 떡 피 + 생과일 통째 + 달콤한 크림소 = 거의 동일한 구조", ja: "もち米の皮 + 生果物丸ごと + 甘いクリーム餡 = ほぼ同じ構造", en: "Mochi rice skin + whole fresh fruit + sweet cream filling = nearly identical structure" }
           }
-        ]
+        }
       },
       {
         id: "cheonan-lotus-rice",
@@ -2078,18 +1901,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["연잎", "찹쌀", "은행", "잣", "대추", "밤", "간장"], ja: ["蓮の葉", "もち米", "銀杏", "松の実", "なつめ", "栗", "醤油"], en: ["Lotus leaf", "Glutinous rice", "Ginkgo", "Pine nuts", "Jujube", "Chestnut", "Soy sauce"] },
         tags: ["연잎", "건강", "찹쌀"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "타케노코 오코와", ja: "たけのこおこわ", en: "Takenoko Okowa" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 40, spicy: 0, umami: 70, sour: 5 },
             description: { ko: "죽순이나 제철 채소를 섞어 찐 일본식 찹쌀밥", ja: "たけのこや旬の野菜を混ぜて蒸した日本式もち米ご飯", en: "Japanese steamed glutinous rice mixed with bamboo shoots and seasonal vegetables" },
             ingredients: { ko: ["찹쌀", "죽순", "간장", "미림", "다시마", "당근"], ja: ["もち米", "たけのこ", "醤油", "みりん", "昆布", "人参"], en: ["Glutinous rice", "Bamboo shoots", "Soy sauce", "Mirin", "Kelp", "Carrot"] },
             similarityPercent: 76,
             matchReason: { ko: "자연 향재료로 향을 입힌 찹쌀밥 + 견과류 곡물 + 찜 조리 방식", ja: "天然香り食材で香り付けしたもち米ご飯 + ナッツ穀物 + 蒸し調理法", en: "Aromatic ingredient-infused sticky rice + nut grains + steam cooking method" }
           }
-        ]
+        }
       },
       {
         id: "cheonan-mushroom-stew",
@@ -2104,18 +1925,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["표고버섯", "느타리버섯", "팽이버섯", "두부", "당면", "파", "간장", "참기름"], ja: ["椎茸", "ヒラタケ", "えのき茸", "豆腐", "春雨", "ネギ", "醤油", "ごま油"], en: ["Shiitake", "Oyster mushroom", "Enoki", "Tofu", "Glass noodles", "Green onion", "Soy sauce", "Sesame oil"] },
         tags: ["버섯", "전골", "감칠맛"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "키노코 나베", ja: "きのこ鍋", en: "Kinoko Nabe" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 40, spicy: 5, umami: 88, sour: 5 },
             description: { ko: "다양한 버섯을 다시마 국물에 끓여 먹는 일본 나베 요리", ja: "様々なキノコを昆布だしで煮て食べる日本の鍋料理", en: "Japanese hotpot of various mushrooms simmered in kelp dashi broth" },
             ingredients: { ko: ["표고버섯", "팽이버섯", "다시마", "두부", "파"], ja: ["椎茸", "えのき", "昆布", "豆腐", "ネギ"], en: ["Shiitake", "Enoki", "Kelp", "Tofu", "Green onion"] },
             similarityPercent: 89,
             matchReason: { ko: "다양한 버섯이 주재료 + 감칠맛 가득한 육수 + 두부와 채소 곁들임", ja: "様々なキノコが主役 + 旨味たっぷりのだし + 豆腐と野菜添え", en: "Various mushrooms as star + umami-packed broth + tofu and veggie sides" }
           }
-        ]
+        }
       },
       {
         id: "cheonan-local-bakery",
@@ -2130,18 +1949,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["브리오슈", "팥소", "발효 버터", "소금", "설탕"], ja: ["ブリオッシュ", "小豆餡", "発酵バター", "塩", "砂糖"], en: ["Brioche", "Red bean paste", "Cultured butter", "Salt", "Sugar"] },
         tags: ["베이커리", "앙버터", "로컬"],
-        dupes: [
-          {
+        dupes: {
+          FR: {
             name: { ko: "앙버터 크루아상", ja: "餡バタークロワッサン", en: "Anpan Butter Croissant" },
-            country: "fr", countryFlag: "🇫🇷",
-            countryName: { ko: "프랑스", ja: "フランス", en: "France" },
             tasteProfile: { sweet: 60, salty: 22, spicy: 0, umami: 12, sour: 8 },
             description: { ko: "버터 풍미 가득한 크루아상에 팥소를 넣어 만든 한불 퓨전 디저트", ja: "バター風味たっぷりのクロワッサンに小豆餡を入れた日仏フュージョンデザート", en: "Korean-French fusion dessert: a buttery croissant filled with sweet red bean paste" },
             ingredients: { ko: ["크루아상", "팥소", "버터", "밀가루"], ja: ["クロワッサン", "小豆餡", "バター", "小麦粉"], en: ["Croissant", "Red bean paste", "Butter", "Wheat flour"] },
             similarityPercent: 82,
             matchReason: { ko: "버터 풍미 + 달콤한 팥소 + 부드럽고 결 있는 반죽", ja: "バター風味 + 甘い小豆餡 + 柔らかく層のある生地", en: "Butter richness + sweet red bean + soft layered dough" }
           }
-        ]
+        }
       }
     ]
   },
@@ -2169,18 +1986,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["돼지 소장", "찹쌀", "두부", "당면", "선지", "부추", "마늘"], ja: ["豚の小腸", "もち米", "豆腐", "春雨", "血", "ニラ", "ニンニク"], en: ["Pork intestine casing", "Glutinous rice", "Tofu", "Glass noodles", "Blood", "Garlic chives", "Garlic"] },
         tags: ["순대", "백암", "전통"],
-        dupes: [
-          {
+        dupes: {
+          DE: {
             name: { ko: "바이스부르스트", ja: "ヴァイスヴルスト", en: "Weisswurst" },
-            country: "de", countryFlag: "🇩🇪",
-            countryName: { ko: "독일", ja: "ドイツ", en: "Germany" },
             tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 75, sour: 5 },
             description: { ko: "송아지 고기와 베이컨으로 만든 독일 바이에른 전통 흰 소시지", ja: "子牛肉とベーコンで作ったドイツ・バイエルン伝統の白ソーセージ", en: "Traditional Bavarian white sausage made from veal and bacon" },
             ingredients: { ko: ["송아지 고기", "베이컨", "파슬리", "양파", "레몬", "소금"], ja: ["子牛肉", "ベーコン", "パセリ", "玉ねぎ", "レモン", "塩"], en: ["Veal", "Bacon", "Parsley", "Onion", "Lemon zest", "Salt"] },
             similarityPercent: 70,
             matchReason: { ko: "속을 채워 만든 장 요리 + 삶아서 먹는 형태 + 찍어 먹는 소스와 함께", ja: "詰め物をした腸料理 + 茹でて食べる形 + つけダレと一緒に", en: "Stuffed casing preparation + boiled serving style + dipping condiment pairing" }
           }
-        ]
+        }
       },
       {
         id: "yongin-jangter-gukbap",
@@ -2195,18 +2010,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["사골육수", "밥", "우거지", "수육", "파", "된장", "고춧가루"], ja: ["骨付き肉スープ", "ご飯", "干し白菜葉", "ゆで肉", "ネギ", "味噌", "唐辛子粉"], en: ["Bone broth", "Rice", "Dried cabbage", "Boiled pork", "Green onion", "Doenjang", "Red pepper"] },
         tags: ["국밥", "전통", "민속촌"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "카스지루", ja: "粕汁", en: "Kasujiru" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 50, spicy: 5, umami: 80, sour: 10 },
             description: { ko: "술지게미와 돼지고기, 채소를 함께 끓인 일본 전통 국", ja: "酒粕と豚肉、野菜を一緒に煮込んだ日本の伝統スープ", en: "Traditional Japanese soup with sake lees, pork, and vegetables" },
             ingredients: { ko: ["술지게미", "돼지고기", "당근", "무", "된장", "파"], ja: ["酒粕", "豚肉", "人参", "大根", "味噌", "ネギ"], en: ["Sake lees", "Pork", "Carrot", "Daikon", "Miso", "Green onion"] },
             similarityPercent: 72,
             matchReason: { ko: "진한 발효 양념 베이스 + 돼지고기와 채소 + 따뜻한 뚝배기 국 형태", ja: "濃い発酵調味料ベース + 豚肉と野菜 + 温かい土鍋スープ形態", en: "Rich fermented base + pork and vegetables + warm earthenware pot soup" }
           }
-        ]
+        }
       },
       {
         id: "yongin-nurungji-baeksuk",
@@ -2221,18 +2034,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["닭", "누룽지", "찹쌀", "인삼", "마늘", "대추", "밤", "소금"], ja: ["鶏", "おこげ", "もち米", "高麗人参", "ニンニク", "なつめ", "栗", "塩"], en: ["Whole chicken", "Scorched rice", "Glutinous rice", "Ginseng", "Garlic", "Jujube", "Chestnut", "Salt"] },
         tags: ["백숙", "누룽지", "보양"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "오코게 가유", ja: "おこげ粥", en: "Okoge Kayu" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 35, spicy: 0, umami: 75, sour: 5 },
             description: { ko: "솥바닥의 구수한 누룽지를 물에 불려 만든 일본식 죽", ja: "釜底の香ばしいおこげを水に浸して作った日本式のお粥", en: "Japanese porridge made by soaking crispy scorched rice from the pot bottom in water" },
             ingredients: { ko: ["누룽지", "육수", "소금", "파"], ja: ["おこげ", "だし", "塩", "ネギ"], en: ["Scorched rice", "Dashi broth", "Salt", "Green onion"] },
             similarityPercent: 74,
             matchReason: { ko: "구수한 눌음밥 풍미 + 국물에 불린 쌀 + 간단하지만 깊은 고소함", ja: "香ばしい焦げご飯の風味 + スープに浸したご飯 + シンプルだが深い香ばしさ", en: "Nutty scorched rice flavor + broth-soaked rice + simple yet deeply savory" }
           }
-        ]
+        }
       },
       {
         id: "yongin-pajeon",
@@ -2247,18 +2058,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["쪽파", "밀가루", "달걀", "해산물", "간장", "식초", "고추"], ja: ["小ネギ", "小麦粉", "卵", "海産物", "醤油", "酢", "唐辛子"], en: ["Green onion", "Wheat flour", "Egg", "Seafood", "Soy sauce", "Vinegar", "Pepper"] },
         tags: ["파전", "전통", "안주"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "오코노미야키", ja: "お好み焼き", en: "Okonomiyaki" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 30, salty: 45, spicy: 10, umami: 70, sour: 20 },
             description: { ko: "밀가루 반죽에 양배추와 각종 재료를 넣어 철판에 구운 일본 전통 요리", ja: "小麦粉の生地にキャベツと様々な食材を入れて鉄板で焼く日本の伝統料理", en: "Japanese savory pancake with cabbage and various ingredients grilled on a flat iron griddle" },
             ingredients: { ko: ["밀가루", "양배추", "달걀", "해산물", "소스", "파"], ja: ["小麦粉", "キャベツ", "卵", "海産物", "ソース", "ネギ"], en: ["Flour", "Cabbage", "Egg", "Seafood", "Okonomiyaki sauce", "Green onion"] },
             similarityPercent: 80,
             matchReason: { ko: "밀가루 반죽 채소 전 + 철판 구이 + 소스 찍어 먹기", ja: "小麦粉生地野菜チヂミ + 鉄板焼き + ソース付け", en: "Flour-batter vegetable pancake + griddle frying + dipping sauce" }
           }
-        ]
+        }
       },
       {
         id: "yongin-makguksu",
@@ -2273,18 +2082,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["메밀 면", "양념장", "오이", "계란", "깍두기", "겨자", "식초"], ja: ["そば麺", "ヤンニョムジャン", "きゅうり", "卵", "カクテキ", "からし", "酢"], en: ["Buckwheat noodles", "Spicy sauce", "Cucumber", "Egg", "Radish kimchi", "Mustard", "Vinegar"] },
         tags: ["메밀", "냉면", "여름"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "자루 소바", ja: "ざるそば", en: "Zaru Soba" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 40, spicy: 5, umami: 65, sour: 15 },
             description: { ko: "대나무 채반에 올려 차갑게 제공되는 일본 메밀국수", ja: "竹のざるに乗せて冷たく提供される日本のそば", en: "Cold Japanese buckwheat noodles served on a bamboo draining tray" },
             ingredients: { ko: ["메밀 면", "쯔유", "파", "와사비", "김"], ja: ["そば", "つゆ", "ネギ", "わさび", "海苔"], en: ["Soba noodles", "Tsuyu dipping sauce", "Green onion", "Wasabi", "Nori"] },
             similarityPercent: 79,
             matchReason: { ko: "메밀 향 짙은 차가운 면 + 소스에 찍어 먹기 + 시원하게 즐기는 여름 국수", ja: "そばの香りが豊かな冷たい麺 + ソースに付けて食べる + 涼しく楽しむ夏の麺", en: "Strong buckwheat aroma cold noodles + dipping sauce style + cool summer noodle dish" }
           }
-        ]
+        }
       },
       {
         id: "yongin-sanchae-bibimbap",
@@ -2299,18 +2106,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["밥", "고사리", "취나물", "참나물", "도라지", "고추장", "참기름", "계란"], ja: ["ご飯", "わらび", "シドケ", "野芹", "桔梗", "コチュジャン", "ごま油", "卵"], en: ["Rice", "Bracken", "Aster scaber", "Wild parsley", "Bellflower root", "Gochujang", "Sesame oil", "Egg"] },
         tags: ["산나물", "비빔밥", "건강"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "산사이 덮밥", ja: "山菜丼", en: "Sansai Donburi" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 25, salty: 45, spicy: 5, umami: 70, sour: 10 },
             description: { ko: "봄철 산나물을 간장과 미림으로 조려 밥 위에 올린 일본 덮밥", ja: "春の山菜を醤油とみりんで煮詰めてご飯の上に乗せた日本の丼", en: "Japanese donburi with spring mountain vegetables braised in soy and mirin over rice" },
             ingredients: { ko: ["밥", "산나물", "간장", "미림", "달걀", "참깨"], ja: ["ご飯", "山菜", "醤油", "みりん", "卵", "ごま"], en: ["Rice", "Mountain greens", "Soy sauce", "Mirin", "Egg", "Sesame"] },
             similarityPercent: 82,
             matchReason: { ko: "산나물이 주인공인 밥 요리 + 나물 위주 토핑 + 건강 지향적 원볼", ja: "山菜が主役のご飯料理 + 山菜中心のトッピング + 健康志向ワンボウル", en: "Mountain greens-forward rice dish + veggie-centric topping + health-oriented one-bowl" }
           }
-        ]
+        }
       },
       {
         id: "yongin-acorn-jelly",
@@ -2325,18 +2130,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["도토리묵", "간장", "참기름", "고춧가루", "파", "마늘", "깨", "식초"], ja: ["どんぐりゼリー", "醤油", "ごま油", "唐辛子粉", "ネギ", "ニンニク", "ごま", "酢"], en: ["Acorn jelly", "Soy sauce", "Sesame oil", "Red pepper flakes", "Green onion", "Garlic", "Sesame", "Vinegar"] },
         tags: ["묵", "도토리", "무침"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "콘냐쿠 조림", ja: "こんにゃくの煮物", en: "Braised Konjac" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 25, salty: 50, spicy: 15, umami: 60, sour: 10 },
             description: { ko: "곤약을 달콤짭짤한 간장 국물에 조린 일본 반찬", ja: "こんにゃくを甘辛い醤油のだしで煮た日本のおかず", en: "Japanese side dish of konjac braised in sweet-savory soy broth" },
             ingredients: { ko: ["곤약", "간장", "설탕", "미림", "깨", "유자"], ja: ["こんにゃく", "醤油", "砂糖", "みりん", "ごま", "ゆず"], en: ["Konjac", "Soy sauce", "Sugar", "Mirin", "Sesame", "Yuzu"] },
             similarityPercent: 72,
             matchReason: { ko: "탄력 있는 젤리형 식감 + 양념 잘 배는 무색무취 재료 + 반찬 역할", ja: "弾力のあるゼリー状の食感 + 味が染み込みやすい無色無臭の食材 + おかずの役割", en: "Springy jelly-like texture + flavor-absorbing neutral ingredient + side dish role" }
           }
-        ]
+        }
       },
       {
         id: "yongin-hanwoo",
@@ -2351,18 +2154,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["한우 등심", "소금", "참기름", "마늘", "상추", "깻잎", "쌈장"], ja: ["韓牛サーロイン", "塩", "ごま油", "ニンニク", "サンチュ", "エゴマの葉", "サムジャン"], en: ["Hanwoo sirloin", "Salt", "Sesame oil", "Garlic", "Lettuce", "Perilla", "Ssamjang"] },
         tags: ["한우", "구이", "프리미엄"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "와규 야키니쿠", ja: "和牛焼肉", en: "Wagyu Yakiniku" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 40, spicy: 5, umami: 95, sour: 5 },
             description: { ko: "최상급 마블링의 일본 와규를 직화로 구운 고급 야키니쿠", ja: "最上級のサシが入った日本の和牛を直火で焼く高級焼き肉", en: "Premium Japanese wagyu with exceptional marbling, grilled over direct flame" },
             ingredients: { ko: ["와규", "소금", "유자 후추", "폰즈", "파"], ja: ["和牛", "塩", "柚子胡椒", "ポン酢", "ネギ"], en: ["Wagyu beef", "Salt", "Yuzu pepper", "Ponzu", "Green onion"] },
             similarityPercent: 88,
             matchReason: { ko: "최상급 마블링 소고기 + 직화 구이 + 상추 등 채소에 싸 먹는 방식", ja: "最上級サシ牛肉 + 直火焼き + サンチュなど野菜に包んで食べる方法", en: "Premium marbled beef + direct-flame grilling + wrap-and-eat with greens style" }
           }
-        ]
+        }
       },
       {
         id: "yongin-cafe-dessert",
@@ -2377,18 +2178,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["밀가루", "버터", "생크림", "계절 과일", "초콜릿", "설탕"], ja: ["小麦粉", "バター", "生クリーム", "旬のフルーツ", "チョコレート", "砂糖"], en: ["Flour", "Butter", "Heavy cream", "Seasonal fruit", "Chocolate", "Sugar"] },
         tags: ["카페", "디저트", "트렌디"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "파르페", ja: "パフェ", en: "Parfait" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 72, salty: 8, spicy: 0, umami: 10, sour: 25 },
             description: { ko: "아이스크림과 과일, 크림, 시리얼 등을 층층이 쌓아 올린 일본식 파르페 디저트", ja: "アイスクリームとフルーツ、クリーム、シリアルなどを層に重ねた日本式パフェデザート", en: "Japanese parfait layered with ice cream, fruit, cream, and cereal in a tall glass" },
             ingredients: { ko: ["아이스크림", "과일", "생크림", "시리얼", "초콜릿 소스"], ja: ["アイスクリーム", "フルーツ", "生クリーム", "シリアル", "チョコソース"], en: ["Ice cream", "Fruit", "Whipped cream", "Cereal", "Chocolate sauce"] },
             similarityPercent: 75,
             matchReason: { ko: "다층 구조의 달콤한 디저트 + 과일과 크림 조합 + 눈에도 즐거운 비주얼", ja: "多層構造の甘いデザート + フルーツとクリームの組み合わせ + 目にも楽しいビジュアル", en: "Layered sweet dessert + fruit and cream combination + visually stunning presentation" }
           }
-        ]
+        }
       },
       {
         id: "yongin-makgeolli",
@@ -2403,18 +2202,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["쌀", "누룩", "물", "효모"], ja: ["米", "麹", "水", "酵母"], en: ["Rice", "Nuruk (koji)", "Water", "Yeast"] },
         tags: ["막걸리", "전통주", "발효"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "니고리자케", ja: "にごり酒", en: "Nigorizake" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 45, salty: 8, spicy: 5, umami: 25, sour: 35 },
             description: { ko: "탁하게 걸러지지 않은 일본의 전통 흰 탁주", ja: "粗く漉された日本の伝統的な白濁り酒", en: "Traditional Japanese unfiltered cloudy rice wine with rough straining" },
             ingredients: { ko: ["쌀", "쌀누룩", "물", "효모"], ja: ["米", "米麹", "水", "酵母"], en: ["Rice", "Rice koji", "Water", "Yeast"] },
             similarityPercent: 88,
             matchReason: { ko: "탁하고 뽀얀 발효 쌀술 + 단맛과 산미의 균형 + 가볍고 청량한 도수", ja: "白濁した発酵米酒 + 甘みと酸味のバランス + 軽くて爽やかなアルコール度数", en: "Cloudy fermented rice alcohol + sweet-sour balance + light refreshing ABV" }
           }
-        ]
+        }
       }
     ]
   },
@@ -2442,18 +2239,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["이천 쌀", "된장찌개", "나물 반찬", "구이", "김치", "계란", "멸치볶음"], ja: ["利川米", "味噌チゲ", "ナムルおかず", "焼き物", "キムチ", "卵", "炒めじゃこ"], en: ["Icheon rice", "Doenjang jjigae", "Namul side dishes", "Grilled dish", "Kimchi", "Egg", "Stir-fried anchovy"] },
         tags: ["쌀밥", "정식", "임금님"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "고시히카리 정식", ja: "コシヒカリ定食", en: "Koshihikari Set Meal" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 20, salty: 40, spicy: 10, umami: 75, sour: 10 },
             description: { ko: "일본 최고급 쌀 고시히카리 밥을 중심으로 한 정갈한 정식", ja: "日本最高級米コシヒカリご飯を中心とした上品な定食", en: "A refined set meal centered on premium Koshihikari rice, Japan's finest variety" },
             ingredients: { ko: ["고시히카리 쌀", "미소시루", "야채 반찬", "절임류", "생선 구이"], ja: ["コシヒカリ米", "味噌汁", "野菜おかず", "漬物", "焼き魚"], en: ["Koshihikari rice", "Miso soup", "Vegetable side dishes", "Pickles", "Grilled fish"] },
             similarityPercent: 87,
             matchReason: { ko: "프리미엄 품종 쌀밥이 주인공 + 다채로운 반찬 구성 + 쌀 본연의 단맛과 윤기", ja: "プレミアム品種のご飯が主役 + 多彩なおかず構成 + お米本来の甘みとツヤ", en: "Premium variety rice as the hero + diverse side dish spread + natural rice sweetness and shine" }
           }
-        ]
+        }
       },
       {
         id: "icheon-bori-gulbi",
@@ -2468,18 +2263,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["참조기", "천일염", "보리", "시간"], ja: ["真グチ", "天日塩", "麦", "時間"], en: ["Yellow corvina", "Sea salt", "Barley", "Time (aging)"] },
         tags: ["건생선", "숙성", "전통"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "히모노", ja: "干物", en: "Himono" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 65, spicy: 5, umami: 82, sour: 5 },
             description: { ko: "생선을 소금물에 절여 햇볕에 말린 일본 전통 건어물", ja: "魚を塩水に漬けて天日干しにした日本の伝統干物", en: "Traditional Japanese dried fish soaked in salt water and sun-dried" },
             ingredients: { ko: ["생선", "소금물", "햇빛"], ja: ["魚", "塩水", "日光"], en: ["Fish", "Salt water", "Sunlight"] },
             similarityPercent: 84,
             matchReason: { ko: "염장 건조로 응축된 감칠맛 + 밥반찬으로 최적 + 전통 보존 방식", ja: "塩漬け乾燥で凝縮された旨味 + ご飯のおかずとして最適 + 伝統的な保存方法", en: "Salt-dried concentrated umami + perfect rice accompaniment + traditional preservation technique" }
           }
-        ]
+        }
       },
       {
         id: "icheon-ganjang-gejang",
@@ -2494,18 +2287,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["꽃게", "간장", "마늘", "생강", "청양고추", "다시마", "설탕"], ja: ["ワタリガニ", "醤油", "ニンニク", "生姜", "青唐辛子", "昆布", "砂糖"], en: ["Blue crab", "Soy sauce", "Garlic", "Ginger", "Green chili", "Kelp", "Sugar"] },
         tags: ["게장", "밥도둑", "발효"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "와타리가니 조림", ja: "ワタリガニの煮物", en: "Braised Blue Crab" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 30, salty: 55, spicy: 5, umami: 85, sour: 10 },
             description: { ko: "꽃게를 달콤짭짤한 간장 소스에 조린 일본 요리", ja: "ワタリガニを甘辛い醤油ソースで煮た日本料理", en: "Japanese dish of blue crab braised in sweet-salty soy sauce" },
             ingredients: { ko: ["꽃게", "간장", "미림", "설탕", "생강", "다시마"], ja: ["ワタリガニ", "醤油", "みりん", "砂糖", "生姜", "昆布"], en: ["Blue crab", "Soy sauce", "Mirin", "Sugar", "Ginger", "Kelp"] },
             similarityPercent: 79,
             matchReason: { ko: "꽃게 + 간장 베이스 양념 + 밥과 함께하는 감칠맛 극강 요리", ja: "ワタリガニ + 醤油ベースの味付け + ご飯と一緒に食べる旨味MAX料理", en: "Blue crab + soy-based marinade + peak-umami dish served with rice" }
           }
-        ]
+        }
       },
       {
         id: "icheon-jeyuk-bokkeum",
@@ -2520,18 +2311,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["돼지고기", "고추장", "간장", "마늘", "생강", "파", "참기름", "설탕"], ja: ["豚肉", "コチュジャン", "醤油", "ニンニク", "生姜", "ネギ", "ごま油", "砂糖"], en: ["Pork", "Gochujang", "Soy sauce", "Garlic", "Ginger", "Green onion", "Sesame oil", "Sugar"] },
         tags: ["볶음", "매콤", "돼지고기"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "부타 쇼가야키", ja: "豚の生姜焼き", en: "Buta Shogayaki" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 35, salty: 50, spicy: 15, umami: 70, sour: 10 },
             description: { ko: "생강 간장 소스에 볶은 일본식 돼지고기 볶음", ja: "生姜醤油ソースで炒めた日本式豚肉炒め", en: "Japanese stir-fried pork in ginger-soy sauce" },
             ingredients: { ko: ["돼지 불고기용", "생강", "간장", "미림", "양파"], ja: ["豚薄切り", "生姜", "醤油", "みりん", "玉ねぎ"], en: ["Pork slices", "Ginger", "Soy sauce", "Mirin", "Onion"] },
             similarityPercent: 82,
             matchReason: { ko: "달콤짭짤한 소스의 돼지고기 볶음 + 밥반찬으로 최적 + 고기 향 가득한 볶음 요리", ja: "甘辛いソースの豚肉炒め + ご飯のおかずとして最適 + 肉の香り豊かな炒め料理", en: "Sweet-savory sauce stir-fried pork + ideal rice side dish + meat-fragrant pan-fried dish" }
           }
-        ]
+        }
       },
       {
         id: "icheon-hanwoo-gui",
@@ -2546,18 +2335,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["한우 채끝", "소금", "참기름", "마늘", "이천 쌀밥", "상추", "쌈장"], ja: ["韓牛サーロイン", "塩", "ごま油", "ニンニク", "利川ご飯", "サンチュ", "サムジャン"], en: ["Hanwoo striploin", "Salt", "Sesame oil", "Garlic", "Icheon rice", "Lettuce", "Ssamjang"] },
         tags: ["한우", "구이", "이천쌀"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "와규 시오야키", ja: "和牛塩焼き", en: "Wagyu Shioyaki" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 42, spicy: 0, umami: 95, sour: 3 },
             description: { ko: "최상급 와규에 소금만 뿌려 굽는 가장 순수한 형태의 야키니쿠", ja: "最上級の和牛に塩だけをふって焼く最も純粋な形の焼き肉", en: "The purest form of wagyu yakiniku: top-grade beef seasoned only with salt and grilled" },
             ingredients: { ko: ["와규", "소금", "레몬", "와사비"], ja: ["和牛", "塩", "レモン", "わさび"], en: ["Wagyu beef", "Salt", "Lemon", "Wasabi"] },
             similarityPercent: 90,
             matchReason: { ko: "프리미엄 소고기 + 소금 간으로 재료 본연의 맛 살리기 + 구워서 밥과 함께", ja: "プレミアム牛肉 + 塩で食材本来の味を引き出す + 焼いてご飯と一緒に", en: "Premium beef + salt seasoning to highlight natural flavor + grilled and paired with rice" }
           }
-        ]
+        }
       },
       {
         id: "icheon-straw-pork",
@@ -2572,18 +2359,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["삼겹살", "볏짚", "소금", "참기름", "마늘", "상추"], ja: ["豚バラ肉", "稲藁", "塩", "ごま油", "ニンニク", "サンチュ"], en: ["Pork belly", "Rice straw", "Salt", "Sesame oil", "Garlic", "Lettuce"] },
         tags: ["삼겹살", "볏짚", "훈연"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "와라야키 가쓰오", ja: "藁焼きかつお", en: "Warayaki Katsuo" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 85, sour: 15 },
             description: { ko: "고치 현의 전통 볏짚 직화로 표면을 그을린 가다랑어 요리", ja: "高知県の伝統的な藁の直火で表面を焦がしたカツオ料理", en: "Kochi prefecture's traditional katsuo with surface seared by direct rice-straw flame" },
             ingredients: { ko: ["가다랑어", "볏짚", "파", "마늘", "생강", "폰즈"], ja: ["カツオ", "藁", "ネギ", "ニンニク", "生姜", "ポン酢"], en: ["Skipjack tuna", "Rice straw", "Green onion", "Garlic", "Ginger", "Ponzu"] },
             similarityPercent: 85,
             matchReason: { ko: "볏짚 불꽃 직화 기법 + 식재료 겉면에 스며드는 짚 향 + 겉 그을림 속 촉촉함", ja: "藁の直火技法 + 食材表面に染み込む藁の香り + 外焦げ内しっとり", en: "Rice-straw direct-flame technique + straw aroma penetrating the surface + crispy outside, moist inside" }
           }
-        ]
+        }
       },
       {
         id: "icheon-royal-table",
@@ -2598,18 +2383,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["이천 쌀밥", "구절판", "신선로", "전유어", "나물", "김치", "찜", "정과"], ja: ["利川ご飯", "九折板", "神仙炉", "チヂミ", "ナムル", "キムチ", "蒸し物", "正果"], en: ["Icheon rice", "Gujeolpan (nine-section dish)", "Royal hotpot", "Pan-fried dishes", "Namul", "Kimchi", "Steamed dishes", "Candied sweets"] },
         tags: ["궁중", "정찬", "전통"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "오세치 요리", ja: "お節料理", en: "Osechi Ryori" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 35, salty: 45, spicy: 5, umami: 80, sour: 25 },
             description: { ko: "새해에 정성껏 준비하는 일본 전통 다단 도시락 형태의 격식 요리", ja: "お正月に丁寧に準備する日本の伝統的な重箱形式の格式料理", en: "Japan's elaborate New Year celebratory cuisine prepared in traditional stacked lacquer boxes" },
             ingredients: { ko: ["검은콩", "다시마롤", "새우", "계란 조림", "고구마 정과"], ja: ["黒豆", "昆布巻き", "海老", "卵の煮物", "芋きんとん"], en: ["Black beans", "Kelp roll", "Shrimp", "Simmered egg", "Sweet potato kinton"] },
             similarityPercent: 80,
             matchReason: { ko: "다수의 격식 있는 소반찬 + 계승된 왕조 요리 전통 + 의례적 성격의 정찬", ja: "多数の格式ある小皿料理 + 継承された王朝料理の伝統 + 儀礼的性格の正餐", en: "Multiple formal small dishes + inherited dynastic culinary tradition + ceremonial set meal" }
           }
-        ]
+        }
       },
       {
         id: "icheon-makguksu",
@@ -2624,18 +2407,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["메밀 면", "양념장", "오이", "계란", "무", "식초", "겨자"], ja: ["そば麺", "ヤンニョムジャン", "きゅうり", "卵", "大根", "酢", "からし"], en: ["Buckwheat noodles", "Spicy sauce", "Cucumber", "Egg", "Radish", "Vinegar", "Mustard"] },
         tags: ["막국수", "메밀", "냉면"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "모리소바", ja: "もりそば", en: "Mori Soba" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 15, salty: 40, spicy: 5, umami: 65, sour: 20 },
             description: { ko: "쟁반에 소복이 올린 차가운 메밀국수를 쯔유에 찍어 먹는 일본 요리", ja: "ざるに盛った冷たいそばをつゆに付けて食べる日本料理", en: "Cold buckwheat soba noodles mounded on a bamboo tray, dipped in tsuyu broth" },
             ingredients: { ko: ["메밀 면", "쯔유", "와사비", "파", "김"], ja: ["そば", "つゆ", "わさび", "ネギ", "のり"], en: ["Soba noodles", "Tsuyu", "Wasabi", "Green onion", "Nori"] },
             similarityPercent: 81,
             matchReason: { ko: "차갑게 먹는 메밀 면 + 진한 소스에 찍기 + 메밀 향 즐기는 여름 국수", ja: "冷やして食べるそば麺 + 濃いつゆに付けて食べる + そばの香りを楽しむ夏の麺", en: "Cold buckwheat noodles + bold dipping sauce + buckwheat-forward summer noodle dish" }
           }
-        ]
+        }
       },
       {
         id: "icheon-hangwa",
@@ -2650,18 +2431,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["찹쌀가루", "꿀", "참기름", "잣", "깨", "조청", "계피"], ja: ["もち米粉", "蜂蜜", "ごま油", "松の実", "ごま", "水あめ", "シナモン"], en: ["Glutinous rice flour", "Honey", "Sesame oil", "Pine nuts", "Sesame", "Jocheong syrup", "Cinnamon"] },
         tags: ["한과", "전통", "도자기마을"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "와가시", ja: "和菓子", en: "Wagashi" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 65, salty: 8, spicy: 0, umami: 18, sour: 8 },
             description: { ko: "계절의 아름다움을 담아 손으로 빚은 일본 전통 화과자", ja: "季節の美しさを表現して手で形作った日本の伝統和菓子", en: "Traditional Japanese confections handcrafted to express the beauty of the seasons" },
             ingredients: { ko: ["팥소", "찹쌀", "설탕", "한천", "색소 재료"], ja: ["小豆餡", "もち米", "砂糖", "寒天", "天然色素"], en: ["Red bean paste", "Glutinous rice", "Sugar", "Agar", "Natural coloring"] },
             similarityPercent: 84,
             matchReason: { ko: "전통 문화를 담은 정교한 과자 + 곡물과 꿀로 만든 자연 재료 + 눈과 입이 동시에 즐거운 예술품", ja: "伝統文化を宿した精巧な菓子 + 穀物と蜂蜜で作った自然素材 + 目と口が同時に楽しむ芸術品", en: "Artisan confection embodying traditional culture + natural grain and honey ingredients + art piece for eyes and palate" }
           }
-        ]
+        }
       },
       {
         id: "icheon-sotbap",
@@ -2676,18 +2455,16 @@ export const regions: Region[] = [
         },
         ingredients: { ko: ["이천 쌀", "제철 채소", "버섯", "간장", "참기름", "소금"], ja: ["利川米", "旬の野菜", "きのこ", "醤油", "ごま油", "塩"], en: ["Icheon rice", "Seasonal vegetables", "Mushrooms", "Soy sauce", "Sesame oil", "Salt"] },
         tags: ["솥밥", "누룽지", "이천쌀"],
-        dupes: [
-          {
+        dupes: {
+          JP: {
             name: { ko: "카마메시", ja: "釜飯", en: "Kamameshi" },
-            country: "jp", countryFlag: "🇯🇵",
-            countryName: { ko: "일본", ja: "日本", en: "Japan" },
             tasteProfile: { sweet: 25, salty: 40, spicy: 5, umami: 75, sour: 5 },
             description: { ko: "작은 무쇠 솥에 쌀과 각종 재료를 넣어 함께 지어내는 일본 향토 요리", ja: "小さな鋳鉄の釜にお米と様々な食材を入れて一緒に炊く日本の郷土料理", en: "Japanese regional dish of rice and various ingredients cooked together in a small iron pot" },
             ingredients: { ko: ["쌀", "닭고기", "버섯", "죽순", "간장", "미림"], ja: ["米", "鶏肉", "きのこ", "たけのこ", "醤油", "みりん"], en: ["Rice", "Chicken", "Mushrooms", "Bamboo shoots", "Soy sauce", "Mirin"] },
             similarityPercent: 95,
             matchReason: { ko: "무쇠 솥에 함께 지어낸 밥 + 솥 바닥 누룽지 + 재료의 맛이 밥에 스며드는 일체감", ja: "鉄釜で一緒に炊いたご飯 + 釜底おこげ + 食材の味がご飯に染み込む一体感", en: "Iron pot cooked rice + scorched bottom crust + all-in-one flavor absorption into rice" }
           }
-        ]
+        }
       }
     ]
   }

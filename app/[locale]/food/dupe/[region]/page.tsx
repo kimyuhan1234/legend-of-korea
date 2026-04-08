@@ -50,8 +50,8 @@ export default function RegionFoodsPage({ params }: Props) {
       <FoodTabNav locale={locale} activeTab="dupe" />
 
       {/* 지역 히어로 */}
-      <section className="bg-[#1B2A4A] text-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="bg-[#F5F3EF] text-white py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-8 md:px-10">
           <Link
             href={`/${locale}/food/dupe`}
             className="inline-flex items-center text-sm text-white/50 hover:text-white mb-6 transition-colors"
@@ -69,11 +69,11 @@ export default function RegionFoodsPage({ params }: Props) {
       </section>
 
       {/* 음식 그리드 */}
-      <section className="max-w-6xl mx-auto px-4 py-12">
+      <section className="max-w-6xl mx-auto px-8 md:px-10 py-20 md:py-28">
         {region.foods.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-5xl mb-4">🍽️</p>
-            <p className="font-bold text-[#1B2A4A] text-lg mb-2">{t.comingSoon}</p>
+            <p className="font-bold text-[#111] text-lg mb-2">{t.comingSoon}</p>
             <Link href={`/${locale}/food/dupe`} className="mt-4 inline-block text-sm text-[#D4A843] hover:underline">
               {t.back}
             </Link>
@@ -106,11 +106,11 @@ export default function RegionFoodsPage({ params }: Props) {
 
                 {/* 정보 */}
                 <div className="p-4">
-                  <h3 className="font-black text-[#1B2A4A] mb-1">{getL(food.name, locale)}</h3>
+                  <h3 className="font-black text-[#111] mb-1">{getL(food.name, locale)}</h3>
                   <p className="text-xs text-[#D4A843] font-semibold mb-3">{topFlavors(food.tasteProfile, locale)}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-[#7a6a58]">
-                      {food.dupes.length} {t.dupeCount}
+                      {Object.keys(food.dupes).length} {t.dupeCount}
                     </span>
                     <span className="text-xs text-[#D4A843] group-hover:translate-x-0.5 transition-transform">
                       {t.viewDetail}
