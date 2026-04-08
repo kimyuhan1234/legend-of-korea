@@ -338,7 +338,7 @@ export const regions: Region[] = [
         id: "seoul-samgyeopsal",
         name: { ko: "삼겹살", ja: "サムギョプサル", en: "Samgyeopsal" },
         region: "seoul",
-        image: "/images/food/seo-samgyeopsal.jpg",
+        image: "/images/food/삼겹살.png",
         tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 80, sour: 10 },
         storyDescription: {
           ko: "지글지글 불판 위에서 구워지는 소리만으로도 벌써 침이 고여요. 상추에 싸서 마늘, 쌈장과 함께 크게 한 입 베어 무는 순간, 서울 밤의 활기가 입안에서 터져 나와요.",
@@ -369,7 +369,7 @@ export const regions: Region[] = [
         id: "seoul-tteokbokki",
         name: { ko: "떡볶이", ja: "トッポッキ", en: "Tteokbokki" },
         region: "seoul",
-        image: "/images/food/seo-tteokbokki.jpg",
+        image: "/images/food/떡볶이.png",
         tasteProfile: { sweet: 40, salty: 50, spicy: 75, umami: 55, sour: 10 },
         storyDescription: {
           ko: "빨갛고 매콤한 소스가 쫄깃한 떡 위에 달라붙어 유혹하는 서울 길거리의 대표 스타예요. 어묵과 달걀을 함께 넣으면 맵고 달콤하고 쫄깃한 삼박자가 완성된답니다.",
@@ -400,7 +400,7 @@ export const regions: Region[] = [
         id: "seoul-dakhanmari",
         name: { ko: "닭한마리", ja: "タッハンマリ", en: "Dakhanmari" },
         region: "seoul",
-        image: "/images/food/seo-dakhanmari.jpg",
+        image: "/images/food/닭한마리.png",
         tasteProfile: { sweet: 15, salty: 40, spicy: 30, umami: 85, sour: 5 },
         storyDescription: {
           ko: "통닭 한 마리를 커다란 냄비에 넣고 맑게 끓여내는 동대문의 명물이에요. 직접 테이블 위 냄비에서 끓이며 먹는 즐거움과 진한 닭 육수가 소울 푸드의 모든 것을 담고 있어요.",
@@ -431,7 +431,7 @@ export const regions: Region[] = [
         id: "seoul-seolleongtang",
         name: { ko: "설렁탕", ja: "ソルロンタン", en: "Seolleongtang" },
         region: "seoul",
-        image: "/images/food/seo-seolleongtang.jpg",
+        image: "/images/food/설렁탕.png",
         tasteProfile: { sweet: 10, salty: 40, spicy: 10, umami: 90, sour: 0 },
         storyDescription: {
           ko: "뽀얀 우윳빛 국물이 뼈와 고기를 몇 시간이나 끓여 만든 서울의 오랜 영혼 같은 음식이에요. 기호에 맞게 소금과 깍두기를 곁들이면 새벽에도 따뜻하게 위를 달래주는 완벽한 한 끼가 됩니다.",
@@ -462,7 +462,7 @@ export const regions: Region[] = [
         id: "seoul-street-toast",
         name: { ko: "길거리 토스트", ja: "屋台トースト", en: "Street Toast" },
         region: "seoul",
-        image: "/images/food/seo-street-toast.jpg",
+        image: "/images/food/길거리토스트.png",
         tasteProfile: { sweet: 35, salty: 45, spicy: 15, umami: 50, sour: 10 },
         storyDescription: {
           ko: "이른 아침 버터 향이 솔솔 나는 길거리 토스트 한 봉지는 서울 직장인들의 든든한 아침이에요. 달걀, 양배추, 설탕 한 꼬집의 조합이 왜 이렇게 맛있는지 먹어봐야만 알 수 있답니다.",
@@ -493,7 +493,7 @@ export const regions: Region[] = [
         id: "seoul-bindaetteok",
         name: { ko: "광장시장 빈대떡", ja: "広蔵市場のビンデトク", en: "Gwangjang Market Bindaetteok" },
         region: "seoul",
-        image: "/images/food/seo-bindaetteok.jpg",
+        image: "/images/food/광장시장빈대떡.png",
         tasteProfile: { sweet: 10, salty: 50, spicy: 25, umami: 75, sour: 15 },
         storyDescription: {
           ko: "녹두를 갈아 기름에 지글지글 부쳐낸 광장시장의 빈대떡은 바삭함과 고소함의 교과서예요. 막걸리 한 잔과 함께라면 서울 오래된 시장의 정취가 온몸으로 느껴진답니다.",
@@ -524,7 +524,7 @@ export const regions: Region[] = [
         id: "seoul-yukhoe",
         name: { ko: "육회", ja: "ユッケ", en: "Yukhoe" },
         region: "seoul",
-        image: "/images/food/seo-yukhoe.jpg",
+        image: "/images/food/욱회.png",
         tasteProfile: { sweet: 30, salty: 50, spicy: 20, umami: 80, sour: 20 },
         storyDescription: {
           ko: "신선한 소고기를 가늘게 채 썰어 배와 함께 달콤 고소하게 무친 날것의 아름다움이에요. 노른자가 터지는 순간 모든 재료가 하나로 어우러지는 그 황홀한 맛을 잊을 수가 없어요.",
@@ -555,7 +555,7 @@ export const regions: Region[] = [
         id: "seoul-hangang-ramen",
         name: { ko: "한강 라면", ja: "漢江ラーメン", en: "Hangang Ramen" },
         region: "seoul",
-        image: "/images/food/seo-hangang-ramen.jpg",
+        image: "/images/food/한강라면.png",
         tasteProfile: { sweet: 15, salty: 65, spicy: 50, umami: 60, sour: 5 },
         storyDescription: {
           ko: "컵라면에 뜨거운 물을 붓고 한강 변에 앉아 먹는 그 행복감은 미슐랭 식당도 따라올 수 없어요. 바람에 흔들리는 강물을 바라보며 호호 불어 먹는 라면 한 젓가락은 서울 낭만 그 자체예요.",
@@ -586,7 +586,7 @@ export const regions: Region[] = [
         id: "seoul-jokbal",
         name: { ko: "족발", ja: "チョクパル", en: "Jokbal" },
         region: "seoul",
-        image: "/images/food/seo-jokbal.jpg",
+        image: "/images/food/족발.png",
         tasteProfile: { sweet: 35, salty: 55, spicy: 15, umami: 85, sour: 5 },
         storyDescription: {
           ko: "간장과 각종 향신료로 오랫동안 조려낸 족발은 쫄깃하면서도 입에서 살살 녹아요. 새벽 2시 귀갓길에 족발 한 접시와 소주 한 잔이면 서울의 밤이 완성된답니다.",
@@ -617,7 +617,7 @@ export const regions: Region[] = [
         id: "seoul-kimchi-jjigae",
         name: { ko: "김치찌개", ja: "キムチチゲ", en: "Kimchi Jjigae" },
         region: "seoul",
-        image: "/images/food/seo-kimchi-jjigae.jpg",
+        image: "/images/food/김치찌개.png",
         tasteProfile: { sweet: 15, salty: 60, spicy: 70, umami: 85, sour: 40 },
         storyDescription: {
           ko: "묵은지와 돼지고기가 어우러져 얼큰하고 깊은 맛을 내는 한국 가정의 영원한 국민 찌개예요. 뚝배기째 보글보글 끓여 흰 밥에 얹어 먹으면 온 세상이 그 자리에서 멈추는 것 같아요.",
@@ -657,7 +657,7 @@ export const regions: Region[] = [
         id: "tongyeong-chungmu-gimbap",
         name: { ko: "충무김밥", ja: "忠武キンパプ", en: "Chungmu Gimbap" },
         region: "tongyeong",
-        image: "/images/food/ton-chungmu-gimbap.jpg",
+        image: "/images/food/충무김밥.png",
         tasteProfile: { sweet: 10, salty: 55, spicy: 50, umami: 70, sour: 30 },
         storyDescription: {
           ko: "손가락 한 마디만한 작은 김밥이지만 그 짝꿍인 꼴뚜기무침과 깍두기가 함께 오면 이야기가 달라져요. 작은 한 입에 바다 냄새와 매콤함이 함께 터져 나오는 통영만의 자랑이랍니다.",
@@ -688,7 +688,7 @@ export const regions: Region[] = [
         id: "tongyeong-kkul-ppang",
         name: { ko: "꿀빵", ja: "蜂蜜パン", en: "Kkul-ppang" },
         region: "tongyeong",
-        image: "/images/food/ton-kkul-ppang.jpg",
+        image: "/images/food/꿀빵.jpg",
         tasteProfile: { sweet: 80, salty: 15, spicy: 0, umami: 20, sour: 5 },
         storyDescription: {
           ko: "통영 항구 골목에서 오랫동안 사랑받아온 꿀빵은 튀긴 도넛 반죽 안에 달콤한 팥소가 숨어 있어요. 겉은 바삭하고 안은 촉촉한 대비가 한 입마다 새로운 행복을 선물해요.",
@@ -719,7 +719,7 @@ export const regions: Region[] = [
         id: "tongyeong-meongge-bibimbap",
         name: { ko: "멍게비빔밥", ja: "ホヤビビンバ", en: "Meongge Bibimbap" },
         region: "tongyeong",
-        image: "/images/food/ton-meongge-bibimbap.jpg",
+        image: "/images/food/멍게비빔밥.png",
         tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 90, sour: 25 },
         storyDescription: {
           ko: "바다의 향기를 가득 품은 멍게를 밥 위에 올리고 쓱쓱 비비면 바다가 통째로 입안으로 들어오는 느낌이에요. 독특한 향과 짙은 바다 맛이 처음에는 낯설지만, 한번 빠지면 헤어 나오기 힘들어요.",
@@ -750,7 +750,7 @@ export const regions: Region[] = [
         id: "tongyeong-oyster-soup",
         name: { ko: "통영 굴국밥", ja: "統営牡蛎クッパ", en: "Tongyeong Oyster Soup" },
         region: "tongyeong",
-        image: "/images/food/ton-oyster-soup.jpg",
+        image: "/images/food/굴국밥.png",
         tasteProfile: { sweet: 15, salty: 50, spicy: 20, umami: 95, sour: 10 },
         storyDescription: {
           ko: "통영 바다에서 건져 올린 탱글탱글한 굴이 뜨끈한 국물 속에서 더욱 빛을 발해요. 굴의 진한 바다 향이 국물 전체에 녹아들어 한 국자씩 떠 먹을 때마다 바닷가에 있는 것처럼 편안해져요.",
@@ -781,7 +781,7 @@ export const regions: Region[] = [
         id: "tongyeong-ujja",
         name: { ko: "우짜", ja: "ウッチャ", en: "Ujja" },
         region: "tongyeong",
-        image: "/images/food/ton-ujja.jpg",
+        image: "/images/food/우짜.png",
         tasteProfile: { sweet: 20, salty: 55, spicy: 40, umami: 75, sour: 10 },
         storyDescription: {
           ko: "우동과 짜장의 합성어인 우짜는 통영 사람들이 오래전부터 즐겨 온 퓨전의 원조예요. 부드러운 우동 면에 짜장 소스를 얹은 이 독특한 조합이 한번 먹으면 왜 유명한지 고개가 절로 끄덕여져요.",
@@ -812,7 +812,7 @@ export const regions: Region[] = [
         id: "tongyeong-sirakguk",
         name: { ko: "시락국", ja: "シラクグク", en: "Sirakguk" },
         region: "tongyeong",
-        image: "/images/food/ton-sirakguk.jpg",
+        image: "/images/food/시락국.png",
         tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 80, sour: 5 },
         storyDescription: {
           ko: "무말랭이를 삶은 뽀얀 국물에 된장을 풀어 만든 통영 어민들의 새벽 밥상이에요. 생선 배 곯으러 바다에 나가기 전, 뜨끈한 시락국 한 사발이 몸과 마음을 함께 데워주었답니다.",
@@ -843,7 +843,7 @@ export const regions: Region[] = [
         id: "tongyeong-haemul-ttukbaegi",
         name: { ko: "해물뚝배기", ja: "海鮮トゥッペギ", en: "Haemul Ttukbaegi" },
         region: "tongyeong",
-        image: "/images/food/ton-haemul-ttukbaegi.jpg",
+        image: "/images/food/해물뚝배기.png",
         tasteProfile: { sweet: 10, salty: 55, spicy: 55, umami: 90, sour: 10 },
         storyDescription: {
           ko: "싱싱한 해산물이 가득 든 뚝배기가 테이블에 오를 때의 기대감이란! 해물들이 뿜어내는 진한 바다 향과 매콤한 국물이 어우러져 한 숟가락씩 뜰 때마다 탄성이 절로 나와요.",
@@ -874,7 +874,7 @@ export const regions: Region[] = [
         id: "tongyeong-ppaettaegi-juk",
         name: { ko: "빼때기죽", ja: "ッペッテギジュク", en: "Ppaettaegi-juk" },
         region: "tongyeong",
-        image: "/images/food/ton-ppaettaegi-juk.jpg",
+        image: "/images/food/빼때기죽.png",
         tasteProfile: { sweet: 45, salty: 20, spicy: 0, umami: 40, sour: 5 },
         storyDescription: {
           ko: "고구마를 썰어 말린 빼때기로 끓인 죽은 통영 할머니들의 가난하던 시절 이야기를 담고 있어요. 달콤하고 구수한 맛이 그 시절의 따뜻한 기억처럼 마음을 포근하게 감싸줍니다.",
@@ -905,7 +905,7 @@ export const regions: Region[] = [
         id: "tongyeong-dacci",
         name: { ko: "다찌 해산물", ja: "ダッチ海鮮", en: "Dacci Seafood" },
         region: "tongyeong",
-        image: "/images/food/ton-dacci.jpg",
+        image: "/images/food/다찌해산물.png",
         tasteProfile: { sweet: 15, salty: 50, spicy: 20, umami: 95, sour: 15 },
         storyDescription: {
           ko: "다찌는 통영의 어시장 선술집에서 술 한 잔과 함께 내오는 신선한 해산물 한상이에요. 오늘 바다에서 건져 올린 것들만 나오는, 메뉴가 없는 즉흥의 미식 경험이랍니다.",
@@ -936,7 +936,7 @@ export const regions: Region[] = [
         id: "tongyeong-dodari-ssuk",
         name: { ko: "도다리쑥국", ja: "ヒラメヨモギスープ", en: "Dodari-ssuk Soup" },
         region: "tongyeong",
-        image: "/images/food/ton-dodari-ssuk.jpg",
+        image: "/images/food/도다리쑥국.png",
         tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 85, sour: 5 },
         storyDescription: {
           ko: "봄이 오면 통영 사람들이 가장 먼저 찾는 것이 도다리쑥국이에요. 봄 쑥의 진한 향과 도다리의 담백하고 깨끗한 국물이 만나 봄의 설렘을 그대로 담아낸 계절의 선물이랍니다.",
@@ -976,7 +976,7 @@ export const regions: Region[] = [
         id: "jeju-black-pork",
         name: { ko: "흑돼지 구이", ja: "黒豚焼き", en: "Black Pork BBQ" },
         region: "jeju",
-        image: "/images/food/jej-black-pork.jpg",
+        image: "/images/food/흑돼지구이.png",
         tasteProfile: { sweet: 10, salty: 50, spicy: 20, umami: 90, sour: 5 },
         storyDescription: {
           ko: "제주 흑돼지는 현무암 화산섬의 바람과 풀밭에서 자란 덕분에 육질이 특별해요. 두툼하게 썬 살코기를 불판에 올리면 고소하고 진한 향이 피어오르며 누구도 자리를 뜨지 못하게 만들어요.",
@@ -1007,7 +1007,7 @@ export const regions: Region[] = [
         id: "jeju-gogi-guksu",
         name: { ko: "고기국수", ja: "コギククス", en: "Gogi Guksu" },
         region: "jeju",
-        image: "/images/food/jej-gogi-guksu.jpg",
+        image: "/images/food/고기국수.png",
         tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 90, sour: 5 },
         storyDescription: {
           ko: "제주에서는 잔칫날이면 온 동네가 고기국수 냄새로 가득 찼어요. 돼지 뼈를 오래 끓인 뽀얀 국물에 소면을 말고 수육을 얹으면 제주 사람들의 기쁨과 정이 한 그릇에 담겨요.",
@@ -1038,7 +1038,7 @@ export const regions: Region[] = [
         id: "jeju-galchi-jorim",
         name: { ko: "갈치조림", ja: "太刀魚の煮付け", en: "Galchi Jorim" },
         region: "jeju",
-        image: "/images/food/jej-galchi-jorim.jpg",
+        image: "/images/food/갈치조림.png",
         tasteProfile: { sweet: 20, salty: 55, spicy: 65, umami: 80, sour: 15 },
         storyDescription: {
           ko: "은빛으로 반짝이는 갈치가 매콤하고 달콤한 양념에 쪄지듯 조려지면 그 맛은 이 세상 것이 아니에요. 무와 함께 푹 익힌 양념이 밥 위에 올라가면 밥 한 그릇이 두 그릇이 되어버려요.",
@@ -1069,7 +1069,7 @@ export const regions: Region[] = [
         id: "jeju-jeonbok-juk",
         name: { ko: "전복죽", ja: "アワビ粥", en: "Jeonbok Juk" },
         region: "jeju",
-        image: "/images/food/jej-jeonbok-juk.jpg",
+        image: "/images/food/전복죽.png",
         tasteProfile: { sweet: 15, salty: 45, spicy: 5, umami: 95, sour: 5 },
         storyDescription: {
           ko: "제주 해녀가 물 속 깊은 곳에서 건져 올린 전복으로 끓인 죽은 바다 향이 그대로 살아 있어요. 초록빛으로 물든 부드러운 죽 한 숟가락은 몸이 아프거나 지쳤을 때 최고의 보약이 되어줘요.",
@@ -1100,7 +1100,7 @@ export const regions: Region[] = [
         id: "jeju-momguk",
         name: { ko: "몸국", ja: "モムグク", en: "Momguk" },
         region: "jeju",
-        image: "/images/food/jej-momguk.jpg",
+        image: "/images/food/몸국.png",
         tasteProfile: { sweet: 5, salty: 55, spicy: 10, umami: 85, sour: 5 },
         storyDescription: {
           ko: "모자반이라는 검은 해조류와 돼지고기를 함께 끓인 몸국은 제주의 잔칫상에 빠지지 않는 음식이에요. 검고 진한 국물이 처음엔 낯설지만, 한 모금 마시면 바다와 땅의 정수를 맛보는 듯한 깊은 감동이 와요.",
@@ -1131,7 +1131,7 @@ export const regions: Region[] = [
         id: "jeju-dombe",
         name: { ko: "돔베고기", ja: "ドンベコギ", en: "Dombe Gogi" },
         region: "jeju",
-        image: "/images/food/jej-dombe.jpg",
+        image: "/images/food/돔베고기.png",
         tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 85, sour: 5 },
         storyDescription: {
           ko: "돔베는 제주 방언으로 도마를 뜻해요. 삶아낸 돼지고기를 도마 위에 그대로 썰어내는 투박하고 진솔한 이 음식은 그 어떤 화려한 요리보다도 오래 기억에 남아요.",
@@ -1162,7 +1162,7 @@ export const regions: Region[] = [
         id: "jeju-mulhoe",
         name: { ko: "물회", ja: "ムルフェ", en: "Mulhoe" },
         region: "jeju",
-        image: "/images/food/jej-mulhoe.jpg",
+        image: "/images/food/물회.png",
         tasteProfile: { sweet: 25, salty: 50, spicy: 60, umami: 75, sour: 55 },
         storyDescription: {
           ko: "신선한 해산물을 얼음처럼 차가운 매콤새콤한 국물에 담가 먹는 여름 제주의 청량한 별미예요. 한 입 떠먹으면 뜨거운 여름 더위가 순식간에 사라지는 마법 같은 경험을 할 수 있어요.",
@@ -1193,7 +1193,7 @@ export const regions: Region[] = [
         id: "jeju-bomal-kalguksu",
         name: { ko: "보말칼국수", ja: "カサガイカルグクス", en: "Bomal Kalguksu" },
         region: "jeju",
-        image: "/images/food/jej-bomal-kalguksu.jpg",
+        image: "/images/food/보말칼국수.png",
         tasteProfile: { sweet: 10, salty: 50, spicy: 10, umami: 90, sour: 5 },
         storyDescription: {
           ko: "보말은 제주 방언으로 고둥이에요. 이 작은 소라 같은 조개를 듬뿍 넣고 끓인 칼국수 국물은 진하고 담백하여 마치 바다를 한 그릇에 담은 것처럼 감동적이에요.",
@@ -1224,7 +1224,7 @@ export const regions: Region[] = [
         id: "jeju-omegi-tteok",
         name: { ko: "오메기떡", ja: "オメギ餅", en: "Omegi Tteok" },
         region: "jeju",
-        image: "/images/food/jej-omegi-tteok.jpg",
+        image: "/images/food/오메기떡.jpg",
         tasteProfile: { sweet: 60, salty: 10, spicy: 0, umami: 20, sour: 5 },
         storyDescription: {
           ko: "차조로 만든 쫄깃한 반죽 안에 달콤한 팥고물이 가득 들어있는 제주 전통 떡이에요. 오메기술을 빚을 때 남은 차조 술지게미로 만들어온 역사 깊은 섬의 지혜가 담겨 있어요.",
@@ -1255,7 +1255,7 @@ export const regions: Region[] = [
         id: "jeju-hallabong",
         name: { ko: "한라봉 디저트", ja: "漢拏峰デザート", en: "Hallabong Dessert" },
         region: "jeju",
-        image: "/images/food/jej-hallabong.jpg",
+        image: "/images/food/한라봉디저트.jpg",
         tasteProfile: { sweet: 75, salty: 5, spicy: 0, umami: 10, sour: 40 },
         storyDescription: {
           ko: "한라산을 닮은 봉긋한 모양의 한라봉은 제주 태양을 듬뿍 받아 달콤하고 향긋해요. 아이스크림, 젤리, 케이크 등 다양한 디저트로 변신한 한라봉의 맛은 제주 여행의 달콤한 마침표예요.",
@@ -1295,7 +1295,7 @@ export const regions: Region[] = [
         id: "busan-pork-soup",
         name: { ko: "돼지국밥", ja: "豚クッパ", en: "Pork Rice Soup" },
         region: "busan",
-        image: "/images/food/bus-pork-soup.jpg",
+        image: "/images/food/돼지국밥.png",
         tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 90, sour: 5 },
         storyDescription: {
           ko: "부산 시민들의 새벽을 여는 돼지국밥은 진하고 뽀얀 국물 속에 부드러운 수육이 담겨 있어요. 부추와 새우젓을 곁들여 기호에 맞게 먹는 이 한 그릇이 항구 도시의 하루를 힘차게 시작시켜줘요.",
@@ -1326,7 +1326,7 @@ export const regions: Region[] = [
         id: "busan-milmyeon",
         name: { ko: "밀면", ja: "ミルミョン", en: "Milmyeon" },
         region: "busan",
-        image: "/images/food/bus-milmyeon.jpg",
+        image: "/images/food/밀면.png",
         tasteProfile: { sweet: 20, salty: 50, spicy: 40, umami: 70, sour: 45 },
         storyDescription: {
           ko: "한국전쟁 피난민들이 부산에서 탄생시킨 밀면은 물냉면과 비슷하지만 면발이 밀가루라 더 쫄깃해요. 차갑고 새콤달콤 매콤한 육수 속에 쫄깃한 면이 어우러진 맛은 피난민들의 강인한 삶을 닮았어요.",
@@ -1357,7 +1357,7 @@ export const regions: Region[] = [
         id: "busan-hotteok",
         name: { ko: "씨앗호떡", ja: "シアッホットク", en: "Ssiat Hotteok" },
         region: "busan",
-        image: "/images/food/bus-hotteok.jpg",
+        image: "/images/food/씨앗호떡.png",
         tasteProfile: { sweet: 65, salty: 15, spicy: 0, umami: 25, sour: 5 },
         storyDescription: {
           ko: "바삭한 반죽 안에 달콤한 흑설탕과 씨앗이 가득 들어 있는 부산 국제시장의 명물이에요. 뜨거운 기름에서 갓 꺼낸 호떡 안에서 달달한 시럽이 흘러나올 때의 행복감은 부산 여행의 가장 달콤한 순간이에요.",
@@ -1388,7 +1388,7 @@ export const regions: Region[] = [
         id: "busan-mul-tteok",
         name: { ko: "물떡", ja: "ムルトク", en: "Mul-tteok" },
         region: "busan",
-        image: "/images/food/bus-mul-tteok.jpg",
+        image: "/images/food/물떡.png",
         tasteProfile: { sweet: 15, salty: 55, spicy: 30, umami: 70, sour: 10 },
         storyDescription: {
           ko: "부산 포장마차에서 뜨거운 어묵 국물 속에 동동 떠다니는 물떡은 추운 날 최고의 위로예요. 국물 한 국자 마시고 말랑한 떡을 오물거리면 부산 사람들의 정이 온몸에 퍼지는 것 같아요.",
@@ -1419,7 +1419,7 @@ export const regions: Region[] = [
         id: "busan-naengchae-jokbal",
         name: { ko: "냉채족발", ja: "冷菜チョクパル", en: "Naengchae Jokbal" },
         region: "busan",
-        image: "/images/food/bus-naengchae-jokbal.jpg",
+        image: "/images/food/냉채족발.png",
         tasteProfile: { sweet: 20, salty: 50, spicy: 30, umami: 75, sour: 45 },
         storyDescription: {
           ko: "쫄깃한 족발을 차갑게 식혀 겨자 소스와 새콤달콤한 드레싱으로 버무린 여름 별미예요. 아삭한 채소와 탱글한 고기의 대비가 짜릿하고, 새콤한 소스가 더위를 싹 날려줘요.",
@@ -1450,7 +1450,7 @@ export const regions: Region[] = [
         id: "busan-grilled-clams",
         name: { ko: "조개구이", ja: "貝の焼き物", en: "Grilled Clams" },
         region: "busan",
-        image: "/images/food/bus-grilled-clams.jpg",
+        image: "/images/food/조개구이.png",
         tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 90, sour: 10 },
         storyDescription: {
           ko: "부산 해변가 포장마차에서 불판 위에 조개를 올리면 지글지글 끓는 조개 국물 향이 바닷바람과 섞여 황홀해요. 입 벌린 조개 안에 고인 진한 바다 국물 한 모금이 부산 바다를 통째로 삼키는 기분이에요.",
@@ -1481,7 +1481,7 @@ export const regions: Region[] = [
         id: "busan-eomuk",
         name: { ko: "어묵", ja: "おでん（釜山式）", en: "Busan Eomuk" },
         region: "busan",
-        image: "/images/food/bus-eomuk.jpg",
+        image: "/images/food/어묵.png",
         tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 80, sour: 5 },
         storyDescription: {
           ko: "부산 어묵은 전국에서 가장 유명해요. 신선한 생선살을 갈아 다양한 모양으로 만든 뒤 진한 국물에 끓여내면 쫄깃하고 감칠맛 나는 부산 대표 길거리 음식이 완성돼요.",
@@ -1512,7 +1512,7 @@ export const regions: Region[] = [
         id: "busan-bibim-dangmyeon",
         name: { ko: "비빔당면", ja: "ビビムタンミョン", en: "Bibim Dangmyeon" },
         region: "busan",
-        image: "/images/food/bus-bibim-dangmyeon.jpg",
+        image: "/images/food/비빔당면.png",
         tasteProfile: { sweet: 30, salty: 50, spicy: 55, umami: 65, sour: 30 },
         storyDescription: {
           ko: "투명한 당면을 매콤달콤한 양념에 버무린 비빔당면은 부산 분식집의 숨겨진 보물이에요. 쫄깃한 면발에 양념이 쏙쏙 배어들어 한 젓가락이 두 젓가락, 두 젓가락이 한 그릇이 되는 마법이 일어나요.",
@@ -1543,7 +1543,7 @@ export const regions: Region[] = [
         id: "busan-gopchang",
         name: { ko: "양곱창", ja: "ヤンコプチャン", en: "Yang Gopchang" },
         region: "busan",
-        image: "/images/food/bus-gopchang.jpg",
+        image: "/images/food/양곱창.png",
         tasteProfile: { sweet: 15, salty: 55, spicy: 35, umami: 90, sour: 10 },
         storyDescription: {
           ko: "불판 위에서 기름이 튀며 구워지는 양곱창의 고소하고 진한 향은 저항할 수 없는 유혹이에요. 처음엔 낯설어도 한 점 먹기 시작하면 멈출 수가 없는, 부산 야식 문화의 진수랍니다.",
@@ -1574,7 +1574,7 @@ export const regions: Region[] = [
         id: "busan-nakgopsae",
         name: { ko: "낙곱새", ja: "ナクコプセ", en: "Nakgopsae" },
         region: "busan",
-        image: "/images/food/bus-nakgopsae.jpg",
+        image: "/images/food/낙곱새.png",
         tasteProfile: { sweet: 15, salty: 55, spicy: 70, umami: 90, sour: 10 },
         storyDescription: {
           ko: "낙지, 곱창, 새우 세 가지를 한 냄비에 넣고 매콤하게 볶아낸 낙곱새는 부산 야식의 트리플 크라운이에요. 세 가지 바다 재료가 뿜어내는 시너지는 한 가지만 먹을 때보다 배로 맛있어요.",
@@ -1614,7 +1614,7 @@ export const regions: Region[] = [
         id: "gyeongju-hwangnam-ppang",
         name: { ko: "황남빵", ja: "ファンナムパン", en: "Hwangnam Bread" },
         region: "gyeongju",
-        image: "/images/food/gye-hwangnam-ppang.jpg",
+        image: "/images/food/황남빵.png",
         tasteProfile: { sweet: 70, salty: 15, spicy: 0, umami: 20, sour: 5 },
         storyDescription: {
           ko: "경주를 대표하는 100년 전통의 팥소 빵이에요. 얇고 바삭한 밀가루 껍질 안에 달콤한 팥소가 가득 차 있어, 한 입 베어 물면 경주의 천년 역사가 입 안에서 녹아드는 것 같아요.",
@@ -1640,7 +1640,7 @@ export const regions: Region[] = [
         id: "gyeongju-gyori-gimbap",
         name: { ko: "교리김밥", ja: "キョリキンパ", en: "Gyori Gimbap" },
         region: "gyeongju",
-        image: "/images/food/gye-gyori-gimbap.jpg",
+        image: "/images/food/교리김밥.png",
         tasteProfile: { sweet: 20, salty: 55, spicy: 10, umami: 65, sour: 10 },
         storyDescription: {
           ko: "경주 교리에서 시작된 수제 김밥이에요. 통통하게 들어찬 속재료와 도톰하게 자른 단면이 마치 보석 단면처럼 예뻐서, 먹기 아까울 만큼 눈도 즐겁게 해준답니다.",
@@ -1666,7 +1666,7 @@ export const regions: Region[] = [
         id: "gyeongju-tteokgalbi",
         name: { ko: "경주 떡갈비", ja: "慶州トッカルビ", en: "Gyeongju Tteokgalbi" },
         region: "gyeongju",
-        image: "/images/food/gye-tteokgalbi.jpg",
+        image: "/images/food/떡갈비.png",
         tasteProfile: { sweet: 50, salty: 55, spicy: 10, umami: 75, sour: 5 },
         storyDescription: {
           ko: "갈비살을 곱게 다져 달콤짭짤한 양념을 입혀 구워낸 요리예요. 겉은 살짝 카라멜화되어 반짝이고, 안은 촉촉하게 촉촉해서 입에서 사르르 녹는 황금빛 패티랍니다.",
@@ -1692,7 +1692,7 @@ export const regions: Region[] = [
         id: "gyeongju-hanwoo-mulhoe",
         name: { ko: "한우 물회", ja: "韓牛ムルフェ", en: "Hanwoo Mulhoe" },
         region: "gyeongju",
-        image: "/images/food/gye-hanwoo-mulhoe.jpg",
+        image: "/images/food/한우물회.png",
         tasteProfile: { sweet: 25, salty: 45, spicy: 55, umami: 70, sour: 40 },
         storyDescription: {
           ko: "신선한 한우 육회를 얼음처럼 차가운 육수에 담가 먹는 경주만의 별미예요. 상큼하게 새콤달콤한 국물과 쫄깃한 육회의 만남이 더운 여름날 혀를 상쾌하게 깨워준답니다.",
@@ -1718,7 +1718,7 @@ export const regions: Region[] = [
         id: "gyeongju-ssambap",
         name: { ko: "쌈밥 정식", ja: "サムバプ定食", en: "Ssambap Set" },
         region: "gyeongju",
-        image: "/images/food/gye-ssambap.jpg",
+        image: "/images/food/쌈밥정식.png",
         tasteProfile: { sweet: 20, salty: 45, spicy: 40, umami: 65, sour: 15 },
         storyDescription: {
           ko: "신선한 채소잎에 밥 한 숟갈과 고기, 쌈장을 올려 손 안에 꼭 쥐고 한 입에 먹는 즐거움이 있어요. 입 안에서 채소의 신선함과 고기의 풍미, 쌈장의 깊은 맛이 한꺼번에 어우러지는 게 이 맛의 묘미랍니다.",
@@ -1744,7 +1744,7 @@ export const regions: Region[] = [
         id: "gyeongju-sundubu",
         name: { ko: "순두부찌개", ja: "スンドゥブチゲ", en: "Sundubu Jjigae" },
         region: "gyeongju",
-        image: "/images/food/gye-sundubu.jpg",
+        image: "/images/food/순두부찌개.png",
         tasteProfile: { sweet: 10, salty: 50, spicy: 65, umami: 75, sour: 10 },
         storyDescription: {
           ko: "보글보글 끓는 뚝배기 속에서 하얀 순두부가 매콤한 국물을 흠뻑 머금고 있어요. 부드럽고 연한 두부 한 숟갈이 입 안에 들어오는 순간, 따뜻한 포근함이 온몸으로 퍼져나간답니다.",
@@ -1770,7 +1770,7 @@ export const regions: Region[] = [
         id: "gyeongju-haejangguk",
         name: { ko: "경주 해장국", ja: "慶州ヘジャングク", en: "Gyeongju Haejangguk" },
         region: "gyeongju",
-        image: "/images/food/gye-haejangguk.jpg",
+        image: "/images/food/해장국.png",
         tasteProfile: { sweet: 10, salty: 55, spicy: 50, umami: 80, sour: 10 },
         storyDescription: {
           ko: "진한 사골 국물에 우거지와 선지, 콩나물이 어우러진 경주식 해장국이에요. 묵직하고 깊은 국물 한 모금이면 전날의 피로가 씻겨나가는 것 같아서, 경주 사람들의 아침을 든든히 책임진답니다.",
@@ -1796,7 +1796,7 @@ export const regions: Region[] = [
         id: "gyeongju-hanjeongsik",
         name: { ko: "경주 한정식", ja: "慶州韓定食", en: "Gyeongju Hanjeongsik" },
         region: "gyeongju",
-        image: "/images/food/gye-hanjeongsik.jpg",
+        image: "/images/food/경주한정식.png",
         tasteProfile: { sweet: 30, salty: 50, spicy: 30, umami: 80, sour: 20 },
         storyDescription: {
           ko: "신라의 궁중 음식 문화를 계승한 경주의 전통 한정식이에요. 작은 그릇 하나하나에 장인의 손길이 담긴 정성스러운 반찬들이 차려지면, 마치 천년 전 경주 고분에서 발굴된 유물처럼 그 자리 자체가 하나의 역사가 된답니다.",
@@ -1822,7 +1822,7 @@ export const regions: Region[] = [
         id: "gyeongju-chalborippang",
         name: { ko: "찰보리빵", ja: "チャルボリパン", en: "Chalborippang" },
         region: "gyeongju",
-        image: "/images/food/gye-chalborippang.jpg",
+        image: "/images/food/찰보리빵.png",
         tasteProfile: { sweet: 60, salty: 15, spicy: 0, umami: 25, sour: 5 },
         storyDescription: {
           ko: "경주의 찰보리를 넣어 만든 촉촉하고 쫄깃한 빵이에요. 일반 빵과 달리 보리 특유의 구수한 향이 은은하게 올라오고, 팥 크림이나 단팥소와 어우러지면 소박하지만 깊은 맛이 나요.",
@@ -1848,7 +1848,7 @@ export const regions: Region[] = [
         id: "gyeongju-milmyeon",
         name: { ko: "경주 밀면", ja: "慶州ミルミョン", en: "Gyeongju Milmyeon" },
         region: "gyeongju",
-        image: "/images/food/gye-milmyeon.jpg",
+        image: "/images/food/경주밀면.png",
         tasteProfile: { sweet: 20, salty: 45, spicy: 50, umami: 60, sour: 35 },
         storyDescription: {
           ko: "밀가루 면을 차갑게 먹는 경주식 냉면이에요. 한방 재료가 들어간 시원한 국물에 쫄깃한 면을 담고, 고소하게 볶은 고기와 채소를 올려서 먹으면 여름 더위를 단번에 날려버려요.",
@@ -1887,7 +1887,7 @@ export const regions: Region[] = [
         id: "cheonan-walnut-cookie",
         name: { ko: "호두과자", ja: "クルミ菓子", en: "Walnut Cookie" },
         region: "cheonan",
-        image: "/images/food/che-walnut-cookie.jpg",
+        image: "/images/food/호두과자.png",
         tasteProfile: { sweet: 72, salty: 12, spicy: 0, umami: 18, sour: 5 },
         storyDescription: {
           ko: "천안을 대표하는 국민 간식이에요. 호두 모양의 작은 틀에 달콤한 팥소와 호두 한 조각을 넣고 구워낸 빵으로, 고속도로 휴게소에서 갓 구운 것을 사 먹는 것이 천안 여행의 진짜 묘미랍니다.",
@@ -1913,7 +1913,7 @@ export const regions: Region[] = [
         id: "cheonan-byeongcheon-sundae",
         name: { ko: "병천순대", ja: "ビョンチョンスンデ", en: "Byeongcheon Sundae" },
         region: "cheonan",
-        image: "/images/food/che-byeongcheon-sundae.jpg",
+        image: "/images/food/병천순대.png",
         tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 75, sour: 5 },
         storyDescription: {
           ko: "당면과 채소, 선지를 듬뿍 넣어 꽉 채운 병천 특유의 순대예요. 다른 지역 순대보다 채소가 훨씬 많이 들어가 가볍고 깔끔한 맛이 나고, 천안 여행자들이 꼭 들러야 하는 명물 음식이랍니다.",
@@ -1939,7 +1939,7 @@ export const regions: Region[] = [
         id: "cheonan-sundae-soup",
         name: { ko: "순대국밥", ja: "スンデクッパ", en: "Sundae Soup" },
         region: "cheonan",
-        image: "/images/food/che-sundae-soup.jpg",
+        image: "/images/food/순대국밥.png",
         tasteProfile: { sweet: 10, salty: 55, spicy: 35, umami: 80, sour: 5 },
         storyDescription: {
           ko: "뽀얗게 우러난 돼지 사골 국물에 순대 한 줌이 풍덩 빠져 있어요. 국물 한 모금에 구수함이 입을 가득 채우고, 순대 한 점에 쫄깃한 식감이 더해지면서 천안 장날의 따뜻한 정이 느껴진답니다.",
@@ -1965,7 +1965,7 @@ export const regions: Region[] = [
         id: "cheonan-charcoal-dakgalbi",
         name: { ko: "천안 숯불 닭갈비", ja: "天安炭火ダッカルビ", en: "Cheonan Charcoal Dakgalbi" },
         region: "cheonan",
-        image: "/images/food/che-charcoal-dakgalbi.jpg",
+        image: "/images/food/숯불닭갈비.png",
         tasteProfile: { sweet: 35, salty: 50, spicy: 65, umami: 70, sour: 10 },
         storyDescription: {
           ko: "천안에서는 일반 닭갈비와 달리 숯불 위에서 직접 구워낸 닭갈비가 유명해요. 연기 스며든 숯불 향기와 매콤달콤한 양념이 닭고기 속까지 배어들어, 한 입 베어 물면 입 안 가득 숯불 향연이 펼쳐져요.",
@@ -1991,7 +1991,7 @@ export const regions: Region[] = [
         id: "cheonan-spicy-catfish",
         name: { ko: "빠가사리 매운탕", ja: "ナマズ辛鍋", en: "Spicy Catfish Stew" },
         region: "cheonan",
-        image: "/images/food/che-spicy-catfish.jpg",
+        image: "/images/food/빠가사리매운탕.png",
         tasteProfile: { sweet: 10, salty: 50, spicy: 75, umami: 75, sour: 15 },
         storyDescription: {
           ko: "충청도 강에서 잡히는 빠가사리(메기류) 민물고기로 끓인 진한 매운탕이에요. 담백한 흰살 생선의 부드러운 살점이 칼칼한 양념과 어우러져 시원하고 얼큰한 국물이 완성되는데, 이맛이 그리워 천안을 찾는 사람들도 있답니다.",
@@ -2017,7 +2017,7 @@ export const regions: Region[] = [
         id: "cheonan-hanwoo-yukhoe",
         name: { ko: "한우 육회비빔밥", ja: "韓牛ユッケビビンバ", en: "Hanwoo Raw Beef Bibimbap" },
         region: "cheonan",
-        image: "/images/food/che-hanwoo-yukhoe.jpg",
+        image: "/images/food/한우육회비빔밥.png",
         tasteProfile: { sweet: 30, salty: 50, spicy: 55, umami: 80, sour: 20 },
         storyDescription: {
           ko: "신선한 한우 육회가 소복이 올려진 비빔밥이에요. 고슬고슬한 밥과 각양각색의 나물, 달걀 노른자 위에 윤기 좔좔 흐르는 육회가 올려지면, 그 아름다운 모습에 비비기 전에 한참 바라보게 된답니다.",
@@ -2043,7 +2043,7 @@ export const regions: Region[] = [
         id: "cheonan-fruit-mochi",
         name: { ko: "생과일 모찌", ja: "生フルーツ大福", en: "Fresh Fruit Mochi" },
         region: "cheonan",
-        image: "/images/food/che-fruit-mochi.jpg",
+        image: "/images/food/생과일모찌.png",
         tasteProfile: { sweet: 75, salty: 5, spicy: 0, umami: 10, sour: 20 },
         storyDescription: {
           ko: "촉촉한 찹쌀 떡 피 속에 생딸기나 망고 같은 신선한 과일이 통째로 들어있어요. 한 입 베어 물면 달콤한 찹쌀 향과 함께 과즙이 터지면서 어느 디저트 카페도 부럽지 않은 행복감이 밀려온답니다.",
@@ -2069,7 +2069,7 @@ export const regions: Region[] = [
         id: "cheonan-lotus-rice",
         name: { ko: "연잎밥 정식", ja: "蓮の葉ご飯定食", en: "Lotus Leaf Rice Set" },
         region: "cheonan",
-        image: "/images/food/che-lotus-rice.jpg",
+        image: "/images/food/연잎밥.png",
         tasteProfile: { sweet: 25, salty: 45, spicy: 20, umami: 65, sour: 10 },
         storyDescription: {
           ko: "향긋한 연잎으로 찹쌀밥과 견과류를 싸서 쪄낸 건강 요리예요. 연잎 특유의 은은한 향이 밥 속으로 스며들면서 일반 밥과는 전혀 다른 청아한 풍미를 만들어내고, 눈에도 먹기 전부터 힐링이 됩니다.",
@@ -2095,7 +2095,7 @@ export const regions: Region[] = [
         id: "cheonan-mushroom-stew",
         name: { ko: "버섯전골", ja: "きのこ鍋", en: "Mushroom Hotpot" },
         region: "cheonan",
-        image: "/images/food/che-mushroom-stew.jpg",
+        image: "/images/food/버섯전골.png",
         tasteProfile: { sweet: 15, salty: 45, spicy: 25, umami: 90, sour: 5 },
         storyDescription: {
           ko: "충청 지역에서 재배되는 다양한 버섯들이 그 향과 맛을 국물 속에 풀어내는 웰빙 전골이에요. 먹을수록 감칠맛이 깊어지고, 건더기를 건져 먹을 때 버섯 특유의 향긋한 식감이 입 안에 가득 차는 게 묘미랍니다.",
@@ -2121,7 +2121,7 @@ export const regions: Region[] = [
         id: "cheonan-local-bakery",
         name: { ko: "뚜쥬루 앙버터빵", ja: "トゥジュル餡バターパン", en: "Ttujuru Anpan Butter Bread" },
         region: "cheonan",
-        image: "/images/food/che-lokal-bakery.jpg",
+        image: "/images/food/뚜쥬르빵.png",
         tasteProfile: { sweet: 65, salty: 20, spicy: 0, umami: 15, sour: 5 },
         storyDescription: {
           ko: "천안의 인기 로컬 베이커리 '뚜쥬루'의 시그니처 앙버터 빵이에요. 고소한 발효 버터와 달콤한 팥소가 부드러운 브리오슈 빵 사이에 끼워져 있어, 한 입 먹으면 고소함과 달콤함이 파도처럼 밀려오는 행복한 빵이에요.",
@@ -2160,7 +2160,7 @@ export const regions: Region[] = [
         id: "yongin-baegam-sundae",
         name: { ko: "백암순대", ja: "ペガムスンデ", en: "Baegam Sundae" },
         region: "yongin",
-        image: "/images/food/yon-baegam-sundae.jpg",
+        image: "/images/food/백암순대.png",
         tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 80, sour: 5 },
         storyDescription: {
           ko: "용인 백암면에서 유래한 순대로, 속이 꽉 찬 풍성함이 자랑이에요. 찹쌀과 두부, 당면이 가득 들어간 도톰한 순대를 뚝 잘라 소금에 찍어 먹으면, 할머니 손맛이 생각나는 정겨운 맛이 납니다.",
@@ -2186,7 +2186,7 @@ export const regions: Region[] = [
         id: "yongin-jangter-gukbap",
         name: { ko: "민속촌 장터국밥", ja: "民俗村チャンターグッパ", en: "Folk Village Market Soup Rice" },
         region: "yongin",
-        image: "/images/food/yon-jangter-gukbap.jpg",
+        image: "/images/food/장터국밥.png",
         tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 80, sour: 5 },
         storyDescription: {
           ko: "한국 민속촌 장터에서 팔던 소박한 시골 국밥이에요. 뚝배기에 담긴 진한 사골 국물과 밥, 우거지, 수육이 어우러진 푸짐한 한 그릇이 옛날 장날의 분위기를 그대로 살려낸답니다.",
@@ -2212,7 +2212,7 @@ export const regions: Region[] = [
         id: "yongin-nurungji-baeksuk",
         name: { ko: "누룽지 백숙", ja: "おこげ白熟鶏", en: "Nurungji Baeksuk" },
         region: "yongin",
-        image: "/images/food/yon-nurungji-baeksuk.jpg",
+        image: "/images/food/누룽지백숙.png",
         tasteProfile: { sweet: 15, salty: 40, spicy: 5, umami: 85, sour: 5 },
         storyDescription: {
           ko: "닭을 통째로 푹 끓인 백숙에 누룽지를 더해 구수함을 배로 끌어올린 용인의 별미예요. 닭 국물이 누룽지 속으로 스며들면서 걸쭉하고 고소해지는 국물의 변신이 마법 같고, 마지막 한 방울까지 아까운 맛이에요.",
@@ -2238,7 +2238,7 @@ export const regions: Region[] = [
         id: "yongin-pajeon",
         name: { ko: "민속촌 파전", ja: "民俗村パジョン", en: "Folk Village Pajeon" },
         region: "yongin",
-        image: "/images/food/yon-pajeon.jpg",
+        image: "/images/food/민속촌파전.png",
         tasteProfile: { sweet: 15, salty: 50, spicy: 20, umami: 65, sour: 15 },
         storyDescription: {
           ko: "한국 민속촌에서 굽는 커다란 파전이에요. 바깥은 바삭하고 안은 촉촉하게 구워진 두툼한 파전에, 새콤달콤한 간장 양념을 찍어 먹으면 막걸리 한 잔이 절로 생각난답니다.",
@@ -2264,7 +2264,7 @@ export const regions: Region[] = [
         id: "yongin-makguksu",
         name: { ko: "수지 막국수", ja: "水枝マックッス", en: "Suji Makguksu" },
         region: "yongin",
-        image: "/images/food/yon-makguksu.jpg",
+        image: "/images/food/수지막국수.png",
         tasteProfile: { sweet: 20, salty: 45, spicy: 55, umami: 60, sour: 35 },
         storyDescription: {
           ko: "메밀로 만든 차갑고 탄력 있는 면에 양념장을 비벼 먹는 막국수예요. 수지 지역의 막국수는 특히 메밀 향이 진하고, 새콤매콤한 양념이 면 한 올 한 올에 스며들어 있어 여름 별미로 손꼽힌답니다.",
@@ -2290,7 +2290,7 @@ export const regions: Region[] = [
         id: "yongin-sanchae-bibimbap",
         name: { ko: "산채비빔밥", ja: "山菜ビビンバ", en: "Sanchae Bibimbap" },
         region: "yongin",
-        image: "/images/food/yon-sanchae-bibimbap.jpg",
+        image: "/images/food/산채비빔밥.png",
         tasteProfile: { sweet: 20, salty: 45, spicy: 50, umami: 65, sour: 20 },
         storyDescription: {
           ko: "경기도 산에서 채취한 고사리, 취나물, 참나물 등의 신선한 산나물을 밥 위에 소복이 올려 비벼 먹는 건강 비빔밥이에요. 나물마다 각기 다른 향과 식감이 어우러져 자연의 풍성함을 한 그릇에서 느낄 수 있어요.",
@@ -2316,7 +2316,7 @@ export const regions: Region[] = [
         id: "yongin-acorn-jelly",
         name: { ko: "도토리묵 무침", ja: "どんぐりゼリーサラダ", en: "Acorn Jelly Salad" },
         region: "yongin",
-        image: "/images/food/yon-acorn-jelly.jpg",
+        image: "/images/food/도도리묵무침.png",
         tasteProfile: { sweet: 10, salty: 50, spicy: 40, umami: 55, sour: 25 },
         storyDescription: {
           ko: "도토리 전분으로 만든 촉촉하고 보들보들한 묵에 새콤매콤한 양념을 무친 요리예요. 쫀득한 식감과 구수한 도토리 향, 그리고 맵고 새콤한 양념이 한꺼번에 입 안을 자극하는 이 조화가 바로 한식의 매력이에요.",
@@ -2342,7 +2342,7 @@ export const regions: Region[] = [
         id: "yongin-hanwoo",
         name: { ko: "용인 한우 구이", ja: "龍仁韓牛焼肉", en: "Yongin Hanwoo Grilled Beef" },
         region: "yongin",
-        image: "/images/food/yon-hanwoo.jpg",
+        image: "/images/food/한우구이.png",
         tasteProfile: { sweet: 20, salty: 45, spicy: 10, umami: 90, sour: 5 },
         storyDescription: {
           ko: "경기도 한우 고장 용인에서 만나는 프리미엄 한우 구이예요. 결이 고운 마블링이 불에 닿는 순간 지글지글 녹아내리면서 올라오는 고기 향이 식욕을 자극하고, 한 점만 먹어도 입 안 가득 풍미가 가득 차오른답니다.",
@@ -2368,7 +2368,7 @@ export const regions: Region[] = [
         id: "yongin-cafe-dessert",
         name: { ko: "보정동 카페거리 디저트", ja: "保亭洞カフェ通りデザート", en: "Bojeongdong Cafe Street Dessert" },
         region: "yongin",
-        image: "/images/food/yon-cafe-dessert.jpg",
+        image: "/images/food/보정동카페거리디저트.png",
         tasteProfile: { sweet: 75, salty: 10, spicy: 0, umami: 15, sour: 20 },
         storyDescription: {
           ko: "용인 보정동 카페거리는 경기도 최대의 카페 밀집 지역이에요. 이 거리에서 즐기는 개성 넘치는 케이크, 크리스피 크로넛, 달콤한 음료들은 SNS 감성을 자극하면서도, 한 입 먹으면 그 맛이 진짜임을 증명해낸답니다.",
@@ -2394,7 +2394,7 @@ export const regions: Region[] = [
         id: "yongin-makgeolli",
         name: { ko: "용인 막걸리", ja: "龍仁マッコリ", en: "Yongin Makgeolli" },
         region: "yongin",
-        image: "/images/food/yon-makgeolli.jpg",
+        image: "/images/food/막걸리.png",
         tasteProfile: { sweet: 40, salty: 10, spicy: 5, umami: 30, sour: 45 },
         storyDescription: {
           ko: "용인 지역의 전통 양조장에서 빚어낸 생막걸리예요. 탁하고 뽀얀 빛깔 속에 은은한 단맛과 알싸한 신맛이 균형을 이루고 있어, 파전이나 두부김치 한 접시와 함께하면 민속촌 마당에서 마시는 것 같은 낭만이 있답니다.",
@@ -2433,7 +2433,7 @@ export const regions: Region[] = [
         id: "icheon-rice-table",
         name: { ko: "이천 쌀밥 정식", ja: "利川ご飯定食", en: "Icheon Rice Table" },
         region: "icheon",
-        image: "/images/food/ich-rice-table.jpg",
+        image: "/images/food/이천쌀밥정식.png",
         tasteProfile: { sweet: 25, salty: 45, spicy: 25, umami: 75, sour: 10 },
         storyDescription: {
           ko: "임금님 수라상에 올랐다는 이천 쌀로 지은 밥은 한 톨 한 톨이 탱글탱글하고 윤기가 자르르 흘러요. 이 밥을 중심으로 구성된 정식 한 상을 받으면, 밥 그 자체가 주인공인 식사가 이런 것이구나 하는 감동을 받게 된답니다.",
@@ -2459,7 +2459,7 @@ export const regions: Region[] = [
         id: "icheon-bori-gulbi",
         name: { ko: "보리굴비", ja: "麦塩干しグルビ", en: "Bori Gulbi" },
         region: "icheon",
-        image: "/images/food/ich-bori-gulbi.jpg",
+        image: "/images/food/보리굴비.png",
         tasteProfile: { sweet: 10, salty: 70, spicy: 10, umami: 85, sour: 5 },
         storyDescription: {
           ko: "참조기를 소금에 절여 보리 속에서 서서히 숙성시킨 전통 건생선이에요. 수분이 빠지면서 응축된 감칠맛이 놀랍도록 진해지고, 따뜻한 밥 위에 한 점 올려 먹으면 다른 반찬이 필요 없는 밥도둑이 된답니다.",
@@ -2485,7 +2485,7 @@ export const regions: Region[] = [
         id: "icheon-ganjang-gejang",
         name: { ko: "간장게장", ja: "醤油ワタリガニ漬け", en: "Soy Sauce Marinated Crab" },
         region: "icheon",
-        image: "/images/food/ich-ganjang-gejang.jpg",
+        image: "/images/food/간장게장.png",
         tasteProfile: { sweet: 20, salty: 65, spicy: 10, umami: 95, sour: 10 },
         storyDescription: {
           ko: "신선한 꽃게를 간장에 담가 숙성시킨 요리로, '밥도둑'이라 불리는 데는 다 이유가 있어요. 짭조름하고 감칠맛 폭발하는 게장을 이천 밥에 올려 비벼 먹으면, 순식간에 밥 한 공기가 사라지는 마법을 경험하게 된답니다.",
@@ -2511,7 +2511,7 @@ export const regions: Region[] = [
         id: "icheon-jeyuk-bokkeum",
         name: { ko: "제육볶음", ja: "豚肉炒め", en: "Spicy Stir-Fried Pork" },
         region: "icheon",
-        image: "/images/food/ich-jeyuk-bokkeum.jpg",
+        image: "/images/food/제육볶음.png",
         tasteProfile: { sweet: 30, salty: 55, spicy: 70, umami: 70, sour: 10 },
         storyDescription: {
           ko: "이천 쌀밥과 제육볶음의 조합은 경기도 밥상의 클래식이에요. 고추장 양념에 매콤하게 볶아진 돼지고기 한 점을 탱글탱글한 이천 쌀밥 위에 올려 먹는 그 순간은, 아무리 많이 먹어도 질리지 않는 한국 소울 푸드랍니다.",
@@ -2537,7 +2537,7 @@ export const regions: Region[] = [
         id: "icheon-hanwoo-gui",
         name: { ko: "이천 한우 구이", ja: "利川韓牛焼肉", en: "Icheon Hanwoo Grilled Beef" },
         region: "icheon",
-        image: "/images/food/ich-hanwoo-gui.jpg",
+        image: "/images/food/이천한우구이.png",
         tasteProfile: { sweet: 15, salty: 45, spicy: 5, umami: 92, sour: 5 },
         storyDescription: {
           ko: "이천 쌀밥을 곁들여 먹는 한우 구이는 이 지역의 격조 있는 식사 문화예요. 살살 녹는 마블링의 한우를 구워서 이천 쌀밥 한 숟갈과 함께 먹으면, 그야말로 밥 한 공기가 사치가 된답니다.",
@@ -2563,7 +2563,7 @@ export const regions: Region[] = [
         id: "icheon-straw-pork",
         name: { ko: "볏짚 삼겹살", ja: "藁火豚バラ焼き", en: "Straw-Fire Pork Belly" },
         region: "icheon",
-        image: "/images/food/ich-straw-pork.jpg",
+        image: "/images/food/볏집삼겹살구이.png",
         tasteProfile: { sweet: 15, salty: 50, spicy: 10, umami: 80, sour: 5 },
         storyDescription: {
           ko: "이천에서 생산되는 볏짚으로 삼겹살 표면을 훑어 구워낸 특별한 조리법이에요. 볏짚 불꽃이 고기 겉면을 스쳐지나가면서 은은한 짚 향이 배어들고, 겉은 바삭하면서 속은 촉촉한 환상적인 삼겹살이 완성된답니다.",
@@ -2589,7 +2589,7 @@ export const regions: Region[] = [
         id: "icheon-royal-table",
         name: { ko: "임금님 수라상", ja: "王の御膳", en: "Royal Table" },
         region: "icheon",
-        image: "/images/food/ich-royal-table.jpg",
+        image: "/images/food/임금님수라상.png",
         tasteProfile: { sweet: 30, salty: 45, spicy: 25, umami: 85, sour: 20 },
         storyDescription: {
           ko: "이천 쌀밥을 중심으로 수십 가지 반찬이 격식 있게 펼쳐지는 왕의 밥상이에요. 조선 궁중 요리의 방식을 계승하여 재료 하나하나에 정성을 다했고, 이천이라는 지역의 자부심과 전통이 이 한 상 안에 모두 담겨 있답니다.",
@@ -2615,7 +2615,7 @@ export const regions: Region[] = [
         id: "icheon-makguksu",
         name: { ko: "이천 막국수", ja: "利川マックッス", en: "Icheon Makguksu" },
         region: "icheon",
-        image: "/images/food/ich-makguksu.jpg",
+        image: "/images/food/이천막국수.png",
         tasteProfile: { sweet: 20, salty: 45, spicy: 50, umami: 60, sour: 40 },
         storyDescription: {
           ko: "메밀 향 물씬 풍기는 차가운 막국수에 이천 쌀로 만든 밥을 곁들이는 것이 이 지역만의 독특한 조합이에요. 탄력 있는 메밀 면의 쫄깃함과 새콤달콤한 양념이 어우러지면서, 여름날 오후의 느긋한 식사 풍경이 그려진답니다.",
@@ -2641,7 +2641,7 @@ export const regions: Region[] = [
         id: "icheon-hangwa",
         name: { ko: "이천 한과", ja: "利川韓菓", en: "Icheon Hangwa" },
         region: "icheon",
-        image: "/images/food/ich-hangwa.jpg",
+        image: "/images/food/한과.png",
         tasteProfile: { sweet: 70, salty: 10, spicy: 0, umami: 20, sour: 5 },
         storyDescription: {
           ko: "이천의 도자기 마을에서 전해 내려오는 전통 한과예요. 깨, 잣, 꿀을 넣어 정성스럽게 만들어진 강정, 약과, 다식들은 단순한 간식이 아니라 조선 시대 선비들이 즐기던 품격 있는 문화의 일부랍니다.",
@@ -2667,7 +2667,7 @@ export const regions: Region[] = [
         id: "icheon-sotbap",
         name: { ko: "솥밥", ja: "釜飯", en: "Sotbap (Pot Rice)" },
         region: "icheon",
-        image: "/images/food/ich-sotbap.jpg",
+        image: "/images/food/돌솥밥.png",
         tasteProfile: { sweet: 20, salty: 35, spicy: 10, umami: 70, sour: 5 },
         storyDescription: {
           ko: "작은 무쇠 솥에 이천 쌀과 제철 재료를 넣고 지어낸 솥밥이에요. 솥 뚜껑을 열 때 나는 구수한 김의 향기와 솥 바닥의 노릇한 누룽지는, 어떤 화려한 요리도 대신할 수 없는 단순하고 완벽한 행복이에요.",
