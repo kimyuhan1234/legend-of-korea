@@ -60,7 +60,7 @@ export const regions: Region[] = [
         id: "jeonju-bibimbap",
         name: { ko: "전주비빔밥", ja: "全州ビビンバ", en: "Jeonju Bibimbap" },
         region: "jeonju",
-        image: "/images/food/jeonju-bibimbap.jpg",
+        image: "/images/food/jeonju-bibimbap.png",
         tasteProfile: { sweet: 20, salty: 45, spicy: 60, umami: 65, sour: 15 },
         storyDescription: {
           ko: "하얀 밥 위에 알록달록한 나물과 고기가 미술 시간의 물감처럼 예쁘게 올려져 있어요. 쓱쓱 비벼 먹으면 입안에서 여러 가지 재료가 멋진 합창을 하는 것 같아요.",
@@ -96,7 +96,7 @@ export const regions: Region[] = [
         id: "jeonju-kongnamul",
         name: { ko: "콩나물국밥", ja: "コンナムルクッパ", en: "Bean Sprout Rice Soup" },
         region: "jeonju",
-        image: "/images/food/kongnamul-gukbap.jpg",
+        image: "/images/food/kongnamul-gukbap.png",
         tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 75, sour: 10 },
         storyDescription: {
           ko: "아삭아삭한 콩나물이 듬뿍 들어간 뜨끈한 국물 요리예요. 추운 겨울날, 포근한 솜이불을 덮은 것처럼 배 속을 따뜻하고 편안하게 달래준답니다.",
@@ -120,7 +120,7 @@ export const regions: Region[] = [
         id: "jeonju-hanjeongsik",
         name: { ko: "전주 한정식", ja: "全州韓定食", en: "Jeonju Hanjeongsik" },
         region: "jeonju",
-        image: "/images/food/hanjeongsik.jpg",
+        image: "/images/food/hanjeongsik.png",
         tasteProfile: { sweet: 30, salty: 50, spicy: 35, umami: 80, sour: 20 },
         storyDescription: {
           ko: "마치 옛날 임금님이 드시던 수라상 같아요! 상다리가 부러질 정도로 수십 가지의 맛있는 반찬들이 커다란 상을 빈틈없이 가득 채우는 멋진 밥상이에요.",
@@ -144,7 +144,7 @@ export const regions: Region[] = [
         id: "jeonju-tteokgalbi",
         name: { ko: "전주 떡갈비", ja: "全州トッカルビ", en: "Jeonju Tteokgalbi" },
         region: "jeonju",
-        image: "/images/food/tteokgalbi.jpg",
+        image: "/images/food/tteokgalbi.png",
         tasteProfile: { sweet: 50, salty: 55, spicy: 10, umami: 75, sour: 5 },
         storyDescription: {
           ko: "고기를 아주 잘게 다져서 도톰하게 뭉친 다음 불에 구워낸 요리예요. 질기지 않아 씹을 필요도 없이 부드럽고, 달콤 짭짤해서 밥도둑이 따로 없어요.",
@@ -168,7 +168,7 @@ export const regions: Region[] = [
         id: "jeonju-kalguksu",
         name: { ko: "전주식 칼국수", ja: "全州式カルグクス", en: "Jeonju Kalguksu" },
         region: "jeonju",
-        image: "/images/food/kalguksu.jpg",
+        image: "/images/food/kalguksu.png",
         tasteProfile: { sweet: 15, salty: 45, spicy: 5, umami: 85, sour: 5 },
         storyDescription: {
           ko: "들깨가루라는 고소한 가루가 눈보라처럼 듬뿍 뿌려져 있어요. 일반 국수와 달리, 국물이 수프처럼 아주 진하고 고소한 것이 특징이에요.",
@@ -192,7 +192,7 @@ export const regions: Region[] = [
         id: "jeonju-muljjajang",
         name: { ko: "물짜장", ja: "ムルチャジャン", en: "Mul-jjajang" },
         region: "jeonju",
-        image: "/images/food/muljjajang.jpg",
+        image: "/images/food/muljjajang.png",
         tasteProfile: { sweet: 25, salty: 55, spicy: 50, umami: 65, sour: 15 },
         storyDescription: {
           ko: "이름은 짜장면인데 색깔이 까맣지 않고 빨간색이나 하얀색이에요! 짬뽕처럼 매콤하면서도, 짜장면처럼 소스가 면에 착 달라붙는 마법 같은 요리랍니다.",
@@ -216,7 +216,7 @@ export const regions: Region[] = [
         id: "jeonju-pisundae",
         name: { ko: "피순대와 순대국밥", ja: "ピスンデとスンデクッパ", en: "Blood Sausage Soup" },
         region: "jeonju",
-        image: "/images/food/sundae-gukbap.jpg",
+        image: "/images/food/sundae-gukbap.png",
         tasteProfile: { sweet: 10, salty: 60, spicy: 35, umami: 85, sour: 5 },
         storyDescription: {
           ko: "우리가 흔히 아는 얇은 당면 순대와 달라요. 고기와 채소 등 영양 만점 재료로 속을 꽉 채워서, 아주 든든하고 진한 맛이 나는 한국식 소시지라고 할 수 있어요.",
@@ -240,7 +240,7 @@ export const regions: Region[] = [
         id: "jeonju-omogaritang",
         name: { ko: "오모가리탕", ja: "オモガリタン", en: "Omogaritang" },
         region: "jeonju",
-        image: "/images/food/omogaritang.jpg",
+        image: "/images/food/omogaritang.png",
         tasteProfile: { sweet: 15, salty: 55, spicy: 65, umami: 80, sour: 10 },
         storyDescription: {
           ko: "'오모가리'는 뚝배기라는 숨 쉬는 흙그릇을 부르는 전주의 옛날 말이에요. 이 그릇에 쫄깃한 물고기와 시래기를 넣고 얼큰하게 끓여내서 아주 깊은 맛이 나요.",
@@ -264,7 +264,7 @@ export const regions: Region[] = [
         id: "jeonju-chocopie",
         name: { ko: "수제 초코파이", ja: "手作りチョコパイ", en: "Handmade Choco Pie" },
         region: "jeonju",
-        image: "/images/food/chocopie.jpg",
+        image: "/images/food/chocopie.png",
         tasteProfile: { sweet: 90, salty: 10, spicy: 0, umami: 15, sour: 5 },
         storyDescription: {
           ko: "전주의 유명한 빵집에서 직접 구워내는 거대한 초콜릿 과자예요. 부드러운 빵 사이에 달콤한 크림과 딸기잼이 가득 들어 있어서 최고로 인기 있는 디저트랍니다.",
@@ -288,7 +288,7 @@ export const regions: Region[] = [
         id: "jeonju-baguette-burger",
         name: { ko: "바게트 버거", ja: "バゲットバーガー", en: "Baguette Burger" },
         region: "jeonju",
-        image: "/images/food/baguette-burger.jpg",
+        image: "/images/food/baguette-burger.png",
         tasteProfile: { sweet: 25, salty: 55, spicy: 45, umami: 60, sour: 10 },
         storyDescription: {
           ko: "바게트의 속을 파내고, 그 안에 매콤달콤하게 볶은 고기와 아삭한 양배추를 가득 채워 넣었어요. 겉은 바삭하고 속은 꽉 찬 재미있는 간식이랍니다.",
