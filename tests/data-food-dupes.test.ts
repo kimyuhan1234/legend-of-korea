@@ -111,6 +111,7 @@ describe("food-dupes: 음식(RegionalFood) 구조", () => {
     for (const region of regions) {
       for (const food of region.foods) {
         for (const dupe of Object.values(food.dupes)) {
+          if ('challenge' in dupe) continue
           expect(
             dupe.similarityPercent,
             `${food.id} > ${dupe.name.ko}: similarityPercent = ${dupe.similarityPercent}`

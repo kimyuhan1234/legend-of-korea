@@ -76,7 +76,9 @@ export function DupeCountrySelector({ food, locale }: Props) {
   const t = UI[locale as keyof typeof UI] || UI.ko
 
   const country = COUNTRIES_12.find((c) => c.code === selected)!
-  const dupe: DupeForeignFood | undefined = food.dupes[selected]
+  const entry = food.dupes[selected]
+  const dupe: DupeForeignFood | undefined =
+    entry && !('challenge' in entry) ? (entry as DupeForeignFood) : undefined
 
   return (
     <section className="mb-10">
