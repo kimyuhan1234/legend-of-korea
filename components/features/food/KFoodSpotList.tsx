@@ -49,7 +49,7 @@ export function KFoodSpotList({ locale, cityFilter }: KFoodSpotListProps) {
               href={`?city=${city.code}`}
               className={`px-4 py-2 rounded-xl text-sm font-medium border transition-colors ${
                 isActive
-                  ? "bg-[#1B2A4A] text-white border-[#1B2A4A]"
+                  ? "bg-[#F5F3EF] text-white border-[#1B2A4A]"
                   : "bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#1B2A4A]/40"
               }`}
             >
@@ -96,7 +96,7 @@ function SpotCard({
               <span className="text-xs text-[#7a6a58]">{catLabel[spot.category]}</span>
               <span className={`text-xs font-bold ${PRICE_COLOR[spot.priceRange]}`}>{spot.priceRange}</span>
             </div>
-            <h3 className="font-black text-[#1B2A4A] text-base">{getL(spot.name, locale)}</h3>
+            <h3 className="font-black text-[#111] text-base">{getL(spot.name, locale)}</h3>
             <p className="text-xs text-[#D4A843] font-semibold mt-0.5">{getL(spot.speciality, locale)}</p>
           </div>
           <span className="text-2xl shrink-0">
@@ -108,7 +108,7 @@ function SpotCard({
 
       {/* 머스트 트라이 */}
       <div className="px-6 pb-4">
-        <p className="text-xs font-bold text-[#1B2A4A] mb-2">
+        <p className="text-xs font-bold text-[#111] mb-2">
           {locale === "ko" ? "꼭 먹어봐야 할 것" : locale === "ja" ? "必食メニュー" : "Must try"}
         </p>
         <div className="flex flex-wrap gap-1.5">

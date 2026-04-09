@@ -74,10 +74,10 @@ export function KitPurchaseCard({ courseId, kits, locale, isLoggedIn, className 
   const coupleKit = kits.find((k) => k.option_type === "couple")
 
   return (
-    <div className={`bg-white rounded-3xl border border-[#e8ddd0] overflow-hidden shadow-sm h-full flex flex-col${className ? ` ${className}` : ""}`}>
+    <div className={`bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-0 overflow-hidden shadow-sm h-full flex flex-col${className ? ` ${className}` : ""}`}>
       <div className="flex-1 grid md:grid-cols-2 gap-0">
         {/* 왼쪽: 설명 */}
-        <div className="p-8 bg-[#1B2A4A] text-white flex flex-col">
+        <div className="p-8 bg-[#F5F3EF] text-white flex flex-col">
           <h2 className="text-2xl font-black mb-2">📦 {label.title}</h2>
           <p className="text-white/70 mb-8">{label.subtitle}</p>
 
@@ -131,7 +131,7 @@ export function KitPurchaseCard({ courseId, kits, locale, isLoggedIn, className 
                   ? `/${locale}/courses/${courseId}/purchase`
                   : `/${locale}/auth/login?next=/${locale}/courses/${courseId}/purchase`
               }
-              className="block w-full text-center py-4 rounded-xl bg-[#D4A843] text-[#1B2A4A] font-bold text-lg hover:bg-[#e0b84e] transition-colors"
+              className="block w-full text-center py-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-[#D4A843] text-[#111] font-bold text-lg hover:bg-[#e0b84e] transition-colors"
             >
               {isLoggedIn ? label.buyNow : label.buyNowLogin}
             </Link>
@@ -163,16 +163,16 @@ function KitOption({
     : `/${locale}/auth/login?next=/${locale}/courses/${courseId}/purchase?kit=${kit.id}`
 
   return (
-    <div className="rounded-2xl border border-[#e8ddd0] p-5 hover:border-[#D4A843]/60 transition-colors">
+    <div className="rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-0 p-5 hover:border-[#D4A843]/60 transition-colors">
       <div className="flex items-center justify-between mb-3">
-        <span className="font-bold text-[#1B2A4A]">{optionLabel}</span>
+        <span className="font-bold text-[#111]">{optionLabel}</span>
         {!inStock && (
-          <span className="text-xs px-2 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-200">
+          <span className="text-xs px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-red-50 text-red-600  border-0 border-red-200">
             {label.outOfStock}
           </span>
         )}
       </div>
-      <p className="text-2xl font-black text-[#1B2A4A] mb-4">
+      <p className="text-2xl font-black text-[#111] mb-4">
         ₩{kit.price.toLocaleString()}
         <span className="text-sm font-normal text-[#7a6a58] ml-1">{label.perPerson}</span>
       </p>
@@ -180,12 +180,12 @@ function KitOption({
       {inStock ? (
         <Link
           href={purchaseHref}
-          className="block w-full text-center py-4 rounded-xl bg-[#D4A843] text-[#1B2A4A] font-bold text-lg hover:bg-[#e0b84e] transition-colors"
+          className="block w-full text-center py-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-[#D4A843] text-[#111] font-bold text-lg hover:bg-[#e0b84e] transition-colors"
         >
           {isLoggedIn ? label.buyNow : label.buyNowLogin}
         </Link>
       ) : (
-        <button className="w-full px-6 py-3 rounded-xl bg-[#F5F0E8] text-[#7a6a58] font-medium border border-[#e8ddd0] hover:bg-[#eee5d8] transition-colors">
+        <button className="w-full px-6 py-3 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-[#F5F0E8] text-[#7a6a58] font-medium border-0 hover:bg-[#eee5d8] transition-colors">
           {label.restock}
         </button>
       )}

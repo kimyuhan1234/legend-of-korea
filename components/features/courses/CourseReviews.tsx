@@ -84,7 +84,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl md:text-2xl font-bold text-[#1B2A4A]">
+        <h2 className="text-xl md:text-2xl font-bold text-[#111]">
           🌟 {label.title}
         </h2>
         <Link
@@ -98,11 +98,11 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
       {posts.length === 0 ? (
         <div className="text-center py-16 bg-white rounded-3xl border border-dashed border-[#e8ddd0]">
           <div className="text-5xl mb-3">🗺️</div>
-          <p className="font-bold text-[#1B2A4A] mb-1">{label.empty}</p>
+          <p className="font-bold text-[#111] mb-1">{label.empty}</p>
           <p className="text-sm text-[#7a6a58] mb-6">{label.emptyDesc}</p>
           <Link
             href={`/${locale}/community/write`}
-            className="inline-flex px-6 py-2.5 rounded-xl bg-[#1B2A4A] text-white font-semibold text-sm hover:bg-[#243a63] transition-colors"
+            className="inline-flex px-6 py-2.5 rounded-xl bg-[#F5F3EF] text-white font-semibold text-sm hover:bg-[#243a63] transition-colors"
           >
             {label.writeReview}
           </Link>
@@ -132,7 +132,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
 
               {/* 스포일러 블러 */}
               {post.photos && post.photos.length > 0 && post.is_spoiler && (
-                <div className="relative h-40 bg-[#1B2A4A]/10 flex items-center justify-center">
+                <div className="relative h-40 bg-[#F5F3EF]/10 flex items-center justify-center">
                   <span className="text-xs px-2 py-1 rounded-full bg-orange-100 text-orange-600 border border-orange-200">
                     ⚠️ {label.spoiler}
                   </span>
@@ -142,7 +142,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
               <div className="p-4">
                 {/* 유저 */}
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-7 rounded-full bg-[#1B2A4A] flex items-center justify-center text-white text-xs font-bold shrink-0">
+                  <div className="w-7 h-7 rounded-full bg-[#F5F3EF] flex items-center justify-center text-white text-xs font-bold shrink-0">
                     {post.users?.avatar_url ? (
                       <img
                         src={post.users.avatar_url}
@@ -154,7 +154,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
                     )}
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-[#1B2A4A]">
+                    <p className="text-xs font-semibold text-[#111]">
                       {post.users?.nickname || "모험가"}
                     </p>
                     <p className="text-xs text-[#D4A843]">

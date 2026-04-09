@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Loader2, PenLine } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { createClient } from '@/lib/supabase/client';
 
 // Hardcoded placeholder ads shown every 4th post when no sponsored posts in feed
 const PLACEHOLDER_ADS: PostType[] = [
@@ -68,8 +69,8 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
   // Fetch current user
   useEffect(() => {
-    fetch('/api/auth/me').then(r => r.json()).then(d => {
-      setCurrentUserId(d?.user?.id || null);
+    createClient().auth.getUser().then(({ data }) => {
+      setCurrentUserId(data.user?.id ?? null);
     }).catch(() => {});
   }, []);
 
@@ -155,21 +156,21 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
       {/* Header & Write Button */}
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-3xl font-black text-slate-800 tracking-tight">{t('title')}</h1>
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setRegionFilter('recipe')}
-            className={`px-4 py-2 rounded-full font-medium text-sm transition-colors
+            className={`px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 rounded-xl border-none
               ${regionFilter === 'recipe'
-                ? 'bg-[#E55A2B] text-white'
+                ? 'bg-[#E55A2B] text-white ring-2 ring-orange-200'
                 : 'bg-[#FF6B35] text-white hover:bg-[#E55A2B]'
               }`}
           >
             🍳 요리 레시피
           </button>
           <Link href={`/${locale}/community/write`}>
-            <Button className="rounded-xl px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 bg-indigo-600 hover:bg-indigo-700">
+            <Button className="rounded-xl px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 bg-[#FF6B35] hover:bg-[#E55A2B] text-white border-none">
               <PenLine className="w-4 h-4 mr-2" />
-              {t('writePost', { defaultValue: 'Write Post' })}
+              {t('writePost', { defaultValue: '기록 남기기' })}
             </Button>
           </Link>
         </div>
@@ -225,7 +226,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
       {/* Mobile FAB */}
       <Link href={`/${locale}/community/write`} className="fixed bottom-24 right-6 md:hidden z-40">
-        <Button size="icon" className="rounded-full shadow-2xl h-14 w-14 p-0 bg-indigo-600 hover:bg-indigo-700 shadow-indigo-400/50 border-4 border-white">
+        <Button size="icon" className="rounded-full shadow-2xl h-14 w-14 p-0 bg-[#FF6B35] hover:bg-[#E55A2B] shadow-orange-100/50 border-4 border-white">
           <PenLine className="w-6 h-6 text-white" />
         </Button>
       </Link>

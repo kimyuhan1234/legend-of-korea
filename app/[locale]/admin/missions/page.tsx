@@ -90,13 +90,13 @@ export default function AdminMissionsPage() {
     <div className="space-y-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-[#1B2A4A]">미션 관리</h1>
+          <h1 className="text-2xl font-black text-[#111]">미션 관리</h1>
           <p className="text-slate-500 text-sm mt-1">코스별 미션 내용과 힌트를 수정합니다.</p>
         </div>
         
         <div className="w-full sm:w-64">
           <Select value={selectedCourseId} onValueChange={setSelectedCourseId}>
-            <SelectTrigger className="h-12 border-slate-200 rounded-xl bg-white font-bold text-[#1B2A4A]">
+            <SelectTrigger className="h-12 border-slate-200 rounded-xl bg-white font-bold text-[#111]">
               <SelectValue placeholder="코스 선택" />
             </SelectTrigger>
             <SelectContent>
@@ -134,13 +134,13 @@ export default function AdminMissionsPage() {
                 <TableCell className="text-center font-black text-slate-400">#{m.sequence}</TableCell>
                 <TableCell className="py-5">
                   <div className="max-w-md space-y-1">
-                    <p className="font-bold text-[#1B2A4A]">{m.title.ko}</p>
+                    <p className="font-bold text-[#111]">{m.title.ko}</p>
                     <p className="text-xs text-slate-400 line-clamp-1">{m.description.ko}</p>
                   </div>
                 </TableCell>
                 <TableCell>
                   <div className="flex flex-wrap gap-1">
-                    <Badge variant="outline" className="bg-[#1B2A4A] text-white border-none py-0.5 px-2 text-[10px] font-bold">
+                    <Badge variant="outline" className="bg-[#F5F3EF] text-white border-none py-0.5 px-2 text-[10px] font-bold">
                       {m.type.toUpperCase()}
                     </Badge>
                     {m.is_hidden && <Badge className="bg-amber-100 text-amber-700 border-none py-0.5 px-2 text-[10px] font-bold">HIDDEN</Badge>}
@@ -157,7 +157,7 @@ export default function AdminMissionsPage() {
                   <Button 
                     variant="ghost" 
                     size="icon" 
-                    className="h-8 w-8 rounded-lg text-slate-400 hover:text-[#1B2A4A] hover:bg-slate-100"
+                    className="h-8 w-8 rounded-lg text-slate-400 hover:text-[#111] hover:bg-slate-100"
                     onClick={() => handleEdit(m)}
                   >
                     <Edit2 className="w-4 h-4" />
@@ -173,7 +173,7 @@ export default function AdminMissionsPage() {
         <div className="fixed inset-0 bg-black/60 z-[60] backdrop-blur-sm flex items-center justify-center p-4">
           <Card className="w-full max-w-2xl bg-white rounded-3xl overflow-hidden border-none shadow-2xl animate-in fade-in zoom-in duration-300">
             <CardHeader className="flex flex-row items-center justify-between border-b border-slate-100 bg-slate-50/50 p-6">
-              <CardTitle className="text-xl font-black text-[#1B2A4A]">미션 내용 수정</CardTitle>
+              <CardTitle className="text-xl font-black text-[#111]">미션 내용 수정</CardTitle>
               <Button variant="ghost" size="icon" onClick={() => setEditingId(null)} className="rounded-full">
                 <X className="w-5 h-5" />
               </Button>
@@ -184,7 +184,7 @@ export default function AdminMissionsPage() {
                   <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">상태 정보</label>
                   <div className="flex gap-2">
                     <Badge variant="outline" className="border-slate-200 text-slate-500">#{editForm.sequence}</Badge>
-                    <Badge className="bg-[#1B2A4A] text-white border-none">{editForm.type.toUpperCase()}</Badge>
+                    <Badge className="bg-[#F5F3EF] text-white border-none">{editForm.type.toUpperCase()}</Badge>
                     <Badge variant="outline" className="border-slate-200 text-slate-500 font-mono">{editForm.qr_code}</Badge>
                   </div>
                 </div>
@@ -245,7 +245,7 @@ export default function AdminMissionsPage() {
                 </Button>
                 <Button 
                   onClick={handleSave} 
-                  className="flex-1 h-14 rounded-2xl bg-[#1B2A4A] text-white font-black text-lg border-none hover:bg-[#243a63] shadow-lg shadow-[#1B2A4A]/20 transition-all"
+                  className="flex-1 h-14 rounded-2xl bg-[#F5F3EF] text-white font-black text-lg border-none hover:bg-[#243a63] shadow-lg shadow-[#1B2A4A]/20 transition-all"
                 >
                   <Save className="w-5 h-5 mr-2" /> 저장 완료
                 </Button>

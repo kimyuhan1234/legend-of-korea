@@ -548,3 +548,121 @@ VALUES
  37.3012, 127.4890)
 
 ON CONFLICT (id) DO NOTHING;
+
+
+-- =============================================
+-- 신규 지역 코스 추가 (4개 코스)
+-- 경주, 부산, 서울, 제주
+-- =============================================
+
+INSERT INTO courses (id, legend_type, region, difficulty, duration_text, title, description, thumbnail_url, price_1p, price_2p, is_active, created_at)
+VALUES
+
+-- 코스 6: 경주 만파식적
+('33333333-3333-3333-3333-000000000001',
+ 'manpa',
+ 'gyeongju',
+ 'medium',
+ '{"ko": "1일", "ja": "1日", "en": "1 day"}',
+ '{"ko": "용이 깃든 마법 피리", "ja": "龍が宿る魔法の笛", "en": "The Magic Flute of the Dragon"}',
+ '{"ko": "신라 문무왕과 김유신이 죽어서도 나라를 지키려 보냈다는 신비한 대나무 피리 이야기입니다. 이 피리를 불면 적군이 물러가고 가뭄에 비가 내렸다고 합니다.", "ja": "新羅の文武王と金庾信が死後も国を守ろうと送った神秘的な竹の笛の物語です。この笛を吹けば敵軍が退き、干ばつに雨が降ったと言われています。", "en": "A legendary bamboo flute sent by King Munmu and General Kim Yu-sin to protect the nation. It was said that blowing this flute would repel enemies and bring rain to droughts."}',
+ '/images/courses/gyeongju-manpa-thumb.jpg',
+ 29000,
+ 39000,
+ true,
+ NOW()
+),
+
+-- 코스 7: 부산 황옥공주
+('33333333-3333-3333-3333-000000000002',
+ 'mermaid',
+ 'busan',
+ 'easy',
+ '{"ko": "반나절~1일", "ja": "半日〜1日", "en": "Half day to 1 day"}',
+ '{"ko": "동백섬 인어공주", "ja": "冬柏島の人魚姫", "en": "The Mermaid of Dongbaek Island"}',
+ '{"ko": "멀리 인도에서 시집온 황옥공주가 보름달 아래서 고향을 그리워하며 구슬을 바라보았다는 애틋한 인어 전설입니다.", "ja": "遠くインドから嫁いできた黄玉王女が、満月の下で故郷を懐かしみながら玉を眺めていたという切ない人魚の伝説です。", "en": "A poignant mermaid legend of Princess Hwangok, who traveled from India to marry and gazed at her bead under the full moon, longing for home."}',
+ '/images/courses/busan-mermaids-thumb.jpg',
+ 29000,
+ 39000,
+ true,
+ NOW()
+),
+
+-- 코스 8: 서울 해치
+('33333333-3333-3333-3333-000000000003',
+ 'haechi',
+ 'seoul',
+ 'easy',
+ '{"ko": "1일", "ja": "1日", "en": "1 day"}',
+ '{"ko": "불을 먹는 수호신", "ja": "火を食べる守護神", "en": "The Fire-Eating Guardian"}',
+ '{"ko": "화재와 재앙을 막아주고 시비와 선악을 판단하는 상상의 동물 해치가 서울 도심 곳곳에 숨겨놓은 수호의 기운을 찾아 떠납니다.", "ja": "火災と災いを防ぎ、是非と善悪を判断する想像上の動物ヘチが、ソウル市内のあ치こちに隠した守護の気運を探しに出かけます。", "en": "Journey to find the protective energy hidden throughout Seoul by Haechi, the mythical creature that prevents fire and disaster."}',
+ '/images/courses/seoul-haechi-thumb.jpg',
+ 29000,
+ 39000,
+ true,
+ NOW()
+),
+
+-- 코스 9: 제주 설문대할망
+('33333333-3333-3333-3333-000000000004',
+ 'giant',
+ 'jeju',
+ 'medium',
+ '{"ko": "1박 2일", "ja": "1泊2日", "en": "2 days"}',
+ '{"ko": "제주를 빚은 거인", "ja": "済州を創った巨人", "en": "The Giant Who Shaped Jeju"}',
+ '{"ko": "제주도 섬 자체를 만들었다는 거인 설문대할망이 육지와 연결하기 위해 다리를 놓으려던 미완의 전설과 그가 남긴 오름들을 탐험합니다.", "ja": "済州島そのものを創ったという巨人ソルムンデハルマンが、陸と繋ぐために橋を架けようとした未完の伝説と、彼女が残したオルム（寄生火山）を探検します。", "en": "Explore the unfinished legend of the giant Seolmundae Halmang, who created Jeju Island and tried to build a bridge to the mainland."}',
+ '/images/courses/jeju-giant-thumb.jpg',
+ 29000,
+ 39000,
+ true,
+ NOW()
+)
+
+ON CONFLICT (id) DO UPDATE SET
+  title = EXCLUDED.title,
+  description = EXCLUDED.description,
+  is_active = EXCLUDED.is_active;
+
+
+-- =============================================
+-- 신규 미션 데이터 (26개 미션)
+-- =============================================
+
+INSERT INTO missions (id, course_id, sequence, type, title, description, hint_1, correct_answer, lp_reward, is_hidden, location_name, latitude, longitude)
+VALUES
+
+-- ── 경주 만파식적 (7 미션) ──
+('33333333-2222-2222-2222-000000000601', '33333333-3333-3333-3333-000000000001', 1, 'quiz', '{"ko": "피리의 기원", "ja": "笛の起源", "en": "Origin of the Flute"}', '{"ko": "문무대왕릉이 보이는 곳에서 피리의 기원에 대한 퀴즈를 풀어보세요.", "ja": "文武大王陵が見える場所で笛の起源に関するクイズに挑戦しましょう。", "en": "Solve a quiz about the origin of the flute at a spot overlooking King Munmu''s Tomb."}', '{"ko": "바다의 용이 된 신라의 왕은?", "ja": "海の龍になった新羅の王は？", "en": "Which Silla king became a sea dragon?"}', '문무왕', 100, false, '{"ko": "문무대왕릉", "ja": "文武大王陵", "en": "King Munmu''s Tomb"}', 35.7381, 129.4891),
+('33333333-2222-2222-2222-000000000602', '33333333-3333-3333-3333-000000000001', 2, 'photo', '{"ko": "이견대에서 바라본 바다", "ja": "利見台から見た海", "en": "Sea from Igyeondae"}', '{"ko": "이견대에 올라 대왕암을 배경으로 사진을 찍으세요.", "ja": "利見台に登り、大王岩を背景に写真を撮りましょう。", "en": "Climb Igyeondae and take a photo with Daewangam in the background."}', '{"ko": "언덕 위 정자에서 바다를 바라보세요", "ja": "丘の上の東屋から海を眺めてみましょう", "en": "Look at the sea from the pavilion on the hill"}', NULL, 150, false, '{"ko": "이견대", "ja": "利見台", "en": "Igyeondae Pavilion"}', 35.7410, 129.4870),
+('33333333-2222-2222-2222-000000000603', '33333333-3333-3333-3333-000000000001', 3, 'quiz', '{"ko": "대나무의 신비", "ja": "竹の神秘", "en": "Mystery of the Bamboo"}', '{"ko": "감은사지 삼층석탑 앞에서 대나무의 비밀에 대한 퀴즈를 풀어보세요.", "ja": "感恩寺跡三層石塔の前で竹の秘密に関するクイズに挑戦しましょう。", "en": "Solve a quiz about the secret of the bamboo at the Gameunsaji Three-story Pagoda."}', '{"ko": "낮에는 둘이었다가 밤에는 하나가 된 것은?", "ja": "昼は二つで、夜は一つになったものは？", "en": "What was two in the day but became one at night?"}', '대나무', 100, false, '{"ko": "감은사지", "ja": "感恩寺跡", "en": "Gameunsaji Temple Site"}', 35.7412, 129.4795),
+('33333333-2222-2222-2222-000000000604', '33333333-3333-3333-3333-000000000001', 4, 'photo', '{"ko": "용의 길을 따라", "ja": "龍の道をたどって", "en": "Following the Dragon''s Path"}', '{"ko": "기림사에서 용과 관련된 유물을 찾아 촬영하세요.", "ja": "祇林寺で龍に関連する遺物を見つけて撮影しましょう。", "en": "Find and photograph a dragon-related artifact at Girimsa Temple."}', '{"ko": "사찰 내부의 조각이나 벽화를 살펴보세요", "ja": "寺院内部の彫刻や壁画を見てみましょう", "en": "Examine the carvings or murals inside the temple"}', NULL, 150, false, '{"ko": "기림사", "ja": "祇林寺", "en": "Girimsa Temple"}', 35.8075, 129.3872),
+('33333333-2222-2222-2222-000000000605', '33333333-3333-3333-3333-000000000001', 5, 'quiz', '{"ko": "피리의 이름", "ja": "笛の名前", "en": "Name of the Flute"}', '{"ko": "월정교에서 피리의 이름에 담긴 뜻을 맞추는 퀴즈를 풀어보세요.", "ja": "月精橋で笛の名前に込められた意味を当てるクイズに挑戦しましょう。", "en": "Solve a quiz about the meaning behind the flute''s name at Woljeonggyo Bridge."}', '{"ko": "만 개의 파도를 잠재우는 피리라는 뜻의 이름은?", "ja": "万の波を静める笛という意味の名前は？", "en": "Which name means the flute that calms ten thousand waves?"}', '만파식적', 100, false, '{"ko": "월정교", "ja": "月精橋", "en": "Woljeonggyo Bridge"}', 35.8300, 129.2185),
+('33333333-2222-2222-2222-000000000606', '33333333-3333-3333-3333-000000000001', 6, 'photo', '{"ko": "천년 고도의 야경", "ja": "千年の古都の夜景", "en": "Night View of the Ancient City"}', '{"ko": "동궁과 월지에서 아름다운 야경을 배경으로 인증샷을 찍으세요.", "ja": "東宮と月池で美しい夜景を背景に記念撮影しましょう。", "en": "Take a photo with the beautiful night view at Donggung Palace and Wolji Pond."}', '{"ko": "안압지로 불리던 통일신라의 궁궐터입니다", "ja": "雁鴨池と呼ばれた統一新羅の宮殿跡です", "en": "This is a Unified Silla palace site formerly known as Anapji"}', NULL, 150, false, '{"ko": "동궁과 월지", "ja": "東宮と月池", "en": "Donggung Palace & Wolji Pond"}', 35.8342, 129.2265),
+('33333333-2222-2222-2222-000000000607', '33333333-3333-3333-3333-000000000001', 7, 'boss', '{"ko": "태평성대를 향한 연주", "ja": "泰平の世への演奏", "en": "Performance for Prosperity"}', '{"ko": "대릉원에서 최종 보스 미션! 만파식전의 전설을 요약하고 교훈을 기록하세요.", "ja": "大陵苑で最終ボスミッション！萬波息笛の伝説を要約し、教訓を記録しましょう。", "en": "Final boss mission at Daereungwon! Summarize the Manpa-sikjeok legend and record its lesson."}', '{"ko": "나라가 평안해지기를 바라는 마음으로 작성하세요", "ja": "国が平和になることを願う気持ちで書きましょう", "en": "Write with a wish for the nation''s peace and prosperity"}', NULL, 300, false, '{"ko": "대릉원", "ja": "大陵苑", "en": "Daereungwon Royal Tombs"}', 35.8391, 129.2128),
+
+-- ── 부산 황옥공주 (6 미션) ──
+('33333333-2222-2222-2222-000000000701', '33333333-3333-3333-3333-000000000002', 1, 'quiz', '{"ko": "나랑국의 공주", "ja": "ナラン国の王女", "en": "Princess of Narang"}', '{"ko": "해운대 해수욕장에서 황옥공주의 고향에 대한 퀴즈를 풀어보세요.", "ja": "海雲台海水浴場で黄玉王女の故郷に関するクイズに挑戦しましょう。", "en": "Solve a quiz about Princess Hwangok''s homeland at Haeundae Beach."}', '{"ko": "공주가 온 먼 나라는?", "ja": "王女が来た遠い国は？", "en": "Which distant land did the princess come from?"}', '인도', 100, false, '{"ko": "해운대 해수욕장", "ja": "海雲台海水浴場", "en": "Haeundae Beach"}', 35.1587, 129.1603),
+('33333333-2222-2222-2222-000000000702', '33333333-3333-3333-3333-000000000002', 2, 'photo', '{"ko": "인어상을 찾아서", "ja": "人魚像を探して", "en": "Searching for the Mermaid"}', '{"ko": "동백섬 해안산책로에 있는 황옥공주 인어상을 찾아 인증샷을 찍으세요.", "ja": "冬柏島の海岸散歩道にある黄玉王女の人魚像を見つけて記念撮影しましょう。", "en": "Find and photograph the Princess Hwangok mermaid statue on Dongbaek Island trail."}', '{"ko": "동백섬 끝자락 바위 위에 인어상이 있어요", "ja": "冬柏島の端の岩の上に人魚像があります", "en": "The mermaid statue sits on a rock at the edge of Dongbaek Island"}', NULL, 150, false, '{"ko": "황옥공주 인어상", "ja": "黄玉王女の人魚像", "en": "Princess Hwangok Mermaid Statue"}', 35.1542, 129.1555),
+('33333333-2222-2222-2222-000000000703', '33333333-3333-3333-3333-000000000002', 3, 'quiz', '{"ko": "거북이의 비밀", "ja": "亀の秘密", "en": "Secret of the Turtle"}', '{"ko": "누리마루 APEC 하우스 근처에서 전설 속 조력자에 대한 퀴즈를 풀어보세요.", "ja": "ヌリマルAPECハウスの近くで伝説の協力者に関するクイズに挑戦しましょう。", "en": "Solve a quiz about the legendary helper near Nurimaru APEC House."}', '{"ko": "공주를 바다 너머로 데려다준 동물은?", "ja": "王女を海の外へ連れて行った動物は？", "en": "Which animal carried the princess across the sea?"}', '거북이', 100, false, '{"ko": "누리마루", "ja": "ヌリマル", "en": "Nurimaru APEC House"}', 35.1528, 129.1523),
+('33333333-2222-2222-2222-000000000704', '33333333-3333-3333-3333-000000000002', 4, 'open', '{"ko": "고향을 그리는 마음", "ja": "故郷への想い", "en": "Longing for Home"}', '{"ko": "등대가 보이는 곳에서 황옥공주가 느꼈을 그리움을 짧은 기록으로 남겨보세요.", "ja": "灯台が見える場所で黄玉王女が感じたであろう慕情を短い記録として残しましょう。", "en": "Record a short note about the longing Princess Hwangok might have felt, near the lighthouse."}', '{"ko": "먼 타국에서 가족을 그리는 마음을 적어보세요", "ja": "遠い他国で家族を想う気持ちを書いてみましょう", "en": "Write about longing for family from a distant land"}', NULL, 200, false, '{"ko": "동백섬 등대", "ja": "冬柏島灯台", "en": "Dongbaek Island Lighthouse"}', 35.1535, 129.1530),
+('33333333-2222-2222-2222-000000000705', '33333333-3333-3333-3333-000000000002', 5, 'photo', '{"ko": "미포항의 노을", "ja": "尾浦港の夕焼け", "en": "Sunset at Mipo Port"}', '{"ko": "미포항 철길 근처에서 바다를 배경으로 아름다운 노을을 촬영하세요.", "ja": "尾浦港の線路近くで海を背景に美しい夕焼けを撮影しましょう。", "en": "Photograph the sunset with the sea in the background near Mipo Port railway."}', '{"ko": "해운대 해수욕장 끝자락에 위치한 작은 항구입니다", "ja": "海雲台海水浴場の端に位置する小さな港です", "en": "A small port located at the end of Haeundae Beach"}', NULL, 150, false, '{"ko": "미포항", "ja": "尾浦港", "en": "Mipo Port"}', 35.1598, 129.1695),
+('33333333-2222-2222-2222-000000000706', '33333333-3333-3333-3333-000000000002', 6, 'boss', '{"ko": "진실된 사랑과 그리움", "ja": "真実の愛と慕情", "en": "True Love and Longing"}', '{"ko": "청사포 다릿돌 전망대에서 최종 보스 미션! 인어 전설이 현대인에게 주는 의미를 기록하세요.", "ja": "青沙浦のタリットル展望台で最終ボスミッション！人魚の伝説が現代人に与える意味を記録しましょう。", "en": "Final boss mission at Cheongsapo Daritdol Observatory! Record what the mermaid legend means to us today."}', '{"ko": "사랑과 그리움의 가치에 대해 자유롭게 답변하세요", "ja": "愛と慕情の価値について自由に答えてください", "en": "Answer freely about the value of love and longing"}', NULL, 300, false, '{"ko": "청사포 전망대", "ja": "青沙浦展望台", "en": "Cheongsapo Observatory"}', 35.1610, 129.1915),
+
+-- ── 서울 해치 (7 미션) ──
+('33333333-2222-2222-2222-000000000801', '33333333-3333-3333-3333-000000000003', 1, 'quiz', '{"ko": "궁궐의 수호자", "ja": "宮殿の守護者", "en": "Guardian of the Palace"}', '{"ko": "광화문 해치상 앞에서 해치의 역할에 대한 퀴즈를 풀어보세요.", "ja": "光化門のヘチ像の前でヘチの役割に関するクイズに挑戦しましょう。", "en": "Solve a quiz about Haechi''s role in front of the Gwanghwamun Haechi statue."}', '{"ko": "해치가 막아준다고 믿었던 것은?", "ja": "ヘチが防いでくれると信じられていたものは？", "en": "What was Haechi believed to prevent?"}', '화재', 100, false, '{"ko": "광화문 해치상", "ja": "光化門ヘ치像", "en": "Gwanghwamun Haechi Statue"}', 37.5759, 126.9768),
+('33333333-2222-2222-2222-000000000802', '33333333-3333-3333-3333-000000000003', 2, 'photo', '{"ko": "수호신 해치 찾기", "ja": "守護神ヘチ探し", "en": "Finding Guardian Haechi"}', '{"ko": "경복궁 내부에 있는 해치 조각을 찾아 인증샷을 찍으세요.", "ja": "景福宮の内部にあるヘチの彫刻を見つけて記念撮影しましょう。", "en": "Find and photograph a Haechi carving inside Gyeongbokgung Palace."}', '{"ko": "다리의 난간이나 계단 주변을 살펴보세요", "ja": "橋の欄干や階段の周辺を見てみましょう", "en": "Look around bridge railings or stairs"}', NULL, 150, false, '{"ko": "경복궁 근정전", "ja": "景福宮勤政殿", "en": "Gyeongbokgung Geunjeongjeon"}', 37.5786, 126.9772),
+('33333333-2222-2222-2222-000000000803', '33333333-3333-3333-3333-000000000003', 3, 'quiz', '{"ko": "선과 악의 판단", "ja": "善悪の判断", "en": "Judging Good and Evil"}', '{"ko": "서울역사박물관 마당에서 해치의 상징인 뿔에 대한 퀴즈를 풀어보세요.", "ja": "ソウル歴史博物館の中庭でヘチの象徴である角に関するクイズに挑戦しましょう。", "en": "Solve a quiz about Haechi''s horn symbol at Seoul Museum of History yard."}', '{"ko": "상상의 동물 해치는 머리에 무엇이 관찰될까요?", "ja": "想像上の動物ヘチの頭には何が見られるでしょうか？", "en": "What part is observed on the head of the mythical creature Haechi?"}', '뿔', 100, false, '{"ko": "서울역사박물관", "ja": "ソウル歴史博物館", "en": "Seoul Museum of History"}', 37.5707, 126.9708),
+('33333333-2222-2222-2222-000000000804', '33333333-3333-3333-3333-000000000003', 4, 'photo', '{"ko": "과거와 현재의 공존", "ja": "過去と現代の共存", "en": "Coexistence of Past and Present"}', '{"ko": "북촌 한옥마을의 전통 가옥과 현대적 도심이 어우러진 풍경을 촬영하세요.", "ja": "北村韓屋村の伝統家屋と現代的な都心が融合した風景を撮影しましょう。", "en": "Photograph the scenery blending traditional houses and modern city at Bukchon Hanok Village."}', '{"ko": "골목길 가장 높은 곳으로 올라가보세요", "ja": "路地の最も高い場所へ登ってみましょう", "en": "Go to the highest point of the alleyway"}', NULL, 150, false, '{"ko": "북촌 한옥마을", "ja": "北村韓屋村", "en": "Bukchon Hanok Village"}', 37.5826, 126.9836),
+('33333333-2222-2222-2222-000000000805', '33333333-3333-3333-3333-000000000003', 5, 'quiz', '{"ko": "서울의 상징", "ja": "ソウルの象徴", "en": "Symbol of Seoul"}', '{"ko": "DDP(동대문 디자인 플라자)에서 현대적으로 재해석된 해치에 대한 퀴즈를 풀어보세요.", "ja": "DDP（東大門デザインプラザ）で現代的に再解釈されたヘチに関するクイズに挑戦しましょう。", "en": "Solve a quiz about modern Haechi interpretations at DDP."}', '{"ko": "서울시의 공식 캐릭터 이름은?", "ja": "ソウル市の公式キャラクターの名前は？", "en": "What is the name of Seoul''s official character?"}', '해치', 100, false, '{"ko": "동대문 디자인 플라자", "ja": "東大門デザインプラザ", "en": "Dongdaemun Design Plaza"}', 37.5665, 127.0092),
+('33333333-2222-2222-2222-000000000806', '33333333-3333-3333-3333-000000000003', 6, 'photo', '{"ko": "성벽 너머 서울", "ja": "城壁の向こうのソウル", "en": "Seoul Beyond the Walls"}', '{"ko": "낙산공원 한양도성 성벽을 배경으로 서울의 도심 전경을 인증샷으로 찍으세요.", "ja": "駱山公園の漢陽都城の城壁を背景にソウルの都心の全景を記念撮影しましょう。", "en": "Take a photo of Seoul''s skyline with Hanyangdoseong fortress walls at Naksan Park."}', '{"ko": "야경이 특히 아름다운 곳입니다", "ja": "夜景が特に美しい場所です", "en": "This spot is especially beautiful for night views"}', NULL, 150, false, '{"ko": "낙산공원", "ja": "駱山公園", "en": "Naksan Park"}', 37.5807, 127.0064),
+('33333333-2222-2222-2222-000000000807', '33333333-3333-3333-3333-000000000003', 7, 'boss', '{"ko": "도시의 안녕을 지키는 힘", "ja": "都市の安泰を守る力", "en": "Power to Guard the City"}', '{"ko": "세종대로 해치마당에서 최종 보스 미션! 서울의 역사와 해치의 연관성을 기록하세요.", "ja": "世宗通りヘチ広場で最終ボスミッション！ソウルの歴史とヘチの関連性を記録しましょう。", "en": "Final boss mission at Haechi Madang! Record the connection between Seoul''s history and Haechi."}', '{"ko": "서울을 지키는 수호신으로서의 해치를 떠올려보세요", "ja": "ソウルを守る守護神としてのヘチを思い出しましょう", "en": "Think of Haechi as the guardian shielding Seoul"}', NULL, 300, false, '{"ko": "해치마당", "ja": "ヘチ広場", "en": "Haechi Madang"}', 37.5721, 126.9768),
+
+-- ── 제주 설문대할망 (6 미션) ──
+('33333333-2222-2222-2222-000000000901', '33333333-3333-3333-3333-000000000004', 1, 'quiz', '{"ko": "창조의 거인", "ja": "創造の巨人", "en": "Giant of Creation"}', '{"ko": "제주 돌문화공원에서 설문대할망 신화에 대한 첫 번째 퀴즈를 풀어보세요.", "ja": "済州石文化公園でソルムンデハルマン神話に関する最初のクイズに挑戦しましょう。", "en": "Solve the first quiz about the Seolmundae Halmang myth at Jeju Stone Park."}', '{"ko": "제주도 섬을 만들었다고 전해지는 거인신은?", "ja": "済州島を創ったと言い伝えられる巨神は？", "en": "Which giant god is said to have created Jeju Island?"}', '설문대할망', 100, false, '{"ko": "제주 돌문화공원", "ja": "済州石文化公園", "en": "Jeju Stone Park"}', 33.4398, 126.6667),
+('33333333-2222-2222-2222-000000000902', '33333333-3333-3333-3333-000000000004', 2, 'photo', '{"ko": "거인의 유물을 찾아", "ja": "巨人の遺物を探して", "en": "Searching for Giant Artifacts"}', '{"ko": "설문대할망 조각상이나 관련 돌 전시물 앞에서 인증샷을 찍으세요.", "ja": "ソルムンデハルマン像や関連する石の展示物の前で記念撮影しましょう。", "en": "Take a photo in front of the Seolmundae Halmang statue or related stone exhibits."}', '{"ko": "야외 전시장의 거대한 돌 조각을 찾아보세요", "ja": "屋外展示場の巨大な石の彫刻を探してみましょう", "en": "Look for the large stone sculptures in the outdoor exhibition area"}', NULL, 150, false, '{"ko": "설문대할망 조각상", "ja": "ソルムンデハルマン像", "en": "Seolmundae Halmang Statue"}', 33.4412, 126.6655),
+('33333333-2222-2222-2222-000000000903', '33333333-3333-3333-3333-000000000004', 3, 'quiz', '{"ko": "미완의 다리", "ja": "未完の橋", "en": "The Unfinished Bridge"}', '{"ko": "성산 일출봉 근처에서 설문대할망의 다리 놓기 시도에 대한 퀴즈를 풀어보세요.", "ja": "城山日出峰の近くでソルムンデハルマンの橋架けの試みに関するクイズに挑戦しましょう。", "en": "Solve a quiz about the bridge-building attempt near Seongsan Ilchulbong."}', '{"ko": "할망이 육지로 다리를 놓기 위해 바다에 부은 흙은?", "ja": "ハルマンが陸に橋を架けるために海に注いだ土は？", "en": "What amount of soil did Halmang pour into the sea to build a bridge?"}', '아흔아홉 바구니', 100, false, '{"ko": "성산 일출봉", "ja": "城山日出峰", "en": "Seongsan Ilchulbong"}', 33.4582, 126.9426),
+('33333333-2222-2222-2222-000000000904', '33333333-3333-3333-3333-000000000004', 4, 'photo', '{"ko": "성산 해안의 비경", "ja": "城山海岸の秘境", "en": "Secret Scenery of Seongsan Coast"}', '{"ko": "성산 일출봉을 배경으로 해안가에서 멋진 풍경 사진을 남기세요.", "ja": "城山日出峰を背景に海岸沿いで素晴らしい風景写真を残しましょう。", "en": "Take a scenic photo at the coast with Seongsan Ilchulbong in the background."}', '{"ko": "바닷물과 어우러진 일출봉의 모습을 담아보세요", "ja": "海水と調和した日出峰の姿を写してみましょう", "en": "Capture Ilchulbong in harmony with the sea water"}', NULL, 150, false, '{"ko": "성산 연안", "ja": "城山沿岸", "en": "Seongsan Coast"}', 33.4550, 126.9380),
+('33333333-2222-2222-2222-000000000905', '33333333-3333-3333-3333-000000000004', 5, 'quiz', '{"ko": "할망의 부엌", "ja": "ハルマンの台所", "en": "Halmang''s Kitchen"}', '{"ko": "만장굴 입구에서 할망이 요리했다는 전설이 깃든 장소에 대한 퀴즈를 풀어보세요.", "ja": "万丈窟の入口で、ハルマンが料理したという伝説が残る場所に関するクイズに挑戦しましょう。", "en": "Solve a quiz at Manjanggul Entrance about the place where legend says Halmang cooked."}', '{"ko": "화산 활동으로 만들어진 제주의 신비로운 동굴은?", "ja": "火山活動で造られた済州の神秘的な洞窟は？", "en": "What mysterious Jeju cave was formed by volcanic activity?"}', '만장굴', 100, false, '{"ko": "만장굴 입구", "ja": "万丈窟入口", "en": "Manjanggul Cave Entrance"}', 33.5283, 126.7715),
+('33333333-2222-2222-2222-000000000906', '33333333-3333-3333-3333-000000000004', 6, 'boss', '{"ko": "자연을 빚은 거대한 어머니", "ja": "自然を創った巨大な母", "en": "The Great Mother Who Shaped Nature"}', '{"ko": "사려니숲길 입구에서 최종 보스 미션! 설문대할망 신화가 제주 자연을 사랑하게 만드는 이유를 기록하세요.", "ja": "サリョニ森の道入口で最終ボスミッション！ソルムンデハルマン神話が済州の自然を愛するようにさせる理由を記録しましょう。", "en": "Final boss mission at Saryeoni Forest Path! Record how the Seolmundae Halmang myth inspires love for Jeju''s nature."}', '{"ko": "거인의 손길이 닿은 숲의 기운을 느끼며 작성하세요", "ja": "巨人の手が触れた森の気配を感じながら書きましょう", "en": "Write while feeling the forest energy touched by the giant"}', NULL, 300, false, '{"ko": "사려니숲길", "ja": "サリョニ森の道", "en": "Saryeoni Forest Path"}', 33.4072, 126.6572)
+
+ON CONFLICT (id) DO NOTHING;

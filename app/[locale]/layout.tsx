@@ -1,8 +1,10 @@
+import { Metadata } from 'next'
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { Navbar } from "@/components/shared/Navbar"
 import { Footer } from "@/components/shared/Footer"
+import { Toaster } from "@/components/ui/toaster"
 import { locales } from "@/i18n"
 
 interface LocaleLayoutProps {
@@ -14,56 +16,39 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
 
-import { Toaster } from "@/components/ui/toaster"
-import { Metadata } from 'next'
-
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = params
-  
+
   const titles: Record<string, string> = {
     ko: "Legend of Korea - 한국 전설을 따라가는 미션 어드벤처",
     en: "Legend of Korea - Mission Adventure following Korean Legends",
-    ja: "Legend of Korea - 韓国の伝説を辿るミッションアドベンチャー"
+    ja: "Legend of Korea - 韓国の伝説を辿るミッションアドベンチャー",
   }
-  
+
   const descriptions: Record<string, string> = {
     ko: "한국의 전설 속 장소를 직접 탐험하며 미션을 해결하는 프리미엄 어드벤처 서비스입니다.",
     en: "A premium adventure service where you explore legendary places in Korea and solve missions.",
-    ja: "韓国の伝説的な場所を探索し、ミッションを解決するプレミアムアドベンチャーサービスです。"
+    ja: "韓国の伝説的な場所を探索し、ミッションを解決するプレミアムアドベンチャーサービスです。",
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legendofkorea.com'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://legendofkorea.com"
 
   return {
     title: {
       default: titles[locale] || titles.ko,
-      template: `%s | Legend of Korea`
+      template: "%s | Legend of Korea",
     },
     description: descriptions[locale] || descriptions.ko,
-    manifest: "/manifest.json",
-    themeColor: "#1B2A4A",
+    themeColor: "#FF6B35",
     viewport: "width=device-width, initial-scale=1, maximum-scale=1",
-    appleWebApp: {
-      capable: true,
-      statusBarStyle: "default",
-      title: "LegendKR",
-    },
-    formatDetection: {
-      telephone: false,
-    },
+    formatDetection: { telephone: false },
     openGraph: {
       type: "website",
       siteName: "Legend of Korea",
       title: titles[locale] || titles.ko,
       description: descriptions[locale] || descriptions.ko,
       url: `${siteUrl}/${locale}`,
-      images: [
-        {
-          url: "/images/dokkaebi-hero.jpg",
-          width: 1200,
-          height: 630,
-        }
-      ]
+      images: [{ url: "/images/dokkaebi-hero.jpg", width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
@@ -73,9 +58,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     },
     alternates: {
       languages: {
-        'ko-KR': '/ko',
-        'ja-JP': '/ja',
-        'en-US': '/en',
+        "ko-KR": "/ko",
+        "ja-JP": "/ja",
+        "en-US": "/en",
       },
     },
   }
@@ -89,7 +74,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages()
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8] flex flex-col" lang={locale}>
+    <div className="min-h-screen bg-white flex flex-col">
       <NextIntlClientProvider messages={messages} locale={locale}>
         <Navbar locale={locale} />
         <main className="flex-1">{children}</main>

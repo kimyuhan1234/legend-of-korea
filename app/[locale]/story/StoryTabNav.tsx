@@ -24,8 +24,8 @@ export function StoryTabNav({ locale, activeTab, tabs }: StoryTabNavProps) {
             onClick={() => router.push(`/${locale}/story?tab=${tab.id}`)}
             className={`flex-1 py-4 text-sm font-bold transition-colors border-b-2 ${
               activeTab === tab.id
-                ? 'border-[#2D1B69] text-[#2D1B69]'
-                : 'border-transparent text-[#7a6a58] hover:text-[#2D1B69]'
+                ? 'border-[#2D1B69] text-[#111]'
+                : 'border-transparent text-[#7a6a58] hover:text-[#111]'
             }`}
           >
             {tab.label}

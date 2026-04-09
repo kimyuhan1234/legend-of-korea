@@ -91,7 +91,7 @@ export default function AdminDashboardPage() {
     <div className="space-y-8">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-black text-[#1B2A4A]">대시보드 홈</h1>
+        <h1 className="text-2xl font-black text-[#111]">대시보드 홈</h1>
         <p className="text-slate-500 text-sm mt-1">오늘의 서비스 현황을 한눈에 확인하세요.</p>
       </div>
 
@@ -108,7 +108,7 @@ export default function AdminDashboardPage() {
               </div>
               <div>
                 <p className="text-sm font-medium text-slate-500">{stat.title}</p>
-                <h3 className="text-2xl font-black text-[#1B2A4A] mt-1">{stat.value}</h3>
+                <h3 className="text-2xl font-black text-[#111] mt-1">{stat.value}</h3>
               </div>
             </CardContent>
           </Card>
@@ -119,7 +119,7 @@ export default function AdminDashboardPage() {
         {/* Recent Orders */}
         <Card className="lg:col-span-2 border-none shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-lg font-bold text-[#1B2A4A]">최근 주문 내역</CardTitle>
+            <CardTitle className="text-lg font-bold text-[#111]">최근 주문 내역</CardTitle>
             <Badge variant="outline" className="text-xs">전체보기</Badge>
           </CardHeader>
           <CardContent>
@@ -139,7 +139,7 @@ export default function AdminDashboardPage() {
                     <TableCell className="font-medium text-xs text-slate-500 truncate max-w-[100px]">
                       {order.id.split('-')[0]}
                     </TableCell>
-                    <TableCell className="font-bold text-[#1B2A4A]">{order.customer_name}</TableCell>
+                    <TableCell className="font-bold text-[#111]">{order.customer_name}</TableCell>
                     <TableCell>₩{order.total_amount.toLocaleString()}</TableCell>
                     <TableCell>
                       <Badge 
@@ -165,7 +165,7 @@ export default function AdminDashboardPage() {
         {/* Recent Community Posts */}
         <Card className="border-none shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-lg font-bold text-[#1B2A4A]">방금 올라온 글</CardTitle>
+            <CardTitle className="text-lg font-bold text-[#111]">방금 올라온 글</CardTitle>
             <MessageSquare className="w-5 h-5 text-slate-400" />
           </CardHeader>
           <CardContent>
@@ -174,7 +174,7 @@ export default function AdminDashboardPage() {
                 <div key={post.id} className="flex gap-3 group cursor-pointer">
                   <div className="w-1 aspect-square rounded-full bg-[#D4A843] mt-2 shrink-0 group-hover:scale-150 transition-transform" />
                   <div className="min-w-0">
-                    <p className="text-sm text-[#1B2A4A] font-bold truncate group-hover:text-[#D4A843] transition-colors">
+                    <p className="text-sm text-[#111] font-bold truncate group-hover:text-[#D4A843] transition-colors">
                       {post.content}
                     </p>
                     <div className="flex items-center gap-2 mt-1">

@@ -76,14 +76,14 @@ function FailContent({ locale, courseId }: { locale: string; courseId: string })
   const isUserCancelled = code === "PAY_PROCESS_CANCELED" || code === "CANCELED_PAYMENT"
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8] flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#F5F0E8] flex items-center justify-center px-8 md:px-10">
       <div className="text-center max-w-md">
         <div className="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-6">
           <span className="text-4xl">{isUserCancelled ? "🙅" : "😞"}</span>
         </div>
 
-        <h1 className="text-2xl font-black text-[#1B2A4A] mb-3">{label.title}</h1>
-        <p className="text-sm text-red-600 bg-red-50 rounded-xl px-4 py-3 mb-8 leading-relaxed">
+        <h1 className="text-2xl font-black text-[#111] mb-3">{label.title}</h1>
+        <p className="text-sm text-red-600 bg-red-50 rounded-xl px-8 md:px-10 py-3 mb-8 leading-relaxed">
           {errorDesc}
         </p>
 
@@ -91,20 +91,20 @@ function FailContent({ locale, courseId }: { locale: string; courseId: string })
           {!isUserCancelled && (
             <Link
               href={`/${locale}/courses/${courseId}/purchase`}
-              className="px-8 py-3.5 rounded-xl bg-[#D4A843] text-[#1B2A4A] font-bold hover:bg-[#e0b84e] transition-colors"
+              className="px-8 py-3.5 rounded-xl bg-[#D4A843] text-[#111] font-bold hover:bg-[#e0b84e] transition-colors"
             >
               {label.retry}
             </Link>
           )}
           <Link
             href={`/${locale}/courses/${courseId}/purchase`}
-            className="px-8 py-3.5 rounded-xl bg-[#1B2A4A] text-white font-bold hover:bg-[#243a63] transition-colors"
+            className="px-8 py-3.5 rounded-xl bg-[#F5F3EF] text-white font-bold hover:bg-[#243a63] transition-colors"
           >
             {label.otherMethod}
           </Link>
           <Link
             href={`/${locale}/courses/${courseId}`}
-            className="px-8 py-3.5 rounded-xl bg-white border border-[#e8ddd0] text-[#1B2A4A] font-semibold hover:bg-[#F5F0E8] transition-colors"
+            className="px-8 py-3.5 rounded-xl bg-white border border-[#e8ddd0] text-[#111] font-semibold hover:bg-[#F5F0E8] transition-colors"
           >
             ← {label.back}
           </Link>

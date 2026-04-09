@@ -32,7 +32,7 @@ export const courses: CourseData[] = [
     duration: { ko: '1일', ja: '1日', en: '1 day' },
     price1p: 29000,
     price2p: 39000,
-    thumbnail: '/images/courses/jeonju-dokkaebi-thumb.jpg',
+    thumbnail: '/images/courses/jeonju.png',
     status: 'active',
     food: ['전주비빔밥', '콩나물국밥', '초코파이', 'PNB 풍년제과'],
     japanConnection: {
@@ -57,7 +57,7 @@ export const courses: CourseData[] = [
     duration: { ko: '1박 2일', ja: '1泊2日', en: '2 days' },
     price1p: 29000,
     price2p: 39000,
-    thumbnail: '/images/courses/tongyeong-byeoljubu-thumb.jpg',
+    thumbnail: '/images/courses/tongyeong.jpg',
     status: 'active',
     food: ['충무김밥', '통영 굴구이', '꿀빵', '멍게비빔밥'],
     japanConnection: {
@@ -82,7 +82,7 @@ export const courses: CourseData[] = [
     duration: { ko: '반나절~1일', ja: '半日〜1日', en: 'Half day to 1 day' },
     price1p: 29000,
     price2p: 39000,
-    thumbnail: '/images/courses/cheonan-nungso-thumb.jpg',
+    thumbnail: '/images/courses/cheonan.png',
     status: 'coming_soon',
     food: ['호두과자', '병천순대', '호두강정'],
     japanConnection: {
@@ -107,7 +107,7 @@ export const courses: CourseData[] = [
     duration: { ko: '반나절', ja: '半日', en: 'Half day' },
     price1p: 29000,
     price2p: 39000,
-    thumbnail: '/images/courses/yongin-fairytale-thumb.jpg',
+    thumbnail: '/images/courses/yongin.jpg',
     status: 'coming_soon',
     food: ['달고나', '전통 떡', '도토리묵', '파전·막걸리'],
     japanConnection: {
@@ -132,14 +132,114 @@ export const courses: CourseData[] = [
     duration: { ko: '반나절~1일', ja: '半日〜1日', en: 'Half day to 1 day' },
     price1p: 29000,
     price2p: 39000,
-    thumbnail: '/images/courses/icheon-fairy-thumb.jpg',
+    thumbnail: '/images/courses/icheon.png',
     status: 'coming_soon',
     food: ['이천 쌀밥 정식', '이천 복숭아', '산수유차'],
     japanConnection: {
       ko: '일본의 하고로모 전설(羽衣伝説)과 거의 동일한 구조의 이야기입니다.',
-      ja: '日本の羽衣伝説とほぼ同じ構造の物語です。',
+      ja: '日本の羽衣伝説とほぼ同じ構造の物語です.',
       en: 'Nearly identical in structure to the Japanese Hagoromo legend.'
     },
     targetAudience: ['couple', 'family']
+  },
+  {
+    id: '33333333-3333-3333-3333-000000000001',
+    region: 'gyeongju',
+    title: { ko: '용이 깃든 마법 피리', ja: '龍が宿る魔法の笛', en: 'The Magic Flute of the Dragon' },
+    subtitle: { ko: '천년 고도 경주에서 찾는 만파식전의 전설', ja: '千年の古都、慶州で探す萬波息笛の伝説', en: 'The Legend of Manpa-sikjeok in Ancient Gyeongju' },
+    legendSummary: {
+      ko: '신라 문무왕과 김유신이 죽어서도 나라를 지키려 보냈다는 신비한 대나무 피리 이야기입니다. 이 피리를 불면 적군이 물러가고 가뭄에 비가 내렸다고 합니다.',
+      ja: '新羅の文武王と金庾信が死後も国を守ろうと送った神秘的な竹の笛の物語です。この笛を吹けば敵軍が退き、干ばつに雨が降ったと言われています。',
+      en: 'A legendary bamboo flute sent by King Munmu and General Kim Yu-sin to protect the nation. It was said that blowing this flute would repel enemies and bring rain to droughts.'
+    },
+    difficulty: 'medium',
+    missionCount: 7,
+    duration: { ko: '1일', ja: '1日', en: '1 day' },
+    price1p: 29000,
+    price2p: 39000,
+    thumbnail: '/images/courses/gyeongju.jpg',
+    status: 'coming_soon',
+    food: ['경주빵', '황남빵', '교리김밥', '순두부찌개'],
+    japanConnection: {
+      ko: '삼국시대 신라와 교류가 깊었던 일본 역사와 연결된 지점이 많아 일본 관광객들이 선호하는 지역입니다.',
+      ja: '三国時代の新羅と交流が深かった日本の歴史と繋がる点が多く、日本人観光客に人気の地域です。',
+      en: 'Many historical links to Japan from the Silla period make Gyeongju a favorite for Japanese tourists.'
+    },
+    targetAudience: ['family', 'history-lover']
+  },
+  {
+    id: '33333333-3333-3333-3333-000000000002',
+    region: 'busan',
+    title: { ko: '동백섬 인어공주', ja: '冬柏島の人魚姫', en: 'The Mermaid of Dongbaek Island' },
+    subtitle: { ko: '해운대 바다에 새겨진 황옥공주의 그리움', ja: '海雲台の海に刻まれた黄玉王女の慕情', en: 'Princess Hwangok\'s Longing Carved in Haeundae Sea' },
+    legendSummary: {
+      ko: '멀리 인도에서 시집온 황옥공주가 보름달 아래서 고향을 그리워하며 구슬을 바라보았다는 애틋한 인어 전설입니다.',
+      ja: '遠くインドから嫁いできた黄玉王女が、満月の下で故郷を懐かしみながら玉を眺めていたという切ない人魚の伝説です。',
+      en: 'A poignant mermaid legend of Princess Hwangok, who traveled from India to marry and gazed at her bead under the full moon, longing for home.'
+    },
+    difficulty: 'easy',
+    missionCount: 6,
+    duration: { ko: '반나절~1일', ja: '半日〜1日', en: 'Half day to 1 day' },
+    price1p: 29000,
+    price2p: 39000,
+    thumbnail: '/images/courses/busan.jpg',
+    status: 'coming_soon',
+    food: ['돼지국밥', '씨앗호떡', '밀면', '어묵'],
+    japanConnection: {
+      ko: '일본과 가장 가까운 항구 도시로, 일본인들에게 가장 익숙한 한국의 모습이 담겨 있습니다.',
+      ja: '日本に最も近い港町で、日本人にとって最も馴染みのある韓国の姿が詰まっています。',
+      en: 'The closest port city to Japan, Busan embodies the side of Korea most familiar to Japanese people.'
+    },
+    targetAudience: ['couple', 'mz']
+  },
+  {
+    id: '33333333-3333-3333-3333-000000000003',
+    region: 'seoul',
+    title: { ko: '불을 먹는 수호신', ja: '火を食べる守護神', en: 'The Fire-Eating Guardian' },
+    subtitle: { ko: '경복궁을 지키는 해치의 비밀을 찾아서', ja: '景福宮を守るヘチの秘密を探して', en: 'Searching for the Secrets of Haechi Guarding the Palace' },
+    legendSummary: {
+      ko: '화재와 재앙을 막아주고 시비와 선악을 판단하는 상상의 동물 해치가 서울 도심 곳곳에 숨겨놓은 수호의 기운을 찾아 떠납니다.',
+      ja: '火災と災いを防ぎ、是非と善悪を判断する想像上の動物ヘチが、ソウル市内のあちこちに隠した守護の気運を探しに出かけます。',
+      en: 'Journey to find the protective energy hidden throughout Seoul by Haechi, the mythical creature that prevents fire and disaster.'
+    },
+    difficulty: 'easy',
+    missionCount: 7,
+    duration: { ko: '1일', ja: '1日', en: '1 day' },
+    price1p: 29000,
+    price2p: 39000,
+    thumbnail: '/images/courses/seoul.jpg',
+    status: 'coming_soon',
+    food: ['설렁탕', '광장시장 빈대떡', '마약김밥', '궁중음식'],
+    japanConnection: {
+      ko: '서울의 상징인 해치는 일본의 고마이누(狛犬)와 수호신적 성격에서 유사점을 가집니다.',
+      ja: 'ソウルの象徴であるヘチは、日本の狛犬と守護神的な性格において類似点があります。',
+      en: 'Haechi, the symbol of Seoul, shares similarities in its protective nature with the Japanese Komainu.'
+    },
+    targetAudience: ['family', 'foreigner']
+  },
+  {
+    id: '33333333-3333-3333-3333-000000000004',
+    region: 'jeju',
+    title: { ko: '제주를 빚은 거인', ja: '済州を創った巨人', en: 'The Giant Who Shaped Jeju' },
+    subtitle: { ko: '설문대할망의 거대한 발자취를 따라서', ja: '説門大婆（ソルムンデハルマン）の巨大な足跡をたどって', en: 'Following the Massive Footsteps of Seolmundae Halmang' },
+    legendSummary: {
+      ko: '제주도 섬 자체를 만들었다는 거인 설문대할망이 육지와 연결하기 위해 다리를 놓으려던 미완의 전설과 그가 남긴 오름들을 탐험합니다.',
+      ja: '済州島そのものを創ったという巨人ソルムンデハルマンが、陸と繋ぐために橋を架けようとした未完の伝説と、彼女が残したオルム（寄生火山）を探検します。',
+      en: 'Explore the unfinished legend of the giant Seolmundae Halmang, who created Jeju Island and tried to build a bridge to the mainland.'
+    },
+    difficulty: 'medium',
+    missionCount: 6,
+    duration: { ko: '1박 2일', ja: '1泊2日', en: '2 days' },
+    price1p: 29000,
+    price2p: 39000,
+    thumbnail: '/images/courses/jeju.jpg',
+    status: 'coming_soon',
+    food: ['흑돼지구이', '고기국수', '오메기떡', '갈치조림'],
+    japanConnection: {
+      ko: '제주도의 해녀(해녀) 문화는 일본의 아마(海女) 문화와 역사적, 문화적 연계성이 매우 높습니다.',
+      ja: '済州島の海女文化は、日本の海女文化と歴史的・文化的な関連性が非常に高いです。',
+      en: 'Jeju\'s Haenyeo culture has strong historical and cultural links with the Japanese Ama culture.'
+    },
+    targetAudience: ['family', 'nature-lover']
   }
 ];

@@ -47,7 +47,7 @@ export default async function StoryPage({ params, searchParams }: Props) {
   return (
     <div className="min-h-screen bg-[#FFF8F0]">
       {/* 헤더 */}
-      <div className="bg-[#2D1B69] text-white py-12 px-4 text-center">
+      <div className="bg-[#FF6B35] text-white py-20 md:py-28 px-8 md:px-10 text-center">
         <h1 className="text-3xl md:text-4xl font-black mb-2">{t('title')}</h1>
         <p className="text-white/70">{t('subtitle')}</p>
       </div>
@@ -56,7 +56,7 @@ export default async function StoryPage({ params, searchParams }: Props) {
       <StoryTabNav locale={locale} activeTab={activeTab} tabs={tabs} />
 
       {/* 탭 콘텐츠 (서버) */}
-      <div className="max-w-5xl mx-auto px-4 py-8">
+      <div className="max-w-5xl mx-auto px-8 md:px-10 py-20 md:py-28">
         {activeTab === 'mission-kit' && <CoursesTab locale={locale} />}
         {activeTab === 'memories'    && <MemoriesTab locale={locale} />}
         {activeTab === 'points'      && (

@@ -84,7 +84,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
   ].slice(0, 3);
 
   return (
-    <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-gray-100">
+    <div className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] shadow-sm hover:shadow-md transition-shadow overflow-hidden border-0">
       {/* 대표 사진 */}
       <div className="relative h-44 bg-gray-100">
         {recipe.photos?.[0] ? (
@@ -100,7 +100,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
             {flag}
           </div>
         )}
-        <span className={`absolute top-3 right-3 text-xs px-2 py-0.5 rounded-full font-bold ${DIFFICULTY_COLOR[recipe.difficulty] || 'bg-gray-100 text-gray-600'}`}>
+        <span className={`absolute top-3 right-3 text-xs px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] font-bold ${DIFFICULTY_COLOR[recipe.difficulty] || 'bg-gray-100 text-gray-600'}`}>
           {DIFFICULTY_LABEL[recipe.difficulty] || recipe.difficulty}
         </span>
       </div>
@@ -113,7 +113,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
             <span className="text-gray-400">×</span>
             <span>{flag}</span>
           </div>
-          <h3 className="font-bold text-[#2D1B69] text-base leading-snug">{recipe.name}</h3>
+          <h3 className="font-bold text-[#111] text-base leading-snug">{recipe.name}</h3>
         </div>
 
         {/* 한줄 소개 */}
@@ -125,7 +125,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
         {allIngredients.length > 0 && (
           <div className="flex flex-wrap gap-1">
             {allIngredients.map((ing, i) => (
-              <span key={i} className="text-xs bg-[#2D1B69]/8 text-[#2D1B69] px-2 py-0.5 rounded-full">
+              <span key={i} className="text-xs bg-[#FF6B35]/8 text-[#111] px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
                 {ing}
               </span>
             ))}

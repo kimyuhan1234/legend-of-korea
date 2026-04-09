@@ -70,7 +70,7 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
             onClick={() => setCountry(f.code)}
             className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors
               ${country === f.code
-                ? 'bg-[#2D1B69] text-white'
+                ? 'bg-[#FF6B35] text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
           >

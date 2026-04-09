@@ -131,7 +131,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
             `}
           >
             <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center">
-              <Camera size={28} className="text-[#2D1B69]" />
+              <Camera size={28} className="text-[#111]" />
             </div>
             <p className="text-sm text-gray-500 font-medium text-center">
               {t('tapToUpload')}
@@ -149,7 +149,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
                          border-gray-200 hover:border-[#2D1B69] hover:bg-purple-50 transition-all
                          active:scale-95"
             >
-              <Camera size={18} className="text-[#2D1B69]" />
+              <Camera size={18} className="text-[#111]" />
               <span className="text-xs text-gray-600 font-medium">{t('camera')}</span>
             </button>
             <button
@@ -158,7 +158,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
                          border-gray-200 hover:border-[#2D1B69] hover:bg-purple-50 transition-all
                          active:scale-95"
             >
-              <ImageIcon size={18} className="text-[#2D1B69]" />
+              <ImageIcon size={18} className="text-[#111]" />
               <span className="text-xs text-gray-600 font-medium">{t('gallery')}</span>
             </button>
             <button
@@ -167,7 +167,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
                          border-gray-200 hover:border-[#2D1B69] hover:bg-purple-50 transition-all
                          active:scale-95"
             >
-              <FolderOpen size={18} className="text-[#2D1B69]" />
+              <FolderOpen size={18} className="text-[#111]" />
               <span className="text-xs text-gray-600 font-medium">{t('fileSelect')}</span>
             </button>
           </div>
@@ -175,7 +175,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
           {/* guide toggle */}
           <button
             onClick={() => setShowGuide((v) => !v)}
-            className="text-xs text-gray-400 underline underline-offset-2 hover:text-[#2D1B69] transition-colors"
+            className="text-xs text-gray-400 underline underline-offset-2 hover:text-[#111] transition-colors"
           >
             📸 {t('photoGuide')}
           </button>

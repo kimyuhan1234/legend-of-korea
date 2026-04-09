@@ -1,27 +1,38 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 export default function Loading() {
-  const t = useTranslations('common')
-  
   return (
-    <div className="fixed inset-0 bg-[#F5F0E8] flex flex-col items-center justify-center z-50">
-      <div className="relative">
-        {/* Animated Dokkaebi Icon / Spinner */}
-        <div className="w-24 h-24 border-4 border-[#1B2A4A]/20 border-t-[#1B2A4A] rounded-full animate-spin"></div>
-        <div className="absolute inset-0 flex items-center justify-center text-4xl animate-bounce">
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: '#fff',
+      zIndex: 50,
+    }}>
+      <div style={{ position: 'relative', width: '6rem', height: '6rem' }}>
+        <div style={{
+          width: '6rem',
+          height: '6rem',
+          borderRadius: '50%',
+          border: '4px solid #f3f4f6',
+          borderTopColor: '#FF6B35',
+          animation: 'spin 1s linear infinite',
+        }} />
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '2rem',
+        }}>
           👹
         </div>
       </div>
-      <p className="mt-8 text-[#1B2A4A] font-bold text-xl tracking-widest animate-pulse">
-        {t('loading')}
-      </p>
-      <div className="mt-4 flex space-x-2">
-        <div className="w-2 h-2 bg-[#D4A843] rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-        <div className="w-2 h-2 bg-[#D4A843] rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-        <div className="w-2 h-2 bg-[#D4A843] rounded-full animate-bounce"></div>
-      </div>
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   )
 }

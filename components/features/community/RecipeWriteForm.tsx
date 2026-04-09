@@ -150,7 +150,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto px-4 py-8 space-y-6">
       <div className="bg-white rounded-2xl shadow p-6 space-y-5">
-        <h1 className="text-xl font-black text-[#2D1B69]">🍳 나만의 퓨전 레시피 등록</h1>
+        <h1 className="text-xl font-black text-[#111]">🍳 나만의 퓨전 레시피 등록</h1>
 
         {/* 요리 이름 */}
         <div>
@@ -405,7 +405,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         <button
           type="button"
           onClick={() => addItem(koreanIngredients, setKoreanIngredients)}
-          className="flex items-center gap-1.5 text-sm text-[#2D1B69] font-medium hover:text-[#FF6B35] transition-colors"
+          className="flex items-center gap-1.5 text-sm text-[#111] font-medium hover:text-[#FF6B35] transition-colors"
         >
           <Plus size={16} /> 재료 추가
         </button>
@@ -437,7 +437,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         <button
           type="button"
           onClick={() => addItem(foreignIngredients, setForeignIngredients)}
-          className="flex items-center gap-1.5 text-sm text-[#2D1B69] font-medium hover:text-[#FF6B35] transition-colors"
+          className="flex items-center gap-1.5 text-sm text-[#111] font-medium hover:text-[#FF6B35] transition-colors"
         >
           <Plus size={16} /> 재료 추가
         </button>
@@ -448,7 +448,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         <label className="block text-sm font-bold text-gray-700">👨‍🍳 조리 순서</label>
         {steps.map((step, idx) => (
           <div key={idx} className="flex gap-2 items-start">
-            <span className="w-7 h-7 rounded-full bg-[#2D1B69] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-2.5">
+            <span className="w-7 h-7 rounded-full bg-[#FF6B35] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-2.5">
               {idx + 1}
             </span>
             <textarea
@@ -471,7 +471,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         <button
           type="button"
           onClick={() => addItem(steps, setSteps)}
-          className="flex items-center gap-1.5 text-sm text-[#2D1B69] font-medium hover:text-[#FF6B35] transition-colors"
+          className="flex items-center gap-1.5 text-sm text-[#111] font-medium hover:text-[#FF6B35] transition-colors"
         >
           <Plus size={16} /> 단계 추가
         </button>

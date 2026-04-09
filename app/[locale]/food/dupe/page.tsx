@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const HERO = {
   ko: {
     badge: "🔗 맛의 유사성 발견",
-    title: "어느 지역의 맛이\n궁금하세요?",
-    subtitle: "좋아하는 맛은 이미 알고 있잖아요,\n나머지는 저희가 연결해 드려요",
+    title: "엄선된 각 지역의\n스페셜 요리를",
+    subtitle: "당신이 알고 있는 맛 으로\n연결해 드려요",
   },
   ja: {
     badge: "🔗 味の類似性を発見",

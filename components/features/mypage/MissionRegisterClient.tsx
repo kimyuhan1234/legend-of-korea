@@ -146,7 +146,7 @@ export default function MissionRegisterClient({
           {/* course info header */}
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center
-                            text-4xl backdrop-blur-sm border border-white/10 shadow-lg">
+                            text-4xl backdrop-blur-sm  border-0 border-white/10 shadow-lg">
               {course.emoji}
             </div>
             <div className="flex-1">
@@ -172,15 +172,15 @@ export default function MissionRegisterClient({
 
           {/* stats row */}
           <div className="grid grid-cols-3 gap-3 mt-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center  border-0 border-white/10">
               <p className="text-[10px] text-white/50 font-bold mb-0.5">📋 {t('totalMissions')}</p>
               <p className="text-lg font-black">{missions.length}</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center  border-0 border-white/10">
               <p className="text-[10px] text-white/50 font-bold mb-0.5">🏆 {t('completedMissions')}</p>
               <p className="text-lg font-black">{completedCount}</p>
             </div>
-            <div className="bg-[#FF6B35]/20 backdrop-blur-sm rounded-xl p-3 text-center border border-[#FF6B35]/20">
+            <div className="bg-[#FF6B35]/20 backdrop-blur-sm rounded-xl p-3 text-center  border-0 border-[#FF6B35]/20">
               <p className="text-[10px] text-white/50 font-bold mb-0.5">⚡ LP</p>
               <p className="text-lg font-black text-[#FF6B35]">
                 {earnedLP}<span className="text-[10px] text-white/40">/{totalLP}</span>
@@ -192,7 +192,7 @@ export default function MissionRegisterClient({
 
       {/* ─── Mission List ─── */}
       <div className="max-w-3xl mx-auto px-4 py-8 space-y-4">
-        <h2 className="text-base font-bold text-[#2D1B69] flex items-center gap-2">
+        <h2 className="text-base font-bold text-[#111] flex items-center gap-2">
           <Trophy size={18} className="text-[#FF6B35]" />
           {t('missionListTitle')}
         </h2>
@@ -222,8 +222,8 @@ export default function MissionRegisterClient({
 
       {/* ─── Bottom Guide ─── */}
       <div className="max-w-3xl mx-auto px-4 pb-12">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 p-5 space-y-3">
-          <h3 className="text-sm font-bold text-[#2D1B69] flex items-center gap-2">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 p-5 space-y-3">
+          <h3 className="text-sm font-bold text-[#111] flex items-center gap-2">
             <Zap size={16} className="text-[#FF6B35]" />
             {t('photoGuide')}
           </h3>

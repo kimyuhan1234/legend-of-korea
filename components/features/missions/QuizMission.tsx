@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from '@/components/ui/use-toast';
-import { CheckCircle2, HelpCircle, Lightbulb, Loader2, Sparkles, Send } from 'lucide-react';
+import { HelpCircle, Lightbulb, Loader2, Sparkles, Send } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -54,35 +54,24 @@ export function QuizMission({
 
     setIsVerifying(true);
     try {
-      const response = await fetch('/api/missions/complete', {
+      const response = await fetch('/api/missions/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          missionId, 
-          type: 'quiz', 
-          answer: answer.trim()
-        }),
+        body: JSON.stringify({ missionId, type: 'quiz', answer: answer.trim() }),
       });
 
       const data = await response.json();
 
-      if (response.ok && data.success) {
+      if (data.isCorrect) {
         setStatus('completed');
-        setTotalEarned(data.lpEarned + (data.bonusLp || 0));
-        
+        setTotalEarned((data.lpEarned ?? lpReward) + (data.bonusLp ?? 0));
         if (data.courseCompleted) {
-            setShowCompletion(true);
+          setShowCompletion(true);
         } else {
-            toast({
-              title: t('missionComplete') || '미션 완료!',
-              description: t('lpEarned', { lp: lpReward }) || `${lpReward} LP 획득!`,
-            });
-        }
-        if (data.tierUp) {
-            toast({
-                title: "티어 승급!",
-                description: `축하합니다! 새로운 티어로 올라갔습니다.`,
-            });
+          toast({
+            title: t('missionComplete') || '미션 완료!',
+            description: t('lpEarned', { lp: data.lpEarned ?? lpReward }) || `${lpReward} LP 획득!`,
+          });
         }
       } else {
         toast({
@@ -132,7 +121,7 @@ export function QuizMission({
           description: data.error || 'LP가 부족하거나 오류가 발생했습니다.',
         });
       }
-    } catch (err) {
+    } catch (_err) {
       toast({
         variant: 'destructive',
         title: '오류',

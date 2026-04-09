@@ -81,7 +81,7 @@ export default function AdminStatsPage() {
   return (
     <div className="space-y-8 pb-12">
       <div>
-        <h1 className="text-2xl font-black text-[#1B2A4A]">통계 분석</h1>
+        <h1 className="text-2xl font-black text-[#111]">통계 분석</h1>
         <p className="text-slate-500 text-sm mt-1">플랫폼의 성과를 데이터로 정밀하게 파악합니다.</p>
       </div>
 
@@ -92,7 +92,7 @@ export default function AdminStatsPage() {
             <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
               <TrendingUp className="w-5 h-5" />
             </div>
-            <CardTitle className="text-xl font-black text-[#1B2A4A]">일별 매출 트렌드 (최근 30일)</CardTitle>
+            <CardTitle className="text-xl font-black text-[#111]">일별 매출 트렌드 (최근 30일)</CardTitle>
           </div>
           <CardDescription>결제 완료된 주문 기준의 매출 변화 추이입니다.</CardDescription>
         </CardHeader>
@@ -149,10 +149,10 @@ export default function AdminStatsPage() {
         <Card className="border-none shadow-sm bg-white rounded-3xl">
           <CardHeader className="p-8 pb-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-[#1B2A4A] text-[#D4A843] rounded-lg">
+              <div className="p-2 bg-[#F5F3EF] text-[#D4A843] rounded-lg">
                 <Target className="w-5 h-5" />
               </div>
-              <CardTitle className="text-lg font-black text-[#1B2A4A]">코스별 판매량 비중</CardTitle>
+              <CardTitle className="text-lg font-black text-[#111]">코스별 판매량 비중</CardTitle>
             </div>
           </CardHeader>
           <CardContent className="p-8 pt-0">
@@ -187,7 +187,7 @@ export default function AdminStatsPage() {
               <div className="p-2 bg-amber-50 text-amber-600 rounded-lg">
                 <Globe2 className="w-5 h-5" />
               </div>
-              <CardTitle className="text-lg font-black text-[#1B2A4A]">글로벌 사용자 분포 (언어)</CardTitle>
+              <CardTitle className="text-lg font-black text-[#111]">글로벌 사용자 분포 (언어)</CardTitle>
             </div>
           </CardHeader>
           <CardContent className="p-8 pt-0 flex flex-col items-center">
@@ -217,11 +217,11 @@ export default function AdminStatsPage() {
             <div className="mt-4 grid grid-cols-2 gap-4 w-full">
               <div className="p-4 bg-slate-50 rounded-2xl text-center">
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Primary Market</p>
-                <p className="text-xl font-black text-[#1B2A4A] mt-1">{langChartData[0]?.name || 'N/A'}</p>
+                <p className="text-xl font-black text-[#111] mt-1">{langChartData[0]?.name || 'N/A'}</p>
               </div>
               <div className="p-4 bg-slate-50 rounded-2xl text-center">
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Active Users</p>
-                <p className="text-xl font-black text-[#1B2A4A] mt-1">{data.languages.length}</p>
+                <p className="text-xl font-black text-[#111] mt-1">{data.languages.length}</p>
               </div>
             </div>
           </CardContent>
@@ -230,13 +230,13 @@ export default function AdminStatsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
          {/* Affiliate Stats Summary */}
-         <Card className="border-none shadow-sm bg-[#1B2A4A] text-white rounded-3xl overflow-hidden">
+         <Card className="border-none shadow-sm bg-[#F5F3EF] text-white rounded-3xl overflow-hidden">
           <CardContent className="p-8">
             <div className="flex items-center justify-between mb-8">
               <div className="p-3 bg-white/10 rounded-2xl text-[#D4A843]">
                 <MousePointer2 className="w-6 h-6" />
               </div>
-              <Badge className="bg-[#D4A843] text-[#1B2A4A] font-black border-none">LIVE PERFORMANCE</Badge>
+              <Badge className="bg-[#D4A843] text-[#111] font-black border-none">LIVE PERFORMANCE</Badge>
             </div>
             <div className="space-y-1">
               <p className="text-slate-400 font-bold">총 제휴 링크 클릭</p>
@@ -252,21 +252,21 @@ export default function AdminStatsPage() {
         </Card>
 
         {/* Mission Completion Stats */}
-        <Card className="border-none shadow-sm bg-[#D4A843] text-[#1B2A4A] rounded-3xl overflow-hidden">
+        <Card className="border-none shadow-sm bg-[#D4A843] text-[#111] rounded-3xl overflow-hidden">
           <CardContent className="p-8">
             <div className="flex items-center justify-between mb-8">
-              <div className="p-3 bg-[#1B2A4A]/10 rounded-2xl text-[#1B2A4A]">
+              <div className="p-3 bg-[#F5F3EF]/10 rounded-2xl text-[#111]">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <Badge className="bg-[#1B2A4A] text-white font-black border-none">USER ENGAGEMENT</Badge>
+              <Badge className="bg-[#F5F3EF] text-white font-black border-none">USER ENGAGEMENT</Badge>
             </div>
             <div className="space-y-1">
               <p className="font-bold opacity-70">총 미션 수행 기록</p>
               <h2 className="text-4xl font-black">{data.missions.length.toLocaleString()} <span className="text-lg font-medium opacity-70">Actions</span></h2>
             </div>
             <div className="mt-8 flex items-center gap-4">
-              <div className="flex-1 h-3 bg-[#1B2A4A]/10 rounded-full overflow-hidden">
-                <div className="h-full bg-[#1B2A4A] rounded-full" style={{ width: '75%' }} />
+              <div className="flex-1 h-3 bg-[#F5F3EF]/10 rounded-full overflow-hidden">
+                <div className="h-full bg-[#F5F3EF] rounded-full" style={{ width: '75%' }} />
               </div>
               <span className="font-black text-sm">75% Completion</span>
             </div>

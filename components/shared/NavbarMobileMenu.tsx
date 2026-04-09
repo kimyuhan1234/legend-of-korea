@@ -6,6 +6,7 @@ import { LogoutButton } from "@/components/features/auth/LogoutButton"
 
 interface NavbarMobileMenuProps {
   locale: string
+  links: { href: string; label: string }[]
   user: { nickname?: string | null; lp?: number | null } | null
   t: {
     signup: string
@@ -21,7 +22,7 @@ interface NavbarMobileMenuProps {
   }
 }
 
-export function NavbarMobileMenu({ locale, user, t }: NavbarMobileMenuProps) {
+export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuProps) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -32,9 +33,9 @@ export function NavbarMobileMenu({ locale, user, t }: NavbarMobileMenuProps) {
         className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-[#F5F0E8] transition-colors"
         aria-label="메뉴"
       >
-        <span className={`w-5 h-0.5 bg-[#2D1B69] transition-all duration-200 ${open ? "rotate-45 translate-y-2" : ""}`} />
-        <span className={`w-5 h-0.5 bg-[#2D1B69] transition-all duration-200 ${open ? "opacity-0" : ""}`} />
-        <span className={`w-5 h-0.5 bg-[#2D1B69] transition-all duration-200 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+        <span className={`w-5 h-0.5 bg-[#FF6B35] transition-all duration-200 ${open ? "rotate-45 translate-y-2" : ""}`} />
+        <span className={`w-5 h-0.5 bg-[#FF6B35] transition-all duration-200 ${open ? "opacity-0" : ""}`} />
+        <span className={`w-5 h-0.5 bg-[#FF6B35] transition-all duration-200 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
       </button>
 
       {/* 오버레이 */}
@@ -49,16 +50,16 @@ export function NavbarMobileMenu({ locale, user, t }: NavbarMobileMenuProps) {
         <div className="flex flex-col h-full">
           {/* 유저 정보 */}
           {user ? (
-            <div className="px-6 py-5 bg-[#2D1B69] text-white">
+            <div className="px-6 py-5 bg-[#FF6B35] text-white">
               <p className="font-semibold">{user.nickname}</p>
-              <p className="text-[#FF6B35] text-sm mt-1">⚡ {user.lp?.toLocaleString() ?? 0} LP</p>
+              <p className="text-white/80 text-sm mt-1 font-bold">⚡ {user.lp?.toLocaleString() ?? 0} LP</p>
             </div>
           ) : (
-            <div className="px-6 py-5 bg-[#2D1B69] space-y-2">
+            <div className="px-6 py-5 bg-[#FF6B35] space-y-2">
               <Link
                 href={`/${locale}/auth/login`}
                 onClick={() => setOpen(false)}
-                className="block text-center py-2 rounded-xl bg-white text-[#2D1B69] font-semibold text-sm"
+                className="block text-center py-2 rounded-xl bg-white text-[#111] font-semibold text-sm"
               >
                 {t.login}
               </Link>
@@ -115,7 +116,7 @@ export function NavbarMobileMenu({ locale, user, t }: NavbarMobileMenuProps) {
                   onClick={() => setOpen(false)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                     locale === lang
-                      ? "bg-[#2D1B69] text-white"
+                      ? "bg-[#FF6B35] text-white"
                       : "bg-[#F5F0E8] text-[#7a6a58] hover:bg-[#e8ddd0]"
                   }`}
                 >

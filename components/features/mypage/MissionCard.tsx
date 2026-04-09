@@ -70,7 +70,7 @@ export default function MissionCard({
                 </span>
               )}
             </div>
-            <h3 className="font-bold text-[#2D1B69] text-sm md:text-base leading-snug">
+            <h3 className="font-bold text-[#111] text-sm md:text-base leading-snug">
               {mission.title}
             </h3>
             <div className="flex items-center gap-3 mt-1.5">
@@ -87,10 +87,10 @@ export default function MissionCard({
           {/* expand icon */}
           <div className="shrink-0 mt-1">
             {expanded ? (
-              <ChevronUp size={20} className="text-[#2D1B69]" />
+              <ChevronUp size={20} className="text-[#111]" />
             ) : (
               <div className="flex flex-col items-center gap-0.5">
-                <span className="text-[10px] bg-[#2D1B69] text-white px-2.5 py-1 rounded-full font-bold">
+                <span className="text-[10px] bg-[#FF6B35] text-white px-2.5 py-1 rounded-full font-bold">
                   {t('uploadPhoto')}
                 </span>
                 <ChevronDown size={14} className="text-gray-400" />
@@ -163,7 +163,7 @@ export default function MissionCard({
               )}
             </div>
 
-            <h3 className="font-bold text-[#2D1B69] text-sm md:text-base leading-snug">
+            <h3 className="font-bold text-[#111] text-sm md:text-base leading-snug">
               #{mission.seq} {mission.title}
             </h3>
 
@@ -217,7 +217,7 @@ export default function MissionCard({
 
   // ---------- State C: Locked ----------
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden opacity-70
+    <div className="rounded-2xl border-0 bg-white overflow-hidden opacity-70
                     cursor-not-allowed select-none">
       <div className="p-5">
         {/* top: seq + title + lock icon */}
@@ -260,7 +260,7 @@ export default function MissionCard({
 
         {/* locked notice bar */}
         <div className="mt-4 py-2.5 bg-gray-50 rounded-xl flex items-center justify-center gap-2
-                        border border-gray-100">
+                        border-0">
           <Lock size={14} className="text-gray-400" />
           <p className="text-xs text-gray-400 font-medium">
             {t('lockedDesc')}

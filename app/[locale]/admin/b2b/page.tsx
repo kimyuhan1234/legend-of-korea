@@ -106,12 +106,12 @@ export default function AdminB2BPage() {
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-[#1B2A4A]">B2B 주문 관리</h1>
+          <h1 className="text-2xl font-black text-[#111]">B2B 주문 관리</h1>
           <p className="text-slate-500 text-sm mt-1">여행사 및 숙소 대량 주문을 관리합니다.</p>
         </div>
         <Button 
           onClick={() => setIsAdding(!isAdding)}
-          className="bg-[#1B2A4A] hover:bg-[#243a63] text-white rounded-xl h-12 font-bold px-6 border-none"
+          className="bg-[#F5F3EF] hover:bg-[#243a63] text-white rounded-xl h-12 font-bold px-6 border-none"
         >
           {isAdding ? "취소" : <><Plus className="w-5 h-5 mr-2" /> 새 B2B 주문</>}
         </Button>
@@ -211,7 +211,7 @@ export default function AdminB2BPage() {
               </div>
 
               <div className="md:col-span-2 lg:col-span-3 pt-2">
-                <Button type="submit" className="w-full h-14 bg-[#D4A843] hover:bg-[#b88d30] text-[#1B2A4A] font-black text-lg rounded-2xl shadow-lg shadow-[#D4A843]/20 border-none transition-all">
+                <Button type="submit" className="w-full h-14 bg-[#D4A843] hover:bg-[#b88d30] text-[#111] font-black text-lg rounded-2xl shadow-lg shadow-[#D4A843]/20 border-none transition-all">
                   주문 등록 완료
                 </Button>
               </div>
@@ -244,7 +244,7 @@ export default function AdminB2BPage() {
             ) : b2bOrders.map((order) => (
               <TableRow key={order.id} className="border-slate-50 hover:bg-slate-50/30 transition-colors">
                 <TableCell>
-                  <p className="font-bold text-[#1B2A4A]">{order.agency_name}</p>
+                  <p className="font-bold text-[#111]">{order.agency_name}</p>
                   <p className="text-[10px] text-slate-400 mt-0.5">{new Date(order.created_at).toLocaleDateString()}</p>
                 </TableCell>
                 <TableCell>
@@ -278,7 +278,7 @@ export default function AdminB2BPage() {
                   </Select>
                 </TableCell>
                 <TableCell className="text-right">
-                  <p className="font-black text-[#1B2A4A]">₩{order.total_amount.toLocaleString()}</p>
+                  <p className="font-black text-[#111]">₩{order.total_amount.toLocaleString()}</p>
                   <p className="text-[10px] text-slate-400">단가: ₩{order.unit_price.toLocaleString()}</p>
                 </TableCell>
               </TableRow>

@@ -85,7 +85,7 @@ export function LocaleSwitcher({ currentLocale }: LocaleSwitcherProps) {
                 flex items-center gap-2.5 w-full px-4 py-2.5
                 text-sm transition-colors text-left
                 ${locale.code === currentLocale
-                  ? "bg-[#F5F0E8] text-[#1B2A4A] font-semibold"
+                  ? "bg-[#F5F0E8] text-[#111] font-semibold"
                   : "text-[#3a3028] hover:bg-[#F5F0E8]"
                 }
               `}

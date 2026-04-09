@@ -117,8 +117,8 @@ export default async function CourseDetailPage({ params }: Props) {
       />
 
       {/* 2. 전설 이야기 (2컬럼: 스토리+정보 | 영상) */}
-      <section className="max-w-6xl mx-auto px-4 py-12">
-        <h2 className="text-xl md:text-2xl font-bold text-[#1B2A4A] mb-8">
+      <section className="max-w-6xl mx-auto px-8 md:px-10 py-20 md:py-28">
+        <h2 className="text-xl md:text-2xl font-bold text-[#111] mb-8">
           📖 {storyLabel}
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
@@ -140,17 +140,17 @@ export default async function CourseDetailPage({ params }: Props) {
               <div className="bg-white rounded-2xl p-4 text-center border border-[#e8ddd0] shadow-sm">
                 <span className="text-2xl">📍</span>
                 <p className="text-xs text-[#7a6a58] mt-1">{t("infoRegion")}</p>
-                <p className="font-bold text-[#1B2A4A] text-sm mt-0.5">{course.region || "-"}</p>
+                <p className="font-bold text-[#111] text-sm mt-0.5">{course.region || "-"}</p>
               </div>
               <div className="bg-white rounded-2xl p-4 text-center border border-[#e8ddd0] shadow-sm">
                 <span className="text-2xl">⏱️</span>
                 <p className="text-xs text-[#7a6a58] mt-1">{t("infoDuration")}</p>
-                <p className="font-bold text-[#1B2A4A] text-sm mt-0.5">{durationText || "-"}</p>
+                <p className="font-bold text-[#111] text-sm mt-0.5">{durationText || "-"}</p>
               </div>
               <div className="bg-white rounded-2xl p-4 text-center border border-[#e8ddd0] shadow-sm">
                 <span className="text-2xl">🎯</span>
                 <p className="text-xs text-[#7a6a58] mt-1">{t("infoMissions")}</p>
-                <p className="font-bold text-[#1B2A4A] text-sm mt-0.5">{missions.length}</p>
+                <p className="font-bold text-[#111] text-sm mt-0.5">{missions.length}</p>
               </div>
             </div>
           </div>
@@ -183,7 +183,7 @@ export default async function CourseDetailPage({ params }: Props) {
       </section>
 
       {/* 3. 미션 키트 소개 + 여행 준비 (2컬럼, 높이 동일) */}
-      <section className="max-w-6xl mx-auto px-4 py-12">
+      <section className="max-w-6xl mx-auto px-8 md:px-10 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           <div className="flex flex-col h-full">
             <KitPurchaseCard courseId={courseId} kits={kits as any} locale={locale} isLoggedIn={isLoggedIn} className="flex-1" />

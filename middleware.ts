@@ -1,7 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server"
 import createMiddleware from "next-intl/middleware"
 import { updateSession } from "@/lib/supabase/middleware"
-import { locales, defaultLocale } from "@/i18n"
+
+const locales = ["ko", "ja", "en"] as const
+const defaultLocale = "ko"
+
+// 로그인 필요 경로 (locale prefix 제외)
+const PROTECTED_PATHS = ["/mypage", "/community/write", "/shop", "/missions"]
 
 const intlMiddleware = createMiddleware({
   locales,
@@ -9,63 +14,74 @@ const intlMiddleware = createMiddleware({
   localePrefix: "always",
 })
 
-// 로그인 필요 경로 (locale 제외한 부분)
-const PROTECTED_PATHS = ["/mypage", "/community/write", "/shop"]
-
 export async function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname
+  const { pathname } = request.nextUrl
 
-  // 정적 파일 및 API 패스스루
+  // ── 정적 자산 / API: 패스스루 ──────────────────────────
   if (
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/api") ||
-    pathname.match(/\.(ico|svg|png|jpg|jpeg|gif|webp|woff|woff2)$/)
+    pathname.startsWith("/_next/") ||
+    pathname.startsWith("/api/") ||
+    /\.(?:ico|svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot)$/.test(pathname)
   ) {
     return NextResponse.next()
   }
 
-  // 1. Supabase 세션 갱신
-  const sessionResponse = await updateSession(request)
+  // ── 1. Supabase 세션 갱신 (실패해도 무시 — intl 라우팅은 계속) ──
+  let sessionResponse: NextResponse
+  try {
+    sessionResponse = await updateSession(request)
+  } catch {
+    sessionResponse = NextResponse.next()
+  }
 
-  // 2. next-intl 로케일 처리
+  // ── 2. next-intl 로케일 라우팅 ──────────────────────────
   const intlResponse = intlMiddleware(request)
 
-  // intl이 리다이렉트를 반환하면 그것을 우선 적용
+  // intl 리다이렉트 우선 (307 / 308)
   if (intlResponse.status === 307 || intlResponse.status === 308) {
     return intlResponse
   }
 
-  // 3. 보호된 라우트 체크
-  const localeMatch = pathname.match(/^\/([a-z]{2})(.*)$/)
+  // ── 3. 보호 경로 인증 체크 ──────────────────────────────
+  const localeMatch = pathname.match(/^\/([a-z]{2})(\/.*)?$/)
   if (localeMatch) {
     const locale = localeMatch[1]
-    const restPath = localeMatch[2] || "/"
+    const restPath = localeMatch[2] ?? "/"
 
-    if (PROTECTED_PATHS.some((p) => restPath.startsWith(p))) {
-      // 세션 쿠키 확인
-      const authCookie = request.cookies.get(
-        `sb-${process.env.NEXT_PUBLIC_SUPABASE_URL?.split("//")[1]?.split(".")[0]}-auth-token`
-      ) || request.cookies.get("sb-isixbzxophgxrfgjesaa-auth-token")
+    const needsAuth = PROTECTED_PATHS.some((p) => restPath === p || restPath.startsWith(`${p}/`))
 
-      if (!authCookie) {
+    if (needsAuth) {
+      // Supabase auth 쿠키 이름 패턴: sb-<project_ref>-auth-token
+      const projectRef =
+        process.env.NEXT_PUBLIC_SUPABASE_URL?.split("//")[1]?.split(".")[0] ?? ""
+      const authCookieName = `sb-${projectRef}-auth-token`
+
+      const hasSession =
+        request.cookies.has(authCookieName) ||
+        request.cookies.has("sb-isixbzxophgxrfgjesaa-auth-token")
+
+      if (!hasSession) {
         const loginUrl = new URL(`/${locale}/auth/login`, request.url)
-        loginUrl.searchParams.set("next", restPath)
+        loginUrl.searchParams.set("next", pathname)
         return NextResponse.redirect(loginUrl)
       }
     }
   }
 
-  // 세션 쿠키를 intl 응답에 병합
-  const response = intlResponse || sessionResponse
+  // ── 4. 세션 쿠키를 intl 응답에 병합하여 반환 ──────────
   sessionResponse.cookies.getAll().forEach((cookie) => {
-    response.cookies.set(cookie.name, cookie.value, cookie)
+    intlResponse.cookies.set(cookie.name, cookie.value, cookie)
   })
 
-  return response
+  return intlResponse
 }
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff|woff2)$).*)",
+    /*
+     * _next/static, _next/image, favicon.ico, 정적 파일 확장자 제외
+     * API 라우트도 제외 (updateSession은 위 if 분기에서 이미 패스스루)
+     */
+    "/((?!_next/static|_next/image|favicon\\.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot)$).*)",
   ],
 }

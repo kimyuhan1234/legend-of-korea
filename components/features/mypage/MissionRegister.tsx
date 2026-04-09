@@ -33,7 +33,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
-          className="w-full py-4 bg-[#2D1B69] text-white rounded-xl font-bold text-base
+          className="w-full py-4 bg-[#FF6B35] text-white rounded-xl font-bold text-base
                      hover:bg-[#3d2a7a] transition-colors flex items-center justify-center gap-2"
         >
           <span>📝</span>
@@ -42,7 +42,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
       ) : (
         <div className="bg-white rounded-xl border-2 border-[#2D1B69] overflow-hidden">
           {/* 헤더 */}
-          <div className="bg-[#2D1B69] px-5 py-3 flex items-center justify-between">
+          <div className="bg-[#FF6B35] px-5 py-3 flex items-center justify-between">
             <h3 className="text-white font-bold text-sm">
               {t('selectCourse')}
             </h3>
@@ -85,7 +85,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">{course.emoji}</span>
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-[#2D1B69] text-sm md:text-base truncate">
+                        <p className="font-bold text-[#111] text-sm md:text-base truncate">
                           {course.name[lang]}
                         </p>
                         <p className="text-xs text-gray-500 mt-0.5">

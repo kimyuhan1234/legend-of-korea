@@ -11,7 +11,7 @@ export function MemoriesTab({ locale }: MemoriesTabProps) {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-black text-[#2D1B69]">📸 추억남기기</h2>
+        <h2 className="text-xl font-black text-[#111]">📸 추억남기기</h2>
         <Link
           href={`/${locale}/community/write`}
           className="px-4 py-2 bg-[#FF6B35] text-white rounded-full text-sm font-bold hover:bg-[#E55A2B] transition-colors"

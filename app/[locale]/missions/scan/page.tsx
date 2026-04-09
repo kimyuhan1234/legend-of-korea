@@ -61,7 +61,7 @@ export default function ScanPage({ params }: ScanPageProps) {
   };
 
   return (
-    <div className="container max-w-lg mx-auto py-10 px-4 min-h-screen flex flex-col">
+    <div className="container max-w-lg mx-auto py-20 md:py-28 px-8 md:px-10 min-h-screen flex flex-col">
       <div className="mb-8 flex items-center justify-between">
         <Button variant="ghost" asChild className="pl-0 hover:bg-transparent">
           <Link href={`/${locale}/missions`} className="flex items-center gap-1 font-bold">
@@ -69,7 +69,7 @@ export default function ScanPage({ params }: ScanPageProps) {
             {t('back')}
           </Link>
         </Button>
-        <div className="bg-slate-100 px-4 py-1.5 rounded-full text-xs font-black text-slate-500 flex items-center gap-1.5 shadow-sm">
+        <div className="bg-slate-100 px-8 md:px-10 py-1.5 rounded-full text-xs font-black text-slate-500 flex items-center gap-1.5 shadow-sm">
            <MapPin className="w-3 h-3" />
            실시간 동기화 중
         </div>

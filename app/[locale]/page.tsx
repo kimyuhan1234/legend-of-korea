@@ -50,7 +50,7 @@ export default async function HomePage({ params }: Props) {
       </div>
 
       {/* 섹션 2: HERO */}
-      <HeroSection cta={t('learnMore')} />
+      <HeroSection cta={t('signup')} />
 
       {/* 섹션 3: 5-COLUMN 카테고리 */}
       <CategorySection

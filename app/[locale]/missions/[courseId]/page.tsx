@@ -52,7 +52,7 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
   const firstIncomplete = missions.find(m => !m.is_hidden && progressMap.get(m.id) !== 'completed');
 
   return (
-    <div className="container max-w-3xl mx-auto py-10 px-4 pb-32 min-h-screen bg-slate-50/30">
+    <div className="container max-w-3xl mx-auto py-20 md:py-28 px-8 md:px-10 pb-32 min-h-screen bg-slate-50/30">
       <div className="mb-12 text-center">
         <h1 className="text-4xl font-black mb-4 tracking-tight">전설의 여정</h1>
         <div className="flex items-center justify-center gap-4 text-slate-500 font-bold mb-6">

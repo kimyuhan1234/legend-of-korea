@@ -34,7 +34,7 @@ export function CourseHero({ course, missionCount, locale }: CourseHeroProps) {
   const duration = getI18n(course.duration_text, locale)
 
   return (
-    <section className="relative bg-[#1B2A4A] text-white overflow-hidden">
+    <section className="relative bg-[#F5F3EF] text-white overflow-hidden">
       {/* 배경 이미지 */}
       <div className="absolute inset-0">
         <Image

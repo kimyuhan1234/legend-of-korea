@@ -128,13 +128,13 @@ export function Step3Payment({
 
   return (
     <div className="space-y-6">
-      <h2 className="text-xl font-bold text-[#1B2A4A]">{t.orderSummary}</h2>
+      <h2 className="text-xl font-bold text-[#111]">{t.orderSummary}</h2>
 
       {/* 주문 요약 */}
       <div className="bg-white rounded-2xl border border-[#e8ddd0] p-5 space-y-3">
         <div className="flex justify-between text-sm">
           <span className="text-[#7a6a58]">{kitLabel} × {kitSelection.quantity}</span>
-          <span className="font-medium text-[#1B2A4A]">₩{subtotal.toLocaleString()}</span>
+          <span className="font-medium text-[#111]">₩{subtotal.toLocaleString()}</span>
         </div>
         {discount > 0 && (
           <div className="flex justify-between text-sm text-emerald-600">
@@ -143,7 +143,7 @@ export function Step3Payment({
           </div>
         )}
         <div className="h-px bg-[#e8ddd0]" />
-        <div className="flex justify-between font-black text-[#1B2A4A]">
+        <div className="flex justify-between font-black text-[#111]">
           <span>{t.finalPrice}</span>
           <span className="text-xl">₩{finalAmount.toLocaleString()}</span>
         </div>
@@ -151,7 +151,7 @@ export function Step3Payment({
 
       {/* 배송지 요약 */}
       <div className="bg-[#F5F0E8] rounded-2xl p-4 text-sm">
-        <p className="font-semibold text-[#1B2A4A] mb-1">📦 {shipping.name} ({shipping.phone})</p>
+        <p className="font-semibold text-[#111] mb-1">📦 {shipping.name} ({shipping.phone})</p>
         <p className="text-[#7a6a58]">[{shipping.zipcode}] {shipping.address} {shipping.addressDetail}</p>
       </div>
 
@@ -165,7 +165,7 @@ export function Step3Payment({
       {!orderId && (
         <>
           <div>
-            <p className="text-sm font-semibold text-[#1B2A4A] mb-3">{t.paymentMethod}</p>
+            <p className="text-sm font-semibold text-[#111] mb-3">{t.paymentMethod}</p>
             <div className="grid grid-cols-2 gap-3">
               {(["toss", "stripe"] as const).map((method) => (
                 <button
@@ -178,7 +178,7 @@ export function Step3Payment({
                   }`}
                 >
                   <div className="text-xl mb-1">{method === "toss" ? "🇰🇷" : "🌐"}</div>
-                  <p className="text-xs font-bold text-[#1B2A4A]">
+                  <p className="text-xs font-bold text-[#111]">
                     {method === "toss" ? t.tossPay : t.stripePay}
                   </p>
                 </button>
@@ -189,14 +189,14 @@ export function Step3Payment({
           <div className="flex gap-3">
             <button
               onClick={onPrev}
-              className="flex-1 py-4 rounded-2xl border border-[#e8ddd0] bg-white text-[#1B2A4A] font-semibold hover:bg-[#F5F0E8] transition-colors"
+              className="flex-1 py-4 rounded-2xl border border-[#e8ddd0] bg-white text-[#111] font-semibold hover:bg-[#F5F0E8] transition-colors"
             >
               ← {t.prev}
             </button>
             <button
               onClick={handlePrepareOrder}
               disabled={isCreatingOrder}
-              className="flex-[2] py-4 rounded-2xl bg-[#D4A843] text-[#1B2A4A] font-black text-lg hover:bg-[#e0b84e] disabled:opacity-50 transition-colors"
+              className="flex-[2] py-4 rounded-2xl bg-[#D4A843] text-[#111] font-black text-lg hover:bg-[#e0b84e] disabled:opacity-50 transition-colors"
             >
               {isCreatingOrder ? t.processing : t.payNow}
             </button>

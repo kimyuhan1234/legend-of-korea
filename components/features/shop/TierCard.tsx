@@ -136,7 +136,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
           <div className="bg-white rounded-2xl max-w-md w-full max-h-[80vh] overflow-y-auto shadow-2xl"
                onClick={e => e.stopPropagation()}>
             <div className="px-6 pt-6 pb-4 border-b border-gray-100">
-              <h2 className="text-xl font-bold text-[#2D1B69]">🏆 티어 시스템</h2>
+              <h2 className="text-xl font-bold text-[#111]">🏆 티어 시스템</h2>
               <p className="text-sm text-gray-500 mt-1">LP를 모아 승급하세요. 승급 시 LP가 차감됩니다.</p>
             </div>
             <div className="p-6 space-y-3">
@@ -148,7 +148,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                   <div key={tier.level}
                        className={`p-4 rounded-xl border-2 transition-all ${
                          isCurrent
-                           ? 'border-[#2D1B69] bg-[#2D1B69]/5'
+                           ? 'border-[#2D1B69] bg-[#FF6B35]/5'
                            : isNext
                              ? 'border-[#FF6B35] bg-orange-50'
                              : isLocked
@@ -160,11 +160,11 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                         <span className="text-2xl">{tier.emoji}</span>
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-bold text-[#2D1B69]">
+                            <span className="font-bold text-[#111]">
                               Lv.{tier.level} {loc(tier.name)}
                             </span>
                             {isCurrent && (
-                              <span className="px-2 py-0.5 bg-[#2D1B69] text-white text-xs rounded-full">현재</span>
+                              <span className="px-2 py-0.5 bg-[#FF6B35] text-white text-xs rounded-full">현재</span>
                             )}
                             {isNext && (
                               <span className="px-2 py-0.5 bg-[#FF6B35] text-white text-xs rounded-full">다음</span>
@@ -192,7 +192,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
             </div>
             <div className="px-6 pb-6">
               <button onClick={() => setShowTierList(false)}
-                      className="w-full py-3 bg-[#2D1B69] text-white rounded-xl font-medium hover:bg-[#3D2B79] transition-colors">
+                      className="w-full py-3 bg-[#FF6B35] text-white rounded-xl font-medium hover:bg-[#3D2B79] transition-colors">
                 닫기
               </button>
             </div>
@@ -206,7 +206,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
           <div className="bg-white rounded-2xl max-w-sm w-full shadow-2xl text-center p-8"
                onClick={e => e.stopPropagation()}>
             <div className="text-6xl mb-4">{upgradedTier.tierEmoji}</div>
-            <h2 className="text-2xl font-bold text-[#2D1B69] mb-2">🎉 승급 완료!</h2>
+            <h2 className="text-2xl font-bold text-[#111] mb-2">🎉 승급 완료!</h2>
             <p className="text-gray-600 mb-4">
               {currentTier.emoji} {loc(currentTier.name)} → {upgradedTier.tierEmoji} {loc(upgradedTier.tierName)}
             </p>
@@ -221,7 +221,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
               </div>
             </div>
             <button onClick={() => setShowSuccess(false)}
-                    className="w-full py-3 bg-[#2D1B69] text-white rounded-xl font-bold hover:bg-[#3D2B79] transition-colors">
+                    className="w-full py-3 bg-[#FF6B35] text-white rounded-xl font-bold hover:bg-[#3D2B79] transition-colors">
               확인
             </button>
           </div>

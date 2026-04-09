@@ -44,7 +44,7 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
 
   return (
     <div className="space-y-6">
-      <h2 className="text-xl font-bold text-[#1B2A4A]">{t.selectKit}</h2>
+      <h2 className="text-xl font-bold text-[#111]">{t.selectKit}</h2>
 
       {/* 키트 선택 */}
       <div className="grid sm:grid-cols-2 gap-4">
@@ -69,18 +69,18 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
       {/* 수량 */}
       {data.kitId && (
         <div>
-          <label className="block text-sm font-semibold text-[#1B2A4A] mb-2">{t.quantity}</label>
+          <label className="block text-sm font-semibold text-[#111] mb-2">{t.quantity}</label>
           <div className="flex items-center gap-3">
             <button
               onClick={() => onChange({ ...data, quantity: Math.max(1, data.quantity - 1) })}
-              className="w-10 h-10 rounded-xl border border-[#e8ddd0] bg-white text-[#1B2A4A] font-bold text-lg hover:bg-[#F5F0E8] transition-colors"
+              className="w-10 h-10 rounded-xl border border-[#e8ddd0] bg-white text-[#111] font-bold text-lg hover:bg-[#F5F0E8] transition-colors"
             >
               −
             </button>
-            <span className="w-10 text-center font-bold text-[#1B2A4A] text-lg">{data.quantity}</span>
+            <span className="w-10 text-center font-bold text-[#111] text-lg">{data.quantity}</span>
             <button
               onClick={() => onChange({ ...data, quantity: Math.min(5, data.quantity + 1) })}
-              className="w-10 h-10 rounded-xl border border-[#e8ddd0] bg-white text-[#1B2A4A] font-bold text-lg hover:bg-[#F5F0E8] transition-colors"
+              className="w-10 h-10 rounded-xl border border-[#e8ddd0] bg-white text-[#111] font-bold text-lg hover:bg-[#F5F0E8] transition-colors"
             >
               +
             </button>
@@ -90,14 +90,14 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
 
       {/* 쿠폰 */}
       <div>
-        <label className="block text-sm font-semibold text-[#1B2A4A] mb-2">{t.applyCoupon}</label>
+        <label className="block text-sm font-semibold text-[#111] mb-2">{t.applyCoupon}</label>
         {coupons.length === 0 ? (
           <p className="text-sm text-[#7a6a58] bg-[#F5F0E8] rounded-xl px-4 py-3">{t.noCoupon}</p>
         ) : (
           <select
             value={data.couponId}
             onChange={(e) => onChange({ ...data, couponId: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-[#e8ddd0] bg-white text-[#1B2A4A] text-sm focus:outline-none focus:border-[#D4A843] transition-colors"
+            className="w-full px-4 py-3 rounded-xl border border-[#e8ddd0] bg-white text-[#111] text-sm focus:outline-none focus:border-[#D4A843] transition-colors"
           >
             <option value="">{t.selectCoupon}</option>
             {coupons.map((coupon) => (
@@ -123,7 +123,7 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
             </div>
           )}
           <div className="h-px bg-[#e8ddd0] my-2" />
-          <div className="flex justify-between font-black text-[#1B2A4A] text-lg">
+          <div className="flex justify-between font-black text-[#111] text-lg">
             <span>{t.finalPrice}</span>
             <span>₩{total.toLocaleString()}</span>
           </div>
@@ -134,7 +134,7 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
       <button
         onClick={onNext}
         disabled={!data.kitId}
-        className="w-full py-4 rounded-2xl bg-[#1B2A4A] text-white font-bold text-lg hover:bg-[#243a63] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="w-full py-4 rounded-2xl bg-[#F5F3EF] text-white font-bold text-lg hover:bg-[#243a63] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >
         {t.next} →
       </button>
@@ -172,8 +172,8 @@ function KitCard({
         </div>
       )}
       <div className="text-2xl mb-2">📦</div>
-      <p className="font-bold text-[#1B2A4A] mb-1">{label}</p>
-      <p className="text-xl font-black text-[#1B2A4A]">₩{kit.price.toLocaleString()}</p>
+      <p className="font-bold text-[#111] mb-1">{label}</p>
+      <p className="text-xl font-black text-[#111]">₩{kit.price.toLocaleString()}</p>
       {!inStock && (
         <span className="mt-2 inline-block text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600">
           품절

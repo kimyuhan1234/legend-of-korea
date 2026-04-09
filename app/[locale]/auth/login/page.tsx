@@ -38,7 +38,7 @@ export default function LoginPage({ params, searchParams }: Props) {
         {/* 카드 */}
         <div className="bg-white rounded-3xl shadow-lg shadow-[#1B2A4A]/10 overflow-hidden">
           {/* 헤더 배너 */}
-          <div className="relative bg-[#1B2A4A] px-8 pt-10 pb-8 text-center">
+          <div className="relative bg-[#F5F3EF] px-8 pt-10 pb-8 text-center">
             {/* 장식용 원형 패턴 */}
             <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-[#D4A843]/10 -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-[#D4A843]/10 translate-y-1/2 -translate-x-1/2" />
@@ -46,7 +46,7 @@ export default function LoginPage({ params, searchParams }: Props) {
             {/* 로고 */}
             <div className="relative inline-flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-xl bg-[#D4A843] flex items-center justify-center">
-                <span className="text-[#1B2A4A] font-black text-lg">伝</span>
+                <span className="text-[#111] font-black text-lg">伝</span>
               </div>
               <span className="text-white font-bold text-xl tracking-wide">Legend of Korea</span>
             </div>
@@ -58,10 +58,10 @@ export default function LoginPage({ params, searchParams }: Props) {
           </div>
 
           {/* 폼 영역 */}
-          <div className="px-8 py-8 flex flex-col gap-6">
+          <div className="px-8 py-20 md:py-28 flex flex-col gap-6">
             {/* 에러 파라미터 */}
             {searchParams.error === "auth_failed" && (
-              <div className="px-4 py-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm text-center">
+              <div className="px-8 md:px-10 py-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm text-center">
                 {locale === "ko" ? "로그인에 실패했습니다. 다시 시도해주세요." :
                  locale === "ja" ? "ログインに失敗しました。もう一度お試しください。" :
                  "Login failed. Please try again."}

@@ -1,41 +1,41 @@
 @import "tailwindcss";
 
-/* ── 폰트 설정 ──────────────────────────────── */
-:root {
-  --font-sans: "Noto Sans KR", "Noto Sans JP", system-ui, sans-serif;
+/* ── 폰트 유틸리티 ──────────────────────────────── */
+.font-display {
+  font-family: 'Playfair Display', 'Noto Serif KR', Georgia, serif;
 }
 
-/* ── 테마 변수 ──────────────────────────────── */
+/* ── 테마 변수 (v2 — 과일바구니 프리미엄) ──────────── */
 @theme {
-  /* LOK 브랜드 컬러 - 확장 팔레트 */
-  --color-lok-navy:        #1B2A4A;
-  --color-lok-navy-light:  #2D4A7A;
-  --color-lok-gold:        #D4A843;
-  --color-lok-gold-light:  #E8C96A;
-  --color-lok-gold-dark:   #B8902F;
-  --color-lok-cream:       #F5F0E8;
-  --color-lok-cream-dark:  #EDE5D8;
-  --color-lok-brown:       #7a6a58;
-  --color-lok-brown-dark:  #5a4a38;
-  --color-lok-border:      #e8ddd0;
-  --color-lok-text:        #3a3028;
-  --color-lok-success:     #4CAF50;
-  --color-lok-error:       #E53935;
+  /* ── LOK v2 브랜드 컬러 ── */
+  --color-lok-coral:        #FF6B35;   /* Primary CTA — 코랄 오렌지 */
+  --color-lok-coral-hover:  #E55A24;   /* Hover */
+  --color-lok-coral-light:  #FFF0EB;   /* 코랄 틴트 배경 */
+  --color-lok-sky:          #63B3ED;   /* Sub accent — 스카이 블루 */
+  --color-lok-sky-light:    #EBF8FF;   /* 스카이 틴트 */
+  --color-lok-greige:       #F5F3EF;   /* 푸터 / 보조 섹션 배경 */
+  --color-lok-display:      #111111;   /* 디스플레이 헤딩 */
+  --color-lok-body:         #374151;   /* 본문 텍스트 */
+  --color-lok-subtle:       #6B7280;   /* 서브 텍스트 */
+  --color-lok-muted:        #9CA3AF;   /* Placeholder */
+  --color-lok-border:       #F3F4F6;   /* 아주 연한 테두리 */
+  --color-lok-success:      #10B981;
+  --color-lok-error:        #EF4444;
 
-  /* shadcn/ui 호환 */
-  --color-background: #F5F0E8;
-  --color-foreground: #1B2A4A;
-  --color-primary:    #1B2A4A;
-  --color-primary-foreground: #ffffff;
-  --color-secondary:  #F5F0E8;
-  --color-secondary-foreground: #1B2A4A;
-  --color-muted:      #e8ddd0;
-  --color-muted-foreground: #7a6a58;
-  --color-accent:     #D4A843;
-  --color-accent-foreground: #1B2A4A;
-  --color-border:     #e8ddd0;
-  --color-input:      #e8ddd0;
-  --color-ring:       #D4A843;
+  /* ── shadcn/ui 호환 (v2) ── */
+  --color-background:            #FFFFFF;
+  --color-foreground:            #111111;
+  --color-primary:               #FF6B35;
+  --color-primary-foreground:    #ffffff;
+  --color-secondary:             #F5F3EF;
+  --color-secondary-foreground:  #374151;
+  --color-muted:                 #F3F4F6;
+  --color-muted-foreground:      #6B7280;
+  --color-accent:                #FFF0EB;
+  --color-accent-foreground:     #FF6B35;
+  --color-border:                #F3F4F6;
+  --color-input:                 #F3F4F6;
+  --color-ring:                  #FF6B35;
   --radius: 0.75rem;
 }
 
@@ -50,17 +50,21 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: #F5F0E8;
-  color: #1B2A4A;
+  font-family: var(--font-inter, 'Noto Sans KR', system-ui, sans-serif);
+  background-color: #FFFFFF;
+  color: #374151;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 /* 언어별 폰트 */
-:lang(ko) { font-family: "Noto Sans KR", system-ui, sans-serif; }
-:lang(ja) { font-family: "Noto Sans JP", system-ui, sans-serif; }
-:lang(en) { font-family: system-ui, sans-serif; }
+:lang(ko) { font-family: 'Noto Sans KR', system-ui, sans-serif; }
+:lang(ja) { font-family: 'Noto Sans JP', system-ui, sans-serif; }
+:lang(en) { font-family: var(--font-inter, system-ui, sans-serif); }
+
+/* 한국어/일본어 디스플레이 헤딩 */
+:lang(ko) .font-display { font-family: 'Noto Serif KR', 'Playfair Display', Georgia, serif; }
+:lang(ja) .font-display { font-family: 'Noto Serif KR', 'Playfair Display', Georgia, serif; }
 
 /* ── 스크롤바 ──────────────────────────────── */
 ::-webkit-scrollbar {
@@ -68,18 +72,29 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F0E8;
+  background: #F9FAFB;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d5c9b8;
+  background: #E5E7EB;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b0a090;
+  background: #D1D5DB;
 }
 
 /* ── 선택 영역 ──────────────────────────────── */
 ::selection {
-  background: #D4A843;
-  color: #1B2A4A;
+  background: #FF6B35;
+  color: #ffffff;
+}
+
+/* ── 카드 섀도우 유틸리티 ──────────────────── */
+.shadow-card {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+.shadow-card-hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+.shadow-coral {
+  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.25);
 }

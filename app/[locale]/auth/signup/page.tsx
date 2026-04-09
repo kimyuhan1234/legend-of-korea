@@ -30,17 +30,17 @@ export default function SignupPage({ params }: Props) {
   const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8] flex items-center justify-center p-4 py-10">
+    <div className="min-h-screen bg-[#F5F0E8] flex items-center justify-center p-4 py-20 md:py-28">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-3xl shadow-lg shadow-[#1B2A4A]/10 overflow-hidden">
           {/* 헤더 */}
-          <div className="relative bg-[#1B2A4A] px-8 pt-10 pb-8 text-center">
+          <div className="relative bg-[#F5F3EF] px-8 pt-10 pb-8 text-center">
             <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-[#D4A843]/10 -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-[#D4A843]/10 translate-y-1/2 -translate-x-1/2" />
 
             <div className="relative inline-flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-xl bg-[#D4A843] flex items-center justify-center">
-                <span className="text-[#1B2A4A] font-black text-lg">伝</span>
+                <span className="text-[#111] font-black text-lg">伝</span>
               </div>
               <span className="text-white font-bold text-xl tracking-wide">Legend of Korea</span>
             </div>
@@ -52,7 +52,7 @@ export default function SignupPage({ params }: Props) {
           </div>
 
           {/* 폼 */}
-          <div className="px-8 py-8 flex flex-col gap-6">
+          <div className="px-8 py-20 md:py-28 flex flex-col gap-6">
             {/* 소셜 로그인 */}
             <SocialLoginButtons locale={locale} mode="signup" />
 

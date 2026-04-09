@@ -66,7 +66,7 @@ export default function AdminCommunityPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-black text-[#1B2A4A]">커뮤니티 관리</h1>
+        <h1 className="text-2xl font-black text-[#111]">커뮤니티 관리</h1>
         <p className="text-slate-500 text-sm mt-1">모험가들의 기록을 모니터링하고 관리합니다.</p>
       </div>
 
@@ -99,7 +99,7 @@ export default function AdminCommunityPage() {
                       <UserIcon className="w-4 h-4" />
                     </div>
                     <div className="space-y-0.5">
-                      <p className="font-bold text-[#1B2A4A] text-xs">@{post.users?.nickname || 'Unknown'}</p>
+                      <p className="font-bold text-[#111] text-xs">@{post.users?.nickname || 'Unknown'}</p>
                       <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-slate-200 text-slate-400">
                         {post.users?.current_tier || 'Villager'}
                       </Badge>

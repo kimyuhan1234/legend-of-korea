@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { DifficultyBadge } from "@/components/shared/DifficultyBadge"
 import type { I18nText } from "@/lib/supabase/types"
+import { getRegionName } from "@/lib/constants/regions"
 
 interface CourseCardProps {
   course: {
@@ -37,10 +38,10 @@ export function CourseCard({ course, locale }: CourseCardProps) {
   return (
     <Link
       href={`/${locale}/courses/${course.id}`}
-      className="group block bg-white rounded-3xl overflow-hidden border border-[#e8ddd0] shadow-sm hover:shadow-md hover:border-[#D4A843]/40 transition-all duration-200"
+      className="group block bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden border-0 shadow-sm hover:shadow-md hover:border-[#D4A843]/40 transition-all duration-200"
     >
       {/* 썸네일 */}
-      <div className="relative aspect-video bg-[#1B2A4A]/10 overflow-hidden">
+      <div className="relative aspect-video bg-[#F5F3EF]/10 overflow-hidden">
         <Image
           src={course.thumbnail_url || "/images/dokkaebi-hero.jpg"}
           alt={title}
@@ -56,12 +57,12 @@ export function CourseCard({ course, locale }: CourseCardProps) {
       {/* 내용 */}
       <div className="p-5">
         <div className="flex items-center gap-2 text-xs text-[#7a6a58] mb-2">
-          <span>📍 {course.region}</span>
+          <span>📍 {getRegionName(course.region, locale)}</span>
           <span>·</span>
           <span>⏱ {duration}</span>
         </div>
 
-        <h3 className="text-base font-bold text-[#1B2A4A] mb-2 line-clamp-1">
+        <h3 className="text-base font-bold text-[#111] mb-2 line-clamp-1">
           {title}
         </h3>
         <p className="text-sm text-[#7a6a58] leading-relaxed line-clamp-2 mb-4">
@@ -71,7 +72,7 @@ export function CourseCard({ course, locale }: CourseCardProps) {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs text-[#7a6a58]">1인 {label.from}</p>
-            <p className="text-base font-black text-[#1B2A4A]">
+            <p className="text-base font-black text-[#111]">
               ₩{course.price_1p.toLocaleString()}
             </p>
           </div>

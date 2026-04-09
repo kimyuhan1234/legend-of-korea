@@ -15,11 +15,11 @@ export function AdCard({ ad, locale }: AdCardProps) {
   const t = useTranslations('community');
 
   return (
-    <div className="bg-slate-50 rounded-3xl p-5 md:p-6 border border-slate-200">
+    <div className="bg-slate-50 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-5 md:p-6  border-0 border-slate-200">
       {/* Ad Header */}
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center shrink-0 border border-indigo-200">
+          <div className="w-10 h-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-indigo-100 flex items-center justify-center shrink-0  border-0 border-indigo-200">
             <Building2 className="w-5 h-5 text-indigo-500" />
           </div>
           <div>
@@ -33,7 +33,7 @@ export function AdCard({ ad, locale }: AdCardProps) {
 
       {/* Ad Banner Image */}
       {ad.ad_banner && (
-        <Link href={ad.ad_link || '#'} target="_blank" className="block relative w-full aspect-[21/9] rounded-2xl overflow-hidden mb-4 group shadow-sm">
+        <Link href={ad.ad_link || '#'} target="_blank" className="block relative w-full aspect-[21/9] rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden mb-4 group shadow-sm">
           <Image src={ad.ad_banner} alt={ad.title || 'Ad Image'} fill className="object-cover group-hover:scale-105 transition-transform duration-500" unoptimized />
           <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
         </Link>
@@ -48,7 +48,7 @@ export function AdCard({ ad, locale }: AdCardProps) {
       </div>
 
       {/* CTA Button */}
-      <Link href={ad.ad_link || '#'} target="_blank" className="w-full h-12 flex items-center justify-center gap-2 bg-white text-indigo-600 rounded-xl font-black border-2 border-indigo-100 hover:border-indigo-200 hover:bg-slate-50 transition-all active:scale-[0.98]">
+      <Link href={ad.ad_link || '#'} target="_blank" className="w-full h-12 flex items-center justify-center gap-2 bg-white text-indigo-600 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] font-black border-2 border-indigo-100 hover:border-indigo-200 hover:bg-slate-50 transition-all active:scale-[0.98]">
         {t('viewDetail')}
         <ArrowRight className="w-4 h-4" />
       </Link>

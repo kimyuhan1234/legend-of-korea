@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { CourseCard } from '@/components/features/courses/CourseCard'
+import { getRegionName } from '@/lib/constants/regions'
 
 interface CoursesTabProps {
   locale: string
@@ -27,7 +28,7 @@ const activeCourses = allCourses?.filter(c => c.is_active) ?? []
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-black text-[#2D1B69]">🗺️ 미션 키트</h2>
+        <h2 className="text-xl font-black text-[#111]">🗺️ 미션 키트</h2>
       </div>
       {activeCourses.length === 0 && comingSoonCourses.length === 0 ? (
         <div className="text-center py-20 text-[#7a6a58]">
@@ -61,14 +62,14 @@ const activeCourses = allCourses?.filter(c => c.is_active) ?? []
                   )}
                   <div className="absolute inset-0 bg-black/30" />
                   <div className="absolute top-3 left-3">
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-[#2D1B69] text-white">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-[#FF6B35] text-white">
                       {badge}
                     </span>
                   </div>
                 </div>
                 <div className="p-5">
-                  <p className="text-xs text-[#7a6a58] mb-2">📍 {course.region}</p>
-                  <h3 className="font-bold text-[#2D1B69]">{title}</h3>
+                  <p className="text-xs text-[#7a6a58] mb-2">📍 {getRegionName(course.region, locale)}</p>
+                  <h3 className="font-bold text-[#111]">{title}</h3>
                 </div>
               </div>
             )

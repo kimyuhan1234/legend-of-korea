@@ -73,8 +73,8 @@ export default async function PurchasePage({ params }: Props) {
     <div className="min-h-screen bg-[#F5F0E8]">
       {/* 헤더 */}
       <div className="bg-white border-b border-[#e8ddd0]">
-        <div className="max-w-xl mx-auto px-4 py-4">
-          <h1 className="text-lg font-bold text-[#1B2A4A]">📦 {tObj.stepKit}</h1>
+        <div className="max-w-xl mx-auto px-8 md:px-10 py-4">
+          <h1 className="text-lg font-bold text-[#111]">📦 {tObj.stepKit}</h1>
           <p className="text-sm text-[#7a6a58]">{courseName}</p>
         </div>
       </div>

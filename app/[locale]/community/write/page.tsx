@@ -13,7 +13,7 @@ export default async function CommunityWritePage({ params: { locale } }: { param
   }
 
   return (
-    <div className="px-4 py-8">
+    <div className="px-8 md:px-10 py-20 md:py-28">
       <CommunityWriteForm locale={locale} />
     </div>
   );

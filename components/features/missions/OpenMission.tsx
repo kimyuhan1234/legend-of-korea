@@ -3,25 +3,22 @@
 import { useState, ChangeEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/components/ui/use-toast';
-import { 
-  Camera, 
-  CheckCircle2, 
-  HelpCircle, 
-  Lightbulb, 
-  Loader2, 
-  Sparkles, 
-  Upload, 
+import {
+  Camera,
+  CheckCircle2,
+  Loader2,
+  Sparkles,
+  Upload,
   X,
-  MessageSquare,
   Share2,
-  Trophy
+  Trophy,
+  MessageSquare,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -110,32 +107,31 @@ export function OpenMission({
           photoUrl = uploadData.publicUrl;
       }
 
-      // 2. 미션 완료 처리
-      const response = await fetch('/api/missions/complete', {
+      // 2. 미션 검증 (verify)
+      const response = await fetch('/api/missions/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          missionId, 
-          type, 
+        body: JSON.stringify({
+          missionId,
+          type,
           answer: text,
-          photoUrl,
-          syncCommunity
+          photoUrls: photoUrl ? [photoUrl] : [],
+          syncCommunity,
         }),
       });
 
       const data = await response.json();
 
-      if (response.ok && data.success) {
+      if (data.isCorrect) {
         setStatus('completed');
-        setTotalEarned(data.lpEarned + (data.bonusLp || 0));
-        
+        setTotalEarned((data.lpEarned ?? lpReward) + (data.bonusLp ?? 0));
         if (data.courseCompleted) {
-            setShowCompletion(true);
+          setShowCompletion(true);
         } else {
-            toast({
-              title: '미션 완료!',
-              description: `${lpReward} LP 획득! 커뮤니티에 공유되었습니다.`,
-            });
+          toast({
+            title: t('missionComplete') || '미션 완료!',
+            description: t('lpEarned', { lp: data.lpEarned ?? lpReward }) || `${lpReward} LP 획득!`,
+          });
         }
       } else {
         throw new Error(data.error || '완료 처리 중 오류가 발생했습니다.');

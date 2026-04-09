@@ -67,21 +67,20 @@ export function MyPageClient({ locale }: MyPageClientProps) {
           return;
         }
 
-        const [userRes, historyRes, couponsRes, ordersRes] = await Promise.all([
-          fetch('/api/auth/me'),
+        const [userProfile, historyRes, couponsRes, ordersRes] = await Promise.all([
+          supabase.from('users').select('*').eq('id', authUser.id).single(),
           fetch('/api/lp/history'),
           fetch('/api/shop/coupons'),
           fetch('/api/orders')
         ]);
 
-        const uData = await userRes.json();
         const hData = await historyRes.json();
         const cData = await couponsRes.json();
         const oData = await ordersRes.json();
 
-        if (uData.success) {
-          setUser(uData.user);
-          setLpBalance(uData.user?.total_lp ?? 0);
+        if (userProfile.data) {
+          setUser(userProfile.data);
+          setLpBalance(userProfile.data.total_lp ?? 0);
         }
         if (hData.success) {
           setLpHistory(hData.history);
@@ -111,7 +110,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
   };
 
   // LP Apply handler
-  const handleApplyLP = async (transactionId: string, amount: number) => {
+  const handleApplyLP = async (transactionId: string) => {
     if (appliedIds.has(transactionId) || applyingId) return;
     setApplyingId(transactionId);
     try {
@@ -324,7 +323,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                               </span>
                             ) : (
                               <button
-                                onClick={() => handleApplyLP(item.id, item.amount)}
+                                onClick={() => handleApplyLP(item.id)}
                                 disabled={isApplying}
                                 className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 text-white rounded-xl text-xs font-black
                                            hover:bg-indigo-700 active:scale-95 transition-all
@@ -438,7 +437,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                 {/* 미션 요약 헤더 */}
                 <div className="text-center py-6">
                   <div className="text-5xl mb-3">🏛️</div>
-                  <h3 className="text-lg font-bold text-[#2D1B69]">
+                  <h3 className="text-lg font-bold text-[#111]">
                     {t('missionSummary')}
                   </h3>
                   <p className="text-sm text-gray-500 mt-1">
@@ -451,14 +450,14 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                   <div className="bg-white rounded-xl p-4 text-center border border-gray-100">
                     <div className="text-2xl mb-1">📋</div>
                     <p className="text-xs text-gray-500">{t('totalMissions')}</p>
-                    <p className="text-2xl font-bold text-[#2D1B69]">12</p>
+                    <p className="text-2xl font-bold text-[#111]">12</p>
                   </div>
                   <div className="bg-white rounded-xl p-4 text-center border border-gray-100">
                     <div className="text-2xl mb-1">🏆</div>
                     <p className="text-xs text-gray-500">{t('completedMissions')}</p>
-                    <p className="text-2xl font-bold text-[#2D1B69]">2</p>
+                    <p className="text-2xl font-bold text-[#111]">2</p>
                   </div>
-                  <div className="bg-[#2D1B69] rounded-xl p-4 text-center text-white">
+                  <div className="bg-[#FF6B35] rounded-xl p-4 text-center text-white">
                     <div className="text-2xl mb-1">✅</div>
                     <p className="text-xs text-white/70">{t('earnedLP')}</p>
                     <p className="text-2xl font-bold">600</p>
@@ -561,7 +560,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
               <button
                 onClick={handleSaveProfile}
                 disabled={isSaving || !editNickname.trim()}
-                className="flex-1 py-3 bg-[#2D1B69] text-white rounded-xl font-black
+                className="flex-1 py-3 bg-[#FF6B35] text-white rounded-xl font-black
                            hover:bg-[#3d2a7a] disabled:opacity-60 disabled:cursor-not-allowed
                            transition-colors text-sm flex items-center justify-center gap-2"
               >

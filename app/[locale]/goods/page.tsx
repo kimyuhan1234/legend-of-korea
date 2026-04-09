@@ -22,12 +22,12 @@ export default async function GoodsPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1B2A4A]/5 to-[#D4A843]/5">
-      <div className="max-w-4xl mx-auto px-4 py-16 md:py-24">
+      <div className="max-w-4xl mx-auto px-8 md:px-10 py-16 md:py-24">
 
         {/* 히어로 */}
         <div className="text-center mb-14">
           <div className="text-6xl mb-6">🛍️</div>
-          <h1 className="text-4xl md:text-5xl font-black text-[#1B2A4A] mb-4">
+          <h1 className="text-4xl md:text-5xl font-black text-[#111] mb-4">
             {t("title")}
           </h1>
           <p className="text-xl text-[#7a6a58] max-w-xl mx-auto leading-relaxed">
@@ -36,10 +36,10 @@ export default async function GoodsPage({ params }: Props) {
         </div>
 
         {/* Coming Soon 카드 */}
-        <div className="max-w-2xl mx-auto bg-white rounded-3xl border border-[#e8ddd0] shadow-sm px-8 py-10">
+        <div className="max-w-2xl mx-auto bg-white rounded-3xl border border-[#e8ddd0] shadow-sm px-8 py-20 md:py-28">
           {/* 배지 */}
           <div className="flex justify-center mb-8">
-            <span className="px-5 py-1.5 rounded-full bg-[#D4A843] text-[#1B2A4A] text-sm font-black tracking-widest">
+            <span className="px-5 py-1.5 rounded-full bg-[#D4A843] text-[#111] text-sm font-black tracking-widest">
               {t("comingSoon")}
             </span>
           </div>
@@ -54,7 +54,7 @@ export default async function GoodsPage({ params }: Props) {
 
           {/* 알림 신청 */}
           <div>
-            <h2 className="text-base font-bold text-[#1B2A4A] mb-5 text-center">
+            <h2 className="text-base font-bold text-[#111] mb-5 text-center">
               {t("notifyTitle")}
             </h2>
             <GoodsNotifyForm
@@ -74,7 +74,7 @@ export default async function GoodsPage({ params }: Props) {
         <div className="text-center mt-12">
           <Link
             href={`/${locale}/courses`}
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#1B2A4A] text-white font-semibold hover:bg-[#243a63] transition-colors"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#F5F3EF] text-white font-semibold hover:bg-[#243a63] transition-colors"
           >
             {t("backToCourses")} →
           </Link>

@@ -9,6 +9,7 @@ import { TierBadge } from '@/components/features/community/TierBadge';
 import { toast } from '@/components/ui/use-toast';
 import { Loader2, Ticket, ChevronRight, Coins, History, Calendar, CheckCircle2, Sparkles } from 'lucide-react';
 import TierCard from '@/components/features/shop/TierCard';
+import { createClient } from '@/lib/supabase/client';
 
 interface Coupon {
   id: string;
@@ -38,15 +39,17 @@ export function ShopClient({ locale }: ShopClientProps) {
   const fetchShopData = async () => {
     try {
       setLoading(true);
-      const [userRes, couponsRes] = await Promise.all([
-        fetch('/api/auth/me'),
+      const supabase = createClient();
+      const { data: { user: authUser } } = await supabase.auth.getUser();
+
+      const [userProfile, couponsRes] = await Promise.all([
+        authUser ? supabase.from('users').select('total_lp, current_tier').eq('id', authUser.id).single() : Promise.resolve({ data: null }),
         fetch('/api/shop/coupons')
       ]);
 
-      const userData = await userRes.json();
       const couponsData = await couponsRes.json();
 
-      if (userData.success) setUser(userData.user);
+      if (userProfile.data) setUser(userProfile.data);
       if (couponsData.success) setActiveCoupons(couponsData.coupons);
     } catch (error) {
       console.error('Fetch Shop Data Error:', error);

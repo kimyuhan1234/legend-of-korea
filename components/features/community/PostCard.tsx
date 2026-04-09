@@ -53,8 +53,8 @@ function timeAgo(dateString: string, t: any) {
   const now = new Date();
   const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60));
   if (diffInHours < 1) return t('justNow', { defaultValue: 'Just now' });
-  if (diffInHours < 24) return t('hoursAgo', { hours: diffInHours, defaultValue: `${diffInHours}h ago` });
-  return t('daysAgo', { days: Math.floor(diffInHours / 24), defaultValue: `${Math.floor(diffInHours / 24)}d ago` });
+  if (diffInHours < 24) return t('hoursAgo', { count: diffInHours, defaultValue: `${diffInHours}h ago` });
+  return t('daysAgo', { count: Math.floor(diffInHours / 24), defaultValue: `${Math.floor(diffInHours / 24)}d ago` });
 }
 
 export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: PostCardProps) {
@@ -242,12 +242,12 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
   // ── Render ────────────────────────────────────────────────────────────────
   return (
     <>
-      <div className="bg-white rounded-3xl p-5 md:p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+      <div className="bg-white rounded-3xl p-5 md:p-6 shadow-sm  border-0 border-slate-100 hover:shadow-md transition-shadow">
 
         {/* ── Header ── */}
         <div className="flex justify-between items-start mb-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-slate-100 overflow-hidden relative shrink-0 border border-slate-200">
+            <div className="w-10 h-10 rounded-full bg-slate-100 overflow-hidden relative shrink-0  border-0 border-slate-200">
               {post.user?.avatar_url ? (
                 <Image src={post.user.avatar_url} alt="avatar" fill className="object-cover" unoptimized />
               ) : (
@@ -280,7 +280,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
                 <MoreHorizontal className="w-5 h-5" />
               </button>
               {menuOpen && (
-                <div className="absolute right-0 top-full mt-1 w-36 bg-white rounded-xl shadow-lg border border-slate-100 py-1 z-20">
+                <div className="absolute right-0 top-full mt-1 w-36 bg-white rounded-xl shadow-lg  border-0 border-slate-100 py-1 z-20">
                   <button
                     onClick={() => { setEditing(true); setMenuOpen(false); }}
                     className="w-full flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
@@ -306,18 +306,18 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               value={editTitle}
               onChange={e => setEditTitle(e.target.value)}
               placeholder="제목"
-              className="w-full text-base font-bold border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-indigo-400"
+              className="w-full text-base font-bold  border-0 border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-indigo-400"
             />
             <textarea
               value={editText}
               onChange={e => setEditText(e.target.value)}
               rows={4}
-              className="w-full text-sm border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-indigo-400 resize-none"
+              className="w-full text-sm  border-0 border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-indigo-400 resize-none"
             />
             <select
               value={editRegion}
               onChange={e => setEditRegion(e.target.value)}
-              className="w-full text-sm border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-indigo-400"
+              className="w-full text-sm  border-0 border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-indigo-400"
             >
               {['all','jeonju','tongyeong','gyeongju','seoul','busan','jeju'].map(r => (
                 <option key={r} value={r}>{getRegionName(r, locale)}</option>
@@ -340,7 +340,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
                 onChange={e => setEditTagInput(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addEditTag(); } }}
                 placeholder="#태그 추가"
-                className="flex-1 text-sm border border-slate-200 rounded-xl px-3 py-2 outline-none focus:border-indigo-400"
+                className="flex-1 text-sm  border-0 border-slate-200 rounded-xl px-3 py-2 outline-none focus:border-indigo-400"
               />
               <button onClick={addEditTag} className="px-3 py-2 bg-slate-100 rounded-xl text-sm font-medium hover:bg-slate-200">
                 추가
@@ -350,7 +350,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               <button
                 onClick={saveEdit}
                 disabled={editSaving}
-                className="flex-1 py-2.5 bg-[#2D1B69] text-white rounded-xl text-sm font-bold hover:bg-[#3d2a7a] disabled:opacity-60 transition-colors"
+                className="flex-1 py-2.5 bg-[#FF6B35] text-white rounded-xl text-sm font-bold hover:bg-[#3d2a7a] disabled:opacity-60 transition-colors"
               >
                 {editSaving ? '저장 중...' : t('saveButton')}
               </button>
@@ -407,7 +407,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
             {post.tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="text-xs font-medium text-[#2D1B69] bg-[#2D1B69]/10 rounded-full px-2.5 py-0.5"
+                className="text-xs font-medium text-[#111] bg-[#FF6B35]/10 rounded-full px-2.5 py-0.5"
               >
                 {tag.startsWith('#') ? tag : `#${tag}`}
               </span>
@@ -453,7 +453,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               <div className="space-y-3 max-h-60 overflow-y-auto pr-1">
                 {comments.map(c => (
                   <div key={c.id} className="flex gap-2.5">
-                    <div className="w-7 h-7 rounded-full bg-slate-100 shrink-0 flex items-center justify-center text-xs font-bold text-slate-400 border border-slate-200">
+                    <div className="w-7 h-7 rounded-full bg-slate-100 shrink-0 flex items-center justify-center text-xs font-bold text-slate-400  border-0 border-slate-200">
                       {c.user?.nickname?.[0] || 'A'}
                     </div>
                     <div className="flex-1 bg-slate-50 rounded-xl px-3 py-2">
@@ -471,12 +471,12 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
                 value={commentText}
                 onChange={e => setCommentText(e.target.value)}
                 placeholder={t('writeComment')}
-                className="flex-1 text-sm border border-slate-200 rounded-xl px-3 py-2 outline-none focus:border-indigo-400"
+                className="flex-1 text-sm  border-0 border-slate-200 rounded-xl px-3 py-2 outline-none focus:border-indigo-400"
               />
               <button
                 type="submit"
                 disabled={!commentText.trim() || commentSubmitting}
-                className="px-3 py-2 bg-[#2D1B69] text-white rounded-xl hover:bg-[#3d2a7a] disabled:opacity-50 transition-colors"
+                className="px-3 py-2 bg-[#FF6B35] text-white rounded-xl hover:bg-[#3d2a7a] disabled:opacity-50 transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>

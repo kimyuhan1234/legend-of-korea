@@ -19,7 +19,7 @@ export function PointsTab({ locale, user }: PointsTabProps) {
         <p className="text-[#7a6a58] mb-6">{t('loginRequired')}</p>
         <Link
           href={`/${locale}/auth/login`}
-          className="px-6 py-3 bg-[#2D1B69] text-white rounded-full font-bold hover:bg-[#3d2880] transition-colors"
+          className="px-6 py-3 bg-[#FF6B35] text-white rounded-full font-bold hover:bg-[#3d2880] transition-colors"
         >
           {t('loginBtn')}
         </Link>

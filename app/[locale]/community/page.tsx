@@ -5,7 +5,7 @@ import { CommunitySidebar } from '@/components/features/community/CommunitySideb
 
 export default function CommunityPage({ params: { locale } }: { params: { locale: string } }) {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto px-8 md:px-10 py-20 md:py-28">
       <div className="flex flex-col lg:grid lg:grid-cols-[1fr_320px] gap-8 items-start">
         {/* Main Feed Content */}
         <main className="w-full min-w-0">

@@ -43,22 +43,22 @@ export default async function SightsPage({ params, searchParams }: Props) {
   return (
     <div className="min-h-screen bg-[#FFF8F0]">
       {/* 헤더 */}
-      <div className="bg-[#2D1B69] text-white py-12 px-4 text-center">
+      <div className="bg-[#FF6B35] text-white py-20 md:py-28 px-8 md:px-10 text-center">
         <h1 className="text-3xl md:text-4xl font-black mb-2">{t('title')}</h1>
         <p className="text-white/70">{t('subtitle')}</p>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-8 md:px-10 py-20 md:py-28">
         {/* 지역 필터 */}
         <div className="flex flex-wrap gap-2 mb-4">
-          <a href={`/${locale}/sights`} className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${!region && !category ? 'bg-[#2D1B69] text-white border-[#2D1B69]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#2D1B69]/40'}`}>
+          <a href={`/${locale}/sights`} className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${!region && !category ? 'bg-[#FF6B35] text-white border-[#2D1B69]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#2D1B69]/40'}`}>
             {t('filterAll')}
           </a>
           {REGIONS.map(r => {
             const label = r[locale as 'ko' | 'ja' | 'en'] || r.ko
             return (
               <a key={r.code} href={`/${locale}/sights?region=${r.code}${category ? `&category=${category}` : ''}`}
-                className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${region === r.code ? 'bg-[#2D1B69] text-white border-[#2D1B69]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#2D1B69]/40'}`}
+                className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${region === r.code ? 'bg-[#FF6B35] text-white border-[#2D1B69]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#2D1B69]/40'}`}
               >
                 {label}
               </a>
@@ -70,7 +70,7 @@ export default async function SightsPage({ params, searchParams }: Props) {
         <div className="flex flex-wrap gap-2 mb-8">
           {(['hotspot', 'landmark', 'festival'] as SightCategory[]).map(cat => (
             <a key={cat} href={`/${locale}/sights?${region ? `region=${region}&` : ''}category=${cat}`}
-              className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${category === cat ? 'bg-[#FF6B35] text-white border-[#FF6B35]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#FF6B35]/40'}`}
+              className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${category === cat ? 'bg-[#FF6B35] text-white border-[#FF6B35]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#FF6B35]/40'}`}
             >
               {CATEGORY_EMOJI[cat]} {CATEGORY_LABELS[cat]}
             </a>
@@ -81,7 +81,7 @@ export default async function SightsPage({ params, searchParams }: Props) {
         {!hasSights ? (
           <div className="text-center py-20">
             <div className="text-5xl mb-4">🗺️</div>
-            <p className="font-bold text-[#2D1B69] text-lg mb-2">{t('comingSoon')}</p>
+            <p className="font-bold text-[#111] text-lg mb-2">{t('comingSoon')}</p>
             <p className="text-[#7a6a58]">{t('comingSoonDesc')}</p>
           </div>
         ) : (
@@ -99,7 +99,7 @@ export default async function SightsPage({ params, searchParams }: Props) {
                     <span className="text-5xl opacity-20">{CATEGORY_EMOJI[sight.category]}</span>
                   </div>
                   <div className="absolute top-3 left-3 flex gap-1.5">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#2D1B69] text-white">
+                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#FF6B35] text-white">
                       📍 {REGIONS.find(r => r.code === sight.region)?.[locale as 'ko' | 'ja' | 'en'] || sight.region}
                     </span>
                     <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#FF6B35] text-white">
@@ -108,7 +108,7 @@ export default async function SightsPage({ params, searchParams }: Props) {
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-bold text-[#2D1B69] mb-2">{sight.name}</h3>
+                  <h3 className="font-bold text-[#111] mb-2">{sight.name}</h3>
                   <p className="text-sm text-[#7a6a58] line-clamp-2">{sight.description}</p>
                 </div>
               </div>

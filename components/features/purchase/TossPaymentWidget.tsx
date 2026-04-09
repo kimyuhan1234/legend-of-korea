@@ -109,7 +109,7 @@ export function TossPaymentWidget({
         <button
           onClick={handlePay}
           disabled={!isReady}
-          className="w-full mt-6 py-4 rounded-2xl bg-[#D4A843] text-[#1B2A4A] font-black text-lg hover:bg-[#e0b84e] disabled:opacity-50 transition-colors"
+          className="w-full mt-6 py-4 rounded-2xl bg-[#D4A843] text-[#111] font-black text-lg hover:bg-[#e0b84e] disabled:opacity-50 transition-colors"
         >
           {isReady ? payLabel : processingLabel}
         </button>

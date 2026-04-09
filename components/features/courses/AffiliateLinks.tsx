@@ -104,7 +104,7 @@ export function AffiliateLinks({ links, locale, className }: AffiliateLinksProps
 
   return (
     <div className={`h-full flex flex-col${className ? ` ${className}` : ""}`}>
-      <h2 className="text-xl md:text-2xl font-bold text-[#1B2A4A] mb-2">
+      <h2 className="text-xl md:text-2xl font-bold text-[#111] mb-2">
         🗺️ {locale === "ko" ? "여행 준비" : locale === "ja" ? "旅行準備" : "Travel Prep"}
       </h2>
 
@@ -142,7 +142,7 @@ export function AffiliateLinks({ links, locale, className }: AffiliateLinksProps
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-[#1B2A4A] line-clamp-1 group-hover:text-[#D4A843] transition-colors">
+                      <p className="font-semibold text-[#111] line-clamp-1 group-hover:text-[#D4A843] transition-colors">
                         {getI18n(link.title, locale)}
                       </p>
                       {link.description && (

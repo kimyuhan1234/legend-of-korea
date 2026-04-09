@@ -27,18 +27,18 @@ export default async function StayPage({ params, searchParams }: Props) {
   return (
     <div className="min-h-screen bg-[#FFF8F0]">
       {/* 헤더 */}
-      <div className="bg-[#2D1B69] text-white py-12 px-4 text-center">
+      <div className="bg-[#FF6B35] text-white py-20 md:py-28 px-8 md:px-10 text-center">
         <h1 className="text-3xl md:text-4xl font-black mb-2">{t('title')}</h1>
         <p className="text-white/70">{t('subtitle')}</p>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-8 md:px-10 py-20 md:py-28">
         {/* 지역 필터 */}
         <div className="flex flex-wrap gap-2 mb-8">
           <a
             href={`/${locale}/stay`}
-            className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
-              !region ? 'bg-[#2D1B69] text-white border-[#2D1B69]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#2D1B69]/40'
+            className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${
+              !region ? 'bg-[#FF6B35] text-white border-[#2D1B69]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#2D1B69]/40'
             }`}
           >
             {t('filterAll')}
@@ -49,8 +49,8 @@ export default async function StayPage({ params, searchParams }: Props) {
               <a
                 key={r.code}
                 href={`/${locale}/stay?region=${r.code}`}
-                className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
-                  region === r.code ? 'bg-[#2D1B69] text-white border-[#2D1B69]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#2D1B69]/40'
+                className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${
+                  region === r.code ? 'bg-[#FF6B35] text-white border-[#2D1B69]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#2D1B69]/40'
                 }`}
               >
                 {label}
@@ -63,7 +63,7 @@ export default async function StayPage({ params, searchParams }: Props) {
         {!hasStays ? (
           <div className="text-center py-20">
             <div className="text-5xl mb-4">🏨</div>
-            <p className="font-bold text-[#2D1B69] text-lg mb-2">{t('comingSoon')}</p>
+            <p className="font-bold text-[#111] text-lg mb-2">{t('comingSoon')}</p>
             <p className="text-[#7a6a58]">{t('comingSoonDesc')}</p>
           </div>
         ) : (
@@ -82,12 +82,12 @@ export default async function StayPage({ params, searchParams }: Props) {
                     <span className="text-5xl opacity-20">🏨</span>
                   </div>
                   {/* 지역 배지 */}
-                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold bg-[#2D1B69] text-white">
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold bg-[#FF6B35] text-white">
                     📍 {REGIONS.find(r => r.code === stay.region)?.[locale as 'ko' | 'ja' | 'en'] || stay.region}
                   </span>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-bold text-[#2D1B69] mb-2">{stay.name}</h3>
+                  <h3 className="font-bold text-[#111] mb-2">{stay.name}</h3>
                   <p className="text-sm text-[#7a6a58] mb-3 line-clamp-2">{stay.description}</p>
                   <div className="flex flex-wrap gap-1 mb-4">
                     {stay.tags.map(tag => (

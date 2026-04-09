@@ -80,7 +80,7 @@ export default function AdminOrdersPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-[#1B2A4A]">주문 관리</h1>
+          <h1 className="text-2xl font-black text-[#111]">주문 관리</h1>
           <p className="text-slate-500 text-sm mt-1">키트 배송 상태와 운송장을 관리합니다.</p>
         </div>
         
@@ -127,7 +127,7 @@ export default function AdminOrdersPage() {
                 </TableCell>
                 <TableCell>
                   <div className="space-y-0.5">
-                    <p className="font-bold text-[#1B2A4A]">{order.customer_name}</p>
+                    <p className="font-bold text-[#111]">{order.customer_name}</p>
                     <p className="text-[10px] text-slate-400">{order.customer_phone}</p>
                   </div>
                 </TableCell>
@@ -172,7 +172,7 @@ export default function AdminOrdersPage() {
                   </div>
                 </TableCell>
                 <TableCell className="text-right">
-                  <p className="font-black text-[#1B2A4A]">₩{order.total_amount.toLocaleString()}</p>
+                  <p className="font-black text-[#111]">₩{order.total_amount.toLocaleString()}</p>
                 </TableCell>
               </TableRow>
             ))}

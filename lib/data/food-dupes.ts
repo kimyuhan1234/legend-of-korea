@@ -2509,7 +2509,6 @@ export const regions: Region[] = [
           },
           US: {
             name: { ko: "피칸 파이", ja: "ピーカンパイ", en: "Pecan Pie" },
-            tagestProfile: { sweet: 80, salty: 8, spicy: 0, umami: 12, sour: 2 },
             tasteProfile: { sweet: 80, salty: 8, spicy: 0, umami: 12, sour: 2 },
             description: { ko: "피칸과 옥수수 시럽으로 만든 미국 남부식 견과류 파이", ja: "ピーカンとコーンシロップで作るアメリカ南部風ナッツパイ", en: "Southern American pie filled with pecans and corn syrup" },
             ingredients: { ko: ["파이 반죽", "피칸", "옥수수시럽", "설탕", "달걀", "버터"], ja: ["パイ生地", "ピーカン", "コーンシロップ", "砂糖", "卵", "バター"], en: ["pie crust", "pecan", "corn syrup", "sugar", "egg", "butter"] },
