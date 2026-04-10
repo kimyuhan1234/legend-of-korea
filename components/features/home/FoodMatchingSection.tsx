@@ -38,6 +38,7 @@ export function FoodMatchingSection({ locale, title, subtitle, cta }: FoodMatchi
               alt="Food Dupe Matching"
               fill
               sizes="(max-width: 768px) 100vw, 60vw"
+              quality={90}
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>

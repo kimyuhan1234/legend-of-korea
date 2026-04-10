@@ -26,26 +26,26 @@ export function CategorySection({ locale, heading, categories }: CategorySection
         </p>
 
         {/* 데스크톱: 커스텀 비율 grid (스토리 카드 강조) */}
-        <div className="hidden lg:flex gap-2 h-[480px]">
+        <div className="hidden lg:grid grid-cols-[1fr_1fr_1fr_1.4fr_1fr_1fr_1fr] gap-2 h-[480px]">
           {categories.map((cat) => {
             const isStory = cat.id === 'story'
             return (
               <Link
                 key={cat.id}
                 href={`/${locale}${cat.href}`}
-                className={`group relative overflow-hidden rounded-2xl flex-shrink-0 ${isStory ? 'flex-[1.5]' : 'flex-1'}`}
+                className="group relative overflow-hidden rounded-2xl"
               >
                 <div className={`absolute inset-0 ${cat.gradient}`} />
                 <Image
                   src={cat.image}
                   alt={cat.label}
                   fill
-                  sizes="(max-width: 1280px) 25vw, 20vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 1280px) 15vw, 14vw"
+                  quality={90} className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 px-5 pb-6">
-                  <p className={`text-white font-black leading-tight ${isStory ? 'text-2xl' : 'text-xl'}`}>
+                <div className="absolute bottom-0 left-0 right-0 px-4 pb-6">
+                  <p className={`text-white font-black leading-tight ${isStory ? 'text-2xl' : 'text-lg lg:text-xl'}`}>
                     {cat.label}
                   </p>
                 </div>
@@ -54,22 +54,24 @@ export function CategorySection({ locale, heading, categories }: CategorySection
           })}
         </div>
 
-        {/* 태블릿: 3+2 레이아웃 */}
-        <div className="hidden md:grid lg:hidden grid-cols-3 gap-2">
-          {categories.slice(0, 3).map((cat) => (
-            <Link key={cat.id} href={`/${locale}${cat.href}`} className="group relative overflow-hidden rounded-2xl h-72">
+        {/* 태블릿: 4+3 레이아웃 */}
+        <div className="hidden md:grid lg:hidden grid-cols-4 gap-2">
+          {categories.slice(0, 4).map((cat) => (
+            <Link key={cat.id} href={`/${locale}${cat.href}`} className="group relative overflow-hidden rounded-2xl h-64">
               <div className={`absolute inset-0 ${cat.gradient}`} />
-              <Image src={cat.image} alt={cat.label} fill sizes="33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Image src={cat.image} alt={cat.label} fill sizes="25vw" quality={90} className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 px-4 pb-4">
                 <p className="text-white font-black text-lg">{cat.label}</p>
               </div>
             </Link>
           ))}
-          {categories.slice(3).map((cat) => (
-            <Link key={cat.id} href={`/${locale}${cat.href}`} className="group relative overflow-hidden rounded-2xl h-72">
+        </div>
+        <div className="hidden md:grid lg:hidden grid-cols-3 gap-2 mt-2">
+          {categories.slice(4).map((cat) => (
+            <Link key={cat.id} href={`/${locale}${cat.href}`} className="group relative overflow-hidden rounded-2xl h-64">
               <div className={`absolute inset-0 ${cat.gradient}`} />
-              <Image src={cat.image} alt={cat.label} fill sizes="33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Image src={cat.image} alt={cat.label} fill sizes="33vw" quality={90} className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 px-4 pb-4">
                 <p className="text-white font-black text-lg">{cat.label}</p>
@@ -84,13 +86,13 @@ export function CategorySection({ locale, heading, categories }: CategorySection
             <Link
               key={cat.id}
               href={`/${locale}${cat.href}`}
-              className={`group relative overflow-hidden rounded-xl h-52 ${cat.id === 'story' ? 'col-span-2 h-64' : ''}`}
+              className={`group relative overflow-hidden rounded-xl h-48 ${cat.id === 'story' ? 'col-span-2 h-56' : ''}`}
             >
               <div className={`absolute inset-0 ${cat.gradient}`} />
-              <Image src={cat.image} alt={cat.label} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Image src={cat.image} alt={cat.label} fill sizes="(max-width: 768px) 100vw, 50vw" quality={90} className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 px-4 pb-4">
-                <p className="text-white font-black text-lg">{cat.label}</p>
+                <p className="text-white font-black text-base">{cat.label}</p>
               </div>
             </Link>
           ))}

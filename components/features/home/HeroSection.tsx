@@ -14,6 +14,7 @@ export function HeroSection({ cta }: HeroSectionProps) {
         alt="Legend of Korea"
         fill
         sizes="100vw"
+        quality={90}
         className="object-cover"
         priority
       />
