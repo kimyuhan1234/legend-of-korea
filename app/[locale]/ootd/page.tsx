@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
-import { WeeklyOotdBoard } from '@/components/ootd/WeeklyOotdBoard'
+import dynamic from 'next/dynamic'
+
+const WeeklyOotdBoard = dynamic(() => import('@/components/ootd/WeeklyOotdBoard').then(m => ({ default: m.WeeklyOotdBoard })), { ssr: true })
 
 interface Props {
   params: { locale: string }
