@@ -130,6 +130,7 @@ export default async function CourseDetailPage({ params }: Props) {
         courseId={courseId}
         kits={kits as any}
         locale={locale}
+        region={course.region || 'jeonju'}
         isLoggedIn={isLoggedIn}
       />
 

@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import Link from 'next/link'
 
 interface Kit {
@@ -13,6 +14,7 @@ interface Kit {
 interface QuestKitShowcaseProps {
   courseId: string
   kits: Kit[]
+  region: string
   locale: string
   isLoggedIn: boolean
 }
@@ -25,8 +27,21 @@ const KIT_ITEMS = [
   { icon: '🎁', nameKey: 'kit.items.localGift' },
 ]
 
-export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn }: QuestKitShowcaseProps) {
+const KIT_IMAGE_MAP: Record<string, string> = {
+  jeonju: '/images/kits/jeonju.png',
+  seoul: '/images/kits/seoul.png',
+  busan: '/images/kits/busan.png',
+  jeju: '/images/kits/jeju.png',
+  gyeongju: '/images/kits/gyeongju.png',
+  tongyeong: '/images/kits/tongyeong.png',
+  cheonan: '/images/kits/cheonan.png',
+  icheon: '/images/kits/icheon.png',
+  yongin: '/images/kits/seoul.png',
+}
+
+export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }: QuestKitShowcaseProps) {
   const t = useTranslations('quest')
+  const kitImage = KIT_IMAGE_MAP[region] || '/images/kits/jeonju.png'
 
   return (
     <section id="kit-section" className="bg-white py-20 md:py-28">
@@ -35,6 +50,18 @@ export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn }: QuestKi
           {t('kit.title')}
         </h2>
         <p className="text-center text-[#6B7280] mb-10">{t('kit.subtitle')}</p>
+
+        {/* 키트 실사 이미지 */}
+        <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden mb-12 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
+          <Image
+            src={kitImage}
+            alt="Mission Kit"
+            fill
+            sizes="(max-width: 768px) 100vw, 80vw"
+            quality={90}
+            className="object-cover"
+          />
+        </div>
 
         {/* 구성품 그리드 */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
