@@ -918,11 +918,12 @@
         "tier": "Level up your tier! Exclusive rewards at each rank"
       },
       "tier": {
-        "seed": "Seed",
-        "sprout": "Sprout",
-        "goblin": "Goblin",
-        "fairy": "Fairy",
-        "sage": "Sage"
+        "lv1": "Villager",
+        "lv2": "Traveler",
+        "lv3": "Adventurer",
+        "lv4": "Hero",
+        "lv5": "Legend",
+        "lv6": "Myth"
       },
       "cta": "Start Your Mission Travel →"
     },

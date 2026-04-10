@@ -15,11 +15,12 @@ export function QuestComparison() {
   ]
 
   const tiers = [
-    { emoji: '🌱', nameKey: 'comparison.tier.seed', lp: '0', benefit: '3%' },
-    { emoji: '🌿', nameKey: 'comparison.tier.sprout', lp: '500', benefit: '5%' },
-    { emoji: '👹', nameKey: 'comparison.tier.goblin', lp: '2,000', benefit: '8%' },
-    { emoji: '🧚', nameKey: 'comparison.tier.fairy', lp: '5,000', benefit: '12%' },
-    { emoji: '🏔️', nameKey: 'comparison.tier.sage', lp: '10,000', benefit: '15% + VIP' },
+    { emoji: '🏘️', nameKey: 'comparison.tier.lv1', lp: '0',      benefit: '-',           pos: 0 },
+    { emoji: '🧳', nameKey: 'comparison.tier.lv2', lp: '500',    benefit: '3%',          pos: 10 },
+    { emoji: '⚔️', nameKey: 'comparison.tier.lv3', lp: '2,000',  benefit: '5%',          pos: 30 },
+    { emoji: '🦸', nameKey: 'comparison.tier.lv4', lp: '5,000',  benefit: '8%',          pos: 50 },
+    { emoji: '👑', nameKey: 'comparison.tier.lv5', lp: '10,000', benefit: '12%',         pos: 75 },
+    { emoji: '✨', nameKey: 'comparison.tier.lv6', lp: '20,000', benefit: '15% + VIP',   pos: 100 },
   ]
 
   const scrollToKit = () => {
@@ -59,25 +60,47 @@ export function QuestComparison() {
               ))}
             </ul>
 
-            {/* LP & 티어 인포그래픽 */}
+            {/* LP & 6단계 티어 인포그래픽 */}
             <div className="bg-[#F5F3EF] rounded-2xl p-5">
-              <p className="text-xs font-bold text-[#FF6B35] uppercase tracking-widest mb-3">
+              <p className="text-xs font-bold text-[#FF6B35] uppercase tracking-widest mb-4">
                 {t('comparison.legend.lp')}
               </p>
-              <div className="flex items-center justify-between mb-2">
+
+              {/* 프로그레스 바 */}
+              <div className="relative mb-2">
+                <div className="h-3 bg-gradient-to-r from-green-400 via-yellow-400 via-orange-500 to-red-500 rounded-full" />
+                {/* 티어 마커 */}
                 {tiers.map((tier, i) => (
-                  <div key={i} className="flex flex-col items-center text-center flex-1">
-                    <span className="text-xl">{tier.emoji}</span>
-                    <span className="text-[10px] font-bold text-[#111] mt-1">
-                      {t(tier.nameKey as Parameters<typeof t>[0])}
-                    </span>
-                    <span className="text-[9px] text-[#6B7280]">{tier.lp} LP</span>
-                    <span className="text-[9px] text-[#FF6B35] font-bold">{tier.benefit}</span>
+                  <div
+                    key={i}
+                    className="absolute -top-1"
+                    style={{ left: `${tier.pos}%`, transform: 'translateX(-50%)' }}
+                  >
+                    <div className="w-5 h-5 rounded-full bg-white border-2 border-[#FF6B35] flex items-center justify-center text-[10px] shadow-sm">
+                      {tier.emoji}
+                    </div>
                   </div>
                 ))}
               </div>
-              <div className="h-2 bg-gradient-to-r from-green-300 via-yellow-300 via-orange-400 to-red-500 rounded-full mt-1" />
-              <p className="text-[10px] text-[#6B7280] mt-2 text-center">
+
+              {/* 티어 라벨 */}
+              <div className="grid grid-cols-6 gap-1 mt-4">
+                {tiers.map((tier, i) => (
+                  <div key={i} className="flex flex-col items-center text-center">
+                    <span className="text-lg leading-none">{tier.emoji}</span>
+                    <span className="text-[9px] font-black text-[#111] mt-1 leading-tight">
+                      Lv.{i + 1}
+                    </span>
+                    <span className="text-[8px] font-bold text-[#374151] leading-tight">
+                      {t(tier.nameKey as Parameters<typeof t>[0])}
+                    </span>
+                    <span className="text-[8px] text-[#6B7280]">{tier.lp} LP</span>
+                    <span className="text-[8px] text-[#FF6B35] font-bold">{tier.benefit}</span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-[10px] text-[#6B7280] mt-3 text-center">
                 {t('comparison.legend.tier')}
               </p>
             </div>
