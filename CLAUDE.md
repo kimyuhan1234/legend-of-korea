@@ -36,6 +36,15 @@ git push origin main
 
 3. **`error.tsx` / `global-error.tsx` / `loading.tsx` / `not-found.tsx` 에는 `next-intl`, `shadcn/ui`, 외부 컴포넌트를 절대 임포트하지 마라.** 이 파일들은 React Provider 바깥에서 렌더링될 수 있으므로, 오직 `'use client'` + 순수 React + 인라인 스타일만 허용된다.
 
+4. **`pnpm install` 후에는 반드시 `.next` 폴더를 삭제한 뒤 `pnpm dev`를 실행한다.** pnpm이 의존성 버전을 업데이트하면 `.next/server/vendor-chunks/` 내부 파일명과 불일치가 발생하여 `Cannot find module './vendor-chunks/@supabase+auth-js@...'` 에러가 발생한다. (실제 반복 사고 발생 이력 있음)
+
+```bash
+# 작업 시작 시 또는 vendor-chunks 에러 발생 시 실행
+rm -rf .next node_modules && pnpm install && pnpm dev
+```
+
+> **Claude 작업 원칙**: 코드 수정 후 dev 서버를 재시작할 때는 항상 `.next`를 삭제한 뒤 시작한다. `pnpm install`을 실행했다면 반드시 `.next`도 함께 삭제한다.
+
 ---
 
 ## [문서 주도 개발 규칙] ← 반드시 준수
