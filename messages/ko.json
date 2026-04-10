@@ -540,9 +540,9 @@
   "story": {
     "title": "QUEST",
     "subtitle": "코스 탐색 · 스토리 · 미션",
-    "tabMissionKit": "코스 탐색",
-    "tabMemories": "스토리",
-    "tabPoints": "QUEST",
+    "tabMissionKit": "QUEST",
+    "tabMemories": "추억 남기기",
+    "tabPoints": "전설 상점",
     "loginRequired": "로그인 후 확인 가능합니다",
     "loginBtn": "로그인",
     "pointsTitle": "나의 포인트",

@@ -515,9 +515,9 @@
   "story": {
     "title": "QUEST",
     "subtitle": "コース探索 · ストーリー · クエスト",
-    "tabMissionKit": "コース探索",
-    "tabMemories": "ストーリー",
-    "tabPoints": "QUEST",
+    "tabMissionKit": "QUEST",
+    "tabMemories": "思い出記録",
+    "tabPoints": "伝説の店",
     "loginRequired": "ログイン後に確認できます",
     "loginBtn": "ログイン",
     "pointsTitle": "マイポイント",
