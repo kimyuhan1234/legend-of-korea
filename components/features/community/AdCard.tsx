@@ -34,7 +34,7 @@ export function AdCard({ ad, locale }: AdCardProps) {
       {/* Ad Banner Image */}
       {ad.ad_banner && (
         <Link href={ad.ad_link || '#'} target="_blank" className="block relative w-full aspect-[21/9] rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden mb-4 group shadow-sm">
-          <Image src={ad.ad_banner} alt={ad.title || 'Ad Image'} fill className="object-cover group-hover:scale-105 transition-transform duration-500" unoptimized />
+          <Image src={ad.ad_banner} alt={ad.title || 'Ad Image'} fill sizes="(max-width: 768px) 100vw, 300px" className="object-cover group-hover:scale-105 transition-transform duration-500" unoptimized />
           <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
         </Link>
       )}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { PopularPosts } from './PopularPosts';
 
 interface AdBannerItem {
@@ -14,6 +15,8 @@ interface AdBannerItem {
 }
 
 export function CommunitySidebar() {
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1] || 'ko';
   const [topAds, setTopAds] = useState<AdBannerItem[]>([]);
   const [bottomAds, setBottomAds] = useState<AdBannerItem[]>([]);
 
@@ -112,7 +115,7 @@ export function CommunitySidebar() {
             <p className="font-black text-base mb-1">Legend of Korea와 함께하세요</p>
             <p className="text-xs text-white/80 mb-3">당신의 전설을 기록하고 LP를 쌓으세요</p>
             <Link
-              href="/ko/courses"
+              href={`/${locale}/courses`}
               className="inline-block text-xs bg-white/20 hover:bg-white/30 text-white font-bold
                          px-4 py-2 rounded-full transition-colors"
             >

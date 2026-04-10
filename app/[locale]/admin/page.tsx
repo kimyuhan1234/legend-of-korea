@@ -44,7 +44,7 @@ export default function AdminDashboardPage() {
       } catch (error) {
         console.error("Failed to fetch admin stats:", error)
       } finally {
-        setLoading(setLoading(false as any) as any)
+        setLoading(false)
       }
     }
     fetchStats()

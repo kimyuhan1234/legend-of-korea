@@ -41,6 +41,7 @@ export function CourseHero({ course, missionCount, locale }: CourseHeroProps) {
           src={course.thumbnail_url || "/images/dokkaebi-hero.jpg"}
           alt={title}
           fill
+          sizes="100vw"
           className="object-cover opacity-30"
           priority
         />

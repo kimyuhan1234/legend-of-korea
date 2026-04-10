@@ -14,6 +14,18 @@ export async function POST(req: Request) {
       return Response.json({ error: '파일과 미션 ID가 필요합니다.' }, { status: 400 });
     }
 
+    // 파일 타입 검증
+    const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      return Response.json({ error: '지원하지 않는 파일 형식입니다. (JPG, PNG, WEBP, GIF만 가능)' }, { status: 400 });
+    }
+
+    // 파일 크기 검증 (10MB)
+    const MAX_SIZE = 10 * 1024 * 1024;
+    if (file.size > MAX_SIZE) {
+      return Response.json({ error: '파일 크기는 10MB 이하만 가능합니다.' }, { status: 400 });
+    }
+
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return Response.json({ error: '로그인이 필요합니다.' }, { status: 401 });
 

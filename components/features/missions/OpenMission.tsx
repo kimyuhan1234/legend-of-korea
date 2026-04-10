@@ -214,7 +214,7 @@ export function OpenMission({
                 
                 {preview ? (
                     <div className="relative aspect-video w-full rounded-2xl overflow-hidden border-2 border-slate-200 shadow-inner group">
-                        <Image src={preview} alt="Preview" fill className="object-cover transition-transform group-hover:scale-105" />
+                        <Image src={preview} alt="Preview" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform group-hover:scale-105" />
                         <Button 
                             variant="destructive" 
                             size="icon" 

@@ -56,9 +56,7 @@ export async function middleware(request: NextRequest) {
         process.env.NEXT_PUBLIC_SUPABASE_URL?.split("//")[1]?.split(".")[0] ?? ""
       const authCookieName = `sb-${projectRef}-auth-token`
 
-      const hasSession =
-        request.cookies.has(authCookieName) ||
-        request.cookies.has("sb-isixbzxophgxrfgjesaa-auth-token")
+      const hasSession = request.cookies.has(authCookieName)
 
       if (!hasSession) {
         const loginUrl = new URL(`/${locale}/auth/login`, request.url)

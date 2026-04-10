@@ -1,8 +1,8 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
   ShoppingBag,
@@ -35,7 +35,33 @@ const NAV_ITEMS = [
 export default function AdminLayout({ children, params }: AdminLayoutProps) {
   const { locale } = params;
   const pathname = usePathname();
+  const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
+
+  useEffect(() => {
+    async function checkAdmin() {
+      try {
+        const res = await fetch('/api/admin/stats')
+        if (!res.ok) {
+          router.replace(`/${locale}/auth/login?next=${pathname}`)
+          return
+        }
+        setAuthChecked(true)
+      } catch {
+        router.replace(`/${locale}/auth/login`)
+      }
+    }
+    checkAdmin()
+  }, [locale, pathname, router]);
+
+  if (!authChecked) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p>권한을 확인하는 중...</p>
+      </div>
+    )
+  }
 
   const isActive = (href: string) => {
     const fullPath = `/${locale}${href}`;

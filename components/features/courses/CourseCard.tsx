@@ -46,6 +46,7 @@ export function CourseCard({ course, locale }: CourseCardProps) {
           src={course.thumbnail_url || "/images/dokkaebi-hero.jpg"}
           alt={title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         {/* 난이도 뱃지 */}
