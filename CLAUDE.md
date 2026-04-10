@@ -332,3 +332,72 @@ export async function POST(req: Request) {
 - 미션 완료 여부를 `mission_progress` 테이블에서 서버에서 직접 확인
 - 동일 미션 중복 적립 방지: `UNIQUE (user_id, mission_id)` 제약 활용
 - LP 금액은 `missions.lp_reward`에서 서버가 직접 읽어옴 (클라이언트 전달값 무시)
+
+---
+
+### 4. 하드코딩 금지 (No Hardcoded Secrets)
+
+> 코드에 프로젝트 ID, API 키, 토큰을 직접 쓰면 안 된다.
+
+- **middleware.ts, 컴포넌트, API 라우트** 어디에서든 Supabase 프로젝트 ID(`isixbzxophgxrfgjesaa` 등)를 문자열로 직접 넣지 않는다.
+- 반드시 `process.env.NEXT_PUBLIC_SUPABASE_URL`에서 동적으로 추출한다.
+- **체크리스트** (코드 작성 후):
+  - [ ] `grep -r "isixbzx" .` 등으로 프로젝트 ID 하드코딩이 없는지 확인
+  - [ ] `grep -r "sk_live\|sk_test\|sbp_" .` 등으로 시크릿 키 하드코딩이 없는지 확인
+
+---
+
+### 5. 파일 업로드 보안 (Upload Validation)
+
+> 사용자가 올린 파일을 무조건 신뢰하지 않는다.
+
+- **허용 MIME 타입**: `image/jpeg`, `image/png`, `image/webp`, `image/gif`만 허용
+- **최대 파일 크기**: 10MB (`10 * 1024 * 1024`)
+- `file.name`에서 확장자만 추출하는 것은 불충분 — 반드시 `file.type`으로 MIME 타입 검증
+
+```typescript
+// 올바른 패턴 (app/api/missions/upload/route.ts에 적용됨)
+const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+if (!ALLOWED_TYPES.includes(file.type)) {
+  return Response.json({ error: '지원하지 않는 파일 형식' }, { status: 400 });
+}
+if (file.size > 10 * 1024 * 1024) {
+  return Response.json({ error: '10MB 초과' }, { status: 400 });
+}
+```
+
+---
+
+### 6. console.log 금지 (No Sensitive Logging)
+
+> API 라우트에서 이메일, 요청 본문, 결제 정보를 `console.log`로 찍지 않는다.
+
+- 에러 핸들러의 `console.error`는 허용하되, 사용자 입력값·개인정보는 포함하지 않는다.
+- 디버깅용 `console.log`는 작업 완료 전에 반드시 제거한다.
+- **금지 패턴:**
+  ```typescript
+  console.log("request:", { email, locale })  // ← 개인정보 노출
+  console.log("supabase result:", { data })   // ← 민감 데이터 노출
+  ```
+
+---
+
+### 7. Admin 보호 (Admin Route Protection)
+
+> `/admin` 경로는 2단계로 보호한다.
+
+1. **middleware.ts의 `PROTECTED_PATHS`에 `/admin` 포함** — 비로그인 시 로그인 페이지로 307 리다이렉트
+2. **API 라우트(`app/api/admin/**`)에서 role 체크** — `role !== 'admin'`이면 403 Forbidden
+
+- admin layout에 `useEffect` + `useRouter`로 클라이언트 auth guard를 넣으면 **`clientModules` 에러 발생** (실제 사고 발생 이력 있음). 클라이언트 레이아웃에서 auth 체크를 하지 않는다.
+- 보호는 반드시 **middleware + API 레벨**에서만 수행한다.
+
+---
+
+### 8. not-found.tsx 규칙 (Not Found Safety)
+
+> `app/not-found.tsx`에는 `<html>`, `<body>` 태그를 넣지 않는다.
+
+- `app/not-found.tsx`는 `app/layout.tsx` 안에서 렌더링되므로, `<html><body>`를 중복 선언하면 hydration 충돌 → `useContext null` 에러 발생 (실제 사고 발생 이력 있음)
+- `<html><body>`는 **`app/global-error.tsx`만** 사용한다.
+- `app/not-found.tsx`와 `app/[locale]/not-found.tsx` 모두 `'use client'` + 순수 인라인 스타일 + `<div>` 래퍼만 허용
