@@ -1,3 +1,5 @@
+'use client'
+
 interface DifficultyBadgeProps {
   difficulty: "easy" | "medium" | "hard"
   locale: string

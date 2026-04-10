@@ -49,6 +49,8 @@ rm -rf .next node_modules && pnpm install && pnpm dev
 
 6. **admin layout에 `useEffect` + `useRouter`로 auth guard를 넣지 않는다.** 마찬가지로 `clientModules` 에러를 유발한다. admin 보호는 middleware + API 레벨에서만 수행한다. (실제 사고 발생 이력 있음)
 
+7. **`'use client'` 컴포넌트가 import하는 모든 컴포넌트에도 `'use client'`가 있어야 한다.** 클라이언트 컴포넌트가 `'use client'` 없는 컴포넌트를 import하면 서버/클라이언트 경계 해석이 꼬여 `clientModules` 에러가 발생한다. `components/ui/` (shadcn), `components/shared/` 컴포넌트를 새로 만들거나 수정할 때 반드시 확인한다. (실제 반복 사고의 **진짜 근본 원인**이었음)
+
 ---
 
 ## [문서 주도 개발 규칙] ← 반드시 준수

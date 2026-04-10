@@ -1,3 +1,5 @@
+'use client'
+
 interface DisclaimerProps {
   locale: string
   className?: string
