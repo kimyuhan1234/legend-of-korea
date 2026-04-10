@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
-import { CourseCard } from '@/components/features/courses/CourseCard'
+import { CourseSlider } from '@/components/features/courses/CourseSlider'
 import { getRegionName } from '@/lib/constants/regions'
+import type { I18nText } from '@/lib/supabase/types'
 
 interface CoursesTabProps {
   locale: string
@@ -12,70 +13,61 @@ const COMING_SOON_BADGE: Record<string, string> = {
   en: 'Coming Soon',
 }
 
+const LABEL = {
+  ko: { heading: '🗺️ 미션 키트', from: '부터', detail: '자세히 보기', empty: '곧 새로운 전설이 열립니다' },
+  ja: { heading: '🗺️ ミッションキット', from: 'から', detail: '詳しく見る', empty: 'まもなく新しい伝説が始まります' },
+  en: { heading: '🗺️ Mission Kits', from: 'from', detail: 'View details', empty: 'New legends are coming soon' },
+}
+
+function getI18n(field: I18nText | null, locale: string): string {
+  if (!field) return ''
+  return (field as unknown as Record<string, string>)[locale] || field.ko || ''
+}
+
 export async function CoursesTab({ locale }: CoursesTabProps) {
   const supabase = await createClient()
 
   const { data: allCourses } = await supabase
     .from('courses')
     .select('id, title, description, thumbnail_url, difficulty, region, duration_text, price_1p, price_2p, is_active')
+    .order('is_active', { ascending: false })
     .order('created_at', { ascending: true })
 
-const activeCourses = allCourses?.filter(c => c.is_active) ?? []
-  const comingSoonCourses = allCourses?.filter(c => !c.is_active) ?? []
-
+  const courses = allCourses ?? []
   const badge = COMING_SOON_BADGE[locale] ?? COMING_SOON_BADGE.ko
+  const label = LABEL[locale as keyof typeof LABEL] || LABEL.ko
+
+  if (courses.length === 0) {
+    return (
+      <div className="text-center py-20 text-[#7a6a58]">
+        <div className="text-5xl mb-4">🌙</div>
+        <p>{label.empty}</p>
+      </div>
+    )
+  }
+
+  const sliderItems = courses.map((course) => ({
+    id: course.id,
+    title: getI18n(course.title as I18nText, locale),
+    description: getI18n(course.description as I18nText, locale),
+    thumbnail_url: course.thumbnail_url,
+    difficulty: course.difficulty || 'easy',
+    region: course.region,
+    regionName: getRegionName(course.region, locale),
+    duration: getI18n(course.duration_text as I18nText, locale),
+    price_1p: course.price_1p || 0,
+    isActive: course.is_active ?? false,
+    comingSoonBadge: badge,
+  }))
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-black text-[#111]">🗺️ 미션 키트</h2>
-      </div>
-      {activeCourses.length === 0 && comingSoonCourses.length === 0 ? (
-        <div className="text-center py-20 text-[#7a6a58]">
-          <div className="text-5xl mb-4">🌙</div>
-          <p>곧 새로운 전설이 열립니다</p>
-        </div>
-      ) : (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {activeCourses.map(course => (
-            <CourseCard key={course.id} course={course as any} locale={locale} />
-          ))}
-          {comingSoonCourses.map(course => {
-            const title =
-              typeof course.title === 'object' && course.title !== null
-                ? (course.title as Record<string, string>)[locale] ??
-                  (course.title as Record<string, string>).ko
-                : String(course.title)
-            return (
-              <div
-                key={course.id}
-                className="relative bg-white rounded-3xl overflow-hidden border border-[#e8ddd0]/60 shadow-sm opacity-80 cursor-not-allowed"
-              >
-                <div className="relative h-48 overflow-hidden bg-[#e8ddd0]">
-                  {course.thumbnail_url && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={course.thumbnail_url}
-                      alt={title}
-                      className="w-full h-full object-cover brightness-75"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-black/30" />
-                  <div className="absolute top-3 left-3">
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-[#FF6B35] text-white">
-                      {badge}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <p className="text-xs text-[#7a6a58] mb-2">📍 {getRegionName(course.region, locale)}</p>
-                  <h3 className="font-bold text-[#111]">{title}</h3>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      )}
+      <h2 className="text-xl font-black text-[#111] mb-6">{label.heading}</h2>
+      <CourseSlider
+        courses={sliderItems}
+        locale={locale}
+        label={{ from: label.from, detail: label.detail }}
+      />
     </div>
   )
 }
