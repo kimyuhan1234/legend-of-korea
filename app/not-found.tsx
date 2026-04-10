@@ -1,17 +1,43 @@
-import Link from 'next/link'
+'use client'
 
 export default function GlobalNotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 text-center bg-[#F5F0E8]">
-      <div className="text-8xl mb-8">👹</div>
-      <h1 className="text-3xl font-bold text-[#111] mb-4">404 - 페이지를 찾을 수 없습니다</h1>
-      <p className="text-lg text-[#3a3028] mb-8">요청하신 페이지가 존재하지 않습니다.</p>
-      <Link
-        href="/ko"
-        className="px-8 py-3 rounded-xl bg-[#F5F3EF] text-white font-bold hover:bg-[#243a63] transition-colors"
-      >
-        홈으로 돌아가기
-      </Link>
-    </div>
+    <html>
+      <body>
+        <div style={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '2rem',
+          textAlign: 'center',
+          fontFamily: 'sans-serif',
+          background: '#fff',
+        }}>
+          <div style={{ fontSize: '5rem', marginBottom: '1.5rem' }}>👹</div>
+          <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '0.75rem', color: '#111' }}>
+            404 - 페이지를 찾을 수 없습니다
+          </h1>
+          <p style={{ color: '#666', marginBottom: '2rem' }}>
+            요청하신 페이지가 존재하지 않습니다.
+          </p>
+          <a
+            href="/ko"
+            style={{
+              padding: '0.75rem 2rem',
+              background: '#FF6B35',
+              color: 'white',
+              borderRadius: '1rem',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+            }}
+          >
+            홈으로 돌아가기
+          </a>
+        </div>
+      </body>
+    </html>
   )
 }
