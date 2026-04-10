@@ -485,8 +485,8 @@
     "flagCookingForeignBase": "Foreign Element"
   },
   "goods": {
-    "title": "Goods Shop",
-    "subtitle": "Special souvenirs from legendary lands, coming soon",
+    "title": "GOODS",
+    "subtitle": "Special souvenirs from the land of legends, coming soon",
     "description": "We're carefully preparing exclusive Legend of Korea goods. Souvenirs carrying the legends and stories of each region are on their way. Stay tuned!",
     "comingSoon": "COMING SOON",
     "notifyTitle": "Get notified when we launch",
@@ -513,11 +513,11 @@
     "loginBtn": "Sign In"
   },
   "story": {
-    "title": "Story",
-    "subtitle": "Mission Kits · Memories · Legend Shop",
-    "tabMissionKit": "Mission Kits",
-    "tabMemories": "Memories",
-    "tabPoints": "Legend Shop",
+    "title": "QUEST",
+    "subtitle": "Course Explore · Story · Quest",
+    "tabMissionKit": "Courses",
+    "tabMemories": "Story",
+    "tabPoints": "QUEST",
     "loginRequired": "Please sign in to view",
     "loginBtn": "Sign In",
     "pointsTitle": "My Points",
@@ -525,16 +525,16 @@
     "currentTier": "Current Tier"
   },
   "stay": {
-    "title": "Stay",
-    "subtitle": "Find accommodations for your legendary journey",
+    "title": "STAY",
+    "subtitle": "Discover unique stays in Korea",
     "filterAll": "All",
     "bookNow": "Book Now",
     "comingSoon": "Coming Soon",
     "comingSoonDesc": "We're preparing stays for this region"
   },
   "sights": {
-    "title": "Sights",
-    "subtitle": "Explore hotspots across Korea",
+    "title": "SPOT",
+    "subtitle": "Must-see attractions in Korea",
     "filterAll": "All",
     "hotspot": "Hotspot",
     "landmark": "Landmark",

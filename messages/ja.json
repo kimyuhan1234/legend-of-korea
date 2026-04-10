@@ -485,8 +485,8 @@
     "flagCookingForeignBase": "相手国の要素"
   },
   "goods": {
-    "title": "グッズショップ",
-    "subtitle": "伝説の地から届く特別な記念品、もうすぐ登場",
+    "title": "GOODS",
+    "subtitle": "伝説の地からの特別な記念品、まもなく登場",
     "description": "Legend of Koreaならではの特別なグッズを心を込めて準備しています。各地域の伝説と物語を込めた記念品がまもなく届きます。もう少しお待ちください！",
     "comingSoon": "COMING SOON",
     "notifyTitle": "オープン通知を申し込む",
@@ -513,11 +513,11 @@
     "loginBtn": "ログインする"
   },
   "story": {
-    "title": "ストーリー",
-    "subtitle": "ミッションキット・思い出・伝説の店",
-    "tabMissionKit": "ミッションキット",
-    "tabMemories": "思い出を残す",
-    "tabPoints": "伝説の店",
+    "title": "QUEST",
+    "subtitle": "コース探索 · ストーリー · クエスト",
+    "tabMissionKit": "コース探索",
+    "tabMemories": "ストーリー",
+    "tabPoints": "QUEST",
     "loginRequired": "ログイン後に確認できます",
     "loginBtn": "ログイン",
     "pointsTitle": "マイポイント",
@@ -525,16 +525,16 @@
     "currentTier": "現在の等級"
   },
   "stay": {
-    "title": "ステイ",
-    "subtitle": "伝説の旅に寄り添う宿泊施設を探しましょう",
+    "title": "STAY",
+    "subtitle": "韓国の特別な宿泊先を見つけよう",
     "filterAll": "すべて",
     "bookNow": "予約する",
     "comingSoon": "準備中",
     "comingSoonDesc": "この地域の宿泊情報を準備中です"
   },
   "sights": {
-    "title": "観光",
-    "subtitle": "韓国各地のホットスポットを探検しましょう",
+    "title": "SPOT",
+    "subtitle": "見逃せない韓国の見どころ",
     "filterAll": "すべて",
     "hotspot": "ホットスポット",
     "landmark": "ランドマーク",

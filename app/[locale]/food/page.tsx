@@ -8,15 +8,15 @@ interface Props {
 }
 
 const META = {
-  ko: { title: '음식 | Legend of Korea', desc: '지역별 K-Food Spot 큐레이션' },
-  ja: { title: 'グルメ | Legend of Korea', desc: '地域別K-Foodスポットキュレーション' },
-  en: { title: 'Food | Legend of Korea', desc: 'Regional K-Food Spot curation' },
+  ko: { title: 'K-FOOD | Legend of Korea', desc: '지역별 K-Food Spot 큐레이션' },
+  ja: { title: 'K-FOOD | Legend of Korea', desc: '地域別K-Foodスポットキュレーション' },
+  en: { title: 'K-FOOD | Legend of Korea', desc: 'Regional K-Food Spot curation' },
 }
 
 const HERO = {
-  ko: { badge: 'K-FOOD', title: '음식', subtitle: '지역별 맛집 스팟 · 음식 듀프 · 플래그 쿠킹' },
-  ja: { badge: 'K-FOOD', title: 'グルメ', subtitle: '地域別グルメスポット · 食べ物デュープ · フラッグ料理' },
-  en: { badge: 'K-FOOD', title: 'Food', subtitle: 'Regional spots · Food dupes · Flag cooking' },
+  ko: { badge: 'K-FOOD', title: 'K-FOOD', subtitle: '지역별 맛집 스팟 · 음식 듀프 · 플래그 쿠킹' },
+  ja: { badge: 'K-FOOD', title: 'K-FOOD', subtitle: '地域別グルメスポット · 食べ物デュープ · フラッグ料理' },
+  en: { badge: 'K-FOOD', title: 'K-FOOD', subtitle: 'Regional spots · Food dupes · Flag cooking' },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
