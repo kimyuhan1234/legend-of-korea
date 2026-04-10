@@ -6,7 +6,7 @@ const locales = ["ko", "ja", "en"] as const
 const defaultLocale = "ko"
 
 // 로그인 필요 경로 (locale prefix 제외)
-const PROTECTED_PATHS = ["/mypage", "/community/write", "/shop", "/missions"]
+const PROTECTED_PATHS = ["/mypage", "/community/write", "/shop", "/missions", "/admin"]
 
 const intlMiddleware = createMiddleware({
   locales,
