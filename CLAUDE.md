@@ -224,7 +224,32 @@ try {
 
 ---
 
-### 4. 레고 블록 규칙 (Atomic UI Updates)
+### 4. 파일 위생 규칙 (File Hygiene)
+
+> 프로젝트에 쓰레기 파일을 남기지 않는다.
+
+**작업 중 임시 파일 금지:**
+- Python 스크립트(`.py`), 임시 텍스트(`.txt`), 로그 파일을 프로젝트 폴더 안에 생성하지 않는다.
+- 데이터 생성용 스크립트가 필요하면 프로젝트 폴더 **바깥**에서 실행하고, 작업 완료 후 즉시 삭제한다.
+
+**이미지 중복 방지:**
+- 같은 음식/장소의 `.jpg`와 `.png`가 동시에 존재하면 안 된다. **`.png`만 유지**한다.
+- 이미지를 교체할 때는 기존 파일을 삭제한 후 새 파일을 추가한다.
+
+**미사용 컴포넌트 정리:**
+- 새 컴포넌트를 만들어 기존 컴포넌트를 대체했으면, 기존 파일을 삭제한다.
+- 판단 기준: `grep -r "import.*ComponentName" .`으로 검색해서 import가 0건이면 삭제 대상.
+
+**프로젝트 루트에 허용되는 파일:**
+- 설정 파일: `package.json`, `tsconfig.json`, `next.config.mjs`, `.eslintrc.json`, `.npmrc`, `postcss.config.mjs`, `vitest.config.ts`, `vercel.json`, `components.json`
+- 문서: `CLAUDE.md`, `README.md`, `DEPLOYMENT.md`
+- 환경: `.env.local`, `.env.example`, `.gitignore`
+- 자동 생성: `pnpm-lock.yaml`, `next-env.d.ts`, `tsconfig.tsbuildinfo`
+- **그 외 파일은 존재하면 안 된다**
+
+---
+
+### 5. 레고 블록 규칙 (Atomic UI Updates)
 
 > page.tsx를 통째로 덮어쓰지 않는다.
 
