@@ -52,14 +52,14 @@ export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }:
         <p className="text-center text-[#6B7280] mb-10">{t('kit.subtitle')}</p>
 
         {/* 키트 실사 이미지 */}
-        <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden mb-12 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
+        <div className="relative aspect-[4/3] md:aspect-[16/9] rounded-3xl overflow-hidden mb-12 shadow-[0_12px_40px_rgba(0,0,0,0.12)] bg-[#F5F3EF]">
           <Image
             src={kitImage}
             alt="Mission Kit"
             fill
             sizes="(max-width: 768px) 100vw, 80vw"
             quality={90}
-            className="object-cover"
+            className="object-contain"
           />
         </div>
 

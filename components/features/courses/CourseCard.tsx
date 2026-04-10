@@ -41,13 +41,13 @@ export function CourseCard({ course, locale }: CourseCardProps) {
       className="group block bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden border-0 shadow-sm hover:shadow-md hover:border-[#D4A843]/40 transition-all duration-200"
     >
       {/* 썸네일 */}
-      <div className="relative aspect-video bg-[#F5F3EF]/10 overflow-hidden">
+      <div className="relative aspect-[4/3] bg-[#F5F3EF] overflow-hidden">
         <Image
           src={course.thumbnail_url || "/images/dokkaebi-hero.jpg"}
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-contain group-hover:scale-105 transition-transform duration-500"
         />
         {/* 난이도 뱃지 */}
         <div className="absolute top-3 left-3">

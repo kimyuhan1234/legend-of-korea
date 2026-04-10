@@ -29,7 +29,7 @@ export function QuestHero({ title, region, thumbnail, difficulty, duration, miss
         fill
         sizes="100vw"
         quality={90}
-        className="object-cover opacity-40"
+        className="object-cover object-top opacity-40"
         priority
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
