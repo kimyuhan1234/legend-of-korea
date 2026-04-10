@@ -36,7 +36,7 @@ const KIT_IMAGE_MAP: Record<string, string> = {
   tongyeong: '/images/kits/tongyeong.png',
   cheonan: '/images/kits/cheonan.png',
   icheon: '/images/kits/icheon.png',
-  yongin: '/images/kits/seoul.png',
+  yongin: '/images/kits/yongin.png',
 }
 
 export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }: QuestKitShowcaseProps) {
