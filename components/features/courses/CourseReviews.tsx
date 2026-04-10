@@ -2,7 +2,7 @@ import Link from "next/link"
 
 interface ReviewPost {
   id: string
-  content: string
+  text: string
   photos: string[] | null
   likes_count: number
   created_at: string
@@ -51,9 +51,9 @@ const LABEL = {
 }
 
 const TIER_NAMES = {
-  ko: ["", "마을 주민", "나그네", "풍류객", "산신령", "도깨비왕", "전설의 영웅"],
-  ja: ["", "村人", "旅人", "風流客", "山の神", "鬼王", "伝説の英雄"],
-  en: ["", "Villager", "Wanderer", "Traveler", "Mountain God", "Dokkaebi King", "Legend Hero"],
+  ko: ["", "마을 주민", "여행자", "모험가", "영웅", "전설", "신화"],
+  ja: ["", "村の住民", "旅行者", "冒険家", "英雄", "伝説", "神話"],
+  en: ["", "Villager", "Traveler", "Adventurer", "Hero", "Legend", "Myth"],
 }
 
 function timeAgo(dateStr: string, locale: string): string {
@@ -168,7 +168,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
 
                 {/* 내용 */}
                 <p className="text-sm text-[#3a3028] leading-relaxed line-clamp-3">
-                  {post.content}
+                  {post.text}
                 </p>
 
                 {/* 좋아요 */}

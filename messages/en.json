@@ -409,10 +409,10 @@
   "tier": {
     "1": "Villager",
     "2": "Traveler",
-    "3": "Wanderer",
-    "4": "Mountain Spirit",
-    "5": "Dokkaebi King",
-    "6": "Legendary Hero"
+    "3": "Adventurer",
+    "4": "Hero",
+    "5": "Legend",
+    "6": "Myth"
   },
   "footer": {
     "company": "Legend of Korea Co., Ltd.",

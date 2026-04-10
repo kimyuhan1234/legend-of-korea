@@ -177,23 +177,21 @@ CREATE TABLE lp_transactions (
 
 ```sql
 CREATE TABLE tiers (
-  id              SERIAL PRIMARY KEY,
-  name_ko         TEXT NOT NULL,   -- '씨앗', '새싹', '도깨비', '선녀', '신선'
-  name_ja         TEXT NOT NULL,
-  name_en         TEXT NOT NULL,
+  level           INTEGER PRIMARY KEY,
+  name            JSONB NOT NULL,    -- {"ko":"...", "ja":"...", "en":"..."}
   min_lp          INTEGER NOT NULL,
-  max_lp          INTEGER,         -- NULL이면 상한 없음
-  badge_url       TEXT,
-  created_at      TIMESTAMPTZ NOT NULL DEFAULT now()
+  discount_rate   INTEGER NOT NULL DEFAULT 0,
+  badge_url       TEXT
 );
 
--- 초기 데이터
-INSERT INTO tiers (name_ko, name_ja, name_en, min_lp, max_lp) VALUES
-  ('씨앗',   '種',     'Seed',    0,     499),
-  ('새싹',   '芽',     'Sprout',  500,   1999),
-  ('도깨비', '鬼',     'Goblin',  2000,  4999),
-  ('선녀',   '仙女',   'Fairy',   5000,  9999),
-  ('신선',   '神仙',   'Sage',    10000, NULL);
+-- 6단계 티어 (014_tier_system_unify.sql)
+INSERT INTO tiers (level, name, min_lp, discount_rate) VALUES
+  (1, '{"ko":"마을 주민", "ja":"村の住民", "en":"Villager"}',      0,     0),
+  (2, '{"ko":"여행자",   "ja":"旅行者",   "en":"Traveler"}',      500,   3),
+  (3, '{"ko":"모험가",   "ja":"冒険家",   "en":"Adventurer"}',    2000,  5),
+  (4, '{"ko":"영웅",     "ja":"英雄",     "en":"Hero"}',          5000,  8),
+  (5, '{"ko":"전설",     "ja":"伝説",     "en":"Legend"}',        10000, 12),
+  (6, '{"ko":"신화",     "ja":"神話",     "en":"Myth"}',          20000, 15);
 ```
 
 ---
