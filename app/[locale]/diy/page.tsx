@@ -1,7 +1,5 @@
 import { Metadata } from 'next'
-import dynamic from 'next/dynamic'
-
-const DiyWorkshopDirectory = dynamic(() => import('@/components/diy/DiyWorkshopDirectory').then(m => ({ default: m.DiyWorkshopDirectory })), { ssr: true })
+import { DiyWorkshopDirectory } from '@/components/diy/DiyWorkshopDirectory'
 
 interface Props {
   params: { locale: string }
