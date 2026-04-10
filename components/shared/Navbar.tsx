@@ -12,19 +12,25 @@ interface NavbarProps {
 
 const NAV_LINKS = {
   ko: [
-    { href: "/courses", label: "코스 탐색" },
-    { href: "/community", label: "추억 남기기" },
-    { href: "/shop", label: "전설 상점" },
+    { href: "/story", label: "QUEST" },
+    { href: "/food",  label: "K-Food" },
+    { href: "/stay",  label: "STAY" },
+    { href: "/sights",label: "SPOT" },
+    { href: "/goods", label: "GOODS" },
   ],
   ja: [
-    { href: "/courses", label: "コース探索" },
-    { href: "/community", label: "思い出残し" },
-    { href: "/shop", label: "伝説の店" },
+    { href: "/story", label: "QUEST" },
+    { href: "/food",  label: "K-Food" },
+    { href: "/stay",  label: "STAY" },
+    { href: "/sights",label: "SPOT" },
+    { href: "/goods", label: "GOODS" },
   ],
   en: [
-    { href: "/courses", label: "Courses" },
-    { href: "/community", label: "Gallery" },
-    { href: "/shop", label: "Legend Shop" },
+    { href: "/story", label: "QUEST" },
+    { href: "/food",  label: "K-Food" },
+    { href: "/stay",  label: "STAY" },
+    { href: "/sights",label: "SPOT" },
+    { href: "/goods", label: "GOODS" },
   ],
 }
 

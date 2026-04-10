@@ -75,27 +75,22 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
 
           {/* 네비게이션 */}
           <nav className="flex-1 px-4 py-4 overflow-y-auto space-y-1">
-            <Link
-              href={`/${locale}/faq`}
-              onClick={() => setOpen(false)}
-              className="flex items-center px-4 py-3.5 rounded-xl text-[#3a3028] font-medium hover:bg-[#F5F0E8] transition-colors"
-            >
-              ❓ {t.faq}
-            </Link>
+            {/* 메인 5개 메뉴 */}
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={`/${locale}${link.href}`}
+                onClick={() => setOpen(false)}
+                className="flex items-center px-4 py-3.5 rounded-xl text-[#3a3028] font-semibold hover:bg-[#F5F0E8] transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            <div className="h-px bg-[#e8ddd0] my-2 mx-4" />
 
             {user && (
               <>
-                <div className="h-px bg-[#e8ddd0] my-2 mx-4" />
-                <Link href={`/${locale}/community`} onClick={() => setOpen(false)} className="flex items-center px-4 py-3.5 rounded-xl text-[#3a3028] font-medium hover:bg-[#F5F0E8] transition-colors">
-                  📸 {t.memories}
-                </Link>
-                <Link href={`/${locale}/mypage/points`} onClick={() => setOpen(false)} className="flex items-center px-4 py-3.5 rounded-xl text-[#3a3028] font-medium hover:bg-[#F5F0E8] transition-colors">
-                  ⚡ {t.points}
-                </Link>
-                <Link href={`/${locale}/food/dupe`} onClick={() => setOpen(false)} className="flex items-center px-4 py-3.5 rounded-xl text-[#3a3028] font-medium hover:bg-[#F5F0E8] transition-colors">
-                  🍽️ {t.foodMatching}
-                </Link>
-                <div className="h-px bg-[#e8ddd0] my-2 mx-4" />
                 <Link href={`/${locale}/mypage`} onClick={() => setOpen(false)} className="flex items-center px-4 py-3.5 rounded-xl text-[#3a3028] font-medium hover:bg-[#F5F0E8] transition-colors">
                   👤 {t.mypage}
                 </Link>
