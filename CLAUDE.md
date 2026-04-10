@@ -49,7 +49,27 @@ rm -rf .next node_modules && pnpm install && pnpm dev
 
 6. **admin layout에 `useEffect` + `useRouter`로 auth guard를 넣지 않는다.** 마찬가지로 `clientModules` 에러를 유발한다. admin 보호는 middleware + API 레벨에서만 수행한다. (실제 사고 발생 이력 있음)
 
-7. **`'use client'` 컴포넌트가 import하는 모든 컴포넌트에도 `'use client'`가 있어야 한다.** 클라이언트 컴포넌트가 `'use client'` 없는 컴포넌트를 import하면 서버/클라이언트 경계 해석이 꼬여 `clientModules` 에러가 발생한다. `components/ui/` (shadcn), `components/shared/` 컴포넌트를 새로 만들거나 수정할 때 반드시 확인한다. (실제 반복 사고의 **진짜 근본 원인**이었음)
+7. **`'use client'` 컴포넌트가 import하는 모든 컴포넌트에도 `'use client'`가 있어야 한다.** 클라이언트 컴포넌트가 `'use client'` 없는 컴포넌트를 import하면 서버/클라이언트 경계 해석이 꼬져 `clientModules` 에러가 발생한다. (실제 반복 사고의 **진짜 근본 원인**이었음)
+
+> **Claude 필수 검증 절차 — 컴포넌트 생성·수정 시 매번 실행:**
+>
+> 1. 새 컴포넌트를 만들거나 import를 추가한 후, 아래 명령어로 누락을 검사한다:
+> ```bash
+> for f in $(grep -rl "^'use client'" components/ --include="*.tsx"); do
+>   grep "^import.*from.*@/components" "$f" | while read -r line; do
+>     target=$(echo "$line" | sed "s/.*from ['\"]@\///" | sed "s/['\"].*//" | sed "s/$/.tsx/")
+>     [ -f "$target" ] && head -1 "$target" | grep -q "use client" || echo "MISSING: $target (imported by $f)"
+>   done
+> done
+> ```
+> 2. `MISSING`이 출력되면 해당 파일 1번째 줄에 `'use client'`를 추가한다.
+> 3. 이 검사를 통과해야만 커밋할 수 있다.
+>
+> **적용 범위:**
+> - `components/ui/` (shadcn/ui) — 모든 파일에 `'use client'` 필수
+> - `components/shared/` — 클라이언트 컴포넌트에서 import되는 파일은 `'use client'` 필수
+> - `components/features/` — `'use client'` 선언된 파일이 import하는 모든 대상
+> - 유일한 예외: `lib/` 폴더의 순수 유틸 함수 (타입, 상수, 헬퍼 — JSX 없음)
 
 ---
 
