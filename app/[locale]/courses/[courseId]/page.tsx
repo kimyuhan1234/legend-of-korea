@@ -1,11 +1,15 @@
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
-import { getTranslations } from "next-intl/server"
 import { createClient } from "@/lib/supabase/server"
-import { CourseHero } from "@/components/features/courses/CourseHero"
-import { KitPurchaseCard } from "@/components/features/courses/KitPurchaseCard"
 import { AffiliateLinks } from "@/components/features/courses/AffiliateLinks"
-import { CourseReviews } from "@/components/features/courses/CourseReviews"
+import { QuestHero } from "@/components/features/quest/QuestHero"
+import { QuestHowItWorks } from "@/components/features/quest/QuestHowItWorks"
+import { QuestStorySlider } from "@/components/features/quest/QuestStorySlider"
+import { QuestComparison } from "@/components/features/quest/QuestComparison"
+import { QuestKitShowcase } from "@/components/features/quest/QuestKitShowcase"
+import { QuestReviews } from "@/components/features/quest/QuestReviews"
+import { QuestFAQ } from "@/components/features/quest/QuestFAQ"
+import { QuestStickyBar } from "@/components/features/quest/QuestStickyBar"
 import type { I18nText } from "@/lib/supabase/types"
 
 interface Props {
@@ -52,21 +56,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-const STORY_LABEL = {
-  ko: "전설 이야기",
-  ja: "伝説の物語",
-  en: "The Legend",
-}
-
 export default async function CourseDetailPage({ params }: Props) {
   const { locale, courseId } = params
   const supabase = await createClient()
-  const t = await getTranslations({ locale, namespace: "course" })
-
   const { data: { user } } = await supabase.auth.getUser()
   const isLoggedIn = !!user
 
-  const [courseRes, kitRes, missionRes, affiliateRes, reviewRes] = await Promise.all([
+  const [courseRes, kitRes, missionRes, affiliateRes] = await Promise.all([
     supabase
       .from("courses")
       .select("*")
@@ -87,12 +83,6 @@ export default async function CourseDetailPage({ params }: Props) {
       .select("*")
       .eq("course_id", courseId)
       .eq("is_active", true),
-    supabase
-      .from("community_posts")
-      .select("id, content, photos, likes_count, created_at, is_spoiler, users(nickname, avatar_url, current_tier)")
-      .eq("course_id", courseId)
-      .order("likes_count", { ascending: false })
-      .limit(6),
   ])
 
   if (!courseRes.data) notFound()
@@ -101,103 +91,72 @@ export default async function CourseDetailPage({ params }: Props) {
   const kits = kitRes.data || []
   const missions = missionRes.data || []
   const affiliateLinks = affiliateRes.data || []
-  const reviews = reviewRes.data || []
-
-  const storyText = getI18n(course.description as I18nText, locale)
   const durationText = getI18n(course.duration_text as I18nText, locale)
-  const storyLabel = STORY_LABEL[locale as keyof typeof STORY_LABEL] || STORY_LABEL.ko
+
+  const courseTitle = getI18n(course.title as I18nText, locale)
+  const thumbnailUrl = course.thumbnail_url || '/images/dokkaebi-hero.png'
+  const firstKit = kits[0]
+
+  const storyCards = [
+    { image: thumbnailUrl, textKey: 'story.card1' },
+    { image: thumbnailUrl, textKey: 'story.card2' },
+    { image: thumbnailUrl, textKey: 'story.card3' },
+    { image: thumbnailUrl, textKey: 'story.card4' },
+  ]
 
   return (
     <div>
-      {/* 1. 히어로 섹션 */}
-      <CourseHero
-        course={course as any}
+      {/* 1. 몰입형 히어로 */}
+      <QuestHero
+        title={courseTitle}
+        region={course.region || ''}
+        thumbnail={thumbnailUrl}
+        difficulty={course.difficulty || 'easy'}
+        duration={durationText}
         missionCount={missions.length}
-        locale={locale}
       />
 
-      {/* 2. 전설 이야기 (2컬럼: 스토리+정보 | 영상) */}
-      <section className="max-w-6xl mx-auto px-8 md:px-10 py-20 md:py-28">
-        <h2 className="text-xl md:text-2xl font-bold text-[#111] mb-8">
-          📖 {storyLabel}
-        </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* 왼쪽: 설명 + 인용구 + 정보 카드 */}
-          <div className="space-y-6">
-            <div className="bg-white rounded-3xl p-8 border border-[#e8ddd0]">
-              <p className="text-[#3a3028] leading-relaxed text-base whitespace-pre-wrap mb-6">
-                {storyText}
-              </p>
-              <div className="bg-[#FFF8EC] border-l-4 border-[#D4A843] pl-4 pr-3 py-4 rounded-r-xl">
-                <p className="text-sm text-[#7a6a58] italic leading-relaxed">
-                  &ldquo;{t("storyIntro")}&rdquo;
-                </p>
-              </div>
-            </div>
+      {/* 2. 3단계 프로세스 */}
+      <QuestHowItWorks />
 
-            {/* 코스 정보 요약 카드 */}
-            <div className="grid grid-cols-3 gap-4">
-              <div className="bg-white rounded-2xl p-4 text-center border border-[#e8ddd0] shadow-sm">
-                <span className="text-2xl">📍</span>
-                <p className="text-xs text-[#7a6a58] mt-1">{t("infoRegion")}</p>
-                <p className="font-bold text-[#111] text-sm mt-0.5">{course.region || "-"}</p>
-              </div>
-              <div className="bg-white rounded-2xl p-4 text-center border border-[#e8ddd0] shadow-sm">
-                <span className="text-2xl">⏱️</span>
-                <p className="text-xs text-[#7a6a58] mt-1">{t("infoDuration")}</p>
-                <p className="font-bold text-[#111] text-sm mt-0.5">{durationText || "-"}</p>
-              </div>
-              <div className="bg-white rounded-2xl p-4 text-center border border-[#e8ddd0] shadow-sm">
-                <span className="text-2xl">🎯</span>
-                <p className="text-xs text-[#7a6a58] mt-1">{t("infoMissions")}</p>
-                <p className="font-bold text-[#111] text-sm mt-0.5">{missions.length}</p>
-              </div>
-            </div>
-          </div>
+      {/* 3. 인터랙티브 스토리 */}
+      <QuestStorySlider storyCards={storyCards} />
 
-          {/* 오른쪽: 소개 영상 또는 플레이스홀더 */}
-          <div className="space-y-3">
-            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
-              {(course as any).video_url ? (
-                <iframe
-                  src={(course as any).video_url}
-                  className="absolute inset-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#1B2A4A] to-[#2a3f6e] text-white">
-                  <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mb-4">
-                    <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                  <p className="text-lg font-bold">{t("videoPlaceholder")}</p>
-                  <p className="text-sm text-white/70 mt-1">{t("videoPlaceholderDesc")}</p>
-                </div>
-              )}
-            </div>
-            <p className="text-xs text-[#7a6a58] text-center">🎬 {t("videoCaption")}</p>
-          </div>
-        </div>
-      </section>
+      {/* 4. 일반 관광 vs 미션 여행 */}
+      <QuestComparison />
 
-      {/* 3. 미션 키트 소개 + 여행 준비 (2컬럼, 높이 동일) */}
-      <section className="max-w-6xl mx-auto px-8 md:px-10 py-20 md:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          <div className="flex flex-col h-full">
-            <KitPurchaseCard courseId={courseId} kits={kits as any} locale={locale} isLoggedIn={isLoggedIn} className="flex-1" />
-          </div>
-          <div className="flex flex-col h-full">
-            <AffiliateLinks links={affiliateLinks as any} locale={locale} className="flex-1" />
-          </div>
-        </div>
-      </section>
+      {/* 5. 키트 언박싱 & 구매 */}
+      <QuestKitShowcase
+        courseId={courseId}
+        kits={kits as any}
+        locale={locale}
+        isLoggedIn={isLoggedIn}
+      />
 
-      {/* 5. 모험가들의 후기 */}
-      <CourseReviews posts={reviews as any} courseId={courseId} locale={locale} />
+      {/* 6. 여행 준비 (제휴 링크) */}
+      {affiliateLinks.length > 0 && (
+        <section className="max-w-5xl mx-auto px-8 md:px-10 py-20 md:py-28">
+          <AffiliateLinks links={affiliateLinks as any} locale={locale} />
+        </section>
+      )}
 
-      <div className="h-16" />
+      {/* 7. 외국인 체험 후기 */}
+      <QuestReviews />
+
+      {/* 8. FAQ */}
+      <QuestFAQ />
+
+      {/* 하단 고정 구매 바 */}
+      <QuestStickyBar
+        courseId={courseId}
+        title={courseTitle}
+        price={course.price_1p || 29000}
+        locale={locale}
+        isLoggedIn={isLoggedIn}
+        kitId={firstKit?.id}
+      />
+
+      <div className="h-20" />
     </div>
   )
 }

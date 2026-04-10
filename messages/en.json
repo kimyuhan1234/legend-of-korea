@@ -863,5 +863,105 @@
         "duration": "2h"
       }
     }
+  },
+  "quest": {
+    "hero": {
+      "headline": "Become the Hero of a Korean Legend",
+      "subline": "Unbox → Travel → Complete Missions → Earn Rewards",
+      "preview": "30s Preview",
+      "buy": "Get Your Kit",
+      "missions": "{count} Missions"
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "step1": {
+        "title": "Receive Your Kit",
+        "desc": "Delivered to your accommodation before your trip"
+      },
+      "step2": {
+        "title": "Complete Missions",
+        "desc": "Explore legendary places and solve challenges"
+      },
+      "step3": {
+        "title": "Earn Rewards",
+        "desc": "Badges, certificates, LP points & discount coupons"
+      }
+    },
+    "story": {
+      "title": "The Legend Behind This Quest",
+      "ctaCard": "Become the hero of this legend",
+      "cta": "Get Your Mission Kit →",
+      "card1": "Long ago, a mysterious legend was passed down through this land.",
+      "card2": "The hero of the legend set out to solve riddles and find hidden treasures.",
+      "card3": "The people and places along the journey became eternal memories.",
+      "card4": "Now, you are the new hero of this legend."
+    },
+    "comparison": {
+      "title": "Regular Tourism vs Mission Travel",
+      "normalTitle": "Regular Tourism",
+      "legendTitle": "Legend of Korea",
+      "normal": {
+        "1": "Just take photos at tourist spots",
+        "2": "Visit only guidebook locations",
+        "3": "Superficial cultural experience",
+        "4": "Memories fade after the trip",
+        "5": "No motivation to return"
+      },
+      "legend": {
+        "1": "Become the hero of a legend and adventure",
+        "2": "Discover hidden local gems",
+        "3": "Deep cultural immersion through missions",
+        "4": "Lifetime memories with badges & certificates",
+        "5": "Complete missions → Earn LP → Partner store discounts",
+        "6": "Level up your tier with LP → Exclusive rewards per rank",
+        "lp": "Earn LP points per mission → Redeem for discounts",
+        "tier": "Level up your tier! Exclusive rewards at each rank"
+      },
+      "tier": {
+        "seed": "Seed",
+        "sprout": "Sprout",
+        "goblin": "Goblin",
+        "fairy": "Fairy",
+        "sage": "Sage"
+      },
+      "cta": "Start Your Mission Travel →"
+    },
+    "kit": {
+      "title": "What's in the Kit",
+      "subtitle": "Everything you need for an extraordinary journey",
+      "items": {
+        "missionCard": "Mission Cards",
+        "legendMap": "Legend Map",
+        "stickers": "Character Stickers",
+        "certificate": "Completion Certificate",
+        "localGift": "Local Specialty Gift"
+      },
+      "solo": "Solo Kit",
+      "couple": "Couple Kit",
+      "taxIncluded": "Free shipping included",
+      "buy": "Purchase",
+      "delivery": "Guaranteed delivery 3 days before your trip",
+      "multilang": "Mission cards in EN / JA / KO"
+    },
+    "reviews": {
+      "title": "What Adventurers Say",
+      "verified": "Verified Adventurer"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "Can I receive the kit outside Korea?",
+      "a1": "We deliver to your accommodation in Korea. It'll be at the front desk before check-in.",
+      "q2": "Do I need to speak Korean?",
+      "a2": "All mission cards are available in English, Japanese, and Korean.",
+      "q3": "Can I do it solo?",
+      "a3": "Solo, couples, and families are all welcome.",
+      "q4": "How do I receive mission rewards?",
+      "a4": "Complete missions in-app to instantly earn digital badges + partner discount coupons.",
+      "q5": "Can I do missions without the kit?",
+      "a5": "The kit contains mission cards, maps, and hints — it's essential for the experience."
+    },
+    "sticky": {
+      "buy": "Buy Now"
+    }
   }
 }
