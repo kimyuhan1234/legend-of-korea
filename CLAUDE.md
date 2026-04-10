@@ -45,6 +45,10 @@ rm -rf .next node_modules && pnpm install && pnpm dev
 
 > **Claude 작업 원칙**: 코드 수정 후 dev 서버를 재시작할 때는 항상 `.next`를 삭제한 뒤 시작한다. `pnpm install`을 실행했다면 반드시 `.next`도 함께 삭제한다.
 
+5. **서버 컴포넌트 페이지에서 `next/dynamic`을 사용하지 않는다.** App Router의 서버 컴포넌트(page.tsx)에서 `dynamic(() => import(...))`을 쓰면 `clientModules` 에러가 발생한다. 클라이언트 컴포넌트는 직접 `import { Component } from '...'`로 가져온다. (실제 사고 발생 이력 있음)
+
+6. **admin layout에 `useEffect` + `useRouter`로 auth guard를 넣지 않는다.** 마찬가지로 `clientModules` 에러를 유발한다. admin 보호는 middleware + API 레벨에서만 수행한다. (실제 사고 발생 이력 있음)
+
 ---
 
 ## [문서 주도 개발 규칙] ← 반드시 준수
