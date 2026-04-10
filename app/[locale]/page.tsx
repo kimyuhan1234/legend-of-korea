@@ -23,11 +23,13 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: 'home' })
 
   const categories = [
-    { id: 'food',   label: t('categoryFood'),   href: '/food',   image: '/images/category-food.png',   gradient: 'bg-gradient-to-br from-orange-400 to-red-500' },
-    { id: 'stay',   label: t('categoryStay'),   href: '/stay',   image: '/images/category-stay.png',   gradient: 'bg-gradient-to-br from-blue-400 to-indigo-600' },
-    { id: 'story',  label: t('categoryStory'),  href: '/story',  image: '/images/category-story.png',  gradient: 'bg-gradient-to-br from-purple-500 to-[#2D1B69]' },
-    { id: 'sights', label: t('categorySights'), href: '/sights', image: '/images/category-sights.png', gradient: 'bg-gradient-to-br from-green-400 to-teal-600' },
-    { id: 'style',  label: t('categoryStyle'),  href: '/goods',  image: '/images/category-style.png',  gradient: 'bg-gradient-to-br from-pink-400 to-rose-600' },
+    { id: 'fashion', label: t('categoryFashion'), href: '/ootd',   image: '/images/category-fashion.png', gradient: 'bg-gradient-to-br from-yellow-400 to-amber-500' },
+    { id: 'food',   label: t('categoryFood'),   href: '/food',   image: '/images/category-food.png',    gradient: 'bg-gradient-to-br from-orange-400 to-red-500' },
+    { id: 'stay',   label: t('categoryStay'),   href: '/stay',   image: '/images/category-stay.png',    gradient: 'bg-gradient-to-br from-blue-400 to-indigo-600' },
+    { id: 'story',  label: t('categoryStory'),  href: '/story',  image: '/images/category-story.png',   gradient: 'bg-gradient-to-br from-purple-500 to-[#2D1B69]' },
+    { id: 'sights', label: t('categorySights'), href: '/sights', image: '/images/category-sights.png',  gradient: 'bg-gradient-to-br from-green-400 to-teal-600' },
+    { id: 'style',  label: t('categoryStyle'),  href: '/goods',  image: '/images/category-style.png',   gradient: 'bg-gradient-to-br from-pink-400 to-rose-600' },
+    { id: 'create', label: t('categoryCreate'), href: '/create', image: '/images/category-create.png',  gradient: 'bg-gradient-to-br from-cyan-400 to-blue-500' },
   ]
 
   return (
@@ -52,7 +54,7 @@ export default async function HomePage({ params }: Props) {
       {/* 섹션 2: HERO */}
       <HeroSection cta={t('signup')} />
 
-      {/* 섹션 3: 5-COLUMN 카테고리 */}
+      {/* 섹션 3: 7-COLUMN 카테고리 */}
       <CategorySection
         locale={locale}
         heading={t('categoryHeading')}
