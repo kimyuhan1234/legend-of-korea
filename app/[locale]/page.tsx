@@ -29,7 +29,7 @@ export default async function HomePage({ params }: Props) {
     { id: 'story',  label: t('categoryStory'),  href: '/story',  image: '/images/category-story.png',   gradient: 'bg-gradient-to-br from-purple-500 to-[#2D1B69]' },
     { id: 'sights', label: t('categorySights'), href: '/sights', image: '/images/category-sights.png',  gradient: 'bg-gradient-to-br from-green-400 to-teal-600' },
     { id: 'style',  label: t('categoryStyle'),  href: '/goods',  image: '/images/category-style.png',   gradient: 'bg-gradient-to-br from-pink-400 to-rose-600' },
-    { id: 'create', label: t('categoryCreate'), href: '/create', image: '/images/category-create.png',  gradient: 'bg-gradient-to-br from-cyan-400 to-blue-500' },
+    { id: 'create', label: t('categoryCreate'), href: '/diy',    image: '/images/category-create.png',  gradient: 'bg-gradient-to-br from-cyan-400 to-blue-500' },
   ]
 
   return (

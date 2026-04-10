@@ -712,5 +712,156 @@
       "linenJacket": "Linen Jacket",
       "cottonPants": "Cotton Pants"
     }
+  },
+  "diy": {
+    "title": "DIY Workshop Experience",
+    "subtitle": "Book unique handmade experiences across 8 Korean cities",
+    "book": "Book Now",
+    "note": "Booking Tips",
+    "noteText": "Most workshops operate on a reservation basis. Book at least 1-2 days in advance to secure your preferred time. Some workshops require a minimum of 2 participants.",
+    "external": "Booking Platforms",
+    "noResults": "No workshops found for the selected filters",
+    "cities": {
+      "seoul": "Seoul",
+      "busan": "Busan",
+      "jeju": "Jeju",
+      "gyeongju": "Gyeongju",
+      "tongyeong": "Tongyeong",
+      "cheonan": "Cheonan",
+      "yongin": "Yongin",
+      "icheon": "Icheon"
+    },
+    "categories": {
+      "all": "All",
+      "pottery": "Pottery",
+      "perfume": "Perfume",
+      "leather": "Leather",
+      "candle": "Candle",
+      "ring": "Ring",
+      "art": "Art",
+      "nature": "Nature"
+    },
+    "workshops": {
+      "seoul1": {
+        "name": "Bitda Pottery Studio (Hongdae)",
+        "desc": "Create your own pottery in a trendy Hongdae studio. Beginner-friendly with full guidance.",
+        "price": "₩35,000~",
+        "duration": "1.5h"
+      },
+      "seoul2": {
+        "name": "Dotnote Perfume Lab (Seongsu)",
+        "desc": "Blend your signature fragrance in Seongsu-dong with a professional perfumer.",
+        "price": "₩49,000~",
+        "duration": "1.5h"
+      },
+      "seoul3": {
+        "name": "Emotion Line Project (Yeonnam)",
+        "desc": "Create emotional artworks in a cozy Yeonnam-dong space. No experience needed.",
+        "price": "₩30,000~",
+        "duration": "2h"
+      },
+      "seoul4": {
+        "name": "Wooyuri Glass Studio",
+        "desc": "Blow glass to make your own cup or objet d'art — a truly unique experience.",
+        "price": "₩40,000~",
+        "duration": "1.5h"
+      },
+      "busan1": {
+        "name": "Haeundae Pottery Workshop",
+        "desc": "Spin the pottery wheel with an ocean view at this beachside studio.",
+        "price": "₩30,000~",
+        "duration": "1.5h"
+      },
+      "busan2": {
+        "name": "Neon Sign & Rattan Studio",
+        "desc": "Create your own neon LED sign or rattan crafts to take home.",
+        "price": "₩36,000~",
+        "duration": "2h"
+      },
+      "busan3": {
+        "name": "Busan Candle Workshop",
+        "desc": "Make candles infused with Busan's ocean scents.",
+        "price": "₩30,000~",
+        "duration": "1.5h"
+      },
+      "jeju1": {
+        "name": "Jeju Pottery Handbuilding",
+        "desc": "Handbuilding pottery with Jeju clay — capture the island's nature in your work.",
+        "price": "₩25,000~",
+        "duration": "1.5h"
+      },
+      "jeju2": {
+        "name": "Natural Dyeing (Jeju)",
+        "desc": "Dye scarves and handkerchiefs using Jeju's natural materials.",
+        "price": "₩30,000~",
+        "duration": "1.5h"
+      },
+      "jeju3": {
+        "name": "Jeju Leather Workshop",
+        "desc": "Premium one-day class making leather wallets, keyrings, and card holders.",
+        "price": "₩40,000~",
+        "duration": "2h"
+      },
+      "gyeongju1": {
+        "name": "Gyeongju Pottery Studio",
+        "desc": "Make pottery using traditional techniques in the ancient capital.",
+        "price": "₩20,000~",
+        "duration": "1h"
+      },
+      "gyeongju2": {
+        "name": "Hanbok Accessory Making",
+        "desc": "Create traditional Korean accessories and ornaments to take home.",
+        "price": "₩25,000~",
+        "duration": "2h"
+      },
+      "tongyeong1": {
+        "name": "Mother-of-Pearl Lacquer",
+        "desc": "Experience Tongyeong's famous najeon-chilgi (lacquerware) craft.",
+        "price": "₩30,000~",
+        "duration": "1.5h"
+      },
+      "tongyeong2": {
+        "name": "Candle & Soap Workshop",
+        "desc": "Make candles and soaps inspired by Tongyeong's coastal charm.",
+        "price": "₩25,000~",
+        "duration": "1h"
+      },
+      "cheonan1": {
+        "name": "Daon Made Ring Studio",
+        "desc": "Craft couple or friendship rings — a memorable keepsake.",
+        "price": "₩50,000~",
+        "duration": "2h"
+      },
+      "cheonan2": {
+        "name": "Leather Craft Class",
+        "desc": "Practical one-day class for leather wallets and keyrings.",
+        "price": "₩35,000~",
+        "duration": "1.5h"
+      },
+      "yongin1": {
+        "name": "Folk Village Traditional Craft",
+        "desc": "Make fans, hanji paper items using traditional methods at the Folk Village.",
+        "price": "₩15,000~",
+        "duration": "1h"
+      },
+      "yongin2": {
+        "name": "Candle & Plaster Diffuser",
+        "desc": "Choose your favorite scent and create beautiful candles and plaster diffusers.",
+        "price": "₩25,000~",
+        "duration": "1h"
+      },
+      "icheon1": {
+        "name": "Icheon Ceramics Studio",
+        "desc": "Pottery experience in Korea's ceramics capital. Wheel throwing available.",
+        "price": "₩20,000~",
+        "duration": "1.5h"
+      },
+      "icheon2": {
+        "name": "Wheel Throwing One-Day Class",
+        "desc": "Advanced class with a professional potter — throw your own bowl on the wheel.",
+        "price": "₩35,000~",
+        "duration": "2h"
+      }
+    }
   }
 }
