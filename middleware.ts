@@ -21,7 +21,7 @@ export async function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/_next/") ||
     pathname.startsWith("/api/") ||
-    /\.(?:ico|svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot)$/.test(pathname)
+    /\.(?:ico|svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot|webmanifest|json)$/.test(pathname)
   ) {
     return NextResponse.next()
   }
