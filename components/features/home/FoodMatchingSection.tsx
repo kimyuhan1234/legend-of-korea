@@ -10,8 +10,6 @@ interface FoodMatchingSectionProps {
   cta: string
 }
 
-const MATCHING_IMAGES = [1, 2, 3, 4, 5, 6, 7, 8].map(n => `/images/matching/matching${n}.png`)
-
 export function FoodMatchingSection({ locale, title, subtitle, cta }: FoodMatchingSectionProps) {
   return (
     <section className="bg-white overflow-hidden">
@@ -33,22 +31,15 @@ export function FoodMatchingSection({ locale, title, subtitle, cta }: FoodMatchi
             </Link>
           </div>
 
-          {/* 우: 4×2 이미지 그리드 */}
-          <div className="flex-1 grid grid-cols-4 gap-2">
-            {MATCHING_IMAGES.map((src, i) => (
-              <div
-                key={i}
-                className="relative aspect-square overflow-hidden rounded-lg group"
-              >
-                <Image
-                  src={src}
-                  alt={`매칭 이미지 ${i + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 25vw, 15vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            ))}
+          {/* 우: DUPE 대표 이미지 */}
+          <div className="flex-1 relative aspect-[4/3] overflow-hidden rounded-2xl group">
+            <Image
+              src="/images/matching/dupe-hero.png"
+              alt="Food Dupe Matching"
+              fill
+              sizes="(max-width: 768px) 100vw, 60vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
           </div>
         </div>
       </div>
