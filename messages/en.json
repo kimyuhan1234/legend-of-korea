@@ -1121,7 +1121,10 @@
       "downloadPdf": "Download PDF",
       "estimatedLp": "Estimated LP",
       "lpUnit": "LP",
-      "missionIntegrated": "Mission kit course auto-included"
+      "missionIntegrated": "Mission kit course auto-included",
+      "lunch": "Lunch",
+      "dinner": "Dinner",
+      "night": "Night"
     },
     "approx": "Approx.",
     "hotel": {

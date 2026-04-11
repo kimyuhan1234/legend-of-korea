@@ -1121,7 +1121,10 @@
       "downloadPdf": "PDFダウンロード",
       "estimatedLp": "予想LP獲得",
       "lpUnit": "LP",
-      "missionIntegrated": "ミッションキットコース自動含む"
+      "missionIntegrated": "ミッションキットコース自動含む",
+      "lunch": "昼食",
+      "dinner": "夕食",
+      "night": "夜"
     },
     "approx": "大体",
     "hotel": {

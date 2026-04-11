@@ -1146,7 +1146,10 @@
       "downloadPdf": "PDF 다운로드",
       "estimatedLp": "예상 LP 적립",
       "lpUnit": "LP",
-      "missionIntegrated": "미션키트 코스 자동 포함"
+      "missionIntegrated": "미션키트 코스 자동 포함",
+      "lunch": "점심",
+      "dinner": "저녁",
+      "night": "밤"
     },
     "approx": "대략",
     "hotel": {

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 
 interface SpotItem {
@@ -55,21 +55,15 @@ export function PlannerSpotDistance({ hotelLat, hotelLng, spots }: PlannerSpotDi
     return () => { cancelled = true }
   }, [hotelLat, hotelLng, spots])
 
-  // 호텔 좌표 없을 때
-  if (hotelLat === null || hotelLng === null) {
-    return (
-      <section>
-        <h2 className="text-xl md:text-2xl font-black text-[#111] mb-2">
-          📍 Spot 거리
-        </h2>
-        <div className="bg-[#FFF8F0] border border-[#FF6B35]/20 rounded-2xl p-5 text-center">
-          <p className="text-sm text-[#374151]">{t('spot.noHotel')}</p>
-        </div>
-      </section>
-    )
-  }
+  // 호텔 좌표나 스팟 좌표가 없으면 섹션 전체 숨김 (빈 placeholder 제거)
+  const hasSpotsWithCoords = useMemo(
+    () => spots.some((s) => typeof s.lat === 'number' && typeof s.lng === 'number'),
+    [spots]
+  )
 
-  if (spots.length === 0) return null
+  if (hotelLat === null || hotelLng === null || !hasSpotsWithCoords || spots.length === 0) {
+    return null
+  }
 
   const approx = t('approx')
 
