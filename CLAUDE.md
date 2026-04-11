@@ -116,6 +116,26 @@ rm -rf .next node_modules && pnpm install && pnpm dev
 
 ---
 
+## ⚠️ 구독 결제 상태 (최종 배포 전까지 유지)
+
+> **현재 `/api/subscription/create`는 실제 결제 연동 없이 DB 레코드만 생성한다.**
+> `paymentProvider='manual'`로 호출되며 Toss/Stripe API는 호출하지 않는다.
+> **최종 배포 전까지 이 상태를 그대로 유지할 것.**
+> 실제 결제 연동(Toss Billing / Stripe Subscriptions)은 배포 직전에만 추가한다.
+
+**지금 해서는 안 되는 작업:**
+- `/api/subscription/create`에 Toss/Stripe 결제 호출 추가
+- 실제 카드 결제창 렌더링
+- Webhook 처리 엔드포인트 추가
+- 정기결제 갱신 크론 추가
+
+**왜 유지하는가:**
+- 테스트 단계에서 실수로 카드가 청구되는 것을 방지
+- 현재는 UI·흐름 검증 단계이므로 DB 레코드만으로 충분
+- 결제 연동은 운영 배포 직전에 일괄 작업하여 사고 위험 최소화
+
+---
+
 ## 다국어 구조
 - `next-intl` 사용
 - 기본 locale: `ko` / 지원: `ko`, `ja`, `en`
