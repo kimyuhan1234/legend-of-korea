@@ -25,17 +25,40 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: '유효하지 않은 itemType' }, { status: 400 })
     }
 
-    // 1. 해당 유저의 draft 플랜 조회 (city 기준)
-    let { data: plan } = await supabase
+    // 1. 해당 유저의 draft 플랜 조회 — 도시와 무관하게 유저당 1개만 유지.
+    //    (이전 구현은 city_id 를 키로 삼아 도시마다 draft 가 무한 증식하는 버그 있었음)
+    const { data: existingPlans, error: findErr } = await supabase
       .from('travel_plans')
-      .select('id')
+      .select('id, city_id')
       .eq('user_id', user.id)
-      .eq('city_id', cityId)
       .eq('status', 'draft')
-      .maybeSingle()
+      .order('created_at', { ascending: true })
 
-    // 2. 없으면 자동 생성
-    if (!plan) {
+    if (findErr) {
+      return NextResponse.json(
+        { error: '플랜 조회 실패', detail: findErr.message },
+        { status: 500 }
+      )
+    }
+
+    let plan: { id: string } | null = null
+
+    if (existingPlans && existingPlans.length > 0) {
+      // 가장 오래된 draft 하나만 유지하고 나머지는 자가 치유로 정리
+      plan = { id: existingPlans[0].id }
+      if (existingPlans.length > 1) {
+        const extraIds = existingPlans.slice(1).map((p) => p.id)
+        await supabase.from('travel_plans').delete().in('id', extraIds)
+      }
+      // 담는 도시가 기존 plan.city_id 와 다르면 최신 도시로 갱신
+      if (existingPlans[0].city_id !== cityId) {
+        await supabase
+          .from('travel_plans')
+          .update({ city_id: cityId })
+          .eq('id', plan.id)
+      }
+    } else {
+      // 2. 없으면 새 draft 생성
       const { data: newPlan, error: planErr } = await supabase
         .from('travel_plans')
         .insert({
