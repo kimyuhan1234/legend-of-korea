@@ -1157,6 +1157,10 @@
     "ootd": {
       "check": "옷 선택",
       "addChecked": "체크한 옷 담기"
+    },
+    "spot": {
+      "noHotel": "호텔 정보를 입력하면 거리를 계산해드려요",
+      "distance": "호텔에서 대략 {method} {min}분"
     }
   }
 }
