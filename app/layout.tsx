@@ -1,7 +1,23 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { ServiceWorkerCleanup } from "@/components/shared/ServiceWorkerCleanup"
+
+// 과거 next-pwa 로 등록됐던 service worker 와 workbox 캐시를 제거한다.
+// inline script 로 직접 주입해 서버/클라이언트 컴포넌트 경계 없이 hydration 전에
+// 실행되도록 한다. PWA 재활성화 시점에는 이 스크립트 블록을 제거.
+const SW_CLEANUP_SCRIPT = `
+(function(){
+  if (typeof navigator === 'undefined' || !('serviceWorker' in navigator)) return;
+  navigator.serviceWorker.getRegistrations().then(function(regs){
+    regs.forEach(function(reg){ reg.unregister().catch(function(){}); });
+  }).catch(function(){});
+  if (typeof caches !== 'undefined') {
+    caches.keys().then(function(keys){
+      keys.forEach(function(k){ caches.delete(k).catch(function(){}); });
+    }).catch(function(){});
+  }
+})();
+`.trim()
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -27,7 +43,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <ServiceWorkerCleanup />
+        <script dangerouslySetInnerHTML={{ __html: SW_CLEANUP_SCRIPT }} />
         {children}
       </body>
     </html>
