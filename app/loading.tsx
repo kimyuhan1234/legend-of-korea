@@ -3,14 +3,12 @@
 export default function RootLoading() {
   return (
     <div style={{
-      position: 'fixed',
-      inset: 0,
+      minHeight: '60vh',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      background: '#fff',
-      zIndex: 50,
+      gap: '1rem',
     }}>
       <div style={{ position: 'relative', width: '6rem', height: '6rem' }}>
         <div style={{

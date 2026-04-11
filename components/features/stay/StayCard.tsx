@@ -15,19 +15,6 @@ export function StayCard({ stay, locale }: StayCardProps) {
   const desc = stay.description[locale as keyof typeof stay.description] || stay.description.ko
   const walk = stay.walkToMission[locale as keyof typeof stay.walkToMission] || stay.walkToMission.ko
 
-  const handleBookingClick = async () => {
-    // 제휴 클릭 추적 (실패해도 예약 이동은 차단하지 않음)
-    try {
-      await fetch('/api/affiliate/click', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ link_id: stay.id }),
-      })
-    } catch {
-      // 추적 실패는 무시
-    }
-  }
-
   return (
     <div className="group bg-white rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300 border border-[#e8ddd0]/40">
       {/* 상단: 타입별 색상 그라데이션 + 이모지 */}
@@ -90,7 +77,6 @@ export function StayCard({ stay, locale }: StayCardProps) {
           href={stay.bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={handleBookingClick}
           className="block w-full text-center py-3 rounded-full bg-[#FF6B35] text-white font-bold text-sm hover:bg-[#E55A2B] transition-colors"
         >
           {t('card.book')} ↗
