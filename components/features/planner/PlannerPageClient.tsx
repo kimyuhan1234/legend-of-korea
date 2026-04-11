@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { PlannerHero } from './PlannerHero'
 import { PlannerPreview } from './PlannerPreview'
@@ -55,21 +55,23 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   const [subscriptionPlans, setSubscriptionPlans] = useState<SubscriptionPlan[]>([])
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
-  // 여행 기간/스타일 (localStorage 보존)
+  // 여행 기간/스타일/도시 (localStorage 보존)
   const [tripStart, setTripStart] = useState<string>('')
   const [tripEnd, setTripEnd] = useState<string>('')
   const [tripStyle, setTripStyle] = useState<TripStyle>('active')
+  const [selectedCityId, setSelectedCityId] = useState<string>('jeonju')
 
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem('planner:trip')
       if (saved) {
         const parsed = JSON.parse(saved) as {
-          start?: string; end?: string; style?: TripStyle
+          start?: string; end?: string; style?: TripStyle; cityId?: string
         }
         if (parsed.start) setTripStart(parsed.start)
         if (parsed.end) setTripEnd(parsed.end)
         if (parsed.style) setTripStyle(parsed.style)
+        if (parsed.cityId) setSelectedCityId(parsed.cityId)
       }
     } catch {}
   }, [])
@@ -78,10 +80,15 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
     try {
       window.localStorage.setItem(
         'planner:trip',
-        JSON.stringify({ start: tripStart, end: tripEnd, style: tripStyle })
+        JSON.stringify({
+          start: tripStart,
+          end: tripEnd,
+          style: tripStyle,
+          cityId: selectedCityId,
+        })
       )
     } catch {}
-  }, [tripStart, tripEnd, tripStyle])
+  }, [tripStart, tripEnd, tripStyle, selectedCityId])
 
   // 담긴 아이템 다시 불러오기 (공개 재사용 함수) — no-store 로 fetch 캐시 방지
   const refreshPlans = async () => {
@@ -142,6 +149,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
     setTripStart('')
     setTripEnd('')
     setTripStyle('active')
+    setSelectedCityId('jeonju')
     try {
       window.localStorage.removeItem('planner:trip')
     } catch {}
@@ -189,6 +197,21 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
 
   // 첫 번째 플랜 기준 (메인 플랜)
   const mainPlan = plans[0]
+
+  // localStorage 에 도시가 저장돼 있지 않은 초기 방문자는 mainPlan.city_id 로 1회 동기화
+  const initialCitySyncedRef = useRef(false)
+  useEffect(() => {
+    if (initialCitySyncedRef.current) return
+    if (!mainPlan) return
+    try {
+      const saved = window.localStorage.getItem('planner:trip')
+      const parsed = saved ? (JSON.parse(saved) as { cityId?: string }) : null
+      if (!parsed?.cityId && mainPlan.city_id) {
+        setSelectedCityId(mainPlan.city_id)
+      }
+    } catch {}
+    initialCitySyncedRef.current = true
+  }, [mainPlan])
   const allItems = useMemo(
     () => plans.flatMap((p) => p.plan_items),
     [plans]
@@ -263,16 +286,17 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
         {isSubscribed && mainPlan && (
           <>
             <PlannerTripSetup
-              cityId={mainPlan.city_id}
+              cityId={selectedCityId}
               startDate={tripStart}
               endDate={tripEnd}
               style={tripStyle}
+              onChangeCity={setSelectedCityId}
               onChangeStart={setTripStart}
               onChangeEnd={setTripEnd}
               onChangeStyle={setTripStyle}
             />
-            <PlannerCuration itemTypesInPlan={itemTypes} cityId={mainPlan.city_id} />
-            <PlannerTransport cityId={mainPlan.city_id} locale={locale} />
+            <PlannerCuration itemTypesInPlan={itemTypes} cityId={selectedCityId} />
+            <PlannerTransport cityId={selectedCityId} locale={locale} />
             <PlannerSpotDistance
               hotelLat={mainPlan.hotel_lat}
               hotelLng={mainPlan.hotel_lng}
@@ -282,13 +306,13 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
               items={allItems}
               locale={locale}
               hasMissionKit={mainPlan.has_mission_kit}
-              cityId={mainPlan.city_id}
+              cityId={selectedCityId}
               tripStartDate={tripStart}
               tripEndDate={tripEnd}
               tripStyle={tripStyle}
               ootdSlot={
                 <PlannerOotd
-                  cityId={mainPlan.city_id}
+                  cityId={selectedCityId}
                   locale={locale}
                   startDate={tripStart}
                   endDate={tripEnd}
