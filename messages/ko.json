@@ -1183,6 +1183,10 @@
     },
     "addToPlanner": "📋 플래너에 담기",
     "addShort": "📋 담기",
-    "alreadyAdded": "✓ 담김"
+    "alreadyAdded": "✓ 담김",
+    "mission": {
+      "prefix": "미션{n}",
+      "fromHotel": "호텔에서 대략 {method} {min}분"
+    }
   }
 }

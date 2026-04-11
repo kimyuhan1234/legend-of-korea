@@ -1158,6 +1158,10 @@
     },
     "addToPlanner": "📋 Add to Planner",
     "addShort": "📋 Add",
-    "alreadyAdded": "✓ Added"
+    "alreadyAdded": "✓ Added",
+    "mission": {
+      "prefix": "Mission {n}",
+      "fromHotel": "Approx. {min} min by {method} from hotel"
+    }
   }
 }

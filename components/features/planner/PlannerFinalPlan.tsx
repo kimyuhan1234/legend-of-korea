@@ -1,7 +1,29 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { PlannerWeather } from './PlannerWeather'
+
+interface CourseMission {
+  id: string
+  course_id: string
+  sequence: number
+  type: string
+  title: { ko?: string; ja?: string; en?: string } | null
+  description: { ko?: string; ja?: string; en?: string } | null
+  location_name: { ko?: string; ja?: string; en?: string } | null
+  latitude: number | null
+  longitude: number | null
+  lp_reward: number
+}
+
+function i18nText(
+  field: { ko?: string; ja?: string; en?: string } | null,
+  locale: string
+): string {
+  if (!field) return ''
+  return field[locale as 'ko' | 'ja' | 'en'] || field.ko || ''
+}
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -135,9 +157,72 @@ export function PlannerFinalPlan({ items, locale, hasMissionKit, cityId }: Plann
   const ootdItems = items.filter((i) => i.item_type === 'ootd')
   const stayItems = items.filter((i) => i.item_type === 'stay')
   const transportItems = items.filter((i) => i.item_type === 'transport')
+  const questItems = items.filter((i) => i.item_type === 'quest')
+  // quest 아이템은 미션으로 펼칠 것이므로 scheduler에서 제외
   const schedulableItems = items.filter(
-    (i) => !['ootd', 'stay', 'transport'].includes(i.item_type)
+    (i) => !['ootd', 'stay', 'transport', 'quest'].includes(i.item_type)
   )
+
+  // quest 아이템의 courseId별 미션 목록 fetch
+  const [missionsByCourse, setMissionsByCourse] = useState<Record<string, CourseMission[]>>({})
+
+  useEffect(() => {
+    let mounted = true
+    const courseIds = Array.from(
+      new Set(
+        questItems
+          .map((q) => q.item_data.courseId)
+          .filter((id): id is string => typeof id === 'string')
+      )
+    )
+    if (courseIds.length === 0) return
+
+    async function loadMissions() {
+      const results: Record<string, CourseMission[]> = {}
+      for (const courseId of courseIds) {
+        try {
+          const res = await fetch(`/api/planner/course-missions?courseId=${courseId}`)
+          if (res.ok) {
+            const data = await res.json()
+            results[courseId] = data.missions ?? []
+          }
+        } catch {
+          // ignore
+        }
+      }
+      if (mounted) setMissionsByCourse(results)
+    }
+
+    loadMissions()
+    return () => { mounted = false }
+    // questItems의 id 목록이 바뀔 때만 재조회
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questItems.map((q) => q.id).join(',')])
+
+  // 모든 미션을 sequence 순으로 펼침
+  const allMissions: CourseMission[] = questItems.flatMap((q) => {
+    const courseId = q.item_data.courseId as string | undefined
+    if (!courseId) return []
+    return missionsByCourse[courseId] ?? []
+  })
+
+  // 미션을 오전/오후/저녁에 자동 분배 (개수 기반)
+  const missionSlots = (() => {
+    const total = allMissions.length
+    if (total === 0) {
+      return { morning: [], afternoon: [], evening: [] as CourseMission[] }
+    }
+    // 분배 비율: 오전 40%, 오후 40%, 저녁 20%
+    const morningCount = Math.max(1, Math.ceil(total * 0.4))
+    const afternoonCount = Math.max(
+      total - morningCount > 0 ? 1 : 0,
+      Math.ceil(total * 0.4)
+    )
+    const morning = allMissions.slice(0, morningCount)
+    const afternoon = allMissions.slice(morningCount, morningCount + afternoonCount)
+    const evening = allMissions.slice(morningCount + afternoonCount)
+    return { morning, afternoon, evening }
+  })()
 
   // 날씨 위젯에 전달할 날짜 배열 (OOTD 담긴 날짜들 + 오늘 기본값)
   const planDates = (() => {
@@ -162,10 +247,16 @@ export function PlannerFinalPlan({ items, locale, hasMissionKit, cityId }: Plann
 
   const { slots } = buildSchedule(schedulableItems, t as unknown as (k: string) => string)
 
-  // 예상 LP (미션키트 고객 기준)
-  const estimatedLp = hasMissionKit
-    ? items.filter((i) => i.item_type === 'quest').length * 400
-    : 0
+  // 예상 LP — 실제 펼쳐진 미션의 lp_reward 합계 (fallback: 코스당 400)
+  const estimatedLp = (() => {
+    if (allMissions.length > 0) {
+      return allMissions.reduce((sum, m) => sum + (m.lp_reward || 0), 0)
+    }
+    if (hasMissionKit || questItems.length > 0) {
+      return questItems.length * 400
+    }
+    return 0
+  })()
 
   return (
     <section>
@@ -268,37 +359,79 @@ export function PlannerFinalPlan({ items, locale, hasMissionKit, cityId }: Plann
         </p>
 
         <div className="space-y-4">
-          {slots.map((slot, i) => (
-            <div key={i} className="flex gap-4">
-              {/* 시간대 정보 */}
-              <div className="shrink-0 w-24 pt-0.5">
-                <p className="text-xs font-black text-[#111] flex items-center gap-1">
-                  <span>{slot.emoji}</span>
-                  <span>{slot.label}</span>
-                </p>
-                <p className="text-[10px] text-[#9CA3AF] mt-0.5">{slot.timeRange}</p>
-              </div>
+          {slots.map((slot, i) => {
+            // 각 시간대에 해당하는 미션 (오전/오후/저녁 슬롯에만 펼쳐 배치)
+            let slotMissions: CourseMission[] = []
+            if (slot.label === t('final.morning')) slotMissions = missionSlots.morning
+            else if (slot.label === t('final.afternoon')) slotMissions = missionSlots.afternoon
+            else if (slot.label === t('final.dinner') || slot.label === t('final.night'))
+              slotMissions = slot.label === t('final.dinner') ? missionSlots.evening : []
 
-              {/* 일정 */}
-              <div className="flex-1 min-w-0 border-l-2 border-dashed border-[#e8ddd0] pl-4">
-                {slot.items.length === 0 ? (
-                  <p className="text-xs text-[#9CA3AF] italic">—</p>
-                ) : (
-                  <ul className="space-y-2">
-                    {slot.items.map((it) => (
-                      <li key={it.id} className="flex items-center gap-2 text-sm text-[#374151]">
-                        <span className="text-base">{TYPE_EMOJI[it.item_type]}</span>
-                        <span className="truncate">{itemName(it, locale)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+            const isEmpty = slot.items.length === 0 && slotMissions.length === 0
+
+            return (
+              <div key={i} className="flex gap-4">
+                {/* 시간대 정보 */}
+                <div className="shrink-0 w-24 pt-0.5">
+                  <p className="text-xs font-black text-[#111] flex items-center gap-1">
+                    <span>{slot.emoji}</span>
+                    <span>{slot.label}</span>
+                  </p>
+                  <p className="text-[10px] text-[#9CA3AF] mt-0.5">{slot.timeRange}</p>
+                </div>
+
+                {/* 일정 */}
+                <div className="flex-1 min-w-0 border-l-2 border-dashed border-[#e8ddd0] pl-4">
+                  {isEmpty ? (
+                    <p className="text-xs text-[#9CA3AF] italic">—</p>
+                  ) : (
+                    <ul className="space-y-2">
+                      {/* 미션 먼저 (시간대 시작 활동) */}
+                      {slotMissions.map((m, mi) => {
+                        const missionNum = allMissions.indexOf(m) + 1
+                        const locName = i18nText(m.location_name, locale)
+                        const title = i18nText(m.title, locale)
+                        return (
+                          <li
+                            key={m.id}
+                            className="flex items-start gap-2 text-sm text-[#374151]"
+                          >
+                            <span className="text-base shrink-0">📍</span>
+                            <div className="min-w-0">
+                              <span className="font-bold text-[#FF6B35]">
+                                {t('mission.prefix', { n: missionNum })}:
+                              </span>{' '}
+                              <span className="font-semibold">
+                                {locName || title || `Mission ${missionNum}`}
+                              </span>
+                              {title && locName && title !== locName && (
+                                <span className="text-xs text-[#6B7280] block ml-0">
+                                  — {title}
+                                </span>
+                              )}
+                            </div>
+                          </li>
+                        )
+                      })}
+                      {/* 고객 담은 일반 아이템 */}
+                      {slot.items.map((it) => (
+                        <li
+                          key={it.id}
+                          className="flex items-center gap-2 text-sm text-[#374151]"
+                        >
+                          <span className="text-base">{TYPE_EMOJI[it.item_type]}</span>
+                          <span className="truncate">{itemName(it, locale)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
-        {hasMissionKit && estimatedLp > 0 && (
+        {estimatedLp > 0 && (
           <div className="mt-6 p-4 rounded-2xl bg-[#FFF8F0] border border-[#FF6B35]/20 text-center">
             <p className="text-xs text-[#6B7280] mb-1">
               ⚔️ {t('final.missionIntegrated')}

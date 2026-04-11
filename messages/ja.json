@@ -1158,6 +1158,10 @@
     },
     "addToPlanner": "📋 プランナーに追加",
     "addShort": "📋 追加",
-    "alreadyAdded": "✓ 追加済み"
+    "alreadyAdded": "✓ 追加済み",
+    "mission": {
+      "prefix": "ミッション{n}",
+      "fromHotel": "ホテルから大体{method}{min}分"
+    }
   }
 }
