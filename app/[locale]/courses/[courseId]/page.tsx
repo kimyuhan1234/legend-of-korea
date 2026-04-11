@@ -155,6 +155,7 @@ export default async function CourseDetailPage({ params }: Props) {
         locale={locale}
         isLoggedIn={isLoggedIn}
         kitId={firstKit?.id}
+        cityId={course.region || 'jeonju'}
       />
 
       <div className="h-20" />

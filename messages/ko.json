@@ -1180,6 +1180,9 @@
       "snowy": "눈",
       "foggy": "안개",
       "windy": "바람"
-    }
+    },
+    "addToPlanner": "📋 플래너에 담기",
+    "addShort": "📋 담기",
+    "alreadyAdded": "✓ 담김"
   }
 }

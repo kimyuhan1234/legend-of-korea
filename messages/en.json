@@ -1155,6 +1155,9 @@
       "snowy": "Snowy",
       "foggy": "Foggy",
       "windy": "Windy"
-    }
+    },
+    "addToPlanner": "📋 Add to Planner",
+    "addShort": "📋 Add",
+    "alreadyAdded": "✓ Added"
   }
 }

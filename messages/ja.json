@@ -1155,6 +1155,9 @@
       "snowy": "雪",
       "foggy": "霧",
       "windy": "風"
-    }
+    },
+    "addToPlanner": "📋 プランナーに追加",
+    "addShort": "📋 追加",
+    "alreadyAdded": "✓ 追加済み"
   }
 }
