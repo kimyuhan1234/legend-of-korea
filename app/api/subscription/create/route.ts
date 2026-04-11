@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     // 2. 플랜 정보 서버에서 직접 조회 (클라이언트 금액 무시)
     const { data: plan, error: planErr } = await service
       .from('subscription_plans')
-      .select('id, plan_type, price, tier_levelup, kit_discount_rate')
+      .select('id, plan_type, price, tier_levelup, kit_discount_rate, monthly_credits')
       .eq('id', planId)
       .eq('is_active', true)
       .single()
@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: '유효하지 않은 플랜' }, { status: 400 })
     }
 
-    // 3. 구독 생성 (1개월)
+    // 3. 구독 생성 (1개월) + 크레딧 초기화
     const periodStart = new Date()
     const periodEnd = new Date()
     periodEnd.setMonth(periodEnd.getMonth() + 1)
@@ -56,6 +56,8 @@ export async function POST(req: NextRequest) {
       current_period_start: periodStart.toISOString(),
       current_period_end: periodEnd.toISOString(),
       tier_levelup_used: false,
+      credits_remaining: plan.monthly_credits ?? 0,
+      credits_reset_at: periodEnd.toISOString(),
     }
 
     let subscriptionId: string

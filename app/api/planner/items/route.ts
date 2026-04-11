@@ -74,12 +74,10 @@ export async function GET() {
       hotel_lat: (p.hotel_lat as number | null | undefined) ?? null,
       hotel_lng: (p.hotel_lng as number | null | undefined) ?? null,
       hotel_source: (p.hotel_source as string | null | undefined) ?? null,
+      plan_items: (p.plan_items as Array<unknown> | undefined) ?? [],
     }))
 
-    const totalItems = plans.reduce((sum, p) => {
-      const items = p.plan_items as Array<unknown> | undefined
-      return sum + (items?.length ?? 0)
-    }, 0)
+    const totalItems = plans.reduce((sum, p) => sum + p.plan_items.length, 0)
 
     return NextResponse.json({ plans, totalItems })
   } catch (err) {

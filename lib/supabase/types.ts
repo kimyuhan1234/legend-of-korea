@@ -633,6 +633,7 @@ export interface Database {
           features: { ko: string[]; ja: string[]; en: string[] }
           kit_discount_rate: number
           tier_levelup: boolean
+          monthly_credits: number
           is_active: boolean
           created_at: string
         }
@@ -644,6 +645,7 @@ export interface Database {
           features: { ko: string[]; ja: string[]; en: string[] }
           kit_discount_rate?: number
           tier_levelup?: boolean
+          monthly_credits?: number
           is_active?: boolean
           created_at?: string
         }
@@ -654,6 +656,7 @@ export interface Database {
           features?: { ko: string[]; ja: string[]; en: string[] }
           kit_discount_rate?: number
           tier_levelup?: boolean
+          monthly_credits?: number
           is_active?: boolean
         }
         Relationships: []
@@ -669,6 +672,8 @@ export interface Database {
           current_period_start: string
           current_period_end: string
           tier_levelup_used: boolean
+          credits_remaining: number
+          credits_reset_at: string | null
           created_at: string
           updated_at: string
         }
@@ -682,6 +687,8 @@ export interface Database {
           current_period_start?: string
           current_period_end: string
           tier_levelup_used?: boolean
+          credits_remaining?: number
+          credits_reset_at?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -693,6 +700,8 @@ export interface Database {
           current_period_start?: string
           current_period_end?: string
           tier_levelup_used?: boolean
+          credits_remaining?: number
+          credits_reset_at?: string | null
           updated_at?: string
         }
         Relationships: [
@@ -718,6 +727,7 @@ export interface Database {
           city_id: string
           start_date: string | null
           end_date: string | null
+          travel_style: "relaxed" | "active" | "full"
           has_mission_kit: boolean
           kit_course_id: string | null
           hotel_name: string | null
@@ -736,6 +746,7 @@ export interface Database {
           city_id: string
           start_date?: string | null
           end_date?: string | null
+          travel_style?: "relaxed" | "active" | "full"
           has_mission_kit?: boolean
           kit_course_id?: string | null
           hotel_name?: string | null
@@ -752,6 +763,7 @@ export interface Database {
           city_id?: string
           start_date?: string | null
           end_date?: string | null
+          travel_style?: "relaxed" | "active" | "full"
           has_mission_kit?: boolean
           kit_course_id?: string | null
           hotel_name?: string | null
@@ -773,6 +785,71 @@ export interface Database {
             foreignKeyName: "travel_plans_kit_course_id_fkey"
             columns: ["kit_course_id"]
             referencedRelation: "courses"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      credit_purchases: {
+        Row: {
+          id: string
+          user_id: string
+          credits: number
+          price: number
+          payment_provider: string | null
+          payment_id: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          credits: number
+          price: number
+          payment_provider?: string | null
+          payment_id?: string | null
+          created_at?: string
+        }
+        Update: {
+          credits?: number
+          price?: number
+          payment_provider?: string | null
+          payment_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "credit_purchases_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      credit_usage: {
+        Row: {
+          id: string
+          user_id: string
+          feature: "weather" | "distance" | "ai_curation" | "pdf" | "schedule_change" | "companion_share"
+          credits_used: number
+          metadata: Record<string, unknown> | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          feature: "weather" | "distance" | "ai_curation" | "pdf" | "schedule_change" | "companion_share"
+          credits_used: number
+          metadata?: Record<string, unknown> | null
+          created_at?: string
+        }
+        Update: {
+          feature?: "weather" | "distance" | "ai_curation" | "pdf" | "schedule_change" | "companion_share"
+          credits_used?: number
+          metadata?: Record<string, unknown> | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "credit_usage_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]

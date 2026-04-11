@@ -368,7 +368,7 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs"
 
 ---
 
-### 2.15 subscription_plans (015 추가)
+### 2.15 subscription_plans (015 추가, 017 수정)
 
 ```sql
 CREATE TABLE subscription_plans (
@@ -379,16 +379,20 @@ CREATE TABLE subscription_plans (
   features          JSONB NOT NULL,          -- { ko: [...], ja: [...], en: [...] }
   kit_discount_rate INTEGER DEFAULT 0,       -- 키트 추가 할인율 (%)
   tier_levelup      BOOLEAN DEFAULT false,   -- 즉시 레벨업 혜택 여부
+  monthly_credits   INTEGER NOT NULL DEFAULT 0,  -- 월 지급 크레딧 (017)
   is_active         BOOLEAN DEFAULT true,
   created_at        TIMESTAMPTZ DEFAULT now()
 );
 ```
 
-초기 데이터 (3개): free(0원) / explorer(9,900원, 5%) / legend(19,900원, 5% + 티어업)
+초기 데이터 (3개):
+- free (0원, 0크레딧)
+- explorer (9,900원, 5%, 30크레딧/월)
+- legend (19,900원, 5% + 티어업, 100크레딧/월)
 
 ---
 
-### 2.16 user_subscriptions (015 추가)
+### 2.16 user_subscriptions (015 추가, 017 수정)
 
 ```sql
 CREATE TABLE user_subscriptions (
@@ -401,6 +405,8 @@ CREATE TABLE user_subscriptions (
   current_period_start     TIMESTAMPTZ NOT NULL,
   current_period_end       TIMESTAMPTZ NOT NULL,
   tier_levelup_used        BOOLEAN DEFAULT false,  -- 전설 플랜 1회 제한
+  credits_remaining        INTEGER NOT NULL DEFAULT 0,  -- 잔여 크레딧 (017)
+  credits_reset_at         TIMESTAMPTZ,                 -- 다음 갱신일 (017)
   created_at               TIMESTAMPTZ DEFAULT now(),
   updated_at               TIMESTAMPTZ DEFAULT now(),
   UNIQUE(user_id)
@@ -411,7 +417,7 @@ RLS: 본인만 조회/수정/생성 (`auth.uid() = user_id`)
 
 ---
 
-### 2.17 travel_plans (015 추가)
+### 2.17 travel_plans (015 추가, 016/017 수정)
 
 ```sql
 CREATE TABLE travel_plans (
@@ -421,8 +427,15 @@ CREATE TABLE travel_plans (
   city_id          TEXT NOT NULL,
   start_date       DATE,
   end_date         DATE,
+  travel_style     TEXT NOT NULL DEFAULT 'active'
+                   CHECK (travel_style IN ('relaxed','active','full')),  -- 017
   has_mission_kit  BOOLEAN DEFAULT false,
   kit_course_id    UUID REFERENCES courses(id),
+  hotel_name       TEXT,                 -- 016
+  hotel_address    TEXT,                 -- 016
+  hotel_lat        DOUBLE PRECISION,     -- 016
+  hotel_lng        DOUBLE PRECISION,     -- 016
+  hotel_source     TEXT CHECK (hotel_source IS NULL OR hotel_source IN ('curated','manual')),  -- 016
   status           TEXT CHECK (status IN ('draft','confirmed','completed')),
   created_at       TIMESTAMPTZ DEFAULT now(),
   updated_at       TIMESTAMPTZ DEFAULT now()
@@ -433,7 +446,46 @@ RLS: 본인만 모든 권한
 
 ---
 
-### 2.18 plan_items (015 추가)
+### 2.18 credit_purchases (017 추가)
+
+```sql
+CREATE TABLE credit_purchases (
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id           UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  credits           INTEGER NOT NULL CHECK (credits > 0),
+  price             INTEGER NOT NULL CHECK (price >= 0),
+  payment_provider  TEXT,
+  payment_id        TEXT,
+  created_at        TIMESTAMPTZ DEFAULT now()
+);
+```
+
+패키지: 10개/₩1,900 · 30개/₩4,900 · 100개/₩12,900 (서버 고정, 클라이언트 값 무시)
+
+RLS: 본인만 조회/생성
+
+---
+
+### 2.19 credit_usage (017 추가)
+
+```sql
+CREATE TABLE credit_usage (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id       UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  feature       TEXT NOT NULL CHECK (feature IN ('weather','distance','ai_curation','pdf','schedule_change','companion_share')),
+  credits_used  INTEGER NOT NULL CHECK (credits_used > 0),
+  metadata      JSONB,
+  created_at    TIMESTAMPTZ DEFAULT now()
+);
+```
+
+feature 단가 (서버 고정): weather=1, distance=1, ai_curation=3, pdf=2, schedule_change=2, companion_share=1
+
+RLS: 본인만 조회/생성
+
+---
+
+### 2.20 plan_items (015 추가)
 
 ```sql
 CREATE TABLE plan_items (

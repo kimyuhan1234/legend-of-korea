@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function GET() {
   try {
     const supabase = await createClient()
@@ -10,7 +13,7 @@ export async function GET() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // 유저 구독 조회
+    // 유저 구독 조회 — 크레딧 잔액 포함
     const { data: subscription } = await supabase
       .from('user_subscriptions')
       .select(`
@@ -19,6 +22,8 @@ export async function GET() {
         current_period_start,
         current_period_end,
         tier_levelup_used,
+        credits_remaining,
+        credits_reset_at,
         subscription_plans (
           id,
           plan_type,
@@ -26,7 +31,8 @@ export async function GET() {
           price,
           features,
           kit_discount_rate,
-          tier_levelup
+          tier_levelup,
+          monthly_credits
         )
       `)
       .eq('user_id', user.id)

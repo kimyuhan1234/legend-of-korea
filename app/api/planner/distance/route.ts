@@ -1,4 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createClient } from '@/lib/supabase/server'
+import { deductCredits } from '@/lib/credits'
+
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 // Haversine 거리 (km)
 function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
@@ -24,6 +29,41 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: '좌표 4개 필수' }, { status: 400 })
     }
 
+    // v1.2 — 거리 계산은 크레딧 1개 차감 (구독자 전용)
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    const deduct = await deductCredits(supabase, user.id, 'distance', {
+      fromLat, fromLng, toLat, toLng,
+    })
+
+    if (!deduct.ok) {
+      if (deduct.error === 'insufficient_credits') {
+        return NextResponse.json(
+          {
+            error: 'insufficient_credits',
+            remaining: deduct.remaining,
+            required: deduct.required,
+          },
+          { status: 402 }
+        )
+      }
+      if (deduct.error === 'no_active_subscription') {
+        return NextResponse.json(
+          { error: 'subscription_required' },
+          { status: 403 }
+        )
+      }
+      return NextResponse.json(
+        { error: deduct.error },
+        { status: 500 }
+      )
+    }
+
     const distanceKm = haversineKm(fromLat, fromLng, toLat, toLng)
 
     // 도보 4km/h, 택시 평균 25km/h + 대기/출발 3분
@@ -35,8 +75,12 @@ export async function GET(req: NextRequest) {
       distanceKm: Math.round(distanceKm * 10) / 10,
       walkMinutes,
       taxiMinutes,
+      creditsRemaining: deduct.remaining,
     })
-  } catch {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+  } catch (err) {
+    return NextResponse.json(
+      { error: 'Internal Server Error', detail: err instanceof Error ? err.message : String(err) },
+      { status: 500 }
+    )
   }
 }
