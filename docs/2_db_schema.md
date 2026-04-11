@@ -365,3 +365,88 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs"
 ```
 
 > **주의**: `service_role` 키는 절대 클라이언트에 노출 금지. API Route에서만 사용.
+
+---
+
+### 2.15 subscription_plans (015 추가)
+
+```sql
+CREATE TABLE subscription_plans (
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name              JSONB NOT NULL,          -- { ko, ja, en }
+  price             INTEGER NOT NULL,        -- 월 구독료 (원)
+  plan_type         TEXT CHECK (plan_type IN ('free','explorer','legend')),
+  features          JSONB NOT NULL,          -- { ko: [...], ja: [...], en: [...] }
+  kit_discount_rate INTEGER DEFAULT 0,       -- 키트 추가 할인율 (%)
+  tier_levelup      BOOLEAN DEFAULT false,   -- 즉시 레벨업 혜택 여부
+  is_active         BOOLEAN DEFAULT true,
+  created_at        TIMESTAMPTZ DEFAULT now()
+);
+```
+
+초기 데이터 (3개): free(0원) / explorer(9,900원, 5%) / legend(19,900원, 5% + 티어업)
+
+---
+
+### 2.16 user_subscriptions (015 추가)
+
+```sql
+CREATE TABLE user_subscriptions (
+  id                       UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id                  UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  plan_id                  UUID REFERENCES subscription_plans(id),
+  status                   TEXT CHECK (status IN ('active','canceled','expired','trial')),
+  payment_provider         TEXT,
+  payment_subscription_id  TEXT,
+  current_period_start     TIMESTAMPTZ NOT NULL,
+  current_period_end       TIMESTAMPTZ NOT NULL,
+  tier_levelup_used        BOOLEAN DEFAULT false,  -- 전설 플랜 1회 제한
+  created_at               TIMESTAMPTZ DEFAULT now(),
+  updated_at               TIMESTAMPTZ DEFAULT now(),
+  UNIQUE(user_id)
+);
+```
+
+RLS: 본인만 조회/수정/생성 (`auth.uid() = user_id`)
+
+---
+
+### 2.17 travel_plans (015 추가)
+
+```sql
+CREATE TABLE travel_plans (
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id          UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  title            JSONB,
+  city_id          TEXT NOT NULL,
+  start_date       DATE,
+  end_date         DATE,
+  has_mission_kit  BOOLEAN DEFAULT false,
+  kit_course_id    UUID REFERENCES courses(id),
+  status           TEXT CHECK (status IN ('draft','confirmed','completed')),
+  created_at       TIMESTAMPTZ DEFAULT now(),
+  updated_at       TIMESTAMPTZ DEFAULT now()
+);
+```
+
+RLS: 본인만 모든 권한
+
+---
+
+### 2.18 plan_items (015 추가)
+
+```sql
+CREATE TABLE plan_items (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  plan_id       UUID REFERENCES travel_plans(id) ON DELETE CASCADE,
+  item_type     TEXT CHECK (item_type IN ('food','stay','diy','quest','ootd','goods','transport','surprise')),
+  item_data     JSONB NOT NULL,
+  day_number    INTEGER,
+  time_slot     TEXT CHECK (time_slot IN ('morning','afternoon','evening','anytime')),
+  sort_order    INTEGER DEFAULT 0,
+  is_confirmed  BOOLEAN DEFAULT false,
+  created_at    TIMESTAMPTZ DEFAULT now()
+);
+```
+
+RLS: travel_plans.user_id 기반 서브쿼리 검증 (본인 플랜의 아이템만 접근)

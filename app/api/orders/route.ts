@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 쿠폰 검증
-    let discountRate = 0
+    let couponDiscountRate = 0
     if (couponId) {
       const { data: coupon } = await service
         .from("coupons")
@@ -61,12 +61,33 @@ export async function POST(request: NextRequest) {
       if (new Date(coupon.expires_at) < new Date()) {
         return NextResponse.json({ error: "만료된 쿠폰입니다" }, { status: 400 })
       }
-      discountRate = coupon.discount_rate
+      couponDiscountRate = coupon.discount_rate
     }
 
-    // 서버 측 금액 계산 및 검증
+    // 구독 할인 확인 (서버에서 직접 조회)
+    let subscriptionDiscountRate = 0
+    const { data: subscription } = await service
+      .from("user_subscriptions")
+      .select(`
+        status,
+        current_period_end,
+        subscription_plans ( kit_discount_rate )
+      `)
+      .eq("user_id", user.id)
+      .eq("status", "active")
+      .maybeSingle()
+
+    if (subscription && new Date(subscription.current_period_end) > new Date()) {
+      const plan = subscription.subscription_plans as unknown as { kit_discount_rate: number } | null
+      if (plan?.kit_discount_rate) {
+        subscriptionDiscountRate = plan.kit_discount_rate
+      }
+    }
+
+    // 서버 측 금액 계산 및 검증 (쿠폰 할인 + 구독 할인 합산)
     const subtotal = kit.price * quantity
-    const discount = Math.floor(subtotal * (discountRate / 100))
+    const totalDiscountRate = couponDiscountRate + subscriptionDiscountRate
+    const discount = Math.floor(subtotal * (totalDiscountRate / 100))
     const expectedTotal = subtotal - discount
 
     if (Math.abs(expectedTotal - totalPrice) > 1) {

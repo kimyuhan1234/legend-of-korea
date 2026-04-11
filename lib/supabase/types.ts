@@ -624,6 +624,184 @@ export interface Database {
         }
         Relationships: []
       }
+      subscription_plans: {
+        Row: {
+          id: string
+          name: I18nText
+          price: number
+          plan_type: "free" | "explorer" | "legend"
+          features: { ko: string[]; ja: string[]; en: string[] }
+          kit_discount_rate: number
+          tier_levelup: boolean
+          is_active: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: I18nText
+          price: number
+          plan_type: "free" | "explorer" | "legend"
+          features: { ko: string[]; ja: string[]; en: string[] }
+          kit_discount_rate?: number
+          tier_levelup?: boolean
+          is_active?: boolean
+          created_at?: string
+        }
+        Update: {
+          name?: I18nText
+          price?: number
+          plan_type?: "free" | "explorer" | "legend"
+          features?: { ko: string[]; ja: string[]; en: string[] }
+          kit_discount_rate?: number
+          tier_levelup?: boolean
+          is_active?: boolean
+        }
+        Relationships: []
+      }
+      user_subscriptions: {
+        Row: {
+          id: string
+          user_id: string
+          plan_id: string
+          status: "active" | "canceled" | "expired" | "trial"
+          payment_provider: string | null
+          payment_subscription_id: string | null
+          current_period_start: string
+          current_period_end: string
+          tier_levelup_used: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          plan_id: string
+          status?: "active" | "canceled" | "expired" | "trial"
+          payment_provider?: string | null
+          payment_subscription_id?: string | null
+          current_period_start?: string
+          current_period_end: string
+          tier_levelup_used?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          plan_id?: string
+          status?: "active" | "canceled" | "expired" | "trial"
+          payment_provider?: string | null
+          payment_subscription_id?: string | null
+          current_period_start?: string
+          current_period_end?: string
+          tier_levelup_used?: boolean
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_subscriptions_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_subscriptions_plan_id_fkey"
+            columns: ["plan_id"]
+            referencedRelation: "subscription_plans"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      travel_plans: {
+        Row: {
+          id: string
+          user_id: string
+          title: I18nText | null
+          city_id: string
+          start_date: string | null
+          end_date: string | null
+          has_mission_kit: boolean
+          kit_course_id: string | null
+          status: "draft" | "confirmed" | "completed"
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          title?: I18nText | null
+          city_id: string
+          start_date?: string | null
+          end_date?: string | null
+          has_mission_kit?: boolean
+          kit_course_id?: string | null
+          status?: "draft" | "confirmed" | "completed"
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          title?: I18nText | null
+          city_id?: string
+          start_date?: string | null
+          end_date?: string | null
+          has_mission_kit?: boolean
+          kit_course_id?: string | null
+          status?: "draft" | "confirmed" | "completed"
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "travel_plans_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "travel_plans_kit_course_id_fkey"
+            columns: ["kit_course_id"]
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      plan_items: {
+        Row: {
+          id: string
+          plan_id: string
+          item_type: "food" | "stay" | "diy" | "quest" | "ootd" | "goods" | "transport" | "surprise"
+          item_data: Record<string, unknown>
+          day_number: number | null
+          time_slot: "morning" | "afternoon" | "evening" | "anytime" | null
+          sort_order: number
+          is_confirmed: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          plan_id: string
+          item_type: "food" | "stay" | "diy" | "quest" | "ootd" | "goods" | "transport" | "surprise"
+          item_data: Record<string, unknown>
+          day_number?: number | null
+          time_slot?: "morning" | "afternoon" | "evening" | "anytime" | null
+          sort_order?: number
+          is_confirmed?: boolean
+          created_at?: string
+        }
+        Update: {
+          item_type?: "food" | "stay" | "diy" | "quest" | "ootd" | "goods" | "transport" | "surprise"
+          item_data?: Record<string, unknown>
+          day_number?: number | null
+          time_slot?: "morning" | "afternoon" | "evening" | "anytime" | null
+          sort_order?: number
+          is_confirmed?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plan_items_plan_id_fkey"
+            columns: ["plan_id"]
+            referencedRelation: "travel_plans"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -658,6 +836,10 @@ export type Coupon = Database["public"]["Tables"]["coupons"]["Row"]
 export type AffiliateLink = Database["public"]["Tables"]["affiliate_links"]["Row"]
 export type AffiliateClick = Database["public"]["Tables"]["affiliate_clicks"]["Row"]
 export type B2bOrder = Database["public"]["Tables"]["b2b_orders"]["Row"]
+export type SubscriptionPlan = Database["public"]["Tables"]["subscription_plans"]["Row"]
+export type UserSubscription = Database["public"]["Tables"]["user_subscriptions"]["Row"]
+export type TravelPlan = Database["public"]["Tables"]["travel_plans"]["Row"]
+export type PlanItem = Database["public"]["Tables"]["plan_items"]["Row"]
 
 // Insert 타입
 export type UserInsert = Database["public"]["Tables"]["users"]["Insert"]
