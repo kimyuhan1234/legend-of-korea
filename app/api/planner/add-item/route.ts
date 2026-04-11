@@ -36,9 +36,6 @@ export async function POST(req: NextRequest) {
 
     // 2. 없으면 자동 생성
     if (!plan) {
-      const periodEnd = new Date()
-      periodEnd.setMonth(periodEnd.getMonth() + 1)
-
       const { data: newPlan, error: planErr } = await supabase
         .from('travel_plans')
         .insert({
@@ -50,7 +47,10 @@ export async function POST(req: NextRequest) {
         .single()
 
       if (planErr || !newPlan) {
-        return NextResponse.json({ error: '플랜 생성 실패' }, { status: 500 })
+        return NextResponse.json(
+          { error: '플랜 생성 실패', detail: planErr?.message },
+          { status: 500 }
+        )
       }
       plan = newPlan
     }
@@ -67,7 +67,10 @@ export async function POST(req: NextRequest) {
       .single()
 
     if (itemErr || !item) {
-      return NextResponse.json({ error: '아이템 추가 실패' }, { status: 500 })
+      return NextResponse.json(
+        { error: '아이템 추가 실패', detail: itemErr?.message },
+        { status: 500 }
+      )
     }
 
     return NextResponse.json({ success: true, itemId: item.id, planId: plan.id })
