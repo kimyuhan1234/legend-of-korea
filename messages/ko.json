@@ -1062,6 +1062,78 @@
       "diy": "🛍️ 여행 아이템은 준비하셨나요?",
       "ootd": "☀️ 날씨 맞는 액티비티 추천",
       "goods": "🔥 미션하면 LP 더 적립!"
+    },
+    "hero": {
+      "title": "나만의 전설 여행 플랜",
+      "subtitle": "담아둔 아이템들이 완벽한 여행으로 완성됩니다",
+      "itemCount": "담은 아이템 {count}개"
+    },
+    "preview": {
+      "title": "담은 아이템",
+      "empty": "아직 담은 아이템이 없어요. 탭을 둘러보세요!",
+      "blur": "전체 플랜을 보려면 구독하세요",
+      "remove": "삭제",
+      "city": "도시"
+    },
+    "subscription": {
+      "title": "플랜을 선택하세요",
+      "subtitle": "구독으로 전체 여행 플래너를 활성화하세요",
+      "free": "무료 체험",
+      "explorer": "탐험가 플랜",
+      "legend": "전설 플랜",
+      "best": "BEST",
+      "perMonth": "월",
+      "kitDiscount": "미션키트 5% 추가 할인",
+      "tierUp": "즉시 1랭크 레벨업! (1회)",
+      "tierUpUsed": "이미 레벨업 혜택을 사용하셨습니다",
+      "congratsTierUp": "축하합니다! 레벨업 완료!",
+      "bonus500": "최고 티어라 LP 500 보너스가 지급되었어요!",
+      "subscribe": "구독하기",
+      "processing": "처리 중...",
+      "alreadySubscribed": "이미 활성 구독이 있습니다",
+      "success": "구독 완료!"
+    },
+    "curation": {
+      "title": "여행 큐레이션",
+      "subtitle": "담은 아이템을 완벽하게 이어드릴게요",
+      "surprise": "우리만 아는 추천",
+      "surpriseSubtitle": "이 여행에 딱 어울리는 숨겨진 명소",
+      "addSurprise": "추가하기",
+      "skip": "다음에",
+      "missingStay": "숙소가 아직 없어요. 이 도시에 딱 맞는 숙소를 추천해드릴까요?",
+      "missingFood": "맛집을 아직 안 담으셨네요. 현지인 추천 맛집 어때요?",
+      "missingDiy": "한국적인 공방 체험도 추가해보세요",
+      "missingQuest": "미션 키트로 더 풍부한 여행을 경험해보세요"
+    },
+    "transport": {
+      "title": "교통 안내",
+      "subtitle": "서울에서 출발하는 경로를 확인하세요",
+      "fromSeoul": "서울 출발",
+      "ktx": "KTX",
+      "bus": "고속버스",
+      "flight": "직항",
+      "booking": "예약하기",
+      "lastMile": "역/터미널/공항에서 숙소까지",
+      "taxi": "택시",
+      "taxiEstimate": "예상 요금",
+      "addressCard": "기사에게 보여주세요",
+      "copy": "복사",
+      "copied": "복사됨!",
+      "publicBus": "대중교통",
+      "duration": "소요시간"
+    },
+    "final": {
+      "title": "나의 여행 플랜",
+      "subtitle": "날짜별로 정리된 완벽한 일정",
+      "day": "{day}일차",
+      "morning": "오전",
+      "afternoon": "오후",
+      "evening": "저녁",
+      "anytime": "자유 시간",
+      "downloadPdf": "PDF 다운로드",
+      "estimatedLp": "예상 LP 적립",
+      "lpUnit": "LP",
+      "missionIntegrated": "미션키트 코스 자동 포함"
     }
   }
 }

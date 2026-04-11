@@ -1037,6 +1037,78 @@
       "diy": "🛍️ Got your travel goods ready?",
       "ootd": "☀️ Activities that match the weather",
       "goods": "🔥 Earn more LP with missions!"
+    },
+    "hero": {
+      "title": "My Legend Travel Plan",
+      "subtitle": "Saved items become a perfect journey",
+      "itemCount": "{count} items saved"
+    },
+    "preview": {
+      "title": "Saved Items",
+      "empty": "No items yet. Browse the tabs!",
+      "blur": "Subscribe to see the full plan",
+      "remove": "Remove",
+      "city": "City"
+    },
+    "subscription": {
+      "title": "Choose Your Plan",
+      "subtitle": "Unlock the full travel planner with a subscription",
+      "free": "Free Trial",
+      "explorer": "Explorer Plan",
+      "legend": "Legend Plan",
+      "best": "BEST",
+      "perMonth": "/mo",
+      "kitDiscount": "Mission kit 5% extra discount",
+      "tierUp": "Instant 1-rank level-up! (once)",
+      "tierUpUsed": "Level-up benefit already used",
+      "congratsTierUp": "Congrats! Level-up complete!",
+      "bonus500": "Top tier bonus: 500 LP awarded!",
+      "subscribe": "Subscribe",
+      "processing": "Processing...",
+      "alreadySubscribed": "You already have an active subscription",
+      "success": "Subscribed!"
+    },
+    "curation": {
+      "title": "Travel Curation",
+      "subtitle": "We'll connect your saved items perfectly",
+      "surprise": "Our Secret Pick",
+      "surpriseSubtitle": "A hidden gem that fits your trip",
+      "addSurprise": "Add",
+      "skip": "Skip",
+      "missingStay": "No stay yet. Want a perfect match for this city?",
+      "missingFood": "Missing food spots. How about local favorites?",
+      "missingDiy": "Try a Korean craft workshop experience",
+      "missingQuest": "Enrich your trip with a Mission Kit"
+    },
+    "transport": {
+      "title": "Transport Guide",
+      "subtitle": "Routes from Seoul",
+      "fromSeoul": "From Seoul",
+      "ktx": "KTX",
+      "bus": "Express Bus",
+      "flight": "Flight",
+      "booking": "Book",
+      "lastMile": "Station/Terminal/Airport to Stay",
+      "taxi": "Taxi",
+      "taxiEstimate": "Est. fare",
+      "addressCard": "Show to driver",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "publicBus": "Public Transit",
+      "duration": "Duration"
+    },
+    "final": {
+      "title": "My Travel Plan",
+      "subtitle": "A perfect day-by-day itinerary",
+      "day": "Day {day}",
+      "morning": "Morning",
+      "afternoon": "Afternoon",
+      "evening": "Evening",
+      "anytime": "Free Time",
+      "downloadPdf": "Download PDF",
+      "estimatedLp": "Estimated LP",
+      "lpUnit": "LP",
+      "missionIntegrated": "Mission kit course auto-included"
     }
   }
 }
