@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import { SIGHTS, REGIONS, type SightCategory } from '@/lib/data/sights'
+import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 interface Props {
   params: { locale: string }
@@ -109,7 +110,20 @@ export default async function SightsPage({ params, searchParams }: Props) {
                 </div>
                 <div className="p-5">
                   <h3 className="font-bold text-[#111] mb-2">{sight.name}</h3>
-                  <p className="text-sm text-[#7a6a58] line-clamp-2">{sight.description}</p>
+                  <p className="text-sm text-[#7a6a58] line-clamp-2 mb-4">{sight.description}</p>
+                  <AddToPlannerButton
+                    itemType="food"
+                    cityId={sight.region}
+                    itemData={{
+                      id: sight.id,
+                      name: sight.name,
+                      description: sight.description,
+                      category: sight.category,
+                      region: sight.region,
+                      kind: 'sight',
+                    }}
+                    className="w-full"
+                  />
                 </div>
               </div>
             ))}
