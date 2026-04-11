@@ -7,24 +7,25 @@ type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transpor
 
 interface PlannerCurationProps {
   itemTypesInPlan: ItemType[]
+  cityId: string
 }
 
-export function PlannerCuration({ itemTypesInPlan }: PlannerCurationProps) {
+export function PlannerCuration({ itemTypesInPlan, cityId }: PlannerCurationProps) {
   const t = useTranslations('planner')
 
-  const missing: Array<{ emoji: string; messageKey: string }> = []
+  const missing: Array<{ emoji: string; messageKey: string; kind: string }> = []
 
   if (!itemTypesInPlan.includes('stay')) {
-    missing.push({ emoji: '🏯', messageKey: 'curation.missingStay' })
+    missing.push({ emoji: '🏯', messageKey: 'curation.missingStay', kind: 'stay' })
   }
   if (!itemTypesInPlan.includes('food')) {
-    missing.push({ emoji: '🍜', messageKey: 'curation.missingFood' })
+    missing.push({ emoji: '🍜', messageKey: 'curation.missingFood', kind: 'food' })
   }
   if (!itemTypesInPlan.includes('diy')) {
-    missing.push({ emoji: '🏺', messageKey: 'curation.missingDiy' })
+    missing.push({ emoji: '🏺', messageKey: 'curation.missingDiy', kind: 'diy' })
   }
   if (!itemTypesInPlan.includes('quest')) {
-    missing.push({ emoji: '⚔️', messageKey: 'curation.missingQuest' })
+    missing.push({ emoji: '⚔️', messageKey: 'curation.missingQuest', kind: 'quest' })
   }
 
   if (missing.length === 0) return null
@@ -38,7 +39,13 @@ export function PlannerCuration({ itemTypesInPlan }: PlannerCurationProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {missing.map((s, i) => (
-          <PlannerSurprise key={i} emoji={s.emoji} messageKey={s.messageKey} />
+          <PlannerSurprise
+            key={i}
+            emoji={s.emoji}
+            messageKey={s.messageKey}
+            cityId={cityId}
+            suggestionKind={s.kind}
+          />
         ))}
       </div>
     </section>

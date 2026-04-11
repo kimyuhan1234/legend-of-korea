@@ -215,7 +215,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
 
         {isSubscribed && mainPlan && (
           <>
-            <PlannerCuration itemTypesInPlan={itemTypes} />
+            <PlannerCuration itemTypesInPlan={itemTypes} cityId={mainPlan.city_id} />
             <PlannerTransport cityId={mainPlan.city_id} locale={locale} />
             <PlannerSpotDistance
               hotelLat={mainPlan.hotel_lat}
