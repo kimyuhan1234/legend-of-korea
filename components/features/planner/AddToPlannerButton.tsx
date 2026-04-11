@@ -57,6 +57,8 @@ export function AddToPlannerButton({
       }
 
       setState('added')
+      // Navbar 뱃지 갱신 트리거
+      window.dispatchEvent(new Event('planner:refresh'))
       // 크로스 탭 토스트는 itemType이 TabId인 경우만
       if (['food', 'stay', 'diy', 'quest', 'ootd', 'goods'].includes(itemType)) {
         setShowToast(true)

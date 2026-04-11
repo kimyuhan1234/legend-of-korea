@@ -1,9 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+
+const REFRESH_EVENT = 'planner:refresh'
 
 export function PlannerBadge() {
   const t = useTranslations('planner')
@@ -11,18 +13,28 @@ export function PlannerBadge() {
   const locale = pathname.split('/')[1] || 'ko'
   const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    let mounted = true
+  const refresh = useCallback(() => {
     fetch('/api/planner/items')
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
-        if (mounted && data?.totalItems !== undefined) {
+        if (data && typeof data.totalItems === 'number') {
           setCount(data.totalItems)
         }
       })
       .catch(() => {})
-    return () => { mounted = false }
-  }, [pathname])
+  }, [])
+
+  // pathname 변경 시 재조회
+  useEffect(() => {
+    refresh()
+  }, [pathname, refresh])
+
+  // 담기 이벤트 리스너 (AddToPlannerButton에서 dispatchEvent로 호출)
+  useEffect(() => {
+    const handler = () => refresh()
+    window.addEventListener(REFRESH_EVENT, handler)
+    return () => window.removeEventListener(REFRESH_EVENT, handler)
+  }, [refresh])
 
   if (count === 0) return null
 

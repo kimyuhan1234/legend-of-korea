@@ -53,32 +53,41 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   const [subscriptionPlans, setSubscriptionPlans] = useState<SubscriptionPlan[]>([])
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
-  // 초기 데이터 로드
+  // 담긴 아이템 다시 불러오기 (공개 재사용 함수)
+  const refreshPlans = async () => {
+    const res = await fetch('/api/planner/items')
+    if (!res.ok) return
+    const d = await res.json()
+    setPlans(d.plans || [])
+    setTotalItems(d.totalItems || 0)
+  }
+
+  // 초기 데이터 로드 — 3개 API 동시 호출
   useEffect(() => {
     let mounted = true
     async function load() {
       try {
-        const [plannerRes, statusRes, plansRes] = await Promise.all([
+        const [itemsRes, statusRes, subPlansRes] = await Promise.all([
           fetch('/api/planner/items'),
           fetch('/api/subscription/status'),
-          fetch('/api/subscription/status'),
+          fetch('/api/subscription/plans'),
         ])
 
-        if (plannerRes.ok && mounted) {
-          const d = await plannerRes.json()
+        if (mounted && itemsRes.ok) {
+          const d = await itemsRes.json()
           setPlans(d.plans || [])
           setTotalItems(d.totalItems || 0)
         }
 
-        if (statusRes.ok && mounted) {
+        if (mounted && statusRes.ok) {
           const s = await statusRes.json()
           setIsSubscribed(!!s.subscribed)
         }
 
-        // subscription_plans 목록은 Supabase public 테이블에서 직접 조회
-        // 여기선 status API가 free plan만 반환하므로, 별도 엔드포인트 없어도 무방
-        // 임시로 RLS=public인 테이블에서 pulled 한다면 별도 API 필요
-        void plansRes
+        if (mounted && subPlansRes.ok) {
+          const sp = await subPlansRes.json()
+          setSubscriptionPlans(sp.plans || [])
+        }
       } finally {
         if (mounted) setLoading(false)
       }
@@ -87,45 +96,18 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
     return () => { mounted = false }
   }, [])
 
-  // 구독 플랜 목록 로드 (공개 조회)
+  // planner:refresh 이벤트 구독 (담기/삭제 시 자동 재조회)
   useEffect(() => {
-    let mounted = true
-    fetch('/api/subscription/status')
-      .then((r) => r.ok ? r.json() : null)
-      .then(() => {
-        // 임시: 하드코딩된 UI용 플랜 3개를 가져오는 대신
-        // subscription_plans 테이블을 직접 조회하는 API가 별도 필요
-        // 여기서는 PlannerSubscriptionWall에 직접 쿼리를 시도
-      })
-      .catch(() => {})
-    return () => { mounted = false }
-  }, [])
-
-  // 플랜 목록 직접 조회 (Supabase 공개 테이블)
-  useEffect(() => {
-    let mounted = true
-    fetch('/api/subscription/plans')
-      .then((r) => r.ok ? r.json() : null)
-      .then((data) => {
-        if (mounted && data?.plans) {
-          setSubscriptionPlans(data.plans)
-        }
-      })
-      .catch(() => {})
-    return () => { mounted = false }
+    const handler = () => refreshPlans()
+    window.addEventListener('planner:refresh', handler)
+    return () => window.removeEventListener('planner:refresh', handler)
   }, [])
 
   const handleRemoveItem = async (itemId: string) => {
     try {
       const res = await fetch(`/api/planner/items?itemId=${itemId}`, { method: 'DELETE' })
       if (res.ok) {
-        setPlans((prev) =>
-          prev.map((p) => ({
-            ...p,
-            plan_items: p.plan_items.filter((i) => i.id !== itemId),
-          }))
-        )
-        setTotalItems((n) => Math.max(0, n - 1))
+        await refreshPlans()
       }
     } catch {
       // ignore
@@ -193,13 +175,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   }, [mainPlan, locale])
 
   // 호텔이 저장된 후 플랜 목록을 다시 불러오기
-  const handleHotelSaved = async () => {
-    const res = await fetch('/api/planner/items')
-    if (res.ok) {
-      const d = await res.json()
-      setPlans(d.plans || [])
-    }
-  }
+  const handleHotelSaved = () => refreshPlans()
 
   if (loading) {
     return (

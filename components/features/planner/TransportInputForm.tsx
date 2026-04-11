@@ -89,6 +89,7 @@ export function TransportInputForm({ cityId, locale }: TransportInputFormProps) 
         return
       }
       setState('added')
+      window.dispatchEvent(new Event('planner:refresh'))
     } catch {
       setState('idle')
     }

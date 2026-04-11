@@ -29,6 +29,7 @@ export function HotelInputForm({ planId, initialName, initialAddress, onSaved }:
       if (res.ok) {
         setSaved(true)
         onSaved?.()
+        window.dispatchEvent(new Event('planner:refresh'))
         setTimeout(() => setSaved(false), 2000)
       }
     } finally {

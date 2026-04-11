@@ -80,6 +80,7 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
       }
 
       setState('added')
+      window.dispatchEvent(new Event('planner:refresh'))
     } catch {
       setState('idle')
     }
