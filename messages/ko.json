@@ -555,7 +555,62 @@
     "filterAll": "전체",
     "bookNow": "예약하기",
     "comingSoon": "준비 중",
-    "comingSoonDesc": "이 지역 숙소 정보를 준비 중입니다"
+    "comingSoonDesc": "이 지역 숙소 정보를 준비 중입니다",
+    "hero": {
+      "headline": "전설 속 도시에서 머물다",
+      "subline": "미션 수행지 가까운 숙소를 골라 전설 여행을 완성하세요",
+      "badge1": "미션 수행지 도보 거리 표시",
+      "badge2": "외부 사이트에서 직접 예약",
+      "badge3": "최저가 비교"
+    },
+    "cities": {
+      "all": "전체",
+      "jeonju": "전주",
+      "seoul": "서울",
+      "busan": "부산",
+      "jeju": "제주",
+      "gyeongju": "경주",
+      "tongyeong": "통영",
+      "cheonan": "천안",
+      "yongin": "용인",
+      "icheon": "이천"
+    },
+    "filter": {
+      "typeLabel": "숙소 유형",
+      "vibeLabel": "분위기",
+      "all": "전체",
+      "hanok": "한옥",
+      "hotel": "호텔",
+      "guesthouse": "게스트하우스",
+      "pension": "펜션",
+      "resort": "리조트"
+    },
+    "vibe": {
+      "traditional": "전통",
+      "modern": "모던",
+      "romantic": "로맨틱",
+      "family": "가족",
+      "budget": "가성비",
+      "luxury": "럭셔리",
+      "instagram": "인스타",
+      "nature": "자연"
+    },
+    "card": {
+      "priceRange": "가격대",
+      "walkToMission": "미션 수행지까지",
+      "book": "예약하기",
+      "external": "외부 사이트로 이동합니다"
+    },
+    "tip": {
+      "title": "예약 팁",
+      "discount": "미션키트 구매 고객에게 제휴 숙소 추가 할인이 제공될 수 있습니다",
+      "hanok": "한옥스테이는 외국인에게 가장 인기 있는 숙소 유형입니다",
+      "app": "Booking.com, Airbnb 앱을 미리 설치하면 현장 체크인이 편리합니다"
+    },
+    "platforms": {
+      "title": "주요 예약 플랫폼"
+    },
+    "empty": "조건에 맞는 숙소가 없습니다"
   },
   "sights": {
     "title": "SPOT",

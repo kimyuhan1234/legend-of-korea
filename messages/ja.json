@@ -530,7 +530,62 @@
     "filterAll": "すべて",
     "bookNow": "予約する",
     "comingSoon": "準備中",
-    "comingSoonDesc": "この地域の宿泊情報を準備中です"
+    "comingSoonDesc": "この地域の宿泊情報を準備中です",
+    "hero": {
+      "headline": "伝説の地に泊まる",
+      "subline": "ミッション地に近い宿泊先を選んで伝説の旅を完成させよう",
+      "badge1": "ミッション地までの徒歩時間表示",
+      "badge2": "外部サイトで直接予約",
+      "badge3": "最安値比較"
+    },
+    "cities": {
+      "all": "すべて",
+      "jeonju": "全州",
+      "seoul": "ソウル",
+      "busan": "釜山",
+      "jeju": "済州",
+      "gyeongju": "慶州",
+      "tongyeong": "統営",
+      "cheonan": "天安",
+      "yongin": "龍仁",
+      "icheon": "利川"
+    },
+    "filter": {
+      "typeLabel": "宿泊タイプ",
+      "vibeLabel": "雰囲気",
+      "all": "すべて",
+      "hanok": "韓屋",
+      "hotel": "ホテル",
+      "guesthouse": "ゲストハウス",
+      "pension": "ペンション",
+      "resort": "リゾート"
+    },
+    "vibe": {
+      "traditional": "伝統",
+      "modern": "モダン",
+      "romantic": "ロマンチック",
+      "family": "ファミリー",
+      "budget": "リーズナブル",
+      "luxury": "ラグジュアリー",
+      "instagram": "インスタ映え",
+      "nature": "自然"
+    },
+    "card": {
+      "priceRange": "価格帯",
+      "walkToMission": "ミッション地まで",
+      "book": "予約する",
+      "external": "外部サイトに移動します"
+    },
+    "tip": {
+      "title": "予約のヒント",
+      "discount": "ミッションキット購入者に提携宿泊施設の追加割引が提供される場合があります",
+      "hanok": "韓屋ステイは外国人に最も人気の宿泊タイプです",
+      "app": "Booking.comやAirbnbアプリを事前にインストールするとチェックインが便利です"
+    },
+    "platforms": {
+      "title": "主要予約プラットフォーム"
+    },
+    "empty": "条件に合う宿泊施設がありません"
   },
   "sights": {
     "title": "SPOT",

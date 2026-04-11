@@ -530,7 +530,62 @@
     "filterAll": "All",
     "bookNow": "Book Now",
     "comingSoon": "Coming Soon",
-    "comingSoonDesc": "We're preparing stays for this region"
+    "comingSoonDesc": "We're preparing stays for this region",
+    "hero": {
+      "headline": "Stay in the City of Legends",
+      "subline": "Pick a stay close to your mission site and complete your legend journey",
+      "badge1": "Walking distance to mission",
+      "badge2": "Book directly on partner sites",
+      "badge3": "Best price comparison"
+    },
+    "cities": {
+      "all": "All",
+      "jeonju": "Jeonju",
+      "seoul": "Seoul",
+      "busan": "Busan",
+      "jeju": "Jeju",
+      "gyeongju": "Gyeongju",
+      "tongyeong": "Tongyeong",
+      "cheonan": "Cheonan",
+      "yongin": "Yongin",
+      "icheon": "Icheon"
+    },
+    "filter": {
+      "typeLabel": "Type",
+      "vibeLabel": "Vibe",
+      "all": "All",
+      "hanok": "Hanok",
+      "hotel": "Hotel",
+      "guesthouse": "Guesthouse",
+      "pension": "Pension",
+      "resort": "Resort"
+    },
+    "vibe": {
+      "traditional": "Traditional",
+      "modern": "Modern",
+      "romantic": "Romantic",
+      "family": "Family",
+      "budget": "Budget",
+      "luxury": "Luxury",
+      "instagram": "Instagram",
+      "nature": "Nature"
+    },
+    "card": {
+      "priceRange": "Price range",
+      "walkToMission": "Walk to mission site",
+      "book": "Book Now",
+      "external": "Opens external site"
+    },
+    "tip": {
+      "title": "Booking Tips",
+      "discount": "Mission kit customers may receive additional discounts on partner stays",
+      "hanok": "Hanok stays are the most popular choice for foreign travelers",
+      "app": "Install Booking.com or Airbnb apps in advance for smooth check-in"
+    },
+    "platforms": {
+      "title": "Major Booking Platforms"
+    },
+    "empty": "No stays match your filters"
   },
   "sights": {
     "title": "SPOT",
