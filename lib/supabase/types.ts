@@ -720,6 +720,11 @@ export interface Database {
           end_date: string | null
           has_mission_kit: boolean
           kit_course_id: string | null
+          hotel_name: string | null
+          hotel_address: string | null
+          hotel_lat: number | null
+          hotel_lng: number | null
+          hotel_source: "curated" | "manual" | null
           status: "draft" | "confirmed" | "completed"
           created_at: string
           updated_at: string
@@ -733,6 +738,11 @@ export interface Database {
           end_date?: string | null
           has_mission_kit?: boolean
           kit_course_id?: string | null
+          hotel_name?: string | null
+          hotel_address?: string | null
+          hotel_lat?: number | null
+          hotel_lng?: number | null
+          hotel_source?: "curated" | "manual" | null
           status?: "draft" | "confirmed" | "completed"
           created_at?: string
           updated_at?: string
@@ -744,6 +754,11 @@ export interface Database {
           end_date?: string | null
           has_mission_kit?: boolean
           kit_course_id?: string | null
+          hotel_name?: string | null
+          hotel_address?: string | null
+          hotel_lat?: number | null
+          hotel_lng?: number | null
+          hotel_source?: "curated" | "manual" | null
           status?: "draft" | "confirmed" | "completed"
           updated_at?: string
         }

@@ -486,7 +486,7 @@
   },
   "goods": {
     "title": "GOODS",
-    "subtitle": "Special souvenirs from the land of legends, coming soon",
+    "subtitle": "Special souvenirs from the land of legends",
     "description": "We're carefully preparing exclusive Legend of Korea goods. Souvenirs carrying the legends and stories of each region are on their way. Stay tuned!",
     "comingSoon": "COMING SOON",
     "notifyTitle": "Get notified when we launch",
@@ -495,7 +495,16 @@
     "notifySuccess": "You're on the list! We'll let you know as soon as we launch.",
     "notifyError": "Please enter a valid email address.",
     "notifyDisclaimer": "Your email will only be used for launch notifications.",
-    "backToCourses": "Browse courses"
+    "backToCourses": "Browse courses",
+    "empty": "No products match your filter",
+    "category": {
+      "all": "All",
+      "keyring": "Keyring",
+      "figure": "Figure",
+      "stationery": "Stationery",
+      "bag": "Bag",
+      "misc": "Misc"
+    }
   },
   "nav": {
     "signup": "Sign Up",
@@ -1095,7 +1104,11 @@
       "copy": "Copy",
       "copied": "Copied!",
       "publicBus": "Public Transit",
-      "duration": "Duration"
+      "duration": "Duration",
+      "departure": "Departure time",
+      "arrival": "Arrival (auto)",
+      "ticket": "Buy ticket",
+      "taxiNote": "To hotel after arrival: approx. {min} min by taxi"
     },
     "final": {
       "title": "My Travel Plan",
@@ -1109,6 +1122,16 @@
       "estimatedLp": "Estimated LP",
       "lpUnit": "LP",
       "missionIntegrated": "Mission kit course auto-included"
+    },
+    "approx": "Approx.",
+    "hotel": {
+      "manual": "Enter hotel manually",
+      "name": "Hotel name",
+      "address": "Address"
+    },
+    "ootd": {
+      "check": "Select outfit",
+      "addChecked": "Add checked items"
     }
   }
 }

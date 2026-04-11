@@ -1,6 +1,8 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { HotelInputForm } from './HotelInputForm'
+import { TransportInputForm } from './TransportInputForm'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -13,6 +15,8 @@ interface PlanItem {
 interface Plan {
   id: string
   city_id: string
+  hotel_name?: string | null
+  hotel_address?: string | null
   plan_items: PlanItem[]
 }
 
@@ -21,6 +25,7 @@ interface PlannerPreviewProps {
   locale: string
   isSubscribed: boolean
   onRemoveItem: (itemId: string) => void
+  onHotelSaved?: () => void
 }
 
 const TYPE_CONFIG: Record<ItemType, { emoji: string; color: string }> = {
@@ -49,7 +54,7 @@ function getItemName(item: PlanItem, locale: string): string {
   return 'Item'
 }
 
-export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem }: PlannerPreviewProps) {
+export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHotelSaved }: PlannerPreviewProps) {
   const t = useTranslations('planner')
 
   if (plans.length === 0 || plans.every((p) => p.plan_items.length === 0)) {
@@ -105,6 +110,29 @@ export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem }: Pl
                       )
                     })}
                   </ul>
+                )}
+
+                {/* 호텔 + 교통 입력 영역 (첫 도시만) */}
+                {isFirstCity && (
+                  <div className="mt-4 space-y-3">
+                    {/* 호텔: 이미 있으면 카드, 없으면 입력 폼 */}
+                    {plan.hotel_name ? (
+                      <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4">
+                        <p className="text-[10px] font-black text-blue-700 uppercase tracking-widest mb-1">
+                          🏨 Hotel
+                        </p>
+                        <p className="text-sm font-bold text-[#111]">{plan.hotel_name}</p>
+                        <p className="text-xs text-[#6B7280] truncate">{plan.hotel_address}</p>
+                      </div>
+                    ) : (
+                      <HotelInputForm planId={plan.id} onSaved={onHotelSaved} />
+                    )}
+
+                    {/* 교통편: 이미 transport 아이템 있으면 숨김 */}
+                    {!plan.plan_items.some((i) => i.item_type === 'transport') && (
+                      <TransportInputForm cityId={plan.city_id} locale={locale} />
+                    )}
+                  </div>
                 )}
               </div>
 

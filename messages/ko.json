@@ -511,7 +511,7 @@
   },
   "goods": {
     "title": "GOODS",
-    "subtitle": "전설의 땅에서 온 특별한 기념품, 곧 만나요",
+    "subtitle": "전설의 땅에서 온 특별한 기념품",
     "description": "Legend of Korea만의 특별한 굿즈를 정성껏 준비하고 있습니다. 각 지역의 전설과 이야기를 담은 기념품들이 곧 찾아옵니다. 조금만 기다려 주세요!",
     "comingSoon": "COMING SOON",
     "notifyTitle": "오픈 알림 신청",
@@ -520,7 +520,16 @@
     "notifySuccess": "신청 완료! 굿즈샵이 열리면 가장 먼저 알려드릴게요.",
     "notifyError": "올바른 이메일 주소를 입력해주세요.",
     "notifyDisclaimer": "입력하신 이메일은 오픈 알림 외 다른 용도로 사용되지 않습니다.",
-    "backToCourses": "코스 둘러보기"
+    "backToCourses": "코스 둘러보기",
+    "empty": "조건에 맞는 상품이 없습니다",
+    "category": {
+      "all": "전체",
+      "keyring": "키링",
+      "figure": "피규어",
+      "stationery": "문구",
+      "bag": "가방",
+      "misc": "기타"
+    }
   },
   "nav": {
     "signup": "회원가입",
@@ -1120,7 +1129,11 @@
       "copy": "복사",
       "copied": "복사됨!",
       "publicBus": "대중교통",
-      "duration": "소요시간"
+      "duration": "소요시간",
+      "departure": "출발 시간",
+      "arrival": "도착 시간 (자동)",
+      "ticket": "티켓 구매",
+      "taxiNote": "도착 후 호텔까지: 대략 택시 {min}분"
     },
     "final": {
       "title": "나의 여행 플랜",
@@ -1134,6 +1147,16 @@
       "estimatedLp": "예상 LP 적립",
       "lpUnit": "LP",
       "missionIntegrated": "미션키트 코스 자동 포함"
+    },
+    "approx": "대략",
+    "hotel": {
+      "manual": "호텔 직접 입력",
+      "name": "호텔명",
+      "address": "주소"
+    },
+    "ootd": {
+      "check": "옷 선택",
+      "addChecked": "체크한 옷 담기"
     }
   }
 }

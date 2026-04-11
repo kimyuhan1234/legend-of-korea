@@ -7,6 +7,7 @@ import { PlannerPreview } from './PlannerPreview'
 import { PlannerSubscriptionWall } from './PlannerSubscriptionWall'
 import { PlannerCuration } from './PlannerCuration'
 import { PlannerTransport } from './PlannerTransport'
+import { PlannerSpotDistance } from './PlannerSpotDistance'
 import { PlannerFinalPlan } from './PlannerFinalPlan'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
@@ -21,6 +22,11 @@ interface Plan {
   id: string
   city_id: string
   has_mission_kit: boolean
+  hotel_name: string | null
+  hotel_address: string | null
+  hotel_lat: number | null
+  hotel_lng: number | null
+  hotel_source: 'curated' | 'manual' | null
   plan_items: PlanItem[]
 }
 
@@ -164,6 +170,37 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
     [allItems]
   )
 
+  // Spot 거리 계산용 아이템 (좌표가 있는 것만)
+  const spotsForDistance = useMemo(() => {
+    if (!mainPlan) return []
+    return mainPlan.plan_items
+      .filter((i) => ['food', 'diy', 'quest'].includes(i.item_type))
+      .map((i) => {
+        const data = i.item_data
+        const nameField = data.name as Record<string, string> | string | undefined
+        const name =
+          typeof nameField === 'string'
+            ? nameField
+            : nameField?.[locale] || nameField?.ko || 'Item'
+        return {
+          id: i.id,
+          name,
+          lat: typeof data.lat === 'number' ? (data.lat as number) : undefined,
+          lng: typeof data.lng === 'number' ? (data.lng as number) : undefined,
+          emoji: i.item_type === 'food' ? '🍜' : i.item_type === 'diy' ? '🏺' : '⚔️',
+        }
+      })
+  }, [mainPlan, locale])
+
+  // 호텔이 저장된 후 플랜 목록을 다시 불러오기
+  const handleHotelSaved = async () => {
+    const res = await fetch('/api/planner/items')
+    if (res.ok) {
+      const d = await res.json()
+      setPlans(d.plans || [])
+    }
+  }
+
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
@@ -189,6 +226,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
           locale={locale}
           isSubscribed={isSubscribed}
           onRemoveItem={handleRemoveItem}
+          onHotelSaved={handleHotelSaved}
         />
 
         {!isSubscribed && subscriptionPlans.length > 0 && (
@@ -203,6 +241,11 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
           <>
             <PlannerCuration itemTypesInPlan={itemTypes} />
             <PlannerTransport cityId={mainPlan.city_id} locale={locale} />
+            <PlannerSpotDistance
+              hotelLat={mainPlan.hotel_lat}
+              hotelLng={mainPlan.hotel_lng}
+              spots={spotsForDistance}
+            />
             <PlannerFinalPlan
               items={allItems}
               locale={locale}

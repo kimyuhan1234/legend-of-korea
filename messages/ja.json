@@ -486,7 +486,7 @@
   },
   "goods": {
     "title": "GOODS",
-    "subtitle": "伝説の地からの特別な記念品、まもなく登場",
+    "subtitle": "伝説の地からの特別な記念品",
     "description": "Legend of Koreaならではの特別なグッズを心を込めて準備しています。各地域の伝説と物語を込めた記念品がまもなく届きます。もう少しお待ちください！",
     "comingSoon": "COMING SOON",
     "notifyTitle": "オープン通知を申し込む",
@@ -495,7 +495,16 @@
     "notifySuccess": "申請完了！グッズショップオープン時にいち早くお知らせします。",
     "notifyError": "正しいメールアドレスを入力してください。",
     "notifyDisclaimer": "ご入力いただいたメールアドレスはオープン通知以外の目的には使用しません。",
-    "backToCourses": "コースを見る"
+    "backToCourses": "コースを見る",
+    "empty": "条件に合う商品がありません",
+    "category": {
+      "all": "すべて",
+      "keyring": "キーリング",
+      "figure": "フィギュア",
+      "stationery": "文具",
+      "bag": "バッグ",
+      "misc": "その他"
+    }
   },
   "nav": {
     "signup": "会員登録",
@@ -1095,7 +1104,11 @@
       "copy": "コピー",
       "copied": "コピーしました！",
       "publicBus": "公共交通",
-      "duration": "所要時間"
+      "duration": "所要時間",
+      "departure": "出発時間",
+      "arrival": "到着時間（自動）",
+      "ticket": "チケット購入",
+      "taxiNote": "到着後ホテルまで: 大体タクシー{min}分"
     },
     "final": {
       "title": "私の旅行プラン",
@@ -1109,6 +1122,16 @@
       "estimatedLp": "予想LP獲得",
       "lpUnit": "LP",
       "missionIntegrated": "ミッションキットコース自動含む"
+    },
+    "approx": "大体",
+    "hotel": {
+      "manual": "ホテルを手入力",
+      "name": "ホテル名",
+      "address": "住所"
+    },
+    "ootd": {
+      "check": "服を選択",
+      "addChecked": "チェックした服を追加"
     }
   }
 }

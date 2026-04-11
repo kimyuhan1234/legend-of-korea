@@ -11,6 +11,19 @@ import {
   type DailyWeather,
   type OutfitRecommendation,
 } from '@/lib/data/ootd'
+import { OotdChecklist } from '@/components/features/planner/OotdChecklist'
+
+const CITY_NAME_MAP: Record<string, { ko: string; ja: string; en: string }> = {
+  seoul:     { ko: '서울', ja: 'ソウル', en: 'Seoul' },
+  busan:     { ko: '부산', ja: '釜山', en: 'Busan' },
+  jeju:      { ko: '제주', ja: '済州', en: 'Jeju' },
+  gyeongju:  { ko: '경주', ja: '慶州', en: 'Gyeongju' },
+  tongyeong: { ko: '통영', ja: '統営', en: 'Tongyeong' },
+  cheonan:   { ko: '천안', ja: '天安', en: 'Cheonan' },
+  yongin:    { ko: '용인', ja: '龍仁', en: 'Yongin' },
+  icheon:    { ko: '이천', ja: '利川', en: 'Icheon' },
+  jeonju:    { ko: '전주', ja: '全州', en: 'Jeonju' },
+}
 
 // ─────────────────────────────────────────────
 //  타입
@@ -112,9 +125,11 @@ interface DayCardProps {
   weather: DailyWeather
   outfit: OutfitRecommendation | undefined
   isToday: boolean
+  cityId: string
+  cityName: { ko: string; ja: string; en: string }
 }
 
-function DayCard({ weather, outfit, isToday }: DayCardProps) {
+function DayCard({ weather, outfit, isToday, cityId, cityName }: DayCardProps) {
   const t = useTranslations('ootd')
   const tempRange = getTempRange(weather.highTemp)
 
@@ -202,6 +217,14 @@ function DayCard({ weather, outfit, isToday }: DayCardProps) {
             <p className={['text-[10px] mt-3 leading-snug', isToday ? 'text-neutral-400' : 'text-neutral-400'].join(' ')}>
               💡 {t(outfit.tipKey.replace('ootd.', '') as Parameters<typeof t>[0])}
             </p>
+            {!isToday && (
+              <OotdChecklist
+                date={weather.date}
+                cityId={cityId}
+                cityName={cityName}
+                items={outfit.items}
+              />
+            )}
           </>
         ) : (
           <p className="text-xs text-neutral-400">—</p>
@@ -270,6 +293,8 @@ export function WeeklyOotdBoard() {
                 weather={weather}
                 outfit={outfit}
                 isToday={weather.date === today}
+                cityId={selectedCity}
+                cityName={CITY_NAME_MAP[selectedCity] ?? CITY_NAME_MAP.seoul}
               />
             )
           })}

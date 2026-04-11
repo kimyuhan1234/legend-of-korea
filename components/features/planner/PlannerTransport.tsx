@@ -16,10 +16,10 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
   const [copied, setCopied] = useState(false)
 
   const route = getRouteByCity(cityId)
-
   if (!route || route.options.length === 0) return null
 
   const taxiAddr = route.lastMile.taxi.koreanAddress[locale as 'ko' | 'ja' | 'en'] || route.lastMile.taxi.koreanAddress.ko
+  const approx = t('approx')
 
   const handleCopy = async () => {
     try {
@@ -40,7 +40,7 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
         {t('transport.subtitle')} · {t('transport.fromSeoul')}
       </p>
 
-      {/* 서울 → 목적지 옵션 */}
+      {/* 서울 → 목적지 옵션 (정찰제 요금만) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
         {route.options.map((opt) => {
           const stationName = opt.station[locale as 'ko' | 'ja' | 'en'] || opt.station.ko
@@ -51,13 +51,18 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
             >
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-2xl">{TYPE_EMOJI[opt.type]}</span>
-                <span className="text-sm font-black text-[#111]">{t(`transport.${opt.type}` as Parameters<typeof t>[0])}</span>
+                <span className="text-sm font-black text-[#111]">
+                  {t(`transport.${opt.type}` as Parameters<typeof t>[0])}
+                </span>
               </div>
               <p className="text-xs text-[#6B7280] mb-1">{stationName}</p>
               <p className="text-xs text-[#6B7280] mb-3">
-                {t('transport.duration')}: <span className="font-bold text-[#111]">{opt.duration}</span>
+                {t('transport.duration')}:{' '}
+                <span className="font-bold text-[#111]">{approx} {opt.duration}</span>
               </p>
-              <p className="text-base font-black text-[#111] mb-3">{opt.estimatedCost}</p>
+              {opt.fixedPrice && (
+                <p className="text-base font-black text-[#111] mb-3">{opt.fixedPrice}</p>
+              )}
               <a
                 href={opt.bookingUrl}
                 target="_blank"
@@ -71,19 +76,21 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
         })}
       </div>
 
-      {/* 라스트마일 */}
+      {/* 라스트마일 — 택시 금액 절대 표시 안 함 */}
       <div className="bg-[#F5F3EF] rounded-2xl p-5">
         <p className="text-xs font-black text-[#FF6B35] uppercase tracking-widest mb-3">
           {t('transport.lastMile')}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* 택시 카드 */}
+          {/* 택시 카드 — 금액 없음, minutes만 */}
           <div className="bg-white rounded-xl p-4 border border-[#e8ddd0]/40">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xl">🚕</span>
               <span className="text-sm font-bold text-[#111]">{t('transport.taxi')}</span>
-              <span className="text-xs text-[#6B7280] ml-auto">{route.lastMile.taxi.estimatedCost}</span>
+              <span className="text-xs text-[#6B7280] ml-auto">
+                {approx} {route.lastMile.taxi.minutes}분
+              </span>
             </div>
             <div className="bg-[#F5F3EF] rounded-lg p-3 mb-2">
               <p className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest mb-1">
@@ -105,7 +112,9 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-xl">🚌</span>
                 <span className="text-sm font-bold text-[#111]">{t('transport.publicBus')}</span>
-                <span className="text-xs text-[#6B7280] ml-auto">{route.lastMile.bus.duration}</span>
+                <span className="text-xs text-[#6B7280] ml-auto">
+                  {approx} {route.lastMile.bus.minutes}분
+                </span>
               </div>
               <p className="text-xs text-[#374151] mb-1">
                 {route.lastMile.bus.route[locale as 'ko' | 'ja' | 'en'] || route.lastMile.bus.route.ko}
@@ -116,6 +125,10 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
             </div>
           )}
         </div>
+
+        <p className="text-[10px] text-[#9CA3AF] mt-3 text-center">
+          ※ {approx} 시간은 교통 상황에 따라 달라질 수 있습니다
+        </p>
       </div>
     </section>
   )

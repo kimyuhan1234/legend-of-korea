@@ -20,6 +20,11 @@ export async function GET() {
         status,
         has_mission_kit,
         kit_course_id,
+        hotel_name,
+        hotel_address,
+        hotel_lat,
+        hotel_lng,
+        hotel_source,
         created_at,
         plan_items (
           id,
