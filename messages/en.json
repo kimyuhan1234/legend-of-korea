@@ -1139,6 +1139,22 @@
     "spot": {
       "noHotel": "Enter your hotel info to see distances",
       "distance": "Approx. {min} min by {method} from hotel"
+    },
+    "weather": {
+      "title": "Weather Info",
+      "high": "High",
+      "low": "Low",
+      "humidity": "Humidity",
+      "disclaimer": "* Weather info is for reference only and may differ from actual conditions",
+      "changeOutfit": "Change outfit",
+      "sunny": "Sunny",
+      "partly_cloudy": "Partly Cloudy",
+      "cloudy": "Cloudy",
+      "rainy": "Rainy",
+      "thunderstorm": "Thunderstorm",
+      "snowy": "Snowy",
+      "foggy": "Foggy",
+      "windy": "Windy"
     }
   }
 }

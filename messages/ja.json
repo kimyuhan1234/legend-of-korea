@@ -1139,6 +1139,22 @@
     "spot": {
       "noHotel": "ホテル情報を入力すると距離を計算します",
       "distance": "ホテルから大体{method}{min}分"
+    },
+    "weather": {
+      "title": "天気情報",
+      "high": "最高",
+      "low": "最低",
+      "humidity": "湿度",
+      "disclaimer": "※ 天気情報は参考用であり、実際と異なる場合があります",
+      "changeOutfit": "服を変更する",
+      "sunny": "晴れ",
+      "partly_cloudy": "曇り時々晴れ",
+      "cloudy": "曇り",
+      "rainy": "雨",
+      "thunderstorm": "雷雨",
+      "snowy": "雪",
+      "foggy": "霧",
+      "windy": "風"
     }
   }
 }

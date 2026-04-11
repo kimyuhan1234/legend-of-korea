@@ -226,6 +226,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
               items={allItems}
               locale={locale}
               hasMissionKit={mainPlan.has_mission_kit}
+              cityId={mainPlan.city_id}
             />
           </>
         )}

@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { PlannerWeather } from './PlannerWeather'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -14,6 +15,7 @@ interface PlannerFinalPlanProps {
   items: PlanItem[]
   locale: string
   hasMissionKit: boolean
+  cityId: string
 }
 
 const TYPE_EMOJI: Record<ItemType, string> = {
@@ -126,7 +128,7 @@ function buildSchedule(
   return { slots, unscheduled: [] }
 }
 
-export function PlannerFinalPlan({ items, locale, hasMissionKit }: PlannerFinalPlanProps) {
+export function PlannerFinalPlan({ items, locale, hasMissionKit, cityId }: PlannerFinalPlanProps) {
   const t = useTranslations('planner')
 
   // OOTD, transport, stay는 별도로 처리
@@ -136,6 +138,27 @@ export function PlannerFinalPlan({ items, locale, hasMissionKit }: PlannerFinalP
   const schedulableItems = items.filter(
     (i) => !['ootd', 'stay', 'transport'].includes(i.item_type)
   )
+
+  // 날씨 위젯에 전달할 날짜 배열 (OOTD 담긴 날짜들 + 오늘 기본값)
+  const planDates = (() => {
+    const dates = new Set<string>()
+    for (const o of ootdItems) {
+      const d = o.item_data.date
+      if (typeof d === 'string') dates.add(d)
+    }
+    for (const tr of transportItems) {
+      const d = tr.item_data.date
+      if (typeof d === 'string') dates.add(d)
+    }
+    if (dates.size === 0) {
+      const today = new Date()
+      const y = today.getFullYear()
+      const m = String(today.getMonth() + 1).padStart(2, '0')
+      const day = String(today.getDate()).padStart(2, '0')
+      dates.add(`${y}-${m}-${day}`)
+    }
+    return Array.from(dates).sort()
+  })()
 
   const { slots } = buildSchedule(schedulableItems, t as unknown as (k: string) => string)
 
@@ -185,41 +208,58 @@ export function PlannerFinalPlan({ items, locale, hasMissionKit }: PlannerFinalP
         </div>
       )}
 
-      {/* 오늘의 코디 (OOTD) — 스케줄 밖 별도 섹션 */}
-      {ootdItems.length > 0 && (
-        <div className="bg-pink-50 rounded-2xl p-5 mb-4 border border-pink-200">
-          <p className="text-[10px] font-black text-pink-700 uppercase tracking-widest mb-2">
-            👗 오늘의 코디
-          </p>
-          <div className="space-y-2">
-            {ootdItems.map((o) => {
-              const data = o.item_data
-              const date = typeof data.date === 'string' ? String(data.date) : ''
-              const checkedItems = (data.checkedItems as Array<{ name: string; icon: string }>) || []
-              return (
-                <div key={o.id} className="text-sm">
-                  {date && <p className="text-xs text-[#9CA3AF] mb-1">{date}</p>}
-                  <div className="flex flex-wrap gap-2">
-                    {checkedItems.length > 0 ? (
-                      checkedItems.map((ci, idx) => (
-                        <span
-                          key={idx}
-                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-pink-200 text-xs font-semibold text-[#374151]"
-                        >
-                          <span>{ci.icon}</span>
-                          <span>{ci.name}</span>
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-xs text-[#9CA3AF]">—</span>
-                    )}
+      {/* 오늘의 코디 + 날씨 — 2열 그리드 (모바일 스택) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        {/* 오늘의 코디 */}
+        {ootdItems.length > 0 ? (
+          <div className="bg-pink-50 rounded-2xl p-5 border border-pink-200">
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-[10px] font-black text-pink-700 uppercase tracking-widest">
+                👗 오늘의 코디
+              </p>
+              <a
+                href={`/${locale}/ootd`}
+                className="text-[10px] font-bold text-pink-700 hover:underline"
+              >
+                {t('weather.changeOutfit')} →
+              </a>
+            </div>
+            <div className="space-y-2">
+              {ootdItems.map((o) => {
+                const data = o.item_data
+                const date = typeof data.date === 'string' ? String(data.date) : ''
+                const checkedItems =
+                  (data.checkedItems as Array<{ name: string; icon: string }>) || []
+                return (
+                  <div key={o.id} className="text-sm">
+                    {date && <p className="text-xs text-[#9CA3AF] mb-1">{date}</p>}
+                    <div className="flex flex-wrap gap-2">
+                      {checkedItems.length > 0 ? (
+                        checkedItems.map((ci, idx) => (
+                          <span
+                            key={idx}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-pink-200 text-xs font-semibold text-[#374151]"
+                          >
+                            <span>{ci.icon}</span>
+                            <span>{ci.name}</span>
+                          </span>
+                        ))
+                      ) : (
+                        <span className="text-xs text-[#9CA3AF]">—</span>
+                      )}
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="hidden md:block" />
+        )}
+
+        {/* 날씨 위젯 */}
+        <PlannerWeather cityId={cityId} dates={planDates} />
+      </div>
 
       {/* 1일차 스마트 스케줄 */}
       <div className="bg-white rounded-3xl p-6 border border-[#e8ddd0]/40">

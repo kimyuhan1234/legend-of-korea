@@ -1164,6 +1164,22 @@
     "spot": {
       "noHotel": "호텔 정보를 입력하면 거리를 계산해드려요",
       "distance": "호텔에서 대략 {method} {min}분"
+    },
+    "weather": {
+      "title": "날씨 정보",
+      "high": "최고",
+      "low": "최저",
+      "humidity": "습도",
+      "disclaimer": "※ 날씨 정보는 참고용이며 실제와 다를 수 있습니다",
+      "changeOutfit": "옷 변경하기",
+      "sunny": "맑음",
+      "partly_cloudy": "구름 조금",
+      "cloudy": "흐림",
+      "rainy": "비",
+      "thunderstorm": "뇌우",
+      "snowy": "눈",
+      "foggy": "안개",
+      "windy": "바람"
     }
   }
 }
