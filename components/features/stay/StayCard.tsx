@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { STAY_TYPE_EMOJI, type StayRecommendation } from '@/lib/data/stay-recommendations'
+import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 interface StayCardProps {
   stay: StayRecommendation
@@ -72,15 +73,31 @@ export function StayCard({ stay, locale }: StayCardProps) {
           ))}
         </div>
 
-        {/* 예약 버튼 */}
-        <a
-          href={stay.bookingUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full text-center py-3 rounded-full bg-[#FF6B35] text-white font-bold text-sm hover:bg-[#E55A2B] transition-colors"
-        >
-          {t('card.book')} ↗
-        </a>
+        {/* 예약 버튼 + 플래너 담기 */}
+        <div className="flex gap-2">
+          <a
+            href={stay.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 text-center py-3 rounded-full bg-[#FF6B35] text-white font-bold text-sm hover:bg-[#E55A2B] transition-colors"
+          >
+            {t('card.book')} ↗
+          </a>
+          <AddToPlannerButton
+            itemType="stay"
+            cityId={stay.cityId}
+            itemData={{
+              id: stay.id,
+              name: stay.name,
+              type: stay.type,
+              priceRange: stay.priceRange,
+              bookingUrl: stay.bookingUrl,
+              platform: stay.platform,
+            }}
+            size="md"
+            className="shrink-0"
+          />
+        </div>
         <p className="text-[10px] text-[#9CA3AF] text-center mt-2">
           via {stay.platform} · {t('card.external')}
         </p>

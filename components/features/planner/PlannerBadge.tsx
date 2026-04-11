@@ -1,0 +1,39 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+
+export function PlannerBadge() {
+  const t = useTranslations('planner')
+  const pathname = usePathname()
+  const locale = pathname.split('/')[1] || 'ko'
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    let mounted = true
+    fetch('/api/planner/items')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (mounted && data?.totalItems !== undefined) {
+          setCount(data.totalItems)
+        }
+      })
+      .catch(() => {})
+    return () => { mounted = false }
+  }, [pathname])
+
+  if (count === 0) return null
+
+  return (
+    <Link
+      href={`/${locale}/planner`}
+      className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FF6B35]/10 border border-[#FF6B35]/20 hover:bg-[#FF6B35]/15 transition-colors"
+      title={t('badge')}
+    >
+      <span className="text-base">📋</span>
+      <span className="text-xs font-black text-[#FF6B35]">{count}</span>
+    </Link>
+  )
+}

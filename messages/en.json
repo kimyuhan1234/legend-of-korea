@@ -1019,5 +1019,24 @@
     "sticky": {
       "buy": "Buy Now"
     }
+  },
+  "planner": {
+    "addButton": "Add to Planner",
+    "added": "Added ✓",
+    "adding": "Adding...",
+    "loginRequired": "Login required",
+    "loginButton": "Sign in",
+    "badge": "My Planner",
+    "toastTitle": "Added to your planner!",
+    "toastGoTo": "Go",
+    "toastClose": "Close",
+    "cross": {
+      "stay": "👗 Ready for the weather? Check outfit recommendations",
+      "food": "🏯 Found a place to stay? Let us recommend one",
+      "quest": "🏺 There's a workshop along the mission route",
+      "diy": "🛍️ Got your travel goods ready?",
+      "ootd": "☀️ Activities that match the weather",
+      "goods": "🔥 Earn more LP with missions!"
+    }
   }
 }

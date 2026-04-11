@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 // ─────────────────────────────────────────────
 //  타입 & 데이터
@@ -151,19 +152,34 @@ export function DiyWorkshopDirectory() {
                 <p className="text-sm text-neutral-500 mb-4 leading-relaxed">
                   {t(w.descKey.replace('diy.', '') as Parameters<typeof t>[0])}
                 </p>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-3">
                   <div className="flex gap-3 text-xs text-neutral-400">
                     <span>💰 {t(w.priceKey.replace('diy.', '') as Parameters<typeof t>[0])}</span>
                     <span>⏱ {t(w.durationKey.replace('diy.', '') as Parameters<typeof t>[0])}</span>
                   </div>
+                </div>
+                <div className="flex gap-2">
                   <a
                     href={w.bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-full bg-[#FF6B35] text-white text-xs font-bold hover:bg-[#E55A2B] transition-colors"
+                    className="flex-1 text-center px-4 py-2 rounded-full bg-[#FF6B35] text-white text-xs font-bold hover:bg-[#E55A2B] transition-colors"
                   >
-                    {t('book')}
+                    {t('book')} ↗
                   </a>
+                  <AddToPlannerButton
+                    itemType="diy"
+                    cityId={w.cityId}
+                    itemData={{
+                      id: w.id,
+                      nameKey: w.nameKey,
+                      category: w.category,
+                      priceKey: w.priceKey,
+                      durationKey: w.durationKey,
+                      bookingUrl: w.bookingUrl,
+                    }}
+                    className="shrink-0"
+                  />
                 </div>
               </div>
             ))}

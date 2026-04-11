@@ -5,6 +5,7 @@ import { LogoutButton } from "@/components/features/auth/LogoutButton"
 import { NavbarMobileMenu } from "@/components/shared/NavbarMobileMenu"
 import { LocaleSwitcher } from "@/components/shared/LocaleSwitcher"
 import { BackButton } from "@/components/shared/BackButton"
+import { PlannerBadge } from "@/components/features/planner/PlannerBadge"
 
 interface NavbarProps {
   locale: string
@@ -104,6 +105,12 @@ export async function Navbar({ locale }: NavbarProps) {
           <div className="hidden md:block">
             <LocaleSwitcher currentLocale={locale} />
           </div>
+          {/* 플래너 뱃지 (로그인 시에만 표시) */}
+          {user && (
+            <div className="hidden md:block">
+              <PlannerBadge />
+            </div>
+          )}
           {user && profile ? (
             <div className="hidden md:flex items-center gap-3">
               {/* LP 뱃지 */}

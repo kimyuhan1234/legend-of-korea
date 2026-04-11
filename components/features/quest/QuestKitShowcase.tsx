@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
+import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 interface Kit {
   id: string
@@ -93,10 +94,23 @@ export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }:
                 <p className="text-xs text-[#6B7280] mb-6">{t('kit.taxIncluded')}</p>
                 <Link
                   href={href}
-                  className="inline-block w-full py-3 rounded-full bg-[#FF6B35] text-white font-bold text-sm hover:bg-[#E55A2B] transition-colors"
+                  className="inline-block w-full py-3 rounded-full bg-[#FF6B35] text-white font-bold text-sm hover:bg-[#E55A2B] transition-colors mb-2"
                 >
                   {t('kit.buy')}
                 </Link>
+                <AddToPlannerButton
+                  itemType="quest"
+                  cityId={region}
+                  itemData={{
+                    courseId,
+                    kitId: kit.id,
+                    kitName: kit.name,
+                    price: kit.price,
+                    optionType: kit.option_type,
+                  }}
+                  className="w-full"
+                  size="md"
+                />
               </div>
             )
           })}

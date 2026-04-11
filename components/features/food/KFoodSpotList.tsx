@@ -1,5 +1,6 @@
 import { kfoodSpots, CITIES, CATEGORY_LABEL, type KFoodSpot } from "@/lib/data/kfood-spots"
 import Link from "next/link"
+import { AddToPlannerButton } from "@/components/features/planner/AddToPlannerButton"
 
 interface KFoodSpotListProps {
   locale: string
@@ -121,9 +122,24 @@ function SpotCard({
       </div>
 
       {/* 푸터 */}
-      <div className="px-6 py-3 border-t border-[#F5F0E8] flex items-center justify-between">
-        <p className="text-xs text-[#7a6a58]">📍 {spot.address}</p>
-        <p className="text-xs text-[#7a6a58] whitespace-nowrap ml-2">🕐 {spot.openHours}</p>
+      <div className="px-6 py-3 border-t border-[#F5F0E8] flex items-center justify-between gap-2">
+        <div className="min-w-0 flex-1">
+          <p className="text-xs text-[#7a6a58] truncate">📍 {spot.address}</p>
+          <p className="text-xs text-[#7a6a58] truncate">🕐 {spot.openHours}</p>
+        </div>
+        <AddToPlannerButton
+          itemType="food"
+          cityId={spot.cityCode}
+          itemData={{
+            id: spot.id,
+            name: spot.name,
+            category: spot.category,
+            priceRange: spot.priceRange,
+            address: spot.address,
+            speciality: spot.speciality,
+          }}
+          className="shrink-0"
+        />
       </div>
     </div>
   )
