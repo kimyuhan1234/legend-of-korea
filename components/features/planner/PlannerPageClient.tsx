@@ -83,9 +83,9 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
     } catch {}
   }, [tripStart, tripEnd, tripStyle])
 
-  // 담긴 아이템 다시 불러오기 (공개 재사용 함수)
+  // 담긴 아이템 다시 불러오기 (공개 재사용 함수) — no-store 로 fetch 캐시 방지
   const refreshPlans = async () => {
-    const res = await fetch('/api/planner/items')
+    const res = await fetch('/api/planner/items', { cache: 'no-store' })
     if (!res.ok) return
     const d = await res.json()
     setPlans(d.plans || [])
@@ -133,14 +133,19 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
     return () => window.removeEventListener('planner:refresh', handler)
   }, [])
 
-  // 전체 초기화 — 아이템 삭제 후 서버 상태 재조회 + 프론트 여행 설정도 리셋
+  // 전체 초기화 — 프론트 상태를 즉시 비우고(낙관적) 서버 재조회로 검증
+  // 서버 DELETE 는 PlannerResetButton 이 호출 후 onReset() 으로 이 핸들러를 트리거한다.
   const handleResetAll = async () => {
+    // 1) 낙관적 클리어 — refreshPlans 를 기다리지 않고 UI 즉시 비움
+    setPlans([])
+    setTotalItems(0)
     setTripStart('')
     setTripEnd('')
     setTripStyle('active')
     try {
       window.localStorage.removeItem('planner:trip')
     } catch {}
+    // 2) 검증용 재조회 — 서버 delete 가 반영됐는지 확인
     await refreshPlans()
   }
 

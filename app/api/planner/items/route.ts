@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
+// 유저별 상태 변경이 잦은 라우트라 Next.js route-level 캐시 금지
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 // 모듈 레벨 캐시: migration 016 적용 여부를 한 번만 확인
 let hotelColumnsAvailable: boolean | null = null
 
@@ -100,54 +104,28 @@ export async function DELETE(req: NextRequest) {
     const resetAll = searchParams.get('all') === 'true'
 
     if (resetAll) {
-      // 본인의 draft/confirmed 플랜 id 목록 조회 후 해당 플랜의 plan_items만 삭제
-      const { data: userPlans, error: plansError } = await supabase
-        .from('travel_plans')
-        .select('id')
-        .eq('user_id', user.id)
-        .in('status', ['draft', 'confirmed'])
-
-      if (plansError) {
-        return NextResponse.json(
-          { error: '플랜 조회 실패', detail: plansError.message },
-          { status: 500 }
-        )
-      }
-
-      const planIds = (userPlans ?? []).map((p) => p.id)
-      if (planIds.length === 0) {
-        return NextResponse.json({ success: true, deleted: 0 })
-      }
-
-      // 1) plan_items 먼저 삭제 (FK 의존성 해제)
-      const { error: itemsError, count } = await supabase
-        .from('plan_items')
-        .delete({ count: 'exact' })
-        .in('plan_id', planIds)
-
-      if (itemsError) {
-        return NextResponse.json(
-          { error: '초기화 실패', detail: itemsError.message },
-          { status: 500 }
-        )
-      }
-
-      // 2) travel_plans 행 자체를 삭제 — 도시/호텔/상태 전부 깨끗이 리셋
-      //    다음 아이템 추가 시 /api/planner/add-item 이 새 플랜을 자동 생성함
-      const { error: plansDelError } = await supabase
+      // 본인의 draft/confirmed travel_plans 행 자체를 삭제.
+      // plan_items.plan_id REFERENCES travel_plans(id) ON DELETE CASCADE (migration 015)
+      // 덕분에 plan_items 는 자동으로 함께 삭제된다.
+      // 도시/호텔/상태까지 모두 리셋 → 다음 add-item 호출 시 새 플랜이 생성됨.
+      const { data: deletedPlans, error: plansDelError } = await supabase
         .from('travel_plans')
         .delete()
-        .in('id', planIds)
         .eq('user_id', user.id)
+        .in('status', ['draft', 'confirmed'])
+        .select('id')
 
       if (plansDelError) {
         return NextResponse.json(
-          { error: '플랜 초기화 실패', detail: plansDelError.message },
+          { error: '초기화 실패', detail: plansDelError.message },
           { status: 500 }
         )
       }
 
-      return NextResponse.json({ success: true, deleted: count ?? 0 })
+      return NextResponse.json({
+        success: true,
+        deleted: deletedPlans?.length ?? 0,
+      })
     }
 
     if (!itemId) {

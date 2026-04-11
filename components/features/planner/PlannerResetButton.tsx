@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 
 interface PlannerResetButtonProps {
   itemCount: number
-  onReset: () => void
+  onReset: () => void | Promise<void>
 }
 
 export function PlannerResetButton({ itemCount, onReset }: PlannerResetButtonProps) {
@@ -19,15 +19,19 @@ export function PlannerResetButton({ itemCount, onReset }: PlannerResetButtonPro
     setError(null)
     setLoading(true)
     try {
-      const res = await fetch('/api/planner/items?all=true', { method: 'DELETE' })
+      const res = await fetch('/api/planner/items?all=true', {
+        method: 'DELETE',
+        cache: 'no-store',
+      })
       if (!res.ok) {
         const data = (await res.json().catch(() => null)) as { error?: string } | null
         setError(data?.error ?? 'Reset failed')
         return
       }
+      // 부모 상태를 즉시 클리어(낙관적) — UI 즉시 반영됨
+      await onReset()
       setOpen(false)
       setToast(true)
-      onReset()
       window.dispatchEvent(new Event('planner:refresh'))
       setTimeout(() => setToast(false), 2500)
     } catch {
