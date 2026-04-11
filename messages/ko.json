@@ -1107,12 +1107,12 @@
       "subtitle": "담은 아이템을 완벽하게 이어드릴게요",
       "surprise": "우리만 아는 추천",
       "surpriseSubtitle": "이 여행에 딱 어울리는 숨겨진 명소",
-      "addSurprise": "추가하기",
       "skip": "다음에",
-      "missingStay": "숙소가 아직 없어요. 이 도시에 딱 맞는 숙소를 추천해드릴까요?",
-      "missingFood": "맛집을 아직 안 담으셨네요. 현지인 추천 맛집 어때요?",
-      "missingDiy": "한국적인 공방 체험도 추가해보세요",
-      "missingQuest": "미션 키트로 더 풍부한 여행을 경험해보세요"
+      "missingStay": "이 도시의 특별한 숙소도 있어요. 둘러보실래요?",
+      "missingFood": "근처에 숨은 맛집이 있어요. 구경해볼래요?",
+      "missingDiy": "한국적인 공방 체험도 있어요. 한번 둘러보실래요?",
+      "missingQuest": "미션 키트로 더 풍부한 여행을 경험해보세요. 구경해볼래요?",
+      "goSee": "보러가기"
     },
     "transport": {
       "title": "교통 안내",

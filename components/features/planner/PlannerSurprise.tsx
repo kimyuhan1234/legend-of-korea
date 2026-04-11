@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useRouter, usePathname } from 'next/navigation'
 
 interface PlannerSurpriseProps {
   emoji: string
@@ -10,64 +11,33 @@ interface PlannerSurpriseProps {
   suggestionKind: string
 }
 
+// 서프라이즈 종류 → 이동할 탭 경로
+const KIND_TO_PATH: Record<string, string> = {
+  stay: '/stay',
+  food: '/food',
+  diy: '/diy',
+  quest: '/story',
+  goods: '/goods',
+  spot: '/sights',
+}
+
 export function PlannerSurprise({ emoji, messageKey, cityId, suggestionKind }: PlannerSurpriseProps) {
   const t = useTranslations('planner')
+  const router = useRouter()
+  const pathname = usePathname()
+  const locale = pathname.split('/')[1] || 'ko'
+
   const [dismissed, setDismissed] = useState(false)
-  const [state, setState] = useState<'idle' | 'loading' | 'added' | 'error'>('idle')
 
   if (dismissed) return null
 
-  const handleAdd = async () => {
-    if (state === 'added' || state === 'loading') return
-
-    setState('loading')
-    try {
-      const res = await fetch('/api/planner/add-item', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          itemType: 'surprise',
-          cityId,
-          itemData: {
-            emoji,
-            messageKey,
-            suggestionKind,
-            note: t(messageKey as Parameters<typeof t>[0]),
-          },
-        }),
-      })
-
-      if (!res.ok) {
-        setState('error')
-        setTimeout(() => setState('idle'), 2500)
-        return
-      }
-
-      setState('added')
-      window.dispatchEvent(new Event('planner:refresh'))
-    } catch {
-      setState('error')
-      setTimeout(() => setState('idle'), 2500)
-    }
+  const handleGo = () => {
+    const path = KIND_TO_PATH[suggestionKind] ?? '/story'
+    router.push(`/${locale}${path}`)
   }
 
-  const mainBtnStyle =
-    state === 'added'
-      ? 'bg-emerald-500 text-white'
-      : state === 'loading'
-        ? 'bg-amber-300 text-white cursor-wait'
-        : state === 'error'
-          ? 'bg-red-500 text-white'
-          : 'bg-amber-500 text-white hover:bg-amber-600'
-
-  const mainBtnLabel =
-    state === 'added'
-      ? `✓ ${t('added')}`
-      : state === 'loading'
-        ? t('adding')
-        : state === 'error'
-          ? '⚠ 실패'
-          : t('curation.addSurprise')
+  // cityId는 향후 도시별 필터링을 위해 유지 (현재는 탭 이동만)
+  void cityId
 
   return (
     <div className="bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-amber-200 rounded-2xl p-5">
@@ -85,11 +55,10 @@ export function PlannerSurprise({ emoji, messageKey, cityId, suggestionKind }: P
 
       <div className="flex gap-2 mt-3">
         <button
-          onClick={handleAdd}
-          disabled={state === 'loading' || state === 'added'}
-          className={`flex-1 py-2 rounded-full text-xs font-bold transition-colors ${mainBtnStyle}`}
+          onClick={handleGo}
+          className="flex-1 py-2 rounded-full text-xs font-bold bg-amber-500 text-white hover:bg-amber-600 transition-colors"
         >
-          {mainBtnLabel}
+          {t('curation.goSee')} →
         </button>
         <button
           onClick={() => setDismissed(true)}

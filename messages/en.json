@@ -1082,12 +1082,12 @@
       "subtitle": "We'll connect your saved items perfectly",
       "surprise": "Our Secret Pick",
       "surpriseSubtitle": "A hidden gem that fits your trip",
-      "addSurprise": "Add",
       "skip": "Skip",
-      "missingStay": "No stay yet. Want a perfect match for this city?",
-      "missingFood": "Missing food spots. How about local favorites?",
-      "missingDiy": "Try a Korean craft workshop experience",
-      "missingQuest": "Enrich your trip with a Mission Kit"
+      "missingStay": "There are special stays in this city. Want to browse?",
+      "missingFood": "There are hidden gems nearby. Want to see?",
+      "missingDiy": "There are Korean craft workshops too. Want to take a look?",
+      "missingQuest": "Experience a richer trip with a mission kit. Want to check it out?",
+      "goSee": "Take a look"
     },
     "transport": {
       "title": "Transport Guide",
