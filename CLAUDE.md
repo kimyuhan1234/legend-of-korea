@@ -136,6 +136,34 @@ rm -rf .next node_modules && pnpm install && pnpm dev
 
 ---
 
+## ⚠️ AI 큐레이션 상태 (최종 배포 전까지 유지)
+
+> **현재 `/api/planner/ai-curate`는 스텁 상태로, 실제 LLM API를 호출하지 않는다.**
+> `AI_CURATION_ENABLED=false` 기본값으로 응답만 `{ enabled: false }` 반환한다.
+> **최종 배포 전까지 이 상태를 그대로 유지할 것.**
+> 실제 AI 활성화는 배포 직전에만 수행한다.
+
+**지금 해서는 안 되는 작업:**
+- `.env.local`에 `AI_CURATION_ENABLED=true` 설정
+- `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` 실제 값 입력
+- `lib/ai/providers/{openai,anthropic}.ts`의 STUB 주석 해제
+- `pnpm add openai` 또는 `pnpm add @anthropic-ai/sdk`
+
+**왜 유지하는가:**
+- 테스트 중 무심코 실행하면 토큰 비용이 발생함
+- 현재는 규칙 기반 스마트 스케쥴러(`PlannerFinalPlan`)로 충분히 동작
+- AI 활성화는 프롬프트 튜닝 + 응답 파싱 검증까지 묶어서 배포 직전에 일괄 수행
+
+**활성화 절차 (배포 시):**
+1. `pnpm add @anthropic-ai/sdk` (또는 `openai`)
+2. `.env.local`에 API 키 설정
+3. `AI_CURATION_ENABLED=true`
+4. `lib/ai/providers/anthropic.ts` (또는 `openai.ts`)의 STUB 주석 해제
+5. `PlannerFinalPlan` 또는 `PlannerPageClient`에서 `/api/planner/ai-curate` 호출 로직 추가
+6. 응답 실패 시 기존 규칙 기반 스케쥴러로 자동 fallback
+
+---
+
 ## 다국어 구조
 - `next-intl` 사용
 - 기본 locale: `ko` / 지원: `ko`, `ja`, `en`
