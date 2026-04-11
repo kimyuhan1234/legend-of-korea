@@ -1127,6 +1127,7 @@
       "evening": "Evening",
       "anytime": "Free Time",
       "downloadPdf": "Download PDF",
+      "downloadPdfWithCost": "Download PDF (2 credits)",
       "estimatedLp": "Estimated LP",
       "lpUnit": "LP",
       "missionIntegrated": "Mission kit course auto-included",
@@ -1171,7 +1172,24 @@
     },
     "spot": {
       "noHotel": "Enter your hotel info to see distances",
-      "distance": "Approx. {min} min by {method} from hotel"
+      "distance": "Approx. {min} min by {method} from hotel",
+      "creditNote": "1 credit per lookup",
+      "insufficientHint": "Top up credits to calculate the remaining spots"
+    },
+    "credits": {
+      "title": "Credits",
+      "remaining": "{n} credits left",
+      "resetAt": "Next reset: {date}",
+      "buy": "Buy more credits",
+      "insufficient": "Insufficient credits",
+      "used": "Used: {n} credits",
+      "unit": "credits",
+      "bestValue": "BEST",
+      "purchasing": "Processing...",
+      "purchaseFailed": "Purchase failed. Please try again later",
+      "subRequired": "Only subscribers can buy credits",
+      "close": "Close",
+      "modalSub": "Top up whenever you need"
     },
     "weather": {
       "title": "Weather Info",

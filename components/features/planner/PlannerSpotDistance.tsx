@@ -15,6 +15,7 @@ interface PlannerSpotDistanceProps {
   hotelLat: number | null
   hotelLng: number | null
   spots: SpotItem[]
+  onCreditsChanged?: () => void
 }
 
 interface Distance {
@@ -22,38 +23,72 @@ interface Distance {
   taxiMinutes: number
 }
 
-export function PlannerSpotDistance({ hotelLat, hotelLng, spots }: PlannerSpotDistanceProps) {
+type ErrorState = null | 'insufficient_credits' | 'subscription_required' | 'unknown'
+
+export function PlannerSpotDistance({
+  hotelLat,
+  hotelLng,
+  spots,
+  onCreditsChanged,
+}: PlannerSpotDistanceProps) {
   const t = useTranslations('planner')
   const [distances, setDistances] = useState<Record<string, Distance>>({})
+  const [errorState, setErrorState] = useState<ErrorState>(null)
+  const [computing, setComputing] = useState(false)
 
   useEffect(() => {
     if (hotelLat === null || hotelLng === null) return
     let cancelled = false
 
     async function compute() {
+      setComputing(true)
+      setErrorState(null)
       const results: Record<string, Distance> = {}
+      let creditsChanged = false
+      let hitInsufficient = false
+      let hitSubRequired = false
+
       for (const spot of spots) {
         if (typeof spot.lat !== 'number' || typeof spot.lng !== 'number') continue
         try {
           const url = `/api/planner/distance?fromLat=${hotelLat}&fromLng=${hotelLng}&toLat=${spot.lat}&toLng=${spot.lng}`
-          const res = await fetch(url)
+          const res = await fetch(url, { cache: 'no-store' })
           if (res.ok) {
             const data = await res.json()
             results[spot.id] = {
               walkMinutes: data.walkMinutes,
               taxiMinutes: data.taxiMinutes,
             }
+            creditsChanged = true
+          } else if (res.status === 402) {
+            // 크레딧 부족 — 이후 spot 요청 중단 (동일 결과)
+            hitInsufficient = true
+            break
+          } else if (res.status === 403) {
+            hitSubRequired = true
+            break
           }
         } catch {
-          // 개별 실패는 무시
+          // 개별 네트워크 실패는 무시
         }
       }
-      if (!cancelled) setDistances(results)
+
+      if (cancelled) return
+
+      setDistances(results)
+      if (hitInsufficient) setErrorState('insufficient_credits')
+      else if (hitSubRequired) setErrorState('subscription_required')
+      else setErrorState(null)
+
+      setComputing(false)
+
+      // 성공적으로 한 번이라도 차감됐으면 부모에게 잔액 갱신 알림
+      if (creditsChanged && onCreditsChanged) onCreditsChanged()
     }
 
     compute()
     return () => { cancelled = true }
-  }, [hotelLat, hotelLng, spots])
+  }, [hotelLat, hotelLng, spots, onCreditsChanged])
 
   // 호텔 좌표나 스팟 좌표가 없으면 섹션 전체 숨김 (빈 placeholder 제거)
   const hasSpotsWithCoords = useMemo(
@@ -73,8 +108,25 @@ export function PlannerSpotDistance({ hotelLat, hotelLng, spots }: PlannerSpotDi
         📍 Spot 거리
       </h2>
       <p className="text-sm text-[#6B7280] mb-4">
-        호텔 기준 각 장소까지의 {approx} 이동 시간
+        호텔 기준 각 장소까지의 {approx} 이동 시간 ({t('spot.creditNote')})
       </p>
+
+      {errorState === 'insufficient_credits' && (
+        <div className="mb-4 p-4 rounded-2xl bg-red-50 border border-red-200 text-center">
+          <p className="text-sm font-bold text-red-700 mb-1">
+            ⚠ {t('credits.insufficient')}
+          </p>
+          <p className="text-[11px] text-red-600">{t('spot.insufficientHint')}</p>
+        </div>
+      )}
+
+      {errorState === 'subscription_required' && (
+        <div className="mb-4 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-center">
+          <p className="text-sm font-bold text-amber-700">
+            🔒 {t('credits.subRequired')}
+          </p>
+        </div>
+      )}
 
       <ul className="space-y-2">
         {spots.map((spot) => {
@@ -93,7 +145,9 @@ export function PlannerSpotDistance({ hotelLat, hotelLng, spots }: PlannerSpotDi
                     <span>🚕 {approx} {dist.taxiMinutes}분</span>
                   </div>
                 ) : (
-                  <p className="text-[11px] text-[#9CA3AF] mt-1">—</p>
+                  <p className="text-[11px] text-[#9CA3AF] mt-1">
+                    {computing ? '...' : '—'}
+                  </p>
                 )}
               </div>
             </li>

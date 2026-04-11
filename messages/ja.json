@@ -1127,6 +1127,7 @@
       "evening": "夕方",
       "anytime": "自由時間",
       "downloadPdf": "PDFダウンロード",
+      "downloadPdfWithCost": "PDFダウンロード (2クレジット)",
       "estimatedLp": "予想LP獲得",
       "lpUnit": "LP",
       "missionIntegrated": "ミッションキットコース自動含む",
@@ -1171,7 +1172,24 @@
     },
     "spot": {
       "noHotel": "ホテル情報を入力すると距離を計算します",
-      "distance": "ホテルから大体{method}{min}分"
+      "distance": "ホテルから大体{method}{min}分",
+      "creditNote": "1回の照会につき1クレジット",
+      "insufficientHint": "クレジットをチャージすると残りの場所も計算できます"
+    },
+    "credits": {
+      "title": "クレジット状況",
+      "remaining": "{n}クレジット残り",
+      "resetAt": "次回更新日: {date}",
+      "buy": "クレジット追加購入",
+      "insufficient": "クレジットが不足しています",
+      "used": "使用: {n}クレジット",
+      "unit": "クレジット",
+      "bestValue": "BEST",
+      "purchasing": "決済中...",
+      "purchaseFailed": "購入に失敗しました。しばらくしてから再試行してください",
+      "subRequired": "購読者のみクレジットを購入できます",
+      "close": "閉じる",
+      "modalSub": "必要な時に購入して使えます"
     },
     "weather": {
       "title": "天気情報",

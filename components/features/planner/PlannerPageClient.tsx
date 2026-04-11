@@ -11,6 +11,7 @@ import { PlannerSpotDistance } from './PlannerSpotDistance'
 import { PlannerFinalPlan } from './PlannerFinalPlan'
 import { PlannerTripSetup, type TripStyle } from './PlannerTripSetup'
 import { PlannerOotd } from './PlannerOotd'
+import { PlannerCreditsDisplay } from './PlannerCreditsDisplay'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -23,6 +24,9 @@ interface PlanItem {
 interface Plan {
   id: string
   city_id: string
+  start_date: string | null
+  end_date: string | null
+  travel_style: 'relaxed' | 'active' | 'full' | null
   has_mission_kit: boolean
   hotel_name: string | null
   hotel_address: string | null
@@ -30,6 +34,13 @@ interface Plan {
   hotel_lng: number | null
   hotel_source: 'curated' | 'manual' | null
   plan_items: PlanItem[]
+}
+
+interface SubscriptionStatus {
+  subscribed: boolean
+  creditsRemaining: number
+  monthlyCredits: number
+  creditsResetAt: string | null
 }
 
 interface SubscriptionPlan {
@@ -54,6 +65,34 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [subscriptionPlans, setSubscriptionPlans] = useState<SubscriptionPlan[]>([])
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const [subStatus, setSubStatus] = useState<SubscriptionStatus>({
+    subscribed: false,
+    creditsRemaining: 0,
+    monthlyCredits: 0,
+    creditsResetAt: null,
+  })
+
+  // 구독/크레딧 상태 새로고침 — 크레딧 차감 이후 호출
+  const refreshSubscriptionStatus = async () => {
+    try {
+      const res = await fetch('/api/subscription/status', { cache: 'no-store' })
+      if (!res.ok) return
+      const data = await res.json()
+      const sub = data.subscription
+      const plan = Array.isArray(sub?.subscription_plans)
+        ? sub.subscription_plans[0]
+        : sub?.subscription_plans
+      setSubStatus({
+        subscribed: !!data.subscribed,
+        creditsRemaining: sub?.credits_remaining ?? 0,
+        monthlyCredits: plan?.monthly_credits ?? 0,
+        creditsResetAt: sub?.credits_reset_at ?? null,
+      })
+      setIsSubscribed(!!data.subscribed)
+    } catch {
+      // ignore
+    }
+  }
 
   // 여행 기간/스타일/도시 (localStorage 보존)
   const [tripStart, setTripStart] = useState<string>('')
@@ -118,7 +157,17 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
 
         if (mounted && statusRes.ok) {
           const s = await statusRes.json()
+          const sub = s.subscription
+          const plan = Array.isArray(sub?.subscription_plans)
+            ? sub.subscription_plans[0]
+            : sub?.subscription_plans
           setIsSubscribed(!!s.subscribed)
+          setSubStatus({
+            subscribed: !!s.subscribed,
+            creditsRemaining: sub?.credits_remaining ?? 0,
+            monthlyCredits: plan?.monthly_credits ?? 0,
+            creditsResetAt: sub?.credits_reset_at ?? null,
+          })
         }
 
         if (mounted && subPlansRes.ok) {
@@ -198,20 +247,58 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   // 첫 번째 플랜 기준 (메인 플랜)
   const mainPlan = plans[0]
 
-  // localStorage 에 도시가 저장돼 있지 않은 초기 방문자는 mainPlan.city_id 로 1회 동기화
-  const initialCitySyncedRef = useRef(false)
+  // DB 우선 초기화: mainPlan 에 저장된 trip 값이 있으면 그걸 기준으로 state 동기화 (1회만)
+  // localStorage 값이 있으면 flash 로 먼저 보이고, DB 값이 도착하면 덮어씀
+  const initialDbSyncedRef = useRef(false)
   useEffect(() => {
-    if (initialCitySyncedRef.current) return
+    if (initialDbSyncedRef.current) return
     if (!mainPlan) return
-    try {
-      const saved = window.localStorage.getItem('planner:trip')
-      const parsed = saved ? (JSON.parse(saved) as { cityId?: string }) : null
-      if (!parsed?.cityId && mainPlan.city_id) {
-        setSelectedCityId(mainPlan.city_id)
-      }
-    } catch {}
-    initialCitySyncedRef.current = true
+
+    if (mainPlan.city_id) setSelectedCityId(mainPlan.city_id)
+    if (mainPlan.start_date) setTripStart(mainPlan.start_date)
+    if (mainPlan.end_date) setTripEnd(mainPlan.end_date)
+    if (mainPlan.travel_style) setTripStyle(mainPlan.travel_style)
+
+    initialDbSyncedRef.current = true
   }, [mainPlan])
+
+  // Trip setup 서버 동기화 — 디바운스 800ms. 사용자가 date/style/city 변경 시 DB 영속화.
+  const syncTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const lastSyncedRef = useRef<string>('')
+  useEffect(() => {
+    if (!isSubscribed) return
+    if (!initialDbSyncedRef.current) return
+
+    const payload = {
+      cityId: selectedCityId,
+      startDate: tripStart || null,
+      endDate: tripEnd || null,
+      travelStyle: tripStyle,
+    }
+    const signature = JSON.stringify(payload)
+    if (signature === lastSyncedRef.current) return
+
+    if (syncTimerRef.current) clearTimeout(syncTimerRef.current)
+    syncTimerRef.current = setTimeout(async () => {
+      try {
+        const res = await fetch('/api/planner/trip-setup', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: signature,
+          cache: 'no-store',
+        })
+        if (res.ok) {
+          lastSyncedRef.current = signature
+        }
+      } catch {
+        // 네트워크 실패 시 다음 변경에서 다시 시도
+      }
+    }, 800)
+
+    return () => {
+      if (syncTimerRef.current) clearTimeout(syncTimerRef.current)
+    }
+  }, [selectedCityId, tripStart, tripEnd, tripStyle, isSubscribed])
   const allItems = useMemo(
     () => plans.flatMap((p) => p.plan_items),
     [plans]
@@ -285,6 +372,13 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
 
         {isSubscribed && mainPlan && (
           <>
+            <PlannerCreditsDisplay
+              credits={subStatus.creditsRemaining}
+              monthlyCredits={subStatus.monthlyCredits}
+              resetAt={subStatus.creditsResetAt}
+              locale={locale}
+              onCreditsChanged={refreshSubscriptionStatus}
+            />
             <PlannerTripSetup
               cityId={selectedCityId}
               startDate={tripStart}
@@ -301,6 +395,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
               hotelLat={mainPlan.hotel_lat}
               hotelLng={mainPlan.hotel_lng}
               spots={spotsForDistance}
+              onCreditsChanged={refreshSubscriptionStatus}
             />
             <PlannerFinalPlan
               items={allItems}
@@ -310,6 +405,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
               tripStartDate={tripStart}
               tripEndDate={tripEnd}
               tripStyle={tripStyle}
+              onCreditsChanged={refreshSubscriptionStatus}
               ootdSlot={
                 <PlannerOotd
                   cityId={selectedCityId}
