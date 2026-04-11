@@ -51,6 +51,17 @@ rm -rf .next node_modules && pnpm install && pnpm dev
 
 7. **`'use client'` 컴포넌트가 import하는 모든 컴포넌트에도 `'use client'`가 있어야 한다.** 클라이언트 컴포넌트가 `'use client'` 없는 컴포넌트를 import하면 서버/클라이언트 경계 해석이 꼬져 `clientModules` 에러가 발생한다. (실제 반복 사고의 **진짜 근본 원인**이었음)
 
+8. **`public/sw.js`, `public/workbox-*.js`, `public/_next/*` 같은 `next build` 산출물을 `public/` 에 커밋하지 않는다.** `next-pwa` 가 과거 한 번이라도 production build 에서 돌면 `public/sw.js` 에 **옛날 hash chunk 경로 수백 개가 하드코딩된 service worker** 가 떨어진다. 이게 브라우저에 한 번 등록되면 **모든 요청을 가로채 존재하지 않는 옛날 chunk 를 캐시에서 서빙하려다 실패해 404 로 떨어뜨린다**. 서버 로그는 `200`인데 브라우저 콘솔은 `404` 로 보이는 증상 → 100% service worker 문제다. `next-pwa` 를 실제로 쓰지 않는다면 `public/sw.js` / `public/workbox-*.js` 는 **존재 자체가 버그**. 발견 즉시 삭제. `app/layout.tsx` 에서 `ServiceWorkerCleanup` 컴포넌트가 과거 방문자 브라우저도 자동 정리하므로 함부로 제거하지 말 것. (실제 사고 발생 이력 있음 — 2026-04-12, "모든 경로 404" 증상으로 수 시간 낭비)
+
+9. **`.next` 는 dev 서버가 **살아있는 동안** 절대 삭제하지 않는다.** dev 서버는 시작 시점에 읽은 모듈 매니페스트를 메모리에 들고 있다. 그 상태에서 `.next` 를 날리면 매니페스트가 가리키는 파일들이 사라져 **모든 경로가 404** 로 떨어지는 좀비 상태가 된다. 순서는 반드시: (1) **Ctrl+C 로 dev 서버 완전 종료 확인** → (2) `rm -rf .next` (또는 `pnpm dev:clean` 스크립트로 한 번에) → (3) 다시 `pnpm dev`. 사용자에게 안내할 때도 이 순서를 명시적으로 전달해야 한다. (실제 사고 발생 이력 있음 — 사용자에게 `rm -rf .next` 만 먼저 안내해 살아있는 dev 서버가 좀비 상태가 됨)
+
+10. **"서버 로그 200 vs 브라우저 404" 괴리는 먼저 service worker / 브라우저 캐시를 의심한다.** 서버 쪽 코드를 파기 전에 아래 순서로 진단한다:
+    - (a) `ls public/sw*.js public/workbox*.js` — 있으면 즉시 Rule #8 적용
+    - (b) DevTools → Application → Service Workers 에 활성 worker 가 있는지 확인
+    - (c) `cat next.config.mjs` 로 `withPWA` 사용 여부 확인 — 미사용인데 package.json 에 `next-pwa` 가 있으면 orphan 빌드 산출물 의심
+    - (d) 위 셋 다 깨끗하면 그 때 middleware / 라우트 / .next cache 를 본다
+    이 순서를 뒤집으면 원인을 못 찾고 `.next` 삭제 루프에 빠진다. (실제 사고 발생 이력 있음)
+
 > **Claude 필수 검증 절차 — 컴포넌트 생성·수정 시 매번 실행:**
 >
 > 1. 새 컴포넌트를 만들거나 import를 추가한 후, 아래 명령어로 누락을 검사한다:
