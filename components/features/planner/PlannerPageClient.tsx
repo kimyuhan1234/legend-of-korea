@@ -9,6 +9,8 @@ import { PlannerCuration } from './PlannerCuration'
 import { PlannerTransport } from './PlannerTransport'
 import { PlannerSpotDistance } from './PlannerSpotDistance'
 import { PlannerFinalPlan } from './PlannerFinalPlan'
+import { PlannerTripSetup, type TripStyle } from './PlannerTripSetup'
+import { PlannerOotd } from './PlannerOotd'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -52,6 +54,34 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [subscriptionPlans, setSubscriptionPlans] = useState<SubscriptionPlan[]>([])
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
+
+  // 여행 기간/스타일 (localStorage 보존)
+  const [tripStart, setTripStart] = useState<string>('')
+  const [tripEnd, setTripEnd] = useState<string>('')
+  const [tripStyle, setTripStyle] = useState<TripStyle>('active')
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem('planner:trip')
+      if (saved) {
+        const parsed = JSON.parse(saved) as {
+          start?: string; end?: string; style?: TripStyle
+        }
+        if (parsed.start) setTripStart(parsed.start)
+        if (parsed.end) setTripEnd(parsed.end)
+        if (parsed.style) setTripStyle(parsed.style)
+      }
+    } catch {}
+  }, [])
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(
+        'planner:trip',
+        JSON.stringify({ start: tripStart, end: tripEnd, style: tripStyle })
+      )
+    } catch {}
+  }, [tripStart, tripEnd, tripStyle])
 
   // 담긴 아이템 다시 불러오기 (공개 재사용 함수)
   const refreshPlans = async () => {
@@ -102,6 +132,17 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
     window.addEventListener('planner:refresh', handler)
     return () => window.removeEventListener('planner:refresh', handler)
   }, [])
+
+  // 전체 초기화 — 아이템 삭제 후 서버 상태 재조회 + 프론트 여행 설정도 리셋
+  const handleResetAll = async () => {
+    setTripStart('')
+    setTripEnd('')
+    setTripStyle('active')
+    try {
+      window.localStorage.removeItem('planner:trip')
+    } catch {}
+    await refreshPlans()
+  }
 
   const handleRemoveItem = async (itemId: string) => {
     try {
@@ -203,6 +244,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
           isSubscribed={isSubscribed}
           onRemoveItem={handleRemoveItem}
           onHotelSaved={handleHotelSaved}
+          onResetAll={handleResetAll}
         />
 
         {!isSubscribed && subscriptionPlans.length > 0 && (
@@ -215,6 +257,15 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
 
         {isSubscribed && mainPlan && (
           <>
+            <PlannerTripSetup
+              cityId={mainPlan.city_id}
+              startDate={tripStart}
+              endDate={tripEnd}
+              style={tripStyle}
+              onChangeStart={setTripStart}
+              onChangeEnd={setTripEnd}
+              onChangeStyle={setTripStyle}
+            />
             <PlannerCuration itemTypesInPlan={itemTypes} cityId={mainPlan.city_id} />
             <PlannerTransport cityId={mainPlan.city_id} locale={locale} />
             <PlannerSpotDistance
@@ -227,6 +278,20 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
               locale={locale}
               hasMissionKit={mainPlan.has_mission_kit}
               cityId={mainPlan.city_id}
+              tripStartDate={tripStart}
+              tripEndDate={tripEnd}
+              tripStyle={tripStyle}
+              ootdSlot={
+                <PlannerOotd
+                  cityId={mainPlan.city_id}
+                  locale={locale}
+                  startDate={tripStart}
+                  endDate={tripEnd}
+                  existingOotd={allItems
+                    .filter((i) => i.item_type === 'ootd')
+                    .map((i) => ({ id: i.id, item_data: i.item_data as { date?: string; checkedItems?: { name: string; icon: string }[] } }))}
+                />
+              }
             />
           </>
         )}

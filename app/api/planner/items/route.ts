@@ -97,6 +97,58 @@ export async function DELETE(req: NextRequest) {
 
     const { searchParams } = new URL(req.url)
     const itemId = searchParams.get('itemId')
+    const resetAll = searchParams.get('all') === 'true'
+
+    if (resetAll) {
+      // 본인의 draft/confirmed 플랜 id 목록 조회 후 해당 플랜의 plan_items만 삭제
+      const { data: userPlans, error: plansError } = await supabase
+        .from('travel_plans')
+        .select('id')
+        .eq('user_id', user.id)
+        .in('status', ['draft', 'confirmed'])
+
+      if (plansError) {
+        return NextResponse.json(
+          { error: '플랜 조회 실패', detail: plansError.message },
+          { status: 500 }
+        )
+      }
+
+      const planIds = (userPlans ?? []).map((p) => p.id)
+      if (planIds.length === 0) {
+        return NextResponse.json({ success: true, deleted: 0 })
+      }
+
+      // 1) plan_items 먼저 삭제 (FK 의존성 해제)
+      const { error: itemsError, count } = await supabase
+        .from('plan_items')
+        .delete({ count: 'exact' })
+        .in('plan_id', planIds)
+
+      if (itemsError) {
+        return NextResponse.json(
+          { error: '초기화 실패', detail: itemsError.message },
+          { status: 500 }
+        )
+      }
+
+      // 2) travel_plans 행 자체를 삭제 — 도시/호텔/상태 전부 깨끗이 리셋
+      //    다음 아이템 추가 시 /api/planner/add-item 이 새 플랜을 자동 생성함
+      const { error: plansDelError } = await supabase
+        .from('travel_plans')
+        .delete()
+        .in('id', planIds)
+        .eq('user_id', user.id)
+
+      if (plansDelError) {
+        return NextResponse.json(
+          { error: '플랜 초기화 실패', detail: plansDelError.message },
+          { status: 500 }
+        )
+      }
+
+      return NextResponse.json({ success: true, deleted: count ?? 0 })
+    }
 
     if (!itemId) {
       return NextResponse.json({ error: 'itemId 필수' }, { status: 400 })

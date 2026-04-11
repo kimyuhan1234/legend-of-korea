@@ -1059,6 +1059,14 @@
       "remove": "Remove",
       "city": "City"
     },
+    "reset": {
+      "button": "🗑️ Reset All",
+      "title": "Reset all items?",
+      "description": "All {n} saved items will be deleted. This cannot be undone.",
+      "cancel": "Cancel",
+      "confirm": "Reset",
+      "done": "Reset complete"
+    },
     "subscription": {
       "title": "Choose Your Plan",
       "subtitle": "Unlock the full travel planner with a subscription",
@@ -1134,7 +1142,32 @@
     },
     "ootd": {
       "check": "Select outfit",
-      "addChecked": "Add checked items"
+      "addChecked": "Add checked items",
+      "title": "Today's Outfit",
+      "basedOn": "Recommended based on trip weather",
+      "addThis": "Add this outfit",
+      "goChoose": "Choose yourself",
+      "change": "Change outfit",
+      "adding": "Adding...",
+      "added": "✓ Added",
+      "addFailed": "Failed to add. Please try again later",
+      "rainNote": "Rainy day (bring an umbrella)"
+    },
+    "setup": {
+      "title": "Trip Period & Style",
+      "subtitle": "Set your period and style — we'll auto-build each day's plan",
+      "city": "City",
+      "periodTitle": "Trip Period",
+      "startDate": "Start date",
+      "endDate": "End date",
+      "nightsDays": "{nights} nights {days} days",
+      "styleTitle": "Travel Style",
+      "styleRelaxed": "Relaxed",
+      "styleRelaxedDesc": "2-3 missions a day, take it slow",
+      "styleActive": "Active",
+      "styleActiveDesc": "4-5 missions a day, balanced plan",
+      "styleFull": "Full Course",
+      "styleFullDesc": "Max missions a day, experience everything"
     },
     "spot": {
       "noHotel": "Enter your hotel info to see distances",

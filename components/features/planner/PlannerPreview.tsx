@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { HotelInputForm } from './HotelInputForm'
 import { TransportInputForm } from './TransportInputForm'
+import { PlannerResetButton } from './PlannerResetButton'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -26,6 +27,7 @@ interface PlannerPreviewProps {
   isSubscribed: boolean
   onRemoveItem: (itemId: string) => void
   onHotelSaved?: () => void
+  onResetAll?: () => void
 }
 
 const TYPE_CONFIG: Record<ItemType, { emoji: string; color: string }> = {
@@ -54,8 +56,10 @@ function getItemName(item: PlanItem, locale: string): string {
   return 'Item'
 }
 
-export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHotelSaved }: PlannerPreviewProps) {
+export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHotelSaved, onResetAll }: PlannerPreviewProps) {
   const t = useTranslations('planner')
+
+  const totalItemCount = plans.reduce((sum, p) => sum + p.plan_items.length, 0)
 
   if (plans.length === 0 || plans.every((p) => p.plan_items.length === 0)) {
     return (
@@ -68,9 +72,18 @@ export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHo
 
   return (
     <div>
-      <h2 className="text-xl md:text-2xl font-black text-[#111] mb-6">
-        {t('preview.title')}
-      </h2>
+      <div className="flex items-center justify-between mb-6 gap-3">
+        <h2 className="text-xl md:text-2xl font-black text-[#111]">
+          {t('preview.title')}{' '}
+          <span className="text-sm font-bold text-[#9CA3AF]">
+            ({totalItemCount})
+          </span>
+        </h2>
+        <PlannerResetButton
+          itemCount={totalItemCount}
+          onReset={() => onResetAll?.()}
+        />
+      </div>
 
       <div className="space-y-6">
         {plans.map((plan, planIdx) => {

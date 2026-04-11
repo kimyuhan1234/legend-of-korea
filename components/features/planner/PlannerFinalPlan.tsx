@@ -1,8 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import { PlannerWeather } from './PlannerWeather'
+import { getCityWeather, type CityWeatherDay } from '@/lib/data/city-weather-mock'
+import type { TripStyle } from './PlannerTripSetup'
 
 interface CourseMission {
   id: string
@@ -38,6 +40,33 @@ interface PlannerFinalPlanProps {
   locale: string
   hasMissionKit: boolean
   cityId: string
+  tripStartDate?: string
+  tripEndDate?: string
+  tripStyle?: TripStyle
+  ootdSlot?: ReactNode
+}
+
+const MAX_MISSIONS_PER_DAY: Record<TripStyle, number> = {
+  relaxed: 3,
+  active: 5,
+  full: 999,
+}
+
+function tripDateRange(start: string, end: string): string[] {
+  if (!start || !end) return []
+  const s = new Date(start)
+  const e = new Date(end)
+  if (isNaN(s.getTime()) || isNaN(e.getTime())) return []
+  const dates: string[] = []
+  const cur = new Date(s)
+  while (cur.getTime() <= e.getTime()) {
+    const y = cur.getFullYear()
+    const m = String(cur.getMonth() + 1).padStart(2, '0')
+    const d = String(cur.getDate()).padStart(2, '0')
+    dates.push(`${y}-${m}-${d}`)
+    cur.setDate(cur.getDate() + 1)
+  }
+  return dates
 }
 
 const TYPE_EMOJI: Record<ItemType, string> = {
@@ -150,7 +179,16 @@ function buildSchedule(
   return { slots, unscheduled: [] }
 }
 
-export function PlannerFinalPlan({ items, locale, hasMissionKit, cityId }: PlannerFinalPlanProps) {
+export function PlannerFinalPlan({
+  items,
+  locale,
+  hasMissionKit,
+  cityId,
+  tripStartDate,
+  tripEndDate,
+  tripStyle = 'active',
+  ootdSlot,
+}: PlannerFinalPlanProps) {
   const t = useTranslations('planner')
 
   // OOTD, transport, stay는 별도로 처리
@@ -162,6 +200,15 @@ export function PlannerFinalPlan({ items, locale, hasMissionKit, cityId }: Plann
   const schedulableItems = items.filter(
     (i) => !['ootd', 'stay', 'transport', 'quest'].includes(i.item_type)
   )
+
+  // 여행 날짜 범위
+  const dayDates = tripDateRange(tripStartDate ?? '', tripEndDate ?? '')
+  const numDays = Math.max(1, dayDates.length)
+
+  // 각 날짜별 날씨
+  const dayWeather: CityWeatherDay[] = dayDates.length > 0
+    ? getCityWeather(cityId, dayDates[0], dayDates.length)
+    : []
 
   // quest 아이템의 courseId별 미션 목록 fetch
   const [missionsByCourse, setMissionsByCourse] = useState<Record<string, CourseMission[]>>({})
@@ -206,26 +253,47 @@ export function PlannerFinalPlan({ items, locale, hasMissionKit, cityId }: Plann
     return missionsByCourse[courseId] ?? []
   })
 
-  // 미션을 오전/오후/저녁에 자동 분배 (개수 기반)
-  const missionSlots = (() => {
-    const total = allMissions.length
-    if (total === 0) {
-      return { morning: [], afternoon: [], evening: [] as CourseMission[] }
-    }
-    // 분배 비율: 오전 40%, 오후 40%, 저녁 20%
+  // 여행 스타일별 하루 최대 미션 수
+  const maxMissionsPerDay = MAX_MISSIONS_PER_DAY[tripStyle]
+
+  // 미션을 numDays에 맞춰 분배 (스타일의 최대치까지)
+  const missionsPerDay = Math.min(
+    maxMissionsPerDay,
+    Math.max(1, Math.ceil(allMissions.length / numDays))
+  )
+
+  // Day별 미션 배열
+  const dayMissions: CourseMission[][] = []
+  for (let d = 0; d < numDays; d++) {
+    const start = d * missionsPerDay
+    const end = Math.min(start + missionsPerDay, allMissions.length)
+    dayMissions.push(allMissions.slice(start, end))
+  }
+
+  // 하루 안의 미션을 오전/오후/저녁에 분배 (40/40/20)
+  function splitInDay(missions: CourseMission[]) {
+    const total = missions.length
+    if (total === 0) return { morning: [], afternoon: [], evening: [] as CourseMission[] }
     const morningCount = Math.max(1, Math.ceil(total * 0.4))
     const afternoonCount = Math.max(
       total - morningCount > 0 ? 1 : 0,
       Math.ceil(total * 0.4)
     )
-    const morning = allMissions.slice(0, morningCount)
-    const afternoon = allMissions.slice(morningCount, morningCount + afternoonCount)
-    const evening = allMissions.slice(morningCount + afternoonCount)
-    return { morning, afternoon, evening }
-  })()
+    return {
+      morning: missions.slice(0, morningCount),
+      afternoon: missions.slice(morningCount, morningCount + afternoonCount),
+      evening: missions.slice(morningCount + afternoonCount),
+    }
+  }
 
-  // 날씨 위젯에 전달할 날짜 배열 (OOTD 담긴 날짜들 + 오늘 기본값)
+  // 일반 아이템을 Day별로 분배 — 현재는 Day 1에만 몰아서 표시
+  // (Day 2 이후는 미션 + 식사만; 향후 사용자 요청 시 세분화)
+  const dayItems: PlanItem[][] = Array.from({ length: numDays }, () => [])
+  dayItems[0] = schedulableItems
+
+  // 날씨 위젯에 전달할 날짜 배열
   const planDates = (() => {
+    if (dayDates.length > 0) return dayDates
     const dates = new Set<string>()
     for (const o of ootdItems) {
       const d = o.item_data.date
@@ -245,7 +313,15 @@ export function PlannerFinalPlan({ items, locale, hasMissionKit, cityId }: Plann
     return Array.from(dates).sort()
   })()
 
-  const { slots } = buildSchedule(schedulableItems, t as unknown as (k: string) => string)
+  function dayDateLabel(dateStr: string): string {
+    const d = new Date(dateStr)
+    if (isNaN(d.getTime())) return dateStr
+    const month = d.getMonth() + 1
+    const day = d.getDate()
+    if (locale === 'en') return `${month}/${day}`
+    if (locale === 'ja') return `${month}月${day}日`
+    return `${month}월 ${day}일`
+  }
 
   // 예상 LP — 실제 펼쳐진 미션의 lp_reward 합계 (fallback: 코스당 400)
   const estimatedLp = (() => {
@@ -301,138 +377,125 @@ export function PlannerFinalPlan({ items, locale, hasMissionKit, cityId }: Plann
 
       {/* 오늘의 코디 + 날씨 — 2열 그리드 (모바일 스택) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        {/* 오늘의 코디 */}
-        {ootdItems.length > 0 ? (
-          <div className="bg-pink-50 rounded-2xl p-5 border border-pink-200">
-            <div className="flex items-center justify-between mb-3">
-              <p className="text-[10px] font-black text-pink-700 uppercase tracking-widest">
-                👗 오늘의 코디
-              </p>
-              <a
-                href={`/${locale}/ootd`}
-                className="text-[10px] font-bold text-pink-700 hover:underline"
-              >
-                {t('weather.changeOutfit')} →
-              </a>
-            </div>
-            <div className="space-y-2">
-              {ootdItems.map((o) => {
-                const data = o.item_data
-                const date = typeof data.date === 'string' ? String(data.date) : ''
-                const checkedItems =
-                  (data.checkedItems as Array<{ name: string; icon: string }>) || []
-                return (
-                  <div key={o.id} className="text-sm">
-                    {date && <p className="text-xs text-[#9CA3AF] mb-1">{date}</p>}
-                    <div className="flex flex-wrap gap-2">
-                      {checkedItems.length > 0 ? (
-                        checkedItems.map((ci, idx) => (
-                          <span
-                            key={idx}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-pink-200 text-xs font-semibold text-[#374151]"
-                          >
-                            <span>{ci.icon}</span>
-                            <span>{ci.name}</span>
-                          </span>
-                        ))
-                      ) : (
-                        <span className="text-xs text-[#9CA3AF]">—</span>
-                      )}
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        ) : (
-          <div className="hidden md:block" />
-        )}
-
-        {/* 날씨 위젯 */}
+        {ootdSlot ? ootdSlot : <div className="hidden md:block" />}
         <PlannerWeather cityId={cityId} dates={planDates} />
       </div>
 
-      {/* 1일차 스마트 스케줄 */}
-      <div className="bg-white rounded-3xl p-6 border border-[#e8ddd0]/40">
-        <p className="text-xs font-black text-[#FF6B35] uppercase tracking-widest mb-4">
-          {t('final.day', { day: 1 })}
-        </p>
+      {/* Day별 스마트 스케줄 */}
+      <div className="space-y-5">
+        {Array.from({ length: numDays }).map((_, dayIdx) => {
+          const daySchedulableItems = dayItems[dayIdx] ?? []
+          const dayMissionList = dayMissions[dayIdx] ?? []
+          const { slots } = buildSchedule(
+            daySchedulableItems,
+            t as unknown as (k: string) => string
+          )
+          const missionSlots = splitInDay(dayMissionList)
+          const w = dayWeather[dayIdx]
+          const dateLabel = dayDates[dayIdx] ? dayDateLabel(dayDates[dayIdx]) : ''
 
-        <div className="space-y-4">
-          {slots.map((slot, i) => {
-            // 각 시간대에 해당하는 미션 (오전/오후/저녁 슬롯에만 펼쳐 배치)
-            let slotMissions: CourseMission[] = []
-            if (slot.label === t('final.morning')) slotMissions = missionSlots.morning
-            else if (slot.label === t('final.afternoon')) slotMissions = missionSlots.afternoon
-            else if (slot.label === t('final.dinner') || slot.label === t('final.night'))
-              slotMissions = slot.label === t('final.dinner') ? missionSlots.evening : []
-
-            const isEmpty = slot.items.length === 0 && slotMissions.length === 0
-
-            return (
-              <div key={i} className="flex gap-4">
-                {/* 시간대 정보 */}
-                <div className="shrink-0 w-24 pt-0.5">
-                  <p className="text-xs font-black text-[#111] flex items-center gap-1">
-                    <span>{slot.emoji}</span>
-                    <span>{slot.label}</span>
-                  </p>
-                  <p className="text-[10px] text-[#9CA3AF] mt-0.5">{slot.timeRange}</p>
-                </div>
-
-                {/* 일정 */}
-                <div className="flex-1 min-w-0 border-l-2 border-dashed border-[#e8ddd0] pl-4">
-                  {isEmpty ? (
-                    <p className="text-xs text-[#9CA3AF] italic">—</p>
-                  ) : (
-                    <ul className="space-y-2">
-                      {/* 미션 먼저 (시간대 시작 활동) */}
-                      {slotMissions.map((m, mi) => {
-                        const missionNum = allMissions.indexOf(m) + 1
-                        const locName = i18nText(m.location_name, locale)
-                        const title = i18nText(m.title, locale)
-                        return (
-                          <li
-                            key={m.id}
-                            className="flex items-start gap-2 text-sm text-[#374151]"
-                          >
-                            <span className="text-base shrink-0">📍</span>
-                            <div className="min-w-0">
-                              <span className="font-bold text-[#FF6B35]">
-                                {t('mission.prefix', { n: missionNum })}:
-                              </span>{' '}
-                              <span className="font-semibold">
-                                {locName || title || `Mission ${missionNum}`}
-                              </span>
-                              {title && locName && title !== locName && (
-                                <span className="text-xs text-[#6B7280] block ml-0">
-                                  — {title}
-                                </span>
-                              )}
-                            </div>
-                          </li>
-                        )
-                      })}
-                      {/* 고객 담은 일반 아이템 */}
-                      {slot.items.map((it) => (
-                        <li
-                          key={it.id}
-                          className="flex items-center gap-2 text-sm text-[#374151]"
-                        >
-                          <span className="text-base">{TYPE_EMOJI[it.item_type]}</span>
-                          <span className="truncate">{itemName(it, locale)}</span>
-                        </li>
-                      ))}
-                    </ul>
+          return (
+            <div
+              key={dayIdx}
+              className="bg-white rounded-3xl p-6 border border-[#e8ddd0]/40"
+            >
+              <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                <p className="text-xs font-black text-[#FF6B35] uppercase tracking-widest">
+                  {t('final.day', { day: dayIdx + 1 })}
+                  {dateLabel && (
+                    <span className="ml-2 text-[#9CA3AF] font-bold normal-case">
+                      {dateLabel}
+                    </span>
                   )}
-                </div>
+                </p>
+                {w && (
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF8F0] border border-[#FF6B35]/20">
+                    <span className="text-base leading-none">{w.icon}</span>
+                    <span className="text-[11px] font-bold text-[#374151]">
+                      {w.highTemp}° / {w.lowTemp}°
+                    </span>
+                  </div>
+                )}
               </div>
-            )
-          })}
-        </div>
 
+              <div className="space-y-4">
+                {slots.map((slot, i) => {
+                  let slotMissions: CourseMission[] = []
+                  if (slot.label === t('final.morning')) slotMissions = missionSlots.morning
+                  else if (slot.label === t('final.afternoon'))
+                    slotMissions = missionSlots.afternoon
+                  else if (slot.label === t('final.dinner'))
+                    slotMissions = missionSlots.evening
+
+                  const isEmpty = slot.items.length === 0 && slotMissions.length === 0
+
+                  return (
+                    <div key={i} className="flex gap-4">
+                      <div className="shrink-0 w-24 pt-0.5">
+                        <p className="text-xs font-black text-[#111] flex items-center gap-1">
+                          <span>{slot.emoji}</span>
+                          <span>{slot.label}</span>
+                        </p>
+                        <p className="text-[10px] text-[#9CA3AF] mt-0.5">
+                          {slot.timeRange}
+                        </p>
+                      </div>
+
+                      <div className="flex-1 min-w-0 border-l-2 border-dashed border-[#e8ddd0] pl-4">
+                        {isEmpty ? (
+                          <p className="text-xs text-[#9CA3AF] italic">—</p>
+                        ) : (
+                          <ul className="space-y-2">
+                            {slotMissions.map((m) => {
+                              const missionNum = allMissions.indexOf(m) + 1
+                              const locName = i18nText(m.location_name, locale)
+                              const title = i18nText(m.title, locale)
+                              return (
+                                <li
+                                  key={m.id}
+                                  className="flex items-start gap-2 text-sm text-[#374151]"
+                                >
+                                  <span className="text-base shrink-0">📍</span>
+                                  <div className="min-w-0">
+                                    <span className="font-bold text-[#FF6B35]">
+                                      {t('mission.prefix', { n: missionNum })}:
+                                    </span>{' '}
+                                    <span className="font-semibold">
+                                      {locName || title || `Mission ${missionNum}`}
+                                    </span>
+                                    {title && locName && title !== locName && (
+                                      <span className="text-xs text-[#6B7280] block ml-0">
+                                        — {title}
+                                      </span>
+                                    )}
+                                  </div>
+                                </li>
+                              )
+                            })}
+                            {slot.items.map((it) => (
+                              <li
+                                key={it.id}
+                                className="flex items-center gap-2 text-sm text-[#374151]"
+                              >
+                                <span className="text-base">{TYPE_EMOJI[it.item_type]}</span>
+                                <span className="truncate">{itemName(it, locale)}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      <div className="bg-white rounded-3xl p-6 border border-[#e8ddd0]/40 mt-5">
         {estimatedLp > 0 && (
-          <div className="mt-6 p-4 rounded-2xl bg-[#FFF8F0] border border-[#FF6B35]/20 text-center">
+          <div className="p-4 rounded-2xl bg-[#FFF8F0] border border-[#FF6B35]/20 text-center">
             <p className="text-xs text-[#6B7280] mb-1">
               ⚔️ {t('final.missionIntegrated')}
             </p>

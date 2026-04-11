@@ -1059,6 +1059,14 @@
       "remove": "削除",
       "city": "都市"
     },
+    "reset": {
+      "button": "🗑️ 全てリセット",
+      "title": "本当にリセットしますか？",
+      "description": "保存した{n}個のアイテムが全て削除されます。元に戻せません。",
+      "cancel": "キャンセル",
+      "confirm": "リセットする",
+      "done": "リセット完了"
+    },
     "subscription": {
       "title": "プランを選択",
       "subtitle": "購読で全機能を開放",
@@ -1134,7 +1142,32 @@
     },
     "ootd": {
       "check": "服を選択",
-      "addChecked": "チェックした服を追加"
+      "addChecked": "チェックした服を追加",
+      "title": "今日のコーデ",
+      "basedOn": "旅行期間の天気に基づくおすすめです",
+      "addThis": "このコーデを追加",
+      "goChoose": "自分で選ぶ",
+      "change": "服を変更する",
+      "adding": "追加中...",
+      "added": "✓ 追加済み",
+      "addFailed": "追加に失敗しました。しばらくしてから再試行してください",
+      "rainNote": "雨対策 (傘を忘れずに)"
+    },
+    "setup": {
+      "title": "旅行期間 & スタイル",
+      "subtitle": "期間とスタイルを決めると、毎日のスケジュールが自動で組まれます",
+      "city": "都市",
+      "periodTitle": "旅行期間",
+      "startDate": "開始日",
+      "endDate": "終了日",
+      "nightsDays": "{nights}泊{days}日",
+      "styleTitle": "旅行スタイル",
+      "styleRelaxed": "ゆったり",
+      "styleRelaxedDesc": "1日ミッション2〜3個、ゆっくり観光",
+      "styleActive": "充実",
+      "styleActiveDesc": "1日ミッション4〜5個、バランスの良い日程",
+      "styleFull": "フルコース",
+      "styleFullDesc": "1日ミッション最大、すべてを体験"
     },
     "spot": {
       "noHotel": "ホテル情報を入力すると距離を計算します",
