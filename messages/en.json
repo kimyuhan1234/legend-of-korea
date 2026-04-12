@@ -1243,6 +1243,39 @@
     }
   },
   "dupe": {
+    "mode": {
+      "city": "🗺️ By City",
+      "ai": "🤖 AI Match",
+      "taste": "🎯 My Taste"
+    },
+    "taste": {
+      "title": "🎯 Find by My Taste",
+      "subtitle": "Set your taste preference to find the perfect Korean dish",
+      "spicy": "🌶️ Spicy",
+      "sweet": "🍬 Sweet",
+      "salty": "🧂 Salty",
+      "umami": "🍖 Umami",
+      "sour": "🍋 Sour",
+      "reset": "Reset",
+      "search": "Find matches → (⚡3)",
+      "preset": {
+        "spicy": "🔥 Spice Lover",
+        "sweet": "🍬 Sweet Tooth",
+        "umami": "🍖 Umami Fan",
+        "balanced": "⚖️ Balanced"
+      }
+    },
+    "results": {
+      "top3": "🏆 Your Taste TOP 3",
+      "match": "Match",
+      "detail": "Details →",
+      "surprise": {
+        "title": "🎁 Surprise Flag Cooking",
+        "subtitle": "Fusion recipes to enjoy your TOP 3 even more",
+        "recipe": "View recipe →",
+        "reason": "You'll love this fusion too!"
+      }
+    },
     "ai": {
       "title": "🤖 AI Food Matching",
       "subtitle": "Enter any food from your country and we'll find a similar Korean dish",
