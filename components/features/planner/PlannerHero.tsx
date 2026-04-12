@@ -10,7 +10,7 @@ export function PlannerHero({ itemCount }: PlannerHeroProps) {
   const t = useTranslations('planner')
 
   return (
-    <section className="bg-gradient-to-br from-[#1F2937] to-[#1F2937] text-white py-16 md:py-24 px-6 md:px-10">
+    <section className="bg-ink text-white py-16 md:py-24 px-6 md:px-10">
       <div className="max-w-5xl mx-auto text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-xs font-black uppercase tracking-widest mb-4">
           📋 MY PLANNER

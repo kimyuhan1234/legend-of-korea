@@ -86,7 +86,7 @@ export function DiyWorkshopDirectory() {
   return (
     <div className="min-h-screen bg-[#FAFBFC]">
       {/* ── 헤더 ─────────────────────────────── */}
-      <div className="bg-gradient-to-br from-[#9DD8CE] to-[#7BC8BC] text-white py-16 px-6 md:px-10 text-center">
+      <div className="bg-mint-light text-ink py-16 px-6 md:px-10 text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-xs font-black uppercase tracking-widest mb-4">
           DIY
         </span>
@@ -192,7 +192,7 @@ export function DiyWorkshopDirectory() {
         )}
 
         {/* ── 예약 팁 안내 ──────────────────── */}
-        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-8">
+        <div className="bg-amber-50 border border-blossom rounded-2xl p-5 mb-8">
           <p className="text-sm font-bold text-amber-800 mb-1">💡 {t('note')}</p>
           <p className="text-xs text-amber-700 leading-relaxed">{t('noteText')}</p>
         </div>

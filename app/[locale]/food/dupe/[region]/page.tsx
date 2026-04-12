@@ -87,7 +87,7 @@ export default function RegionFoodsPage({ params }: Props) {
                 className="group bg-white rounded-3xl border border-[#E4E7EB] hover:border-[#F0B8B8]/50 hover:shadow-md transition-all overflow-hidden"
               >
                 {/* 이미지 */}
-                <div className="relative h-44 bg-gradient-to-br from-[#1F2937]/10 to-[#F0B8B8]/10 overflow-hidden">
+                <div className="relative h-44 bg-gradient-to-br from-cloud to-blossom-light overflow-hidden">
                   <Image
                     src={food.image}
                     alt={getL(food.name, locale)}

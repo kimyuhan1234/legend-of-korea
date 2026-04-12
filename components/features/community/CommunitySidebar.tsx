@@ -65,7 +65,7 @@ export function CommunitySidebar() {
       ) : (
         /* TODO: 나중에 ad_banners 테이블에서 동적 로드 */
         <div className="rounded-3xl overflow-hidden shadow-sm">
-          <div className="bg-gradient-to-br from-[#1F2937] via-[#4a2f8f] to-[#6b46c1] p-6 text-white text-center">
+          <div className="bg-ink p-6 text-white text-center">
             <div className="text-3xl mb-3">📢</div>
             <p className="font-black text-base mb-1">광고 문의</p>
             <p className="text-xs text-white/70 mb-3">전설 모험가들에게 알려보세요</p>
@@ -110,7 +110,7 @@ export function CommunitySidebar() {
       ) : (
         /* TODO: 나중에 ad_banners 테이블에서 동적 로드 */
         <div className="rounded-3xl overflow-hidden shadow-sm">
-          <div className="bg-gradient-to-br from-[#9DD8CE] via-[#ff8c5a] to-[#ffa070] p-6 text-white text-center">
+          <div className="bg-mint-deep p-6 text-white text-center">
             <div className="text-3xl mb-3">🚀</div>
             <p className="font-black text-base mb-1">Legend of Korea와 함께하세요</p>
             <p className="text-xs text-white/80 mb-3">당신의 전설을 기록하고 LP를 쌓으세요</p>

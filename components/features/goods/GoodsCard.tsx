@@ -18,7 +18,7 @@ export function GoodsCard({ product, locale }: GoodsCardProps) {
   return (
     <div className="group bg-white rounded-3xl overflow-hidden border border-[#E4E7EB]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
       {/* 이모지 히어로 */}
-      <div className="relative h-40 bg-gradient-to-br from-[#9DD8CE]/10 to-[#9DD8CE]/30 flex items-center justify-center">
+      <div className="relative h-40 bg-gradient-to-br from-mint-light/40 to-mint/30 flex items-center justify-center">
         <span className="text-6xl">{product.emoji}</span>
         <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/90 text-[10px] font-black text-[#111] uppercase">
           {t(`category.${product.category}` as Parameters<typeof t>[0])}

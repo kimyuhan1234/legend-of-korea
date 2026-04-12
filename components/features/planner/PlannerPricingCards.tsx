@@ -93,7 +93,7 @@ export function PlannerPricingCards({ plans, locale, onSubscribe }: PlannerPrici
             )}
 
             {plan.tier_levelup && (
-              <div className="mb-3 px-3 py-2 rounded-xl bg-gradient-to-r from-[#9DD8CE]/10 to-[#7BC8BC]/10 border border-[#9DD8CE]/20">
+              <div className="mb-3 px-3 py-2 rounded-xl bg-gradient-to-r from-mint-light/30 to-mint/20 border border-[#9DD8CE]/20">
                 <p className="text-[10px] font-black text-[#9DD8CE] text-center">
                   👑 {t('subscription.tierUp')}
                 </p>

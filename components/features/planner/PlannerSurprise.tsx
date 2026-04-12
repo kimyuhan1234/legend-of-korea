@@ -40,7 +40,7 @@ export function PlannerSurprise({ emoji, messageKey, cityId, suggestionKind }: P
   void cityId
 
   return (
-    <div className="bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-amber-200 rounded-2xl p-5">
+    <div className="bg-peach border-2 border-blossom rounded-2xl p-5">
       <div className="flex items-start gap-3 mb-3">
         <span className="text-3xl shrink-0">{emoji}</span>
         <div className="flex-1">
@@ -62,7 +62,7 @@ export function PlannerSurprise({ emoji, messageKey, cityId, suggestionKind }: P
         </button>
         <button
           onClick={() => setDismissed(true)}
-          className="px-4 py-2 rounded-full text-xs font-bold bg-white border border-amber-200 text-[#6B7280] hover:bg-amber-50"
+          className="px-4 py-2 rounded-full text-xs font-bold bg-white border border-blossom text-[#6B7280] hover:bg-amber-50"
         >
           {t('curation.skip')}
         </button>

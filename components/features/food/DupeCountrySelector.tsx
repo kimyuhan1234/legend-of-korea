@@ -165,7 +165,7 @@ export function DupeCountrySelector({ food, locale }: Props) {
             </div>
           ) : (
             /* 조건 B: 데이터 없음 */
-            <div className="bg-gradient-to-br from-[#1F2937] to-[#2a3f6b] rounded-3xl p-10 text-center">
+            <div className="bg-gradient-to-br from-[#1F2937] to-slate rounded-3xl p-10 text-center">
               <div className="text-6xl mb-5">{country.flag}</div>
               <p className="text-2xl font-black text-white mb-2">{t.noDataTitle}</p>
               <p className="text-white/60 text-sm mb-7 max-w-xs mx-auto leading-relaxed">{t.noDataSub}</p>

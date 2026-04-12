@@ -91,7 +91,7 @@ export function ShopClient({ locale }: ShopClientProps) {
   const exchangeItems = [
     { rate: 10, cost: 500, label: 'Standard Ticket', color: 'from-blue-500 to-mint-deep' },
     { rate: 20, cost: 1500, label: 'Premium Ticket', color: 'from-mint-deep to-sky' },
-    { rate: 30, cost: 3000, label: 'Legendary Ticket', color: 'from-amber-400 to-orange-600' },
+    { rate: 30, cost: 3000, label: 'Legendary Ticket', color: 'from-blossom-deep to-blossom' },
   ];
 
   return (

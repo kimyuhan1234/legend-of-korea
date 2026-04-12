@@ -80,7 +80,7 @@ export function LoginForm({ locale, next }: LoginFormProps) {
           required
           placeholder={t.emailPlaceholder}
           className="
-            h-12 px-4 rounded-xl border border-[#d5c9b8] bg-white
+            h-12 px-4 rounded-xl border border-[#E4E7EB] bg-white
             text-[#111] placeholder:text-[#9CA3AF] text-sm
             focus:outline-none focus:ring-2 focus:ring-[#F0B8B8]/40 focus:border-[#F0B8B8]
             transition-all
@@ -96,7 +96,7 @@ export function LoginForm({ locale, next }: LoginFormProps) {
           required
           placeholder={t.passwordPlaceholder}
           className="
-            h-12 px-4 rounded-xl border border-[#d5c9b8] bg-white
+            h-12 px-4 rounded-xl border border-[#E4E7EB] bg-white
             text-[#111] placeholder:text-[#9CA3AF] text-sm
             focus:outline-none focus:ring-2 focus:ring-[#F0B8B8]/40 focus:border-[#F0B8B8]
             transition-all

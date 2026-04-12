@@ -12,7 +12,7 @@ export function StayBookingTip() {
   ]
 
   return (
-    <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 md:p-6">
+    <div className="bg-amber-50 border border-blossom rounded-2xl p-5 md:p-6">
       <p className="text-sm font-black text-amber-800 mb-3">💡 {t('tip.title')}</p>
       <ul className="space-y-2">
         {tips.map(({ icon, key }) => (

@@ -65,7 +65,7 @@ export default async function MissionExecutionPage({ params }: MissionExecutionP
 
           <div className="flex gap-2">
             {isBoss && (
-              <div className="flex items-center gap-1.5 px-8 md:px-10 py-1.5 rounded-full bg-gradient-to-r from-yellow-400 to-amber-600 text-white text-xs font-black shadow-lg animate-bounce">
+              <div className="flex items-center gap-1.5 px-8 md:px-10 py-1.5 rounded-full bg-gradient-to-r from-blossom-deep to-blossom text-white text-xs font-black shadow-lg animate-bounce">
                 <Trophy className="w-3.5 h-3.5" />
                 {t('boss')}
               </div>

@@ -127,7 +127,7 @@ export default function MissionRegisterClient({
   return (
     <div className="min-h-screen bg-[#F0F2F5]">
       {/* ─── Header Section ─── */}
-      <div className="bg-gradient-to-br from-[#1F2937] via-[#374151] to-[#1a0f44] text-white relative overflow-hidden">
+      <div className="bg-gradient-to-br from-[#1F2937] via-slate to-ink text-white relative overflow-hidden">
         {/* decorative elements */}
         <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -mr-20 -mt-20 blur-2xl" />
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#9DD8CE]/10 rounded-full -ml-16 -mb-16 blur-xl" />

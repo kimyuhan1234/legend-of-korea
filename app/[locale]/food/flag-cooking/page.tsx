@@ -20,7 +20,7 @@ const DIFFICULTY_LABEL: Record<string, Record<string, string>> = {
 
 const DIFFICULTY_COLOR: Record<string, string> = {
   easy: "bg-emerald-50 text-emerald-700 border-emerald-200",
-  medium: "bg-amber-50 text-amber-700 border-amber-200",
+  medium: "bg-amber-50 text-amber-700 border-blossom",
   hard: "bg-red-50 text-red-700 border-red-200",
 }
 
@@ -187,7 +187,7 @@ export default function FlagCookingPage() {
       <FoodTabNav locale={locale} activeTab="flag-cooking" />
 
       {/* 히어로 */}
-      <section className="bg-gradient-to-br from-[#1F2937] to-[#2a3f6e] text-white py-14">
+      <section className="bg-gradient-to-br from-[#1F2937] to-slate text-white py-14">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F0B8B8]/20 border border-[#F0B8B8]/30 mb-5">
             <span className="text-[#F0B8B8] text-sm font-medium">{h.badge}</span>

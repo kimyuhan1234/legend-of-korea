@@ -161,7 +161,7 @@ export function OpenMission({
       <CardHeader className={`${isBoss ? 'bg-amber-100/30' : isHidden ? 'bg-lavender/30' : 'bg-primary/5'} pb-6 pt-8 px-8`}>
         <div className="flex justify-between items-center mb-4">
           <Badge variant="outline" className={`flex items-center gap-1.5 py-1 px-3 ${
-              isBoss ? 'bg-amber-100 text-amber-700 border-amber-200' : isHidden ? 'bg-lavender text-sky border-lavender' : 'border-primary/30 text-primary'
+              isBoss ? 'bg-amber-100 text-amber-700 border-blossom' : isHidden ? 'bg-lavender text-sky border-lavender' : 'border-primary/30 text-primary'
           }`}>
             {isHidden ? <Sparkles className="w-4 h-4" /> : isBoss ? <Trophy className="w-4 h-4" /> : <Camera className="w-4 h-4" />}
             {isHidden ? 'HIDDEN MISSION' : isBoss ? 'BOSS MISSION' : 'OPEN MISSION'}

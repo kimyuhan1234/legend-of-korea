@@ -36,7 +36,7 @@ export function QuestComparison() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* 일반 관광 */}
-          <div className="bg-white/60 rounded-3xl p-7 border border-[#E5E7EB]">
+          <div className="bg-white/60 rounded-3xl p-7 border border-[#E4E7EB]">
             <h3 className="text-lg font-bold text-[#6B7280] mb-5">{t('comparison.normalTitle')}</h3>
             <ul className="space-y-3">
               {normalItems.map((key) => (

@@ -48,7 +48,7 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
   return (
     <div className="space-y-6">
       {/* 배너 */}
-      <div className="bg-gradient-to-r from-[#9DD8CE] to-[#FF8C5A] rounded-2xl p-5 flex items-center justify-between gap-4 text-white">
+      <div className="bg-mint-deep rounded-2xl p-5 flex items-center justify-between gap-4 text-white">
         <div>
           <p className="font-black text-base">🍳 나만의 퓨전 레시피를 공유해보세요!</p>
           <p className="text-sm text-white/80 mt-0.5">한국 재료로 만드는 세계 퓨전 요리</p>

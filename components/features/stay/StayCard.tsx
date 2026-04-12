@@ -19,7 +19,7 @@ export function StayCard({ stay, locale }: StayCardProps) {
   return (
     <div className="group bg-white rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300 border border-[#E4E7EB]/40">
       {/* 상단: 타입별 색상 그라데이션 + 이모지 */}
-      <div className="relative h-48 bg-gradient-to-br from-[#9DD8CE]/10 to-[#9DD8CE]/30 flex items-center justify-center">
+      <div className="relative h-48 bg-gradient-to-br from-mint-light/40 to-mint/30 flex items-center justify-center">
         <span className="text-7xl">{STAY_TYPE_EMOJI[stay.type]}</span>
         {/* 타입 뱃지 */}
         <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 text-[#111] text-xs font-black shadow-sm uppercase">

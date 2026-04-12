@@ -56,7 +56,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
 
   return (
     <>
-      <div className="bg-gradient-to-br from-[#1F2937] to-[#4A2D8A] rounded-2xl p-6 text-white shadow-lg">
+      <div className="bg-gradient-to-br from-[#1F2937] to-sky rounded-2xl p-6 text-white shadow-lg">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <span className="text-4xl">{currentTier.emoji}</span>

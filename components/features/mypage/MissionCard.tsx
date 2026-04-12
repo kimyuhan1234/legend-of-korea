@@ -54,7 +54,7 @@ export default function MissionCard({
           className="w-full p-5 text-left flex items-start gap-4"
         >
           {/* sequence badge */}
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1F2937] to-[#5B3DAA]
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1F2937] to-sky
                           flex items-center justify-center text-white font-black text-lg
                           shadow-md shadow-purple-200 shrink-0 group-hover:scale-110 transition-transform">
             {mission.seq}
@@ -126,7 +126,7 @@ export default function MissionCard({
       <div className={`rounded-2xl border-2 overflow-hidden transition-all
         ${progress.reviewStatus === 'approved'
           ? 'border-green-300 bg-gradient-to-r from-green-50 to-emerald-50'
-          : 'border-yellow-300 bg-gradient-to-r from-yellow-50 to-amber-50'
+          : 'border-peach bg-peach'
         }`}
       >
         <div className="p-5 flex items-start gap-4">
@@ -134,7 +134,7 @@ export default function MissionCard({
           <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-md
             ${progress.reviewStatus === 'approved'
               ? 'bg-gradient-to-br from-green-400 to-emerald-500 text-white'
-              : 'bg-gradient-to-br from-yellow-400 to-amber-500 text-white'
+              : 'bg-gradient-to-br from-blossom-deep to-blossom text-white'
             }`}
           >
             <CheckCircle2 size={24} />
