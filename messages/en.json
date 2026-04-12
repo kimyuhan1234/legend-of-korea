@@ -1249,6 +1249,14 @@
       "taste": "🎯 My Taste",
       "world": "🌍 World Map"
     },
+    "map": {
+      "korea": {
+        "title": "Discover Korean Flavors",
+        "subtitle": "Tap a city to explore its flavors"
+      },
+      "foods": "{count} dishes",
+      "explore": "Explore this city →"
+    },
     "world": {
       "title": "🌍 World Food Dupe Map",
       "subtitle": "Click your country!",

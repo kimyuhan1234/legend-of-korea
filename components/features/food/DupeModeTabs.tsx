@@ -1,12 +1,14 @@
 'use client'
 
-import { useState, useMemo, type ReactNode } from 'react'
+import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { AiDupeSearch } from './AiDupeSearch'
 import { TastePreferenceFilter } from './TastePreferenceFilter'
 import { TasteMatchResults } from './TasteMatchResults'
 import { WorldDupeMap } from './WorldDupeMap'
 import { CountryDupeList } from './CountryDupeList'
+import { KoreaMapCitySelector } from './KoreaMapCitySelector'
+import { DupeSwipeContainer } from './DupeSwipeContainer'
 import { regions } from '@/lib/data/food-dupes'
 import { getAllCountryCounts, getCountryDupes } from '@/lib/utils/country-dupe-aggregator'
 
@@ -30,24 +32,24 @@ interface Surprise {
   connectionReason: { ko: string; en: string; ja: string }
 }
 
-type Mode = 'city' | 'ai' | 'taste' | 'world'
-
 interface DupeModeTabsProps {
   locale: string
-  cityGrid: ReactNode
 }
 
-export function DupeModeTabs({ locale, cityGrid }: DupeModeTabsProps) {
+export function DupeModeTabs({ locale }: DupeModeTabsProps) {
   const t = useTranslations('dupe')
-  const [mode, setMode] = useState<Mode>('city')
+
+  // 취향 매칭 상태
   const [tasteLoading, setTasteLoading] = useState(false)
-  const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
-  const countryCounts = useMemo(() => getAllCountryCounts(regions), [])
   const [tasteResults, setTasteResults] = useState<{
     topFoods: TopFood[]
     surprises: Surprise[]
   } | null>(null)
   const [tasteError, setTasteError] = useState<string | null>(null)
+
+  // 세계지도 상태
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
+  const countryCounts = useMemo(() => getAllCountryCounts(regions), [])
 
   const handleTasteSearch = async (pref: { sweet: number; salty: number; spicy: number; umami: number; sour: number }) => {
     setTasteLoading(true)
@@ -72,50 +74,22 @@ export function DupeModeTabs({ locale, cityGrid }: DupeModeTabsProps) {
     }
   }
 
-  const tabs: Array<{ key: Mode; label: string }> = [
-    { key: 'city', label: t('mode.city') },
-    { key: 'ai', label: t('mode.ai') },
-    { key: 'taste', label: t('mode.taste') },
-    { key: 'world', label: t('mode.world') },
-  ]
-
-  return (
-    <>
-      {/* 모드 탭 */}
-      <div className="max-w-4xl mx-auto px-4 pt-8 pb-4">
-        <div className="flex gap-2 justify-center flex-wrap">
-          {tabs.map((tab) => (
-            <button
-              key={tab.key}
-              type="button"
-              onClick={() => setMode(tab.key)}
-              className={`px-5 py-2.5 rounded-full text-sm font-bold transition-colors ${
-                mode === tab.key
-                  ? 'bg-mint-deep text-white'
-                  : 'bg-cloud text-slate hover:bg-mist'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 모드별 콘텐츠 */}
-      {mode === 'city' && (
-        <section className="max-w-6xl mx-auto px-4 py-8">
-          {cityGrid}
-        </section>
-      )}
-
-      {mode === 'ai' && (
-        <section className="max-w-4xl mx-auto px-4 py-8">
-          <AiDupeSearch locale={locale} />
-        </section>
-      )}
-
-      {mode === 'taste' && (
-        <section className="max-w-4xl mx-auto px-4 py-8">
+  const tabs = [
+    {
+      key: 'city',
+      label: t('mode.city'),
+      content: <KoreaMapCitySelector regions={regions} />,
+    },
+    {
+      key: 'ai',
+      label: t('mode.ai'),
+      content: <AiDupeSearch locale={locale} />,
+    },
+    {
+      key: 'taste',
+      label: t('mode.taste'),
+      content: (
+        <>
           <TastePreferenceFilter onSearch={handleTasteSearch} isLoading={tasteLoading} />
           {tasteError && (
             <div className="text-center mt-4">
@@ -136,11 +110,14 @@ export function DupeModeTabs({ locale, cityGrid }: DupeModeTabsProps) {
               isVisible={!!tasteResults}
             />
           )}
-        </section>
-      )}
-
-      {mode === 'world' && (
-        <section className="max-w-4xl mx-auto px-4 py-8">
+        </>
+      ),
+    },
+    {
+      key: 'world',
+      label: t('mode.world'),
+      content: (
+        <>
           <WorldDupeMap
             onCountrySelect={setSelectedCountry}
             selectedCountry={selectedCountry}
@@ -154,8 +131,10 @@ export function DupeModeTabs({ locale, cityGrid }: DupeModeTabsProps) {
               locale={locale}
             />
           )}
-        </section>
-      )}
-    </>
-  )
+        </>
+      ),
+    },
+  ]
+
+  return <DupeSwipeContainer tabs={tabs} />
 }

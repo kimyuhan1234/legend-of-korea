@@ -1,9 +1,6 @@
 import { Metadata } from "next"
-import Link from "next/link"
-import Image from "next/image"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
 import { DupeModeTabs } from "@/components/features/food/DupeModeTabs"
-import { regions } from "@/lib/data/food-dupes"
 
 interface Props {
   params: { locale: string }
@@ -38,20 +35,9 @@ const HERO = {
   },
 }
 
-const COMING_SOON = {
-  ko: "준비 중",
-  ja: "準備中",
-  en: "Coming Soon",
-}
-
-function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as "ko" | "ja" | "en"] || field.ko
-}
-
 export default function DupePage({ params }: Props) {
   const { locale } = params
   const h = HERO[locale as keyof typeof HERO] || HERO.ko
-  const comingSoon = COMING_SOON[locale as keyof typeof COMING_SOON] || COMING_SOON.ko
 
   return (
     <div>
@@ -68,52 +54,8 @@ export default function DupePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 3모드 탭 (도시별 / AI 매칭 / 내 취향) */}
-      <DupeModeTabs
-        locale={locale}
-        cityGrid={
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {regions.map((region) => (
-              <Link
-                key={region.code}
-                href={`/${locale}/food/dupe/${region.code}`}
-                className="group bg-white rounded-3xl border border-mist hover:border-blossom/50 hover:shadow-md transition-all overflow-hidden"
-              >
-                <div className="relative h-44 overflow-hidden">
-                  <Image
-                    src={region.image}
-                    alt={getL(region.name, locale)}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
-                  <span className="absolute bottom-3 left-4 text-3xl">{region.icon}</span>
-                </div>
-                <div className="p-5">
-                  <h2 className="text-xl font-black text-ink mb-1">
-                    {getL(region.name, locale)}
-                  </h2>
-                  <p className="text-sm text-stone leading-relaxed mb-4">
-                    {getL(region.description, locale)}
-                  </p>
-                  {region.foods.length > 0 ? (
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-blossom-deep">
-                        {region.foods.length}{locale === "ko" ? "가지 음식" : locale === "ja" ? "品" : " dishes"}
-                      </span>
-                      <span className="text-blossom-deep group-hover:translate-x-1 transition-transform">→</span>
-                    </div>
-                  ) : (
-                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-cloud text-xs text-stone font-medium">
-                      🕐 {comingSoon}
-                    </span>
-                  )}
-                </div>
-              </Link>
-            ))}
-          </div>
-        }
-      />
+      {/* 4모드 스와이프 탭 (도시별 / AI 매칭 / 취향 / 세계지도) */}
+      <DupeModeTabs locale={locale} />
     </div>
   )
 }
