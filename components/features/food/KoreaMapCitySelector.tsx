@@ -17,15 +17,15 @@ function getL(field: { ko: string; en: string; ja: string }, locale: string): st
 
 // 도시 마커 위치 (% 단위 — 지도 이미지 기준)
 const CITY_POS: Record<string, { top: string; left: string }> = {
-  seoul: { top: '16.5%', left: '44%' },
-  yongin: { top: '21%', left: '49%' },
-  icheon: { top: '20%', left: '56%' },
-  cheonan: { top: '24%', left: '40%' },
-  jeonju: { top: '46%', left: '28%' },
-  gyeongju: { top: '48%', left: '72%' },
-  tongyeong: { top: '60%', left: '50%' },
-  busan: { top: '57%', left: '73%' },
-  jeju: { top: '84%', left: '26%' },
+  seoul: { top: '23%', left: '43%' },
+  yongin: { top: '27%', left: '46%' },
+  icheon: { top: '26%', left: '53%' },
+  cheonan: { top: '33%', left: '38%' },
+  jeonju: { top: '48%', left: '30%' },
+  gyeongju: { top: '46%', left: '67%' },
+  tongyeong: { top: '60%', left: '47%' },
+  busan: { top: '56%', left: '67%' },
+  jeju: { top: '80%', left: '33%' },
 }
 
 // 도시별 이미지 경로 — food-dupes.ts 의 region.image 또는 village 폴더
