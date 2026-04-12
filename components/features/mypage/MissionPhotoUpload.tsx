@@ -126,17 +126,17 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
               flex flex-col items-center gap-3 transition-all duration-300
               ${dragOver
                 ? 'border-[#9DD8CE] bg-mint-light scale-[1.02]'
-                : 'border-gray-300 bg-gray-50 hover:border-[#1F2937] hover:bg-lavender'
+                : 'border-mist bg-snow hover:border-[#1F2937] hover:bg-lavender'
               }
             `}
           >
             <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center">
               <Camera size={28} className="text-[#111]" />
             </div>
-            <p className="text-sm text-gray-500 font-medium text-center">
+            <p className="text-sm text-stone font-medium text-center">
               {t('tapToUpload')}
             </p>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-stone">
               {t('photoGuide3')}
             </p>
           </div>
@@ -146,41 +146,41 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
             <button
               onClick={() => cameraRef.current?.click()}
               className="flex flex-col items-center gap-1.5 py-3 rounded-xl border-2 border-dashed
-                         border-gray-200 hover:border-[#1F2937] hover:bg-lavender transition-all
+                         border-mist hover:border-[#1F2937] hover:bg-lavender transition-all
                          active:scale-95"
             >
               <Camera size={18} className="text-[#111]" />
-              <span className="text-xs text-gray-600 font-medium">{t('camera')}</span>
+              <span className="text-xs text-slate font-medium">{t('camera')}</span>
             </button>
             <button
               onClick={() => galleryRef.current?.click()}
               className="flex flex-col items-center gap-1.5 py-3 rounded-xl border-2 border-dashed
-                         border-gray-200 hover:border-[#1F2937] hover:bg-lavender transition-all
+                         border-mist hover:border-[#1F2937] hover:bg-lavender transition-all
                          active:scale-95"
             >
               <ImageIcon size={18} className="text-[#111]" />
-              <span className="text-xs text-gray-600 font-medium">{t('gallery')}</span>
+              <span className="text-xs text-slate font-medium">{t('gallery')}</span>
             </button>
             <button
               onClick={() => fileRef.current?.click()}
               className="flex flex-col items-center gap-1.5 py-3 rounded-xl border-2 border-dashed
-                         border-gray-200 hover:border-[#1F2937] hover:bg-lavender transition-all
+                         border-mist hover:border-[#1F2937] hover:bg-lavender transition-all
                          active:scale-95"
             >
               <FolderOpen size={18} className="text-[#111]" />
-              <span className="text-xs text-gray-600 font-medium">{t('fileSelect')}</span>
+              <span className="text-xs text-slate font-medium">{t('fileSelect')}</span>
             </button>
           </div>
 
           {/* guide toggle */}
           <button
             onClick={() => setShowGuide((v) => !v)}
-            className="text-xs text-gray-400 underline underline-offset-2 hover:text-[#111] transition-colors"
+            className="text-xs text-stone underline underline-offset-2 hover:text-[#111] transition-colors"
           >
             📸 {t('photoGuide')}
           </button>
           {showGuide && (
-            <ul className="text-xs text-gray-500 space-y-1.5 pl-5 list-disc bg-amber-50 p-3 rounded-xl border border-amber-100">
+            <ul className="text-xs text-stone space-y-1.5 pl-5 list-disc bg-peach p-3 rounded-xl border border-peach">
               <li>{t('photoGuide1')}</li>
               <li>{t('photoGuide2')}</li>
               <li>{t('photoGuide3')}</li>
@@ -190,7 +190,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
       ) : (
         <>
           {/* preview with remove button */}
-          <div className="relative rounded-2xl overflow-hidden border-2 border-gray-200 bg-gray-50 shadow-sm group">
+          <div className="relative rounded-2xl overflow-hidden border-2 border-mist bg-snow shadow-sm group">
             <Image
               src={preview}
               alt="preview"

@@ -192,9 +192,9 @@ export function DiyWorkshopDirectory() {
         )}
 
         {/* ── 예약 팁 안내 ──────────────────── */}
-        <div className="bg-amber-50 border border-blossom rounded-2xl p-5 mb-8">
-          <p className="text-sm font-bold text-amber-800 mb-1">💡 {t('note')}</p>
-          <p className="text-xs text-amber-700 leading-relaxed">{t('noteText')}</p>
+        <div className="bg-peach border border-blossom rounded-2xl p-5 mb-8">
+          <p className="text-sm font-bold text-slate mb-1">💡 {t('note')}</p>
+          <p className="text-xs text-slate leading-relaxed">{t('noteText')}</p>
         </div>
 
         {/* ── 예약 플랫폼 바로가기 ────────────── */}

@@ -440,21 +440,21 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                   <h3 className="text-lg font-bold text-[#111]">
                     {t('missionSummary')}
                   </h3>
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-sm text-stone mt-1">
                     {t('missionSummaryDesc')}
                   </p>
                 </div>
 
                 {/* 통계 카드 */}
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="bg-white rounded-xl p-4 text-center border border-gray-100">
+                  <div className="bg-white rounded-xl p-4 text-center border border-cloud">
                     <div className="text-2xl mb-1">📋</div>
-                    <p className="text-xs text-gray-500">{t('totalMissions')}</p>
+                    <p className="text-xs text-stone">{t('totalMissions')}</p>
                     <p className="text-2xl font-bold text-[#111]">12</p>
                   </div>
-                  <div className="bg-white rounded-xl p-4 text-center border border-gray-100">
+                  <div className="bg-white rounded-xl p-4 text-center border border-cloud">
                     <div className="text-2xl mb-1">🏆</div>
-                    <p className="text-xs text-gray-500">{t('completedMissions')}</p>
+                    <p className="text-xs text-stone">{t('completedMissions')}</p>
                     <p className="text-2xl font-bold text-[#111]">2</p>
                   </div>
                   <div className="bg-[#9DD8CE] rounded-xl p-4 text-center text-white">

@@ -82,8 +82,8 @@ export default function AdminDashboardPage() {
       title: "총 회원 수",
       value: data.summary.totalUsers.toLocaleString(),
       icon: Users,
-      color: "text-amber-600",
-      bg: "bg-amber-50",
+      color: "text-blossom-deep",
+      bg: "bg-peach",
     },
   ]
 

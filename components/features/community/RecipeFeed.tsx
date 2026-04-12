@@ -71,7 +71,7 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
             className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors
               ${country === f.code
                 ? 'bg-[#9DD8CE] text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                : 'bg-cloud text-slate hover:bg-mist'
               }`}
           >
             {f.label}
@@ -85,10 +85,10 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
           <Loader2 className="w-8 h-8 animate-spin text-sky" />
         </div>
       ) : recipes.length === 0 ? (
-        <div className="text-center py-16 bg-white rounded-2xl border border-gray-100">
+        <div className="text-center py-16 bg-white rounded-2xl border border-cloud">
           <div className="text-5xl mb-3">🍳</div>
-          <p className="text-gray-500 font-bold">아직 등록된 레시피가 없습니다.</p>
-          <p className="text-sm text-gray-400 mt-1">첫 번째 레시피를 공유해보세요!</p>
+          <p className="text-stone font-bold">아직 등록된 레시피가 없습니다.</p>
+          <p className="text-sm text-stone mt-1">첫 번째 레시피를 공유해보세요!</p>
           <Link
             href={`/${locale}/community/recipe/write`}
             className="inline-block mt-4 px-5 py-2.5 bg-[#9DD8CE] text-white rounded-xl font-bold text-sm hover:bg-[#7BC8BC] transition-colors"

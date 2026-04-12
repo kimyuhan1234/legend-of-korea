@@ -154,19 +154,19 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
 
         {/* 요리 이름 */}
         <div>
-          <label className="block text-sm font-bold text-gray-700 mb-1.5">요리 이름 *</label>
+          <label className="block text-sm font-bold text-slate mb-1.5">요리 이름 *</label>
           <input
             value={name}
             onChange={e => setName(e.target.value)}
             placeholder="예: 김치 리조또, 된장 파스타"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#9DD8CE] transition-colors"
+            className="w-full border border-mist rounded-xl px-4 py-3 text-sm outline-none focus:border-[#9DD8CE] transition-colors"
             required
           />
         </div>
 
         {/* 퓨전 국가 */}
         <div>
-          <label className="block text-sm font-bold text-gray-700 mb-1.5">퓨전 국가</label>
+          <label className="block text-sm font-bold text-slate mb-1.5">퓨전 국가</label>
           <div className="grid grid-cols-4 gap-2">
             {COUNTRY_OPTIONS.map(c => (
               <button
@@ -176,7 +176,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
                 className={`flex flex-col items-center gap-1 py-3 rounded-xl border-2 text-xs font-bold transition-all
                   ${countryCode === c.code
                     ? 'border-[#9DD8CE] bg-mint-light text-[#9DD8CE]'
-                    : 'border-gray-200 text-gray-600 hover:border-gray-300'
+                    : 'border-mist text-slate hover:border-mist'
                   }`}
               >
                 <span className="text-xl">{c.flag}</span>
@@ -189,7 +189,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         {/* 난이도 / 조리시간 / 인분 */}
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-1.5">난이도</label>
+            <label className="block text-sm font-bold text-slate mb-1.5">난이도</label>
             <div className="flex flex-col gap-1.5">
               {(['easy', 'medium', 'hard'] as const).map(d => (
                 <label key={d} className="flex items-center gap-2 cursor-pointer">
@@ -207,45 +207,45 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
             </div>
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-1.5">조리 시간 (분)</label>
+            <label className="block text-sm font-bold text-slate mb-1.5">조리 시간 (분)</label>
             <input
               type="number"
               min={1}
               value={cookingTime}
               onChange={e => setCookingTime(Number(e.target.value))}
-              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
+              className="w-full border border-mist rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
             />
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-1.5">인분</label>
+            <label className="block text-sm font-bold text-slate mb-1.5">인분</label>
             <input
               type="number"
               min={1}
               value={servings}
               onChange={e => setServings(Number(e.target.value))}
-              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
+              className="w-full border border-mist rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
             />
           </div>
         </div>
 
         {/* 한줄 소개 */}
         <div>
-          <label className="block text-sm font-bold text-gray-700 mb-1.5">한줄 소개</label>
+          <label className="block text-sm font-bold text-slate mb-1.5">한줄 소개</label>
           <input
             value={description}
             onChange={e => setDescription(e.target.value)}
             placeholder="이 레시피를 한 문장으로 소개해주세요"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#9DD8CE]"
+            className="w-full border border-mist rounded-xl px-4 py-3 text-sm outline-none focus:border-[#9DD8CE]"
           />
         </div>
       </div>
 
       {/* 사진 업로드 */}
       <div className="bg-white rounded-2xl shadow p-6 space-y-3">
-        <label className="block text-sm font-bold text-gray-700">요리 사진 (최대 5장)</label>
+        <label className="block text-sm font-bold text-slate">요리 사진 (최대 5장)</label>
         <div className="flex flex-wrap gap-3">
           {photos.map((src, idx) => (
-            <div key={idx} className="relative w-24 h-24 rounded-xl overflow-hidden border border-gray-200">
+            <div key={idx} className="relative w-24 h-24 rounded-xl overflow-hidden border border-mist">
               <Image src={src} alt={`photo ${idx + 1}`} fill className="object-cover" unoptimized />
               <button
                 type="button"
@@ -260,8 +260,8 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
             <button
               type="button"
               onClick={() => photoInputRef.current?.click()}
-              className="w-24 h-24 rounded-xl border-2 border-dashed border-gray-300 hover:border-[#9DD8CE]
-                         flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-[#9DD8CE] transition-colors"
+              className="w-24 h-24 rounded-xl border-2 border-dashed border-mist hover:border-[#9DD8CE]
+                         flex flex-col items-center justify-center gap-1 text-stone hover:text-[#9DD8CE] transition-colors"
             >
               <Camera size={20} />
               <span className="text-xs">사진 추가</span>
@@ -276,12 +276,12 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
           className="hidden"
           onChange={handlePhotoChange}
         />
-        <p className="text-xs text-gray-400">사진은 레시피 등록 후 자동 업로드됩니다</p>
+        <p className="text-xs text-stone">사진은 레시피 등록 후 자동 업로드됩니다</p>
       </div>
 
       {/* 맛 프로필 */}
       <div className="bg-white rounded-2xl shadow p-6 space-y-4">
-        <label className="block text-sm font-bold text-gray-700">🎯 맛 프로필 (0~5)</label>
+        <label className="block text-sm font-bold text-slate">🎯 맛 프로필 (0~5)</label>
         <div className="flex gap-6 items-center">
           {/* 슬라이더 */}
           <div className="flex-1 space-y-3">
@@ -383,20 +383,20 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
 
       {/* 한국 재료 */}
       <div className="bg-white rounded-2xl shadow p-6 space-y-3">
-        <label className="block text-sm font-bold text-gray-700">🇰🇷 한국 재료</label>
+        <label className="block text-sm font-bold text-slate">🇰🇷 한국 재료</label>
         {koreanIngredients.map((ing, idx) => (
           <div key={idx} className="flex gap-2">
             <input
               value={ing}
               onChange={e => updateList(koreanIngredients, setKoreanIngredients, idx, e.target.value)}
               placeholder={`재료 ${idx + 1} (예: 김치 100g)`}
-              className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
+              className="flex-1 border border-mist rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
             />
             <button
               type="button"
               onClick={() => removeItem(koreanIngredients, setKoreanIngredients, idx)}
               disabled={koreanIngredients.length <= 1}
-              className="p-2.5 text-gray-400 hover:text-red-400 disabled:opacity-30 transition-colors"
+              className="p-2.5 text-stone hover:text-red-400 disabled:opacity-30 transition-colors"
             >
               <Trash2 size={16} />
             </button>
@@ -413,7 +413,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
 
       {/* 외국 재료 */}
       <div className="bg-white rounded-2xl shadow p-6 space-y-3">
-        <label className="block text-sm font-bold text-gray-700">
+        <label className="block text-sm font-bold text-slate">
           {COUNTRY_OPTIONS.find(c => c.code === countryCode)?.flag} 외국 재료
         </label>
         {foreignIngredients.map((ing, idx) => (
@@ -422,13 +422,13 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
               value={ing}
               onChange={e => updateList(foreignIngredients, setForeignIngredients, idx, e.target.value)}
               placeholder={`재료 ${idx + 1}`}
-              className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
+              className="flex-1 border border-mist rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
             />
             <button
               type="button"
               onClick={() => removeItem(foreignIngredients, setForeignIngredients, idx)}
               disabled={foreignIngredients.length <= 1}
-              className="p-2.5 text-gray-400 hover:text-red-400 disabled:opacity-30 transition-colors"
+              className="p-2.5 text-stone hover:text-red-400 disabled:opacity-30 transition-colors"
             >
               <Trash2 size={16} />
             </button>
@@ -445,7 +445,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
 
       {/* 조리 순서 */}
       <div className="bg-white rounded-2xl shadow p-6 space-y-3">
-        <label className="block text-sm font-bold text-gray-700">👨‍🍳 조리 순서</label>
+        <label className="block text-sm font-bold text-slate">👨‍🍳 조리 순서</label>
         {steps.map((step, idx) => (
           <div key={idx} className="flex gap-2 items-start">
             <span className="w-7 h-7 rounded-full bg-[#9DD8CE] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-2.5">
@@ -456,13 +456,13 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
               onChange={e => updateList(steps, setSteps, idx, e.target.value)}
               placeholder={`${idx + 1}단계 조리 방법을 입력하세요`}
               rows={2}
-              className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE] resize-none"
+              className="flex-1 border border-mist rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE] resize-none"
             />
             <button
               type="button"
               onClick={() => removeItem(steps, setSteps, idx)}
               disabled={steps.length <= 1}
-              className="p-2.5 text-gray-400 hover:text-red-400 disabled:opacity-30 transition-colors mt-1"
+              className="p-2.5 text-stone hover:text-red-400 disabled:opacity-30 transition-colors mt-1"
             >
               <Trash2 size={16} />
             </button>

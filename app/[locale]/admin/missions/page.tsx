@@ -143,7 +143,7 @@ export default function AdminMissionsPage() {
                     <Badge variant="outline" className="bg-[#F0F2F5] text-white border-none py-0.5 px-2 text-[10px] font-bold">
                       {m.type.toUpperCase()}
                     </Badge>
-                    {m.is_hidden && <Badge className="bg-amber-100 text-amber-700 border-none py-0.5 px-2 text-[10px] font-bold">HIDDEN</Badge>}
+                    {m.is_hidden && <Badge className="bg-peach text-slate border-none py-0.5 px-2 text-[10px] font-bold">HIDDEN</Badge>}
                   </div>
                 </TableCell>
                 <TableCell>

@@ -34,10 +34,10 @@ const TYPE_CONFIG: Record<ItemType, { emoji: string; color: string }> = {
   food: { emoji: '🍜', color: 'bg-mint-light border-mint text-blossom-deep' },
   stay: { emoji: '🏯', color: 'bg-blue-50 border-blue-200 text-blue-700' },
   quest: { emoji: '⚔️', color: 'bg-red-50 border-red-200 text-red-700' },
-  diy: { emoji: '🏺', color: 'bg-amber-50 border-blossom text-amber-700' },
+  diy: { emoji: '🏺', color: 'bg-peach border-blossom text-slate' },
   ootd: { emoji: '👗', color: 'bg-pink-50 border-pink-200 text-pink-700' },
   goods: { emoji: '🛍️', color: 'bg-lavender border-lavender text-sky' },
-  transport: { emoji: '🚄', color: 'bg-gray-50 border-gray-200 text-gray-700' },
+  transport: { emoji: '🚄', color: 'bg-snow border-mist text-slate' },
   surprise: { emoji: '🎁', color: 'bg-yellow-50 border-yellow-200 text-yellow-700' },
 }
 

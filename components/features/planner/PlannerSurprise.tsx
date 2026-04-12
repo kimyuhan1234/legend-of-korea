@@ -44,7 +44,7 @@ export function PlannerSurprise({ emoji, messageKey, cityId, suggestionKind }: P
       <div className="flex items-start gap-3 mb-3">
         <span className="text-3xl shrink-0">{emoji}</span>
         <div className="flex-1">
-          <p className="text-[10px] font-black text-amber-700 uppercase tracking-widest mb-1">
+          <p className="text-[10px] font-black text-slate uppercase tracking-widest mb-1">
             🎁 {t('curation.surprise')}
           </p>
           <p className="text-sm text-[#374151] font-semibold leading-snug">
@@ -56,13 +56,13 @@ export function PlannerSurprise({ emoji, messageKey, cityId, suggestionKind }: P
       <div className="flex gap-2 mt-3">
         <button
           onClick={handleGo}
-          className="flex-1 py-2 rounded-full text-xs font-bold bg-amber-500 text-white hover:bg-amber-600 transition-colors"
+          className="flex-1 py-2 rounded-full text-xs font-bold bg-peach0 text-white hover:bg-blossom transition-colors"
         >
           {t('curation.goSee')} →
         </button>
         <button
           onClick={() => setDismissed(true)}
-          className="px-4 py-2 rounded-full text-xs font-bold bg-white border border-blossom text-[#6B7280] hover:bg-amber-50"
+          className="px-4 py-2 rounded-full text-xs font-bold bg-white border border-blossom text-[#6B7280] hover:bg-peach"
         >
           {t('curation.skip')}
         </button>

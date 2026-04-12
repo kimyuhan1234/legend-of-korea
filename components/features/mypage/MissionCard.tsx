@@ -46,7 +46,7 @@ export default function MissionCard({
   // ---------- State A: Available ----------
   if (status === 'available') {
     return (
-      <div className="rounded-2xl border-2 border-gray-200 bg-white overflow-hidden
+      <div className="rounded-2xl border-2 border-mist bg-white overflow-hidden
                       hover:border-[#1F2937] hover:shadow-lg transition-all duration-300 group">
         {/* header clickable area */}
         <button
@@ -74,7 +74,7 @@ export default function MissionCard({
               {mission.title}
             </h3>
             <div className="flex items-center gap-3 mt-1.5">
-              <span className="flex items-center gap-1 text-xs text-gray-400">
+              <span className="flex items-center gap-1 text-xs text-stone">
                 <MapPin size={12} />
                 {mission.location}
               </span>
@@ -93,7 +93,7 @@ export default function MissionCard({
                 <span className="text-[10px] bg-[#9DD8CE] text-white px-2.5 py-1 rounded-full font-bold">
                   {t('uploadPhoto')}
                 </span>
-                <ChevronDown size={14} className="text-gray-400" />
+                <ChevronDown size={14} className="text-stone" />
               </div>
             )}
           </div>
@@ -105,7 +105,7 @@ export default function MissionCard({
             expanded ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="px-5 pb-5 border-t border-gray-100">
+          <div className="px-5 pb-5 border-t border-cloud">
             <MissionPhotoUpload
               missionId={mission.id}
               courseId={courseId}
@@ -168,7 +168,7 @@ export default function MissionCard({
             </h3>
 
             <div className="flex items-center gap-3 mt-1.5">
-              <span className="flex items-center gap-1 text-xs text-gray-400">
+              <span className="flex items-center gap-1 text-xs text-stone">
                 <MapPin size={12} />
                 {mission.location}
               </span>
@@ -182,7 +182,7 @@ export default function MissionCard({
                   +{mission.lp} {t('lpAwarded')}
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1 text-xs text-gray-400">
+                <span className="inline-flex items-center gap-1 text-xs text-stone">
                   <Clock size={12} />
                   +{mission.lp} {t('lpPending')}
                 </span>
@@ -191,7 +191,7 @@ export default function MissionCard({
 
             {/* registered date */}
             {progress.registeredAt && (
-              <p className="text-[10px] text-gray-400 mt-1">
+              <p className="text-[10px] text-stone mt-1">
                 📅 {new Date(progress.registeredAt).toLocaleDateString()}
               </p>
             )}
@@ -224,29 +224,29 @@ export default function MissionCard({
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-start gap-3">
             {/* sequence number — grey circle */}
-            <div className="w-10 h-10 rounded-full bg-gray-300 text-white
+            <div className="w-10 h-10 rounded-full bg-mist text-white
                             flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">
               {mission.seq}
             </div>
             <div className="min-w-0">
               {/* mission title — visible but greyed */}
-              <h4 className="font-bold text-gray-500 text-sm md:text-base leading-snug">
+              <h4 className="font-bold text-stone text-sm md:text-base leading-snug">
                 {mission.title}
               </h4>
               {/* location + LP */}
               <div className="flex items-center gap-3 mt-1.5 flex-wrap">
-                <span className="flex items-center gap-1 text-xs text-gray-400">
+                <span className="flex items-center gap-1 text-xs text-stone">
                   <MapPin size={12} />
                   {mission.location}
                 </span>
-                <span className="text-xs text-gray-400 font-medium">
+                <span className="text-xs text-stone font-medium">
                   🏆 {mission.lp} LP
                 </span>
               </div>
               {/* boss mission badge */}
               {mission.isBoss && (
-                <span className="inline-flex items-center gap-1 mt-1.5 px-2 py-0.5 bg-gray-100
-                                 text-gray-400 rounded-full text-[10px] font-bold">
+                <span className="inline-flex items-center gap-1 mt-1.5 px-2 py-0.5 bg-cloud
+                                 text-stone rounded-full text-[10px] font-bold">
                   <Sparkles size={10} />
                   {t('bossMission')}
                 </span>
@@ -255,14 +255,14 @@ export default function MissionCard({
           </div>
 
           {/* lock icon */}
-          <span className="text-gray-400 text-xl shrink-0 mt-1">🔒</span>
+          <span className="text-stone text-xl shrink-0 mt-1">🔒</span>
         </div>
 
         {/* locked notice bar */}
-        <div className="mt-4 py-2.5 bg-gray-50 rounded-xl flex items-center justify-center gap-2
+        <div className="mt-4 py-2.5 bg-snow rounded-xl flex items-center justify-center gap-2
                         border-0">
-          <Lock size={14} className="text-gray-400" />
-          <p className="text-xs text-gray-400 font-medium">
+          <Lock size={14} className="text-stone" />
+          <p className="text-xs text-stone font-medium">
             {t('lockedDesc')}
           </p>
         </div>

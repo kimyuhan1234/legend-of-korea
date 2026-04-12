@@ -27,7 +27,7 @@ export function FoodTabNav({ locale, activeTab }: FoodTabNavProps) {
   const tabs = TABS[locale as keyof typeof TABS] || TABS.ko
 
   return (
-    <div className="bg-white border-b border-gray-100 sticky top-16 z-40">
+    <div className="bg-white border-b border-cloud sticky top-16 z-40">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="flex gap-1">
           {tabs.map((tab) => (
@@ -37,7 +37,7 @@ export function FoodTabNav({ locale, activeTab }: FoodTabNavProps) {
               className={`px-5 py-4 text-sm font-semibold border-b-2 transition-colors whitespace-nowrap ${
                 activeTab === tab.key
                   ? "border-[#9DD8CE] text-[#9DD8CE]"
-                  : "border-transparent text-gray-400 hover:text-[#111] hover:border-gray-200"
+                  : "border-transparent text-stone hover:text-[#111] hover:border-mist"
               }`}
             >
               {tab.label}

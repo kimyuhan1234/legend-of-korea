@@ -86,11 +86,11 @@ export default function ScanPage({ params }: ScanPageProps) {
           <QRScanner onScanSuccess={handleScanSuccess} />
       </div>
 
-      <div className="mt-12 p-6 rounded-[2rem] bg-amber-50 border border-amber-100 flex items-start gap-4">
-         <Sparkles className="w-5 h-5 text-amber-500 mt-1" />
-         <div className="text-sm text-amber-700 leading-relaxed font-bold">
+      <div className="mt-12 p-6 rounded-[2rem] bg-peach border border-peach flex items-start gap-4">
+         <Sparkles className="w-5 h-5 text-blossom-deep mt-1" />
+         <div className="text-sm text-slate leading-relaxed font-bold">
             <p className="mb-1">TIP: 비밀의 장소에는 숨겨진 미션이 있습니다!</p>
-            <p className="text-amber-600/70 font-medium">QR 코드를 발견하면 바로 스캔해 보세요. 보너스 LP가 기다리고 있습니다.</p>
+            <p className="text-blossom-deep/70 font-medium">QR 코드를 발견하면 바로 스캔해 보세요. 보너스 LP가 기다리고 있습니다.</p>
          </div>
       </div>
     </div>

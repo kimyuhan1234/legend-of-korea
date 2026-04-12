@@ -59,7 +59,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
             {AVAILABLE_COURSES.length === 0 ? (
               <div className="text-center py-8">
                 <div className="text-4xl mb-3">📦</div>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-stone">
                   {t('noPurchasedCourses')}
                 </p>
                 <Link
@@ -79,7 +79,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                     className={`w-full p-4 rounded-xl border-2 text-left transition-all
                       ${selectedCourse === course.id
                         ? 'border-[#9DD8CE] bg-mint-light shadow-md'
-                        : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
+                        : 'border-mist bg-white hover:border-mist hover:shadow-sm'
                       }`}
                   >
                     <div className="flex items-center gap-3">
@@ -88,12 +88,12 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                         <p className="font-bold text-[#111] text-sm md:text-base truncate">
                           {course.name[lang]}
                         </p>
-                        <p className="text-xs text-gray-500 mt-0.5">
+                        <p className="text-xs text-stone mt-0.5">
                           📍 {course.region[lang]}
                         </p>
                         {/* 진행률 바 */}
                         <div className="mt-2 flex items-center gap-2">
-                          <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div className="flex-1 h-2 bg-cloud rounded-full overflow-hidden">
                             <div
                               className="h-full bg-[#9DD8CE] rounded-full transition-all"
                               style={{
@@ -101,7 +101,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                               }}
                             />
                           </div>
-                          <span className="text-xs text-gray-500 flex-shrink-0">
+                          <span className="text-xs text-stone flex-shrink-0">
                             {course.completedMissions}/{course.totalMissions}
                           </span>
                         </div>

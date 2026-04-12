@@ -136,7 +136,7 @@ export default function AdminOrdersPage() {
                     className={
                       order.payment_status === 'paid' 
                         ? "bg-emerald-100 text-emerald-700 border-none" 
-                        : "bg-amber-100 text-amber-700 border-none"
+                        : "bg-peach text-slate border-none"
                     }
                   >
                     {order.payment_status === 'paid' ? '결제완료' : '대기'}

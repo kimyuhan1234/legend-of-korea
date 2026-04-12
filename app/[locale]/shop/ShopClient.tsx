@@ -99,7 +99,7 @@ export function ShopClient({ locale }: ShopClientProps) {
       {/* Header Section */}
       <section className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-200 border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-sky-light rounded-full -mr-32 -mt-32 blur-3xl opacity-50" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-50 rounded-full -ml-24 -mb-24 blur-3xl opacity-50" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-peach rounded-full -ml-24 -mb-24 blur-3xl opacity-50" />
 
         <div className="relative space-y-4 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-black text-slate-800 tracking-tight">{t('title')}</h1>
@@ -108,13 +108,13 @@ export function ShopClient({ locale }: ShopClientProps) {
 
         <div className="relative flex items-center gap-6 bg-slate-50 p-6 rounded-[2.5rem] border border-slate-200 shadow-inner">
           <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg">
-            <Coins className="w-10 h-10 text-amber-400" />
+            <Coins className="w-10 h-10 text-blossom-deep" />
           </div>
           <div>
             <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">My Balance</p>
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-black text-slate-800">{user?.total_lp.toLocaleString() || 0}</span>
-              <span className="text-sm font-black text-amber-500">LP</span>
+              <span className="text-sm font-black text-blossom-deep">LP</span>
             </div>
             {user && <TierBadge level={user.current_tier} className="mt-2" />}
           </div>
@@ -221,12 +221,12 @@ export function ShopClient({ locale }: ShopClientProps) {
 
       {/* Benefits Notice */}
       <section className="grid md:grid-cols-2 gap-8 py-8">
-        <div className="bg-amber-50 rounded-[2.5rem] p-8 space-y-4 border border-amber-100">
+        <div className="bg-peach rounded-[2.5rem] p-8 space-y-4 border border-peach">
           <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-md">
-            <Sparkles className="w-6 h-6 text-amber-500" />
+            <Sparkles className="w-6 h-6 text-blossom-deep" />
           </div>
-          <h3 className="text-xl font-black text-amber-900">티어 승급 혜택</h3>
-          <p className="text-sm text-amber-800/70 font-bold leading-relaxed">전설 등급이 올라갈 때마다 특별한 할인 쿠폰이 자동으로 발급됩니다. 더 많은 모험을 떠나고 전설의 영웅이 되어보세요!</p>
+          <h3 className="text-xl font-black text-ink">티어 승급 혜택</h3>
+          <p className="text-sm text-slate/70 font-bold leading-relaxed">전설 등급이 올라갈 때마다 특별한 할인 쿠폰이 자동으로 발급됩니다. 더 많은 모험을 떠나고 전설의 영웅이 되어보세요!</p>
         </div>
         <div className="bg-sky-light rounded-[2.5rem] p-8 space-y-4 border border-sky-light">
           <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-md">

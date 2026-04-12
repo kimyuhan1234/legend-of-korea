@@ -135,9 +135,9 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
              onClick={() => setShowTierList(false)}>
           <div className="bg-white rounded-2xl max-w-md w-full max-h-[80vh] overflow-y-auto shadow-2xl"
                onClick={e => e.stopPropagation()}>
-            <div className="px-6 pt-6 pb-4 border-b border-gray-100">
+            <div className="px-6 pt-6 pb-4 border-b border-cloud">
               <h2 className="text-xl font-bold text-[#111]">🏆 티어 시스템</h2>
-              <p className="text-sm text-gray-500 mt-1">LP를 모아 승급하세요. 승급 시 LP가 차감됩니다.</p>
+              <p className="text-sm text-stone mt-1">LP를 모아 승급하세요. 승급 시 LP가 차감됩니다.</p>
             </div>
             <div className="p-6 space-y-3">
               {TIERS.map(tier => {
@@ -152,7 +152,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                            : isNext
                              ? 'border-[#9DD8CE] bg-mint-light'
                              : isLocked
-                               ? 'border-gray-100 bg-gray-50 opacity-50'
+                               ? 'border-cloud bg-snow opacity-50'
                                : 'border-green-200 bg-green-50'
                        }`}>
                     <div className="flex items-center justify-between">
@@ -170,12 +170,12 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                               <span className="px-2 py-0.5 bg-[#9DD8CE] text-white text-xs rounded-full">다음</span>
                             )}
                           </div>
-                          <p className="text-xs text-gray-500 mt-0.5">{loc(tier.benefits)}</p>
+                          <p className="text-xs text-stone mt-0.5">{loc(tier.benefits)}</p>
                         </div>
                       </div>
                       <div className="text-right">
                         {tier.level === 1 ? (
-                          <span className="text-xs text-gray-400">기본</span>
+                          <span className="text-xs text-stone">기본</span>
                         ) : (
                           <span className="text-sm font-bold text-[#9DD8CE]">
                             {isLocked ? '🔒' : ''} {tier.requiredLP.toLocaleString()} LP
@@ -207,16 +207,16 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                onClick={e => e.stopPropagation()}>
             <div className="text-6xl mb-4">{upgradedTier.tierEmoji}</div>
             <h2 className="text-2xl font-bold text-[#111] mb-2">🎉 승급 완료!</h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-slate mb-4">
               {currentTier.emoji} {loc(currentTier.name)} → {upgradedTier.tierEmoji} {loc(upgradedTier.tierName)}
             </p>
-            <div className="bg-gray-50 rounded-xl p-4 mb-4 space-y-2">
+            <div className="bg-snow rounded-xl p-4 mb-4 space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">차감 LP</span>
+                <span className="text-stone">차감 LP</span>
                 <span className="text-red-500 font-bold">-{upgradedTier.deducted.toLocaleString()} LP</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">잔여 LP</span>
+                <span className="text-stone">잔여 LP</span>
                 <span className="text-[#9DD8CE] font-bold">{upgradedTier.newLP.toLocaleString()} LP</span>
               </div>
             </div>

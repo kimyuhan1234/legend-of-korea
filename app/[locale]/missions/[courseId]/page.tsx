@@ -56,7 +56,7 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
       <div className="mb-12 text-center">
         <h1 className="text-4xl font-black mb-4 tracking-tight">전설의 여정</h1>
         <div className="flex items-center justify-center gap-4 text-slate-500 font-bold mb-6">
-           <Trophy className={`w-5 h-5 ${completedCount === totalCount ? 'text-amber-500' : 'text-primary'}`} />
+           <Trophy className={`w-5 h-5 ${completedCount === totalCount ? 'text-blossom-deep' : 'text-primary'}`} />
            {completedCount} / {totalCount} 미션 완료
         </div>
         <div className="h-4 bg-slate-200 rounded-full max-w-md mx-auto overflow-hidden shadow-inner border border-white">
@@ -82,7 +82,7 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
           const cardTheme = isCompleted 
             ? 'bg-green-50/80 border-green-200' 
             : isCurrent 
-              ? 'bg-white border-amber-400 shadow-[0_20px_50px_-15px_rgba(251,191,36,0.2)]' 
+              ? 'bg-white border-blossom shadow-[0_20px_50px_-15px_rgba(251,191,36,0.2)]' 
               : 'bg-slate-100/50 border-slate-200 opacity-70';
 
           return (
@@ -90,14 +90,14 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
               
               {/* Timeline Node */}
               <div className={`absolute left-8 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full border-4 z-10 hidden md:block transition-colors duration-500 shadow-sm ${
-                isCompleted ? 'bg-green-500 border-white' : isCurrent ? 'bg-amber-400 border-white animate-pulse' : 'bg-slate-300 border-white'
+                isCompleted ? 'bg-green-500 border-white' : isCurrent ? 'bg-blossom-deep border-white animate-pulse' : 'bg-slate-300 border-white'
               }`} />
 
               {/* Mission Card */}
               <div className={`w-full md:w-[46%] rounded-[2.5rem] p-8 border-2 transition-all duration-500 hover:translate-y-[-4px] ${cardTheme}`}>
                 <div className="flex justify-between items-center mb-6">
                   <Badge variant="outline" className={`py-1 px-3 border-none font-black ${
-                      isCompleted ? 'bg-green-100 text-green-700' : isCurrent ? 'bg-amber-100 text-amber-700' : 'bg-slate-200 text-slate-500'
+                      isCompleted ? 'bg-green-100 text-green-700' : isCurrent ? 'bg-peach text-slate' : 'bg-slate-200 text-slate-500'
                   }`}>
                     {isHidden ? (
                       <span className="flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5" /> HIDDEN</span>

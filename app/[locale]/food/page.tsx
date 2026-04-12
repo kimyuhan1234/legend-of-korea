@@ -44,7 +44,7 @@ export default function FoodPage({ params, searchParams }: Props) {
           {h.title}
         </h1>
         {/* 서브타이틀 */}
-        <p className="text-gray-500 text-base md:text-lg font-medium max-w-xl mx-auto">
+        <p className="text-stone text-base md:text-lg font-medium max-w-xl mx-auto">
           {h.subtitle}
         </p>
       </div>

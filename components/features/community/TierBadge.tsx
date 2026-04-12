@@ -17,7 +17,7 @@ export function TierBadge({ level, className }: TierBadgeProps) {
     2: "bg-blue-50 text-blue-600 border-blue-200",       // 여행자
     3: "bg-green-50 text-green-600 border-green-200",    // 모험가
     4: "bg-lavender text-sky border-lavender", // 영웅
-    5: "bg-amber-50 text-amber-600 border-blossom",    // 전설
+    5: "bg-peach text-blossom-deep border-blossom",    // 전설
     6: "bg-rose-50 text-rose-600 border-rose-200",       // 신화
   };
 

@@ -14,7 +14,7 @@ const DIFFICULTY_LABEL: Record<string, string> = {
 
 const DIFFICULTY_COLOR: Record<string, string> = {
   easy: 'bg-emerald-50 text-emerald-700',
-  medium: 'bg-amber-50 text-amber-700',
+  medium: 'bg-peach text-slate',
   hard: 'bg-red-50 text-red-700',
 };
 
@@ -86,7 +86,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
   return (
     <div className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] shadow-sm hover:shadow-md transition-shadow overflow-hidden border-0">
       {/* 대표 사진 */}
-      <div className="relative h-44 bg-gray-100">
+      <div className="relative h-44 bg-cloud">
         {recipe.photos?.[0] ? (
           <Image
             src={recipe.photos[0]}
@@ -100,7 +100,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
             {flag}
           </div>
         )}
-        <span className={`absolute top-3 right-3 text-xs px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] font-bold ${DIFFICULTY_COLOR[recipe.difficulty] || 'bg-gray-100 text-gray-600'}`}>
+        <span className={`absolute top-3 right-3 text-xs px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] font-bold ${DIFFICULTY_COLOR[recipe.difficulty] || 'bg-cloud text-slate'}`}>
           {DIFFICULTY_LABEL[recipe.difficulty] || recipe.difficulty}
         </span>
       </div>
@@ -108,9 +108,9 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
       <div className="p-4 space-y-3">
         {/* 이름 + 플래그 */}
         <div>
-          <div className="flex items-center gap-1.5 text-sm text-gray-500 mb-1">
+          <div className="flex items-center gap-1.5 text-sm text-stone mb-1">
             <span>🇰🇷</span>
-            <span className="text-gray-400">×</span>
+            <span className="text-stone">×</span>
             <span>{flag}</span>
           </div>
           <h3 className="font-bold text-[#111] text-base leading-snug">{recipe.name}</h3>
@@ -118,7 +118,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
 
         {/* 한줄 소개 */}
         {recipe.description && (
-          <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">{recipe.description}</p>
+          <p className="text-sm text-stone line-clamp-2 leading-relaxed">{recipe.description}</p>
         )}
 
         {/* 재료 미리보기 */}
@@ -130,7 +130,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
               </span>
             ))}
             {(recipe.korean_ingredients.length + recipe.foreign_ingredients.length) > 3 && (
-              <span className="text-xs text-gray-400 px-1">
+              <span className="text-xs text-stone px-1">
                 +{recipe.korean_ingredients.length + recipe.foreign_ingredients.length - 3}
               </span>
             )}
@@ -139,7 +139,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
 
         {/* 시간/인분 + 맛 프로필 */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 text-xs text-gray-400">
+          <div className="flex items-center gap-3 text-xs text-stone">
             <span className="flex items-center gap-1"><Clock size={12} /> {recipe.cooking_time}분</span>
             <span className="flex items-center gap-1"><Users size={12} /> {recipe.servings}인분</span>
           </div>
@@ -149,11 +149,11 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
         </div>
 
         {/* 작성자 + 반응 */}
-        <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-          <span className="text-xs text-gray-400">
+        <div className="flex items-center justify-between pt-2 border-t border-cloud">
+          <span className="text-xs text-stone">
             {recipe.user?.nickname || 'Unknown'} · {timeAgo(recipe.created_at)}
           </span>
-          <div className="flex items-center gap-3 text-xs text-gray-400">
+          <div className="flex items-center gap-3 text-xs text-stone">
             <span className="flex items-center gap-1"><Heart size={12} /> {recipe.likes_count}</span>
             <span className="flex items-center gap-1"><MessageCircle size={12} /> {recipe.comments_count}</span>
           </div>

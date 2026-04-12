@@ -121,8 +121,8 @@ export function PlannerSpotDistance({
       )}
 
       {errorState === 'subscription_required' && (
-        <div className="mb-4 p-4 rounded-2xl bg-amber-50 border border-blossom text-center">
-          <p className="text-sm font-bold text-amber-700">
+        <div className="mb-4 p-4 rounded-2xl bg-peach border border-blossom text-center">
+          <p className="text-sm font-bold text-slate">
             🔒 {t('credits.subRequired')}
           </p>
         </div>

@@ -184,7 +184,7 @@ export default function AdminStatsPage() {
         <Card className="border-none shadow-sm bg-white rounded-3xl">
           <CardHeader className="p-8 pb-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-amber-50 text-amber-600 rounded-lg">
+              <div className="p-2 bg-peach text-blossom-deep rounded-lg">
                 <Globe2 className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-black text-[#111]">글로벌 사용자 분포 (언어)</CardTitle>

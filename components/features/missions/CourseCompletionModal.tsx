@@ -61,7 +61,7 @@ export function CourseCompletionModal({
               <div className="w-px h-10 bg-slate-200" />
               <div className="text-center">
                  <p className="text-xs font-black text-slate-400 mb-1">완주 보너스</p>
-                 <p className="text-2xl font-black text-amber-500">+500 LP</p>
+                 <p className="text-2xl font-black text-blossom-deep">+500 LP</p>
               </div>
            </div>
 

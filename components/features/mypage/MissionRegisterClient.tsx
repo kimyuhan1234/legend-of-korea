@@ -227,7 +227,7 @@ export default function MissionRegisterClient({
             <Zap size={16} className="text-[#9DD8CE]" />
             {t('photoGuide')}
           </h3>
-          <ul className="text-xs text-gray-500 space-y-2 pl-1">
+          <ul className="text-xs text-stone space-y-2 pl-1">
             <li className="flex items-start gap-2">
               <span className="mt-0.5">📸</span>
               <span>{t('photoGuide1')}</span>
@@ -241,8 +241,8 @@ export default function MissionRegisterClient({
               <span>{t('photoGuide3')}</span>
             </li>
           </ul>
-          <div className="pt-2 border-t border-gray-100">
-            <p className="text-[10px] text-gray-400 leading-relaxed">
+          <div className="pt-2 border-t border-cloud">
+            <p className="text-[10px] text-stone leading-relaxed">
               ※ {t('photoGuideNotice')}
             </p>
           </div>
