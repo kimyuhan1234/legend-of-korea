@@ -12,6 +12,7 @@ export type CreditFeature =
   | 'pdf'
   | 'schedule_change'
   | 'companion_share'
+  | 'ai_dupe'
 
 // v1.2 스펙의 feature 별 고정 단가 — 서버에서만 신뢰된다.
 export const CREDIT_COST: Record<CreditFeature, number> = {
@@ -21,6 +22,7 @@ export const CREDIT_COST: Record<CreditFeature, number> = {
   pdf: 2,
   schedule_change: 2,
   companion_share: 1,
+  ai_dupe: 3,
 }
 
 export type DeductCreditsResult =

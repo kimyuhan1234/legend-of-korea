@@ -1266,5 +1266,27 @@
       "prefix": "미션{n}",
       "fromHotel": "호텔에서 대략 {method} {min}분"
     }
+  },
+  "dupe": {
+    "ai": {
+      "title": "🤖 AI 음식 매칭",
+      "subtitle": "당신 나라의 음식을 입력하면 비슷한 한국 음식을 찾아드려요",
+      "placeholder": "음식 이름을 입력하세요...",
+      "search": "찾기 🔍",
+      "examples": "예시: Pad Thai, Ramen, Tacos, カレー, Pho",
+      "credits": "⚡ 3크레딧 사용",
+      "loading": "AI가 비슷한 한국 음식을 찾고 있어요...",
+      "similarity": "유사도",
+      "reason": "비슷한 이유",
+      "tasteDiff": "맛 차이점",
+      "detail": "상세보기 →",
+      "noResult": "비슷한 한국 음식을 찾지 못했어요. 다른 음식으로 시도해보세요",
+      "loginRequired": "로그인 후 이용 가능합니다",
+      "insufficient": "크레딧이 부족합니다. 추가 구매하기",
+      "subscription": "구독자만 이용 가능합니다",
+      "notConfigured": "AI 기능이 아직 준비 중입니다",
+      "aiError": "AI 응답에 문제가 있어요. 잠시 후 다시 시도해주세요",
+      "networkError": "네트워크 오류. 인터넷 연결을 확인해주세요"
+    }
   }
 }

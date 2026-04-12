@@ -1241,5 +1241,27 @@
       "prefix": "Mission {n}",
       "fromHotel": "Approx. {min} min by {method} from hotel"
     }
+  },
+  "dupe": {
+    "ai": {
+      "title": "🤖 AI Food Matching",
+      "subtitle": "Enter any food from your country and we'll find a similar Korean dish",
+      "placeholder": "Type any food name...",
+      "search": "Search 🔍",
+      "examples": "Examples: Pad Thai, Ramen, Tacos, Curry, Pho",
+      "credits": "⚡ Uses 3 credits",
+      "loading": "AI is finding similar Korean dishes...",
+      "similarity": "Similarity",
+      "reason": "Why similar",
+      "tasteDiff": "Taste difference",
+      "detail": "View details →",
+      "noResult": "No similar Korean dish found. Try a different food",
+      "loginRequired": "Login required",
+      "insufficient": "Insufficient credits. Buy more",
+      "subscription": "Subscribers only",
+      "notConfigured": "AI feature is not ready yet",
+      "aiError": "AI had trouble responding. Please try again later",
+      "networkError": "Network error. Check your internet connection"
+    }
   }
 }

@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
+import { AiDupeSearch } from "@/components/features/food/AiDupeSearch"
 import { regions } from "@/lib/data/food-dupes"
 
 interface Props {
@@ -66,6 +67,15 @@ export default function DupePage({ params }: Props) {
           <p className="text-white/70 text-lg whitespace-pre-line max-w-xl mx-auto">{h.subtitle}</p>
         </div>
       </section>
+
+      {/* AI 듀프 매칭 */}
+      <section className="max-w-4xl mx-auto px-4 pt-10 pb-2">
+        <AiDupeSearch locale={locale} />
+      </section>
+
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="border-t border-mist my-4" />
+      </div>
 
       {/* 지역 선택 그리드 */}
       <section className="max-w-6xl mx-auto px-4 py-12">

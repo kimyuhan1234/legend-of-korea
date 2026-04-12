@@ -827,7 +827,7 @@ export interface Database {
         Row: {
           id: string
           user_id: string
-          feature: "weather" | "distance" | "ai_curation" | "pdf" | "schedule_change" | "companion_share"
+          feature: "weather" | "distance" | "ai_curation" | "pdf" | "schedule_change" | "companion_share" | "ai_dupe"
           credits_used: number
           metadata: Record<string, unknown> | null
           created_at: string
@@ -835,7 +835,7 @@ export interface Database {
         Insert: {
           id?: string
           user_id: string
-          feature: "weather" | "distance" | "ai_curation" | "pdf" | "schedule_change" | "companion_share"
+          feature: "weather" | "distance" | "ai_curation" | "pdf" | "schedule_change" | "companion_share" | "ai_dupe"
           credits_used: number
           metadata?: Record<string, unknown> | null
           created_at?: string

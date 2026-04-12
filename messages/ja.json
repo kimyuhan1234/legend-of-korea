@@ -1241,5 +1241,27 @@
       "prefix": "ミッション{n}",
       "fromHotel": "ホテルから大体{method}{min}分"
     }
+  },
+  "dupe": {
+    "ai": {
+      "title": "🤖 AI フードマッチング",
+      "subtitle": "あなたの国の料理を入力すると、似た韓国料理を見つけます",
+      "placeholder": "料理名を入力...",
+      "search": "検索 🔍",
+      "examples": "例: パッタイ, タコス, フォー, カレー, ピザ",
+      "credits": "⚡ 3クレジット使用",
+      "loading": "AIが似た韓国料理を探しています...",
+      "similarity": "類似度",
+      "reason": "似ている理由",
+      "tasteDiff": "味の違い",
+      "detail": "詳細を見る →",
+      "noResult": "似た韓国料理が見つかりませんでした。別の料理で試してみてください",
+      "loginRequired": "ログインが必要です",
+      "insufficient": "クレジットが不足しています。追加購入してください",
+      "subscription": "購読者のみ利用可能です",
+      "notConfigured": "AI機能はまだ準備中です",
+      "aiError": "AI応答に問題がありました。しばらくしてから再試行してください",
+      "networkError": "ネットワークエラー。インターネット接続を確認してください"
+    }
   }
 }
