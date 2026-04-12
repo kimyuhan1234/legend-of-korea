@@ -127,6 +127,17 @@
     "foodMatchingTitle": "You already know what you like",
     "foodMatchingSubtitle": "We'll connect you to the rest",
     "foodMatchingCta": "Explore Food Matching →",
+    "explore": {
+      "title": "A new journey exploring cities through Korean legends",
+      "more": "Learn more →",
+      "ootd": "Pack the right outfit for your travel weather",
+      "kfood": "Discover hidden local restaurants and special dishes",
+      "stay": "Stay at unique accommodations near mission sites",
+      "quest": "Become the hero of a Korean legend and complete missions",
+      "spot": "Explore Korea's must-visit hot spots",
+      "goods": "Keep your travel memories with legendary character goods",
+      "diy": "Create your own masterpiece at Korean traditional workshops"
+    },
     "plannerTitle": "My Custom Travel Plan",
     "plannerSubtitle": "Save, choose, and complete. A trip crafted just for you",
     "plannerCta": "Start Travel Planner →",
