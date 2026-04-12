@@ -34,7 +34,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
         <button
           onClick={() => setIsOpen(true)}
           className="w-full py-4 bg-[#9DD8CE] text-white rounded-xl font-bold text-base
-                     hover:bg-[#3d2a7a] transition-colors flex items-center justify-center gap-2"
+                     hover:bg-[#374151] transition-colors flex items-center justify-center gap-2"
         >
           <span>📝</span>
           {t('registerCompletedMission')}
@@ -65,7 +65,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                 <Link
                   href={`/${locale}/courses`}
                   className="inline-block mt-3 px-4 py-2 bg-[#9DD8CE] text-white
-                             rounded-lg text-sm font-medium hover:bg-[#e55a2a] transition-colors"
+                             rounded-lg text-sm font-medium hover:bg-[#7BC8BC] transition-colors"
                 >
                   {t('goToCourses')}
                 </Link>
@@ -78,7 +78,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                     onClick={() => setSelectedCourse(course.id)}
                     className={`w-full p-4 rounded-xl border-2 text-left transition-all
                       ${selectedCourse === course.id
-                        ? 'border-[#9DD8CE] bg-orange-50 shadow-md'
+                        ? 'border-[#9DD8CE] bg-mint-light shadow-md'
                         : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
                       }`}
                   >
@@ -117,7 +117,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                   <Link
                     href={`/${locale}/mypage/mission-register/${selectedCourse}`}
                     className="block w-full py-3.5 bg-[#9DD8CE] text-white rounded-xl
-                               font-bold text-center text-sm hover:bg-[#e55a2a]
+                               font-bold text-center text-sm hover:bg-[#7BC8BC]
                                transition-colors mt-4"
                   >
                     {t('proceedToRegister')} →

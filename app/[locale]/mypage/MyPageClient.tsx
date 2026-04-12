@@ -175,7 +175,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+          <div className="w-16 h-16 border-4 border-mint-deep border-t-transparent rounded-full animate-spin" />
           <p className="font-black text-slate-400">당신의 전설을 불러오는 중...</p>
         </div>
       </div>
@@ -189,7 +189,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
         {/* Sidebar Area */}
         <aside className="space-y-6">
           <Card className="rounded-[3rem] border-none shadow-2xl overflow-hidden bg-white">
-            <div className="h-24 bg-gradient-to-br from-indigo-500 to-purple-600" />
+            <div className="h-24 bg-gradient-to-br from-mint-deep to-sky" />
             <CardContent className="px-6 pb-8 -mt-12 text-center">
               <div className="relative inline-block mb-4">
                 <div className="w-24 h-24 rounded-[2rem] border-4 border-white shadow-xl overflow-hidden bg-white mx-auto">
@@ -212,11 +212,11 @@ export function MyPageClient({ locale }: MyPageClientProps) {
               <div className="grid grid-cols-2 gap-4 text-left">
                 <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100">
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-tighter mb-0.5">LP Balance</p>
-                  <p className="text-xl font-black text-indigo-600 transition-all duration-500">{lpBalance.toLocaleString()}</p>
+                  <p className="text-xl font-black text-sky transition-all duration-500">{lpBalance.toLocaleString()}</p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100">
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-tighter mb-0.5">Experience</p>
-                  <p className="text-xl font-black text-indigo-600">{orders.length} <span className="text-[10px]">Courses</span></p>
+                  <p className="text-xl font-black text-sky">{orders.length} <span className="text-[10px]">Courses</span></p>
                 </div>
               </div>
 
@@ -231,12 +231,12 @@ export function MyPageClient({ locale }: MyPageClientProps) {
             </CardContent>
           </Card>
 
-          <div className="bg-indigo-600 rounded-[2.5rem] p-8 text-white space-y-4 shadow-xl shadow-indigo-200 relative overflow-hidden group">
+          <div className="bg-mint-deep rounded-[2.5rem] p-8 text-white space-y-4 shadow-xl shadow-mint relative overflow-hidden group">
              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-150 transition-transform duration-700" />
-             <ShieldCheck className="w-10 h-10 text-indigo-200 mb-2" />
+             <ShieldCheck className="w-10 h-10 text-mint-light mb-2" />
              <h3 className="text-xl font-black">레전드 멤버십</h3>
-             <p className="text-xs text-indigo-100 font-bold leading-relaxed opacity-80">더 높은 등급으로 승급하여 전용 할인 혜택과 특별한 굿즈 기회를 잡으세요.</p>
-             <Button onClick={() => router.push(`/${locale}/shop`)} className="w-full rounded-xl bg-white text-indigo-600 font-black hover:bg-indigo-50 mt-4 h-11 border-none">
+             <p className="text-xs text-mint-light font-bold leading-relaxed opacity-80">더 높은 등급으로 승급하여 전용 할인 혜택과 특별한 굿즈 기회를 잡으세요.</p>
+             <Button onClick={() => router.push(`/${locale}/shop`)} className="w-full rounded-xl bg-white text-sky font-black hover:bg-sky-light mt-4 h-11 border-none">
                전설 상점 가기
              </Button>
           </div>
@@ -247,16 +247,16 @@ export function MyPageClient({ locale }: MyPageClientProps) {
           <Tabs defaultValue="lp" className="w-full flex flex-col h-full">
             <CardHeader className="p-0 border-b border-slate-100">
               <TabsList className="w-full flex justify-start h-20 bg-transparent px-8 gap-8 overflow-x-auto scrollbar-hide">
-                <TabsTrigger value="lp" className="data-[state=active]:text-indigo-600 data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-indigo-600 after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
+                <TabsTrigger value="lp" className="data-[state=active]:text-sky data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-mint-deep after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
                   {lpT('history')}
                 </TabsTrigger>
-                <TabsTrigger value="coupons" className="data-[state=active]:text-indigo-600 data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-indigo-600 after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
+                <TabsTrigger value="coupons" className="data-[state=active]:text-sky data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-mint-deep after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
                   {t('coupons')}
                 </TabsTrigger>
-                <TabsTrigger value="orders" className="data-[state=active]:text-indigo-600 data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-indigo-600 after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
+                <TabsTrigger value="orders" className="data-[state=active]:text-sky data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-mint-deep after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
                   {t('orders')}
                 </TabsTrigger>
-                <TabsTrigger value="progress" className="data-[state=active]:text-indigo-600 data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-indigo-600 after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
+                <TabsTrigger value="progress" className="data-[state=active]:text-sky data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-mint-deep after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
                   {t('missionCenter')}
                 </TabsTrigger>
               </TabsList>
@@ -283,14 +283,14 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                         className={`flex items-center gap-4 md:gap-6 p-5 md:p-6 rounded-[2rem] border transition-all duration-300 group
                           ${isApplied
                             ? 'bg-slate-50/60 border-slate-100'
-                            : 'bg-slate-50 border-slate-100 hover:border-indigo-200 hover:shadow-sm'
+                            : 'bg-slate-50 border-slate-100 hover:border-sky hover:shadow-sm'
                           }`}
                       >
                         {/* icon */}
                         <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shadow-md shrink-0 transition-transform group-hover:scale-110
                           ${isApplied
                             ? 'bg-emerald-50 text-emerald-500'
-                            : isPositive ? 'bg-indigo-50 text-indigo-600' : 'bg-rose-50 text-rose-600'
+                            : isPositive ? 'bg-sky-light text-sky' : 'bg-rose-50 text-rose-600'
                           }`}
                         >
                           {isApplied
@@ -311,7 +311,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
 
                         {/* amount + apply button */}
                         <div className="flex items-center gap-2 md:gap-3 shrink-0">
-                          <div className={`text-lg md:text-xl font-black ${isApplied ? 'text-slate-400' : isPositive ? 'text-indigo-600' : 'text-rose-500'}`}>
+                          <div className={`text-lg md:text-xl font-black ${isApplied ? 'text-slate-400' : isPositive ? 'text-sky' : 'text-rose-500'}`}>
                             {isPositive ? '+' : ''}{item.amount.toLocaleString()} <span className="text-[10px]">LP</span>
                           </div>
 
@@ -325,8 +325,8 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                               <button
                                 onClick={() => handleApplyLP(item.id)}
                                 disabled={isApplying}
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 text-white rounded-xl text-xs font-black
-                                           hover:bg-indigo-700 active:scale-95 transition-all
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-mint-deep text-white rounded-xl text-xs font-black
+                                           hover:bg-mint-deep/80 active:scale-95 transition-all
                                            disabled:opacity-50 disabled:cursor-not-allowed"
                               >
                                 {isApplying ? (
@@ -359,15 +359,15 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                      </div>
                  ) : (
                    coupons.map((coupon: any) => (
-                     <div key={coupon.id} className="flex flex-col md:flex-row items-center gap-6 p-6 rounded-[2rem] bg-slate-50 border border-slate-100 group hover:border-indigo-100 transition-colors overflow-hidden relative">
-                       <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-700" />
+                     <div key={coupon.id} className="flex flex-col md:flex-row items-center gap-6 p-6 rounded-[2rem] bg-slate-50 border border-slate-100 group hover:border-sky-light transition-colors overflow-hidden relative">
+                       <div className="absolute top-0 right-0 w-24 h-24 bg-sky-light0/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-700" />
                        <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg shrink-0 relative z-10">
-                         <Ticket className="w-8 h-8 text-indigo-500" />
+                         <Ticket className="w-8 h-8 text-sky" />
                        </div>
                        <div className="flex-1 text-center md:text-left space-y-1 relative z-10">
                          <div className="flex items-center justify-center md:justify-start gap-2">
                            <h3 className="text-xl font-black text-slate-800">{coupon.discount_rate}% OFF</h3>
-                           <Badge variant="secondary" className={`font-black text-[10px] border-none ${coupon.is_used ? 'bg-slate-200 text-slate-500' : 'bg-indigo-100 text-indigo-700'}`}>
+                           <Badge variant="secondary" className={`font-black text-[10px] border-none ${coupon.is_used ? 'bg-slate-200 text-slate-500' : 'bg-sky-light text-sky'}`}>
                              {coupon.is_used ? 'USED' : 'ACTIVE'}
                            </Badge>
                          </div>
@@ -378,7 +378,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                            <Calendar className="w-4 h-4" />
                            Exp: {new Date(coupon.expires_at).toLocaleDateString()}
                          </div>
-                         <Button disabled={coupon.is_used} className={`rounded-full font-black px-6 h-10 shadow-lg transition-all ${coupon.is_used ? 'bg-slate-200 text-slate-400' : 'bg-indigo-600 hover:scale-105 active:scale-95'}`}>
+                         <Button disabled={coupon.is_used} className={`rounded-full font-black px-6 h-10 shadow-lg transition-all ${coupon.is_used ? 'bg-slate-200 text-slate-400' : 'bg-mint-deep hover:scale-105 active:scale-95'}`}>
                            {coupon.is_used ? '사용 완료' : '지금 사용'}
                          </Button>
                        </div>
@@ -402,7 +402,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Order ID</p>
                              <span className="text-sm font-black text-slate-500 font-mono">#{order.id.split('-')[0].toUpperCase()}</span>
                           </div>
-                          <Badge className="rounded-xl px-4 py-1.5 bg-indigo-100 text-indigo-700 border-none font-black text-xs">
+                          <Badge className="rounded-xl px-4 py-1.5 bg-sky-light text-sky border-none font-black text-xs">
                             {order.payment_status?.toUpperCase()}
                           </Badge>
                        </div>
@@ -423,7 +423,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                           <Button variant="outline" className="flex-1 rounded-2xl h-12 font-black border-2 border-slate-200 hover:bg-white text-slate-500 transition-all">
                             배송 조회
                           </Button>
-                          <Button className="flex-1 rounded-2xl h-12 font-black bg-white text-indigo-600 border-2 border-indigo-100 hover:bg-indigo-50 transition-all">
+                          <Button className="flex-1 rounded-2xl h-12 font-black bg-white text-sky border-2 border-sky-light hover:bg-sky-light transition-all">
                             미션 시작하기
                           </Button>
                        </div>
@@ -543,7 +543,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                 maxLength={20}
                 placeholder="닉네임 입력"
                 className="w-full border-2 border-slate-200 rounded-xl px-4 py-3 text-sm font-bold
-                           outline-none focus:border-indigo-400 transition-colors"
+                           outline-none focus:border-mint-deep transition-colors"
               />
               <p className="text-right text-xs text-slate-400 mt-1">{editNickname.length}/20</p>
             </div>
@@ -561,7 +561,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                 onClick={handleSaveProfile}
                 disabled={isSaving || !editNickname.trim()}
                 className="flex-1 py-3 bg-[#9DD8CE] text-white rounded-xl font-black
-                           hover:bg-[#3d2a7a] disabled:opacity-60 disabled:cursor-not-allowed
+                           hover:bg-[#374151] disabled:opacity-60 disabled:cursor-not-allowed
                            transition-colors text-sm flex items-center justify-center gap-2"
               >
                 {isSaving ? <><Loader2 className="w-4 h-4 animate-spin" /> 저장 중...</> : t('saveButton')}

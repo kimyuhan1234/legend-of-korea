@@ -260,7 +260,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               <div className="flex items-center gap-2 flex-wrap">
                 <p className="font-bold text-slate-800 text-sm">{post.user?.nickname || 'Unknown'}</p>
                 {post.region && post.region !== 'all' && (
-                  <span className="inline-flex items-center gap-0.5 bg-orange-50 text-[#9DD8CE] rounded-full px-2 py-0.5 text-xs font-medium">
+                  <span className="inline-flex items-center gap-0.5 bg-mint-light text-[#9DD8CE] rounded-full px-2 py-0.5 text-xs font-medium">
                     <MapPin className="w-3 h-3" />
                     {regionName}
                   </span>
@@ -306,18 +306,18 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               value={editTitle}
               onChange={e => setEditTitle(e.target.value)}
               placeholder="제목"
-              className="w-full text-base font-bold  border-0 border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-indigo-400"
+              className="w-full text-base font-bold  border-0 border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-mint-deep"
             />
             <textarea
               value={editText}
               onChange={e => setEditText(e.target.value)}
               rows={4}
-              className="w-full text-sm  border-0 border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-indigo-400 resize-none"
+              className="w-full text-sm  border-0 border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-mint-deep resize-none"
             />
             <select
               value={editRegion}
               onChange={e => setEditRegion(e.target.value)}
-              className="w-full text-sm  border-0 border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-indigo-400"
+              className="w-full text-sm  border-0 border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:border-mint-deep"
             >
               {['all','jeonju','tongyeong','gyeongju','seoul','busan','jeju'].map(r => (
                 <option key={r} value={r}>{getRegionName(r, locale)}</option>
@@ -326,7 +326,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
             {/* tag editor */}
             <div className="flex flex-wrap gap-1.5">
               {editTags.map(tag => (
-                <span key={tag} className="flex items-center gap-1 text-xs bg-indigo-50 text-indigo-600 px-2 py-1 rounded-lg">
+                <span key={tag} className="flex items-center gap-1 text-xs bg-sky-light text-sky px-2 py-1 rounded-lg">
                   #{tag}
                   <button onClick={() => setEditTags(prev => prev.filter(t => t !== tag))}>
                     <X className="w-3 h-3" />
@@ -340,7 +340,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
                 onChange={e => setEditTagInput(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addEditTag(); } }}
                 placeholder="#태그 추가"
-                className="flex-1 text-sm  border-0 border-slate-200 rounded-xl px-3 py-2 outline-none focus:border-indigo-400"
+                className="flex-1 text-sm  border-0 border-slate-200 rounded-xl px-3 py-2 outline-none focus:border-mint-deep"
               />
               <button onClick={addEditTag} className="px-3 py-2 bg-slate-100 rounded-xl text-sm font-medium hover:bg-slate-200">
                 추가
@@ -350,7 +350,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               <button
                 onClick={saveEdit}
                 disabled={editSaving}
-                className="flex-1 py-2.5 bg-[#9DD8CE] text-white rounded-xl text-sm font-bold hover:bg-[#3d2a7a] disabled:opacity-60 transition-colors"
+                className="flex-1 py-2.5 bg-[#9DD8CE] text-white rounded-xl text-sm font-bold hover:bg-[#374151] disabled:opacity-60 transition-colors"
               >
                 {editSaving ? '저장 중...' : t('saveButton')}
               </button>
@@ -471,12 +471,12 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
                 value={commentText}
                 onChange={e => setCommentText(e.target.value)}
                 placeholder={t('writeComment')}
-                className="flex-1 text-sm  border-0 border-slate-200 rounded-xl px-3 py-2 outline-none focus:border-indigo-400"
+                className="flex-1 text-sm  border-0 border-slate-200 rounded-xl px-3 py-2 outline-none focus:border-mint-deep"
               />
               <button
                 type="submit"
                 disabled={!commentText.trim() || commentSubmitting}
-                className="px-3 py-2 bg-[#9DD8CE] text-white rounded-xl hover:bg-[#3d2a7a] disabled:opacity-50 transition-colors"
+                className="px-3 py-2 bg-[#9DD8CE] text-white rounded-xl hover:bg-[#374151] disabled:opacity-50 transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>

@@ -102,7 +102,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
           <p className="text-sm text-[#9CA3AF] mb-6">{label.emptyDesc}</p>
           <Link
             href={`/${locale}/community/write`}
-            className="inline-flex px-6 py-2.5 rounded-xl bg-[#F0F2F5] text-white font-semibold text-sm hover:bg-[#243a63] transition-colors"
+            className="inline-flex px-6 py-2.5 rounded-xl bg-[#F0F2F5] text-white font-semibold text-sm hover:bg-[#374151] transition-colors"
           >
             {label.writeReview}
           </Link>
@@ -133,7 +133,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
               {/* 스포일러 블러 */}
               {post.photos && post.photos.length > 0 && post.is_spoiler && (
                 <div className="relative h-40 bg-[#F0F2F5]/10 flex items-center justify-center">
-                  <span className="text-xs px-2 py-1 rounded-full bg-orange-100 text-orange-600 border border-orange-200">
+                  <span className="text-xs px-2 py-1 rounded-full bg-blossom-light text-blossom-deep border border-mint">
                     ⚠️ {label.spoiler}
                   </span>
                 </div>

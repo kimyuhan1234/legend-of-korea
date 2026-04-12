@@ -18,7 +18,7 @@ function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: stri
 const PRICE_COLOR: Record<string, string> = {
   "₩": "text-green-600",
   "₩₩": "text-[#F0B8B8]",
-  "₩₩₩": "text-orange-500",
+  "₩₩₩": "text-blossom-deep",
 }
 
 const CATEGORY_ICON: Record<string, string> = {

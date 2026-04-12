@@ -150,7 +150,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                          isCurrent
                            ? 'border-[#1F2937] bg-[#9DD8CE]/5'
                            : isNext
-                             ? 'border-[#9DD8CE] bg-orange-50'
+                             ? 'border-[#9DD8CE] bg-mint-light'
                              : isLocked
                                ? 'border-gray-100 bg-gray-50 opacity-50'
                                : 'border-green-200 bg-green-50'

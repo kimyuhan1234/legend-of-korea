@@ -75,8 +75,8 @@ export default function AdminDashboardPage() {
       title: "총 주문 수",
       value: data.summary.totalOrders.toLocaleString(),
       icon: ShoppingBag,
-      color: "text-indigo-600",
-      bg: "bg-indigo-50",
+      color: "text-sky",
+      bg: "bg-sky-light",
     },
     {
       title: "총 회원 수",

@@ -74,7 +74,7 @@ export default function LoginPage({ params, searchParams }: Props) {
             {/* 구분선 */}
             <div className="flex items-center gap-3">
               <div className="flex-1 h-px bg-[#E4E7EB]" />
-              <span className="text-xs text-[#b0a090] font-medium">{t.divider}</span>
+              <span className="text-xs text-[#9CA3AF] font-medium">{t.divider}</span>
               <div className="flex-1 h-px bg-[#E4E7EB]" />
             </div>
 
@@ -84,7 +84,7 @@ export default function LoginPage({ params, searchParams }: Props) {
         </div>
 
         {/* 하단 장식 */}
-        <p className="text-center text-xs text-[#b0a090] mt-6">
+        <p className="text-center text-xs text-[#9CA3AF] mt-6">
           © 2025 Legend of Korea
         </p>
       </div>

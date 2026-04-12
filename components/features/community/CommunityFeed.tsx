@@ -188,7 +188,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
         <RecipeFeed locale={locale} />
       ) : loading ? (
         <div className="py-20 flex flex-col items-center gap-4">
-          <Loader2 className="w-10 h-10 animate-spin text-indigo-500" />
+          <Loader2 className="w-10 h-10 animate-spin text-sky" />
           <p className="text-slate-400 font-bold animate-pulse">{t('loading', { defaultValue: 'Loading adventures...' })}</p>
         </div>
       ) : posts.length === 0 ? (

@@ -175,7 +175,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
                 onClick={() => setCountryCode(c.code)}
                 className={`flex flex-col items-center gap-1 py-3 rounded-xl border-2 text-xs font-bold transition-all
                   ${countryCode === c.code
-                    ? 'border-[#9DD8CE] bg-orange-50 text-[#9DD8CE]'
+                    ? 'border-[#9DD8CE] bg-mint-light text-[#9DD8CE]'
                     : 'border-gray-200 text-gray-600 hover:border-gray-300'
                   }`}
               >

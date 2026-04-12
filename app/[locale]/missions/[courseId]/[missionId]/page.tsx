@@ -71,7 +71,7 @@ export default async function MissionExecutionPage({ params }: MissionExecutionP
               </div>
             )}
             {isHidden && (
-              <div className="flex items-center gap-1.5 px-8 md:px-10 py-1.5 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs font-black shadow-lg animate-pulse">
+              <div className="flex items-center gap-1.5 px-8 md:px-10 py-1.5 rounded-full bg-gradient-to-r from-sky to-mint-deep text-white text-xs font-black shadow-lg animate-pulse">
                 <Sparkles className="w-3.5 h-3.5" />
                 {t('hidden')}
               </div>

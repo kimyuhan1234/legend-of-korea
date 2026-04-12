@@ -111,7 +111,7 @@ export function GoodsNotifyForm({
         <p className="text-xs text-red-500 pl-1">{errorMsg}</p>
       )}
       {status === "server_error" && (
-        <p className="text-xs text-orange-500 pl-1">
+        <p className="text-xs text-blossom-deep pl-1">
           {SERVER_ERROR_MSG[locale] || SERVER_ERROR_MSG.ko}
         </p>
       )}

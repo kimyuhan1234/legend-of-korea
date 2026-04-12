@@ -136,7 +136,7 @@ function DayCard({ weather, outfit, isToday, cityId, cityName }: DayCardProps) {
   const tempRangeColor: Record<string, string> = {
     cold: 'text-blue-500',
     mild: 'text-emerald-500',
-    hot: 'text-orange-500',
+    hot: 'text-blossom-deep',
   }
 
   return (
@@ -304,7 +304,7 @@ export function WeeklyOotdBoard() {
         <div className="flex flex-wrap gap-4 pb-12 text-xs text-neutral-400">
           {(['cold', 'mild', 'hot'] as const).map((range) => (
             <span key={range} className="flex items-center gap-1">
-              <span className={range === 'cold' ? 'text-blue-400' : range === 'mild' ? 'text-emerald-400' : 'text-orange-400'}>●</span>
+              <span className={range === 'cold' ? 'text-blue-400' : range === 'mild' ? 'text-emerald-400' : 'text-blossom-deep'}>●</span>
               {t(`tempRange.${range}`)}
             </span>
           ))}

@@ -14,7 +14,7 @@ function tempTone(high: number): { bg: string; border: string; text: string } {
     return { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-700' }
   }
   if (high >= 23) {
-    return { bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-700' }
+    return { bg: 'bg-mint-light', border: 'border-mint', text: 'text-blossom-deep' }
   }
   return { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-700' }
 }

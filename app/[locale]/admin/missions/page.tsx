@@ -245,7 +245,7 @@ export default function AdminMissionsPage() {
                 </Button>
                 <Button 
                   onClick={handleSave} 
-                  className="flex-1 h-14 rounded-2xl bg-[#F0F2F5] text-white font-black text-lg border-none hover:bg-[#243a63] shadow-lg shadow-[#1F2937]/20 transition-all"
+                  className="flex-1 h-14 rounded-2xl bg-[#F0F2F5] text-white font-black text-lg border-none hover:bg-[#374151] shadow-lg shadow-[#1F2937]/20 transition-all"
                 >
                   <Save className="w-5 h-5 mr-2" /> 저장 완료
                 </Button>

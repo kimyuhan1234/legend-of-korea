@@ -89,8 +89,8 @@ export function ShopClient({ locale }: ShopClientProps) {
   };
 
   const exchangeItems = [
-    { rate: 10, cost: 500, label: 'Standard Ticket', color: 'from-blue-500 to-indigo-600' },
-    { rate: 20, cost: 1500, label: 'Premium Ticket', color: 'from-indigo-600 to-purple-700' },
+    { rate: 10, cost: 500, label: 'Standard Ticket', color: 'from-blue-500 to-mint-deep' },
+    { rate: 20, cost: 1500, label: 'Premium Ticket', color: 'from-mint-deep to-sky' },
     { rate: 30, cost: 3000, label: 'Legendary Ticket', color: 'from-amber-400 to-orange-600' },
   ];
 
@@ -98,7 +98,7 @@ export function ShopClient({ locale }: ShopClientProps) {
     <div className="flex-1 container max-w-5xl mx-auto px-4 py-8 space-y-12">
       {/* Header Section */}
       <section className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-200 border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-full -mr-32 -mt-32 blur-3xl opacity-50" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-sky-light rounded-full -mr-32 -mt-32 blur-3xl opacity-50" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-50 rounded-full -ml-24 -mb-24 blur-3xl opacity-50" />
 
         <div className="relative space-y-4 text-center md:text-left">
@@ -157,13 +157,13 @@ export function ShopClient({ locale }: ShopClientProps) {
               <CardContent className="p-8 pb-4">
                 <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl">
                   <span className="text-slate-400 font-bold text-sm">필요 LP</span>
-                  <span className="text-indigo-600 font-extrabold">{item.cost.toLocaleString()} LP</span>
+                  <span className="text-sky font-extrabold">{item.cost.toLocaleString()} LP</span>
                 </div>
               </CardContent>
               <CardFooter className="p-8 pt-4">
                 <Button
                   size="lg"
-                  className="w-full h-16 rounded-2xl font-black mt-4 shadow-xl shadow-indigo-100 hover:scale-[1.01] active:scale-[0.99] transition-all"
+                  className="w-full h-16 rounded-2xl font-black mt-4 shadow-xl shadow-mint-light hover:scale-[1.01] active:scale-[0.99] transition-all"
                   disabled={!user || user.total_lp < item.cost || isExchanging !== null}
                   onClick={() => handleExchange(item.rate)}
                 >
@@ -182,7 +182,7 @@ export function ShopClient({ locale }: ShopClientProps) {
         <div className="bg-white rounded-[3rem] p-8 shadow-xl border border-slate-100 min-h-[200px] flex flex-col justify-center">
           {loading ? (
             <div className="flex justify-center p-12">
-              <Loader2 className="w-8 h-8 animate-spin text-indigo-400" />
+              <Loader2 className="w-8 h-8 animate-spin text-sky" />
             </div>
           ) : activeCoupons.length === 0 ? (
             <div className="text-center py-12 space-y-4">
@@ -192,14 +192,14 @@ export function ShopClient({ locale }: ShopClientProps) {
           ) : (
             <div className="grid gap-4">
               {activeCoupons.map((coupon) => (
-                <div key={coupon.id} className="flex flex-col md:flex-row items-center gap-6 p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:border-indigo-100 transition-colors">
+                <div key={coupon.id} className="flex flex-col md:flex-row items-center gap-6 p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:border-sky-light transition-colors">
                   <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-md shrink-0">
-                    <Ticket className="w-8 h-8 text-indigo-500" />
+                    <Ticket className="w-8 h-8 text-sky" />
                   </div>
                   <div className="flex-1 text-center md:text-left space-y-1">
                     <div className="flex items-center justify-center md:justify-start gap-2">
                       <h3 className="text-xl font-black text-slate-800">{coupon.discount_rate}% {t('discountRate').replace('{rate}% ', '')}</h3>
-                      <Badge variant="secondary" className="bg-indigo-100 text-indigo-700 border-none font-black text-[10px]">{coupon.is_used ? 'USED' : 'ACTIVE'}</Badge>
+                      <Badge variant="secondary" className="bg-sky-light text-sky border-none font-black text-[10px]">{coupon.is_used ? 'USED' : 'ACTIVE'}</Badge>
                     </div>
                     <p className="text-slate-400 font-bold font-mono tracking-wider">{coupon.code}</p>
                   </div>
@@ -228,12 +228,12 @@ export function ShopClient({ locale }: ShopClientProps) {
           <h3 className="text-xl font-black text-amber-900">티어 승급 혜택</h3>
           <p className="text-sm text-amber-800/70 font-bold leading-relaxed">전설 등급이 올라갈 때마다 특별한 할인 쿠폰이 자동으로 발급됩니다. 더 많은 모험을 떠나고 전설의 영웅이 되어보세요!</p>
         </div>
-        <div className="bg-indigo-50 rounded-[2.5rem] p-8 space-y-4 border border-indigo-100">
+        <div className="bg-sky-light rounded-[2.5rem] p-8 space-y-4 border border-sky-light">
           <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-md">
-            <CheckCircle2 className="w-6 h-6 text-indigo-500" />
+            <CheckCircle2 className="w-6 h-6 text-sky" />
           </div>
-          <h3 className="text-xl font-black text-indigo-900">쿠폰 사용 방법</h3>
-          <p className="text-sm text-indigo-800/70 font-bold leading-relaxed">발급받은 쿠폰은 미션 키트 구매 단계에서 적용할 수 있습니다. 한 번에 하나의 쿠폰만 사용 가능하며 유효기간은 90일입니다.</p>
+          <h3 className="text-xl font-black text-ink">쿠폰 사용 방법</h3>
+          <p className="text-sm text-slate/70 font-bold leading-relaxed">발급받은 쿠폰은 미션 키트 구매 단계에서 적용할 수 있습니다. 한 번에 하나의 쿠폰만 사용 가능하며 유효기간은 90일입니다.</p>
         </div>
       </section>
     </div>

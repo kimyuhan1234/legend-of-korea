@@ -125,7 +125,7 @@ export function DupeCountrySelector({ food, locale }: Props) {
                 <div className="flex-1 min-w-0">
                   <p className="font-black text-[#111] truncate">{getL(dupe.name, locale)}</p>
                   <p className="text-xs text-[#9CA3AF]">{getL(country.name, locale)}</p>
-                  <p className="text-xs text-[#b0a090] mt-0.5 line-clamp-1">{getL(dupe.description, locale)}</p>
+                  <p className="text-xs text-[#9CA3AF] mt-0.5 line-clamp-1">{getL(dupe.description, locale)}</p>
                 </div>
                 <div className="flex flex-col items-center flex-shrink-0">
                   <div
@@ -140,7 +140,7 @@ export function DupeCountrySelector({ food, locale }: Props) {
               </div>
 
               {/* 왜 닮았나요 */}
-              <div className="px-6 py-4 bg-[#FAFAF8]">
+              <div className="px-6 py-4 bg-[#FAFBFC]">
                 <p className="text-xs font-bold text-[#F0B8B8] mb-1">{t.why}</p>
                 <p className="text-sm text-[#9CA3AF] leading-relaxed">{getL(dupe.matchReason, locale)}</p>
               </div>

@@ -250,7 +250,7 @@ export default function FlagCookingPage() {
               ))}
               {/* 레시피 등록 빈 카드 */}
               <div
-                className="border-2 border-dashed border-gray-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#9DD8CE] hover:bg-orange-50 transition-all"
+                className="border-2 border-dashed border-gray-300 rounded-xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#9DD8CE] hover:bg-mint-light transition-all"
                 onClick={() => router.push(`/${locale}/community/recipe/write`)}
               >
                 <span className="text-4xl mb-2">✏️</span>

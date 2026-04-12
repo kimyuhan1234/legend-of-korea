@@ -81,7 +81,7 @@ export function LoginForm({ locale, next }: LoginFormProps) {
           placeholder={t.emailPlaceholder}
           className="
             h-12 px-4 rounded-xl border border-[#d5c9b8] bg-white
-            text-[#111] placeholder:text-[#b0a090] text-sm
+            text-[#111] placeholder:text-[#9CA3AF] text-sm
             focus:outline-none focus:ring-2 focus:ring-[#F0B8B8]/40 focus:border-[#F0B8B8]
             transition-all
           "
@@ -97,7 +97,7 @@ export function LoginForm({ locale, next }: LoginFormProps) {
           placeholder={t.passwordPlaceholder}
           className="
             h-12 px-4 rounded-xl border border-[#d5c9b8] bg-white
-            text-[#111] placeholder:text-[#b0a090] text-sm
+            text-[#111] placeholder:text-[#9CA3AF] text-sm
             focus:outline-none focus:ring-2 focus:ring-[#F0B8B8]/40 focus:border-[#F0B8B8]
             transition-all
           "
@@ -109,7 +109,7 @@ export function LoginForm({ locale, next }: LoginFormProps) {
         disabled={loading}
         className="
           h-12 rounded-xl bg-[#F0F2F5] text-white font-semibold text-sm
-          hover:bg-[#243a63] active:bg-[#152038]
+          hover:bg-[#374151] active:bg-[#1F2937]
           disabled:opacity-60 disabled:cursor-not-allowed
           transition-all duration-150 shadow-sm
         "

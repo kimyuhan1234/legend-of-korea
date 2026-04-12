@@ -153,20 +153,20 @@ export function OpenMission({
   const themeColors = isBoss 
     ? 'border-amber-400 bg-amber-50/10' 
     : isHidden 
-        ? 'border-purple-400 bg-purple-50/10' 
+        ? 'border-sky bg-lavender/10' 
         : 'border-primary/20 bg-white/40';
 
   return (
     <Card className={`w-full overflow-hidden border-2 rounded-[2.5rem] shadow-xl backdrop-blur-md transition-all duration-500 ${themeColors}`}>
-      <CardHeader className={`${isBoss ? 'bg-amber-100/30' : isHidden ? 'bg-purple-100/30' : 'bg-primary/5'} pb-6 pt-8 px-8`}>
+      <CardHeader className={`${isBoss ? 'bg-amber-100/30' : isHidden ? 'bg-lavender/30' : 'bg-primary/5'} pb-6 pt-8 px-8`}>
         <div className="flex justify-between items-center mb-4">
           <Badge variant="outline" className={`flex items-center gap-1.5 py-1 px-3 ${
-              isBoss ? 'bg-amber-100 text-amber-700 border-amber-200' : isHidden ? 'bg-purple-100 text-purple-700 border-purple-200' : 'border-primary/30 text-primary'
+              isBoss ? 'bg-amber-100 text-amber-700 border-amber-200' : isHidden ? 'bg-lavender text-sky border-lavender' : 'border-primary/30 text-primary'
           }`}>
             {isHidden ? <Sparkles className="w-4 h-4" /> : isBoss ? <Trophy className="w-4 h-4" /> : <Camera className="w-4 h-4" />}
             {isHidden ? 'HIDDEN MISSION' : isBoss ? 'BOSS MISSION' : 'OPEN MISSION'}
           </Badge>
-          <div className={`text-xl font-black ${isBoss ? 'text-amber-600' : isHidden ? 'text-purple-600' : 'text-primary'}`}>
+          <div className={`text-xl font-black ${isBoss ? 'text-amber-600' : isHidden ? 'text-sky' : 'text-primary'}`}>
             +{lpReward} LP
           </div>
         </div>
@@ -194,8 +194,8 @@ export function OpenMission({
                     />
                 ))}
             </div>
-            <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-inner relative z-10 scale-110 ${isBoss ? 'bg-amber-100' : isHidden ? 'bg-purple-100' : 'bg-green-100'}`}>
-              <CheckCircle2 className={`w-12 h-12 ${isBoss ? 'text-amber-600' : isHidden ? 'text-purple-600' : 'text-green-600'} animate-bounce`} />
+            <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-inner relative z-10 scale-110 ${isBoss ? 'bg-amber-100' : isHidden ? 'bg-lavender' : 'bg-green-100'}`}>
+              <CheckCircle2 className={`w-12 h-12 ${isBoss ? 'text-amber-600' : isHidden ? 'text-sky' : 'text-green-600'} animate-bounce`} />
             </div>
             <h3 className="text-4xl font-black text-slate-800 mb-2 relative z-10">미션 완료!</h3>
             <p className="text-muted-foreground font-bold text-xl mb-10 relative z-10">{lpReward} LP를 획득했습니다.</p>
@@ -280,7 +280,7 @@ export function OpenMission({
                 onClick={handleSubmit}
                 disabled={isSubmitting}
                 className={`w-full h-16 rounded-[1.5rem] shadow-2xl transition-all font-black text-xl flex items-center gap-2 ${
-                    isBoss ? 'bg-amber-500 hover:bg-amber-600' : isHidden ? 'bg-purple-600 hover:bg-purple-700' : 'bg-primary hover:bg-primary/90'
+                    isBoss ? 'bg-amber-500 hover:bg-amber-600' : isHidden ? 'bg-sky hover:bg-sky/80' : 'bg-primary hover:bg-primary/90'
                 }`}
             >
                 {isSubmitting ? (

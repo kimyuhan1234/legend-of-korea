@@ -89,7 +89,7 @@ export function SignupForm({ locale }: SignupFormProps) {
 
   const inputClass = `
     h-12 px-4 rounded-xl border border-[#d5c9b8] bg-white
-    text-[#111] placeholder:text-[#b0a090] text-sm
+    text-[#111] placeholder:text-[#9CA3AF] text-sm
     focus:outline-none focus:ring-2 focus:ring-[#F0B8B8]/40 focus:border-[#F0B8B8]
     transition-all w-full
   `
@@ -133,7 +133,7 @@ export function SignupForm({ locale }: SignupFormProps) {
       <div className="flex flex-col gap-1.5">
         <div className="flex items-center justify-between">
           <label className="text-sm font-medium text-[#4B5563]">{t.nickname}</label>
-          <span className={`text-xs ${nicknameLen > 18 ? "text-orange-500" : "text-[#b0a090]"}`}>
+          <span className={`text-xs ${nicknameLen > 18 ? "text-blossom-deep" : "text-[#9CA3AF]"}`}>
             {nicknameLen}/20
           </span>
         </div>
@@ -168,7 +168,7 @@ export function SignupForm({ locale }: SignupFormProps) {
         disabled={loading}
         className="
           h-12 rounded-xl bg-[#F0F2F5] text-white font-semibold text-sm
-          hover:bg-[#243a63] active:bg-[#152038]
+          hover:bg-[#374151] active:bg-[#1F2937]
           disabled:opacity-60 disabled:cursor-not-allowed
           transition-all duration-150 shadow-sm mt-1
         "

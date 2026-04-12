@@ -155,7 +155,7 @@ export default function FoodDetailPage({ params }: Props) {
                   <p className="text-xs text-[#9CA3AF] line-clamp-2">
                     {getL(spot.speciality, locale)}
                   </p>
-                  <p className="text-xs text-[#b0a090] mt-2">{spot.priceRange} · {spot.openHours}</p>
+                  <p className="text-xs text-[#9CA3AF] mt-2">{spot.priceRange} · {spot.openHours}</p>
                 </div>
               ))}
             </div>

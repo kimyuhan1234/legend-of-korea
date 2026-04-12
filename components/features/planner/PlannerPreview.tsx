@@ -31,12 +31,12 @@ interface PlannerPreviewProps {
 }
 
 const TYPE_CONFIG: Record<ItemType, { emoji: string; color: string }> = {
-  food: { emoji: '🍜', color: 'bg-orange-50 border-orange-200 text-orange-700' },
+  food: { emoji: '🍜', color: 'bg-mint-light border-mint text-blossom-deep' },
   stay: { emoji: '🏯', color: 'bg-blue-50 border-blue-200 text-blue-700' },
   quest: { emoji: '⚔️', color: 'bg-red-50 border-red-200 text-red-700' },
   diy: { emoji: '🏺', color: 'bg-amber-50 border-amber-200 text-amber-700' },
   ootd: { emoji: '👗', color: 'bg-pink-50 border-pink-200 text-pink-700' },
-  goods: { emoji: '🛍️', color: 'bg-purple-50 border-purple-200 text-purple-700' },
+  goods: { emoji: '🛍️', color: 'bg-lavender border-lavender text-sky' },
   transport: { emoji: '🚄', color: 'bg-gray-50 border-gray-200 text-gray-700' },
   surprise: { emoji: '🎁', color: 'bg-yellow-50 border-yellow-200 text-yellow-700' },
 }

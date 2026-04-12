@@ -19,8 +19,8 @@ export function AdCard({ ad, locale }: AdCardProps) {
       {/* Ad Header */}
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-indigo-100 flex items-center justify-center shrink-0  border-0 border-indigo-200">
-            <Building2 className="w-5 h-5 text-indigo-500" />
+          <div className="w-10 h-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-sky-light flex items-center justify-center shrink-0  border-0 border-sky">
+            <Building2 className="w-5 h-5 text-sky" />
           </div>
           <div>
             <p className="font-black text-slate-800 text-sm">{ad.ad_company || 'Sponsor'}</p>
@@ -48,7 +48,7 @@ export function AdCard({ ad, locale }: AdCardProps) {
       </div>
 
       {/* CTA Button */}
-      <Link href={ad.ad_link || '#'} target="_blank" className="w-full h-12 flex items-center justify-center gap-2 bg-white text-indigo-600 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] font-black border-2 border-indigo-100 hover:border-indigo-200 hover:bg-slate-50 transition-all active:scale-[0.98]">
+      <Link href={ad.ad_link || '#'} target="_blank" className="w-full h-12 flex items-center justify-center gap-2 bg-white text-sky rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] font-black border-2 border-sky-light hover:border-sky hover:bg-slate-50 transition-all active:scale-[0.98]">
         {t('viewDetail')}
         <ArrowRight className="w-4 h-4" />
       </Link>
