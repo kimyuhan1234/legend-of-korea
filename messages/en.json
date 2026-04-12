@@ -1066,6 +1066,15 @@
       "subtitle": "Saved items become a perfect journey",
       "itemCount": "{count} items saved"
     },
+    "guide": {
+      "step1": "Browse the tabs you like",
+      "step2": "Save items you love",
+      "step3": "Your saved items become a perfect trip",
+      "browseOotd": "Browse OOTD",
+      "browseFood": "Browse K-Food",
+      "browseQuest": "Browse QUEST",
+      "browseAll": "Browse all tabs"
+    },
     "preview": {
       "title": "Saved Items",
       "empty": "No items yet. Browse the tabs!",

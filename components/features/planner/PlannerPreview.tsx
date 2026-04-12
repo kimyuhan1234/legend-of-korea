@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { HotelInputForm } from './HotelInputForm'
 import { TransportInputForm } from './TransportInputForm'
 import { PlannerResetButton } from './PlannerResetButton'
+import { PlannerEmptyGuide } from './PlannerEmptyGuide'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -62,12 +63,7 @@ export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHo
   const totalItemCount = plans.reduce((sum, p) => sum + p.plan_items.length, 0)
 
   if (plans.length === 0 || plans.every((p) => p.plan_items.length === 0)) {
-    return (
-      <div className="bg-white rounded-3xl p-12 text-center border border-[#E4E7EB]/40">
-        <div className="text-5xl mb-4">📋</div>
-        <p className="text-[#6B7280]">{t('preview.empty')}</p>
-      </div>
-    )
+    return <PlannerEmptyGuide />
   }
 
   return (

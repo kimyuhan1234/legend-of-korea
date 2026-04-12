@@ -1066,6 +1066,15 @@
       "subtitle": "保存したアイテムが完璧な旅へ",
       "itemCount": "保存アイテム {count}個"
     },
+    "guide": {
+      "step1": "気になるタブを見てみましょう",
+      "step2": "気に入ったアイテムを追加しましょう",
+      "step3": "保存したアイテムが完璧な旅になります",
+      "browseOotd": "OOTD を見る",
+      "browseFood": "K-Food を見る",
+      "browseQuest": "QUEST を見る",
+      "browseAll": "全タブを見る"
+    },
     "preview": {
       "title": "保存したアイテム",
       "empty": "まだ保存したアイテムがありません。タブを見てみましょう！",
