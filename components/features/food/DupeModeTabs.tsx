@@ -1,10 +1,14 @@
 'use client'
 
-import { useState, type ReactNode } from 'react'
+import { useState, useMemo, type ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import { AiDupeSearch } from './AiDupeSearch'
 import { TastePreferenceFilter } from './TastePreferenceFilter'
 import { TasteMatchResults } from './TasteMatchResults'
+import { WorldDupeMap } from './WorldDupeMap'
+import { CountryDupeList } from './CountryDupeList'
+import { regions } from '@/lib/data/food-dupes'
+import { getAllCountryCounts, getCountryDupes } from '@/lib/utils/country-dupe-aggregator'
 
 interface TopFood {
   foodId: string
@@ -26,7 +30,7 @@ interface Surprise {
   connectionReason: { ko: string; en: string; ja: string }
 }
 
-type Mode = 'city' | 'ai' | 'taste'
+type Mode = 'city' | 'ai' | 'taste' | 'world'
 
 interface DupeModeTabsProps {
   locale: string
@@ -37,6 +41,8 @@ export function DupeModeTabs({ locale, cityGrid }: DupeModeTabsProps) {
   const t = useTranslations('dupe')
   const [mode, setMode] = useState<Mode>('city')
   const [tasteLoading, setTasteLoading] = useState(false)
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
+  const countryCounts = useMemo(() => getAllCountryCounts(regions), [])
   const [tasteResults, setTasteResults] = useState<{
     topFoods: TopFood[]
     surprises: Surprise[]
@@ -70,6 +76,7 @@ export function DupeModeTabs({ locale, cityGrid }: DupeModeTabsProps) {
     { key: 'city', label: t('mode.city') },
     { key: 'ai', label: t('mode.ai') },
     { key: 'taste', label: t('mode.taste') },
+    { key: 'world', label: t('mode.world') },
   ]
 
   return (
@@ -127,6 +134,24 @@ export function DupeModeTabs({ locale, cityGrid }: DupeModeTabsProps) {
               surprises={tasteResults.surprises}
               locale={locale}
               isVisible={!!tasteResults}
+            />
+          )}
+        </section>
+      )}
+
+      {mode === 'world' && (
+        <section className="max-w-4xl mx-auto px-4 py-8">
+          <WorldDupeMap
+            onCountrySelect={setSelectedCountry}
+            selectedCountry={selectedCountry}
+            countryCounts={countryCounts}
+            locale={locale}
+          />
+          {selectedCountry && (
+            <CountryDupeList
+              countryCode={selectedCountry}
+              data={getCountryDupes(selectedCountry, regions)}
+              locale={locale}
             />
           )}
         </section>

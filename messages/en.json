@@ -1246,7 +1246,18 @@
     "mode": {
       "city": "🗺️ By City",
       "ai": "🤖 AI Match",
-      "taste": "🎯 My Taste"
+      "taste": "🎯 My Taste",
+      "world": "🌍 World Map"
+    },
+    "world": {
+      "title": "🌍 World Food Dupe Map",
+      "subtitle": "Click your country!",
+      "korea": "KOREA",
+      "matches": "{count} Korean dishes similar to {country} food",
+      "more": "Show more",
+      "detail": "Details →",
+      "arrow": "→",
+      "similarity": "Similarity"
     },
     "taste": {
       "title": "🎯 Find by My Taste",

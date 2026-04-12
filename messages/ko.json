@@ -1271,7 +1271,18 @@
     "mode": {
       "city": "🗺️ 도시별 탐색",
       "ai": "🤖 AI 매칭",
-      "taste": "🎯 내 취향"
+      "taste": "🎯 내 취향",
+      "world": "🌍 세계지도"
+    },
+    "world": {
+      "title": "🌍 세계 음식 듀프 지도",
+      "subtitle": "당신의 나라를 클릭하세요!",
+      "korea": "KOREA",
+      "matches": "{country} 음식과 비슷한 한국 음식 {count}개",
+      "more": "더보기",
+      "detail": "상세보기 →",
+      "arrow": "→",
+      "similarity": "유사도"
     },
     "taste": {
       "title": "🎯 나의 맛 취향으로 찾기",

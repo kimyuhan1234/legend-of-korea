@@ -1246,7 +1246,18 @@
     "mode": {
       "city": "🗺️ 都市別",
       "ai": "🤖 AI マッチ",
-      "taste": "🎯 好みで探す"
+      "taste": "🎯 好みで探す",
+      "world": "🌍 世界地図"
+    },
+    "world": {
+      "title": "🌍 世界フードデュープマップ",
+      "subtitle": "あなたの国をクリック！",
+      "korea": "韓国",
+      "matches": "{country}料理に似た韓国料理 {count}個",
+      "more": "もっと見る",
+      "detail": "詳細 →",
+      "arrow": "→",
+      "similarity": "類似度"
     },
     "taste": {
       "title": "🎯 味の好みで探す",
