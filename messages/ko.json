@@ -1246,6 +1246,10 @@
       "foggy": "안개",
       "windy": "바람"
     },
+    "remove": "취소 ✕",
+    "removeConfirm": "플래너에서 제거할까요?",
+    "removeYes": "제거",
+    "removeNo": "아니요",
     "addToPlanner": "📋 플래너에 담기",
     "addShort": "📋 담기",
     "alreadyAdded": "✓ 담김",

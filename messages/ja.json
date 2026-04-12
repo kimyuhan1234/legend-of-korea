@@ -1221,6 +1221,10 @@
       "foggy": "霧",
       "windy": "風"
     },
+    "remove": "取消 ✕",
+    "removeConfirm": "プランナーから削除しますか？",
+    "removeYes": "削除",
+    "removeNo": "キャンセル",
     "addToPlanner": "📋 プランナーに追加",
     "addShort": "📋 追加",
     "alreadyAdded": "✓ 追加済み",

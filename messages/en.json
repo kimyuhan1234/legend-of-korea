@@ -1221,6 +1221,10 @@
       "foggy": "Foggy",
       "windy": "Windy"
     },
+    "remove": "Remove ✕",
+    "removeConfirm": "Remove from planner?",
+    "removeYes": "Remove",
+    "removeNo": "Cancel",
     "addToPlanner": "📋 Add to Planner",
     "addShort": "📋 Add",
     "alreadyAdded": "✓ Added",

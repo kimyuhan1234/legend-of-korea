@@ -26,14 +26,23 @@ export function AddToPlannerButton({
   const pathname = usePathname()
   const locale = pathname.split('/')[1] || 'ko'
 
-  const [state, setState] = useState<'idle' | 'loading' | 'added' | 'login-required'>('idle')
+  const [state, setState] = useState<'idle' | 'loading' | 'added' | 'removing' | 'login-required'>('idle')
   const [showToast, setShowToast] = useState(false)
+  const [hovered, setHovered] = useState(false)
+  const [itemId, setItemId] = useState<string | null>(null)
+  const [showConfirm, setShowConfirm] = useState(false)
 
-  const handleClick = async (e: React.MouseEvent) => {
+  const handleAdd = async (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
 
-    if (state === 'added' || state === 'loading') return
+    if (state === 'loading' || state === 'removing') return
+
+    // 담김 상태에서 클릭 → 취소 확인 모달
+    if (state === 'added') {
+      setShowConfirm(true)
+      return
+    }
 
     setState('loading')
     try {
@@ -56,15 +65,40 @@ export function AddToPlannerButton({
         return
       }
 
+      const data = (await res.json().catch(() => null)) as { itemId?: string } | null
+      if (data?.itemId) setItemId(data.itemId)
+
       setState('added')
-      // Navbar 뱃지 갱신 트리거
       window.dispatchEvent(new Event('planner:refresh'))
-      // 크로스 탭 토스트는 itemType이 TabId인 경우만
       if (['food', 'stay', 'diy', 'quest', 'ootd', 'goods'].includes(itemType)) {
         setShowToast(true)
       }
     } catch {
       setState('idle')
+    }
+  }
+
+  const handleRemove = async () => {
+    if (!itemId) {
+      // itemId 없으면 그냥 idle 로 복귀 (UI 리셋)
+      setState('idle')
+      setShowConfirm(false)
+      return
+    }
+
+    setState('removing')
+    setShowConfirm(false)
+    try {
+      const res = await fetch(`/api/planner/items?itemId=${itemId}`, { method: 'DELETE' })
+      if (res.ok) {
+        setState('idle')
+        setItemId(null)
+        window.dispatchEvent(new Event('planner:refresh'))
+      } else {
+        setState('added')
+      }
+    } catch {
+      setState('added')
     }
   }
 
@@ -74,28 +108,70 @@ export function AddToPlannerButton({
       : 'px-4 py-2 text-sm font-bold rounded-full'
 
   const stateClasses = {
-    idle: 'bg-[#9DD8CE] text-white hover:bg-[#7BC8BC]',
-    loading: 'bg-[#B8E8E0] text-white cursor-wait',
-    added: 'bg-emerald-500 text-white',
-    'login-required': 'bg-[#9CA3AF] text-white',
+    idle: 'bg-mint-deep text-white hover:bg-[#7BC8BC]',
+    loading: 'bg-mint text-white cursor-wait',
+    added: hovered
+      ? 'bg-blossom-light text-blossom-deep border border-blossom-deep'
+      : 'bg-mint-light text-mint-deep border border-mint',
+    removing: 'bg-mist text-stone cursor-wait',
+    'login-required': 'bg-stone text-white',
   }
 
   const label = {
     idle: `+ ${t('addButton')}`,
     loading: t('adding'),
-    added: t('added'),
+    added: hovered ? t('remove') : t('added'),
+    removing: '...',
     'login-required': t('loginRequired'),
   }[state]
 
   return (
     <>
       <button
-        onClick={handleClick}
-        disabled={state === 'loading' || state === 'added'}
+        onClick={handleAdd}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        disabled={state === 'loading' || state === 'removing'}
         className={`${baseClasses} ${stateClasses[state]} transition-colors ${className}`}
       >
         {label}
       </button>
+
+      {/* 취소 확인 모달 */}
+      {showConfirm && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center px-4"
+          role="dialog"
+          aria-modal="true"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation() }}
+        >
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setShowConfirm(false)}
+          />
+          <div className="relative bg-white rounded-2xl shadow-xl max-w-xs w-full p-5 border border-mist">
+            <p className="text-sm font-bold text-ink text-center mb-4">
+              {t('removeConfirm')}
+            </p>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => setShowConfirm(false)}
+                className="flex-1 py-2.5 rounded-full border border-mist text-sm font-bold text-slate hover:bg-cloud transition-colors"
+              >
+                {t('removeNo')}
+              </button>
+              <button
+                type="button"
+                onClick={handleRemove}
+                className="flex-1 py-2.5 rounded-full bg-red-500 text-sm font-bold text-white hover:bg-red-600 transition-colors"
+              >
+                {t('removeYes')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showToast && itemType !== 'transport' && itemType !== 'surprise' && (
         <CrossTabToast
