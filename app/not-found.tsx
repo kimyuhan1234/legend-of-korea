@@ -24,7 +24,7 @@ export default function GlobalNotFound() {
         href="/ko"
         style={{
           padding: '0.75rem 2rem',
-          background: '#FF6B35',
+          background: '#9DD8CE',
           color: 'white',
           borderRadius: '1rem',
           fontSize: '1rem',

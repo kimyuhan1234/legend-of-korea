@@ -17,15 +17,15 @@ export function FoodMatchingSection({ locale, title, subtitle, cta }: FoodMatchi
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           {/* 좌: 텍스트 */}
           <div className="md:w-[280px] lg:w-[320px] shrink-0 text-center md:text-left">
-            <h2 className="text-2xl md:text-3xl font-black text-[#2D1B69] leading-tight mb-3">
+            <h2 className="text-2xl md:text-3xl font-black text-[#1F2937] leading-tight mb-3">
               {title}
             </h2>
-            <p className="text-lg font-medium text-[#FF6B35] mb-8">
+            <p className="text-lg font-medium text-[#9DD8CE] mb-8">
               {subtitle}
             </p>
             <Link
               href={`/${locale}/food/dupe`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#2D1B69] text-white font-bold hover:bg-[#3d2880] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1F2937] text-white font-bold hover:bg-[#374151] transition-colors"
             >
               {cta}
             </Link>

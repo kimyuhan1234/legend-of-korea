@@ -14,7 +14,7 @@ export function MemoriesTab({ locale }: MemoriesTabProps) {
         <h2 className="text-xl font-black text-[#111]">📸 추억남기기</h2>
         <Link
           href={`/${locale}/community/write`}
-          className="px-4 py-2 bg-[#FF6B35] text-white rounded-full text-sm font-bold hover:bg-[#E55A2B] transition-colors"
+          className="px-4 py-2 bg-[#9DD8CE] text-white rounded-full text-sm font-bold hover:bg-[#7BC8BC] transition-colors"
         >
           ✏️ 기록 남기기
         </Link>

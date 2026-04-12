@@ -111,7 +111,7 @@ export default function AdminB2BPage() {
         </div>
         <Button 
           onClick={() => setIsAdding(!isAdding)}
-          className="bg-[#F5F3EF] hover:bg-[#243a63] text-white rounded-xl h-12 font-bold px-6 border-none"
+          className="bg-[#F0F2F5] hover:bg-[#243a63] text-white rounded-xl h-12 font-bold px-6 border-none"
         >
           {isAdding ? "취소" : <><Plus className="w-5 h-5 mr-2" /> 새 B2B 주문</>}
         </Button>
@@ -211,7 +211,7 @@ export default function AdminB2BPage() {
               </div>
 
               <div className="md:col-span-2 lg:col-span-3 pt-2">
-                <Button type="submit" className="w-full h-14 bg-[#D4A843] hover:bg-[#b88d30] text-[#111] font-black text-lg rounded-2xl shadow-lg shadow-[#D4A843]/20 border-none transition-all">
+                <Button type="submit" className="w-full h-14 bg-[#F0B8B8] hover:bg-[#b88d30] text-[#111] font-black text-lg rounded-2xl shadow-lg shadow-[#F0B8B8]/20 border-none transition-all">
                   주문 등록 완료
                 </Button>
               </div>

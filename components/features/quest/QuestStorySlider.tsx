@@ -46,7 +46,7 @@ export function QuestStorySlider({ storyCards }: QuestStorySliderProps) {
         </h2>
 
         <div
-          className="relative overflow-hidden rounded-3xl bg-[#F5F3EF] shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+          className="relative overflow-hidden rounded-3xl bg-[#F0F2F5] shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -58,7 +58,7 @@ export function QuestStorySlider({ storyCards }: QuestStorySliderProps) {
               </h3>
               <button
                 onClick={scrollToKit}
-                className="mt-4 px-8 py-3 rounded-full bg-[#FF6B35] text-white font-bold hover:bg-[#E55A2B] transition-colors"
+                className="mt-4 px-8 py-3 rounded-full bg-[#9DD8CE] text-white font-bold hover:bg-[#7BC8BC] transition-colors"
               >
                 {t('story.cta')}
               </button>
@@ -105,7 +105,7 @@ export function QuestStorySlider({ storyCards }: QuestStorySliderProps) {
               key={i}
               onClick={() => setCurrent(i)}
               className={`w-2.5 h-2.5 rounded-full transition-all ${
-                i === current ? 'bg-[#FF6B35] w-6' : 'bg-[#D1D5DB]'
+                i === current ? 'bg-[#9DD8CE] w-6' : 'bg-[#D1D5DB]'
               }`}
             />
           ))}

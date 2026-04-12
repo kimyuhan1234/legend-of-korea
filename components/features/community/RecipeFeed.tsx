@@ -48,14 +48,14 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
   return (
     <div className="space-y-6">
       {/* 배너 */}
-      <div className="bg-gradient-to-r from-[#FF6B35] to-[#FF8C5A] rounded-2xl p-5 flex items-center justify-between gap-4 text-white">
+      <div className="bg-gradient-to-r from-[#9DD8CE] to-[#FF8C5A] rounded-2xl p-5 flex items-center justify-between gap-4 text-white">
         <div>
           <p className="font-black text-base">🍳 나만의 퓨전 레시피를 공유해보세요!</p>
           <p className="text-sm text-white/80 mt-0.5">한국 재료로 만드는 세계 퓨전 요리</p>
         </div>
         <Link
           href={`/${locale}/community/recipe/write`}
-          className="shrink-0 flex items-center gap-1.5 bg-white text-[#FF6B35] px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-orange-50 transition-colors"
+          className="shrink-0 flex items-center gap-1.5 bg-white text-[#9DD8CE] px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-orange-50 transition-colors"
         >
           <PenLine size={15} />
           레시피 작성
@@ -70,7 +70,7 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
             onClick={() => setCountry(f.code)}
             className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors
               ${country === f.code
-                ? 'bg-[#FF6B35] text-white'
+                ? 'bg-[#9DD8CE] text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
           >
@@ -91,7 +91,7 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
           <p className="text-sm text-gray-400 mt-1">첫 번째 레시피를 공유해보세요!</p>
           <Link
             href={`/${locale}/community/recipe/write`}
-            className="inline-block mt-4 px-5 py-2.5 bg-[#FF6B35] text-white rounded-xl font-bold text-sm hover:bg-[#E55A2B] transition-colors"
+            className="inline-block mt-4 px-5 py-2.5 bg-[#9DD8CE] text-white rounded-xl font-bold text-sm hover:bg-[#7BC8BC] transition-colors"
           >
             레시피 작성하기
           </Link>

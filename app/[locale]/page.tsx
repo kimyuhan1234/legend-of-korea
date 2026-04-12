@@ -24,7 +24,7 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: 'home' })
 
   return (
-    <div className="bg-[#FFF8F0]">
+    <div className="bg-[#FAFBFC]">
       {/* 섹션 1: HERO */}
       <HeroSection cta={t('signup')} />
 

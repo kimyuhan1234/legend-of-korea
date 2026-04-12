@@ -90,7 +90,7 @@ export function SignupForm({ locale }: SignupFormProps) {
   const inputClass = `
     h-12 px-4 rounded-xl border border-[#d5c9b8] bg-white
     text-[#111] placeholder:text-[#b0a090] text-sm
-    focus:outline-none focus:ring-2 focus:ring-[#D4A843]/40 focus:border-[#D4A843]
+    focus:outline-none focus:ring-2 focus:ring-[#F0B8B8]/40 focus:border-[#F0B8B8]
     transition-all w-full
   `
 
@@ -108,7 +108,7 @@ export function SignupForm({ locale }: SignupFormProps) {
       )}
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-[#3a3028]">{t.email}</label>
+        <label className="text-sm font-medium text-[#4B5563]">{t.email}</label>
         <input
           type="email"
           name="email"
@@ -119,7 +119,7 @@ export function SignupForm({ locale }: SignupFormProps) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-[#3a3028]">{t.password}</label>
+        <label className="text-sm font-medium text-[#4B5563]">{t.password}</label>
         <input
           type="password"
           name="password"
@@ -132,7 +132,7 @@ export function SignupForm({ locale }: SignupFormProps) {
 
       <div className="flex flex-col gap-1.5">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-[#3a3028]">{t.nickname}</label>
+          <label className="text-sm font-medium text-[#4B5563]">{t.nickname}</label>
           <span className={`text-xs ${nicknameLen > 18 ? "text-orange-500" : "text-[#b0a090]"}`}>
             {nicknameLen}/20
           </span>
@@ -149,7 +149,7 @@ export function SignupForm({ locale }: SignupFormProps) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-[#3a3028]">{t.language}</label>
+        <label className="text-sm font-medium text-[#4B5563]">{t.language}</label>
         <select
           name="language"
           defaultValue={locale}
@@ -167,7 +167,7 @@ export function SignupForm({ locale }: SignupFormProps) {
         type="submit"
         disabled={loading}
         className="
-          h-12 rounded-xl bg-[#F5F3EF] text-white font-semibold text-sm
+          h-12 rounded-xl bg-[#F0F2F5] text-white font-semibold text-sm
           hover:bg-[#243a63] active:bg-[#152038]
           disabled:opacity-60 disabled:cursor-not-allowed
           transition-all duration-150 shadow-sm mt-1
@@ -176,11 +176,11 @@ export function SignupForm({ locale }: SignupFormProps) {
         {loading ? t.submitting : t.submit}
       </button>
 
-      <p className="text-center text-sm text-[#7a6a58]">
+      <p className="text-center text-sm text-[#9CA3AF]">
         {t.hasAccount}{" "}
         <Link
           href={`/${locale}/auth/login`}
-          className="font-semibold text-[#D4A843] hover:underline"
+          className="font-semibold text-[#F0B8B8] hover:underline"
         >
           {t.login}
         </Link>

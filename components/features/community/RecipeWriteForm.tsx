@@ -159,7 +159,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
             value={name}
             onChange={e => setName(e.target.value)}
             placeholder="예: 김치 리조또, 된장 파스타"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#FF6B35] transition-colors"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#9DD8CE] transition-colors"
             required
           />
         </div>
@@ -175,7 +175,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
                 onClick={() => setCountryCode(c.code)}
                 className={`flex flex-col items-center gap-1 py-3 rounded-xl border-2 text-xs font-bold transition-all
                   ${countryCode === c.code
-                    ? 'border-[#FF6B35] bg-orange-50 text-[#FF6B35]'
+                    ? 'border-[#9DD8CE] bg-orange-50 text-[#9DD8CE]'
                     : 'border-gray-200 text-gray-600 hover:border-gray-300'
                   }`}
               >
@@ -199,7 +199,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
                     value={d}
                     checked={difficulty === d}
                     onChange={() => setDifficulty(d)}
-                    className="accent-[#FF6B35]"
+                    className="accent-[#9DD8CE]"
                   />
                   <span className="text-sm">{DIFFICULTY_LABELS[d]}</span>
                 </label>
@@ -213,7 +213,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
               min={1}
               value={cookingTime}
               onChange={e => setCookingTime(Number(e.target.value))}
-              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#FF6B35]"
+              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
             />
           </div>
           <div>
@@ -223,7 +223,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
               min={1}
               value={servings}
               onChange={e => setServings(Number(e.target.value))}
-              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#FF6B35]"
+              className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
             />
           </div>
         </div>
@@ -235,7 +235,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
             value={description}
             onChange={e => setDescription(e.target.value)}
             placeholder="이 레시피를 한 문장으로 소개해주세요"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#FF6B35]"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#9DD8CE]"
           />
         </div>
       </div>
@@ -260,8 +260,8 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
             <button
               type="button"
               onClick={() => photoInputRef.current?.click()}
-              className="w-24 h-24 rounded-xl border-2 border-dashed border-gray-300 hover:border-[#FF6B35]
-                         flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-[#FF6B35] transition-colors"
+              className="w-24 h-24 rounded-xl border-2 border-dashed border-gray-300 hover:border-[#9DD8CE]
+                         flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-[#9DD8CE] transition-colors"
             >
               <Camera size={20} />
               <span className="text-xs">사진 추가</span>
@@ -303,9 +303,9 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
                   step={1}
                   value={tasteProfile[key]}
                   onChange={e => setTasteProfile(prev => ({ ...prev, [key]: Number(e.target.value) }))}
-                  className="flex-1 accent-[#FF6B35]"
+                  className="flex-1 accent-[#9DD8CE]"
                 />
-                <span className="text-xs w-4 text-right font-bold text-[#FF6B35]">{tasteProfile[key]}</span>
+                <span className="text-xs w-4 text-right font-bold text-[#9DD8CE]">{tasteProfile[key]}</span>
               </div>
             ))}
           </div>
@@ -346,7 +346,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
                   <polygon
                     points={pts}
                     fill="rgba(255,107,53,0.25)"
-                    stroke="#FF6B35"
+                    stroke="#9DD8CE"
                     strokeWidth={1.5}
                     strokeLinejoin="round"
                   />
@@ -390,7 +390,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
               value={ing}
               onChange={e => updateList(koreanIngredients, setKoreanIngredients, idx, e.target.value)}
               placeholder={`재료 ${idx + 1} (예: 김치 100g)`}
-              className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#FF6B35]"
+              className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
             />
             <button
               type="button"
@@ -405,7 +405,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         <button
           type="button"
           onClick={() => addItem(koreanIngredients, setKoreanIngredients)}
-          className="flex items-center gap-1.5 text-sm text-[#111] font-medium hover:text-[#FF6B35] transition-colors"
+          className="flex items-center gap-1.5 text-sm text-[#111] font-medium hover:text-[#9DD8CE] transition-colors"
         >
           <Plus size={16} /> 재료 추가
         </button>
@@ -422,7 +422,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
               value={ing}
               onChange={e => updateList(foreignIngredients, setForeignIngredients, idx, e.target.value)}
               placeholder={`재료 ${idx + 1}`}
-              className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#FF6B35]"
+              className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE]"
             />
             <button
               type="button"
@@ -437,7 +437,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         <button
           type="button"
           onClick={() => addItem(foreignIngredients, setForeignIngredients)}
-          className="flex items-center gap-1.5 text-sm text-[#111] font-medium hover:text-[#FF6B35] transition-colors"
+          className="flex items-center gap-1.5 text-sm text-[#111] font-medium hover:text-[#9DD8CE] transition-colors"
         >
           <Plus size={16} /> 재료 추가
         </button>
@@ -448,7 +448,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         <label className="block text-sm font-bold text-gray-700">👨‍🍳 조리 순서</label>
         {steps.map((step, idx) => (
           <div key={idx} className="flex gap-2 items-start">
-            <span className="w-7 h-7 rounded-full bg-[#FF6B35] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-2.5">
+            <span className="w-7 h-7 rounded-full bg-[#9DD8CE] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-2.5">
               {idx + 1}
             </span>
             <textarea
@@ -456,7 +456,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
               onChange={e => updateList(steps, setSteps, idx, e.target.value)}
               placeholder={`${idx + 1}단계 조리 방법을 입력하세요`}
               rows={2}
-              className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#FF6B35] resize-none"
+              className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[#9DD8CE] resize-none"
             />
             <button
               type="button"
@@ -471,7 +471,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         <button
           type="button"
           onClick={() => addItem(steps, setSteps)}
-          className="flex items-center gap-1.5 text-sm text-[#111] font-medium hover:text-[#FF6B35] transition-colors"
+          className="flex items-center gap-1.5 text-sm text-[#111] font-medium hover:text-[#9DD8CE] transition-colors"
         >
           <Plus size={16} /> 단계 추가
         </button>
@@ -481,8 +481,8 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
       <button
         type="submit"
         disabled={submitting || uploadingPhotos}
-        className="w-full py-4 bg-[#FF6B35] text-white rounded-xl font-bold text-base
-                   hover:bg-[#E55A2B] disabled:opacity-60 disabled:cursor-not-allowed
+        className="w-full py-4 bg-[#9DD8CE] text-white rounded-xl font-bold text-base
+                   hover:bg-[#7BC8BC] disabled:opacity-60 disabled:cursor-not-allowed
                    transition-colors flex items-center justify-center gap-2"
       >
         {submitting ? (

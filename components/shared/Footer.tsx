@@ -32,7 +32,7 @@ export function Footer({ locale }: FooterProps) {
   const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
 
   return (
-    <footer className="bg-[#2D1B69] text-white/70">
+    <footer className="bg-[#1F2937] text-white/70">
       <div className="max-w-6xl mx-auto px-4 py-14 text-center">
         {/* 브랜드 로고 */}
         <p

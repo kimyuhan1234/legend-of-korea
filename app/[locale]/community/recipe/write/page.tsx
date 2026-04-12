@@ -6,7 +6,7 @@ interface PageProps {
 
 export default function RecipeWritePage({ params: { locale } }: PageProps) {
   return (
-    <div className="min-h-screen bg-[#F5F0E8]">
+    <div className="min-h-screen bg-[#F0F2F5]">
       <RecipeWriteForm locale={locale} />
     </div>
   );

@@ -8,7 +8,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ cta }: HeroSectionProps) {
   return (
-    <section className="relative h-screen overflow-hidden bg-[#2D1B69]">
+    <section className="relative h-screen overflow-hidden bg-[#1F2937]">
       <Image
         src="/images/dokkaebi-hero.png"
         alt="Legend of Korea"

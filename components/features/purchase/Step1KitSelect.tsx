@@ -73,14 +73,14 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
           <div className="flex items-center gap-3">
             <button
               onClick={() => onChange({ ...data, quantity: Math.max(1, data.quantity - 1) })}
-              className="w-10 h-10 rounded-xl border border-[#e8ddd0] bg-white text-[#111] font-bold text-lg hover:bg-[#F5F0E8] transition-colors"
+              className="w-10 h-10 rounded-xl border border-[#E4E7EB] bg-white text-[#111] font-bold text-lg hover:bg-[#F0F2F5] transition-colors"
             >
               −
             </button>
             <span className="w-10 text-center font-bold text-[#111] text-lg">{data.quantity}</span>
             <button
               onClick={() => onChange({ ...data, quantity: Math.min(5, data.quantity + 1) })}
-              className="w-10 h-10 rounded-xl border border-[#e8ddd0] bg-white text-[#111] font-bold text-lg hover:bg-[#F5F0E8] transition-colors"
+              className="w-10 h-10 rounded-xl border border-[#E4E7EB] bg-white text-[#111] font-bold text-lg hover:bg-[#F0F2F5] transition-colors"
             >
               +
             </button>
@@ -92,12 +92,12 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
       <div>
         <label className="block text-sm font-semibold text-[#111] mb-2">{t.applyCoupon}</label>
         {coupons.length === 0 ? (
-          <p className="text-sm text-[#7a6a58] bg-[#F5F0E8] rounded-xl px-4 py-3">{t.noCoupon}</p>
+          <p className="text-sm text-[#9CA3AF] bg-[#F0F2F5] rounded-xl px-4 py-3">{t.noCoupon}</p>
         ) : (
           <select
             value={data.couponId}
             onChange={(e) => onChange({ ...data, couponId: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-[#e8ddd0] bg-white text-[#111] text-sm focus:outline-none focus:border-[#D4A843] transition-colors"
+            className="w-full px-4 py-3 rounded-xl border border-[#E4E7EB] bg-white text-[#111] text-sm focus:outline-none focus:border-[#F0B8B8] transition-colors"
           >
             <option value="">{t.selectCoupon}</option>
             {coupons.map((coupon) => (
@@ -111,8 +111,8 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
 
       {/* 금액 요약 */}
       {data.kitId && (
-        <div className="bg-[#F5F0E8] rounded-2xl p-5 space-y-2">
-          <div className="flex justify-between text-sm text-[#7a6a58]">
+        <div className="bg-[#F0F2F5] rounded-2xl p-5 space-y-2">
+          <div className="flex justify-between text-sm text-[#9CA3AF]">
             <span>{t.totalPrice}</span>
             <span>₩{subtotal.toLocaleString()}</span>
           </div>
@@ -122,7 +122,7 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
               <span>−₩{discount.toLocaleString()}</span>
             </div>
           )}
-          <div className="h-px bg-[#e8ddd0] my-2" />
+          <div className="h-px bg-[#E4E7EB] my-2" />
           <div className="flex justify-between font-black text-[#111] text-lg">
             <span>{t.finalPrice}</span>
             <span>₩{total.toLocaleString()}</span>
@@ -134,7 +134,7 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
       <button
         onClick={onNext}
         disabled={!data.kitId}
-        className="w-full py-4 rounded-2xl bg-[#F5F3EF] text-white font-bold text-lg hover:bg-[#243a63] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="w-full py-4 rounded-2xl bg-[#F0F2F5] text-white font-bold text-lg hover:bg-[#243a63] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >
         {t.next} →
       </button>
@@ -160,14 +160,14 @@ function KitCard({
       disabled={!inStock}
       className={`relative w-full text-left p-5 rounded-2xl border-2 transition-all ${
         isSelected
-          ? "border-[#D4A843] bg-[#D4A843]/5"
+          ? "border-[#F0B8B8] bg-[#F0B8B8]/5"
           : inStock
-          ? "border-[#e8ddd0] bg-white hover:border-[#D4A843]/50"
-          : "border-[#e8ddd0] bg-[#F5F0E8] opacity-50 cursor-not-allowed"
+          ? "border-[#E4E7EB] bg-white hover:border-[#F0B8B8]/50"
+          : "border-[#E4E7EB] bg-[#F0F2F5] opacity-50 cursor-not-allowed"
       }`}
     >
       {isSelected && (
-        <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#D4A843] flex items-center justify-center text-white text-xs font-bold">
+        <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#F0B8B8] flex items-center justify-center text-white text-xs font-bold">
           ✓
         </div>
       )}

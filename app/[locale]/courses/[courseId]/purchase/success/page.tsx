@@ -58,14 +58,14 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
 
   if (paymentError) {
     return (
-      <div className="min-h-screen bg-[#F5F0E8] flex items-center justify-center px-8 md:px-10">
+      <div className="min-h-screen bg-[#F0F2F5] flex items-center justify-center px-8 md:px-10">
         <div className="text-center max-w-md">
           <div className="text-5xl mb-4">❌</div>
           <h1 className="text-2xl font-black text-[#111] mb-2">{t("paymentFailed")}</h1>
-          <p className="text-[#7a6a58] mb-8">{paymentError}</p>
+          <p className="text-[#9CA3AF] mb-8">{paymentError}</p>
           <Link
             href={`/${locale}/courses/${courseId}/purchase/fail?orderId=${confirmedOrderId}`}
-            className="px-8 py-3.5 rounded-xl bg-[#F5F3EF] text-white font-bold hover:bg-[#243a63] transition-colors"
+            className="px-8 py-3.5 rounded-xl bg-[#F0F2F5] text-white font-bold hover:bg-[#243a63] transition-colors"
           >
             {t("retryPayment")}
           </Link>
@@ -75,10 +75,10 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
   }
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8] flex items-center justify-center px-8 md:px-10">
+    <div className="min-h-screen bg-[#F0F2F5] flex items-center justify-center px-8 md:px-10">
       <div className="text-center max-w-md">
         {/* 성공 아이콘 */}
-        <div className="w-24 h-24 rounded-full bg-[#D4A843]/20 flex items-center justify-center mx-auto mb-6">
+        <div className="w-24 h-24 rounded-full bg-[#F0B8B8]/20 flex items-center justify-center mx-auto mb-6">
           <span className="text-5xl">🎉</span>
         </div>
 
@@ -87,15 +87,15 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
         </h1>
 
         {confirmedOrderId && (
-          <div className="bg-white rounded-2xl border border-[#e8ddd0] px-5 py-4 mb-6 inline-block">
-            <p className="text-xs text-[#7a6a58] mb-1">{t("orderNumber")}</p>
+          <div className="bg-white rounded-2xl border border-[#E4E7EB] px-5 py-4 mb-6 inline-block">
+            <p className="text-xs text-[#9CA3AF] mb-1">{t("orderNumber")}</p>
             <p className="font-mono font-bold text-[#111] text-sm break-all">
               {confirmedOrderId}
             </p>
           </div>
         )}
 
-        <p className="text-[#7a6a58] mb-10">
+        <p className="text-[#9CA3AF] mb-10">
           {locale === "ko"
             ? "키트가 등록하신 배송지로 발송됩니다. 배송 현황은 마이페이지에서 확인하세요."
             : locale === "ja"
@@ -106,13 +106,13 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
           <Link
             href={`/${locale}/courses/${courseId}#affiliate`}
-            className="px-6 py-3.5 rounded-xl bg-white border border-[#e8ddd0] text-[#111] font-semibold hover:bg-[#F5F0E8] transition-colors"
+            className="px-6 py-3.5 rounded-xl bg-white border border-[#E4E7EB] text-[#111] font-semibold hover:bg-[#F0F2F5] transition-colors"
           >
             🏨 {t("viewRecommendedStay")}
           </Link>
           <Link
             href={`/${locale}/mypage`}
-            className="px-6 py-3.5 rounded-xl bg-[#F5F3EF] text-white font-bold hover:bg-[#243a63] transition-colors"
+            className="px-6 py-3.5 rounded-xl bg-[#F0F2F5] text-white font-bold hover:bg-[#243a63] transition-colors"
           >
             {t("trackShipping")} →
           </Link>
@@ -123,7 +123,7 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
         <div className="mt-6">
           <Link
             href={`/${locale}/courses/${courseId}`}
-            className="text-sm text-[#7a6a58] hover:text-[#111] transition-colors"
+            className="text-sm text-[#9CA3AF] hover:text-[#111] transition-colors"
           >
             ← {t("backToCourse")}
           </Link>

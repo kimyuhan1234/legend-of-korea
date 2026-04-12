@@ -95,12 +95,12 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
   // 플래너 버튼 상태별 스타일
   const plannerBtn = {
     idle: {
-      cls: 'border-[#FF6B35] text-[#FF6B35] hover:bg-[#FFF8F0]',
+      cls: 'border-[#9DD8CE] text-[#9DD8CE] hover:bg-[#FAFBFC]',
       label: tp('addToPlanner'),
       labelShort: tp('addShort'),
     },
     loading: {
-      cls: 'border-[#FFA070] text-[#FFA070] cursor-wait',
+      cls: 'border-[#B8E8E0] text-[#B8E8E0] cursor-wait',
       label: tp('adding'),
       labelShort: tp('adding'),
     },
@@ -134,7 +134,7 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
           </button>
           <Link
             href={href}
-            className="shrink-0 px-4 sm:px-6 py-2.5 rounded-full bg-[#FF6B35] text-white text-xs sm:text-sm font-bold hover:bg-[#E55A2B] transition-colors whitespace-nowrap"
+            className="shrink-0 px-4 sm:px-6 py-2.5 rounded-full bg-[#9DD8CE] text-white text-xs sm:text-sm font-bold hover:bg-[#7BC8BC] transition-colors whitespace-nowrap"
           >
             {t('sticky.buy')}
           </Link>

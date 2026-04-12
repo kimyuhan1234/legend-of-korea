@@ -16,10 +16,10 @@ export function PointsTab({ locale, user }: PointsTabProps) {
     return (
       <div className="text-center py-20">
         <div className="text-5xl mb-4">⚡</div>
-        <p className="text-[#7a6a58] mb-6">{t('loginRequired')}</p>
+        <p className="text-[#9CA3AF] mb-6">{t('loginRequired')}</p>
         <Link
           href={`/${locale}/auth/login`}
-          className="px-6 py-3 bg-[#FF6B35] text-white rounded-full font-bold hover:bg-[#3d2880] transition-colors"
+          className="px-6 py-3 bg-[#9DD8CE] text-white rounded-full font-bold hover:bg-[#374151] transition-colors"
         >
           {t('loginBtn')}
         </Link>

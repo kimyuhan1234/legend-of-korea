@@ -38,7 +38,7 @@ export function HotelInputForm({ planId, initialName, initialAddress, onSaved }:
   }
 
   return (
-    <div className="bg-white rounded-2xl p-5 border border-[#e8ddd0]/40">
+    <div className="bg-white rounded-2xl p-5 border border-[#E4E7EB]/40">
       <p className="text-sm font-black text-[#111] mb-3">🏨 {t('hotel.manual')}</p>
 
       <div className="space-y-3">
@@ -52,7 +52,7 @@ export function HotelInputForm({ planId, initialName, initialAddress, onSaved }:
             onChange={(e) => setName(e.target.value)}
             maxLength={200}
             placeholder="한옥스테이 사로"
-            className="w-full mt-1 px-4 py-2 rounded-xl border border-[#e8ddd0] text-sm focus:border-[#FF6B35] focus:outline-none"
+            className="w-full mt-1 px-4 py-2 rounded-xl border border-[#E4E7EB] text-sm focus:border-[#9DD8CE] focus:outline-none"
           />
         </div>
         <div>
@@ -65,7 +65,7 @@ export function HotelInputForm({ planId, initialName, initialAddress, onSaved }:
             onChange={(e) => setAddress(e.target.value)}
             maxLength={500}
             placeholder="전라북도 전주시 완산구 ..."
-            className="w-full mt-1 px-4 py-2 rounded-xl border border-[#e8ddd0] text-sm focus:border-[#FF6B35] focus:outline-none"
+            className="w-full mt-1 px-4 py-2 rounded-xl border border-[#E4E7EB] text-sm focus:border-[#9DD8CE] focus:outline-none"
           />
         </div>
       </div>
@@ -73,7 +73,7 @@ export function HotelInputForm({ planId, initialName, initialAddress, onSaved }:
       <button
         onClick={handleSave}
         disabled={saving || !name.trim() || !address.trim()}
-        className="w-full mt-4 py-2.5 rounded-full bg-[#FF6B35] text-white text-sm font-bold hover:bg-[#E55A2B] transition-colors disabled:bg-neutral-200 disabled:text-neutral-400"
+        className="w-full mt-4 py-2.5 rounded-full bg-[#9DD8CE] text-white text-sm font-bold hover:bg-[#7BC8BC] transition-colors disabled:bg-neutral-200 disabled:text-neutral-400"
       >
         {saved ? '✓ ' + t('added') : saving ? t('adding') : t('addButton')}
       </button>

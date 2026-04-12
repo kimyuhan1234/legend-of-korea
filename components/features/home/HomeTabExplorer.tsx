@@ -61,12 +61,12 @@ export function HomeTabExplorer() {
 
   return (
     <section
-      className="bg-[#FFF8F0] py-12 md:py-16"
+      className="bg-[#FAFBFC] py-12 md:py-16"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <h2 className="text-center text-xl md:text-2xl font-black text-[#2D1B69] mb-8 md:mb-10">
+        <h2 className="text-center text-xl md:text-2xl font-black text-[#1F2937] mb-8 md:mb-10">
           {t('explore.title')}
         </h2>
 
@@ -83,12 +83,12 @@ export function HomeTabExplorer() {
                   onMouseEnter={() => setActive(i)}
                   className={`relative flex items-center gap-3 px-4 py-3 rounded-xl text-lg font-bold transition-all duration-300 ${
                     isActive
-                      ? 'text-[#FF6B35] bg-[#FF6B35]/5'
+                      ? 'text-[#9DD8CE] bg-[#9DD8CE]/5'
                       : 'text-[#9CA3AF] hover:text-[#6B7280]'
                   }`}
                 >
                   {isActive && (
-                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-7 rounded-r-full bg-[#FF6B35]" />
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-7 rounded-r-full bg-[#9DD8CE]" />
                   )}
                   <span className={`transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
                     ►
@@ -132,7 +132,7 @@ export function HomeTabExplorer() {
               key={active}
               className="animate-fadeSlideUp"
             >
-              <p className="text-sm font-black text-[#FF6B35] uppercase tracking-widest mb-2">
+              <p className="text-sm font-black text-[#9DD8CE] uppercase tracking-widest mb-2">
                 {tab.label}
               </p>
               <h3 className="text-2xl font-black text-[#111] mb-4 leading-snug">
@@ -143,7 +143,7 @@ export function HomeTabExplorer() {
               </p>
               <Link
                 href={`/${locale}${tab.href}`}
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#FF6B35] hover:text-[#E55A2B] transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#9DD8CE] hover:text-[#7BC8BC] transition-colors"
               >
                 {t('explore.more')}
               </Link>
@@ -182,7 +182,7 @@ export function HomeTabExplorer() {
                       </div>
                     </Link>
                     <div className="bg-white rounded-b-2xl p-5">
-                      <p className="text-xs font-black text-[#FF6B35] uppercase tracking-widest mb-1">
+                      <p className="text-xs font-black text-[#9DD8CE] uppercase tracking-widest mb-1">
                         {item.label}
                       </p>
                       <p className="text-sm text-[#374151] leading-relaxed mb-3">
@@ -190,7 +190,7 @@ export function HomeTabExplorer() {
                       </p>
                       <Link
                         href={`/${locale}${item.href}`}
-                        className="text-sm font-bold text-[#FF6B35] hover:text-[#E55A2B]"
+                        className="text-sm font-bold text-[#9DD8CE] hover:text-[#7BC8BC]"
                       >
                         {t('explore.more')}
                       </Link>
@@ -208,7 +208,7 @@ export function HomeTabExplorer() {
                 key={i}
                 onClick={() => { setActive(i); timerResetRef.current += 1 }}
                 className={`w-2 h-2 rounded-full transition-colors ${
-                  i === active ? 'bg-[#FF6B35]' : 'bg-[#D1D5DB]'
+                  i === active ? 'bg-[#9DD8CE]' : 'bg-[#D1D5DB]'
                 }`}
                 aria-label={`Slide ${i + 1}`}
               />

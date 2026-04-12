@@ -16,7 +16,7 @@ interface StoryTabNavProps {
 export function StoryTabNav({ locale, activeTab, tabs }: StoryTabNavProps) {
   const router = useRouter()
   return (
-    <div className="sticky top-16 z-30 bg-white border-b border-[#e8ddd0] shadow-sm">
+    <div className="sticky top-16 z-30 bg-white border-b border-[#E4E7EB] shadow-sm">
       <div className="max-w-5xl mx-auto px-4 flex">
         {tabs.map(tab => (
           <button
@@ -24,8 +24,8 @@ export function StoryTabNav({ locale, activeTab, tabs }: StoryTabNavProps) {
             onClick={() => router.push(`/${locale}/story?tab=${tab.id}`)}
             className={`flex-1 py-4 text-sm font-bold transition-colors border-b-2 ${
               activeTab === tab.id
-                ? 'border-[#2D1B69] text-[#111]'
-                : 'border-transparent text-[#7a6a58] hover:text-[#111]'
+                ? 'border-[#1F2937] text-[#111]'
+                : 'border-transparent text-[#9CA3AF] hover:text-[#111]'
             }`}
           >
             {tab.label}

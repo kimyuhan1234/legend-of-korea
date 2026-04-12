@@ -63,7 +63,7 @@ export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHo
 
   if (plans.length === 0 || plans.every((p) => p.plan_items.length === 0)) {
     return (
-      <div className="bg-white rounded-3xl p-12 text-center border border-[#e8ddd0]/40">
+      <div className="bg-white rounded-3xl p-12 text-center border border-[#E4E7EB]/40">
         <div className="text-5xl mb-4">📋</div>
         <p className="text-[#6B7280]">{t('preview.empty')}</p>
       </div>
@@ -92,7 +92,7 @@ export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHo
 
           return (
             <div key={plan.id} className="relative">
-              <div className={`bg-white rounded-3xl p-6 border border-[#e8ddd0]/40 ${isBlurred ? 'blur-sm pointer-events-none select-none' : ''}`}>
+              <div className={`bg-white rounded-3xl p-6 border border-[#E4E7EB]/40 ${isBlurred ? 'blur-sm pointer-events-none select-none' : ''}`}>
                 <h3 className="text-lg font-bold text-[#111] mb-4 flex items-center gap-2">
                   <span className="text-2xl">{CITY_EMOJI[plan.city_id] || '📍'}</span>
                   <span>{plan.city_id}</span>

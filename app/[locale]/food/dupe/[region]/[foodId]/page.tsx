@@ -80,13 +80,13 @@ export default function FoodDetailPage({ params }: Props) {
         {/* 뒤로가기 */}
         <Link
           href={`/${locale}/food/dupe/${regionCode}`}
-          className="inline-flex items-center text-sm text-[#7a6a58] hover:text-[#111] mb-8 transition-colors"
+          className="inline-flex items-center text-sm text-[#9CA3AF] hover:text-[#111] mb-8 transition-colors"
         >
           {t.backRegion}
         </Link>
 
         {/* 음식 히어로 */}
-        <div className="bg-[#F5F3EF] rounded-3xl overflow-hidden mb-8">
+        <div className="bg-[#F0F2F5] rounded-3xl overflow-hidden mb-8">
           <div className="relative h-56 md:h-72">
             <Image
               src={food.image}
@@ -95,11 +95,11 @@ export default function FoodDetailPage({ params }: Props) {
               className="object-cover opacity-70"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A] via-[#1B2A4A]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1F2937] via-[#1F2937]/40 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {food.tags.map((tag) => (
-                  <span key={tag} className="px-2.5 py-1 rounded-full bg-[#D4A843]/20 border border-[#D4A843]/40 text-xs text-[#D4A843] font-medium">
+                  <span key={tag} className="px-2.5 py-1 rounded-full bg-[#F0B8B8]/20 border border-[#F0B8B8]/40 text-xs text-[#F0B8B8] font-medium">
                     #{tag}
                   </span>
                 ))}
@@ -111,17 +111,17 @@ export default function FoodDetailPage({ params }: Props) {
         </div>
 
         {/* 스토리텔링 */}
-        <div className="bg-[#FFF8EC] border-l-4 border-[#D4A843] pl-5 pr-4 py-5 rounded-r-2xl mb-8">
-          <p className="text-xs font-bold text-[#D4A843] uppercase tracking-wider mb-3">{t.story}</p>
-          <p className="text-[#3a3028] leading-relaxed text-base">{getL(food.storyDescription, locale)}</p>
+        <div className="bg-[#D4F0EB] border-l-4 border-[#F0B8B8] pl-5 pr-4 py-5 rounded-r-2xl mb-8">
+          <p className="text-xs font-bold text-[#F0B8B8] uppercase tracking-wider mb-3">{t.story}</p>
+          <p className="text-[#4B5563] leading-relaxed text-base">{getL(food.storyDescription, locale)}</p>
         </div>
 
         {/* 주요 재료 */}
-        <div className="bg-white rounded-3xl border border-[#e8ddd0] p-6 mb-8">
+        <div className="bg-white rounded-3xl border border-[#E4E7EB] p-6 mb-8">
           <p className="text-sm font-bold text-[#111] mb-5">{t.ingredients}</p>
           <div className="flex flex-wrap gap-2">
             {getLA(food.ingredients, locale).map((item) => (
-              <span key={item} className="px-3 py-1.5 rounded-full bg-[#F5F0E8] text-sm text-[#3a3028]">
+              <span key={item} className="px-3 py-1.5 rounded-full bg-[#F0F2F5] text-sm text-[#4B5563]">
                 {item}
               </span>
             ))}
@@ -138,7 +138,7 @@ export default function FoodDetailPage({ params }: Props) {
               <h2 className="text-lg font-black text-[#111]">🍽️ {t.spotsTitle}</h2>
               <Link
                 href={`/${locale}/food/kfood-spot?city=${food.region}`}
-                className="text-sm text-[#D4A843] font-bold hover:underline"
+                className="text-sm text-[#F0B8B8] font-bold hover:underline"
               >
                 {t.spotsLink}
               </Link>
@@ -147,12 +147,12 @@ export default function FoodDetailPage({ params }: Props) {
               {relatedSpots.map((spot) => (
                 <div
                   key={spot.id}
-                  className="bg-white rounded-2xl border border-[#e8ddd0] p-4 hover:border-[#D4A843]/50 hover:shadow-sm transition-all"
+                  className="bg-white rounded-2xl border border-[#E4E7EB] p-4 hover:border-[#F0B8B8]/50 hover:shadow-sm transition-all"
                 >
                   <p className="font-bold text-[#111] text-sm mb-1">
                     {getL(spot.name, locale)}
                   </p>
-                  <p className="text-xs text-[#7a6a58] line-clamp-2">
+                  <p className="text-xs text-[#9CA3AF] line-clamp-2">
                     {getL(spot.speciality, locale)}
                   </p>
                   <p className="text-xs text-[#b0a090] mt-2">{spot.priceRange} · {spot.openHours}</p>
@@ -163,12 +163,12 @@ export default function FoodDetailPage({ params }: Props) {
         )}
 
         {/* CTA */}
-        <div className="bg-[#1B2A4A] rounded-3xl p-8 text-center">
+        <div className="bg-[#1F2937] rounded-3xl p-8 text-center">
           <p className="text-xl font-black text-white mb-2">{t.tryCta}</p>
           <p className="text-white/60 text-sm mb-6">{t.tryDesc}</p>
           <Link
             href={`/${locale}/courses`}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#D4A843] text-[#111] font-bold hover:bg-[#e0b84e] transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#F0B8B8] text-[#111] font-bold hover:bg-[#F5D0D0] transition-colors"
           >
             {locale === "ko" ? "전주 코스 보러가기 →" : locale === "ja" ? "全州コースを見る →" : "See Jeonju Course →"}
           </Link>

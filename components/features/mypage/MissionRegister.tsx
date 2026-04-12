@@ -33,16 +33,16 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
-          className="w-full py-4 bg-[#FF6B35] text-white rounded-xl font-bold text-base
+          className="w-full py-4 bg-[#9DD8CE] text-white rounded-xl font-bold text-base
                      hover:bg-[#3d2a7a] transition-colors flex items-center justify-center gap-2"
         >
           <span>📝</span>
           {t('registerCompletedMission')}
         </button>
       ) : (
-        <div className="bg-white rounded-xl border-2 border-[#2D1B69] overflow-hidden">
+        <div className="bg-white rounded-xl border-2 border-[#1F2937] overflow-hidden">
           {/* 헤더 */}
-          <div className="bg-[#FF6B35] px-5 py-3 flex items-center justify-between">
+          <div className="bg-[#9DD8CE] px-5 py-3 flex items-center justify-between">
             <h3 className="text-white font-bold text-sm">
               {t('selectCourse')}
             </h3>
@@ -64,7 +64,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                 </p>
                 <Link
                   href={`/${locale}/courses`}
-                  className="inline-block mt-3 px-4 py-2 bg-[#FF6B35] text-white
+                  className="inline-block mt-3 px-4 py-2 bg-[#9DD8CE] text-white
                              rounded-lg text-sm font-medium hover:bg-[#e55a2a] transition-colors"
                 >
                   {t('goToCourses')}
@@ -78,7 +78,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                     onClick={() => setSelectedCourse(course.id)}
                     className={`w-full p-4 rounded-xl border-2 text-left transition-all
                       ${selectedCourse === course.id
-                        ? 'border-[#FF6B35] bg-orange-50 shadow-md'
+                        ? 'border-[#9DD8CE] bg-orange-50 shadow-md'
                         : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
                       }`}
                   >
@@ -95,7 +95,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                         <div className="mt-2 flex items-center gap-2">
                           <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-[#FF6B35] rounded-full transition-all"
+                              className="h-full bg-[#9DD8CE] rounded-full transition-all"
                               style={{
                                 width: `${(course.completedMissions / course.totalMissions) * 100}%`
                               }}
@@ -107,7 +107,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                         </div>
                       </div>
                       {selectedCourse === course.id && (
-                        <span className="text-[#FF6B35] text-xl flex-shrink-0">✓</span>
+                        <span className="text-[#9DD8CE] text-xl flex-shrink-0">✓</span>
                       )}
                     </div>
                   </button>
@@ -116,7 +116,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                 {selectedCourse && (
                   <Link
                     href={`/${locale}/mypage/mission-register/${selectedCourse}`}
-                    className="block w-full py-3.5 bg-[#FF6B35] text-white rounded-xl
+                    className="block w-full py-3.5 bg-[#9DD8CE] text-white rounded-xl
                                font-bold text-center text-sm hover:bg-[#e55a2a]
                                transition-colors mt-4"
                   >

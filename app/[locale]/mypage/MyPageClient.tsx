@@ -457,7 +457,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                     <p className="text-xs text-gray-500">{t('completedMissions')}</p>
                     <p className="text-2xl font-bold text-[#111]">2</p>
                   </div>
-                  <div className="bg-[#FF6B35] rounded-xl p-4 text-center text-white">
+                  <div className="bg-[#9DD8CE] rounded-xl p-4 text-center text-white">
                     <div className="text-2xl mb-1">✅</div>
                     <p className="text-xs text-white/70">{t('earnedLP')}</p>
                     <p className="text-2xl font-bold">600</p>
@@ -560,7 +560,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
               <button
                 onClick={handleSaveProfile}
                 disabled={isSaving || !editNickname.trim()}
-                className="flex-1 py-3 bg-[#FF6B35] text-white rounded-xl font-black
+                className="flex-1 py-3 bg-[#9DD8CE] text-white rounded-xl font-black
                            hover:bg-[#3d2a7a] disabled:opacity-60 disabled:cursor-not-allowed
                            transition-colors text-sm flex items-center justify-center gap-2"
               >

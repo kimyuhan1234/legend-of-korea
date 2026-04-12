@@ -77,7 +77,7 @@ export async function Navbar({ locale }: NavbarProps) {
   const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#e8ddd0]">
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#E4E7EB]">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
         {/* 뒤로가기 및 로고 */}
         <div className="flex items-center gap-2 shrink-0">
@@ -90,7 +90,7 @@ export async function Navbar({ locale }: NavbarProps) {
               fontSize: '22px',
               fontWeight: 400,
               letterSpacing: '2px',
-              color: '#1B2A4A',
+              color: '#1F2937',
               textDecoration: 'none',
             }}
           >
@@ -104,7 +104,7 @@ export async function Navbar({ locale }: NavbarProps) {
             <Link
               key={link.href}
               href={`/${locale}${link.href}`}
-              className="shrink-0 px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-medium text-[#3a3028] hover:bg-[#F5F0E8] hover:text-[#1B2A4A] transition-colors whitespace-nowrap"
+              className="shrink-0 px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-medium text-[#4B5563] hover:bg-[#F0F2F5] hover:text-[#1F2937] transition-colors whitespace-nowrap"
             >
               {link.label}
             </Link>
@@ -126,18 +126,18 @@ export async function Navbar({ locale }: NavbarProps) {
           {user && profile ? (
             <div className="hidden md:flex items-center gap-3">
               {/* LP 뱃지 */}
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1B2A4A]/5 border border-[#1B2A4A]/10">
-                <span className="text-xs text-[#D4A843]">⚡</span>
-                <span className="text-xs font-bold text-[#1B2A4A]">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1F2937]/5 border border-[#1F2937]/10">
+                <span className="text-xs text-[#F0B8B8]">⚡</span>
+                <span className="text-xs font-bold text-[#1F2937]">
                   {profile.total_lp.toLocaleString()} {t.lp}
                 </span>
               </div>
 
               {/* 유저 드롭다운 */}
               <div className="relative group">
-                <button className="flex items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-[#F5F0E8] transition-colors">
+                <button className="flex items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-[#F0F2F5] transition-colors">
                   {/* 아바타 */}
-                  <div className="w-7 h-7 rounded-full bg-[#1B2A4A] flex items-center justify-center text-white text-xs font-bold overflow-hidden">
+                  <div className="w-7 h-7 rounded-full bg-[#1F2937] flex items-center justify-center text-white text-xs font-bold overflow-hidden">
                     {profile.avatar_url ? (
                       <Image
                         src={profile.avatar_url}
@@ -150,23 +150,23 @@ export async function Navbar({ locale }: NavbarProps) {
                       profile.nickname?.[0]?.toUpperCase() || "U"
                     )}
                   </div>
-                  <span className="text-sm font-medium text-[#1B2A4A]">{profile.nickname}</span>
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-[#7a6a58]">
+                  <span className="text-sm font-medium text-[#1F2937]">{profile.nickname}</span>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-[#9CA3AF]">
                     <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </button>
 
                 {/* 드롭다운 메뉴 */}
-                <div className="absolute right-0 top-full mt-2 w-44 bg-white rounded-2xl shadow-lg shadow-[#1B2A4A]/10 border border-[#e8ddd0] overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+                <div className="absolute right-0 top-full mt-2 w-44 bg-white rounded-2xl shadow-lg shadow-[#1F2937]/10 border border-[#E4E7EB] overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
                   <Link
                     href={`/${locale}/mypage`}
-                    className="flex items-center gap-2 px-4 py-3 text-sm text-[#3a3028] hover:bg-[#F5F0E8] transition-colors"
+                    className="flex items-center gap-2 px-4 py-3 text-sm text-[#4B5563] hover:bg-[#F0F2F5] transition-colors"
                   >
                     <span>👤</span> {t.mypage}
                   </Link>
-                  <div className="h-px bg-[#e8ddd0] mx-3" />
+                  <div className="h-px bg-[#E4E7EB] mx-3" />
                   <div className="px-4 py-3">
-                    <LogoutButton locale={locale} className="text-sm text-[#7a6a58] hover:text-red-500 transition-colors w-full text-left flex items-center gap-2" />
+                    <LogoutButton locale={locale} className="text-sm text-[#9CA3AF] hover:text-red-500 transition-colors w-full text-left flex items-center gap-2" />
                   </div>
                 </div>
               </div>
@@ -175,13 +175,13 @@ export async function Navbar({ locale }: NavbarProps) {
             <div className="hidden md:flex items-center gap-2">
               <Link
                 href={`/${locale}/auth/login`}
-                className="px-4 py-2 rounded-xl text-sm font-medium text-[#1B2A4A] hover:bg-[#F5F0E8] transition-colors"
+                className="px-4 py-2 rounded-xl text-sm font-medium text-[#1F2937] hover:bg-[#F0F2F5] transition-colors"
               >
                 {t.login}
               </Link>
               <Link
                 href={`/${locale}/auth/signup`}
-                className="px-4 py-2 rounded-xl text-sm font-semibold bg-[#FF6B35] text-white hover:bg-[#E55A2B] transition-colors"
+                className="px-4 py-2 rounded-xl text-sm font-semibold bg-[#9DD8CE] text-white hover:bg-[#7BC8BC] transition-colors"
               >
                 {t.signup}
               </Link>

@@ -45,9 +45,9 @@ export default async function StoryPage({ params, searchParams }: Props) {
   ]
 
   return (
-    <div className="min-h-screen bg-[#FFF8F0]">
+    <div className="min-h-screen bg-[#FAFBFC]">
       {/* 헤더 */}
-      <div className="bg-[#FF6B35] text-white py-20 md:py-28 px-8 md:px-10 text-center">
+      <div className="bg-[#9DD8CE] text-white py-20 md:py-28 px-8 md:px-10 text-center">
         <h1 className="text-3xl md:text-4xl font-black mb-2">{t('title')}</h1>
         <p className="text-white/70">{t('subtitle')}</p>
       </div>

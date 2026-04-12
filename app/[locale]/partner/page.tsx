@@ -22,13 +22,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function PartnerPage({ params }: Props) {
   const c = CONTENT[params.locale] ?? CONTENT.ko
   return (
-    <div className="min-h-screen bg-[#FFF8F0]">
-      <div className="bg-[#FF6B35] text-white py-20 px-8 text-center">
+    <div className="min-h-screen bg-[#FAFBFC]">
+      <div className="bg-[#9DD8CE] text-white py-20 px-8 text-center">
         <h1 className="text-3xl md:text-4xl font-black">{c.title}</h1>
       </div>
       <div className="max-w-3xl mx-auto px-8 py-16 text-center">
-        <p className="text-[#3a3028] text-lg leading-relaxed mb-6">{c.body}</p>
-        <a href="mailto:hello@legendofkorea.kr" className="inline-block px-8 py-3 rounded-xl bg-[#FF6B35] text-white font-bold hover:bg-[#E55A2B] transition-colors">
+        <p className="text-[#4B5563] text-lg leading-relaxed mb-6">{c.body}</p>
+        <a href="mailto:hello@legendofkorea.kr" className="inline-block px-8 py-3 rounded-xl bg-[#9DD8CE] text-white font-bold hover:bg-[#7BC8BC] transition-colors">
           {c.email}
         </a>
       </div>

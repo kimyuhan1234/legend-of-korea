@@ -50,7 +50,7 @@ export default function RegionFoodsPage({ params }: Props) {
       <FoodTabNav locale={locale} activeTab="dupe" />
 
       {/* 지역 히어로 */}
-      <section className="bg-[#F5F3EF] text-white py-20 md:py-28">
+      <section className="bg-[#F0F2F5] text-white py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-8 md:px-10">
           <Link
             href={`/${locale}/food/dupe`}
@@ -74,7 +74,7 @@ export default function RegionFoodsPage({ params }: Props) {
           <div className="text-center py-20">
             <p className="text-5xl mb-4">🍽️</p>
             <p className="font-bold text-[#111] text-lg mb-2">{t.comingSoon}</p>
-            <Link href={`/${locale}/food/dupe`} className="mt-4 inline-block text-sm text-[#D4A843] hover:underline">
+            <Link href={`/${locale}/food/dupe`} className="mt-4 inline-block text-sm text-[#F0B8B8] hover:underline">
               {t.back}
             </Link>
           </div>
@@ -84,10 +84,10 @@ export default function RegionFoodsPage({ params }: Props) {
               <Link
                 key={food.id}
                 href={`/${locale}/food/dupe/${regionCode}/${food.id}`}
-                className="group bg-white rounded-3xl border border-[#e8ddd0] hover:border-[#D4A843]/50 hover:shadow-md transition-all overflow-hidden"
+                className="group bg-white rounded-3xl border border-[#E4E7EB] hover:border-[#F0B8B8]/50 hover:shadow-md transition-all overflow-hidden"
               >
                 {/* 이미지 */}
-                <div className="relative h-44 bg-gradient-to-br from-[#1B2A4A]/10 to-[#D4A843]/10 overflow-hidden">
+                <div className="relative h-44 bg-gradient-to-br from-[#1F2937]/10 to-[#F0B8B8]/10 overflow-hidden">
                   <Image
                     src={food.image}
                     alt={getL(food.name, locale)}
@@ -107,12 +107,12 @@ export default function RegionFoodsPage({ params }: Props) {
                 {/* 정보 */}
                 <div className="p-4">
                   <h3 className="font-black text-[#111] mb-1">{getL(food.name, locale)}</h3>
-                  <p className="text-xs text-[#D4A843] font-semibold mb-3">{topFlavors(food.tasteProfile, locale)}</p>
+                  <p className="text-xs text-[#F0B8B8] font-semibold mb-3">{topFlavors(food.tasteProfile, locale)}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-[#7a6a58]">
+                    <span className="text-xs text-[#9CA3AF]">
                       {Object.keys(food.dupes).length} {t.dupeCount}
                     </span>
-                    <span className="text-xs text-[#D4A843] group-hover:translate-x-0.5 transition-transform">
+                    <span className="text-xs text-[#F0B8B8] group-hover:translate-x-0.5 transition-transform">
                       {t.viewDetail}
                     </span>
                   </div>

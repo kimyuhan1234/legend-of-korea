@@ -74,8 +74,8 @@ export function AddToPlannerButton({
       : 'px-4 py-2 text-sm font-bold rounded-full'
 
   const stateClasses = {
-    idle: 'bg-[#FF6B35] text-white hover:bg-[#E55A2B]',
-    loading: 'bg-[#FFA070] text-white cursor-wait',
+    idle: 'bg-[#9DD8CE] text-white hover:bg-[#7BC8BC]',
+    loading: 'bg-[#B8E8E0] text-white cursor-wait',
     added: 'bg-emerald-500 text-white',
     'login-required': 'bg-[#9CA3AF] text-white',
   }

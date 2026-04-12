@@ -161,14 +161,14 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
             onClick={() => setRegionFilter('recipe')}
             className={`px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 rounded-xl border-none
               ${regionFilter === 'recipe'
-                ? 'bg-[#E55A2B] text-white ring-2 ring-orange-200'
-                : 'bg-[#FF6B35] text-white hover:bg-[#E55A2B]'
+                ? 'bg-[#7BC8BC] text-white ring-2 ring-orange-200'
+                : 'bg-[#9DD8CE] text-white hover:bg-[#7BC8BC]'
               }`}
           >
             🍳 요리 레시피
           </button>
           <Link href={`/${locale}/community/write`}>
-            <Button className="rounded-xl px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 bg-[#FF6B35] hover:bg-[#E55A2B] text-white border-none">
+            <Button className="rounded-xl px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 bg-[#9DD8CE] hover:bg-[#7BC8BC] text-white border-none">
               <PenLine className="w-4 h-4 mr-2" />
               {t('writePost', { defaultValue: '기록 남기기' })}
             </Button>
@@ -226,7 +226,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
       {/* Mobile FAB */}
       <Link href={`/${locale}/community/write`} className="fixed bottom-24 right-6 md:hidden z-40">
-        <Button size="icon" className="rounded-full shadow-2xl h-14 w-14 p-0 bg-[#FF6B35] hover:bg-[#E55A2B] shadow-orange-100/50 border-4 border-white">
+        <Button size="icon" className="rounded-full shadow-2xl h-14 w-14 p-0 bg-[#9DD8CE] hover:bg-[#7BC8BC] shadow-orange-100/50 border-4 border-white">
           <PenLine className="w-6 h-6 text-white" />
         </Button>
       </Link>

@@ -192,7 +192,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
             <Label className="text-sm font-black text-slate-500 ml-1">태그</Label>
             <div className="min-h-[56px] rounded-2xl border border-slate-100 bg-slate-50/50 p-3 flex flex-wrap gap-2 items-center focus-within:ring-2 focus-within:ring-indigo-100 transition-all">
               {tags.map((tag, i) => (
-                <span key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-orange-50 text-[#FF6B35] rounded-xl text-sm font-bold">
+                <span key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-orange-50 text-[#9DD8CE] rounded-xl text-sm font-bold">
                   {tag.startsWith('#') ? tag : `#${tag}`}
                   <button onClick={() => removeTag(i)} className="hover:bg-orange-200/50 rounded-full p-0.5 transition-colors">
                     <X className="w-3 h-3" />
@@ -215,7 +215,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
           <div className="space-y-4">
             <Label className="text-sm font-black text-slate-500 ml-1 flex justify-between items-center">
               <span>{t('photo')} ({images.length}/5)</span>
-              <span className="text-[10px] text-[#FF6B35] bg-orange-50 px-2 py-0.5 rounded-full">+30 LP</span>
+              <span className="text-[10px] text-[#9DD8CE] bg-orange-50 px-2 py-0.5 rounded-full">+30 LP</span>
             </Label>
             
             <div className="flex flex-wrap gap-4">
@@ -236,7 +236,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
                   onClick={() => fileInputRef.current?.click()}
                   className="w-24 h-24 rounded-2xl bg-slate-50 border-2 border-dashed border-slate-200 flex flex-col items-center justify-center gap-2 hover:bg-slate-100 hover:border-indigo-200 transition-all group"
                 >
-                  <Camera className="w-6 h-6 text-slate-400 group-hover:text-[#FF6B35] group-hover:scale-110 transition-all" />
+                  <Camera className="w-6 h-6 text-slate-400 group-hover:text-[#9DD8CE] group-hover:scale-110 transition-all" />
                   <span className="text-[10px] font-black text-slate-400">사진 추가</span>
                 </button>
               )}
@@ -253,15 +253,15 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
 
           {/* Reward Info */}
           <div className="flex items-center gap-3 p-4 bg-orange-50/30 rounded-2xl border border-orange-100/30">
-            <AlertCircle className="w-5 h-5 text-[#FF6B35]/70" />
-            <p className="text-xs font-bold text-[#FF6B35]/80">
-              이야기를 기록하면 <span className="text-[#FF6B35] font-extrabold">{images.length > 0 ? '50 LP' : '30 LP'}</span>가 즉시 적립됩니다.
+            <AlertCircle className="w-5 h-5 text-[#9DD8CE]/70" />
+            <p className="text-xs font-bold text-[#9DD8CE]/80">
+              이야기를 기록하면 <span className="text-[#9DD8CE] font-extrabold">{images.length > 0 ? '50 LP' : '30 LP'}</span>가 즉시 적립됩니다.
             </p>
           </div>
 
           {/* Submit Button */}
           <Button 
-            className="w-full h-16 rounded-[1.5rem] text-xl font-black bg-[#FF6B35] hover:bg-[#E55A2B] text-white shadow-2xl shadow-orange-200 hover:scale-[1.02] active:scale-[0.98] transition-all border-none"
+            className="w-full h-16 rounded-[1.5rem] text-xl font-black bg-[#9DD8CE] hover:bg-[#7BC8BC] text-white shadow-2xl shadow-orange-200 hover:scale-[1.02] active:scale-[0.98] transition-all border-none"
             disabled={isSubmitting}
             onClick={handleSubmit}
           >

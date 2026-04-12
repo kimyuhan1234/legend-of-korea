@@ -22,7 +22,7 @@ export function PlannerSubscriptionWall({ plans, locale, onSubscribe }: PlannerS
   const t = useTranslations('planner')
 
   return (
-    <section className="bg-gradient-to-b from-[#FFF8F0] to-white rounded-3xl p-6 md:p-10 border border-[#FF6B35]/20">
+    <section className="bg-gradient-to-b from-[#FAFBFC] to-white rounded-3xl p-6 md:p-10 border border-[#9DD8CE]/20">
       <div className="text-center mb-8">
         <h2 className="text-2xl md:text-3xl font-black text-[#111] mb-2">
           {t('subscription.title')}

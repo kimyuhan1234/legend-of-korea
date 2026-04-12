@@ -42,9 +42,9 @@ export default async function SightsPage({ params, searchParams }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-[#FFF8F0]">
+    <div className="min-h-screen bg-[#FAFBFC]">
       {/* 헤더 */}
-      <div className="bg-[#FF6B35] text-white py-20 md:py-28 px-8 md:px-10 text-center">
+      <div className="bg-[#9DD8CE] text-white py-20 md:py-28 px-8 md:px-10 text-center">
         <h1 className="text-3xl md:text-4xl font-black mb-2">{t('title')}</h1>
         <p className="text-white/70">{t('subtitle')}</p>
       </div>
@@ -52,14 +52,14 @@ export default async function SightsPage({ params, searchParams }: Props) {
       <div className="max-w-6xl mx-auto px-8 md:px-10 py-20 md:py-28">
         {/* 지역 필터 */}
         <div className="flex flex-wrap gap-2 mb-4">
-          <a href={`/${locale}/sights`} className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${!region && !category ? 'bg-[#FF6B35] text-white border-[#2D1B69]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#2D1B69]/40'}`}>
+          <a href={`/${locale}/sights`} className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${!region && !category ? 'bg-[#9DD8CE] text-white border-[#1F2937]' : 'bg-white text-[#4B5563] border-[#E4E7EB] hover:border-[#1F2937]/40'}`}>
             {t('filterAll')}
           </a>
           {REGIONS.map(r => {
             const label = r[locale as 'ko' | 'ja' | 'en'] || r.ko
             return (
               <a key={r.code} href={`/${locale}/sights?region=${r.code}${category ? `&category=${category}` : ''}`}
-                className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${region === r.code ? 'bg-[#FF6B35] text-white border-[#2D1B69]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#2D1B69]/40'}`}
+                className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${region === r.code ? 'bg-[#9DD8CE] text-white border-[#1F2937]' : 'bg-white text-[#4B5563] border-[#E4E7EB] hover:border-[#1F2937]/40'}`}
               >
                 {label}
               </a>
@@ -71,7 +71,7 @@ export default async function SightsPage({ params, searchParams }: Props) {
         <div className="flex flex-wrap gap-2 mb-8">
           {(['hotspot', 'landmark', 'festival'] as SightCategory[]).map(cat => (
             <a key={cat} href={`/${locale}/sights?${region ? `region=${region}&` : ''}category=${cat}`}
-              className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${category === cat ? 'bg-[#FF6B35] text-white border-[#FF6B35]' : 'bg-white text-[#3a3028] border-[#e8ddd0] hover:border-[#FF6B35]/40'}`}
+              className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${category === cat ? 'bg-[#9DD8CE] text-white border-[#9DD8CE]' : 'bg-white text-[#4B5563] border-[#E4E7EB] hover:border-[#9DD8CE]/40'}`}
             >
               {CATEGORY_EMOJI[cat]} {CATEGORY_LABELS[cat]}
             </a>
@@ -83,13 +83,13 @@ export default async function SightsPage({ params, searchParams }: Props) {
           <div className="text-center py-20">
             <div className="text-5xl mb-4">🗺️</div>
             <p className="font-bold text-[#111] text-lg mb-2">{t('comingSoon')}</p>
-            <p className="text-[#7a6a58]">{t('comingSoonDesc')}</p>
+            <p className="text-[#9CA3AF]">{t('comingSoonDesc')}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map(sight => (
-              <div key={sight.id} className="bg-white rounded-2xl overflow-hidden border border-[#e8ddd0] shadow-sm hover:shadow-md transition-all group cursor-pointer">
-                <div className="relative h-52 bg-[#F5F0E8]">
+              <div key={sight.id} className="bg-white rounded-2xl overflow-hidden border border-[#E4E7EB] shadow-sm hover:shadow-md transition-all group cursor-pointer">
+                <div className="relative h-52 bg-[#F0F2F5]">
                   <Image
                     src={sight.image}
                     alt={sight.name}
@@ -100,17 +100,17 @@ export default async function SightsPage({ params, searchParams }: Props) {
                     <span className="text-5xl opacity-20">{CATEGORY_EMOJI[sight.category]}</span>
                   </div>
                   <div className="absolute top-3 left-3 flex gap-1.5">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#FF6B35] text-white">
+                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#9DD8CE] text-white">
                       📍 {REGIONS.find(r => r.code === sight.region)?.[locale as 'ko' | 'ja' | 'en'] || sight.region}
                     </span>
-                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#FF6B35] text-white">
+                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#9DD8CE] text-white">
                       {CATEGORY_EMOJI[sight.category]} {CATEGORY_LABELS[sight.category]}
                     </span>
                   </div>
                 </div>
                 <div className="p-5">
                   <h3 className="font-bold text-[#111] mb-2">{sight.name}</h3>
-                  <p className="text-sm text-[#7a6a58] line-clamp-2 mb-4">{sight.description}</p>
+                  <p className="text-sm text-[#9CA3AF] line-clamp-2 mb-4">{sight.description}</p>
                   <AddToPlannerButton
                     itemType="food"
                     cityId={sight.region}

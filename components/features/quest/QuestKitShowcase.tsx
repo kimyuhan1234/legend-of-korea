@@ -53,7 +53,7 @@ export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }:
         <p className="text-center text-[#6B7280] mb-10">{t('kit.subtitle')}</p>
 
         {/* 키트 실사 이미지 */}
-        <div className="relative aspect-[4/3] md:aspect-[16/9] rounded-3xl overflow-hidden mb-12 shadow-[0_12px_40px_rgba(0,0,0,0.12)] bg-[#F5F3EF]">
+        <div className="relative aspect-[4/3] md:aspect-[16/9] rounded-3xl overflow-hidden mb-12 shadow-[0_12px_40px_rgba(0,0,0,0.12)] bg-[#F0F2F5]">
           <Image
             src={kitImage}
             alt="Mission Kit"
@@ -67,7 +67,7 @@ export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }:
         {/* 구성품 그리드 */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
           {KIT_ITEMS.map((item) => (
-            <div key={item.nameKey} className="bg-[#F5F3EF] rounded-2xl p-5 text-center">
+            <div key={item.nameKey} className="bg-[#F0F2F5] rounded-2xl p-5 text-center">
               <div className="text-3xl mb-2">{item.icon}</div>
               <p className="text-sm font-bold text-[#111]">
                 {t(item.nameKey as Parameters<typeof t>[0])}
@@ -86,15 +86,15 @@ export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }:
               : `/${locale}/auth/login?next=/${locale}/courses/${courseId}/purchase?kit=${kit.id}`
 
             return (
-              <div key={kit.id} className="bg-white border-2 border-[#FF6B35]/20 rounded-3xl p-7 text-center hover:border-[#FF6B35] hover:shadow-lg transition-all duration-200">
-                <p className="text-sm font-bold text-[#FF6B35] uppercase tracking-widest mb-2">{label}</p>
+              <div key={kit.id} className="bg-white border-2 border-[#9DD8CE]/20 rounded-3xl p-7 text-center hover:border-[#9DD8CE] hover:shadow-lg transition-all duration-200">
+                <p className="text-sm font-bold text-[#9DD8CE] uppercase tracking-widest mb-2">{label}</p>
                 <p className="text-4xl font-black text-[#111] mb-1">
                   ₩{kit.price.toLocaleString()}
                 </p>
                 <p className="text-xs text-[#6B7280] mb-6">{t('kit.taxIncluded')}</p>
                 <Link
                   href={href}
-                  className="inline-block w-full py-3 rounded-full bg-[#FF6B35] text-white font-bold text-sm hover:bg-[#E55A2B] transition-colors mb-2"
+                  className="inline-block w-full py-3 rounded-full bg-[#9DD8CE] text-white font-bold text-sm hover:bg-[#7BC8BC] transition-colors mb-2"
                 >
                   {t('kit.buy')}
                 </Link>

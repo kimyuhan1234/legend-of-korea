@@ -70,12 +70,12 @@ export default async function PurchasePage({ params }: Props) {
   const courseName = getI18n(courseRes.data.title as I18nText, locale)
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8]">
+    <div className="min-h-screen bg-[#F0F2F5]">
       {/* 헤더 */}
-      <div className="bg-white border-b border-[#e8ddd0]">
+      <div className="bg-white border-b border-[#E4E7EB]">
         <div className="max-w-xl mx-auto px-8 md:px-10 py-4">
           <h1 className="text-lg font-bold text-[#111]">📦 {tObj.stepKit}</h1>
-          <p className="text-sm text-[#7a6a58]">{courseName}</p>
+          <p className="text-sm text-[#9CA3AF]">{courseName}</p>
         </div>
       </div>
 

@@ -36,7 +36,7 @@ export function FoodTabNav({ locale, activeTab }: FoodTabNavProps) {
               href={`/${locale}${tab.href}`}
               className={`px-5 py-4 text-sm font-semibold border-b-2 transition-colors whitespace-nowrap ${
                 activeTab === tab.key
-                  ? "border-[#FF6B35] text-[#FF6B35]"
+                  ? "border-[#9DD8CE] text-[#9DD8CE]"
                   : "border-transparent text-gray-400 hover:text-[#111] hover:border-gray-200"
               }`}
             >

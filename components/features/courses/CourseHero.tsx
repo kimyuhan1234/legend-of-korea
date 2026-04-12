@@ -34,7 +34,7 @@ export function CourseHero({ course, missionCount, locale }: CourseHeroProps) {
   const duration = getI18n(course.duration_text, locale)
 
   return (
-    <section className="relative bg-[#F5F3EF] text-white overflow-hidden">
+    <section className="relative bg-[#F0F2F5] text-white overflow-hidden">
       {/* 배경 이미지 */}
       <div className="absolute inset-0">
         <Image
@@ -45,7 +45,7 @@ export function CourseHero({ course, missionCount, locale }: CourseHeroProps) {
           className="object-cover opacity-30"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#1B2A4A]/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#1F2937]/80" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
@@ -68,15 +68,15 @@ export function CourseHero({ course, missionCount, locale }: CourseHeroProps) {
           <div className="flex flex-wrap gap-6">
             <div>
               <p className="text-white/50 text-xs mb-1">{label.duration}</p>
-              <p className="font-bold text-[#D4A843]">⏱ {duration}</p>
+              <p className="font-bold text-[#F0B8B8]">⏱ {duration}</p>
             </div>
             <div>
               <p className="text-white/50 text-xs mb-1">{label.missions}</p>
-              <p className="font-bold text-[#D4A843]">🎯 {missionCount}{label.missions}</p>
+              <p className="font-bold text-[#F0B8B8]">🎯 {missionCount}{label.missions}</p>
             </div>
             <div>
               <p className="text-white/50 text-xs mb-1">{label.legend}</p>
-              <p className="font-bold text-[#D4A843]">👹 {course.legend_type}</p>
+              <p className="font-bold text-[#F0B8B8]">👹 {course.legend_type}</p>
             </div>
           </div>
         </div>

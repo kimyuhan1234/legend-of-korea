@@ -134,7 +134,7 @@ export function PlannerSpotDistance({
           return (
             <li
               key={spot.id}
-              className="flex items-center gap-3 bg-white rounded-2xl p-4 border border-[#e8ddd0]/40"
+              className="flex items-center gap-3 bg-white rounded-2xl p-4 border border-[#E4E7EB]/40"
             >
               <span className="text-2xl shrink-0">{spot.emoji}</span>
               <div className="flex-1 min-w-0">

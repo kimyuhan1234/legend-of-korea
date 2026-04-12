@@ -28,7 +28,7 @@ export function QuestComparison() {
   }
 
   return (
-    <section className="bg-[#F5F3EF] py-20 md:py-28">
+    <section className="bg-[#F0F2F5] py-20 md:py-28">
       <div className="max-w-5xl mx-auto px-6 md:px-10">
         <h2 className="text-2xl md:text-3xl font-black text-[#111] text-center mb-12">
           {t('comparison.title')}
@@ -49,8 +49,8 @@ export function QuestComparison() {
           </div>
 
           {/* Legend of Korea */}
-          <div className="bg-white rounded-3xl p-7 border-2 border-[#FF6B35] shadow-[0_12px_40px_rgba(255,107,53,0.15)]">
-            <h3 className="text-lg font-bold text-[#FF6B35] mb-5">{t('comparison.legendTitle')}</h3>
+          <div className="bg-white rounded-3xl p-7 border-2 border-[#9DD8CE] shadow-[0_12px_40px_rgba(255,107,53,0.15)]">
+            <h3 className="text-lg font-bold text-[#9DD8CE] mb-5">{t('comparison.legendTitle')}</h3>
             <ul className="space-y-3 mb-6">
               {legendItems.map((key) => (
                 <li key={key} className="flex items-start gap-2 text-sm text-[#374151]">
@@ -61,8 +61,8 @@ export function QuestComparison() {
             </ul>
 
             {/* LP & 6단계 티어 인포그래픽 */}
-            <div className="bg-[#F5F3EF] rounded-2xl p-5">
-              <p className="text-xs font-bold text-[#FF6B35] uppercase tracking-widest mb-4">
+            <div className="bg-[#F0F2F5] rounded-2xl p-5">
+              <p className="text-xs font-bold text-[#9DD8CE] uppercase tracking-widest mb-4">
                 {t('comparison.legend.lp')}
               </p>
 
@@ -76,7 +76,7 @@ export function QuestComparison() {
                     className="absolute -top-1"
                     style={{ left: `${tier.pos}%`, transform: 'translateX(-50%)' }}
                   >
-                    <div className="w-5 h-5 rounded-full bg-white border-2 border-[#FF6B35] flex items-center justify-center text-[10px] shadow-sm">
+                    <div className="w-5 h-5 rounded-full bg-white border-2 border-[#9DD8CE] flex items-center justify-center text-[10px] shadow-sm">
                       {tier.emoji}
                     </div>
                   </div>
@@ -95,7 +95,7 @@ export function QuestComparison() {
                       {t(tier.nameKey as Parameters<typeof t>[0])}
                     </span>
                     <span className="text-[8px] text-[#6B7280]">{tier.lp} LP</span>
-                    <span className="text-[8px] text-[#FF6B35] font-bold">{tier.benefit}</span>
+                    <span className="text-[8px] text-[#9DD8CE] font-bold">{tier.benefit}</span>
                   </div>
                 ))}
               </div>
@@ -107,7 +107,7 @@ export function QuestComparison() {
 
             <button
               onClick={scrollToKit}
-              className="w-full mt-5 py-3 rounded-full bg-[#FF6B35] text-white font-bold text-sm hover:bg-[#E55A2B] transition-colors"
+              className="w-full mt-5 py-3 rounded-full bg-[#9DD8CE] text-white font-bold text-sm hover:bg-[#7BC8BC] transition-colors"
             >
               {t('comparison.cta')}
             </button>

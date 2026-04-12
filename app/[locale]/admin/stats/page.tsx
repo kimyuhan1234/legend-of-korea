@@ -76,7 +76,7 @@ export default function AdminStatsPage() {
     return acc
   }, [])
 
-  const COLORS = ['#1B2A4A', '#D4A843', '#3B82F6', '#10B981', '#F59E0B']
+  const COLORS = ['#1F2937', '#F0B8B8', '#3B82F6', '#10B981', '#F59E0B']
 
   return (
     <div className="space-y-8 pb-12">
@@ -149,7 +149,7 @@ export default function AdminStatsPage() {
         <Card className="border-none shadow-sm bg-white rounded-3xl">
           <CardHeader className="p-8 pb-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-[#F5F3EF] text-[#D4A843] rounded-lg">
+              <div className="p-2 bg-[#F0F2F5] text-[#F0B8B8] rounded-lg">
                 <Target className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-black text-[#111]">코스별 판매량 비중</CardTitle>
@@ -166,14 +166,14 @@ export default function AdminStatsPage() {
                     type="category" 
                     axisLine={false} 
                     tickLine={false} 
-                    tick={{ fontSize: 11, fontWeight: 'bold', fill: '#1B2A4A' }}
+                    tick={{ fontSize: 11, fontWeight: 'bold', fill: '#1F2937' }}
                     width={100}
                   />
                   <Tooltip 
                     cursor={{ fill: '#F8FAFC' }}
                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                   />
-                  <Bar dataKey="sales" fill="#1B2A4A" radius={[0, 8, 8, 0]} barSize={24} />
+                  <Bar dataKey="sales" fill="#1F2937" radius={[0, 8, 8, 0]} barSize={24} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -230,43 +230,43 @@ export default function AdminStatsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
          {/* Affiliate Stats Summary */}
-         <Card className="border-none shadow-sm bg-[#F5F3EF] text-white rounded-3xl overflow-hidden">
+         <Card className="border-none shadow-sm bg-[#F0F2F5] text-white rounded-3xl overflow-hidden">
           <CardContent className="p-8">
             <div className="flex items-center justify-between mb-8">
-              <div className="p-3 bg-white/10 rounded-2xl text-[#D4A843]">
+              <div className="p-3 bg-white/10 rounded-2xl text-[#F0B8B8]">
                 <MousePointer2 className="w-6 h-6" />
               </div>
-              <Badge className="bg-[#D4A843] text-[#111] font-black border-none">LIVE PERFORMANCE</Badge>
+              <Badge className="bg-[#F0B8B8] text-[#111] font-black border-none">LIVE PERFORMANCE</Badge>
             </div>
             <div className="space-y-1">
               <p className="text-slate-400 font-bold">총 제휴 링크 클릭</p>
-              <h2 className="text-4xl font-black">{data.affiliate.length.toLocaleString()} <span className="text-lg font-medium text-[#D4A843]">Clicks</span></h2>
+              <h2 className="text-4xl font-black">{data.affiliate.length.toLocaleString()} <span className="text-lg font-medium text-[#F0B8B8]">Clicks</span></h2>
             </div>
             <div className="mt-8 p-4 bg-white/5 rounded-2xl border border-white/10">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-slate-300">최근 클릭 (Today)</span>
-                <span className="text-sm font-black text-[#D4A843]">+{Math.floor(data.affiliate.length * 0.1)}</span>
+                <span className="text-sm font-black text-[#F0B8B8]">+{Math.floor(data.affiliate.length * 0.1)}</span>
               </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Mission Completion Stats */}
-        <Card className="border-none shadow-sm bg-[#D4A843] text-[#111] rounded-3xl overflow-hidden">
+        <Card className="border-none shadow-sm bg-[#F0B8B8] text-[#111] rounded-3xl overflow-hidden">
           <CardContent className="p-8">
             <div className="flex items-center justify-between mb-8">
-              <div className="p-3 bg-[#F5F3EF]/10 rounded-2xl text-[#111]">
+              <div className="p-3 bg-[#F0F2F5]/10 rounded-2xl text-[#111]">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <Badge className="bg-[#F5F3EF] text-white font-black border-none">USER ENGAGEMENT</Badge>
+              <Badge className="bg-[#F0F2F5] text-white font-black border-none">USER ENGAGEMENT</Badge>
             </div>
             <div className="space-y-1">
               <p className="font-bold opacity-70">총 미션 수행 기록</p>
               <h2 className="text-4xl font-black">{data.missions.length.toLocaleString()} <span className="text-lg font-medium opacity-70">Actions</span></h2>
             </div>
             <div className="mt-8 flex items-center gap-4">
-              <div className="flex-1 h-3 bg-[#F5F3EF]/10 rounded-full overflow-hidden">
-                <div className="h-full bg-[#F5F3EF] rounded-full" style={{ width: '75%' }} />
+              <div className="flex-1 h-3 bg-[#F0F2F5]/10 rounded-full overflow-hidden">
+                <div className="h-full bg-[#F0F2F5] rounded-full" style={{ width: '75%' }} />
               </div>
               <span className="font-black text-sm">75% Completion</span>
             </div>

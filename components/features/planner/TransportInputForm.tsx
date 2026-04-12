@@ -96,7 +96,7 @@ export function TransportInputForm({ cityId, locale }: TransportInputFormProps) 
   }
 
   return (
-    <div className="bg-white rounded-2xl p-5 border border-[#e8ddd0]/40">
+    <div className="bg-white rounded-2xl p-5 border border-[#E4E7EB]/40">
       <p className="text-sm font-black text-[#111] mb-4">🚄 {t('transport.title')}</p>
 
       {/* 우리가 제공하는 교통 옵션 (읽기 전용) */}
@@ -109,8 +109,8 @@ export function TransportInputForm({ cityId, locale }: TransportInputFormProps) 
               onClick={() => setSelectedType(opt.type)}
               className={`p-3 rounded-xl border-2 text-left transition-all ${
                 active
-                  ? 'border-[#FF6B35] bg-[#FFF8F0]'
-                  : 'border-[#e8ddd0]/60 hover:border-[#FF6B35]/40'
+                  ? 'border-[#9DD8CE] bg-[#FAFBFC]'
+                  : 'border-[#E4E7EB]/60 hover:border-[#9DD8CE]/40'
               }`}
             >
               <div className="flex items-center gap-2 mb-1">
@@ -132,7 +132,7 @@ export function TransportInputForm({ cityId, locale }: TransportInputFormProps) 
 
       {selectedOption && (
         <>
-          <div className="bg-[#F5F3EF] rounded-xl p-3 mb-4 text-xs text-[#374151] space-y-1">
+          <div className="bg-[#F0F2F5] rounded-xl p-3 mb-4 text-xs text-[#374151] space-y-1">
             <p>
               <span className="text-[#6B7280]">출발지:</span> 서울
             </p>
@@ -148,7 +148,7 @@ export function TransportInputForm({ cityId, locale }: TransportInputFormProps) 
               href={selectedOption.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-2 px-3 py-1 rounded-full bg-[#FF6B35] text-white text-[10px] font-bold hover:bg-[#E55A2B]"
+              className="inline-block mt-2 px-3 py-1 rounded-full bg-[#9DD8CE] text-white text-[10px] font-bold hover:bg-[#7BC8BC]"
             >
               {t('transport.ticket')} ↗
             </a>
@@ -164,7 +164,7 @@ export function TransportInputForm({ cityId, locale }: TransportInputFormProps) 
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full mt-1 px-3 py-2 rounded-xl border border-[#e8ddd0] text-xs focus:border-[#FF6B35] focus:outline-none"
+                className="w-full mt-1 px-3 py-2 rounded-xl border border-[#E4E7EB] text-xs focus:border-[#9DD8CE] focus:outline-none"
               />
             </div>
             <div>
@@ -175,21 +175,21 @@ export function TransportInputForm({ cityId, locale }: TransportInputFormProps) 
                 type="time"
                 value={departureTime}
                 onChange={(e) => setDepartureTime(e.target.value)}
-                className="w-full mt-1 px-3 py-2 rounded-xl border border-[#e8ddd0] text-xs focus:border-[#FF6B35] focus:outline-none"
+                className="w-full mt-1 px-3 py-2 rounded-xl border border-[#E4E7EB] text-xs focus:border-[#9DD8CE] focus:outline-none"
               />
             </div>
             <div>
               <label className="text-[10px] font-black text-[#9CA3AF] uppercase tracking-widest">
                 {t('transport.arrival')}
               </label>
-              <div className="mt-1 px-3 py-2 rounded-xl border border-[#e8ddd0] text-xs bg-[#F5F3EF] font-bold">
+              <div className="mt-1 px-3 py-2 rounded-xl border border-[#E4E7EB] text-xs bg-[#F0F2F5] font-bold">
                 {arrivalTime}
               </div>
             </div>
           </div>
 
           {/* 도착 후 안내 (택시 금액 없음) */}
-          <div className="bg-[#FFF8F0] border border-[#FF6B35]/20 rounded-xl p-3 mb-4 text-xs text-[#374151]">
+          <div className="bg-[#FAFBFC] border border-[#9DD8CE]/20 rounded-xl p-3 mb-4 text-xs text-[#374151]">
             🚕{' '}
             {t('transport.taxiNote', { min: route.lastMile.taxi.minutes })}
           </div>
@@ -202,7 +202,7 @@ export function TransportInputForm({ cityId, locale }: TransportInputFormProps) 
                 ? 'bg-emerald-500 text-white'
                 : !date
                   ? 'bg-neutral-100 text-neutral-400 cursor-not-allowed'
-                  : 'bg-[#FF6B35] text-white hover:bg-[#E55A2B]'
+                  : 'bg-[#9DD8CE] text-white hover:bg-[#7BC8BC]'
             }`}
           >
             {state === 'added'

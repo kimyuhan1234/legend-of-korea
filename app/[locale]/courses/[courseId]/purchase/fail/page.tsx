@@ -76,7 +76,7 @@ function FailContent({ locale, courseId }: { locale: string; courseId: string })
   const isUserCancelled = code === "PAY_PROCESS_CANCELED" || code === "CANCELED_PAYMENT"
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8] flex items-center justify-center px-8 md:px-10">
+    <div className="min-h-screen bg-[#F0F2F5] flex items-center justify-center px-8 md:px-10">
       <div className="text-center max-w-md">
         <div className="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-6">
           <span className="text-4xl">{isUserCancelled ? "🙅" : "😞"}</span>
@@ -91,20 +91,20 @@ function FailContent({ locale, courseId }: { locale: string; courseId: string })
           {!isUserCancelled && (
             <Link
               href={`/${locale}/courses/${courseId}/purchase`}
-              className="px-8 py-3.5 rounded-xl bg-[#D4A843] text-[#111] font-bold hover:bg-[#e0b84e] transition-colors"
+              className="px-8 py-3.5 rounded-xl bg-[#F0B8B8] text-[#111] font-bold hover:bg-[#F5D0D0] transition-colors"
             >
               {label.retry}
             </Link>
           )}
           <Link
             href={`/${locale}/courses/${courseId}/purchase`}
-            className="px-8 py-3.5 rounded-xl bg-[#F5F3EF] text-white font-bold hover:bg-[#243a63] transition-colors"
+            className="px-8 py-3.5 rounded-xl bg-[#F0F2F5] text-white font-bold hover:bg-[#243a63] transition-colors"
           >
             {label.otherMethod}
           </Link>
           <Link
             href={`/${locale}/courses/${courseId}`}
-            className="px-8 py-3.5 rounded-xl bg-white border border-[#e8ddd0] text-[#111] font-semibold hover:bg-[#F5F0E8] transition-colors"
+            className="px-8 py-3.5 rounded-xl bg-white border border-[#E4E7EB] text-[#111] font-semibold hover:bg-[#F0F2F5] transition-colors"
           >
             ← {label.back}
           </Link>
@@ -117,7 +117,7 @@ function FailContent({ locale, courseId }: { locale: string; courseId: string })
 export default function PurchaseFailPage({ params }: Props) {
   const { locale, courseId } = params
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#F5F0E8]" />}>
+    <Suspense fallback={<div className="min-h-screen bg-[#F0F2F5]" />}>
       <FailContent locale={locale} courseId={courseId} />
     </Suspense>
   )

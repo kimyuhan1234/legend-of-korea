@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Playfair_Display } from "next/font/google"
 import "./globals.css"
 
 // 과거 next-pwa 로 등록됐던 service worker 와 workbox 캐시를 제거한다.
@@ -19,7 +19,8 @@ const SW_CLEANUP_SCRIPT = `
 })();
 `.trim()
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" })
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" })
 
 export const metadata: Metadata = {
   title: "Legend of Korea | 한국의 전설을 따라서",
@@ -38,11 +39,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <script dangerouslySetInnerHTML={{ __html: SW_CLEANUP_SCRIPT }} />
         {children}
       </body>

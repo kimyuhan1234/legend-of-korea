@@ -21,7 +21,7 @@ export function GoodsGrid({ locale }: GoodsGridProps) {
   }, [selected])
 
   return (
-    <div className="min-h-screen bg-[#FAFAF9]">
+    <div className="min-h-screen bg-[#FAFBFC]">
       <GoodsHero />
 
       <main className="max-w-5xl mx-auto px-4 md:px-8 py-12 space-y-6">

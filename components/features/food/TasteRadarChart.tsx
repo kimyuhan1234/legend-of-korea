@@ -39,7 +39,7 @@ export function TasteRadarChart({
   profile,
   locale,
   size = 160,
-  color = "#D4A843",
+  color = "#F0B8B8",
 }: TasteRadarChartProps) {
   const axes = AXES[locale as keyof typeof AXES] || AXES.ko
   const cx = size / 2
@@ -92,14 +92,14 @@ export function TasteRadarChart({
       <path
         d={toPath(angles.map((a) => ({ x: cx + innerR60 * Math.cos(toRad(a)), y: cy + innerR60 * Math.sin(toRad(a)) })))}
         fill="none"
-        stroke="#e8ddd0"
+        stroke="#E4E7EB"
         strokeWidth="0.5"
       />
       {/* 배경 오각형 */}
-      <path d={toPath(bgPoints)} fill="#F5F0E8" stroke="#e8ddd0" strokeWidth="1" />
+      <path d={toPath(bgPoints)} fill="#F0F2F5" stroke="#E4E7EB" strokeWidth="1" />
       {/* 축 선 */}
       {bgPoints.map((p, i) => (
-        <line key={i} x1={cx} y1={cy} x2={p.x.toFixed(1)} y2={p.y.toFixed(1)} stroke="#e8ddd0" strokeWidth="0.5" />
+        <line key={i} x1={cx} y1={cy} x2={p.x.toFixed(1)} y2={p.y.toFixed(1)} stroke="#E4E7EB" strokeWidth="0.5" />
       ))}
       {/* 데이터 폴리곤 */}
       <path
@@ -125,7 +125,7 @@ export function TasteRadarChart({
             textAnchor="middle"
             dominantBaseline="middle"
             fontSize={size * 0.095}
-            fill="#1B2A4A"
+            fill="#1F2937"
             fontWeight="600"
             fontFamily="sans-serif"
           >

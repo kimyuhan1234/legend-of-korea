@@ -38,7 +38,7 @@ export function StayPageClient({ locale }: StayPageClientProps) {
   }, [selectedCity, selectedType, selectedVibes])
 
   return (
-    <div className="min-h-screen bg-[#FAFAF9]">
+    <div className="min-h-screen bg-[#FAFBFC]">
       <StayHero />
 
       <main className="max-w-5xl mx-auto px-4 md:px-8 py-12 space-y-8">

@@ -342,7 +342,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   }
 
   return (
-    <div className="bg-[#FAFAF9] min-h-screen">
+    <div className="bg-[#FAFBFC] min-h-screen">
       <PlannerHero itemCount={totalItems} />
 
       {/* 성공 토스트 */}

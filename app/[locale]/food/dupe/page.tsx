@@ -57,10 +57,10 @@ export default function DupePage({ params }: Props) {
       <FoodTabNav locale={locale} activeTab="dupe" />
 
       {/* 히어로 */}
-      <section className="bg-[#1B2A4A] text-white py-14">
+      <section className="bg-[#1F2937] text-white py-14">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4A843]/20 border border-[#D4A843]/30 mb-5">
-            <span className="text-[#D4A843] text-sm font-medium">{h.badge}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F0B8B8]/20 border border-[#F0B8B8]/30 mb-5">
+            <span className="text-[#F0B8B8] text-sm font-medium">{h.badge}</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-black mb-4 whitespace-pre-line">{h.title}</h1>
           <p className="text-white/70 text-lg whitespace-pre-line max-w-xl mx-auto">{h.subtitle}</p>
@@ -74,7 +74,7 @@ export default function DupePage({ params }: Props) {
             <Link
               key={region.code}
               href={`/${locale}/food/dupe/${region.code}`}
-              className="group bg-white rounded-3xl border border-[#e8ddd0] hover:border-[#D4A843]/50 hover:shadow-md transition-all overflow-hidden"
+              className="group bg-white rounded-3xl border border-[#E4E7EB] hover:border-[#F0B8B8]/50 hover:shadow-md transition-all overflow-hidden"
             >
               {/* 지역 이미지 */}
               <div className="relative h-44 overflow-hidden">
@@ -84,25 +84,25 @@ export default function DupePage({ params }: Props) {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A]/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1F2937]/60 to-transparent" />
                 <span className="absolute bottom-3 left-4 text-3xl">{region.icon}</span>
               </div>
               <div className="p-5">
-                <h2 className="text-xl font-black text-[#1B2A4A] mb-1">
+                <h2 className="text-xl font-black text-[#1F2937] mb-1">
                   {getL(region.name, locale)}
                 </h2>
-                <p className="text-sm text-[#7a6a58] leading-relaxed mb-4">
+                <p className="text-sm text-[#9CA3AF] leading-relaxed mb-4">
                   {getL(region.description, locale)}
                 </p>
                 {region.foods.length > 0 ? (
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#D4A843]">
+                    <span className="text-xs font-bold text-[#F0B8B8]">
                       {region.foods.length}{locale === "ko" ? "가지 음식" : locale === "ja" ? "品" : " dishes"}
                     </span>
-                    <span className="text-[#D4A843] group-hover:translate-x-1 transition-transform">→</span>
+                    <span className="text-[#F0B8B8] group-hover:translate-x-1 transition-transform">→</span>
                   </div>
                 ) : (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#F5F0E8] text-xs text-[#7a6a58] font-medium">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#F0F2F5] text-xs text-[#9CA3AF] font-medium">
                     🕐 {comingSoon}
                   </span>
                 )}

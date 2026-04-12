@@ -16,7 +16,7 @@ export default function RootLoading() {
           height: '6rem',
           borderRadius: '50%',
           border: '4px solid #f3f4f6',
-          borderTopColor: '#FF6B35',
+          borderTopColor: '#9DD8CE',
           animation: 'spin 1s linear infinite',
         }} />
         <div style={{

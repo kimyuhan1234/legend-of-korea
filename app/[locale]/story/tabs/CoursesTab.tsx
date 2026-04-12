@@ -39,7 +39,7 @@ export async function CoursesTab({ locale }: CoursesTabProps) {
 
   if (courses.length === 0) {
     return (
-      <div className="text-center py-20 text-[#7a6a58]">
+      <div className="text-center py-20 text-[#9CA3AF]">
         <div className="text-5xl mb-4">🌙</div>
         <p>{label.empty}</p>
       </div>

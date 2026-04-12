@@ -84,9 +84,9 @@ export function DiyWorkshopDirectory() {
   })
 
   return (
-    <div className="min-h-screen bg-[#FAFAF9]">
+    <div className="min-h-screen bg-[#FAFBFC]">
       {/* ── 헤더 ─────────────────────────────── */}
-      <div className="bg-gradient-to-br from-[#FF6B35] to-[#E55A2B] text-white py-16 px-6 md:px-10 text-center">
+      <div className="bg-gradient-to-br from-[#9DD8CE] to-[#7BC8BC] text-white py-16 px-6 md:px-10 text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-xs font-black uppercase tracking-widest mb-4">
           DIY
         </span>
@@ -122,7 +122,7 @@ export function DiyWorkshopDirectory() {
               className={[
                 'shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all',
                 selectedCategory === cat
-                  ? 'bg-[#FF6B35] text-white'
+                  ? 'bg-[#9DD8CE] text-white'
                   : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200',
               ].join(' ')}
             >
@@ -163,7 +163,7 @@ export function DiyWorkshopDirectory() {
                     href={w.bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 text-center px-4 py-2 rounded-full bg-[#FF6B35] text-white text-xs font-bold hover:bg-[#E55A2B] transition-colors"
+                    className="flex-1 text-center px-4 py-2 rounded-full bg-[#9DD8CE] text-white text-xs font-bold hover:bg-[#7BC8BC] transition-colors"
                   >
                     {t('book')} ↗
                   </a>

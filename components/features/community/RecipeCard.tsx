@@ -67,7 +67,7 @@ function TastePentagon({ profile }: { profile: NonNullable<RecipeType['taste_pro
         const angle = (-Math.PI / 2) + (2 * Math.PI / 5) * i;
         return <line key={i} x1={cx} y1={cy} x2={cx + R * Math.cos(angle)} y2={cy + R * Math.sin(angle)} stroke="#e5e7eb" strokeWidth={0.8} />;
       })}
-      <polygon points={dataPoints} fill="rgba(255,107,53,0.25)" stroke="#FF6B35" strokeWidth={1.5} strokeLinejoin="round" />
+      <polygon points={dataPoints} fill="rgba(255,107,53,0.25)" stroke="#9DD8CE" strokeWidth={1.5} strokeLinejoin="round" />
     </svg>
   );
 }
@@ -125,7 +125,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
         {allIngredients.length > 0 && (
           <div className="flex flex-wrap gap-1">
             {allIngredients.map((ing, i) => (
-              <span key={i} className="text-xs bg-[#FF6B35]/8 text-[#111] px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+              <span key={i} className="text-xs bg-[#9DD8CE]/8 text-[#111] px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
                 {ing}
               </span>
             ))}

@@ -260,7 +260,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               <div className="flex items-center gap-2 flex-wrap">
                 <p className="font-bold text-slate-800 text-sm">{post.user?.nickname || 'Unknown'}</p>
                 {post.region && post.region !== 'all' && (
-                  <span className="inline-flex items-center gap-0.5 bg-orange-50 text-[#FF6B35] rounded-full px-2 py-0.5 text-xs font-medium">
+                  <span className="inline-flex items-center gap-0.5 bg-orange-50 text-[#9DD8CE] rounded-full px-2 py-0.5 text-xs font-medium">
                     <MapPin className="w-3 h-3" />
                     {regionName}
                   </span>
@@ -350,7 +350,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               <button
                 onClick={saveEdit}
                 disabled={editSaving}
-                className="flex-1 py-2.5 bg-[#FF6B35] text-white rounded-xl text-sm font-bold hover:bg-[#3d2a7a] disabled:opacity-60 transition-colors"
+                className="flex-1 py-2.5 bg-[#9DD8CE] text-white rounded-xl text-sm font-bold hover:bg-[#3d2a7a] disabled:opacity-60 transition-colors"
               >
                 {editSaving ? '저장 중...' : t('saveButton')}
               </button>
@@ -407,7 +407,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
             {post.tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="text-xs font-medium text-[#111] bg-[#FF6B35]/10 rounded-full px-2.5 py-0.5"
+                className="text-xs font-medium text-[#111] bg-[#9DD8CE]/10 rounded-full px-2.5 py-0.5"
               >
                 {tag.startsWith('#') ? tag : `#${tag}`}
               </span>
@@ -476,7 +476,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               <button
                 type="submit"
                 disabled={!commentText.trim() || commentSubmitting}
-                className="px-3 py-2 bg-[#FF6B35] text-white rounded-xl hover:bg-[#3d2a7a] disabled:opacity-50 transition-colors"
+                className="px-3 py-2 bg-[#9DD8CE] text-white rounded-xl hover:bg-[#3d2a7a] disabled:opacity-50 transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>

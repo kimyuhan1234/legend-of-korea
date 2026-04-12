@@ -54,7 +54,7 @@ export default function AdminLayout({ children, params }: AdminLayoutProps) {
 
       {/* Sidebar */}
       <aside className={`
-        fixed inset-y-0 left-0 z-50 w-72 bg-[#F5F3EF] text-white transition-transform duration-300 ease-in-out transform
+        fixed inset-y-0 left-0 z-50 w-72 bg-[#F0F2F5] text-white transition-transform duration-300 ease-in-out transform
         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:relative lg:translate-x-0 border-r border-slate-800
       `}>
@@ -62,7 +62,7 @@ export default function AdminLayout({ children, params }: AdminLayoutProps) {
           {/* Logo Section */}
           <div className="p-6 flex items-center justify-between">
             <Link href={`/${locale}`} className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-[#D4A843] flex items-center justify-center font-black text-[#111]">
+              <div className="w-8 h-8 rounded-lg bg-[#F0B8B8] flex items-center justify-center font-black text-[#111]">
                 L
               </div>
               <span className="font-black text-xl tracking-tighter">LOK ADMIN</span>
@@ -85,7 +85,7 @@ export default function AdminLayout({ children, params }: AdminLayoutProps) {
                   className={`
                     flex items-center gap-3 px-4 py-3 rounded-xl transition-all group
                     ${active 
-                      ? 'bg-[#D4A843] text-[#111] font-bold shadow-lg shadow-[#D4A843]/20' 
+                      ? 'bg-[#F0B8B8] text-[#111] font-bold shadow-lg shadow-[#F0B8B8]/20' 
                       : 'hover:bg-white/5 text-slate-400 hover:text-white'}
                   `}
                 >
@@ -127,7 +127,7 @@ export default function AdminLayout({ children, params }: AdminLayoutProps) {
               <p className="text-sm font-bold text-[#111]">관리자</p>
               <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black">Super Admin</p>
             </div>
-            <div className="w-10 h-10 rounded-full bg-[#F5F3EF] text-[#D4A843] flex items-center justify-center font-black ring-2 ring-slate-100">
+            <div className="w-10 h-10 rounded-full bg-[#F0F2F5] text-[#F0B8B8] flex items-center justify-center font-black ring-2 ring-slate-100">
               A
             </div>
           </div>

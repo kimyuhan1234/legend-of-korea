@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       template: "%s | Legend of Korea",
     },
     description: descriptions[locale] || descriptions.ko,
-    themeColor: "#FF6B35",
+    themeColor: "#9DD8CE",
     viewport: "width=device-width, initial-scale=1, maximum-scale=1",
     formatDetection: { telephone: false },
     openGraph: {

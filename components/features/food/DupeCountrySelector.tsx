@@ -54,8 +54,8 @@ const UI = {
 
 function similarityColor(pct: number): string {
   if (pct >= 80) return 'bg-emerald-500'
-  if (pct >= 70) return 'bg-[#D4A843]'
-  return 'bg-[#7a6a58]'
+  if (pct >= 70) return 'bg-[#F0B8B8]'
+  return 'bg-[#9CA3AF]'
 }
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
@@ -98,8 +98,8 @@ export function DupeCountrySelector({ food, locale }: Props) {
                     onClick={() => setSelected(c.code)}
                     className={`flex flex-col items-center gap-1 px-3 py-2.5 rounded-2xl border transition-all flex-shrink-0 ${
                       isSelected
-                        ? 'bg-[#1B2A4A] border-[#1B2A4A] text-white shadow-md'
-                        : 'bg-white border-[#e8ddd0] text-[#7a6a58] hover:border-[#D4A843]/60 hover:bg-[#FFFBF5]'
+                        ? 'bg-[#1F2937] border-[#1F2937] text-white shadow-md'
+                        : 'bg-white border-[#E4E7EB] text-[#9CA3AF] hover:border-[#F0B8B8]/60 hover:bg-[#FFFBF5]'
                     }`}
                   >
                     <span className="text-xl leading-none">{c.flag}</span>
@@ -107,7 +107,7 @@ export function DupeCountrySelector({ food, locale }: Props) {
                     {/* 데이터 있음 표시 점 */}
                     <span
                       className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                        hasData ? 'bg-[#D4A843]' : isSelected ? 'bg-white/30' : 'bg-[#e8ddd0]'
+                        hasData ? 'bg-[#F0B8B8]' : isSelected ? 'bg-white/30' : 'bg-[#E4E7EB]'
                       }`}
                     />
                   </button>
@@ -118,13 +118,13 @@ export function DupeCountrySelector({ food, locale }: Props) {
 
           {/* 조건 A: 데이터 있음 */}
           {dupe ? (
-            <div className="bg-white rounded-3xl border border-[#e8ddd0] overflow-hidden">
+            <div className="bg-white rounded-3xl border border-[#E4E7EB] overflow-hidden">
               {/* 헤더 */}
-              <div className="flex items-center gap-4 px-6 py-5 border-b border-[#F5F0E8]">
+              <div className="flex items-center gap-4 px-6 py-5 border-b border-[#F0F2F5]">
                 <span className="text-4xl">{country.flag}</span>
                 <div className="flex-1 min-w-0">
                   <p className="font-black text-[#111] truncate">{getL(dupe.name, locale)}</p>
-                  <p className="text-xs text-[#7a6a58]">{getL(country.name, locale)}</p>
+                  <p className="text-xs text-[#9CA3AF]">{getL(country.name, locale)}</p>
                   <p className="text-xs text-[#b0a090] mt-0.5 line-clamp-1">{getL(dupe.description, locale)}</p>
                 </div>
                 <div className="flex flex-col items-center flex-shrink-0">
@@ -135,27 +135,27 @@ export function DupeCountrySelector({ food, locale }: Props) {
                   >
                     <span className="text-white text-sm font-black">{dupe.similarityPercent}%</span>
                   </div>
-                  <p className="text-[10px] text-[#7a6a58] mt-1">{t.similarity}</p>
+                  <p className="text-[10px] text-[#9CA3AF] mt-1">{t.similarity}</p>
                 </div>
               </div>
 
               {/* 왜 닮았나요 */}
               <div className="px-6 py-4 bg-[#FAFAF8]">
-                <p className="text-xs font-bold text-[#D4A843] mb-1">{t.why}</p>
-                <p className="text-sm text-[#7a6a58] leading-relaxed">{getL(dupe.matchReason, locale)}</p>
+                <p className="text-xs font-bold text-[#F0B8B8] mb-1">{t.why}</p>
+                <p className="text-sm text-[#9CA3AF] leading-relaxed">{getL(dupe.matchReason, locale)}</p>
               </div>
 
               {/* 레이더 + 재료 */}
-              <div className="grid grid-cols-2 divide-x divide-[#F5F0E8]">
+              <div className="grid grid-cols-2 divide-x divide-[#F0F2F5]">
                 <div className="px-6 py-5 flex flex-col items-center">
-                  <TasteRadarChart profile={dupe.tasteProfile} locale={locale} size={120} color="#7a6a58" />
-                  <p className="text-xs text-[#7a6a58] mt-2 text-center">{getL(dupe.name, locale)}</p>
+                  <TasteRadarChart profile={dupe.tasteProfile} locale={locale} size={120} color="#9CA3AF" />
+                  <p className="text-xs text-[#9CA3AF] mt-2 text-center">{getL(dupe.name, locale)}</p>
                 </div>
                 <div className="px-6 py-5">
                   <p className="text-xs font-bold text-[#111] mb-3">{t.ingredients}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {getLA(dupe.ingredients, locale).map((item) => (
-                      <span key={item} className="px-2 py-0.5 rounded-full bg-[#F5F0E8] text-xs text-[#3a3028]">
+                      <span key={item} className="px-2 py-0.5 rounded-full bg-[#F0F2F5] text-xs text-[#4B5563]">
                         {item}
                       </span>
                     ))}
@@ -165,11 +165,11 @@ export function DupeCountrySelector({ food, locale }: Props) {
             </div>
           ) : (
             /* 조건 B: 데이터 없음 */
-            <div className="bg-gradient-to-br from-[#1B2A4A] to-[#2a3f6b] rounded-3xl p-10 text-center">
+            <div className="bg-gradient-to-br from-[#1F2937] to-[#2a3f6b] rounded-3xl p-10 text-center">
               <div className="text-6xl mb-5">{country.flag}</div>
               <p className="text-2xl font-black text-white mb-2">{t.noDataTitle}</p>
               <p className="text-white/60 text-sm mb-7 max-w-xs mx-auto leading-relaxed">{t.noDataSub}</p>
-              <span className="inline-flex items-center gap-2 px-7 py-3 rounded-2xl bg-[#D4A843] text-[#111] font-black text-sm">
+              <span className="inline-flex items-center gap-2 px-7 py-3 rounded-2xl bg-[#F0B8B8] text-[#111] font-black text-sm">
                 {t.challenge}
               </span>
             </div>

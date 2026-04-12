@@ -66,7 +66,7 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
           const inner = (
             <div className="flex h-full">
               {/* 왼쪽: 이미지 */}
-              <div className="relative w-[45%] shrink-0 bg-[#F5F3EF] overflow-hidden">
+              <div className="relative w-[45%] shrink-0 bg-[#F0F2F5] overflow-hidden">
                 <Image
                   src={course.thumbnail_url || '/images/dokkaebi-hero.png'}
                   alt={course.title}
@@ -78,7 +78,7 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
                 {!course.isActive && (
                   <>
                     <div className="absolute inset-0 bg-black/30" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold bg-[#FF6B35] text-white">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold bg-[#9DD8CE] text-white">
                       {course.comingSoonBadge}
                     </span>
                   </>
@@ -94,7 +94,7 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
               <div className="flex-1 p-5 md:p-6 flex flex-col justify-between">
                 <div>
                   {/* 메타 정보 */}
-                  <div className="flex items-center gap-2 text-xs text-[#7a6a58] mb-3">
+                  <div className="flex items-center gap-2 text-xs text-[#9CA3AF] mb-3">
                     <span>📍 {course.regionName}</span>
                     <span>·</span>
                     <span>⏱ {course.duration}</span>
@@ -113,14 +113,14 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
 
                 {/* 하단: 가격 + 버튼 */}
                 {course.isActive && (
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-[#e8ddd0]/60">
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-[#E4E7EB]/60">
                     <div>
-                      <p className="text-xs text-[#7a6a58]">1인 {label.from}</p>
+                      <p className="text-xs text-[#9CA3AF]">1인 {label.from}</p>
                       <p className="text-lg font-black text-[#111]">
                         ₩{course.price_1p.toLocaleString()}
                       </p>
                     </div>
-                    <span className="px-5 py-2.5 rounded-full bg-[#FF6B35] text-white text-sm font-bold hover:bg-[#E55A2B] transition-colors">
+                    <span className="px-5 py-2.5 rounded-full bg-[#9DD8CE] text-white text-sm font-bold hover:bg-[#7BC8BC] transition-colors">
                       {label.detail} →
                     </span>
                   </div>
@@ -137,12 +137,12 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
               {course.isActive ? (
                 <Link
                   href={`/${locale}/courses/${course.id}`}
-                  className="block bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-[#e8ddd0]/40 h-[280px] md:h-[320px]"
+                  className="block bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-[#E4E7EB]/40 h-[280px] md:h-[320px]"
                 >
                   {inner}
                 </Link>
               ) : (
-                <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-[#e8ddd0]/40 cursor-not-allowed h-[280px] md:h-[320px]">
+                <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-[#E4E7EB]/40 cursor-not-allowed h-[280px] md:h-[320px]">
                   {inner}
                 </div>
               )}

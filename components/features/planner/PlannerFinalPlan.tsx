@@ -346,8 +346,8 @@ export function PlannerFinalPlan({
 
       {/* 출발 (Transport) */}
       {transportItems.length > 0 && (
-        <div className="bg-white rounded-2xl p-5 mb-4 border-l-4 border-[#FF6B35]">
-          <p className="text-[10px] font-black text-[#FF6B35] uppercase tracking-widest mb-2">
+        <div className="bg-white rounded-2xl p-5 mb-4 border-l-4 border-[#9DD8CE]">
+          <p className="text-[10px] font-black text-[#9DD8CE] uppercase tracking-widest mb-2">
             🚄 출발
           </p>
           {transportItems.map((t) => (
@@ -400,10 +400,10 @@ export function PlannerFinalPlan({
           return (
             <div
               key={dayIdx}
-              className="bg-white rounded-3xl p-6 border border-[#e8ddd0]/40"
+              className="bg-white rounded-3xl p-6 border border-[#E4E7EB]/40"
             >
               <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-                <p className="text-xs font-black text-[#FF6B35] uppercase tracking-widest">
+                <p className="text-xs font-black text-[#9DD8CE] uppercase tracking-widest">
                   {t('final.day', { day: dayIdx + 1 })}
                   {dateLabel && (
                     <span className="ml-2 text-[#9CA3AF] font-bold normal-case">
@@ -412,7 +412,7 @@ export function PlannerFinalPlan({
                   )}
                 </p>
                 {w && (
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF8F0] border border-[#FF6B35]/20">
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAFBFC] border border-[#9DD8CE]/20">
                     <span className="text-base leading-none">{w.icon}</span>
                     <span className="text-[11px] font-bold text-[#374151]">
                       {w.highTemp}° / {w.lowTemp}°
@@ -444,7 +444,7 @@ export function PlannerFinalPlan({
                         </p>
                       </div>
 
-                      <div className="flex-1 min-w-0 border-l-2 border-dashed border-[#e8ddd0] pl-4">
+                      <div className="flex-1 min-w-0 border-l-2 border-dashed border-[#E4E7EB] pl-4">
                         {isEmpty ? (
                           <p className="text-xs text-[#9CA3AF] italic">—</p>
                         ) : (
@@ -460,7 +460,7 @@ export function PlannerFinalPlan({
                                 >
                                   <span className="text-base shrink-0">📍</span>
                                   <div className="min-w-0">
-                                    <span className="font-bold text-[#FF6B35]">
+                                    <span className="font-bold text-[#9DD8CE]">
                                       {t('mission.prefix', { n: missionNum })}:
                                     </span>{' '}
                                     <span className="font-semibold">
@@ -496,13 +496,13 @@ export function PlannerFinalPlan({
         })}
       </div>
 
-      <div className="bg-white rounded-3xl p-6 border border-[#e8ddd0]/40 mt-5">
+      <div className="bg-white rounded-3xl p-6 border border-[#E4E7EB]/40 mt-5">
         {estimatedLp > 0 && (
-          <div className="p-4 rounded-2xl bg-[#FFF8F0] border border-[#FF6B35]/20 text-center">
+          <div className="p-4 rounded-2xl bg-[#FAFBFC] border border-[#9DD8CE]/20 text-center">
             <p className="text-xs text-[#6B7280] mb-1">
               ⚔️ {t('final.missionIntegrated')}
             </p>
-            <p className="text-sm font-black text-[#FF6B35]">
+            <p className="text-sm font-black text-[#9DD8CE]">
               {t('final.estimatedLp')}: {estimatedLp.toLocaleString()} {t('final.lpUnit')}
             </p>
           </div>

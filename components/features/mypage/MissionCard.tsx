@@ -47,14 +47,14 @@ export default function MissionCard({
   if (status === 'available') {
     return (
       <div className="rounded-2xl border-2 border-gray-200 bg-white overflow-hidden
-                      hover:border-[#2D1B69] hover:shadow-lg transition-all duration-300 group">
+                      hover:border-[#1F2937] hover:shadow-lg transition-all duration-300 group">
         {/* header clickable area */}
         <button
           onClick={() => setExpanded((v) => !v)}
           className="w-full p-5 text-left flex items-start gap-4"
         >
           {/* sequence badge */}
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2D1B69] to-[#5B3DAA]
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1F2937] to-[#5B3DAA]
                           flex items-center justify-center text-white font-black text-lg
                           shadow-md shadow-purple-200 shrink-0 group-hover:scale-110 transition-transform">
             {mission.seq}
@@ -78,7 +78,7 @@ export default function MissionCard({
                 <MapPin size={12} />
                 {mission.location}
               </span>
-              <span className="text-xs font-bold text-[#FF6B35]">
+              <span className="text-xs font-bold text-[#9DD8CE]">
                 +{mission.lp} LP
               </span>
             </div>
@@ -90,7 +90,7 @@ export default function MissionCard({
               <ChevronUp size={20} className="text-[#111]" />
             ) : (
               <div className="flex flex-col items-center gap-0.5">
-                <span className="text-[10px] bg-[#FF6B35] text-white px-2.5 py-1 rounded-full font-bold">
+                <span className="text-[10px] bg-[#9DD8CE] text-white px-2.5 py-1 rounded-full font-bold">
                   {t('uploadPhoto')}
                 </span>
                 <ChevronDown size={14} className="text-gray-400" />

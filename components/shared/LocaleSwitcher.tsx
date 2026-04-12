@@ -51,8 +51,8 @@ export function LocaleSwitcher({ currentLocale }: LocaleSwitcherProps) {
         onClick={() => setOpen(!open)}
         className="
           flex items-center gap-1.5 px-3 py-1.5 rounded-lg
-          text-sm text-[#3a3028] hover:bg-[#F5F0E8]
-          border border-transparent hover:border-[#e8ddd0]
+          text-sm text-[#4B5563] hover:bg-[#F0F2F5]
+          border border-transparent hover:border-[#E4E7EB]
           transition-all duration-150
         "
         aria-label="언어 변경"
@@ -64,7 +64,7 @@ export function LocaleSwitcher({ currentLocale }: LocaleSwitcherProps) {
           height="12"
           viewBox="0 0 12 12"
           fill="none"
-          className={`text-[#7a6a58] transition-transform duration-150 ${open ? "rotate-180" : ""}`}
+          className={`text-[#9CA3AF] transition-transform duration-150 ${open ? "rotate-180" : ""}`}
         >
           <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
@@ -73,8 +73,8 @@ export function LocaleSwitcher({ currentLocale }: LocaleSwitcherProps) {
       {open && (
         <div className="
           absolute right-0 top-full mt-1.5 z-50
-          w-40 bg-white rounded-xl shadow-lg shadow-[#1B2A4A]/10
-          border border-[#e8ddd0] overflow-hidden
+          w-40 bg-white rounded-xl shadow-lg shadow-[#1F2937]/10
+          border border-[#E4E7EB] overflow-hidden
           animate-in fade-in slide-in-from-top-1 duration-150
         ">
           {LOCALES.map((locale) => (
@@ -85,15 +85,15 @@ export function LocaleSwitcher({ currentLocale }: LocaleSwitcherProps) {
                 flex items-center gap-2.5 w-full px-4 py-2.5
                 text-sm transition-colors text-left
                 ${locale.code === currentLocale
-                  ? "bg-[#F5F0E8] text-[#111] font-semibold"
-                  : "text-[#3a3028] hover:bg-[#F5F0E8]"
+                  ? "bg-[#F0F2F5] text-[#111] font-semibold"
+                  : "text-[#4B5563] hover:bg-[#F0F2F5]"
                 }
               `}
             >
               <span className="text-base">{locale.flag}</span>
               <span>{locale.label}</span>
               {locale.code === currentLocale && (
-                <span className="ml-auto text-[#D4A843]">✓</span>
+                <span className="ml-auto text-[#F0B8B8]">✓</span>
               )}
             </button>
           ))}

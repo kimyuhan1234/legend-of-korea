@@ -35,7 +35,7 @@ export function QuestHero({ title, region, thumbnail, difficulty, duration, miss
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-[#FF6B35] text-white text-xs font-black uppercase tracking-widest mb-4">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-[#9DD8CE] text-white text-xs font-black uppercase tracking-widest mb-4">
           🔥 {title}
         </span>
         <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight max-w-3xl leading-tight">
@@ -54,7 +54,7 @@ export function QuestHero({ title, region, thumbnail, difficulty, duration, miss
           </a>
           <button
             onClick={scrollToKit}
-            className="px-6 py-3 rounded-full bg-[#FF6B35] text-white text-sm font-bold hover:bg-[#E55A2B] transition-colors"
+            className="px-6 py-3 rounded-full bg-[#9DD8CE] text-white text-sm font-bold hover:bg-[#7BC8BC] transition-colors"
           >
             {t('hero.buy')}
           </button>

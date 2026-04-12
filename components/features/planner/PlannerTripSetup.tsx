@@ -66,10 +66,10 @@ export function PlannerTripSetup({
       </h2>
       <p className="text-sm text-[#6B7280] mb-6">{t('setup.subtitle')}</p>
 
-      <div className="bg-white rounded-3xl p-6 border border-[#e8ddd0]/40 space-y-6">
+      <div className="bg-white rounded-3xl p-6 border border-[#E4E7EB]/40 space-y-6">
         {/* 여행 기간 */}
         <div>
-          <p className="text-[10px] font-black text-[#FF6B35] uppercase tracking-widest mb-3">
+          <p className="text-[10px] font-black text-[#9DD8CE] uppercase tracking-widest mb-3">
             📅 {t('setup.periodTitle')}
           </p>
           <label className="block mb-3">
@@ -79,7 +79,7 @@ export function PlannerTripSetup({
             <select
               value={cityId}
               onChange={(e) => onChangeCity(e.target.value)}
-              className="w-full sm:w-auto min-w-[180px] px-4 py-2.5 rounded-xl border border-[#e8ddd0] text-sm font-bold text-[#111] bg-white focus:outline-none focus:border-[#FF6B35]"
+              className="w-full sm:w-auto min-w-[180px] px-4 py-2.5 rounded-xl border border-[#E4E7EB] text-sm font-bold text-[#111] bg-white focus:outline-none focus:border-[#9DD8CE]"
             >
               {CITY_OPTIONS.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -97,7 +97,7 @@ export function PlannerTripSetup({
                 type="date"
                 value={startDate}
                 onChange={(e) => onChangeStart(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#e8ddd0] text-sm font-semibold text-[#111] focus:outline-none focus:border-[#FF6B35]"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#E4E7EB] text-sm font-semibold text-[#111] focus:outline-none focus:border-[#9DD8CE]"
               />
             </label>
             <label className="block">
@@ -109,12 +109,12 @@ export function PlannerTripSetup({
                 value={endDate}
                 min={startDate || undefined}
                 onChange={(e) => onChangeEnd(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#e8ddd0] text-sm font-semibold text-[#111] focus:outline-none focus:border-[#FF6B35]"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#E4E7EB] text-sm font-semibold text-[#111] focus:outline-none focus:border-[#9DD8CE]"
               />
             </label>
           </div>
           {days > 0 && (
-            <p className="mt-3 text-sm font-bold text-[#FF6B35]">
+            <p className="mt-3 text-sm font-bold text-[#9DD8CE]">
               = {t('setup.nightsDays', { nights, days })}
             </p>
           )}
@@ -122,7 +122,7 @@ export function PlannerTripSetup({
 
         {/* 여행 스타일 */}
         <div>
-          <p className="text-[10px] font-black text-[#FF6B35] uppercase tracking-widest mb-3">
+          <p className="text-[10px] font-black text-[#9DD8CE] uppercase tracking-widest mb-3">
             🎯 {t('setup.styleTitle')}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -135,15 +135,15 @@ export function PlannerTripSetup({
                   onClick={() => onChangeStyle(s.key)}
                   className={`text-left px-4 py-4 rounded-2xl border-2 transition-colors ${
                     selected
-                      ? 'border-[#FF6B35] bg-[#FFF8F0]'
-                      : 'border-[#e8ddd0] bg-white hover:border-[#FFC9AA]'
+                      ? 'border-[#9DD8CE] bg-[#FAFBFC]'
+                      : 'border-[#E4E7EB] bg-white hover:border-[#D4F0EB]'
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-2xl">{s.emoji}</span>
                     <span
                       className={`text-sm font-black ${
-                        selected ? 'text-[#FF6B35]' : 'text-[#111]'
+                        selected ? 'text-[#9DD8CE]' : 'text-[#111]'
                       }`}
                     >
                       {t(s.titleKey as Parameters<typeof t>[0]) as string}

@@ -172,9 +172,9 @@ export default function AdminDashboardPage() {
             <div className="space-y-6">
               {data.recentPosts.map((post) => (
                 <div key={post.id} className="flex gap-3 group cursor-pointer">
-                  <div className="w-1 aspect-square rounded-full bg-[#D4A843] mt-2 shrink-0 group-hover:scale-150 transition-transform" />
+                  <div className="w-1 aspect-square rounded-full bg-[#F0B8B8] mt-2 shrink-0 group-hover:scale-150 transition-transform" />
                   <div className="min-w-0">
-                    <p className="text-sm text-[#111] font-bold truncate group-hover:text-[#D4A843] transition-colors">
+                    <p className="text-sm text-[#111] font-bold truncate group-hover:text-[#F0B8B8] transition-colors">
                       {post.content}
                     </p>
                     <div className="flex items-center gap-2 mt-1">

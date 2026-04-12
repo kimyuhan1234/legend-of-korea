@@ -247,7 +247,7 @@ export function WeeklyOotdBoard() {
   const today = weatherList[0]?.date
 
   return (
-    <div className="min-h-screen bg-[#FAFAF9]">
+    <div className="min-h-screen bg-[#FAFBFC]">
       {/* ── 페이지 헤더 ───────────────────────── */}
       <div className="bg-white border-b border-neutral-100 py-14 px-6 md:px-10 text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-neutral-900 text-white

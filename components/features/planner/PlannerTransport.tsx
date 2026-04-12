@@ -47,7 +47,7 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
           return (
             <div
               key={opt.type}
-              className="bg-white rounded-2xl p-5 border border-[#e8ddd0]/60 hover:shadow-md transition-shadow"
+              className="bg-white rounded-2xl p-5 border border-[#E4E7EB]/60 hover:shadow-md transition-shadow"
             >
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-2xl">{TYPE_EMOJI[opt.type]}</span>
@@ -67,7 +67,7 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
                 href={opt.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center py-2 rounded-full bg-[#FF6B35] text-white text-xs font-bold hover:bg-[#E55A2B] transition-colors"
+                className="block w-full text-center py-2 rounded-full bg-[#9DD8CE] text-white text-xs font-bold hover:bg-[#7BC8BC] transition-colors"
               >
                 {t('transport.booking')} ↗
               </a>
@@ -77,14 +77,14 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
       </div>
 
       {/* 라스트마일 — 택시 금액 절대 표시 안 함 */}
-      <div className="bg-[#F5F3EF] rounded-2xl p-5">
-        <p className="text-xs font-black text-[#FF6B35] uppercase tracking-widest mb-3">
+      <div className="bg-[#F0F2F5] rounded-2xl p-5">
+        <p className="text-xs font-black text-[#9DD8CE] uppercase tracking-widest mb-3">
           {t('transport.lastMile')}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* 택시 카드 — 금액 없음, minutes만 */}
-          <div className="bg-white rounded-xl p-4 border border-[#e8ddd0]/40">
+          <div className="bg-white rounded-xl p-4 border border-[#E4E7EB]/40">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xl">🚕</span>
               <span className="text-sm font-bold text-[#111]">{t('transport.taxi')}</span>
@@ -92,7 +92,7 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
                 {approx} {route.lastMile.taxi.minutes}분
               </span>
             </div>
-            <div className="bg-[#F5F3EF] rounded-lg p-3 mb-2">
+            <div className="bg-[#F0F2F5] rounded-lg p-3 mb-2">
               <p className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest mb-1">
                 {t('transport.addressCard')}
               </p>
@@ -108,7 +108,7 @@ export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
 
           {/* 대중교통 카드 */}
           {route.lastMile.bus && (
-            <div className="bg-white rounded-xl p-4 border border-[#e8ddd0]/40">
+            <div className="bg-white rounded-xl p-4 border border-[#E4E7EB]/40">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-xl">🚌</span>
                 <span className="text-sm font-bold text-[#111]">{t('transport.publicBus')}</span>

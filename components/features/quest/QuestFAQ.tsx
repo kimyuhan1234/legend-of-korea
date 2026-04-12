@@ -20,7 +20,7 @@ export function QuestFAQ() {
           {FAQ_KEYS.map((key, i) => {
             const isOpen = openIndex === i
             return (
-              <div key={key} className="bg-[#F5F3EF] rounded-2xl overflow-hidden">
+              <div key={key} className="bg-[#F0F2F5] rounded-2xl overflow-hidden">
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   className="w-full flex items-center justify-between px-6 py-5 text-left"
@@ -28,7 +28,7 @@ export function QuestFAQ() {
                   <span className="font-bold text-sm text-[#111]">
                     {t(`faq.${key}` as Parameters<typeof t>[0])}
                   </span>
-                  <span className={`text-[#FF6B35] text-xl transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}>
+                  <span className={`text-[#9DD8CE] text-xl transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}>
                     +
                   </span>
                 </button>

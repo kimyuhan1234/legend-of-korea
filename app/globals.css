@@ -2,40 +2,58 @@
 
 /* ── 폰트 유틸리티 ──────────────────────────────── */
 .font-display {
-  font-family: 'Playfair Display', 'Noto Serif KR', Georgia, serif;
+  font-family: var(--font-playfair, 'Playfair Display'), 'Noto Serif KR', 'Noto Serif JP', Georgia, serif;
 }
 
-/* ── 테마 변수 (v2 — 과일바구니 프리미엄) ──────────── */
+/* ── 테마 변수 (v3 — 파스텔 민트 + 벚꽃 핑크) ──────── */
 @theme {
-  /* ── LOK v2 브랜드 컬러 ── */
-  --color-lok-coral:        #FF6B35;   /* Primary CTA — 코랄 오렌지 */
-  --color-lok-coral-hover:  #E55A24;   /* Hover */
-  --color-lok-coral-light:  #FFF0EB;   /* 코랄 틴트 배경 */
-  --color-lok-sky:          #63B3ED;   /* Sub accent — 스카이 블루 */
-  --color-lok-sky-light:    #EBF8FF;   /* 스카이 틴트 */
-  --color-lok-greige:       #F5F3EF;   /* 푸터 / 보조 섹션 배경 */
-  --color-lok-display:      #111111;   /* 디스플레이 헤딩 */
-  --color-lok-body:         #374151;   /* 본문 텍스트 */
-  --color-lok-subtle:       #6B7280;   /* 서브 텍스트 */
-  --color-lok-muted:        #9CA3AF;   /* Placeholder */
-  --color-lok-border:       #F3F4F6;   /* 아주 연한 테두리 */
-  --color-lok-success:      #10B981;
-  --color-lok-error:        #EF4444;
+  /* ── 폰트 ── */
+  --font-family-sans: var(--font-inter, 'Inter'), 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+  --font-family-serif: var(--font-playfair, 'Playfair Display'), 'Noto Serif KR', 'Noto Serif JP', Georgia, serif;
+  --font-family-logo: Georgia, 'Palatino', 'Times New Roman', serif;
 
-  /* ── shadcn/ui 호환 (v2) ── */
-  --color-background:            #FFFFFF;
-  --color-foreground:            #111111;
-  --color-primary:               #FF6B35;
-  --color-primary-foreground:    #ffffff;
-  --color-secondary:             #F5F3EF;
-  --color-secondary-foreground:  #374151;
-  --color-muted:                 #F3F4F6;
-  --color-muted-foreground:      #6B7280;
-  --color-accent:                #FFF0EB;
-  --color-accent-foreground:     #FF6B35;
-  --color-border:                #F3F4F6;
-  --color-input:                 #F3F4F6;
-  --color-ring:                  #FF6B35;
+  /* ── Primary: 민트 ── */
+  --color-mint:       #B8E8E0;
+  --color-mint-deep:  #9DD8CE;
+  --color-mint-light: #D4F0EB;
+
+  /* ── Secondary: 벚꽃 ── */
+  --color-blossom:       #F5D0D0;
+  --color-blossom-deep:  #F0B8B8;
+  --color-blossom-light: #FAE8E8;
+
+  /* ── Sky & Accent ── */
+  --color-sky:       #A8D4F0;
+  --color-sky-light: #C8E4F8;
+  --color-lavender:  #E8C8D8;
+  --color-peach:     #F8E8D0;
+
+  /* ── Neutrals ── */
+  --color-snow:  #FAFBFC;
+  --color-cloud: #F0F2F5;
+  --color-mist:  #E4E7EB;
+  --color-stone: #9CA3AF;
+  --color-slate: #4B5563;
+  --color-ink:   #1F2937;
+
+  /* ── Semantic (에러 빨간색 유지) ── */
+  --color-lok-success: #10B981;
+  --color-lok-error:   #EF4444;
+
+  /* ── shadcn/ui 호환 (v3) ── */
+  --color-background:            #FAFBFC;
+  --color-foreground:            #1F2937;
+  --color-primary:               #9DD8CE;
+  --color-primary-foreground:    #1F2937;
+  --color-secondary:             #F0F2F5;
+  --color-secondary-foreground:  #4B5563;
+  --color-muted:                 #E4E7EB;
+  --color-muted-foreground:      #9CA3AF;
+  --color-accent:                #D4F0EB;
+  --color-accent-foreground:     #1F2937;
+  --color-border:                #E4E7EB;
+  --color-input:                 #E4E7EB;
+  --color-ring:                  #9DD8CE;
   --radius: 0.75rem;
 }
 
@@ -50,21 +68,21 @@ html {
 }
 
 body {
-  font-family: var(--font-inter, 'Noto Sans KR', system-ui, sans-serif);
-  background-color: #FFFFFF;
-  color: #374151;
+  font-family: var(--font-inter, 'Inter'), 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+  background-color: var(--color-snow, #FAFBFC);
+  color: var(--color-ink, #1F2937);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 /* 언어별 폰트 */
-:lang(ko) { font-family: 'Noto Sans KR', system-ui, sans-serif; }
-:lang(ja) { font-family: 'Noto Sans JP', system-ui, sans-serif; }
-:lang(en) { font-family: var(--font-inter, system-ui, sans-serif); }
+:lang(ko) { font-family: 'Noto Sans KR', var(--font-inter, 'Inter'), sans-serif; }
+:lang(ja) { font-family: 'Noto Sans JP', var(--font-inter, 'Inter'), sans-serif; }
+:lang(en) { font-family: var(--font-inter, 'Inter'), sans-serif; }
 
 /* 한국어/일본어 디스플레이 헤딩 */
-:lang(ko) .font-display { font-family: 'Noto Serif KR', 'Playfair Display', Georgia, serif; }
-:lang(ja) .font-display { font-family: 'Noto Serif KR', 'Playfair Display', Georgia, serif; }
+:lang(ko) .font-display { font-family: 'Noto Serif KR', var(--font-playfair, 'Playfair Display'), Georgia, serif; }
+:lang(ja) .font-display { font-family: 'Noto Serif JP', var(--font-playfair, 'Playfair Display'), Georgia, serif; }
 
 /* ── 스크롤바 ──────────────────────────────── */
 ::-webkit-scrollbar {
@@ -84,8 +102,8 @@ body {
 
 /* ── 선택 영역 ──────────────────────────────── */
 ::selection {
-  background: #FF6B35;
-  color: #ffffff;
+  background: var(--color-mint-deep, #9DD8CE);
+  color: var(--color-ink, #1F2937);
 }
 
 /* ── 카드 섀도우 유틸리티 ──────────────────── */
@@ -95,6 +113,6 @@ body {
 .shadow-card-hover {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
-.shadow-coral {
-  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.25);
+.shadow-mint {
+  box-shadow: 0 8px 30px rgba(157, 216, 206, 0.35);
 }

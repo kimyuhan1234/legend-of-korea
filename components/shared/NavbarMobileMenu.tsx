@@ -30,12 +30,12 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
       {/* 햄버거 버튼 */}
       <button
         onClick={() => setOpen(!open)}
-        className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-[#F5F0E8] transition-colors"
+        className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-[#F0F2F5] transition-colors"
         aria-label="메뉴"
       >
-        <span className={`w-5 h-0.5 bg-[#FF6B35] transition-all duration-200 ${open ? "rotate-45 translate-y-2" : ""}`} />
-        <span className={`w-5 h-0.5 bg-[#FF6B35] transition-all duration-200 ${open ? "opacity-0" : ""}`} />
-        <span className={`w-5 h-0.5 bg-[#FF6B35] transition-all duration-200 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+        <span className={`w-5 h-0.5 bg-[#9DD8CE] transition-all duration-200 ${open ? "rotate-45 translate-y-2" : ""}`} />
+        <span className={`w-5 h-0.5 bg-[#9DD8CE] transition-all duration-200 ${open ? "opacity-0" : ""}`} />
+        <span className={`w-5 h-0.5 bg-[#9DD8CE] transition-all duration-200 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
       </button>
 
       {/* 오버레이 */}
@@ -50,12 +50,12 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
         <div className="flex flex-col h-full">
           {/* 유저 정보 */}
           {user ? (
-            <div className="px-6 py-5 bg-[#FF6B35] text-white">
+            <div className="px-6 py-5 bg-[#9DD8CE] text-white">
               <p className="font-semibold">{user.nickname}</p>
               <p className="text-white/80 text-sm mt-1 font-bold">⚡ {user.lp?.toLocaleString() ?? 0} LP</p>
             </div>
           ) : (
-            <div className="px-6 py-5 bg-[#FF6B35] space-y-2">
+            <div className="px-6 py-5 bg-[#9DD8CE] space-y-2">
               <Link
                 href={`/${locale}/auth/login`}
                 onClick={() => setOpen(false)}
@@ -66,7 +66,7 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
               <Link
                 href={`/${locale}/auth/signup`}
                 onClick={() => setOpen(false)}
-                className="block text-center py-2 rounded-xl bg-[#FF6B35] text-white font-semibold text-sm"
+                className="block text-center py-2 rounded-xl bg-[#9DD8CE] text-white font-semibold text-sm"
               >
                 {t.signup}
               </Link>
@@ -81,17 +81,17 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
                 key={link.href}
                 href={`/${locale}${link.href}`}
                 onClick={() => setOpen(false)}
-                className="flex items-center px-4 py-3.5 rounded-xl text-[#3a3028] font-semibold hover:bg-[#F5F0E8] transition-colors"
+                className="flex items-center px-4 py-3.5 rounded-xl text-[#4B5563] font-semibold hover:bg-[#F0F2F5] transition-colors"
               >
                 {link.label}
               </Link>
             ))}
 
-            <div className="h-px bg-[#e8ddd0] my-2 mx-4" />
+            <div className="h-px bg-[#E4E7EB] my-2 mx-4" />
 
             {user && (
               <>
-                <Link href={`/${locale}/mypage`} onClick={() => setOpen(false)} className="flex items-center px-4 py-3.5 rounded-xl text-[#3a3028] font-medium hover:bg-[#F5F0E8] transition-colors">
+                <Link href={`/${locale}/mypage`} onClick={() => setOpen(false)} className="flex items-center px-4 py-3.5 rounded-xl text-[#4B5563] font-medium hover:bg-[#F0F2F5] transition-colors">
                   👤 {t.mypage}
                 </Link>
                 <div className="px-4 py-3.5">
@@ -102,7 +102,7 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
           </nav>
 
           {/* 언어 전환 */}
-          <div className="px-6 py-4 border-t border-[#e8ddd0]">
+          <div className="px-6 py-4 border-t border-[#E4E7EB]">
             <div className="flex gap-2">
               {["ko", "ja", "en"].map((lang) => (
                 <Link
@@ -111,8 +111,8 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
                   onClick={() => setOpen(false)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                     locale === lang
-                      ? "bg-[#FF6B35] text-white"
-                      : "bg-[#F5F0E8] text-[#7a6a58] hover:bg-[#e8ddd0]"
+                      ? "bg-[#9DD8CE] text-white"
+                      : "bg-[#F0F2F5] text-[#9CA3AF] hover:bg-[#E4E7EB]"
                   }`}
                 >
                   {lang === "ko" ? "한국어" : lang === "ja" ? "日本語" : "English"}

@@ -87,8 +87,8 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
   }
 
   return (
-    <div className="border-t border-[#e8ddd0]/40 mt-4 pt-4">
-      <p className="text-[10px] font-black text-[#FF6B35] uppercase tracking-widest mb-2">
+    <div className="border-t border-[#E4E7EB]/40 mt-4 pt-4">
+      <p className="text-[10px] font-black text-[#9DD8CE] uppercase tracking-widest mb-2">
         {t('ootd.check')}
       </p>
 
@@ -102,7 +102,7 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
                   type="checkbox"
                   checked={checked.has(item.nameKey)}
                   onChange={() => toggle(item.nameKey)}
-                  className="w-4 h-4 accent-[#FF6B35]"
+                  className="w-4 h-4 accent-[#9DD8CE]"
                 />
                 <span className="text-base leading-none">{item.icon}</span>
                 <span className="text-neutral-700">{ot(shortKey)}</span>
@@ -120,7 +120,7 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
             ? 'bg-emerald-500 text-white'
             : checked.size === 0
               ? 'bg-neutral-100 text-neutral-400 cursor-not-allowed'
-              : 'bg-[#FF6B35] text-white hover:bg-[#E55A2B]'
+              : 'bg-[#9DD8CE] text-white hover:bg-[#7BC8BC]'
         }`}
       >
         {state === 'added'

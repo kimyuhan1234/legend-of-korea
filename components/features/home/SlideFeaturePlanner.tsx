@@ -15,15 +15,15 @@ export function SlideFeaturePlanner({ locale, title, subtitle, cta }: SlideFeatu
     <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
       {/* 좌: 텍스트 */}
       <div className="md:w-[280px] lg:w-[320px] shrink-0 text-center md:text-left">
-        <h2 className="text-2xl md:text-3xl font-black text-[#FF6B35] leading-tight mb-3">
+        <h2 className="text-2xl md:text-3xl font-black text-[#9DD8CE] leading-tight mb-3">
           {title}
         </h2>
-        <p className="text-lg font-medium text-[#2D1B69] mb-8">
+        <p className="text-lg font-medium text-[#1F2937] mb-8">
           {subtitle}
         </p>
         <Link
           href={`/${locale}/planner`}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FF6B35] text-white font-bold hover:bg-[#E55A2B] transition-colors"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#9DD8CE] text-white font-bold hover:bg-[#7BC8BC] transition-colors"
         >
           {cta}
         </Link>

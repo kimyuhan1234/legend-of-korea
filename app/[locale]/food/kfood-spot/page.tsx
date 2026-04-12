@@ -46,13 +46,13 @@ export default function KFoodSpotPage({ params, searchParams }: Props) {
       <FoodTabNav locale={locale} activeTab="kfood-spot" />
 
       {/* 히어로 */}
-      <section className="bg-[#F5F0E8] py-14 border-b border-[#e8ddd0]">
+      <section className="bg-[#F0F2F5] py-14 border-b border-[#E4E7EB]">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1B2A4A]/10 border border-[#1B2A4A]/20 mb-5">
-            <span className="text-[#1B2A4A] text-sm font-medium">{h.badge}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1F2937]/10 border border-[#1F2937]/20 mb-5">
+            <span className="text-[#1F2937] text-sm font-medium">{h.badge}</span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-black text-[#1B2A4A] mb-4 whitespace-pre-line">{h.title}</h1>
-          <p className="text-[#7a6a58] text-lg">{h.subtitle}</p>
+          <h1 className="text-3xl md:text-4xl font-black text-[#1F2937] mb-4 whitespace-pre-line">{h.title}</h1>
+          <p className="text-[#9CA3AF] text-lg">{h.subtitle}</p>
         </div>
       </section>
 

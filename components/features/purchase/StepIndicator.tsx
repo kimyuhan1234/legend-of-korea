@@ -20,17 +20,17 @@ export function StepIndicator({ currentStep, labels }: StepIndicatorProps) {
               <div
                 className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-black transition-colors ${
                   isDone
-                    ? "bg-[#D4A843] text-[#111]"
+                    ? "bg-[#F0B8B8] text-[#111]"
                     : isActive
-                    ? "bg-[#F5F3EF] text-white ring-4 ring-[#1B2A4A]/20"
-                    : "bg-[#e8ddd0] text-[#7a6a58]"
+                    ? "bg-[#F0F2F5] text-white ring-4 ring-[#1F2937]/20"
+                    : "bg-[#E4E7EB] text-[#9CA3AF]"
                 }`}
               >
                 {isDone ? "✓" : step}
               </div>
               <span
                 className={`text-xs font-medium whitespace-nowrap ${
-                  isActive ? "text-[#111]" : isDone ? "text-[#D4A843]" : "text-[#7a6a58]"
+                  isActive ? "text-[#111]" : isDone ? "text-[#F0B8B8]" : "text-[#9CA3AF]"
                 }`}
               >
                 {label}
@@ -41,7 +41,7 @@ export function StepIndicator({ currentStep, labels }: StepIndicatorProps) {
             {i < labels.length - 1 && (
               <div
                 className={`w-12 sm:w-20 h-0.5 mx-1 -mt-5 transition-colors ${
-                  step < currentStep ? "bg-[#D4A843]" : "bg-[#e8ddd0]"
+                  step < currentStep ? "bg-[#F0B8B8]" : "bg-[#E4E7EB]"
                 }`}
               />
             )}

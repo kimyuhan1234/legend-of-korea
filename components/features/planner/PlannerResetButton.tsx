@@ -68,7 +68,7 @@ export function PlannerResetButton({ itemCount, onReset }: PlannerResetButtonPro
             className="absolute inset-0 bg-black/50"
             onClick={() => !loading && setOpen(false)}
           />
-          <div className="relative bg-white rounded-3xl shadow-2xl max-w-sm w-full p-6 border border-[#e8ddd0]/40">
+          <div className="relative bg-white rounded-3xl shadow-2xl max-w-sm w-full p-6 border border-[#E4E7EB]/40">
             <div className="text-center mb-5">
               <div className="text-4xl mb-3">⚠️</div>
               <h3 className="text-lg font-black text-[#111] mb-2">
@@ -88,7 +88,7 @@ export function PlannerResetButton({ itemCount, onReset }: PlannerResetButtonPro
                 type="button"
                 onClick={() => setOpen(false)}
                 disabled={loading}
-                className="flex-1 py-3 rounded-full border-2 border-[#e8ddd0] text-sm font-bold text-[#374151] hover:bg-[#FAFAF9] transition-colors disabled:opacity-50"
+                className="flex-1 py-3 rounded-full border-2 border-[#E4E7EB] text-sm font-bold text-[#374151] hover:bg-[#FAFBFC] transition-colors disabled:opacity-50"
               >
                 {t('reset.cancel')}
               </button>

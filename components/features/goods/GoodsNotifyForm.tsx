@@ -62,7 +62,7 @@ export function GoodsNotifyForm({
 
   if (status === "success") {
     return (
-      <div className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-[#D4A843]/10 border border-[#D4A843]/30">
+      <div className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-[#F0B8B8]/10 border border-[#F0B8B8]/30">
         <span className="text-xl">✅</span>
         <p className="text-sm text-[#111] font-medium">{successMsg}</p>
       </div>
@@ -96,13 +96,13 @@ export function GoodsNotifyForm({
           className={`flex-1 rounded-xl border-2 px-4 py-3 text-sm outline-none transition-colors ${
             isInputError
               ? "border-red-400 focus:border-red-500"
-              : "border-[#e8ddd0] focus:border-[#D4A843]"
+              : "border-[#E4E7EB] focus:border-[#F0B8B8]"
           }`}
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="px-6 py-3 rounded-xl bg-[#D4A843] hover:bg-[#e0b84e] text-[#111] font-bold text-sm transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
+          className="px-6 py-3 rounded-xl bg-[#F0B8B8] hover:bg-[#F5D0D0] text-[#111] font-bold text-sm transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {status === "loading" ? "..." : buttonLabel}
         </button>

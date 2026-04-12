@@ -92,7 +92,7 @@ export function HomeFeatureCarousel({ children }: HomeFeatureCarouselProps) {
                 onClick={() => setActive(i)}
                 className={`w-2.5 h-2.5 rounded-full transition-colors ${
                   i === active
-                    ? 'bg-[#2D1B69]'
+                    ? 'bg-[#1F2937]'
                     : 'bg-[#D1D5DB] hover:bg-[#9CA3AF]'
                 }`}
                 aria-label={`Slide ${i + 1}`}

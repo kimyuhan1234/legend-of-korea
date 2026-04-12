@@ -125,12 +125,12 @@ export default function MissionRegisterClient({
     }, 0);
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8]">
+    <div className="min-h-screen bg-[#F0F2F5]">
       {/* ─── Header Section ─── */}
-      <div className="bg-gradient-to-br from-[#2D1B69] via-[#3d2a7a] to-[#1a0f44] text-white relative overflow-hidden">
+      <div className="bg-gradient-to-br from-[#1F2937] via-[#3d2a7a] to-[#1a0f44] text-white relative overflow-hidden">
         {/* decorative elements */}
         <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -mr-20 -mt-20 blur-2xl" />
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#FF6B35]/10 rounded-full -ml-16 -mb-16 blur-xl" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#9DD8CE]/10 rounded-full -ml-16 -mb-16 blur-xl" />
 
         <div className="max-w-3xl mx-auto px-4 pt-8 pb-8 relative z-10">
           {/* back link */}
@@ -180,9 +180,9 @@ export default function MissionRegisterClient({
               <p className="text-[10px] text-white/50 font-bold mb-0.5">🏆 {t('completedMissions')}</p>
               <p className="text-lg font-black">{completedCount}</p>
             </div>
-            <div className="bg-[#FF6B35]/20 backdrop-blur-sm rounded-xl p-3 text-center  border-0 border-[#FF6B35]/20">
+            <div className="bg-[#9DD8CE]/20 backdrop-blur-sm rounded-xl p-3 text-center  border-0 border-[#9DD8CE]/20">
               <p className="text-[10px] text-white/50 font-bold mb-0.5">⚡ LP</p>
-              <p className="text-lg font-black text-[#FF6B35]">
+              <p className="text-lg font-black text-[#9DD8CE]">
                 {earnedLP}<span className="text-[10px] text-white/40">/{totalLP}</span>
               </p>
             </div>
@@ -193,7 +193,7 @@ export default function MissionRegisterClient({
       {/* ─── Mission List ─── */}
       <div className="max-w-3xl mx-auto px-4 py-8 space-y-4">
         <h2 className="text-base font-bold text-[#111] flex items-center gap-2">
-          <Trophy size={18} className="text-[#FF6B35]" />
+          <Trophy size={18} className="text-[#9DD8CE]" />
           {t('missionListTitle')}
         </h2>
 
@@ -224,7 +224,7 @@ export default function MissionRegisterClient({
       <div className="max-w-3xl mx-auto px-4 pb-12">
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 p-5 space-y-3">
           <h3 className="text-sm font-bold text-[#111] flex items-center gap-2">
-            <Zap size={16} className="text-[#FF6B35]" />
+            <Zap size={16} className="text-[#9DD8CE]" />
             {t('photoGuide')}
           </h3>
           <ul className="text-xs text-gray-500 space-y-2 pl-1">
