@@ -56,7 +56,7 @@ export default function MissionCard({
           {/* sequence badge */}
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1F2937] to-sky
                           flex items-center justify-center text-white font-black text-lg
-                          shadow-md shadow-purple-200 shrink-0 group-hover:scale-110 transition-transform">
+                          shadow-md shadow-mint-light shrink-0 group-hover:scale-110 transition-transform">
             {mission.seq}
           </div>
 

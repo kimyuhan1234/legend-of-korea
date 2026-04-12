@@ -218,7 +218,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
             className="w-full py-3.5 bg-[#9DD8CE] text-white rounded-xl font-bold text-sm
                        hover:bg-[#7BC8BC] disabled:opacity-60 disabled:cursor-not-allowed
                        transition-all active:scale-[0.98] flex items-center justify-center gap-2
-                       shadow-lg shadow-orange-200"
+                       shadow-lg shadow-mint-light"
           >
             {uploading ? (
               <>

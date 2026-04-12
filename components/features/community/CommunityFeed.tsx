@@ -161,7 +161,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
             onClick={() => setRegionFilter('recipe')}
             className={`px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 rounded-xl border-none
               ${regionFilter === 'recipe'
-                ? 'bg-[#7BC8BC] text-white ring-2 ring-orange-200'
+                ? 'bg-[#7BC8BC] text-white ring-2 ring-blossom'
                 : 'bg-[#9DD8CE] text-white hover:bg-[#7BC8BC]'
               }`}
           >
@@ -226,7 +226,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
       {/* Mobile FAB */}
       <Link href={`/${locale}/community/write`} className="fixed bottom-24 right-6 md:hidden z-40">
-        <Button size="icon" className="rounded-full shadow-2xl h-14 w-14 p-0 bg-[#9DD8CE] hover:bg-[#7BC8BC] shadow-orange-100/50 border-4 border-white">
+        <Button size="icon" className="rounded-full shadow-2xl h-14 w-14 p-0 bg-[#9DD8CE] hover:bg-[#7BC8BC] shadow-mint-light/50 border-4 border-white">
           <PenLine className="w-6 h-6 text-white" />
         </Button>
       </Link>

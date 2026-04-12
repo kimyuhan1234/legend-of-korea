@@ -261,7 +261,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
 
           {/* Submit Button */}
           <Button 
-            className="w-full h-16 rounded-[1.5rem] text-xl font-black bg-[#9DD8CE] hover:bg-[#7BC8BC] text-white shadow-2xl shadow-orange-200 hover:scale-[1.02] active:scale-[0.98] transition-all border-none"
+            className="w-full h-16 rounded-[1.5rem] text-xl font-black bg-[#9DD8CE] hover:bg-[#7BC8BC] text-white shadow-2xl shadow-mint-light hover:scale-[1.02] active:scale-[0.98] transition-all border-none"
             disabled={isSubmitting}
             onClick={handleSubmit}
           >

@@ -68,7 +68,7 @@ export function QuestComparison() {
 
               {/* 프로그레스 바 */}
               <div className="relative mb-2">
-                <div className="h-3 bg-gradient-to-r from-green-400 via-yellow-400 via-orange-500 to-red-500 rounded-full" />
+                <div className="h-3 bg-gradient-to-r from-mint via-blossom via-blossom-deep to-red-400 rounded-full" />
                 {/* 티어 마커 */}
                 {tiers.map((tier, i) => (
                   <div

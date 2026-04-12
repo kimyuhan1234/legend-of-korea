@@ -110,7 +110,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
               disabled={!canUpgrade || isUpgrading}
               className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${
                 canUpgrade
-                  ? 'bg-[#9DD8CE] hover:bg-[#7BC8BC] text-white shadow-lg shadow-orange-500/30'
+                  ? 'bg-[#9DD8CE] hover:bg-[#7BC8BC] text-white shadow-lg shadow-mint-deep/30'
                   : 'bg-white/10 text-white/30 cursor-not-allowed'
               }`}
             >
