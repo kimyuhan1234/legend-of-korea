@@ -5,7 +5,9 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import { HeroSection } from '@/components/features/home/HeroSection'
 import { CategorySection } from '@/components/features/home/CategorySection'
-import { FoodMatchingSection } from '@/components/features/home/FoodMatchingSection'
+import { HomeFeatureCarousel } from '@/components/features/home/HomeFeatureCarousel'
+import { SlideFeatureDupe } from '@/components/features/home/SlideFeatureDupe'
+import { SlideFeaturePlanner } from '@/components/features/home/SlideFeaturePlanner'
 
 interface Props {
   params: { locale: string }
@@ -61,13 +63,21 @@ export default async function HomePage({ params }: Props) {
         categories={categories}
       />
 
-      {/* 섹션 4: FOOD MATCHING */}
-      <FoodMatchingSection
-        locale={locale}
-        title={t('foodMatchingTitle')}
-        subtitle={t('foodMatchingSubtitle')}
-        cta={t('foodMatchingCta')}
-      />
+      {/* 섹션 4: 자동 슬라이드 캐러셀 (DUPE + 플래너) */}
+      <HomeFeatureCarousel>
+        <SlideFeatureDupe
+          locale={locale}
+          title={t('foodMatchingTitle')}
+          subtitle={t('foodMatchingSubtitle')}
+          cta={t('foodMatchingCta')}
+        />
+        <SlideFeaturePlanner
+          locale={locale}
+          title={t('plannerTitle')}
+          subtitle={t('plannerSubtitle')}
+          cta={t('plannerCta')}
+        />
+      </HomeFeatureCarousel>
 
       {/* 섹션 5: FOOTER */}
       <footer className="bg-[#2D1B69] text-white/70 py-12 px-4">
