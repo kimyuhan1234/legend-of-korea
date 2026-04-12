@@ -82,13 +82,19 @@ export async function Navbar({ locale }: NavbarProps) {
         {/* 뒤로가기 및 로고 */}
         <div className="flex items-center gap-2 shrink-0">
           <BackButton />
-          <Link href={`/${locale}`} className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#1B2A4A] flex items-center justify-center">
-              <span className="text-lg leading-none">👹</span>
-            </div>
-            <span className="font-bold text-[#1B2A4A] text-base hidden sm:block">
-              Legend of Korea
-            </span>
+          <Link
+            href={`/${locale}`}
+            style={{
+              fontFamily: "Georgia, 'Palatino', 'Times New Roman', serif",
+              fontStyle: 'italic',
+              fontSize: '22px',
+              fontWeight: 400,
+              letterSpacing: '2px',
+              color: '#1B2A4A',
+              textDecoration: 'none',
+            }}
+          >
+            imagination
           </Link>
         </div>
 
