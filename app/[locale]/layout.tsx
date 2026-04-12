@@ -74,7 +74,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages()
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-snow flex flex-col">
       <NextIntlClientProvider messages={messages} locale={locale}>
         <Navbar locale={locale} />
         <main className="flex-1">{children}</main>

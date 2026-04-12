@@ -52,8 +52,8 @@ function CitySelector({ cities, selected, onSelect }: CitySelectorProps) {
             className={[
               'shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200',
               isActive
-                ? 'bg-neutral-900 text-white shadow-md scale-105'
-                : 'bg-white border border-neutral-200 text-neutral-600 hover:border-neutral-400 hover:text-neutral-900',
+                ? 'bg-mint-deep text-white shadow-md scale-105'
+                : 'bg-cloud border border-mist text-slate hover:border-mint hover:text-ink',
             ].join(' ')}
           >
             {t(`cities.${city.cityId}.name`)}
@@ -75,7 +75,7 @@ interface GenderToggleProps {
 function GenderToggle({ selected, onChange }: GenderToggleProps) {
   const t = useTranslations('ootd')
   return (
-    <div className="inline-flex rounded-full border border-neutral-200 bg-white p-0.5 shadow-sm">
+    <div className="inline-flex rounded-full border border-mist bg-cloud p-0.5 shadow-sm">
       {(['male', 'female'] as Gender[]).map((g) => (
         <button
           key={g}
@@ -83,8 +83,8 @@ function GenderToggle({ selected, onChange }: GenderToggleProps) {
           className={[
             'px-5 py-1.5 rounded-full text-sm font-semibold transition-all duration-200',
             selected === g
-              ? 'bg-neutral-900 text-white'
-              : 'text-neutral-500 hover:text-neutral-800',
+              ? 'bg-mint-deep text-white'
+              : 'text-stone hover:text-slate',
           ].join(' ')}
         >
           {g === 'male' ? '👔' : '👗'} {t(`gender.${g}`)}
@@ -105,13 +105,13 @@ function ThemeHeader({ city }: ThemeHeaderProps) {
   const t = useTranslations('ootd')
   return (
     <div className="py-6 px-1">
-      <p className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">
+      <p className="text-xs font-bold uppercase tracking-widest text-stone mb-1">
         {city.theme}
       </p>
-      <h2 className="text-3xl md:text-4xl font-black text-neutral-900 tracking-tight">
+      <h2 className="text-3xl md:text-4xl font-black text-ink tracking-tight">
         {t(`cities.${city.cityId}.name`)}
       </h2>
-      <p className="mt-2 text-base text-neutral-500">
+      <p className="mt-2 text-base text-stone">
         {t(`cities.${city.cityId}.description`)}
       </p>
     </div>
@@ -145,29 +145,29 @@ function DayCard({ weather, outfit, isToday, cityId, cityName }: DayCardProps) {
         'group shrink-0 w-44 md:w-48 rounded-2xl border transition-all duration-200',
         'hover:scale-105 hover:shadow-xl cursor-default',
         isToday
-          ? 'border-neutral-900 bg-neutral-900 text-white shadow-lg'
-          : 'border-neutral-100 bg-white text-neutral-900 hover:border-neutral-300',
+          ? 'border-mint-deep bg-mint-deep text-white shadow-lg'
+          : 'border-mist bg-white text-ink hover:border-mint',
       ].join(' ')}
     >
       {/* 요일·날짜 */}
       <div className={[
         'px-4 pt-4 pb-3 border-b',
-        isToday ? 'border-neutral-700' : 'border-neutral-100',
+        isToday ? 'border-mint/50' : 'border-mist',
       ].join(' ')}>
         {isToday && (
-          <span className="inline-block mb-1 px-2 py-0.5 rounded-full bg-white text-neutral-900 text-[10px] font-black uppercase tracking-wider">
+          <span className="inline-block mb-1 px-2 py-0.5 rounded-full bg-white text-ink text-[10px] font-black uppercase tracking-wider">
             TODAY
           </span>
         )}
         <p className={[
           'text-xs font-bold uppercase tracking-widest',
-          isToday ? 'text-neutral-400' : 'text-neutral-400',
+          isToday ? 'text-stone' : 'text-stone',
         ].join(' ')}>
           {t(`days.${weather.dayOfWeek}`)}
         </p>
         <p className={[
           'text-sm font-semibold mt-0.5',
-          isToday ? 'text-neutral-300' : 'text-neutral-500',
+          isToday ? 'text-mint-light' : 'text-stone',
         ].join(' ')}>
           {weather.date.slice(5).replace('-', '/')}
         </p>
@@ -178,11 +178,11 @@ function DayCard({ weather, outfit, isToday, cityId, cityName }: DayCardProps) {
         <div className="flex items-center justify-between">
           <span className="text-3xl">{WEATHER_EMOJI[weather.condition]}</span>
           <div className="text-right">
-            <p className={['text-xs font-bold', isToday ? 'text-neutral-300' : 'text-neutral-400'].join(' ')}>
+            <p className={['text-xs font-bold', isToday ? 'text-mint-light' : 'text-stone'].join(' ')}>
               {t(`weather.${weather.condition}`)}
             </p>
-            <p className={['text-sm font-black mt-0.5', isToday ? 'text-white' : 'text-neutral-900'].join(' ')}>
-              {weather.highTemp}° <span className={isToday ? 'text-neutral-400 font-normal' : 'text-neutral-400 font-normal'}>/ {weather.lowTemp}°</span>
+            <p className={['text-sm font-black mt-0.5', isToday ? 'text-white' : 'text-ink'].join(' ')}>
+              {weather.highTemp}° <span className={isToday ? 'text-stone font-normal' : 'text-stone font-normal'}>/ {weather.lowTemp}°</span>
             </p>
           </div>
         </div>
@@ -196,10 +196,10 @@ function DayCard({ weather, outfit, isToday, cityId, cityName }: DayCardProps) {
       {/* 옷차림 */}
       <div className={[
         'px-4 pb-4 border-t',
-        isToday ? 'border-neutral-700' : 'border-neutral-100',
+        isToday ? 'border-mint/50' : 'border-mist',
       ].join(' ')}>
         <p className={['text-[10px] font-bold uppercase tracking-widest mt-3 mb-2',
-          isToday ? 'text-neutral-400' : 'text-neutral-400'].join(' ')}>
+          isToday ? 'text-stone' : 'text-stone'].join(' ')}>
           OUTFIT
         </p>
         {outfit ? (
@@ -208,13 +208,13 @@ function DayCard({ weather, outfit, isToday, cityId, cityName }: DayCardProps) {
               {outfit.items.map((item) => (
                 <li key={item.nameKey} className="flex items-center gap-1.5">
                   <span className="text-base leading-none">{item.icon}</span>
-                  <span className={['text-xs font-medium', isToday ? 'text-neutral-200' : 'text-neutral-700'].join(' ')}>
+                  <span className={['text-xs font-medium', isToday ? 'text-mint-light' : 'text-slate'].join(' ')}>
                     {t(item.nameKey.replace('ootd.', '') as Parameters<typeof t>[0])}
                   </span>
                 </li>
               ))}
             </ul>
-            <p className={['text-[10px] mt-3 leading-snug', isToday ? 'text-neutral-400' : 'text-neutral-400'].join(' ')}>
+            <p className={['text-[10px] mt-3 leading-snug', isToday ? 'text-stone' : 'text-stone'].join(' ')}>
               💡 {t(outfit.tipKey.replace('ootd.', '') as Parameters<typeof t>[0])}
             </p>
             {!isToday && (
@@ -227,7 +227,7 @@ function DayCard({ weather, outfit, isToday, cityId, cityName }: DayCardProps) {
             )}
           </>
         ) : (
-          <p className="text-xs text-neutral-400">—</p>
+          <p className="text-xs text-stone">—</p>
         )}
       </div>
     </div>
@@ -249,15 +249,15 @@ export function WeeklyOotdBoard() {
   return (
     <div className="min-h-screen bg-[#FAFBFC]">
       {/* ── 페이지 헤더 ───────────────────────── */}
-      <div className="bg-white border-b border-neutral-100 py-14 px-6 md:px-10 text-center">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-neutral-900 text-white
+      <div className="bg-mint-light border-b border-mist py-14 px-6 md:px-10 text-center">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-mint-deep text-white
                          text-xs font-black uppercase tracking-widest mb-4">
           OOTD
         </span>
-        <h1 className="text-4xl md:text-5xl font-black text-neutral-900 tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-black text-ink tracking-tight">
           {t('title')}
         </h1>
-        <p className="mt-3 text-neutral-500 text-base">{t('subtitle')}</p>
+        <p className="mt-3 text-stone text-base">{t('subtitle')}</p>
       </div>
 
       {/* ── 컨트롤 영역 ──────────────────────── */}
@@ -301,7 +301,7 @@ export function WeeklyOotdBoard() {
         </div>
 
         {/* ── 범례 ────────────────────────────── */}
-        <div className="flex flex-wrap gap-4 pb-12 text-xs text-neutral-400">
+        <div className="flex flex-wrap gap-4 pb-12 text-xs text-stone">
           {(['cold', 'mild', 'hot'] as const).map((range) => (
             <span key={range} className="flex items-center gap-1">
               <span className={range === 'cold' ? 'text-blue-400' : range === 'mild' ? 'text-emerald-400' : 'text-blossom-deep'}>●</span>

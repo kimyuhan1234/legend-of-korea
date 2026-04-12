@@ -30,7 +30,7 @@ export default function FoodPage({ params, searchParams }: Props) {
   const h = HERO[locale as keyof typeof HERO] ?? HERO.ko
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-snow">
 
       {/* ── 히어로 헤더 ──────────────────────────── */}
       <div className="bg-mint-light border-b border-mint py-20 md:py-28 px-6 md:px-10 text-center">
