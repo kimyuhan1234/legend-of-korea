@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface SlideFeaturePlannerProps {
   locale: string
@@ -28,19 +29,16 @@ export function SlideFeaturePlanner({ locale, title, subtitle, cta }: SlideFeatu
         </Link>
       </div>
 
-      {/* 우: 플래너 비주얼 */}
-      <div className="flex-1 relative aspect-[4/3] overflow-hidden rounded-2xl bg-gradient-to-br from-[#FFF8F0] to-[#FFE8D6] flex items-center justify-center">
-        <div className="text-center px-6">
-          <div className="flex items-center justify-center gap-3 text-5xl md:text-6xl mb-4">
-            <span>📋</span>
-            <span>🗺️</span>
-            <span>✈️</span>
-            <span>🏯</span>
-          </div>
-          <p className="text-[80px] md:text-[100px] font-black text-[#FF6B35]/10 leading-none select-none">
-            PLANNER
-          </p>
-        </div>
+      {/* 우: 플래너 대표 이미지 */}
+      <div className="flex-1 relative aspect-[4/3] overflow-hidden rounded-2xl group">
+        <Image
+          src="/images/matching/planner-hero.png"
+          alt="Travel Planner"
+          fill
+          sizes="(max-width: 768px) 100vw, 60vw"
+          quality={90}
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+        />
       </div>
     </div>
   )
