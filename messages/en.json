@@ -1080,6 +1080,17 @@
       "browseQuest": "Browse QUEST",
       "browseAll": "Browse all tabs"
     },
+    "category": {
+      "ootd": "Outfit",
+      "food": "Food",
+      "stay": "Stay",
+      "quest": "Mission Kit",
+      "diy": "Workshop",
+      "goods": "Goods",
+      "transport": "Transport",
+      "surprise": "Surprise"
+    },
+    "selectCity": "Select your travel city",
     "preview": {
       "title": "Saved Items",
       "empty": "No items yet. Browse the tabs!",

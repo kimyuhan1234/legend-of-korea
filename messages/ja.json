@@ -1080,6 +1080,17 @@
       "browseQuest": "QUEST を見る",
       "browseAll": "全タブを見る"
     },
+    "category": {
+      "ootd": "服装",
+      "food": "グルメ",
+      "stay": "宿泊",
+      "quest": "ミッションキット",
+      "diy": "工房",
+      "goods": "グッズ",
+      "transport": "交通",
+      "surprise": "サプライズ"
+    },
+    "selectCity": "旅行先を選択してください",
     "preview": {
       "title": "保存したアイテム",
       "empty": "まだ保存したアイテムがありません。タブを見てみましょう！",

@@ -1,6 +1,8 @@
 'use client'
 
+import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
+import { usePathname } from 'next/navigation'
 import { HotelInputForm } from './HotelInputForm'
 import { TransportInputForm } from './TransportInputForm'
 import { PlannerResetButton } from './PlannerResetButton'
@@ -31,49 +33,75 @@ interface PlannerPreviewProps {
   onResetAll?: () => void
 }
 
-const TYPE_CONFIG: Record<ItemType, { emoji: string; color: string }> = {
-  food: { emoji: '🍜', color: 'bg-mint-light border-mint text-blossom-deep' },
-  stay: { emoji: '🏯', color: 'bg-blue-50 border-blue-200 text-blue-700' },
-  quest: { emoji: '⚔️', color: 'bg-red-50 border-red-200 text-red-700' },
-  diy: { emoji: '🏺', color: 'bg-peach border-blossom text-slate' },
-  ootd: { emoji: '👗', color: 'bg-pink-50 border-pink-200 text-pink-700' },
-  goods: { emoji: '🛍️', color: 'bg-lavender border-lavender text-sky' },
-  transport: { emoji: '🚄', color: 'bg-snow border-mist text-slate' },
-  surprise: { emoji: '🎁', color: 'bg-yellow-50 border-yellow-200 text-yellow-700' },
+const CATEGORY_CONFIG: Record<ItemType, { icon: string; labelKey: string }> = {
+  ootd: { icon: '👗', labelKey: 'category.ootd' },
+  food: { icon: '🍜', labelKey: 'category.food' },
+  stay: { icon: '🏯', labelKey: 'category.stay' },
+  quest: { icon: '🎯', labelKey: 'category.quest' },
+  diy: { icon: '🏺', labelKey: 'category.diy' },
+  goods: { icon: '🛍️', labelKey: 'category.goods' },
+  transport: { icon: '🚌', labelKey: 'category.transport' },
+  surprise: { icon: '🎁', labelKey: 'category.surprise' },
 }
 
-const CITY_EMOJI: Record<string, string> = {
-  jeonju: '🏯', seoul: '🏙️', busan: '🌊', jeju: '🌺',
-  gyeongju: '🏛️', tongyeong: '⛵', cheonan: '🌳', yongin: '🎢', icheon: '🏺',
-}
+const CITIES = [
+  { code: 'jeonju', name: { ko: '전주', en: 'Jeonju', ja: '全州' } },
+  { code: 'seoul', name: { ko: '서울', en: 'Seoul', ja: 'ソウル' } },
+  { code: 'busan', name: { ko: '부산', en: 'Busan', ja: '釜山' } },
+  { code: 'jeju', name: { ko: '제주', en: 'Jeju', ja: '済州' } },
+  { code: 'gyeongju', name: { ko: '경주', en: 'Gyeongju', ja: '慶州' } },
+  { code: 'tongyeong', name: { ko: '통영', en: 'Tongyeong', ja: '統営' } },
+  { code: 'cheonan', name: { ko: '천안', en: 'Cheonan', ja: '天安' } },
+  { code: 'yongin', name: { ko: '용인', en: 'Yongin', ja: '龍仁' } },
+  { code: 'icheon', name: { ko: '이천', en: 'Icheon', ja: '利川' } },
+]
 
 function getItemName(item: PlanItem, locale: string): string {
   const data = item.item_data
+  if (item.item_type === 'ootd') {
+    const checked = data.checkedItems as Array<{ name?: string; icon?: string }> | undefined
+    if (checked && checked.length > 0) {
+      return checked.map((c) => c.name || c.icon || '').filter(Boolean).join(', ') || 'OOTD'
+    }
+  }
   const name = data.name as Record<string, string> | string | undefined
   if (typeof name === 'string') return name
-  if (name && typeof name === 'object') return name[locale] || name.ko || 'Item'
+  if (name && typeof name === 'object') return name[locale] || name.ko || ''
+  if (data.courseName) {
+    const cn = data.courseName as Record<string, string> | string
+    return typeof cn === 'string' ? cn : cn[locale] || cn.ko || ''
+  }
   if (data.kitName) return String(data.kitName)
-  if (data.nameKey) return String(data.nameKey).split('.').pop() || 'Item'
-  return 'Item'
+  return ''
+}
+
+function getCityLabel(code: string, locale: string): string {
+  const city = CITIES.find((c) => c.code === code)
+  if (!city) return code
+  return city.name[locale as 'ko' | 'en' | 'ja'] || city.name.ko
 }
 
 export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHotelSaved, onResetAll }: PlannerPreviewProps) {
   const t = useTranslations('planner')
+  const pathname = usePathname()
 
   const totalItemCount = plans.reduce((sum, p) => sum + p.plan_items.length, 0)
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({})
 
   if (plans.length === 0 || plans.every((p) => p.plan_items.length === 0)) {
     return <PlannerEmptyGuide />
   }
 
+  const toggleCategory = (key: string) => {
+    setExpanded((prev) => ({ ...prev, [key]: !prev[key] }))
+  }
+
   return (
     <div>
       <div className="flex items-center justify-between mb-6 gap-3">
-        <h2 className="text-xl md:text-2xl font-black text-[#111]">
+        <h2 className="text-xl md:text-2xl font-black text-ink">
           {t('preview.title')}{' '}
-          <span className="text-sm font-bold text-[#9CA3AF]">
-            ({totalItemCount})
-          </span>
+          <span className="text-sm font-bold text-stone">({totalItemCount})</span>
         </h2>
         <PlannerResetButton
           itemCount={totalItemCount}
@@ -86,58 +114,108 @@ export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHo
           const isFirstCity = planIdx === 0
           const isBlurred = !isSubscribed && !isFirstCity
 
+          // 카테고리별 그룹핑
+          const grouped = plan.plan_items.reduce<Record<string, PlanItem[]>>((acc, item) => {
+            const key = item.item_type
+            if (!acc[key]) acc[key] = []
+            acc[key].push(item)
+            return acc
+          }, {})
+
+          // 카테고리 순서 고정
+          const categoryOrder: ItemType[] = ['ootd', 'food', 'stay', 'quest', 'diy', 'goods', 'transport', 'surprise']
+          const sortedGroups = categoryOrder.filter((type) => grouped[type]?.length > 0)
+
           return (
             <div key={plan.id} className="relative">
-              <div className={`bg-white rounded-3xl p-6 border border-[#E4E7EB]/40 ${isBlurred ? 'blur-sm pointer-events-none select-none' : ''}`}>
-                <h3 className="text-lg font-bold text-[#111] mb-4 flex items-center gap-2">
-                  <span className="text-2xl">{CITY_EMOJI[plan.city_id] || '📍'}</span>
-                  <span>{plan.city_id}</span>
-                </h3>
+              <div className={`bg-white rounded-3xl p-6 border border-mist ${isBlurred ? 'blur-sm pointer-events-none select-none' : ''}`}>
+                {/* 도시 표시 */}
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="text-lg">📍</span>
+                  <span className="text-base font-black text-ink">
+                    {getCityLabel(plan.city_id, locale)}
+                  </span>
+                </div>
 
+                {/* 카테고리별 그룹 */}
                 {plan.plan_items.length === 0 ? (
-                  <p className="text-sm text-[#9CA3AF]">—</p>
+                  <p className="text-sm text-stone">—</p>
                 ) : (
-                  <ul className="space-y-2">
-                    {plan.plan_items.map((item) => {
-                      const cfg = TYPE_CONFIG[item.item_type]
+                  <div className="space-y-3">
+                    {sortedGroups.map((type) => {
+                      const items = grouped[type]
+                      const cat = CATEGORY_CONFIG[type]
+                      const groupKey = `${plan.id}-${type}`
+                      const isOpen = expanded[groupKey] ?? false
+
                       return (
-                        <li
-                          key={item.id}
-                          className={`flex items-center gap-3 px-4 py-3 rounded-2xl border ${cfg.color}`}
-                        >
-                          <span className="text-xl">{cfg.emoji}</span>
-                          <span className="flex-1 text-sm font-semibold truncate">
-                            {getItemName(item, locale)}
-                          </span>
+                        <div key={type}>
+                          {/* 카테고리 헤더 */}
                           <button
-                            onClick={() => onRemoveItem(item.id)}
-                            className="text-xs text-[#9CA3AF] hover:text-red-500 transition-colors"
+                            type="button"
+                            onClick={() => toggleCategory(groupKey)}
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-snow border border-mist hover:border-mint transition-all"
                           >
-                            ✕
+                            <span className="text-lg">{cat.icon}</span>
+                            <span className="font-bold text-ink text-sm">
+                              {t(cat.labelKey as Parameters<typeof t>[0]) as string}
+                            </span>
+                            <span className="text-xs text-blossom-deep bg-blossom-light rounded-full px-2.5 py-0.5 font-bold">
+                              {items.length}
+                            </span>
+                            <span
+                              className="ml-auto text-stone text-xs transition-transform duration-200"
+                              style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                            >
+                              ▼
+                            </span>
                           </button>
-                        </li>
+
+                          {/* 아이템 목록 */}
+                          {isOpen && (
+                            <div className="mt-1 ml-4 border-l-2 border-mint-light pl-4 space-y-1 py-2">
+                              {items.map((item) => {
+                                const name = getItemName(item, locale)
+                                return (
+                                  <div
+                                    key={item.id}
+                                    className="flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-mint-light/20 transition-colors"
+                                  >
+                                    <span className="text-sm">{cat.icon}</span>
+                                    <span className="flex-1 text-sm text-ink truncate">
+                                      {name || t(cat.labelKey as Parameters<typeof t>[0]) as string}
+                                    </span>
+                                    <button
+                                      onClick={() => onRemoveItem(item.id)}
+                                      className="text-xs text-stone hover:text-red-500 transition-colors p-1"
+                                    >
+                                      ✕
+                                    </button>
+                                  </div>
+                                )
+                              })}
+                            </div>
+                          )}
+                        </div>
                       )
                     })}
-                  </ul>
+                  </div>
                 )}
 
-                {/* 호텔 + 교통 입력 영역 (첫 도시만) */}
+                {/* 호텔 + 교통 (첫 도시만) */}
                 {isFirstCity && (
                   <div className="mt-4 space-y-3">
-                    {/* 호텔: 이미 있으면 카드, 없으면 입력 폼 */}
                     {plan.hotel_name ? (
-                      <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4">
-                        <p className="text-[10px] font-black text-blue-700 uppercase tracking-widest mb-1">
+                      <div className="bg-sky-light/30 border border-sky-light rounded-2xl p-4">
+                        <p className="text-[10px] font-black text-sky uppercase tracking-widest mb-1">
                           🏨 Hotel
                         </p>
-                        <p className="text-sm font-bold text-[#111]">{plan.hotel_name}</p>
-                        <p className="text-xs text-[#6B7280] truncate">{plan.hotel_address}</p>
+                        <p className="text-sm font-bold text-ink">{plan.hotel_name}</p>
+                        <p className="text-xs text-stone truncate">{plan.hotel_address}</p>
                       </div>
                     ) : (
                       <HotelInputForm planId={plan.id} onSaved={onHotelSaved} />
                     )}
-
-                    {/* 교통편: 이미 transport 아이템 있으면 숨김 */}
                     {!plan.plan_items.some((i) => i.item_type === 'transport') && (
                       <TransportInputForm cityId={plan.city_id} locale={locale} />
                     )}
@@ -149,7 +227,7 @@ export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHo
                 <div className="absolute inset-0 flex items-center justify-center rounded-3xl bg-gradient-to-b from-transparent to-white/80">
                   <div className="text-center p-6">
                     <div className="text-3xl mb-2">🔒</div>
-                    <p className="text-sm font-bold text-[#111]">{t('preview.blur')}</p>
+                    <p className="text-sm font-bold text-ink">{t('preview.blur')}</p>
                   </div>
                 </div>
               )}

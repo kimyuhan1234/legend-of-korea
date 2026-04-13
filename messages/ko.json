@@ -1105,6 +1105,17 @@
       "browseQuest": "QUEST 보기",
       "browseAll": "전체 탭 보기"
     },
+    "category": {
+      "ootd": "의류",
+      "food": "맛집",
+      "stay": "숙소",
+      "quest": "미션키트",
+      "diy": "공방",
+      "goods": "굿즈",
+      "transport": "교통",
+      "surprise": "서프라이즈"
+    },
+    "selectCity": "여행할 도시를 선택해주세요",
     "preview": {
       "title": "담은 아이템",
       "empty": "아직 담은 아이템이 없어요. 탭을 둘러보세요!",
