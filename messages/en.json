@@ -1262,6 +1262,7 @@
       "subtitle": "Click your country!",
       "korea": "KOREA",
       "matches": "{count} Korean dishes similar to {country} food",
+      "selectCountry": "← Select a country",
       "more": "Show more",
       "detail": "Details →",
       "arrow": "→",

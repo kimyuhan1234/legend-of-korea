@@ -1287,6 +1287,7 @@
       "subtitle": "당신의 나라를 클릭하세요!",
       "korea": "KOREA",
       "matches": "{country} 음식과 비슷한 한국 음식 {count}개",
+      "selectCountry": "← 국가를 선택하세요",
       "more": "더보기",
       "detail": "상세보기 →",
       "arrow": "→",

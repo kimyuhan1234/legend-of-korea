@@ -1262,6 +1262,7 @@
       "subtitle": "あなたの国をクリック！",
       "korea": "韓国",
       "matches": "{country}料理に似た韓国料理 {count}個",
+      "selectCountry": "← 国を選択してください",
       "more": "もっと見る",
       "detail": "詳細 →",
       "arrow": "→",
