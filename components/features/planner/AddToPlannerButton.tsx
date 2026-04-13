@@ -14,6 +14,35 @@ interface AddToPlannerButtonProps {
   size?: 'sm' | 'md'
 }
 
+interface Warning {
+  type: 'city_mismatch' | 'duplicate' | 'transport_conflict'
+  message: string
+  onConfirm: () => void
+}
+
+const CITY_NAMES: Record<string, { ko: string; en: string; ja: string }> = {
+  jeonju: { ko: '전주', en: 'Jeonju', ja: '全州' },
+  seoul: { ko: '서울', en: 'Seoul', ja: 'ソウル' },
+  busan: { ko: '부산', en: 'Busan', ja: '釜山' },
+  jeju: { ko: '제주', en: 'Jeju', ja: '済州' },
+  gyeongju: { ko: '경주', en: 'Gyeongju', ja: '慶州' },
+  tongyeong: { ko: '통영', en: 'Tongyeong', ja: '統営' },
+  cheonan: { ko: '천안', en: 'Cheonan', ja: '天安' },
+  yongin: { ko: '용인', en: 'Yongin', ja: '龍仁' },
+  icheon: { ko: '이천', en: 'Icheon', ja: '利川' },
+}
+
+function getCityName(cityId: string, locale: string): string {
+  return CITY_NAMES[cityId]?.[locale as 'ko' | 'en' | 'ja'] || cityId
+}
+
+function extractName(data: Record<string, unknown>): string {
+  const n = data.name ?? data.foodName ?? ''
+  if (typeof n === 'string') return n
+  if (n && typeof n === 'object') return (n as Record<string, string>).ko || ''
+  return ''
+}
+
 export function AddToPlannerButton({
   itemType,
   itemData,
@@ -31,19 +60,10 @@ export function AddToPlannerButton({
   const [hovered, setHovered] = useState(false)
   const [itemId, setItemId] = useState<string | null>(null)
   const [showConfirm, setShowConfirm] = useState(false)
+  const [warning, setWarning] = useState<Warning | null>(null)
 
-  const handleAdd = async (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-
-    if (state === 'loading' || state === 'removing') return
-
-    // 담김 상태에서 클릭 → 취소 확인 모달
-    if (state === 'added') {
-      setShowConfirm(true)
-      return
-    }
-
+  // 실제 담기 실행
+  const doAdd = async () => {
     setState('loading')
     try {
       const res = await fetch('/api/planner/add-item', {
@@ -76,6 +96,92 @@ export function AddToPlannerButton({
     } catch {
       setState('idle')
     }
+  }
+
+  const handleAdd = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if (state === 'loading' || state === 'removing') return
+
+    // 담김 상태에서 클릭 → 취소 확인 모달
+    if (state === 'added') {
+      setShowConfirm(true)
+      return
+    }
+
+    // 기존 플랜 정보를 가져와서 검증
+    let planCityId: string | undefined
+    let existingItems: Array<{ item_type: string; item_data: Record<string, unknown> }> = []
+    try {
+      const planRes = await fetch('/api/planner/items', { cache: 'no-store' })
+      if (planRes.ok) {
+        const planData = await planRes.json()
+        const plans = planData.plans as Array<{ city_id: string; plan_items: Array<{ item_type: string; item_data: Record<string, unknown> }> }> | undefined
+        if (plans && plans.length > 0) {
+          planCityId = plans[0].city_id
+          existingItems = plans[0].plan_items ?? []
+        }
+      }
+    } catch {
+      // 검증 실패해도 담기는 진행
+    }
+
+    const itemCityId = (itemData?.cityId ?? itemData?.city_id ?? itemData?.regionCode ?? itemData?.region) as string | undefined
+
+    // 검증 1: 도시 불일치
+    if (
+      planCityId && itemCityId &&
+      planCityId !== itemCityId &&
+      !['transport', 'ootd'].includes(itemType)
+    ) {
+      setWarning({
+        type: 'city_mismatch',
+        message: t('warn.cityMismatch', {
+          planCity: getCityName(planCityId, locale),
+          itemCity: getCityName(itemCityId, locale),
+        }),
+        onConfirm: () => { setWarning(null); doAdd() },
+      })
+      return
+    }
+
+    // 검증 2: 중복 아이템
+    const newName = extractName(itemData)
+    if (newName && existingItems.length > 0) {
+      const isDuplicate = existingItems.some((ex) => {
+        if (ex.item_type !== itemType) return false
+        return extractName(ex.item_data) === newName
+      })
+      if (isDuplicate) {
+        setWarning({
+          type: 'duplicate',
+          message: t('warn.duplicate'),
+          onConfirm: () => { setWarning(null); doAdd() },
+        })
+        return
+      }
+    }
+
+    // 검증 3: 교통편 충돌
+    if (itemType === 'transport' && itemData?.direction) {
+      const dir = itemData.direction as string
+      const conflict = existingItems.find(
+        (ex) => ex.item_type === 'transport' && ex.item_data?.direction === dir
+      )
+      if (conflict) {
+        const dirLabel = dir === 'going' ? t('warn.going') : t('warn.returning')
+        setWarning({
+          type: 'transport_conflict',
+          message: t('warn.transportConflict', { direction: dirLabel }),
+          onConfirm: () => { setWarning(null); doAdd() },
+        })
+        return
+      }
+    }
+
+    // 검증 통과 → 바로 담기
+    doAdd()
   }
 
   const handleRemove = async () => {
@@ -178,6 +284,48 @@ export function AddToPlannerButton({
           currentTab={itemType as TabId}
           onClose={() => setShowToast(false)}
         />
+      )}
+
+      {/* 경고 모달 */}
+      {warning && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/30 backdrop-blur-sm"
+          onClick={() => setWarning(null)}
+        >
+          <div
+            className="relative bg-white rounded-2xl shadow-xl max-w-sm w-full p-6 border border-mist"
+            onClick={(ev) => ev.stopPropagation()}
+          >
+            <div className="text-center mb-4">
+              <span className="text-4xl">
+                {warning.type === 'city_mismatch' && '⚠️'}
+                {warning.type === 'duplicate' && '📋'}
+                {warning.type === 'transport_conflict' && '🚄'}
+              </span>
+            </div>
+            <p className="text-sm text-ink text-center mb-6 leading-relaxed">
+              {warning.message}
+            </p>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => setWarning(null)}
+                className="flex-1 bg-white border border-mist text-slate font-bold rounded-xl px-4 py-2.5 text-sm hover:bg-cloud transition-colors"
+              >
+                {t('warn.cancel')}
+              </button>
+              <button
+                type="button"
+                onClick={warning.onConfirm}
+                className="flex-1 bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-4 py-2.5 text-sm hover:opacity-90 transition"
+              >
+                {warning.type === 'transport_conflict'
+                  ? t('warn.replace')
+                  : t('warn.addAnyway')}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </>
   )

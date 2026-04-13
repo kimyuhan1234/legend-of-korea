@@ -1258,6 +1258,16 @@
     "addToPlanner": "📋 プランナーに追加",
     "addShort": "📋 追加",
     "alreadyAdded": "✓ 追加済み",
+    "warn": {
+      "cityMismatch": "{planCity}の旅行を計画中ですが、このアイテムは{itemCity}にあります。追加しますか？",
+      "duplicate": "同じアイテムがすでにプランナーにあります。重複追加しますか？",
+      "transportConflict": "{direction}がすでにあります。新しい交通手段に置き換えますか？",
+      "cancel": "キャンセル",
+      "addAnyway": "それでも追加",
+      "replace": "置き換え",
+      "going": "往路",
+      "returning": "復路"
+    },
     "mission": {
       "prefix": "ミッション{n}",
       "fromHotel": "ホテルから大体{method}{min}分"

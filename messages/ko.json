@@ -1283,6 +1283,16 @@
     "addToPlanner": "📋 플래너에 담기",
     "addShort": "📋 담기",
     "alreadyAdded": "✓ 담김",
+    "warn": {
+      "cityMismatch": "현재 {planCity} 여행을 계획 중인데, 이 아이템은 {itemCity}에 있어요. 그래도 담을까요?",
+      "duplicate": "이미 같은 아이템이 플래너에 있어요. 중복으로 담을까요?",
+      "transportConflict": "{direction}이 이미 있어요. 새로운 교통편으로 교체할까요?",
+      "cancel": "취소",
+      "addAnyway": "그래도 담기",
+      "replace": "교체하기",
+      "going": "가는편",
+      "returning": "오는편"
+    },
     "mission": {
       "prefix": "미션{n}",
       "fromHotel": "호텔에서 대략 {method} {min}분"
