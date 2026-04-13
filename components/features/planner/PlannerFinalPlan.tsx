@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useState, useMemo, type ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import { PlannerWeather } from './PlannerWeather'
 import { getCityWeather, type CityWeatherDay } from '@/lib/data/city-weather-mock'
+import { getItemName, filterItemsByCity, getFirstDayStartTime, getLastDayEndTime } from '@/lib/utils/planner-helpers'
 import type { TripStyle } from './PlannerTripSetup'
 
 interface CourseMission {
@@ -75,15 +76,9 @@ const TYPE_EMOJI: Record<ItemType, string> = {
   ootd: '👗', goods: '🛍️', transport: '🚄', surprise: '🎁',
 }
 
-// 아이템명 추출 (i18n 객체 / 문자열 / 번역키 모두 대응)
+// 아이템명 추출 — 공유 헬퍼 사용
 function itemName(item: PlanItem, locale: string): string {
-  const data = item.item_data
-  const name = data.name as Record<string, string> | string | undefined
-  if (typeof name === 'string') return name
-  if (name && typeof name === 'object') return name[locale] || name.ko || 'Item'
-  if (data.kitName) return String(data.kitName)
-  if (data.productName) return String(data.productName)
-  return 'Item'
+  return getItemName(item, locale)
 }
 
 // 음식/스팟 아이템이 사이트인지 식당인지 추정 (kind 필드 또는 이름 키워드)
@@ -117,7 +112,9 @@ interface TimeSlot {
 // 스마트 스케줄링 알고리즘
 function buildSchedule(
   items: PlanItem[],
-  t: (key: string) => string
+  t: (key: string) => string,
+  dayStartTime?: string,
+  dayEndTime?: string,
 ): { slots: TimeSlot[]; unscheduled: PlanItem[] } {
   const foods: PlanItem[] = []
   const sights: PlanItem[] = []
@@ -169,13 +166,28 @@ function buildSchedule(
   while (foods.length > 0) night.push(foods.shift()!)
   while (goods.length > 0) night.push(goods.shift()!)
 
-  const slots: TimeSlot[] = [
-    { label: t('final.morning'), timeRange: '09:00 – 12:00', emoji: '🌅', items: morning },
+  // 시작/종료 시간 동적 반영
+  const start = dayStartTime ?? '09:00'
+  const end = dayEndTime ?? '22:00'
+  const startH = parseInt(start.split(':')[0], 10)
+  const endH = parseInt(end.split(':')[0], 10)
+
+  const allSlots: TimeSlot[] = [
+    { label: t('final.morning'), timeRange: `${start} – 12:00`, emoji: '🌅', items: morning },
     { label: t('final.lunch'), timeRange: '12:00 – 14:00', emoji: '🍽️', items: lunch },
     { label: t('final.afternoon'), timeRange: '14:00 – 18:00', emoji: '☀️', items: afternoon },
     { label: t('final.dinner'), timeRange: '18:00 – 20:00', emoji: '🌆', items: dinner },
-    { label: t('final.night'), timeRange: '20:00 – 22:00', emoji: '🌙', items: night },
+    { label: t('final.night'), timeRange: `20:00 – ${end}`, emoji: '🌙', items: night },
   ]
+
+  // 시작 시간 이전 슬롯 제거 (예: 도착 13시면 오전/점심 스킵)
+  // 종료 시간 이후 슬롯 제거
+  const slotStartHours = [startH, 12, 14, 18, 20]
+  const slots = allSlots.filter((_, i) => {
+    const slotStart = slotStartHours[i]
+    const slotEnd = i < 4 ? slotStartHours[i + 1] : (endH || 22)
+    return slotStart < (endH || 22) && slotEnd > startH
+  })
 
   return { slots, unscheduled: [] }
 }
@@ -194,13 +206,23 @@ export function PlannerFinalPlan({
   const t = useTranslations('planner')
   const [pdfState, setPdfState] = useState<'idle' | 'charging' | 'insufficient' | 'error'>('idle')
 
+  // 도시 필터 — 선택한 도시 아이템만 (교통/OOTD는 도시 무관)
+  const filteredItems = useMemo(
+    () => filterItemsByCity(items, cityId),
+    [items, cityId]
+  )
+
   // OOTD, transport, stay는 별도로 처리
-  const ootdItems = items.filter((i) => i.item_type === 'ootd')
-  const stayItems = items.filter((i) => i.item_type === 'stay')
-  const transportItems = items.filter((i) => i.item_type === 'transport')
-  const questItems = items.filter((i) => i.item_type === 'quest')
+  const ootdItems = filteredItems.filter((i) => i.item_type === 'ootd')
+  const stayItems = filteredItems.filter((i) => i.item_type === 'stay')
+  const transportItems = filteredItems.filter((i) => i.item_type === 'transport')
+  // 교통편 중복 제거: 같은 direction은 최신 1개만
+  const goingTransport = transportItems.filter((i) => i.item_data?.direction === 'going').slice(-1)
+  const returningTransport = transportItems.filter((i) => i.item_data?.direction === 'returning').slice(-1)
+  const dedupedTransport = [...goingTransport, ...returningTransport]
+  const questItems = filteredItems.filter((i) => i.item_type === 'quest')
   // quest 아이템은 미션으로 펼칠 것이므로 scheduler에서 제외
-  const schedulableItems = items.filter(
+  const schedulableItems = filteredItems.filter(
     (i) => !['ootd', 'stay', 'transport', 'quest'].includes(i.item_type)
   )
 
@@ -289,6 +311,10 @@ export function PlannerFinalPlan({
     }
   }
 
+  // 교통편 기반 1일차 시작 / 마지막날 종료 시간
+  const firstDayStart = getFirstDayStartTime(dedupedTransport)
+  const lastDayEnd = getLastDayEndTime(dedupedTransport)
+
   // 일반 아이템을 Day별로 분배 — 현재는 Day 1에만 몰아서 표시
   // (Day 2 이후는 미션 + 식사만; 향후 사용자 요청 시 세분화)
   const dayItems: PlanItem[][] = Array.from({ length: numDays }, () => [])
@@ -302,7 +328,7 @@ export function PlannerFinalPlan({
       const d = o.item_data.date
       if (typeof d === 'string') dates.add(d)
     }
-    for (const tr of transportItems) {
+    for (const tr of dedupedTransport) {
       const d = tr.item_data.date
       if (typeof d === 'string') dates.add(d)
     }
@@ -344,19 +370,22 @@ export function PlannerFinalPlan({
       </h2>
       <p className="text-sm text-[#6B7280] mb-6">{t('final.subtitle')}</p>
 
-      {/* 출발 (Transport) */}
-      {transportItems.length > 0 && (
+      {/* 교통편 (중복 제거된 가는편/오는편) */}
+      {dedupedTransport.length > 0 && (
         <div className="bg-white rounded-2xl p-5 mb-4 border-l-4 border-[#9DD8CE]">
           <p className="text-[10px] font-black text-[#9DD8CE] uppercase tracking-widest mb-2">
-            🚄 출발
+            🚄 교통편
           </p>
-          {transportItems.map((t) => (
-            <div key={t.id} className="text-sm text-[#374151]">
-              {itemName(t, locale)}{' '}
-              {typeof t.item_data.departureTime === 'string' && (
+          {dedupedTransport.map((tr) => (
+            <div key={tr.id} className="text-sm text-[#374151] mb-1">
+              <span className="text-xs font-bold text-[#9DD8CE] mr-1.5">
+                {tr.item_data?.direction === 'going' ? '✈️' : '🏠'}
+              </span>
+              {itemName(tr, locale)}{' '}
+              {typeof tr.item_data.departureTime === 'string' && (
                 <span className="text-[#9CA3AF] ml-1">
-                  {String(t.item_data.departureTime)}
-                  {typeof t.item_data.arrivalTime === 'string' && ` → ${String(t.item_data.arrivalTime)}`}
+                  {String(tr.item_data.departureTime)}
+                  {typeof tr.item_data.arrivalTime === 'string' && ` → ${String(tr.item_data.arrivalTime)}`}
                 </span>
               )}
             </div>
@@ -389,9 +418,15 @@ export function PlannerFinalPlan({
         {Array.from({ length: numDays }).map((_, dayIdx) => {
           const daySchedulableItems = dayItems[dayIdx] ?? []
           const dayMissionList = dayMissions[dayIdx] ?? []
+          const isFirstDay = dayIdx === 0
+          const isLastDay = dayIdx === numDays - 1
+          const dayStart = isFirstDay ? firstDayStart : undefined
+          const dayEnd = isLastDay ? lastDayEnd : undefined
           const { slots } = buildSchedule(
             daySchedulableItems,
-            t as unknown as (k: string) => string
+            t as unknown as (k: string) => string,
+            dayStart,
+            dayEnd,
           )
           const missionSlots = splitInDay(dayMissionList)
           const w = dayWeather[dayIdx]

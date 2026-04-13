@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { HotelInputForm } from './HotelInputForm'
 import { PlannerResetButton } from './PlannerResetButton'
 import { PlannerEmptyGuide } from './PlannerEmptyGuide'
+import { getItemName as sharedGetItemName } from '@/lib/utils/planner-helpers'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -56,22 +57,7 @@ const CITIES = [
 ]
 
 function getItemName(item: PlanItem, locale: string): string {
-  const data = item.item_data
-  if (item.item_type === 'ootd') {
-    const checked = data.checkedItems as Array<{ name?: string; icon?: string }> | undefined
-    if (checked && checked.length > 0) {
-      return checked.map((c) => c.name || c.icon || '').filter(Boolean).join(', ') || 'OOTD'
-    }
-  }
-  const name = data.name as Record<string, string> | string | undefined
-  if (typeof name === 'string') return name
-  if (name && typeof name === 'object') return name[locale] || name.ko || ''
-  if (data.courseName) {
-    const cn = data.courseName as Record<string, string> | string
-    return typeof cn === 'string' ? cn : cn[locale] || cn.ko || ''
-  }
-  if (data.kitName) return String(data.kitName)
-  return ''
+  return sharedGetItemName(item, locale)
 }
 
 function getCityLabel(code: string, locale: string): string {

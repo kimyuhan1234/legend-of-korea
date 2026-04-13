@@ -78,7 +78,28 @@ export async function POST(req: NextRequest) {
       plan = newPlan
     }
 
-    // 3. 아이템 추가
+    // 3. 교통편 중복 방지: 같은 direction의 기존 교통편 삭제 후 교체
+    if (itemType === 'transport' && itemData?.direction) {
+      const { data: existing } = await supabase
+        .from('plan_items')
+        .select('id, item_data')
+        .eq('plan_id', plan.id)
+        .eq('item_type', 'transport')
+
+      if (existing) {
+        const dupes = existing.filter(
+          (e) => (e.item_data as Record<string, unknown>)?.direction === itemData.direction
+        )
+        if (dupes.length > 0) {
+          await supabase
+            .from('plan_items')
+            .delete()
+            .in('id', dupes.map((d) => d.id))
+        }
+      }
+    }
+
+    // 4. 아이템 추가
     const { data: item, error: itemErr } = await supabase
       .from('plan_items')
       .insert({
