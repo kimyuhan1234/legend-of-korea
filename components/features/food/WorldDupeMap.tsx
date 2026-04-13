@@ -56,51 +56,14 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
 
   return (
     <div>
-      <div className="text-center mb-6">
-        <h2 className="text-xl md:text-2xl font-black text-ink mb-2">
-          {t('world.title')}
-        </h2>
-        <p className="text-sm text-stone">{t('world.subtitle')}</p>
-      </div>
-
-      {/* ── 데스크톱: 리스트 + 지도 나란히 ── */}
-      <div className="hidden lg:flex gap-5 items-start">
-        {/* 왼쪽 — 국가 리스트 */}
-        <div className="w-56 shrink-0 max-h-[460px] overflow-y-auto pr-1 flex flex-col gap-1">
-          {codes.map((code) => {
-            const meta = COUNTRIES[code]
-            const count = countryCounts[code] ?? 0
-            const isActive = active === code
-            return (
-              <button
-                key={code}
-                type="button"
-                onMouseEnter={() => setHovered(code)}
-                onMouseLeave={() => setHovered(null)}
-                onClick={() => handleSelect(code)}
-                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all text-left ${
-                  isActive ? 'bg-mint-deep text-white' : 'hover:bg-mint-light'
-                }`}
-              >
-                <span className="text-xl shrink-0">{meta.flag}</span>
-                <span className="flex-1 text-sm font-medium truncate">{getL(meta.name, locale)}</span>
-                <span className={`text-[10px] rounded-full px-2 py-0.5 font-bold shrink-0 ${
-                  isActive ? 'bg-white/20 text-white' : 'bg-blossom text-blossom-deep'
-                }`}>
-                  {count}
-                </span>
-              </button>
-            )
-          })}
-        </div>
-
-        {/* 오른쪽 — 세계지도 */}
-        <div className="flex-1 relative">
+      {/* ── 데스크톱: 지도 풀 폭 ── */}
+      <div className="hidden lg:block">
+        <div className="relative w-full">
           <Image
             src="/images/world-map-legend.png"
             alt="Legend World Map"
-            width={800}
-            height={450}
+            width={1200}
+            height={675}
             className="w-full h-auto rounded-xl"
             priority
           />
@@ -167,7 +130,7 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
         </div>
       </div>
 
-      {/* ── 모바일: 세로 스택 ── */}
+      {/* ── 모바일: 칩 + 지도 ── */}
       <div className="lg:hidden">
         {/* 국기 칩 가로 스크롤 */}
         <div className="overflow-x-auto pb-3 mb-4">
