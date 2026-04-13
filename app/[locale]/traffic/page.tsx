@@ -1,12 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
-import { TRANSPORT_ROUTES, type TransportOption } from '@/lib/data/transport-routes'
-import { getTransferInfo, type TransferStep } from '@/lib/data/transport-transfers'
+import { TRANSPORT_ROUTES } from '@/lib/data/transport-routes'
+import { getTransferInfo } from '@/lib/data/transport-transfers'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
+// ── 출발지 5개 ──
+const DEPARTURES = [
+  { code: 'seoul', name: { ko: '서울', en: 'Seoul', ja: 'ソウル' }, icon: '🏙️' },
+  { code: 'incheon-airport', name: { ko: '인천공항', en: 'Incheon Airport', ja: '仁川空港' }, icon: '✈️' },
+  { code: 'gimpo-airport', name: { ko: '김포공항', en: 'Gimpo Airport', ja: '金浦空港' }, icon: '✈️' },
+  { code: 'busan', name: { ko: '부산', en: 'Busan', ja: '釜山' }, icon: '🌊' },
+  { code: 'gimhae-airport', name: { ko: '김해공항', en: 'Gimhae Airport', ja: '金海空港' }, icon: '✈️' },
+]
+
+// ── 도착지 9개 도시 ──
 const CITIES = [
   { code: 'jeonju', name: { ko: '전주', en: 'Jeonju', ja: '全州' } },
   { code: 'seoul', name: { ko: '서울', en: 'Seoul', ja: 'ソウル' } },
@@ -19,7 +29,21 @@ const CITIES = [
   { code: 'icheon', name: { ko: '이천', en: 'Icheon', ja: '利川' } },
 ]
 
-const SEOUL = { ko: '서울', en: 'Seoul', ja: 'ソウル' }
+// ── 출발지별 도착지 필터 + 추천 ──
+const ROUTES: Record<string, string[]> = {
+  'seoul': ['jeonju', 'busan', 'jeju', 'gyeongju', 'tongyeong', 'cheonan', 'yongin', 'icheon'],
+  'incheon-airport': ['seoul', 'cheonan', 'yongin', 'icheon', 'jeonju', 'busan', 'jeju'],
+  'gimpo-airport': ['seoul', 'cheonan', 'yongin', 'icheon', 'jeonju', 'jeju'],
+  'busan': ['gyeongju', 'tongyeong', 'seoul', 'jeonju'],
+  'gimhae-airport': ['busan', 'gyeongju', 'tongyeong'],
+}
+
+const RECOMMENDED: Record<string, string[]> = {
+  'gimhae-airport': ['busan', 'gyeongju', 'tongyeong'],
+  'incheon-airport': ['seoul', 'jeju'],
+  'gimpo-airport': ['seoul', 'jeju'],
+}
+
 const TYPE_ICON: Record<string, string> = { ktx: '🚄', bus: '🚌', flight: '✈️' }
 const TYPE_LABEL: Record<string, { ko: string; en: string; ja: string }> = {
   ktx: { ko: 'KTX', en: 'KTX', ja: 'KTX' },
@@ -35,21 +59,16 @@ function minLabel(locale: string): string {
   return locale === 'ko' ? '분' : locale === 'ja' ? '分' : 'min'
 }
 
-// duration 문자열 → 분 변환 (예: "1.5~2h" → 105)
 function parseDurationMinutes(dur: string): number {
   const match = dur.match(/([\d.]+)/)
-  if (!match) return 120
-  const hours = parseFloat(match[1])
-  return Math.round(hours * 60)
+  return match ? Math.round(parseFloat(match[1]) * 60) : 120
 }
 
 function calculateArrival(departTime: string, durationMinutes: number): string {
   const [h, m] = departTime.split(':').map(Number)
   if (isNaN(h) || isNaN(m)) return ''
   const total = h * 60 + m + durationMinutes
-  const arrH = Math.floor(total / 60) % 24
-  const arrM = total % 60
-  return `${String(arrH).padStart(2, '0')}:${String(arrM).padStart(2, '0')}`
+  return `${String(Math.floor(total / 60) % 24).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`
 }
 
 type Direction = 'going' | 'returning'
@@ -59,21 +78,41 @@ export default function TrafficPage() {
   const pathname = usePathname()
   const locale = pathname.split('/')[1] || 'ko'
 
+  const [departure, setDeparture] = useState('seoul')
   const [selectedCity, setSelectedCity] = useState('jeonju')
   const [direction, setDirection] = useState<Direction>('going')
-
-  // 각 교통 카드별 날짜/시간 상태
   const [cardDates, setCardDates] = useState<Record<string, string>>({})
   const [cardTimes, setCardTimes] = useState<Record<string, string>>({})
 
-  const route = TRANSPORT_ROUTES.find((r) => r.cityId === selectedCity)
-  const cityName = CITIES.find((c) => c.code === selectedCity)?.name ?? { ko: selectedCity, en: selectedCity, ja: selectedCity }
   const isGoing = direction === 'going'
+
+  // 실제 출발/도착 (방향 고려)
+  const effectiveDep = isGoing ? departure : selectedCity
+  const effectiveDest = isGoing ? selectedCity : departure
+
+  const depName = DEPARTURES.find((d) => d.code === effectiveDep)?.name
+    ?? CITIES.find((c) => c.code === effectiveDep)?.name
+    ?? { ko: effectiveDep, en: effectiveDep, ja: effectiveDep }
+  const destName = DEPARTURES.find((d) => d.code === effectiveDest)?.name
+    ?? CITIES.find((c) => c.code === effectiveDest)?.name
+    ?? { ko: effectiveDest, en: effectiveDest, ja: effectiveDest }
+
+  // 도착지 목록 (출발지에 따라 필터)
+  const availableCities = useMemo(() => {
+    const available = ROUTES[departure] ?? CITIES.map((c) => c.code)
+    return CITIES.filter((c) => available.includes(c.code))
+  }, [departure])
+
+  const isRecommended = (cityCode: string) =>
+    (RECOMMENDED[departure] ?? []).includes(cityCode)
+
+  // transport-routes 에서 데이터 조회 (서울 출발 기준 데이터 사용)
+  // 비서울 출발이면 도착지 기준으로 조회, 없으면 null
+  const routeCity = departure === 'seoul' ? selectedCity : selectedCity
+  const route = TRANSPORT_ROUTES.find((r) => r.cityId === routeCity)
 
   const getDate = (key: string) => cardDates[key] ?? ''
   const getTime = (key: string) => cardTimes[key] ?? ''
-  const setDate = (key: string, val: string) => setCardDates((p) => ({ ...p, [key]: val }))
-  const setTime = (key: string, val: string) => setCardTimes((p) => ({ ...p, [key]: val }))
 
   return (
     <div className="min-h-screen bg-snow">
@@ -87,7 +126,7 @@ export default function TrafficPage() {
       </section>
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-10">
-        {/* 가는편 / 오는편 탭 */}
+        {/* 가는편/오는편 */}
         <div className="flex gap-2 justify-center mb-6">
           {(['going', 'returning'] as Direction[]).map((dir) => (
             <button
@@ -110,16 +149,22 @@ export default function TrafficPage() {
           <div>
             <label className="text-xs font-bold text-stone block mb-1">{t('from')}</label>
             {isGoing ? (
-              <div className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm">
-                {getL(SEOUL, locale)}
-              </div>
+              <select
+                value={departure}
+                onChange={(e) => { setDeparture(e.target.value); setSelectedCity('') }}
+                className="px-4 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm focus:outline-none focus:border-mint-deep"
+              >
+                {DEPARTURES.map((d) => (
+                  <option key={d.code} value={d.code}>{d.icon} {getL(d.name, locale)}</option>
+                ))}
+              </select>
             ) : (
               <select
                 value={selectedCity}
                 onChange={(e) => setSelectedCity(e.target.value)}
-                className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm focus:outline-none focus:border-mint-deep"
+                className="px-4 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm focus:outline-none focus:border-mint-deep"
               >
-                {CITIES.map((c) => (
+                {availableCities.map((c) => (
                   <option key={c.code} value={c.code}>{getL(c.name, locale)}</option>
                 ))}
               </select>
@@ -134,32 +179,49 @@ export default function TrafficPage() {
               <select
                 value={selectedCity}
                 onChange={(e) => setSelectedCity(e.target.value)}
-                className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm focus:outline-none focus:border-mint-deep"
+                className="px-4 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm focus:outline-none focus:border-mint-deep"
               >
-                {CITIES.map((c) => (
-                  <option key={c.code} value={c.code}>{getL(c.name, locale)}</option>
+                <option value="">{t('selectCity')}</option>
+                {availableCities.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {getL(c.name, locale)}{isRecommended(c.code) ? ' ⭐' : ''}
+                  </option>
                 ))}
               </select>
             ) : (
-              <div className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm">
-                {getL(SEOUL, locale)}
-              </div>
+              <select
+                value={departure}
+                onChange={(e) => setDeparture(e.target.value)}
+                className="px-4 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm focus:outline-none focus:border-mint-deep"
+              >
+                {DEPARTURES.map((d) => (
+                  <option key={d.code} value={d.code}>{d.icon} {getL(d.name, locale)}</option>
+                ))}
+              </select>
             )}
           </div>
         </div>
 
-        {route ? (
+        {/* 경로 요약 */}
+        {selectedCity && (
+          <p className="text-center text-sm text-slate mb-6">
+            {getL(depName, locale)} → {getL(destName, locale)}
+          </p>
+        )}
+
+        {route && selectedCity ? (
           <div className="space-y-5">
-            {/* 교통 카드 */}
             {route.options.map((opt) => {
               const cardKey = `${direction}-${opt.type}`
               const date = getDate(cardKey)
               const time = getTime(cardKey)
               const durMin = parseDurationMinutes(opt.duration)
               const arrival = time ? calculateArrival(time, durMin) : ''
-              const transfer = getTransferInfo(selectedCity, opt.type)
-              const stationFrom = isGoing ? getL(SEOUL, locale) : getL(opt.station, locale)
-              const stationTo = isGoing ? getL(opt.station, locale) : getL(SEOUL, locale)
+
+              // 환승 정보 — effectiveDep 기준
+              const transfer = getTransferInfo(effectiveDep, isGoing ? selectedCity : departure, opt.type)
+              const fromStation = getL(depName, locale)
+              const toStation = isGoing ? getL(opt.station, locale) : getL(depName, locale)
 
               return (
                 <div
@@ -168,7 +230,7 @@ export default function TrafficPage() {
                     opt.available ? 'border-mist hover:border-mint hover:shadow-md' : 'border-mist opacity-60'
                   }`}
                 >
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center gap-3 mb-4 flex-wrap">
                     <span className="text-2xl">{TYPE_ICON[opt.type]}</span>
                     <h3 className="font-bold text-ink text-lg">{getL(TYPE_LABEL[opt.type], locale)}</h3>
                     {!opt.available && (
@@ -177,7 +239,7 @@ export default function TrafficPage() {
                     {opt.available && !transfer && (
                       <span className="text-xs bg-mint-light text-mint-deep rounded-full px-2.5 py-0.5 font-bold">{t('direct')}</span>
                     )}
-                    {opt.available && transfer && (
+                    {opt.available && transfer && transfer.transfers.length > 0 && (
                       <span className="text-xs bg-peach text-ink rounded-full px-2.5 py-0.5 font-bold">
                         {t('transfer', { count: transfer.transfers.length })}
                       </span>
@@ -186,10 +248,9 @@ export default function TrafficPage() {
 
                   {opt.available && (
                     <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] gap-5">
-                      {/* 왼쪽: 교통 정보 */}
                       <div>
                         <div className="space-y-2 text-sm mb-4">
-                          <p className="text-ink font-medium">{stationFrom} → {stationTo}</p>
+                          <p className="text-ink font-medium">{fromStation} → {toStation}</p>
                           <p className="text-slate">
                             {t('duration')}: <span className="font-bold text-ink">{t('approx')} {opt.duration}</span>
                           </p>
@@ -198,8 +259,7 @@ export default function TrafficPage() {
                           )}
                         </div>
 
-                        {/* 환승 정보 */}
-                        {transfer && (
+                        {transfer && transfer.transfers.length > 0 && (
                           <div className="p-3 bg-peach/20 rounded-xl mb-4">
                             <p className="text-xs font-bold text-ink mb-2">{t('transferInfo')}</p>
                             {transfer.transfers.map((step) => (
@@ -221,14 +281,13 @@ export default function TrafficPage() {
                         </a>
                       </div>
 
-                      {/* 오른쪽: 날짜/시간 입력 */}
                       <div className="space-y-3 p-4 bg-snow rounded-xl border border-mist">
                         <div>
                           <label className="text-xs text-stone mb-1 block">{t('departDate')}</label>
                           <input
                             type="date"
                             value={date}
-                            onChange={(e) => setDate(cardKey, e.target.value)}
+                            onChange={(e) => setCardDates((p) => ({ ...p, [cardKey]: e.target.value }))}
                             className="w-full bg-white border border-mist rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-mint-light focus:border-mint-deep"
                           />
                         </div>
@@ -237,17 +296,15 @@ export default function TrafficPage() {
                           <input
                             type="time"
                             value={time}
-                            onChange={(e) => setTime(cardKey, e.target.value)}
+                            onChange={(e) => setCardTimes((p) => ({ ...p, [cardKey]: e.target.value }))}
                             className="w-full bg-white border border-mist rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-mint-light focus:border-mint-deep"
                           />
                         </div>
-
                         {arrival && (
                           <p className="text-xs text-mint-deep font-bold">
                             🕐 {t('arrivalEstimate', { time: arrival })}
                           </p>
                         )}
-
                         <AddToPlannerButton
                           itemType="transport"
                           itemData={{
@@ -258,15 +315,15 @@ export default function TrafficPage() {
                               en: `${isGoing ? 'Outbound' : 'Return'} ${getL(TYPE_LABEL[opt.type], 'en')}`,
                               ja: `${isGoing ? '往路' : '復路'} ${getL(TYPE_LABEL[opt.type], 'ja')}`,
                             },
-                            from: isGoing ? SEOUL : cityName,
-                            to: isGoing ? cityName : SEOUL,
+                            from: depName,
+                            to: destName,
                             date: date || null,
                             departureTime: time || null,
                             arrivalTime: arrival || null,
                             duration: opt.duration,
                             price: opt.fixedPrice ?? '',
                           }}
-                          cityId={selectedCity}
+                          cityId={selectedCity || departure}
                           size="md"
                           className="w-full justify-center"
                         />
@@ -277,8 +334,7 @@ export default function TrafficPage() {
               )
             })}
 
-            {/* 라스트마일 — 가는편만 */}
-            {isGoing && (
+            {isGoing && route.lastMile && (
               <div className="bg-mint-light/30 rounded-2xl border border-mint-light p-5">
                 <h3 className="font-bold text-ink mb-3">🚕 {t('lastMile')}</h3>
                 <div className="space-y-2 text-sm text-slate">
@@ -299,7 +355,7 @@ export default function TrafficPage() {
         ) : (
           <div className="text-center py-16 text-stone">
             <p className="text-3xl mb-3">🚄</p>
-            <p className="text-sm">{t('selectRoute')}</p>
+            <p className="text-sm">{selectedCity ? t('selectRoute') : t('selectCity')}</p>
           </div>
         )}
       </div>
