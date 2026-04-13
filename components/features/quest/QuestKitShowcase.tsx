@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import Link from 'next/link'
+import { useCart } from '@/lib/contexts/CartContext'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 interface Kit {
@@ -40,7 +40,33 @@ const KIT_IMAGE_MAP: Record<string, string> = {
   yongin: '/images/kits/yongin.png',
 }
 
-export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }: QuestKitShowcaseProps) {
+function CartButton({ kit, courseId, region, locale }: { kit: Kit; courseId: string; region: string; locale: string }) {
+  const { addItem } = useCart()
+  const tCart = useTranslations('cart')
+
+  return (
+    <button
+      type="button"
+      onClick={() =>
+        addItem({
+          id: `kit-${courseId}-${kit.id}`,
+          type: 'kit',
+          name: { ko: kit.name, en: kit.name, ja: kit.name },
+          price: kit.price,
+          priceDisplay: `₩${kit.price.toLocaleString()}`,
+          emoji: '🎁',
+          cityId: region,
+          metadata: { courseId, kitId: kit.id, optionType: kit.option_type },
+        })
+      }
+      className="inline-block w-full py-3 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold text-sm hover:opacity-90 transition mb-2"
+    >
+      🛒 {tCart('add')} · ₩{kit.price.toLocaleString()}
+    </button>
+  )
+}
+
+export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn: _isLoggedIn, region }: QuestKitShowcaseProps) {
   const t = useTranslations('quest')
   const kitImage = KIT_IMAGE_MAP[region] || '/images/kits/jeonju.png'
 
@@ -81,10 +107,6 @@ export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }:
           {kits.map((kit) => {
             const isSolo = kit.option_type === 'solo' || kit.name?.includes('1인')
             const label = isSolo ? t('kit.solo') : t('kit.couple')
-            const href = isLoggedIn
-              ? `/${locale}/courses/${courseId}/purchase?kit=${kit.id}`
-              : `/${locale}/auth/login?next=/${locale}/courses/${courseId}/purchase?kit=${kit.id}`
-
             return (
               <div key={kit.id} className="bg-white border-2 border-[#9DD8CE]/20 rounded-3xl p-7 text-center hover:border-[#9DD8CE] hover:shadow-lg transition-all duration-200">
                 <p className="text-sm font-bold text-[#9DD8CE] uppercase tracking-widest mb-2">{label}</p>
@@ -92,12 +114,8 @@ export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }:
                   ₩{kit.price.toLocaleString()}
                 </p>
                 <p className="text-xs text-[#6B7280] mb-6">{t('kit.taxIncluded')}</p>
-                <Link
-                  href={href}
-                  className="inline-block w-full py-3 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold text-sm hover:bg-[#7BC8BC] transition-colors mb-2"
-                >
-                  {t('kit.buy')}
-                </Link>
+                <CartButton kit={kit} courseId={courseId} region={region} locale={locale} />
+
                 <AddToPlannerButton
                   itemType="quest"
                   cityId={region}

@@ -5,6 +5,8 @@ import { notFound } from "next/navigation"
 import { Navbar } from "@/components/shared/Navbar"
 import { Footer } from "@/components/shared/Footer"
 import { Toaster } from "@/components/ui/toaster"
+import { CartProvider } from "@/lib/contexts/CartContext"
+import { CartSidePanel } from "@/components/shared/CartSidePanel"
 import { locales } from "@/i18n"
 
 interface LocaleLayoutProps {
@@ -76,10 +78,13 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <div className="min-h-screen bg-snow flex flex-col">
       <NextIntlClientProvider messages={messages} locale={locale}>
-        <Navbar locale={locale} />
-        <main className="flex-1">{children}</main>
-        <Footer locale={locale} />
-        <Toaster />
+        <CartProvider>
+          <Navbar locale={locale} />
+          <main className="flex-1">{children}</main>
+          <Footer locale={locale} />
+          <Toaster />
+          <CartSidePanel />
+        </CartProvider>
       </NextIntlClientProvider>
     </div>
   )

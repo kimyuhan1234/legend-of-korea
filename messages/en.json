@@ -522,6 +522,14 @@
       "misc": "Misc"
     }
   },
+  "cart": {
+    "title": "Cart",
+    "add": "Add to cart",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "clear": "Clear all",
+    "order": "Order now"
+  },
   "delivery": {
     "title": "📦 Delivery Address",
     "recipient": "Recipient name",

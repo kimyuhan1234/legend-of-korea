@@ -547,6 +547,14 @@
       "misc": "기타"
     }
   },
+  "cart": {
+    "title": "장바구니",
+    "add": "장바구니 담기",
+    "empty": "장바구니가 비어있어요",
+    "subtotal": "소계",
+    "clear": "전체 비우기",
+    "order": "주문하기"
+  },
   "delivery": {
     "title": "📦 배송지 입력",
     "recipient": "수령인 이름",

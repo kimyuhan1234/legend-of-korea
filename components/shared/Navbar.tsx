@@ -6,6 +6,7 @@ import { NavbarMobileMenu } from "@/components/shared/NavbarMobileMenu"
 import { LocaleSwitcher } from "@/components/shared/LocaleSwitcher"
 import { BackButton } from "@/components/shared/BackButton"
 import { PlannerBadge } from "@/components/features/planner/PlannerBadge"
+import { CartBadge } from "@/components/shared/CartBadge"
 
 interface NavbarProps {
   locale: string
@@ -119,6 +120,10 @@ export async function Navbar({ locale }: NavbarProps) {
           {/* 언어 전환 (데스크탑) */}
           <div className="hidden md:block">
             <LocaleSwitcher currentLocale={locale} />
+          </div>
+          {/* 장바구니 뱃지 */}
+          <div className="hidden md:block">
+            <CartBadge />
           </div>
           {/* 플래너 뱃지 (로그인 시에만 표시) */}
           {user && (

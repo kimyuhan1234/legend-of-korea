@@ -522,6 +522,14 @@
       "misc": "その他"
     }
   },
+  "cart": {
+    "title": "カート",
+    "add": "カートに入れる",
+    "empty": "カートは空です",
+    "subtotal": "小計",
+    "clear": "すべて削除",
+    "order": "注文する"
+  },
   "delivery": {
     "title": "📦 配送先入力",
     "recipient": "受取人名",

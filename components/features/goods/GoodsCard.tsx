@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { type GoodsProduct } from '@/lib/data/goods-products'
-import { DeliveryAddressModal, type DeliveryAddress } from '@/components/shared/DeliveryAddressModal'
+import { useCart } from '@/lib/contexts/CartContext'
 
 interface GoodsCardProps {
   product: GoodsProduct
@@ -12,57 +11,55 @@ interface GoodsCardProps {
 
 export function GoodsCard({ product, locale }: GoodsCardProps) {
   const t = useTranslations('goods')
-  const [showDelivery, setShowDelivery] = useState(false)
+  const tCart = useTranslations('cart')
+  const { addItem } = useCart()
 
   const name = product.name[locale as 'ko' | 'ja' | 'en'] || product.name.ko
   const description = product.description[locale as 'ko' | 'ja' | 'en'] || product.description.ko
 
-  const handleDeliveryConfirm = (_address: DeliveryAddress) => {
-    setShowDelivery(false)
-    // TODO: 결제 연동 시 address + product 정보를 결제 API로 전달
+  const handleAddToCart = () => {
+    addItem({
+      id: `goods-${product.id}`,
+      type: 'goods',
+      name: product.name,
+      price: product.price,
+      priceDisplay: `₩${product.price.toLocaleString()}`,
+      emoji: product.emoji,
+      cityId: product.cityId,
+    })
   }
 
   return (
-    <>
-      <div className="group bg-white rounded-3xl overflow-hidden border border-[#E4E7EB]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-        {/* 이모지 히어로 */}
-        <div className="relative h-40 bg-gradient-to-br from-mint-light/40 to-mint/30 flex items-center justify-center">
-          <span className="text-6xl">{product.emoji}</span>
-          <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/90 text-[10px] font-black text-[#111] uppercase">
-            {t(`category.${product.category}` as Parameters<typeof t>[0])}
-          </span>
-        </div>
-
-        <div className="p-5">
-          <h3 className="text-base font-bold text-[#111] mb-1 leading-tight">{name}</h3>
-          <p className="text-xs text-[#6B7280] mb-3 line-clamp-2">{description}</p>
-
-          <div className="flex items-baseline gap-2 mb-4">
-            <p className="text-lg font-black text-[#111]">₩{product.price.toLocaleString()}</p>
-            {product.lpPrice && (
-              <p className="text-xs font-bold text-[#9DD8CE]">
-                or {product.lpPrice} LP
-              </p>
-            )}
-          </div>
-
-          <button
-            type="button"
-            onClick={() => setShowDelivery(true)}
-            className="w-full bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-4 py-3 text-sm hover:opacity-90 transition"
-          >
-            {t('buy')} · ₩{product.price.toLocaleString()}
-          </button>
-        </div>
+    <div className="group bg-white rounded-3xl overflow-hidden border border-[#E4E7EB]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+      {/* 이모지 히어로 */}
+      <div className="relative h-40 bg-gradient-to-br from-mint-light/40 to-mint/30 flex items-center justify-center">
+        <span className="text-6xl">{product.emoji}</span>
+        <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/90 text-[10px] font-black text-[#111] uppercase">
+          {t(`category.${product.category}` as Parameters<typeof t>[0])}
+        </span>
       </div>
 
-      <DeliveryAddressModal
-        isOpen={showDelivery}
-        onClose={() => setShowDelivery(false)}
-        onConfirm={handleDeliveryConfirm}
-        productName={name}
-        productPrice={`₩${product.price.toLocaleString()}`}
-      />
-    </>
+      <div className="p-5">
+        <h3 className="text-base font-bold text-[#111] mb-1 leading-tight">{name}</h3>
+        <p className="text-xs text-[#6B7280] mb-3 line-clamp-2">{description}</p>
+
+        <div className="flex items-baseline gap-2 mb-4">
+          <p className="text-lg font-black text-[#111]">₩{product.price.toLocaleString()}</p>
+          {product.lpPrice && (
+            <p className="text-xs font-bold text-[#9DD8CE]">
+              or {product.lpPrice} LP
+            </p>
+          )}
+        </div>
+
+        <button
+          type="button"
+          onClick={handleAddToCart}
+          className="w-full bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-4 py-3 text-sm hover:opacity-90 transition"
+        >
+          🛒 {tCart('add')} · ₩{product.price.toLocaleString()}
+        </button>
+      </div>
+    </div>
   )
 }
