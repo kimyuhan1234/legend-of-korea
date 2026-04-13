@@ -224,7 +224,7 @@ export default function TrafficPage() {
 
               return (
                 <div
-                  key={opt.type}
+                  key={cardKey}
                   className={`bg-white rounded-2xl border p-6 transition-all ${
                     opt.available ? 'border-mist hover:border-mint hover:shadow-md' : 'border-mist opacity-60'
                   }`}
