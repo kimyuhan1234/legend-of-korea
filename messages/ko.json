@@ -1283,6 +1283,25 @@
       "fromHotel": "호텔에서 대략 {method} {min}분"
     }
   },
+  "traffic": {
+    "title": "도시까지 가는 길을 알려드려요",
+    "subtitle": "서울에서 출발하는 교통편을 한눈에 비교하세요",
+    "from": "출발지",
+    "to": "도착지",
+    "duration": "소요시간",
+    "approx": "대략",
+    "fare": "요금",
+    "book": "티켓 예매하기 →",
+    "lastMile": "터미널에서 시내까지",
+    "taxi": "택시",
+    "bus": "버스",
+    "walk": "도보",
+    "taxiNote": "택시 금액은 표시하지 않습니다",
+    "unavailable": "이용 불가",
+    "addToPlanner": "이 교통편 플래너에 담기",
+    "disclaimer": "모든 소요시간은 '대략'이며 실제와 다를 수 있습니다",
+    "selectRoute": "도착지를 선택해주세요"
+  },
   "dupe": {
     "mode": {
       "city": "🗺️ 도시별 탐색",

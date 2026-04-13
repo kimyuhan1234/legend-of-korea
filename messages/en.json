@@ -1258,6 +1258,25 @@
       "fromHotel": "Approx. {min} min by {method} from hotel"
     }
   },
+  "traffic": {
+    "title": "Find your way to the city",
+    "subtitle": "Compare transport options from Seoul at a glance",
+    "from": "From",
+    "to": "To",
+    "duration": "Duration",
+    "approx": "Approx.",
+    "fare": "Fare",
+    "book": "Book ticket →",
+    "lastMile": "From terminal to city",
+    "taxi": "Taxi",
+    "bus": "Bus",
+    "walk": "Walk",
+    "taxiNote": "Taxi fare is not displayed",
+    "unavailable": "Unavailable",
+    "addToPlanner": "Add to planner",
+    "disclaimer": "All durations are approximate",
+    "selectRoute": "Select a destination"
+  },
   "dupe": {
     "mode": {
       "city": "🗺️ By City",

@@ -1258,6 +1258,25 @@
       "fromHotel": "ホテルから大体{method}{min}分"
     }
   },
+  "traffic": {
+    "title": "都市への行き方をご案内",
+    "subtitle": "ソウルからの交通手段を一目で比較",
+    "from": "出発地",
+    "to": "到着地",
+    "duration": "所要時間",
+    "approx": "大体",
+    "fare": "料金",
+    "book": "チケット予約 →",
+    "lastMile": "ターミナルから市内へ",
+    "taxi": "タクシー",
+    "bus": "バス",
+    "walk": "徒歩",
+    "taxiNote": "タクシー料金は表示しません",
+    "unavailable": "利用不可",
+    "addToPlanner": "プランナーに追加",
+    "disclaimer": "全ての所要時間は目安です",
+    "selectRoute": "到着地を選択してください"
+  },
   "dupe": {
     "mode": {
       "city": "🗺️ 都市別",
