@@ -6,11 +6,10 @@ import { AiDupeSearch } from './AiDupeSearch'
 import { TastePreferenceFilter } from './TastePreferenceFilter'
 import { TasteMatchResults } from './TasteMatchResults'
 import { WorldDupeMap } from './WorldDupeMap'
-import { CountryDupeList } from './CountryDupeList'
 import { KoreaMapCitySelector } from './KoreaMapCitySelector'
 import { DupeSwipeContainer } from './DupeSwipeContainer'
 import { regions } from '@/lib/data/food-dupes'
-import { getAllCountryCounts, getCountryDupes } from '@/lib/utils/country-dupe-aggregator'
+import { getAllCountryCounts } from '@/lib/utils/country-dupe-aggregator'
 
 interface TopFood {
   foodId: string
@@ -117,21 +116,12 @@ export function DupeModeTabs({ locale }: DupeModeTabsProps) {
       key: 'world',
       label: t('mode.world'),
       content: (
-        <>
-          <WorldDupeMap
-            onCountrySelect={setSelectedCountry}
-            selectedCountry={selectedCountry}
-            countryCounts={countryCounts}
-            locale={locale}
-          />
-          {selectedCountry && (
-            <CountryDupeList
-              countryCode={selectedCountry}
-              data={getCountryDupes(selectedCountry, regions)}
-              locale={locale}
-            />
-          )}
-        </>
+        <WorldDupeMap
+          onCountrySelect={setSelectedCountry}
+          selectedCountry={selectedCountry}
+          countryCounts={countryCounts}
+          locale={locale}
+        />
       ),
     },
   ]

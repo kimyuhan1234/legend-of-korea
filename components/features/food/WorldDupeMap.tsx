@@ -4,8 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { COUNTRIES } from '@/lib/utils/country-dupe-aggregator'
-import { getCountryDupes } from '@/lib/utils/country-dupe-aggregator'
+import { COUNTRIES, getCountryDupes } from '@/lib/utils/country-dupe-aggregator'
 import { regions } from '@/lib/data/food-dupes'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
@@ -20,33 +19,40 @@ function getL(field: { ko: string; en: string; ja: string }, locale: string): st
   return field[locale as 'ko' | 'en' | 'ja'] || field.ko
 }
 
-// 국가별 지구본 회전각 (CSS rotateY)
-const ROTATIONS: Record<string, number> = {
-  JP: 0, CN: -10, TH: -20, VN: -15, MY: -25, ID: -30,
-  IN: -50, IT: -100, FR: -110, ES: -115, US: -170, MX: -160,
+// 국기 마커 위치 (세계지도 이미지 기준 %) — 아시아 중앙 동양식 지도
+const MAP_POS: Record<string, { x: number; y: number }> = {
+  JP: { x: 73, y: 30 },
+  CN: { x: 58, y: 28 },
+  TH: { x: 55, y: 48 },
+  VN: { x: 60, y: 45 },
+  MY: { x: 57, y: 55 },
+  ID: { x: 62, y: 60 },
+  IN: { x: 45, y: 40 },
+  IT: { x: 30, y: 28 },
+  FR: { x: 27, y: 24 },
+  ES: { x: 24, y: 30 },
+  US: { x: 88, y: 28 },
+  MX: { x: 85, y: 40 },
 }
-
-// 지구본 위 국가 점 위치 (원 기준 %)
-const DOTS: Record<string, { x: number; y: number }> = {
-  JP: { x: 82, y: 30 }, CN: { x: 72, y: 28 }, TH: { x: 70, y: 48 },
-  VN: { x: 74, y: 42 }, MY: { x: 72, y: 55 }, ID: { x: 75, y: 60 },
-  IN: { x: 62, y: 42 }, IT: { x: 48, y: 30 }, FR: { x: 44, y: 25 },
-  ES: { x: 42, y: 32 }, US: { x: 18, y: 28 }, MX: { x: 15, y: 40 },
-}
+const KOREA_POS = { x: 67, y: 30 }
 
 const codes = Object.keys(COUNTRIES)
 
 export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, locale }: WorldDupeMapProps) {
   const t = useTranslations('dupe')
   const [hovered, setHovered] = useState<string | null>(null)
+  const [showAll, setShowAll] = useState(false)
 
   const active = hovered || selectedCountry
-  const rotation = active ? (ROTATIONS[active] ?? 0) : 0
-  const dot = active ? DOTS[active] : null
-
-  // 선택된 국가의 듀프 데이터
   const dupeData = active ? getCountryDupes(active, regions) : null
-  const dupes = dupeData?.dupes.slice(0, 5) ?? []
+  const dupes = dupeData?.dupes ?? []
+  const activeMeta = active ? COUNTRIES[active] : null
+
+  // 국가 변경 시 더보기 리셋
+  const handleSelect = (code: string) => {
+    setShowAll(false)
+    onCountrySelect(code)
+  }
 
   return (
     <div>
@@ -57,10 +63,10 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
         <p className="text-sm text-stone">{t('world.subtitle')}</p>
       </div>
 
-      {/* ── 데스크톱: 3단 그리드 ── */}
-      <div className="hidden lg:grid grid-cols-[220px_200px_1fr] gap-6 items-start">
+      {/* ── 데스크톱: 리스트 + 지도 나란히 ── */}
+      <div className="hidden lg:flex gap-5 items-start">
         {/* 왼쪽 — 국가 리스트 */}
-        <div className="max-h-[520px] overflow-y-auto pr-1 flex flex-col gap-1">
+        <div className="w-56 shrink-0 max-h-[460px] overflow-y-auto pr-1 flex flex-col gap-1">
           {codes.map((code) => {
             const meta = COUNTRIES[code]
             const count = countryCounts[code] ?? 0
@@ -71,18 +77,14 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
                 type="button"
                 onMouseEnter={() => setHovered(code)}
                 onMouseLeave={() => setHovered(null)}
-                onClick={() => onCountrySelect(code)}
+                onClick={() => handleSelect(code)}
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all text-left ${
-                  isActive
-                    ? 'bg-mint-deep text-white'
-                    : 'hover:bg-mint-light'
+                  isActive ? 'bg-mint-deep text-white' : 'hover:bg-mint-light'
                 }`}
               >
                 <span className="text-xl shrink-0">{meta.flag}</span>
-                <span className="flex-1 text-sm font-medium truncate">
-                  {getL(meta.name, locale)}
-                </span>
-                <span className={`text-xs rounded-full px-2 py-0.5 font-bold shrink-0 ${
+                <span className="flex-1 text-sm font-medium truncate">{getL(meta.name, locale)}</span>
+                <span className={`text-[10px] rounded-full px-2 py-0.5 font-bold shrink-0 ${
                   isActive ? 'bg-white/20 text-white' : 'bg-blossom text-blossom-deep'
                 }`}>
                   {count}
@@ -92,115 +94,75 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
           })}
         </div>
 
-        {/* 중간 — 지구본 */}
-        <div className="flex justify-center pt-10">
-          <div className="relative w-48 h-48">
-            {/* 지구본 본체 */}
-            <div
-              className="w-full h-full rounded-full relative overflow-hidden"
-              style={{
-                background: 'radial-gradient(circle at 35% 35%, #6CB4EE, #2E86C1 40%, #1A5276 80%, #0B2545)',
-                boxShadow: 'inset -20px -20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(44,130,201,0.2)',
-              }}
-            >
-              {/* 대륙 */}
-              <div
-                className="absolute inset-0 transition-transform duration-700 ease-out"
-                style={{ transform: `rotateY(${rotation}deg)` }}
-              >
-                <div style={{ position: 'absolute', top: '15%', left: '8%', width: '25%', height: '30%', background: 'rgba(139,195,74,0.5)', borderRadius: '40% 60% 30% 70%' }} />
-                <div style={{ position: 'absolute', top: '50%', left: '18%', width: '15%', height: '30%', background: 'rgba(139,195,74,0.5)', borderRadius: '50% 50% 40% 60%' }} />
-                <div style={{ position: 'absolute', top: '12%', left: '42%', width: '18%', height: '20%', background: 'rgba(139,195,74,0.5)', borderRadius: '60% 40% 50% 50%' }} />
-                <div style={{ position: 'absolute', top: '30%', left: '44%', width: '16%', height: '32%', background: 'rgba(139,195,74,0.5)', borderRadius: '45% 55% 40% 60%' }} />
-                <div style={{ position: 'absolute', top: '10%', left: '55%', width: '35%', height: '40%', background: 'rgba(139,195,74,0.5)', borderRadius: '50% 60% 40% 50%' }} />
-                <div style={{ position: 'absolute', top: '60%', left: '75%', width: '14%', height: '14%', background: 'rgba(139,195,74,0.5)', borderRadius: '50% 40% 60% 50%' }} />
-              </div>
+        {/* 오른쪽 — 세계지도 */}
+        <div className="flex-1 relative">
+          <Image
+            src="/images/world-map-legend.png"
+            alt="Legend World Map"
+            width={800}
+            height={450}
+            className="w-full h-auto rounded-xl"
+            priority
+          />
 
-              {/* 국가 점 */}
-              {dot && (
-                <div
-                  className="absolute w-3 h-3 rounded-full bg-blossom-deep"
-                  style={{ top: `${dot.y}%`, left: `${dot.x}%`, transform: 'translate(-50%,-50%)' }}
-                >
-                  <div className="absolute inset-0 rounded-full bg-blossom-deep animate-ping" />
-                </div>
-              )}
-
-              {/* 광택 */}
-              <div
-                className="absolute inset-0 rounded-full pointer-events-none"
-                style={{ background: 'radial-gradient(circle at 30% 25%, rgba(255,255,255,0.25), transparent 60%)' }}
-              />
-            </div>
-
-            {/* 한국 라벨 */}
-            <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 bg-mint-deep text-white px-3 py-1 rounded-full text-[10px] font-bold whitespace-nowrap">
-              📍 KOREA
-            </div>
+          {/* 한국 마커 (항상 표시) */}
+          <div
+            className="absolute -translate-x-1/2 -translate-y-1/2 z-10"
+            style={{ top: `${KOREA_POS.y}%`, left: `${KOREA_POS.x}%` }}
+          >
+            <span className="text-lg">📍</span>
+            <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-mint-deep text-white text-[9px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">
+              KOREA
+            </span>
           </div>
-        </div>
 
-        {/* 오른쪽 — 듀프 카드 */}
-        <div className="min-h-[200px]">
-          {active && dupes.length > 0 ? (
-            <div className="flex flex-col gap-3">
-              {dupes.map((dupe, i) => (
-                <div
-                  key={`${active}-${dupe.koreanFood.id}`}
-                  className="bg-white rounded-xl p-3 border border-mist hover:border-mint transition-all"
-                  style={{ animation: `slideIn 0.4s ease-out ${i * 0.08}s both` }}
-                >
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="text-sm font-medium text-slate truncate">
-                      {getL(dupe.foreignFood.name, locale)}
-                    </span>
-                    <span className="text-mint-deep font-bold shrink-0">→</span>
-                    <span className="text-sm font-bold text-ink truncate">
-                      {getL(dupe.koreanFood.name, locale)}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] bg-blossom-light text-blossom-deep rounded-full px-2 py-0.5 font-bold shrink-0">
-                      {getL(dupe.regionName, locale)}
-                    </span>
-                    <div className="flex-1 h-1.5 bg-mist rounded-full">
-                      <div className="h-full bg-mint-deep rounded-full transition-all" style={{ width: `${dupe.foreignFood.similarityPercent}%` }} />
-                    </div>
-                    <span className="text-xs font-bold text-mint-deep shrink-0">
-                      {dupe.foreignFood.similarityPercent}%
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 mt-2">
-                    <Link
-                      href={`/${locale}/food/dupe/${dupe.regionCode}/${dupe.koreanFood.id}`}
-                      className="text-[10px] font-bold text-mint-deep hover:underline"
-                    >
-                      {t('world.detail')}
-                    </Link>
-                    <AddToPlannerButton
-                      itemType="food"
-                      itemData={{ name: dupe.koreanFood.name, foodId: dupe.koreanFood.id, region: dupe.regionCode, source: 'world-globe' }}
-                      cityId={dupe.regionCode}
-                      size="sm"
-                    />
-                  </div>
-                </div>
-              ))}
-              {dupeData && dupeData.totalMatches > 5 && (
-                <button
-                  type="button"
-                  onClick={() => onCountrySelect(active)}
-                  className="text-sm text-mint-deep hover:underline text-center"
-                >
-                  {t('world.more', { count: dupeData.totalMatches - 5 })}
-                </button>
-              )}
-            </div>
-          ) : (
-            <div className="text-center text-stone py-16">
-              <p className="text-3xl mb-2">🌍</p>
-              <p className="text-sm">{t('world.selectCountry')}</p>
-            </div>
+          {/* 12개국 국기 마커 */}
+          {codes.map((code) => {
+            const pos = MAP_POS[code]
+            if (!pos) return null
+            const meta = COUNTRIES[code]
+            const count = countryCounts[code] ?? 0
+            const isActive = active === code
+
+            return (
+              <button
+                key={code}
+                type="button"
+                onMouseEnter={() => setHovered(code)}
+                onMouseLeave={() => setHovered(null)}
+                onClick={() => handleSelect(code)}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-300 z-20 ${
+                  isActive ? 'scale-150' : 'hover:scale-125'
+                }`}
+                style={{ top: `${pos.y}%`, left: `${pos.x}%` }}
+                title={getL(meta.name, locale)}
+              >
+                <span className="text-2xl drop-shadow-lg">{meta.flag}</span>
+                <span className="absolute -bottom-1 -right-1 bg-blossom text-blossom-deep text-[8px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                  {count}
+                </span>
+                {isActive && (
+                  <span className="absolute inset-0 -m-2 rounded-full bg-mint/30 animate-ping" />
+                )}
+              </button>
+            )
+          })}
+
+          {/* 선택된 국가 → 한국 점선 */}
+          {active && MAP_POS[active] && (
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-10">
+              <line
+                x1={`${MAP_POS[active].x}%`}
+                y1={`${MAP_POS[active].y}%`}
+                x2={`${KOREA_POS.x}%`}
+                y2={`${KOREA_POS.y}%`}
+                stroke="#9DD8CE"
+                strokeWidth="2"
+                strokeDasharray="8,4"
+                className="animate-draw"
+              />
+              <circle cx={`${KOREA_POS.x}%`} cy={`${KOREA_POS.y}%`} r="4" fill="#9DD8CE" />
+            </svg>
           )}
         </div>
       </div>
@@ -217,7 +179,7 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
                 <button
                   key={code}
                   type="button"
-                  onClick={() => onCountrySelect(code)}
+                  onClick={() => handleSelect(code)}
                   className={`shrink-0 flex items-center gap-2 px-3 py-2 rounded-full text-sm font-bold transition-colors ${
                     isActive ? 'bg-mint-deep text-white' : 'bg-cloud text-slate border border-mist'
                   }`}
@@ -235,62 +197,121 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
           </div>
         </div>
 
-        {/* 모바일 지구본 (작게) */}
-        <div className="flex justify-center mb-6">
-          <div className="relative w-32 h-32">
-            <div
-              className="w-full h-full rounded-full overflow-hidden"
-              style={{
-                background: 'radial-gradient(circle at 35% 35%, #6CB4EE, #2E86C1 40%, #1A5276 80%, #0B2545)',
-                boxShadow: 'inset -12px -12px 24px rgba(0,0,0,0.3)',
-              }}
-            >
-              <div className="absolute inset-0 transition-transform duration-700" style={{ transform: `rotateY(${rotation}deg)` }}>
-                <div style={{ position: 'absolute', top: '10%', left: '55%', width: '35%', height: '40%', background: 'rgba(139,195,74,0.4)', borderRadius: '50% 60% 40% 50%' }} />
-                <div style={{ position: 'absolute', top: '12%', left: '42%', width: '18%', height: '20%', background: 'rgba(139,195,74,0.4)', borderRadius: '60% 40% 50% 50%' }} />
-                <div style={{ position: 'absolute', top: '15%', left: '8%', width: '25%', height: '30%', background: 'rgba(139,195,74,0.4)', borderRadius: '40% 60% 30% 70%' }} />
-              </div>
-              {dot && (
-                <div className="absolute w-2.5 h-2.5 rounded-full bg-blossom-deep" style={{ top: `${dot.y}%`, left: `${dot.x}%`, transform: 'translate(-50%,-50%)' }}>
-                  <div className="absolute inset-0 rounded-full bg-blossom-deep animate-ping" />
-                </div>
-              )}
-              <div className="absolute inset-0 rounded-full" style={{ background: 'radial-gradient(circle at 30% 25%, rgba(255,255,255,0.2), transparent 60%)' }} />
-            </div>
+        {/* 모바일 지도 (작게) */}
+        <div className="relative mb-6">
+          <Image
+            src="/images/world-map-legend.png"
+            alt="Legend World Map"
+            width={800}
+            height={450}
+            className="w-full h-auto rounded-xl"
+          />
+          {/* 한국 마커 */}
+          <div className="absolute -translate-x-1/2 -translate-y-1/2" style={{ top: `${KOREA_POS.y}%`, left: `${KOREA_POS.x}%` }}>
+            <span className="text-sm">📍</span>
           </div>
-        </div>
-
-        {/* 모바일 카드 */}
-        {active && dupes.length > 0 && (
-          <div className="space-y-3">
-            {dupes.map((dupe, i) => (
+          {/* 선택된 국가 마커만 표시 */}
+          {active && MAP_POS[active] && (
+            <>
               <div
-                key={`m-${active}-${dupe.koreanFood.id}`}
-                className="bg-white rounded-xl p-3 border border-mist"
-                style={{ animation: `slideIn 0.3s ease-out ${i * 0.06}s both` }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-20 scale-125"
+                style={{ top: `${MAP_POS[active].y}%`, left: `${MAP_POS[active].x}%` }}
               >
-                <div className="flex items-center gap-2 mb-1">
+                <span className="text-xl">{COUNTRIES[active].flag}</span>
+                <span className="absolute inset-0 -m-1 rounded-full bg-mint/30 animate-ping" />
+              </div>
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-10">
+                <line
+                  x1={`${MAP_POS[active].x}%`} y1={`${MAP_POS[active].y}%`}
+                  x2={`${KOREA_POS.x}%`} y2={`${KOREA_POS.y}%`}
+                  stroke="#9DD8CE" strokeWidth="1.5" strokeDasharray="6,3" className="animate-draw"
+                />
+              </svg>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* ── 듀프 카드 그리드 (지도 아래) ── */}
+      {active && dupes.length > 0 && (
+        <div className="mt-8">
+          <h3 className="text-lg font-bold text-ink mb-4">
+            {activeMeta?.flag} {t('world.matches', {
+              country: activeMeta ? getL(activeMeta.name, locale) : '',
+              count: dupeData?.totalMatches ?? 0,
+            })}
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {(showAll ? dupes : dupes.slice(0, 6)).map((dupe, i) => (
+              <div
+                key={`${active}-${dupe.koreanFood.id}`}
+                className="bg-white rounded-xl p-4 border border-mist hover:border-mint hover:shadow-md transition-all"
+                style={{ animation: `fadeUp 0.4s ease-out ${i * 0.08}s both` }}
+              >
+                <div className="flex items-center gap-2 mb-2">
                   <span className="text-sm text-slate truncate">{getL(dupe.foreignFood.name, locale)}</span>
-                  <span className="text-mint-deep font-bold">→</span>
+                  <span className="text-mint-deep font-bold shrink-0">→</span>
                   <span className="text-sm font-bold text-ink truncate">{getL(dupe.koreanFood.name, locale)}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] bg-blossom-light text-blossom-deep rounded-full px-2 py-0.5 font-bold">{getL(dupe.regionName, locale)}</span>
-                  <div className="flex-1 h-1 bg-mist rounded-full">
-                    <div className="h-full bg-mint-deep rounded-full" style={{ width: `${dupe.foreignFood.similarityPercent}%` }} />
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-[10px] bg-blossom-light text-blossom-deep rounded-full px-2 py-0.5 font-bold shrink-0">
+                    {getL(dupe.regionName, locale)}
+                  </span>
+                  <div className="flex-1 h-1.5 bg-mist rounded-full">
+                    <div className="h-full bg-mint-deep rounded-full transition-all duration-500" style={{ width: `${dupe.foreignFood.similarityPercent}%` }} />
                   </div>
-                  <span className="text-xs font-bold text-mint-deep">{dupe.foreignFood.similarityPercent}%</span>
+                  <span className="text-xs font-bold text-mint-deep shrink-0">{dupe.foreignFood.similarityPercent}%</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Link
+                    href={`/${locale}/food/dupe/${dupe.regionCode}/${dupe.koreanFood.id}`}
+                    className="text-[10px] font-bold text-mint-deep hover:underline"
+                  >
+                    {t('world.detail')}
+                  </Link>
+                  <AddToPlannerButton
+                    itemType="food"
+                    itemData={{ name: dupe.koreanFood.name, foodId: dupe.koreanFood.id, region: dupe.regionCode, source: 'world-map' }}
+                    cityId={dupe.regionCode}
+                    size="sm"
+                  />
                 </div>
               </div>
             ))}
           </div>
-        )}
-      </div>
+
+          {dupes.length > 6 && !showAll && (
+            <button
+              type="button"
+              onClick={() => setShowAll(true)}
+              className="mt-4 text-sm text-mint-deep hover:underline mx-auto block"
+            >
+              {t('world.more', { count: dupes.length - 6 })}
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* 미선택 상태 */}
+      {!active && (
+        <div className="text-center text-stone py-10 mt-4">
+          <p className="text-3xl mb-2">🌍</p>
+          <p className="text-sm">{t('world.selectCountry')}</p>
+        </div>
+      )}
 
       <style jsx>{`
-        @keyframes slideIn {
-          from { opacity: 0; transform: translateX(-20px); }
-          to   { opacity: 1; transform: translateX(0); }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes drawLine {
+          from { stroke-dashoffset: 200; }
+          to   { stroke-dashoffset: 0; }
+        }
+        .animate-draw {
+          animation: drawLine 0.6s ease-out forwards;
         }
       `}</style>
     </div>
