@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
@@ -15,7 +15,19 @@ function getL(field: { ko: string; en: string; ja: string }, locale: string): st
   return field[locale as 'ko' | 'en' | 'ja'] || field.ko
 }
 
-// 도시별 이미지 경로
+// 확정 좌표 (드래그 도구로 실측)
+const CITY_POS: Record<string, { top: string; left: string }> = {
+  seoul: { top: '27.4%', left: '40.6%' },
+  yongin: { top: '34.6%', left: '43.8%' },
+  icheon: { top: '34%', left: '48.4%' },
+  cheonan: { top: '40.8%', left: '42.4%' },
+  jeonju: { top: '56.4%', left: '43.4%' },
+  gyeongju: { top: '58.2%', left: '76%' },
+  tongyeong: { top: '73.6%', left: '60.6%' },
+  busan: { top: '67.4%', left: '72.2%' },
+  jeju: { top: '96%', left: '35.8%' },
+}
+
 const CITY_IMAGE: Record<string, string> = {
   jeonju: '/images/village/jeonju.jpg',
   seoul: '/images/village/seoul.jpg',
@@ -28,19 +40,6 @@ const CITY_IMAGE: Record<string, string> = {
   icheon: '/images/village/icheon.png',
 }
 
-// 초기 좌표 — 드래그로 조정 후 콘솔에서 확정
-const INITIAL_POS: Record<string, { top: number; left: number }> = {
-  seoul: { top: 23, left: 43 },
-  yongin: { top: 27, left: 46 },
-  icheon: { top: 26, left: 53 },
-  cheonan: { top: 33, left: 38 },
-  jeonju: { top: 48, left: 30 },
-  gyeongju: { top: 46, left: 67 },
-  tongyeong: { top: 60, left: 47 },
-  busan: { top: 56, left: 67 },
-  jeju: { top: 80, left: 33 },
-}
-
 export function KoreaMapCitySelector({ regions }: KoreaMapCitySelectorProps) {
   const t = useTranslations('dupe')
   const pathname = usePathname()
@@ -48,58 +47,6 @@ export function KoreaMapCitySelector({ regions }: KoreaMapCitySelectorProps) {
 
   const [selected, setSelected] = useState<string | null>(null)
   const selectedRegion = selected ? regions.find((r) => r.code === selected) : null
-
-  // ── 개발 도구: 드래그 좌표 조정 (좌표 확정 후 제거) ──
-  const [positions, setPositions] = useState<Record<string, { top: number; left: number }>>({ ...INITIAL_POS })
-  const [dragging, setDragging] = useState<string | null>(null)
-  const mapRef = useRef<HTMLDivElement>(null)
-
-  const updatePos = (clientX: number, clientY: number) => {
-    if (!dragging || !mapRef.current) return
-    const rect = mapRef.current.getBoundingClientRect()
-    const top = Math.round(((clientY - rect.top) / rect.height) * 1000) / 10
-    const left = Math.round(((clientX - rect.left) / rect.width) * 1000) / 10
-    setPositions((prev) => ({ ...prev, [dragging]: { top, left } }))
-  }
-
-  const handleMouseDown = (code: string) => (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setDragging(code)
-  }
-
-  const handleMouseMove = (e: React.MouseEvent) => updatePos(e.clientX, e.clientY)
-
-  const handleMouseUp = () => {
-    if (dragging) {
-      console.log('=== 도시 좌표 ===')
-      Object.entries(positions).forEach(([code, pos]) => {
-        console.log(`  ${code}: { top: '${pos.top}%', left: '${pos.left}%' },`)
-      })
-      setDragging(null)
-    }
-  }
-
-  const handleTouchStart = (code: string) => (e: React.TouchEvent) => {
-    e.stopPropagation()
-    setDragging(code)
-  }
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!dragging) return
-    const touch = e.touches[0]
-    updatePos(touch.clientX, touch.clientY)
-  }
-
-  const handleTouchEnd = () => handleMouseUp()
-
-  const copyPositions = () => {
-    const text = Object.entries(positions)
-      .map(([code, pos]) => `  ${code}: { top: '${pos.top}%', left: '${pos.left}%' },`)
-      .join('\n')
-    navigator.clipboard.writeText(text).catch(() => {})
-    alert('좌표가 클립보드에 복사되었습니다!')
-  }
 
   return (
     <div>
@@ -111,17 +58,9 @@ export function KoreaMapCitySelector({ regions }: KoreaMapCitySelectorProps) {
       </div>
 
       <div className="flex flex-col md:flex-row gap-6 items-start">
-        {/* 지도 이미지 + 드래그 가능 마커 */}
+        {/* 지도 이미지 + 도시 마커 */}
         <div className="flex-1 w-full md:w-auto">
-          <div
-            ref={mapRef}
-            className="relative w-full max-w-[500px] mx-auto select-none"
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
+          <div className="relative w-full max-w-[500px] mx-auto">
             <Image
               src="/images/korea-map.png"
               alt="Korea Map"
@@ -129,36 +68,22 @@ export function KoreaMapCitySelector({ regions }: KoreaMapCitySelectorProps) {
               height={600}
               className="w-full h-auto rounded-2xl"
               priority
-              draggable={false}
             />
 
-            {/* 도시 마커 */}
             {regions.map((region) => {
-              const pos = positions[region.code]
+              const pos = CITY_POS[region.code]
               if (!pos) return null
               const isSelected = selected === region.code
-              const isDraggingThis = dragging === region.code
 
               return (
                 <button
                   key={region.code}
                   type="button"
-                  onClick={(e) => {
-                    if (!dragging) {
-                      e.stopPropagation()
-                      setSelected(isSelected ? null : region.code)
-                    }
-                  }}
-                  onMouseDown={handleMouseDown(region.code)}
-                  onTouchStart={handleTouchStart(region.code)}
-                  className={`absolute -translate-x-1/2 -translate-y-1/2 group flex flex-col items-center gap-0.5 z-10 ${
-                    isDraggingThis
-                      ? 'cursor-grabbing scale-150'
-                      : isSelected
-                        ? 'scale-125'
-                        : 'hover:scale-125 cursor-grab'
-                  } transition-transform duration-200`}
-                  style={{ top: `${pos.top}%`, left: `${pos.left}%` }}
+                  onClick={() => setSelected(isSelected ? null : region.code)}
+                  className={`absolute -translate-x-1/2 -translate-y-1/2 group flex flex-col items-center gap-0.5 transition-transform duration-200 z-10 ${
+                    isSelected ? 'scale-125' : 'hover:scale-125'
+                  }`}
+                  style={{ top: pos.top, left: pos.left }}
                   title={getL(region.name, locale)}
                 >
                   <div className={`rounded-full border-2 border-white shadow-lg transition-all ${
@@ -171,34 +96,12 @@ export function KoreaMapCitySelector({ regions }: KoreaMapCitySelectorProps) {
                   }`}>
                     {getL(region.name, locale)}
                   </span>
-                  {/* 개발도구: 좌표 표시 */}
-                  <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-[7px] bg-black/80 text-white px-1 rounded whitespace-nowrap">
-                    {pos.top}%, {pos.left}%
-                  </span>
-                  {/* 호버 툴팁 */}
                   <span className="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[8px] font-bold text-white bg-ink/80 px-2 py-0.5 rounded-full whitespace-nowrap">
                     {t('map.foods', { count: region.foods.length })}
                   </span>
                 </button>
               )
             })}
-          </div>
-
-          {/* 개발 도구 — 좌표 확정 후 이 블록 전체 삭제 */}
-          <div className="mt-4 p-3 bg-yellow-50 border border-yellow-300 rounded-lg text-xs font-mono">
-            <p className="font-bold mb-2">🛠️ 개발 도구: 마커를 드래그해서 위치 조정</p>
-            {Object.entries(positions).map(([code, pos]) => (
-              <div key={code}>
-                {code}: top: {pos.top}%, left: {pos.left}%
-              </div>
-            ))}
-            <button
-              type="button"
-              onClick={copyPositions}
-              className="mt-2 px-3 py-1 bg-mint-deep text-white rounded text-xs font-bold"
-            >
-              📋 좌표 복사
-            </button>
           </div>
         </div>
 
