@@ -855,26 +855,26 @@
     },
     "workshops": {
       "jeonju1": {
-        "name": "Jeonju Hanji Paper Craft",
-        "desc": "Make fans, lanterns, and postcards from traditional Korean paper in the heart of Hanok Village.",
-        "price": "₩15,000~₩25,000",
-        "duration": "1~1.5h"
+        "name": "Jeonju Hanbok Experience & Photo Shoot",
+        "desc": "Wear traditional Hanbok and get professional photos taken at Gyeonggijeon & Jeondong Cathedral in Hanok Village.",
+        "price": "From ₩15,000",
+        "duration": "2h"
       },
       "jeonju2": {
-        "name": "Jeonju Pottery Making",
-        "desc": "Spin the wheel and create your own teacup or plate. Guided by a professional potter, perfect for beginners.",
-        "price": "₩20,000~₩30,000",
-        "duration": "1.5h"
+        "name": "Jeonju Hanbok Rental (Hanboknam)",
+        "desc": "Rent premium Hanbok and freely explore the charming streets of Jeonju Hanok Village.",
+        "price": "From ₩10,000",
+        "duration": "3h"
       },
       "jeonju3": {
-        "name": "Traditional Fan Making",
-        "desc": "Craft Jeonju's famous hapjukseon folding fan. Shape bamboo and apply hanji paper for a one-of-a-kind keepsake.",
-        "price": "₩18,000~₩25,000",
-        "duration": "1h"
+        "name": "Jeonju Hanok Village Cultural Experience",
+        "desc": "Try various traditional crafts in Hanok Village — hanji art, tea ceremony, traditional games and more.",
+        "price": "From ₩15,000",
+        "duration": "1~2h"
       },
       "jeonju4": {
-        "name": "Natural Dyeing Workshop",
-        "desc": "Dye handkerchiefs and scarves with natural materials like indigo and gardenia. Experience nature's own palette.",
+        "name": "Jeonju Traditional Culture Workshop",
+        "desc": "Hands-on cultural workshops in Hanok Village — calligraphy, rice cake making, traditional crafts.",
         "price": "₩12,000~₩20,000",
         "duration": "1h"
       },
@@ -891,15 +891,15 @@
         "duration": "1.5h"
       },
       "seoul3": {
-        "name": "Emotion Line Project (Yeonnam)",
-        "desc": "Create emotional artworks in a cozy Yeonnam-dong space. No experience needed.",
-        "price": "₩30,000~",
-        "duration": "2h"
+        "name": "Handmade Ring Workshop",
+        "desc": "Design and craft your own ring in Seoul. Popular for couples and friendship rings.",
+        "price": "From ₩45,000",
+        "duration": "1.5h"
       },
       "seoul4": {
-        "name": "Wooyuri Glass Studio",
-        "desc": "Blow glass to make your own cup or objet d'art — a truly unique experience.",
-        "price": "₩40,000~",
+        "name": "Korean Alphabet Jewelry Making",
+        "desc": "Create a necklace or bracelet with Korean Hangul initials. Perfect souvenir from Korea.",
+        "price": "From ₩35,000",
         "duration": "1.5h"
       },
       "busan1": {
@@ -915,10 +915,10 @@
         "duration": "2h"
       },
       "busan3": {
-        "name": "Busan Candle Workshop",
-        "desc": "Make candles infused with Busan's ocean scents.",
-        "price": "₩30,000~",
-        "duration": "1.5h"
+        "name": "Busan Local Food Cooking Class",
+        "desc": "Shop at Busan's traditional market and cook authentic Korean dishes with a local chef.",
+        "price": "From ₩50,000",
+        "duration": "3h"
       },
       "jeju1": {
         "name": "Jeju Pottery Handbuilding",
@@ -927,9 +927,9 @@
         "duration": "1.5h"
       },
       "jeju2": {
-        "name": "Natural Dyeing (Jeju)",
-        "desc": "Dye scarves and handkerchiefs using Jeju's natural materials.",
-        "price": "₩30,000~",
+        "name": "Create Your Own Perfume in Jeju",
+        "desc": "Blend your signature scent inspired by Jeju's nature. Expert guidance included.",
+        "price": "From ₩45,000",
         "duration": "1.5h"
       },
       "jeju3": {
@@ -939,16 +939,16 @@
         "duration": "2h"
       },
       "gyeongju1": {
-        "name": "Gyeongju Pottery Studio",
-        "desc": "Make pottery using traditional techniques in the ancient capital.",
-        "price": "₩20,000~",
-        "duration": "1h"
+        "name": "Gyeongju Silla Hanbok Experience",
+        "desc": "Wear Silla dynasty costumes and take photos at Cheomseongdae and Gyochon Village.",
+        "price": "From ₩15,000",
+        "duration": "2h"
       },
       "gyeongju2": {
-        "name": "Hanbok Accessory Making",
-        "desc": "Create traditional Korean accessories and ornaments to take home.",
-        "price": "₩25,000~",
-        "duration": "2h"
+        "name": "Gyeongju Cultural Experience Tour",
+        "desc": "Explore UNESCO World Heritage sites — Bulguksa Temple, Seokguram Grotto, and Royal Tombs.",
+        "price": "From ₩30,000",
+        "duration": "3~4h"
       },
       "tongyeong1": {
         "name": "Mother-of-Pearl Lacquer",
@@ -975,16 +975,16 @@
         "duration": "1.5h"
       },
       "yongin1": {
-        "name": "Folk Village Traditional Craft",
-        "desc": "Make fans, hanji paper items using traditional methods at the Folk Village.",
-        "price": "₩15,000~",
-        "duration": "1h"
+        "name": "Korean Folk Village Admission",
+        "desc": "Step into a recreated Joseon-era village with traditional performances, games, and folk food.",
+        "price": "From ₩25,000",
+        "duration": "4~5h"
       },
       "yongin2": {
-        "name": "Candle & Plaster Diffuser",
-        "desc": "Choose your favorite scent and create beautiful candles and plaster diffusers.",
-        "price": "₩25,000~",
-        "duration": "1h"
+        "name": "Hanbok Rental at Folk Village",
+        "desc": "Rent Hanbok inside the Korean Folk Village and take photos in the Joseon-era backdrop.",
+        "price": "From ₩15,000",
+        "duration": "2h"
       },
       "icheon1": {
         "name": "Icheon Ceramics Studio",

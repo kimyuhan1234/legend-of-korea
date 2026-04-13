@@ -32,58 +32,58 @@ const CATEGORY_EMOJI: Record<Category, string> = {
 }
 
 const WORKSHOPS: Workshop[] = [
-  // 전주
-  { id: 'jeonju-1', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju1.name', descKey: 'diy.workshops.jeonju1.desc', category: 'art', priceKey: 'diy.workshops.jeonju1.price', durationKey: 'diy.workshops.jeonju1.duration', bookingUrl: 'https://search.naver.com/search.naver?query=%EC%A0%84%EC%A3%BC+%ED%95%9C%EC%A7%80+%EA%B3%B5%EC%98%88+%EC%B2%B4%ED%97%98+%EC%98%88%EC%95%BD' },
-  { id: 'jeonju-2', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju2.name', descKey: 'diy.workshops.jeonju2.desc', category: 'pottery', priceKey: 'diy.workshops.jeonju2.price', durationKey: 'diy.workshops.jeonju2.duration', bookingUrl: 'https://www.myrealtrip.com/q/ko/%EC%A0%84%EC%A3%BC+%EB%8F%84%EC%9E%90%EA%B8%B0+%EC%B2%B4%ED%97%98' },
-  { id: 'jeonju-3', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju3.name', descKey: 'diy.workshops.jeonju3.desc', category: 'art', priceKey: 'diy.workshops.jeonju3.price', durationKey: 'diy.workshops.jeonju3.duration', bookingUrl: 'https://search.naver.com/search.naver?query=%EC%A0%84%EC%A3%BC+%ED%95%A9%EC%A3%BD%EC%84%A0+%EB%A7%8C%EB%93%A4%EA%B8%B0+%EC%B2%B4%ED%97%98+%EC%98%88%EC%95%BD' },
-  { id: 'jeonju-4', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju4.name', descKey: 'diy.workshops.jeonju4.desc', category: 'nature', priceKey: 'diy.workshops.jeonju4.price', durationKey: 'diy.workshops.jeonju4.duration', bookingUrl: 'https://search.naver.com/search.naver?query=%EC%A0%84%EC%A3%BC+%EC%B2%9C%EC%97%B0%EC%97%BC%EC%83%89+%EC%B2%B4%ED%97%98+%EC%98%88%EC%95%BD' },
-  // 서울
+  // 전주 — 한복 체험 & 한옥마을 문화 체험 (Klook 실제 상품)
+  { id: 'jeonju-1', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju1.name', descKey: 'diy.workshops.jeonju1.desc', category: 'art', priceKey: 'diy.workshops.jeonju1.price', durationKey: 'diy.workshops.jeonju1.duration', bookingUrl: 'https://www.klook.com/en/activity/119150-jeonju-hanok-village-hanbok-rental-photography/' },
+  { id: 'jeonju-2', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju2.name', descKey: 'diy.workshops.jeonju2.desc', category: 'pottery', priceKey: 'diy.workshops.jeonju2.price', durationKey: 'diy.workshops.jeonju2.duration', bookingUrl: 'https://www.klook.com/en/activity/17677-hanbok-rental-jeonju-hanok-hanboknam-seoul/' },
+  { id: 'jeonju-3', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju3.name', descKey: 'diy.workshops.jeonju3.desc', category: 'art', priceKey: 'diy.workshops.jeonju3.price', durationKey: 'diy.workshops.jeonju3.duration', bookingUrl: 'https://www.klook.com/en/destination/c-jeonju/' },
+  { id: 'jeonju-4', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju4.name', descKey: 'diy.workshops.jeonju4.desc', category: 'nature', priceKey: 'diy.workshops.jeonju4.price', durationKey: 'diy.workshops.jeonju4.duration', bookingUrl: 'https://www.airbnb.com/s/Jeonju--South-Korea/experiences' },
+  // 서울 (seoul-1 유지)
   { id: 'seoul-1', cityId: 'seoul', nameKey: 'diy.workshops.seoul1.name', descKey: 'diy.workshops.seoul1.desc', category: 'pottery', priceKey: 'diy.workshops.seoul1.price', durationKey: 'diy.workshops.seoul1.duration', bookingUrl: 'https://experiences.myrealtrip.com/products/3828516' },
-  { id: 'seoul-2', cityId: 'seoul', nameKey: 'diy.workshops.seoul2.name', descKey: 'diy.workshops.seoul2.desc', category: 'perfume', priceKey: 'diy.workshops.seoul2.price', durationKey: 'diy.workshops.seoul2.duration', bookingUrl: 'https://www.myrealtrip.com/q/ko/%EC%84%B1%EC%88%98+%ED%96%A5%EC%88%98+%EA%B3%B5%EB%B0%A9' },
-  { id: 'seoul-3', cityId: 'seoul', nameKey: 'diy.workshops.seoul3.name', descKey: 'diy.workshops.seoul3.desc', category: 'art', priceKey: 'diy.workshops.seoul3.price', durationKey: 'diy.workshops.seoul3.duration', bookingUrl: 'https://www.myrealtrip.com/q/ko/%EC%84%9C%EC%9A%B8+%EA%B3%B5%EC%98%88+%EC%B2%B4%ED%97%98' },
-  { id: 'seoul-4', cityId: 'seoul', nameKey: 'diy.workshops.seoul4.name', descKey: 'diy.workshops.seoul4.desc', category: 'art', priceKey: 'diy.workshops.seoul4.price', durationKey: 'diy.workshops.seoul4.duration', bookingUrl: 'https://search.naver.com/search.naver?query=%EC%84%9C%EC%9A%B8+%EC%9C%A0%EB%A6%AC+%EA%B3%B5%EC%98%88+%EC%B2%B4%ED%97%98+%EC%98%88%EC%95%BD' },
-  // 부산
+  { id: 'seoul-2', cityId: 'seoul', nameKey: 'diy.workshops.seoul2.name', descKey: 'diy.workshops.seoul2.desc', category: 'perfume', priceKey: 'diy.workshops.seoul2.price', durationKey: 'diy.workshops.seoul2.duration', bookingUrl: 'https://www.klook.com/en/activity/8599-making-perfume-experience-seoul/' },
+  { id: 'seoul-3', cityId: 'seoul', nameKey: 'diy.workshops.seoul3.name', descKey: 'diy.workshops.seoul3.desc', category: 'ring', priceKey: 'diy.workshops.seoul3.price', durationKey: 'diy.workshops.seoul3.duration', bookingUrl: 'https://www.klook.com/en/activity/3044-handmade-ring-making-workshop-seoul/' },
+  { id: 'seoul-4', cityId: 'seoul', nameKey: 'diy.workshops.seoul4.name', descKey: 'diy.workshops.seoul4.desc', category: 'art', priceKey: 'diy.workshops.seoul4.price', durationKey: 'diy.workshops.seoul4.duration', bookingUrl: 'https://www.klook.com/en/activity/24371-korean-alphabet-jewelry-making-experience-seoul/' },
+  // 부산 (busan-1, busan-2 유지)
   { id: 'busan-1', cityId: 'busan', nameKey: 'diy.workshops.busan1.name', descKey: 'diy.workshops.busan1.desc', category: 'pottery', priceKey: 'diy.workshops.busan1.price', durationKey: 'diy.workshops.busan1.duration', bookingUrl: 'https://www.umclass.com/plan/28' },
   { id: 'busan-2', cityId: 'busan', nameKey: 'diy.workshops.busan2.name', descKey: 'diy.workshops.busan2.desc', category: 'art', priceKey: 'diy.workshops.busan2.price', durationKey: 'diy.workshops.busan2.duration', bookingUrl: 'https://b2b.mochaclass.com/1112298f-4205-4b1e-a1f4-70e9430423db' },
-  { id: 'busan-3', cityId: 'busan', nameKey: 'diy.workshops.busan3.name', descKey: 'diy.workshops.busan3.desc', category: 'candle', priceKey: 'diy.workshops.busan3.price', durationKey: 'diy.workshops.busan3.duration', bookingUrl: 'https://www.myrealtrip.com/q/ko/%EB%B6%80%EC%82%B0+%EC%BA%94%EB%93%A4+%EA%B3%B5%EB%B0%A9' },
-  // 제주
-  { id: 'jeju-1', cityId: 'jeju', nameKey: 'diy.workshops.jeju1.name', descKey: 'diy.workshops.jeju1.desc', category: 'pottery', priceKey: 'diy.workshops.jeju1.price', durationKey: 'diy.workshops.jeju1.duration', bookingUrl: 'https://www.klook.com/ko/activity/39302-pottery-handbuilding-one-day-class-jeju/' },
-  { id: 'jeju-2', cityId: 'jeju', nameKey: 'diy.workshops.jeju2.name', descKey: 'diy.workshops.jeju2.desc', category: 'nature', priceKey: 'diy.workshops.jeju2.price', durationKey: 'diy.workshops.jeju2.duration', bookingUrl: 'https://www.myrealtrip.com/q/ko/%EC%A0%9C%EC%A3%BC+%ED%96%A5%EC%88%98+%EB%A7%8C%EB%93%A4%EA%B8%B0' },
+  { id: 'busan-3', cityId: 'busan', nameKey: 'diy.workshops.busan3.name', descKey: 'diy.workshops.busan3.desc', category: 'art', priceKey: 'diy.workshops.busan3.price', durationKey: 'diy.workshops.busan3.duration', bookingUrl: 'https://www.klook.com/en/activity/74475-korea-busan-cooking-class/' },
+  // 제주 (jeju-1, jeju-3 유지)
+  { id: 'jeju-1', cityId: 'jeju', nameKey: 'diy.workshops.jeju1.name', descKey: 'diy.workshops.jeju1.desc', category: 'pottery', priceKey: 'diy.workshops.jeju1.price', durationKey: 'diy.workshops.jeju1.duration', bookingUrl: 'https://www.klook.com/en/activity/39302-pottery-handbuilding-one-day-class-jeju/' },
+  { id: 'jeju-2', cityId: 'jeju', nameKey: 'diy.workshops.jeju2.name', descKey: 'diy.workshops.jeju2.desc', category: 'perfume', priceKey: 'diy.workshops.jeju2.price', durationKey: 'diy.workshops.jeju2.duration', bookingUrl: 'https://www.klook.com/en/activity/157797-create-your-own-signature-scent/' },
   { id: 'jeju-3', cityId: 'jeju', nameKey: 'diy.workshops.jeju3.name', descKey: 'diy.workshops.jeju3.desc', category: 'leather', priceKey: 'diy.workshops.jeju3.price', durationKey: 'diy.workshops.jeju3.duration', bookingUrl: 'https://nujakda.wixsite.com/main' },
-  // 경주
-  { id: 'gyeongju-1', cityId: 'gyeongju', nameKey: 'diy.workshops.gyeongju1.name', descKey: 'diy.workshops.gyeongju1.desc', category: 'pottery', priceKey: 'diy.workshops.gyeongju1.price', durationKey: 'diy.workshops.gyeongju1.duration', bookingUrl: 'https://www.myrealtrip.com/q/ko/%EA%B2%BD%EC%A3%BC+%EB%8F%84%EC%9E%90%EA%B8%B0+%EC%B2%B4%ED%97%98' },
-  { id: 'gyeongju-2', cityId: 'gyeongju', nameKey: 'diy.workshops.gyeongju2.name', descKey: 'diy.workshops.gyeongju2.desc', category: 'art', priceKey: 'diy.workshops.gyeongju2.price', durationKey: 'diy.workshops.gyeongju2.duration', bookingUrl: 'https://search.naver.com/search.naver?query=%EA%B2%BD%EC%A3%BC+%ED%83%81%EB%B3%B8+%EC%B2%B4%ED%97%98+%EC%98%88%EC%95%BD' },
-  // 통영
-  { id: 'tongyeong-1', cityId: 'tongyeong', nameKey: 'diy.workshops.tongyeong1.name', descKey: 'diy.workshops.tongyeong1.desc', category: 'art', priceKey: 'diy.workshops.tongyeong1.price', durationKey: 'diy.workshops.tongyeong1.duration', bookingUrl: 'https://search.naver.com/search.naver?query=%ED%86%B5%EC%98%81+%EB%82%98%EC%A0%84%EC%B9%A0%EA%B8%B0+%EC%B2%B4%ED%97%98+%EC%98%88%EC%95%BD' },
-  { id: 'tongyeong-2', cityId: 'tongyeong', nameKey: 'diy.workshops.tongyeong2.name', descKey: 'diy.workshops.tongyeong2.desc', category: 'candle', priceKey: 'diy.workshops.tongyeong2.price', durationKey: 'diy.workshops.tongyeong2.duration', bookingUrl: 'https://www.myrealtrip.com/q/ko/%ED%86%B5%EC%98%81+%EC%BA%94%EB%93%A4+%EB%A7%8C%EB%93%A4%EA%B8%B0' },
-  // 천안
+  // 경주 — 한복 + 문화 체험 (Klook 실제 상품)
+  { id: 'gyeongju-1', cityId: 'gyeongju', nameKey: 'diy.workshops.gyeongju1.name', descKey: 'diy.workshops.gyeongju1.desc', category: 'art', priceKey: 'diy.workshops.gyeongju1.price', durationKey: 'diy.workshops.gyeongju1.duration', bookingUrl: 'https://www.klook.com/en/activity/117284-gyeongju-hanbok-experience/' },
+  { id: 'gyeongju-2', cityId: 'gyeongju', nameKey: 'diy.workshops.gyeongju2.name', descKey: 'diy.workshops.gyeongju2.desc', category: 'art', priceKey: 'diy.workshops.gyeongju2.price', durationKey: 'diy.workshops.gyeongju2.duration', bookingUrl: 'https://www.klook.com/en/experiences/list/gyeongju-cultural-experiences/c8928-cate122/' },
+  // 통영 — Airbnb Experiences (국제 플랫폼에 통영 체험 없음)
+  { id: 'tongyeong-1', cityId: 'tongyeong', nameKey: 'diy.workshops.tongyeong1.name', descKey: 'diy.workshops.tongyeong1.desc', category: 'art', priceKey: 'diy.workshops.tongyeong1.price', durationKey: 'diy.workshops.tongyeong1.duration', bookingUrl: 'https://www.airbnb.com/s/Tongyeong--South-Korea/experiences' },
+  { id: 'tongyeong-2', cityId: 'tongyeong', nameKey: 'diy.workshops.tongyeong2.name', descKey: 'diy.workshops.tongyeong2.desc', category: 'candle', priceKey: 'diy.workshops.tongyeong2.price', durationKey: 'diy.workshops.tongyeong2.duration', bookingUrl: 'https://www.airbnb.com/s/Tongyeong--South-Korea/experiences' },
+  // 천안 (cheonan-1 유지)
   { id: 'cheonan-1', cityId: 'cheonan', nameKey: 'diy.workshops.cheonan1.name', descKey: 'diy.workshops.cheonan1.desc', category: 'ring', priceKey: 'diy.workshops.cheonan1.price', durationKey: 'diy.workshops.cheonan1.duration', bookingUrl: 'https://www.instagram.com/theonering2/' },
-  { id: 'cheonan-2', cityId: 'cheonan', nameKey: 'diy.workshops.cheonan2.name', descKey: 'diy.workshops.cheonan2.desc', category: 'leather', priceKey: 'diy.workshops.cheonan2.price', durationKey: 'diy.workshops.cheonan2.duration', bookingUrl: 'https://search.naver.com/search.naver?query=%EC%B2%9C%EC%95%88+%EA%B0%80%EC%A3%BD+%EA%B3%B5%EB%B0%A9+%EC%B2%B4%ED%97%98+%EC%98%88%EC%95%BD' },
-  // 용인
-  { id: 'yongin-1', cityId: 'yongin', nameKey: 'diy.workshops.yongin1.name', descKey: 'diy.workshops.yongin1.desc', category: 'art', priceKey: 'diy.workshops.yongin1.price', durationKey: 'diy.workshops.yongin1.duration', bookingUrl: 'https://www.myrealtrip.com/q/ko/%EC%9A%A9%EC%9D%B8+%EB%8F%84%EC%9E%90%EA%B8%B0+%EC%B2%B4%ED%97%98' },
-  { id: 'yongin-2', cityId: 'yongin', nameKey: 'diy.workshops.yongin2.name', descKey: 'diy.workshops.yongin2.desc', category: 'candle', priceKey: 'diy.workshops.yongin2.price', durationKey: 'diy.workshops.yongin2.duration', bookingUrl: 'https://search.naver.com/search.naver?query=%EC%9A%A9%EC%9D%B8+%EC%BA%94%EB%93%A4+%EB%A7%8C%EB%93%A4%EA%B8%B0+%EC%B2%B4%ED%97%98+%EC%98%88%EC%95%BD' },
-  // 이천
-  { id: 'icheon-1', cityId: 'icheon', nameKey: 'diy.workshops.icheon1.name', descKey: 'diy.workshops.icheon1.desc', category: 'pottery', priceKey: 'diy.workshops.icheon1.price', durationKey: 'diy.workshops.icheon1.duration', bookingUrl: 'https://www.myrealtrip.com/q/ko/%EC%9D%B4%EC%B2%9C+%EB%8F%84%EC%9E%90%EA%B8%B0+%EC%B2%B4%ED%97%98' },
-  { id: 'icheon-2', cityId: 'icheon', nameKey: 'diy.workshops.icheon2.name', descKey: 'diy.workshops.icheon2.desc', category: 'pottery', priceKey: 'diy.workshops.icheon2.price', durationKey: 'diy.workshops.icheon2.duration', bookingUrl: 'https://search.naver.com/search.naver?query=%EC%9D%B4%EC%B2%9C+%EB%8F%84%EC%98%88+%EA%B3%B5%EB%B0%A9+%EC%B2%B4%ED%97%98+%EC%98%88%EC%95%BD' },
+  { id: 'cheonan-2', cityId: 'cheonan', nameKey: 'diy.workshops.cheonan2.name', descKey: 'diy.workshops.cheonan2.desc', category: 'leather', priceKey: 'diy.workshops.cheonan2.price', durationKey: 'diy.workshops.cheonan2.duration', bookingUrl: 'https://www.airbnb.com/s/Cheonan--South-Korea/experiences' },
+  // 용인 — 한국민속촌 (Klook 실제 상품)
+  { id: 'yongin-1', cityId: 'yongin', nameKey: 'diy.workshops.yongin1.name', descKey: 'diy.workshops.yongin1.desc', category: 'art', priceKey: 'diy.workshops.yongin1.price', durationKey: 'diy.workshops.yongin1.duration', bookingUrl: 'https://www.klook.com/en/activity/1582-korean-folk-village-ticket-gyeonggi-do/' },
+  { id: 'yongin-2', cityId: 'yongin', nameKey: 'diy.workshops.yongin2.name', descKey: 'diy.workshops.yongin2.desc', category: 'art', priceKey: 'diy.workshops.yongin2.price', durationKey: 'diy.workshops.yongin2.duration', bookingUrl: 'https://www.klook.com/en/activity/125688-hanbok-rental-at-yongin-korean-folk-village/' },
+  // 이천 — 도자기마을 투어 (Klook + Viator 실제 상품)
+  { id: 'icheon-1', cityId: 'icheon', nameKey: 'diy.workshops.icheon1.name', descKey: 'diy.workshops.icheon1.desc', category: 'pottery', priceKey: 'diy.workshops.icheon1.price', durationKey: 'diy.workshops.icheon1.duration', bookingUrl: 'https://www.klook.com/en/activity/123089-icheon-yongin-day-eg-tour/' },
+  { id: 'icheon-2', cityId: 'icheon', nameKey: 'diy.workshops.icheon2.name', descKey: 'diy.workshops.icheon2.desc', category: 'pottery', priceKey: 'diy.workshops.icheon2.price', durationKey: 'diy.workshops.icheon2.duration', bookingUrl: 'https://www.viator.com/tours/Seoul/Icheon-Pottery-Tours/d973-6411P226' },
 ]
 
 const PLATFORMS = [
-  { name: '네이버 예약', url: 'https://m.booking.naver.com/', color: '#03C75A' },
-  { name: '마이리얼트립', url: 'https://experiences.myrealtrip.com/', color: '#2B96ED' },
-  { name: 'Klook', url: 'https://www.klook.com/ko/experiences/list/south-korea-workshops/g10-cate25/', color: '#FF5722' },
-  { name: '움클래스', url: 'https://www.umclass.com/', color: '#6C5CE7' },
-  { name: '모카클래스', url: 'https://b2b.mochaclass.com/', color: '#E17055' },
+  { name: 'Klook', url: 'https://www.klook.com/en/experiences/list/south-korea-workshops/g10-cate25/', color: '#FF5722' },
+  { name: 'Viator', url: 'https://www.viator.com/South-Korea/d972-ttd', color: '#00AA6C' },
+  { name: 'Airbnb Experiences', url: 'https://www.airbnb.com/s/South-Korea/experiences', color: '#FF385C' },
+  { name: 'GetYourGuide', url: 'https://www.getyourguide.com/south-korea-l228/', color: '#004FB4' },
 ]
 
 function getPlatformName(url: string): string {
-  if (url.includes('myrealtrip')) return '마이리얼트립'
   if (url.includes('klook')) return 'Klook'
-  if (url.includes('naver')) return '네이버'
+  if (url.includes('viator')) return 'Viator'
+  if (url.includes('airbnb')) return 'Airbnb'
+  if (url.includes('myrealtrip')) return 'MyRealTrip'
   if (url.includes('instagram')) return 'Instagram'
-  if (url.includes('umclass')) return '움클래스'
-  if (url.includes('mochaclass')) return '모카클래스'
-  if (url.includes('nujakda') || url.includes('wixsite')) return '공식사이트'
-  return '예약'
+  if (url.includes('umclass')) return 'Umclass'
+  if (url.includes('mochaclass')) return 'Mochaclass'
+  if (url.includes('nujakda') || url.includes('wixsite')) return 'Official'
+  return 'Book'
 }
 
 // ─────────────────────────────────────────────

@@ -44,7 +44,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '한정식 조식 무료', ja: '韓定食朝食無料', en: 'Free Korean breakfast' },
       { ko: '한옥마을 도보 3분', ja: '韓屋村徒歩3分', en: '3 min to hanok village' },
     ],
-    bookingUrl: 'https://www.airbnb.co.kr/s/%EC%A0%84%EC%A3%BC+%ED%95%9C%EC%98%A5%EB%A7%88%EC%9D%84/homes',
+    bookingUrl: 'https://www.airbnb.com/s/Jeonju-Hanok-Village--South-Korea/homes',
     platform: 'Airbnb',
   },
   {
@@ -63,7 +63,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '24시간 룸서비스', ja: '24時間ルームサービス', en: '24h room service' },
       { ko: '무료 주차', ja: '無料駐車場', en: 'Free parking' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%EC%A0%84%EC%A3%BC+%ED%95%9C%EC%98%A5%EB%A7%88%EC%9D%84',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Jeonju+Hanok+Village',
     platform: 'Booking.com',
   },
   {
@@ -82,7 +82,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '전통차 서비스', ja: '伝統茶サービス', en: 'Traditional tea service' },
       { ko: '스파 + 한식 코스', ja: 'スパ+韓食コース', en: 'Spa + Korean course' },
     ],
-    bookingUrl: 'https://kr.trip.com/hotels/list?city=61380&keyword=%EC%A0%84%EC%A3%BC+%ED%95%9C%EC%98%A5',
+    bookingUrl: 'https://www.trip.com/hotels/list?city=61380&keyword=Jeonju+Hanok',
     platform: 'Trip.com',
   },
 
@@ -103,7 +103,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '한복 대여 포함', ja: '韓服レンタル込み', en: 'Hanbok rental included' },
       { ko: '삼청동 도보 5분', ja: '三清洞徒歩5分', en: '5 min to Samcheongdong' },
     ],
-    bookingUrl: 'https://www.airbnb.co.kr/s/%EB%B6%81%EC%B4%8C+%ED%95%9C%EC%98%A5%EB%A7%88%EC%9D%84/homes',
+    bookingUrl: 'https://www.airbnb.com/s/Bukchon-Hanok-Village--Seoul/homes',
     platform: 'Airbnb',
   },
   {
@@ -122,7 +122,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '지하철역 2분', ja: '駅2分', en: '2 min to subway' },
       { ko: '공항버스 정류장', ja: '空港バス停', en: 'Airport bus stop' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%EB%AA%85%EB%8F%99+%EC%84%9C%EC%9A%B8',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Myeongdong+Seoul',
     platform: 'Booking.com',
   },
   {
@@ -141,7 +141,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '공용 주방', ja: '共用キッチン', en: 'Shared kitchen' },
       { ko: '여성 전용 도미토리', ja: '女性専用ドミトリー', en: 'Female dorm' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%EC%9D%B5%EC%84%A0%EB%8F%99+%EC%84%9C%EC%9A%B8',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Ikseon-dong+Seoul',
     platform: 'Booking.com',
   },
 
@@ -162,7 +162,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '해변 앞', ja: 'ビーチ前', en: 'Beachfront' },
       { ko: '스파 + 수영장', ja: 'スパ+プール', en: 'Spa + pool' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%ED%95%B4%EC%9A%B4%EB%8C%80+%EB%B6%80%EC%82%B0',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Haeundae+Busan',
     platform: 'Booking.com',
   },
   {
@@ -181,7 +181,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '포토 스팟', ja: 'フォトスポット', en: 'Photo spots' },
       { ko: '무료 와이파이', ja: '無料Wi-Fi', en: 'Free WiFi' },
     ],
-    bookingUrl: 'https://www.airbnb.co.kr/s/%EA%B0%90%EC%B2%9C%EB%AC%B8%ED%99%94%EB%A7%88%EC%9D%84+%EB%B6%80%EC%82%B0/homes',
+    bookingUrl: 'https://www.airbnb.com/s/Gamcheon-Culture-Village--Busan/homes',
     platform: 'Airbnb',
   },
   {
@@ -200,7 +200,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '카페거리 중심', ja: 'カフェ通り中心', en: 'Cafe street center' },
       { ko: '해운대 5분', ja: '海雲台5分', en: '5 min to Haeundae' },
     ],
-    bookingUrl: 'https://www.airbnb.co.kr/s/%ED%95%B4%EB%A6%AC%EB%8B%A8%EA%B8%B8+%EB%B6%80%EC%82%B0/homes',
+    bookingUrl: 'https://www.airbnb.com/s/Haeundae--Busan--South-Korea/homes',
     platform: 'Airbnb',
   },
 
@@ -221,7 +221,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: 'BBQ 시설', ja: 'BBQ設備', en: 'BBQ facilities' },
       { ko: '한라산 뷰', ja: '漢拏山ビュー', en: 'Hallasan view' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%EC%A0%9C%EC%A3%BC+%EC%A4%91%EC%82%B0%EA%B0%84',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Jeju+Island',
     platform: 'Booking.com',
   },
   {
@@ -240,7 +240,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '오션뷰 전용 발코니', ja: '専用オーシャンバルコニー', en: 'Ocean view balcony' },
       { ko: '프라이빗 비치', ja: 'プライベートビーチ', en: 'Private beach' },
     ],
-    bookingUrl: 'https://kr.trip.com/hotels/list?city=900040198&keyword=%EC%84%9C%EA%B7%80%ED%8F%AC+%EB%A6%AC%EC%A1%B0%ED%8A%B8',
+    bookingUrl: 'https://www.trip.com/hotels/list?city=900040198&keyword=Seogwipo+Resort',
     platform: 'Trip.com',
   },
   {
@@ -259,7 +259,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '애월 핫플', ja: '涯月ホットプレイス', en: 'Aewol hotspot' },
       { ko: '자전거 무료 대여', ja: '自転車無料レンタル', en: 'Free bike rental' },
     ],
-    bookingUrl: 'https://www.airbnb.co.kr/s/%EC%95%A0%EC%9B%94+%EC%A0%9C%EC%A3%BC/homes',
+    bookingUrl: 'https://www.airbnb.com/s/Aewol--Jeju--South-Korea/homes',
     platform: 'Airbnb',
   },
 
@@ -280,7 +280,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '교촌마을', ja: '校村マウル', en: 'Gyochon Village' },
       { ko: '첨성대 도보 5분', ja: '瞻星台徒歩5分', en: '5 min to Cheomseongdae' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%EA%B5%90%EC%B4%8C%EB%A7%88%EC%9D%84+%EA%B2%BD%EC%A3%BC',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Gyeongju',
     platform: 'Booking.com',
   },
   {
@@ -299,7 +299,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '키즈클럽', ja: 'キッズクラブ', en: 'Kids club' },
       { ko: '보문호수 뷰', ja: '普門湖ビュー', en: 'Bomun Lake view' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%EB%B3%B4%EB%AC%B8%EB%8B%A8%EC%A7%80+%EA%B2%BD%EC%A3%BC',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Bomun+Gyeongju',
     platform: 'Booking.com',
   },
 
@@ -320,7 +320,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '선셋 명소', ja: '夕日の名所', en: 'Sunset spot' },
       { ko: 'BBQ 시설', ja: 'BBQ設備', en: 'BBQ facilities' },
     ],
-    bookingUrl: 'https://www.airbnb.co.kr/s/%ED%86%B5%EC%98%81%EC%8B%9C/homes',
+    bookingUrl: 'https://www.airbnb.com/s/Tongyeong--South-Korea/homes',
     platform: 'Airbnb',
   },
   {
@@ -339,7 +339,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '항구 뷰', ja: '港ビュー', en: 'Harbor view' },
       { ko: '조식 뷔페', ja: '朝食ビュッフェ', en: 'Breakfast buffet' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%ED%86%B5%EC%98%81',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Tongyeong',
     platform: 'Booking.com',
   },
 
@@ -360,7 +360,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '무료 조식', ja: '無料朝食', en: 'Free breakfast' },
       { ko: '무료 주차', ja: '無料駐車場', en: 'Free parking' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%EC%B2%9C%EC%95%88',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Cheonan',
     platform: 'Booking.com',
   },
   {
@@ -379,7 +379,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '공용 주방', ja: '共用キッチン', en: 'Shared kitchen' },
       { ko: '루프탑', ja: 'ルーフトップ', en: 'Rooftop' },
     ],
-    bookingUrl: 'https://www.airbnb.co.kr/s/%EC%B2%9C%EC%95%88%EC%8B%9C/homes',
+    bookingUrl: 'https://www.airbnb.com/s/Cheonan--South-Korea/homes',
     platform: 'Airbnb',
   },
 
@@ -400,7 +400,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '수영장 + 워터파크', ja: 'プール+ウォーターパーク', en: 'Pool + water park' },
       { ko: '키즈 시설', ja: 'キッズ施設', en: 'Kids facilities' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%EC%9A%A9%EC%9D%B8+%EC%97%90%EB%B2%84%EB%9E%9C%EB%93%9C',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Yongin+Everland',
     platform: 'Booking.com',
   },
   {
@@ -419,7 +419,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '독채 프라이빗', ja: '一棟貸し', en: 'Private villa' },
       { ko: 'BBQ 시설', ja: 'BBQ設備', en: 'BBQ facilities' },
     ],
-    bookingUrl: 'https://www.airbnb.co.kr/s/%EC%9A%A9%EC%9D%B8%EC%8B%9C+%ED%95%9C%EA%B5%AD%EB%AF%BC%EC%86%8D%EC%B4%8C/homes',
+    bookingUrl: 'https://www.airbnb.com/s/Yongin--South-Korea/homes',
     platform: 'Airbnb',
   },
 
@@ -440,7 +440,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '도예촌 중심', ja: '陶芸村中心', en: 'Ceramic village center' },
       { ko: '전통 한옥', ja: '伝統韓屋', en: 'Traditional hanok' },
     ],
-    bookingUrl: 'https://www.airbnb.co.kr/s/%EC%9D%B4%EC%B2%9C+%EB%8F%84%EC%98%88%EC%B4%8C/homes',
+    bookingUrl: 'https://www.airbnb.com/s/Icheon--South-Korea/homes',
     platform: 'Airbnb',
   },
   {
@@ -459,7 +459,7 @@ export const STAY_RECOMMENDATIONS: StayRecommendation[] = [
       { ko: '야외 노천탕', ja: '露天風呂', en: 'Outdoor bath' },
       { ko: '한정식 조식', ja: '韓定食朝食', en: 'Korean breakfast' },
     ],
-    bookingUrl: 'https://www.booking.com/searchresults.ko.html?ss=%EC%9D%B4%EC%B2%9C+%EC%98%A8%EC%B2%9C',
+    bookingUrl: 'https://www.booking.com/searchresults.en.html?ss=Icheon+Hot+Spring',
     platform: 'Booking.com',
   },
 ]
