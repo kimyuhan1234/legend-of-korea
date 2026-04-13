@@ -34,8 +34,9 @@ const UI = {
     tasteProfile: "맛 프로필",
     spotsTitle: "이 음식을 맛볼 수 있는 곳",
     spotsLink: "맛집 전체 보기 →",
-    tryCta: "전주에서 직접 맛보기 →",
-    tryDesc: "전주 도깨비 코스에서 한국 음식의 진짜 맛을 경험해보세요",
+    tryCta: (city: string) => `${city}에서 직접 맛보기 →`,
+    tryDesc: (city: string) => `${city}에서 한국 음식의 진짜 맛을 경험해보세요`,
+    courseLink: (city: string) => `${city} 코스 보러가기 →`,
   },
   ja: {
     backRegion: "← 一覧に戻る",
@@ -44,8 +45,9 @@ const UI = {
     tasteProfile: "味プロフィール",
     spotsTitle: "この料理が食べられる場所",
     spotsLink: "グルメスポット一覧 →",
-    tryCta: "全州で実際に味わう →",
-    tryDesc: "全州トッケビコースで韓国料理の本当の味を体験してください",
+    tryCta: (city: string) => `${city}で実際に味わう →`,
+    tryDesc: (city: string) => `${city}で韓国料理の本当の味を体験してください`,
+    courseLink: (city: string) => `${city}コースを見る →`,
   },
   en: {
     backRegion: "← Back to list",
@@ -54,8 +56,9 @@ const UI = {
     tasteProfile: "Taste Profile",
     spotsTitle: "Where to taste this dish",
     spotsLink: "See all food spots →",
-    tryCta: "Taste it in Jeonju →",
-    tryDesc: "Experience authentic Korean flavors on the Jeonju Dokkaebi Course",
+    tryCta: (city: string) => `Taste it in ${city} →`,
+    tryDesc: (city: string) => `Experience authentic Korean flavors in ${city}`,
+    courseLink: (city: string) => `See ${city} Course →`,
   },
 }
 
@@ -163,14 +166,14 @@ export default function FoodDetailPage({ params }: Props) {
         )}
 
         {/* CTA */}
-        <div className="bg-[#1F2937] rounded-3xl p-8 text-center">
-          <p className="text-xl font-black text-white mb-2">{t.tryCta}</p>
-          <p className="text-[#4B5563] text-sm mb-6">{t.tryDesc}</p>
+        <div className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] rounded-3xl p-8 text-center">
+          <p className="text-xl font-black text-[#1F2937] mb-2">{t.tryCta(getL(region.name, locale))}</p>
+          <p className="text-[#4B5563] text-sm mb-6">{t.tryDesc(getL(region.name, locale))}</p>
           <Link
             href={`/${locale}/courses`}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#F0B8B8] text-[#111] font-bold hover:bg-[#F5D0D0] transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#9DD8CE] text-white font-bold hover:bg-[#7BC8BC] transition-colors"
           >
-            {locale === "ko" ? "전주 코스 보러가기 →" : locale === "ja" ? "全州コースを見る →" : "See Jeonju Course →"}
+            {t.courseLink(getL(region.name, locale))}
           </Link>
         </div>
       </div>
