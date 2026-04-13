@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import {
   CITY_THEMES,
@@ -10,8 +10,10 @@ import {
   type CityTheme,
   type DailyWeather,
   type OutfitRecommendation,
+  type OutfitItem,
 } from '@/lib/data/ootd'
 import { OotdChecklist } from '@/components/features/planner/OotdChecklist'
+import { OOTD_CATEGORIES, getItemCategory } from '@/lib/data/ootd-categories'
 
 const CITY_NAME_MAP: Record<string, { ko: string; ja: string; en: string }> = {
   seoul:     { ko: '서울', ja: 'ソウル', en: 'Seoul' },
@@ -203,34 +205,123 @@ function DayCard({ weather, outfit, isToday, cityId, cityName }: DayCardProps) {
           OUTFIT
         </p>
         {outfit ? (
-          <>
-            <ul className="space-y-1">
-              {outfit.items.map((item) => (
-                <li key={item.nameKey} className="flex items-center gap-1.5">
-                  <span className="text-base leading-none">{item.icon}</span>
-                  <span className={['text-xs font-medium', isToday ? 'text-mint-light' : 'text-slate'].join(' ')}>
-                    {t(item.nameKey.replace('ootd.', '') as Parameters<typeof t>[0])}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className={['text-[10px] mt-3 leading-snug', isToday ? 'text-stone' : 'text-stone'].join(' ')}>
-              💡 {t(outfit.tipKey.replace('ootd.', '') as Parameters<typeof t>[0])}
-            </p>
-            {!isToday && (
-              <OotdChecklist
-                date={weather.date}
-                cityId={cityId}
-                cityName={cityName}
-                items={outfit.items}
-              />
-            )}
-          </>
+          <OutfitWithDropdown
+            outfit={outfit}
+            isToday={isToday}
+            weather={weather}
+            cityId={cityId}
+            cityName={cityName}
+          />
         ) : (
           <p className="text-xs text-stone">—</p>
         )}
       </div>
     </div>
+  )
+}
+
+// ─────────────────────────────────────────────
+//  서브 컴포넌트: OutfitWithDropdown — 아이템별 교체 드롭다운
+// ─────────────────────────────────────────────
+interface OutfitDropdownProps {
+  outfit: OutfitRecommendation
+  isToday: boolean
+  weather: DailyWeather
+  cityId: string
+  cityName: { ko: string; ja: string; en: string }
+}
+
+function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: OutfitDropdownProps) {
+  const t = useTranslations('ootd')
+  const [openIdx, setOpenIdx] = useState<number | null>(null)
+  const [customItems, setCustomItems] = useState<Record<number, OutfitItem>>({})
+  const dropRef = useRef<HTMLUListElement>(null)
+
+  // 바깥 클릭 시 닫기
+  useEffect(() => {
+    if (openIdx === null) return
+    const handler = (e: MouseEvent) => {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) setOpenIdx(null)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [openIdx])
+
+  const currentItems = outfit.items.map((item, i) => customItems[i] ?? item)
+
+  return (
+    <>
+      <ul className="space-y-1.5" ref={dropRef}>
+        {currentItems.map((item, i) => {
+          const cat = getItemCategory(item.nameKey)
+          const catDef = OOTD_CATEGORIES[cat]
+          const isOpen = openIdx === i
+
+          return (
+            <li key={i} className="relative">
+              <div className="flex items-center gap-1.5">
+                <span className="text-base leading-none">{item.icon}</span>
+                <span className={['text-xs font-medium flex-1', isToday ? 'text-mint-light' : 'text-slate'].join(' ')}>
+                  {t(item.nameKey.replace('ootd.', '') as Parameters<typeof t>[0])}
+                </span>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); setOpenIdx(isOpen ? null : i) }}
+                  className="text-[9px] text-mint-deep bg-mint-light/50 rounded-lg px-1.5 py-0.5 hover:bg-mint-light transition-colors shrink-0"
+                >
+                  {t('change')}
+                </button>
+              </div>
+
+              {isOpen && (
+                <div className="absolute top-full left-0 mt-1 w-44 bg-white rounded-xl shadow-lg border border-mist z-30 max-h-40 overflow-y-auto">
+                  <div className="px-3 py-1.5 text-[9px] font-bold text-stone uppercase tracking-wider border-b border-mist">
+                    {catDef.label.ko}
+                  </div>
+                  {catDef.items.map((key) => {
+                    const nameKey = `ootd.items.${key}`
+                    const isCurrent = item.nameKey === nameKey
+                    return (
+                      <button
+                        key={key}
+                        type="button"
+                        onClick={() => {
+                          setCustomItems((prev) => ({
+                            ...prev,
+                            [i]: { nameKey, icon: catDef.icon },
+                          }))
+                          setOpenIdx(null)
+                        }}
+                        className={`w-full text-left px-3 py-1.5 text-xs flex items-center gap-2 transition-colors ${
+                          isCurrent ? 'bg-mint-light text-mint-deep font-bold' : 'hover:bg-mint-light/30'
+                        }`}
+                      >
+                        <span>{catDef.icon}</span>
+                        <span className="flex-1 truncate">
+                          {t(`items.${key}` as Parameters<typeof t>[0])}
+                        </span>
+                        {isCurrent && <span className="text-mint-deep text-[10px]">✓</span>}
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
+            </li>
+          )
+        })}
+      </ul>
+      <p className={['text-[10px] mt-3 leading-snug', isToday ? 'text-stone' : 'text-stone'].join(' ')}>
+        💡 {t(outfit.tipKey.replace('ootd.', '') as Parameters<typeof t>[0])}
+      </p>
+      {!isToday && (
+        <OotdChecklist
+          date={weather.date}
+          cityId={cityId}
+          cityName={cityName}
+          items={currentItems}
+        />
+      )}
+    </>
   )
 }
 

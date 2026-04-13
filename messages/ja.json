@@ -621,6 +621,7 @@
     "comingSoonDesc": "この地域の観光情報を準備中です"
   },
   "ootd": {
+    "change": "変更 ▼",
     "title": "天気コーデ案内",
     "subtitle": "都市の雰囲気に合わせた7日間の天気・コーデガイド",
     "humidity": "湿度",

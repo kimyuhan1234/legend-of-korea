@@ -646,6 +646,7 @@
     "comingSoonDesc": "이 지역 볼거리 정보를 준비 중입니다"
   },
   "ootd": {
+    "change": "변경 ▼",
     "title": "날씨 코디 추천",
     "subtitle": "도시 분위기에 맞는 7일치 날씨 · 옷차림 가이드",
     "humidity": "현재 습도",

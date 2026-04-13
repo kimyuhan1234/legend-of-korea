@@ -621,6 +621,7 @@
     "comingSoonDesc": "We're preparing sights for this region"
   },
   "ootd": {
+    "change": "Change ▼",
     "title": "Weather Outfit Guide",
     "subtitle": "7-day weather & outfit recommendations tailored to each city vibe",
     "humidity": "Humidity",
