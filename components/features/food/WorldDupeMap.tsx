@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
@@ -19,20 +19,20 @@ function getL(field: { ko: string; en: string; ja: string }, locale: string): st
   return field[locale as 'ko' | 'en' | 'ja'] || field.ko
 }
 
-// 확정 좌표 (드래그 도구로 실측)
+// 확정 좌표 (드래그 도구로 실측 — 2차)
 const MAP_POS: Record<string, { x: number; y: number }> = {
-  JP: { x: 44.2, y: 32.7 },
-  CN: { x: 36.8, y: 32.1 },
-  TH: { x: 35.3, y: 42.2 },
-  VN: { x: 37, y: 43.7 },
-  MY: { x: 34.7, y: 48.7 },
-  ID: { x: 29, y: 40.4 },
-  IN: { x: 35, y: 51.9 },
-  IT: { x: 16.2, y: 26.6 },
-  FR: { x: 14.2, y: 24.2 },
-  ES: { x: 11.9, y: 26 },
-  US: { x: 73.1, y: 29.5 },
-  MX: { x: 73.7, y: 38.9 },
+  JP: { x: 44.8, y: 31.4 },
+  CN: { x: 37.1, y: 30.6 },
+  TH: { x: 34.6, y: 41.1 },
+  VN: { x: 36.2, y: 46.3 },
+  MY: { x: 34, y: 50.4 },
+  ID: { x: 41.9, y: 51.4 },
+  IN: { x: 28.7, y: 39.5 },
+  IT: { x: 16.7, y: 27.1 },
+  FR: { x: 14.1, y: 23.6 },
+  ES: { x: 11.6, y: 27.1 },
+  US: { x: 76.4, y: 25 },
+  MX: { x: 73.1, y: 36.5 },
 }
 const KOREA_POS = { x: 41.6, y: 28.8 }
 
@@ -53,42 +53,12 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
     onCountrySelect(code)
   }
 
-  // ── 개발 도구: 드래그 좌표 조정 (확정 후 제거) ──
-  const [positions, setPositions] = useState<Record<string, { x: number; y: number }>>({
-    ...MAP_POS,
-    KOREA: { ...KOREA_POS },
-  })
-  const [dragging, setDragging] = useState<string | null>(null)
-  const mapRef = useRef<HTMLDivElement>(null)
-
-  const updatePos = (clientX: number, clientY: number) => {
-    if (!dragging || !mapRef.current) return
-    const rect = mapRef.current.getBoundingClientRect()
-    const x = Math.round(((clientX - rect.left) / rect.width) * 1000) / 10
-    const y = Math.round(((clientY - rect.top) / rect.height) * 1000) / 10
-    setPositions((prev) => ({ ...prev, [dragging]: { x, y } }))
-  }
-  const onDragMouseDown = (code: string) => (e: React.MouseEvent) => { e.preventDefault(); e.stopPropagation(); setDragging(code) }
-  const onDragMouseMove = (e: React.MouseEvent) => updatePos(e.clientX, e.clientY)
-  const onDragMouseUp = () => { if (dragging) { console.log('=== 세계지도 좌표 ==='); Object.entries(positions).forEach(([c, p]) => console.log(`  ${c}: { x: ${p.x}, y: ${p.y} },`)); setDragging(null) } }
-  const onDragTouchStart = (code: string) => (e: React.TouchEvent) => { e.stopPropagation(); setDragging(code) }
-  const onDragTouchMove = (e: React.TouchEvent) => { if (dragging) updatePos(e.touches[0].clientX, e.touches[0].clientY) }
-  const copyPositions = () => { navigator.clipboard.writeText(Object.entries(positions).map(([c, p]) => `  ${c}: { x: ${p.x}, y: ${p.y} },`).join('\n')).catch(() => {}); alert('복사됨!') }
-  const koreaPos = positions.KOREA
 
   return (
     <div>
-      {/* ── 데스크톱: 지도 풀 폭 (드래그 도구 포함) ── */}
+      {/* ── 데스크톱: 지도 풀 폭 ── */}
       <div className="hidden lg:block">
-        <div
-          ref={mapRef}
-          className="relative w-full select-none"
-          onMouseMove={onDragMouseMove}
-          onMouseUp={onDragMouseUp}
-          onMouseLeave={onDragMouseUp}
-          onTouchMove={onDragTouchMove}
-          onTouchEnd={onDragMouseUp}
-        >
+        <div className="relative w-full">
           <Image
             src="/images/world-map-legend.png"
             alt="Legend World Map"
@@ -96,45 +66,36 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
             height={675}
             className="w-full h-auto rounded-xl"
             priority
-            draggable={false}
           />
 
-          {/* 한국 마커 (드래그 가능) */}
+          {/* 한국 마커 */}
           <div
-            className={`absolute -translate-x-1/2 -translate-y-1/2 z-10 ${dragging === 'KOREA' ? 'cursor-grabbing scale-150' : 'cursor-grab'}`}
-            style={{ top: `${koreaPos.y}%`, left: `${koreaPos.x}%` }}
-            onMouseDown={onDragMouseDown('KOREA')}
-            onTouchStart={onDragTouchStart('KOREA')}
+            className="absolute -translate-x-1/2 -translate-y-1/2 z-10"
+            style={{ top: `${KOREA_POS.y}%`, left: `${KOREA_POS.x}%` }}
           >
             <span className="text-lg">📍</span>
             <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-mint-deep text-white text-[9px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">
               KOREA
             </span>
-            <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[7px] bg-black/80 text-white px-1 rounded whitespace-nowrap">
-              {koreaPos.x},{koreaPos.y}
-            </span>
           </div>
 
-          {/* 12개국 국기 마커 (드래그 가능) */}
+          {/* 12개국 국기 마커 */}
           {codes.map((code) => {
-            const pos = positions[code]
+            const pos = MAP_POS[code]
             if (!pos) return null
             const meta = COUNTRIES[code]
             const count = countryCounts[code] ?? 0
             const isActive = active === code
-            const isDraggingThis = dragging === code
 
             return (
               <button
                 key={code}
                 type="button"
-                onClick={(e) => { if (!dragging) { e.stopPropagation(); handleSelect(code) } }}
-                onMouseDown={onDragMouseDown(code)}
-                onTouchStart={onDragTouchStart(code)}
-                onMouseEnter={() => { if (!dragging) setHovered(code) }}
-                onMouseLeave={() => { if (!dragging) setHovered(null) }}
+                onMouseEnter={() => setHovered(code)}
+                onMouseLeave={() => setHovered(null)}
+                onClick={() => handleSelect(code)}
                 className={`absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-300 z-20 ${
-                  isDraggingThis ? 'cursor-grabbing scale-[1.8]' : isActive ? 'scale-150 cursor-grab' : 'hover:scale-125 cursor-grab'
+                  isActive ? 'scale-150' : 'hover:scale-125'
                 }`}
                 style={{ top: `${pos.y}%`, left: `${pos.x}%` }}
                 title={getL(meta.name, locale)}
@@ -143,43 +104,29 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
                 <span className="absolute -bottom-1 -right-1 bg-blossom text-blossom-deep text-[8px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
                   {count}
                 </span>
-                {isActive && !isDraggingThis && (
+                {isActive && (
                   <span className="absolute inset-0 -m-2 rounded-full bg-mint/30 animate-ping" />
                 )}
-                <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[7px] bg-black/80 text-white px-1 rounded whitespace-nowrap">
-                  {code} {pos.x},{pos.y}
-                </span>
               </button>
             )
           })}
 
           {/* 선택된 국가 → 한국 점선 */}
-          {active && positions[active] && (
+          {active && MAP_POS[active] && (
             <svg className="absolute inset-0 w-full h-full pointer-events-none z-10">
               <line
-                x1={`${positions[active].x}%`}
-                y1={`${positions[active].y}%`}
-                x2={`${koreaPos.x}%`}
-                y2={`${koreaPos.y}%`}
+                x1={`${MAP_POS[active].x}%`}
+                y1={`${MAP_POS[active].y}%`}
+                x2={`${KOREA_POS.x}%`}
+                y2={`${KOREA_POS.y}%`}
                 stroke="#9DD8CE"
                 strokeWidth="2"
                 strokeDasharray="8,4"
                 className="animate-draw"
               />
-              <circle cx={`${koreaPos.x}%`} cy={`${koreaPos.y}%`} r="4" fill="#9DD8CE" />
+              <circle cx={`${KOREA_POS.x}%`} cy={`${KOREA_POS.y}%`} r="4" fill="#9DD8CE" />
             </svg>
           )}
-        </div>
-
-        {/* 개발 도구 — 좌표 확정 후 이 블록 전체 삭제 */}
-        <div className="mt-4 p-3 bg-yellow-50 border border-yellow-300 rounded-lg text-xs font-mono">
-          <p className="font-bold mb-2">🛠️ 개발 도구: 국기를 드래그해서 위치 조정 (한국 📍도 드래그 가능)</p>
-          {Object.entries(positions).map(([code, pos]) => (
-            <div key={code}>{code === 'KOREA' ? '📍' : COUNTRIES[code]?.flag ?? ''} {code}: x: {pos.x}%, y: {pos.y}%</div>
-          ))}
-          <button type="button" onClick={copyPositions} className="mt-2 px-3 py-1 bg-mint-deep text-white rounded text-xs font-bold">
-            📋 좌표 복사
-          </button>
         </div>
       </div>
 
