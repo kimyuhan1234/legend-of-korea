@@ -512,6 +512,7 @@
     "notifyDisclaimer": "ご入力いただいたメールアドレスはオープン通知以外の目的には使用しません。",
     "backToCourses": "コースを見る",
     "empty": "条件に合う商品がありません",
+    "buy": "購入する",
     "category": {
       "all": "すべて",
       "keyring": "キーリング",
@@ -520,6 +521,20 @@
       "bag": "バッグ",
       "misc": "その他"
     }
+  },
+  "delivery": {
+    "title": "📦 配送先入力",
+    "recipient": "受取人名",
+    "hotelName": "ホテル名",
+    "hotelAddress": "ホテル住所",
+    "roomNumber": "部屋番号",
+    "checkInDate": "チェックイン日",
+    "phone": "連絡先",
+    "note": "ご要望",
+    "warning": "⚠️ チェックイン2日前までの注文で到着前配送可能",
+    "autoFilled": "💡 プランナーのホテル情報から自動入力されました",
+    "cancel": "キャンセル",
+    "confirm": "配送先確認 → 決済"
   },
   "nav": {
     "signup": "会員登録",

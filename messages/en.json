@@ -512,6 +512,7 @@
     "notifyDisclaimer": "Your email will only be used for launch notifications.",
     "backToCourses": "Browse courses",
     "empty": "No products match your filter",
+    "buy": "Buy now",
     "category": {
       "all": "All",
       "keyring": "Keyring",
@@ -520,6 +521,20 @@
       "bag": "Bag",
       "misc": "Misc"
     }
+  },
+  "delivery": {
+    "title": "📦 Delivery Address",
+    "recipient": "Recipient name",
+    "hotelName": "Hotel name",
+    "hotelAddress": "Hotel address",
+    "roomNumber": "Room number",
+    "checkInDate": "Check-in date",
+    "phone": "Phone",
+    "note": "Special requests",
+    "warning": "⚠️ Order 2 days before check-in for pre-arrival delivery",
+    "autoFilled": "💡 Auto-filled from your planner hotel info",
+    "cancel": "Cancel",
+    "confirm": "Confirm → Pay"
   },
   "nav": {
     "signup": "Sign Up",

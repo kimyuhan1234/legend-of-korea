@@ -537,6 +537,7 @@
     "notifyDisclaimer": "입력하신 이메일은 오픈 알림 외 다른 용도로 사용되지 않습니다.",
     "backToCourses": "코스 둘러보기",
     "empty": "조건에 맞는 상품이 없습니다",
+    "buy": "구매하기",
     "category": {
       "all": "전체",
       "keyring": "키링",
@@ -545,6 +546,20 @@
       "bag": "가방",
       "misc": "기타"
     }
+  },
+  "delivery": {
+    "title": "📦 배송지 입력",
+    "recipient": "수령인 이름",
+    "hotelName": "호텔/숙소명",
+    "hotelAddress": "호텔 주소",
+    "roomNumber": "객실 번호",
+    "checkInDate": "체크인 날짜",
+    "phone": "연락처",
+    "note": "요청사항",
+    "warning": "⚠️ 체크인 2일 전까지 주문 시 도착 전 배송 가능",
+    "autoFilled": "💡 플래너의 호텔 정보가 자동으로 채워졌어요",
+    "cancel": "취소",
+    "confirm": "배송지 확인 → 결제"
   },
   "nav": {
     "signup": "회원가입",
