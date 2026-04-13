@@ -630,6 +630,10 @@
       "female": "レディース"
     },
     "cities": {
+      "jeonju": {
+        "name": "全州",
+        "description": "韓屋村の散策に似合う上品なルック"
+      },
       "seoul": {
         "name": "ソウル",
         "description": "都市のホットスポットや夜景に似合うスタイリッシュなルック"

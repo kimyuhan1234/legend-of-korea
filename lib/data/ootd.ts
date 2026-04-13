@@ -59,6 +59,15 @@ export const WEATHER_EMOJI: Record<WeatherCondition, string> = {
 //  8개 도시 × 7일 날씨 (2026-04-10 ~ 04-16)
 // ─────────────────────────────────────────────
 export const CITY_WEATHER: Record<string, DailyWeather[]> = {
+  jeonju: [
+    { date: '2026-04-10', dayOfWeek: 'FRI', condition: 'sunny',         highTemp: 18, lowTemp: 9,  humidity: 48 },
+    { date: '2026-04-11', dayOfWeek: 'SAT', condition: 'sunny',         highTemp: 20, lowTemp: 10, humidity: 42 },
+    { date: '2026-04-12', dayOfWeek: 'SUN', condition: 'partly_cloudy', highTemp: 21, lowTemp: 11, humidity: 50 },
+    { date: '2026-04-13', dayOfWeek: 'MON', condition: 'cloudy',        highTemp: 16, lowTemp: 10, humidity: 65 },
+    { date: '2026-04-14', dayOfWeek: 'TUE', condition: 'rainy',         highTemp: 14, lowTemp: 9,  humidity: 82 },
+    { date: '2026-04-15', dayOfWeek: 'WED', condition: 'partly_cloudy', highTemp: 17, lowTemp: 10, humidity: 55 },
+    { date: '2026-04-16', dayOfWeek: 'THU', condition: 'sunny',         highTemp: 19, lowTemp: 10, humidity: 45 },
+  ],
   seoul: [
     { date: '2026-04-10', dayOfWeek: 'FRI', condition: 'partly_cloudy', highTemp: 17, lowTemp: 9,  humidity: 55 },
     { date: '2026-04-11', dayOfWeek: 'SAT', condition: 'sunny',         highTemp: 19, lowTemp: 10, humidity: 45 },
@@ -137,6 +146,32 @@ export const CITY_WEATHER: Record<string, DailyWeather[]> = {
 //  8개 도시 테마 & 옷차림 추천
 // ─────────────────────────────────────────────
 export const CITY_THEMES: CityTheme[] = [
+  // ── 전주 (Hanok & Traditional) ──────────────
+  {
+    cityId: 'jeonju', nameKey: 'ootd.cities.jeonju.name',
+    theme: 'Hanok & Traditional', descriptionKey: 'ootd.cities.jeonju.description',
+    outfits: [
+      { gender: 'male',   tempRange: 'cold', tipKey: 'ootd.tips.springLayering',
+        items: [{ nameKey: 'ootd.items.woolCoat',      icon: '🧥' }, { nameKey: 'ootd.items.turtleneck',  icon: '👕' },
+                { nameKey: 'ootd.items.slacks',        icon: '👖' }, { nameKey: 'ootd.items.derbyShoes',  icon: '👞' }] },
+      { gender: 'female', tempRange: 'cold', tipKey: 'ootd.tips.springLayering',
+        items: [{ nameKey: 'ootd.items.longCoat',      icon: '🧥' }, { nameKey: 'ootd.items.knit',        icon: '👕' },
+                { nameKey: 'ootd.items.widePants',     icon: '👖' }, { nameKey: 'ootd.items.ankleBoots',  icon: '👢' }] },
+      { gender: 'male',   tempRange: 'mild', tipKey: 'ootd.tips.comfyShoes',
+        items: [{ nameKey: 'ootd.items.linenJacket',   icon: '🧥' }, { nameKey: 'ootd.items.oxfordShirt', icon: '👔' },
+                { nameKey: 'ootd.items.chinoPants',    icon: '👖' }, { nameKey: 'ootd.items.loafer',      icon: '👞' }] },
+      { gender: 'female', tempRange: 'mild', tipKey: 'ootd.tips.comfyShoes',
+        items: [{ nameKey: 'ootd.items.cardigan',      icon: '🧥' }, { nameKey: 'ootd.items.floralDress', icon: '👗' },
+                { nameKey: 'ootd.items.flatShoes',     icon: '👠' }, { nameKey: 'ootd.items.crossbag',    icon: '👜' }] },
+      { gender: 'male',   tempRange: 'hot',  tipKey: 'ootd.tips.sunscreen',
+        items: [{ nameKey: 'ootd.items.linenShirt',    icon: '👔' }, { nameKey: 'ootd.items.shorts',      icon: '🩳' },
+                { nameKey: 'ootd.items.sandals',       icon: '🩴' }] },
+      { gender: 'female', tempRange: 'hot',  tipKey: 'ootd.tips.sunscreen',
+        items: [{ nameKey: 'ootd.items.sleevelessDress',icon: '👗' }, { nameKey: 'ootd.items.flatSandal', icon: '🩴' },
+                { nameKey: 'ootd.items.strawHat',      icon: '👒' }] },
+    ],
+  },
+
   // ── 서울 (Trendy & Urban) ──────────────────
   {
     cityId: 'seoul', nameKey: 'ootd.cities.seoul.name',

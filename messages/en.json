@@ -630,6 +630,10 @@
       "female": "Female"
     },
     "cities": {
+      "jeonju": {
+        "name": "Jeonju",
+        "description": "Elegant looks for strolling the Hanok Village"
+      },
       "seoul": {
         "name": "Seoul",
         "description": "Sleek urban looks for city hotspots and night views"

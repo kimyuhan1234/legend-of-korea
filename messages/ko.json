@@ -655,6 +655,10 @@
       "female": "여성"
     },
     "cities": {
+      "jeonju": {
+        "name": "전주",
+        "description": "한옥마을 산책에 어울리는 단아한 룩"
+      },
       "seoul": {
         "name": "서울",
         "description": "도심 핫플과 야경에 어울리는 세련된 룩"
