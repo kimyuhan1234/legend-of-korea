@@ -159,19 +159,19 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setRegionFilter('recipe')}
-            className={`px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 rounded-xl border-none
+            className={`px-5 py-2.5 font-bold transition-all rounded-xl
               ${regionFilter === 'recipe'
-                ? 'bg-[#7BC8BC] text-white ring-2 ring-blossom'
-                : 'bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] hover:bg-[#7BC8BC]'
+                ? 'bg-mint-deep text-white'
+                : 'bg-white border border-mist text-[#1F2937] hover:border-mint-deep'
               }`}
           >
             🍳 요리 레시피
           </button>
           <Link href={`/${locale}/community/write`}>
-            <Button className="rounded-xl px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 bg-[#9DD8CE] hover:bg-[#7BC8BC] text-white border-none">
-              <PenLine className="w-4 h-4 mr-2" />
+            <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] hover:opacity-90 hover:scale-[1.02] transition-all">
+              <PenLine className="w-4 h-4" />
               {t('writePost', { defaultValue: '기록 남기기' })}
-            </Button>
+            </button>
           </Link>
         </div>
       </div>
@@ -226,9 +226,9 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
       {/* Mobile FAB */}
       <Link href={`/${locale}/community/write`} className="fixed bottom-24 right-6 md:hidden z-40">
-        <Button size="icon" className="rounded-full shadow-2xl h-14 w-14 p-0 bg-[#9DD8CE] hover:bg-[#7BC8BC] shadow-mint-light/50 border-4 border-white">
-          <PenLine className="w-6 h-6 text-white" />
-        </Button>
+        <div className="rounded-full shadow-2xl h-14 w-14 flex items-center justify-center bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] border-4 border-white">
+          <PenLine className="w-6 h-6 text-[#1F2937]" />
+        </div>
       </Link>
     </div>
   );
