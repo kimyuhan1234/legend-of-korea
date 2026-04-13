@@ -1285,6 +1285,8 @@
     "unavailable": "Unavailable",
     "addToPlanner": "Add to planner",
     "disclaimer": "All durations are approximate",
+    "selectCity": "Select destination",
+    "noRoute": "Route info coming soon",
     "selectRoute": "Select a destination"
   },
   "dupe": {

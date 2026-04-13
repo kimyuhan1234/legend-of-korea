@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { TRANSPORT_ROUTES } from '@/lib/data/transport-routes'
 import { getTransferInfo } from '@/lib/data/transport-transfers'
+import { getDepartureRoutes, type DepartureOption } from '@/lib/data/departure-routes'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 // ── 출발지 5개 ──
@@ -44,7 +45,7 @@ const RECOMMENDED: Record<string, string[]> = {
   'gimpo-airport': ['seoul', 'jeju'],
 }
 
-const TYPE_ICON: Record<string, string> = { ktx: '🚄', bus: '🚌', flight: '✈️' }
+const TYPE_ICON: Record<string, string> = { ktx: '🚄', bus: '🚌', flight: '✈️', arex: '🚈', limousine: '🚐' }
 const TYPE_LABEL: Record<string, { ko: string; en: string; ja: string }> = {
   ktx: { ko: 'KTX', en: 'KTX', ja: 'KTX' },
   bus: { ko: '고속버스', en: 'Express Bus', ja: '高速バス' },
@@ -106,10 +107,9 @@ export default function TrafficPage() {
   const isRecommended = (cityCode: string) =>
     (RECOMMENDED[departure] ?? []).includes(cityCode)
 
-  // transport-routes 에서 데이터 조회 (서울 출발 기준 데이터 사용)
-  // 비서울 출발이면 도착지 기준으로 조회, 없으면 null
-  const routeCity = departure === 'seoul' ? selectedCity : selectedCity
-  const route = TRANSPORT_ROUTES.find((r) => r.cityId === routeCity)
+  // 서울 출발 → transport-routes.ts, 그 외 → departure-routes.ts
+  const seoulRoute = departure === 'seoul' ? TRANSPORT_ROUTES.find((r) => r.cityId === selectedCity) : null
+  const depRoute = departure !== 'seoul' ? getDepartureRoutes(effectiveDep, isGoing ? selectedCity : departure) : null
 
   const getDate = (key: string) => cardDates[key] ?? ''
   const getTime = (key: string) => cardTimes[key] ?? ''
@@ -209,16 +209,15 @@ export default function TrafficPage() {
           </p>
         )}
 
-        {route && selectedCity ? (
+        {(seoulRoute || depRoute) && selectedCity ? (
           <div className="space-y-6">
-            {route.options.map((opt) => {
+            {/* 서울 출발: 기존 transport-routes 카드 */}
+            {seoulRoute && seoulRoute.options.map((opt) => {
               const cardKey = `${direction}-${opt.type}`
               const date = getDate(cardKey)
               const time = getTime(cardKey)
               const durMin = parseDurationMinutes(opt.duration)
               const arrival = time ? calculateArrival(time, durMin) : ''
-
-              // 환승 정보 — effectiveDep 기준
               const transfer = getTransferInfo(effectiveDep, isGoing ? selectedCity : departure, opt.type)
               const fromStation = getL(depName, locale)
               const toStation = isGoing ? getL(opt.station, locale) : getL(depName, locale)
@@ -364,16 +363,68 @@ export default function TrafficPage() {
               )
             })}
 
-            {isGoing && route.lastMile && (
+            {/* 비서울 출발: departure-routes 카드 */}
+            {depRoute && depRoute.options.map((dopt) => {
+              const cardKey = `${direction}-dep-${dopt.type}-${dopt.name.en}`
+              const date = getDate(cardKey)
+              const time = getTime(cardKey)
+              const durMin = dopt.durationMinutes
+              const arrival = time ? calculateArrival(time, durMin) : ''
+              const fromStation = getL(dopt.from, locale)
+              const toStation = getL(dopt.to, locale)
+
+              return (
+                <div key={cardKey} className={`bg-white rounded-2xl border p-6 transition-all ${dopt.available ? 'border-mist hover:border-mint hover:shadow-md' : 'border-mist opacity-60'}`}>
+                  <div className="flex items-center gap-3 mb-4 flex-wrap">
+                    <span className="text-2xl">{TYPE_ICON[dopt.type] ?? '🚌'}</span>
+                    <h3 className="font-bold text-ink text-lg">{getL(dopt.name, locale)}</h3>
+                    {!dopt.available && <span className="text-xs bg-mist text-stone rounded-full px-2.5 py-0.5 font-bold">{t('unavailable')}</span>}
+                  </div>
+                  {dopt.available && (
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_200px_220px] gap-5">
+                      <div>
+                        <div className="space-y-2.5 mb-5">
+                          <p className="text-base text-ink font-medium">{fromStation} → {toStation}</p>
+                          <p className="text-base text-slate">{t('duration')}: <span className="font-bold text-ink">{t('approx')} {dopt.duration}</span></p>
+                          {dopt.fixedPrice && <p className="text-ink font-bold text-lg">{t('fare')}: {dopt.fixedPrice}</p>}
+                          {dopt.note && <p className="text-xs text-stone mt-1">💡 {getL(dopt.note, locale)}</p>}
+                        </div>
+                        {dopt.bookingUrl && (
+                          <a href={dopt.bookingUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-4 py-2 text-sm hover:opacity-90 transition">{t('book')}</a>
+                        )}
+                      </div>
+                      <div className="hidden md:flex flex-col items-center justify-between py-4">
+                        <div className="text-center"><div className="w-4 h-4 bg-mint-deep rounded-full mx-auto mb-1.5" /><span className="text-sm font-bold text-ink leading-tight block max-w-[160px]">{fromStation}</span></div>
+                        <div className="relative flex-1 w-px my-3 min-h-[120px]">
+                          <div className="absolute inset-0 border-l-[3px] border-dashed border-mint/40 left-1/2" />
+                          <div className={`absolute left-1/2 -translate-x-1/2 ${dopt.type === 'flight' ? 'animate-travel-flight' : 'animate-travel'}`}><span className="text-4xl drop-shadow-sm">{TYPE_ICON[dopt.type] ?? '🚌'}</span></div>
+                        </div>
+                        <div className="text-center"><div className="w-4 h-4 bg-blossom-deep rounded-full mx-auto mb-1.5" /><span className="text-sm font-bold text-ink leading-tight block max-w-[160px]">{toStation}</span></div>
+                        <div className="mt-3"><span className="text-sm text-mint-deep font-bold bg-mint-light/50 rounded-full px-4 py-1.5">{t('approx')} {dopt.duration}</span></div>
+                      </div>
+                      <div className="space-y-3 p-4 bg-snow rounded-xl border border-mist">
+                        <div><label className="text-xs text-stone mb-1 block">{t('departDate')}</label><input type="date" value={date} onChange={(e) => setCardDates((p) => ({ ...p, [cardKey]: e.target.value }))} className="w-full bg-white border border-mist rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-mint-light focus:border-mint-deep" /></div>
+                        <div><label className="text-xs text-stone mb-1 block">{t('departTime')}</label><input type="time" value={time} onChange={(e) => setCardTimes((p) => ({ ...p, [cardKey]: e.target.value }))} className="w-full bg-white border border-mist rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-mint-light focus:border-mint-deep" /></div>
+                        {arrival && <p className="text-xs text-mint-deep font-bold">🕐 {t('arrivalEstimate', { time: arrival })}</p>}
+                        <AddToPlannerButton itemType="transport" itemData={{ direction, type: dopt.type, name: dopt.name, from: dopt.from, to: dopt.to, date: date || null, departureTime: time || null, arrivalTime: arrival || null, duration: dopt.duration, price: dopt.fixedPrice ?? '' }} cityId={selectedCity || departure} size="md" className="w-full justify-center" />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+
+            {/* 라스트마일 — 서울 출발 가는편만 */}
+            {isGoing && seoulRoute?.lastMile && (
               <div className="bg-mint-light/30 rounded-2xl border border-mint-light p-5">
                 <h3 className="font-bold text-ink mb-3">🚕 {t('lastMile')}</h3>
                 <div className="space-y-2 text-sm text-slate">
-                  <p>🚕 {t('approx')} {t('taxi')} {route.lastMile.taxi.minutes}{minLabel(locale)}</p>
-                  {route.lastMile.bus && (
-                    <p>🚌 {t('approx')} {t('bus')} {route.lastMile.bus.minutes}{minLabel(locale)} ({getL(route.lastMile.bus.route, locale)}, {getL(route.lastMile.bus.stop, locale)})</p>
+                  <p>🚕 {t('approx')} {t('taxi')} {seoulRoute.lastMile.taxi.minutes}{minLabel(locale)}</p>
+                  {seoulRoute.lastMile.bus && (
+                    <p>🚌 {t('approx')} {t('bus')} {seoulRoute.lastMile.bus.minutes}{minLabel(locale)} ({getL(seoulRoute.lastMile.bus.route, locale)}, {getL(seoulRoute.lastMile.bus.stop, locale)})</p>
                   )}
-                  {route.lastMile.walk && (
-                    <p>🚶 {t('approx')} {t('walk')} {route.lastMile.walk.minutes}{minLabel(locale)}</p>
+                  {seoulRoute.lastMile.walk && (
+                    <p>🚶 {t('approx')} {t('walk')} {seoulRoute.lastMile.walk.minutes}{minLabel(locale)}</p>
                   )}
                 </div>
                 <p className="text-xs text-stone mt-3">⚠ {t('taxiNote')}</p>

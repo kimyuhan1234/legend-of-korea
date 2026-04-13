@@ -1285,6 +1285,8 @@
     "unavailable": "利用不可",
     "addToPlanner": "プランナーに追加",
     "disclaimer": "全ての所要時間は目安です",
+    "selectCity": "目的地を選択",
+    "noRoute": "路線情報準備中",
     "selectRoute": "到着地を選択してください"
   },
   "dupe": {
