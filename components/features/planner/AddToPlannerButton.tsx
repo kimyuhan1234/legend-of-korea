@@ -62,6 +62,9 @@ export function AddToPlannerButton({
   const [showConfirm, setShowConfirm] = useState(false)
   const [warning, setWarning] = useState<Warning | null>(null)
 
+  // 굿즈는 플래너에 담을 수 없음 (hooks 이후 early return)
+  if (itemType === 'goods') return null
+
   // 실제 담기 실행
   const doAdd = async () => {
     setState('loading')

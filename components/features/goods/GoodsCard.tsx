@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 import { type GoodsProduct } from '@/lib/data/goods-products'
-import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 interface GoodsCardProps {
   product: GoodsProduct
@@ -38,19 +37,6 @@ export function GoodsCard({ product, locale }: GoodsCardProps) {
           )}
         </div>
 
-        <AddToPlannerButton
-          itemType="goods"
-          cityId={product.cityId}
-          itemData={{
-            id: product.id,
-            name: product.name,
-            category: product.category,
-            price: product.price,
-            emoji: product.emoji,
-          }}
-          size="md"
-          className="w-full"
-        />
       </div>
     </div>
   )
