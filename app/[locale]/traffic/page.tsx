@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
-import { TRANSPORT_ROUTES, type TransportRoute } from '@/lib/data/transport-routes'
+import { TRANSPORT_ROUTES, type TransportOption } from '@/lib/data/transport-routes'
+import { getTransferInfo, type TransferStep } from '@/lib/data/transport-transfers'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 const CITIES = [
@@ -34,6 +35,23 @@ function minLabel(locale: string): string {
   return locale === 'ko' ? '분' : locale === 'ja' ? '分' : 'min'
 }
 
+// duration 문자열 → 분 변환 (예: "1.5~2h" → 105)
+function parseDurationMinutes(dur: string): number {
+  const match = dur.match(/([\d.]+)/)
+  if (!match) return 120
+  const hours = parseFloat(match[1])
+  return Math.round(hours * 60)
+}
+
+function calculateArrival(departTime: string, durationMinutes: number): string {
+  const [h, m] = departTime.split(':').map(Number)
+  if (isNaN(h) || isNaN(m)) return ''
+  const total = h * 60 + m + durationMinutes
+  const arrH = Math.floor(total / 60) % 24
+  const arrM = total % 60
+  return `${String(arrH).padStart(2, '0')}:${String(arrM).padStart(2, '0')}`
+}
+
 type Direction = 'going' | 'returning'
 
 export default function TrafficPage() {
@@ -43,17 +61,19 @@ export default function TrafficPage() {
 
   const [selectedCity, setSelectedCity] = useState('jeonju')
   const [direction, setDirection] = useState<Direction>('going')
-  const [goingDate, setGoingDate] = useState('')
-  const [returningDate, setReturningDate] = useState('')
 
-  const route: TransportRoute | undefined = TRANSPORT_ROUTES.find((r) => r.cityId === selectedCity)
+  // 각 교통 카드별 날짜/시간 상태
+  const [cardDates, setCardDates] = useState<Record<string, string>>({})
+  const [cardTimes, setCardTimes] = useState<Record<string, string>>({})
+
+  const route = TRANSPORT_ROUTES.find((r) => r.cityId === selectedCity)
   const cityName = CITIES.find((c) => c.code === selectedCity)?.name ?? { ko: selectedCity, en: selectedCity, ja: selectedCity }
-
   const isGoing = direction === 'going'
-  const fromLabel = isGoing ? getL(SEOUL, locale) : getL(cityName, locale)
-  const toLabel = isGoing ? getL(cityName, locale) : getL(SEOUL, locale)
-  const currentDate = isGoing ? goingDate : returningDate
-  const setCurrentDate = isGoing ? setGoingDate : setReturningDate
+
+  const getDate = (key: string) => cardDates[key] ?? ''
+  const getTime = (key: string) => cardTimes[key] ?? ''
+  const setDate = (key: string, val: string) => setCardDates((p) => ({ ...p, [key]: val }))
+  const setTime = (key: string, val: string) => setCardTimes((p) => ({ ...p, [key]: val }))
 
   return (
     <div className="min-h-screen bg-snow">
@@ -69,31 +89,23 @@ export default function TrafficPage() {
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-10">
         {/* 가는편 / 오는편 탭 */}
         <div className="flex gap-2 justify-center mb-6">
-          <button
-            type="button"
-            onClick={() => setDirection('going')}
-            className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
-              isGoing
-                ? 'bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink'
-                : 'bg-white text-slate border border-mist hover:bg-cloud'
-            }`}
-          >
-            {t('going')}
-          </button>
-          <button
-            type="button"
-            onClick={() => setDirection('returning')}
-            className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
-              !isGoing
-                ? 'bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink'
-                : 'bg-white text-slate border border-mist hover:bg-cloud'
-            }`}
-          >
-            {t('returning')}
-          </button>
+          {(['going', 'returning'] as Direction[]).map((dir) => (
+            <button
+              key={dir}
+              type="button"
+              onClick={() => setDirection(dir)}
+              className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
+                direction === dir
+                  ? 'bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink'
+                  : 'bg-white text-slate border border-mist hover:bg-cloud'
+              }`}
+            >
+              {t(dir)}
+            </button>
+          ))}
         </div>
 
-        {/* 출발지 / 날짜 / 도착지 */}
+        {/* 출발지 / 도착지 */}
         <div className="flex items-end gap-3 mb-8 flex-wrap justify-center">
           <div>
             <label className="text-xs font-bold text-stone block mb-1">{t('from')}</label>
@@ -102,20 +114,16 @@ export default function TrafficPage() {
                 {getL(SEOUL, locale)}
               </div>
             ) : (
-              <div className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm">
-                {getL(cityName, locale)}
-              </div>
+              <select
+                value={selectedCity}
+                onChange={(e) => setSelectedCity(e.target.value)}
+                className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm focus:outline-none focus:border-mint-deep"
+              >
+                {CITIES.map((c) => (
+                  <option key={c.code} value={c.code}>{getL(c.name, locale)}</option>
+                ))}
+              </select>
             )}
-          </div>
-
-          <div>
-            <label className="text-xs font-bold text-stone block mb-1">{t('date')}</label>
-            <input
-              type="date"
-              value={currentDate}
-              onChange={(e) => setCurrentDate(e.target.value)}
-              className="px-4 py-2.5 rounded-xl border border-mist bg-white text-ink text-sm font-semibold focus:outline-none focus:border-mint-deep"
-            />
           </div>
 
           <span className="text-2xl text-mint-deep font-bold pb-1">→</span>
@@ -142,14 +150,14 @@ export default function TrafficPage() {
 
         {route ? (
           <div className="space-y-5">
-            {/* 경로 요약 */}
-            <div className="text-center text-sm text-slate mb-2">
-              {fromLabel} → {toLabel}
-              {currentDate && <span className="ml-2 text-ink font-bold">({currentDate})</span>}
-            </div>
-
             {/* 교통 카드 */}
             {route.options.map((opt) => {
+              const cardKey = `${direction}-${opt.type}`
+              const date = getDate(cardKey)
+              const time = getTime(cardKey)
+              const durMin = parseDurationMinutes(opt.duration)
+              const arrival = time ? calculateArrival(time, durMin) : ''
+              const transfer = getTransferInfo(selectedCity, opt.type)
               const stationFrom = isGoing ? getL(SEOUL, locale) : getL(opt.station, locale)
               const stationTo = isGoing ? getL(opt.station, locale) : getL(SEOUL, locale)
 
@@ -160,54 +168,110 @@ export default function TrafficPage() {
                     opt.available ? 'border-mist hover:border-mint hover:shadow-md' : 'border-mist opacity-60'
                   }`}
                 >
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-center gap-3 mb-4">
                     <span className="text-2xl">{TYPE_ICON[opt.type]}</span>
                     <h3 className="font-bold text-ink text-lg">{getL(TYPE_LABEL[opt.type], locale)}</h3>
                     {!opt.available && (
-                      <span className="text-xs bg-mist text-stone rounded-full px-2.5 py-0.5 font-bold">
-                        {t('unavailable')}
+                      <span className="text-xs bg-mist text-stone rounded-full px-2.5 py-0.5 font-bold">{t('unavailable')}</span>
+                    )}
+                    {opt.available && !transfer && (
+                      <span className="text-xs bg-mint-light text-mint-deep rounded-full px-2.5 py-0.5 font-bold">{t('direct')}</span>
+                    )}
+                    {opt.available && transfer && (
+                      <span className="text-xs bg-peach text-ink rounded-full px-2.5 py-0.5 font-bold">
+                        {t('transfer', { count: transfer.transfers.length })}
                       </span>
                     )}
                   </div>
 
                   {opt.available && (
-                    <>
-                      <div className="space-y-2 text-sm mb-4">
-                        <p className="text-slate">{stationFrom} → {stationTo}</p>
-                        <p className="text-slate">
-                          {t('duration')}: <span className="font-bold text-ink">{t('approx')} {opt.duration}</span>
-                        </p>
-                        {opt.fixedPrice && (
-                          <p className="text-ink font-bold">{t('fare')}: {opt.fixedPrice}</p>
-                        )}
-                      </div>
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] gap-5">
+                      {/* 왼쪽: 교통 정보 */}
+                      <div>
+                        <div className="space-y-2 text-sm mb-4">
+                          <p className="text-ink font-medium">{stationFrom} → {stationTo}</p>
+                          <p className="text-slate">
+                            {t('duration')}: <span className="font-bold text-ink">{t('approx')} {opt.duration}</span>
+                          </p>
+                          {opt.fixedPrice && (
+                            <p className="text-ink font-bold text-base">{t('fare')}: {opt.fixedPrice}</p>
+                          )}
+                        </div>
 
-                      <div className="flex items-center gap-3 flex-wrap">
+                        {/* 환승 정보 */}
+                        {transfer && (
+                          <div className="p-3 bg-peach/20 rounded-xl mb-4">
+                            <p className="text-xs font-bold text-ink mb-2">{t('transferInfo')}</p>
+                            {transfer.transfers.map((step) => (
+                              <div key={step.step} className="text-xs text-slate ml-2 mb-1">
+                                <p>• {getL(step.from, locale)} → {getL(step.to, locale)} ({getL(step.method, locale)}, {t('approx')} {step.duration})</p>
+                                {step.note && <p className="text-stone ml-3">{getL(step.note, locale)}</p>}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
                         <a
                           href={opt.bookingUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-2.5 text-sm hover:opacity-90 transition"
+                          className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-4 py-2 text-sm hover:opacity-90 transition"
                         >
                           {t('book')}
                         </a>
+                      </div>
+
+                      {/* 오른쪽: 날짜/시간 입력 */}
+                      <div className="space-y-3 p-4 bg-snow rounded-xl border border-mist">
+                        <div>
+                          <label className="text-xs text-stone mb-1 block">{t('departDate')}</label>
+                          <input
+                            type="date"
+                            value={date}
+                            onChange={(e) => setDate(cardKey, e.target.value)}
+                            className="w-full bg-white border border-mist rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-mint-light focus:border-mint-deep"
+                          />
+                        </div>
+                        <div>
+                          <label className="text-xs text-stone mb-1 block">{t('departTime')}</label>
+                          <input
+                            type="time"
+                            value={time}
+                            onChange={(e) => setTime(cardKey, e.target.value)}
+                            className="w-full bg-white border border-mist rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-mint-light focus:border-mint-deep"
+                          />
+                        </div>
+
+                        {arrival && (
+                          <p className="text-xs text-mint-deep font-bold">
+                            🕐 {t('arrivalEstimate', { time: arrival })}
+                          </p>
+                        )}
+
                         <AddToPlannerButton
                           itemType="transport"
                           itemData={{
                             direction,
                             type: opt.type,
-                            name: { ko: `${isGoing ? '가는편' : '오는편'} ${getL(TYPE_LABEL[opt.type], 'ko')}`, en: `${isGoing ? 'Outbound' : 'Return'} ${getL(TYPE_LABEL[opt.type], 'en')}`, ja: `${isGoing ? '往路' : '復路'} ${getL(TYPE_LABEL[opt.type], 'ja')}` },
+                            name: {
+                              ko: `${isGoing ? '가는편' : '오는편'} ${getL(TYPE_LABEL[opt.type], 'ko')}`,
+                              en: `${isGoing ? 'Outbound' : 'Return'} ${getL(TYPE_LABEL[opt.type], 'en')}`,
+                              ja: `${isGoing ? '往路' : '復路'} ${getL(TYPE_LABEL[opt.type], 'ja')}`,
+                            },
                             from: isGoing ? SEOUL : cityName,
                             to: isGoing ? cityName : SEOUL,
-                            date: currentDate || null,
+                            date: date || null,
+                            departureTime: time || null,
+                            arrivalTime: arrival || null,
                             duration: opt.duration,
                             price: opt.fixedPrice ?? '',
                           }}
                           cityId={selectedCity}
-                          size="sm"
+                          size="md"
+                          className="w-full justify-center"
                         />
                       </div>
-                    </>
+                    </div>
                   )}
                 </div>
               )
