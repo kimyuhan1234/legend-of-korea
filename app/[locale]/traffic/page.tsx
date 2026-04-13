@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
-import Image from 'next/image'
 import { TRANSPORT_ROUTES, type TransportRoute } from '@/lib/data/transport-routes'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
@@ -19,6 +18,7 @@ const CITIES = [
   { code: 'icheon', name: { ko: '이천', en: 'Icheon', ja: '利川' } },
 ]
 
+const SEOUL = { ko: '서울', en: 'Seoul', ja: 'ソウル' }
 const TYPE_ICON: Record<string, string> = { ktx: '🚄', bus: '🚌', flight: '✈️' }
 const TYPE_LABEL: Record<string, { ko: string; en: string; ja: string }> = {
   ktx: { ko: 'KTX', en: 'KTX', ja: 'KTX' },
@@ -30,14 +30,30 @@ function getL(field: { ko: string; en: string; ja: string }, locale: string): st
   return field[locale as 'ko' | 'en' | 'ja'] || field.ko
 }
 
+function minLabel(locale: string): string {
+  return locale === 'ko' ? '분' : locale === 'ja' ? '分' : 'min'
+}
+
+type Direction = 'going' | 'returning'
+
 export default function TrafficPage() {
   const t = useTranslations('traffic')
   const pathname = usePathname()
   const locale = pathname.split('/')[1] || 'ko'
 
   const [selectedCity, setSelectedCity] = useState('jeonju')
+  const [direction, setDirection] = useState<Direction>('going')
+  const [goingDate, setGoingDate] = useState('')
+  const [returningDate, setReturningDate] = useState('')
+
   const route: TransportRoute | undefined = TRANSPORT_ROUTES.find((r) => r.cityId === selectedCity)
-  const cityLabel = CITIES.find((c) => c.code === selectedCity)
+  const cityName = CITIES.find((c) => c.code === selectedCity)?.name ?? { ko: selectedCity, en: selectedCity, ja: selectedCity }
+
+  const isGoing = direction === 'going'
+  const fromLabel = isGoing ? getL(SEOUL, locale) : getL(cityName, locale)
+  const toLabel = isGoing ? getL(cityName, locale) : getL(SEOUL, locale)
+  const currentDate = isGoing ? goingDate : returningDate
+  const setCurrentDate = isGoing ? setGoingDate : setReturningDate
 
   return (
     <div className="min-h-screen bg-snow">
@@ -51,108 +67,169 @@ export default function TrafficPage() {
       </section>
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-10">
-        {/* 출발/도착 선택 */}
-        <div className="flex items-center gap-4 mb-8 flex-wrap justify-center">
+        {/* 가는편 / 오는편 탭 */}
+        <div className="flex gap-2 justify-center mb-6">
+          <button
+            type="button"
+            onClick={() => setDirection('going')}
+            className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
+              isGoing
+                ? 'bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink'
+                : 'bg-white text-slate border border-mist hover:bg-cloud'
+            }`}
+          >
+            {t('going')}
+          </button>
+          <button
+            type="button"
+            onClick={() => setDirection('returning')}
+            className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
+              !isGoing
+                ? 'bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink'
+                : 'bg-white text-slate border border-mist hover:bg-cloud'
+            }`}
+          >
+            {t('returning')}
+          </button>
+        </div>
+
+        {/* 출발지 / 날짜 / 도착지 */}
+        <div className="flex items-end gap-3 mb-8 flex-wrap justify-center">
           <div>
             <label className="text-xs font-bold text-stone block mb-1">{t('from')}</label>
-            <div className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm">
-              {locale === 'ko' ? '서울' : locale === 'ja' ? 'ソウル' : 'Seoul'}
-            </div>
+            {isGoing ? (
+              <div className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm">
+                {getL(SEOUL, locale)}
+              </div>
+            ) : (
+              <div className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm">
+                {getL(cityName, locale)}
+              </div>
+            )}
           </div>
-          <span className="text-2xl text-mint-deep font-bold mt-5">→</span>
+
+          <div>
+            <label className="text-xs font-bold text-stone block mb-1">{t('date')}</label>
+            <input
+              type="date"
+              value={currentDate}
+              onChange={(e) => setCurrentDate(e.target.value)}
+              className="px-4 py-2.5 rounded-xl border border-mist bg-white text-ink text-sm font-semibold focus:outline-none focus:border-mint-deep"
+            />
+          </div>
+
+          <span className="text-2xl text-mint-deep font-bold pb-1">→</span>
+
           <div>
             <label className="text-xs font-bold text-stone block mb-1">{t('to')}</label>
-            <select
-              value={selectedCity}
-              onChange={(e) => setSelectedCity(e.target.value)}
-              className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm focus:outline-none focus:border-mint-deep"
-            >
-              {CITIES.map((c) => (
-                <option key={c.code} value={c.code}>
-                  {getL(c.name, locale)}
-                </option>
-              ))}
-            </select>
+            {isGoing ? (
+              <select
+                value={selectedCity}
+                onChange={(e) => setSelectedCity(e.target.value)}
+                className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm focus:outline-none focus:border-mint-deep"
+              >
+                {CITIES.map((c) => (
+                  <option key={c.code} value={c.code}>{getL(c.name, locale)}</option>
+                ))}
+              </select>
+            ) : (
+              <div className="px-5 py-2.5 rounded-xl border border-mist bg-white text-ink font-bold text-sm">
+                {getL(SEOUL, locale)}
+              </div>
+            )}
           </div>
         </div>
 
         {route ? (
           <div className="space-y-5">
-            {/* 교통 카드 */}
-            {route.options.map((opt) => (
-              <div
-                key={opt.type}
-                className={`bg-white rounded-2xl border p-5 transition-all ${
-                  opt.available ? 'border-mist hover:border-mint hover:shadow-md' : 'border-mist opacity-60'
-                }`}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-2xl">{TYPE_ICON[opt.type]}</span>
-                  <h3 className="font-bold text-ink text-lg">{getL(TYPE_LABEL[opt.type], locale)}</h3>
-                  {!opt.available && (
-                    <span className="text-xs bg-mist text-stone rounded-full px-2.5 py-0.5 font-bold">
-                      {t('unavailable')}
-                    </span>
-                  )}
-                </div>
-
-                {opt.available && (
-                  <>
-                    <div className="space-y-2 text-sm mb-4">
-                      <p className="text-slate">
-                        {locale === 'ko' ? '서울' : locale === 'ja' ? 'ソウル' : 'Seoul'} → {getL(opt.station, locale)}
-                      </p>
-                      <p className="text-slate">
-                        {t('duration')}: <span className="font-bold text-ink">{t('approx')} {opt.duration}</span>
-                      </p>
-                      {opt.fixedPrice && (
-                        <p className="text-ink font-bold">{t('fare')}: {opt.fixedPrice}</p>
-                      )}
-                    </div>
-
-                    <div className="flex items-center gap-3 flex-wrap">
-                      <a
-                        href={opt.bookingUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-2.5 text-sm hover:opacity-90 transition"
-                      >
-                        {t('book')}
-                      </a>
-                      <AddToPlannerButton
-                        itemType="transport"
-                        itemData={{
-                          type: opt.type,
-                          from: { ko: '서울', en: 'Seoul', ja: 'ソウル' },
-                          to: cityLabel?.name ?? { ko: selectedCity, en: selectedCity, ja: selectedCity },
-                          duration: opt.duration,
-                          price: opt.fixedPrice ?? '',
-                        }}
-                        cityId={selectedCity}
-                        size="sm"
-                      />
-                    </div>
-                  </>
-                )}
-              </div>
-            ))}
-
-            {/* 라스트마일 */}
-            <div className="bg-mint-light/30 rounded-2xl border border-mint-light p-5">
-              <h3 className="font-bold text-ink mb-3">🚕 {t('lastMile')}</h3>
-              <div className="space-y-2 text-sm text-slate">
-                <p>🚕 {t('approx')} {t('taxi')} {route.lastMile.taxi.minutes}{locale === 'ko' ? '분' : locale === 'ja' ? '分' : 'min'}</p>
-                {route.lastMile.bus && (
-                  <p>🚌 {t('approx')} {t('bus')} {route.lastMile.bus.minutes}{locale === 'ko' ? '분' : locale === 'ja' ? '分' : 'min'} ({getL(route.lastMile.bus.route, locale)}, {getL(route.lastMile.bus.stop, locale)})</p>
-                )}
-                {route.lastMile.walk && (
-                  <p>🚶 {t('approx')} {t('walk')} {route.lastMile.walk.minutes}{locale === 'ko' ? '분' : locale === 'ja' ? '分' : 'min'}</p>
-                )}
-              </div>
-              <p className="text-xs text-stone mt-3">⚠ {t('taxiNote')}</p>
+            {/* 경로 요약 */}
+            <div className="text-center text-sm text-slate mb-2">
+              {fromLabel} → {toLabel}
+              {currentDate && <span className="ml-2 text-ink font-bold">({currentDate})</span>}
             </div>
 
-            {/* 면책 */}
+            {/* 교통 카드 */}
+            {route.options.map((opt) => {
+              const stationFrom = isGoing ? getL(SEOUL, locale) : getL(opt.station, locale)
+              const stationTo = isGoing ? getL(opt.station, locale) : getL(SEOUL, locale)
+
+              return (
+                <div
+                  key={opt.type}
+                  className={`bg-white rounded-2xl border p-5 transition-all ${
+                    opt.available ? 'border-mist hover:border-mint hover:shadow-md' : 'border-mist opacity-60'
+                  }`}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-2xl">{TYPE_ICON[opt.type]}</span>
+                    <h3 className="font-bold text-ink text-lg">{getL(TYPE_LABEL[opt.type], locale)}</h3>
+                    {!opt.available && (
+                      <span className="text-xs bg-mist text-stone rounded-full px-2.5 py-0.5 font-bold">
+                        {t('unavailable')}
+                      </span>
+                    )}
+                  </div>
+
+                  {opt.available && (
+                    <>
+                      <div className="space-y-2 text-sm mb-4">
+                        <p className="text-slate">{stationFrom} → {stationTo}</p>
+                        <p className="text-slate">
+                          {t('duration')}: <span className="font-bold text-ink">{t('approx')} {opt.duration}</span>
+                        </p>
+                        {opt.fixedPrice && (
+                          <p className="text-ink font-bold">{t('fare')}: {opt.fixedPrice}</p>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <a
+                          href={opt.bookingUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-2.5 text-sm hover:opacity-90 transition"
+                        >
+                          {t('book')}
+                        </a>
+                        <AddToPlannerButton
+                          itemType="transport"
+                          itemData={{
+                            direction,
+                            type: opt.type,
+                            name: { ko: `${isGoing ? '가는편' : '오는편'} ${getL(TYPE_LABEL[opt.type], 'ko')}`, en: `${isGoing ? 'Outbound' : 'Return'} ${getL(TYPE_LABEL[opt.type], 'en')}`, ja: `${isGoing ? '往路' : '復路'} ${getL(TYPE_LABEL[opt.type], 'ja')}` },
+                            from: isGoing ? SEOUL : cityName,
+                            to: isGoing ? cityName : SEOUL,
+                            date: currentDate || null,
+                            duration: opt.duration,
+                            price: opt.fixedPrice ?? '',
+                          }}
+                          cityId={selectedCity}
+                          size="sm"
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
+              )
+            })}
+
+            {/* 라스트마일 — 가는편만 */}
+            {isGoing && (
+              <div className="bg-mint-light/30 rounded-2xl border border-mint-light p-5">
+                <h3 className="font-bold text-ink mb-3">🚕 {t('lastMile')}</h3>
+                <div className="space-y-2 text-sm text-slate">
+                  <p>🚕 {t('approx')} {t('taxi')} {route.lastMile.taxi.minutes}{minLabel(locale)}</p>
+                  {route.lastMile.bus && (
+                    <p>🚌 {t('approx')} {t('bus')} {route.lastMile.bus.minutes}{minLabel(locale)} ({getL(route.lastMile.bus.route, locale)}, {getL(route.lastMile.bus.stop, locale)})</p>
+                  )}
+                  {route.lastMile.walk && (
+                    <p>🚶 {t('approx')} {t('walk')} {route.lastMile.walk.minutes}{minLabel(locale)}</p>
+                  )}
+                </div>
+                <p className="text-xs text-stone mt-3">⚠ {t('taxiNote')}</p>
+              </div>
+            )}
+
             <p className="text-xs text-stone text-center">⚠ {t('disclaimer')}</p>
           </div>
         ) : (
