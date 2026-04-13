@@ -1,4 +1,7 @@
-import Link from "next/link"
+'use client'
+
+import { useCart } from '@/lib/contexts/CartContext'
+import { useTranslations } from 'next-intl'
 
 interface KitProduct {
   id: string
@@ -123,18 +126,9 @@ export function KitPurchaseCard({ courseId, kits, locale, isLoggedIn, className 
               isLoggedIn={isLoggedIn}
             />
           )}
-          {/* kit 데이터 없을 때도 구매 버튼 표시 */}
+          {/* kit 데이터 없을 때 — 스크롤 안내 */}
           {!soloKit && !coupleKit && (
-            <Link
-              href={
-                isLoggedIn
-                  ? `/${locale}/courses/${courseId}/purchase`
-                  : `/${locale}/auth/login?next=/${locale}/courses/${courseId}/purchase`
-              }
-              className="block w-full text-center py-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-[#F0B8B8] text-[#111] font-bold text-lg hover:bg-[#F5D0D0] transition-colors"
-            >
-              {isLoggedIn ? label.buyNow : label.buyNowLogin}
-            </Link>
+            <p className="text-sm text-stone text-center py-4">{label.outOfStock}</p>
           )}
         </div>
       </div>
@@ -147,8 +141,6 @@ function KitOption({
   label,
   optionLabel,
   courseId,
-  locale,
-  isLoggedIn,
 }: {
   kit: KitProduct
   label: (typeof LABEL)["ko"]
@@ -157,17 +149,28 @@ function KitOption({
   locale: string
   isLoggedIn: boolean
 }) {
+  const { addItem } = useCart()
+  const tCart = useTranslations('cart')
   const inStock = kit.stock > 0 && kit.is_active
-  const purchaseHref = isLoggedIn
-    ? `/${locale}/courses/${courseId}/purchase?kit=${kit.id}`
-    : `/${locale}/auth/login?next=/${locale}/courses/${courseId}/purchase?kit=${kit.id}`
+
+  const handleAddToCart = () => {
+    addItem({
+      id: `kit-${courseId}-${kit.id}`,
+      type: 'kit',
+      name: { ko: optionLabel, en: optionLabel, ja: optionLabel },
+      price: kit.price,
+      priceDisplay: `₩${kit.price.toLocaleString()}`,
+      emoji: '🎁',
+      metadata: { courseId, kitId: kit.id, optionType: kit.option_type },
+    })
+  }
 
   return (
     <div className="rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-0 p-5 hover:border-[#F0B8B8]/60 transition-colors">
       <div className="flex items-center justify-between mb-3">
         <span className="font-bold text-[#111]">{optionLabel}</span>
         {!inStock && (
-          <span className="text-xs px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-red-50 text-red-600  border-0 border-red-200">
+          <span className="text-xs px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-red-50 text-red-600 border-0 border-red-200">
             {label.outOfStock}
           </span>
         )}
@@ -178,12 +181,13 @@ function KitOption({
       </p>
 
       {inStock ? (
-        <Link
-          href={purchaseHref}
-          className="block w-full text-center py-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-[#F0B8B8] text-[#111] font-bold text-lg hover:bg-[#F5D0D0] transition-colors"
+        <button
+          type="button"
+          onClick={handleAddToCart}
+          className="block w-full text-center py-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-[#111] font-bold text-lg hover:opacity-90 transition"
         >
-          {isLoggedIn ? label.buyNow : label.buyNowLogin}
-        </Link>
+          🛒 {tCart('add')}
+        </button>
       ) : (
         <button className="w-full px-6 py-3 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-[#F0F2F5] text-[#9CA3AF] font-medium border-0 hover:bg-[#eee5d8] transition-colors">
           {label.restock}

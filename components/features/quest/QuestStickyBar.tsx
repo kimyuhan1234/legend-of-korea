@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useCart } from '@/lib/contexts/CartContext'
 
 interface QuestStickyBarProps {
   courseId: string
@@ -18,7 +18,9 @@ interface QuestStickyBarProps {
 export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kitId, cityId }: QuestStickyBarProps) {
   const t = useTranslations('quest')
   const tp = useTranslations('planner')
+  const tCart = useTranslations('cart')
   const router = useRouter()
+  const { addItem } = useCart()
   const [visible, setVisible] = useState(false)
   const [addState, setAddState] = useState<'idle' | 'loading' | 'added' | 'error'>('idle')
 
@@ -86,11 +88,18 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
 
   if (!visible) return null
 
-  const href = kitId
-    ? (isLoggedIn
-        ? `/${locale}/courses/${courseId}/purchase?kit=${kitId}`
-        : `/${locale}/auth/login?next=/${locale}/courses/${courseId}/purchase?kit=${kitId}`)
-    : '#kit-section'
+  const handleAddToCart = () => {
+    addItem({
+      id: `kit-${courseId}-${kitId || 'default'}`,
+      type: 'kit',
+      name: { ko: title, en: title, ja: title },
+      price,
+      priceDisplay: `₩${price.toLocaleString()}`,
+      emoji: '🎁',
+      cityId,
+      metadata: { courseId, kitId: kitId ?? null },
+    })
+  }
 
   // 플래너 버튼 상태별 스타일
   const plannerBtn = {
@@ -132,12 +141,13 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
             <span className="hidden sm:inline">{plannerBtn.label}</span>
             <span className="sm:hidden">{plannerBtn.labelShort}</span>
           </button>
-          <Link
-            href={href}
-            className="shrink-0 px-4 sm:px-6 py-2.5 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs sm:text-sm font-bold hover:bg-[#7BC8BC] transition-colors whitespace-nowrap"
+          <button
+            type="button"
+            onClick={handleAddToCart}
+            className="shrink-0 px-4 sm:px-6 py-2.5 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs sm:text-sm font-bold hover:opacity-90 transition whitespace-nowrap"
           >
-            {t('sticky.buy')}
-          </Link>
+            🛒 {tCart('add')}
+          </button>
         </div>
       </div>
     </div>
