@@ -5,8 +5,8 @@ import { updateSession } from "@/lib/supabase/middleware"
 const locales = ["ko", "ja", "en"] as const
 const defaultLocale = "ko"
 
-// 로그인 필요 경로 (locale prefix 제외)
-const PROTECTED_PATHS = ["/mypage", "/community/write", "/shop", "/missions", "/admin", "/planner"]
+// 비로그인 접근 허용 경로 (locale prefix 제외, 화이트리스트)
+const PUBLIC_PATHS = ["/", "/auth", "/login", "/signup"]
 
 const intlMiddleware = createMiddleware({
   locales,
@@ -42,15 +42,17 @@ export async function middleware(request: NextRequest) {
     return intlResponse
   }
 
-  // ── 3. 보호 경로 인증 체크 ──────────────────────────────
+  // ── 3. 비공개 경로 인증 체크 (PUBLIC_PATHS 이외 전부 로그인 필요) ──
   const localeMatch = pathname.match(/^\/([a-z]{2})(\/.*)?$/)
   if (localeMatch) {
     const locale = localeMatch[1]
     const restPath = localeMatch[2] ?? "/"
 
-    const needsAuth = PROTECTED_PATHS.some((p) => restPath === p || restPath.startsWith(`${p}/`))
+    const isPublic = PUBLIC_PATHS.some(
+      (p) => restPath === p || (p !== "/" && restPath.startsWith(`${p}/`))
+    )
 
-    if (needsAuth) {
+    if (!isPublic) {
       // Supabase auth 쿠키 이름 패턴: sb-<project_ref>-auth-token
       const projectRef =
         process.env.NEXT_PUBLIC_SUPABASE_URL?.split("//")[1]?.split(".")[0] ?? ""
