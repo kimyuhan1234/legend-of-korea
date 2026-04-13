@@ -210,7 +210,7 @@ export default function TrafficPage() {
         )}
 
         {route && selectedCity ? (
-          <div className="space-y-5">
+          <div className="space-y-6">
             {route.options.map((opt) => {
               const cardKey = `${direction}-${opt.type}`
               const date = getDate(cardKey)
@@ -226,7 +226,7 @@ export default function TrafficPage() {
               return (
                 <div
                   key={opt.type}
-                  className={`bg-white rounded-2xl border p-5 transition-all ${
+                  className={`bg-white rounded-2xl border p-6 transition-all ${
                     opt.available ? 'border-mist hover:border-mint hover:shadow-md' : 'border-mist opacity-60'
                   }`}
                 >
@@ -247,15 +247,15 @@ export default function TrafficPage() {
                   </div>
 
                   {opt.available && (
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr_140px_220px] gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_200px_220px] gap-5">
                       <div>
-                        <div className="space-y-2 text-sm mb-4">
-                          <p className="text-ink font-medium">{fromStation} → {toStation}</p>
-                          <p className="text-slate">
+                        <div className="space-y-2.5 mb-5">
+                          <p className="text-base text-ink font-medium">{fromStation} → {toStation}</p>
+                          <p className="text-base text-slate">
                             {t('duration')}: <span className="font-bold text-ink">{t('approx')} {opt.duration}</span>
                           </p>
                           {opt.fixedPrice && (
-                            <p className="text-ink font-bold text-base">{t('fare')}: {opt.fixedPrice}</p>
+                            <p className="text-ink font-bold text-lg">{t('fare')}: {opt.fixedPrice}</p>
                           )}
                         </div>
 
@@ -282,30 +282,30 @@ export default function TrafficPage() {
                       </div>
 
                       {/* 가운데: 경로 시각화 (데스크톱만) */}
-                      <div className="hidden md:flex flex-col items-center justify-between py-3">
+                      <div className="hidden md:flex flex-col items-center justify-between py-4">
                         <div className="text-center">
-                          <div className="w-3 h-3 bg-mint-deep rounded-full mx-auto mb-1" />
-                          <span className="text-[10px] font-bold text-ink leading-tight block max-w-[120px]">{fromStation}</span>
+                          <div className="w-4 h-4 bg-mint-deep rounded-full mx-auto mb-1.5" />
+                          <span className="text-sm font-bold text-ink leading-tight block max-w-[160px]">{fromStation}</span>
                         </div>
-                        <div className="relative flex-1 w-px my-2 min-h-[80px]">
-                          <div className="absolute inset-0 border-l-2 border-dashed border-mint/40 left-1/2" />
+                        <div className="relative flex-1 w-px my-3 min-h-[120px]">
+                          <div className="absolute inset-0 border-l-[3px] border-dashed border-mint/40 left-1/2" />
                           <div className={`absolute left-1/2 -translate-x-1/2 ${opt.type === 'flight' ? 'animate-travel-flight' : 'animate-travel'}`}>
-                            <span className="text-2xl drop-shadow-sm">{TYPE_ICON[opt.type]}</span>
+                            <span className="text-4xl drop-shadow-sm">{TYPE_ICON[opt.type]}</span>
                           </div>
                           {transfer && transfer.transfers.length > 0 && (
                             <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10">
-                              <span className="text-[8px] bg-peach text-ink rounded-full px-1.5 py-0.5 font-bold whitespace-nowrap">
+                              <span className="text-xs bg-peach text-ink rounded-full px-2 py-0.5 font-bold whitespace-nowrap">
                                 🔄 {transfer.transfers.length}
                               </span>
                             </div>
                           )}
                         </div>
                         <div className="text-center">
-                          <div className="w-3 h-3 bg-blossom-deep rounded-full mx-auto mb-1" />
-                          <span className="text-[10px] font-bold text-ink leading-tight block max-w-[120px]">{toStation}</span>
+                          <div className="w-4 h-4 bg-blossom-deep rounded-full mx-auto mb-1.5" />
+                          <span className="text-sm font-bold text-ink leading-tight block max-w-[160px]">{toStation}</span>
                         </div>
-                        <div className="mt-2">
-                          <span className="text-[10px] text-mint-deep font-bold bg-mint-light/50 rounded-full px-2.5 py-0.5">
+                        <div className="mt-3">
+                          <span className="text-sm text-mint-deep font-bold bg-mint-light/50 rounded-full px-4 py-1.5">
                             {t('approx')} {opt.duration}
                           </span>
                         </div>
