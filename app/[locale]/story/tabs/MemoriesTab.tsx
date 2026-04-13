@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { CommunityFeed } from '@/components/features/community/CommunityFeed'
 
 interface MemoriesTabProps {
@@ -10,15 +9,6 @@ interface MemoriesTabProps {
 export function MemoriesTab({ locale }: MemoriesTabProps) {
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-black text-[#111]">📸 추억남기기</h2>
-        <Link
-          href={`/${locale}/community/write`}
-          className="px-4 py-2 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-full text-sm font-bold hover:bg-[#7BC8BC] transition-colors"
-        >
-          ✏️ 기록 남기기
-        </Link>
-      </div>
       <CommunityFeed locale={locale} />
     </div>
   )
