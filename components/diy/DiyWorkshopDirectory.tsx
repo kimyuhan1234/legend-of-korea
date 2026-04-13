@@ -21,7 +21,7 @@ interface Workshop {
 }
 
 const CITIES = [
-  'seoul', 'busan', 'jeju', 'gyeongju', 'tongyeong', 'cheonan', 'yongin', 'icheon',
+  'jeonju', 'seoul', 'busan', 'jeju', 'gyeongju', 'tongyeong', 'cheonan', 'yongin', 'icheon',
 ] as const
 
 const CATEGORIES: Category[] = ['all', 'pottery', 'perfume', 'leather', 'candle', 'ring', 'art', 'nature']
@@ -32,6 +32,11 @@ const CATEGORY_EMOJI: Record<Category, string> = {
 }
 
 const WORKSHOPS: Workshop[] = [
+  // 전주
+  { id: 'jeonju-1', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju1.name', descKey: 'diy.workshops.jeonju1.desc', category: 'art', priceKey: 'diy.workshops.jeonju1.price', durationKey: 'diy.workshops.jeonju1.duration', bookingUrl: 'https://www.klook.com/ko/experiences/list/south-korea-workshops/g10-cate25/' },
+  { id: 'jeonju-2', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju2.name', descKey: 'diy.workshops.jeonju2.desc', category: 'pottery', priceKey: 'diy.workshops.jeonju2.price', durationKey: 'diy.workshops.jeonju2.duration', bookingUrl: 'https://www.klook.com/ko/experiences/list/south-korea-workshops/g10-cate25/' },
+  { id: 'jeonju-3', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju3.name', descKey: 'diy.workshops.jeonju3.desc', category: 'art', priceKey: 'diy.workshops.jeonju3.price', durationKey: 'diy.workshops.jeonju3.duration', bookingUrl: 'https://www.klook.com/ko/experiences/list/south-korea-workshops/g10-cate25/' },
+  { id: 'jeonju-4', cityId: 'jeonju', nameKey: 'diy.workshops.jeonju4.name', descKey: 'diy.workshops.jeonju4.desc', category: 'nature', priceKey: 'diy.workshops.jeonju4.price', durationKey: 'diy.workshops.jeonju4.duration', bookingUrl: 'https://www.klook.com/ko/experiences/list/south-korea-workshops/g10-cate25/' },
   // 서울
   { id: 'seoul-1', cityId: 'seoul', nameKey: 'diy.workshops.seoul1.name', descKey: 'diy.workshops.seoul1.desc', category: 'pottery', priceKey: 'diy.workshops.seoul1.price', durationKey: 'diy.workshops.seoul1.duration', bookingUrl: 'https://experiences.myrealtrip.com/products/3828516' },
   { id: 'seoul-2', cityId: 'seoul', nameKey: 'diy.workshops.seoul2.name', descKey: 'diy.workshops.seoul2.desc', category: 'perfume', priceKey: 'diy.workshops.seoul2.price', durationKey: 'diy.workshops.seoul2.duration', bookingUrl: 'https://www.klook.com/ko/experiences/list/south-korea-workshops/g10-cate25/' },
@@ -74,7 +79,7 @@ const PLATFORMS = [
 // ─────────────────────────────────────────────
 export function DiyWorkshopDirectory() {
   const t = useTranslations('diy')
-  const [selectedCity, setSelectedCity] = useState<string>('seoul')
+  const [selectedCity, setSelectedCity] = useState<string>('jeonju')
   const [selectedCategory, setSelectedCategory] = useState<Category>('all')
 
   const filtered = WORKSHOPS.filter((w) => {

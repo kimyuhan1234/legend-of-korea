@@ -806,6 +806,7 @@
     "external": "Booking Platforms",
     "noResults": "No workshops found for the selected filters",
     "cities": {
+      "jeonju": "Jeonju",
       "seoul": "Seoul",
       "busan": "Busan",
       "jeju": "Jeju",
@@ -826,6 +827,30 @@
       "nature": "Nature"
     },
     "workshops": {
+      "jeonju1": {
+        "name": "Jeonju Hanji Paper Craft",
+        "desc": "Make fans, lanterns, and postcards from traditional Korean paper in the heart of Hanok Village.",
+        "price": "₩15,000~₩25,000",
+        "duration": "1~1.5h"
+      },
+      "jeonju2": {
+        "name": "Jeonju Pottery Making",
+        "desc": "Spin the wheel and create your own teacup or plate. Guided by a professional potter, perfect for beginners.",
+        "price": "₩20,000~₩30,000",
+        "duration": "1.5h"
+      },
+      "jeonju3": {
+        "name": "Traditional Fan Making",
+        "desc": "Craft Jeonju's famous hapjukseon folding fan. Shape bamboo and apply hanji paper for a one-of-a-kind keepsake.",
+        "price": "₩18,000~₩25,000",
+        "duration": "1h"
+      },
+      "jeonju4": {
+        "name": "Natural Dyeing Workshop",
+        "desc": "Dye handkerchiefs and scarves with natural materials like indigo and gardenia. Experience nature's own palette.",
+        "price": "₩12,000~₩20,000",
+        "duration": "1h"
+      },
       "seoul1": {
         "name": "Bitda Pottery Studio (Hongdae)",
         "desc": "Create your own pottery in a trendy Hongdae studio. Beginner-friendly with full guidance.",
