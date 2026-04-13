@@ -10,7 +10,12 @@ export interface DeliveryAddress {
   roomNumber: string
   checkInDate: string
   phone: string
+  email: string
   note: string
+}
+
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
 interface DeliveryAddressModalProps {
@@ -37,6 +42,7 @@ export function DeliveryAddressModal({
     roomNumber: '',
     checkInDate: '',
     phone: '',
+    email: '',
     note: '',
   })
   const [errors, setErrors] = useState<Record<string, boolean>>({})
@@ -84,6 +90,8 @@ export function DeliveryAddressModal({
     if (!form.hotelName.trim()) e.hotelName = true
     if (!form.hotelAddress.trim()) e.hotelAddress = true
     if (!form.checkInDate) e.checkInDate = true
+    if (!form.phone.trim()) e.phone = true
+    if (!form.email.trim() || !isValidEmail(form.email)) e.email = true
     setErrors(e)
     return Object.keys(e).length === 0
   }
@@ -173,15 +181,28 @@ export function DeliveryAddressModal({
             />
           </div>
 
-          {/* 연락처 */}
+          {/* 전화번호 */}
           <div>
-            <label className="text-xs text-stone mb-1 block">{t('phone')}</label>
+            <label className="text-xs text-stone mb-1 block">{t('phone')} *</label>
             <input
-              type="text"
+              type="tel"
               value={form.phone}
               onChange={(e) => update('phone', e.target.value)}
-              placeholder="+82-10-1234-5678"
-              className={`${inputBase} border-mist`}
+              placeholder={t('phonePlaceholder')}
+              className={`${inputBase} ${errors.phone ? 'border-red-400' : 'border-mist'}`}
+            />
+            <p className="text-[10px] text-stone mt-1">{t('phoneHint')}</p>
+          </div>
+
+          {/* 이메일 */}
+          <div>
+            <label className="text-xs text-stone mb-1 block">{t('email')} *</label>
+            <input
+              type="email"
+              value={form.email}
+              onChange={(e) => update('email', e.target.value)}
+              placeholder={t('emailPlaceholder')}
+              className={`${inputBase} ${errors.email ? 'border-red-400' : 'border-mist'}`}
             />
           </div>
 
