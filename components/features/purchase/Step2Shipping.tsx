@@ -111,7 +111,7 @@ export function Step2Shipping({ data, prevAddress, onChange, onNext, onPrev, t }
           />
           <button
             onClick={handleFindZipcode}
-            className="px-4 py-3 rounded-xl bg-[#F0F2F5] text-white text-sm font-semibold hover:bg-[#374151] transition-colors whitespace-nowrap"
+            className="px-4 py-3 rounded-xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-sm font-semibold hover:bg-[#374151] transition-colors whitespace-nowrap"
           >
             {t.findZipcode}
           </button>
@@ -151,7 +151,7 @@ export function Step2Shipping({ data, prevAddress, onChange, onNext, onPrev, t }
         <button
           onClick={onNext}
           disabled={!isValid}
-          className="flex-[2] py-4 rounded-2xl bg-[#F0F2F5] text-white font-bold hover:bg-[#374151] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          className="flex-[2] py-4 rounded-2xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold hover:bg-[#374151] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
           {t.next} →
         </button>

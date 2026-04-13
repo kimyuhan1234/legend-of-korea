@@ -134,7 +134,7 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
           </button>
           <Link
             href={href}
-            className="shrink-0 px-4 sm:px-6 py-2.5 rounded-full bg-[#9DD8CE] text-white text-xs sm:text-sm font-bold hover:bg-[#7BC8BC] transition-colors whitespace-nowrap"
+            className="shrink-0 px-4 sm:px-6 py-2.5 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs sm:text-sm font-bold hover:bg-[#7BC8BC] transition-colors whitespace-nowrap"
           >
             {t('sticky.buy')}
           </Link>

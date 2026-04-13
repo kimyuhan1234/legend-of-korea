@@ -78,7 +78,7 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
                 {!course.isActive && (
                   <>
                     <div className="absolute inset-0 bg-black/30" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold bg-[#9DD8CE] text-white">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937]">
                       {course.comingSoonBadge}
                     </span>
                   </>
@@ -120,7 +120,7 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
                         ₩{course.price_1p.toLocaleString()}
                       </p>
                     </div>
-                    <span className="px-5 py-2.5 rounded-full bg-[#9DD8CE] text-white text-sm font-bold hover:bg-[#7BC8BC] transition-colors">
+                    <span className="px-5 py-2.5 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-sm font-bold hover:bg-[#7BC8BC] transition-colors">
                       {label.detail} →
                     </span>
                   </div>

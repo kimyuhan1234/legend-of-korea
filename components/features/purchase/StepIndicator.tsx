@@ -22,7 +22,7 @@ export function StepIndicator({ currentStep, labels }: StepIndicatorProps) {
                   isDone
                     ? "bg-[#F0B8B8] text-[#111]"
                     : isActive
-                    ? "bg-[#F0F2F5] text-white ring-4 ring-[#1F2937]/20"
+                    ? "bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] ring-4 ring-[#1F2937]/20"
                     : "bg-[#E4E7EB] text-[#9CA3AF]"
                 }`}
               >

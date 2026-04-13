@@ -34,7 +34,7 @@ export function CourseHero({ course, missionCount, locale }: CourseHeroProps) {
   const duration = getI18n(course.duration_text, locale)
 
   return (
-    <section className="relative bg-[#F0F2F5] text-white overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] overflow-hidden">
       {/* 배경 이미지 */}
       <div className="absolute inset-0">
         <Image
@@ -53,14 +53,14 @@ export function CourseHero({ course, missionCount, locale }: CourseHeroProps) {
           {/* 뱃지 */}
           <div className="flex items-center gap-3 mb-4">
             <DifficultyBadge difficulty={course.difficulty} locale={locale} size="md" />
-            <span className="text-sm text-white/60">📍 {course.region}</span>
+            <span className="text-sm text-[#4B5563]">📍 {course.region}</span>
           </div>
 
           {/* 타이틀 */}
           <h1 className="text-3xl md:text-5xl font-black leading-tight mb-4">
             {title}
           </h1>
-          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-8">
+          <p className="text-[#4B5563] text-base md:text-lg leading-relaxed mb-8">
             {description}
           </p>
 

@@ -61,12 +61,12 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
           <div className="flex items-center gap-3">
             <span className="text-4xl">{currentTier.emoji}</span>
             <div>
-              <p className="text-sm text-white/60">현재 티어</p>
+              <p className="text-sm text-[#4B5563]">현재 티어</p>
               <h3 className="text-xl font-bold">{loc(currentTier.name)} (Lv.{currentTier.level})</h3>
             </div>
           </div>
           <div className="text-right">
-            <p className="text-sm text-white/60">보유 LP</p>
+            <p className="text-sm text-[#4B5563]">보유 LP</p>
             <p className="text-2xl font-bold text-[#9DD8CE]">{currentLP.toLocaleString()}</p>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
 
         {nextTier ? (
           <div className="mb-4">
-            <div className="flex justify-between text-xs text-white/60 mb-1">
+            <div className="flex justify-between text-xs text-[#4B5563] mb-1">
               <span>다음 티어: {nextTier.emoji} {loc(nextTier.name)}</span>
               <span>{currentLP.toLocaleString()} / {nextTier.requiredLP.toLocaleString()} LP</span>
             </div>
@@ -164,10 +164,10 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                               Lv.{tier.level} {loc(tier.name)}
                             </span>
                             {isCurrent && (
-                              <span className="px-2 py-0.5 bg-[#9DD8CE] text-white text-xs rounded-full">현재</span>
+                              <span className="px-2 py-0.5 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs rounded-full">현재</span>
                             )}
                             {isNext && (
-                              <span className="px-2 py-0.5 bg-[#9DD8CE] text-white text-xs rounded-full">다음</span>
+                              <span className="px-2 py-0.5 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs rounded-full">다음</span>
                             )}
                           </div>
                           <p className="text-xs text-stone mt-0.5">{loc(tier.benefits)}</p>
@@ -192,7 +192,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
             </div>
             <div className="px-6 pb-6">
               <button onClick={() => setShowTierList(false)}
-                      className="w-full py-3 bg-[#9DD8CE] text-white rounded-xl font-medium hover:bg-[#3D2B79] transition-colors">
+                      className="w-full py-3 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl font-medium hover:bg-[#3D2B79] transition-colors">
                 닫기
               </button>
             </div>
@@ -221,7 +221,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
               </div>
             </div>
             <button onClick={() => setShowSuccess(false)}
-                    className="w-full py-3 bg-[#9DD8CE] text-white rounded-xl font-bold hover:bg-[#3D2B79] transition-colors">
+                    className="w-full py-3 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl font-bold hover:bg-[#3D2B79] transition-colors">
               확인
             </button>
           </div>

@@ -94,7 +94,7 @@ export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn, region }:
                 <p className="text-xs text-[#6B7280] mb-6">{t('kit.taxIncluded')}</p>
                 <Link
                   href={href}
-                  className="inline-block w-full py-3 rounded-full bg-[#9DD8CE] text-white font-bold text-sm hover:bg-[#7BC8BC] transition-colors mb-2"
+                  className="inline-block w-full py-3 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold text-sm hover:bg-[#7BC8BC] transition-colors mb-2"
                 >
                   {t('kit.buy')}
                 </Link>

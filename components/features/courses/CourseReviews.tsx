@@ -102,7 +102,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
           <p className="text-sm text-[#9CA3AF] mb-6">{label.emptyDesc}</p>
           <Link
             href={`/${locale}/community/write`}
-            className="inline-flex px-6 py-2.5 rounded-xl bg-[#F0F2F5] text-white font-semibold text-sm hover:bg-[#374151] transition-colors"
+            className="inline-flex px-6 py-2.5 rounded-xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-semibold text-sm hover:bg-[#374151] transition-colors"
           >
             {label.writeReview}
           </Link>

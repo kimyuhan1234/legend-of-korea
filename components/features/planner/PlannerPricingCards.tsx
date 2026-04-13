@@ -58,7 +58,7 @@ export function PlannerPricingCards({ plans, locale, onSubscribe }: PlannerPrici
             }`}
           >
             {isLegend && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#9DD8CE] text-white text-[10px] font-black uppercase tracking-widest shadow-md">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-[10px] font-black uppercase tracking-widest shadow-md">
                 {t('subscription.best')}
               </span>
             )}
@@ -107,7 +107,7 @@ export function PlannerPricingCards({ plans, locale, onSubscribe }: PlannerPrici
                 isFree
                   ? 'bg-neutral-100 text-neutral-400 cursor-not-allowed'
                   : isLegend
-                    ? 'bg-[#9DD8CE] text-white hover:bg-[#7BC8BC]'
+                    ? 'bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] hover:bg-[#7BC8BC]'
                     : 'bg-neutral-900 text-white hover:bg-neutral-700'
               }`}
             >

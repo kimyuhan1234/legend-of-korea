@@ -25,7 +25,7 @@ export function FoodMatchingSection({ locale, title, subtitle, cta }: FoodMatchi
             </p>
             <Link
               href={`/${locale}/food/dupe`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1F2937] text-white font-bold hover:bg-[#374151] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold hover:bg-[#374151] transition-colors"
             >
               {cta}
             </Link>

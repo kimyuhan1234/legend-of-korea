@@ -50,7 +50,7 @@ export function KFoodSpotList({ locale, cityFilter }: KFoodSpotListProps) {
               href={`?city=${city.code}`}
               className={`px-4 py-2 rounded-xl text-sm font-medium border transition-colors ${
                 isActive
-                  ? "bg-[#F0F2F5] text-white border-[#1F2937]"
+                  ? "bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] border-[#1F2937]"
                   : "bg-white text-[#4B5563] border-[#E4E7EB] hover:border-[#1F2937]/40"
               }`}
             >

@@ -108,7 +108,7 @@ export function LoginForm({ locale, next }: LoginFormProps) {
         type="submit"
         disabled={loading}
         className="
-          h-12 rounded-xl bg-[#F0F2F5] text-white font-semibold text-sm
+          h-12 rounded-xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-semibold text-sm
           hover:bg-[#374151] active:bg-[#1F2937]
           disabled:opacity-60 disabled:cursor-not-allowed
           transition-all duration-150 shadow-sm

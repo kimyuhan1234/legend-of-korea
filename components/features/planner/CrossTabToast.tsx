@@ -43,7 +43,7 @@ export function CrossTabToast({ currentTab, onClose }: CrossTabToastProps) {
           </div>
           <button
             onClick={handleGo}
-            className="shrink-0 px-3 py-1.5 rounded-full bg-[#9DD8CE] text-white text-xs font-bold hover:bg-[#7BC8BC] transition-colors"
+            className="shrink-0 px-3 py-1.5 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs font-bold hover:bg-[#7BC8BC] transition-colors"
           >
             {t('toastGoTo')} →
           </button>

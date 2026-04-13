@@ -105,7 +105,7 @@ export default function FoodDetailPage({ params }: Props) {
                 ))}
               </div>
               <h1 className="text-2xl md:text-3xl font-black text-white">{getL(food.name, locale)}</h1>
-              <p className="text-white/60 text-sm mt-1">{region.icon} {getL(region.name, locale)}</p>
+              <p className="text-[#4B5563] text-sm mt-1">{region.icon} {getL(region.name, locale)}</p>
             </div>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function FoodDetailPage({ params }: Props) {
         {/* CTA */}
         <div className="bg-[#1F2937] rounded-3xl p-8 text-center">
           <p className="text-xl font-black text-white mb-2">{t.tryCta}</p>
-          <p className="text-white/60 text-sm mb-6">{t.tryDesc}</p>
+          <p className="text-[#4B5563] text-sm mb-6">{t.tryDesc}</p>
           <Link
             href={`/${locale}/courses`}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#F0B8B8] text-[#111] font-bold hover:bg-[#F5D0D0] transition-colors"

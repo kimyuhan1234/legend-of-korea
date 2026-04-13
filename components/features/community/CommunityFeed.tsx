@@ -162,7 +162,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
             className={`px-5 font-bold shadow-md hover:shadow-lg transition-all h-11 rounded-xl border-none
               ${regionFilter === 'recipe'
                 ? 'bg-[#7BC8BC] text-white ring-2 ring-blossom'
-                : 'bg-[#9DD8CE] text-white hover:bg-[#7BC8BC]'
+                : 'bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] hover:bg-[#7BC8BC]'
               }`}
           >
             🍳 요리 레시피

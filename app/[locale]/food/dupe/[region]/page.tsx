@@ -50,7 +50,7 @@ export default function RegionFoodsPage({ params }: Props) {
       <FoodTabNav locale={locale} activeTab="dupe" />
 
       {/* 지역 히어로 */}
-      <section className="bg-[#F0F2F5] text-white py-20 md:py-28">
+      <section className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-8 md:px-10">
           <Link
             href={`/${locale}/food/dupe`}
@@ -62,7 +62,7 @@ export default function RegionFoodsPage({ params }: Props) {
             <span className="text-5xl">{region.icon}</span>
             <div>
               <h1 className="text-3xl md:text-4xl font-black">{getL(region.name, locale)}</h1>
-              <p className="text-white/60 mt-1">{getL(region.description, locale)}</p>
+              <p className="text-[#4B5563] mt-1">{getL(region.description, locale)}</p>
             </div>
           </div>
         </div>

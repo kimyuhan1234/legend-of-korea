@@ -38,7 +38,7 @@ export function StayTypeFilter({
                 className={[
                   'shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all',
                   active
-                    ? 'bg-[#9DD8CE] text-white'
+                    ? 'bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937]'
                     : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200',
                 ].join(' ')}
               >

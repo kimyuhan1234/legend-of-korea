@@ -33,7 +33,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
-          className="w-full py-4 bg-[#9DD8CE] text-white rounded-xl font-bold text-base
+          className="w-full py-4 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl font-bold text-base
                      hover:bg-[#374151] transition-colors flex items-center justify-center gap-2"
         >
           <span>📝</span>
@@ -48,7 +48,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
             </h3>
             <button
               onClick={() => { setIsOpen(false); setSelectedCourse(null); }}
-              className="text-white/70 hover:text-white text-lg leading-none"
+              className="text-[#4B5563] hover:text-white text-lg leading-none"
             >
               ×
             </button>
@@ -64,7 +64,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                 </p>
                 <Link
                   href={`/${locale}/courses`}
-                  className="inline-block mt-3 px-4 py-2 bg-[#9DD8CE] text-white
+                  className="inline-block mt-3 px-4 py-2 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937]
                              rounded-lg text-sm font-medium hover:bg-[#7BC8BC] transition-colors"
                 >
                   {t('goToCourses')}
@@ -116,7 +116,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                 {selectedCourse && (
                   <Link
                     href={`/${locale}/mypage/mission-register/${selectedCourse}`}
-                    className="block w-full py-3.5 bg-[#9DD8CE] text-white rounded-xl
+                    className="block w-full py-3.5 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl
                                font-bold text-center text-sm hover:bg-[#7BC8BC]
                                transition-colors mt-4"
                   >

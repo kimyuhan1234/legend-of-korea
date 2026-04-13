@@ -230,7 +230,7 @@ export default function AdminStatsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
          {/* Affiliate Stats Summary */}
-         <Card className="border-none shadow-sm bg-[#F0F2F5] text-white rounded-3xl overflow-hidden">
+         <Card className="border-none shadow-sm bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-3xl overflow-hidden">
           <CardContent className="p-8">
             <div className="flex items-center justify-between mb-8">
               <div className="p-3 bg-white/10 rounded-2xl text-[#F0B8B8]">
@@ -258,7 +258,7 @@ export default function AdminStatsPage() {
               <div className="p-3 bg-[#F0F2F5]/10 rounded-2xl text-[#111]">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <Badge className="bg-[#F0F2F5] text-white font-black border-none">USER ENGAGEMENT</Badge>
+              <Badge className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-black border-none">USER ENGAGEMENT</Badge>
             </div>
             <div className="space-y-1">
               <p className="font-bold opacity-70">총 미션 수행 기록</p>

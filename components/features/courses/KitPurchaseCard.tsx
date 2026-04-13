@@ -77,9 +77,9 @@ export function KitPurchaseCard({ courseId, kits, locale, isLoggedIn, className 
     <div className={`bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-0 overflow-hidden shadow-sm h-full flex flex-col${className ? ` ${className}` : ""}`}>
       <div className="flex-1 grid md:grid-cols-2 gap-0">
         {/* 왼쪽: 설명 */}
-        <div className="p-8 bg-[#F0F2F5] text-white flex flex-col">
+        <div className="p-8 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] flex flex-col">
           <h2 className="text-2xl font-black mb-2">📦 {label.title}</h2>
-          <p className="text-white/70 mb-8">{label.subtitle}</p>
+          <p className="text-[#4B5563] mb-8">{label.subtitle}</p>
 
           <div className="flex-1">
             <p className="text-xs font-bold text-[#F0B8B8] uppercase tracking-wider mb-3">
@@ -95,7 +95,7 @@ export function KitPurchaseCard({ courseId, kits, locale, isLoggedIn, className 
             </ul>
           </div>
 
-          <div className="mt-8 flex items-center gap-2 text-sm text-white/60">
+          <div className="mt-8 flex items-center gap-2 text-sm text-[#4B5563]">
             <span>🚚</span>
             <span>{label.delivery}</span>
           </div>

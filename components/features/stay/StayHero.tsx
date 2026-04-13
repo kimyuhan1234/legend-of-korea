@@ -6,7 +6,7 @@ export function StayHero() {
   const t = useTranslations('stay')
 
   return (
-    <section className="relative bg-mint-light text-ink py-16 md:py-24 px-6 md:px-10">
+    <section className="relative bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] py-16 md:py-24 px-6 md:px-10">
       <div className="max-w-5xl mx-auto text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-xs font-black uppercase tracking-widest mb-4">
           STAY

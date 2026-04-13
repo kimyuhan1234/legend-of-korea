@@ -58,7 +58,7 @@ export function QuestStorySlider({ storyCards }: QuestStorySliderProps) {
               </h3>
               <button
                 onClick={scrollToKit}
-                className="mt-4 px-8 py-3 rounded-full bg-[#9DD8CE] text-white font-bold hover:bg-[#7BC8BC] transition-colors"
+                className="mt-4 px-8 py-3 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold hover:bg-[#7BC8BC] transition-colors"
               >
                 {t('story.cta')}
               </button>

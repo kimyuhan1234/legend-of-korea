@@ -54,7 +54,7 @@ export default function AdminLayout({ children, params }: AdminLayoutProps) {
 
       {/* Sidebar */}
       <aside className={`
-        fixed inset-y-0 left-0 z-50 w-72 bg-[#F0F2F5] text-white transition-transform duration-300 ease-in-out transform
+        fixed inset-y-0 left-0 z-50 w-72 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] transition-transform duration-300 ease-in-out transform
         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:relative lg:translate-x-0 border-r border-slate-800
       `}>

@@ -136,7 +136,7 @@ export default function MissionRegisterClient({
           {/* back link */}
           <Link
             href={`/${locale}/mypage`}
-            className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm
+            className="inline-flex items-center gap-1.5 text-[#4B5563] hover:text-white text-sm
                        mb-6 transition-colors group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
@@ -156,7 +156,7 @@ export default function MissionRegisterClient({
                 }`}>
                   {DIFFICULTY_LABELS[course.difficulty]?.[locale] ?? course.difficulty}
                 </span>
-                <span className="text-[10px] text-white/60">
+                <span className="text-[10px] text-[#4B5563]">
                   📍 {course.region}
                 </span>
               </div>

@@ -90,7 +90,7 @@ export default function MissionCard({
               <ChevronUp size={20} className="text-[#111]" />
             ) : (
               <div className="flex flex-col items-center gap-0.5">
-                <span className="text-[10px] bg-[#9DD8CE] text-white px-2.5 py-1 rounded-full font-bold">
+                <span className="text-[10px] bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] px-2.5 py-1 rounded-full font-bold">
                   {t('uploadPhoto')}
                 </span>
                 <ChevronDown size={14} className="text-stone" />

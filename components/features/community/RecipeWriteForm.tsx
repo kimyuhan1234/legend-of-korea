@@ -448,7 +448,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         <label className="block text-sm font-bold text-slate">👨‍🍳 조리 순서</label>
         {steps.map((step, idx) => (
           <div key={idx} className="flex gap-2 items-start">
-            <span className="w-7 h-7 rounded-full bg-[#9DD8CE] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-2.5">
+            <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs font-bold flex items-center justify-center shrink-0 mt-2.5">
               {idx + 1}
             </span>
             <textarea
@@ -481,7 +481,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
       <button
         type="submit"
         disabled={submitting || uploadingPhotos}
-        className="w-full py-4 bg-[#9DD8CE] text-white rounded-xl font-bold text-base
+        className="w-full py-4 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl font-bold text-base
                    hover:bg-[#7BC8BC] disabled:opacity-60 disabled:cursor-not-allowed
                    transition-colors flex items-center justify-center gap-2"
       >

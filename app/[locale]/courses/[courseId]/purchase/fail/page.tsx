@@ -98,7 +98,7 @@ function FailContent({ locale, courseId }: { locale: string; courseId: string })
           )}
           <Link
             href={`/${locale}/courses/${courseId}/purchase`}
-            className="px-8 py-3.5 rounded-xl bg-[#F0F2F5] text-white font-bold hover:bg-[#374151] transition-colors"
+            className="px-8 py-3.5 rounded-xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold hover:bg-[#374151] transition-colors"
           >
             {label.otherMethod}
           </Link>

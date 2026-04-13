@@ -65,7 +65,7 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
           <p className="text-[#9CA3AF] mb-8">{paymentError}</p>
           <Link
             href={`/${locale}/courses/${courseId}/purchase/fail?orderId=${confirmedOrderId}`}
-            className="px-8 py-3.5 rounded-xl bg-[#F0F2F5] text-white font-bold hover:bg-[#374151] transition-colors"
+            className="px-8 py-3.5 rounded-xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold hover:bg-[#374151] transition-colors"
           >
             {t("retryPayment")}
           </Link>
@@ -112,7 +112,7 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
           </Link>
           <Link
             href={`/${locale}/mypage`}
-            className="px-6 py-3.5 rounded-xl bg-[#F0F2F5] text-white font-bold hover:bg-[#374151] transition-colors"
+            className="px-6 py-3.5 rounded-xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold hover:bg-[#374151] transition-colors"
           >
             {t("trackShipping")} →
           </Link>

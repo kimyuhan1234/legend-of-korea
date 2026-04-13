@@ -134,7 +134,7 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
       <button
         onClick={onNext}
         disabled={!data.kitId}
-        className="w-full py-4 rounded-2xl bg-[#F0F2F5] text-white font-bold text-lg hover:bg-[#374151] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="w-full py-4 rounded-2xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold text-lg hover:bg-[#374151] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >
         {t.next} →
       </button>

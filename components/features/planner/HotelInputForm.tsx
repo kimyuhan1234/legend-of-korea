@@ -73,7 +73,7 @@ export function HotelInputForm({ planId, initialName, initialAddress, onSaved }:
       <button
         onClick={handleSave}
         disabled={saving || !name.trim() || !address.trim()}
-        className="w-full mt-4 py-2.5 rounded-full bg-[#9DD8CE] text-white text-sm font-bold hover:bg-[#7BC8BC] transition-colors disabled:bg-neutral-200 disabled:text-neutral-400"
+        className="w-full mt-4 py-2.5 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-sm font-bold hover:bg-[#7BC8BC] transition-colors disabled:bg-neutral-200 disabled:text-neutral-400"
       >
         {saved ? '✓ ' + t('added') : saving ? t('adding') : t('addButton')}
       </button>

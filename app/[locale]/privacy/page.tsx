@@ -23,7 +23,7 @@ export default function PrivacyPage({ params }: Props) {
   const c = CONTENT[params.locale] ?? CONTENT.ko
   return (
     <div className="min-h-screen bg-[#FAFBFC]">
-      <div className="bg-[#9DD8CE] text-white py-20 px-8 text-center">
+      <div className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] py-20 px-8 text-center">
         <h1 className="text-3xl md:text-4xl font-black">{c.title}</h1>
       </div>
       <div className="max-w-3xl mx-auto px-8 py-16">

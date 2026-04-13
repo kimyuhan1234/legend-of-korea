@@ -120,7 +120,7 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
             ? 'bg-emerald-500 text-white'
             : checked.size === 0
               ? 'bg-neutral-100 text-neutral-400 cursor-not-allowed'
-              : 'bg-[#9DD8CE] text-white hover:bg-[#7BC8BC]'
+              : 'bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] hover:bg-[#7BC8BC]'
         }`}
       >
         {state === 'added'

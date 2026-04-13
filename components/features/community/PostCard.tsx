@@ -350,7 +350,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               <button
                 onClick={saveEdit}
                 disabled={editSaving}
-                className="flex-1 py-2.5 bg-[#9DD8CE] text-white rounded-xl text-sm font-bold hover:bg-[#374151] disabled:opacity-60 transition-colors"
+                className="flex-1 py-2.5 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl text-sm font-bold hover:bg-[#374151] disabled:opacity-60 transition-colors"
               >
                 {editSaving ? '저장 중...' : t('saveButton')}
               </button>
@@ -476,7 +476,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               <button
                 type="submit"
                 disabled={!commentText.trim() || commentSubmitting}
-                className="px-3 py-2 bg-[#9DD8CE] text-white rounded-xl hover:bg-[#374151] disabled:opacity-50 transition-colors"
+                className="px-3 py-2 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl hover:bg-[#374151] disabled:opacity-50 transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>
@@ -492,7 +492,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
           onClick={() => setLightboxIdx(null)}
         >
           <button
-            className="absolute top-4 right-4 text-white/70 hover:text-white p-2"
+            className="absolute top-4 right-4 text-[#4B5563] hover:text-white p-2"
             onClick={() => setLightboxIdx(null)}
           >
             <X className="w-7 h-7" />

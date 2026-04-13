@@ -107,7 +107,7 @@ export function QuestComparison() {
 
             <button
               onClick={scrollToKit}
-              className="w-full mt-5 py-3 rounded-full bg-[#9DD8CE] text-white font-bold text-sm hover:bg-[#7BC8BC] transition-colors"
+              className="w-full mt-5 py-3 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold text-sm hover:bg-[#7BC8BC] transition-colors"
             >
               {t('comparison.cta')}
             </button>

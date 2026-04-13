@@ -168,7 +168,7 @@ export function DupeCountrySelector({ food, locale }: Props) {
             <div className="bg-gradient-to-br from-[#1F2937] to-slate rounded-3xl p-10 text-center">
               <div className="text-6xl mb-5">{country.flag}</div>
               <p className="text-2xl font-black text-white mb-2">{t.noDataTitle}</p>
-              <p className="text-white/60 text-sm mb-7 max-w-xs mx-auto leading-relaxed">{t.noDataSub}</p>
+              <p className="text-[#4B5563] text-sm mb-7 max-w-xs mx-auto leading-relaxed">{t.noDataSub}</p>
               <span className="inline-flex items-center gap-2 px-7 py-3 rounded-2xl bg-[#F0B8B8] text-[#111] font-black text-sm">
                 {t.challenge}
               </span>
