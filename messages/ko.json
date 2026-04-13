@@ -1193,6 +1193,18 @@
       "night": "밤"
     },
     "approx": "대략",
+    "locked": {
+      "generating": "여행 플랜을 만들고 있어요...",
+      "lineDeparture": "출발",
+      "lineMorning": "1일차 오전",
+      "lineLunch": "점심",
+      "lineMission": "미션",
+      "lineDay2": "2일차...",
+      "lineComplete": "플랜 완성!",
+      "title": "구독하고 나만의 플랜을 받아보세요",
+      "desc": "AI가 담은 아이템을 바탕으로 최적의 일정을 만들어드려요",
+      "subscribe": "구독 플랜 보기"
+    },
     "hotel": {
       "manual": "호텔 직접 입력",
       "name": "호텔명",

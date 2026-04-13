@@ -1168,6 +1168,18 @@
       "night": "Night"
     },
     "approx": "Approx.",
+    "locked": {
+      "generating": "Creating your travel plan...",
+      "lineDeparture": "Departure",
+      "lineMorning": "Day 1 Morning",
+      "lineLunch": "Lunch",
+      "lineMission": "Mission",
+      "lineDay2": "Day 2...",
+      "lineComplete": "Plan complete!",
+      "title": "Subscribe to get your personalized plan",
+      "desc": "AI creates the perfect itinerary from your saved items",
+      "subscribe": "View subscription plans"
+    },
     "hotel": {
       "manual": "Enter hotel manually",
       "name": "Hotel name",

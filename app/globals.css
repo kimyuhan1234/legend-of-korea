@@ -144,3 +144,30 @@ body {
   animation: travelFlight 3s ease-in-out infinite;
   position: absolute;
 }
+
+/* 플래너 타임라인 생성 애니메이션 */
+@keyframes lineAppear {
+  0% { opacity: 0; transform: translateX(-20px); }
+  15% { opacity: 1; transform: translateX(0); }
+  85% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+.animate-line-1 { animation: lineAppear 7s ease-in-out infinite; animation-delay: 0s; }
+.animate-line-2 { animation: lineAppear 7s ease-in-out infinite; animation-delay: 0.5s; }
+.animate-line-3 { animation: lineAppear 7s ease-in-out infinite; animation-delay: 1.0s; }
+.animate-line-4 { animation: lineAppear 7s ease-in-out infinite; animation-delay: 1.5s; }
+.animate-line-5 { animation: lineAppear 7s ease-in-out infinite; animation-delay: 2.0s; }
+.animate-line-6 { animation: lineAppear 7s ease-in-out infinite; animation-delay: 2.5s; }
+.animate-line-7 { animation: lineAppear 7s ease-in-out infinite; animation-delay: 3.0s; }
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(157,216,206,0.3), transparent);
+  background-size: 400px 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}

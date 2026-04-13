@@ -1168,6 +1168,18 @@
       "night": "夜"
     },
     "approx": "大体",
+    "locked": {
+      "generating": "旅行プランを作成中...",
+      "lineDeparture": "出発",
+      "lineMorning": "1日目午前",
+      "lineLunch": "昼食",
+      "lineMission": "ミッション",
+      "lineDay2": "2日目...",
+      "lineComplete": "プラン完成！",
+      "title": "定期購読してプランを受け取りましょう",
+      "desc": "AIが保存したアイテムから最適な旅程を作成します",
+      "subscribe": "プランを見る"
+    },
     "hotel": {
       "manual": "ホテルを手入力",
       "name": "ホテル名",

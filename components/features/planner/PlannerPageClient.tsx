@@ -370,6 +370,114 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
           />
         )}
 
+        {/* 무료 유저: 블러 더미 플랜 + 타임라인 생성 애니메이션 */}
+        {!isSubscribed && (
+          <section className="relative">
+            {/* 더미 블러 콘텐츠 */}
+            <div className="blur-sm pointer-events-none select-none">
+              <div className="bg-white rounded-3xl p-6 border border-mist mb-4">
+                <p className="text-xs font-black text-mint-deep uppercase tracking-widest mb-3">📅 1일차</p>
+                <div className="space-y-3">
+                  {['🌅 09:00 – 12:00', '🍽️ 12:00 – 14:00', '☀️ 14:00 – 18:00', '🌆 18:00 – 20:00', '🌙 20:00 – 22:00'].map((s) => (
+                    <div key={s} className="flex gap-4">
+                      <span className="text-xs text-stone w-28 shrink-0">{s}</span>
+                      <div className="flex-1 h-6 bg-mist/50 rounded-lg" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-white rounded-3xl p-6 border border-mist">
+                <p className="text-xs font-black text-mint-deep uppercase tracking-widest mb-3">📅 2일차</p>
+                <div className="space-y-3">
+                  {['🌅 09:00 – 12:00', '🍽️ 12:00 – 14:00', '☀️ 14:00 – 18:00'].map((s) => (
+                    <div key={s} className="flex gap-4">
+                      <span className="text-xs text-stone w-28 shrink-0">{s}</span>
+                      <div className="flex-1 h-6 bg-mist/50 rounded-lg" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 애니메이션 + 구독 유도 오버레이 */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
+              {/* 플랜 생성 애니메이션 */}
+              <div className="w-full max-w-md mb-8">
+                <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 border border-mist shadow-lg">
+                  <div className="flex items-center gap-2 mb-5">
+                    <span className="text-lg">✨</span>
+                    <span className="text-sm font-bold text-ink animate-pulse">
+                      {t('locked.generating')}
+                    </span>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 animate-line-1">
+                      <div className="w-2 h-2 rounded-full bg-mint-deep" />
+                      <div className="flex-1 h-px bg-gradient-to-r from-mint-deep to-transparent" />
+                      <span className="text-xs text-mint-deep font-bold">🚄 {t('locked.lineDeparture')}</span>
+                      <div className="h-8 w-32 bg-mint-light/50 rounded-lg animate-shimmer" />
+                    </div>
+                    <div className="flex items-center gap-3 animate-line-2">
+                      <div className="w-2 h-2 rounded-full bg-mint" />
+                      <div className="flex-1 h-px bg-gradient-to-r from-mint to-transparent" />
+                      <span className="text-xs text-slate">☀️ {t('locked.lineMorning')}</span>
+                      <div className="h-8 w-28 bg-mint-light/30 rounded-lg animate-shimmer" />
+                    </div>
+                    <div className="flex items-center gap-3 animate-line-3">
+                      <div className="w-2 h-2 rounded-full bg-mint" />
+                      <div className="flex-1 h-px bg-gradient-to-r from-mint to-transparent" />
+                      <span className="text-xs text-slate">🍜 {t('locked.lineLunch')}</span>
+                      <div className="h-8 w-24 bg-blossom/20 rounded-lg animate-shimmer" />
+                    </div>
+                    <div className="flex items-center gap-3 animate-line-4">
+                      <div className="w-2 h-2 rounded-full bg-mint" />
+                      <div className="flex-1 h-px bg-gradient-to-r from-mint to-transparent" />
+                      <span className="text-xs text-slate">🎯 {t('locked.lineMission')}</span>
+                      <div className="h-8 w-36 bg-mint-light/30 rounded-lg animate-shimmer" />
+                    </div>
+                    <div className="flex items-center gap-3 animate-line-5">
+                      <div className="w-2 h-2 rounded-full bg-blossom" />
+                      <div className="flex-1 h-px bg-gradient-to-r from-blossom to-transparent" />
+                      <span className="text-xs text-slate">👗 OOTD</span>
+                      <div className="h-8 w-20 bg-blossom/20 rounded-lg animate-shimmer" />
+                    </div>
+                    <div className="flex items-center gap-3 animate-line-6">
+                      <div className="w-2 h-2 rounded-full bg-mint" />
+                      <div className="flex-1 h-px bg-gradient-to-r from-mint to-transparent" />
+                      <span className="text-xs text-slate">📅 {t('locked.lineDay2')}</span>
+                      <div className="h-8 w-32 bg-mint-light/30 rounded-lg animate-shimmer" />
+                    </div>
+                    <div className="flex items-center gap-3 animate-line-7">
+                      <div className="w-2 h-2 rounded-full bg-blossom-deep" />
+                      <div className="flex-1 h-px bg-gradient-to-r from-blossom-deep to-transparent" />
+                      <span className="text-xs text-blossom-deep font-bold">🏆 {t('locked.lineComplete')}</span>
+                      <div className="h-8 w-24 bg-blossom/30 rounded-lg animate-shimmer" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 구독 유도 카드 */}
+              <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 text-center border border-mist shadow-lg max-w-sm w-full">
+                <span className="text-3xl mb-3 block">🔒</span>
+                <h3 className="text-base font-bold text-ink mb-1">{t('locked.title')}</h3>
+                <p className="text-sm text-slate mb-5">{t('locked.desc')}</p>
+                <div className="space-y-2.5">
+                  <button
+                    onClick={() => {
+                      const el = document.querySelector('[data-subscription-wall]')
+                      el?.scrollIntoView({ behavior: 'smooth' })
+                    }}
+                    className="w-full bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-2.5 text-sm hover:opacity-90 transition"
+                  >
+                    {t('locked.subscribe')}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
         {isSubscribed && mainPlan && (
           <>
             <PlannerCreditsDisplay
