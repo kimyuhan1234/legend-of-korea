@@ -45,20 +45,20 @@ export const TRANSFER_INFO: TransferInfo[] = [
   {
     departureId: 'incheon-airport', cityId: 'seoul', transportType: 'ktx',
     transfers: [
-      { step: 1, from: { ko: '인천공항', en: 'Incheon Airport', ja: '仁川空港' }, to: { ko: '서울역', en: 'Seoul Station', ja: 'ソウル駅' }, method: { ko: '공항철도 직행', en: 'AREX Express', ja: '空港鉄道直通' }, duration: '43m', note: { ko: '공항철도 직통열차 ₩9,500', en: 'AREX Express ₩9,500', ja: '空港鉄道直通 ₩9,500' } },
+      { step: 1, from: { ko: '인천국제공항', en: "Incheon Int'l Airport", ja: '仁川国際空港' }, to: { ko: '서울역', en: 'Seoul Station', ja: 'ソウル駅' }, method: { ko: '공항철도 직행', en: 'AREX Express', ja: '空港鉄道直通' }, duration: '43m', note: { ko: '공항철도 직통열차 ₩9,500', en: 'AREX Express ₩9,500', ja: '空港鉄道直通 ₩9,500' } },
     ],
   },
   {
     departureId: 'incheon-airport', cityId: 'busan', transportType: 'ktx',
     transfers: [
-      { step: 1, from: { ko: '인천공항', en: 'Incheon Airport', ja: '仁川空港' }, to: { ko: '서울역', en: 'Seoul Station', ja: 'ソウル駅' }, method: { ko: '공항철도 직행', en: 'AREX Express', ja: '空港鉄道直通' }, duration: '43m' },
+      { step: 1, from: { ko: '인천국제공항', en: "Incheon Int'l Airport", ja: '仁川国際空港' }, to: { ko: '서울역', en: 'Seoul Station', ja: 'ソウル駅' }, method: { ko: '공항철도 직행', en: 'AREX Express', ja: '空港鉄道直通' }, duration: '43m' },
       { step: 2, from: { ko: '서울역', en: 'Seoul Station', ja: 'ソウル駅' }, to: { ko: '부산역', en: 'Busan Station', ja: '釜山駅' }, method: { ko: 'KTX', en: 'KTX', ja: 'KTX' }, duration: '2h 30m' },
     ],
   },
   {
     departureId: 'incheon-airport', cityId: 'jeonju', transportType: 'bus',
     transfers: [
-      { step: 1, from: { ko: '인천공항', en: 'Incheon Airport', ja: '仁川空港' }, to: { ko: '서울고속버스터미널', en: 'Seoul Express Bus Terminal', ja: 'ソウル高速バスターミナル' }, method: { ko: '공항리무진', en: 'Airport Limousine', ja: '空港リムジン' }, duration: '1h 10m' },
+      { step: 1, from: { ko: '인천국제공항', en: "Incheon Int'l Airport", ja: '仁川国際空港' }, to: { ko: '서울고속버스터미널', en: 'Seoul Express Bus Terminal', ja: 'ソウル高速バスターミナル' }, method: { ko: '공항리무진', en: 'Airport Limousine', ja: '空港リムジン' }, duration: '1h 10m' },
       { step: 2, from: { ko: '서울고속버스터미널', en: 'Seoul Express Bus Terminal', ja: 'ソウル高速バスターミナル' }, to: { ko: '전주고속버스터미널', en: 'Jeonju Bus Terminal', ja: '全州バスターミナル' }, method: { ko: '고속버스', en: 'Express Bus', ja: '高速バス' }, duration: '2h 30m' },
     ],
   },
@@ -67,7 +67,7 @@ export const TRANSFER_INFO: TransferInfo[] = [
   {
     departureId: 'gimpo-airport', cityId: 'seoul', transportType: 'bus',
     transfers: [
-      { step: 1, from: { ko: '김포공항', en: 'Gimpo Airport', ja: '金浦空港' }, to: { ko: '서울역', en: 'Seoul Station', ja: 'ソウル駅' }, method: { ko: '공항철도', en: 'AREX', ja: '空港鉄道' }, duration: '20m' },
+      { step: 1, from: { ko: '김포국제공항', en: "Gimpo Int'l Airport", ja: '金浦国際空港' }, to: { ko: '서울역', en: 'Seoul Station', ja: 'ソウル駅' }, method: { ko: '공항철도', en: 'AREX', ja: '空港鉄道' }, duration: '20m' },
     ],
   },
 
@@ -75,14 +75,14 @@ export const TRANSFER_INFO: TransferInfo[] = [
   {
     departureId: 'gimhae-airport', cityId: 'gyeongju', transportType: 'bus',
     transfers: [
-      { step: 1, from: { ko: '김해공항', en: 'Gimhae Airport', ja: '金海空港' }, to: { ko: '부산종합버스터미널', en: 'Busan Bus Terminal', ja: '釜山バスターミナル' }, method: { ko: '공항리무진', en: 'Airport Limousine', ja: '空港リムジン' }, duration: '50m' },
+      { step: 1, from: { ko: '김해국제공항', en: "Gimhae Int'l Airport", ja: '金海国際空港' }, to: { ko: '부산종합버스터미널', en: 'Busan Bus Terminal', ja: '釜山バスターミナル' }, method: { ko: '공항리무진', en: 'Airport Limousine', ja: '空港リムジン' }, duration: '50m' },
       { step: 2, from: { ko: '부산종합버스터미널', en: 'Busan Bus Terminal', ja: '釜山バスターミナル' }, to: { ko: '경주고속버스터미널', en: 'Gyeongju Bus Terminal', ja: '慶州バスターミナル' }, method: { ko: '고속버스', en: 'Express Bus', ja: '高速バス' }, duration: '50m' },
     ],
   },
   {
     departureId: 'gimhae-airport', cityId: 'tongyeong', transportType: 'bus',
     transfers: [
-      { step: 1, from: { ko: '김해공항', en: 'Gimhae Airport', ja: '金海空港' }, to: { ko: '마산합포구터미널', en: 'Masan Terminal', ja: '馬山ターミナル' }, method: { ko: '공항리무진/시외버스', en: 'Limousine/Intercity Bus', ja: 'リムジン/市外バス' }, duration: '1h 30m' },
+      { step: 1, from: { ko: '김해국제공항', en: "Gimhae Int'l Airport", ja: '金海国際空港' }, to: { ko: '마산합포구터미널', en: 'Masan Terminal', ja: '馬山ターミナル' }, method: { ko: '공항리무진/시외버스', en: 'Limousine/Intercity Bus', ja: 'リムジン/市外バス' }, duration: '1h 30m' },
       { step: 2, from: { ko: '마산합포구터미널', en: 'Masan Terminal', ja: '馬山ターミナル' }, to: { ko: '통영종합버스터미널', en: 'Tongyeong Terminal', ja: '統営ターミナル' }, method: { ko: '시외버스', en: 'Intercity Bus', ja: '市外バス' }, duration: '1h' },
     ],
   },

@@ -10,10 +10,10 @@ import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerBu
 // ── 출발지 5개 ──
 const DEPARTURES = [
   { code: 'seoul', name: { ko: '서울', en: 'Seoul', ja: 'ソウル' }, icon: '🏙️' },
-  { code: 'incheon-airport', name: { ko: '인천공항', en: 'Incheon Airport', ja: '仁川空港' }, icon: '✈️' },
-  { code: 'gimpo-airport', name: { ko: '김포공항', en: 'Gimpo Airport', ja: '金浦空港' }, icon: '✈️' },
+  { code: 'incheon-airport', name: { ko: '인천국제공항', en: "Incheon Int'l Airport", ja: '仁川国際空港' }, icon: '✈️' },
+  { code: 'gimpo-airport', name: { ko: '김포국제공항', en: "Gimpo Int'l Airport", ja: '金浦国際空港' }, icon: '✈️' },
   { code: 'busan', name: { ko: '부산', en: 'Busan', ja: '釜山' }, icon: '🌊' },
-  { code: 'gimhae-airport', name: { ko: '김해공항', en: 'Gimhae Airport', ja: '金海空港' }, icon: '✈️' },
+  { code: 'gimhae-airport', name: { ko: '김해국제공항', en: "Gimhae Int'l Airport", ja: '金海国際空港' }, icon: '✈️' },
 ]
 
 // ── 도착지 9개 도시 ──
