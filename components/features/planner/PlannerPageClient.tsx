@@ -390,7 +390,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
               onChangeStyle={setTripStyle}
             />
             <PlannerCuration itemTypesInPlan={itemTypes} cityId={selectedCityId} />
-            <PlannerTransport cityId={selectedCityId} locale={locale} />
+            <PlannerTransport items={allItems} locale={locale} onRemove={handleRemoveItem} />
             <PlannerSpotDistance
               hotelLat={mainPlan.hotel_lat}
               hotelLng={mainPlan.hotel_lng}

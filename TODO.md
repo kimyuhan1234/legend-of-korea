@@ -22,12 +22,12 @@
   $$;
   ```
 
-- [ ] **[DB] 모든 테이블 RLS 활성화 확인**
+- [x] **[DB] 모든 테이블 RLS 활성화 확인**
   - `DEPLOYMENT.md`의 RLS 정책 SQL을 Supabase SQL Editor에서 전체 실행
   - 확인 대상: `orders`, `mission_progress`, `lp_transactions`, `community_posts`, `community_comments`, `users`
   - 검증: `anon` 키로 직접 접근 시 빈 배열 반환되는지 테스트
 
-- [ ] **[DB] `lp_transactions` 테이블에 `applied` / `applied_at` 컬럼 존재 여부 확인**
+- [x] **[DB] `lp_transactions` 테이블에 `applied` / `applied_at` 컬럼 존재 여부 확인**
   - 없으면 `ALTER TABLE lp_transactions ADD COLUMN applied boolean DEFAULT false, ADD COLUMN applied_at timestamptz;`
 
 ---

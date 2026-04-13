@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { HotelInputForm } from './HotelInputForm'
-import { TransportInputForm } from './TransportInputForm'
 import { PlannerResetButton } from './PlannerResetButton'
 import { PlannerEmptyGuide } from './PlannerEmptyGuide'
 
@@ -215,9 +214,6 @@ export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHo
                       </div>
                     ) : (
                       <HotelInputForm planId={plan.id} onSaved={onHotelSaved} />
-                    )}
-                    {!plan.plan_items.some((i) => i.item_type === 'transport') && (
-                      <TransportInputForm cityId={plan.city_id} locale={locale} />
                     )}
                   </div>
                 )}

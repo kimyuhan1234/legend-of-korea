@@ -1,134 +1,169 @@
 'use client'
 
-import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { getRouteByCity } from '@/lib/data/transport-routes'
+import Link from 'next/link'
 
-interface PlannerTransportProps {
-  cityId: string
-  locale: string
+interface TransportItem {
+  id: string
+  item_type: string
+  item_data: Record<string, unknown>
 }
 
-const TYPE_EMOJI = { ktx: '🚄', bus: '🚌', flight: '✈️' } as const
+interface PlannerTransportProps {
+  items: TransportItem[]
+  locale: string
+  onRemove: (itemId: string) => void
+}
 
-export function PlannerTransport({ cityId, locale }: PlannerTransportProps) {
-  const t = useTranslations('planner')
-  const [copied, setCopied] = useState(false)
+const TYPE_ICON: Record<string, string> = {
+  ktx: '🚄', bus: '🚌', flight: '✈️', arex: '🚈', limousine: '🚐',
+}
 
-  const route = getRouteByCity(cityId)
-  if (!route || route.options.length === 0) return null
-
-  const taxiAddr = route.lastMile.taxi.koreanAddress[locale as 'ko' | 'ja' | 'en'] || route.lastMile.taxi.koreanAddress.ko
-  const approx = t('approx')
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(route.lastMile.taxi.koreanAddress.ko)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch {
-      // ignore
-    }
+function getL(field: unknown, locale: string): string {
+  if (typeof field === 'string') return field
+  if (field && typeof field === 'object') {
+    const obj = field as Record<string, string>
+    return obj[locale] || obj.ko || ''
   }
+  return ''
+}
+
+export function PlannerTransport({ items, locale, onRemove }: PlannerTransportProps) {
+  const t = useTranslations('planner')
+
+  const transportItems = items.filter((i) => i.item_type === 'transport')
+  const goingItems = transportItems.filter((i) => i.item_data?.direction === 'going')
+  const returningItems = transportItems.filter((i) => i.item_data?.direction === 'returning')
+
+  const hasTransport = transportItems.length > 0
 
   return (
     <section>
-      <h2 className="text-xl md:text-2xl font-black text-[#111] mb-2">
-        🚄 {t('transport.title')}
-      </h2>
-      <p className="text-sm text-[#6B7280] mb-6">
-        {t('transport.subtitle')} · {t('transport.fromSeoul')}
-      </p>
+      <div className="bg-white rounded-2xl border border-mist p-6">
+        {hasTransport ? (
+          <>
+            <h3 className="text-lg font-bold text-ink mb-4">
+              🚄 {t('transport.myTitle')}
+            </h3>
 
-      {/* 서울 → 목적지 옵션 (정찰제 요금만) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-        {route.options.map((opt) => {
-          const stationName = opt.station[locale as 'ko' | 'ja' | 'en'] || opt.station.ko
-          return (
-            <div
-              key={opt.type}
-              className="bg-white rounded-2xl p-5 border border-[#E4E7EB]/60 hover:shadow-md transition-shadow"
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-2xl">{TYPE_EMOJI[opt.type]}</span>
-                <span className="text-sm font-black text-[#111]">
-                  {t(`transport.${opt.type}` as Parameters<typeof t>[0])}
-                </span>
+            {/* 가는편 */}
+            {goingItems.length > 0 ? (
+              goingItems.map((item) => {
+                const d = item.item_data
+                const icon = TYPE_ICON[d.type as string] ?? '🚄'
+                const typeName = typeof d.type === 'string' ? d.type.toUpperCase() : ''
+                return (
+                  <div
+                    key={item.id}
+                    className="flex items-start gap-3 mb-4 p-3 bg-mint-light/20 rounded-xl"
+                  >
+                    <span className="text-lg mt-0.5">✈️</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-mint-deep font-bold mb-1">
+                        {t('transport.goingLabel')}{d.date ? ` ${d.date}` : ''}
+                      </p>
+                      <p className="text-sm text-ink font-medium">
+                        {getL(d.from, locale)} → {getL(d.to, locale)}
+                      </p>
+                      <p className="text-xs text-slate">
+                        {icon} {typeName}
+                        {d.duration ? `, ${t('approx')} ${d.duration}` : ''}
+                        {d.price ? `, ${d.price}` : ''}
+                      </p>
+                      {d.departureTime && (
+                        <p className="text-xs text-mint-deep mt-1">
+                          🕐 {t('transport.depart')} {d.departureTime as string}
+                          {d.arrivalTime ? ` → ${t('transport.arrive')} ${t('approx')} ${d.arrivalTime as string}` : ''}
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => onRemove(item.id)}
+                      className="text-stone hover:text-red-500 p-1 text-sm shrink-0"
+                      aria-label={t('preview.remove')}
+                    >
+                      ✕
+                    </button>
+                  </div>
+                )
+              })
+            ) : (
+              <div className="mb-4 p-3 bg-mist/30 rounded-xl">
+                <p className="text-sm text-stone">✈️ {t('transport.goingEmpty')}</p>
               </div>
-              <p className="text-xs text-[#6B7280] mb-1">{stationName}</p>
-              <p className="text-xs text-[#6B7280] mb-3">
-                {t('transport.duration')}:{' '}
-                <span className="font-bold text-[#111]">{approx} {opt.duration}</span>
-              </p>
-              {opt.fixedPrice && (
-                <p className="text-base font-black text-[#111] mb-3">{opt.fixedPrice}</p>
-              )}
-              <a
-                href={opt.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center py-2 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs font-bold hover:bg-[#7BC8BC] transition-colors"
-              >
-                {t('transport.booking')} ↗
-              </a>
-            </div>
-          )
-        })}
-      </div>
+            )}
 
-      {/* 라스트마일 — 택시 금액 절대 표시 안 함 */}
-      <div className="bg-[#F0F2F5] rounded-2xl p-5">
-        <p className="text-xs font-black text-[#9DD8CE] uppercase tracking-widest mb-3">
-          {t('transport.lastMile')}
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* 택시 카드 — 금액 없음, minutes만 */}
-          <div className="bg-white rounded-xl p-4 border border-[#E4E7EB]/40">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-xl">🚕</span>
-              <span className="text-sm font-bold text-[#111]">{t('transport.taxi')}</span>
-              <span className="text-xs text-[#6B7280] ml-auto">
-                {approx} {route.lastMile.taxi.minutes}분
-              </span>
-            </div>
-            <div className="bg-[#F0F2F5] rounded-lg p-3 mb-2">
-              <p className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest mb-1">
-                {t('transport.addressCard')}
-              </p>
-              <p className="text-sm text-[#111] font-semibold">{taxiAddr}</p>
-            </div>
-            <button
-              onClick={handleCopy}
-              className="w-full py-1.5 rounded-full bg-neutral-100 text-xs font-bold text-[#374151] hover:bg-neutral-200"
-            >
-              {copied ? t('transport.copied') : `📋 ${t('transport.copy')}`}
-            </button>
-          </div>
-
-          {/* 대중교통 카드 */}
-          {route.lastMile.bus && (
-            <div className="bg-white rounded-xl p-4 border border-[#E4E7EB]/40">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">🚌</span>
-                <span className="text-sm font-bold text-[#111]">{t('transport.publicBus')}</span>
-                <span className="text-xs text-[#6B7280] ml-auto">
-                  {approx} {route.lastMile.bus.minutes}분
-                </span>
+            {/* 오는편 */}
+            {returningItems.length > 0 ? (
+              returningItems.map((item) => {
+                const d = item.item_data
+                const icon = TYPE_ICON[d.type as string] ?? '🚄'
+                const typeName = typeof d.type === 'string' ? d.type.toUpperCase() : ''
+                return (
+                  <div
+                    key={item.id}
+                    className="flex items-start gap-3 mb-4 p-3 bg-blossom/10 rounded-xl"
+                  >
+                    <span className="text-lg mt-0.5">🏠</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-blossom-deep font-bold mb-1">
+                        {t('transport.returningLabel')}{d.date ? ` ${d.date}` : ''}
+                      </p>
+                      <p className="text-sm text-ink font-medium">
+                        {getL(d.from, locale)} → {getL(d.to, locale)}
+                      </p>
+                      <p className="text-xs text-slate">
+                        {icon} {typeName}
+                        {d.duration ? `, ${t('approx')} ${d.duration}` : ''}
+                        {d.price ? `, ${d.price}` : ''}
+                      </p>
+                      {d.departureTime && (
+                        <p className="text-xs text-blossom-deep mt-1">
+                          🕐 {t('transport.depart')} {d.departureTime as string}
+                          {d.arrivalTime ? ` → ${t('transport.arrive')} ${t('approx')} ${d.arrivalTime as string}` : ''}
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => onRemove(item.id)}
+                      className="text-stone hover:text-red-500 p-1 text-sm shrink-0"
+                      aria-label={t('preview.remove')}
+                    >
+                      ✕
+                    </button>
+                  </div>
+                )
+              })
+            ) : (
+              <div className="mb-4 p-3 bg-mist/30 rounded-xl">
+                <p className="text-sm text-stone">🏠 {t('transport.returningEmpty')}</p>
               </div>
-              <p className="text-xs text-[#374151] mb-1">
-                {route.lastMile.bus.route[locale as 'ko' | 'ja' | 'en'] || route.lastMile.bus.route.ko}
-              </p>
-              <p className="text-xs text-[#6B7280]">
-                → {route.lastMile.bus.stop[locale as 'ko' | 'ja' | 'en'] || route.lastMile.bus.stop.ko}
-              </p>
-            </div>
-          )}
-        </div>
+            )}
 
-        <p className="text-[10px] text-[#9CA3AF] mt-3 text-center">
-          ※ {approx} 시간은 교통 상황에 따라 달라질 수 있습니다
-        </p>
+            {/* TRAFFIC 변경 버튼 */}
+            <Link
+              href={`/${locale}/traffic`}
+              className="block text-center bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-3 mt-2 hover:opacity-90 transition"
+            >
+              {t('transport.change')}
+            </Link>
+          </>
+        ) : (
+          <>
+            <h3 className="text-lg font-bold text-ink mb-3">
+              🚄 {t('transport.emptyTitle')}
+            </h3>
+            <p className="text-sm text-slate mb-4">
+              {t('transport.emptyDesc')}
+            </p>
+            <Link
+              href={`/${locale}/traffic`}
+              className="block text-center bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-3 hover:opacity-90 transition"
+            >
+              {t('transport.goSelect')}
+            </Link>
+          </>
+        )}
       </div>
     </section>
   )
