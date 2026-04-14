@@ -26,20 +26,21 @@ function CityWorkshopCard({ workshop, locale }: { workshop: CityWorkshop; locale
       <h3 className="text-xl font-bold text-ink mb-1">{getL(workshop.cityName, locale)}</h3>
       <p className="text-sm text-slate mb-4">{getL(workshop.description, locale)}</p>
 
-      {/* 체험 목록 — 2열 그리드 */}
-      <div className="grid grid-cols-2 gap-2 mb-4">
+      {/* 체험 목록 */}
+      <div className="flex flex-col gap-2 mb-4">
         {workshop.experiences.map((exp, i) => (
-          <div key={i} className="flex items-center gap-2 text-sm text-ink">
-            <span>{exp.icon}</span>
-            <span>{getL(exp.name, locale)}</span>
+          <div key={i} className="p-3 bg-snow rounded-xl">
+            <div className="flex items-center gap-2 mb-1">
+              <span>{exp.icon}</span>
+              <span className="text-sm font-bold text-ink">{getL(exp.name, locale)}</span>
+            </div>
+            <p className="text-xs text-slate mb-1 pl-6">{getL(exp.desc, locale)}</p>
+            <div className="flex gap-3 pl-6 text-xs text-stone">
+              <span>💰 {exp.price}</span>
+              <span>⏰ {exp.duration}</span>
+            </div>
           </div>
         ))}
-      </div>
-
-      {/* 가격 + 소요시간 */}
-      <div className="flex gap-4 mb-5 text-sm">
-        <span className="text-ink font-bold">💰 {workshop.priceRange}</span>
-        <span className="text-slate">⏰ {workshop.duration}</span>
       </div>
 
       {/* 예약 버튼들 */}
@@ -65,7 +66,6 @@ function CityWorkshopCard({ workshop, locale }: { workshop: CityWorkshop; locale
           cityId: workshop.cityId,
           name: workshop.cityName,
           description: workshop.description,
-          priceRange: workshop.priceRange,
         }}
         size="sm"
       />

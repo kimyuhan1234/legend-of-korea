@@ -1,212 +1,181 @@
 // ─────────────────────────────────────────────
 //  lib/data/diy-workshops.ts
-//  9개 도시별 체험 묶음 데이터 (검색 URL만 사용)
+//  서울 / 부산 도시별 체험 묶음 데이터 (GetYourGuide 검색 URL만 사용)
 // ─────────────────────────────────────────────
 
 type I18n = { ko: string; en: string; ja: string }
+
+export interface CityWorkshopExperience {
+  icon: string
+  name: I18n
+  desc: I18n
+  price: string
+  duration: string
+}
 
 export interface CityWorkshop {
   cityId: string
   cityName: I18n
   description: I18n
-  experiences: { icon: string; name: I18n }[]
-  priceRange: string
-  duration: string
+  experiences: CityWorkshopExperience[]
   bookingLinks: { platform: string; url: string; icon: string }[]
 }
 
 export const CITY_WORKSHOPS: CityWorkshop[] = [
   {
-    cityId: 'jeonju',
-    cityName: { ko: '전주', en: 'Jeonju', ja: '全州' },
-    description: {
-      ko: '한옥마을에서 즐기는 전통 공예 체험',
-      en: 'Traditional craft experiences in Hanok Village',
-      ja: '韓屋村で楽しむ伝統工芸体験',
-    },
-    experiences: [
-      { icon: '🎨', name: { ko: '한지 공예', en: 'Hanji paper craft', ja: '韓紙工芸' } },
-      { icon: '👘', name: { ko: '한복 체험 & 사진촬영', en: 'Hanbok experience & photo', ja: '韓服体験＆写真' } },
-      { icon: '🍪', name: { ko: '한과 만들기', en: 'Korean cookie making', ja: '韓菓作り' } },
-      { icon: '🏺', name: { ko: '도자기 빚기', en: 'Pottery making', ja: '陶芸体験' } },
-      { icon: '🎋', name: { ko: '합죽선 만들기', en: 'Traditional fan craft', ja: '伝統扇子作り' } },
-      { icon: '🧵', name: { ko: '천연 염색', en: 'Natural dyeing', ja: '天然染色' } },
-    ],
-    priceRange: '₩12,000 ~ ₩30,000',
-    duration: '1~2h',
-    bookingLinks: [
-      { platform: 'Klook', url: 'https://www.klook.com/en/search/result/?query=Jeonju+workshop+experience', icon: '🟠' },
-      { platform: 'Viator', url: 'https://www.viator.com/searchResults/all?text=Jeonju+craft+experience', icon: '🟢' },
-    ],
-  },
-  {
     cityId: 'seoul',
     cityName: { ko: '서울', en: 'Seoul', ja: 'ソウル' },
     description: {
-      ko: '트렌디한 성수·홍대에서 즐기는 크래프트',
-      en: 'Trendy craft workshops in Seongsu & Hongdae',
-      ja: 'トレンディな聖水・弘大のクラフト体験',
+      ko: '북촌·홍대·성수에서 즐기는 한국 전통 & 감성 공예',
+      en: 'Korean traditional & artisan crafts in Bukchon, Hongdae & Seongsu',
+      ja: '北村・弘大・聖水でめぐる韓国伝統＆感性クラフト',
     },
     experiences: [
-      { icon: '🏺', name: { ko: '도자기 공방', en: 'Pottery studio', ja: '陶芸工房' } },
-      { icon: '🌸', name: { ko: '향수 만들기', en: 'Perfume making', ja: '香水作り' } },
-      { icon: '💎', name: { ko: '실버링 만들기', en: 'Silver ring making', ja: 'シルバーリング作り' } },
-      { icon: '🕯️', name: { ko: '캔들 만들기', en: 'Candle making', ja: 'キャンドル作り' } },
-      { icon: '🎨', name: { ko: '유리 공예', en: 'Glass art', ja: 'ガラス工芸' } },
-      { icon: '👘', name: { ko: '한복 체험', en: 'Hanbok experience', ja: '韓服体験' } },
+      {
+        icon: '🌸',
+        name: { ko: '한옥 향수 만들기', en: 'Hanok Perfume Workshop', ja: '韓屋香水作り' },
+        desc: {
+          ko: '북촌 한옥에서 천연 원료로 나만의 향수를 조향하는 클래스',
+          en: 'Blend your own natural perfume inside a traditional hanok in Bukchon',
+          ja: '北村の韓屋で天然素材を使い、オリジナル香水を調香するクラス',
+        },
+        price: '₩55,000~',
+        duration: '2h',
+      },
+      {
+        icon: '🧴',
+        name: { ko: '홍대 니치 퍼퓸 클래스', en: 'Hongdae Niche Perfume Class', ja: '弘大ニッチ香水クラス' },
+        desc: {
+          ko: '홍대 감성 공방에서 전문 조향사와 함께 나만의 시그니처 향 완성',
+          en: 'Create your signature scent with a professional perfumer in Hongdae',
+          ja: '弘大のおしゃれな工房で、プロの調香師とシグネチャー香を完成',
+        },
+        price: '₩65,000~',
+        duration: '2h',
+      },
+      {
+        icon: '💍',
+        name: { ko: '실버링 만들기', en: 'Silver Ring Workshop', ja: 'シルバーリング作り' },
+        desc: {
+          ko: '순은 소재로 직접 망치질하여 세상에 하나뿐인 반지 제작',
+          en: 'Hammer and shape pure silver into a one-of-a-kind ring you keep forever',
+          ja: '純銀素材をハンマーで叩いて、世界に一つだけの指輪を作成',
+        },
+        price: '₩50,000~',
+        duration: '2h',
+      },
+      {
+        icon: '📜',
+        name: { ko: '북촌 한지 공예', en: 'Bukchon Hanji Craft', ja: '北村韓紙工芸' },
+        desc: {
+          ko: '전통 한지로 소품·엽서·등갓 등을 만드는 정통 공예 체험',
+          en: 'Craft cards, lanterns, or accessories using traditional Korean hanji paper',
+          ja: '伝統的な韓紙でポストカード・行灯・小物を作る本格工芸体験',
+        },
+        price: '₩30,000~',
+        duration: '1.5h',
+      },
+      {
+        icon: '✨',
+        name: { ko: '나전칠기 체험', en: 'Najeonchilgi Lacquerware', ja: '螺鈿漆器体験' },
+        desc: {
+          ko: '전복 껍데기를 잘라 붙이는 전통 나전칠기 기법을 직접 배우는 체험',
+          en: 'Learn the ancient art of inlaying abalone shell on lacquerware',
+          ja: 'アワビの貝殻を切り貼りする伝統螺鈿漆器技法を体験',
+        },
+        price: '₩45,000~',
+        duration: '2h',
+      },
+      {
+        icon: '🎀',
+        name: { ko: '보자기 아트 클래스', en: 'Bojagi Art Class', ja: 'ポジャギアートクラス' },
+        desc: {
+          ko: '색색의 천 조각을 이어 붙이는 전통 보자기 제작 — 선물 포장지로 활용 가능',
+          en: 'Sew colorful fabric pieces into a traditional bojagi wrapping cloth',
+          ja: 'カラフルな布を縫い合わせる伝統ポジャギ作り—ラッピングとして活用可',
+        },
+        price: '₩35,000~',
+        duration: '1.5h',
+      },
     ],
-    priceRange: '₩20,000 ~ ₩50,000',
-    duration: '1~3h',
     bookingLinks: [
-      { platform: 'Klook', url: 'https://www.klook.com/en/search/result/?query=Seoul+craft+workshop', icon: '🟠' },
-      { platform: 'Viator', url: 'https://www.viator.com/searchResults/all?text=Seoul+craft+workshop', icon: '🟢' },
-      { platform: 'GetYourGuide', url: 'https://www.getyourguide.com/s/?q=Seoul+craft+class', icon: '🔵' },
+      {
+        platform: 'GetYourGuide',
+        url: 'https://www.getyourguide.com/s/?q=Seoul+craft+class&ls=1',
+        icon: '🔵',
+      },
+      {
+        platform: 'Klook',
+        url: 'https://www.klook.com/en/search/result/?query=Seoul+craft+workshop',
+        icon: '🟠',
+      },
     ],
   },
   {
     cityId: 'busan',
     cityName: { ko: '부산', en: 'Busan', ja: '釜山' },
     description: {
-      ko: '바다가 보이는 공방에서 특별한 체험',
-      en: 'Special craft experiences with ocean views',
-      ja: '海が見える工房での特別な体験',
+      ko: '바다 전망 공방에서 즐기는 향수·주얼리·도예 체험',
+      en: 'Perfume, jewellery & pottery workshops with ocean views',
+      ja: '海を望む工房で楽しむ香水・ジュエリー・陶芸体験',
     },
     experiences: [
-      { icon: '🏺', name: { ko: '해운대 도자기', en: 'Haeundae pottery', ja: '海雲台陶芸' } },
-      { icon: '🕯️', name: { ko: '바다향 캔들', en: 'Ocean candle making', ja: '海キャンドル' } },
-      { icon: '🎨', name: { ko: '아크릴 아트', en: 'Acrylic art class', ja: 'アクリルアート' } },
-      { icon: '🧂', name: { ko: '천일염 비누 만들기', en: 'Sea salt soap making', ja: '天日塩石鹸作り' } },
-      { icon: '👘', name: { ko: '한복 체험', en: 'Hanbok experience', ja: '韓服体験' } },
+      {
+        icon: '🌸',
+        name: { ko: '부산 향수 만들기', en: 'Busan Perfume Making', ja: '釜山香水作り' },
+        desc: {
+          ko: '해운대 인근 공방에서 바다 향을 모티브로 나만의 향수 조향',
+          en: 'Craft a sea-inspired signature scent at a studio near Haeundae',
+          ja: '海雲台近くの工房で、海をモチーフにしたオリジナル香水を調香',
+        },
+        price: '₩50,000~',
+        duration: '2h',
+      },
+      {
+        icon: '💍',
+        name: { ko: '실버링 만들기', en: 'Silver Ring Workshop', ja: 'シルバーリング作り' },
+        desc: {
+          ko: '광안리 뷰의 공방에서 순은 반지를 직접 제작하는 주얼리 클래스',
+          en: 'Make a pure silver ring by hand in a studio overlooking Gwangalli Beach',
+          ja: '広安里ビューの工房で純銀リングを手作りするジュエリークラス',
+        },
+        price: '₩50,000~',
+        duration: '2h',
+      },
+      {
+        icon: '🕯️',
+        name: { ko: '소이 캔들 만들기', en: 'Soy Candle Making', ja: 'ソイキャンドル作り' },
+        desc: {
+          ko: '천연 소이왁스와 에센셜 오일로 나만의 향초 제작 — 여행 기념품으로 최적',
+          en: 'Pour and scent your own soy candle — a perfect travel keepsake',
+          ja: '天然ソイワックスとエッセンシャルオイルでオリジナル香キャンドルを作成',
+        },
+        price: '₩35,000~',
+        duration: '1.5h',
+      },
+      {
+        icon: '🏺',
+        name: { ko: '도자기 페인팅', en: 'Ceramics Painting', ja: '陶磁器ペインティング' },
+        desc: {
+          ko: '완성된 도자기 위에 그림을 그리고 유약을 발라 나만의 컵·접시 완성',
+          en: 'Paint and glaze a ceramic cup or plate to take home as a souvenir',
+          ja: '成形済みの陶磁器に絵付けして、世界に一つだけのマグ・皿を完成',
+        },
+        price: '₩35,000~',
+        duration: '1.5h',
+      },
     ],
-    priceRange: '₩15,000 ~ ₩40,000',
-    duration: '1~2h',
     bookingLinks: [
-      { platform: 'Klook', url: 'https://www.klook.com/en/search/result/?query=Busan+craft+workshop', icon: '🟠' },
-      { platform: 'Viator', url: 'https://www.viator.com/searchResults/all?text=Busan+craft+experience', icon: '🟢' },
-    ],
-  },
-  {
-    cityId: 'jeju',
-    cityName: { ko: '제주', en: 'Jeju', ja: '済州' },
-    description: {
-      ko: '자연과 함께하는 제주만의 체험',
-      en: 'Unique Jeju experiences with nature',
-      ja: '自然と共にする済州ならではの体験',
-    },
-    experiences: [
-      { icon: '🏺', name: { ko: '도자기 빚기', en: 'Pottery making', ja: '陶芸体験' } },
-      { icon: '🌸', name: { ko: '자연 향수 만들기', en: 'Natural perfume making', ja: '天然香水作り' } },
-      { icon: '🍊', name: { ko: '감귤 청 만들기', en: 'Tangerine syrup making', ja: 'みかんシロップ作り' } },
-      { icon: '🧴', name: { ko: '가죽 공예', en: 'Leather craft', ja: 'レザークラフト' } },
-      { icon: '🍫', name: { ko: '초콜릿 만들기', en: 'Chocolate making', ja: 'チョコレート作り' } },
-    ],
-    priceRange: '₩15,000 ~ ₩45,000',
-    duration: '1~2h',
-    bookingLinks: [
-      { platform: 'Klook', url: 'https://www.klook.com/en/search/result/?query=Jeju+craft+experience', icon: '🟠' },
-      { platform: 'Viator', url: 'https://www.viator.com/searchResults/all?text=Jeju+craft+workshop', icon: '🟢' },
-    ],
-  },
-  {
-    cityId: 'gyeongju',
-    cityName: { ko: '경주', en: 'Gyeongju', ja: '慶州' },
-    description: {
-      ko: '천년 고도에서 즐기는 역사 체험',
-      en: 'Historical experiences in the ancient capital',
-      ja: '千年の古都で楽しむ歴史体験',
-    },
-    experiences: [
-      { icon: '🏺', name: { ko: '신라 도예 체험', en: 'Silla pottery', ja: '新羅陶芸' } },
-      { icon: '📜', name: { ko: '탁본 체험', en: 'Stone rubbing', ja: '拓本体験' } },
-      { icon: '👘', name: { ko: '신라 복식 체험', en: 'Silla costume', ja: '新羅衣装体験' } },
-      { icon: '🍵', name: { ko: '전통 다도', en: 'Tea ceremony', ja: '伝統茶道' } },
-    ],
-    priceRange: '₩10,000 ~ ₩25,000',
-    duration: '1~2h',
-    bookingLinks: [
-      { platform: 'Klook', url: 'https://www.klook.com/en/search/result/?query=Gyeongju+cultural+experience', icon: '🟠' },
-      { platform: 'Viator', url: 'https://www.viator.com/searchResults/all?text=Gyeongju+experience', icon: '🟢' },
-    ],
-  },
-  {
-    cityId: 'tongyeong',
-    cityName: { ko: '통영', en: 'Tongyeong', ja: '統営' },
-    description: {
-      ko: '예술의 도시에서 즐기는 장인 체험',
-      en: 'Artisan experiences in the city of art',
-      ja: '芸術の都市で楽しむ匠の体験',
-    },
-    experiences: [
-      { icon: '✨', name: { ko: '나전칠기 체험', en: 'Mother-of-pearl craft', ja: '螺鈿漆器体験' } },
-      { icon: '🕯️', name: { ko: '바다 캔들 만들기', en: 'Ocean candle making', ja: '海キャンドル作り' } },
-      { icon: '🎨', name: { ko: '통영 12공방 투어', en: '12 Workshop tour', ja: '12工房ツアー' } },
-      { icon: '🧶', name: { ko: '매듭 공예', en: 'Korean knot craft', ja: '韓国結び工芸' } },
-    ],
-    priceRange: '₩15,000 ~ ₩35,000',
-    duration: '1~2h',
-    bookingLinks: [
-      { platform: 'Klook', url: 'https://www.klook.com/en/search/result/?query=Tongyeong+craft+experience', icon: '🟠' },
-    ],
-  },
-  {
-    cityId: 'cheonan',
-    cityName: { ko: '천안', en: 'Cheonan', ja: '天安' },
-    description: {
-      ko: '호두과자의 도시에서 만드는 특별한 기념품',
-      en: 'Special souvenirs from the walnut cookie city',
-      ja: 'くるみ菓子の都市で作る特別なお土産',
-    },
-    experiences: [
-      { icon: '💍', name: { ko: '실버링 만들기', en: 'Silver ring making', ja: 'シルバーリング作り' } },
-      { icon: '🧴', name: { ko: '가죽 공예', en: 'Leather craft', ja: 'レザークラフト' } },
-      { icon: '🕯️', name: { ko: '소이 캔들', en: 'Soy candle making', ja: 'ソイキャンドル' } },
-      { icon: '🥜', name: { ko: '호두과자 만들기', en: 'Walnut cookie making', ja: 'くるみ菓子作り' } },
-    ],
-    priceRange: '₩15,000 ~ ₩30,000',
-    duration: '1~2h',
-    bookingLinks: [
-      { platform: 'Klook', url: 'https://www.klook.com/en/search/result/?query=Cheonan+workshop+experience', icon: '🟠' },
-    ],
-  },
-  {
-    cityId: 'yongin',
-    cityName: { ko: '용인', en: 'Yongin', ja: '龍仁' },
-    description: {
-      ko: '민속촌 옆에서 즐기는 전통 체험',
-      en: 'Traditional experiences near Folk Village',
-      ja: '民俗村そばで楽しむ伝統体験',
-    },
-    experiences: [
-      { icon: '🏺', name: { ko: '도자기 체험', en: 'Pottery experience', ja: '陶芸体験' } },
-      { icon: '🕯️', name: { ko: '캔들 만들기', en: 'Candle making', ja: 'キャンドル作り' } },
-      { icon: '👘', name: { ko: '민속촌 한복 체험', en: 'Folk Village Hanbok', ja: '民俗村韓服体験' } },
-      { icon: '🎭', name: { ko: '전통 탈 만들기', en: 'Traditional mask making', ja: '伝統仮面作り' } },
-    ],
-    priceRange: '₩12,000 ~ ₩25,000',
-    duration: '1~2h',
-    bookingLinks: [
-      { platform: 'Klook', url: 'https://www.klook.com/en/search/result/?query=Yongin+folk+village+experience', icon: '🟠' },
-    ],
-  },
-  {
-    cityId: 'icheon',
-    cityName: { ko: '이천', en: 'Icheon', ja: '利川' },
-    description: {
-      ko: '대한민국 도자기의 수도에서 도예 체험',
-      en: "Ceramics experience in Korea's pottery capital",
-      ja: '韓国陶磁器の首都で陶芸体験',
-    },
-    experiences: [
-      { icon: '🏺', name: { ko: '물레 도자기 체험', en: 'Wheel pottery class', ja: '轆轤陶芸体験' } },
-      { icon: '🎨', name: { ko: '도자기 페인팅', en: 'Ceramics painting', ja: '陶磁器ペインティング' } },
-      { icon: '🍵', name: { ko: '도자기 다도 체험', en: 'Ceramics tea ceremony', ja: '陶磁器茶道体験' } },
-      { icon: '🖼️', name: { ko: '도예 갤러리 투어', en: 'Pottery gallery tour', ja: '陶芸ギャラリーツアー' } },
-    ],
-    priceRange: '₩15,000 ~ ₩40,000',
-    duration: '1~3h',
-    bookingLinks: [
-      { platform: 'Klook', url: 'https://www.klook.com/en/search/result/?query=Icheon+ceramics+pottery+experience', icon: '🟠' },
-      { platform: 'Viator', url: 'https://www.viator.com/searchResults/all?text=Icheon+pottery+ceramics', icon: '🟢' },
+      {
+        platform: 'GetYourGuide',
+        url: 'https://www.getyourguide.com/s/?q=Busan+craft+class&ls=1',
+        icon: '🔵',
+      },
+      {
+        platform: 'Klook',
+        url: 'https://www.klook.com/en/search/result/?query=Busan+craft+workshop',
+        icon: '🟠',
+      },
     ],
   },
 ]
