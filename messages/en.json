@@ -833,6 +833,7 @@
     "external": "Booking Platforms",
     "noResults": "No workshops found for the selected filters",
     "cities": {
+      "all": "All",
       "jeonju": "Jeonju",
       "seoul": "Seoul",
       "busan": "Busan",

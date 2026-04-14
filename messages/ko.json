@@ -858,6 +858,7 @@
     "external": "주요 예약 플랫폼",
     "noResults": "선택한 조건에 맞는 공방이 없습니다",
     "cities": {
+      "all": "전체",
       "jeonju": "전주",
       "seoul": "서울",
       "busan": "부산",

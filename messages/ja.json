@@ -833,6 +833,7 @@
     "external": "主な予約プラットフォーム",
     "noResults": "選択した条件に合う工房がありません",
     "cities": {
+      "all": "すべて",
       "jeonju": "全州",
       "seoul": "ソウル",
       "busan": "釜山",
