@@ -1565,6 +1565,8 @@
       "step1": "Click the button below to open ZEP",
       "step2": "Enter the password",
       "step3": "Choose your avatar and enter!",
+      "step4": "Head to your zone",
+      "zoneLocation": "Your Zone Location",
       "password": "Password",
       "copied": "Copied!",
       "tip": "In ZEP, voice/video chat starts automatically when you approach other adventurers. Turn on your mic and camera!",

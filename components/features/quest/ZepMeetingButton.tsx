@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Lock } from 'lucide-react'
-import { getZepSpaceByCourseId } from '@/lib/data/zep-spaces'
+import { getZepZoneByCourseId } from '@/lib/data/zep-spaces'
 import { ZepAccessModal } from './ZepAccessModal'
 
 interface ZepMeetingButtonProps {
@@ -41,7 +41,7 @@ const LABEL = {
 
 export function ZepMeetingButton({ courseId, hasPurchased, locale }: ZepMeetingButtonProps) {
   const [modalOpen, setModalOpen] = useState(false)
-  const space = getZepSpaceByCourseId(courseId)
+  const space = getZepZoneByCourseId(courseId)
   const l = LABEL[locale as keyof typeof LABEL] || LABEL.ko
 
   // 해당 코스에 ZEP 스페이스가 없으면 렌더링하지 않음
@@ -85,7 +85,7 @@ export function ZepMeetingButton({ courseId, hasPurchased, locale }: ZepMeetingB
           {/* 텍스트 + 버튼 */}
           <div className="p-5">
             <div className="flex items-start gap-3 mb-4">
-              <span className="text-2xl shrink-0">{space.backgroundEmoji}</span>
+              <span className="text-2xl shrink-0">{space.emoji}</span>
               <div>
                 <h3 className="font-black text-base">🎮 {l.title}</h3>
                 <p className="text-sm opacity-80 mt-0.5">{l.desc}</p>
@@ -123,7 +123,7 @@ export function ZepMeetingButton({ courseId, hasPurchased, locale }: ZepMeetingB
         <ZepAccessModal
           isOpen={modalOpen}
           onClose={() => setModalOpen(false)}
-          space={space}
+          zone={space}
           locale={locale}
         />
       </>

@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import { X, Copy, Check } from 'lucide-react'
-import type { ZepSpace } from '@/lib/data/zep-spaces'
+import type { ZepZone } from '@/lib/data/zep-spaces'
+import { zepSpace } from '@/lib/data/zep-spaces'
 
 interface ZepAccessModalProps {
   isOpen: boolean
   onClose: () => void
-  space: ZepSpace
+  zone: ZepZone
   locale: string
 }
 
@@ -17,6 +18,8 @@ const LABEL = {
     step1: "아래 버튼을 눌러 ZEP에 접속하세요",
     step2: "비밀번호를 입력하세요",
     step3: "아바타를 선택하고 입장!",
+    step4: "구역으로 이동하세요",
+    zoneLocation: "내 구역 위치",
     password: "비밀번호",
     copied: "복사되었습니다",
     copy: "복사",
@@ -29,6 +32,8 @@ const LABEL = {
     step1: "Click the button below to open ZEP",
     step2: "Enter the password",
     step3: "Choose your avatar and enter!",
+    step4: "Head to your zone",
+    zoneLocation: "Your Zone Location",
     password: "Password",
     copied: "Copied!",
     copy: "Copy",
@@ -41,6 +46,8 @@ const LABEL = {
     step1: "下のボタンを押してZEPに接続",
     step2: "パスワードを入力",
     step3: "アバターを選んで入場！",
+    step4: "あなたのゾーンへ移動",
+    zoneLocation: "ゾーンの場所",
     password: "パスワード",
     copied: "コピーしました",
     copy: "コピー",
@@ -50,18 +57,19 @@ const LABEL = {
   },
 }
 
-export function ZepAccessModal({ isOpen, onClose, space, locale }: ZepAccessModalProps) {
+export function ZepAccessModal({ isOpen, onClose, zone, locale }: ZepAccessModalProps) {
   const l = LABEL[locale as keyof typeof LABEL] || LABEL.ko
   const [copied, setCopied] = useState(false)
 
   if (!isOpen) return null
 
-  const spaceName = space.name[locale as keyof typeof space.name] || space.name.ko
-  const spaceDesc = space.description[locale as keyof typeof space.description] || space.description.ko
+  const zoneName = zone.name[locale as keyof typeof zone.name] || zone.name.ko
+  const zoneDesc = zone.description[locale as keyof typeof zone.description] || zone.description.ko
+  const areaGuide = zone.areaGuide[locale as keyof typeof zone.areaGuide] || zone.areaGuide.ko
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(space.password)
+      await navigator.clipboard.writeText(zepSpace.password)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
@@ -70,8 +78,10 @@ export function ZepAccessModal({ isOpen, onClose, space, locale }: ZepAccessModa
   }
 
   const handleEnter = () => {
-    window.open(space.spaceUrl, '_blank', 'noopener,noreferrer')
+    window.open(zepSpace.spaceUrl, '_blank', 'noopener,noreferrer')
   }
+
+  const steps = [l.step1, l.step2, l.step3, l.step4]
 
   return (
     <div
@@ -91,9 +101,9 @@ export function ZepAccessModal({ isOpen, onClose, space, locale }: ZepAccessModa
           >
             <X size={18} />
           </button>
-          <div className="text-4xl mb-2">{space.backgroundEmoji}</div>
-          <h2 className="text-xl font-black pr-8">{spaceName}</h2>
-          <p className="text-sm opacity-80 mt-1 pr-8">{spaceDesc}</p>
+          <div className="text-4xl mb-2">{zone.emoji}</div>
+          <h2 className="text-xl font-black pr-8">{zoneName}</h2>
+          <p className="text-sm opacity-80 mt-1 pr-8">{zoneDesc}</p>
         </div>
 
         <div className="p-6 space-y-5">
@@ -101,7 +111,7 @@ export function ZepAccessModal({ isOpen, onClose, space, locale }: ZepAccessModa
           <div>
             <h3 className="text-sm font-black text-ink mb-3">📋 {l.howTo}</h3>
             <div className="space-y-2.5">
-              {[l.step1, l.step2, l.step3].map((step, i) => (
+              {steps.map((step, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span className="w-6 h-6 rounded-full bg-mint-light text-mint-deep font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
                     {i + 1}
@@ -112,12 +122,21 @@ export function ZepAccessModal({ isOpen, onClose, space, locale }: ZepAccessModa
             </div>
           </div>
 
+          {/* 구역 위치 안내 */}
+          <div className="bg-sky/10 rounded-xl px-4 py-3 border border-sky/20 flex items-center gap-3">
+            <span className="text-2xl shrink-0">{zone.emoji}</span>
+            <div>
+              <p className="text-xs font-black text-ink mb-0.5">📍 {l.zoneLocation}</p>
+              <p className="text-sm text-slate">{areaGuide}</p>
+            </div>
+          </div>
+
           {/* 비밀번호 */}
           <div>
             <h3 className="text-sm font-black text-ink mb-2">🔑 {l.password}</h3>
             <div className="flex items-center gap-2 bg-cloud rounded-xl px-4 py-3 border border-mist">
               <code className="flex-1 font-mono text-sm font-bold text-ink tracking-wider select-all">
-                {space.password}
+                {zepSpace.password}
               </code>
               <button
                 onClick={handleCopy}
