@@ -12,6 +12,8 @@ import { QuestFAQ } from "@/components/features/quest/QuestFAQ"
 import { QuestStickyBar } from "@/components/features/quest/QuestStickyBar"
 import { QuestPartySection } from "@/components/features/quest/QuestPartySection"
 import { ZepMeetingButton } from "@/components/features/quest/ZepMeetingButton"
+import { ZepBanner } from "@/components/features/quest/ZepBanner"
+import { getZepSpaceByCourseId } from "@/lib/data/zep-spaces"
 import type { I18nText } from "@/lib/supabase/types"
 
 interface Props {
@@ -169,14 +171,23 @@ export default async function CourseDetailPage({ params }: Props) {
         locale={locale}
       />
 
-      {/* 6-1. ZEP 가상 모임 */}
-      <section className="max-w-5xl mx-auto px-8 md:px-10 py-8" id="zep-meeting">
-        <ZepMeetingButton
-          courseId={course.region || ''}
-          hasPurchased={hasPurchasedKit}
-          locale={locale}
-        />
-      </section>
+      {/* 6-1. ZEP 가상 모임
+            - 비구매자 : ZepBanner (풀 애니메이션 + 구매 유도 CTA)
+            - 구매자   : ZepMeetingButton (미니 프리뷰 + 입장 버튼)
+            - 해당 코스에 ZEP 스페이스 없으면 렌더링 안 함            */}
+      {getZepSpaceByCourseId(course.region || '') && (
+        <section className="max-w-5xl mx-auto px-8 md:px-10 py-8" id="zep-meeting">
+          {hasPurchasedKit ? (
+            <ZepMeetingButton
+              courseId={course.region || ''}
+              hasPurchased={true}
+              locale={locale}
+            />
+          ) : (
+            <ZepBanner locale={locale} />
+          )}
+        </section>
+      )}
 
       {/* 7. 여행 준비 (제휴 링크) */}
       {affiliateLinks.length > 0 && (
