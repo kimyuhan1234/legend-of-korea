@@ -50,21 +50,75 @@ export function ZepMeetingButton({ courseId, hasPurchased, locale }: ZepMeetingB
   if (hasPurchased) {
     return (
       <>
-        <div className="bg-gradient-to-r from-sky to-mint rounded-2xl p-5 text-ink">
-          <div className="flex items-start gap-3 mb-4">
-            <span className="text-2xl shrink-0">{space.backgroundEmoji}</span>
-            <div>
-              <h3 className="font-black text-base">🎮 {l.title}</h3>
-              <p className="text-sm opacity-80 mt-0.5">{l.desc}</p>
+        <div className="bg-gradient-to-r from-sky to-mint rounded-2xl overflow-hidden text-ink">
+          {/* 미니 애니메이션 프리뷰 */}
+          <div className="relative h-16 bg-black/10 overflow-hidden">
+            {/* 연결 점선 */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.3 }}>
+              <line x1="25%" y1="50%" x2="75%" y2="50%"
+                stroke="#fff" strokeWidth="1" strokeDasharray="4 3" className="animate-pulse" />
+            </svg>
+            {/* 아바타 A */}
+            <div className="absolute top-1/2 -translate-y-1/2 zmb-avatar-a" style={{ left: '18%' }}>
+              <div className="w-8 h-8 rounded-full bg-white/25 border-2 border-white/50 flex items-center justify-center text-lg">
+                🧑‍💻
+              </div>
+            </div>
+            {/* 아바타 B */}
+            <div className="absolute top-1/2 -translate-y-1/2 zmb-avatar-b" style={{ right: '18%' }}>
+              <div className="w-8 h-8 rounded-full bg-white/25 border-2 border-white/50 flex items-center justify-center text-lg">
+                👩‍🎨
+              </div>
+            </div>
+            {/* 대화 버블 */}
+            <div className="absolute top-1.5 left-1/2 -translate-x-1/2 zmb-bubble">
+              <span className="text-[10px] bg-white/85 text-ink px-2.5 py-1 rounded-full font-bold whitespace-nowrap shadow-sm">
+                💬 Hi! 👋
+              </span>
+            </div>
+            {/* 스페이스 이름 */}
+            <div className="absolute bottom-1.5 right-3">
+              <span className="text-[9px] text-white/50 font-bold uppercase tracking-wider">ZEP</span>
             </div>
           </div>
-          <button
-            onClick={() => setModalOpen(true)}
-            className="w-full py-3 rounded-xl bg-white/30 hover:bg-white/50 text-ink font-bold text-sm transition-colors border border-white/40"
-          >
-            {l.enter} →
-          </button>
+
+          {/* 텍스트 + 버튼 */}
+          <div className="p-5">
+            <div className="flex items-start gap-3 mb-4">
+              <span className="text-2xl shrink-0">{space.backgroundEmoji}</span>
+              <div>
+                <h3 className="font-black text-base">🎮 {l.title}</h3>
+                <p className="text-sm opacity-80 mt-0.5">{l.desc}</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setModalOpen(true)}
+              className="w-full py-3 rounded-xl bg-white/30 hover:bg-white/50 text-ink font-bold text-sm transition-colors border border-white/40"
+            >
+              {l.enter} →
+            </button>
+          </div>
         </div>
+
+        {/* 미니 애니메이션 keyframes */}
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        <style jsx>{`
+          @keyframes zmbRight {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50%       { transform: translateY(-50%) translateX(20px); }
+          }
+          @keyframes zmbLeft {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50%       { transform: translateY(-50%) translateX(-20px); }
+          }
+          @keyframes zmbBubble {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(0.95); }
+            50%       { opacity: 1;   transform: translateX(-50%) scale(1); }
+          }
+          .zmb-avatar-a { animation: zmbRight  3s ease-in-out infinite; }
+          .zmb-avatar-b { animation: zmbLeft   3s ease-in-out infinite; }
+          .zmb-bubble   { animation: zmbBubble 3s ease-in-out infinite; }
+        `}</style>
 
         <ZepAccessModal
           isOpen={modalOpen}
