@@ -35,7 +35,9 @@ export function QuestStorySlider({ storyCards, region }: QuestStorySliderProps) 
   const onTouchStart = (e: React.TouchEvent) => { touchStart.current = e.touches[0].clientX }
   const onTouchEnd = (e: React.TouchEvent) => {
     const diff = touchStart.current - e.changedTouches[0].clientX
-    if (Math.abs(diff) > 50) diff > 0 ? next() : prev()
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) { next() } else { prev() }
+    }
   }
 
   const scrollToKit = () => {
