@@ -7,6 +7,7 @@ import { LocaleSwitcher } from "@/components/shared/LocaleSwitcher"
 import { BackButton } from "@/components/shared/BackButton"
 import { PlannerBadge } from "@/components/features/planner/PlannerBadge"
 import { CartBadge } from "@/components/shared/CartBadge"
+import { NavbarTabs } from "@/components/shared/NavbarTabs"
 
 interface NavbarProps {
   locale: string
@@ -102,18 +103,8 @@ export async function Navbar({ locale }: NavbarProps) {
           </Link>
         </div>
 
-        {/* 데스크탑 네비게이션 — 7탭 수용을 위해 간격 축소 + 가로 스크롤 */}
-        <nav className="hidden md:flex items-center gap-0.5 overflow-x-auto scrollbar-hide flex-1 justify-center min-w-0">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={`/${locale}${link.href}`}
-              className="shrink-0 px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-medium text-slate hover:bg-cloud hover:text-ink transition-colors whitespace-nowrap"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        {/* 데스크탑 네비게이션 — 호버 활성 + 좌우 화살표 스크롤 */}
+        <NavbarTabs locale={locale} links={links} />
 
         {/* 우측 유저 영역 */}
         <div className="flex items-center gap-2">
