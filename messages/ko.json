@@ -1125,6 +1125,41 @@
     },
     "sticky": {
       "buy": "지금 구매하기"
+    },
+    "party": {
+      "title": "Quest Party",
+      "subtitle": "함께 모험할 동료를 찾아보세요!",
+      "desc": "혼자보다 함께! 같은 코스를 탐험할 파티원을 모집하세요",
+      "create": "파티 만들기",
+      "join": "참여하기",
+      "joined": "참여 중",
+      "myParty": "내 파티",
+      "full": "마감",
+      "members": "{current}/{max}명",
+      "date": "모험 날짜",
+      "language": "소통 언어",
+      "empty": "아직 파티가 없어요! 첫 번째 파티를 만들어보세요",
+      "emptyCreate": "직접 만들어보세요!",
+      "confirmJoin": "이 파티에 참여할까요?",
+      "confirmJoinDesc": "같은 날짜의 다른 파티에는 참여할 수 없습니다.",
+      "confirm": "참여하기",
+      "cancel": "취소",
+      "created": "파티가 생성되었습니다!",
+      "joinedToast": "파티에 참여했습니다!",
+      "loginRequired": "파티 기능은 로그인이 필요합니다",
+      "modal": {
+        "title": "Quest Party 만들기",
+        "partyTitle": "파티 제목",
+        "partyTitlePlaceholder": "전주 도깨비 같이 깨실 분!",
+        "desc": "소개글",
+        "descPlaceholder": "어떤 파티인지 소개해주세요 (선택)",
+        "date": "모험 날짜",
+        "maxMembers": "최대 인원",
+        "language": "소통 언어",
+        "nationality": "내 국적",
+        "cancel": "취소",
+        "submit": "파티 만들기!"
+      }
     }
   },
   "planner": {

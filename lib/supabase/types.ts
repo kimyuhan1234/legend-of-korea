@@ -894,6 +894,90 @@ export interface Database {
           }
         ]
       }
+      quest_parties: {
+        Row: {
+          id: string
+          course_id: string
+          leader_id: string
+          title: string
+          description: string | null
+          adventure_date: string
+          max_members: number
+          current_members: number
+          status: "open" | "full" | "completed" | "cancelled"
+          language: string
+          leader_nationality: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          course_id: string
+          leader_id: string
+          title: string
+          description?: string | null
+          adventure_date: string
+          max_members?: number
+          current_members?: number
+          status?: "open" | "full" | "completed" | "cancelled"
+          language?: string
+          leader_nationality?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          title?: string
+          description?: string | null
+          adventure_date?: string
+          max_members?: number
+          current_members?: number
+          status?: "open" | "full" | "completed" | "cancelled"
+          language?: string
+          leader_nationality?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quest_parties_leader_id_fkey"
+            columns: ["leader_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      quest_party_members: {
+        Row: {
+          id: string
+          party_id: string
+          user_id: string
+          role: "leader" | "member"
+          joined_at: string
+        }
+        Insert: {
+          id?: string
+          party_id: string
+          user_id: string
+          role?: "leader" | "member"
+          joined_at?: string
+        }
+        Update: {
+          role?: "leader" | "member"
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quest_party_members_party_id_fkey"
+            columns: ["party_id"]
+            referencedRelation: "quest_parties"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quest_party_members_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -932,6 +1016,8 @@ export type SubscriptionPlan = Database["public"]["Tables"]["subscription_plans"
 export type UserSubscription = Database["public"]["Tables"]["user_subscriptions"]["Row"]
 export type TravelPlan = Database["public"]["Tables"]["travel_plans"]["Row"]
 export type PlanItem = Database["public"]["Tables"]["plan_items"]["Row"]
+export type QuestParty = Database["public"]["Tables"]["quest_parties"]["Row"]
+export type QuestPartyMember = Database["public"]["Tables"]["quest_party_members"]["Row"]
 
 // Insert 타입
 export type UserInsert = Database["public"]["Tables"]["users"]["Insert"]

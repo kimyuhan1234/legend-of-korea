@@ -10,6 +10,7 @@ import { QuestKitShowcase } from "@/components/features/quest/QuestKitShowcase"
 import { QuestReviews } from "@/components/features/quest/QuestReviews"
 import { QuestFAQ } from "@/components/features/quest/QuestFAQ"
 import { QuestStickyBar } from "@/components/features/quest/QuestStickyBar"
+import { QuestPartySection } from "@/components/features/quest/QuestPartySection"
 import type { I18nText } from "@/lib/supabase/types"
 
 interface Props {
@@ -134,17 +135,25 @@ export default async function CourseDetailPage({ params }: Props) {
         isLoggedIn={isLoggedIn}
       />
 
-      {/* 6. 여행 준비 (제휴 링크) */}
+      {/* 6. Quest Party 매칭 */}
+      <QuestPartySection
+        courseId={courseId}
+        isLoggedIn={isLoggedIn}
+        currentUserId={user?.id ?? null}
+        locale={locale}
+      />
+
+      {/* 7. 여행 준비 (제휴 링크) */}
       {affiliateLinks.length > 0 && (
         <section className="max-w-5xl mx-auto px-8 md:px-10 py-20 md:py-28">
           <AffiliateLinks links={affiliateLinks as any} locale={locale} />
         </section>
       )}
 
-      {/* 7. 외국인 체험 후기 */}
+      {/* 8. 외국인 체험 후기 */}
       <QuestReviews />
 
-      {/* 8. FAQ */}
+      {/* 9. FAQ */}
       <QuestFAQ />
 
       {/* 하단 고정 구매 바 */}

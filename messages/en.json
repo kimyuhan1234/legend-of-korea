@@ -1100,6 +1100,41 @@
     },
     "sticky": {
       "buy": "Buy Now"
+    },
+    "party": {
+      "title": "Quest Party",
+      "subtitle": "Find companions for your adventure!",
+      "desc": "Better together! Recruit party members to explore the same course",
+      "create": "Create Party",
+      "join": "Join",
+      "joined": "Joined",
+      "myParty": "My Party",
+      "full": "Full",
+      "members": "{current}/{max} members",
+      "date": "Adventure Date",
+      "language": "Language",
+      "empty": "No parties yet! Create the first one",
+      "emptyCreate": "Create one yourself!",
+      "confirmJoin": "Join this party?",
+      "confirmJoinDesc": "You cannot join another party on the same date.",
+      "confirm": "Join",
+      "cancel": "Cancel",
+      "created": "Party created!",
+      "joinedToast": "You joined the party!",
+      "loginRequired": "Login required for party features",
+      "modal": {
+        "title": "Create Quest Party",
+        "partyTitle": "Party Title",
+        "partyTitlePlaceholder": "Let's explore Jeonju together!",
+        "desc": "Description",
+        "descPlaceholder": "Tell us about your party (optional)",
+        "date": "Adventure Date",
+        "maxMembers": "Max Members",
+        "language": "Language",
+        "nationality": "My Nationality",
+        "cancel": "Cancel",
+        "submit": "Create Party!"
+      }
     }
   },
   "planner": {

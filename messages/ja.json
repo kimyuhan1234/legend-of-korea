@@ -1100,6 +1100,41 @@
     },
     "sticky": {
       "buy": "今すぐ購入"
+    },
+    "party": {
+      "title": "クエストパーティー",
+      "subtitle": "冒険の仲間を見つけよう！",
+      "desc": "一人より一緒に！同じコースを探検するパーティーメンバーを募集",
+      "create": "パーティーを作る",
+      "join": "参加する",
+      "joined": "参加中",
+      "myParty": "マイパーティー",
+      "full": "満員",
+      "members": "{current}/{max}人",
+      "date": "冒険日",
+      "language": "言語",
+      "empty": "まだパーティーがありません！最初のパーティーを作ろう",
+      "emptyCreate": "自分で作ってみよう！",
+      "confirmJoin": "このパーティーに参加しますか？",
+      "confirmJoinDesc": "同じ日の他のパーティーには参加できません。",
+      "confirm": "参加する",
+      "cancel": "キャンセル",
+      "created": "パーティーが作成されました！",
+      "joinedToast": "パーティーに参加しました！",
+      "loginRequired": "パーティー機能にはログインが必要です",
+      "modal": {
+        "title": "クエストパーティーを作る",
+        "partyTitle": "パーティータイトル",
+        "partyTitlePlaceholder": "全州ドッケビを一緒に攻略しましょう！",
+        "desc": "紹介文",
+        "descPlaceholder": "パーティーの紹介をどうぞ（任意）",
+        "date": "冒険日",
+        "maxMembers": "最大人数",
+        "language": "言語",
+        "nationality": "国籍",
+        "cancel": "キャンセル",
+        "submit": "パーティーを作る！"
+      }
     }
   },
   "planner": {

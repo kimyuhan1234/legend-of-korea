@@ -1,6 +1,6 @@
 # Legend of Korea — DB Schema (Supabase PostgreSQL)
 
-> 최종 수정: 2026-04-07  
+> 최종 수정: 2026-04-15  
 > DB: Supabase (PostgreSQL 15+), Auth: Supabase Auth (OAuth: 카카오, 구글, LINE)
 
 ---
@@ -22,6 +22,8 @@
 | `affiliate_links` | 제휴 링크 (숙소, 교통 등) |
 | `affiliate_clicks` | 제휴 링크 클릭 로그 |
 | `b2b_orders` | B2B 단체 주문 |
+| `quest_parties` | Quest Party 매칭 — 파티 정보 (migration 020) |
+| `quest_party_members` | Quest Party 멤버 목록 (migration 020) |
 
 ---
 
