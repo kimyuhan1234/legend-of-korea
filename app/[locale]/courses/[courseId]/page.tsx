@@ -147,7 +147,7 @@ export default async function CourseDetailPage({ params }: Props) {
       <QuestHowItWorks />
 
       {/* 3. 인터랙티브 스토리 */}
-      <QuestStorySlider storyCards={storyCards} />
+      <QuestStorySlider storyCards={storyCards} region={course.region || ''} />
 
       {/* 4. 일반 관광 vs 미션 여행 */}
       <QuestComparison />
