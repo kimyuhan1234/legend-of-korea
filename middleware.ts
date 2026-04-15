@@ -82,6 +82,6 @@ export const config = {
      * _next/static, _next/image, favicon.ico, 정적 파일 확장자 제외
      * API 라우트도 제외 (updateSession은 위 if 분기에서 이미 패스스루)
      */
-    "/((?!_next/static|_next/image|favicon\\.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot)$).*)",
+    "/((?!_next/static|_next/image|favicon\\.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot|mp4|mp3|wav|ogg|webm|mov|avi)$).*)",
   ],
 }
