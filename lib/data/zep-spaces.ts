@@ -1,7 +1,7 @@
 /** 도시별 구역 정보 */
 export interface ZepZone {
   id: string
-  courseId: string            // courses.region 또는 이벤트 식별자 ('jeonju', 'gyeongdo-seoul' 등)
+  courseId: string            // courses.region ('jeonju', 'busan' 등) 또는 이벤트 식별자 ('gyeongdo-seoul')
   name: { ko: string; en: string; ja: string }
   description: { ko: string; en: string; ja: string }
   emoji: string
@@ -54,6 +54,70 @@ export const zepSpace: ZepSpace = {
       },
     },
     {
+      id: "tongyeong",
+      courseId: "tongyeong",
+      name: { ko: "통영 별주부 구역", en: "Tongyeong Byeoljubu Zone", ja: "統営ピョルジュブゾーン" },
+      description: {
+        ko: "통영 별주부 코스 모험가들의 모임 구역",
+        en: "Meeting zone for Tongyeong Byeoljubu adventurers",
+        ja: "統営ピョルジュブコースの冒険者集合ゾーン",
+      },
+      emoji: "🐢",
+      areaGuide: {
+        ko: "로비에서 왼쪽",
+        en: "Left from lobby",
+        ja: "ロビーから左",
+      },
+    },
+    {
+      id: "cheonan",
+      courseId: "cheonan",
+      name: { ko: "천안 능소 구역", en: "Cheonan Nungso Zone", ja: "天安ヌンソゾーン" },
+      description: {
+        ko: "천안 능소의 기다림 코스 모험가들의 모임 구역",
+        en: "Meeting zone for Cheonan Nungso adventurers",
+        ja: "天安ヌンソコースの冒険者集合ゾーン",
+      },
+      emoji: "🌸",
+      areaGuide: {
+        ko: "로비에서 왼쪽 아래",
+        en: "Lower left from lobby",
+        ja: "ロビーから左下",
+      },
+    },
+    {
+      id: "yongin",
+      courseId: "yongin",
+      name: { ko: "용인 동화 구역", en: "Yongin Fairy Tale Zone", ja: "龍仁童話ゾーン" },
+      description: {
+        ko: "용인 동화 속으로 코스 모험가들의 모임 구역",
+        en: "Meeting zone for Yongin Fairy Tale adventurers",
+        ja: "龍仁童話コースの冒険者集合ゾーン",
+      },
+      emoji: "📖",
+      areaGuide: {
+        ko: "로비에서 오른쪽",
+        en: "Right from lobby",
+        ja: "ロビーから右",
+      },
+    },
+    {
+      id: "icheon",
+      courseId: "icheon",
+      name: { ko: "이천 선녀 구역", en: "Icheon Fairy Zone", ja: "利川仙女ゾーン" },
+      description: {
+        ko: "이천 선녀의 날개옷 코스 모험가들의 모임 구역",
+        en: "Meeting zone for Icheon Fairy adventurers",
+        ja: "利川仙女コースの冒険者集合ゾーン",
+      },
+      emoji: "🧚",
+      areaGuide: {
+        ko: "로비에서 오른쪽 위",
+        en: "Upper right from lobby",
+        ja: "ロビーから右上",
+      },
+    },
+    {
       id: "gyeongju",
       courseId: "gyeongju",
       name: { ko: "경주 신라 구역", en: "Gyeongju Silla Zone", ja: "慶州新羅ゾーン" },
@@ -64,9 +128,9 @@ export const zepSpace: ZepSpace = {
       },
       emoji: "👑",
       areaGuide: {
-        ko: "로비에서 오른쪽 위",
-        en: "Upper right from lobby",
-        ja: "ロビーから右上",
+        ko: "로비 위쪽 중앙",
+        en: "Upper center from lobby",
+        ja: "ロビー上部中央",
       },
     },
     {
@@ -80,13 +144,45 @@ export const zepSpace: ZepSpace = {
       },
       emoji: "🧜‍♀️",
       areaGuide: {
-        ko: "로비에서 왼쪽 아래",
+        ko: "로비에서 아래쪽 왼쪽",
         en: "Lower left from lobby",
-        ja: "ロビーから左下",
+        ja: "ロビーから下部左",
       },
     },
     {
-      id: "seoul-gyeongdo",
+      id: "seoul",
+      courseId: "seoul",
+      name: { ko: "서울 해치 구역", en: "Seoul Haechi Zone", ja: "ソウルヘチゾーン" },
+      description: {
+        ko: "서울 해치 수호신 코스 모험가들의 모임 구역",
+        en: "Meeting zone for Seoul Haechi adventurers",
+        ja: "ソウルヘチ守護神コースの冒険者集合ゾーン",
+      },
+      emoji: "🦁",
+      areaGuide: {
+        ko: "로비에서 아래쪽 오른쪽",
+        en: "Lower right from lobby",
+        ja: "ロビーから下部右",
+      },
+    },
+    {
+      id: "jeju",
+      courseId: "jeju",
+      name: { ko: "제주 거인 구역", en: "Jeju Giant Zone", ja: "済州巨人ゾーン" },
+      description: {
+        ko: "제주 설문대할망 코스 모험가들의 모임 구역",
+        en: "Meeting zone for Jeju Giant adventurers",
+        ja: "済州ソルムンデハルマンコースの冒険者集合ゾーン",
+      },
+      emoji: "🌋",
+      areaGuide: {
+        ko: "로비 아래쪽 중앙",
+        en: "Lower center from lobby",
+        ja: "ロビー下部中央",
+      },
+    },
+    {
+      id: "gyeongdo-seoul",
       courseId: "gyeongdo-seoul",
       name: { ko: "서울 경도 작전실", en: "Seoul Cops & Robbers HQ", ja: "ソウルケイドロ作戦室" },
       description: {
@@ -96,9 +192,9 @@ export const zepSpace: ZepSpace = {
       },
       emoji: "🚔",
       areaGuide: {
-        ko: "로비에서 오른쪽 아래",
-        en: "Lower right from lobby",
-        ja: "ロビーから右下",
+        ko: "서울 해치 구역 옆",
+        en: "Next to Seoul Haechi Zone",
+        ja: "ソウルヘチゾーンの隣",
       },
     },
     {
