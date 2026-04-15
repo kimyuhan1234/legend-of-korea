@@ -26,6 +26,7 @@ import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import MissionRegister from '@/components/features/mypage/MissionRegister';
+import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton';
 import { toast } from '@/components/ui/use-toast';
 
 interface MyPageClientProps {
@@ -43,6 +44,8 @@ export function MyPageClient({ locale }: MyPageClientProps) {
   const [lpHistory, setLpHistory] = useState<any[]>([]);
   const [coupons, setCoupons] = useState<any[]>([]);
   const [orders, setOrders] = useState<any[]>([]);
+  // orderId -> course.region 매핑 (ZEP 스페이스 조회용)
+  const [orderRegionMap, setOrderRegionMap] = useState<Record<string, string>>({});
 
   // LP apply states
   const [lpBalance, setLpBalance] = useState<number>(0);
@@ -91,7 +94,37 @@ export function MyPageClient({ locale }: MyPageClientProps) {
           setAppliedIds(applied);
         }
         if (cData.success) setCoupons(cData.coupons);
-        if (oData.success) setOrders(oData.orders);
+        if (oData.success) {
+          setOrders(oData.orders);
+          // 각 주문의 course.region 조회 (ZEP 스페이스 매칭용)
+          const courseIds: string[] = [
+            ...new Set(
+              (oData.orders as any[])
+                .map((o: any) => o.kit_products?.courses?.id)
+                .filter(Boolean)
+            ),
+          ];
+          if (courseIds.length) {
+            try {
+              const { data: courseRows } = await supabase
+                .from('courses')
+                .select('id, region')
+                .in('id', courseIds);
+              const regionById: Record<string, string> = {};
+              (courseRows || []).forEach((c: any) => {
+                regionById[c.id] = c.region || '';
+              });
+              const regionByOrder: Record<string, string> = {};
+              (oData.orders as any[]).forEach((o: any) => {
+                const cId = o.kit_products?.courses?.id;
+                if (cId && regionById[cId]) regionByOrder[o.id] = regionById[cId];
+              });
+              setOrderRegionMap(regionByOrder);
+            } catch {
+              // ZEP 매핑 실패해도 주문 탭은 정상 동작
+            }
+          }
+        }
 
       } catch (error) {
         console.error('Fetch My Page Data Error:', error);
@@ -427,6 +460,17 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                             미션 시작하기
                           </Button>
                        </div>
+
+                       {/* ZEP 가상 모임 — 구매된 코스에 ZEP 스페이스가 있을 때만 표시 */}
+                       {orderRegionMap[order.id] && (
+                         <div className="pt-2">
+                           <ZepMeetingButton
+                             courseId={orderRegionMap[order.id]}
+                             hasPurchased={true}
+                             locale={locale}
+                           />
+                         </div>
+                       )}
                      </div>
                    ))
                  )}

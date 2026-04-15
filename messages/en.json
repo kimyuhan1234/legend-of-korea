@@ -1550,5 +1550,36 @@
       "aiError": "AI had trouble responding. Please try again later",
       "networkError": "Network error. Check your internet connection"
     }
+  },
+  "zep": {
+    "button": {
+      "title": "Meet Your Party",
+      "desc": "Meet fellow adventurers on ZEP",
+      "enter": "Enter Virtual Meeting",
+      "locked": "Buy a kit to meet party members in the ZEP virtual space!",
+      "buyFirst": "Buy Kit & Join"
+    },
+    "modal": {
+      "title": "Join Virtual Meeting",
+      "howTo": "How to Join",
+      "step1": "Click the button below to open ZEP",
+      "step2": "Enter the password",
+      "step3": "Choose your avatar and enter!",
+      "password": "Password",
+      "copied": "Copied!",
+      "tip": "In ZEP, voice/video chat starts automatically when you approach other adventurers. Turn on your mic and camera!",
+      "warning": "Don't share the password. This space is only for kit purchasers.",
+      "enterZep": "Enter ZEP"
+    },
+    "banner": {
+      "title": "Meet Before Your Trip!",
+      "desc": "Buy a kit to meet your party members in the ZEP virtual space before your trip.",
+      "voice": "Voice Chat",
+      "video": "Video Chat",
+      "avatar": "Explore with Avatar"
+    },
+    "purchase": {
+      "unlocked": "Your virtual meeting room is unlocked! Meet your party before the trip"
+    }
   }
 }

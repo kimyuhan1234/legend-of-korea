@@ -2,8 +2,8 @@ import Link from "next/link"
 import { getTranslations } from "next-intl/server"
 import { Metadata } from "next"
 import { createClient } from "@/lib/supabase/server"
-
 import { Disclaimer } from "@/components/shared/Disclaimer"
+import { ZepMeetingButton } from "@/components/features/quest/ZepMeetingButton"
 
 interface Props {
   params: { locale: string; courseId: string }
@@ -28,6 +28,20 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
   let confirmedOrderId = orderId || session_id || ""
   let paymentConfirmed = false
   let paymentError = ""
+
+  // 코스 region 조회 (ZEP 스페이스 매칭용)
+  const supabase = await createClient()
+  let courseRegion = ""
+  try {
+    const { data: courseRow } = await supabase
+      .from("courses")
+      .select("region")
+      .eq("id", courseId)
+      .single()
+    courseRegion = courseRow?.region || ""
+  } catch {
+    courseRegion = ""
+  }
 
   // Toss 결제 승인
   if (paymentKey && orderId && amount) {
@@ -95,13 +109,31 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
           </div>
         )}
 
-        <p className="text-stone mb-10">
+        <p className="text-stone mb-6">
           {locale === "ko"
             ? "키트가 등록하신 배송지로 발송됩니다. 배송 현황은 마이페이지에서 확인하세요."
             : locale === "ja"
             ? "キットはご登録の配送先に発送されます。配送状況はマイページでご確認ください。"
             : "Your kit will be shipped to the address you provided. Track your shipment in My Page."}
         </p>
+
+        {/* ZEP 가상 모임 공간 안내 */}
+        {courseRegion && (
+          <div className="mb-8 text-left">
+            <p className="text-sm font-bold text-[#111] mb-3 text-center">
+              {locale === "ko"
+                ? "🎮 가상 모임 공간이 열렸습니다! 여행 전에 파티원을 만나보세요"
+                : locale === "ja"
+                ? "🎮 バーチャル集合場所が開きました！旅行前にパーティーメンバーに会おう"
+                : "🎮 Your virtual meeting room is unlocked! Meet your party before the trip"}
+            </p>
+            <ZepMeetingButton
+              courseId={courseRegion}
+              hasPurchased={true}
+              locale={locale}
+            />
+          </div>
+        )}
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
           <Link

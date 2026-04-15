@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import { GYEONGDO_EVENTS, resolveEventStatus } from '@/lib/data/gyeongdo-events'
 import { GyeongdoEventDetail } from '@/components/features/quest/GyeongdoEventDetail'
+import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton'
 
 interface Props {
   params: { locale: string }
@@ -75,6 +76,13 @@ export default async function GyeongdoPage({ params }: Props) {
                 isLoggedIn={isLoggedIn}
               />
             ))}
+
+            {/* ZEP 가상 사전 작전 모임 */}
+            <ZepMeetingButton
+              courseId="gyeongdo-seoul"
+              hasPurchased={isLoggedIn}
+              locale={locale}
+            />
           </div>
         )}
       </div>

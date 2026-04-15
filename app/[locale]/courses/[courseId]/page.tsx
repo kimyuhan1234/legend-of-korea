@@ -11,6 +11,7 @@ import { QuestReviews } from "@/components/features/quest/QuestReviews"
 import { QuestFAQ } from "@/components/features/quest/QuestFAQ"
 import { QuestStickyBar } from "@/components/features/quest/QuestStickyBar"
 import { QuestPartySection } from "@/components/features/quest/QuestPartySection"
+import { ZepMeetingButton } from "@/components/features/quest/ZepMeetingButton"
 import type { I18nText } from "@/lib/supabase/types"
 
 interface Props {
@@ -62,6 +63,29 @@ export default async function CourseDetailPage({ params }: Props) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   const isLoggedIn = !!user
+
+  // 키트 구매 여부 확인 (ZEP 접근 권한 판단)
+  let hasPurchasedKit = false
+  if (user) {
+    try {
+      const { data: kitRows } = await supabase
+        .from("kit_products")
+        .select("id")
+        .eq("course_id", courseId)
+      if (kitRows?.length) {
+        const kitIds = kitRows.map((k) => k.id)
+        const { data: orderRows } = await supabase
+          .from("orders")
+          .select("id")
+          .eq("user_id", user.id)
+          .in("kit_product_id", kitIds)
+          .limit(1)
+        hasPurchasedKit = (orderRows?.length ?? 0) > 0
+      }
+    } catch {
+      hasPurchasedKit = false
+    }
+  }
 
   const [courseRes, kitRes, missionRes, affiliateRes] = await Promise.all([
     supabase
@@ -127,6 +151,7 @@ export default async function CourseDetailPage({ params }: Props) {
       <QuestComparison />
 
       {/* 5. 키트 언박싱 & 구매 */}
+      <div id="kit-purchase">
       <QuestKitShowcase
         courseId={courseId}
         kits={kits as any}
@@ -134,6 +159,7 @@ export default async function CourseDetailPage({ params }: Props) {
         region={course.region || 'jeonju'}
         isLoggedIn={isLoggedIn}
       />
+      </div>
 
       {/* 6. Quest Party 매칭 */}
       <QuestPartySection
@@ -142,6 +168,15 @@ export default async function CourseDetailPage({ params }: Props) {
         currentUserId={user?.id ?? null}
         locale={locale}
       />
+
+      {/* 6-1. ZEP 가상 모임 */}
+      <section className="max-w-5xl mx-auto px-8 md:px-10 py-8" id="zep-meeting">
+        <ZepMeetingButton
+          courseId={course.region || ''}
+          hasPurchased={hasPurchasedKit}
+          locale={locale}
+        />
+      </section>
 
       {/* 7. 여행 준비 (제휴 링크) */}
       {affiliateLinks.length > 0 && (
