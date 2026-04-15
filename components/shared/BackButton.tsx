@@ -21,14 +21,14 @@ export function BackButton() {
       variant="ghost"
       onClick={() => router.back()}
       className={cn(
-        "h-9 px-2 gap-1.5 rounded-xl bg-transparent hover:bg-[#F0F2F5] transition-all group shrink-0",
+        "h-9 px-2 gap-1.5 rounded-xl bg-transparent hover:bg-cloud transition-all group shrink-0",
         "flex items-center"
       )}
     >
-      <span className="text-lg font-bold text-[#9DD8CE] group-hover:-translate-x-0.5 transition-transform">
+      <span className="text-lg font-bold text-mint-deep group-hover:-translate-x-0.5 transition-transform">
         &lt;
       </span>
-      <span className="text-sm font-medium text-[#9DD8CE]">
+      <span className="text-sm font-medium text-mint-deep">
         {t("back")}
       </span>
     </Button>

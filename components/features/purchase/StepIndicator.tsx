@@ -22,15 +22,15 @@ export function StepIndicator({ currentStep, labels }: StepIndicatorProps) {
                   isDone
                     ? "bg-[#F0B8B8] text-[#111]"
                     : isActive
-                    ? "bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] ring-4 ring-[#1F2937]/20"
-                    : "bg-[#E4E7EB] text-[#9CA3AF]"
+                    ? "bg-gradient-to-br from-mint to-blossom text-ink ring-4 ring-[#1F2937]/20"
+                    : "bg-mist text-stone"
                 }`}
               >
                 {isDone ? "✓" : step}
               </div>
               <span
                 className={`text-xs font-medium whitespace-nowrap ${
-                  isActive ? "text-[#111]" : isDone ? "text-[#F0B8B8]" : "text-[#9CA3AF]"
+                  isActive ? "text-[#111]" : isDone ? "text-blossom-deep" : "text-stone"
                 }`}
               >
                 {label}
@@ -41,7 +41,7 @@ export function StepIndicator({ currentStep, labels }: StepIndicatorProps) {
             {i < labels.length - 1 && (
               <div
                 className={`w-12 sm:w-20 h-0.5 mx-1 -mt-5 transition-colors ${
-                  step < currentStep ? "bg-[#F0B8B8]" : "bg-[#E4E7EB]"
+                  step < currentStep ? "bg-[#F0B8B8]" : "bg-mist"
                 }`}
               />
             )}

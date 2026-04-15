@@ -143,7 +143,7 @@ export function PlannerTransport({ items, locale, onRemove }: PlannerTransportPr
             {/* TRAFFIC 변경 버튼 */}
             <Link
               href={`/${locale}/traffic`}
-              className="block text-center bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-3 mt-2 hover:opacity-90 transition"
+              className="block text-center bg-gradient-to-r from-mint to-blossom text-ink font-bold rounded-xl px-5 py-3 mt-2 hover:opacity-90 transition"
             >
               {t('transport.change')}
             </Link>
@@ -158,7 +158,7 @@ export function PlannerTransport({ items, locale, onRemove }: PlannerTransportPr
             </p>
             <Link
               href={`/${locale}/traffic`}
-              className="block text-center bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-3 hover:opacity-90 transition"
+              className="block text-center bg-gradient-to-r from-mint to-blossom text-ink font-bold rounded-xl px-5 py-3 hover:opacity-90 transition"
             >
               {t('transport.goSelect')}
             </Link>

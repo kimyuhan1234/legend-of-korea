@@ -84,7 +84,7 @@ export function PurchaseFlow({
     <div className="max-w-xl mx-auto px-4 py-10">
       <StepIndicator currentStep={step} labels={stepLabels} />
 
-      <div className="bg-white rounded-3xl border border-[#E4E7EB] p-6 md:p-8 shadow-sm">
+      <div className="bg-white rounded-3xl border border-mist p-6 md:p-8 shadow-sm">
         {step === 1 && (
           <Step1KitSelect
             kits={kits}

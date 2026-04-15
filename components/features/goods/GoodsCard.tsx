@@ -30,7 +30,7 @@ export function GoodsCard({ product, locale }: GoodsCardProps) {
   }
 
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden border border-[#E4E7EB]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+    <div className="group bg-white rounded-3xl overflow-hidden border border-mist/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
       {/* 이모지 히어로 */}
       <div className="relative h-40 bg-gradient-to-br from-mint-light/40 to-mint/30 flex items-center justify-center">
         <span className="text-6xl">{product.emoji}</span>
@@ -46,7 +46,7 @@ export function GoodsCard({ product, locale }: GoodsCardProps) {
         <div className="flex items-baseline gap-2 mb-4">
           <p className="text-lg font-black text-[#111]">₩{product.price.toLocaleString()}</p>
           {product.lpPrice && (
-            <p className="text-xs font-bold text-[#9DD8CE]">
+            <p className="text-xs font-bold text-mint-deep">
               or {product.lpPrice} LP
             </p>
           )}
@@ -55,7 +55,7 @@ export function GoodsCard({ product, locale }: GoodsCardProps) {
         <button
           type="button"
           onClick={handleAddToCart}
-          className="w-full bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-4 py-3 text-sm hover:opacity-90 transition"
+          className="w-full bg-gradient-to-r from-mint to-blossom text-ink font-bold rounded-xl px-4 py-3 text-sm hover:opacity-90 transition"
         >
           🛒 {tCart('add')} · ₩{product.price.toLocaleString()}
         </button>

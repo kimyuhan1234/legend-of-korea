@@ -57,8 +57,8 @@ export function PlannerWeather({ cityId, dates }: PlannerWeatherProps) {
   if (weather.length === 0) return null
 
   return (
-    <div className="bg-white rounded-2xl p-5 border border-[#E4E7EB]/40 h-full">
-      <p className="text-[10px] font-black text-[#9DD8CE] uppercase tracking-widest mb-3">
+    <div className="bg-white rounded-2xl p-5 border border-mist/40 h-full">
+      <p className="text-[10px] font-black text-mint-deep uppercase tracking-widest mb-3">
         🌤️ {t('weather.title')}
       </p>
 
@@ -94,7 +94,7 @@ export function PlannerWeather({ cityId, dates }: PlannerWeatherProps) {
         })}
       </div>
 
-      <p className="text-[9px] text-[#9CA3AF] mt-3 text-center leading-relaxed">
+      <p className="text-[9px] text-stone mt-3 text-center leading-relaxed">
         {t('weather.disclaimer')}
       </p>
     </div>

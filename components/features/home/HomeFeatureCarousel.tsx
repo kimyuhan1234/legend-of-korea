@@ -64,7 +64,7 @@ export function HomeFeatureCarousel({ children }: HomeFeatureCarouselProps) {
           <>
             <button
               onClick={prev}
-              className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-black/10 text-[#4B5563] hover:bg-black/30 hover:text-white transition-colors z-10"
+              className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-black/10 text-slate hover:bg-black/30 hover:text-white transition-colors z-10"
               aria-label="Previous"
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -73,7 +73,7 @@ export function HomeFeatureCarousel({ children }: HomeFeatureCarouselProps) {
             </button>
             <button
               onClick={next}
-              className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-black/10 text-[#4B5563] hover:bg-black/30 hover:text-white transition-colors z-10"
+              className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-black/10 text-slate hover:bg-black/30 hover:text-white transition-colors z-10"
               aria-label="Next"
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">

@@ -10,7 +10,7 @@ export function PlannerHero({ itemCount }: PlannerHeroProps) {
   const t = useTranslations('planner')
 
   return (
-    <section className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] py-16 md:py-24 px-6 md:px-10">
+    <section className="bg-gradient-to-br from-mint to-blossom text-ink py-16 md:py-24 px-6 md:px-10">
       <div className="max-w-5xl mx-auto text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-xs font-black uppercase tracking-widest mb-4">
           📋 MY PLANNER
@@ -21,7 +21,7 @@ export function PlannerHero({ itemCount }: PlannerHeroProps) {
         <p className="mt-4 text-white/80 text-base md:text-lg">
           {t('hero.subtitle')}
         </p>
-        <p className="mt-3 text-sm text-[#9DD8CE] font-bold">
+        <p className="mt-3 text-sm text-mint-deep font-bold">
           {t('hero.itemCount', { count: itemCount })}
         </p>
       </div>

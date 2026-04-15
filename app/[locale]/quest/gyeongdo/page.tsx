@@ -55,7 +55,7 @@ export default async function GyeongdoPage({ params }: Props) {
                   placeholder="email@example.com"
                   className="flex-1 border border-mist rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#5BBDAD]"
                 />
-                <button className="bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold text-sm px-4 py-2.5 rounded-xl whitespace-nowrap">
+                <button className="bg-gradient-to-r from-mint to-blossom text-ink font-bold text-sm px-4 py-2.5 rounded-xl whitespace-nowrap">
                   {locale === 'ko' ? '알림 받기' : locale === 'ja' ? '通知を受ける' : 'Notify me'}
                 </button>
               </div>

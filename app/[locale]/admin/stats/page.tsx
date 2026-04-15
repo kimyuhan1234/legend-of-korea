@@ -149,7 +149,7 @@ export default function AdminStatsPage() {
         <Card className="border-none shadow-sm bg-white rounded-3xl">
           <CardHeader className="p-8 pb-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-[#F0F2F5] text-[#F0B8B8] rounded-lg">
+              <div className="p-2 bg-cloud text-blossom-deep rounded-lg">
                 <Target className="w-5 h-5" />
               </div>
               <CardTitle className="text-lg font-black text-[#111]">코스별 판매량 비중</CardTitle>
@@ -230,22 +230,22 @@ export default function AdminStatsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
          {/* Affiliate Stats Summary */}
-         <Card className="border-none shadow-sm bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-3xl overflow-hidden">
+         <Card className="border-none shadow-sm bg-gradient-to-br from-mint to-blossom text-ink rounded-3xl overflow-hidden">
           <CardContent className="p-8">
             <div className="flex items-center justify-between mb-8">
-              <div className="p-3 bg-white/10 rounded-2xl text-[#F0B8B8]">
+              <div className="p-3 bg-white/10 rounded-2xl text-blossom-deep">
                 <MousePointer2 className="w-6 h-6" />
               </div>
               <Badge className="bg-[#F0B8B8] text-[#111] font-black border-none">LIVE PERFORMANCE</Badge>
             </div>
             <div className="space-y-1">
               <p className="text-slate-400 font-bold">총 제휴 링크 클릭</p>
-              <h2 className="text-4xl font-black">{data.affiliate.length.toLocaleString()} <span className="text-lg font-medium text-[#F0B8B8]">Clicks</span></h2>
+              <h2 className="text-4xl font-black">{data.affiliate.length.toLocaleString()} <span className="text-lg font-medium text-blossom-deep">Clicks</span></h2>
             </div>
             <div className="mt-8 p-4 bg-white/5 rounded-2xl border border-white/10">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-slate-300">최근 클릭 (Today)</span>
-                <span className="text-sm font-black text-[#F0B8B8]">+{Math.floor(data.affiliate.length * 0.1)}</span>
+                <span className="text-sm font-black text-blossom-deep">+{Math.floor(data.affiliate.length * 0.1)}</span>
               </div>
             </div>
           </CardContent>
@@ -255,18 +255,18 @@ export default function AdminStatsPage() {
         <Card className="border-none shadow-sm bg-[#F0B8B8] text-[#111] rounded-3xl overflow-hidden">
           <CardContent className="p-8">
             <div className="flex items-center justify-between mb-8">
-              <div className="p-3 bg-[#F0F2F5]/10 rounded-2xl text-[#111]">
+              <div className="p-3 bg-cloud/10 rounded-2xl text-[#111]">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <Badge className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-black border-none">USER ENGAGEMENT</Badge>
+              <Badge className="bg-gradient-to-br from-mint to-blossom text-ink font-black border-none">USER ENGAGEMENT</Badge>
             </div>
             <div className="space-y-1">
               <p className="font-bold opacity-70">총 미션 수행 기록</p>
               <h2 className="text-4xl font-black">{data.missions.length.toLocaleString()} <span className="text-lg font-medium opacity-70">Actions</span></h2>
             </div>
             <div className="mt-8 flex items-center gap-4">
-              <div className="flex-1 h-3 bg-[#F0F2F5]/10 rounded-full overflow-hidden">
-                <div className="h-full bg-[#F0F2F5] rounded-full" style={{ width: '75%' }} />
+              <div className="flex-1 h-3 bg-cloud/10 rounded-full overflow-hidden">
+                <div className="h-full bg-cloud rounded-full" style={{ width: '75%' }} />
               </div>
               <span className="font-black text-sm">75% Completion</span>
             </div>

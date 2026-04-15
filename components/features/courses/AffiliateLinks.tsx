@@ -117,7 +117,7 @@ export function AffiliateLinks({ links, locale, className }: AffiliateLinksProps
 
           return (
             <div key={type}>
-              <h3 className="text-sm font-bold text-[#9CA3AF] uppercase tracking-wider mb-3">
+              <h3 className="text-sm font-bold text-stone uppercase tracking-wider mb-3">
                 {icon} {sectionLabel}
               </h3>
               <div className="grid sm:grid-cols-2 gap-3">
@@ -128,7 +128,7 @@ export function AffiliateLinks({ links, locale, className }: AffiliateLinksProps
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => handleLinkClick(link.id, link.target_url || link.url || "")}
-                    className="group flex items-start gap-4 bg-white rounded-2xl p-4 border border-[#E4E7EB] hover:border-[#F0B8B8]/50 hover:shadow-sm transition-all"
+                    className="group flex items-start gap-4 bg-white rounded-2xl p-4 border border-mist hover:border-blossom-deep/50 hover:shadow-sm transition-all"
                   >
                     {link.image_url ? (
                       <img
@@ -137,20 +137,20 @@ export function AffiliateLinks({ links, locale, className }: AffiliateLinksProps
                         className="w-16 h-16 rounded-xl object-cover shrink-0"
                       />
                     ) : (
-                      <div className="w-16 h-16 rounded-xl bg-[#F0F2F5] flex items-center justify-center text-2xl shrink-0">
+                      <div className="w-16 h-16 rounded-xl bg-cloud flex items-center justify-center text-2xl shrink-0">
                         {icon}
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-[#111] line-clamp-1 group-hover:text-[#F0B8B8] transition-colors">
+                      <p className="font-semibold text-[#111] line-clamp-1 group-hover:text-blossom-deep transition-colors">
                         {getI18n(link.title, locale)}
                       </p>
                       {link.description && (
-                        <p className="text-xs text-[#9CA3AF] mt-1 line-clamp-2">
+                        <p className="text-xs text-stone mt-1 line-clamp-2">
                           {getI18n(link.description, locale)}
                         </p>
                       )}
-                      <p className="text-xs text-[#F0B8B8] mt-2 font-medium">
+                      <p className="text-xs text-blossom-deep mt-2 font-medium">
                         {label.external} ↗
                       </p>
                     </div>

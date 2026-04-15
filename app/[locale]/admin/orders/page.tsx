@@ -165,7 +165,7 @@ export default function AdminOrdersPage() {
                       <Input 
                         defaultValue={order.tracking_number || ""} 
                         placeholder="운송장 입력"
-                        className="h-9 pl-8 text-xs border-slate-200 rounded-lg focus-visible:ring-[#F0B8B8]"
+                        className="h-9 pl-8 text-xs border-slate-200 rounded-lg focus-visible:ring-blossom-deep"
                         onBlur={(e) => handleTrackingSave(order.id, e.target.value)}
                       />
                     </div>

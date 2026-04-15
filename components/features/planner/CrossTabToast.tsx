@@ -30,11 +30,11 @@ export function CrossTabToast({ currentTab, onClose }: CrossTabToastProps) {
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[92vw] max-w-md animate-slideUp">
-      <div className="bg-white rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.2)] border border-[#9DD8CE]/20 p-4">
+      <div className="bg-white rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.2)] border border-mint-deep/20 p-4">
         <div className="flex items-start gap-3">
           <div className="text-2xl shrink-0">{rec.primary.emoji}</div>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-bold text-[#9DD8CE] uppercase tracking-widest mb-1">
+            <p className="text-xs font-bold text-mint-deep uppercase tracking-widest mb-1">
               {t('toastTitle')}
             </p>
             <p className="text-sm text-[#111] font-semibold leading-snug">
@@ -43,13 +43,13 @@ export function CrossTabToast({ currentTab, onClose }: CrossTabToastProps) {
           </div>
           <button
             onClick={handleGo}
-            className="shrink-0 px-3 py-1.5 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs font-bold hover:bg-[#7BC8BC] transition-colors"
+            className="shrink-0 px-3 py-1.5 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-xs font-bold hover:bg-[#7BC8BC] transition-colors"
           >
             {t('toastGoTo')} →
           </button>
           <button
             onClick={onClose}
-            className="shrink-0 w-6 h-6 rounded-full text-[#9CA3AF] hover:text-[#111] text-xs"
+            className="shrink-0 w-6 h-6 rounded-full text-stone hover:text-[#111] text-xs"
             aria-label={t('toastClose')}
           >
             ✕

@@ -55,7 +55,7 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
         </div>
         <Link
           href={`/${locale}/community/recipe/write`}
-          className="shrink-0 flex items-center gap-1.5 bg-white text-[#9DD8CE] px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-mint-light transition-colors"
+          className="shrink-0 flex items-center gap-1.5 bg-white text-mint-deep px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-mint-light transition-colors"
         >
           <PenLine size={15} />
           레시피 작성
@@ -70,7 +70,7 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
             onClick={() => setCountry(f.code)}
             className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors
               ${country === f.code
-                ? 'bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937]'
+                ? 'bg-gradient-to-br from-mint to-blossom text-ink'
                 : 'bg-cloud text-slate hover:bg-mist'
               }`}
           >
@@ -91,7 +91,7 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
           <p className="text-sm text-stone mt-1">첫 번째 레시피를 공유해보세요!</p>
           <Link
             href={`/${locale}/community/recipe/write`}
-            className="inline-block mt-4 px-5 py-2.5 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl font-bold text-sm hover:bg-[#7BC8BC] transition-colors"
+            className="inline-block mt-4 px-5 py-2.5 bg-gradient-to-br from-mint to-blossom text-ink rounded-xl font-bold text-sm hover:bg-[#7BC8BC] transition-colors"
           >
             레시피 작성하기
           </Link>

@@ -21,14 +21,14 @@ export function GoodsGrid({ locale }: GoodsGridProps) {
   }, [selected])
 
   return (
-    <div className="min-h-screen bg-[#FAFBFC]">
+    <div className="min-h-screen bg-snow">
       <GoodsHero />
 
       <main className="max-w-5xl mx-auto px-4 md:px-8 py-12 space-y-6">
         <GoodsCategoryFilter selected={selected} onSelect={setSelected} />
 
         {filtered.length === 0 ? (
-          <div className="text-center py-20 text-[#9CA3AF]">
+          <div className="text-center py-20 text-stone">
             <div className="text-5xl mb-4">🛍️</div>
             <p className="text-sm">{t('empty')}</p>
           </div>

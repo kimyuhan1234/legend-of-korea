@@ -130,7 +130,7 @@ export function CartSidePanel() {
               <button
                 type="button"
                 onClick={() => setShowDelivery(true)}
-                className="w-full bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-4 py-3.5 text-sm hover:opacity-90 transition"
+                className="w-full bg-gradient-to-r from-mint to-blossom text-ink font-bold rounded-xl px-4 py-3.5 text-sm hover:opacity-90 transition"
               >
                 {t('order')} → {totalPriceDisplay}
               </button>

@@ -38,10 +38,10 @@ export function CourseCard({ course, locale }: CourseCardProps) {
   return (
     <Link
       href={`/${locale}/courses/${course.id}`}
-      className="group block bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden border-0 shadow-sm hover:shadow-md hover:border-[#F0B8B8]/40 transition-all duration-200"
+      className="group block bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden border-0 shadow-sm hover:shadow-md hover:border-blossom-deep/40 transition-all duration-200"
     >
       {/* 썸네일 */}
-      <div className="relative aspect-[4/3] bg-[#F0F2F5] overflow-hidden">
+      <div className="relative aspect-[4/3] bg-cloud overflow-hidden">
         <Image
           src={course.thumbnail_url || "/images/dokkaebi-hero.jpg"}
           alt={title}
@@ -57,7 +57,7 @@ export function CourseCard({ course, locale }: CourseCardProps) {
 
       {/* 내용 */}
       <div className="p-5">
-        <div className="flex items-center gap-2 text-xs text-[#9CA3AF] mb-2">
+        <div className="flex items-center gap-2 text-xs text-stone mb-2">
           <span>📍 {getRegionName(course.region, locale)}</span>
           <span>·</span>
           <span>⏱ {duration}</span>
@@ -66,18 +66,18 @@ export function CourseCard({ course, locale }: CourseCardProps) {
         <h3 className="text-base font-bold text-[#111] mb-2 line-clamp-1">
           {title}
         </h3>
-        <p className="text-sm text-[#9CA3AF] leading-relaxed line-clamp-2 mb-4">
+        <p className="text-sm text-stone leading-relaxed line-clamp-2 mb-4">
           {description}
         </p>
 
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-xs text-[#9CA3AF]">1인 {label.from}</p>
+            <p className="text-xs text-stone">1인 {label.from}</p>
             <p className="text-base font-black text-[#111]">
               ₩{course.price_1p.toLocaleString()}
             </p>
           </div>
-          <span className="text-sm font-semibold text-[#F0B8B8] group-hover:underline">
+          <span className="text-sm font-semibold text-blossom-deep group-hover:underline">
             {label.detail} →
           </span>
         </div>

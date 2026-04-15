@@ -88,9 +88,9 @@ export function SignupForm({ locale }: SignupFormProps) {
   }
 
   const inputClass = `
-    h-12 px-4 rounded-xl border border-[#E4E7EB] bg-white
-    text-[#111] placeholder:text-[#9CA3AF] text-sm
-    focus:outline-none focus:ring-2 focus:ring-[#F0B8B8]/40 focus:border-[#F0B8B8]
+    h-12 px-4 rounded-xl border border-mist bg-white
+    text-[#111] placeholder:text-stone text-sm
+    focus:outline-none focus:ring-2 focus:ring-blossom-deep/40 focus:border-blossom-deep
     transition-all w-full
   `
 
@@ -108,7 +108,7 @@ export function SignupForm({ locale }: SignupFormProps) {
       )}
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-[#4B5563]">{t.email}</label>
+        <label className="text-sm font-medium text-slate">{t.email}</label>
         <input
           type="email"
           name="email"
@@ -119,7 +119,7 @@ export function SignupForm({ locale }: SignupFormProps) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-[#4B5563]">{t.password}</label>
+        <label className="text-sm font-medium text-slate">{t.password}</label>
         <input
           type="password"
           name="password"
@@ -132,8 +132,8 @@ export function SignupForm({ locale }: SignupFormProps) {
 
       <div className="flex flex-col gap-1.5">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-[#4B5563]">{t.nickname}</label>
-          <span className={`text-xs ${nicknameLen > 18 ? "text-blossom-deep" : "text-[#9CA3AF]"}`}>
+          <label className="text-sm font-medium text-slate">{t.nickname}</label>
+          <span className={`text-xs ${nicknameLen > 18 ? "text-blossom-deep" : "text-stone"}`}>
             {nicknameLen}/20
           </span>
         </div>
@@ -149,7 +149,7 @@ export function SignupForm({ locale }: SignupFormProps) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-[#4B5563]">{t.language}</label>
+        <label className="text-sm font-medium text-slate">{t.language}</label>
         <select
           name="language"
           defaultValue={locale}
@@ -167,7 +167,7 @@ export function SignupForm({ locale }: SignupFormProps) {
         type="submit"
         disabled={loading}
         className="
-          h-12 rounded-xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-semibold text-sm
+          h-12 rounded-xl bg-gradient-to-br from-mint to-blossom text-ink font-semibold text-sm
           hover:bg-[#374151] active:bg-[#1F2937]
           disabled:opacity-60 disabled:cursor-not-allowed
           transition-all duration-150 shadow-sm mt-1
@@ -176,11 +176,11 @@ export function SignupForm({ locale }: SignupFormProps) {
         {loading ? t.submitting : t.submit}
       </button>
 
-      <p className="text-center text-sm text-[#9CA3AF]">
+      <p className="text-center text-sm text-stone">
         {t.hasAccount}{" "}
         <Link
           href={`/${locale}/auth/login`}
-          className="font-semibold text-[#F0B8B8] hover:underline"
+          className="font-semibold text-blossom-deep hover:underline"
         >
           {t.login}
         </Link>

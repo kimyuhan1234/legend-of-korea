@@ -47,7 +47,7 @@ export default function MissionCard({
   if (status === 'available') {
     return (
       <div className="rounded-2xl border-2 border-mist bg-white overflow-hidden
-                      hover:border-[#1F2937] hover:shadow-lg transition-all duration-300 group">
+                      hover:border-ink hover:shadow-lg transition-all duration-300 group">
         {/* header clickable area */}
         <button
           onClick={() => setExpanded((v) => !v)}
@@ -78,7 +78,7 @@ export default function MissionCard({
                 <MapPin size={12} />
                 {mission.location}
               </span>
-              <span className="text-xs font-bold text-[#9DD8CE]">
+              <span className="text-xs font-bold text-mint-deep">
                 +{mission.lp} LP
               </span>
             </div>
@@ -90,7 +90,7 @@ export default function MissionCard({
               <ChevronUp size={20} className="text-[#111]" />
             ) : (
               <div className="flex flex-col items-center gap-0.5">
-                <span className="text-[10px] bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] px-2.5 py-1 rounded-full font-bold">
+                <span className="text-[10px] bg-gradient-to-br from-mint to-blossom text-ink px-2.5 py-1 rounded-full font-bold">
                   {t('uploadPhoto')}
                 </span>
                 <ChevronDown size={14} className="text-stone" />
@@ -145,7 +145,7 @@ export default function MissionCard({
               <span className={`inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-bold
                 ${progress.reviewStatus === 'approved'
                   ? 'bg-green-100 text-green-700'
-                  : 'bg-yellow-100 text-yellow-700'
+                  : 'bg-blossom-light text-blossom-deep'
                 }`}
               >
                 {progress.reviewStatus === 'approved' ? (

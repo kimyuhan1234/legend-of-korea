@@ -50,7 +50,7 @@ export default function RegionFoodsPage({ params }: Props) {
       <FoodTabNav locale={locale} activeTab="dupe" />
 
       {/* 지역 히어로 */}
-      <section className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] py-20 md:py-28">
+      <section className="bg-gradient-to-br from-mint to-blossom text-ink py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-8 md:px-10">
           <Link
             href={`/${locale}/food/dupe`}
@@ -62,7 +62,7 @@ export default function RegionFoodsPage({ params }: Props) {
             <span className="text-5xl">{region.icon}</span>
             <div>
               <h1 className="text-3xl md:text-4xl font-black">{getL(region.name, locale)}</h1>
-              <p className="text-[#4B5563] mt-1">{getL(region.description, locale)}</p>
+              <p className="text-slate mt-1">{getL(region.description, locale)}</p>
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function RegionFoodsPage({ params }: Props) {
           <div className="text-center py-20">
             <p className="text-5xl mb-4">🍽️</p>
             <p className="font-bold text-[#111] text-lg mb-2">{t.comingSoon}</p>
-            <Link href={`/${locale}/food/dupe`} className="mt-4 inline-block text-sm text-[#F0B8B8] hover:underline">
+            <Link href={`/${locale}/food/dupe`} className="mt-4 inline-block text-sm text-blossom-deep hover:underline">
               {t.back}
             </Link>
           </div>
@@ -84,7 +84,7 @@ export default function RegionFoodsPage({ params }: Props) {
               <Link
                 key={food.id}
                 href={`/${locale}/food/dupe/${regionCode}/${food.id}`}
-                className="group bg-white rounded-3xl border border-[#E4E7EB] hover:border-[#F0B8B8]/50 hover:shadow-md transition-all overflow-hidden"
+                className="group bg-white rounded-3xl border border-mist hover:border-blossom-deep/50 hover:shadow-md transition-all overflow-hidden"
               >
                 {/* 이미지 */}
                 <div className="relative h-44 bg-gradient-to-br from-cloud to-blossom-light overflow-hidden">
@@ -107,12 +107,12 @@ export default function RegionFoodsPage({ params }: Props) {
                 {/* 정보 */}
                 <div className="p-4">
                   <h3 className="font-black text-[#111] mb-1">{getL(food.name, locale)}</h3>
-                  <p className="text-xs text-[#F0B8B8] font-semibold mb-3">{topFlavors(food.tasteProfile, locale)}</p>
+                  <p className="text-xs text-blossom-deep font-semibold mb-3">{topFlavors(food.tasteProfile, locale)}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-[#9CA3AF]">
+                    <span className="text-xs text-stone">
                       {Object.keys(food.dupes).length} {t.dupeCount}
                     </span>
-                    <span className="text-xs text-[#F0B8B8] group-hover:translate-x-0.5 transition-transform">
+                    <span className="text-xs text-blossom-deep group-hover:translate-x-0.5 transition-transform">
                       {t.viewDetail}
                     </span>
                   </div>

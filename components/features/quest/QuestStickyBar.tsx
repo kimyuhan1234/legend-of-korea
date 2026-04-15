@@ -104,12 +104,12 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
   // 플래너 버튼 상태별 스타일
   const plannerBtn = {
     idle: {
-      cls: 'border-[#9DD8CE] text-[#9DD8CE] hover:bg-[#FAFBFC]',
+      cls: 'border-mint-deep text-mint-deep hover:bg-snow',
       label: tp('addToPlanner'),
       labelShort: tp('addShort'),
     },
     loading: {
-      cls: 'border-[#B8E8E0] text-[#B8E8E0] cursor-wait',
+      cls: 'border-mint text-mint cursor-wait',
       label: tp('adding'),
       labelShort: tp('adding'),
     },
@@ -126,7 +126,7 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
   }[addState]
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-[#E4E7EB] shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-mist shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
       <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
         <div className="min-w-0 flex-shrink">
           <p className="text-sm font-bold text-[#111] truncate">{title}</p>
@@ -144,7 +144,7 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
           <button
             type="button"
             onClick={handleAddToCart}
-            className="shrink-0 px-4 sm:px-6 py-2.5 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs sm:text-sm font-bold hover:opacity-90 transition whitespace-nowrap"
+            className="shrink-0 px-4 sm:px-6 py-2.5 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-xs sm:text-sm font-bold hover:opacity-90 transition whitespace-nowrap"
           >
             🛒 {tCart('add')}
           </button>

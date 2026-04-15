@@ -342,7 +342,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   }
 
   return (
-    <div className="bg-[#FAFBFC] min-h-screen">
+    <div className="bg-snow min-h-screen">
       <PlannerHero itemCount={totalItems} />
 
       {/* 성공 토스트 */}
@@ -468,7 +468,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
                       const el = document.querySelector('[data-subscription-wall]')
                       el?.scrollIntoView({ behavior: 'smooth' })
                     }}
-                    className="w-full bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-2.5 text-sm hover:opacity-90 transition"
+                    className="w-full bg-gradient-to-r from-mint to-blossom text-ink font-bold rounded-xl px-5 py-2.5 text-sm hover:opacity-90 transition"
                   >
                     {t('locked.subscribe')}
                   </button>

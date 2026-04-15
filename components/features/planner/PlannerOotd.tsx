@@ -191,7 +191,7 @@ export function PlannerOotd({
                       </span>
                     ))
                   ) : (
-                    <span className="text-xs text-[#9CA3AF]">—</span>
+                    <span className="text-xs text-stone">—</span>
                   )}
                 </div>
               </div>

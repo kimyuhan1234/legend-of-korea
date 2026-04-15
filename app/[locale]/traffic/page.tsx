@@ -117,12 +117,12 @@ export default function TrafficPage() {
   return (
     <div className="min-h-screen bg-snow">
       {/* 히어로 */}
-      <section className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] py-16 md:py-20 px-6 md:px-10 text-center">
+      <section className="bg-gradient-to-br from-mint to-blossom py-16 md:py-20 px-6 md:px-10 text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-white/50 text-ink text-xs font-black uppercase tracking-widest mb-4">
           TRAFFIC
         </span>
         <h1 className="text-3xl md:text-4xl font-black text-ink mb-3">{t('title')}</h1>
-        <p className="text-[#4B5563] text-base">{t('subtitle')}</p>
+        <p className="text-slate text-base">{t('subtitle')}</p>
       </section>
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-10">
@@ -135,7 +135,7 @@ export default function TrafficPage() {
               onClick={() => setDirection(dir)}
               className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
                 direction === dir
-                  ? 'bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink'
+                  ? 'bg-gradient-to-r from-mint to-blossom text-ink'
                   : 'bg-white text-slate border border-mist hover:bg-cloud'
               }`}
             >
@@ -274,7 +274,7 @@ export default function TrafficPage() {
                           href={opt.bookingUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-4 py-2 text-sm hover:opacity-90 transition"
+                          className="inline-flex items-center gap-2 bg-gradient-to-r from-mint to-blossom text-ink font-bold rounded-xl px-4 py-2 text-sm hover:opacity-90 transition"
                         >
                           {t('book')}
                         </a>
@@ -390,7 +390,7 @@ export default function TrafficPage() {
                           {dopt.note && <p className="text-xs text-stone mt-1">💡 {getL(dopt.note, locale)}</p>}
                         </div>
                         {dopt.bookingUrl && (
-                          <a href={dopt.bookingUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-4 py-2 text-sm hover:opacity-90 transition">{t('book')}</a>
+                          <a href={dopt.bookingUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gradient-to-r from-mint to-blossom text-ink font-bold rounded-xl px-4 py-2 text-sm hover:opacity-90 transition">{t('book')}</a>
                         )}
                       </div>
                       <div className="hidden md:flex flex-col items-center justify-between py-4">

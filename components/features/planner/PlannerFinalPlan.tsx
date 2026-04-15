@@ -372,18 +372,18 @@ export function PlannerFinalPlan({
 
       {/* 교통편 (중복 제거된 가는편/오는편) */}
       {dedupedTransport.length > 0 && (
-        <div className="bg-white rounded-2xl p-5 mb-4 border-l-4 border-[#9DD8CE]">
-          <p className="text-[10px] font-black text-[#9DD8CE] uppercase tracking-widest mb-2">
+        <div className="bg-white rounded-2xl p-5 mb-4 border-l-4 border-mint-deep">
+          <p className="text-[10px] font-black text-mint-deep uppercase tracking-widest mb-2">
             🚄 교통편
           </p>
           {dedupedTransport.map((tr) => (
             <div key={tr.id} className="text-sm text-[#374151] mb-1">
-              <span className="text-xs font-bold text-[#9DD8CE] mr-1.5">
+              <span className="text-xs font-bold text-mint-deep mr-1.5">
                 {tr.item_data?.direction === 'going' ? '✈️' : '🏠'}
               </span>
               {itemName(tr, locale)}{' '}
               {typeof tr.item_data.departureTime === 'string' && (
-                <span className="text-[#9CA3AF] ml-1">
+                <span className="text-stone ml-1">
                   {String(tr.item_data.departureTime)}
                   {typeof tr.item_data.arrivalTime === 'string' && ` → ${String(tr.item_data.arrivalTime)}`}
                 </span>
@@ -435,19 +435,19 @@ export function PlannerFinalPlan({
           return (
             <div
               key={dayIdx}
-              className="bg-white rounded-3xl p-6 border border-[#E4E7EB]/40"
+              className="bg-white rounded-3xl p-6 border border-mist/40"
             >
               <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-                <p className="text-xs font-black text-[#9DD8CE] uppercase tracking-widest">
+                <p className="text-xs font-black text-mint-deep uppercase tracking-widest">
                   {t('final.day', { day: dayIdx + 1 })}
                   {dateLabel && (
-                    <span className="ml-2 text-[#9CA3AF] font-bold normal-case">
+                    <span className="ml-2 text-stone font-bold normal-case">
                       {dateLabel}
                     </span>
                   )}
                 </p>
                 {w && (
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAFBFC] border border-[#9DD8CE]/20">
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-snow border border-mint-deep/20">
                     <span className="text-base leading-none">{w.icon}</span>
                     <span className="text-[11px] font-bold text-[#374151]">
                       {w.highTemp}° / {w.lowTemp}°
@@ -474,14 +474,14 @@ export function PlannerFinalPlan({
                           <span>{slot.emoji}</span>
                           <span>{slot.label}</span>
                         </p>
-                        <p className="text-[10px] text-[#9CA3AF] mt-0.5">
+                        <p className="text-[10px] text-stone mt-0.5">
                           {slot.timeRange}
                         </p>
                       </div>
 
-                      <div className="flex-1 min-w-0 border-l-2 border-dashed border-[#E4E7EB] pl-4">
+                      <div className="flex-1 min-w-0 border-l-2 border-dashed border-mist pl-4">
                         {isEmpty ? (
-                          <p className="text-xs text-[#9CA3AF] italic">—</p>
+                          <p className="text-xs text-stone italic">—</p>
                         ) : (
                           <ul className="space-y-2">
                             {slotMissions.map((m) => {
@@ -495,7 +495,7 @@ export function PlannerFinalPlan({
                                 >
                                   <span className="text-base shrink-0">📍</span>
                                   <div className="min-w-0">
-                                    <span className="font-bold text-[#9DD8CE]">
+                                    <span className="font-bold text-mint-deep">
                                       {t('mission.prefix', { n: missionNum })}:
                                     </span>{' '}
                                     <span className="font-semibold">
@@ -531,13 +531,13 @@ export function PlannerFinalPlan({
         })}
       </div>
 
-      <div className="bg-white rounded-3xl p-6 border border-[#E4E7EB]/40 mt-5">
+      <div className="bg-white rounded-3xl p-6 border border-mist/40 mt-5">
         {estimatedLp > 0 && (
-          <div className="p-4 rounded-2xl bg-[#FAFBFC] border border-[#9DD8CE]/20 text-center">
+          <div className="p-4 rounded-2xl bg-snow border border-mint-deep/20 text-center">
             <p className="text-xs text-[#6B7280] mb-1">
               ⚔️ {t('final.missionIntegrated')}
             </p>
-            <p className="text-sm font-black text-[#9DD8CE]">
+            <p className="text-sm font-black text-mint-deep">
               {t('final.estimatedLp')}: {estimatedLp.toLocaleString()} {t('final.lpUnit')}
             </p>
           </div>
@@ -584,7 +584,7 @@ export function PlannerFinalPlan({
         </button>
       </div>
 
-      <p className="text-[10px] text-[#9CA3AF] mt-3 text-center">
+      <p className="text-[10px] text-stone mt-3 text-center">
         ※ 시간대는 일반적인 여행자 기준 예시이며, 도보 이동 시간과 교통 상황에 따라 달라질 수 있습니다
       </p>
     </section>

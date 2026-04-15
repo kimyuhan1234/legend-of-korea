@@ -89,20 +89,20 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
         </h2>
         <Link
           href={`/${locale}/community`}
-          className="text-sm text-[#F0B8B8] hover:underline font-medium"
+          className="text-sm text-blossom-deep hover:underline font-medium"
         >
           {label.viewAll} →
         </Link>
       </div>
 
       {posts.length === 0 ? (
-        <div className="text-center py-16 bg-white rounded-3xl border border-dashed border-[#E4E7EB]">
+        <div className="text-center py-16 bg-white rounded-3xl border border-dashed border-mist">
           <div className="text-5xl mb-3">🗺️</div>
           <p className="font-bold text-[#111] mb-1">{label.empty}</p>
-          <p className="text-sm text-[#9CA3AF] mb-6">{label.emptyDesc}</p>
+          <p className="text-sm text-stone mb-6">{label.emptyDesc}</p>
           <Link
             href={`/${locale}/community/write`}
-            className="inline-flex px-6 py-2.5 rounded-xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-semibold text-sm hover:bg-[#374151] transition-colors"
+            className="inline-flex px-6 py-2.5 rounded-xl bg-gradient-to-br from-mint to-blossom text-ink font-semibold text-sm hover:bg-[#374151] transition-colors"
           >
             {label.writeReview}
           </Link>
@@ -112,14 +112,14 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
           {posts.map((post) => (
             <div
               key={post.id}
-              className="bg-white rounded-2xl border border-[#E4E7EB] overflow-hidden hover:shadow-sm transition-shadow"
+              className="bg-white rounded-2xl border border-mist overflow-hidden hover:shadow-sm transition-shadow"
             >
               {/* 사진 */}
               {post.photos && post.photos.length > 0 && !post.is_spoiler && (
-                <div className="relative h-40 bg-[#F0F2F5]">
+                <div className="relative h-40 bg-cloud">
                   <img
                     src={post.photos[0]}
-                    alt=""
+                    alt={post.text ? post.text.slice(0, 40) : 'community post photo'}
                     className="w-full h-full object-cover"
                   />
                   {post.photos.length > 1 && (
@@ -132,7 +132,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
 
               {/* 스포일러 블러 */}
               {post.photos && post.photos.length > 0 && post.is_spoiler && (
-                <div className="relative h-40 bg-[#F0F2F5]/10 flex items-center justify-center">
+                <div className="relative h-40 bg-cloud/10 flex items-center justify-center">
                   <span className="text-xs px-2 py-1 rounded-full bg-blossom-light text-blossom-deep border border-mint">
                     ⚠️ {label.spoiler}
                   </span>
@@ -142,7 +142,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
               <div className="p-4">
                 {/* 유저 */}
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-7 rounded-full bg-[#F0F2F5] flex items-center justify-center text-white text-xs font-bold shrink-0">
+                  <div className="w-7 h-7 rounded-full bg-cloud flex items-center justify-center text-white text-xs font-bold shrink-0">
                     {post.users?.avatar_url ? (
                       <img
                         src={post.users.avatar_url}
@@ -157,22 +157,22 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
                     <p className="text-xs font-semibold text-[#111]">
                       {post.users?.nickname || "모험가"}
                     </p>
-                    <p className="text-xs text-[#F0B8B8]">
+                    <p className="text-xs text-blossom-deep">
                       {tierNames[post.users?.current_tier || 1]}
                     </p>
                   </div>
-                  <span className="ml-auto text-xs text-[#9CA3AF]">
+                  <span className="ml-auto text-xs text-stone">
                     {timeAgo(post.created_at, locale)}
                   </span>
                 </div>
 
                 {/* 내용 */}
-                <p className="text-sm text-[#4B5563] leading-relaxed line-clamp-3">
+                <p className="text-sm text-slate leading-relaxed line-clamp-3">
                   {post.text}
                 </p>
 
                 {/* 좋아요 */}
-                <div className="flex items-center gap-1 mt-3 text-xs text-[#9CA3AF]">
+                <div className="flex items-center gap-1 mt-3 text-xs text-stone">
                   <span>👏</span>
                   <span>{post.likes_count} {label.likes}</span>
                 </div>

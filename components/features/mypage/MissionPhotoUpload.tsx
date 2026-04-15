@@ -125,8 +125,8 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
               cursor-pointer rounded-2xl border-2 border-dashed p-8
               flex flex-col items-center gap-3 transition-all duration-300
               ${dragOver
-                ? 'border-[#9DD8CE] bg-mint-light scale-[1.02]'
-                : 'border-mist bg-snow hover:border-[#1F2937] hover:bg-lavender'
+                ? 'border-mint-deep bg-mint-light scale-[1.02]'
+                : 'border-mist bg-snow hover:border-ink hover:bg-lavender'
               }
             `}
           >
@@ -146,7 +146,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
             <button
               onClick={() => cameraRef.current?.click()}
               className="flex flex-col items-center gap-1.5 py-3 rounded-xl border-2 border-dashed
-                         border-mist hover:border-[#1F2937] hover:bg-lavender transition-all
+                         border-mist hover:border-ink hover:bg-lavender transition-all
                          active:scale-95"
             >
               <Camera size={18} className="text-[#111]" />
@@ -155,7 +155,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
             <button
               onClick={() => galleryRef.current?.click()}
               className="flex flex-col items-center gap-1.5 py-3 rounded-xl border-2 border-dashed
-                         border-mist hover:border-[#1F2937] hover:bg-lavender transition-all
+                         border-mist hover:border-ink hover:bg-lavender transition-all
                          active:scale-95"
             >
               <ImageIcon size={18} className="text-[#111]" />
@@ -164,7 +164,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
             <button
               onClick={() => fileRef.current?.click()}
               className="flex flex-col items-center gap-1.5 py-3 rounded-xl border-2 border-dashed
-                         border-mist hover:border-[#1F2937] hover:bg-lavender transition-all
+                         border-mist hover:border-ink hover:bg-lavender transition-all
                          active:scale-95"
             >
               <FolderOpen size={18} className="text-[#111]" />
@@ -215,7 +215,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
           <button
             onClick={submitUpload}
             disabled={uploading}
-            className="w-full py-3.5 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl font-bold text-sm
+            className="w-full py-3.5 bg-gradient-to-br from-mint to-blossom text-ink rounded-xl font-bold text-sm
                        hover:bg-[#7BC8BC] disabled:opacity-60 disabled:cursor-not-allowed
                        transition-all active:scale-[0.98] flex items-center justify-center gap-2
                        shadow-lg shadow-mint-light"

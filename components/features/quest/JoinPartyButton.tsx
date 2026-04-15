@@ -66,7 +66,7 @@ export function JoinPartyConfirmModal({ party, isLoggedIn, locale, onJoined, onC
           <button
             onClick={handleConfirm}
             disabled={loading}
-            className="flex-1 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink hover:opacity-90 transition disabled:opacity-50"
+            className="flex-1 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-mint to-blossom text-ink hover:opacity-90 transition disabled:opacity-50"
           >
             {loading ? '...' : t('confirm')}
           </button>

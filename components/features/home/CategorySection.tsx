@@ -19,9 +19,9 @@ interface CategorySectionProps {
 
 export function CategorySection({ locale, heading, categories }: CategorySectionProps) {
   return (
-    <section id="categories" className="bg-[#FAFBFC] py-8 md:py-12">
+    <section id="categories" className="bg-snow py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-3 md:px-6">
-        <p className="text-center text-[#9CA3AF] text-sm md:text-base mb-6">
+        <p className="text-center text-stone text-sm md:text-base mb-6">
           {heading}
         </p>
 

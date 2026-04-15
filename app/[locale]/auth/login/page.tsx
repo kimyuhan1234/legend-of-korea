@@ -33,12 +33,12 @@ export default function LoginPage({ params, searchParams }: Props) {
   const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
 
   return (
-    <div className="min-h-screen bg-[#F0F2F5] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-cloud flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* 카드 */}
         <div className="bg-white rounded-3xl shadow-lg shadow-[#1F2937]/10 overflow-hidden">
           {/* 헤더 배너 */}
-          <div className="relative bg-[#F0F2F5] px-8 pt-10 pb-8 text-center">
+          <div className="relative bg-cloud px-8 pt-10 pb-8 text-center">
             {/* 장식용 원형 패턴 */}
             <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-[#F0B8B8]/10 -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-[#F0B8B8]/10 translate-y-1/2 -translate-x-1/2" />
@@ -54,7 +54,7 @@ export default function LoginPage({ params, searchParams }: Props) {
             <h1 className="text-white font-bold text-2xl leading-tight whitespace-pre-line">
               {t.title}
             </h1>
-            <p className="text-[#F0B8B8]/80 text-sm mt-2">{t.subtitle}</p>
+            <p className="text-blossom-deep/80 text-sm mt-2">{t.subtitle}</p>
           </div>
 
           {/* 폼 영역 */}
@@ -73,9 +73,9 @@ export default function LoginPage({ params, searchParams }: Props) {
 
             {/* 구분선 */}
             <div className="flex items-center gap-3">
-              <div className="flex-1 h-px bg-[#E4E7EB]" />
-              <span className="text-xs text-[#9CA3AF] font-medium">{t.divider}</span>
-              <div className="flex-1 h-px bg-[#E4E7EB]" />
+              <div className="flex-1 h-px bg-mist" />
+              <span className="text-xs text-stone font-medium">{t.divider}</span>
+              <div className="flex-1 h-px bg-mist" />
             </div>
 
             {/* 이메일 로그인 */}
@@ -84,7 +84,7 @@ export default function LoginPage({ params, searchParams }: Props) {
         </div>
 
         {/* 하단 장식 */}
-        <p className="text-center text-xs text-[#9CA3AF] mt-6">
+        <p className="text-center text-xs text-stone mt-6">
           © 2025 Legend of Korea
         </p>
       </div>

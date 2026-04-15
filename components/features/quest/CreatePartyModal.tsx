@@ -144,8 +144,8 @@ export function CreatePartyModal({ courseId, onClose, onCreated }: Props) {
                   onClick={() => setMaxMembers(n)}
                   className={`w-10 h-10 rounded-xl text-sm font-bold transition-all ${
                     maxMembers === n
-                      ? 'bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink border border-[#B8E8E0]'
-                      : 'bg-snow text-slate border border-mist hover:border-[#B8E8E0]'
+                      ? 'bg-gradient-to-r from-mint to-blossom text-ink border border-mint'
+                      : 'bg-snow text-slate border border-mist hover:border-mint'
                   }`}
                 >
                   {n}
@@ -204,7 +204,7 @@ export function CreatePartyModal({ courseId, onClose, onCreated }: Props) {
             <button
               type="submit"
               disabled={loading || !title.trim() || !adventureDate}
-              className="flex-1 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink hover:opacity-90 transition disabled:opacity-50"
+              className="flex-1 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-mint to-blossom text-ink hover:opacity-90 transition disabled:opacity-50"
             >
               {loading ? '...' : t('modal.submit')}
             </button>

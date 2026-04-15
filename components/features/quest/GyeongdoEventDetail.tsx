@@ -118,7 +118,7 @@ export function GyeongdoEventDetail({ event, locale, isLoggedIn }: Props) {
         {/* C. 경도란? */}
         <div>
           <h3 className="text-base font-black text-ink mb-3">🎮 {t('whatIs')}</h3>
-          <div className="bg-gradient-to-r from-[#B8E8E0]/20 to-[#F5D0D0]/20 rounded-2xl p-5 space-y-3">
+          <div className="bg-gradient-to-r from-mint/20 to-blossom/20 rounded-2xl p-5 space-y-3">
             <p className="text-sm text-slate leading-relaxed">{t('whatIsDesc')}</p>
             <div className="border-t border-mist pt-3">
               <p className="text-xs font-bold text-[#5BBDAD] mb-1">🇯🇵 {t('keydoro')}</p>
@@ -197,7 +197,7 @@ export function GyeongdoEventDetail({ event, locale, isLoggedIn }: Props) {
         </div>
 
         {/* G. 주의사항 */}
-        <div className="bg-[#F5D0D0]/20 border border-[#F5D0D0] rounded-xl p-4">
+        <div className="bg-blossom/20 border border-blossom rounded-xl p-4">
           <p className="text-xs font-bold text-ink mb-2">⚠️ 주의사항</p>
           <ul className="space-y-1">
             {[t('notice1'), t('notice2'), t('notice3')].map((notice, i) => (

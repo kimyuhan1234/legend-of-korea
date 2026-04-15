@@ -38,12 +38,12 @@ export function HotelInputForm({ planId, initialName, initialAddress, onSaved }:
   }
 
   return (
-    <div className="bg-white rounded-2xl p-5 border border-[#E4E7EB]/40">
+    <div className="bg-white rounded-2xl p-5 border border-mist/40">
       <p className="text-sm font-black text-[#111] mb-3">🏨 {t('hotel.manual')}</p>
 
       <div className="space-y-3">
         <div>
-          <label className="text-[10px] font-black text-[#9CA3AF] uppercase tracking-widest">
+          <label className="text-[10px] font-black text-stone uppercase tracking-widest">
             {t('hotel.name')}
           </label>
           <input
@@ -52,11 +52,11 @@ export function HotelInputForm({ planId, initialName, initialAddress, onSaved }:
             onChange={(e) => setName(e.target.value)}
             maxLength={200}
             placeholder="한옥스테이 사로"
-            className="w-full mt-1 px-4 py-2 rounded-xl border border-[#E4E7EB] text-sm focus:border-[#9DD8CE] focus:outline-none"
+            className="w-full mt-1 px-4 py-2 rounded-xl border border-mist text-sm focus:border-mint-deep focus:outline-none"
           />
         </div>
         <div>
-          <label className="text-[10px] font-black text-[#9CA3AF] uppercase tracking-widest">
+          <label className="text-[10px] font-black text-stone uppercase tracking-widest">
             {t('hotel.address')}
           </label>
           <input
@@ -65,7 +65,7 @@ export function HotelInputForm({ planId, initialName, initialAddress, onSaved }:
             onChange={(e) => setAddress(e.target.value)}
             maxLength={500}
             placeholder="전라북도 전주시 완산구 ..."
-            className="w-full mt-1 px-4 py-2 rounded-xl border border-[#E4E7EB] text-sm focus:border-[#9DD8CE] focus:outline-none"
+            className="w-full mt-1 px-4 py-2 rounded-xl border border-mist text-sm focus:border-mint-deep focus:outline-none"
           />
         </div>
       </div>
@@ -73,7 +73,7 @@ export function HotelInputForm({ planId, initialName, initialAddress, onSaved }:
       <button
         onClick={handleSave}
         disabled={saving || !name.trim() || !address.trim()}
-        className="w-full mt-4 py-2.5 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-sm font-bold hover:bg-[#7BC8BC] transition-colors disabled:bg-neutral-200 disabled:text-neutral-400"
+        className="w-full mt-4 py-2.5 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-sm font-bold hover:bg-[#7BC8BC] transition-colors disabled:bg-neutral-200 disabled:text-neutral-400"
       >
         {saved ? '✓ ' + t('added') : saving ? t('adding') : t('addButton')}
       </button>

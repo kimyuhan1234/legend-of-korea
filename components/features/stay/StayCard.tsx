@@ -17,7 +17,7 @@ export function StayCard({ stay, locale }: StayCardProps) {
   const walk = stay.walkToMission[locale as keyof typeof stay.walkToMission] || stay.walkToMission.ko
 
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300 border border-[#E4E7EB]/40">
+    <div className="group bg-white rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300 border border-mist/40">
       {/* 상단: 타입별 색상 그라데이션 + 이모지 */}
       <div className="relative h-48 bg-gradient-to-br from-mint-light/40 to-mint/30 flex items-center justify-center">
         <span className="text-7xl">{STAY_TYPE_EMOJI[stay.type]}</span>
@@ -35,13 +35,13 @@ export function StayCard({ stay, locale }: StayCardProps) {
         {/* 가격 + 미션 거리 */}
         <div className="flex items-center justify-between mb-4 pb-4 border-b border-neutral-100">
           <div>
-            <p className="text-[10px] text-[#9CA3AF] font-bold uppercase tracking-wider">
+            <p className="text-[10px] text-stone font-bold uppercase tracking-wider">
               {t('card.priceRange')}
             </p>
             <p className="text-base font-black text-[#111]">{stay.priceRange}</p>
           </div>
           <div className="text-right">
-            <p className="text-[10px] text-[#9DD8CE] font-bold uppercase tracking-wider">
+            <p className="text-[10px] text-mint-deep font-bold uppercase tracking-wider">
               🗺️ {t('card.walkToMission')}
             </p>
             <p className="text-sm font-bold text-[#111]">{walk}</p>
@@ -54,7 +54,7 @@ export function StayCard({ stay, locale }: StayCardProps) {
             const text = h[locale as keyof typeof h] || h.ko
             return (
               <li key={i} className="flex items-start gap-2 text-sm text-[#374151]">
-                <span className="text-[#9DD8CE] shrink-0 mt-0.5">✓</span>
+                <span className="text-mint-deep shrink-0 mt-0.5">✓</span>
                 <span>{text}</span>
               </li>
             )
@@ -66,7 +66,7 @@ export function StayCard({ stay, locale }: StayCardProps) {
           {stay.vibe.map((v) => (
             <span
               key={v}
-              className="text-[10px] font-bold text-[#9CA3AF] bg-[#F0F2F5] px-2 py-0.5 rounded-full"
+              className="text-[10px] font-bold text-stone bg-cloud px-2 py-0.5 rounded-full"
             >
               #{t(`vibe.${v}` as Parameters<typeof t>[0])}
             </span>
@@ -79,7 +79,7 @@ export function StayCard({ stay, locale }: StayCardProps) {
             href={stay.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 text-center py-3 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold text-sm hover:bg-[#7BC8BC] transition-colors"
+            className="flex-1 text-center py-3 rounded-full bg-gradient-to-br from-mint to-blossom text-ink font-bold text-sm hover:bg-[#7BC8BC] transition-colors"
           >
             {t('card.book')} ↗
           </a>
@@ -98,7 +98,7 @@ export function StayCard({ stay, locale }: StayCardProps) {
             className="shrink-0"
           />
         </div>
-        <p className="text-[10px] text-[#9CA3AF] text-center mt-2">
+        <p className="text-[10px] text-stone text-center mt-2">
           via {stay.platform} · {t('card.external')}
         </p>
       </div>

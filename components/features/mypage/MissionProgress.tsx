@@ -21,7 +21,7 @@ export default function MissionProgress({ completed, total }: MissionProgressPro
           <span className="text-sm font-bold text-white">
             {completed} / {total}
           </span>
-          <span className="text-xs font-bold text-[#9DD8CE] bg-white/20 px-2 py-0.5 rounded-full">
+          <span className="text-xs font-bold text-mint-deep bg-white/20 px-2 py-0.5 rounded-full">
             {pct}%
           </span>
         </div>
@@ -42,7 +42,7 @@ export default function MissionProgress({ completed, total }: MissionProgressPro
       </div>
 
       {pct === 100 && (
-        <p className="text-center text-sm font-bold text-yellow-300 animate-bounce">
+        <p className="text-center text-sm font-bold text-blossom animate-bounce">
           🎉 모든 미션 완료!
         </p>
       )}

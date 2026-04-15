@@ -15,7 +15,7 @@ export function Disclaimer({ locale, className = "" }: DisclaimerProps) {
   const text = TEXT[locale as keyof typeof TEXT] || TEXT.ko
 
   return (
-    <p className={`text-xs text-[#9CA3AF] leading-relaxed ${className}`}>
+    <p className={`text-xs text-stone leading-relaxed ${className}`}>
       ⚠️ {text}
     </p>
   )

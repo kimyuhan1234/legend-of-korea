@@ -15,7 +15,7 @@ export function LogoutButton({ locale, className }: LogoutButtonProps) {
   return (
     <button
       onClick={() => logout(locale)}
-      className={className ?? "text-sm text-[#9CA3AF] hover:text-red-500 transition-colors"}
+      className={className ?? "text-sm text-stone hover:text-red-500 transition-colors"}
     >
       {label}
     </button>

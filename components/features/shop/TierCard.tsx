@@ -61,13 +61,13 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
           <div className="flex items-center gap-3">
             <span className="text-4xl">{currentTier.emoji}</span>
             <div>
-              <p className="text-sm text-[#4B5563]">현재 티어</p>
+              <p className="text-sm text-slate">현재 티어</p>
               <h3 className="text-xl font-bold">{loc(currentTier.name)} (Lv.{currentTier.level})</h3>
             </div>
           </div>
           <div className="text-right">
-            <p className="text-sm text-[#4B5563]">보유 LP</p>
-            <p className="text-2xl font-bold text-[#9DD8CE]">{currentLP.toLocaleString()}</p>
+            <p className="text-sm text-slate">보유 LP</p>
+            <p className="text-2xl font-bold text-mint-deep">{currentLP.toLocaleString()}</p>
           </div>
         </div>
 
@@ -77,13 +77,13 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
 
         {nextTier ? (
           <div className="mb-4">
-            <div className="flex justify-between text-xs text-[#4B5563] mb-1">
+            <div className="flex justify-between text-xs text-slate mb-1">
               <span>다음 티어: {nextTier.emoji} {loc(nextTier.name)}</span>
               <span>{currentLP.toLocaleString()} / {nextTier.requiredLP.toLocaleString()} LP</span>
             </div>
             <div className="w-full h-3 bg-white/20 rounded-full overflow-hidden">
               <div
-                className={`h-full rounded-full transition-all duration-500 ${canUpgrade ? 'bg-green-400' : 'bg-[#9DD8CE]'}`}
+                className={`h-full rounded-full transition-all duration-500 ${canUpgrade ? 'bg-green-400' : 'bg-mint-deep'}`}
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -110,7 +110,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
               disabled={!canUpgrade || isUpgrading}
               className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${
                 canUpgrade
-                  ? 'bg-[#9DD8CE] hover:bg-[#7BC8BC] text-white shadow-lg shadow-mint-deep/30'
+                  ? 'bg-mint-deep hover:bg-[#7BC8BC] text-white shadow-lg shadow-mint-deep/30'
                   : 'bg-white/10 text-white/30 cursor-not-allowed'
               }`}
             >
@@ -148,9 +148,9 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                   <div key={tier.level}
                        className={`p-4 rounded-xl border-2 transition-all ${
                          isCurrent
-                           ? 'border-[#1F2937] bg-[#9DD8CE]/5'
+                           ? 'border-ink bg-mint-deep/5'
                            : isNext
-                             ? 'border-[#9DD8CE] bg-mint-light'
+                             ? 'border-mint-deep bg-mint-light'
                              : isLocked
                                ? 'border-cloud bg-snow opacity-50'
                                : 'border-green-200 bg-green-50'
@@ -164,10 +164,10 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                               Lv.{tier.level} {loc(tier.name)}
                             </span>
                             {isCurrent && (
-                              <span className="px-2 py-0.5 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs rounded-full">현재</span>
+                              <span className="px-2 py-0.5 bg-gradient-to-br from-mint to-blossom text-ink text-xs rounded-full">현재</span>
                             )}
                             {isNext && (
-                              <span className="px-2 py-0.5 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs rounded-full">다음</span>
+                              <span className="px-2 py-0.5 bg-gradient-to-br from-mint to-blossom text-ink text-xs rounded-full">다음</span>
                             )}
                           </div>
                           <p className="text-xs text-stone mt-0.5">{loc(tier.benefits)}</p>
@@ -177,7 +177,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                         {tier.level === 1 ? (
                           <span className="text-xs text-stone">기본</span>
                         ) : (
-                          <span className="text-sm font-bold text-[#9DD8CE]">
+                          <span className="text-sm font-bold text-mint-deep">
                             {isLocked ? '🔒' : ''} {tier.requiredLP.toLocaleString()} LP
                           </span>
                         )}
@@ -192,7 +192,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
             </div>
             <div className="px-6 pb-6">
               <button onClick={() => setShowTierList(false)}
-                      className="w-full py-3 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl font-medium hover:bg-[#3D2B79] transition-colors">
+                      className="w-full py-3 bg-gradient-to-br from-mint to-blossom text-ink rounded-xl font-medium hover:bg-[#3D2B79] transition-colors">
                 닫기
               </button>
             </div>
@@ -217,11 +217,11 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-stone">잔여 LP</span>
-                <span className="text-[#9DD8CE] font-bold">{upgradedTier.newLP.toLocaleString()} LP</span>
+                <span className="text-mint-deep font-bold">{upgradedTier.newLP.toLocaleString()} LP</span>
               </div>
             </div>
             <button onClick={() => setShowSuccess(false)}
-                    className="w-full py-3 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl font-bold hover:bg-[#3D2B79] transition-colors">
+                    className="w-full py-3 bg-gradient-to-br from-mint to-blossom text-ink rounded-xl font-bold hover:bg-[#3D2B79] transition-colors">
               확인
             </button>
           </div>

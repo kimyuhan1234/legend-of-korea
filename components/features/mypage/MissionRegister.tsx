@@ -33,22 +33,22 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
-          className="w-full py-4 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl font-bold text-base
+          className="w-full py-4 bg-gradient-to-br from-mint to-blossom text-ink rounded-xl font-bold text-base
                      hover:bg-[#374151] transition-colors flex items-center justify-center gap-2"
         >
           <span>📝</span>
           {t('registerCompletedMission')}
         </button>
       ) : (
-        <div className="bg-white rounded-xl border-2 border-[#1F2937] overflow-hidden">
+        <div className="bg-white rounded-xl border-2 border-ink overflow-hidden">
           {/* 헤더 */}
-          <div className="bg-[#9DD8CE] px-5 py-3 flex items-center justify-between">
+          <div className="bg-mint-deep px-5 py-3 flex items-center justify-between">
             <h3 className="text-white font-bold text-sm">
               {t('selectCourse')}
             </h3>
             <button
               onClick={() => { setIsOpen(false); setSelectedCourse(null); }}
-              className="text-[#4B5563] hover:text-white text-lg leading-none"
+              className="text-slate hover:text-white text-lg leading-none"
             >
               ×
             </button>
@@ -64,7 +64,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                 </p>
                 <Link
                   href={`/${locale}/courses`}
-                  className="inline-block mt-3 px-4 py-2 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937]
+                  className="inline-block mt-3 px-4 py-2 bg-gradient-to-br from-mint to-blossom text-ink
                              rounded-lg text-sm font-medium hover:bg-[#7BC8BC] transition-colors"
                 >
                   {t('goToCourses')}
@@ -78,7 +78,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                     onClick={() => setSelectedCourse(course.id)}
                     className={`w-full p-4 rounded-xl border-2 text-left transition-all
                       ${selectedCourse === course.id
-                        ? 'border-[#9DD8CE] bg-mint-light shadow-md'
+                        ? 'border-mint-deep bg-mint-light shadow-md'
                         : 'border-mist bg-white hover:border-mist hover:shadow-sm'
                       }`}
                   >
@@ -95,7 +95,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                         <div className="mt-2 flex items-center gap-2">
                           <div className="flex-1 h-2 bg-cloud rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-[#9DD8CE] rounded-full transition-all"
+                              className="h-full bg-mint-deep rounded-full transition-all"
                               style={{
                                 width: `${(course.completedMissions / course.totalMissions) * 100}%`
                               }}
@@ -107,7 +107,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                         </div>
                       </div>
                       {selectedCourse === course.id && (
-                        <span className="text-[#9DD8CE] text-xl flex-shrink-0">✓</span>
+                        <span className="text-mint-deep text-xl flex-shrink-0">✓</span>
                       )}
                     </div>
                   </button>
@@ -116,7 +116,7 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                 {selectedCourse && (
                   <Link
                     href={`/${locale}/mypage/mission-register/${selectedCourse}`}
-                    className="block w-full py-3.5 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl
+                    className="block w-full py-3.5 bg-gradient-to-br from-mint to-blossom text-ink rounded-xl
                                font-bold text-center text-sm hover:bg-[#7BC8BC]
                                transition-colors mt-4"
                   >

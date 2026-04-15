@@ -68,7 +68,7 @@ export function CommunitySidebar() {
           <div className="bg-ink p-6 text-white text-center">
             <div className="text-3xl mb-3">📢</div>
             <p className="font-black text-base mb-1">광고 문의</p>
-            <p className="text-xs text-[#4B5563] mb-3">전설 모험가들에게 알려보세요</p>
+            <p className="text-xs text-slate mb-3">전설 모험가들에게 알려보세요</p>
             <a
               href="mailto:ad@legendofkorea.com"
               className="inline-block text-xs bg-white/20 hover:bg-white/30 text-white font-bold

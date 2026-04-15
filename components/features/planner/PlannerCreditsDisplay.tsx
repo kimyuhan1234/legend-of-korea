@@ -74,17 +74,17 @@ export function PlannerCreditsDisplay({
           className={`rounded-3xl p-5 border ${
             low
               ? 'bg-red-50 border-red-200'
-              : 'bg-white border-[#E4E7EB]/40'
+              : 'bg-white border-mist/40'
           }`}
         >
           <div className="flex items-center justify-between gap-3 flex-wrap">
             <div className="min-w-0">
-              <p className="text-[10px] font-black text-[#9DD8CE] uppercase tracking-widest mb-1">
+              <p className="text-[10px] font-black text-mint-deep uppercase tracking-widest mb-1">
                 🎫 {t('credits.title')}
               </p>
               <p className={`text-2xl font-black ${low ? 'text-red-600' : 'text-[#111]'}`}>
                 {credits}
-                <span className="text-sm font-bold text-[#9CA3AF] ml-1">
+                <span className="text-sm font-bold text-stone ml-1">
                   / {t('credits.remaining', { n: credits })}
                 </span>
               </p>
@@ -103,7 +103,7 @@ export function PlannerCreditsDisplay({
             <button
               type="button"
               onClick={() => setModalOpen(true)}
-              className="shrink-0 px-4 py-2 rounded-full bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-xs font-bold hover:bg-[#7BC8BC] transition-colors"
+              className="shrink-0 px-4 py-2 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-xs font-bold hover:bg-[#7BC8BC] transition-colors"
             >
               {t('credits.buy')}
             </button>
@@ -121,7 +121,7 @@ export function PlannerCreditsDisplay({
             className="absolute inset-0 bg-black/50"
             onClick={() => !purchasingKey && setModalOpen(false)}
           />
-          <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 border border-[#E4E7EB]/40">
+          <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 border border-mist/40">
             <div className="text-center mb-5">
               <div className="text-4xl mb-3">🎫</div>
               <h3 className="text-lg font-black text-[#111] mb-1">
@@ -139,7 +139,7 @@ export function PlannerCreditsDisplay({
                     type="button"
                     disabled={!!purchasingKey}
                     onClick={() => handlePurchase(pkg.key)}
-                    className="w-full flex items-center justify-between gap-3 px-4 py-4 rounded-2xl border-2 border-[#E4E7EB] bg-white hover:border-[#9DD8CE] hover:bg-[#FAFBFC] transition-colors disabled:opacity-50 disabled:cursor-wait"
+                    className="w-full flex items-center justify-between gap-3 px-4 py-4 rounded-2xl border-2 border-mist bg-white hover:border-mint-deep hover:bg-snow transition-colors disabled:opacity-50 disabled:cursor-wait"
                   >
                     <div className="text-left">
                       <p className="text-base font-black text-[#111]">
@@ -150,11 +150,11 @@ export function PlannerCreditsDisplay({
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-black text-[#9DD8CE]">
+                      <p className="text-sm font-black text-mint-deep">
                         ₩{pkg.price.toLocaleString()}
                       </p>
                       {isPurchasing && (
-                        <p className="text-[10px] text-[#9CA3AF]">{t('credits.purchasing')}</p>
+                        <p className="text-[10px] text-stone">{t('credits.purchasing')}</p>
                       )}
                     </div>
                   </button>
@@ -174,7 +174,7 @@ export function PlannerCreditsDisplay({
               type="button"
               onClick={() => setModalOpen(false)}
               disabled={!!purchasingKey}
-              className="w-full py-3 rounded-full border-2 border-[#E4E7EB] text-sm font-bold text-[#374151] hover:bg-[#FAFBFC] transition-colors disabled:opacity-50"
+              className="w-full py-3 rounded-full border-2 border-mist text-sm font-bold text-[#374151] hover:bg-snow transition-colors disabled:opacity-50"
             >
               {t('credits.close')}
             </button>

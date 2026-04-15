@@ -44,13 +44,13 @@ export default function DupePage({ params }: Props) {
       <FoodTabNav locale={locale} activeTab="dupe" />
 
       {/* 히어로 */}
-      <section className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] py-14">
+      <section className="bg-gradient-to-br from-mint to-blossom text-ink py-14">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F0B8B8]/20 border border-[#F0B8B8]/30 mb-5">
-            <span className="text-[#F0B8B8] text-sm font-medium">{h.badge}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F0B8B8]/20 border border-blossom-deep/30 mb-5">
+            <span className="text-blossom-deep text-sm font-medium">{h.badge}</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-black mb-4 whitespace-pre-line">{h.title}</h1>
-          <p className="text-[#4B5563] text-lg whitespace-pre-line max-w-xl mx-auto">{h.subtitle}</p>
+          <p className="text-slate text-lg whitespace-pre-line max-w-xl mx-auto">{h.subtitle}</p>
         </div>
       </section>
 

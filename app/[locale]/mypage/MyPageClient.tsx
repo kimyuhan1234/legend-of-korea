@@ -457,9 +457,9 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                     <p className="text-xs text-stone">{t('completedMissions')}</p>
                     <p className="text-2xl font-bold text-[#111]">2</p>
                   </div>
-                  <div className="bg-[#9DD8CE] rounded-xl p-4 text-center text-white">
+                  <div className="bg-mint-deep rounded-xl p-4 text-center text-white">
                     <div className="text-2xl mb-1">✅</div>
-                    <p className="text-xs text-[#4B5563]">{t('earnedLP')}</p>
+                    <p className="text-xs text-slate">{t('earnedLP')}</p>
                     <p className="text-2xl font-bold">600</p>
                   </div>
                 </div>
@@ -560,7 +560,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
               <button
                 onClick={handleSaveProfile}
                 disabled={isSaving || !editNickname.trim()}
-                className="flex-1 py-3 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] rounded-xl font-black
+                className="flex-1 py-3 bg-gradient-to-br from-mint to-blossom text-ink rounded-xl font-black
                            hover:bg-[#374151] disabled:opacity-60 disabled:cursor-not-allowed
                            transition-colors text-sm flex items-center justify-center gap-2"
               >

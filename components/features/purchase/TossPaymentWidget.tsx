@@ -100,7 +100,7 @@ export function TossPaymentWidget({
     <div>
       {isLoading && (
         <div className="flex items-center justify-center py-16">
-          <div className="w-8 h-8 border-3 border-[#F0B8B8] border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-3 border-blossom-deep border-t-transparent rounded-full animate-spin" />
         </div>
       )}
       <div id="toss-payment-method" />
@@ -109,7 +109,7 @@ export function TossPaymentWidget({
         <button
           onClick={handlePay}
           disabled={!isReady}
-          className="w-full mt-6 py-4 rounded-2xl bg-[#F0B8B8] text-[#111] font-black text-lg hover:bg-[#F5D0D0] disabled:opacity-50 transition-colors"
+          className="w-full mt-6 py-4 rounded-2xl bg-[#F0B8B8] text-[#111] font-black text-lg hover:bg-blossom disabled:opacity-50 transition-colors"
         >
           {isReady ? payLabel : processingLabel}
         </button>

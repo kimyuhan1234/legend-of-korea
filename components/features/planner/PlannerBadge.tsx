@@ -41,11 +41,11 @@ export function PlannerBadge() {
   return (
     <Link
       href={`/${locale}/planner`}
-      className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#9DD8CE]/10 border border-[#9DD8CE]/20 hover:bg-[#9DD8CE]/15 transition-colors"
+      className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-deep/10 border border-mint-deep/20 hover:bg-mint-deep/15 transition-colors"
       title={t('badge')}
     >
       <span className="text-base">📋</span>
-      <span className="text-xs font-black text-[#9DD8CE]">{count}</span>
+      <span className="text-xs font-black text-mint-deep">{count}</span>
     </Link>
   )
 }

@@ -16,8 +16,8 @@ function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: stri
 }
 
 const PRICE_COLOR: Record<string, string> = {
-  "₩": "text-green-600",
-  "₩₩": "text-[#F0B8B8]",
+  "₩": "text-mint-deep",
+  "₩₩": "text-blossom-deep",
   "₩₩₩": "text-blossom-deep",
 }
 
@@ -50,8 +50,8 @@ export function KFoodSpotList({ locale, cityFilter }: KFoodSpotListProps) {
               href={`?city=${city.code}`}
               className={`px-4 py-2 rounded-xl text-sm font-medium border transition-colors ${
                 isActive
-                  ? "bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] border-[#1F2937]"
-                  : "bg-white text-[#4B5563] border-[#E4E7EB] hover:border-[#1F2937]/40"
+                  ? "bg-gradient-to-br from-mint to-blossom text-ink border-ink"
+                  : "bg-white text-slate border-mist hover:border-ink/40"
               }`}
             >
               {label}
@@ -62,7 +62,7 @@ export function KFoodSpotList({ locale, cityFilter }: KFoodSpotListProps) {
 
       {/* 스팟 목록 */}
       {filtered.length === 0 ? (
-        <div className="text-center py-16 text-[#9CA3AF]">
+        <div className="text-center py-16 text-stone">
           <p className="text-4xl mb-3">🍜</p>
           <p className="font-medium">준비 중입니다</p>
         </div>
@@ -87,24 +87,24 @@ function SpotCard({
   catLabel: Record<string, string>
 }) {
   return (
-    <div className="bg-white rounded-3xl border border-[#E4E7EB] hover:border-[#F0B8B8]/40 hover:shadow-md transition-all overflow-hidden">
+    <div className="bg-white rounded-3xl border border-mist hover:border-blossom-deep/40 hover:shadow-md transition-all overflow-hidden">
       {/* 헤더 */}
       <div className="p-6 pb-4">
         <div className="flex items-start justify-between gap-3 mb-3">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-base">{CATEGORY_ICON[spot.category]}</span>
-              <span className="text-xs text-[#9CA3AF]">{catLabel[spot.category]}</span>
+              <span className="text-xs text-stone">{catLabel[spot.category]}</span>
               <span className={`text-xs font-bold ${PRICE_COLOR[spot.priceRange]}`}>{spot.priceRange}</span>
             </div>
             <h3 className="font-black text-[#111] text-base">{getL(spot.name, locale)}</h3>
-            <p className="text-xs text-[#F0B8B8] font-semibold mt-0.5">{getL(spot.speciality, locale)}</p>
+            <p className="text-xs text-blossom-deep font-semibold mt-0.5">{getL(spot.speciality, locale)}</p>
           </div>
           <span className="text-2xl shrink-0">
             {spot.cityCode === "jeonju" ? "🏯" : spot.cityCode === "seoul" ? "🗼" : spot.cityCode === "busan" ? "🌊" : "📍"}
           </span>
         </div>
-        <p className="text-sm text-[#9CA3AF] leading-relaxed">{getL(spot.description, locale)}</p>
+        <p className="text-sm text-stone leading-relaxed">{getL(spot.description, locale)}</p>
       </div>
 
       {/* 머스트 트라이 */}
@@ -114,7 +114,7 @@ function SpotCard({
         </p>
         <div className="flex flex-wrap gap-1.5">
           {getLA(spot.mustTry, locale).map((item: string) => (
-            <span key={item} className="px-2.5 py-1 rounded-full bg-[#F0F2F5] text-xs text-[#4B5563]">
+            <span key={item} className="px-2.5 py-1 rounded-full bg-cloud text-xs text-slate">
               {item}
             </span>
           ))}
@@ -124,8 +124,8 @@ function SpotCard({
       {/* 푸터 */}
       <div className="px-6 py-3 border-t border-[#F0F2F5] flex items-center justify-between gap-2">
         <div className="min-w-0 flex-1">
-          <p className="text-xs text-[#9CA3AF] truncate">📍 {spot.address}</p>
-          <p className="text-xs text-[#9CA3AF] truncate">🕐 {spot.openHours}</p>
+          <p className="text-xs text-stone truncate">📍 {spot.address}</p>
+          <p className="text-xs text-stone truncate">🕐 {spot.openHours}</p>
         </div>
         <AddToPlannerButton
           itemType="food"

@@ -21,7 +21,7 @@ export function HeroSection({ cta }: HeroSectionProps) {
       {/* 자세히 알아보기 — 카테고리 섹션으로 스크롤 */}
       <button
         onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#4B5563] hover:text-white transition-colors animate-bounce"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate hover:text-white transition-colors animate-bounce"
         aria-label={cta}
       >
         <span className="text-sm font-medium">{cta}</span>

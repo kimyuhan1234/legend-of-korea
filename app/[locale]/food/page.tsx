@@ -35,7 +35,7 @@ export default function FoodPage({ params, searchParams }: Props) {
       {/* ── 히어로 헤더 ──────────────────────────── */}
       <div className="bg-mint-light border-b border-mint py-20 md:py-28 px-6 md:px-10 text-center">
         {/* 배지 */}
-        <span className="inline-block px-4 py-1.5 rounded-full bg-white text-[#9DD8CE]
+        <span className="inline-block px-4 py-1.5 rounded-full bg-white text-mint-deep
                          text-xs font-bold uppercase tracking-widest mb-5 shadow-sm">
           {h.badge}
         </span>

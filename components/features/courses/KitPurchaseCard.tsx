@@ -80,25 +80,25 @@ export function KitPurchaseCard({ courseId, kits, locale, isLoggedIn, className 
     <div className={`bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-0 overflow-hidden shadow-sm h-full flex flex-col${className ? ` ${className}` : ""}`}>
       <div className="flex-1 grid md:grid-cols-2 gap-0">
         {/* 왼쪽: 설명 */}
-        <div className="p-8 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] flex flex-col">
+        <div className="p-8 bg-gradient-to-br from-mint to-blossom text-ink flex flex-col">
           <h2 className="text-2xl font-black mb-2">📦 {label.title}</h2>
-          <p className="text-[#4B5563] mb-8">{label.subtitle}</p>
+          <p className="text-slate mb-8">{label.subtitle}</p>
 
           <div className="flex-1">
-            <p className="text-xs font-bold text-[#F0B8B8] uppercase tracking-wider mb-3">
+            <p className="text-xs font-bold text-blossom-deep uppercase tracking-wider mb-3">
               {label.includes}
             </p>
             <ul className="space-y-2">
               {label.includeItems.map((item, i) => (
                 <li key={i} className="flex items-center gap-2 text-sm text-white/80">
-                  <span className="text-[#F0B8B8]">✓</span>
+                  <span className="text-blossom-deep">✓</span>
                   {item}
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="mt-8 flex items-center gap-2 text-sm text-[#4B5563]">
+          <div className="mt-8 flex items-center gap-2 text-sm text-slate">
             <span>🚚</span>
             <span>{label.delivery}</span>
           </div>
@@ -166,7 +166,7 @@ function KitOption({
   }
 
   return (
-    <div className="rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-0 p-5 hover:border-[#F0B8B8]/60 transition-colors">
+    <div className="rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-0 p-5 hover:border-blossom-deep/60 transition-colors">
       <div className="flex items-center justify-between mb-3">
         <span className="font-bold text-[#111]">{optionLabel}</span>
         {!inStock && (
@@ -177,19 +177,19 @@ function KitOption({
       </div>
       <p className="text-2xl font-black text-[#111] mb-4">
         ₩{kit.price.toLocaleString()}
-        <span className="text-sm font-normal text-[#9CA3AF] ml-1">{label.perPerson}</span>
+        <span className="text-sm font-normal text-stone ml-1">{label.perPerson}</span>
       </p>
 
       {inStock ? (
         <button
           type="button"
           onClick={handleAddToCart}
-          className="block w-full text-center py-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-[#111] font-bold text-lg hover:opacity-90 transition"
+          className="block w-full text-center py-4 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-gradient-to-r from-mint to-blossom text-[#111] font-bold text-lg hover:opacity-90 transition"
         >
           🛒 {tCart('add')}
         </button>
       ) : (
-        <button className="w-full px-6 py-3 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-[#F0F2F5] text-[#9CA3AF] font-medium border-0 hover:bg-[#eee5d8] transition-colors">
+        <button className="w-full px-6 py-3 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-cloud text-stone font-medium border-0 hover:bg-[#eee5d8] transition-colors">
           {label.restock}
         </button>
       )}

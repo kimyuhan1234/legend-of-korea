@@ -73,32 +73,32 @@ export function LoginForm({ locale, next }: LoginFormProps) {
       )}
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-[#4B5563]">{t.email}</label>
+        <label className="text-sm font-medium text-slate">{t.email}</label>
         <input
           type="email"
           name="email"
           required
           placeholder={t.emailPlaceholder}
           className="
-            h-12 px-4 rounded-xl border border-[#E4E7EB] bg-white
-            text-[#111] placeholder:text-[#9CA3AF] text-sm
-            focus:outline-none focus:ring-2 focus:ring-[#F0B8B8]/40 focus:border-[#F0B8B8]
+            h-12 px-4 rounded-xl border border-mist bg-white
+            text-[#111] placeholder:text-stone text-sm
+            focus:outline-none focus:ring-2 focus:ring-blossom-deep/40 focus:border-blossom-deep
             transition-all
           "
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-[#4B5563]">{t.password}</label>
+        <label className="text-sm font-medium text-slate">{t.password}</label>
         <input
           type="password"
           name="password"
           required
           placeholder={t.passwordPlaceholder}
           className="
-            h-12 px-4 rounded-xl border border-[#E4E7EB] bg-white
-            text-[#111] placeholder:text-[#9CA3AF] text-sm
-            focus:outline-none focus:ring-2 focus:ring-[#F0B8B8]/40 focus:border-[#F0B8B8]
+            h-12 px-4 rounded-xl border border-mist bg-white
+            text-[#111] placeholder:text-stone text-sm
+            focus:outline-none focus:ring-2 focus:ring-blossom-deep/40 focus:border-blossom-deep
             transition-all
           "
         />
@@ -108,7 +108,7 @@ export function LoginForm({ locale, next }: LoginFormProps) {
         type="submit"
         disabled={loading}
         className="
-          h-12 rounded-xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-semibold text-sm
+          h-12 rounded-xl bg-gradient-to-br from-mint to-blossom text-ink font-semibold text-sm
           hover:bg-[#374151] active:bg-[#1F2937]
           disabled:opacity-60 disabled:cursor-not-allowed
           transition-all duration-150 shadow-sm
@@ -117,11 +117,11 @@ export function LoginForm({ locale, next }: LoginFormProps) {
         {loading ? t.submitting : t.submit}
       </button>
 
-      <p className="text-center text-sm text-[#9CA3AF]">
+      <p className="text-center text-sm text-stone">
         {t.noAccount}{" "}
         <Link
           href={`/${locale}/auth/signup`}
-          className="font-semibold text-[#F0B8B8] hover:underline"
+          className="font-semibold text-blossom-deep hover:underline"
         >
           {t.signup}
         </Link>

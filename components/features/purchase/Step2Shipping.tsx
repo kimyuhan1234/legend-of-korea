@@ -64,7 +64,7 @@ export function Step2Shipping({ data, prevAddress, onChange, onNext, onPrev, t }
         {prevAddress && (
           <button
             onClick={usePrevAddress}
-            className="text-sm text-[#F0B8B8] hover:underline font-medium"
+            className="text-sm text-blossom-deep hover:underline font-medium"
           >
             {t.usePrevAddress}
           </button>
@@ -72,7 +72,7 @@ export function Step2Shipping({ data, prevAddress, onChange, onNext, onPrev, t }
       </div>
 
       {/* 배송 팁 */}
-      <div className="flex items-center gap-2 bg-[#F0B8B8]/10 border border-[#F0B8B8]/30 rounded-xl px-4 py-3 text-sm text-[#111] font-medium">
+      <div className="flex items-center gap-2 bg-[#F0B8B8]/10 border border-blossom-deep/30 rounded-xl px-4 py-3 text-sm text-[#111] font-medium">
         <span>🏨</span>
         <span>{t.shippingTip}</span>
       </div>
@@ -84,7 +84,7 @@ export function Step2Shipping({ data, prevAddress, onChange, onNext, onPrev, t }
           value={data.name}
           onChange={(e) => onChange({ ...data, name: e.target.value })}
           placeholder={t.shippingName}
-          className="w-full px-4 py-3 rounded-xl border border-[#E4E7EB] bg-white text-[#111] text-sm focus:outline-none focus:border-[#F0B8B8] transition-colors"
+          className="w-full px-4 py-3 rounded-xl border border-mist bg-white text-[#111] text-sm focus:outline-none focus:border-blossom-deep transition-colors"
         />
       </FormField>
 
@@ -95,7 +95,7 @@ export function Step2Shipping({ data, prevAddress, onChange, onNext, onPrev, t }
           value={data.phone}
           onChange={(e) => onChange({ ...data, phone: e.target.value })}
           placeholder="010-0000-0000"
-          className="w-full px-4 py-3 rounded-xl border border-[#E4E7EB] bg-white text-[#111] text-sm focus:outline-none focus:border-[#F0B8B8] transition-colors"
+          className="w-full px-4 py-3 rounded-xl border border-mist bg-white text-[#111] text-sm focus:outline-none focus:border-blossom-deep transition-colors"
         />
       </FormField>
 
@@ -107,11 +107,11 @@ export function Step2Shipping({ data, prevAddress, onChange, onNext, onPrev, t }
             value={data.zipcode}
             readOnly
             placeholder="00000"
-            className="flex-1 px-4 py-3 rounded-xl border border-[#E4E7EB] bg-[#F0F2F5] text-[#111] text-sm"
+            className="flex-1 px-4 py-3 rounded-xl border border-mist bg-cloud text-[#111] text-sm"
           />
           <button
             onClick={handleFindZipcode}
-            className="px-4 py-3 rounded-xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] text-sm font-semibold hover:bg-[#374151] transition-colors whitespace-nowrap"
+            className="px-4 py-3 rounded-xl bg-gradient-to-br from-mint to-blossom text-ink text-sm font-semibold hover:bg-[#374151] transition-colors whitespace-nowrap"
           >
             {t.findZipcode}
           </button>
@@ -125,7 +125,7 @@ export function Step2Shipping({ data, prevAddress, onChange, onNext, onPrev, t }
           value={data.address}
           readOnly
           placeholder={t.shippingAddress}
-          className="w-full px-4 py-3 rounded-xl border border-[#E4E7EB] bg-[#F0F2F5] text-[#111] text-sm"
+          className="w-full px-4 py-3 rounded-xl border border-mist bg-cloud text-[#111] text-sm"
         />
       </FormField>
 
@@ -136,7 +136,7 @@ export function Step2Shipping({ data, prevAddress, onChange, onNext, onPrev, t }
           value={data.addressDetail}
           onChange={(e) => onChange({ ...data, addressDetail: e.target.value })}
           placeholder={t.shippingDetail}
-          className="w-full px-4 py-3 rounded-xl border border-[#E4E7EB] bg-white text-[#111] text-sm focus:outline-none focus:border-[#F0B8B8] transition-colors"
+          className="w-full px-4 py-3 rounded-xl border border-mist bg-white text-[#111] text-sm focus:outline-none focus:border-blossom-deep transition-colors"
         />
       </FormField>
 
@@ -144,14 +144,14 @@ export function Step2Shipping({ data, prevAddress, onChange, onNext, onPrev, t }
       <div className="flex gap-3 pt-2">
         <button
           onClick={onPrev}
-          className="flex-1 py-4 rounded-2xl border border-[#E4E7EB] bg-white text-[#111] font-semibold hover:bg-[#F0F2F5] transition-colors"
+          className="flex-1 py-4 rounded-2xl border border-mist bg-white text-[#111] font-semibold hover:bg-cloud transition-colors"
         >
           ← {t.prev}
         </button>
         <button
           onClick={onNext}
           disabled={!isValid}
-          className="flex-[2] py-4 rounded-2xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-bold hover:bg-[#374151] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          className="flex-[2] py-4 rounded-2xl bg-gradient-to-br from-mint to-blossom text-ink font-bold hover:bg-[#374151] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
           {t.next} →
         </button>
@@ -172,7 +172,7 @@ function FormField({
   return (
     <div>
       <label className="block text-sm font-semibold text-[#111] mb-2">
-        {label} {required && <span className="text-[#F0B8B8]">*</span>}
+        {label} {required && <span className="text-blossom-deep">*</span>}
       </label>
       {children}
     </div>

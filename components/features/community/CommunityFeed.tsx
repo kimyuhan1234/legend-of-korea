@@ -162,13 +162,13 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
             className={`px-5 py-2.5 font-bold transition-all rounded-xl
               ${regionFilter === 'recipe'
                 ? 'bg-mint-deep text-white'
-                : 'bg-white border border-mist text-[#1F2937] hover:border-mint-deep'
+                : 'bg-white border border-mist text-ink hover:border-mint-deep'
               }`}
           >
             🍳 요리 레시피
           </button>
           <Link href={`/${locale}/community/write`}>
-            <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] hover:opacity-90 hover:scale-[1.02] transition-all">
+            <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold bg-gradient-to-br from-mint to-blossom text-ink hover:opacity-90 hover:scale-[1.02] transition-all">
               <PenLine className="w-4 h-4" />
               {t('writePost', { defaultValue: '기록 남기기' })}
             </button>
@@ -226,8 +226,8 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
       {/* Mobile FAB */}
       <Link href={`/${locale}/community/write`} className="fixed bottom-24 right-6 md:hidden z-40">
-        <div className="rounded-full shadow-2xl h-14 w-14 flex items-center justify-center bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] border-4 border-white">
-          <PenLine className="w-6 h-6 text-[#1F2937]" />
+        <div className="rounded-full shadow-2xl h-14 w-14 flex items-center justify-center bg-gradient-to-br from-mint to-blossom border-4 border-white">
+          <PenLine className="w-6 h-6 text-ink" />
         </div>
       </Link>
     </div>

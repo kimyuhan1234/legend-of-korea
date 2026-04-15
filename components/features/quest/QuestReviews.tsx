@@ -13,7 +13,7 @@ export function QuestReviews() {
   const t = useTranslations('quest')
 
   return (
-    <section className="bg-[#F0F2F5] py-20 md:py-28">
+    <section className="bg-cloud py-20 md:py-28">
       <div className="max-w-5xl mx-auto px-6 md:px-10">
         <h2 className="text-2xl md:text-3xl font-black text-[#111] text-center mb-10">
           {t('reviews.title')}
@@ -29,7 +29,7 @@ export function QuestReviews() {
                 <span className="text-3xl">{review.flag}</span>
                 <div>
                   <p className="font-bold text-sm text-[#111]">{review.name}</p>
-                  <span className="inline-block px-2 py-0.5 rounded-full bg-[#9DD8CE]/10 text-[9px] font-bold text-[#9DD8CE] uppercase tracking-widest">
+                  <span className="inline-block px-2 py-0.5 rounded-full bg-mint-deep/10 text-[9px] font-bold text-mint-deep uppercase tracking-widest">
                     {t('reviews.verified')}
                   </span>
                 </div>

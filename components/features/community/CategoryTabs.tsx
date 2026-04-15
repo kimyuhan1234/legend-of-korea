@@ -20,11 +20,11 @@ export function CategoryTabs({ currentCategory, onSelect, locale }: CategoryTabs
               key={tab.code}
               onClick={() => onSelect(tab.code)}
               className={`relative px-1 py-2 font-black text-sm whitespace-nowrap transition-colors
-                ${isSelected ? 'text-[#9DD8CE]' : 'text-slate-400 hover:text-slate-600'}`}
+                ${isSelected ? 'text-mint-deep' : 'text-slate-400 hover:text-slate-600'}`}
             >
               {(tab.name as any)[locale] || tab.name.en}
               {isSelected && (
-                <span className="absolute bottom-[-13px] left-0 right-0 h-1 bg-[#9DD8CE] rounded-t-full" />
+                <span className="absolute bottom-[-13px] left-0 right-0 h-1 bg-mint-deep rounded-t-full" />
               )}
             </button>
           );

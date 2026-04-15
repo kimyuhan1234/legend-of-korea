@@ -134,7 +134,7 @@ export function PlannerSpotDistance({
           return (
             <li
               key={spot.id}
-              className="flex items-center gap-3 bg-white rounded-2xl p-4 border border-[#E4E7EB]/40"
+              className="flex items-center gap-3 bg-white rounded-2xl p-4 border border-mist/40"
             >
               <span className="text-2xl shrink-0">{spot.emoji}</span>
               <div className="flex-1 min-w-0">
@@ -145,7 +145,7 @@ export function PlannerSpotDistance({
                     <span>🚕 {approx} {dist.taxiMinutes}분</span>
                   </div>
                 ) : (
-                  <p className="text-[11px] text-[#9CA3AF] mt-1">
+                  <p className="text-[11px] text-stone mt-1">
                     {computing ? '...' : '—'}
                   </p>
                 )}
@@ -155,7 +155,7 @@ export function PlannerSpotDistance({
         })}
       </ul>
 
-      <p className="text-[10px] text-[#9CA3AF] mt-3 text-center">
+      <p className="text-[10px] text-stone mt-3 text-center">
         ※ 모든 시간은 {approx}이며 교통 상황에 따라 달라질 수 있습니다
       </p>
     </section>

@@ -22,12 +22,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function AboutPage({ params }: Props) {
   const c = CONTENT[params.locale] ?? CONTENT.ko
   return (
-    <div className="min-h-screen bg-[#FAFBFC]">
-      <div className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] py-20 px-8 text-center">
+    <div className="min-h-screen bg-snow">
+      <div className="bg-gradient-to-br from-mint to-blossom text-ink py-20 px-8 text-center">
         <h1 className="text-3xl md:text-4xl font-black">{c.title}</h1>
       </div>
       <div className="max-w-3xl mx-auto px-8 py-16">
-        <p className="text-[#4B5563] text-lg leading-relaxed">{c.body}</p>
+        <p className="text-slate text-lg leading-relaxed">{c.body}</p>
       </div>
     </div>
   )

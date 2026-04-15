@@ -35,7 +35,7 @@ export function PartyCard({ party, currentUserId, myPartyIds, onJoin }: PartyCar
   const progressPct = Math.round((party.current_members / party.max_members) * 100)
 
   return (
-    <div className="bg-white rounded-2xl border border-mist p-5 hover:border-[#B8E8E0] hover:shadow-md transition-all flex flex-col gap-3">
+    <div className="bg-white rounded-2xl border border-mist p-5 hover:border-mint hover:shadow-md transition-all flex flex-col gap-3">
       {/* 리더 정보 */}
       <div className="flex items-center gap-2">
         <span className="text-2xl">{flag}</span>
@@ -67,7 +67,7 @@ export function PartyCard({ party, currentUserId, myPartyIds, onJoin }: PartyCar
         </div>
         <div className="w-full bg-snow rounded-full h-1.5">
           <div
-            className="h-1.5 rounded-full bg-gradient-to-r from-[#B8E8E0] to-[#5BBDAD] transition-all"
+            className="h-1.5 rounded-full bg-gradient-to-r from-mint to-[#5BBDAD] transition-all"
             style={{ width: `${progressPct}%` }}
           />
         </div>
@@ -77,7 +77,7 @@ export function PartyCard({ party, currentUserId, myPartyIds, onJoin }: PartyCar
       {isLeader ? (
         <button
           disabled
-          className="w-full py-2 rounded-xl text-sm font-bold bg-[#B8E8E0]/30 text-[#5BBDAD] border border-[#B8E8E0] cursor-default"
+          className="w-full py-2 rounded-xl text-sm font-bold bg-mint/30 text-[#5BBDAD] border border-mint cursor-default"
         >
           {t('myParty')} ✓
         </button>
@@ -95,7 +95,7 @@ export function PartyCard({ party, currentUserId, myPartyIds, onJoin }: PartyCar
           className={`w-full py-2 rounded-xl text-sm font-bold transition-all ${
             isFull
               ? 'bg-snow text-stone cursor-not-allowed'
-              : 'bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink hover:opacity-90'
+              : 'bg-gradient-to-r from-mint to-blossom text-ink hover:opacity-90'
           }`}
         >
           {isFull ? t('full') : t('join')}

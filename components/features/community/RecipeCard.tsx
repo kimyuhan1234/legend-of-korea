@@ -141,7 +141,7 @@ export function RecipeCard({ recipe, locale = 'ko' }: RecipeCardProps) {
         {allIngredients.length > 0 && (
           <div className="flex flex-wrap gap-1">
             {allIngredients.map((ing, i) => (
-              <span key={i} className="text-xs bg-[#9DD8CE]/8 text-[#111] px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+              <span key={i} className="text-xs bg-mint-deep/8 text-[#111] px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
                 {ing}
               </span>
             ))}

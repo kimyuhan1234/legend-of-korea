@@ -34,7 +34,7 @@ function ExperienceDetail({
           unoptimized
         />
         {/* 이미지 로드 실패 시 폴백 — CSS로 처리 */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] flex items-center justify-center -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-mint to-blossom flex items-center justify-center -z-10">
           <span className="text-6xl">{exp.icon}</span>
         </div>
       </div>
@@ -52,7 +52,7 @@ function ExperienceDetail({
 
       {/* 가격 + 소요시간 + 위치 */}
       <div className="flex flex-wrap gap-2 mb-4 text-sm">
-        <span className="bg-[#B8E8E0]/40 text-ink font-bold px-3 py-1 rounded-full">
+        <span className="bg-mint/40 text-ink font-bold px-3 py-1 rounded-full">
           💰 {exp.price}
         </span>
         <span className="bg-snow text-slate px-3 py-1 rounded-full border border-mist">
@@ -83,7 +83,7 @@ function ExperienceDetail({
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 w-full justify-center
-                     bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0]
+                     bg-gradient-to-r from-mint to-blossom
                      text-ink font-bold rounded-xl px-6 py-3 text-sm
                      hover:opacity-90 transition"
         >
@@ -120,7 +120,7 @@ function CityWorkshopCard({ workshop, locale }: { workshop: CityWorkshop; locale
               onClick={() => setSelectedIdx(i)}
               className={`w-full text-left px-4 py-3 rounded-xl transition-all flex items-center gap-3 ${
                 selectedIdx === i
-                  ? 'bg-gradient-to-r from-[#B8E8E0]/30 to-[#F5D0D0]/30 border border-[#B8E8E0]'
+                  ? 'bg-gradient-to-r from-mint/30 to-blossom/30 border border-mint'
                   : 'hover:bg-snow'
               }`}
             >
@@ -223,7 +223,7 @@ export function DiyWorkshopDirectory() {
   return (
     <div className="min-h-screen bg-snow">
       {/* 히어로 */}
-      <div className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-ink py-16 px-6 md:px-10 text-center">
+      <div className="bg-gradient-to-br from-mint to-blossom text-ink py-16 px-6 md:px-10 text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-xs font-black uppercase tracking-widest mb-4">
           DIY
         </span>
@@ -267,7 +267,7 @@ export function DiyWorkshopDirectory() {
         </div>
 
         {/* 예약 팁 */}
-        <div className="bg-[#F5D0D0]/30 border border-[#F5D0D0] rounded-2xl p-5 mb-12">
+        <div className="bg-blossom/30 border border-blossom rounded-2xl p-5 mb-12">
           <p className="text-sm font-bold text-ink mb-1">💡 {t('note')}</p>
           <p className="text-xs text-slate leading-relaxed">{t('noteText')}</p>
         </div>

@@ -140,7 +140,7 @@ export default function AdminMissionsPage() {
                 </TableCell>
                 <TableCell>
                   <div className="flex flex-wrap gap-1">
-                    <Badge variant="outline" className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] border-none py-0.5 px-2 text-[10px] font-bold">
+                    <Badge variant="outline" className="bg-gradient-to-br from-mint to-blossom text-ink border-none py-0.5 px-2 text-[10px] font-bold">
                       {m.type.toUpperCase()}
                     </Badge>
                     {m.is_hidden && <Badge className="bg-peach text-slate border-none py-0.5 px-2 text-[10px] font-bold">HIDDEN</Badge>}
@@ -152,7 +152,7 @@ export default function AdminMissionsPage() {
                     {m.qr_code}
                   </div>
                 </TableCell>
-                <TableCell className="font-black text-[#F0B8B8]">{m.lp_reward} LP</TableCell>
+                <TableCell className="font-black text-blossom-deep">{m.lp_reward} LP</TableCell>
                 <TableCell className="text-right">
                   <Button 
                     variant="ghost" 
@@ -184,7 +184,7 @@ export default function AdminMissionsPage() {
                   <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">상태 정보</label>
                   <div className="flex gap-2">
                     <Badge variant="outline" className="border-slate-200 text-slate-500">#{editForm.sequence}</Badge>
-                    <Badge className="bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] border-none">{editForm.type.toUpperCase()}</Badge>
+                    <Badge className="bg-gradient-to-br from-mint to-blossom text-ink border-none">{editForm.type.toUpperCase()}</Badge>
                     <Badge variant="outline" className="border-slate-200 text-slate-500 font-mono">{editForm.qr_code}</Badge>
                   </div>
                 </div>
@@ -245,7 +245,7 @@ export default function AdminMissionsPage() {
                 </Button>
                 <Button 
                   onClick={handleSave} 
-                  className="flex-1 h-14 rounded-2xl bg-gradient-to-br from-[#B8E8E0] to-[#F5D0D0] text-[#1F2937] font-black text-lg border-none hover:bg-[#374151] shadow-lg shadow-[#1F2937]/20 transition-all"
+                  className="flex-1 h-14 rounded-2xl bg-gradient-to-br from-mint to-blossom text-ink font-black text-lg border-none hover:bg-[#374151] shadow-lg shadow-[#1F2937]/20 transition-all"
                 >
                   <Save className="w-5 h-5 mr-2" /> 저장 완료
                 </Button>

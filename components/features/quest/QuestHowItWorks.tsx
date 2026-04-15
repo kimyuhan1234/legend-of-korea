@@ -12,7 +12,7 @@ export function QuestHowItWorks() {
   ]
 
   return (
-    <section className="bg-[#F0F2F5] py-20 md:py-28">
+    <section className="bg-cloud py-20 md:py-28">
       <div className="max-w-5xl mx-auto px-6 md:px-10">
         <h2 className="text-2xl md:text-3xl font-black text-[#111] text-center mb-12">
           {t('howItWorks.title')}
@@ -23,7 +23,7 @@ export function QuestHowItWorks() {
             <div key={i} className="relative">
               <div className="bg-white rounded-3xl p-7 text-center shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] transition-all duration-300">
                 <div className="text-5xl mb-4">{step.icon}</div>
-                <p className="text-xs font-black text-[#9DD8CE] uppercase tracking-widest mb-2">
+                <p className="text-xs font-black text-mint-deep uppercase tracking-widest mb-2">
                   Step {i + 1}
                 </p>
                 <h3 className="text-lg font-bold text-[#111] mb-2">
@@ -35,8 +35,8 @@ export function QuestHowItWorks() {
               </div>
               {i < 2 && (
                 <>
-                  <div className="hidden md:block absolute top-1/2 -right-4 text-2xl text-[#9DD8CE]">→</div>
-                  <div className="md:hidden text-center text-2xl text-[#9DD8CE] py-2">↓</div>
+                  <div className="hidden md:block absolute top-1/2 -right-4 text-2xl text-mint-deep">→</div>
+                  <div className="md:hidden text-center text-2xl text-mint-deep py-2">↓</div>
                 </>
               )}
             </div>

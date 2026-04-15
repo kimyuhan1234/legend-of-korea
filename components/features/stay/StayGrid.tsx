@@ -14,7 +14,7 @@ export function StayGrid({ stays, locale }: StayGridProps) {
 
   if (stays.length === 0) {
     return (
-      <div className="text-center py-20 text-[#9CA3AF]">
+      <div className="text-center py-20 text-stone">
         <div className="text-5xl mb-4">🏯</div>
         <p className="text-sm">{t('empty')}</p>
       </div>

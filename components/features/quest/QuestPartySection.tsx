@@ -98,7 +98,7 @@ export function QuestPartySection({ courseId, isLoggedIn, currentUserId, locale 
       {/* 섹션 헤더 */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
         <div>
-          <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-[#B8E8E0]/40 to-[#F5D0D0]/40 text-xs font-black uppercase tracking-widest text-ink mb-2">
+          <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-mint/40 to-blossom/40 text-xs font-black uppercase tracking-widest text-ink mb-2">
             🎉 {t('title')}
           </span>
           <h2 className="text-2xl md:text-3xl font-black text-ink">{t('subtitle')}</h2>
@@ -106,7 +106,7 @@ export function QuestPartySection({ courseId, isLoggedIn, currentUserId, locale 
         </div>
         <button
           onClick={handleCreateClick}
-          className="shrink-0 inline-flex items-center gap-2 bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-2.5 text-sm hover:opacity-90 transition"
+          className="shrink-0 inline-flex items-center gap-2 bg-gradient-to-r from-mint to-blossom text-ink font-bold rounded-xl px-5 py-2.5 text-sm hover:opacity-90 transition"
         >
           + {t('create')}
         </button>
@@ -125,7 +125,7 @@ export function QuestPartySection({ courseId, isLoggedIn, currentUserId, locale 
           <p className="text-sm text-slate mb-4">{t('empty')}</p>
           <button
             onClick={handleCreateClick}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#B8E8E0] to-[#F5D0D0] text-ink font-bold rounded-xl px-5 py-2.5 text-sm hover:opacity-90 transition"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-mint to-blossom text-ink font-bold rounded-xl px-5 py-2.5 text-sm hover:opacity-90 transition"
           >
             + {t('create')}
           </button>
