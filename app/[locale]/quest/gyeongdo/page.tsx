@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import { GYEONGDO_EVENTS, resolveEventStatus } from '@/lib/data/gyeongdo-events'
 import { GyeongdoEventDetail } from '@/components/features/quest/GyeongdoEventDetail'
+import { GyeongdoSharedInfo } from '@/components/features/quest/GyeongdoSharedInfo'
 import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton'
 import { ZepBanner } from '@/components/features/quest/ZepBanner'
 
@@ -67,20 +68,27 @@ export default async function GyeongdoPage({ params }: Props) {
             </div>
           </div>
         ) : (
-          /* 이벤트 목록 */
+          /* 이벤트 목록 + 공유 정보 */
           <div className="flex flex-col gap-8">
-            {activeEvents.map((event) => (
-              <GyeongdoEventDetail
-                key={event.id}
-                event={event}
-                locale={locale}
-                isLoggedIn={isLoggedIn}
-              />
-            ))}
+            {/* 경도 설명 + 키트 구성 + 참여 흐름 + 주의사항 (1번만) */}
+            <GyeongdoSharedInfo locale={locale} />
 
-            {/* ZEP 가상 사전 작전 모임
-                - 비로그인: ZepBanner (풀 애니메이션 + 구매 유도)
-                - 로그인  : ZepMeetingButton (미니 프리뷰 + 입장 버튼) */}
+            {/* 이벤트별 카드 (날짜/장소/인원/구매 버튼만) */}
+            <div>
+              <h3 className="text-base font-black text-ink mb-3">📅 {locale === 'ko' ? '예정된 이벤트' : locale === 'ja' ? '予定イベント' : 'Upcoming Events'}</h3>
+              <div className="flex flex-col gap-4">
+                {activeEvents.map((event) => (
+                  <GyeongdoEventDetail
+                    key={event.id}
+                    event={event}
+                    locale={locale}
+                    isLoggedIn={isLoggedIn}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* ZEP 가상 사전 작전 모임 */}
             {isLoggedIn ? (
               <ZepMeetingButton
                 courseId="gyeongdo-seoul"
