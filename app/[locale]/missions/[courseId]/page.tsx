@@ -5,12 +5,36 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
+import { Metadata } from 'next';
+import type { I18nText } from '@/lib/supabase/types';
 
 interface CourseMapProps {
   params: {
     locale: string;
     courseId: string;
   };
+}
+
+export async function generateMetadata({ params }: CourseMapProps): Promise<Metadata> {
+  const { locale, courseId } = params
+  const supabase = await createClient()
+  const { data: course } = await supabase
+    .from('courses')
+    .select('title')
+    .eq('id', courseId)
+    .single()
+
+  const title = course?.title
+    ? ((course.title as unknown as I18nText)[locale as keyof I18nText] || (course.title as unknown as I18nText).ko || 'Mission')
+    : 'Mission'
+
+  const siteName = locale === 'ja' ? 'Legend of Korea' : locale === 'en' ? 'Legend of Korea' : 'Legend of Korea'
+  const label = locale === 'ja' ? 'ミッション' : locale === 'en' ? 'Missions' : '미션'
+
+  return {
+    title: `${title} ${label} | ${siteName}`,
+    openGraph: { title: `${title} ${label} | ${siteName}` },
+  }
 }
 
 export default async function CourseMapPage({ params }: CourseMapProps) {

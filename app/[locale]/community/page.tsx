@@ -1,7 +1,36 @@
 export const dynamic = 'force-dynamic'
 
+import { Metadata } from 'next'
 import { CommunityFeed } from '@/components/features/community/CommunityFeed';
 import { CommunitySidebar } from '@/components/features/community/CommunitySidebar';
+
+interface Props {
+  params: { locale: string }
+}
+
+const META: Record<string, { title: string; description: string }> = {
+  ko: {
+    title: '커뮤니티 | Legend of Korea',
+    description: '모험가들의 여행 기록과 레시피를 공유하세요.',
+  },
+  en: {
+    title: 'Community | Legend of Korea',
+    description: 'Share travel stories and recipes with fellow adventurers.',
+  },
+  ja: {
+    title: 'コミュニティ | Legend of Korea',
+    description: '冒険者たちの旅の記録とレシピを共有しよう。',
+  },
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const m = META[params.locale] ?? META.ko
+  return {
+    title: m.title,
+    description: m.description,
+    openGraph: { title: m.title, description: m.description },
+  }
+}
 
 export default function CommunityPage({ params: { locale } }: { params: { locale: string } }) {
   return (

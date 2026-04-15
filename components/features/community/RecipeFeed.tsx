@@ -6,15 +6,15 @@ import { Loader2, PenLine } from 'lucide-react';
 import { RecipeCard, RecipeType } from './RecipeCard';
 
 const COUNTRY_FILTERS = [
-  { code: 'all', label: '전체' },
-  { code: 'JP', label: '🇯🇵 일본' },
-  { code: 'IT', label: '🇮🇹 이탈리아' },
-  { code: 'MX', label: '🇲🇽 멕시코' },
-  { code: 'TH', label: '🇹🇭 태국' },
-  { code: 'US', label: '🇺🇸 미국' },
-  { code: 'FR', label: '🇫🇷 프랑스' },
-  { code: 'IN', label: '🇮🇳 인도' },
-  { code: 'VN', label: '🇻🇳 베트남' },
+  { code: 'all', label: { ko: '전체',      en: 'All',       ja: 'すべて' } },
+  { code: 'JP',  label: { ko: '🇯🇵 일본',  en: '🇯🇵 Japan', ja: '🇯🇵 日本' } },
+  { code: 'IT',  label: { ko: '🇮🇹 이탈리아', en: '🇮🇹 Italy',   ja: '🇮🇹 イタリア' } },
+  { code: 'MX',  label: { ko: '🇲🇽 멕시코', en: '🇲🇽 Mexico',  ja: '🇲🇽 メキシコ' } },
+  { code: 'TH',  label: { ko: '🇹🇭 태국',  en: '🇹🇭 Thailand', ja: '🇹🇭 タイ' } },
+  { code: 'US',  label: { ko: '🇺🇸 미국',  en: '🇺🇸 USA',     ja: '🇺🇸 アメリカ' } },
+  { code: 'FR',  label: { ko: '🇫🇷 프랑스', en: '🇫🇷 France',  ja: '🇫🇷 フランス' } },
+  { code: 'IN',  label: { ko: '🇮🇳 인도',  en: '🇮🇳 India',   ja: '🇮🇳 インド' } },
+  { code: 'VN',  label: { ko: '🇻🇳 베트남', en: '🇻🇳 Vietnam', ja: '🇻🇳 ベトナム' } },
 ];
 
 interface RecipeFeedProps {
@@ -74,7 +74,7 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
                 : 'bg-cloud text-slate hover:bg-mist'
               }`}
           >
-            {f.label}
+            {f.label[locale as keyof typeof f.label] ?? f.label.ko}
           </button>
         ))}
       </div>
@@ -99,7 +99,7 @@ export function RecipeFeed({ locale }: RecipeFeedProps) {
       ) : (
         <div className="grid sm:grid-cols-2 gap-4">
           {recipes.map(recipe => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
+            <RecipeCard key={recipe.id} recipe={recipe} locale={locale} />
           ))}
         </div>
       )}

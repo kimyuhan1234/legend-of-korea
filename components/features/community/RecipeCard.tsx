@@ -8,9 +8,14 @@ const COUNTRY_FLAGS: Record<string, string> = {
   US: '🇺🇸', FR: '🇫🇷', IN: '🇮🇳', VN: '🇻🇳',
 };
 
-const DIFFICULTY_LABEL: Record<string, string> = {
-  easy: '쉬움', medium: '보통', hard: '어려움',
+const DIFFICULTY_LABELS: Record<string, Record<string, string>> = {
+  easy:   { ko: '쉬움',   en: 'Easy',   ja: '簡単' },
+  medium: { ko: '보통',   en: 'Medium', ja: '普通' },
+  hard:   { ko: '어려움', en: 'Hard',   ja: '難しい' },
 };
+function getDifficultyLabel(difficulty: string, locale: string): string {
+  return DIFFICULTY_LABELS[difficulty]?.[locale] ?? DIFFICULTY_LABELS[difficulty]?.ko ?? difficulty
+}
 
 const DIFFICULTY_COLOR: Record<string, string> = {
   easy: 'bg-emerald-50 text-emerald-700',
@@ -18,8 +23,18 @@ const DIFFICULTY_COLOR: Record<string, string> = {
   hard: 'bg-red-50 text-red-700',
 };
 
-function timeAgo(dateString: string) {
+function timeAgo(dateString: string, locale: string = 'ko') {
   const diff = Math.floor((Date.now() - new Date(dateString).getTime()) / 1000);
+  if (locale === 'ja') {
+    if (diff < 3600) return `${Math.floor(diff / 60)}分前`;
+    if (diff < 86400) return `${Math.floor(diff / 3600)}時間前`;
+    return `${Math.floor(diff / 86400)}日前`;
+  }
+  if (locale === 'en') {
+    if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+    if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+    return `${Math.floor(diff / 86400)}d ago`;
+  }
   if (diff < 3600) return `${Math.floor(diff / 60)}분 전`;
   if (diff < 86400) return `${Math.floor(diff / 3600)}시간 전`;
   return `${Math.floor(diff / 86400)}일 전`;
@@ -74,9 +89,10 @@ function TastePentagon({ profile }: { profile: NonNullable<RecipeType['taste_pro
 
 interface RecipeCardProps {
   recipe: RecipeType;
+  locale?: string;
 }
 
-export function RecipeCard({ recipe }: RecipeCardProps) {
+export function RecipeCard({ recipe, locale = 'ko' }: RecipeCardProps) {
   const flag = COUNTRY_FLAGS[recipe.country_code] || '🌍';
   const allIngredients = [
     ...(recipe.korean_ingredients || []),
@@ -101,7 +117,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
           </div>
         )}
         <span className={`absolute top-3 right-3 text-xs px-2 py-0.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] font-bold ${DIFFICULTY_COLOR[recipe.difficulty] || 'bg-cloud text-slate'}`}>
-          {DIFFICULTY_LABEL[recipe.difficulty] || recipe.difficulty}
+          {getDifficultyLabel(recipe.difficulty, locale)}
         </span>
       </div>
 
@@ -151,7 +167,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
         {/* 작성자 + 반응 */}
         <div className="flex items-center justify-between pt-2 border-t border-cloud">
           <span className="text-xs text-stone">
-            {recipe.user?.nickname || 'Unknown'} · {timeAgo(recipe.created_at)}
+            {recipe.user?.nickname || 'Unknown'} · {timeAgo(recipe.created_at, locale)}
           </span>
           <div className="flex items-center gap-3 text-xs text-stone">
             <span className="flex items-center gap-1"><Heart size={12} /> {recipe.likes_count}</span>

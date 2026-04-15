@@ -7,14 +7,14 @@ import { Plus, Trash2, X, Loader2, Camera } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 
 const COUNTRY_OPTIONS = [
-  { code: 'JP', flag: '🇯🇵', name: '일본' },
-  { code: 'IT', flag: '🇮🇹', name: '이탈리아' },
-  { code: 'MX', flag: '🇲🇽', name: '멕시코' },
-  { code: 'TH', flag: '🇹🇭', name: '태국' },
-  { code: 'US', flag: '🇺🇸', name: '미국' },
-  { code: 'FR', flag: '🇫🇷', name: '프랑스' },
-  { code: 'IN', flag: '🇮🇳', name: '인도' },
-  { code: 'VN', flag: '🇻🇳', name: '베트남' },
+  { code: 'JP', flag: '🇯🇵', name: { ko: '일본',     en: 'Japan',   ja: '日本' } },
+  { code: 'IT', flag: '🇮🇹', name: { ko: '이탈리아', en: 'Italy',   ja: 'イタリア' } },
+  { code: 'MX', flag: '🇲🇽', name: { ko: '멕시코',   en: 'Mexico',  ja: 'メキシコ' } },
+  { code: 'TH', flag: '🇹🇭', name: { ko: '태국',     en: 'Thailand', ja: 'タイ' } },
+  { code: 'US', flag: '🇺🇸', name: { ko: '미국',     en: 'USA',     ja: 'アメリカ' } },
+  { code: 'FR', flag: '🇫🇷', name: { ko: '프랑스',   en: 'France',  ja: 'フランス' } },
+  { code: 'IN', flag: '🇮🇳', name: { ko: '인도',     en: 'India',   ja: 'インド' } },
+  { code: 'VN', flag: '🇻🇳', name: { ko: '베트남',   en: 'Vietnam', ja: 'ベトナム' } },
 ];
 
 interface RecipeWriteFormProps {
@@ -145,7 +145,12 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
     }
   }
 
-  const DIFFICULTY_LABELS = { easy: '쉬움', medium: '보통', hard: '어려움' };
+  const DIFFICULTY_LABELS: Record<string, Record<string, string>> = {
+    easy:   { ko: '쉬움',   en: 'Easy',   ja: '簡単' },
+    medium: { ko: '보통',   en: 'Medium', ja: '普通' },
+    hard:   { ko: '어려움', en: 'Hard',   ja: '難しい' },
+  };
+  const getDiffLabel = (d: string) => DIFFICULTY_LABELS[d]?.[locale] ?? DIFFICULTY_LABELS[d]?.ko ?? d;
 
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto px-4 py-8 space-y-6">
@@ -180,7 +185,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
                   }`}
               >
                 <span className="text-xl">{c.flag}</span>
-                {c.name}
+                {c.name[locale as keyof typeof c.name] ?? c.name.ko}
               </button>
             ))}
           </div>
@@ -201,7 +206,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
                     onChange={() => setDifficulty(d)}
                     className="accent-[#9DD8CE]"
                   />
-                  <span className="text-sm">{DIFFICULTY_LABELS[d]}</span>
+                  <span className="text-sm">{getDiffLabel(d)}</span>
                 </label>
               ))}
             </div>
@@ -354,12 +359,13 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
               })()}
               {/* 꼭짓점 라벨 */}
               {[
-                { label: '달콤', i: 0 },
-                { label: '짭조름', i: 1 },
-                { label: '매콤', i: 2 },
-                { label: '새콤', i: 3 },
-                { label: '감칠맛', i: 4 },
+                { label: { ko: '달콤',  en: 'Sweet',  ja: '甘い' },   i: 0 },
+                { label: { ko: '짭조름', en: 'Salty',  ja: '塩辛い' }, i: 1 },
+                { label: { ko: '매콤',  en: 'Spicy',  ja: '辛い' },   i: 2 },
+                { label: { ko: '새콤',  en: 'Sour',   ja: '酸っぱい' }, i: 3 },
+                { label: { ko: '감칠맛', en: 'Umami', ja: 'うま味' },  i: 4 },
               ].map(({ label, i }) => {
+                const tasteLabel = label[locale as keyof typeof label] ?? label.ko;
                 const angle = (-Math.PI / 2) + (2 * Math.PI / 5) * i;
                 const x = 50 + 48 * Math.cos(angle);
                 const y = 50 + 48 * Math.sin(angle);
@@ -372,7 +378,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
                     fontSize={6}
                     fill="#6b7280"
                   >
-                    {label}
+                    {tasteLabel}
                   </text>
                 );
               })}
