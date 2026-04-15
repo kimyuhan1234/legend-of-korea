@@ -24,6 +24,9 @@
 | `b2b_orders` | B2B 단체 주문 |
 | `quest_parties` | Quest Party 매칭 — 파티 정보 (migration 020) |
 | `quest_party_members` | Quest Party 멤버 목록 (migration 020) |
+| `participant_reviews` | 참여자 상호 별점 평가 (migration 021) |
+| `user_reports` | 참여자 신고 접수 (migration 021) |
+| `blacklist` | 블랙리스트 — 저평점/신고 자동 차단 (migration 021) |
 
 ---
 
@@ -504,3 +507,72 @@ CREATE TABLE plan_items (
 ```
 
 RLS: travel_plans.user_id 기반 서브쿼리 검증 (본인 플랜의 아이템만 접근)
+
+
+---
+
+### 2.21 participant_reviews (021 추가)
+
+```sql
+CREATE TABLE participant_reviews (
+  id           UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  event_type   TEXT NOT NULL CHECK (event_type IN ('quest_party', 'gyeongdo')),
+  event_id     TEXT NOT NULL,
+  reviewer_id  UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  reviewee_id  UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  rating       INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
+  comment      TEXT,
+  created_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  UNIQUE (event_id, reviewer_id, reviewee_id),
+  CHECK (reviewer_id <> reviewee_id)
+);
+```
+
+RLS: INSERT with CHECK(auth.uid()=reviewer_id) / SELECT USING(auth.uid()=reviewer_id OR auth.uid()=reviewee_id)
+
+자동 블랙리스트 트리거: 리뷰 등록 시 reviewee의 평균 별점 재계산 → ≥3건 AND avg ≤1.0 이면 blacklist upsert
+
+---
+
+### 2.22 user_reports (021 추가)
+
+```sql
+CREATE TABLE user_reports (
+  id          UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  reporter_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  reported_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  event_type  TEXT NOT NULL CHECK (event_type IN ('quest_party', 'gyeongdo')),
+  event_id    TEXT NOT NULL,
+  reason      TEXT NOT NULL CHECK (reason IN ('no_show','harassment','fraud','violence','inappropriate','other')),
+  detail      TEXT,
+  status      TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','reviewed','resolved','dismissed')),
+  created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  UNIQUE (event_id, reporter_id, reported_id),
+  CHECK (reporter_id <> reported_id)
+);
+```
+
+RLS: INSERT with CHECK(auth.uid()=reporter_id) / SELECT USING(auth.uid()=reporter_id)
+
+자동 블랙리스트 트리거: dismissed 제외 신고 ≥3건 시 blacklist upsert (reason='reports')
+
+---
+
+### 2.23 blacklist (021 추가)
+
+```sql
+CREATE TABLE blacklist (
+  id             UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id        UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE UNIQUE,
+  reason         TEXT NOT NULL CHECK (reason IN ('low_rating','admin_ban','reports')),
+  average_rating NUMERIC(3,1),
+  total_reports  INTEGER NOT NULL DEFAULT 0,
+  blocked_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  blocked_until  TIMESTAMPTZ,   -- NULL = 영구 차단
+  is_active      BOOLEAN NOT NULL DEFAULT true
+);
+```
+
+RLS: SELECT USING(true) — 참여 허용 여부 확인을 위해 누구나 조회 가능
+
+API: GET /api/review/check?userId=... → isBlacklisted, reviewCount, averageRating 반환

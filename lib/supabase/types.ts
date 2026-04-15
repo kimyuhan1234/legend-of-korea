@@ -978,6 +978,125 @@ export interface Database {
           }
         ]
       }
+      participant_reviews: {
+        Row: {
+          id: string
+          event_type: "quest_party" | "gyeongdo"
+          event_id: string
+          reviewer_id: string
+          reviewee_id: string
+          rating: number
+          comment: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          event_type: "quest_party" | "gyeongdo"
+          event_id: string
+          reviewer_id: string
+          reviewee_id: string
+          rating: number
+          comment?: string | null
+          created_at?: string
+        }
+        Update: {
+          rating?: number
+          comment?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "participant_reviews_reviewer_id_fkey"
+            columns: ["reviewer_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "participant_reviews_reviewee_id_fkey"
+            columns: ["reviewee_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      user_reports: {
+        Row: {
+          id: string
+          reporter_id: string
+          reported_id: string
+          event_type: "quest_party" | "gyeongdo"
+          event_id: string
+          reason: "no_show" | "harassment" | "fraud" | "violence" | "inappropriate" | "other"
+          detail: string | null
+          status: "pending" | "reviewed" | "resolved" | "dismissed"
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          reporter_id: string
+          reported_id: string
+          event_type: "quest_party" | "gyeongdo"
+          event_id: string
+          reason: "no_show" | "harassment" | "fraud" | "violence" | "inappropriate" | "other"
+          detail?: string | null
+          status?: "pending" | "reviewed" | "resolved" | "dismissed"
+          created_at?: string
+        }
+        Update: {
+          status?: "pending" | "reviewed" | "resolved" | "dismissed"
+          detail?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_reports_reporter_id_fkey"
+            columns: ["reporter_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_reports_reported_id_fkey"
+            columns: ["reported_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      blacklist: {
+        Row: {
+          id: string
+          user_id: string
+          reason: "low_rating" | "admin_ban" | "reports"
+          average_rating: number | null
+          total_reports: number
+          blocked_at: string
+          blocked_until: string | null
+          is_active: boolean
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          reason: "low_rating" | "admin_ban" | "reports"
+          average_rating?: number | null
+          total_reports?: number
+          blocked_at?: string
+          blocked_until?: string | null
+          is_active?: boolean
+        }
+        Update: {
+          reason?: "low_rating" | "admin_ban" | "reports"
+          average_rating?: number | null
+          total_reports?: number
+          blocked_until?: string | null
+          is_active?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "blacklist_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -1018,6 +1137,9 @@ export type TravelPlan = Database["public"]["Tables"]["travel_plans"]["Row"]
 export type PlanItem = Database["public"]["Tables"]["plan_items"]["Row"]
 export type QuestParty = Database["public"]["Tables"]["quest_parties"]["Row"]
 export type QuestPartyMember = Database["public"]["Tables"]["quest_party_members"]["Row"]
+export type ParticipantReview = Database["public"]["Tables"]["participant_reviews"]["Row"]
+export type UserReport = Database["public"]["Tables"]["user_reports"]["Row"]
+export type Blacklist = Database["public"]["Tables"]["blacklist"]["Row"]
 
 // Insert 타입
 export type UserInsert = Database["public"]["Tables"]["users"]["Insert"]

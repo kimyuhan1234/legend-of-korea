@@ -1429,6 +1429,53 @@
     "noRoute": "路線情報準備中",
     "selectRoute": "到着地を選択してください"
   },
+  "safety": {
+    "review": {
+      "title": "参加者の評価",
+      "subtitle": "一緒の旅はいかがでしたか？",
+      "ratingLabel": "星を選択",
+      "commentPlaceholder": "コメントを自由にどうぞ（任意）",
+      "submit": "評価を送信",
+      "submitting": "送信中...",
+      "cancel": "キャンセル",
+      "success": "評価が完了しました。",
+      "errorDuplicate": "すでにこの参加者を評価済みです。",
+      "errorGeneric": "エラーが発生しました。もう一度お試しください。",
+      "anonymous": "* 評価は匿名で処理されます"
+    },
+    "report": {
+      "trigger": "通報",
+      "title": "通報する",
+      "selectReason": "通報理由を選択",
+      "detailPlaceholder": "詳細（任意、最大500文字）",
+      "submit": "通報を送信",
+      "submitting": "処理中...",
+      "cancel": "キャンセル",
+      "success": "通報を受け付けました。確認後に対応いたします。",
+      "errorDuplicate": "すでにこの参加者を通報済みです。",
+      "errorGeneric": "エラーが発生しました。再度お試しください。",
+      "notice": "虚偽の通報はご利用に影響する場合があります。",
+      "reasons": {
+        "no_show": "ノーショー（無断欠席）",
+        "harassment": "言葉の暴力 / ハラスメント",
+        "fraud": "詐欺 / 欺瞞行為",
+        "violence": "暴力的な脅し / 暴力",
+        "inappropriate": "不適切な行動",
+        "other": "その他"
+      }
+    },
+    "badge": {
+      "trusted": "信頼度高",
+      "new": "新規参加者",
+      "blocked": "利用制限"
+    },
+    "verification": {
+      "title": "本人確認のご案内",
+      "body": "安全な同行のために、参加前に本人確認が必要です。すべての参加者の身元が確認されます。",
+      "cta": "認証する",
+      "pending": "認証準備中"
+    }
+  },
   "dupe": {
     "mode": {
       "city": "🗺️ 都市別",

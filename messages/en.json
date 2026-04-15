@@ -1429,6 +1429,53 @@
     "noRoute": "Route info coming soon",
     "selectRoute": "Select a destination"
   },
+  "safety": {
+    "review": {
+      "title": "Rate Participant",
+      "subtitle": "How was your adventure together?",
+      "ratingLabel": "Select rating",
+      "commentPlaceholder": "Leave a comment (optional)",
+      "submit": "Submit",
+      "submitting": "Submitting...",
+      "cancel": "Cancel",
+      "success": "Review submitted successfully.",
+      "errorDuplicate": "You have already reviewed this participant.",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "anonymous": "* Reviews are anonymous"
+    },
+    "report": {
+      "trigger": "Report",
+      "title": "Report User",
+      "selectReason": "Select reason",
+      "detailPlaceholder": "Details (optional, max 500 chars)",
+      "submit": "Submit Report",
+      "submitting": "Submitting...",
+      "cancel": "Cancel",
+      "success": "Report submitted. We will review and take action.",
+      "errorDuplicate": "You have already reported this participant.",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "notice": "False reports may result in account restrictions.",
+      "reasons": {
+        "no_show": "No-show (absent without notice)",
+        "harassment": "Verbal abuse / harassment",
+        "fraud": "Fraud / deceptive behavior",
+        "violence": "Physical threats / violence",
+        "inappropriate": "Inappropriate behavior",
+        "other": "Other"
+      }
+    },
+    "badge": {
+      "trusted": "Trusted",
+      "new": "New user",
+      "blocked": "Restricted"
+    },
+    "verification": {
+      "title": "Identity Verification",
+      "body": "For a safe adventure together, identity verification is required before joining. All participants are verified.",
+      "cta": "Verify now",
+      "pending": "Coming soon"
+    }
+  },
   "dupe": {
     "mode": {
       "city": "🗺️ By City",
