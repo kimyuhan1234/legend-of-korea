@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import createMiddleware from "next-intl/middleware"
 import { updateSession } from "@/lib/supabase/middleware"
 
-const locales = ["ko", "ja", "en"] as const
+const locales = ["ko", "ja", "en", "zh-CN", "zh-TW"] as const
 const defaultLocale = "ko"
 
 // 비로그인 접근 허용 경로 (locale prefix 제외, 화이트리스트)
