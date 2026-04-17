@@ -44,3 +44,8 @@ next-env.d.ts
 # supabase
 .supabase/
 supabase/.temp/
+
+# 영상 파일 — 배포 시 CDN/Vercel Storage에 별도 업로드
+public/videos/*.mp4
+public/videos/*.mov
+public/videos/*.avi

@@ -9,9 +9,16 @@ interface StoryCard {
   textKey: string
 }
 
-/** region별 전용 영상 맵 — 영상이 있는 코스만 등록 */
+/** region별 전용 영상 맵 — 영상이 있는 코스만 등록 (yongin 제외) */
 const STORY_VIDEOS: Record<string, string> = {
-  tongyeong: '/videos/byeoljubu.mp4',
+  jeonju: '/videos/jeonju.mp4',
+  tongyeong: '/videos/tongyeong.mp4',
+  gyeongju: '/videos/gyeongju.mp4',
+  busan: '/videos/busan.mp4',
+  seoul: '/videos/seoul.mp4',
+  jeju: '/videos/jeju.mp4',
+  cheonan: '/videos/cheonan.mp4',
+  icheon: '/videos/icheon.mp4',
 }
 
 interface QuestStorySliderProps {
@@ -41,7 +48,7 @@ export function QuestStorySlider({ storyCards, region }: QuestStorySliderProps) 
   }
 
   const scrollToKit = () => {
-    document.getElementById('kit-section')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('kit-purchase')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const isLast = current === cards.length - 1
