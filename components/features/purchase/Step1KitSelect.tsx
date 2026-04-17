@@ -31,73 +31,65 @@ interface Step1Props {
   locale: string
 }
 
-export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Step1Props) {
-  const selectedKit = kits.find((k) => k.id === data.kitId)
+const DIGITAL_FEATURES = [
+  { icon: '📱', label: { ko: 'GPS 미션 해금', en: 'GPS Mission Unlock', ja: 'GPSミッション解除' } },
+  { icon: '📸', label: { ko: '레트로 카메라 필터', en: 'Retro Camera Filter', ja: 'レトロカメラフィルター' } },
+  { icon: '🛂', label: { ko: '디지털 여권 스탬프', en: 'Digital Passport Stamp', ja: 'デジタルパスポート' } },
+  { icon: '🎖️', label: { ko: '프로필 훈장', en: 'Profile Badge', ja: 'プロフィール勲章' } },
+  { icon: '🏆', label: { ko: '월간 우승 실물 상품', en: 'Monthly Winner Prize', ja: '月間優勝賞品' } },
+]
+
+const PLAN_LABEL = {
+  ko: { title: '구독 플랜 확인', plan: '디지털 퀘스트 패스', price: '₩6,900/월', desc: '모든 미션 해금 + 디지털 혜택' },
+  en: { title: 'Confirm Plan', plan: 'Digital Quest Pass', price: '$5/month', desc: 'Unlock all missions + digital perks' },
+  ja: { title: 'プラン確認', plan: 'デジタルクエストパス', price: '¥750/月', desc: '全ミッション解除＋デジタル特典' },
+}
+
+export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t, locale }: Step1Props) {
+  const lk = (locale || 'ko') as 'ko' | 'en' | 'ja'
+  const plan = PLAN_LABEL[lk] || PLAN_LABEL.ko
+
+  // 첫 kit을 자동 선택 (상위 호환)
+  const firstKit = kits[0]
+  if (firstKit && !data.kitId) {
+    onChange({ ...data, kitId: firstKit.id, quantity: 1 })
+  }
+
   const selectedCoupon = coupons.find((c) => c.id === data.couponId)
-
-  const subtotal = (selectedKit?.price || 0) * data.quantity
-  const discount = selectedCoupon ? Math.floor(subtotal * (selectedCoupon.discount_rate / 100)) : 0
-  const total = subtotal - discount
-
-  const soloKit = kits.find((k) => k.option_type === "solo")
-  const coupleKit = kits.find((k) => k.option_type === "couple")
+  const basePrice = 6900
+  const discount = selectedCoupon ? Math.floor(basePrice * (selectedCoupon.discount_rate / 100)) : 0
+  const total = basePrice - discount
 
   return (
     <div className="space-y-6">
-      <h2 className="text-xl font-bold text-[#111]">{t.selectKit}</h2>
+      <h2 className="text-xl font-bold text-[#111]">{plan.title}</h2>
 
-      {/* 키트 선택 */}
-      <div className="grid sm:grid-cols-2 gap-4">
-        {soloKit && (
-          <KitCard
-            kit={soloKit}
-            label={t.soloKit}
-            isSelected={data.kitId === soloKit.id}
-            onSelect={() => onChange({ ...data, kitId: soloKit.id })}
-          />
-        )}
-        {coupleKit && (
-          <KitCard
-            kit={coupleKit}
-            label={t.coupleKit}
-            isSelected={data.kitId === coupleKit.id}
-            onSelect={() => onChange({ ...data, kitId: coupleKit.id })}
-          />
-        )}
+      {/* 구독 플랜 카드 */}
+      <div className="border-2 border-mint-deep rounded-2xl p-6 bg-gradient-to-br from-mint-light/30 to-white">
+        <div className="text-center mb-5">
+          <p className="text-sm font-bold text-mint-deep uppercase tracking-widest mb-1">DIGITAL QUEST PASS</p>
+          <p className="text-4xl font-black text-[#111]">{plan.price}</p>
+          <p className="text-sm text-stone mt-1">{plan.desc}</p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          {DIGITAL_FEATURES.map((f, i) => (
+            <div key={i} className="flex items-center gap-2 bg-white rounded-xl px-3 py-2 border border-mist">
+              <span className="text-lg">{f.icon}</span>
+              <span className="text-xs font-medium text-[#111]">{f.label[lk]}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* 수량 */}
-      {data.kitId && (
-        <div>
-          <label className="block text-sm font-semibold text-[#111] mb-2">{t.quantity}</label>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => onChange({ ...data, quantity: Math.max(1, data.quantity - 1) })}
-              className="w-10 h-10 rounded-xl border border-mist bg-white text-[#111] font-bold text-lg hover:bg-cloud transition-colors"
-            >
-              −
-            </button>
-            <span className="w-10 text-center font-bold text-[#111] text-lg">{data.quantity}</span>
-            <button
-              onClick={() => onChange({ ...data, quantity: Math.min(5, data.quantity + 1) })}
-              className="w-10 h-10 rounded-xl border border-mist bg-white text-[#111] font-bold text-lg hover:bg-cloud transition-colors"
-            >
-              +
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* 쿠폰 */}
-      <div>
-        <label className="block text-sm font-semibold text-[#111] mb-2">{t.applyCoupon}</label>
-        {coupons.length === 0 ? (
-          <p className="text-sm text-stone bg-cloud rounded-xl px-4 py-3">{t.noCoupon}</p>
-        ) : (
+      {coupons.length > 0 && (
+        <div>
+          <label className="block text-sm font-semibold text-[#111] mb-2">{t.applyCoupon}</label>
           <select
             value={data.couponId}
             onChange={(e) => onChange({ ...data, couponId: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-mist bg-white text-[#111] text-sm focus:outline-none focus:border-blossom-deep transition-colors"
+            className="w-full px-4 py-3 rounded-xl border border-mist bg-white text-[#111] text-sm focus:outline-none focus:border-mint-deep transition-colors"
           >
             <option value="">{t.selectCoupon}</option>
             {coupons.map((coupon) => (
@@ -106,79 +98,35 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t }: Ste
               </option>
             ))}
           </select>
-        )}
-      </div>
-
-      {/* 금액 요약 */}
-      {data.kitId && (
-        <div className="bg-cloud rounded-2xl p-5 space-y-2">
-          <div className="flex justify-between text-sm text-stone">
-            <span>{t.totalPrice}</span>
-            <span>₩{subtotal.toLocaleString()}</span>
-          </div>
-          {discount > 0 && (
-            <div className="flex justify-between text-sm text-emerald-600">
-              <span>{t.discount} ({selectedCoupon?.discount_rate}%)</span>
-              <span>−₩{discount.toLocaleString()}</span>
-            </div>
-          )}
-          <div className="h-px bg-mist my-2" />
-          <div className="flex justify-between font-black text-[#111] text-lg">
-            <span>{t.finalPrice}</span>
-            <span>₩{total.toLocaleString()}</span>
-          </div>
         </div>
       )}
+
+      {/* 금액 요약 */}
+      <div className="bg-cloud rounded-2xl p-5 space-y-2">
+        <div className="flex justify-between text-sm text-stone">
+          <span>{plan.plan}</span>
+          <span>₩{basePrice.toLocaleString()}</span>
+        </div>
+        {discount > 0 && (
+          <div className="flex justify-between text-sm text-emerald-600">
+            <span>{t.discount} ({selectedCoupon?.discount_rate}%)</span>
+            <span>-₩{discount.toLocaleString()}</span>
+          </div>
+        )}
+        <div className="h-px bg-mist my-2" />
+        <div className="flex justify-between font-black text-[#111] text-lg">
+          <span>{t.finalPrice}</span>
+          <span>₩{total.toLocaleString()}</span>
+        </div>
+      </div>
 
       {/* 다음 버튼 */}
       <button
         onClick={onNext}
-        disabled={!data.kitId}
-        className="w-full py-4 rounded-2xl bg-gradient-to-br from-mint to-blossom text-ink font-bold text-lg hover:bg-[#374151] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="w-full py-4 rounded-2xl bg-gradient-to-r from-mint to-mint-deep text-white font-bold text-lg hover:opacity-90 transition-colors"
       >
         {t.next} →
       </button>
     </div>
-  )
-}
-
-function KitCard({
-  kit,
-  label,
-  isSelected,
-  onSelect,
-}: {
-  kit: Kit
-  label: string
-  isSelected: boolean
-  onSelect: () => void
-}) {
-  const inStock = kit.stock > 0 && kit.is_active
-  return (
-    <button
-      onClick={onSelect}
-      disabled={!inStock}
-      className={`relative w-full text-left p-5 rounded-2xl border-2 transition-all ${
-        isSelected
-          ? "border-blossom-deep bg-[#F0B8B8]/5"
-          : inStock
-          ? "border-mist bg-white hover:border-blossom-deep/50"
-          : "border-mist bg-cloud opacity-50 cursor-not-allowed"
-      }`}
-    >
-      {isSelected && (
-        <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#F0B8B8] flex items-center justify-center text-white text-xs font-bold">
-          ✓
-        </div>
-      )}
-      <div className="text-2xl mb-2">📦</div>
-      <p className="font-bold text-[#111] mb-1">{label}</p>
-      <p className="text-xl font-black text-[#111]">₩{kit.price.toLocaleString()}</p>
-      {!inStock && (
-        <span className="mt-2 inline-block text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600">
-          품절
-        </span>
-      )}
-    </button>
   )
 }
