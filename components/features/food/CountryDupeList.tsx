@@ -14,7 +14,7 @@ interface CountryDupeListProps {
 }
 
 function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return field[locale as 'ko' | 'en' | 'ja'] || field.ko
+  return field[locale as string] || field.ko
 }
 
 const INITIAL_SHOW = 5

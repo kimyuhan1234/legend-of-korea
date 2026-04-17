@@ -9,7 +9,7 @@ interface Props {
 
 export function GyeongdoSharedInfo({ locale }: Props) {
   const t = useTranslations('quest.gyeongdo')
-  const lk = locale as 'ko' | 'en' | 'ja'
+  const lk = locale
 
   return (
     <div className="bg-white rounded-2xl border border-mist overflow-hidden p-5 md:p-7 flex flex-col gap-7">
@@ -30,7 +30,7 @@ export function GyeongdoSharedInfo({ locale }: Props) {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl p-3 text-center border border-mist">
                 <div className="text-2xl mb-1">{item.icon}</div>
-                <p className="text-xs font-bold text-ink">{item.label[lk]}</p>
+                <p className="text-xs font-bold text-ink">{(item.label as Record<string, string>)[lk] || item.label.en || item.label.ko}</p>
               </div>
             ))}
           </div>
@@ -44,7 +44,7 @@ export function GyeongdoSharedInfo({ locale }: Props) {
           {GYEONGDO_KIT.includes.map((item, i) => (
             <div key={i} className="flex items-start gap-3 text-sm">
               <span className="text-[#5BBDAD] font-bold mt-0.5">✓</span>
-              <span className="text-slate">{item[lk] || item.ko}</span>
+              <span className="text-slate">{(item as Record<string, string>)[lk] || item.en || item.ko}</span>
             </div>
           ))}
         </div>

@@ -46,8 +46,8 @@ const PLAN_LABEL = {
 }
 
 export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t, locale }: Step1Props) {
-  const lk = (locale || 'ko') as 'ko' | 'en' | 'ja'
-  const plan = PLAN_LABEL[lk] || PLAN_LABEL.ko
+  const lk = (locale || 'ko') as string
+  const plan = PLAN_LABEL[lk as keyof typeof PLAN_LABEL] || PLAN_LABEL.ko
 
   // 첫 kit을 자동 선택 (상위 호환)
   const firstKit = kits[0]
@@ -76,7 +76,7 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t, local
           {DIGITAL_FEATURES.map((f, i) => (
             <div key={i} className="flex items-center gap-2 bg-white rounded-xl px-3 py-2 border border-mist">
               <span className="text-lg">{f.icon}</span>
-              <span className="text-xs font-medium text-[#111]">{f.label[lk]}</span>
+              <span className="text-xs font-medium text-[#111]">{(f.label as Record<string, string>)[lk] || f.label.en}</span>
             </div>
           ))}
         </div>

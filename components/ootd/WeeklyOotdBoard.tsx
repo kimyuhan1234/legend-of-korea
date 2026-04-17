@@ -255,7 +255,7 @@ function getItemRecommendation(
   locale: string
 ): { isRecommended: boolean; reason: string } {
   const avgTemp = (highTemp + lowTemp) / 2
-  const lk = locale as 'ko' | 'en' | 'ja'
+  const lk = locale as string
 
   if (condition === 'rainy' && RAIN_SHOES.has(key)) {
     const r = { ko: '비 오는 날 추천', en: 'Good for rain', ja: '雨の日おすすめ' }

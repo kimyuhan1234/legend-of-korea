@@ -56,7 +56,7 @@ export default async function SightsPage({ params, searchParams }: Props) {
             {t('filterAll')}
           </a>
           {REGIONS.map(r => {
-            const label = r[locale as 'ko' | 'ja' | 'en'] || r.ko
+            const label = r[locale as string] || r.ko
             return (
               <a key={r.code} href={`/${locale}/sights?region=${r.code}${category ? `&category=${category}` : ''}`}
                 className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${region === r.code ? 'bg-gradient-to-br from-mint to-blossom text-ink border-ink' : 'bg-white text-slate border-mist hover:border-ink/40'}`}
@@ -101,7 +101,7 @@ export default async function SightsPage({ params, searchParams }: Props) {
                   </div>
                   <div className="absolute top-3 left-3 flex gap-1.5">
                     <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-br from-mint to-blossom text-ink">
-                      📍 {REGIONS.find(r => r.code === sight.region)?.[locale as 'ko' | 'ja' | 'en'] || sight.region}
+                      📍 {REGIONS.find(r => r.code === sight.region)?.[locale as string] || sight.region}
                     </span>
                     <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-br from-mint to-blossom text-ink">
                       {CATEGORY_EMOJI[sight.category]} {CATEGORY_LABELS[sight.category]}

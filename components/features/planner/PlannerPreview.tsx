@@ -63,7 +63,7 @@ function getItemName(item: PlanItem, locale: string): string {
 function getCityLabel(code: string, locale: string): string {
   const city = CITIES.find((c) => c.code === code)
   if (!city) return code
-  return city.name[locale as 'ko' | 'en' | 'ja'] || city.name.ko
+  return city.name[locale as string] || city.name.ko
 }
 
 export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHotelSaved, onResetAll }: PlannerPreviewProps) {

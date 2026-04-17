@@ -4,7 +4,7 @@
 //  초기: 정적 데이터 관리. 추후 관리자 페이지 + DB 연동 가능한 구조.
 // ─────────────────────────────────────────────
 
-type I18n = { ko: string; en: string; ja: string }
+type I18n = { ko: string; en: string; ja: string; 'zh-CN'?: string; 'zh-TW'?: string; [key: string]: string | undefined }
 
 export interface GyeongdoEvent {
   id: string
@@ -31,11 +31,15 @@ export const GYEONGDO_KIT = {
     ko: '서울 경도 스페셜 키트',
     en: 'Seoul Cops & Robbers Kit',
     ja: 'ソウル ケイドロ スペシャルキット',
+    'zh-CN': '首尔警匪大战特别套装',
+    'zh-TW': '首爾警匪大戰特別套裝',
   },
   description: {
     ko: '서울에서 가장 핫한 야외 놀이! 키트 하나로 경도 준비 끝.',
     en: "Seoul's hottest outdoor game! One kit, ready to play.",
     ja: 'ソウルで一番ホットなアウトドアゲーム！キット一つで準備完了。',
+    'zh-CN': '首尔最火的户外游戏！一套搞定警匪大战。',
+    'zh-TW': '首爾最火的戶外遊戲！一套搞定警匪大戰。',
   },
   includes: [
     {
@@ -81,11 +85,15 @@ export const GYEONGDO_EVENTS: GyeongdoEvent[] = [
       ko: '여의도 한강공원',
       en: 'Yeouido Hangang Park',
       ja: '汝矣島漢江公園',
+      'zh-CN': '汝矣岛汉江公园',
+      'zh-TW': '汝矣島漢江公園',
     },
     meetingPoint: {
       ko: '여의도역 3번 출구 앞',
       en: 'Yeouido Station Exit 3',
       ja: '汝矣島駅3番出口前',
+      'zh-CN': '汝矣岛站3号出口前',
+      'zh-TW': '汝矣島站3號出口前',
     },
     maxParticipants: 30,
     currentParticipants: 12,
@@ -101,11 +109,15 @@ export const GYEONGDO_EVENTS: GyeongdoEvent[] = [
       ko: '성수동 서울숲',
       en: 'Seongsu Seoul Forest',
       ja: '聖水ソウルの森',
+      'zh-CN': '圣水洞首尔林',
+      'zh-TW': '聖水洞首爾林',
     },
     meetingPoint: {
       ko: '서울숲역 4번 출구 앞',
       en: 'Seoul Forest Station Exit 4',
       ja: 'ソウルの森駅4番出口前',
+      'zh-CN': '首尔林站4号出口前',
+      'zh-TW': '首爾林站4號出口前',
     },
     maxParticipants: 20,
     currentParticipants: 0,

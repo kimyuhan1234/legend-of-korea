@@ -59,11 +59,11 @@ function similarityColor(pct: number): string {
 }
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as 'ko' | 'ja' | 'en'] || field.ko
+  return field[locale as string] || field.ko
 }
 
 function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: string): string[] {
-  return field[locale as 'ko' | 'ja' | 'en'] || field.ko
+  return field[locale as string] || field.ko
 }
 
 interface Props {

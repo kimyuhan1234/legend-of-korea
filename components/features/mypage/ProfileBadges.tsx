@@ -31,7 +31,7 @@ interface CourseCompletion {
 export function ProfileBadges({ userId }: Props) {
   const t = useTranslations('mypage')
   const pathname = usePathname()
-  const locale = (pathname.split('/')[1] || 'ko') as 'ko' | 'en' | 'ja'
+  const locale = (pathname.split('/')[1] || 'ko') as string
   const [completions, setCompletions] = useState<CourseCompletion[]>([])
   const [loading, setLoading] = useState(true)
 

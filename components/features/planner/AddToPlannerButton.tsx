@@ -33,7 +33,7 @@ const CITY_NAMES: Record<string, { ko: string; en: string; ja: string }> = {
 }
 
 function getCityName(cityId: string, locale: string): string {
-  return CITY_NAMES[cityId]?.[locale as 'ko' | 'en' | 'ja'] || cityId
+  return CITY_NAMES[cityId]?.[locale as string] || cityId
 }
 
 function extractName(data: Record<string, unknown>): string {

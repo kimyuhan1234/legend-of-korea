@@ -26,7 +26,7 @@ export function GyeongdoEventDetail({ event, locale, isLoggedIn }: Props) {
   const spotsLeft = event.maxParticipants - event.currentParticipants
   const progressPct = Math.round((event.currentParticipants / event.maxParticipants) * 100)
 
-  const lk = locale as 'ko' | 'en' | 'ja'
+  const lk = locale
 
   // 날짜 포맷
   const dateObj = new Date(event.date)
@@ -61,14 +61,14 @@ export function GyeongdoEventDetail({ event, locale, isLoggedIn }: Props) {
             <span className="w-6 text-center">📍</span>
             <div>
               <span className="text-xs text-slate">{t('location')}</span>
-              <p className="font-bold text-ink">{event.location[lk] || event.location.ko}</p>
+              <p className="font-bold text-ink">{(event.location as Record<string, string>)[lk] || event.location.en || event.location.ko}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-6 text-center">🚶</span>
             <div>
               <span className="text-xs text-slate">{t('meetingPoint')}</span>
-              <p className="font-bold text-ink">{event.meetingPoint[lk] || event.meetingPoint.ko}</p>
+              <p className="font-bold text-ink">{(event.meetingPoint as Record<string, string>)[lk] || event.meetingPoint.en || event.meetingPoint.ko}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">

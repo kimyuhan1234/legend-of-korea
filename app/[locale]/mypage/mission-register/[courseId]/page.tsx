@@ -26,7 +26,7 @@ export default async function MissionRegisterPage({ params }: PageProps) {
 
   // Get course metadata from local seed data
   const courseData = getCourseById(courseId);
-  const lang = locale as 'ko' | 'ja' | 'en';
+  const lang = locale as string;
 
   const courseName = courseData?.name[lang] ?? courseData?.name['ko'] ?? courseId;
   const courseRegion = courseData?.region[lang] ?? courseData?.region['ko'] ?? '';

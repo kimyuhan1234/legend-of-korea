@@ -52,7 +52,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
   };
 
   const loc = (obj: { ko: string; ja: string; en: string }) =>
-    obj[locale as 'ko' | 'ja' | 'en'] || obj.ko;
+    obj[locale as string] || obj.ko;
 
   return (
     <>

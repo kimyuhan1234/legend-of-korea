@@ -32,8 +32,8 @@ export function GyeongdoEventBanner({ locale }: Props) {
   const spotsLeft = activeEvent.maxParticipants - activeEvent.currentParticipants
   const progressPct = Math.round((activeEvent.currentParticipants / activeEvent.maxParticipants) * 100)
 
-  const localeKey = locale as 'ko' | 'en' | 'ja'
-  const locationText = activeEvent.location[localeKey] || activeEvent.location.ko
+  const localeKey = locale
+  const locationText = (activeEvent.location as Record<string, string>)[localeKey] || activeEvent.location.en || activeEvent.location.ko
 
   // 날짜 포맷
   const dateObj = new Date(activeEvent.date)
