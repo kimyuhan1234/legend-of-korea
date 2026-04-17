@@ -26,6 +26,7 @@ export const GYEONGDO_KIT = {
   type: 'special-gyeongdo',
   city: 'seoul',
   price: 15000,
+  subscriberPrice: 9900,
   name: {
     ko: '서울 경도 스페셜 키트',
     en: 'Seoul Cops & Robbers Kit',

@@ -400,6 +400,12 @@
     "noOrders": "아직 주문 내역이 없습니다",
     "trackShipping": "배송 조회",
     "editProfile": "프로필 수정",
+    "badges": {
+      "title": "내 훈장",
+      "completed": "코스 완료!",
+      "locked": "미완료",
+      "legendaryTitle": "전설의 모험가"
+    },
     "nicknameLabel": "닉네임",
     "languageLabel": "언어 설정",
     "orderStatus": {

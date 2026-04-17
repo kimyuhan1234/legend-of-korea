@@ -55,7 +55,7 @@ export function GyeongdoSharedInfo({ locale }: Props) {
         <h3 className="text-base font-black text-ink mb-3">👣 {t('howTo')}</h3>
         <div className="grid grid-cols-3 gap-3">
           {[
-            { icon: '🛒', step: '1', label: t('step1'), sub: GYEONGDO_KIT.price.toLocaleString() + '원' },
+            { icon: '🛒', step: '1', label: t('step1'), sub: `₩${GYEONGDO_KIT.subscriberPrice.toLocaleString()}~` },
             { icon: '📍', step: '2', label: t('step2'), sub: '' },
             { icon: '🏃', step: '3', label: t('step3'), sub: '' },
           ].map((s) => (

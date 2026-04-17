@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { TierBadge } from '@/components/features/community/TierBadge';
+import { ProfileBadges } from '@/components/features/mypage/ProfileBadges';
 import {
   ShoppingBag,
   History,
@@ -263,6 +264,9 @@ export function MyPageClient({ locale }: MyPageClientProps) {
               </div>
             </CardContent>
           </Card>
+
+          {/* 프로필 훈장 */}
+          {user?.id && <ProfileBadges userId={user.id} />}
 
           <div className="bg-mint-deep rounded-[2.5rem] p-8 text-white space-y-4 shadow-xl shadow-mint relative overflow-hidden group">
              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-150 transition-transform duration-700" />

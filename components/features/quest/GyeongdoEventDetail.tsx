@@ -105,7 +105,18 @@ export function GyeongdoEventDetail({ event, locale, isLoggedIn }: Props) {
         </div>
 
         {/* 구매 버튼 */}
-        <div className="mt-4">
+        {/* 구독자 할인 안내 */}
+        <div className="mt-3 mb-2 bg-gradient-to-r from-mint-light/50 to-sky/10 border border-mint/30 rounded-xl px-3 py-2 flex items-center justify-between">
+          <span className="text-xs text-slate">
+            <span className="line-through text-stone mr-1">₩{GYEONGDO_KIT.price.toLocaleString()}</span>
+            <span className="font-black text-mint-deep">₩{GYEONGDO_KIT.subscriberPrice.toLocaleString()}</span>
+          </span>
+          <span className="text-[10px] font-bold text-white bg-mint-deep px-2 py-0.5 rounded-full">
+            {lk === 'ko' ? '구독자 34% 할인' : lk === 'ja' ? 'サブスク34%割引' : '34% off for subscribers'}
+          </span>
+        </div>
+
+        <div className="mt-2">
           {status === 'upcoming' ? (
             <button
               onClick={handleBuy}

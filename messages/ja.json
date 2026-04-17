@@ -400,6 +400,12 @@
     "noOrders": "まだ注文履歴がありません",
     "trackShipping": "配送確認",
     "editProfile": "プロフィール編集",
+    "badges": {
+      "title": "マイ勲章",
+      "completed": "コース完了！",
+      "locked": "未完了",
+      "legendaryTitle": "伝説の冒険者"
+    },
     "nicknameLabel": "ニックネーム",
     "languageLabel": "言語設定",
     "orderStatus": {
