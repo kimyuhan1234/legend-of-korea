@@ -473,13 +473,13 @@
     "copyright": "© 2025 Legend of Korea. All rights reserved."
   },
   "purchase": {
-    "stepKit": "Kit",
+    "stepKit": "Plan",
     "stepShipping": "Shipping",
     "stepPayment": "Payment",
     "stepComplete": "Done",
     "selectKit": "Select a kit",
-    "soloKit": "Solo Kit",
-    "coupleKit": "Couple Kit",
+    "soloKit": "Digital Quest Pass",
+    "coupleKit": "Digital Quest Pass",
     "quantity": "Quantity",
     "applyCoupon": "Apply Coupon",
     "selectCoupon": "Select a coupon",

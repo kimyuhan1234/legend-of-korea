@@ -473,13 +473,13 @@
     "copyright": "© 2025 Legend of Korea. All rights reserved."
   },
   "purchase": {
-    "stepKit": "套装",
+    "stepKit": "确认方案",
     "stepShipping": "配送",
     "stepPayment": "支付",
     "stepComplete": "完成",
     "selectKit": "选择套装",
-    "soloKit": "单人套装",
-    "coupleKit": "情侣套装",
+    "soloKit": "数字探险通行证",
+    "coupleKit": "数字探险通行证",
     "quantity": "数量",
     "applyCoupon": "使用优惠券",
     "selectCoupon": "选择优惠券",

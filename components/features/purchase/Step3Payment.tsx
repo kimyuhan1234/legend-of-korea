@@ -8,12 +8,6 @@ const TossPaymentWidget = dynamic(
   { ssr: false }
 )
 
-interface Kit {
-  id: string
-  option_type: "solo" | "couple"
-  price: number
-}
-
 interface Coupon {
   id: string
   discount_rate: number
@@ -31,7 +25,6 @@ interface ShippingInfo {
 interface Step3Props {
   kitSelection: { kitId: string; quantity: number; couponId: string }
   shipping: ShippingInfo
-  kits: Kit[]
   coupons: Coupon[]
   locale: string
   courseId: string
@@ -44,7 +37,6 @@ interface Step3Props {
 export function Step3Payment({
   kitSelection,
   shipping,
-  kits,
   coupons,
   locale,
   courseId,
@@ -57,14 +49,15 @@ export function Step3Payment({
   const [isCreatingOrder, setIsCreatingOrder] = useState(false)
   const [error, setError] = useState("")
 
-  const kit = kits.find((k) => k.id === kitSelection.kitId)
+  // 디지털 구독 고정 금액 — kit_products 가격 무시
+  const SUBSCRIPTION_PRICE = 6900
   const coupon = coupons.find((c) => c.id === kitSelection.couponId)
-  const subtotal = (kit?.price || 0) * kitSelection.quantity
+  const subtotal = SUBSCRIPTION_PRICE
   const discount = coupon ? Math.floor(subtotal * (coupon.discount_rate / 100)) : 0
   const finalAmount = subtotal - discount
 
-  const kitLabel =
-    kit?.option_type === "solo" ? t.soloKit : t.coupleKit
+  // 상품명: 디지털 퀘스트 패스 (월간)
+  const productLabel = t.soloKit
 
   // 주문 생성 후 결제 진행
   const handlePrepareOrder = async () => {
@@ -110,7 +103,7 @@ export function Step3Payment({
       {/* 주문 요약 */}
       <div className="bg-white rounded-2xl border border-mist p-5 space-y-3">
         <div className="flex justify-between text-sm">
-          <span className="text-stone">{kitLabel} × {kitSelection.quantity}</span>
+          <span className="text-stone">{productLabel}</span>
           <span className="font-medium text-[#111]">₩{subtotal.toLocaleString()}</span>
         </div>
         {discount > 0 && (
@@ -164,7 +157,7 @@ export function Step3Payment({
         <TossPaymentWidget
           amount={finalAmount}
           orderId={orderId}
-          orderName={`${courseName} - ${kitLabel}`}
+          orderName={`${courseName} - ${productLabel}`}
           successUrl={successUrl}
           failUrl={failUrl}
           customerKey={user?.id || "ANONYMOUS"}

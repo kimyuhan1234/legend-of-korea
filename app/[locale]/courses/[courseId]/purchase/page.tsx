@@ -28,10 +28,9 @@ export default async function PurchasePage({ params }: Props) {
     redirect(`/${locale}/auth/login?next=/courses/${courseId}/purchase`)
   }
 
-  // 병렬 데이터 로딩 (배송 조회 제거 — 디지털 구독)
-  const [courseRes, kitRes, couponRes, profileRes] = await Promise.all([
+  // 병렬 데이터 로딩 (kit_products/배송 조회 제거 — 디지털 구독)
+  const [courseRes, couponRes, profileRes] = await Promise.all([
     supabase.from("courses").select("id, title, is_active").eq("id", courseId).single(),
-    supabase.from("kit_products").select("*").eq("course_id", courseId),
     supabase
       .from("coupons")
       .select("id, discount_rate, code, expires_at")
@@ -73,7 +72,7 @@ export default async function PurchasePage({ params }: Props) {
       </div>
 
       <PurchaseFlow
-        kits={kitRes.data || []}
+        kits={[]}
         coupons={couponRes.data || []}
         locale={locale}
         courseId={courseId}

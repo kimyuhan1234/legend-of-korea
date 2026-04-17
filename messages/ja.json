@@ -473,13 +473,13 @@
     "copyright": "© 2025 Legend of Korea. All rights reserved."
   },
   "purchase": {
-    "stepKit": "キット選択",
+    "stepKit": "プラン確認",
     "stepShipping": "配送情報",
     "stepPayment": "お支払い",
     "stepComplete": "完了",
     "selectKit": "キットを選択してください",
-    "soloKit": "1人キット",
-    "coupleKit": "2人キット",
+    "soloKit": "デジタルクエストパス",
+    "coupleKit": "デジタルクエストパス",
     "quantity": "数量",
     "applyCoupon": "クーポン適用",
     "selectCoupon": "クーポンを選択してください",

@@ -42,10 +42,8 @@ export function PurchaseFlow({
   // 디지털 구독: step 1(플랜 확인) → 3(결제), Step2(배송) 스킵
   const [step, setStep] = useState(1)
 
-  const defaultKit = kits.find((k) => k.option_type === "solo" && k.is_active && k.stock > 0)
-
   const [kitSelection, setKitSelection] = useState({
-    kitId: defaultKit?.id || "",
+    kitId: "",
     quantity: 1,
     couponId: "",
   })
@@ -84,7 +82,6 @@ export function PurchaseFlow({
           <Step3Payment
             kitSelection={kitSelection}
             shipping={shipping}
-            kits={kits}
             coupons={coupons}
             locale={locale}
             courseId={courseId}
