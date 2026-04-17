@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
+import { usePathname } from 'next/navigation'
 import {
   CITY_THEMES,
   CITY_WEATHER,
@@ -221,6 +222,65 @@ function DayCard({ weather, outfit, isToday, cityId, cityName }: DayCardProps) {
 }
 
 // ─────────────────────────────────────────────
+//  날씨 기반 아이템 추천 판단
+// ─────────────────────────────────────────────
+const COLD_ITEMS = new Set([
+  'paddedJacket', 'longPadding', 'woolCoat', 'longWoolCoat', 'fleece', 'overcoat',
+  'herringboneCoat', 'navalCoat', 'longCoat', 'turtleneck', 'cableKnit', 'crewneckKnit',
+  'knit', 'sweater', 'corduroyPants', 'ankleBoots', 'chelseaBoots', 'hikingBoots',
+  'beanie', 'scarf',
+])
+const MILD_ITEMS = new Set([
+  'trenchCoat', 'cardigan', 'windbreaker', 'blazer', 'tweedJacket', 'denimJacket',
+  'hoodie', 'sweatshirt', 'oxfordShirt', 'checkShirt', 'blouse', 'pastelBlouse',
+  'slimPants', 'widePants', 'slacks', 'jeans', 'denim', 'chinoPants', 'cargoPants',
+  'midiSkirt', 'flaredSkirt', 'floralSkirt', 'knitDress', 'floralDress',
+  'sneakers', 'loafer', 'canvasShoes', 'maryJane', 'derbyShoes',
+  'crossbag', 'toteBag',
+])
+const HOT_ITEMS = new Set([
+  'linenShirt', 'cottonTee', 'graphicTee', 'printTee', 'halterTop', 'offShoulderTop',
+  'sleevelessTop', 'puffSleeve', 'linenJacket',
+  'shorts', 'boardShorts', 'wideShorts', 'linenDress', 'marineDress', 'sleevelessDress', 'maxiDress',
+  'sandals', 'espadrilles', 'flatSandal', 'platformSandals', 'slider', 'slipOn',
+  'sunglasses', 'strawHat', 'cap',
+])
+const RAIN_SHOES = new Set(['hikingBoots', 'hikingShoes', 'chunkySneakers', 'runningShoes'])
+
+function getItemRecommendation(
+  key: string,
+  highTemp: number,
+  lowTemp: number,
+  condition: string,
+  locale: string
+): { isRecommended: boolean; reason: string } {
+  const avgTemp = (highTemp + lowTemp) / 2
+  const lk = locale as 'ko' | 'en' | 'ja'
+
+  if (condition === 'rainy' && RAIN_SHOES.has(key)) {
+    const r = { ko: '비 오는 날 추천', en: 'Good for rain', ja: '雨の日おすすめ' }
+    return { isRecommended: true, reason: r[lk] || r.en }
+  }
+  if (avgTemp <= 12 && COLD_ITEMS.has(key)) {
+    const r = { ko: '따뜻하게 입기 좋아요', en: 'Stay warm', ja: '暖かく着られます' }
+    return { isRecommended: true, reason: r[lk] || r.en }
+  }
+  if (avgTemp > 12 && avgTemp <= 22 && MILD_ITEMS.has(key)) {
+    const r = { ko: `${highTemp}°C에 딱!`, en: `Great for ${highTemp}°C`, ja: `${highTemp}°Cにぴったり` }
+    return { isRecommended: true, reason: r[lk] || r.en }
+  }
+  if (avgTemp > 22 && HOT_ITEMS.has(key)) {
+    const r = { ko: '시원하게 입기 좋아요', en: 'Stay cool', ja: '涼しく着られます' }
+    return { isRecommended: true, reason: r[lk] || r.en }
+  }
+  if (lowTemp <= 10 && avgTemp > 12 && COLD_ITEMS.has(key)) {
+    const r = { ko: `아침 ${lowTemp}°C 대비`, en: `For morning ${lowTemp}°C`, ja: `朝${lowTemp}°C対策` }
+    return { isRecommended: true, reason: r[lk] || r.en }
+  }
+  return { isRecommended: false, reason: '' }
+}
+
+// ─────────────────────────────────────────────
 //  서브 컴포넌트: OutfitWithDropdown — 아이템별 교체 드롭다운
 // ─────────────────────────────────────────────
 interface OutfitDropdownProps {
@@ -233,9 +293,14 @@ interface OutfitDropdownProps {
 
 function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: OutfitDropdownProps) {
   const t = useTranslations('ootd')
+  const pathname = usePathname()
+  const locale = pathname.split('/')[1] || 'ko'
   const [openIdx, setOpenIdx] = useState<number | null>(null)
   const [customItems, setCustomItems] = useState<Record<number, OutfitItem>>({})
   const dropRef = useRef<HTMLUListElement>(null)
+
+  const recLabel = locale === 'ko' ? '오늘의 추천' : locale === 'ja' ? '今日のおすすめ' : 'Recommended'
+  const otherLabel = locale === 'ko' ? '다른 옵션' : locale === 'ja' ? '他のオプション' : 'Other options'
 
   // 바깥 클릭 시 닫기
   useEffect(() => {
@@ -257,6 +322,14 @@ function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: Outf
           const catDef = OOTD_CATEGORIES[cat]
           const isOpen = openIdx === i
 
+          // 드롭다운 아이템을 추천/비추천으로 분류
+          const itemsWithRec = catDef.items.map((key) => {
+            const rec = getItemRecommendation(key, weather.highTemp, weather.lowTemp, weather.condition, locale)
+            return { key, ...rec }
+          })
+          const recommended = itemsWithRec.filter(a => a.isRecommended)
+          const others = itemsWithRec.filter(a => !a.isRecommended)
+
           return (
             <li key={i} className="relative">
               <div className="flex items-center gap-1.5">
@@ -274,11 +347,47 @@ function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: Outf
               </div>
 
               {isOpen && (
-                <div className="absolute top-full left-0 mt-1 w-44 bg-white rounded-xl shadow-lg border border-mist z-30 max-h-40 overflow-y-auto">
-                  <div className="px-3 py-1.5 text-[9px] font-bold text-stone uppercase tracking-wider border-b border-mist">
-                    {catDef.label.ko}
+                <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-lg border border-mist z-30 max-h-60 overflow-y-auto">
+                  {/* 추천 섹션 */}
+                  {recommended.length > 0 && (
+                    <>
+                      <div className="px-3 py-1.5 text-[9px] font-black text-mint-deep bg-mint-light/50 sticky top-0 z-10">
+                        ✨ {recLabel}
+                      </div>
+                      {recommended.map(({ key, reason }) => {
+                        const nameKey = `ootd.items.${key}`
+                        const isCurrent = item.nameKey === nameKey
+                        return (
+                          <button
+                            key={key}
+                            type="button"
+                            onClick={() => {
+                              setCustomItems((prev) => ({ ...prev, [i]: { nameKey, icon: catDef.icon } }))
+                              setOpenIdx(null)
+                            }}
+                            className={`w-full text-left px-3 py-1.5 text-xs flex items-center gap-1.5 transition-colors ${
+                              isCurrent ? 'bg-mint-light text-mint-deep font-bold' : 'hover:bg-mint-light/30'
+                            }`}
+                          >
+                            <span>{catDef.icon}</span>
+                            <span className="flex-1 truncate">
+                              {t(`items.${key}` as Parameters<typeof t>[0])}
+                            </span>
+                            <span className="text-[8px] text-mint-deep bg-mint-light px-1.5 py-0.5 rounded-full whitespace-nowrap shrink-0">
+                              {reason}
+                            </span>
+                            {isCurrent && <span className="text-mint-deep text-[10px]">✓</span>}
+                          </button>
+                        )
+                      })}
+                    </>
+                  )}
+
+                  {/* 나머지 섹션 */}
+                  <div className="px-3 py-1.5 text-[9px] font-bold text-stone bg-cloud/50 sticky top-0 z-10 border-t border-mist">
+                    {recommended.length > 0 ? otherLabel : catDef.label.ko}
                   </div>
-                  {catDef.items.map((key) => {
+                  {others.map(({ key }) => {
                     const nameKey = `ootd.items.${key}`
                     const isCurrent = item.nameKey === nameKey
                     return (
@@ -286,14 +395,11 @@ function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: Outf
                         key={key}
                         type="button"
                         onClick={() => {
-                          setCustomItems((prev) => ({
-                            ...prev,
-                            [i]: { nameKey, icon: catDef.icon },
-                          }))
+                          setCustomItems((prev) => ({ ...prev, [i]: { nameKey, icon: catDef.icon } }))
                           setOpenIdx(null)
                         }}
                         className={`w-full text-left px-3 py-1.5 text-xs flex items-center gap-2 transition-colors ${
-                          isCurrent ? 'bg-mint-light text-mint-deep font-bold' : 'hover:bg-mint-light/30'
+                          isCurrent ? 'bg-mint-light text-mint-deep font-bold' : 'text-slate hover:bg-cloud/50'
                         }`}
                       >
                         <span>{catDef.icon}</span>
