@@ -3,22 +3,23 @@
 import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { getVideoUrl } from '@/lib/utils/storage'
 
 interface StoryCard {
   image: string
   textKey: string
 }
 
-/** region별 전용 영상 맵 — 영상이 있는 코스만 등록 (yongin 제외) */
+/** region별 전용 영상 맵 — Supabase Storage CDN 경유 (yongin 제외) */
 const STORY_VIDEOS: Record<string, string> = {
-  jeonju: '/videos/jeonju.mp4',
-  tongyeong: '/videos/tongyeong.mp4',
-  gyeongju: '/videos/gyeongju.mp4',
-  busan: '/videos/busan.mp4',
-  seoul: '/videos/seoul.mp4',
-  jeju: '/videos/jeju.mp4',
-  cheonan: '/videos/cheonan.mp4',
-  icheon: '/videos/icheon.mp4',
+  jeonju: getVideoUrl('jeonju.mp4'),
+  tongyeong: getVideoUrl('tongyeong.mp4'),
+  gyeongju: getVideoUrl('gyeongju.mp4'),
+  busan: getVideoUrl('busan.mp4'),
+  seoul: getVideoUrl('seoul.mp4'),
+  jeju: getVideoUrl('jeju.mp4'),
+  cheonan: getVideoUrl('cheonan.mp4'),
+  icheon: getVideoUrl('icheon.mp4'),
 }
 
 interface QuestStorySliderProps {
