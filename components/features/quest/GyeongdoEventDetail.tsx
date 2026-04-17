@@ -32,8 +32,8 @@ export function GyeongdoEventDetail({ event, locale, isLoggedIn }: Props) {
   const dateObj = new Date(event.date)
   const month = dateObj.getMonth() + 1
   const day = dateObj.getDate()
-  const weekdays = { ko: ['일', '월', '화', '수', '목', '금', '토'], en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], ja: ['日', '月', '火', '水', '木', '金', '土'] }
-  const wd = weekdays[lk][dateObj.getDay()]
+  const weekdays: Record<string, string[]> = { ko: ['일', '월', '화', '수', '목', '금', '토'], en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], ja: ['日', '月', '火', '水', '木', '金', '土'], 'zh-CN': ['日', '一', '二', '三', '四', '五', '六'], 'zh-TW': ['日', '一', '二', '三', '四', '五', '六'] }
+  const wd = (weekdays[lk] || weekdays.en)[dateObj.getDay()]
 
   function handleBuy() {
     if (!isLoggedIn) {
