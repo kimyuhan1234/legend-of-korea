@@ -332,9 +332,19 @@ export function WeeklyOotdBoard() {
   const t = useTranslations('ootd')
   const [selectedCity, setSelectedCity] = useState<string>('seoul')
   const [selectedGender, setSelectedGender] = useState<Gender>('female')
+  const [liveWeather, setLiveWeather] = useState<Record<string, DailyWeather[]> | null>(null)
+
+  useEffect(() => {
+    fetch('/api/weather')
+      .then(res => res.ok ? res.json() : null)
+      .then(data => { if (data && !data.error) setLiveWeather(data) })
+      .catch(() => {})
+  }, [])
 
   const cityTheme = CITY_THEMES.find((c) => c.cityId === selectedCity)!
-  const weatherList = CITY_WEATHER[selectedCity] ?? []
+  const weatherList = liveWeather?.[selectedCity]?.length
+    ? liveWeather[selectedCity]
+    : (CITY_WEATHER[selectedCity] ?? [])
   const today = weatherList[0]?.date
 
   return (

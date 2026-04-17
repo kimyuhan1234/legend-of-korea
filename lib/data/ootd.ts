@@ -56,7 +56,8 @@ export const WEATHER_EMOJI: Record<WeatherCondition, string> = {
 }
 
 // ─────────────────────────────────────────────
-//  8개 도시 × 7일 날씨 (2026-04-10 ~ 04-16)
+//  폴백용 정적 날씨 데이터 — Open-Meteo API 실패 시 사용
+//  실시간 데이터는 /api/weather에서 제공
 // ─────────────────────────────────────────────
 export const CITY_WEATHER: Record<string, DailyWeather[]> = {
   jeonju: [
