@@ -22,7 +22,7 @@ const LABEL = {
 
 function getI18n(field: I18nText | null, locale: string): string {
   if (!field) return ''
-  return (field as unknown as Record<string, string>)[locale] || field.ko || ''
+  return (field as unknown as Record<string, string>)[locale] || field.en || field.ko || ''
 }
 
 export async function CoursesTab({ locale }: CoursesTabProps) {
@@ -36,7 +36,7 @@ export async function CoursesTab({ locale }: CoursesTabProps) {
 
   const courses = allCourses ?? []
   const badge = COMING_SOON_BADGE[locale] ?? COMING_SOON_BADGE.ko
-  const label = LABEL[locale as keyof typeof LABEL] || LABEL.ko
+  const label = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
 
   if (courses.length === 0) {
     return (

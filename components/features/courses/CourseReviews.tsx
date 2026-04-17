@@ -78,8 +78,8 @@ function timeAgo(dateStr: string, locale: string): string {
 }
 
 export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
-  const label = LABEL[locale as keyof typeof LABEL] || LABEL.ko
-  const tierNames = TIER_NAMES[locale as keyof typeof TIER_NAMES] || TIER_NAMES.ko
+  const label = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
+  const tierNames = TIER_NAMES[locale as keyof typeof TIER_NAMES] || TIER_NAMES.en || TIER_NAMES.ko
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">

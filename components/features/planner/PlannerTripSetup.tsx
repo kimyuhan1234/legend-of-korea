@@ -83,7 +83,7 @@ export function PlannerTripSetup({
             >
               {CITY_OPTIONS.map((c) => (
                 <option key={c.id} value={c.id}>
-                  {c.label[locale as string] || c.label.ko}
+                  {c.label[locale as string] || c.label.en || c.label.ko}
                 </option>
               ))}
             </select>

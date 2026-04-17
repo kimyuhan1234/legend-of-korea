@@ -44,23 +44,23 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
   return {
     title: {
-      default: titles[locale] || titles.ko,
+      default: titles[locale] || titles.en || titles.ko,
       template: "%s | Legend of Korea",
     },
-    description: descriptions[locale] || descriptions.ko,
+    description: descriptions[locale] || descriptions.en || descriptions.ko,
     formatDetection: { telephone: false },
     openGraph: {
       type: "website",
       siteName: "Legend of Korea",
-      title: titles[locale] || titles.ko,
-      description: descriptions[locale] || descriptions.ko,
+      title: titles[locale] || titles.en || titles.ko,
+      description: descriptions[locale] || descriptions.en || descriptions.ko,
       url: `${siteUrl}/${locale}`,
       images: [{ url: "/images/dokkaebi-hero.jpg", width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
-      title: titles[locale] || titles.ko,
-      description: descriptions[locale] || descriptions.ko,
+      title: titles[locale] || titles.en || titles.ko,
+      description: descriptions[locale] || descriptions.en || descriptions.ko,
       images: ["/images/dokkaebi-hero.jpg"],
     },
     alternates: {

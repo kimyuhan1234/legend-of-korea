@@ -21,7 +21,7 @@ const STYLES = {
 const ICONS = { easy: "🌱", medium: "🔥", hard: "⚡" }
 
 export function DifficultyBadge({ difficulty, locale, size = "sm" }: DifficultyBadgeProps) {
-  const labels = LABELS[locale as keyof typeof LABELS] || LABELS.ko
+  const labels = LABELS[locale as keyof typeof LABELS] || LABELS.en || LABELS.ko
   const sizeClass = size === "md" ? "px-3 py-1 text-sm" : "px-2.5 py-0.5 text-xs"
 
   return (

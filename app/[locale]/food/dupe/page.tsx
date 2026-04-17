@@ -13,7 +13,7 @@ const META = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const m = META[params.locale as keyof typeof META] || META.ko
+  const m = META[params.locale as keyof typeof META] || META.en || META.ko
   return { title: m.title, description: m.desc }
 }
 
@@ -37,7 +37,7 @@ const HERO = {
 
 export default function DupePage({ params }: Props) {
   const { locale } = params
-  const h = HERO[locale as keyof typeof HERO] || HERO.ko
+  const h = HERO[locale as keyof typeof HERO] || HERO.en || HERO.ko
 
   return (
     <div>

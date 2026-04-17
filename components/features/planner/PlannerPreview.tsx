@@ -45,15 +45,15 @@ const CATEGORY_CONFIG: Record<ItemType, { icon: string; labelKey: string }> = {
 }
 
 const CITIES = [
-  { code: 'jeonju', name: { ko: '전주', en: 'Jeonju', ja: '全州' } },
-  { code: 'seoul', name: { ko: '서울', en: 'Seoul', ja: 'ソウル' } },
-  { code: 'busan', name: { ko: '부산', en: 'Busan', ja: '釜山' } },
-  { code: 'jeju', name: { ko: '제주', en: 'Jeju', ja: '済州' } },
-  { code: 'gyeongju', name: { ko: '경주', en: 'Gyeongju', ja: '慶州' } },
-  { code: 'tongyeong', name: { ko: '통영', en: 'Tongyeong', ja: '統営' } },
-  { code: 'cheonan', name: { ko: '천안', en: 'Cheonan', ja: '天安' } },
-  { code: 'yongin', name: { ko: '용인', en: 'Yongin', ja: '龍仁' } },
-  { code: 'icheon', name: { ko: '이천', en: 'Icheon', ja: '利川' } },
+  { code: 'jeonju', name: { ko: '전주', en: 'Jeonju', ja: '全州', 'zh-CN': '全州', 'zh-TW': '全州' } },
+  { code: 'seoul', name: { ko: '서울', en: 'Seoul', ja: 'ソウル', 'zh-CN': '首尔', 'zh-TW': '首爾' } },
+  { code: 'busan', name: { ko: '부산', en: 'Busan', ja: '釜山', 'zh-CN': '釜山', 'zh-TW': '釜山' } },
+  { code: 'jeju', name: { ko: '제주', en: 'Jeju', ja: '済州', 'zh-CN': '济州', 'zh-TW': '濟州' } },
+  { code: 'gyeongju', name: { ko: '경주', en: 'Gyeongju', ja: '慶州', 'zh-CN': '庆州', 'zh-TW': '慶州' } },
+  { code: 'tongyeong', name: { ko: '통영', en: 'Tongyeong', ja: '統営', 'zh-CN': '统营', 'zh-TW': '統營' } },
+  { code: 'cheonan', name: { ko: '천안', en: 'Cheonan', ja: '天安', 'zh-CN': '天安', 'zh-TW': '天安' } },
+  { code: 'yongin', name: { ko: '용인', en: 'Yongin', ja: '龍仁', 'zh-CN': '龙仁', 'zh-TW': '龍仁' } },
+  { code: 'icheon', name: { ko: '이천', en: 'Icheon', ja: '利川', 'zh-CN': '利川', 'zh-TW': '利川' } },
 ]
 
 function getItemName(item: PlanItem, locale: string): string {
@@ -63,7 +63,7 @@ function getItemName(item: PlanItem, locale: string): string {
 function getCityLabel(code: string, locale: string): string {
   const city = CITIES.find((c) => c.code === code)
   if (!city) return code
-  return city.name[locale as string] || city.name.ko
+  return city.name[locale as string] || city.name.en || city.name.ko
 }
 
 export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHotelSaved, onResetAll }: PlannerPreviewProps) {

@@ -47,7 +47,7 @@ const PLAN_LABEL = {
 
 export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t, locale }: Step1Props) {
   const lk = (locale || 'ko') as string
-  const plan = PLAN_LABEL[lk as keyof typeof PLAN_LABEL] || PLAN_LABEL.ko
+  const plan = PLAN_LABEL[lk as keyof typeof PLAN_LABEL] || PLAN_LABEL.en || PLAN_LABEL.ko
 
   // 첫 kit을 자동 선택 (상위 호환)
   const firstKit = kits[0]

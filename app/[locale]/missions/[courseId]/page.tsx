@@ -190,7 +190,7 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
                 </div>
 
                 <h3 className={`text-2xl font-black mb-6 leading-tight ${isLocked ? 'text-slate-400 italic' : 'text-slate-800'}`}>
-                  {isLocked ? '잠겨있는 미션' : (m.title[locale] || m.title.ko)}
+                  {isLocked ? '잠겨있는 미션' : (m.title[locale] || m.title.en || m.title.ko)}
                 </h3>
 
                 <div className="flex items-center justify-between mt-auto">

@@ -1,16 +1,16 @@
 export interface MissionData {
   id: string;
   seq: number;
-  title: { ko: string; ja: string; en: string };
-  location: { ko: string; ja: string; en: string };
+  title: { ko: string; ja: string; en: string; 'zh-CN'?: string; 'zh-TW'?: string };
+  location: { ko: string; ja: string; en: string; 'zh-CN'?: string; 'zh-TW'?: string };
   lp: number;
   isBoss?: boolean;
 }
 
 export interface CourseData {
   id: string;
-  name: { ko: string; ja: string; en: string };
-  region: { ko: string; ja: string; en: string };
+  name: { ko: string; ja: string; en: string; 'zh-CN'?: string; 'zh-TW'?: string };
+  region: { ko: string; ja: string; en: string; 'zh-CN'?: string; 'zh-TW'?: string };
   emoji: string;
   difficulty: 'easy' | 'medium' | 'hard';
 }
@@ -29,8 +29,10 @@ export const JEONJU_COURSE: CourseData = {
     ko: '전주 도깨비 코스',
     ja: '全州トッケビコース',
     en: 'Jeonju Goblin Course',
+    'zh-CN': '全州鬼怪课程',
+    'zh-TW': '全州鬼怪課程',
   },
-  region: { ko: '전주', ja: '全州', en: 'Jeonju' },
+  region: { ko: '전주', ja: '全州', en: 'Jeonju', 'zh-CN': '全州', 'zh-TW': '全州' },
   emoji: '👹',
   difficulty: 'easy',
 };
@@ -43,11 +45,15 @@ export const JEONJU_MISSIONS: MissionData[] = [
       ko: '전주 한옥마을 도깨비 문 찾기',
       ja: '全州韓屋村トッケビの門を探す',
       en: 'Find the Goblin Gate at Jeonju Hanok Village',
+      'zh-CN': '寻找全州韩屋村的鬼怪之门',
+      'zh-TW': '尋找全州韓屋村的鬼怪之門',
     },
     location: {
       ko: '전주 한옥마을 입구',
       ja: '全州韓屋村入口',
       en: 'Jeonju Hanok Village Entrance',
+      'zh-CN': '全州韩屋村入口',
+      'zh-TW': '全州韓屋村入口',
     },
     lp: 100,
   },
@@ -58,11 +64,15 @@ export const JEONJU_MISSIONS: MissionData[] = [
       ko: '경기전 비밀 도깨비방망이 발견',
       ja: '慶基殿の秘密トッケビ棒を発見',
       en: 'Discover the Secret Goblin Club at Gyeonggijeon',
+      'zh-CN': '在庆基殿发现神秘鬼怪棒',
+      'zh-TW': '在慶基殿發現神秘鬼怪棒',
     },
     location: {
       ko: '경기전',
       ja: '慶基殿',
       en: 'Gyeonggijeon',
+      'zh-CN': '庆基殿',
+      'zh-TW': '慶基殿',
     },
     lp: 150,
   },
@@ -73,11 +83,15 @@ export const JEONJU_MISSIONS: MissionData[] = [
       ko: '전동성당 숨겨진 부적 촬영',
       ja: '殿洞聖堂の隠されたお守りを撮影',
       en: 'Photograph the Hidden Talisman at Jeondong Cathedral',
+      'zh-CN': '拍摄殿洞圣堂隐藏的护身符',
+      'zh-TW': '拍攝殿洞聖堂隱藏的護身符',
     },
     location: {
       ko: '전동성당',
       ja: '殿洞聖堂',
       en: 'Jeondong Cathedral',
+      'zh-CN': '殿洞圣堂',
+      'zh-TW': '殿洞聖堂',
     },
     lp: 100,
   },
@@ -88,11 +102,15 @@ export const JEONJU_MISSIONS: MissionData[] = [
       ko: '남부시장 도깨비 먹거리 미션',
       ja: '南部市場トッケビグルメミッション',
       en: 'Goblin Food Mission at Nambu Market',
+      'zh-CN': '南部市场鬼怪美食任务',
+      'zh-TW': '南部市場鬼怪美食任務',
     },
     location: {
       ko: '남부시장',
       ja: '南部市場',
       en: 'Nambu Market',
+      'zh-CN': '南部市场',
+      'zh-TW': '南部市場',
     },
     lp: 200,
   },
@@ -103,11 +121,15 @@ export const JEONJU_MISSIONS: MissionData[] = [
       ko: '오목대 도깨비 보스 최종 미션',
       ja: '梧木台トッケビボス最終ミッション',
       en: 'Final Goblin Boss Mission at Omokdae',
+      'zh-CN': '梧木台鬼怪首领最终任务',
+      'zh-TW': '梧木台鬼怪首領最終任務',
     },
     location: {
       ko: '오목대',
       ja: '梧木台',
       en: 'Omokdae',
+      'zh-CN': '梧木台',
+      'zh-TW': '梧木台',
     },
     lp: 500,
     isBoss: true,

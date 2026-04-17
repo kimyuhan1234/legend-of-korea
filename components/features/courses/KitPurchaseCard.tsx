@@ -54,7 +54,7 @@ interface KitPurchaseCardProps {
 }
 
 export function KitPurchaseCard({ courseId, kits: _kits, locale, isLoggedIn: _isLoggedIn, className }: KitPurchaseCardProps) {
-  const label = LABEL[locale as keyof typeof LABEL] || LABEL.ko
+  const label = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
 
   return (
     <div className={`bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-0 overflow-hidden h-full flex flex-col${className ? ` ${className}` : ""}`}>

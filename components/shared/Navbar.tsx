@@ -78,8 +78,8 @@ export async function Navbar({ locale }: NavbarProps) {
     profile = data
   }
 
-  const links = NAV_LINKS[locale as keyof typeof NAV_LINKS] || NAV_LINKS.ko
-  const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
+  const links = NAV_LINKS[locale as keyof typeof NAV_LINKS] || NAV_LINKS.en || NAV_LINKS.ko
+  const t = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-mist">

@@ -36,7 +36,7 @@ const LABEL = {
 const CHAT_TEXTS = ["Hi! 👋", "같이 가자!", "Let's go!", "行こう！"]
 
 export function ZepBanner({ locale }: ZepBannerProps) {
-  const l = LABEL[locale as keyof typeof LABEL] || LABEL.ko
+  const l = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
   const [chatIdx, setChatIdx] = useState(0)
 
   useEffect(() => {

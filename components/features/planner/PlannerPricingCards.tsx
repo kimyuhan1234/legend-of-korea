@@ -33,7 +33,7 @@ export function PlannerPricingCards({ plans, locale, onSubscribe }: PlannerPrici
   }
 
   const getFeatures = (plan: Plan): string[] => {
-    return plan.features[locale as keyof typeof plan.features] || plan.features.ko
+    return plan.features[locale as keyof typeof plan.features] || plan.features.en || plan.features.ko
   }
 
   const getName = (plan: Plan): string => {

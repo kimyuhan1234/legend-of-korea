@@ -29,7 +29,7 @@ const TEXT = {
 }
 
 export function Footer({ locale }: FooterProps) {
-  const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
+  const t = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
 
   return (
     <footer className="bg-[#1F2937] text-white/70">

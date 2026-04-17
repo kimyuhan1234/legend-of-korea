@@ -14,8 +14,8 @@ export function GoodsCard({ product, locale }: GoodsCardProps) {
   const tCart = useTranslations('cart')
   const { addItem } = useCart()
 
-  const name = product.name[locale as string] || product.name.ko
-  const description = product.description[locale as string] || product.description.ko
+  const name = product.name[locale as string] || product.name.en || product.name.ko
+  const description = product.description[locale as string] || product.description.en || product.description.ko
 
   const handleAddToCart = () => {
     addItem({

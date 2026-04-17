@@ -8,11 +8,11 @@ interface KFoodSpotListProps {
 }
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as "ko" | "ja" | "en"] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: string): string[] {
-  return field[locale as "ko" | "ja" | "en"] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 const PRICE_COLOR: Record<string, string> = {
@@ -30,7 +30,7 @@ const CATEGORY_ICON: Record<string, string> = {
 
 export function KFoodSpotList({ locale, cityFilter }: KFoodSpotListProps) {
   const cities = CITIES
-  const catLabel = CATEGORY_LABEL[locale as keyof typeof CATEGORY_LABEL] || CATEGORY_LABEL.ko
+  const catLabel = CATEGORY_LABEL[locale as keyof typeof CATEGORY_LABEL] || CATEGORY_LABEL.en || CATEGORY_LABEL.ko
 
   const filtered =
     cityFilter && cityFilter !== "all"
@@ -43,7 +43,7 @@ export function KFoodSpotList({ locale, cityFilter }: KFoodSpotListProps) {
       <div className="flex flex-wrap gap-2 mb-8">
         {cities.map((city) => {
           const isActive = (cityFilter || "all") === city.code
-          const label = city[locale as "ko" | "ja" | "en"] || city.ko
+          const label = city[locale as string] || city.en || city.ko
           return (
             <Link
               key={city.code}

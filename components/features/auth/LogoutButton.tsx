@@ -10,7 +10,7 @@ interface LogoutButtonProps {
 const LABEL = { ko: "로그아웃", ja: "ログアウト", en: "Sign Out" }
 
 export function LogoutButton({ locale, className }: LogoutButtonProps) {
-  const label = LABEL[locale as keyof typeof LABEL] || LABEL.ko
+  const label = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
 
   return (
     <button

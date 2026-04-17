@@ -24,11 +24,11 @@ const LABEL = {
 }
 
 function getI18n(field: I18nText, locale: string): string {
-  return (field as unknown as Record<string, string>)[locale] || field.ko || ""
+  return (field as unknown as Record<string, string>)[locale] || field.en || field.ko || ""
 }
 
 export function CourseHero({ course, missionCount, locale }: CourseHeroProps) {
-  const label = LABEL[locale as keyof typeof LABEL] || LABEL.ko
+  const label = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
   const title = getI18n(course.title, locale)
   const description = getI18n(course.description, locale)
   const duration = getI18n(course.duration_text, locale)

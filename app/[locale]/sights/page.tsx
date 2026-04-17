@@ -56,7 +56,7 @@ export default async function SightsPage({ params, searchParams }: Props) {
             {t('filterAll')}
           </a>
           {REGIONS.map(r => {
-            const label = r[locale as string] || r.ko
+            const label = r[locale as string] || r.en || r.ko
             return (
               <a key={r.code} href={`/${locale}/sights?region=${r.code}${category ? `&category=${category}` : ''}`}
                 className={`px-8 md:px-10 py-2 rounded-full text-sm font-medium border transition-colors ${region === r.code ? 'bg-gradient-to-br from-mint to-blossom text-ink border-ink' : 'bg-white text-slate border-mist hover:border-ink/40'}`}

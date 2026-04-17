@@ -66,7 +66,7 @@ function FailContent({ locale, courseId }: { locale: string; courseId: string })
   const searchParams = useSearchParams()
   const code = searchParams.get("code") || ""
   const message = searchParams.get("message") || ""
-  const label = LABEL[locale as keyof typeof LABEL] || LABEL.ko
+  const label = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
 
   const errorDesc =
     label.errors[code as keyof typeof label.errors] ||

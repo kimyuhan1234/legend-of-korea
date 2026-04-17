@@ -9,7 +9,7 @@ import { flagCountries, getRecipesByCountry, getFlagCountry } from "@/lib/data/f
 import type { FusionRecipe } from "@/lib/data/flag-cooking"
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as "ko" | "ja" | "en"] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 const DIFFICULTY_LABEL: Record<string, Record<string, string>> = {
@@ -114,8 +114,8 @@ function RecipeCard({
   locale: string
   onSelect: (recipe: FusionRecipe) => void
 }) {
-  const t = UI[locale as keyof typeof UI] || UI.ko
-  const diffLabel = DIFFICULTY_LABEL[locale as keyof typeof DIFFICULTY_LABEL] || DIFFICULTY_LABEL.ko
+  const t = UI[locale as keyof typeof UI] || UI.en || UI.ko
+  const diffLabel = DIFFICULTY_LABEL[locale as keyof typeof DIFFICULTY_LABEL] || DIFFICULTY_LABEL.en || DIFFICULTY_LABEL.ko
 
   return (
     <div
@@ -162,9 +162,9 @@ export default function FlagCookingPage() {
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
   const [selectedRecipe, setSelectedRecipe] = useState<FusionRecipe | null>(null)
 
-  const h = HERO[locale as keyof typeof HERO] || HERO.ko
-  const t = UI[locale as keyof typeof UI] || UI.ko
-  const diffLabel = DIFFICULTY_LABEL[locale as keyof typeof DIFFICULTY_LABEL] || DIFFICULTY_LABEL.ko
+  const h = HERO[locale as keyof typeof HERO] || HERO.en || HERO.ko
+  const t = UI[locale as keyof typeof UI] || UI.en || UI.ko
+  const diffLabel = DIFFICULTY_LABEL[locale as keyof typeof DIFFICULTY_LABEL] || DIFFICULTY_LABEL.en || DIFFICULTY_LABEL.ko
 
   const router = useRouter()
   const country = selectedCountry ? getFlagCountry(selectedCountry) : null

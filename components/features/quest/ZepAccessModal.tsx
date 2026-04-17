@@ -58,14 +58,14 @@ const LABEL = {
 }
 
 export function ZepAccessModal({ isOpen, onClose, zone, locale }: ZepAccessModalProps) {
-  const l = LABEL[locale as keyof typeof LABEL] || LABEL.ko
+  const l = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
   const [copied, setCopied] = useState(false)
 
   if (!isOpen) return null
 
-  const zoneName = zone.name[locale as keyof typeof zone.name] || zone.name.ko
-  const zoneDesc = zone.description[locale as keyof typeof zone.description] || zone.description.ko
-  const areaGuide = zone.areaGuide[locale as keyof typeof zone.areaGuide] || zone.areaGuide.ko
+  const zoneName = zone.name[locale as keyof typeof zone.name] || zone.name.en || zone.name.ko
+  const zoneDesc = zone.description[locale as keyof typeof zone.description] || zone.description.en || zone.description.ko
+  const areaGuide = zone.areaGuide[locale as keyof typeof zone.areaGuide] || zone.areaGuide.en || zone.areaGuide.ko
 
   const handleCopy = async () => {
     try {

@@ -53,7 +53,7 @@ const TYPE_LABEL: Record<string, { ko: string; en: string; ja: string }> = {
 }
 
 function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return field[locale as string] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 function minLabel(locale: string): string {

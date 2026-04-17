@@ -65,7 +65,7 @@ export function SignupForm({ locale }: SignupFormProps) {
   const [loading, setLoading] = useState(false)
   const [nicknameLen, setNicknameLen] = useState(0)
 
-  const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
+  const t = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()

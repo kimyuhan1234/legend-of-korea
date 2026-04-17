@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function getI18n(field: I18nText, locale: string): string {
-  return (field as unknown as Record<string, string>)[locale] || field.ko || ""
+  return (field as unknown as Record<string, string>)[locale] || field.en || field.ko || ""
 }
 
 export default async function PurchasePage({ params }: Props) {

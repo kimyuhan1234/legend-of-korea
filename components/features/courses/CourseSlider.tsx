@@ -39,7 +39,7 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
     scrollRef.current.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' })
   }
 
-  const diffLabel = DIFF_LABEL[locale] || DIFF_LABEL.ko
+  const diffLabel = DIFF_LABEL[locale] || DIFF_LABEL.en || DIFF_LABEL.ko
 
   return (
     <div className="relative group/slider">

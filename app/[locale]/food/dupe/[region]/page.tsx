@@ -10,7 +10,7 @@ interface Props {
 }
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as "ko" | "ja" | "en"] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -32,7 +32,7 @@ function topFlavors(profile: { sweet: number; salty: number; spicy: number; umam
     ja: { sweet: "甘め", salty: "塩気", spicy: "辛め", umami: "旨味", sour: "酸味" },
     en: { sweet: "Sweet", salty: "Salty", spicy: "Spicy", umami: "Umami", sour: "Sour" },
   }
-  const labels = LABELS[locale as keyof typeof LABELS] || LABELS.ko
+  const labels = LABELS[locale as keyof typeof LABELS] || LABELS.en || LABELS.ko
   const entries = Object.entries(profile) as [keyof typeof profile, number][]
   const top = entries.sort((a, b) => b[1] - a[1]).slice(0, 2)
   return top.map(([k]) => labels[k]).join(" · ")
@@ -43,7 +43,7 @@ export default function RegionFoodsPage({ params }: Props) {
   const region = regions.find((r) => r.code === regionCode)
   if (!region) notFound()
 
-  const t = UI[locale as keyof typeof UI] || UI.ko
+  const t = UI[locale as keyof typeof UI] || UI.en || UI.ko
 
   return (
     <div>

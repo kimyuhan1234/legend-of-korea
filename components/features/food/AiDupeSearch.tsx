@@ -22,7 +22,7 @@ interface AiDupeSearchProps {
 }
 
 function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return field[locale as string] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 export function AiDupeSearch({ locale }: AiDupeSearchProps) {

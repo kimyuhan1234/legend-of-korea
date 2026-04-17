@@ -25,7 +25,7 @@ function i18nText(
   locale: string
 ): string {
   if (!field) return ''
-  return field[locale as string] || field.ko || ''
+  return field[locale as string] || field.en || field.ko || ''
 }
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'

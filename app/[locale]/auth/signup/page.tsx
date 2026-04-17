@@ -21,13 +21,13 @@ const TEXT = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const m = META[params.locale as keyof typeof META] || META.ko
+  const m = META[params.locale as keyof typeof META] || META.en || META.ko
   return { title: m.title }
 }
 
 export default function SignupPage({ params }: Props) {
   const locale = params.locale || "ko"
-  const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
+  const t = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
 
   return (
     <div className="min-h-screen bg-cloud flex items-center justify-center p-4 py-20 md:py-28">

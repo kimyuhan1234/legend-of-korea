@@ -30,7 +30,7 @@ export function GyeongdoSharedInfo({ locale }: Props) {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl p-3 text-center border border-mist">
                 <div className="text-2xl mb-1">{item.icon}</div>
-                <p className="text-xs font-bold text-ink">{(item.label as Record<string, string>)[lk] || item.label.en || item.label.ko}</p>
+                <p className="text-xs font-bold text-ink">{(item.label as Record<string, string>)[lk] || item.label.en || item.label.en || item.label.ko}</p>
               </div>
             ))}
           </div>

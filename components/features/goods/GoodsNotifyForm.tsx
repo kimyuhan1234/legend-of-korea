@@ -74,7 +74,7 @@ export function GoodsNotifyForm({
       <div className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-emerald-50 border border-emerald-200">
         <span className="text-xl">✓</span>
         <p className="text-sm text-emerald-700 font-medium">
-          {DUPLICATE_MSG[locale] || DUPLICATE_MSG.ko}
+          {DUPLICATE_MSG[locale] || DUPLICATE_MSG.en || DUPLICATE_MSG.ko}
         </p>
       </div>
     )
@@ -112,7 +112,7 @@ export function GoodsNotifyForm({
       )}
       {status === "server_error" && (
         <p className="text-xs text-blossom-deep pl-1">
-          {SERVER_ERROR_MSG[locale] || SERVER_ERROR_MSG.ko}
+          {SERVER_ERROR_MSG[locale] || SERVER_ERROR_MSG.en || SERVER_ERROR_MSG.ko}
         </p>
       )}
     </form>

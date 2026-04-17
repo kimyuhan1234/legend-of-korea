@@ -77,7 +77,7 @@ export function CommunityPost({ post, locale, onLike, onComment }: CommunityPost
           </div>
           <span className="text-xs text-slate-400 font-bold">
             {timeAgo(post.created_at, locale)}
-            {post.course && ` • ${post.course.title[locale] || post.course.title.ko}`}
+            {post.course && ` • ${post.course.title[locale] || post.course.title.en || post.course.title.ko}`}
           </span>
         </div>
         <Button variant="ghost" size="icon" className="rounded-full">

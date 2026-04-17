@@ -23,7 +23,7 @@ function getL(field: unknown, locale: string): string {
   if (typeof field === 'string') return field
   if (field && typeof field === 'object') {
     const obj = field as Record<string, string>
-    return obj[locale] || obj.ko || ''
+    return obj[locale] || obj.en || obj.ko || ''
   }
   return ''
 }

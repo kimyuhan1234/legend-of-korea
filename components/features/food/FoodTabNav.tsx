@@ -24,7 +24,7 @@ const TABS = {
 }
 
 export function FoodTabNav({ locale, activeTab }: FoodTabNavProps) {
-  const tabs = TABS[locale as keyof typeof TABS] || TABS.ko
+  const tabs = TABS[locale as keyof typeof TABS] || TABS.en || TABS.ko
 
   return (
     <div className="bg-white border-b border-cloud sticky top-16 z-40">

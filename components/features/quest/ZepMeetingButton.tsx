@@ -42,7 +42,7 @@ const LABEL = {
 export function ZepMeetingButton({ courseId, hasPurchased, locale }: ZepMeetingButtonProps) {
   const [modalOpen, setModalOpen] = useState(false)
   const space = getZepZoneByCourseId(courseId)
-  const l = LABEL[locale as keyof typeof LABEL] || LABEL.ko
+  const l = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
 
   // 해당 코스에 ZEP 스페이스가 없으면 렌더링하지 않음
   if (!space) return null

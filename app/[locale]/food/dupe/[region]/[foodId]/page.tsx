@@ -12,11 +12,11 @@ interface Props {
 }
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as "ko" | "ja" | "en"] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: string): string[] {
-  return field[locale as "ko" | "ja" | "en"] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -70,7 +70,7 @@ export default function FoodDetailPage({ params }: Props) {
   const food = region.foods.find((f) => f.id === foodId)
   if (!food) notFound()
 
-  const t = UI[locale as keyof typeof UI] || UI.ko
+  const t = UI[locale as keyof typeof UI] || UI.en || UI.ko
 
   // 같은 도시의 K-Food Spot 최대 3개
   const relatedSpots = kfoodSpots.filter((s) => s.cityCode === food.region).slice(0, 3)

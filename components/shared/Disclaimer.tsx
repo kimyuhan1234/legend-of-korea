@@ -12,7 +12,7 @@ const TEXT = {
 }
 
 export function Disclaimer({ locale, className = "" }: DisclaimerProps) {
-  const text = TEXT[locale as keyof typeof TEXT] || TEXT.ko
+  const text = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
 
   return (
     <p className={`text-xs text-stone leading-relaxed ${className}`}>

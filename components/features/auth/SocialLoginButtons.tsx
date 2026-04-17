@@ -68,7 +68,7 @@ export function SocialLoginButtons({ locale, mode }: SocialLoginButtonsProps) {
   return (
     <div className="flex flex-col gap-3 w-full">
       {SOCIAL_PROVIDERS.map((provider) => {
-        const label = provider.label[locale as keyof typeof provider.label] || provider.label.ko
+        const label = provider.label[locale as keyof typeof provider.label] || provider.label.en || provider.label.ko
         return (
           <button
             key={provider.id}

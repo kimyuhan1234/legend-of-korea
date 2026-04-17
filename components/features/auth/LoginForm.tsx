@@ -46,7 +46,7 @@ export function LoginForm({ locale, next }: LoginFormProps) {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
-  const t = TEXT[locale as keyof typeof TEXT] || TEXT.ko
+  const t = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()

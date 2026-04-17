@@ -54,7 +54,7 @@ const SECTION_LABEL = {
 
 function getI18n(field: I18nText | null, locale: string): string {
   if (!field) return ""
-  return (field as unknown as Record<string, string>)[locale] || field.ko || ""
+  return (field as unknown as Record<string, string>)[locale] || field.en || field.ko || ""
 }
 
 const TYPE_ICON: Record<string, string> = {
@@ -78,7 +78,7 @@ export function AffiliateLinks({ links, locale, className }: AffiliateLinksProps
     getUser()
   }, [supabase])
 
-  const label = SECTION_LABEL[locale as keyof typeof SECTION_LABEL] || SECTION_LABEL.ko
+  const label = SECTION_LABEL[locale as keyof typeof SECTION_LABEL] || SECTION_LABEL.en || SECTION_LABEL.ko
 
   if (links.length === 0) return null
 

@@ -59,11 +59,11 @@ function similarityColor(pct: number): string {
 }
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as string] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: string): string[] {
-  return field[locale as string] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 interface Props {
@@ -73,7 +73,7 @@ interface Props {
 
 export function DupeCountrySelector({ food, locale }: Props) {
   const [selected, setSelected] = useState<string>('JP')
-  const t = UI[locale as keyof typeof UI] || UI.ko
+  const t = UI[locale as keyof typeof UI] || UI.en || UI.ko
 
   const country = COUNTRIES_12.find((c) => c.code === selected)!
   const entry = food.dupes[selected]

@@ -41,7 +41,7 @@ export function TasteRadarChart({
   size = 160,
   color = "#F0B8B8",
 }: TasteRadarChartProps) {
-  const axes = AXES[locale as keyof typeof AXES] || AXES.ko
+  const axes = AXES[locale as keyof typeof AXES] || AXES.en || AXES.ko
   const cx = size / 2
   const cy = size / 2
   const maxR = size * 0.36

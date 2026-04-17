@@ -12,9 +12,9 @@ interface StayCardProps {
 export function StayCard({ stay, locale }: StayCardProps) {
   const t = useTranslations('stay')
 
-  const name = stay.name[locale as keyof typeof stay.name] || stay.name.ko
-  const desc = stay.description[locale as keyof typeof stay.description] || stay.description.ko
-  const walk = stay.walkToMission[locale as keyof typeof stay.walkToMission] || stay.walkToMission.ko
+  const name = stay.name[locale as keyof typeof stay.name] || stay.name.en || stay.name.ko
+  const desc = stay.description[locale as keyof typeof stay.description] || stay.description.en || stay.description.ko
+  const walk = stay.walkToMission[locale as keyof typeof stay.walkToMission] || stay.walkToMission.en || stay.walkToMission.ko
 
   return (
     <div className="group bg-white rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300 border border-mist/40">
@@ -51,7 +51,7 @@ export function StayCard({ stay, locale }: StayCardProps) {
         {/* 하이라이트 */}
         <ul className="space-y-2 mb-5">
           {stay.highlights.map((h, i) => {
-            const text = h[locale as keyof typeof h] || h.ko
+            const text = h[locale as keyof typeof h] || h.en || h.ko
             return (
               <li key={i} className="flex items-start gap-2 text-sm text-[#374151]">
                 <span className="text-mint-deep shrink-0 mt-0.5">✓</span>

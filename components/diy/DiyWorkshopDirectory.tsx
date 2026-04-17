@@ -8,7 +8,7 @@ import { CITY_WORKSHOPS, type CityWorkshop, type CityWorkshopExperience } from '
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return field[locale as string] || field.ko
+  return field[locale as string] || field.en || field.ko
 }
 
 // ── 오른쪽 상세 패널 (데스크톱 공용 / 모바일 아코디언 내부)
