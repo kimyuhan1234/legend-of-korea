@@ -18,6 +18,19 @@ export function GyeongdoSharedInfo({ locale }: Props) {
         <h3 className="text-base font-black text-ink mb-3">🎮 {t('whatIs')}</h3>
         <div className="bg-gradient-to-r from-mint/20 to-blossom/20 rounded-2xl p-5 space-y-3">
           <p className="text-sm text-slate leading-relaxed">{t('whatIsDesc')}</p>
+
+          {/* 경도 소개 영상 */}
+          <div className="w-full rounded-2xl overflow-hidden shadow-lg">
+            <video
+              src="/videos/gyeongdo.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-auto"
+            />
+          </div>
+
           <div className="border-t border-mist pt-3">
             <p className="text-xs font-bold text-[#5BBDAD] mb-1">🇯🇵 {t('keydoro')}</p>
             <p className="text-xs text-slate">{t('keydoroDesc')}</p>
