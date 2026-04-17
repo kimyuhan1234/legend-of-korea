@@ -27,6 +27,7 @@
 | `participant_reviews` | 참여자 상호 별점 평가 (migration 021) |
 | `user_reports` | 참여자 신고 접수 (migration 021) |
 | `blacklist` | 블랙리스트 — 저평점/신고 자동 차단 (migration 021) |
+| `party_chat` | 파티 실시간 채팅 메시지 (migration 024) |
 
 ---
 

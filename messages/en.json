@@ -267,7 +267,37 @@
     "guide1": "The next step unlocks automatically when you complete this mission.",
     "guide2": "You can retry unlimited times even after a wrong answer or upload error.",
     "guide3": "Earned LP is reflected in your tier on My Page in real time.",
-    "hiddenDesc": "You have discovered a special reward in a secret location."
+    "hiddenDesc": "You have discovered a special reward in a secret location.",
+    "dashboard": {
+      "mapView": "Map View",
+      "timelineView": "Timeline View",
+      "completed": "{n}/{total} missions completed",
+      "lpEarned": "{n} LP earned",
+      "nextMission": "Next: {name}",
+      "locked": "Complete previous mission first"
+    },
+    "party": {
+      "title": "Party Status",
+      "live": "Live",
+      "inProgress": "In Progress",
+      "resting": "Resting",
+      "noParty": "Join a Quest Party to see member status"
+    },
+    "chat": {
+      "title": "Party Chat",
+      "placeholder": "Type a message...",
+      "send": "Send",
+      "collapse": "Collapse",
+      "expand": "Expand"
+    },
+    "celebrate": {
+      "title": "Mission Complete!",
+      "lp": "+{n} LP",
+      "next": "Next Mission",
+      "hidden": "Hidden Mission Found!",
+      "boss": "Boss Mission Clear!",
+      "allClear": "Legendary Adventurer! All missions completed!"
+    }
   },
   "lp": {
     "totalLP": "Total LP",

@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { Metadata } from 'next';
 import type { I18nText } from '@/lib/supabase/types';
+import { MissionDashboardClient } from '@/components/features/missions/MissionDashboardClient';
 
 interface CourseMapProps {
   params: {
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: CourseMapProps): Promise<Meta
 export default async function CourseMapPage({ params }: CourseMapProps) {
   const { locale, courseId } = params;
   const supabase = await createClient();
-  const t = await getTranslations('mission');
+  const _t = await getTranslations('mission');
 
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/${locale}/login?next=/${locale}/missions/${courseId}`);
@@ -62,6 +63,35 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
 
   const progressMap = new Map(userProgress?.map(p => [p.mission_id, p.status]) || []);
 
+  // 파티 정보 조회
+  let partyInfo = null;
+  try {
+    const { data: membership } = await supabase
+      .from('quest_party_members')
+      .select('party_id')
+      .eq('user_id', user.id)
+      .limit(1)
+      .maybeSingle();
+
+    if (membership) {
+      const { data: partyMembers } = await supabase
+        .from('quest_party_members')
+        .select('user_id, users:user_id(nickname, language)')
+        .eq('party_id', membership.party_id);
+
+      partyInfo = {
+        id: membership.party_id,
+        members: (partyMembers || []).map((pm: Record<string, unknown>) => ({
+          user_id: pm.user_id as string,
+          nickname: (pm.users as Record<string, string>)?.nickname || '?',
+          language: (pm.users as Record<string, string>)?.language || 'en',
+        })),
+      };
+    }
+  } catch {
+    // 파티 조회 실패 시 무시
+  }
+
   const visibleMissions = missions.filter(m => {
     const status = progressMap.get(m.id) || 'locked';
     // 히든 미션은 스캔 시에만 등장 (상태가 lock이면 안보임)
@@ -75,21 +105,44 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
   // 다음 수행할 미션 찾기 (is_hidden 제외한 순차적 미션 중 첫 번째 미완료)
   const firstIncomplete = missions.find(m => !m.is_hidden && progressMap.get(m.id) !== 'completed');
 
+  // MissionDashboardClient에 전달할 progress 데이터
+  const progressForClient = (userProgress || []).map((p: Record<string, unknown>) => ({
+    mission_id: p.mission_id as string,
+    status: p.status as string,
+    lp_earned: (p.lp_earned as number) || 0,
+  }));
+
+  const missionsForClient = missions.map((m: Record<string, unknown>) => ({
+    id: m.id as string,
+    sequence: m.sequence as number,
+    type: m.type as string,
+    title: m.title as Record<string, string>,
+    lp_reward: m.lp_reward as number,
+    is_hidden: m.is_hidden as boolean,
+  }));
+
   return (
     <div className="container max-w-3xl mx-auto py-20 md:py-28 px-8 md:px-10 pb-32 min-h-screen bg-slate-50/30">
-      <div className="mb-12 text-center">
+      <div className="mb-8 text-center">
         <h1 className="text-4xl font-black mb-4 tracking-tight">전설의 여정</h1>
-        <div className="flex items-center justify-center gap-4 text-slate-500 font-bold mb-6">
+      </div>
+
+      {/* 게임형 대시보드 + 파티원 현황 + 채팅 */}
+      <MissionDashboardClient
+        missions={missionsForClient}
+        progress={progressForClient}
+        courseId={courseId}
+        locale={locale}
+        userId={user.id}
+        party={partyInfo}
+      />
+
+      {/* 기존 타임라인 (MissionDashboardClient에서 timeline 뷰 선택 시 표시) */}
+      <div className="mt-8">
+      <div className="flex items-center justify-center gap-4 text-slate-500 font-bold mb-6">
            <Trophy className={`w-5 h-5 ${completedCount === totalCount ? 'text-blossom-deep' : 'text-primary'}`} />
            {completedCount} / {totalCount} 미션 완료
         </div>
-        <div className="h-4 bg-slate-200 rounded-full max-w-md mx-auto overflow-hidden shadow-inner border border-white">
-          <div 
-            className="h-full bg-gradient-to-r from-primary to-primary-foreground shadow-lg transition-all duration-1000" 
-            style={{ width: `${(completedCount / totalCount) * 100}%` }}
-          />
-        </div>
-      </div>
 
       <div className="relative space-y-10">
         {/* Timeline Line */}
@@ -167,6 +220,8 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
           );
         })}
       </div>
+
+      </div>{/* 기존 타임라인 래퍼 닫기 */}
 
       {/* Floating Scan Button */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">

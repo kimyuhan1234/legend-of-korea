@@ -267,7 +267,37 @@
     "guide1": "미션 완료 시 자동으로 다음 단계가 해제됩니다.",
     "guide2": "오답이나 업로드 오류 시에도 무제한 재시도가 가능합니다.",
     "guide3": "획득한 LP는 실시간으로 마이페이지 티어에 반영됩니다.",
-    "hiddenDesc": "비밀의 장소에서 특별한 보상을 발견했습니다."
+    "hiddenDesc": "비밀의 장소에서 특별한 보상을 발견했습니다.",
+    "dashboard": {
+      "mapView": "지도 뷰",
+      "timelineView": "타임라인 뷰",
+      "completed": "{n}/{total} 미션 완료",
+      "lpEarned": "{n} LP 획득",
+      "nextMission": "다음: {name}",
+      "locked": "이전 미션을 먼저 완료하세요"
+    },
+    "party": {
+      "title": "파티원 현황",
+      "live": "실시간",
+      "inProgress": "진행 중",
+      "resting": "잠시 쉬는 중",
+      "noParty": "Quest Party에 참여하면 파티원 현황을 볼 수 있어요"
+    },
+    "chat": {
+      "title": "파티 채팅",
+      "placeholder": "메시지 입력...",
+      "send": "전송",
+      "collapse": "접기",
+      "expand": "펼치기"
+    },
+    "celebrate": {
+      "title": "미션 완료!",
+      "lp": "+{n} LP",
+      "next": "다음 미션으로",
+      "hidden": "숨겨진 미션 발견!",
+      "boss": "보스 미션 클리어!",
+      "allClear": "전설의 모험가! 모든 미션을 완료했습니다!"
+    }
   },
   "lp": {
     "totalLP": "보유 LP",

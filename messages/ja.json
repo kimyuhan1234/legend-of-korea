@@ -267,7 +267,37 @@
     "guide1": "ミッション完了時、自動で次のステップが解放されます。",
     "guide2": "誤答やアップロードエラーでも無制限に再挑戦できます。",
     "guide3": "獲得したLPはリアルタイムでマイページのティアに反映されます。",
-    "hiddenDesc": "秘密の場所で特別な報酬を発見しました。"
+    "hiddenDesc": "秘密の場所で特別な報酬を発見しました。",
+    "dashboard": {
+      "mapView": "マップビュー",
+      "timelineView": "タイムラインビュー",
+      "completed": "{n}/{total} ミッション完了",
+      "lpEarned": "{n} LP獲得",
+      "nextMission": "次: {name}",
+      "locked": "前のミッションを先に完了してください"
+    },
+    "party": {
+      "title": "パーティーメンバー状況",
+      "live": "リアルタイム",
+      "inProgress": "進行中",
+      "resting": "休憩中",
+      "noParty": "Quest Partyに参加するとメンバー状況が見られます"
+    },
+    "chat": {
+      "title": "パーティーチャット",
+      "placeholder": "メッセージを入力...",
+      "send": "送信",
+      "collapse": "閉じる",
+      "expand": "開く"
+    },
+    "celebrate": {
+      "title": "ミッション完了！",
+      "lp": "+{n} LP",
+      "next": "次のミッションへ",
+      "hidden": "隠しミッション発見！",
+      "boss": "ボスミッションクリア！",
+      "allClear": "伝説の冒険者！全ミッション完了！"
+    }
   },
   "lp": {
     "totalLP": "保有LP",

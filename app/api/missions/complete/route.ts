@@ -167,6 +167,28 @@ export async function POST(req: NextRequest) {
     // 최종 User LP 업데이트 (이미 부분적으로 업데이트했지만 동기화 보장)
     await supabase.from('users').update({ total_lp: newLp }).eq('id', user.id);
 
+    // 파티 채팅 자동 알림 — 파티에 소속된 경우 미션 완료 메시지 자동 전송
+    try {
+      const { data: membership } = await supabase
+        .from('quest_party_members')
+        .select('party_id')
+        .eq('user_id', user.id)
+        .limit(1)
+        .maybeSingle();
+
+      if (membership) {
+        await supabase.from('party_chat').insert({
+          party_id: membership.party_id,
+          user_id: user.id,
+          message: `미션 "${mission.title.ko}" 완료! 🎉`,
+          message_type: 'mission_complete',
+          mission_id: missionId,
+        });
+      }
+    } catch {
+      // 채팅 알림 실패는 미션 완료에 영향을 주지 않음
+    }
+
     return NextResponse.json({
       success: true,
       lpEarned: addedLp,

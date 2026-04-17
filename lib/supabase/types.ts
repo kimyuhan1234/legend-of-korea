@@ -978,6 +978,43 @@ export interface Database {
           }
         ]
       }
+      party_chat: {
+        Row: {
+          id: string
+          party_id: string
+          user_id: string
+          message: string
+          message_type: "text" | "mission_complete" | "system"
+          mission_id: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          party_id: string
+          user_id: string
+          message: string
+          message_type?: "text" | "mission_complete" | "system"
+          mission_id?: string | null
+          created_at?: string
+        }
+        Update: {
+          message?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "party_chat_party_id_fkey"
+            columns: ["party_id"]
+            referencedRelation: "quest_parties"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "party_chat_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       participant_reviews: {
         Row: {
           id: string
