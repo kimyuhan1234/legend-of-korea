@@ -1,10 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { notFound, redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { QuizMission } from '@/components/features/missions/QuizMission';
-import { PhotoMission } from '@/components/features/missions/PhotoMission';
-import { OpenMission } from '@/components/features/missions/OpenMission';
-import { BossMission } from '@/components/features/missions/BossMission';
+import { MissionExecutionClient } from '@/components/features/missions/MissionExecutionClient';
 import { OfflineGuard } from '@/components/features/missions/OfflineGuard';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, Sparkles, Trophy } from 'lucide-react';
@@ -93,92 +90,26 @@ export default async function MissionExecutionPage({ params }: MissionExecutionP
           </div>
         )}
 
-        {/* ── 레고 블록 조립 ─────────────────────────────────── */}
-        <div className="space-y-12">
-
-          {mission.type === 'quiz' && (
-            <QuizMission
-              missionId={mission.id}
-              courseName={courseName}
-              question={mission.title[lang] ?? mission.title.ko}
-              hints={[
-                mission.hint_1?.[lang] ?? mission.hint_1?.ko,
-                mission.hint_2?.[lang] ?? mission.hint_2?.ko,
-                mission.hint_3?.[lang] ?? mission.hint_3?.ko,
-              ].filter(Boolean)}
-              lpReward={mission.lp_reward}
-              initialStatus={progress.status}
-              locale={locale}
-            />
-          )}
-
-          {mission.type === 'photo' && (
-            <PhotoMission
-              missionId={mission.id}
-              courseName={courseName}
-              description={mission.description[lang] ?? mission.description.ko}
-              lpReward={mission.lp_reward}
-              initialStatus={progress.status}
-              locale={locale}
-            />
-          )}
-
-          {mission.type === 'open' && (
-            <OpenMission
-              missionId={mission.id}
-              courseName={courseName}
-              title={mission.title[lang] ?? mission.title.ko}
-              description={mission.description[lang] ?? mission.description.ko}
-              lpReward={mission.lp_reward}
-              type="open"
-              initialStatus={progress.status}
-              locale={locale}
-            />
-          )}
-
-          {mission.type === 'hidden' && (
-            <OpenMission
-              missionId={mission.id}
-              courseName={courseName}
-              title={mission.title[lang] ?? mission.title.ko}
-              description={mission.description[lang] ?? mission.description.ko}
-              lpReward={mission.lp_reward}
-              type="hidden"
-              initialStatus={progress.status}
-              locale={locale}
-            />
-          )}
-
-          {mission.type === 'boss' && (
-            <BossMission
-              missionId={mission.id}
-              courseName={courseName}
-              title={mission.title[lang] ?? mission.title.ko}
-              description={mission.description[lang] ?? mission.description.ko}
-              lpReward={mission.lp_reward}
-              correctAnswer={mission.correct_answer ?? undefined}
-              initialStatus={progress.status}
-              locale={locale}
-            />
-          )}
-
-          {/* 미션 안내 박스 (보스 제외) */}
-          {!isBoss && (
-            <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm flex items-start gap-5">
-              <div className="text-sm text-slate-500 leading-relaxed font-bold w-full">
-                <p className="mb-3 text-slate-800 text-base">{t('guideTitle') ?? '미션 가이드'}</p>
-                <ul className="space-y-2 list-none">
-                  {[t('guide1'), t('guide2'), t('guide3')].map((g, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                      {g}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-        </div>
+        {/* ── 레고 블록 조립 (GPS 확인 → 미션 수행) ────────────── */}
+        <MissionExecutionClient
+          missionId={mission.id}
+          courseName={courseName}
+          locale={locale}
+          missionType={mission.type}
+          title={mission.title[lang] ?? mission.title.ko}
+          description={mission.description[lang] ?? mission.description.ko}
+          hints={[
+            mission.hint_1?.[lang] ?? mission.hint_1?.ko,
+            mission.hint_2?.[lang] ?? mission.hint_2?.ko,
+            mission.hint_3?.[lang] ?? mission.hint_3?.ko,
+          ].filter((h): h is string => Boolean(h))}
+          lpReward={mission.lp_reward}
+          initialStatus={progress.status}
+          correctAnswer={mission.correct_answer ?? undefined}
+          latitude={mission.latitude ?? null}
+          longitude={mission.longitude ?? null}
+          isBoss={isBoss}
+        />
       </div>
     </OfflineGuard>
   );

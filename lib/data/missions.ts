@@ -5,6 +5,8 @@ export interface MissionData {
   location: { ko: string; ja: string; en: string; 'zh-CN'?: string; 'zh-TW'?: string };
   lp: number;
   isBoss?: boolean;
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface CourseData {
@@ -56,6 +58,8 @@ export const JEONJU_MISSIONS: MissionData[] = [
       'zh-TW': '全州韓屋村入口',
     },
     lp: 100,
+    latitude: 35.8150,
+    longitude: 127.1530,
   },
   {
     id: '00000000-0000-0000-0000-000000000002',
@@ -75,6 +79,8 @@ export const JEONJU_MISSIONS: MissionData[] = [
       'zh-TW': '慶基殿',
     },
     lp: 150,
+    latitude: 35.8158,
+    longitude: 127.1500,
   },
   {
     id: '00000000-0000-0000-0000-000000000003',
@@ -94,6 +100,8 @@ export const JEONJU_MISSIONS: MissionData[] = [
       'zh-TW': '殿洞聖堂',
     },
     lp: 100,
+    latitude: 35.8144,
+    longitude: 127.1489,
   },
   {
     id: '00000000-0000-0000-0000-000000000004',
@@ -113,6 +121,8 @@ export const JEONJU_MISSIONS: MissionData[] = [
       'zh-TW': '南部市場',
     },
     lp: 200,
+    latitude: 35.8100,
+    longitude: 127.1490,
   },
   {
     id: '00000000-0000-0000-0000-000000000005',
@@ -133,6 +143,8 @@ export const JEONJU_MISSIONS: MissionData[] = [
     },
     lp: 500,
     isBoss: true,
+    latitude: 35.8127,
+    longitude: 127.1536,
   },
 ];
 
