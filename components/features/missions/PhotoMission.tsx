@@ -9,6 +9,8 @@ import { toast } from '@/components/ui/use-toast';
 import { Camera, Upload, Loader2, X, Sparkles, MessageSquare, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { CourseCompletionModal } from './CourseCompletionModal';
+import { FilterSelector } from '@/components/features/camera/FilterSelector';
+import { RETRO_FILTERS, applyFilterToFile } from '@/lib/camera/filters';
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 const MAX_FILES = 3;
@@ -39,6 +41,7 @@ export function PhotoMission({
   const [syncCommunity, setSyncCommunity] = useState(false);
   const [showCompletion, setShowCompletion] = useState(false);
   const [totalEarned, setTotalEarned] = useState(0);
+  const [selectedFilter, setSelectedFilter] = useState('original');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // ── 파일 선택 검증 ──────────────────────────────────────────
@@ -86,9 +89,13 @@ export function PhotoMission({
     setIsUploading(true);
 
     try {
+      // 0. 필터 적용
+      const filter = RETRO_FILTERS.find((f) => f.id === selectedFilter) ?? RETRO_FILTERS[0];
+      const processedFiles = await Promise.all(files.map((f) => applyFilterToFile(f, filter)));
+
       // 1. 사진 순차 업로드
       const uploadedUrls: string[] = [];
-      for (const file of files) {
+      for (const file of processedFiles) {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('missionId', missionId);
@@ -167,9 +174,11 @@ export function PhotoMission({
       <CardContent className="p-8 space-y-6">
         {/* 사진 그리드 */}
         <div className="grid grid-cols-3 gap-3">
-          {previews.map((src, idx) => (
+          {previews.map((src, idx) => {
+            const cssFilter = RETRO_FILTERS.find((f) => f.id === selectedFilter)?.cssFilter ?? 'none';
+            return (
             <div key={idx} className="relative aspect-square rounded-2xl overflow-hidden border-2 border-primary/20 group">
-              <img src={src} alt={`preview-${idx}`} className="w-full h-full object-cover" />
+              <img src={src} alt={`preview-${idx}`} className="w-full h-full object-cover" style={{ filter: cssFilter }} />
               <button
                 onClick={() => removeFile(idx)}
                 className="absolute top-1.5 right-1.5 w-7 h-7 bg-black/60 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
@@ -177,7 +186,7 @@ export function PhotoMission({
                 <X className="w-4 h-4 text-white" />
               </button>
             </div>
-          ))}
+          )})}
 
           {files.length < MAX_FILES && (
             <button
@@ -195,6 +204,11 @@ export function PhotoMission({
         <p className="text-xs text-slate-400 font-medium text-center">
           {files.length}/{MAX_FILES}{t('photoCount') || '장'} · JPEG/PNG/WebP · {t('maxSize', { mb: MAX_SIZE_MB }) || `최대 ${MAX_SIZE_MB}MB`}
         </p>
+
+        {/* 레트로 필터 선택 */}
+        {files.length > 0 && (
+          <FilterSelector selectedFilter={selectedFilter} onSelect={setSelectedFilter} locale={locale} />
+        )}
 
         {/* 커뮤니티 공유 */}
         <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">

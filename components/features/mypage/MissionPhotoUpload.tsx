@@ -3,7 +3,10 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 import { Camera, ImageIcon, FolderOpen, X, Upload, Loader2 } from 'lucide-react';
+import { FilterSelector } from '@/components/features/camera/FilterSelector';
+import { RETRO_FILTERS, applyFilterToFile } from '@/lib/camera/filters';
 
 interface MissionPhotoUploadProps {
   missionId: string;
@@ -16,6 +19,8 @@ const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 
 export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: MissionPhotoUploadProps) {
   const t = useTranslations('mypage');
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1] || 'ko';
   const cameraRef = useRef<HTMLInputElement>(null);
   const galleryRef = useRef<HTMLInputElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -26,6 +31,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
   const [uploading, setUploading] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState('original');
 
   function handleFile(f: File) {
     setError(null);
@@ -66,8 +72,11 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
     setUploading(true);
     setError(null);
 
+    const filter = RETRO_FILTERS.find((f) => f.id === selectedFilter) ?? RETRO_FILTERS[0];
+    const processedFile = await applyFilterToFile(file, filter);
+
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', processedFile);
     formData.append('missionId', missionId);
     formData.append('courseId', courseId);
 
@@ -197,6 +206,7 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
               width={600}
               height={360}
               className="w-full object-cover max-h-64"
+              style={{ filter: RETRO_FILTERS.find((f) => f.id === selectedFilter)?.cssFilter ?? 'none' }}
               unoptimized
             />
             {/* gradient overlay at top */}
@@ -210,6 +220,9 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
               <X size={16} />
             </button>
           </div>
+
+          {/* 레트로 필터 선택 */}
+          <FilterSelector selectedFilter={selectedFilter} onSelect={setSelectedFilter} locale={locale} />
 
           {/* submit button */}
           <button
