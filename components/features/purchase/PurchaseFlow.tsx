@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { StepIndicator } from "./StepIndicator"
 import { Step1KitSelect } from "./Step1KitSelect"
-import { Step2Shipping } from "./Step2Shipping"
 import { Step3Payment } from "./Step3Payment"
 
 interface Kit {
@@ -21,18 +20,9 @@ interface Coupon {
   expires_at: string
 }
 
-interface PrevOrder {
-  shipping_name: string
-  shipping_phone: string
-  shipping_zipcode: string | null
-  shipping_address: string
-  shipping_address_detail: string | null
-}
-
 interface PurchaseFlowProps {
   kits: Kit[]
   coupons: Coupon[]
-  prevOrder: PrevOrder | null
   locale: string
   courseId: string
   courseName: string
@@ -43,13 +33,13 @@ interface PurchaseFlowProps {
 export function PurchaseFlow({
   kits,
   coupons,
-  prevOrder,
   locale,
   courseId,
   courseName,
   user,
   t,
 }: PurchaseFlowProps) {
+  // 디지털 구독: step 1(플랜 확인) → 3(결제), Step2(배송) 스킵
   const [step, setStep] = useState(1)
 
   const defaultKit = kits.find((k) => k.option_type === "solo" && k.is_active && k.stock > 0)
@@ -60,29 +50,22 @@ export function PurchaseFlow({
     couponId: "",
   })
 
-  const [shipping, setShipping] = useState({
+  // 배송 정보 — 디지털 구독에선 사용 안 함, Step3Payment 인터페이스 유지용
+  const shipping = {
     name: "",
     phone: "",
     zipcode: "",
     address: "",
     addressDetail: "",
-  })
+  }
 
-  const stepLabels = [t.stepKit, t.stepShipping, t.stepPayment]
-
-  const prevAddress = prevOrder
-    ? {
-        name: prevOrder.shipping_name,
-        phone: prevOrder.shipping_phone,
-        zipcode: prevOrder.shipping_zipcode || "",
-        address: prevOrder.shipping_address,
-        addressDetail: prevOrder.shipping_address_detail || "",
-      }
-    : null
+  // 인디케이터는 2단계(플랜 확인 → 결제)로 표시
+  const stepLabels = [t.stepKit, t.stepPayment]
+  const displayStep = step === 3 ? 2 : 1
 
   return (
     <div className="max-w-xl mx-auto px-4 py-10">
-      <StepIndicator currentStep={step} labels={stepLabels} />
+      <StepIndicator currentStep={displayStep} labels={stepLabels} />
 
       <div className="bg-white rounded-3xl border border-mist p-6 md:p-8 shadow-sm">
         {step === 1 && (
@@ -91,20 +74,9 @@ export function PurchaseFlow({
             coupons={coupons}
             data={kitSelection}
             onChange={setKitSelection}
-            onNext={() => setStep(2)}
+            onNext={() => setStep(3)}
             t={t}
             locale={locale}
-          />
-        )}
-
-        {step === 2 && (
-          <Step2Shipping
-            data={shipping}
-            prevAddress={prevAddress}
-            onChange={setShipping}
-            onNext={() => setStep(3)}
-            onPrev={() => setStep(1)}
-            t={t}
           />
         )}
 
@@ -119,7 +91,7 @@ export function PurchaseFlow({
             courseName={courseName}
             user={user}
             t={t}
-            onPrev={() => setStep(2)}
+            onPrev={() => setStep(1)}
           />
         )}
       </div>

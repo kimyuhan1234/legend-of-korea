@@ -28,8 +28,8 @@ export default async function PurchasePage({ params }: Props) {
     redirect(`/${locale}/auth/login?next=/courses/${courseId}/purchase`)
   }
 
-  // 병렬 데이터 로딩
-  const [courseRes, kitRes, couponRes, prevOrderRes, profileRes] = await Promise.all([
+  // 병렬 데이터 로딩 (배송 조회 제거 — 디지털 구독)
+  const [courseRes, kitRes, couponRes, profileRes] = await Promise.all([
     supabase.from("courses").select("id, title, is_active").eq("id", courseId).single(),
     supabase.from("kit_products").select("*").eq("course_id", courseId),
     supabase
@@ -38,13 +38,6 @@ export default async function PurchasePage({ params }: Props) {
       .eq("user_id", user.id)
       .eq("is_used", false)
       .gt("expires_at", new Date().toISOString()),
-    supabase
-      .from("orders")
-      .select("shipping_name, shipping_phone, shipping_zipcode, shipping_address, shipping_address_detail")
-      .eq("user_id", user.id)
-      .order("created_at", { ascending: false })
-      .limit(1)
-      .single(),
     supabase.from("users").select("email").eq("id", user.id).single(),
   ])
 
@@ -74,7 +67,7 @@ export default async function PurchasePage({ params }: Props) {
       {/* 헤더 */}
       <div className="bg-white border-b border-mist">
         <div className="max-w-xl mx-auto px-8 md:px-10 py-4">
-          <h1 className="text-lg font-bold text-[#111]">📦 {tObj.stepKit}</h1>
+          <h1 className="text-lg font-bold text-[#111]">📱 {tObj.stepKit}</h1>
           <p className="text-sm text-stone">{courseName}</p>
         </div>
       </div>
@@ -82,7 +75,6 @@ export default async function PurchasePage({ params }: Props) {
       <PurchaseFlow
         kits={kitRes.data || []}
         coupons={couponRes.data || []}
-        prevOrder={prevOrderRes.data || null}
         locale={locale}
         courseId={courseId}
         courseName={courseName}
