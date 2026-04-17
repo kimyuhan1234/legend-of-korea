@@ -373,7 +373,7 @@ function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: Outf
                             <span className="flex-1 truncate">
                               {t(`items.${key}` as Parameters<typeof t>[0])}
                             </span>
-                            <span className="text-[8px] text-mint-deep bg-mint-light px-1.5 py-0.5 rounded-full whitespace-nowrap shrink-0">
+                            <span className="text-[8px] text-white bg-mint-deep px-1.5 py-0.5 rounded-full whitespace-nowrap shrink-0 font-medium">
                               {reason}
                             </span>
                             {isCurrent && <span className="text-mint-deep text-[10px]">✓</span>}
