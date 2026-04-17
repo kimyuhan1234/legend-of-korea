@@ -14,7 +14,7 @@ import {
   type OutfitItem,
 } from '@/lib/data/ootd'
 import { OotdChecklist } from '@/components/features/planner/OotdChecklist'
-import { OOTD_CATEGORIES, getItemCategory } from '@/lib/data/ootd-categories'
+import { OOTD_CATEGORIES, getItemCategory, getItemIcon } from '@/lib/data/ootd-categories'
 
 const CITY_NAME_MAP: Record<string, { ko: string; ja: string; en: string }> = {
   seoul:     { ko: '서울', ja: 'ソウル', en: 'Seoul' },
@@ -362,14 +362,14 @@ function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: Outf
                             key={key}
                             type="button"
                             onClick={() => {
-                              setCustomItems((prev) => ({ ...prev, [i]: { nameKey, icon: item.icon } }))
+                              setCustomItems((prev) => ({ ...prev, [i]: { nameKey, icon: getItemIcon(key) } }))
                               setOpenIdx(null)
                             }}
                             className={`w-full text-left px-3 py-1.5 text-xs flex items-center gap-1.5 transition-colors ${
                               isCurrent ? 'bg-mint-light text-mint-deep font-bold' : 'hover:bg-mint-light/30'
                             }`}
                           >
-                            <span>{item.icon}</span>
+                            <span>{getItemIcon(key)}</span>
                             <span className="flex-1 truncate">
                               {t(`items.${key}` as Parameters<typeof t>[0])}
                             </span>
@@ -395,14 +395,14 @@ function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: Outf
                         key={key}
                         type="button"
                         onClick={() => {
-                          setCustomItems((prev) => ({ ...prev, [i]: { nameKey, icon: item.icon } }))
+                          setCustomItems((prev) => ({ ...prev, [i]: { nameKey, icon: getItemIcon(key) } }))
                           setOpenIdx(null)
                         }}
                         className={`w-full text-left px-3 py-1.5 text-xs flex items-center gap-2 transition-colors ${
                           isCurrent ? 'bg-mint-light text-mint-deep font-bold' : 'text-slate hover:bg-cloud/50'
                         }`}
                       >
-                        <span>{item.icon}</span>
+                        <span>{getItemIcon(key)}</span>
                         <span className="flex-1 truncate">
                           {t(`items.${key}` as Parameters<typeof t>[0])}
                         </span>
