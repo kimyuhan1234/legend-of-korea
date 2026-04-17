@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { useCart } from '@/lib/contexts/CartContext'
 
 interface QuestStickyBarProps {
   courseId: string
@@ -16,11 +15,9 @@ interface QuestStickyBarProps {
 }
 
 export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kitId, cityId }: QuestStickyBarProps) {
-  const t = useTranslations('quest')
+  const _t = useTranslations('quest')
   const tp = useTranslations('planner')
-  const tCart = useTranslations('cart')
   const router = useRouter()
-  const { addItem } = useCart()
   const [visible, setVisible] = useState(false)
   const [addState, setAddState] = useState<'idle' | 'loading' | 'added' | 'error'>('idle')
 
@@ -88,18 +85,8 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
 
   if (!visible) return null
 
-  const handleAddToCart = () => {
-    addItem({
-      id: `kit-${courseId}-${kitId || 'default'}`,
-      type: 'kit',
-      name: { ko: title, en: title, ja: title },
-      price,
-      priceDisplay: `₩${price.toLocaleString()}`,
-      emoji: '🎁',
-      cityId,
-      metadata: { courseId, kitId: kitId ?? null },
-    })
-  }
+  const subscribeLabel = locale === 'ko' ? '구독 시작' : locale === 'ja' ? 'サブスク開始' : 'Subscribe'
+  const priceLabel = locale === 'ko' ? '₩6,900/월' : locale === 'ja' ? '¥750/月' : '$5/mo'
 
   // 플래너 버튼 상태별 스타일
   const plannerBtn = {
@@ -120,7 +107,7 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
     },
     error: {
       cls: 'border-red-500 text-red-500',
-      label: '⚠ 실패',
+      label: '⚠',
       labelShort: '⚠',
     },
   }[addState]
@@ -130,7 +117,7 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
       <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
         <div className="min-w-0 flex-shrink">
           <p className="text-sm font-bold text-[#111] truncate">{title}</p>
-          <p className="text-xs text-[#6B7280]">₩{price.toLocaleString()}~</p>
+          <p className="text-xs text-mint-deep font-bold">{priceLabel}</p>
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <button
@@ -143,10 +130,10 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
           </button>
           <button
             type="button"
-            onClick={handleAddToCart}
-            className="shrink-0 px-4 sm:px-6 py-2.5 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-xs sm:text-sm font-bold hover:opacity-90 transition whitespace-nowrap"
+            onClick={() => router.push(`/${locale}/courses/${courseId}/purchase`)}
+            className="shrink-0 px-4 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-mint to-mint-deep text-white text-xs sm:text-sm font-bold hover:opacity-90 transition whitespace-nowrap"
           >
-            🛒 {tCart('add')}
+            {subscribeLabel}
           </button>
         </div>
       </div>

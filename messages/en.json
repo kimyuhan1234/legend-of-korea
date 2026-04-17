@@ -1113,6 +1113,14 @@
       "delivery": "Guaranteed delivery 3 days before your trip",
       "multilang": "Mission cards in EN / JA / KO"
     },
+    "digitalFeatures": {
+      "title": "Digital Quest Features",
+      "gps": "GPS Mission Unlock",
+      "camera": "Retro Camera Filter",
+      "passport": "Digital Passport Stamp",
+      "badge": "Profile Badge",
+      "prize": "Monthly Winner Prize"
+    },
     "reviews": {
       "title": "What Adventurers Say",
       "verified": "Verified Adventurer"

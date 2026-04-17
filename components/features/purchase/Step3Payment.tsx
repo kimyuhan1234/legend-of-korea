@@ -126,11 +126,13 @@ export function Step3Payment({
         </div>
       </div>
 
-      {/* 배송지 요약 */}
-      <div className="bg-cloud rounded-2xl p-4 text-sm">
-        <p className="font-semibold text-[#111] mb-1">📦 {shipping.name} ({shipping.phone})</p>
-        <p className="text-stone">[{shipping.zipcode}] {shipping.address} {shipping.addressDetail}</p>
-      </div>
+      {/* 배송지 요약 — 배송 정보가 있을 때만 표시 */}
+      {shipping.name && shipping.address && (
+        <div className="bg-cloud rounded-2xl p-4 text-sm">
+          <p className="font-semibold text-[#111] mb-1">📦 {shipping.name} ({shipping.phone})</p>
+          <p className="text-stone">[{shipping.zipcode}] {shipping.address} {shipping.addressDetail}</p>
+        </div>
+      )}
 
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-600">

@@ -1113,6 +1113,14 @@
       "delivery": "旅行3日前に宿泊先へお届け保証",
       "multilang": "EN / JA / KO ミッションカード付き"
     },
+    "digitalFeatures": {
+      "title": "デジタルクエスト構成",
+      "gps": "GPSミッション解除",
+      "camera": "レトロカメラフィルター",
+      "passport": "デジタルパスポートスタンプ",
+      "badge": "プロフィール勲章",
+      "prize": "月間優勝賞品"
+    },
     "reviews": {
       "title": "冒険者たちの声",
       "verified": "Verified Adventurer"

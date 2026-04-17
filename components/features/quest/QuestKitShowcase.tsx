@@ -1,8 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import Image from 'next/image'
-import { useCart } from '@/lib/contexts/CartContext'
+import { useRouter, usePathname } from 'next/navigation'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 interface Kit {
@@ -20,80 +19,40 @@ interface QuestKitShowcaseProps {
   isLoggedIn: boolean
 }
 
-const KIT_ITEMS = [
-  { icon: '🗺️', nameKey: 'kit.items.missionCard' },
-  { icon: '📜', nameKey: 'kit.items.legendMap' },
-  { icon: '🎭', nameKey: 'kit.items.stickers' },
-  { icon: '📋', nameKey: 'kit.items.certificate' },
-  { icon: '🎁', nameKey: 'kit.items.localGift' },
+const DIGITAL_FEATURES = [
+  { icon: '📱', nameKey: 'digitalFeatures.gps' },
+  { icon: '📸', nameKey: 'digitalFeatures.camera' },
+  { icon: '🛂', nameKey: 'digitalFeatures.passport' },
+  { icon: '🎖️', nameKey: 'digitalFeatures.badge' },
+  { icon: '🏆', nameKey: 'digitalFeatures.prize' },
 ]
 
-const KIT_IMAGE_MAP: Record<string, string> = {
-  jeonju: '/images/kits/jeonju.png',
-  seoul: '/images/kits/seoul.png',
-  busan: '/images/kits/busan.png',
-  jeju: '/images/kits/jeju.png',
-  gyeongju: '/images/kits/gyeongju.png',
-  tongyeong: '/images/kits/tongyeong.png',
-  cheonan: '/images/kits/cheonan.png',
-  icheon: '/images/kits/icheon.png',
-  yongin: '/images/kits/yongin.png',
-}
-
-function CartButton({ kit, courseId, region, locale }: { kit: Kit; courseId: string; region: string; locale: string }) {
-  const { addItem } = useCart()
-  const tCart = useTranslations('cart')
-
-  return (
-    <button
-      type="button"
-      onClick={() =>
-        addItem({
-          id: `kit-${courseId}-${kit.id}`,
-          type: 'kit',
-          name: { ko: kit.name, en: kit.name, ja: kit.name },
-          price: kit.price,
-          priceDisplay: `₩${kit.price.toLocaleString()}`,
-          emoji: '🎁',
-          cityId: region,
-          metadata: { courseId, kitId: kit.id, optionType: kit.option_type },
-        })
-      }
-      className="inline-block w-full py-3 rounded-full bg-gradient-to-br from-mint to-blossom text-ink font-bold text-sm hover:opacity-90 transition mb-2"
-    >
-      🛒 {tCart('add')} · ₩{kit.price.toLocaleString()}
-    </button>
-  )
-}
-
-export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn: _isLoggedIn, region }: QuestKitShowcaseProps) {
+export function QuestKitShowcase({ courseId, kits, locale: _locale, isLoggedIn: _isLoggedIn, region }: QuestKitShowcaseProps) {
   const t = useTranslations('quest')
-  const kitImage = KIT_IMAGE_MAP[region] || '/images/kits/jeonju.png'
+  const router = useRouter()
+  const pathname = usePathname()
+  const lk = pathname.split('/')[1] || 'ko'
+
+  const subscribeLabel = { ko: '구독 시작하기', en: 'Start Subscription', ja: 'サブスクリプション開始' }
+  const priceLabel = { ko: '₩6,900/월', en: '$5/month', ja: '¥750/月' }
+  const descLabel = { ko: '월 구독으로 모든 미션 해금', en: 'Unlock all missions with subscription', ja: 'サブスクリプションで全ミッション解除' }
+
+  const handleSubscribe = () => {
+    router.push(`/${lk}/courses/${courseId}/purchase`)
+  }
 
   return (
     <section id="kit-section" className="bg-white py-20 md:py-28">
       <div className="max-w-5xl mx-auto px-6 md:px-10">
         <h2 className="text-2xl md:text-3xl font-black text-[#111] text-center mb-4">
-          {t('kit.title')}
+          {t('digitalFeatures.title')}
         </h2>
-        <p className="text-center text-[#6B7280] mb-10">{t('kit.subtitle')}</p>
+        <p className="text-center text-[#6B7280] mb-10">{descLabel[lk as keyof typeof descLabel] || descLabel.en}</p>
 
-        {/* 키트 실사 이미지 */}
-        <div className="relative aspect-[4/3] md:aspect-[16/9] rounded-3xl overflow-hidden mb-12 shadow-[0_12px_40px_rgba(0,0,0,0.12)] bg-cloud">
-          <Image
-            src={kitImage}
-            alt="Mission Kit"
-            fill
-            sizes="(max-width: 768px) 100vw, 80vw"
-            quality={90}
-            className="object-contain"
-          />
-        </div>
-
-        {/* 구성품 그리드 */}
+        {/* 디지털 기능 그리드 */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
-          {KIT_ITEMS.map((item) => (
-            <div key={item.nameKey} className="bg-cloud rounded-2xl p-5 text-center">
+          {DIGITAL_FEATURES.map((item) => (
+            <div key={item.nameKey} className="bg-gradient-to-br from-mint-light/50 to-cloud rounded-2xl p-5 text-center border border-mist hover:border-mint-deep/30 transition-colors">
               <div className="text-3xl mb-2">{item.icon}</div>
               <p className="text-sm font-bold text-[#111]">
                 {t(item.nameKey as Parameters<typeof t>[0])}
@@ -102,41 +61,35 @@ export function QuestKitShowcase({ courseId, kits, locale, isLoggedIn: _isLogged
           ))}
         </div>
 
-        {/* 키트 옵션 카드 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          {kits.map((kit) => {
-            const isSolo = kit.option_type === 'solo' || kit.name?.includes('1인')
-            const label = isSolo ? t('kit.solo') : t('kit.couple')
-            return (
-              <div key={kit.id} className="bg-white border-2 border-mint-deep/20 rounded-3xl p-7 text-center hover:border-mint-deep hover:shadow-lg transition-all duration-200">
-                <p className="text-sm font-bold text-mint-deep uppercase tracking-widest mb-2">{label}</p>
-                <p className="text-4xl font-black text-[#111] mb-1">
-                  ₩{kit.price.toLocaleString()}
-                </p>
-                <p className="text-xs text-[#6B7280] mb-6">{t('kit.taxIncluded')}</p>
-                <CartButton kit={kit} courseId={courseId} region={region} locale={locale} />
+        {/* 구독 카드 */}
+        <div className="max-w-md mx-auto mb-8">
+          <div className="bg-white border-2 border-mint-deep rounded-3xl p-8 text-center shadow-lg">
+            <p className="text-sm font-bold text-mint-deep uppercase tracking-widest mb-3">DIGITAL QUEST PASS</p>
+            <p className="text-4xl font-black text-[#111] mb-1">
+              {priceLabel[lk as keyof typeof priceLabel] || priceLabel.en}
+            </p>
+            <p className="text-xs text-[#6B7280] mb-6">{descLabel[lk as keyof typeof descLabel] || descLabel.en}</p>
 
-                <AddToPlannerButton
-                  itemType="quest"
-                  cityId={region}
-                  itemData={{
-                    courseId,
-                    kitId: kit.id,
-                    kitName: kit.name,
-                    price: kit.price,
-                    optionType: kit.option_type,
-                  }}
-                  className="w-full"
-                  size="md"
-                />
-              </div>
-            )
-          })}
+            <button
+              onClick={handleSubscribe}
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-mint to-mint-deep text-white font-bold text-sm hover:opacity-90 transition mb-3"
+            >
+              {subscribeLabel[lk as keyof typeof subscribeLabel] || subscribeLabel.en}
+            </button>
+
+            <AddToPlannerButton
+              itemType="quest"
+              cityId={region}
+              itemData={{ courseId, kitId: kits[0]?.id, price: 6900 }}
+              className="w-full"
+              size="md"
+            />
+          </div>
         </div>
 
         {/* 안심 메시지 */}
         <div className="flex flex-col md:flex-row gap-4 justify-center text-sm text-[#6B7280]">
-          <span className="flex items-center gap-2 justify-center">✈️ {t('kit.delivery')}</span>
+          <span className="flex items-center gap-2 justify-center">📱 {lk === 'ko' ? '즉시 이용 가능' : lk === 'ja' ? '即時利用可能' : 'Instant access'}</span>
           <span className="flex items-center gap-2 justify-center">🌍 {t('kit.multilang')}</span>
         </div>
       </div>

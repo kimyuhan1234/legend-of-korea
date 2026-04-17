@@ -1138,6 +1138,14 @@
       "delivery": "여행 3일 전 숙소 배송 보장",
       "multilang": "영어/일본어/한국어 미션카드 포함"
     },
+    "digitalFeatures": {
+      "title": "디지털 퀘스트 구성",
+      "gps": "GPS 미션 해금",
+      "camera": "레트로 카메라 필터",
+      "passport": "디지털 여권 스탬프",
+      "badge": "프로필 훈장",
+      "prize": "월간 우승 실물 상품"
+    },
     "reviews": {
       "title": "모험가들의 실제 후기",
       "verified": "Verified Adventurer"
