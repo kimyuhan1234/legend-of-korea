@@ -24,7 +24,7 @@ export function QuestComparison() {
   ]
 
   const scrollToKit = () => {
-    document.getElementById('kit-section')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('kit-purchase')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (

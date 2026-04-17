@@ -77,7 +77,10 @@ export function ZepAccessModal({ isOpen, onClose, zone, locale }: ZepAccessModal
     }
   }
 
+  const isPlaceholder = zepSpace.spaceUrl.includes('YOUR_SPACE_ID')
+
   const handleEnter = () => {
+    if (isPlaceholder) return
     window.open(zepSpace.spaceUrl, '_blank', 'noopener,noreferrer')
   }
 
@@ -164,9 +167,10 @@ export function ZepAccessModal({ isOpen, onClose, zone, locale }: ZepAccessModal
           {/* ZEP 입장 버튼 */}
           <button
             onClick={handleEnter}
-            className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-sky to-mint text-ink font-black text-sm hover:opacity-90 active:scale-95 transition-all"
+            disabled={isPlaceholder}
+            className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-sky to-mint text-ink font-black text-sm hover:opacity-90 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {l.enterZep} →
+            {isPlaceholder ? '🔧 ZEP 스페이스 준비 중입니다' : `${l.enterZep} →`}
           </button>
         </div>
       </div>

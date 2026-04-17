@@ -66,40 +66,29 @@ export default async function CourseDetailPage({ params }: Props) {
   const { data: { user } } = await supabase.auth.getUser()
   const isLoggedIn = !!user
 
-  // 키트 구매 여부 확인 (ZEP 접근 권한 판단)
-  let hasPurchasedKit = false
+  // 구독 여부 확인 (ZEP 접근 권한 판단)
+  let hasSubscription = false
   if (user) {
     try {
-      const { data: kitRows } = await supabase
-        .from("kit_products")
+      const { data: orderRows } = await supabase
+        .from("orders")
         .select("id")
-        .eq("course_id", courseId)
-      if (kitRows?.length) {
-        const kitIds = kitRows.map((k) => k.id)
-        const { data: orderRows } = await supabase
-          .from("orders")
-          .select("id")
-          .eq("user_id", user.id)
-          .in("kit_product_id", kitIds)
-          .limit(1)
-        hasPurchasedKit = (orderRows?.length ?? 0) > 0
-      }
+        .eq("user_id", user.id)
+        .eq("payment_status", "paid")
+        .limit(1)
+      hasSubscription = (orderRows?.length ?? 0) > 0
     } catch {
-      hasPurchasedKit = false
+      hasSubscription = false
     }
   }
 
-  const [courseRes, kitRes, missionRes, affiliateRes] = await Promise.all([
+  const [courseRes, missionRes, affiliateRes] = await Promise.all([
     supabase
       .from("courses")
       .select("*")
       .eq("id", courseId)
       .eq("is_active", true)
       .single(),
-    supabase
-      .from("kit_products")
-      .select("*")
-      .eq("course_id", courseId),
     supabase
       .from("missions")
       .select("id, sequence, type, title, location_name, lp_reward, is_hidden")
@@ -115,14 +104,13 @@ export default async function CourseDetailPage({ params }: Props) {
   if (!courseRes.data) notFound()
 
   const course = courseRes.data
-  const kits = kitRes.data || []
   const missions = missionRes.data || []
   const affiliateLinks = affiliateRes.data || []
   const durationText = getI18n(course.duration_text as I18nText, locale)
 
   const courseTitle = getI18n(course.title as I18nText, locale)
   const thumbnailUrl = course.thumbnail_url || '/images/dokkaebi-hero.png'
-  const firstKit = kits[0]
+  const firstKit = null
 
   const storyCards = [
     { image: thumbnailUrl, textKey: 'story.card1' },
@@ -156,7 +144,7 @@ export default async function CourseDetailPage({ params }: Props) {
       <div id="kit-purchase">
       <QuestKitShowcase
         courseId={courseId}
-        kits={kits as any}
+        kits={[]}
         locale={locale}
         region={course.region || 'jeonju'}
         isLoggedIn={isLoggedIn}
@@ -177,7 +165,7 @@ export default async function CourseDetailPage({ params }: Props) {
             - 해당 코스에 ZEP 스페이스 없으면 렌더링 안 함            */}
       {getZepZoneByCourseId(course.region || '') && (
         <section className="max-w-5xl mx-auto px-8 md:px-10 py-8" id="zep-meeting">
-          {hasPurchasedKit ? (
+          {hasSubscription ? (
             <ZepMeetingButton
               courseId={course.region || ''}
               hasPurchased={true}
@@ -206,7 +194,7 @@ export default async function CourseDetailPage({ params }: Props) {
       <QuestStickyBar
         courseId={courseId}
         title={courseTitle}
-        price={course.price_1p || 29000}
+        price={6900}
         locale={locale}
         isLoggedIn={isLoggedIn}
         kitId={firstKit?.id}

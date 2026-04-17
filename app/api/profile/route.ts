@@ -22,7 +22,7 @@ export async function PATCH(req: NextRequest) {
 
   let avatarUrl: string | undefined;
 
-  // TODO: 'avatars' 버킷을 Supabase Storage에서 미리 생성해야 합니다.
+  // 배포 전: Supabase Dashboard > Storage > 'avatars' 버킷 생성 필요 (public)
   if (avatarFile && avatarFile.size > 0) {
     const ALLOWED = ['image/jpeg', 'image/png', 'image/webp'];
     if (!ALLOWED.includes(avatarFile.type)) {

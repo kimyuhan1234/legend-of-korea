@@ -452,7 +452,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                              <ShoppingBag className="w-10 h-10 text-slate-300" />
                           </div>
                           <div className="flex-1 space-y-1">
-                             <h4 className="text-xl font-black text-slate-800">{order.kit_products?.courses?.title?.[locale] || order.kit_products?.courses?.title?.ko}</h4>
+                             <h4 className="text-xl font-black text-slate-800">{order.kit_products?.courses?.title?.[locale] || order.kit_products?.courses?.title?.ko || t('digitalPass') || 'Digital Quest Pass'}</h4>
                              <p className="text-sm text-slate-400 font-bold">디지털 퀘스트 패스 • {order.quantity}건</p>
                           </div>
                           <div className="text-right">
