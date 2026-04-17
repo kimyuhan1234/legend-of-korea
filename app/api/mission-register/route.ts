@@ -6,68 +6,50 @@ const MAX_SIZE = 5 * 1024 * 1024; // 5MB
 
 export async function POST(req: NextRequest) {
   try {
-    const supabase = await createClient();
-
-    // Auth check
-    const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser();
-    if (authError || !user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    // Parse form data
-    const formData = await req.formData();
-    const file = formData.get('file') as File | null;
-    const missionId = formData.get('missionId') as string | null;
-    const _courseId = formData.get('courseId') as string | null;
+    // formData를 먼저 파싱 (request body 스트림은 1번만 읽을 수 있음)
+    const formData = await req.formData()
+    const file = formData.get('file') as File | null
+    const missionId = formData.get('missionId') as string | null
 
     if (!file || !missionId) {
-      return NextResponse.json(
-        { error: 'file and missionId are required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'file and missionId are required' }, { status: 400 })
     }
 
-    // Validate file type
     if (!ALLOWED_TYPES.includes(file.type)) {
-      return NextResponse.json(
-        { error: 'Invalid file type. Allowed: JPEG, PNG, WebP' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid file type' }, { status: 400 })
     }
 
-    // Validate file size
     if (file.size > MAX_SIZE) {
-      return NextResponse.json(
-        { error: 'File too large. Maximum: 5MB' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'File too large' }, { status: 400 })
     }
 
-    // Build storage path (버킷명은 .from()에서 지정하므로 경로에 포함하지 않음)
-    const ext = file.type === 'image/webp' ? 'webp' : file.type === 'image/png' ? 'png' : 'jpg';
-    const storagePath = `${user.id}/${missionId}-${Date.now()}.${ext}`;
+    // 인증 확인
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
 
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = new Uint8Array(arrayBuffer);
+    // Storage 업로드
+    const ext = file.type === 'image/webp' ? 'webp' : file.type === 'image/png' ? 'png' : 'jpg'
+    const storagePath = `${user.id}/${missionId}-${Date.now()}.${ext}`
 
-    const supabaseAdmin = await createServiceClient();
+    const arrayBuffer = await file.arrayBuffer()
+    const buffer = new Uint8Array(arrayBuffer)
+
+    const supabaseAdmin = await createServiceClient()
 
     const { error: uploadError } = await supabaseAdmin.storage
       .from('mission-photos')
-      .upload(storagePath, buffer, { contentType: file.type, upsert: false });
+      .upload(storagePath, buffer, { contentType: file.type, upsert: false })
 
     if (uploadError) {
-      return NextResponse.json({ error: 'Storage upload failed' }, { status: 500 });
+      return NextResponse.json({ error: 'Storage upload failed', detail: uploadError.message }, { status: 500 })
     }
 
-    const {
-      data: { publicUrl },
-    } = supabaseAdmin.storage.from('mission-photos').getPublicUrl(storagePath);
+    const { data: { publicUrl } } = supabaseAdmin.storage.from('mission-photos').getPublicUrl(storagePath)
 
-    // Upsert mission_progress record (course_id는 mission_progress 테이블에 없으므로 제외)
+    // DB 저장
     const { error: dbError } = await supabaseAdmin.from('mission_progress').upsert(
       {
         user_id: user.id,
@@ -77,15 +59,17 @@ export async function POST(req: NextRequest) {
         started_at: new Date().toISOString(),
       },
       { onConflict: 'user_id,mission_id' }
-    );
+    )
 
     if (dbError) {
-      return NextResponse.json({ error: 'Failed to save progress' }, { status: 500 });
+      return NextResponse.json({ error: 'Failed to save progress', detail: dbError.message }, { status: 500 })
     }
 
-    return NextResponse.json({ success: true, photoUrl: publicUrl });
-  } catch {
-    console.error('Mission register error')
-    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+    return NextResponse.json({ success: true, photoUrl: publicUrl })
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    const stack = err instanceof Error ? err.stack : ''
+    console.error('[mission-register] FATAL:', msg, stack)
+    return NextResponse.json({ error: 'Server error', detail: msg }, { status: 500 })
   }
 }

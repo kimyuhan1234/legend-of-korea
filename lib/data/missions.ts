@@ -24,7 +24,7 @@ export const DIFFICULTY_MISSION_COUNT: Record<string, number> = {
 
 /** Jeonju Dokkaebi Course (Easy — 5 missions) */
 export const JEONJU_COURSE: CourseData = {
-  id: 'a1b2c3d4-0000-0000-0000-000000000001',
+  id: '11111111-1111-1111-1111-000000000001',
   name: {
     ko: '전주 도깨비 코스',
     ja: '全州トッケビコース',
@@ -37,7 +37,7 @@ export const JEONJU_COURSE: CourseData = {
 
 export const JEONJU_MISSIONS: MissionData[] = [
   {
-    id: 'm1',
+    id: '00000000-0000-0000-0000-000000000001',
     seq: 1,
     title: {
       ko: '전주 한옥마을 도깨비 문 찾기',
@@ -52,7 +52,7 @@ export const JEONJU_MISSIONS: MissionData[] = [
     lp: 100,
   },
   {
-    id: 'm2',
+    id: '00000000-0000-0000-0000-000000000002',
     seq: 2,
     title: {
       ko: '경기전 비밀 도깨비방망이 발견',
@@ -67,7 +67,7 @@ export const JEONJU_MISSIONS: MissionData[] = [
     lp: 150,
   },
   {
-    id: 'm3',
+    id: '00000000-0000-0000-0000-000000000003',
     seq: 3,
     title: {
       ko: '전동성당 숨겨진 부적 촬영',
@@ -82,7 +82,7 @@ export const JEONJU_MISSIONS: MissionData[] = [
     lp: 100,
   },
   {
-    id: 'm4',
+    id: '00000000-0000-0000-0000-000000000004',
     seq: 4,
     title: {
       ko: '남부시장 도깨비 먹거리 미션',
@@ -97,7 +97,7 @@ export const JEONJU_MISSIONS: MissionData[] = [
     lp: 200,
   },
   {
-    id: 'm5',
+    id: '00000000-0000-0000-0000-000000000005',
     seq: 5,
     title: {
       ko: '오목대 도깨비 보스 최종 미션',

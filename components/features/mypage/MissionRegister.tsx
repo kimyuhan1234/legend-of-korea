@@ -8,7 +8,7 @@ import Link from 'next/link';
 // 지금은 하드코딩된 코스 데이터 사용
 const AVAILABLE_COURSES = [
   {
-    id: 'a1b2c3d4-0000-0000-0000-000000000001',
+    id: '11111111-1111-1111-1111-000000000001',
     name: { ko: '전주 도깨비 코스', ja: '全州トッケビコース', en: 'Jeonju Goblin Course' },
     region: { ko: '전주', ja: '全州', en: 'Jeonju' },
     emoji: '👹',
