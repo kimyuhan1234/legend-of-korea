@@ -1647,5 +1647,14 @@
     "purchase": {
       "unlocked": "您的虚拟会议室已解锁！出发前先认识队友吧"
     }
+  },
+  "camera": {
+    "filter": {
+      "title": "选择滤镜",
+      "apply": "应用滤镜",
+      "skip": "跳过",
+      "cancel": "取消",
+      "processing": "正在应用滤镜..."
+    }
   }
 }

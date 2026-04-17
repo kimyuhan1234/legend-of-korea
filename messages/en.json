@@ -1647,5 +1647,14 @@
     "purchase": {
       "unlocked": "Your virtual meeting room is unlocked! Meet your party before the trip"
     }
+  },
+  "camera": {
+    "filter": {
+      "title": "Choose Filter",
+      "apply": "Apply Filter",
+      "skip": "Skip",
+      "cancel": "Cancel",
+      "processing": "Applying filter..."
+    }
   }
 }

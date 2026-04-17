@@ -1,11 +1,10 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Camera, ImageIcon, FolderOpen, X, Upload, Loader2 } from 'lucide-react';
-import { FilterSelector } from '@/components/features/camera/FilterSelector';
+import { RetroFilterCanvas } from '@/components/features/camera/RetroFilterCanvas';
 import { RETRO_FILTERS, applyFilterToFile } from '@/lib/camera/filters';
 
 interface MissionPhotoUploadProps {
@@ -31,7 +30,10 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
   const [uploading, setUploading] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
   const [dragOver, setDragOver] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState('original');
+
+  // Filter step
+  const [filterStep, setFilterStep] = useState(false);
+  const [pendingFile, setPendingFile] = useState<File | null>(null);
 
   function handleFile(f: File) {
     setError(null);
@@ -43,8 +45,9 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
       setError(t('photoGuide3'));
       return;
     }
-    setFile(f);
-    setPreview(URL.createObjectURL(f));
+    // Enter filter step
+    setPendingFile(f);
+    setFilterStep(true);
   }
 
   function onInputChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -52,6 +55,30 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
     if (f) handleFile(f);
     e.target.value = '';
   }
+
+  // Filter callbacks
+  const handleFilterApply = async (filterId: string) => {
+    if (!pendingFile) return;
+    const filter = RETRO_FILTERS.find((f) => f.id === filterId) ?? RETRO_FILTERS[0];
+    const processed = await applyFilterToFile(pendingFile, filter);
+    setFile(processed);
+    setPreview(URL.createObjectURL(processed));
+    setPendingFile(null);
+    setFilterStep(false);
+  };
+
+  const handleFilterSkip = () => {
+    if (!pendingFile) return;
+    setFile(pendingFile);
+    setPreview(URL.createObjectURL(pendingFile));
+    setPendingFile(null);
+    setFilterStep(false);
+  };
+
+  const handleFilterCancel = () => {
+    setPendingFile(null);
+    setFilterStep(false);
+  };
 
   function removePhoto() {
     if (preview) URL.revokeObjectURL(preview);
@@ -72,11 +99,8 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
     setUploading(true);
     setError(null);
 
-    const filter = RETRO_FILTERS.find((f) => f.id === selectedFilter) ?? RETRO_FILTERS[0];
-    const processedFile = await applyFilterToFile(file, filter);
-
     const formData = new FormData();
-    formData.append('file', processedFile);
+    formData.append('file', file);
     formData.append('missionId', missionId);
     formData.append('courseId', courseId);
 
@@ -94,6 +118,21 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
     } finally {
       setUploading(false);
     }
+  }
+
+  // ---- Filter step UI ----
+  if (filterStep && pendingFile) {
+    return (
+      <div className="mt-4">
+        <RetroFilterCanvas
+          imageFile={pendingFile}
+          onApply={handleFilterApply}
+          onSkip={handleFilterSkip}
+          onCancel={handleFilterCancel}
+          locale={locale}
+        />
+      </div>
+    );
   }
 
   return (
@@ -200,16 +239,11 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
         <>
           {/* preview with remove button */}
           <div className="relative rounded-2xl overflow-hidden border-2 border-mist bg-snow shadow-sm group">
-            <Image
+            <img
               src={preview}
               alt="preview"
-              width={600}
-              height={360}
               className="w-full object-cover max-h-64"
-              style={{ filter: RETRO_FILTERS.find((f) => f.id === selectedFilter)?.cssFilter ?? 'none' }}
-              unoptimized
             />
-            {/* gradient overlay at top */}
             <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/40 to-transparent" />
             <button
               onClick={removePhoto}
@@ -220,9 +254,6 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
               <X size={16} />
             </button>
           </div>
-
-          {/* 레트로 필터 선택 */}
-          <FilterSelector selectedFilter={selectedFilter} onSelect={setSelectedFilter} locale={locale} />
 
           {/* submit button */}
           <button

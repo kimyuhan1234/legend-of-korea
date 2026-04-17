@@ -9,7 +9,7 @@ import { toast } from '@/components/ui/use-toast';
 import { Camera, Upload, Loader2, X, Sparkles, MessageSquare, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { CourseCompletionModal } from './CourseCompletionModal';
-import { FilterSelector } from '@/components/features/camera/FilterSelector';
+import { RetroFilterCanvas } from '@/components/features/camera/RetroFilterCanvas';
 import { RETRO_FILTERS, applyFilterToFile } from '@/lib/camera/filters';
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
@@ -41,10 +41,13 @@ export function PhotoMission({
   const [syncCommunity, setSyncCommunity] = useState(false);
   const [showCompletion, setShowCompletion] = useState(false);
   const [totalEarned, setTotalEarned] = useState(0);
-  const [selectedFilter, setSelectedFilter] = useState('original');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // ── 파일 선택 검증 ──────────────────────────────────────────
+  // Filter step state
+  const [filterStep, setFilterStep] = useState(false);
+  const [pendingFiles, setPendingFiles] = useState<File[]>([]);
+
+  // ---- File selection ----
   const handleFilesSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selected = Array.from(e.target.files ?? []);
     const remaining = MAX_FILES - files.length;
@@ -70,11 +73,34 @@ export function PhotoMission({
       return;
     }
 
-    const newPreviews = selected.map((f) => URL.createObjectURL(f));
-    setFiles((prev) => [...prev, ...selected]);
-    setPreviews((prev) => [...prev, ...newPreviews]);
-    // 동일 파일 재선택 가능하도록 value 초기화
+    // Enter filter step
+    setPendingFiles(selected);
+    setFilterStep(true);
     e.target.value = '';
+  };
+
+  // ---- Filter callbacks ----
+  const handleFilterApply = async (filterId: string) => {
+    const filter = RETRO_FILTERS.find((f) => f.id === filterId) ?? RETRO_FILTERS[0];
+    const processed = await Promise.all(pendingFiles.map((f) => applyFilterToFile(f, filter)));
+    const newPreviews = processed.map((f) => URL.createObjectURL(f));
+    setFiles((prev) => [...prev, ...processed]);
+    setPreviews((prev) => [...prev, ...newPreviews]);
+    setPendingFiles([]);
+    setFilterStep(false);
+  };
+
+  const handleFilterSkip = () => {
+    const newPreviews = pendingFiles.map((f) => URL.createObjectURL(f));
+    setFiles((prev) => [...prev, ...pendingFiles]);
+    setPreviews((prev) => [...prev, ...newPreviews]);
+    setPendingFiles([]);
+    setFilterStep(false);
+  };
+
+  const handleFilterCancel = () => {
+    setPendingFiles([]);
+    setFilterStep(false);
   };
 
   const removeFile = (idx: number) => {
@@ -83,19 +109,14 @@ export function PhotoMission({
     setPreviews((prev) => prev.filter((_, i) => i !== idx));
   };
 
-  // ── 업로드 + 미션 완료 ───────────────────────────────────────
+  // ---- Upload ----
   const handleUpload = async () => {
     if (files.length === 0 || isUploading) return;
     setIsUploading(true);
 
     try {
-      // 0. 필터 적용
-      const filter = RETRO_FILTERS.find((f) => f.id === selectedFilter) ?? RETRO_FILTERS[0];
-      const processedFiles = await Promise.all(files.map((f) => applyFilterToFile(f, filter)));
-
-      // 1. 사진 순차 업로드
       const uploadedUrls: string[] = [];
-      for (const file of processedFiles) {
+      for (const file of files) {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('missionId', missionId);
@@ -106,7 +127,6 @@ export function PhotoMission({
         uploadedUrls.push(data.url ?? data.publicUrl);
       }
 
-      // 2. 미션 검증 API (서버에서 URL 유효성 재확인)
       const verifyRes = await fetch('/api/missions/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -136,7 +156,7 @@ export function PhotoMission({
     }
   };
 
-  // ── Completed 화면 ──────────────────────────────────────────
+  // ---- Completed ----
   if (status === 'completed') {
     return (
       <Card className="w-full border-2 border-green-200 rounded-[2.5rem] overflow-hidden shadow-xl bg-white">
@@ -155,7 +175,24 @@ export function PhotoMission({
     );
   }
 
-  // ── 업로드 화면 ─────────────────────────────────────────────
+  // ---- Filter step ----
+  if (filterStep && pendingFiles.length > 0) {
+    return (
+      <Card className="w-full border-2 border-primary/20 rounded-[2.5rem] overflow-hidden shadow-xl bg-white/40 backdrop-blur-md">
+        <CardContent className="p-6 md:p-8">
+          <RetroFilterCanvas
+            imageFile={pendingFiles[0]}
+            onApply={handleFilterApply}
+            onSkip={handleFilterSkip}
+            onCancel={handleFilterCancel}
+            locale={locale}
+          />
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // ---- Upload UI ----
   return (
     <Card className="w-full border-2 border-primary/20 rounded-[2.5rem] overflow-hidden shadow-xl bg-white/40 backdrop-blur-md">
       <CardHeader className="bg-primary/5 pb-6 pt-8 px-8">
@@ -172,13 +209,11 @@ export function PhotoMission({
       </CardHeader>
 
       <CardContent className="p-8 space-y-6">
-        {/* 사진 그리드 */}
+        {/* Photo grid */}
         <div className="grid grid-cols-3 gap-3">
-          {previews.map((src, idx) => {
-            const cssFilter = RETRO_FILTERS.find((f) => f.id === selectedFilter)?.cssFilter ?? 'none';
-            return (
+          {previews.map((src, idx) => (
             <div key={idx} className="relative aspect-square rounded-2xl overflow-hidden border-2 border-primary/20 group">
-              <img src={src} alt={`preview-${idx}`} className="w-full h-full object-cover" style={{ filter: cssFilter }} />
+              <img src={src} alt={`preview-${idx}`} className="w-full h-full object-cover" />
               <button
                 onClick={() => removeFile(idx)}
                 className="absolute top-1.5 right-1.5 w-7 h-7 bg-black/60 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
@@ -186,7 +221,7 @@ export function PhotoMission({
                 <X className="w-4 h-4 text-white" />
               </button>
             </div>
-          )})}
+          ))}
 
           {files.length < MAX_FILES && (
             <button
@@ -205,12 +240,7 @@ export function PhotoMission({
           {files.length}/{MAX_FILES}{t('photoCount') || '장'} · JPEG/PNG/WebP · {t('maxSize', { mb: MAX_SIZE_MB }) || `최대 ${MAX_SIZE_MB}MB`}
         </p>
 
-        {/* 레트로 필터 선택 */}
-        {files.length > 0 && (
-          <FilterSelector selectedFilter={selectedFilter} onSelect={setSelectedFilter} locale={locale} />
-        )}
-
-        {/* 커뮤니티 공유 */}
+        {/* Community share */}
         <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
           <input
             type="checkbox"

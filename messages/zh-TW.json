@@ -1647,5 +1647,14 @@
     "purchase": {
       "unlocked": "你的虛擬會議室已解鎖！旅行前與隊伍見面吧"
     }
+  },
+  "camera": {
+    "filter": {
+      "title": "選擇濾鏡",
+      "apply": "套用濾鏡",
+      "skip": "跳過",
+      "cancel": "取消",
+      "processing": "正在套用濾鏡..."
+    }
   }
 }

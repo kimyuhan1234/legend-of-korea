@@ -56,48 +56,58 @@ export const RETRO_FILTERS: RetroFilter[] = [
   },
 ]
 
-/** Canvas에 필터��� 적용하여 그린다 */
+const MAX_DIMENSION = 1920
+
+/** Canvas filter (max 1920px resize) */
 export function applyFilterToCanvas(
   canvas: HTMLCanvasElement,
   image: HTMLImageElement,
   filter: RetroFilter,
+  maxDim = MAX_DIMENSION,
 ): void {
   const ctx = canvas.getContext('2d')
   if (!ctx) return
 
-  canvas.width = image.naturalWidth
-  canvas.height = image.naturalHeight
+  let w = image.naturalWidth
+  let h = image.naturalHeight
+  if (maxDim && Math.max(w, h) > maxDim) {
+    const scale = maxDim / Math.max(w, h)
+    w = Math.round(w * scale)
+    h = Math.round(h * scale)
+  }
+  canvas.width = w
+  canvas.height = h
 
-  // 1) CSS 필터
+  // 1) CSS filter
   ctx.filter = filter.cssFilter
-  ctx.drawImage(image, 0, 0)
+  ctx.drawImage(image, 0, 0, w, h)
   ctx.filter = 'none'
 
-  // 2) 컬러 오버레이
+  // 2) Color overlay
   if (filter.overlay) {
     ctx.globalCompositeOperation = filter.overlay.blendMode
     ctx.fillStyle = filter.overlay.color
     ctx.globalAlpha = filter.overlay.opacity
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillRect(0, 0, w, h)
     ctx.globalCompositeOperation = 'source-over'
     ctx.globalAlpha = 1
   }
 
-  // 3) 비네팅
+  // 3) Vignette
   if (filter.vignette) {
-    const cx = canvas.width / 2
-    const cy = canvas.height / 2
-    const r = Math.max(canvas.width, canvas.height) * 0.5
+    const cx = w / 2
+    const cy = h / 2
+    const r = Math.max(w, h) * 0.5
     const gradient = ctx.createRadialGradient(cx, cy, r * 0.4, cx, cy, r)
     gradient.addColorStop(0, 'rgba(0,0,0,0)')
     gradient.addColorStop(1, 'rgba(0,0,0,0.35)')
     ctx.fillStyle = gradient
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillRect(0, 0, w, h)
   }
 
-  // 4) 필름 그레인
+  // 4) Film grain (step=16 for performance)
   if (filter.grain) {
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+    const imageData = ctx.getImageData(0, 0, w, h)
     const d = imageData.data
     for (let i = 0; i < d.length; i += 16) {
       const noise = (Math.random() - 0.5) * 25
@@ -109,7 +119,7 @@ export function applyFilterToCanvas(
   }
 }
 
-/** Canvas → JPEG Blob */
+/** Canvas to JPEG Blob */
 export function canvasToBlob(canvas: HTMLCanvasElement, quality = 0.92): Promise<Blob> {
   return new Promise((resolve, reject) => {
     canvas.toBlob(
@@ -120,7 +130,7 @@ export function canvasToBlob(canvas: HTMLCanvasElement, quality = 0.92): Promise
   })
 }
 
-/** File에 필터를 적용하여 새 File 반환 */
+/** Apply filter to File, return new File */
 export async function applyFilterToFile(file: File, filter: RetroFilter): Promise<File> {
   if (filter.id === 'original') return file
 

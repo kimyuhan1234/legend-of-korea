@@ -1672,5 +1672,14 @@
     "purchase": {
       "unlocked": "가상 모임 공간이 열렸습니다! 여행 전에 파티원을 만나보세요"
     }
+  },
+  "camera": {
+    "filter": {
+      "title": "필터 선택",
+      "apply": "필터 적용하기",
+      "skip": "건너뛰기",
+      "cancel": "취소",
+      "processing": "필터 적용 중..."
+    }
   }
 }

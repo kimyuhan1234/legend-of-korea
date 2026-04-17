@@ -30,6 +30,7 @@ export function FilterSelector({ selectedFilter, onSelect, locale }: Props) {
               }`}>
                 {f.name[locale] ?? f.name.ko}
               </span>
+              {isActive && <span className="text-[8px] font-black text-mint-deep leading-none">&#10003;</span>}
             </button>
           )
         })}
