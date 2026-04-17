@@ -1,11 +1,9 @@
-import { createClient } from '@/lib/supabase/server';
-import { NextRequest, NextResponse } from 'next/server';
+import { createClient, createServiceClient } from '@/lib/supabase/server';
 
-// Note: Next.js 14 App Router uses NextRequest/NextResponse
-// We will use standard Supabase Storage upload or return a signed URL/path
 export async function POST(req: Request) {
   try {
     const supabase = await createClient();
+    const supabaseAdmin = await createServiceClient();
     const formData = await req.formData();
     const file = formData.get('file') as File;
     const missionId = formData.get('missionId') as string;
@@ -33,8 +31,8 @@ export async function POST(req: Request) {
     const ext = file.name.split('.').pop() || 'jpg';
     const filePath = `${user.id}/${missionId}/${timestamp}.${ext}`;
 
-    // Upload to Supabase Storage
-    const { data, error } = await supabase.storage
+    // Upload to Supabase Storage (service role로 RLS 우회)
+    const { error } = await supabaseAdmin.storage
       .from('mission-photos')
       .upload(filePath, file, {
         cacheControl: '3600',
@@ -47,7 +45,7 @@ export async function POST(req: Request) {
     }
 
     // Get Public URL
-    const { data: { publicUrl } } = supabase.storage
+    const { data: { publicUrl } } = supabaseAdmin.storage
       .from('mission-photos')
       .getPublicUrl(filePath);
 
