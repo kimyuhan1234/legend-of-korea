@@ -233,7 +233,7 @@ export function ShopClient({ locale }: ShopClientProps) {
             <CheckCircle2 className="w-6 h-6 text-sky" />
           </div>
           <h3 className="text-xl font-black text-ink">쿠폰 사용 방법</h3>
-          <p className="text-sm text-slate/70 font-bold leading-relaxed">발급받은 쿠폰은 미션 키트 구매 단계에서 적용할 수 있습니다. 한 번에 하나의 쿠폰만 사용 가능하며 유효기간은 90일입니다.</p>
+          <p className="text-sm text-slate/70 font-bold leading-relaxed">발급받은 쿠폰은 퀘스트 구독 결제 시 적용할 수 있습니다. 한 번에 하나의 쿠폰만 사용 가능하며 유효기간은 90일입니다.</p>
         </div>
       </section>
     </div>

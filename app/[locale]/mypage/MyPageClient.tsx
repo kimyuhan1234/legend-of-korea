@@ -449,7 +449,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                           </div>
                           <div className="flex-1 space-y-1">
                              <h4 className="text-xl font-black text-slate-800">{order.kit_products?.courses?.title?.[locale] || order.kit_products?.courses?.title?.ko}</h4>
-                             <p className="text-sm text-slate-400 font-bold">{order.kit_products?.option_type === 'solo' ? '1인 미션 키트' : '2인 미션 키트'} • {order.quantity}개</p>
+                             <p className="text-sm text-slate-400 font-bold">디지털 퀘스트 패스 • {order.quantity}건</p>
                           </div>
                           <div className="text-right">
                              <p className="text-xl font-black text-slate-800">₩{order.total_price.toLocaleString()}</p>

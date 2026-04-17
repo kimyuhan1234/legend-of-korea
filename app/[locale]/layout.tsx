@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { notFound } from "next/navigation"
@@ -12,6 +12,13 @@ import { locales } from "@/i18n"
 interface LocaleLayoutProps {
   children: React.ReactNode
   params: { locale: string }
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: '#9DD8CE',
 }
 
 export function generateStaticParams() {
@@ -41,8 +48,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       template: "%s | Legend of Korea",
     },
     description: descriptions[locale] || descriptions.ko,
-    themeColor: "#9DD8CE",
-    viewport: "width=device-width, initial-scale=1, maximum-scale=1",
     formatDetection: { telephone: false },
     openGraph: {
       type: "website",

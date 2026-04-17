@@ -111,10 +111,10 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
 
         <p className="text-stone mb-6">
           {locale === "ko"
-            ? "키트가 등록하신 배송지로 발송됩니다. 배송 현황은 마이페이지에서 확인하세요."
+            ? "구독이 활성화되었습니다! 지금 바로 미션을 시작하세요."
             : locale === "ja"
-            ? "キットはご登録の配送先に発送されます。配送状況はマイページでご確認ください。"
-            : "Your kit will be shipped to the address you provided. Track your shipment in My Page."}
+            ? "サブスクリプションが有効になりました！今すぐミッションを開始してください。"
+            : "Your subscription is active! Start your missions now."}
         </p>
 
         {/* ZEP 가상 모임 공간 안내 */}

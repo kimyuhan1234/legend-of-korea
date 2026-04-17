@@ -10,7 +10,7 @@ const LABEL = {
   ko: {
     title: "여행 전에 파티원을 미리 만나세요!",
     desc: "가상 공간에서 음성·화상으로 대화하고 함께할 모험가를 확인하세요",
-    buyFirst: "키트 구매하고 참여하기",
+    buyFirst: "구독하고 참여하기",
     voice: "음성",
     video: "화상",
     avatar: "아바타",
@@ -18,7 +18,7 @@ const LABEL = {
   en: {
     title: "Meet Your Party Before the Trip!",
     desc: "Chat by voice & video in virtual space — meet your fellow adventurers",
-    buyFirst: "Buy Kit & Join",
+    buyFirst: "Subscribe & Join",
     voice: "Voice",
     video: "Video",
     avatar: "Avatar",
@@ -26,7 +26,7 @@ const LABEL = {
   ja: {
     title: "旅行前にパーティーメンバーに会おう！",
     desc: "バーチャル空間で音声・ビデオ通話しながら仲間を確認しよう",
-    buyFirst: "キット購入して参加する",
+    buyFirst: "サブスクで参加する",
     voice: "音声",
     video: "ビデオ",
     avatar: "アバター",

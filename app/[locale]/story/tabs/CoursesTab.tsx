@@ -15,9 +15,9 @@ const COMING_SOON_BADGE: Record<string, string> = {
 }
 
 const LABEL = {
-  ko: { heading: '🗺️ 미션 키트', from: '부터', detail: '자세히 보기', empty: '곧 새로운 전설이 열립니다' },
-  ja: { heading: '🗺️ ミッションキット', from: 'から', detail: '詳しく見る', empty: 'まもなく新しい伝説が始まります' },
-  en: { heading: '🗺️ Mission Kits', from: 'from', detail: 'View details', empty: 'New legends are coming soon' },
+  ko: { heading: '🗺️ 디지털 퀘스트', from: '부터', detail: '자세히 보기', empty: '곧 새로운 전설이 열립니다' },
+  ja: { heading: '🗺️ デジタルクエスト', from: 'から', detail: '詳しく見る', empty: 'まもなく新しい伝説が始まります' },
+  en: { heading: '🗺️ Digital Quests', from: 'from', detail: 'View details', empty: 'New legends are coming soon' },
 }
 
 function getI18n(field: I18nText | null, locale: string): string {

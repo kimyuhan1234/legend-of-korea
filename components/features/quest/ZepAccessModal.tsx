@@ -24,7 +24,7 @@ const LABEL = {
     copied: "복사되었습니다",
     copy: "복사",
     tip: "ZEP에서는 다른 모험가에게 다가가면 자동으로 음성/화상 대화가 시작됩니다. 마이크와 카메라를 켜주세요!",
-    warning: "비밀번호를 다른 사람에게 공유하지 마세요. 키트 구매자만 입장할 수 있는 공간입니다.",
+    warning: "비밀번호를 다른 사람에게 공유하지 마세요. 구독자만 입장할 수 있는 공간입니다.",
     enterZep: "ZEP 입장하기",
   },
   en: {
@@ -38,7 +38,7 @@ const LABEL = {
     copied: "Copied!",
     copy: "Copy",
     tip: "In ZEP, voice/video chat starts automatically when you approach other adventurers. Turn on your mic and camera!",
-    warning: "Don't share the password. This space is only for kit purchasers.",
+    warning: "Don't share the password. This space is only for subscribers.",
     enterZep: "Enter ZEP",
   },
   ja: {
@@ -52,7 +52,7 @@ const LABEL = {
     copied: "コピーしました",
     copy: "コピー",
     tip: "ZEPでは他の冒険者に近づくと自動的に音声/ビデオ通話が始まります。マイクとカメラをオンにしてください！",
-    warning: "パスワードを他の人に共有しないでください。キット購入者専用スペースです。",
+    warning: "パスワードを他の人に共有しないでください。サブスクライバー専用スペースです。",
     enterZep: "ZEPに入場する",
   },
 }
