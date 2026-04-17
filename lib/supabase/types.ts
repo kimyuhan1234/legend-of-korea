@@ -149,7 +149,7 @@ export interface Database {
           kit_id: string | null
           quantity: number
           total_price: number
-          payment_method: "toss" | "stripe" | null
+          payment_method: "toss" | "manual" | null
           payment_status: "pending" | "paid" | "failed" | "refunded"
           shipping_name: string
           shipping_phone: string
@@ -167,7 +167,7 @@ export interface Database {
           kit_id?: string | null
           quantity?: number
           total_price: number
-          payment_method?: "toss" | "stripe" | null
+          payment_method?: "toss" | "manual" | null
           payment_status?: "pending" | "paid" | "failed" | "refunded"
           shipping_name: string
           shipping_phone: string
@@ -180,7 +180,7 @@ export interface Database {
           updated_at?: string
         }
         Update: {
-          payment_method?: "toss" | "stripe" | null
+          payment_method?: "toss" | "manual" | null
           payment_status?: "pending" | "paid" | "failed" | "refunded"
           shipping_status?: "preparing" | "shipped" | "delivered"
           tracking_number?: string | null

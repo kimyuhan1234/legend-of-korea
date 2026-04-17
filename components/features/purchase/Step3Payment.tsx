@@ -53,8 +53,6 @@ export function Step3Payment({
   t,
   onPrev,
 }: Step3Props) {
-  const defaultMethod = locale === "ko" ? "toss" : "stripe"
-  const [paymentMethod, setPaymentMethod] = useState<"toss" | "stripe">(defaultMethod)
   const [orderId, setOrderId] = useState<string | null>(null)
   const [isCreatingOrder, setIsCreatingOrder] = useState(false)
   const [error, setError] = useState("")
@@ -94,28 +92,7 @@ export function Step3Payment({
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || "주문 생성 실패")
 
-      if (paymentMethod === "stripe") {
-        // Stripe Checkout Session 생성 후 리다이렉트
-        const stripeRes = await fetch("/api/payments/stripe/checkout", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            orderId: data.orderId,
-            kitId: kitSelection.kitId,
-            quantity: kitSelection.quantity,
-            couponId: kitSelection.couponId || null,
-            locale,
-            courseId,
-            successUrl: `${window.location.origin}/${locale}/courses/${courseId}/purchase/success`,
-            cancelUrl: `${window.location.origin}/${locale}/courses/${courseId}/purchase/fail`,
-          }),
-        })
-        const stripeData = await stripeRes.json()
-        if (!stripeRes.ok) throw new Error(stripeData.error || "Stripe 세션 생성 실패")
-        window.location.href = stripeData.url
-      } else {
-        setOrderId(data.orderId)
-      }
+      setOrderId(data.orderId)
     } catch (err: any) {
       setError(err.message || "오류가 발생했습니다")
       setIsCreatingOrder(false)
@@ -161,51 +138,27 @@ export function Step3Payment({
         </div>
       )}
 
-      {/* 결제 수단 선택 */}
+      {/* 결제 진행 */}
       {!orderId && (
-        <>
-          <div>
-            <p className="text-sm font-semibold text-[#111] mb-3">{t.paymentMethod}</p>
-            <div className="grid grid-cols-2 gap-3">
-              {(["toss", "stripe"] as const).map((method) => (
-                <button
-                  key={method}
-                  onClick={() => setPaymentMethod(method)}
-                  className={`p-4 rounded-2xl border-2 text-left transition-all ${
-                    paymentMethod === method
-                      ? "border-blossom-deep bg-[#F0B8B8]/5"
-                      : "border-mist bg-white hover:border-blossom-deep/40"
-                  }`}
-                >
-                  <div className="text-xl mb-1">{method === "toss" ? "🇰🇷" : "🌐"}</div>
-                  <p className="text-xs font-bold text-[#111]">
-                    {method === "toss" ? t.tossPay : t.stripePay}
-                  </p>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex gap-3">
-            <button
-              onClick={onPrev}
-              className="flex-1 py-4 rounded-2xl border border-mist bg-white text-[#111] font-semibold hover:bg-cloud transition-colors"
-            >
-              ← {t.prev}
-            </button>
-            <button
-              onClick={handlePrepareOrder}
-              disabled={isCreatingOrder}
-              className="flex-[2] py-4 rounded-2xl bg-[#F0B8B8] text-[#111] font-black text-lg hover:bg-blossom disabled:opacity-50 transition-colors"
-            >
-              {isCreatingOrder ? t.processing : t.payNow}
-            </button>
-          </div>
-        </>
+        <div className="flex gap-3">
+          <button
+            onClick={onPrev}
+            className="flex-1 py-4 rounded-2xl border border-mist bg-white text-[#111] font-semibold hover:bg-cloud transition-colors"
+          >
+            ← {t.prev}
+          </button>
+          <button
+            onClick={handlePrepareOrder}
+            disabled={isCreatingOrder}
+            className="flex-[2] py-4 rounded-2xl bg-[#F0B8B8] text-[#111] font-black text-lg hover:bg-blossom disabled:opacity-50 transition-colors"
+          >
+            {isCreatingOrder ? t.processing : t.payNow}
+          </button>
+        </div>
       )}
 
       {/* Toss 위젯 (주문 생성 후) */}
-      {orderId && paymentMethod === "toss" && (
+      {orderId && (
         <TossPaymentWidget
           amount={finalAmount}
           orderId={orderId}

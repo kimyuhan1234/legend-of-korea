@@ -61,7 +61,7 @@ export default async function PurchasePage({ params }: Props) {
     "totalPrice", "discount", "finalPrice", "next", "prev",
     "shippingName", "shippingPhone", "shippingZipcode", "shippingAddress",
     "shippingDetail", "findZipcode", "shippingTip", "usePrevAddress",
-    "paymentMethod", "tossPay", "stripePay", "orderSummary",
+    "paymentMethod", "tossPay", "orderSummary",
     "payNow", "processing", "orderComplete",
   ] as const
 

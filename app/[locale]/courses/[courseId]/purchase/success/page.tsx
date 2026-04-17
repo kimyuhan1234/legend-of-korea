@@ -65,7 +65,7 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
     }
   }
 
-  // Stripe 성공 (웹훅이 처리하므로 여기서는 UI만)
+  // 외부 결제 세션 성공 (session_id가 있으면 결제 완료 처리)
   if (session_id) {
     paymentConfirmed = true
   }
