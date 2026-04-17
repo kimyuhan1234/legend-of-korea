@@ -455,7 +455,15 @@
     "editAvatarLabel": "プロフィール写真変更",
     "editNicknameLabel": "ニックネーム",
     "profileSaved": "プロフィールが更新されました",
-    "profileSaveFail": "プロフィール更新に失敗しました"
+    "profileSaveFail": "プロフィール更新に失敗しました",
+    "passportTab": "パスポート",
+    "passportTitle": "LEGEND OF KOREA",
+    "passportSubtitle": "DIGITAL PASSPORT",
+    "stampCount": "{n} / {total}",
+    "issuedDate": "発行日",
+    "capturePassport": "パスポートをキャプチャ",
+    "sharePassport": "SNSでシェア",
+    "legendaryAdventurer": "伝説の冒険者 — 全都市制覇！"
   },
   "tier": {
     "1": "村の住民",

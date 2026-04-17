@@ -28,6 +28,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import MissionRegister from '@/components/features/mypage/MissionRegister';
 import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton';
+import { DigitalPassport } from '@/components/features/mypage/DigitalPassport';
 import { toast } from '@/components/ui/use-toast';
 
 interface MyPageClientProps {
@@ -296,6 +297,9 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                 <TabsTrigger value="progress" className="data-[state=active]:text-sky data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-mint-deep after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
                   {t('missionCenter')}
                 </TabsTrigger>
+                <TabsTrigger value="passport" className="data-[state=active]:text-sky data-[state=active]:after:w-full relative after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-mint-deep after:rounded-full after:transition-all after:duration-300 font-black text-slate-400 py-6 px-0 h-full rounded-none border-none bg-transparent">
+                  {t('passportTab')}
+                </TabsTrigger>
               </TabsList>
             </CardHeader>
 
@@ -514,6 +518,11 @@ export function MyPageClient({ locale }: MyPageClientProps) {
 
                 {/* 완료된 미션 등록하기 */}
                 <MissionRegister locale={locale} />
+              </TabsContent>
+
+              {/* Passport Tab */}
+              <TabsContent value="passport" className="m-0">
+                {user?.id && <DigitalPassport userId={user.id} locale={locale} />}
               </TabsContent>
 
             </div>

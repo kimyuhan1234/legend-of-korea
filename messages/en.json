@@ -455,7 +455,15 @@
     "editAvatarLabel": "Change Avatar",
     "editNicknameLabel": "Nickname",
     "profileSaved": "Profile updated",
-    "profileSaveFail": "Failed to update profile"
+    "profileSaveFail": "Failed to update profile",
+    "passportTab": "Passport",
+    "passportTitle": "LEGEND OF KOREA",
+    "passportSubtitle": "DIGITAL PASSPORT",
+    "stampCount": "{n} / {total}",
+    "issuedDate": "Issued",
+    "capturePassport": "Capture Passport",
+    "sharePassport": "Share on SNS",
+    "legendaryAdventurer": "Legendary Adventurer — All cities conquered!"
   },
   "tier": {
     "1": "Villager",

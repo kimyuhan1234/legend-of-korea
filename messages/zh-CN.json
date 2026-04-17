@@ -455,7 +455,15 @@
     "editAvatarLabel": "更换头像",
     "editNicknameLabel": "昵称",
     "profileSaved": "资料已更新",
-    "profileSaveFail": "资料更新失败"
+    "profileSaveFail": "资料更新失败",
+    "passportTab": "护照",
+    "passportTitle": "LEGEND OF KOREA",
+    "passportSubtitle": "DIGITAL PASSPORT",
+    "stampCount": "{n} / {total}",
+    "issuedDate": "签发日",
+    "capturePassport": "截取护照",
+    "sharePassport": "分享到社交媒体",
+    "legendaryAdventurer": "传说中的冒险家 — 征服了所有城市！"
   },
   "tier": {
     "1": "村民",

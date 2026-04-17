@@ -455,7 +455,15 @@
     "editAvatarLabel": "프로필 사진 변경",
     "editNicknameLabel": "닉네임",
     "profileSaved": "프로필이 수정되었습니다",
-    "profileSaveFail": "프로필 수정에 실패했습니다"
+    "profileSaveFail": "프로필 수정에 실패했습니다",
+    "passportTab": "여권",
+    "passportTitle": "LEGEND OF KOREA",
+    "passportSubtitle": "DIGITAL PASSPORT",
+    "stampCount": "{n} / {total}",
+    "issuedDate": "발급일",
+    "capturePassport": "여권 캡처하기",
+    "sharePassport": "SNS 공유",
+    "legendaryAdventurer": "전설의 모험가 — 모든 도시를 정복했습니다!"
   },
   "tier": {
     "1": "마을 주민",
