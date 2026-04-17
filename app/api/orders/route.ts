@@ -23,13 +23,66 @@ export async function POST(request: NextRequest) {
       shippingZipcode,
     } = body
 
-    // 입력 검증
-    if (!kitId || !quantity || !shippingName || !shippingPhone || !shippingAddress) {
-      return NextResponse.json({ error: "필수 항목을 입력하세요" }, { status: 400 })
+    const service = await createServiceClient()
+
+    // ─── 디지털 구독 주문 (kitId 없음) ───────────────────────────────
+    if (!kitId) {
+      const SUBSCRIPTION_PRICE = 6900
+
+      let couponDiscountRate = 0
+      if (couponId) {
+        const { data: coupon } = await service
+          .from("coupons")
+          .select("id, discount_rate, is_used, expires_at, user_id")
+          .eq("id", couponId)
+          .single()
+
+        if (!coupon || coupon.is_used || coupon.user_id !== user.id) {
+          return NextResponse.json({ error: "유효하지 않은 쿠폰입니다" }, { status: 400 })
+        }
+        if (new Date(coupon.expires_at) < new Date()) {
+          return NextResponse.json({ error: "만료된 쿠폰입니다" }, { status: 400 })
+        }
+        couponDiscountRate = coupon.discount_rate
+      }
+
+      const discount = Math.floor(SUBSCRIPTION_PRICE * (couponDiscountRate / 100))
+      const expectedTotal = SUBSCRIPTION_PRICE - discount
+
+      if (Math.abs(expectedTotal - totalPrice) > 1) {
+        return NextResponse.json({ error: "금액이 일치하지 않습니다" }, { status: 400 })
+      }
+
+      const { data: order, error: orderError } = await service
+        .from("orders")
+        .insert({
+          user_id: user.id,
+          kit_id: null,
+          quantity: 1,
+          total_price: expectedTotal,
+          payment_status: "pending",
+          // 디지털 구독은 배송 불필요 — DB NOT NULL 제약 충족용 플레이스홀더
+          shipping_name: "디지털구독",
+          shipping_phone: "-",
+          shipping_address: "디지털구독",
+          shipping_status: "delivered",
+        })
+        .select("id")
+        .single()
+
+      if (orderError || !order) {
+        return NextResponse.json({ error: "주문 생성 실패", detail: orderError?.message }, { status: 500 })
+      }
+
+      return NextResponse.json({ orderId: order.id, amount: expectedTotal })
     }
 
-    // Service client로 금액 검증 (RLS 우회)
-    const service = await createServiceClient()
+    // ─── 실물 키트 주문 (kitId 있음) ─────────────────────────────────
+
+    // 입력 검증
+    if (!quantity || !shippingName || !shippingPhone || !shippingAddress) {
+      return NextResponse.json({ error: "필수 항목을 입력하세요" }, { status: 400 })
+    }
 
     // 키트 정보 조회
     const { data: kit, error: kitError } = await service
