@@ -362,14 +362,14 @@ function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: Outf
                             key={key}
                             type="button"
                             onClick={() => {
-                              setCustomItems((prev) => ({ ...prev, [i]: { nameKey, icon: catDef.icon } }))
+                              setCustomItems((prev) => ({ ...prev, [i]: { nameKey, icon: item.icon } }))
                               setOpenIdx(null)
                             }}
                             className={`w-full text-left px-3 py-1.5 text-xs flex items-center gap-1.5 transition-colors ${
                               isCurrent ? 'bg-mint-light text-mint-deep font-bold' : 'hover:bg-mint-light/30'
                             }`}
                           >
-                            <span>{catDef.icon}</span>
+                            <span>{item.icon}</span>
                             <span className="flex-1 truncate">
                               {t(`items.${key}` as Parameters<typeof t>[0])}
                             </span>
@@ -395,14 +395,14 @@ function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: Outf
                         key={key}
                         type="button"
                         onClick={() => {
-                          setCustomItems((prev) => ({ ...prev, [i]: { nameKey, icon: catDef.icon } }))
+                          setCustomItems((prev) => ({ ...prev, [i]: { nameKey, icon: item.icon } }))
                           setOpenIdx(null)
                         }}
                         className={`w-full text-left px-3 py-1.5 text-xs flex items-center gap-2 transition-colors ${
                           isCurrent ? 'bg-mint-light text-mint-deep font-bold' : 'text-slate hover:bg-cloud/50'
                         }`}
                       >
-                        <span>{catDef.icon}</span>
+                        <span>{item.icon}</span>
                         <span className="flex-1 truncate">
                           {t(`items.${key}` as Parameters<typeof t>[0])}
                         </span>
