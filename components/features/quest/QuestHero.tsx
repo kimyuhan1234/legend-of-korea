@@ -46,12 +46,6 @@ export function QuestHero({ title, region, thumbnail, difficulty, duration, miss
         </p>
 
         <div className="flex gap-3 mt-8">
-          <a
-            href="#"
-            className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-bold hover:bg-white/20 transition-colors"
-          >
-            ▶ {t('hero.preview')}
-          </a>
           <button
             onClick={scrollToKit}
             className="px-6 py-3 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-sm font-bold hover:bg-[#7BC8BC] transition-colors"
