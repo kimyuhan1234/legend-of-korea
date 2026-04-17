@@ -6,7 +6,7 @@ export function QuestHowItWorks() {
   const t = useTranslations('quest')
 
   const steps = [
-    { icon: '📦', titleKey: 'howItWorks.step1.title', descKey: 'howItWorks.step1.desc' },
+    { icon: '📱', titleKey: 'howItWorks.step1.title', descKey: 'howItWorks.step1.desc' },
     { icon: '🗺️', titleKey: 'howItWorks.step2.title', descKey: 'howItWorks.step2.desc' },
     { icon: '🏆', titleKey: 'howItWorks.step3.title', descKey: 'howItWorks.step3.desc' },
   ]

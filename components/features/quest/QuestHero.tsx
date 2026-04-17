@@ -16,7 +16,7 @@ export function QuestHero({ title, region, thumbnail, difficulty, duration, miss
   const t = useTranslations('quest')
 
   const scrollToKit = () => {
-    document.getElementById('kit-section')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('kit-purchase')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const diffLabel: Record<string, string> = { easy: '⭐', medium: '⭐⭐', hard: '⭐⭐⭐' }

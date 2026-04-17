@@ -1042,16 +1042,16 @@
   "quest": {
     "hero": {
       "headline": "Become the Hero of a Korean Legend",
-      "subline": "Unbox → Travel → Complete Missions → Earn Rewards",
+      "subline": "Subscribe → Complete Missions → Earn Rewards",
       "preview": "30s Preview",
-      "buy": "Get Your Kit",
+      "buy": "Start Subscription",
       "missions": "{count} Missions"
     },
     "howItWorks": {
       "title": "How It Works",
       "step1": {
-        "title": "Receive Your Kit",
-        "desc": "Delivered to your accommodation before your trip"
+        "title": "Subscribe",
+        "desc": "Unlock all city missions instantly for $5/month"
       },
       "step2": {
         "title": "Complete Missions",
@@ -1059,7 +1059,7 @@
       },
       "step3": {
         "title": "Earn Rewards",
-        "desc": "Badges, certificates, LP points & discount coupons"
+        "desc": "Profile badges, LP points & monthly winner prizes"
       }
     },
     "story": {
