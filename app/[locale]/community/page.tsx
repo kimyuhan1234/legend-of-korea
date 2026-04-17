@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic'
 import { Metadata } from 'next'
 import { CommunityFeed } from '@/components/features/community/CommunityFeed';
 import { CommunitySidebar } from '@/components/features/community/CommunitySidebar';
+import { Leaderboard } from '@/components/features/community/Leaderboard';
 
 interface Props {
   params: { locale: string }
@@ -42,8 +43,13 @@ export default function CommunityPage({ params: { locale } }: { params: { locale
         </main>
         
         {/* Right Sidebar (Desktop) / Bottom Sidebar (Mobile) */}
-        <div className="w-full hidden lg:block">
+        <div className="w-full hidden lg:block space-y-6">
+          <Leaderboard locale={locale} />
           <CommunitySidebar />
+        </div>
+        {/* 모바일: 리더보드 하단 표시 */}
+        <div className="w-full lg:hidden">
+          <Leaderboard locale={locale} />
         </div>
       </div>
     </div>

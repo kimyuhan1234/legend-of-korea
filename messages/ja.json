@@ -360,7 +360,17 @@
     "daysAgo": "{count}日前",
     "hoursAgo": "{count}時間前",
     "minutesAgo": "{count}分前",
-    "justNow": "たった今"
+    "justNow": "たった今",
+    "leaderboard": {
+      "title": "月間ランキング",
+      "you": "あなた",
+      "prize": "今月の賞品",
+      "first": "1位",
+      "second": "2位",
+      "third": "3位",
+      "empty": "今月のアクティビティはまだありません",
+      "challenge": "ミッションを完了してランキングに挑戦！"
+    }
   },
   "shop": {
     "title": "伝説ショップ",

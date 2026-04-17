@@ -360,7 +360,17 @@
     "daysAgo": "{count} days ago",
     "hoursAgo": "{count} hours ago",
     "minutesAgo": "{count} minutes ago",
-    "justNow": "Just now"
+    "justNow": "Just now",
+    "leaderboard": {
+      "title": "Monthly Ranking",
+      "you": "You",
+      "prize": "Monthly Prizes",
+      "first": "1st",
+      "second": "2nd",
+      "third": "3rd",
+      "empty": "No activity recorded this month yet",
+      "challenge": "Complete missions and climb the ranking!"
+    }
   },
   "shop": {
     "title": "Legend Shop",

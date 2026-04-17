@@ -360,7 +360,17 @@
     "daysAgo": "{count}일 전",
     "hoursAgo": "{count}시간 전",
     "minutesAgo": "{count}분 전",
-    "justNow": "방금 전"
+    "justNow": "방금 전",
+    "leaderboard": {
+      "title": "월간 랭킹",
+      "you": "나",
+      "prize": "이달의 상품",
+      "first": "1등",
+      "second": "2등",
+      "third": "3등",
+      "empty": "아직 이번 달 활동 기록이 없습니다",
+      "challenge": "미션을 완료하고 랭킹에 도전하세요!"
+    }
   },
   "shop": {
     "title": "전설 상점",

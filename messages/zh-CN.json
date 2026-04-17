@@ -360,7 +360,17 @@
     "daysAgo": "{count}天前",
     "hoursAgo": "{count}小时前",
     "minutesAgo": "{count}分钟前",
-    "justNow": "刚刚"
+    "justNow": "刚刚",
+    "leaderboard": {
+      "title": "月度排名",
+      "you": "我",
+      "prize": "本月奖品",
+      "first": "第1名",
+      "second": "第2名",
+      "third": "第3名",
+      "empty": "本月还没有活动记录",
+      "challenge": "完成任务，挑战排名！"
+    }
   },
   "shop": {
     "title": "传说商店",
