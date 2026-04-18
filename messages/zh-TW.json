@@ -764,6 +764,30 @@
     "empty": "沒有符合篩選條件的住宿"
   },
   "spots": {
+    "tab": {
+      "curation": "AI策展",
+      "map": "地圖",
+      "festival": "節日",
+      "category": "分類",
+      "city": "按城市"
+    },
+    "map": {
+      "title": "地圖搜索",
+      "subtitle": "選擇城市查看景點",
+      "spotsOf": "{city}的景點"
+    },
+    "city": {
+      "title": "按城市瀏覽",
+      "missionCta": "挑戰{city}任務"
+    },
+    "festival": {
+      "title": "節日日曆",
+      "noFestival": "本月沒有節日",
+      "tourApiHint": "連接TourAPI後顯示即時節日資訊",
+      "ended": "已結束",
+      "ongoing": "進行中",
+      "upcoming": "即將開始"
+    },
     "swipe": {
       "title": "找到屬於你的韓國！",
       "progress": "{n}/{total}",
@@ -809,6 +833,8 @@
       "nightlife": "夜生活"
     },
     "category": {
+      "title": "按分類瀏覽",
+      "all": "全部",
       "hotspot": "熱門地點",
       "landmark": "推薦景點",
       "festival": "節日活動"

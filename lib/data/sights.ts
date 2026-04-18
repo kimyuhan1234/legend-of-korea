@@ -16,6 +16,8 @@ export interface Sight {
   description: string | SightI18n
   image: string
   tags?: string[]
+  startDate?: string  // YYYY-MM-DD (축제)
+  endDate?: string    // YYYY-MM-DD (축제)
 }
 
 export const SIGHTS: Sight[] = [
@@ -74,6 +76,8 @@ export const SIGHTS: Sight[] = [
     category: 'festival',
     description: '매년 가을 개최되는 전주 비빔밥 대표 축제. 다양한 비빔밥 체험.',
     image: '/images/sights/jeonju-bibimbap-festival.jpg',
+    startDate: '2026-10-15',
+    endDate: '2026-10-18',
   },
   // 천안
   {
@@ -149,6 +153,8 @@ export const SIGHTS: Sight[] = [
     category: 'festival',
     description: '매년 봄 산수유꽃이 만발하는 이천의 숨은 명소. 노란 꽃밭이 장관을 이루는 봄 축제 개최.',
     image: '/images/sights/icheon-sansuyou.jpg',
+    startDate: '2026-03-20',
+    endDate: '2026-04-05',
   },
   // ── 서울 ────────────────────────────────────────────────────
   {
@@ -225,6 +231,8 @@ export const SIGHTS: Sight[] = [
     },
     image: '',
     tags: ['festival', 'nightlife', 'photo', 'group', 'walking'],
+    startDate: '2026-11-01',
+    endDate: '2026-12-31',
   },
   {
     id: 'seoul-jazz',
@@ -240,6 +248,8 @@ export const SIGHTS: Sight[] = [
     },
     image: '',
     tags: ['festival', 'group', 'trendy', 'modern', 'bar'],
+    startDate: '2026-05-23',
+    endDate: '2026-05-25',
   },
   // ── 부산 ────────────────────────────────────────────────────
   {
@@ -316,6 +326,8 @@ export const SIGHTS: Sight[] = [
     },
     image: '',
     tags: ['festival', 'group', 'trendy', 'modern', 'city'],
+    startDate: '2026-10-01',
+    endDate: '2026-10-10',
   },
   {
     id: 'busan-fireworks',
@@ -331,6 +343,8 @@ export const SIGHTS: Sight[] = [
     },
     image: '',
     tags: ['festival', 'nightlife', 'ocean', 'photo', 'group'],
+    startDate: '2026-10-25',
+    endDate: '2026-10-25',
   },
   // ── 제주 ────────────────────────────────────────────────────
   {
@@ -407,6 +421,8 @@ export const SIGHTS: Sight[] = [
     },
     image: '',
     tags: ['festival', 'nightlife', 'group', 'nature', 'photo'],
+    startDate: '2026-03-06',
+    endDate: '2026-03-08',
   },
   {
     id: 'jeju-canola',
@@ -422,6 +438,8 @@ export const SIGHTS: Sight[] = [
     },
     image: '',
     tags: ['festival', 'nature', 'photo', 'instagram', 'scenic'],
+    startDate: '2026-04-01',
+    endDate: '2026-04-15',
   },
   // ── 경주 ────────────────────────────────────────────────────
   {
@@ -498,6 +516,8 @@ export const SIGHTS: Sight[] = [
     },
     image: '',
     tags: ['festival', 'nature', 'photo', 'romantic', 'scenic'],
+    startDate: '2026-04-01',
+    endDate: '2026-04-10',
   },
   {
     id: 'gyeongju-silla',
@@ -513,6 +533,8 @@ export const SIGHTS: Sight[] = [
     },
     image: '',
     tags: ['festival', 'traditional', 'historic', 'group', 'experience'],
+    startDate: '2026-10-10',
+    endDate: '2026-10-16',
   },
   // ── 통영 ────────────────────────────────────────────────────
   {
@@ -589,6 +611,8 @@ export const SIGHTS: Sight[] = [
     },
     image: '',
     tags: ['festival', 'historic', 'traditional', 'group', 'ocean'],
+    startDate: '2026-08-10',
+    endDate: '2026-08-15',
   },
   {
     id: 'tongyeong-music',
@@ -604,6 +628,8 @@ export const SIGHTS: Sight[] = [
     },
     image: '',
     tags: ['festival', 'modern', 'group', 'romantic', 'experience'],
+    startDate: '2026-03-27',
+    endDate: '2026-04-02',
   },
 ]
 

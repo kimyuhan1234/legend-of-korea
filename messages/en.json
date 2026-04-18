@@ -764,6 +764,30 @@
     "empty": "No stays match your filters"
   },
   "spots": {
+    "tab": {
+      "curation": "AI Curation",
+      "map": "Map",
+      "festival": "Festivals",
+      "category": "Category",
+      "city": "By City"
+    },
+    "map": {
+      "title": "Find on Map",
+      "subtitle": "Select a city to see its spots",
+      "spotsOf": "Spots in {city}"
+    },
+    "city": {
+      "title": "Browse by City",
+      "missionCta": "Start {city} Mission"
+    },
+    "festival": {
+      "title": "Festival Calendar",
+      "noFestival": "No festivals this month",
+      "tourApiHint": "Real-time festival info with TourAPI connection",
+      "ended": "Ended",
+      "ongoing": "Ongoing",
+      "upcoming": "Upcoming"
+    },
     "swipe": {
       "title": "Find your perfect Korea!",
       "progress": "{n}/{total}",
@@ -809,6 +833,8 @@
       "nightlife": "Nightlife"
     },
     "category": {
+      "title": "Browse by Category",
+      "all": "All",
       "hotspot": "Hot Places",
       "landmark": "Landmarks",
       "festival": "Festivals & Events"

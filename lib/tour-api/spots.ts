@@ -75,6 +75,8 @@ function normalizeStaticSight(s: Sight): NormalizedSpot {
     category: s.category,
     description: toI18nFromUnion(s.description),
     image: s.image,
+    startDate: s.startDate,
+    endDate: s.endDate,
     tags: s.tags && s.tags.length > 0 ? s.tags : inferStaticTags(s.category),
   }
 }

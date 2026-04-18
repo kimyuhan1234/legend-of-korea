@@ -764,6 +764,30 @@
     "empty": "条件に合う宿泊施設がありません"
   },
   "spots": {
+    "tab": {
+      "curation": "AIキュレーション",
+      "map": "マップ",
+      "festival": "フェスティバル",
+      "category": "カテゴリ",
+      "city": "都市別"
+    },
+    "map": {
+      "title": "マップから探す",
+      "subtitle": "都市を選択するとスポットが見られます",
+      "spotsOf": "{city}のスポット"
+    },
+    "city": {
+      "title": "都市別で見る",
+      "missionCta": "{city}ミッションに挑戦"
+    },
+    "festival": {
+      "title": "フェスティバルカレンダー",
+      "noFestival": "今月のフェスティバルはありません",
+      "tourApiHint": "TourAPI接続でリアルタイムフェスティバル情報",
+      "ended": "終了",
+      "ongoing": "開催中",
+      "upcoming": "予定"
+    },
     "swipe": {
       "title": "あなたにぴったりの韓国を見つけよう！",
       "progress": "{n}/{total}",
@@ -809,6 +833,8 @@
       "nightlife": "ナイトライフ"
     },
     "category": {
+      "title": "カテゴリ別で見る",
+      "all": "すべて",
       "hotspot": "ホットプレイス",
       "landmark": "おすすめスポット",
       "festival": "フェスティバル"

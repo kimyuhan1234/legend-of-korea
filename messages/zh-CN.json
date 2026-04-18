@@ -764,6 +764,30 @@
     "empty": "没有符合筛选条件的住宿"
   },
   "spots": {
+    "tab": {
+      "curation": "AI策展",
+      "map": "地图",
+      "festival": "节日",
+      "category": "分类",
+      "city": "按城市"
+    },
+    "map": {
+      "title": "地图搜索",
+      "subtitle": "选择城市查看景点",
+      "spotsOf": "{city}的景点"
+    },
+    "city": {
+      "title": "按城市浏览",
+      "missionCta": "挑战{city}任务"
+    },
+    "festival": {
+      "title": "节日日历",
+      "noFestival": "本月没有节日",
+      "tourApiHint": "连接TourAPI后显示实时节日信息",
+      "ended": "已结束",
+      "ongoing": "进行中",
+      "upcoming": "即将开始"
+    },
     "swipe": {
       "title": "找到属于你的韩国！",
       "progress": "{n}/{total}",
@@ -809,6 +833,8 @@
       "nightlife": "夜生活"
     },
     "category": {
+      "title": "按分类浏览",
+      "all": "全部",
       "hotspot": "热门地点",
       "landmark": "推荐景点",
       "festival": "节日活动"

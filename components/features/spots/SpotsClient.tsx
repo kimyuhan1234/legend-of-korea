@@ -2,9 +2,13 @@
 
 import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
+import { Sparkles, Map, Calendar, Folder, Building2 } from 'lucide-react'
 import { StyleSlider } from './StyleSlider'
 import { CurationResult } from './CurationResult'
-import { SpotCard } from './SpotCard'
+import { SpotMapView } from './SpotMapView'
+import { SpotCategoryView } from './SpotCategoryView'
+import { SpotCityView } from './SpotCityView'
+import { FestivalCalendar } from './FestivalCalendar'
 import { calculateCityScores } from '@/lib/curation/scoring'
 import type { NormalizedSpot } from '@/lib/tour-api/types'
 import type { UserPreference } from '@/lib/curation/types'
@@ -14,29 +18,29 @@ interface Props {
   locale: string
 }
 
-type Phase = 'swipe' | 'result' | 'browse'
+type TabId = 'curation' | 'map' | 'festival' | 'category' | 'city'
+type CurationPhase = 'swipe' | 'result'
 
-const REGIONS = [
-  { code: 'jeonju',    ko: '전주',  ja: '全州',  en: 'Jeonju',    'zh-CN': '全州',  'zh-TW': '全州' },
-  { code: 'tongyeong', ko: '통영',  ja: '統営',  en: 'Tongyeong', 'zh-CN': '统营',  'zh-TW': '統營' },
-  { code: 'cheonan',   ko: '천안',  ja: '天安',  en: 'Cheonan',   'zh-CN': '天安',  'zh-TW': '天安' },
-  { code: 'yongin',    ko: '용인',  ja: '龍仁',  en: 'Yongin',    'zh-CN': '龙仁',  'zh-TW': '龍仁' },
-  { code: 'icheon',    ko: '이천',  ja: '利川',  en: 'Icheon',    'zh-CN': '利川',  'zh-TW': '利川' },
-  { code: 'gyeongju',  ko: '경주',  ja: '慶州',  en: 'Gyeongju',  'zh-CN': '庆州',  'zh-TW': '慶州' },
-  { code: 'seoul',     ko: '서울',  ja: 'ソウル', en: 'Seoul',     'zh-CN': '首尔',  'zh-TW': '首爾' },
-  { code: 'busan',     ko: '부산',  ja: '釜山',  en: 'Busan',     'zh-CN': '釜山',  'zh-TW': '釜山' },
-  { code: 'jeju',      ko: '제주',  ja: '済州',  en: 'Jeju',      'zh-CN': '济州',  'zh-TW': '濟州' },
+const TABS: { id: TabId; Icon: React.ComponentType<{ className?: string }>; labelKey: string }[] = [
+  { id: 'curation', Icon: Sparkles, labelKey: 'tab.curation' },
+  { id: 'map', Icon: Map, labelKey: 'tab.map' },
+  { id: 'festival', Icon: Calendar, labelKey: 'tab.festival' },
+  { id: 'category', Icon: Folder, labelKey: 'tab.category' },
+  { id: 'city', Icon: Building2, labelKey: 'tab.city' },
 ]
 
 export function SpotsClient({ initialSpots, locale }: Props) {
   const t = useTranslations('spots')
   const tSights = useTranslations('sights')
-  const [phase, setPhase] = useState<Phase>('swipe')
-  const [preference, setPreference] = useState<UserPreference | null>(null)
-  const [region, setRegion] = useState<string>('')
-  const [category, setCategory] = useState<string>('')
 
-  const cityScores = useMemo(() => preference ? calculateCityScores(preference) : [], [preference])
+  const [activeTab, setActiveTab] = useState<TabId>('curation')
+  const [phase, setPhase] = useState<CurationPhase>('swipe')
+  const [preference, setPreference] = useState<UserPreference | null>(null)
+
+  const cityScores = useMemo(
+    () => (preference ? calculateCityScores(preference) : []),
+    [preference],
+  )
 
   const handleComplete = (pref: UserPreference) => {
     setPreference(pref)
@@ -48,102 +52,65 @@ export function SpotsClient({ initialSpots, locale }: Props) {
     setPhase('swipe')
   }
 
-  const filteredSpots = initialSpots.filter(s => {
-    if (region && s.region !== region) return false
-    if (category && s.category !== category) return false
-    return true
-  })
-
-  // Phase 1: 슬라이더 스타일 설정
-  if (phase === 'swipe') {
-    return (
-      <div className="min-h-screen bg-snow">
-        <StyleSlider
-          locale={locale}
-          onComplete={handleComplete}
-          onSkip={() => setPhase('browse')}
-        />
-      </div>
-    )
-  }
-
-  // Phase 2: 결과
-  if (phase === 'result' && preference) {
-    return (
-      <div className="min-h-screen bg-snow">
-        <CurationResult
-          cityScores={cityScores}
-          spots={initialSpots}
-          preference={preference}
-          locale={locale}
-          onRetry={handleRetry}
-        />
-      </div>
-    )
-  }
-
-  // Phase 3: 일반 브라우즈 (건너뛰기)
   return (
     <div className="min-h-screen bg-snow">
-      <div className="bg-gradient-to-br from-mint to-blossom text-ink py-16 md:py-20 px-6 text-center">
+      {/* 헤더 */}
+      <div className="bg-gradient-to-br from-mint to-blossom text-ink py-12 md:py-16 px-6 text-center">
         <h1 className="text-3xl md:text-4xl font-black mb-2">{tSights('title')}</h1>
         <p className="text-slate">{tSights('subtitle')}</p>
-        <button
-          onClick={() => setPhase('swipe')}
-          className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ink text-white font-black text-sm hover:opacity-90 transition-opacity"
-        >
-          ✨ {t('swipe.start')}
-        </button>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        {/* 지역 필터 */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          <button
-            onClick={() => setRegion('')}
-            className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${!region ? 'bg-gradient-to-br from-mint to-blossom text-ink border-ink' : 'bg-white text-slate border-mist hover:border-ink/40'}`}
-          >
-            {tSights('filterAll')}
-          </button>
-          {REGIONS.map(r => (
-            <button
-              key={r.code}
-              onClick={() => setRegion(r.code)}
-              className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${region === r.code ? 'bg-gradient-to-br from-mint to-blossom text-ink border-ink' : 'bg-white text-slate border-mist hover:border-ink/40'}`}
-            >
-              {(r as Record<string, string>)[locale] || r.en}
-            </button>
-          ))}
-        </div>
-
-        {/* 카테고리 필터 */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {(['hotspot', 'landmark', 'festival'] as const).map(cat => (
-            <button
-              key={cat}
-              onClick={() => setCategory(category === cat ? '' : cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${category === cat ? 'bg-gradient-to-br from-mint to-blossom text-ink border-mint-deep' : 'bg-white text-slate border-mist hover:border-mint-deep/40'}`}
-            >
-              {cat === 'hotspot' ? '🔥' : cat === 'landmark' ? '🏛️' : '🎊'} {tSights(cat)}
-            </button>
-          ))}
-        </div>
-
-        {/* 스팟 카드 */}
-        {filteredSpots.length === 0 ? (
-          <div className="text-center py-20">
-            <div className="text-5xl mb-4">🗺️</div>
-            <p className="font-bold text-[#111] text-lg mb-2">{tSights('comingSoon')}</p>
-            <p className="text-stone">{tSights('comingSoonDesc')}</p>
+      {/* 탭 네비게이션 */}
+      <div className="sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-slate-100">
+        <div className="max-w-5xl mx-auto px-4 md:px-6">
+          <div className="flex gap-1 overflow-x-auto scrollbar-hide">
+            {TABS.map(tab => {
+              const isActive = activeTab === tab.id
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-2 px-4 md:px-5 py-3.5 font-bold text-sm transition-colors border-b-2 whitespace-nowrap shrink-0 ${
+                    isActive
+                      ? 'border-mint-deep text-mint-deep'
+                      : 'border-transparent text-slate-400 hover:text-slate-600'
+                  }`}
+                >
+                  <tab.Icon className="w-4 h-4" />
+                  <span className="hidden md:inline">{t(tab.labelKey)}</span>
+                </button>
+              )
+            })}
           </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredSpots.map(s => (
-              <SpotCard key={s.id} spot={s} locale={locale} />
-            ))}
-          </div>
-        )}
+        </div>
       </div>
+
+      {/* 탭 콘텐츠 */}
+      {activeTab === 'curation' && (
+        <>
+          {phase === 'swipe' && (
+            <StyleSlider
+              locale={locale}
+              onComplete={handleComplete}
+              onSkip={() => setActiveTab('map')}
+            />
+          )}
+          {phase === 'result' && preference && (
+            <CurationResult
+              cityScores={cityScores}
+              spots={initialSpots}
+              preference={preference}
+              locale={locale}
+              onRetry={handleRetry}
+            />
+          )}
+        </>
+      )}
+
+      {activeTab === 'map' && <SpotMapView spots={initialSpots} locale={locale} />}
+      {activeTab === 'festival' && <FestivalCalendar spots={initialSpots} locale={locale} />}
+      {activeTab === 'category' && <SpotCategoryView spots={initialSpots} locale={locale} />}
+      {activeTab === 'city' && <SpotCityView spots={initialSpots} locale={locale} />}
     </div>
   )
 }
