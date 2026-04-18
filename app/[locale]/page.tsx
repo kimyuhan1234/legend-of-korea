@@ -7,6 +7,7 @@ import { HomeTabExplorer } from '@/components/features/home/HomeTabExplorer'
 import { HomeFeatureCarousel } from '@/components/features/home/HomeFeatureCarousel'
 import { SlideFeatureDupe } from '@/components/features/home/SlideFeatureDupe'
 import { SlideFeaturePlanner } from '@/components/features/home/SlideFeaturePlanner'
+import { HomeCommunityPreview } from '@/components/features/home/HomeCommunityPreview'
 
 interface Props {
   params: { locale: string }
@@ -46,6 +47,9 @@ export default async function HomePage({ params }: Props) {
           cta={t('plannerCta')}
         />
       </HomeFeatureCarousel>
+
+      {/* 섹션 5: 커뮤니티 프리뷰 */}
+      <HomeCommunityPreview locale={locale} />
     </div>
   )
 }

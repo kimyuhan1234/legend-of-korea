@@ -142,6 +142,15 @@
     "plannerTitle": "我的客製旅行計畫",
     "plannerSubtitle": "儲存、選擇、完成。專屬於你的旅行",
     "plannerCta": "開始旅行規劃 →",
+    "community": {
+      "title": "冒險者的故事",
+      "subtitle": "發現其他冒險者的傳說之旅",
+      "viewAll": "查看所有故事",
+      "more": "查看更多",
+      "empty": "還沒有帖子",
+      "beFirst": "成為第一位冒險者！",
+      "likes": "點讚"
+    },
     "footerCompany": "關於我們",
     "footerTerms": "服務條款",
     "footerPrivacy": "隱私權政策",

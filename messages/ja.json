@@ -142,6 +142,15 @@
     "plannerTitle": "私のカスタム旅行プラン",
     "plannerSubtitle": "選んで、集めて、完成。あなただけの旅",
     "plannerCta": "旅行プランナーを始める →",
+    "community": {
+      "title": "冒険者たちの物語",
+      "subtitle": "他の冒険者たちの伝説の旅に出会おう",
+      "viewAll": "すべての物語を見る",
+      "more": "もっと見る",
+      "empty": "まだ投稿がありません",
+      "beFirst": "最初の冒険者になろう！",
+      "likes": "いいね"
+    },
     "footerCompany": "会社情報",
     "footerTerms": "利用規約",
     "footerPrivacy": "プライバシーポリシー",

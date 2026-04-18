@@ -142,6 +142,15 @@
     "plannerTitle": "My Custom Travel Plan",
     "plannerSubtitle": "Save, choose, and complete. A trip crafted just for you",
     "plannerCta": "Start Travel Planner →",
+    "community": {
+      "title": "Adventurers' Stories",
+      "subtitle": "Discover legendary journeys from fellow adventurers",
+      "viewAll": "View All Stories",
+      "more": "View More",
+      "empty": "No posts yet",
+      "beFirst": "Be the first adventurer!",
+      "likes": "likes"
+    },
     "footerCompany": "About Us",
     "footerTerms": "Terms of Service",
     "footerPrivacy": "Privacy Policy",
