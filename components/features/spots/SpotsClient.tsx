@@ -2,10 +2,10 @@
 
 import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
-import { SwipeCard } from './SwipeCard'
+import { StyleSlider } from './StyleSlider'
 import { CurationResult } from './CurationResult'
 import { SpotCard } from './SpotCard'
-import { SWIPE_QUESTIONS, swipeToPreference, calculateCityScores } from '@/lib/curation/scoring'
+import { calculateCityScores } from '@/lib/curation/scoring'
 import type { NormalizedSpot } from '@/lib/tour-api/types'
 import type { UserPreference } from '@/lib/curation/types'
 
@@ -38,8 +38,7 @@ export function SpotsClient({ initialSpots, locale }: Props) {
 
   const cityScores = useMemo(() => preference ? calculateCityScores(preference) : [], [preference])
 
-  const handleComplete = (answers: Record<string, 'A' | 'B'>) => {
-    const pref = swipeToPreference(answers)
+  const handleComplete = (pref: UserPreference) => {
     setPreference(pref)
     setPhase('result')
   }
@@ -55,12 +54,11 @@ export function SpotsClient({ initialSpots, locale }: Props) {
     return true
   })
 
-  // Phase 1: 스와이프
+  // Phase 1: 슬라이더 스타일 설정
   if (phase === 'swipe') {
     return (
       <div className="min-h-screen bg-snow">
-        <SwipeCard
-          questions={SWIPE_QUESTIONS}
+        <StyleSlider
           locale={locale}
           onComplete={handleComplete}
           onSkip={() => setPhase('browse')}

@@ -770,6 +770,15 @@
       "skip": "跳過",
       "start": "開始AI策展"
     },
+    "slider": {
+      "title": "我的旅行風格",
+      "subtitle": "調整滑桿，即時查看推薦變化",
+      "travelStyle": "旅行偏好",
+      "companion": "和誰一起？",
+      "liveMatch": "即時匹配",
+      "submit": "查看推薦結果",
+      "skip": "跳過"
+    },
     "result": {
       "title": "為你推薦",
       "match": "匹配",

@@ -805,6 +805,15 @@
       "skip": "건너뛰기",
       "start": "AI 큐레이션 시작하기"
     },
+    "slider": {
+      "title": "나의 여행 스타일",
+      "subtitle": "슬라이더를 조절하면 실시간으로 추천이 바뀌어요",
+      "travelStyle": "여행 성향",
+      "companion": "누구와 함께?",
+      "liveMatch": "실시간 매칭",
+      "submit": "추천 결과 보기",
+      "skip": "건너뛰기"
+    },
     "result": {
       "title": "당신을 위한 추천",
       "match": "매치",

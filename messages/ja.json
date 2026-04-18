@@ -770,6 +770,15 @@
       "skip": "スキップ",
       "start": "AIキュレーション開始"
     },
+    "slider": {
+      "title": "旅のスタイル",
+      "subtitle": "スライダーを調整するとリアルタイムでおすすめが変わります",
+      "travelStyle": "旅の好み",
+      "companion": "誰と一緒に？",
+      "liveMatch": "リアルタイムマッチング",
+      "submit": "おすすめを見る",
+      "skip": "スキップ"
+    },
     "result": {
       "title": "あなたへのおすすめ",
       "match": "マッチ",

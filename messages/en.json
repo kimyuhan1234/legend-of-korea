@@ -770,6 +770,15 @@
       "skip": "Skip",
       "start": "Start AI curation"
     },
+    "slider": {
+      "title": "My Travel Style",
+      "subtitle": "Adjust sliders and see recommendations change in real time",
+      "travelStyle": "Travel Preferences",
+      "companion": "Who are you traveling with?",
+      "liveMatch": "Live Matching",
+      "submit": "See Recommendations",
+      "skip": "Skip"
+    },
     "result": {
       "title": "Recommended for you",
       "match": "match",

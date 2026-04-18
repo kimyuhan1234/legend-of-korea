@@ -83,15 +83,146 @@ export const SWIPE_QUESTIONS: SwipeQuestion[] = [
 ]
 
 export const CITY_TAG_SCORES: Record<string, Record<string, number>> = {
-  jeonju:    { traditional: 0.9, food: 1.0, experience: 0.9, historic: 0.8, market: 0.7, cafe: 0.6 },
-  gyeongju:  { traditional: 1.0, historic: 1.0, scenic: 0.8, temple: 0.9, relax: 0.7, nature: 0.6 },
-  busan:     { ocean: 1.0, city: 0.8, food: 0.9, nightlife: 0.7, instagram: 0.8, active: 0.6 },
-  seoul:     { city: 1.0, modern: 0.9, trendy: 0.9, shopping: 0.8, nightlife: 0.9, food: 0.8 },
-  jeju:      { nature: 1.0, ocean: 0.9, scenic: 0.9, relax: 0.8, hiking: 0.7, cafe: 0.6 },
-  tongyeong: { ocean: 0.9, scenic: 1.0, relax: 0.8, food: 0.7, nature: 0.7, romantic: 0.8 },
-  cheonan:   { active: 0.7, food: 0.6, historic: 0.5, cafe: 0.5, nature: 0.4, solo: 0.5 },
-  yongin:    { themepark: 1.0, group: 0.8, active: 0.7, traditional: 0.5, family: 0.9 },
-  icheon:    { traditional: 0.8, relax: 0.7, food: 0.6, nature: 0.5, experience: 0.7, cafe: 0.5 },
+  jeonju:    { traditional: 0.9, food: 1.0, experience: 0.9, historic: 0.8, market: 0.7, cafe: 0.6, walking: 0.9, 'street-food': 0.8, budget: 0.7, photo: 0.7, daytime: 0.7, 'night-market': 0.6 },
+  gyeongju:  { traditional: 1.0, historic: 1.0, scenic: 0.8, temple: 0.9, relax: 0.7, nature: 0.6, walking: 0.8, driving: 0.6, romantic: 0.7, daytime: 0.8, meditation: 0.6, photo: 0.8 },
+  busan:     { ocean: 1.0, city: 0.8, food: 0.9, nightlife: 0.7, instagram: 0.8, active: 0.6, coastal: 0.9, 'night-market': 0.7, sunset: 0.8, driving: 0.7, group: 0.7, shopping: 0.6 },
+  seoul:     { city: 1.0, modern: 0.9, trendy: 0.9, shopping: 0.8, nightlife: 0.9, food: 0.8, instagram: 0.8, luxury: 0.7, cafe: 0.8, walking: 0.7, bar: 0.7, 'fine-dining': 0.6 },
+  jeju:      { nature: 1.0, ocean: 0.9, scenic: 0.9, relax: 0.8, hiking: 0.7, cafe: 0.6, driving: 1.0, 'scenic-road': 0.9, romantic: 0.8, photo: 0.8, family: 0.7, countryside: 0.7 },
+  tongyeong: { ocean: 0.9, scenic: 1.0, relax: 0.8, food: 0.7, nature: 0.7, romantic: 0.8, coastal: 0.9, sunset: 0.8, walking: 0.6, budget: 0.6, photo: 0.7, 'street-food': 0.6 },
+  cheonan:   { active: 0.7, food: 0.6, historic: 0.5, cafe: 0.5, nature: 0.4, solo: 0.5, budget: 0.7, walking: 0.5, daytime: 0.6, market: 0.5, experience: 0.5 },
+  yongin:    { themepark: 1.0, group: 0.8, active: 0.7, traditional: 0.5, family: 0.9, driving: 0.7, daytime: 0.8, shopping: 0.5, adventure: 0.6 },
+  icheon:    { traditional: 0.8, relax: 0.7, food: 0.6, nature: 0.5, experience: 0.7, cafe: 0.5, walking: 0.5, budget: 0.6, countryside: 0.6, daytime: 0.7, spa: 0.5 },
+}
+
+// ─── 슬라이더 9축 + 동행 1개 ──────────────────────────────────────
+export interface SliderAxis {
+  id: string
+  left: { icon: string; label: I18nString }
+  right: { icon: string; label: I18nString }
+  leftTags: string[]
+  rightTags: string[]
+}
+
+// I18nString import 없이 인라인 정의로 충돌 방지
+type I18nString = { ko: string; en: string; ja: string; 'zh-CN': string; 'zh-TW': string }
+
+export const SLIDER_AXES: SliderAxis[] = [
+  {
+    id: 'tradition-modern',
+    left: { icon: '🏛️', label: { ko: '전통 & 역사', en: 'Traditional', ja: '伝統', 'zh-CN': '传统', 'zh-TW': '傳統' } },
+    right: { icon: '✨', label: { ko: '현대 & 트렌디', en: 'Modern', ja: 'モダン', 'zh-CN': '现代', 'zh-TW': '現代' } },
+    leftTags: ['traditional', 'historic', 'temple'],
+    rightTags: ['modern', 'trendy', 'nightlife', 'instagram'],
+  },
+  {
+    id: 'nature-city',
+    left: { icon: '🌿', label: { ko: '자연', en: 'Nature', ja: '自然', 'zh-CN': '自然', 'zh-TW': '自然' } },
+    right: { icon: '🏙️', label: { ko: '도시', en: 'City', ja: '都市', 'zh-CN': '城市', 'zh-TW': '城市' } },
+    leftTags: ['nature', 'hiking', 'ocean', 'mountain'],
+    rightTags: ['city', 'shopping', 'nightlife', 'cafe'],
+  },
+  {
+    id: 'experience-photo',
+    left: { icon: '🎭', label: { ko: '체험', en: 'Experience', ja: '体験', 'zh-CN': '体验', 'zh-TW': '體驗' } },
+    right: { icon: '📸', label: { ko: '감상 & 사진', en: 'Sightseeing & Photo', ja: '観光＆写真', 'zh-CN': '观光拍照', 'zh-TW': '觀光拍照' } },
+    leftTags: ['experience', 'workshop', 'food', 'market'],
+    rightTags: ['landmark', 'scenic', 'instagram', 'sunset', 'photo'],
+  },
+  {
+    id: 'shopping-healing',
+    left: { icon: '🛍️', label: { ko: '쇼핑', en: 'Shopping', ja: 'ショッピング', 'zh-CN': '购物', 'zh-TW': '購物' } },
+    right: { icon: '🧖', label: { ko: '힐링', en: 'Healing', ja: 'ヒーリング', 'zh-CN': '疗愈', 'zh-TW': '療癒' } },
+    leftTags: ['shopping', 'market', 'city', 'trendy'],
+    rightTags: ['spa', 'relax', 'nature', 'temple', 'meditation'],
+  },
+  {
+    id: 'active-relax',
+    left: { icon: '🏃', label: { ko: '활동적', en: 'Active', ja: 'アクティブ', 'zh-CN': '活跃', 'zh-TW': '活躍' } },
+    right: { icon: '☕', label: { ko: '여유롭게', en: 'Relaxed', ja: 'ゆったり', 'zh-CN': '悠闲', 'zh-TW': '悠閒' } },
+    leftTags: ['active', 'hiking', 'adventure', 'themepark'],
+    rightTags: ['relax', 'cafe', 'spa', 'scenic'],
+  },
+  {
+    id: 'solo-group',
+    left: { icon: '🧘', label: { ko: '혼자', en: 'Solo', ja: 'ひとり', 'zh-CN': '独自', 'zh-TW': '獨自' } },
+    right: { icon: '👥', label: { ko: '그룹', en: 'Group', ja: 'グループ', 'zh-CN': '团体', 'zh-TW': '團體' } },
+    leftTags: ['solo', 'meditation', 'cafe', 'nature'],
+    rightTags: ['group', 'festival', 'themepark', 'nightlife'],
+  },
+  {
+    id: 'budget-luxury',
+    left: { icon: '💰', label: { ko: '알뜰', en: 'Budget', ja: '節約', 'zh-CN': '经济', 'zh-TW': '經濟' } },
+    right: { icon: '💎', label: { ko: '풍족', en: 'Luxury', ja: 'リッチ', 'zh-CN': '奢华', 'zh-TW': '奢華' } },
+    leftTags: ['budget', 'market', 'street-food', 'nature'],
+    rightTags: ['luxury', 'resort', 'fine-dining', 'shopping'],
+  },
+  {
+    id: 'walking-driving',
+    left: { icon: '🚶', label: { ko: '걷기', en: 'Walking', ja: '歩き', 'zh-CN': '步行', 'zh-TW': '步行' } },
+    right: { icon: '🚗', label: { ko: '드라이브', en: 'Driving', ja: 'ドライブ', 'zh-CN': '自驾', 'zh-TW': '自駕' } },
+    leftTags: ['walking', 'hiking', 'city', 'market'],
+    rightTags: ['driving', 'coastal', 'scenic-road', 'countryside'],
+  },
+  {
+    id: 'night-day',
+    left: { icon: '🌙', label: { ko: '야경 & 야시장', en: 'Nightlife', ja: 'ナイトライフ', 'zh-CN': '夜景夜市', 'zh-TW': '夜景夜市' } },
+    right: { icon: '☀️', label: { ko: '낮 활동', en: 'Daytime', ja: '昼間', 'zh-CN': '白天', 'zh-TW': '白天' } },
+    leftTags: ['nightlife', 'night-market', 'sunset', 'bar'],
+    rightTags: ['daytime', 'hiking', 'nature', 'landmark'],
+  },
+]
+
+export interface CompanionOption {
+  id: string
+  icon: string
+  label: I18nString
+  tags: string[]
+}
+
+export const COMPANION_OPTIONS: CompanionOption[] = [
+  { id: 'family', icon: '👨‍👩‍👧', label: { ko: '가족', en: 'Family', ja: '家族', 'zh-CN': '家庭', 'zh-TW': '家庭' }, tags: ['family', 'themepark', 'nature', 'relax'] },
+  { id: 'friends', icon: '👫', label: { ko: '친구', en: 'Friends', ja: '友達', 'zh-CN': '朋友', 'zh-TW': '朋友' }, tags: ['group', 'active', 'nightlife', 'festival', 'instagram'] },
+  { id: 'couple', icon: '💑', label: { ko: '연인', en: 'Couple', ja: 'カップル', 'zh-CN': '情侣', 'zh-TW': '情侶' }, tags: ['romantic', 'scenic', 'cafe', 'sunset', 'coastal'] },
+]
+
+// 슬라이더 값(-100 ~ +100) + 동행 → UserPreference
+export function sliderToPreference(
+  sliders: Record<string, number>,
+  companion: string | null,
+): UserPreference {
+  const tags: Record<string, number> = {}
+
+  for (const axis of SLIDER_AXES) {
+    const raw = sliders[axis.id] ?? 0
+    const value = raw / 100 // -1 ~ +1
+
+    if (value < -0.1) {
+      const strength = Math.abs(value)
+      for (const tag of axis.leftTags) {
+        tags[tag] = (tags[tag] || 0) + strength
+      }
+    } else if (value > 0.1) {
+      for (const tag of axis.rightTags) {
+        tags[tag] = (tags[tag] || 0) + value
+      }
+    } else {
+      // 중간값 → 양쪽 약한 가중치
+      for (const tag of [...axis.leftTags, ...axis.rightTags]) {
+        tags[tag] = (tags[tag] || 0) + 0.3
+      }
+    }
+  }
+
+  if (companion) {
+    const comp = COMPANION_OPTIONS.find(c => c.id === companion)
+    if (comp) {
+      for (const tag of comp.tags) {
+        tags[tag] = (tags[tag] || 0) + 0.8
+      }
+    }
+  }
+
+  return { tags }
 }
 
 export function calculateCityScores(preference: UserPreference): CityScore[] {
