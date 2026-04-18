@@ -808,6 +808,12 @@
       "active": "活动",
       "nightlife": "夜生活"
     },
+    "category": {
+      "hotspot": "热门地点",
+      "landmark": "推荐景点",
+      "festival": "节日活动"
+    },
+    "imagePreparing": "图片准备中",
     "source": "来源：韩国观光公社"
   },
   "sights": {

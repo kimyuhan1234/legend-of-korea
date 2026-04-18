@@ -843,6 +843,12 @@
       "active": "활동",
       "nightlife": "야경"
     },
+    "category": {
+      "hotspot": "핫플레이스",
+      "landmark": "추천 명소",
+      "festival": "축제 & 이벤트"
+    },
+    "imagePreparing": "이미지 준비 중",
     "source": "출처: 한국관광공사"
   },
   "ootd": {

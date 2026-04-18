@@ -808,6 +808,12 @@
       "active": "Active",
       "nightlife": "Nightlife"
     },
+    "category": {
+      "hotspot": "Hot Places",
+      "landmark": "Landmarks",
+      "festival": "Festivals & Events"
+    },
+    "imagePreparing": "Image coming soon",
     "source": "Source: Korea Tourism Organization"
   },
   "sights": {

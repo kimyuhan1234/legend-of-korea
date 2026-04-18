@@ -808,6 +808,12 @@
       "active": "アクティブ",
       "nightlife": "ナイトライフ"
     },
+    "category": {
+      "hotspot": "ホットプレイス",
+      "landmark": "おすすめスポット",
+      "festival": "フェスティバル"
+    },
+    "imagePreparing": "画像準備中",
     "source": "出典：韓国観光公社"
   },
   "sights": {

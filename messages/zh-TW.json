@@ -808,6 +808,12 @@
       "active": "活動",
       "nightlife": "夜生活"
     },
+    "category": {
+      "hotspot": "熱門地點",
+      "landmark": "推薦景點",
+      "festival": "節日活動"
+    },
+    "imagePreparing": "圖片準備中",
     "source": "來源：韓國觀光公社"
   },
   "sights": {

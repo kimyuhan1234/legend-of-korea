@@ -31,10 +31,13 @@ export function SpotCard({ spot, locale, matchPercent }: Props) {
   const description = getI18n(spot.description, locale)
   const categoryLabel = tSights(spot.category)
 
+  const hasRealImage =
+    !!spot.image && !spot.image.includes('placeholder') && spot.image !== ''
+
   return (
     <div className="bg-white rounded-2xl overflow-hidden border border-mist shadow-sm hover:shadow-md transition-all group">
       <div className="relative aspect-[4/3] bg-cloud">
-        {spot.image ? (
+        {hasRealImage ? (
           <Image
             src={spot.image}
             alt={name}
@@ -44,8 +47,11 @@ export function SpotCard({ spot, locale, matchPercent }: Props) {
             unoptimized={spot.source === 'tourapi'}
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-5xl opacity-30">
-            {CATEGORY_EMOJI[spot.category]}
+          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-mint/25 to-blossom/25">
+            <span className="text-4xl mb-1">{CATEGORY_EMOJI[spot.category]}</span>
+            <span className="text-[10px] font-bold text-slate-500">
+              {t('imagePreparing')}
+            </span>
           </div>
         )}
         <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">

@@ -55,16 +55,27 @@ function inferStaticTags(category: SpotCategory): string[] {
   return tags
 }
 
+function toI18nFromUnion(v: string | { ko: string; en: string; ja: string; 'zh-CN'?: string; 'zh-TW'?: string }): I18nString {
+  if (typeof v === 'string') return toI18n(v)
+  return {
+    ko: v.ko,
+    en: v.en,
+    ja: v.ja,
+    'zh-CN': v['zh-CN'] ?? v.en,
+    'zh-TW': v['zh-TW'] ?? v.en,
+  }
+}
+
 function normalizeStaticSight(s: Sight): NormalizedSpot {
   return {
     id: `static-${s.id}`,
     source: 'static',
-    name: toI18n(s.name),
+    name: toI18nFromUnion(s.name),
     region: s.region,
     category: s.category,
-    description: toI18n(s.description),
+    description: toI18nFromUnion(s.description),
     image: s.image,
-    tags: inferStaticTags(s.category),
+    tags: s.tags && s.tags.length > 0 ? s.tags : inferStaticTags(s.category),
   }
 }
 

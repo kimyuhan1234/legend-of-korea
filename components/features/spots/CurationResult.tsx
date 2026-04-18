@@ -208,37 +208,37 @@ function CityDetailCard({
           </div>
         </div>
 
-        {/* 축제 */}
-        {festivals.length > 0 && (
-          <div>
-            <h3 className="text-sm font-black text-slate-700 mb-3">🎊 {t('result.currentFestivals')}</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {festivals.map(f => <SpotCard key={f.id} spot={f} locale={locale} />)}
-            </div>
-          </div>
-        )}
-
-        {/* 추천 장소 */}
-        {landmarks.length > 0 && (
-          <div>
-            <h3 className="text-sm font-black text-slate-700 mb-3">📍 {t('result.recommendedPlaces')}</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {landmarks.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
-            </div>
-          </div>
-        )}
-
-        {/* 핫플 */}
+        {/* 🔥 핫플레이스 */}
         {hotspots.length > 0 && (
           <div>
-            <h3 className="text-sm font-black text-slate-700 mb-3">🔥 {t('result.hotplaces')}</h3>
+            <h3 className="text-sm font-black text-slate-700 mb-3">🔥 {t('category.hotspot')}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {hotspots.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
             </div>
           </div>
         )}
 
-        {/* 스팟 없을 때 */}
+        {/* 🏛️ 추천 명소 */}
+        {landmarks.length > 0 && (
+          <div>
+            <h3 className="text-sm font-black text-slate-700 mb-3">🏛️ {t('category.landmark')}</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {landmarks.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
+            </div>
+          </div>
+        )}
+
+        {/* 🎊 축제 & 이벤트 */}
+        {festivals.length > 0 && (
+          <div>
+            <h3 className="text-sm font-black text-slate-700 mb-3">🎊 {t('category.festival')}</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {festivals.map(f => <SpotCard key={f.id} spot={f} locale={locale} />)}
+            </div>
+          </div>
+        )}
+
+        {/* 3개 모두 비었을 때만 안내 */}
         {festivals.length === 0 && landmarks.length === 0 && hotspots.length === 0 && (
           <div className="text-center py-6 text-xs text-slate-400 font-bold">
             {t('result.noCitySpots')}
