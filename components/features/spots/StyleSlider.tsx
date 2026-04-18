@@ -97,12 +97,19 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
         <h2 className="text-xs font-black text-slate-700 mb-3">
           🧭 {t('slider.travelStyle')}
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-5">
           {SLIDER_AXES.map(axis => {
             const value = sliders[axis.id] ?? 0
             const scaleLabels = SCALE_LABELS[locale] ?? SCALE_LABELS.ko
+            const STEPS = [-100, -50, 0, 50, 100]
+
+            // 0에서 선택값까지 하이라이트 범위 (% 기준)
+            // step 위치: -100=0%, -50=25%, 0=50%, +50=75%, +100=100%
+            const centerPos = 50
+            const selectedPos = centerPos + (value / 100) * 50
+
             return (
-              <div key={axis.id} className="space-y-0.5">
+              <div key={axis.id} className="space-y-1">
                 <div className="flex items-center justify-between text-[11px] font-bold">
                   <span className="flex items-center gap-1 text-slate-600">
                     <span className="text-sm">{axis.left.icon}</span>
@@ -113,32 +120,56 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
                     <span className="text-sm">{axis.right.icon}</span>
                   </span>
                 </div>
-                <input
-                  type="range"
-                  min={-100}
-                  max={100}
-                  step={5}
-                  value={value}
-                  onChange={e => setSliders(prev => ({ ...prev, [axis.id]: Number(e.target.value) }))}
-                  className="lok-slider w-full h-7 appearance-none bg-transparent cursor-pointer"
-                />
-                {/* 구간 마커 5단계 */}
-                <div className="flex justify-between px-[10px]">
-                  {scaleLabels.map((label, i) => {
-                    const isCenter = i === 2
-                    return (
-                      <div key={i} className="flex flex-col items-center gap-0.5">
-                        <div
-                          className={`rounded-full ${
-                            isCenter ? 'w-2 h-2 bg-slate-400' : 'w-1.5 h-1.5 bg-slate-300'
-                          }`}
-                        />
-                        <span className="text-[8px] text-slate-400 font-medium leading-none">
-                          {label}
-                        </span>
-                      </div>
-                    )
-                  })}
+
+                {/* 스텝 선택 트랙 */}
+                <div className="relative h-11 select-none">
+                  {/* 트랙 배경 */}
+                  <div className="absolute top-1/2 -translate-y-1/2 left-2.5 right-2.5 h-1.5 rounded-full bg-gradient-to-r from-blossom/50 via-slate-200 to-mint/50" />
+
+                  {/* 선택 영역 하이라이트 (0 기준 → 선택값) */}
+                  {value !== 0 && (
+                    <div
+                      className={`absolute top-1/2 -translate-y-1/2 h-1.5 rounded-full ${
+                        value < 0 ? 'bg-blossom' : 'bg-mint-deep'
+                      } transition-all duration-200`}
+                      style={{
+                        left: value < 0 ? `${selectedPos}%` : `${centerPos}%`,
+                        right: value > 0 ? `${100 - selectedPos}%` : `${100 - centerPos}%`,
+                      }}
+                    />
+                  )}
+
+                  {/* 5개 스텝 버튼 */}
+                  <div className="absolute inset-0 flex justify-between items-center px-0">
+                    {STEPS.map((step, i) => {
+                      const isSelected = value === step
+                      return (
+                        <button
+                          key={step}
+                          type="button"
+                          onClick={() => setSliders(prev => ({ ...prev, [axis.id]: step }))}
+                          className="flex flex-col items-center gap-1 z-10 w-10"
+                          aria-label={scaleLabels[i]}
+                          aria-pressed={isSelected}
+                        >
+                          <span
+                            className={`rounded-full transition-all duration-200 ${
+                              isSelected
+                                ? 'w-5 h-5 bg-mint-deep border-2 border-white shadow-md ring-2 ring-mint-deep/30'
+                                : 'w-3 h-3 bg-white border-2 border-slate-300 hover:border-mint-deep hover:scale-110'
+                            }`}
+                          />
+                          <span
+                            className={`text-[9px] font-bold leading-none ${
+                              isSelected ? 'text-mint-deep' : 'text-slate-400'
+                            }`}
+                          >
+                            {scaleLabels[i]}
+                          </span>
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
             )
@@ -253,48 +284,6 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
         </button>
       </div>
 
-      {/* 슬라이더 커스텀 스타일 */}
-      <style jsx>{`
-        .lok-slider::-webkit-slider-runnable-track {
-          height: 6px;
-          border-radius: 9999px;
-          background: linear-gradient(to right, #F0B8B8 0%, #E5E7EB 50%, #8EDACB 100%);
-        }
-        .lok-slider::-moz-range-track {
-          height: 6px;
-          border-radius: 9999px;
-          background: linear-gradient(to right, #F0B8B8 0%, #E5E7EB 50%, #8EDACB 100%);
-        }
-        .lok-slider::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          width: 20px;
-          height: 20px;
-          border-radius: 9999px;
-          background: white;
-          border: 2px solid #5BBDAD;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-          cursor: pointer;
-          margin-top: -7px;
-          transition: transform 0.15s ease;
-        }
-        .lok-slider::-webkit-slider-thumb:hover {
-          transform: scale(1.15);
-        }
-        .lok-slider::-moz-range-thumb {
-          width: 20px;
-          height: 20px;
-          border-radius: 9999px;
-          background: white;
-          border: 2px solid #5BBDAD;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-          cursor: pointer;
-          transition: transform 0.15s ease;
-        }
-        .lok-slider::-moz-range-thumb:hover {
-          transform: scale(1.15);
-        }
-      `}</style>
     </div>
   )
 }
