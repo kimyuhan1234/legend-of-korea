@@ -41,6 +41,14 @@ function cityName(code: string, locale: string): string {
   return CITY_NAMES[code]?.[locale] || CITY_NAMES[code]?.ko || code
 }
 
+const SCALE_LABELS: Record<string, string[]> = {
+  ko: ['매우', '조금', '중간', '조금', '매우'],
+  en: ['Very', 'A bit', 'Neutral', 'A bit', 'Very'],
+  ja: ['とても', '少し', '中間', '少し', 'とても'],
+  'zh-CN': ['非常', '偏向', '中间', '偏向', '非常'],
+  'zh-TW': ['非常', '偏向', '中間', '偏向', '非常'],
+}
+
 export function StyleSlider({ locale, onComplete, onSkip }: Props) {
   const t = useTranslations('spots')
 
@@ -89,9 +97,10 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
         <h2 className="text-xs font-black text-slate-700 mb-3">
           🧭 {t('slider.travelStyle')}
         </h2>
-        <div className="space-y-2.5">
+        <div className="space-y-4">
           {SLIDER_AXES.map(axis => {
             const value = sliders[axis.id] ?? 0
+            const scaleLabels = SCALE_LABELS[locale] ?? SCALE_LABELS.ko
             return (
               <div key={axis.id} className="space-y-0.5">
                 <div className="flex items-center justify-between text-[11px] font-bold">
@@ -113,6 +122,24 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
                   onChange={e => setSliders(prev => ({ ...prev, [axis.id]: Number(e.target.value) }))}
                   className="lok-slider w-full h-7 appearance-none bg-transparent cursor-pointer"
                 />
+                {/* 구간 마커 5단계 */}
+                <div className="flex justify-between px-[10px]">
+                  {scaleLabels.map((label, i) => {
+                    const isCenter = i === 2
+                    return (
+                      <div key={i} className="flex flex-col items-center gap-0.5">
+                        <div
+                          className={`rounded-full ${
+                            isCenter ? 'w-2 h-2 bg-slate-400' : 'w-1.5 h-1.5 bg-slate-300'
+                          }`}
+                        />
+                        <span className="text-[8px] text-slate-400 font-medium leading-none">
+                          {label}
+                        </span>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             )
           })}
