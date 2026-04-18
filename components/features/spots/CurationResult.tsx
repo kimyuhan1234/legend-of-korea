@@ -41,6 +41,34 @@ function cityThumbnail(code: string): string {
   return c?.thumbnail || '/images/placeholder-city.jpg'
 }
 
+/**
+ * 도시 대표 이미지 우선순위:
+ * 1) 해당 도시의 TourAPI 스팟 중 유효 firstimage 있는 것
+ * 2) 정적 데이터 스팟(SIGHTS) 이미지 (placeholder 아닌 것)
+ * 3) courses 썸네일
+ */
+function getCityHeroImage(city: string, spots: NormalizedSpot[]): string {
+  // 1순위: TourAPI firstimage (source === 'tourapi')
+  const fromTour = spots.find(
+    s => s.region === city
+      && s.source === 'tourapi'
+      && s.image
+      && !s.image.includes('placeholder'),
+  )
+  if (fromTour) return fromTour.image
+
+  // 2순위: 정적 데이터 중 이미지 있는 것
+  const fromStatic = spots.find(
+    s => s.region === city
+      && s.image
+      && !s.image.includes('placeholder'),
+  )
+  if (fromStatic) return fromStatic.image
+
+  // 3순위: courses 썸네일
+  return cityThumbnail(city)
+}
+
 function cityCourseId(code: string): string | null {
   const c = courses.find(x => x.region === code)
   return c?.id ?? null
@@ -90,12 +118,13 @@ function CityDetailCard({
       {/* 헤더 이미지 + 도시명 + 매치% */}
       <div className="relative aspect-[16/9]">
         <Image
-          src={cityThumbnail(city)}
+          src={getCityHeroImage(city, spots)}
           alt={name}
           fill
           sizes="(max-width: 768px) 100vw, 900px"
           className="object-cover"
           priority
+          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute top-4 right-4">
@@ -255,11 +284,12 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
           >
             <div className="relative aspect-[5/2]">
               <Image
-                src={cityThumbnail(top2.city)}
+                src={getCityHeroImage(top2.city, spots)}
                 alt={cityName(top2.city, locale)}
                 fill
                 sizes="(max-width: 768px) 100vw, 800px"
                 className="object-cover"
+                unoptimized
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <div className="absolute top-3 right-3">
