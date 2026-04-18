@@ -274,7 +274,19 @@
       "completed": "{n}/{total} ミッション完了",
       "lpEarned": "{n} LP獲得",
       "nextMission": "次: {name}",
-      "locked": "前のミッションを先に完了してください"
+      "locked": "前のミッションを先に完了してください",
+      "title": "ミッションセンター",
+      "labelTotal": "全ミッション",
+      "labelDone": "完了",
+      "labelLp": "獲得LP",
+      "labelInProgress": "進行中",
+      "streak": "{n}日連続!",
+      "timeline": "タイムライン",
+      "recentActivity": "最近のアクティビティ",
+      "noRecentActivity": "完了したミッションがまだありません",
+      "loadError": "データを読み込めませんでした",
+      "autoShareTitle": "ミッション完了時の自動共有",
+      "autoShareDesc": "ボス・隠し・写真・オープンミッション完了時にコミュニティに自動共有されます"
     },
     "party": {
       "title": "パーティーメンバー状況",

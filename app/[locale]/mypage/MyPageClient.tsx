@@ -29,6 +29,7 @@ import Image from 'next/image';
 import MissionRegister from '@/components/features/mypage/MissionRegister';
 import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton';
 import { DigitalPassport } from '@/components/features/mypage/DigitalPassport';
+import { MissionDashboard } from '@/components/features/missions/MissionDashboard';
 import { toast } from '@/components/ui/use-toast';
 
 interface MyPageClientProps {
@@ -484,39 +485,11 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                  )}
               </TabsContent>
 
-              {/* Mission Center Tab */}
+              {/* Mission Center Tab — 게임형 대시보드 */}
               <TabsContent value="progress" className="m-0 space-y-6">
-                {/* 미션 요약 헤더 */}
-                <div className="text-center py-6">
-                  <div className="text-5xl mb-3">🏛️</div>
-                  <h3 className="text-lg font-bold text-[#111]">
-                    {t('missionSummary')}
-                  </h3>
-                  <p className="text-sm text-stone mt-1">
-                    {t('missionSummaryDesc')}
-                  </p>
-                </div>
+                {user?.id && <MissionDashboard userId={user.id} locale={locale} />}
 
-                {/* 통계 카드 */}
-                <div className="grid grid-cols-3 gap-3">
-                  <div className="bg-white rounded-xl p-4 text-center border border-cloud">
-                    <div className="text-2xl mb-1">📋</div>
-                    <p className="text-xs text-stone">{t('totalMissions')}</p>
-                    <p className="text-2xl font-bold text-[#111]">12</p>
-                  </div>
-                  <div className="bg-white rounded-xl p-4 text-center border border-cloud">
-                    <div className="text-2xl mb-1">🏆</div>
-                    <p className="text-xs text-stone">{t('completedMissions')}</p>
-                    <p className="text-2xl font-bold text-[#111]">2</p>
-                  </div>
-                  <div className="bg-mint-deep rounded-xl p-4 text-center text-white">
-                    <div className="text-2xl mb-1">✅</div>
-                    <p className="text-xs text-slate">{t('earnedLP')}</p>
-                    <p className="text-2xl font-bold">600</p>
-                  </div>
-                </div>
-
-                {/* 완료된 미션 등록하기 */}
+                {/* 완료된 미션 수동 등록 (유지) */}
                 <MissionRegister locale={locale} />
               </TabsContent>
 

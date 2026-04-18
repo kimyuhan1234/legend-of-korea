@@ -274,7 +274,19 @@
       "completed": "已完成 {n}/{total} 个任务",
       "lpEarned": "已获得 {n} LP",
       "nextMission": "下一个：{name}",
-      "locked": "请先完成上一个任务"
+      "locked": "请先完成上一个任务",
+      "title": "任务中心",
+      "labelTotal": "全部任务",
+      "labelDone": "已完成",
+      "labelLp": "获得LP",
+      "labelInProgress": "进行中",
+      "streak": "连续{n}天!",
+      "timeline": "时间线",
+      "recentActivity": "最近活动",
+      "noRecentActivity": "还没有完成的任务",
+      "loadError": "无法加载数据",
+      "autoShareTitle": "任务完成时自动分享",
+      "autoShareDesc": "完成首领、隐藏、照片、开放任务时会自动分享到社区"
     },
     "party": {
       "title": "队伍状态",

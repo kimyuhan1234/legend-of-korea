@@ -7,7 +7,9 @@ export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient();
     const body = await req.json();
-    const { missionId, type, answer, photoUrls, syncCommunity } = body;
+    const { missionId, type, answer, photoUrls } = body;
+    // 미션 완료 시 커뮤니티 자동 공유 — 명시적으로 false일 때만 스킵
+    const syncCommunity = body.syncCommunity !== false;
 
     // ── 입력 검증 ─────────────────────────────────────────────
     if (!missionId || !type) {

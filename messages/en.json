@@ -274,7 +274,19 @@
       "completed": "{n}/{total} missions completed",
       "lpEarned": "{n} LP earned",
       "nextMission": "Next: {name}",
-      "locked": "Complete previous mission first"
+      "locked": "Complete previous mission first",
+      "title": "Mission Center",
+      "labelTotal": "Total",
+      "labelDone": "Completed",
+      "labelLp": "LP Earned",
+      "labelInProgress": "In Progress",
+      "streak": "{n} day streak!",
+      "timeline": "Timeline",
+      "recentActivity": "Recent Activity",
+      "noRecentActivity": "No completed missions yet",
+      "loadError": "Failed to load data",
+      "autoShareTitle": "Auto-share on mission complete",
+      "autoShareDesc": "Boss, hidden, photo, and open missions are automatically shared to the community"
     },
     "party": {
       "title": "Party Status",

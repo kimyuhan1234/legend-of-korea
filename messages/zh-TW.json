@@ -274,7 +274,19 @@
       "completed": "已完成 {n}/{total} 個任務",
       "lpEarned": "已獲得 {n} LP",
       "nextMission": "下一個：{name}",
-      "locked": "請先完成前一個任務"
+      "locked": "請先完成前一個任務",
+      "title": "任務中心",
+      "labelTotal": "全部任務",
+      "labelDone": "已完成",
+      "labelLp": "獲得LP",
+      "labelInProgress": "進行中",
+      "streak": "連續{n}天!",
+      "timeline": "時間軸",
+      "recentActivity": "最近活動",
+      "noRecentActivity": "還沒有完成的任務",
+      "loadError": "無法載入資料",
+      "autoShareTitle": "任務完成時自動分享",
+      "autoShareDesc": "完成首領、隱藏、照片、開放任務時會自動分享到社群"
     },
     "party": {
       "title": "隊伍狀態",
