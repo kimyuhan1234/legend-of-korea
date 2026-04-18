@@ -143,13 +143,15 @@
     "plannerSubtitle": "收藏、选择、完成。为你量身打造的旅程",
     "plannerCta": "开始旅行规划 →",
     "community": {
-      "title": "冒险者的故事",
-      "subtitle": "发现其他冒险者的传说之旅",
-      "viewAll": "查看所有故事",
+      "title": "MEMORIES",
+      "subtitle": "冒险者们的传说旅行记录",
+      "viewAll": "查看所有回忆",
       "more": "查看更多",
       "empty": "还没有帖子",
       "beFirst": "成为第一位冒险者！",
-      "likes": "点赞"
+      "likes": "点赞",
+      "missionTag": "任务完成",
+      "communityTag": "社区"
     },
     "footerCompany": "关于我们",
     "footerTerms": "服务条款",

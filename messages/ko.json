@@ -143,13 +143,15 @@
     "plannerSubtitle": "담고, 고르고, 완성하세요. 당신만을 위한 맞춤 여행",
     "plannerCta": "여행 플래너 시작하기 →",
     "community": {
-      "title": "모험가들의 이야기",
-      "subtitle": "다른 모험가들의 전설 여행을 만나보세요",
-      "viewAll": "모든 이야기 보기",
+      "title": "MEMORIES",
+      "subtitle": "모험가들의 전설 여행 기록",
+      "viewAll": "MEMORIES 더 보기",
       "more": "더 보기",
       "empty": "아직 게시글이 없습니다",
       "beFirst": "첫 번째 모험가가 되어보세요!",
-      "likes": "좋아요"
+      "likes": "좋아요",
+      "missionTag": "미션완료",
+      "communityTag": "커뮤니티"
     },
     "footerCompany": "회사 정보",
     "footerTerms": "이용약관",

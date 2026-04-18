@@ -143,13 +143,15 @@
     "plannerSubtitle": "Save, choose, and complete. A trip crafted just for you",
     "plannerCta": "Start Travel Planner →",
     "community": {
-      "title": "Adventurers' Stories",
-      "subtitle": "Discover legendary journeys from fellow adventurers",
-      "viewAll": "View All Stories",
+      "title": "MEMORIES",
+      "subtitle": "Legendary travel memories from adventurers",
+      "viewAll": "View All Memories",
       "more": "View More",
       "empty": "No posts yet",
       "beFirst": "Be the first adventurer!",
-      "likes": "likes"
+      "likes": "likes",
+      "missionTag": "Mission Clear",
+      "communityTag": "Community"
     },
     "footerCompany": "About Us",
     "footerTerms": "Terms of Service",

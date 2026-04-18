@@ -143,13 +143,15 @@
     "plannerSubtitle": "儲存、選擇、完成。專屬於你的旅行",
     "plannerCta": "開始旅行規劃 →",
     "community": {
-      "title": "冒險者的故事",
-      "subtitle": "發現其他冒險者的傳說之旅",
-      "viewAll": "查看所有故事",
+      "title": "MEMORIES",
+      "subtitle": "冒險者們的傳說旅行記錄",
+      "viewAll": "查看所有回憶",
       "more": "查看更多",
       "empty": "還沒有帖子",
       "beFirst": "成為第一位冒險者！",
-      "likes": "點讚"
+      "likes": "點讚",
+      "missionTag": "任務完成",
+      "communityTag": "社區"
     },
     "footerCompany": "關於我們",
     "footerTerms": "服務條款",
