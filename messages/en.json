@@ -763,6 +763,25 @@
     },
     "empty": "No stays match your filters"
   },
+  "spots": {
+    "swipe": {
+      "title": "Find your perfect Korea!",
+      "progress": "{n}/{total}",
+      "skip": "Skip",
+      "start": "Start AI curation"
+    },
+    "result": {
+      "title": "Recommended for you",
+      "match": "match",
+      "cityTop": "Top 3 Cities for You",
+      "cityTopDesc": "Try the legend mission in the city that matches your taste best",
+      "recommended": "Recommended Spots",
+      "festivals": "Current Festivals",
+      "retry": "Try Again",
+      "missionCta": "Start Mission"
+    },
+    "source": "Source: Korea Tourism Organization"
+  },
   "sights": {
     "title": "SPOT",
     "subtitle": "Must-see attractions in Korea",

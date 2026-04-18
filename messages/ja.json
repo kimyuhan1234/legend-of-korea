@@ -763,6 +763,25 @@
     },
     "empty": "条件に合う宿泊施設がありません"
   },
+  "spots": {
+    "swipe": {
+      "title": "あなたにぴったりの韓国を見つけよう！",
+      "progress": "{n}/{total}",
+      "skip": "スキップ",
+      "start": "AIキュレーション開始"
+    },
+    "result": {
+      "title": "あなたへのおすすめ",
+      "match": "マッチ",
+      "cityTop": "おすすめ都市TOP3",
+      "cityTopDesc": "あなたの好みに最も合う都市で伝説ミッションに挑戦しよう",
+      "recommended": "おすすめスポット",
+      "festivals": "開催中のフェスティバル",
+      "retry": "もう一度テスト",
+      "missionCta": "ミッションに挑戦"
+    },
+    "source": "出典：韓国観光公社"
+  },
   "sights": {
     "title": "SPOT",
     "subtitle": "見逃せない韓国の見どころ",

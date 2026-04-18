@@ -798,6 +798,25 @@
     "comingSoon": "준비 중",
     "comingSoonDesc": "이 지역 볼거리 정보를 준비 중입니다"
   },
+  "spots": {
+    "swipe": {
+      "title": "당신에게 맞는 한국을 찾아볼까요?",
+      "progress": "{n}/{total}",
+      "skip": "건너뛰기",
+      "start": "AI 큐레이션 시작하기"
+    },
+    "result": {
+      "title": "당신을 위한 추천",
+      "match": "매치",
+      "cityTop": "추천 도시 TOP 3",
+      "cityTopDesc": "당신의 취향과 가장 잘 맞는 도시에서 전설 미션에 도전해보세요",
+      "recommended": "추천 스팟",
+      "festivals": "지금 열리는 축제",
+      "retry": "다시 테스트하기",
+      "missionCta": "미션 도전하기"
+    },
+    "source": "출처: 한국관광공사"
+  },
   "ootd": {
     "change": "변경 ▼",
     "title": "날씨 코디 추천",

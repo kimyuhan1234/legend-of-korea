@@ -763,6 +763,25 @@
     },
     "empty": "沒有符合篩選條件的住宿"
   },
+  "spots": {
+    "swipe": {
+      "title": "找到屬於你的韓國！",
+      "progress": "{n}/{total}",
+      "skip": "跳過",
+      "start": "開始AI策展"
+    },
+    "result": {
+      "title": "為你推薦",
+      "match": "匹配",
+      "cityTop": "推薦城市TOP3",
+      "cityTopDesc": "在最符合你喜好的城市挑戰傳說任務",
+      "recommended": "推薦景點",
+      "festivals": "正在舉辦的節日",
+      "retry": "重新測試",
+      "missionCta": "挑戰任務"
+    },
+    "source": "來源：韓國觀光公社"
+  },
   "sights": {
     "title": "SPOT",
     "subtitle": "韓國必訪景點",

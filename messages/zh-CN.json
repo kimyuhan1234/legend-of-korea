@@ -763,6 +763,25 @@
     },
     "empty": "没有符合筛选条件的住宿"
   },
+  "spots": {
+    "swipe": {
+      "title": "找到属于你的韩国！",
+      "progress": "{n}/{total}",
+      "skip": "跳过",
+      "start": "开始AI策展"
+    },
+    "result": {
+      "title": "为你推荐",
+      "match": "匹配",
+      "cityTop": "推荐城市TOP3",
+      "cityTopDesc": "在最符合你喜好的城市挑战传说任务",
+      "recommended": "推荐景点",
+      "festivals": "正在举办的节日",
+      "retry": "重新测试",
+      "missionCta": "挑战任务"
+    },
+    "source": "来源：韩国观光公社"
+  },
   "sights": {
     "title": "SPOT",
     "subtitle": "韩国必游景点",
