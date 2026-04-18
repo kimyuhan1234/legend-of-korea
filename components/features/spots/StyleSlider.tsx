@@ -10,6 +10,8 @@ import {
   calculateCityScores,
   CITY_TAG_SCORES,
 } from '@/lib/curation/scoring'
+import { preferenceToRadar, cityToRadar, type RadarLabels } from '@/lib/curation/radar'
+import { RadarChart } from './RadarChart'
 import type { UserPreference } from '@/lib/curation/types'
 
 interface Props {
@@ -64,6 +66,19 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
   const preference = useMemo(() => sliderToPreference(sliders, companion), [sliders, companion])
   const cityScores = useMemo(() => calculateCityScores(preference), [preference])
   const top3 = cityScores.slice(0, 3)
+
+  const radarLabels: RadarLabels = {
+    tradition: t('radar.tradition'),
+    nature: t('radar.nature'),
+    experience: t('radar.experience'),
+    active: t('radar.active'),
+    nightlife: t('radar.nightlife'),
+  }
+  const userRadar = useMemo(() => preferenceToRadar(preference, radarLabels), [preference, radarLabels])
+  const topCityRadar = useMemo(
+    () => top3[0] ? cityToRadar(top3[0].city, radarLabels) : [],
+    [top3, radarLabels],
+  )
 
   const medal = ['🥇', '🥈', '🥉']
   const barColors = ['bg-mint-deep', 'bg-sky', 'bg-violet-400']
@@ -199,6 +214,18 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
             )
           })}
         </div>
+
+        {/* 미니 레이더 (1위 도시 겹치기) */}
+        {topCityRadar.length > 0 && (
+          <div className="mt-3 pt-3 border-t border-slate-100 flex justify-center">
+            <RadarChart
+              axes={userRadar}
+              overlayAxes={topCityRadar}
+              size={140}
+              showLabels={false}
+            />
+          </div>
+        )}
       </div>
 
       {/* 슬라이더 커스텀 스타일 */}

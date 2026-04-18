@@ -798,6 +798,16 @@
       "hotplaces": "熱門地點",
       "startMission": "挑戰{city}任務"
     },
+    "radar": {
+      "matchChart": "旅行風格匹配",
+      "myStyle": "我的風格",
+      "cityStyle": "{city}的特徵",
+      "tradition": "傳統",
+      "nature": "自然",
+      "experience": "體驗",
+      "active": "活動",
+      "nightlife": "夜生活"
+    },
     "source": "來源：韓國觀光公社"
   },
   "sights": {

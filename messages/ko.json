@@ -833,6 +833,16 @@
       "hotplaces": "핫플레이스",
       "startMission": "{city} 미션 도전하기"
     },
+    "radar": {
+      "matchChart": "여행 스타일 매칭",
+      "myStyle": "나의 스타일",
+      "cityStyle": "{city}의 특성",
+      "tradition": "전통",
+      "nature": "자연",
+      "experience": "체험",
+      "active": "활동",
+      "nightlife": "야경"
+    },
     "source": "출처: 한국관광공사"
   },
   "ootd": {

@@ -798,6 +798,16 @@
       "hotplaces": "ホットプレイス",
       "startMission": "{city}ミッションに挑戦"
     },
+    "radar": {
+      "matchChart": "旅スタイルマッチ",
+      "myStyle": "マイスタイル",
+      "cityStyle": "{city}の特性",
+      "tradition": "伝統",
+      "nature": "自然",
+      "experience": "体験",
+      "active": "アクティブ",
+      "nightlife": "ナイトライフ"
+    },
     "source": "出典：韓国観光公社"
   },
   "sights": {

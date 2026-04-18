@@ -4,10 +4,12 @@ import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
-import { RefreshCw, Sparkles, ChevronDown, ChevronUp, Quote } from 'lucide-react'
+import { RefreshCw, Sparkles, ChevronDown, ChevronUp, Quote, BarChart3 } from 'lucide-react'
 import { SpotCard } from './SpotCard'
+import { RadarChart } from './RadarChart'
 import { scoreSpots } from '@/lib/curation/scoring'
 import { CITY_STORIES, generateReasons, getTopMatchedTags } from '@/lib/curation/city-stories'
+import { preferenceToRadar, cityToRadar, type RadarLabels } from '@/lib/curation/radar'
 import type { NormalizedSpot } from '@/lib/tour-api/types'
 import type { CityScore, UserPreference } from '@/lib/curation/types'
 import { courses } from '@/lib/data/courses'
@@ -57,11 +59,12 @@ function getCityHeroImage(city: string, spots: NormalizedSpot[]): string {
   )
   if (fromTour) return fromTour.image
 
-  // 2순위: 정적 데이터 중 이미지 있는 것
+  // 2순위: 정적 데이터 중 이미지 있는 것 (/images/sights/ 옛날 사진 제외)
   const fromStatic = spots.find(
     s => s.region === city
       && s.image
-      && !s.image.includes('placeholder'),
+      && !s.image.includes('placeholder')
+      && !s.image.includes('/images/sights/'),
   )
   if (fromStatic) return fromStatic.image
 
@@ -88,18 +91,23 @@ function CityDetailCard({
   spots,
   preference,
   locale,
+  radarLabels,
 }: {
   city: string
   matchPercent: number
   spots: NormalizedSpot[]
   preference: UserPreference
   locale: string
+  radarLabels: RadarLabels
 }) {
   const t = useTranslations('spots')
 
   const story = CITY_STORIES.find(s => s.region === city)
   const topTags = getTopMatchedTags(city, preference)
   const reasons = generateReasons(city, topTags, locale)
+
+  const userRadar = useMemo(() => preferenceToRadar(preference, radarLabels), [preference, radarLabels])
+  const cityRadar = useMemo(() => cityToRadar(city, radarLabels), [city, radarLabels])
 
   const citySpots = useMemo(
     () => scoreSpots(spots.filter(s => s.region === city), preference),
@@ -179,6 +187,26 @@ function CityDetailCard({
           </div>
         </div>
 
+        {/* 레이더 차트 — 나의 스타일 vs 도시 특성 */}
+        <div>
+          <h3 className="flex items-center gap-2 text-sm font-black text-slate-700 mb-3">
+            <BarChart3 className="w-4 h-4 text-mint-deep" />
+            {t('radar.matchChart')}
+          </h3>
+          <div className="flex justify-center bg-slate-50/60 rounded-2xl py-5 border border-slate-100">
+            <RadarChart
+              axes={userRadar}
+              overlayAxes={cityRadar}
+              size={280}
+              showLabels
+              legend={{
+                primary: t('radar.myStyle'),
+                overlay: t('radar.cityStyle', { city: cityName(city, locale) }),
+              }}
+            />
+          </div>
+        </div>
+
         {/* 축제 */}
         {festivals.length > 0 && (
           <div>
@@ -232,6 +260,14 @@ function CityDetailCard({
 export function CurationResult({ cityScores, spots, preference, locale, onRetry }: Props) {
   const t = useTranslations('spots')
 
+  const radarLabels: RadarLabels = {
+    tradition: t('radar.tradition'),
+    nature: t('radar.nature'),
+    experience: t('radar.experience'),
+    active: t('radar.active'),
+    nightlife: t('radar.nightlife'),
+  }
+
   const top1 = cityScores[0]
   const top2 = cityScores[1]
 
@@ -265,6 +301,7 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
         spots={spots}
         preference={preference}
         locale={locale}
+        radarLabels={radarLabels}
       />
 
       {/* TOP 2 — 아코디언 */}
@@ -323,6 +360,7 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
               spots={spots}
               preference={preference}
               locale={locale}
+              radarLabels={radarLabels}
             />
           )}
         </div>

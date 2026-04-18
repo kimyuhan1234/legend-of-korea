@@ -798,6 +798,16 @@
       "hotplaces": "Hot Places",
       "startMission": "Start {city} Mission"
     },
+    "radar": {
+      "matchChart": "Travel Style Match",
+      "myStyle": "My Style",
+      "cityStyle": "{city}'s Character",
+      "tradition": "Tradition",
+      "nature": "Nature",
+      "experience": "Experience",
+      "active": "Active",
+      "nightlife": "Nightlife"
+    },
     "source": "Source: Korea Tourism Organization"
   },
   "sights": {
