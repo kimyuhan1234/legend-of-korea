@@ -824,7 +824,14 @@
       "retry": "다시 테스트하기",
       "missionCta": "미션 도전하기",
       "citySpotsHint": "의 추천 스팟입니다. 도시를 바꾸려면 위 카드를 탭하세요",
-      "noCitySpots": "이 도시의 스팟 정보를 준비 중입니다"
+      "noCitySpots": "이 도시의 스팟 정보를 준비 중입니다",
+      "bestMatch": "당신에게 가장 잘 맞는 도시",
+      "whyRecommend": "왜 {city}를 추천할까요?",
+      "alsoCheck": "여기도 한번 보세요",
+      "currentFestivals": "지금 열리는 축제",
+      "recommendedPlaces": "추천 장소",
+      "hotplaces": "핫플레이스",
+      "startMission": "{city} 미션 도전하기"
     },
     "source": "출처: 한국관광공사"
   },

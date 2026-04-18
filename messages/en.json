@@ -789,7 +789,14 @@
       "retry": "Try Again",
       "missionCta": "Start Mission",
       "citySpotsHint": " — tap another city card above to switch",
-      "noCitySpots": "Spot info for this city is coming soon"
+      "noCitySpots": "Spot info for this city is coming soon",
+      "bestMatch": "Your Best Match",
+      "whyRecommend": "Why we recommend {city}",
+      "alsoCheck": "Also worth checking out",
+      "currentFestivals": "Current Festivals",
+      "recommendedPlaces": "Recommended Places",
+      "hotplaces": "Hot Places",
+      "startMission": "Start {city} Mission"
     },
     "source": "Source: Korea Tourism Organization"
   },

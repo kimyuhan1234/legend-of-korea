@@ -789,7 +789,14 @@
       "retry": "もう一度テスト",
       "missionCta": "ミッションに挑戦",
       "citySpotsHint": "のおすすめスポットです。都市を変えるには上のカードをタップ",
-      "noCitySpots": "この都市のスポット情報を準備中です"
+      "noCitySpots": "この都市のスポット情報を準備中です",
+      "bestMatch": "あなたに最もぴったりの都市",
+      "whyRecommend": "なぜ{city}をおすすめ？",
+      "alsoCheck": "こちらもおすすめ",
+      "currentFestivals": "開催中のフェスティバル",
+      "recommendedPlaces": "おすすめスポット",
+      "hotplaces": "ホットプレイス",
+      "startMission": "{city}ミッションに挑戦"
     },
     "source": "出典：韓国観光公社"
   },

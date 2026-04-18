@@ -789,7 +789,14 @@
       "retry": "重新測試",
       "missionCta": "挑戰任務",
       "citySpotsHint": "的推薦景點。如需切換城市，請點擊上方卡片",
-      "noCitySpots": "該城市的景點資訊正在準備中"
+      "noCitySpots": "該城市的景點資訊正在準備中",
+      "bestMatch": "最適合你的城市",
+      "whyRecommend": "為什麼推薦{city}？",
+      "alsoCheck": "這裡也值得一看",
+      "currentFestivals": "正在舉辦的節日",
+      "recommendedPlaces": "推薦地點",
+      "hotplaces": "熱門地點",
+      "startMission": "挑戰{city}任務"
     },
     "source": "來源：韓國觀光公社"
   },

@@ -789,7 +789,14 @@
       "retry": "重新测试",
       "missionCta": "挑战任务",
       "citySpotsHint": "的推荐景点。如需切换城市，请点击上方卡片",
-      "noCitySpots": "该城市的景点信息正在准备中"
+      "noCitySpots": "该城市的景点信息正在准备中",
+      "bestMatch": "最适合你的城市",
+      "whyRecommend": "为什么推荐{city}？",
+      "alsoCheck": "这里也值得一看",
+      "currentFestivals": "正在举办的节日",
+      "recommendedPlaces": "推荐地点",
+      "hotplaces": "热门地点",
+      "startMission": "挑战{city}任务"
     },
     "source": "来源：韩国观光公社"
   },
