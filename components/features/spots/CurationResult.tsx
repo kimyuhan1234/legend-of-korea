@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -48,14 +48,21 @@ function cityCourseId(code: string): string | null {
 export function CurationResult({ cityScores, spots, preference, locale, onRetry }: Props) {
   const t = useTranslations('spots')
 
-  const scoredSpots = useMemo(() => scoreSpots(spots, preference), [spots, preference])
-
   const top3 = cityScores.slice(0, 3)
   const top1 = top3[0]
   const other = top3.slice(1)
 
-  const recommendedSpots = scoredSpots.slice(0, 8)
-  const festivals = scoredSpots.filter(s => s.category === 'festival').slice(0, 4)
+  // 선택된 도시 (기본: 1위)
+  const [selectedCity, setSelectedCity] = useState<string>(top1?.city ?? '')
+
+  // 선택된 도시 스팟만 필터 → 점수순
+  const citySpots = useMemo(
+    () => scoreSpots(spots.filter(s => s.region === selectedCity), preference),
+    [spots, selectedCity, preference],
+  )
+
+  const recommendedSpots = citySpots.filter(s => s.category !== 'festival').slice(0, 8)
+  const festivals = citySpots.filter(s => s.category === 'festival').slice(0, 4)
 
   const medal = ['🥇', '🥈', '🥉']
 
@@ -77,47 +84,58 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
         </h2>
 
         {top1 && (
-          <Link
-            href={cityCourseId(top1.city) ? `/${locale}/courses/${cityCourseId(top1.city)}` : `/${locale}/story`}
-            className="block bg-gradient-to-br from-mint-deep/10 to-sky/10 rounded-3xl overflow-hidden border-2 border-mint-deep/30 shadow-lg hover:shadow-xl transition-shadow"
+          <div
+            className={`bg-gradient-to-br from-mint-deep/10 to-sky/10 rounded-3xl overflow-hidden border-2 shadow-lg transition-all ${
+              selectedCity === top1.city ? 'border-mint-deep shadow-mint/40' : 'border-mint-deep/20'
+            }`}
           >
-            <div className="relative aspect-[5/3] overflow-hidden">
-              <Image
-                src={cityThumbnail(top1.city)}
-                alt={cityName(top1.city, locale)}
-                fill
-                sizes="(max-width: 768px) 100vw, 800px"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-              <div className="absolute top-4 left-4">
-                <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-amber-400 text-ink font-black text-xs shadow-lg">
-                  {medal[0]} {top1.matchPercent}% {t('result.match', { n: top1.matchPercent })}
-                </span>
+            <button
+              onClick={() => setSelectedCity(top1.city)}
+              className="block w-full text-left cursor-pointer"
+            >
+              <div className="relative aspect-[5/3] overflow-hidden">
+                <Image
+                  src={cityThumbnail(top1.city)}
+                  alt={cityName(top1.city, locale)}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <div className="absolute top-4 left-4">
+                  <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-amber-400 text-ink font-black text-xs shadow-lg">
+                    {medal[0]} {top1.matchPercent}% {t('result.match', { n: top1.matchPercent })}
+                  </span>
+                </div>
+                <div className="absolute bottom-5 left-5 text-white">
+                  <p className="text-3xl md:text-4xl font-black tracking-tight drop-shadow-lg">
+                    {cityName(top1.city, locale)}
+                  </p>
+                </div>
               </div>
-              <div className="absolute bottom-5 left-5 text-white">
-                <p className="text-3xl md:text-4xl font-black tracking-tight drop-shadow-lg">
-                  {cityName(top1.city, locale)}
-                </p>
-              </div>
-            </div>
+            </button>
             <div className="p-5 flex items-center justify-between">
               <p className="text-sm text-slate-500 font-bold">
                 {t('result.cityTopDesc')}
               </p>
-              <span className="inline-flex items-center gap-1 bg-mint-deep text-white px-4 py-2 rounded-full text-xs font-black hover:opacity-90 transition-opacity">
+              <Link
+                href={cityCourseId(top1.city) ? `/${locale}/courses/${cityCourseId(top1.city)}` : `/${locale}/story`}
+                className="inline-flex items-center gap-1 bg-mint-deep text-white px-4 py-2 rounded-full text-xs font-black hover:opacity-90 transition-opacity shrink-0"
+              >
                 <Sparkles className="w-3.5 h-3.5" /> {t('result.missionCta')}
-              </span>
+              </Link>
             </div>
-          </Link>
+          </div>
         )}
 
         <div className="grid grid-cols-2 gap-3 mt-4">
           {other.map((c, i) => (
-            <Link
+            <button
               key={c.city}
-              href={cityCourseId(c.city) ? `/${locale}/courses/${cityCourseId(c.city)}` : `/${locale}/story`}
-              className="block bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-all"
+              onClick={() => setSelectedCity(c.city)}
+              className={`block bg-white rounded-2xl overflow-hidden border-2 shadow-sm hover:shadow-md transition-all text-left ${
+                selectedCity === c.city ? 'border-mint-deep shadow-mint/30' : 'border-slate-100'
+              }`}
             >
               <div className="relative aspect-[4/3]">
                 <Image
@@ -137,12 +155,19 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
                   {cityName(c.city, locale)}
                 </p>
               </div>
-            </Link>
+            </button>
           ))}
         </div>
       </section>
 
-      {/* 추천 스팟 */}
+      {/* 선택 도시 안내 */}
+      {selectedCity && (
+        <div className="bg-mint-deep/5 border border-mint-deep/20 rounded-2xl px-5 py-3 text-sm text-slate-600 font-bold">
+          📍 <span className="text-mint-deep">{cityName(selectedCity, locale)}</span>{t('result.citySpotsHint')}
+        </div>
+      )}
+
+      {/* 추천 스팟 (선택 도시만) */}
       {recommendedSpots.length > 0 && (
         <section>
           <h2 className="text-lg font-black text-slate-700 mb-5">📍 {t('result.recommended')}</h2>
@@ -161,7 +186,7 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
         </section>
       )}
 
-      {/* 축제 */}
+      {/* 축제 (선택 도시만) */}
       {festivals.length > 0 && (
         <section>
           <h2 className="text-lg font-black text-slate-700 mb-5">🎊 {t('result.festivals')}</h2>
@@ -171,6 +196,13 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
             ))}
           </div>
         </section>
+      )}
+
+      {/* 선택 도시에 스팟이 없을 때 */}
+      {recommendedSpots.length === 0 && festivals.length === 0 && (
+        <div className="text-center py-12 text-sm text-slate-400 font-bold">
+          {t('result.noCitySpots')}
+        </div>
       )}
 
       {/* 다시 테스트 */}

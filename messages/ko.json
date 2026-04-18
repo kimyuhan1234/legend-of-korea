@@ -813,7 +813,9 @@
       "recommended": "추천 스팟",
       "festivals": "지금 열리는 축제",
       "retry": "다시 테스트하기",
-      "missionCta": "미션 도전하기"
+      "missionCta": "미션 도전하기",
+      "citySpotsHint": "의 추천 스팟입니다. 도시를 바꾸려면 위 카드를 탭하세요",
+      "noCitySpots": "이 도시의 스팟 정보를 준비 중입니다"
     },
     "source": "출처: 한국관광공사"
   },

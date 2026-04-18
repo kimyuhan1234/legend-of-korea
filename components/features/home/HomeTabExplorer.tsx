@@ -52,7 +52,7 @@ export function HomeTabExplorer() {
   const handleTouchEnd = (e: React.TouchEvent) => {
     const dx = e.changedTouches[0].clientX - touchStartX.current
     if (Math.abs(dx) > 50) {
-      dx < 0 ? next() : prev()
+      if (dx < 0) { next() } else { prev() }
       timerResetRef.current += 1
     }
   }

@@ -778,7 +778,9 @@
       "recommended": "Recommended Spots",
       "festivals": "Current Festivals",
       "retry": "Try Again",
-      "missionCta": "Start Mission"
+      "missionCta": "Start Mission",
+      "citySpotsHint": " — tap another city card above to switch",
+      "noCitySpots": "Spot info for this city is coming soon"
     },
     "source": "Source: Korea Tourism Organization"
   },

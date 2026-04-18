@@ -778,7 +778,9 @@
       "recommended": "おすすめスポット",
       "festivals": "開催中のフェスティバル",
       "retry": "もう一度テスト",
-      "missionCta": "ミッションに挑戦"
+      "missionCta": "ミッションに挑戦",
+      "citySpotsHint": "のおすすめスポットです。都市を変えるには上のカードをタップ",
+      "noCitySpots": "この都市のスポット情報を準備中です"
     },
     "source": "出典：韓国観光公社"
   },

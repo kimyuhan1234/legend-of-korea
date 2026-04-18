@@ -778,7 +778,9 @@
       "recommended": "推荐景点",
       "festivals": "正在举办的节日",
       "retry": "重新测试",
-      "missionCta": "挑战任务"
+      "missionCta": "挑战任务",
+      "citySpotsHint": "的推荐景点。如需切换城市，请点击上方卡片",
+      "noCitySpots": "该城市的景点信息正在准备中"
     },
     "source": "来源：韩国观光公社"
   },

@@ -778,7 +778,9 @@
       "recommended": "推薦景點",
       "festivals": "正在舉辦的節日",
       "retry": "重新測試",
-      "missionCta": "挑戰任務"
+      "missionCta": "挑戰任務",
+      "citySpotsHint": "的推薦景點。如需切換城市，請點擊上方卡片",
+      "noCitySpots": "該城市的景點資訊正在準備中"
     },
     "source": "來源：韓國觀光公社"
   },
