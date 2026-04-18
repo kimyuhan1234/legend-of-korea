@@ -59,16 +59,17 @@ function getCityHeroImage(city: string, spots: NormalizedSpot[]): string {
   )
   if (fromTour) return fromTour.image
 
-  // 2순위: 정적 데이터 중 이미지 있는 것 (/images/sights/ 옛날 사진 제외)
-  const fromStatic = spots.find(
+  // 2순위: 아무 스팟이든 이미지 있고 로컬 옛날 사진(sights/courses)이 아닌 것
+  const anySpot = spots.find(
     s => s.region === city
       && s.image
       && !s.image.includes('placeholder')
-      && !s.image.includes('/images/sights/'),
+      && !s.image.includes('/images/sights/')
+      && !s.image.includes('/images/courses/'),
   )
-  if (fromStatic) return fromStatic.image
+  if (anySpot) return anySpot.image
 
-  // 3순위: courses 썸네일
+  // 최후 fallback: courses 썸네일 (옛날 사진이지만 이미지가 있는 것이 없음보다 나음)
   return cityThumbnail(city)
 }
 
