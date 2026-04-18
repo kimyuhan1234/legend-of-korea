@@ -34,9 +34,9 @@ function getI18n(field: Record<string, string> | undefined, locale: string): str
 }
 
 const TABS: { id: Tab; icon: string; labelKey: string; requiresAuth: boolean }[] = [
-  { id: 'feed', icon: '📸', labelKey: 'tab.feed', requiresAuth: false },
+  { id: 'feed', icon: '📸', labelKey: 'tab.feed', requiresAuth: true },
   { id: 'dashboard', icon: '🎮', labelKey: 'tab.dashboard', requiresAuth: true },
-  { id: 'ranking', icon: '🏆', labelKey: 'tab.ranking', requiresAuth: false },
+  { id: 'ranking', icon: '🏆', labelKey: 'tab.ranking', requiresAuth: true },
   { id: 'achievements', icon: '🛂', labelKey: 'tab.achievements', requiresAuth: true },
   { id: 'photos', icon: '📷', labelKey: 'tab.photos', requiresAuth: true },
   { id: 'together', icon: '👥', labelKey: 'tab.together', requiresAuth: true },
