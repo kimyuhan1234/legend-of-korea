@@ -25,10 +25,10 @@ function getPoint(cx: number, cy: number, radius: number, index: number, total: 
 export function RadarChart({
   axes,
   overlayAxes,
-  size = 280,
-  color = 'rgba(91, 189, 173, 0.35)',
+  size = 220,
+  color = 'rgba(157, 216, 206, 0.45)',
   strokeColor = '#5BBDAD',
-  overlayColor = 'rgba(240, 184, 184, 0.35)',
+  overlayColor = 'rgba(240, 184, 184, 0.45)',
   overlayStrokeColor = '#E89292',
   showLabels = true,
   legend,
@@ -102,7 +102,7 @@ export function RadarChart({
             points={overlayPolygon}
             fill={overlayColor}
             stroke={overlayStrokeColor}
-            strokeWidth={2}
+            strokeWidth={2.5}
             strokeLinejoin="round"
           />
         )}
@@ -111,15 +111,15 @@ export function RadarChart({
           points={dataPolygon}
           fill={color}
           stroke={strokeColor}
-          strokeWidth={2}
+          strokeWidth={2.5}
           strokeLinejoin="round"
         />
         {/* 꼭짓점 점 */}
         {dataPoints.map((p, i) => (
-          <circle key={`dot-${i}`} cx={p.x} cy={p.y} r={3.5} fill={strokeColor} />
+          <circle key={`dot-${i}`} cx={p.x} cy={p.y} r={5} fill={strokeColor} />
         ))}
         {overlayPoints?.map((p, i) => (
-          <circle key={`odot-${i}`} cx={p.x} cy={p.y} r={3.5} fill={overlayStrokeColor} />
+          <circle key={`odot-${i}`} cx={p.x} cy={p.y} r={5} fill={overlayStrokeColor} />
         ))}
         {/* 라벨 */}
         {showLabels &&

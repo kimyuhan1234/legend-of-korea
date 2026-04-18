@@ -8,8 +8,8 @@ import {
   COMPANION_OPTIONS,
   sliderToPreference,
   calculateCityScores,
-  CITY_TAG_SCORES,
 } from '@/lib/curation/scoring'
+import { getTopMatchedTags, getTagLabel } from '@/lib/curation/city-stories'
 import { preferenceToRadar, cityToRadar, type RadarLabels } from '@/lib/curation/radar'
 import { RadarChart } from './RadarChart'
 import type { UserPreference } from '@/lib/curation/types'
@@ -39,20 +39,6 @@ const CITY_NAMES: Record<string, Record<string, string>> = {
 
 function cityName(code: string, locale: string): string {
   return CITY_NAMES[code]?.[locale] || CITY_NAMES[code]?.ko || code
-}
-
-function topTagsForCity(city: string, preference: UserPreference, n = 2): string[] {
-  const cityTags = CITY_TAG_SCORES[city] || {}
-  const matched: Array<{ tag: string; score: number }> = []
-  for (const [tag, userWeight] of Object.entries(preference.tags)) {
-    const cityWeight = cityTags[tag] || 0
-    const score = userWeight * cityWeight
-    if (score > 0) matched.push({ tag, score })
-  }
-  return matched
-    .sort((a, b) => b.score - a.score)
-    .slice(0, n)
-    .map(m => m.tag)
 }
 
 export function StyleSlider({ locale, onComplete, onSkip }: Props) {
@@ -88,34 +74,34 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-10 md:py-16 pb-40">
+    <div className="max-w-3xl mx-auto px-4 md:px-6 py-8 md:py-14">
       {/* 헤더 */}
-      <div className="text-center mb-10">
+      <div className="text-center mb-8">
         <div className="text-4xl mb-3">🎯</div>
-        <h1 className="text-3xl md:text-4xl font-black text-slate-800 tracking-tight mb-3">
+        <h1 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tight mb-2">
           {t('slider.title')}
         </h1>
-        <p className="text-sm text-slate-500 font-bold">{t('slider.subtitle')}</p>
+        <p className="text-xs md:text-sm text-slate-500 font-bold">{t('slider.subtitle')}</p>
       </div>
 
-      {/* 여행 성향 슬라이더 9개 */}
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-5 md:p-7 mb-6">
-        <h2 className="text-sm font-black text-slate-700 mb-5">
+      {/* 여행 성향 슬라이더 9개 — 컴팩트 */}
+      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 md:p-5 mb-4">
+        <h2 className="text-xs font-black text-slate-700 mb-3">
           🧭 {t('slider.travelStyle')}
         </h2>
-        <div className="space-y-5">
+        <div className="space-y-2.5">
           {SLIDER_AXES.map(axis => {
             const value = sliders[axis.id] ?? 0
             return (
-              <div key={axis.id} className="space-y-2">
-                <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="flex items-center gap-1.5 text-slate-600">
-                    <span className="text-base">{axis.left.icon}</span>
+              <div key={axis.id} className="space-y-0.5">
+                <div className="flex items-center justify-between text-[11px] font-bold">
+                  <span className="flex items-center gap-1 text-slate-600">
+                    <span className="text-sm">{axis.left.icon}</span>
                     {getI18n(axis.left.label, locale)}
                   </span>
-                  <span className="flex items-center gap-1.5 text-slate-600">
+                  <span className="flex items-center gap-1 text-slate-600">
                     {getI18n(axis.right.label, locale)}
-                    <span className="text-base">{axis.right.icon}</span>
+                    <span className="text-sm">{axis.right.icon}</span>
                   </span>
                 </div>
                 <input
@@ -125,7 +111,7 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
                   step={5}
                   value={value}
                   onChange={e => setSliders(prev => ({ ...prev, [axis.id]: Number(e.target.value) }))}
-                  className="lok-slider w-full h-10 appearance-none bg-transparent cursor-pointer"
+                  className="lok-slider w-full h-7 appearance-none bg-transparent cursor-pointer"
                 />
               </div>
             )
@@ -134,24 +120,24 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
       </div>
 
       {/* 동행 유형 */}
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-5 md:p-7 mb-6">
-        <h2 className="text-sm font-black text-slate-700 mb-4">
+      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 md:p-5 mb-4">
+        <h2 className="text-xs font-black text-slate-700 mb-3">
           👣 {t('slider.companion')}
         </h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-2">
           {COMPANION_OPTIONS.map(opt => {
             const isActive = companion === opt.id
             return (
               <button
                 key={opt.id}
                 onClick={() => setCompanion(isActive ? null : opt.id)}
-                className={`flex flex-col items-center gap-1 py-4 rounded-2xl border-2 font-black text-xs transition-all ${
+                className={`flex flex-col items-center gap-0.5 py-3 rounded-xl border-2 font-black text-[11px] transition-all ${
                   isActive
-                    ? 'bg-mint-deep text-white border-mint-deep scale-105 shadow-md'
+                    ? 'bg-mint-deep text-white border-mint-deep scale-[1.03] shadow-md'
                     : 'bg-white text-slate-500 border-slate-100 hover:border-mint-deep/40'
                 }`}
               >
-                <span className="text-2xl">{opt.icon}</span>
+                <span className="text-xl">{opt.icon}</span>
                 <span>{getI18n(opt.label, locale)}</span>
               </button>
             )
@@ -159,11 +145,76 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
         </div>
       </div>
 
+      {/* 실시간 매칭 — 전체 너비 인라인 */}
+      <div className="bg-gradient-to-br from-mint-deep/5 to-sky/5 rounded-2xl border-2 border-mint-deep/20 shadow-sm p-4 md:p-5 mb-6">
+        <h2 className="text-xs font-black text-slate-700 mb-4">
+          🏙️ {t('slider.liveMatch')}
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-5 items-center">
+          {/* 왼쪽: 레이더 차트 */}
+          {topCityRadar.length > 0 ? (
+            <div className="flex flex-col items-center">
+              <RadarChart
+                axes={userRadar}
+                overlayAxes={topCityRadar}
+                size={220}
+                showLabels
+                legend={{
+                  primary: t('radar.myStyle'),
+                  overlay: cityName(top3[0].city, locale),
+                }}
+              />
+            </div>
+          ) : (
+            <div className="h-[220px] flex items-center justify-center text-xs text-slate-400 font-bold">
+              ...
+            </div>
+          )}
+
+          {/* 오른쪽: TOP 3 바 차트 */}
+          <div className="space-y-3">
+            {top3.map((c, i) => {
+              const tags = getTopMatchedTags(c.city, preference).slice(0, 2)
+              const width = Math.max(10, Math.min(100, c.matchPercent))
+              return (
+                <div key={c.city} className="space-y-1.5">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="font-black text-slate-700">
+                      {medal[i]} {cityName(c.city, locale)}
+                    </span>
+                    <span className="font-black text-mint-deep text-base">{c.matchPercent}%</span>
+                  </div>
+                  <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full ${barColors[i]} transition-all duration-500 rounded-full`}
+                      style={{ width: `${width}%` }}
+                    />
+                  </div>
+                  {tags.length > 0 && (
+                    <div className="flex gap-1 flex-wrap">
+                      {tags.map(tag => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-bold text-mint-deep bg-mint-deep/10 px-2 py-0.5 rounded-full"
+                        >
+                          #{getTagLabel(tag, locale)}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* 버튼 */}
-      <div className="flex flex-col items-center gap-3 mt-8">
+      <div className="flex flex-col items-center gap-3 mt-6">
         <button
           onClick={handleSubmit}
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-br from-mint-deep to-sky text-white font-black text-sm hover:opacity-90 transition-opacity shadow-lg"
+          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-br from-mint-deep to-sky text-white font-black text-sm hover:opacity-90 transition-opacity shadow-lg"
         >
           <Sparkles className="w-4 h-4" /> {t('slider.submit')}
         </button>
@@ -175,90 +226,37 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
         </button>
       </div>
 
-      {/* 실시간 매칭 프리뷰 (sticky bottom) */}
-      <div className="fixed bottom-4 left-4 right-4 md:bottom-6 md:left-auto md:right-6 md:w-80 bg-white rounded-2xl border border-mint-deep/30 shadow-xl p-4 z-40">
-        <h3 className="text-xs font-black text-slate-700 mb-3 flex items-center gap-1.5">
-          🏙️ {t('slider.liveMatch')}
-        </h3>
-        <div className="space-y-2.5">
-          {top3.map((c, i) => {
-            const tags = topTagsForCity(c.city, preference)
-            const width = Math.max(10, Math.min(100, c.matchPercent))
-            return (
-              <div key={c.city} className="space-y-1">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-black text-slate-700">
-                    {medal[i]} {cityName(c.city, locale)}
-                  </span>
-                  <span className="font-black text-mint-deep">{c.matchPercent}%</span>
-                </div>
-                <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full ${barColors[i]} transition-all duration-500`}
-                    style={{ width: `${width}%` }}
-                  />
-                </div>
-                {tags.length > 0 && (
-                  <div className="flex gap-1 flex-wrap">
-                    {tags.map(tag => (
-                      <span
-                        key={tag}
-                        className="text-[9px] font-bold text-slate-400 bg-slate-50 px-1.5 py-0.5 rounded"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )
-          })}
-        </div>
-
-        {/* 미니 레이더 (1위 도시 겹치기) */}
-        {topCityRadar.length > 0 && (
-          <div className="mt-3 pt-3 border-t border-slate-100 flex justify-center">
-            <RadarChart
-              axes={userRadar}
-              overlayAxes={topCityRadar}
-              size={140}
-              showLabels={false}
-            />
-          </div>
-        )}
-      </div>
-
       {/* 슬라이더 커스텀 스타일 */}
       <style jsx>{`
         .lok-slider::-webkit-slider-runnable-track {
-          height: 8px;
+          height: 6px;
           border-radius: 9999px;
           background: linear-gradient(to right, #F0B8B8 0%, #E5E7EB 50%, #8EDACB 100%);
         }
         .lok-slider::-moz-range-track {
-          height: 8px;
+          height: 6px;
           border-radius: 9999px;
           background: linear-gradient(to right, #F0B8B8 0%, #E5E7EB 50%, #8EDACB 100%);
         }
         .lok-slider::-webkit-slider-thumb {
           -webkit-appearance: none;
           appearance: none;
-          width: 24px;
-          height: 24px;
+          width: 20px;
+          height: 20px;
           border-radius: 9999px;
           background: white;
           border: 2px solid #5BBDAD;
           box-shadow: 0 2px 6px rgba(0,0,0,0.15);
           cursor: pointer;
-          margin-top: -8px;
+          margin-top: -7px;
           transition: transform 0.15s ease;
         }
         .lok-slider::-webkit-slider-thumb:hover {
-          transform: scale(1.1);
+          transform: scale(1.15);
         }
         .lok-slider::-moz-range-thumb {
-          width: 24px;
-          height: 24px;
+          width: 20px;
+          height: 20px;
           border-radius: 9999px;
           background: white;
           border: 2px solid #5BBDAD;
@@ -267,7 +265,7 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
           transition: transform 0.15s ease;
         }
         .lok-slider::-moz-range-thumb:hover {
-          transform: scale(1.1);
+          transform: scale(1.15);
         }
       `}</style>
     </div>

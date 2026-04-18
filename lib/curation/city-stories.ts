@@ -159,9 +159,67 @@ export function getTopMatchedTags(cityRegion: string, preference: UserPreference
     .map(([tag, cityWeight]) => ({
       tag,
       score: (preference.tags[tag] || 0) * cityWeight,
+      cityWeight,
     }))
     .filter(s => s.score > 0)
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => {
+      // 점수 거의 같으면 도시 고유 강점(cityWeight) 높은 것 우선 → 도시별 차별화
+      if (Math.abs(b.score - a.score) < 0.1) return b.cityWeight - a.cityWeight
+      return b.score - a.score
+    })
 
   return scored.slice(0, 5).map(s => s.tag)
+}
+
+/** 태그 → 로케일별 표시명 */
+export const TAG_DISPLAY_NAMES: Record<string, I18n> = {
+  traditional: { ko: '전통', en: 'Traditional', ja: '伝統', 'zh-CN': '传统', 'zh-TW': '傳統' },
+  food: { ko: '맛집', en: 'Food', ja: 'グルメ', 'zh-CN': '美食', 'zh-TW': '美食' },
+  nature: { ko: '자연', en: 'Nature', ja: '自然', 'zh-CN': '自然', 'zh-TW': '自然' },
+  ocean: { ko: '바다', en: 'Ocean', ja: '海', 'zh-CN': '大海', 'zh-TW': '大海' },
+  city: { ko: '도시', en: 'City', ja: '都市', 'zh-CN': '城市', 'zh-TW': '城市' },
+  nightlife: { ko: '야경', en: 'Nightlife', ja: 'ナイトライフ', 'zh-CN': '夜生活', 'zh-TW': '夜生活' },
+  hiking: { ko: '등산', en: 'Hiking', ja: 'ハイキング', 'zh-CN': '登山', 'zh-TW': '登山' },
+  instagram: { ko: '인스타', en: 'Insta', ja: 'インスタ', 'zh-CN': '打卡', 'zh-TW': '打卡' },
+  experience: { ko: '체험', en: 'Experience', ja: '体験', 'zh-CN': '体验', 'zh-TW': '體驗' },
+  relax: { ko: '힐링', en: 'Relax', ja: 'ヒーリング', 'zh-CN': '疗愈', 'zh-TW': '療癒' },
+  shopping: { ko: '쇼핑', en: 'Shopping', ja: 'ショッピング', 'zh-CN': '购物', 'zh-TW': '購物' },
+  historic: { ko: '역사', en: 'Historic', ja: '歴史', 'zh-CN': '历史', 'zh-TW': '歷史' },
+  temple: { ko: '사찰', en: 'Temple', ja: '寺院', 'zh-CN': '寺庙', 'zh-TW': '寺廟' },
+  scenic: { ko: '풍경', en: 'Scenic', ja: '景色', 'zh-CN': '风景', 'zh-TW': '風景' },
+  modern: { ko: '현대', en: 'Modern', ja: 'モダン', 'zh-CN': '现代', 'zh-TW': '現代' },
+  trendy: { ko: '트렌디', en: 'Trendy', ja: 'トレンディ', 'zh-CN': '潮流', 'zh-TW': '潮流' },
+  cafe: { ko: '카페', en: 'Cafe', ja: 'カフェ', 'zh-CN': '咖啡馆', 'zh-TW': '咖啡館' },
+  romantic: { ko: '로맨틱', en: 'Romantic', ja: 'ロマンチック', 'zh-CN': '浪漫', 'zh-TW': '浪漫' },
+  themepark: { ko: '테마파크', en: 'Theme Park', ja: 'テーマパーク', 'zh-CN': '主题乐园', 'zh-TW': '主題樂園' },
+  family: { ko: '가족', en: 'Family', ja: '家族', 'zh-CN': '家庭', 'zh-TW': '家庭' },
+  active: { ko: '액티브', en: 'Active', ja: 'アクティブ', 'zh-CN': '运动', 'zh-TW': '運動' },
+  market: { ko: '시장', en: 'Market', ja: '市場', 'zh-CN': '市场', 'zh-TW': '市場' },
+  sunset: { ko: '석양', en: 'Sunset', ja: '夕日', 'zh-CN': '夕阳', 'zh-TW': '夕陽' },
+  driving: { ko: '드라이브', en: 'Drive', ja: 'ドライブ', 'zh-CN': '自驾', 'zh-TW': '自駕' },
+  coastal: { ko: '해안', en: 'Coastal', ja: '海岸', 'zh-CN': '海岸', 'zh-TW': '海岸' },
+  solo: { ko: '혼자', en: 'Solo', ja: 'ひとり', 'zh-CN': '独自', 'zh-TW': '獨自' },
+  group: { ko: '그룹', en: 'Group', ja: 'グループ', 'zh-CN': '团体', 'zh-TW': '團體' },
+  festival: { ko: '축제', en: 'Festival', ja: 'フェスティバル', 'zh-CN': '节日', 'zh-TW': '節日' },
+  spa: { ko: '온천', en: 'Spa', ja: '温泉', 'zh-CN': '温泉', 'zh-TW': '溫泉' },
+  budget: { ko: '알뜰', en: 'Budget', ja: '節約', 'zh-CN': '经济', 'zh-TW': '經濟' },
+  luxury: { ko: '럭셔리', en: 'Luxury', ja: 'ラグジュアリー', 'zh-CN': '奢华', 'zh-TW': '奢華' },
+  walking: { ko: '도보', en: 'Walking', ja: '歩き', 'zh-CN': '步行', 'zh-TW': '步行' },
+  adventure: { ko: '모험', en: 'Adventure', ja: '冒険', 'zh-CN': '冒险', 'zh-TW': '冒險' },
+  workshop: { ko: '공방', en: 'Workshop', ja: '工房', 'zh-CN': '工坊', 'zh-TW': '工坊' },
+  photo: { ko: '사진', en: 'Photo', ja: '写真', 'zh-CN': '拍照', 'zh-TW': '拍照' },
+  'street-food': { ko: '길거리음식', en: 'Street Food', ja: '屋台', 'zh-CN': '街头小吃', 'zh-TW': '街頭小吃' },
+  'night-market': { ko: '야시장', en: 'Night Market', ja: '夜市', 'zh-CN': '夜市', 'zh-TW': '夜市' },
+  meditation: { ko: '명상', en: 'Meditation', ja: '瞑想', 'zh-CN': '冥想', 'zh-TW': '冥想' },
+  daytime: { ko: '낮활동', en: 'Daytime', ja: '昼間', 'zh-CN': '白天', 'zh-TW': '白天' },
+  'scenic-road': { ko: '드라이브길', en: 'Scenic Road', ja: 'ドライブコース', 'zh-CN': '风景公路', 'zh-TW': '風景公路' },
+  countryside: { ko: '시골', en: 'Countryside', ja: '田舎', 'zh-CN': '乡村', 'zh-TW': '鄉村' },
+  bar: { ko: '바', en: 'Bar', ja: 'バー', 'zh-CN': '酒吧', 'zh-TW': '酒吧' },
+  'fine-dining': { ko: '파인다이닝', en: 'Fine Dining', ja: 'ファインダイニング', 'zh-CN': '高级餐厅', 'zh-TW': '高級餐廳' },
+}
+
+export function getTagLabel(tag: string, locale: string): string {
+  const entry = TAG_DISPLAY_NAMES[tag]
+  if (!entry) return tag
+  return (entry as Record<string, string>)[locale] || entry.en || entry.ko || tag
 }

@@ -231,16 +231,31 @@ export function calculateCityScores(preference: UserPreference): CityScore[] {
     let maxPossible = 0
 
     for (const [tag, userWeight] of Object.entries(preference.tags)) {
+      if (userWeight <= 0) continue
       const cityWeight = cityTags[tag] || 0
       score += userWeight * cityWeight
-      maxPossible += Math.abs(userWeight)
+      maxPossible += userWeight
     }
 
-    const matchPercent = maxPossible > 0 ? Math.round((score / maxPossible) * 100) : 50
-    return { city, score, matchPercent: Math.max(0, Math.min(100, matchPercent)) }
+    // 정규화: raw 0~100 → 30~98 범위로 매핑 (최소 30% 보장, 최대 98%)
+    const rawPercent = maxPossible > 0 ? (score / maxPossible) * 100 : 50
+    const mapped = 30 + (rawPercent / 100) * 68
+    const matchPercent = Math.min(98, Math.max(30, Math.round(mapped)))
+
+    return { city, score, matchPercent }
   })
 
-  return results.sort((a, b) => b.score - a.score)
+  const sorted = results.sort((a, b) => b.score - a.score)
+
+  // 1~2위 격차가 5% 미만이면 1위 +5% 부스트 (구별감 부여)
+  if (sorted.length >= 2) {
+    const gap = sorted[0].matchPercent - sorted[1].matchPercent
+    if (gap < 5) {
+      sorted[0].matchPercent = Math.min(98, sorted[0].matchPercent + 5)
+    }
+  }
+
+  return sorted
 }
 
 export interface ScoredSpot extends NormalizedSpot {

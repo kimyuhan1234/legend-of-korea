@@ -8,7 +8,7 @@ import { RefreshCw, Sparkles, ChevronDown, ChevronUp, Quote, BarChart3 } from 'l
 import { SpotCard } from './SpotCard'
 import { RadarChart } from './RadarChart'
 import { scoreSpots } from '@/lib/curation/scoring'
-import { CITY_STORIES, generateReasons, getTopMatchedTags } from '@/lib/curation/city-stories'
+import { CITY_STORIES, generateReasons, getTopMatchedTags, getTagLabel } from '@/lib/curation/city-stories'
 import { preferenceToRadar, cityToRadar, type RadarLabels } from '@/lib/curation/radar'
 import type { NormalizedSpot } from '@/lib/tour-api/types'
 import type { CityScore, UserPreference } from '@/lib/curation/types'
@@ -177,7 +177,7 @@ function CityDetailCard({
                     <p className="text-sm leading-relaxed text-slate-700 font-medium">{r}</p>
                     {tag && (
                       <span className="inline-block mt-2 text-[10px] font-bold text-mint-deep bg-mint-deep/10 px-2 py-0.5 rounded">
-                        #{tag}
+                        #{getTagLabel(tag, locale)}
                       </span>
                     )}
                   </div>
