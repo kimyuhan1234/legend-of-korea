@@ -33,7 +33,7 @@ export const CROSS_TAB_MAP: Record<TabId, CrossTabRecommendation> = {
     secondary: { targetTab: 'stay', path: '/stay', emoji: '🏨' },
   },
   diy: {
-    primary: { targetTab: 'goods', path: '/goods', emoji: '🛍️' },
+    primary: { targetTab: 'goods', path: '/memories', emoji: '✨' },
     secondary: { targetTab: 'food', path: '/food', emoji: '🍴' },
   },
   ootd: {

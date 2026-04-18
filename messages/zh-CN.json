@@ -1669,5 +1669,25 @@
       "cancel": "取消",
       "processing": "正在应用滤镜..."
     }
+  },
+  "memories": {
+    "meta": {
+      "title": "回忆录 | Legend of Korea",
+      "description": "我的传说旅行记录"
+    },
+    "title": "MEMORIES",
+    "subtitle": "我的传说之旅",
+    "tab": {
+      "dashboard": "仪表盘",
+      "photos": "照片库",
+      "achievements": "成就"
+    },
+    "photos": {
+      "empty": "还没有照片！完成任务留下回忆吧 📸",
+      "share": "分享"
+    },
+    "login": {
+      "message": "登录创建属于你的回忆"
+    }
   }
 }

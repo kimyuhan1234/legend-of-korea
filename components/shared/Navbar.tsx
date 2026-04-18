@@ -21,7 +21,7 @@ const NAV_LINKS = {
     { href: "/traffic", label: "TRAFFIC" },
     { href: "/story",   label: "QUEST" },
     { href: "/sights",label: "SPOT" },
-    { href: "/goods", label: "GOODS" },
+    { href: "/memories", label: "MEMORIES" },
     { href: "/diy",   label: "DIY" },
   ],
   ja: [
@@ -31,7 +31,7 @@ const NAV_LINKS = {
     { href: "/traffic", label: "TRAFFIC" },
     { href: "/story",   label: "QUEST" },
     { href: "/sights",label: "SPOT" },
-    { href: "/goods", label: "GOODS" },
+    { href: "/memories", label: "MEMORIES" },
     { href: "/diy",   label: "DIY" },
   ],
   en: [
@@ -41,7 +41,7 @@ const NAV_LINKS = {
     { href: "/traffic", label: "TRAFFIC" },
     { href: "/story",   label: "QUEST" },
     { href: "/sights",label: "SPOT" },
-    { href: "/goods", label: "GOODS" },
+    { href: "/memories", label: "MEMORIES" },
     { href: "/diy",   label: "DIY" },
   ],
 }

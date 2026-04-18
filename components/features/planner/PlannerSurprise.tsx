@@ -17,7 +17,7 @@ const KIND_TO_PATH: Record<string, string> = {
   food: '/food',
   diy: '/diy',
   quest: '/story',
-  goods: '/goods',
+  goods: '/memories',
   spot: '/sights',
 }
 

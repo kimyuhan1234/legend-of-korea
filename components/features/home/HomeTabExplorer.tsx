@@ -21,7 +21,7 @@ const TABS: TabItem[] = [
   { key: 'traffic', label: 'TRAFFIC', href: '/traffic', image: '/images/explore/traffic.png', descKey: 'explore.traffic' },
   { key: 'quest', label: 'QUEST', href: '/story', image: '/images/explore/quest.png', descKey: 'explore.quest' },
   { key: 'spot', label: 'SPOT', href: '/sights', image: '/images/explore/spot.png', descKey: 'explore.spot' },
-  { key: 'goods', label: 'GOODS', href: '/goods', image: '/images/explore/goods.png', descKey: 'explore.goods' },
+  { key: 'memories', label: 'MEMORIES', href: '/memories', image: '/images/explore/goods.png', descKey: 'explore.memories' },
   { key: 'diy', label: 'DIY', href: '/diy', image: '/images/explore/diy.png', descKey: 'explore.diy' },
 ]
 

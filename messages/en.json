@@ -1669,5 +1669,25 @@
       "cancel": "Cancel",
       "processing": "Applying filter..."
     }
+  },
+  "memories": {
+    "meta": {
+      "title": "Memories | Legend of Korea",
+      "description": "My legendary travel memories"
+    },
+    "title": "MEMORIES",
+    "subtitle": "My Legendary Journey",
+    "tab": {
+      "dashboard": "Dashboard",
+      "photos": "Photo Gallery",
+      "achievements": "Achievements"
+    },
+    "photos": {
+      "empty": "No photos yet! Complete missions to create memories 📸",
+      "share": "Share"
+    },
+    "login": {
+      "message": "Log in to create your own memories"
+    }
   }
 }

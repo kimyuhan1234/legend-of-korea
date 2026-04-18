@@ -1669,5 +1669,25 @@
       "cancel": "キャンセル",
       "processing": "フィルター適用中..."
     }
+  },
+  "memories": {
+    "meta": {
+      "title": "メモリーズ | Legend of Korea",
+      "description": "伝説の旅の記録"
+    },
+    "title": "MEMORIES",
+    "subtitle": "伝説の旅の記録",
+    "tab": {
+      "dashboard": "ダッシュボード",
+      "photos": "フォトギャラリー",
+      "achievements": "アチーブメント"
+    },
+    "photos": {
+      "empty": "まだ写真がありません！ミッションを完了して思い出を残しましょう 📸",
+      "share": "シェア"
+    },
+    "login": {
+      "message": "ログインして自分だけのメモリーズを作ろう"
+    }
   }
 }
