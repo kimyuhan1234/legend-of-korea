@@ -4,11 +4,16 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
-import { LayoutDashboard, Image as ImageIcon, Award, Share2, Loader2, X } from 'lucide-react'
+import { Loader2, Share2, X, PenLine } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { CommunityFeed } from '@/components/features/community/CommunityFeed'
 import { MissionDashboard } from '@/components/features/missions/MissionDashboard'
+import { Leaderboard } from '@/components/features/community/Leaderboard'
 import { ProfileBadges } from '@/components/features/mypage/ProfileBadges'
 import { DigitalPassport } from '@/components/features/mypage/DigitalPassport'
+import { QuestPartySection } from '@/components/features/quest/QuestPartySection'
+import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton'
+import { courses } from '@/lib/data/courses'
 
 interface Props {
   locale: string
@@ -21,21 +26,31 @@ interface PhotoItem {
   courseTitle: Record<string, string>
 }
 
-type Tab = 'dashboard' | 'photos' | 'achievements'
+type Tab = 'feed' | 'dashboard' | 'ranking' | 'achievements' | 'photos' | 'together'
 
 function getI18n(field: Record<string, string> | undefined, locale: string): string {
   if (!field) return ''
   return field[locale] || field.en || field.ko || ''
 }
 
+const TABS: { id: Tab; icon: string; labelKey: string; requiresAuth: boolean }[] = [
+  { id: 'feed', icon: '📸', labelKey: 'tab.feed', requiresAuth: false },
+  { id: 'dashboard', icon: '🎮', labelKey: 'tab.dashboard', requiresAuth: true },
+  { id: 'ranking', icon: '🏆', labelKey: 'tab.ranking', requiresAuth: false },
+  { id: 'achievements', icon: '🛂', labelKey: 'tab.achievements', requiresAuth: true },
+  { id: 'photos', icon: '📷', labelKey: 'tab.photos', requiresAuth: true },
+  { id: 'together', icon: '👥', labelKey: 'tab.together', requiresAuth: true },
+]
+
 export function MemoriesClient({ locale }: Props) {
   const t = useTranslations('memories')
   const [userId, setUserId] = useState<string | null>(null)
   const [authLoading, setAuthLoading] = useState(true)
-  const [tab, setTab] = useState<Tab>('dashboard')
+  const [tab, setTab] = useState<Tab>('feed')
   const [photos, setPhotos] = useState<PhotoItem[]>([])
   const [photosLoading, setPhotosLoading] = useState(false)
   const [lightbox, setLightbox] = useState<PhotoItem | null>(null)
+  const [selectedCourseId, setSelectedCourseId] = useState<string>('')
 
   useEffect(() => {
     const supabase = createClient()
@@ -86,6 +101,18 @@ export function MemoriesClient({ locale }: Props) {
     }
   }
 
+  const LoginPrompt = () => (
+    <div className="text-center py-20 space-y-4">
+      <div className="text-5xl">🔒</div>
+      <p className="text-slate-500 font-bold">{t('login.message')}</p>
+      <Link href={`/${locale}/auth/login?next=/${locale}/memories`}>
+        <button className="px-6 py-3 rounded-2xl bg-gradient-to-br from-mint-deep to-sky text-white font-black hover:opacity-90 transition-opacity">
+          Log In →
+        </button>
+      </Link>
+    </div>
+  )
+
   if (authLoading) {
     return (
       <div className="flex items-center justify-center py-40">
@@ -94,20 +121,8 @@ export function MemoriesClient({ locale }: Props) {
     )
   }
 
-  if (!userId) {
-    return (
-      <div className="max-w-xl mx-auto px-6 py-32 text-center space-y-6">
-        <div className="text-6xl">📖</div>
-        <h1 className="text-3xl font-black text-slate-800 tracking-tight">{t('title')}</h1>
-        <p className="text-slate-500 font-bold">{t('login.message')}</p>
-        <Link href={`/${locale}/auth/login?next=/${locale}/memories`}>
-          <button className="px-8 py-3.5 rounded-2xl bg-gradient-to-br from-mint-deep to-sky text-white font-black hover:opacity-90 transition-opacity">
-            Log In →
-          </button>
-        </Link>
-      </div>
-    )
-  }
+  const currentTab = TABS.find((x) => x.id === tab)
+  const needsAuth = currentTab?.requiresAuth && !userId
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
@@ -122,30 +137,58 @@ export function MemoriesClient({ locale }: Props) {
 
       {/* 탭 */}
       <div className="flex gap-1 border-b border-slate-100 mb-8 overflow-x-auto scrollbar-hide">
-        {([
-          { id: 'dashboard' as Tab, Icon: LayoutDashboard, label: t('tab.dashboard') },
-          { id: 'photos' as Tab, Icon: ImageIcon, label: t('tab.photos') },
-          { id: 'achievements' as Tab, Icon: Award, label: t('tab.achievements') },
-        ]).map(({ id, Icon, label }) => (
+        {TABS.map((tb) => (
           <button
-            key={id}
-            onClick={() => setTab(id)}
-            className={`flex items-center gap-2 px-5 py-3 font-bold text-sm transition-colors border-b-2 whitespace-nowrap ${
-              tab === id
+            key={tb.id}
+            onClick={() => setTab(tb.id)}
+            className={`flex items-center gap-2 px-4 md:px-5 py-3 font-bold text-sm transition-colors border-b-2 whitespace-nowrap shrink-0 ${
+              tab === tb.id
                 ? 'border-mint-deep text-mint-deep'
                 : 'border-transparent text-slate-400 hover:text-slate-600'
             }`}
           >
-            <Icon className="w-4 h-4" /> {label}
+            <span className="text-base">{tb.icon}</span>
+            <span className="hidden md:inline">{t(tb.labelKey)}</span>
           </button>
         ))}
       </div>
 
-      {/* 대시보드 탭 */}
-      {tab === 'dashboard' && <MissionDashboard userId={userId} locale={locale} />}
+      {/* 로그인 필요 탭 */}
+      {needsAuth && <LoginPrompt />}
 
-      {/* 포토갤러리 탭 */}
-      {tab === 'photos' && (
+      {/* 탭 1: 피드 */}
+      {!needsAuth && tab === 'feed' && (
+        <div>
+          <div className="flex justify-end mb-4">
+            <Link
+              href={`/${locale}/community/write`}
+              className="inline-flex items-center gap-1.5 bg-mint-deep text-white px-4 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-opacity"
+            >
+              <PenLine className="w-4 h-4" /> {t('feed.write')}
+            </Link>
+          </div>
+          <CommunityFeed locale={locale} />
+        </div>
+      )}
+
+      {/* 탭 2: 대시보드 */}
+      {!needsAuth && tab === 'dashboard' && userId && (
+        <MissionDashboard userId={userId} locale={locale} />
+      )}
+
+      {/* 탭 3: 랭킹 */}
+      {!needsAuth && tab === 'ranking' && <Leaderboard locale={locale} />}
+
+      {/* 탭 4: 업적 */}
+      {!needsAuth && tab === 'achievements' && userId && (
+        <div className="space-y-6">
+          <ProfileBadges userId={userId} />
+          <DigitalPassport userId={userId} locale={locale} />
+        </div>
+      )}
+
+      {/* 탭 5: 포토갤러리 */}
+      {!needsAuth && tab === 'photos' && userId && (
         <div>
           {photosLoading ? (
             <div className="flex items-center justify-center py-20">
@@ -188,11 +231,63 @@ export function MemoriesClient({ locale }: Props) {
         </div>
       )}
 
-      {/* 업적 탭 */}
-      {tab === 'achievements' && (
-        <div className="space-y-6">
-          <ProfileBadges userId={userId} />
-          <DigitalPassport userId={userId} locale={locale} />
+      {/* 탭 6: 함께하기 */}
+      {!needsAuth && tab === 'together' && userId && (
+        <div className="space-y-8">
+          {/* ZEP 메타버스 */}
+          <div className="bg-gradient-to-r from-violet-50 to-indigo-50 rounded-2xl p-6 border border-violet-100">
+            <h4 className="text-lg font-black flex items-center gap-2 mb-2">
+              🌐 {t('together.zepTitle')}
+            </h4>
+            <p className="text-sm text-slate-500 mb-4">{t('together.zepDesc')}</p>
+
+            {/* 코스 선택 */}
+            <select
+              value={selectedCourseId}
+              onChange={(e) => setSelectedCourseId(e.target.value)}
+              className="w-full p-3 rounded-xl border border-slate-200 mb-4 text-sm font-bold text-slate-700 bg-white"
+            >
+              <option value="">{t('together.selectCourse')}</option>
+              {courses.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {getI18n(c.title, locale)}
+                </option>
+              ))}
+            </select>
+
+            {selectedCourseId ? (
+              <ZepMeetingButton
+                courseId={courses.find((c) => c.id === selectedCourseId)?.region ?? ''}
+                hasPurchased={true}
+                locale={locale}
+              />
+            ) : (
+              <p className="text-center text-sm text-slate-400 py-4">
+                {t('together.selectCourseHint')}
+              </p>
+            )}
+          </div>
+
+          {/* Quest Party */}
+          <div className="bg-gradient-to-r from-mint/10 to-sky/10 rounded-2xl p-6 border border-mint/20">
+            <h4 className="text-lg font-black flex items-center gap-2 mb-2">
+              👥 {t('together.partyTitle')}
+            </h4>
+            <p className="text-sm text-slate-500 mb-4">{t('together.partyDesc')}</p>
+
+            {selectedCourseId ? (
+              <QuestPartySection
+                courseId={selectedCourseId}
+                isLoggedIn={!!userId}
+                currentUserId={userId}
+                locale={locale}
+              />
+            ) : (
+              <p className="text-center text-sm text-slate-400 py-8">
+                {t('together.selectCourseHint')}
+              </p>
+            )}
+          </div>
         </div>
       )}
 

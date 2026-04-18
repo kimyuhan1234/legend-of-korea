@@ -490,6 +490,11 @@
     "profileSaved": "Profile updated",
     "profileSaveFail": "Failed to update profile",
     "digitalPass": "Digital Quest Pass",
+    "progress": {
+      "movedTitle": "Mission Center has moved!",
+      "movedDesc": "Discover more features in MEMORIES",
+      "goToMemories": "Go"
+    },
     "passportTab": "Passport",
     "passportTitle": "LEGEND OF KOREA",
     "passportSubtitle": "DIGITAL PASSPORT",
@@ -1689,13 +1694,27 @@
     "title": "MEMORIES",
     "subtitle": "My Legendary Journey",
     "tab": {
+      "feed": "Feed",
       "dashboard": "Dashboard",
-      "photos": "Photo Gallery",
-      "achievements": "Achievements"
+      "ranking": "Ranking",
+      "achievements": "Achievements",
+      "photos": "Photos",
+      "together": "Together"
+    },
+    "feed": {
+      "write": "Write"
     },
     "photos": {
       "empty": "No photos yet! Complete missions to create memories 📸",
       "share": "Share"
+    },
+    "together": {
+      "zepTitle": "ZEP Metaverse",
+      "zepDesc": "Meet other adventurers in the virtual world",
+      "partyTitle": "Quest Party",
+      "partyDesc": "Find party members to challenge the same course together",
+      "selectCourse": "Select a course",
+      "selectCourseHint": "Select a course to find parties"
     },
     "login": {
       "message": "Log in to create your own memories"

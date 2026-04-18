@@ -490,6 +490,11 @@
     "profileSaved": "プロフィールが更新されました",
     "profileSaveFail": "プロフィール更新に失敗しました",
     "digitalPass": "デジタルクエストパス",
+    "progress": {
+      "movedTitle": "ミッションセンターが移動しました！",
+      "movedDesc": "MEMORIESでもっと多くの機能を",
+      "goToMemories": "へ行く"
+    },
     "passportTab": "パスポート",
     "passportTitle": "LEGEND OF KOREA",
     "passportSubtitle": "DIGITAL PASSPORT",
@@ -1689,13 +1694,27 @@
     "title": "MEMORIES",
     "subtitle": "伝説の旅の記録",
     "tab": {
+      "feed": "フィード",
       "dashboard": "ダッシュボード",
-      "photos": "フォトギャラリー",
-      "achievements": "アチーブメント"
+      "ranking": "ランキング",
+      "achievements": "アチーブメント",
+      "photos": "フォト",
+      "together": "一緒に"
+    },
+    "feed": {
+      "write": "投稿する"
     },
     "photos": {
       "empty": "まだ写真がありません！ミッションを完了して思い出を残しましょう 📸",
       "share": "シェア"
+    },
+    "together": {
+      "zepTitle": "ZEPメタバース",
+      "zepDesc": "仮想空間で他の冒険者と出会おう",
+      "partyTitle": "クエストパーティ",
+      "partyDesc": "同じコースに挑戦する仲間を見つけよう",
+      "selectCourse": "コースを選択",
+      "selectCourseHint": "コースを選択するとパーティが見つかります"
     },
     "login": {
       "message": "ログインして自分だけのメモリーズを作ろう"

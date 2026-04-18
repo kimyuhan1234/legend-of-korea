@@ -26,10 +26,10 @@ import {
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import MissionRegister from '@/components/features/mypage/MissionRegister';
 import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton';
 import { DigitalPassport } from '@/components/features/mypage/DigitalPassport';
-import { MissionDashboard } from '@/components/features/missions/MissionDashboard';
 import { toast } from '@/components/ui/use-toast';
 
 interface MyPageClientProps {
@@ -485,9 +485,23 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                  )}
               </TabsContent>
 
-              {/* Mission Center Tab — 게임형 대시보드 */}
+              {/* Mission Center Tab — MEMORIES로 이동 안내 */}
               <TabsContent value="progress" className="m-0 space-y-6">
-                {user?.id && <MissionDashboard userId={user.id} locale={locale} />}
+                <div className="text-center py-12 space-y-4">
+                  <div className="text-5xl">🎮</div>
+                  <h3 className="text-lg font-black text-slate-700">
+                    {t('progress.movedTitle')}
+                  </h3>
+                  <p className="text-sm text-slate-400">
+                    {t('progress.movedDesc')}
+                  </p>
+                  <Link
+                    href={`/${locale}/memories`}
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-mint-deep to-sky text-white px-6 py-3 rounded-full font-bold text-sm hover:opacity-90 transition-opacity"
+                  >
+                    ✨ MEMORIES {t('progress.goToMemories')}
+                  </Link>
+                </div>
 
                 {/* 완료된 미션 수동 등록 (유지) */}
                 <MissionRegister locale={locale} />

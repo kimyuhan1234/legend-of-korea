@@ -490,6 +490,11 @@
     "profileSaved": "资料已更新",
     "profileSaveFail": "资料更新失败",
     "digitalPass": "数字探险通行证",
+    "progress": {
+      "movedTitle": "任务中心已搬迁！",
+      "movedDesc": "在MEMORIES中发现更多功能",
+      "goToMemories": "前往"
+    },
     "passportTab": "护照",
     "passportTitle": "LEGEND OF KOREA",
     "passportSubtitle": "DIGITAL PASSPORT",
@@ -1689,13 +1694,27 @@
     "title": "MEMORIES",
     "subtitle": "我的传说之旅",
     "tab": {
+      "feed": "动态",
       "dashboard": "仪表盘",
-      "photos": "照片库",
-      "achievements": "成就"
+      "ranking": "排行榜",
+      "achievements": "成就",
+      "photos": "照片",
+      "together": "一起玩"
+    },
+    "feed": {
+      "write": "发帖"
     },
     "photos": {
       "empty": "还没有照片！完成任务留下回忆吧 📸",
       "share": "分享"
+    },
+    "together": {
+      "zepTitle": "ZEP元宇宙",
+      "zepDesc": "在虚拟空间中遇见其他冒险者",
+      "partyTitle": "任务队伍",
+      "partyDesc": "寻找一起挑战同一路线的伙伴",
+      "selectCourse": "选择路线",
+      "selectCourseHint": "选择路线即可查找队伍"
     },
     "login": {
       "message": "登录创建属于你的回忆"
