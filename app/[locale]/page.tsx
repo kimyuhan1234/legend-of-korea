@@ -27,7 +27,7 @@ export default async function HomePage({ params }: Props) {
   return (
     <div className="bg-snow">
       {/* 섹션 1: HERO */}
-      <HeroSection cta={t('signup')} />
+      <HeroSection cta={t('signup')} locale={locale} />
 
       {/* 섹션 3: 탭 탐색 (3단 그리드 + 모바일 슬라이드) */}
       <HomeTabExplorer />
