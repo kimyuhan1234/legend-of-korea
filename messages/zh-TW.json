@@ -125,7 +125,7 @@
     "categoryStyle": "GOODS",
     "categoryCreate": "DIY",
     "foodMatchingTitle": "你已經知道自己喜歡什麼",
-    "foodMatchingSubtitle": "剩下的交給我們來連結",
+    "foodMatchingSubtitle": "害怕陌生料理？用你熟悉的味道為你找到它",
     "foodMatchingCta": "探索美食配對 →",
     "explore": {
       "title": "透過韓國傳說探索城市的全新旅程",
@@ -140,7 +140,7 @@
       "diy": "在韓國傳統工坊創作屬於自己的作品"
     },
     "plannerTitle": "我的客製旅行計畫",
-    "plannerSubtitle": "儲存、選擇、完成。專屬於你的旅行",
+    "plannerSubtitle": "沒有計劃也沒關係，讓你不留遺憾的旅行",
     "plannerCta": "開始旅行規劃 →",
     "community": {
       "title": "MEMORIES",
@@ -155,10 +155,10 @@
     },
     "memories": {
       "slide1Title": "✨ MEMORIES",
-      "slide1Subtitle": "冒險者們記錄的傳說旅程",
+      "slide1Subtitle": "獨自珍藏太可惜的瞬間，在這裡分享吧",
       "slide1Cta": "查看 MEMORIES",
       "slide2Title": "🎯 找到專屬於你的旅行",
-      "slide2Subtitle": "AI 分析你獨有的韓國旅行風格",
+      "slide2Subtitle": "你的喜好就是你的目的地",
       "slide2Cta": "開始風格測試"
     },
     "footerCompany": "關於我們",

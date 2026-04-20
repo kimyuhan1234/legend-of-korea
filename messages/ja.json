@@ -125,7 +125,7 @@
     "categoryStyle": "GOODS",
     "categoryCreate": "DIY",
     "foodMatchingTitle": "好きな味はもうわかっている",
-    "foodMatchingSubtitle": "残りは私たちがつなぎます",
+    "foodMatchingSubtitle": "知らない料理が怖い？あなたの知っている味でお探しします",
     "foodMatchingCta": "フードマッチングを探索 →",
     "explore": {
       "title": "韓国の伝説をたどり、都市を探検する新しい旅",
@@ -140,7 +140,7 @@
       "diy": "韓国の伝統工房で自分だけの作品を作りましょう"
     },
     "plannerTitle": "私のカスタム旅行プラン",
-    "plannerSubtitle": "選んで、集めて、完成。あなただけの旅",
+    "plannerSubtitle": "計画なしでも、後悔しない旅を作ります",
     "plannerCta": "旅行プランナーを始める →",
     "community": {
       "title": "MEMORIES",
@@ -155,10 +155,10 @@
     },
     "memories": {
       "slide1Title": "✨ MEMORIES",
-      "slide1Subtitle": "冒険者たちが残した伝説の記録",
+      "slide1Subtitle": "一人で抱えるにはもったいない瞬間、ここでシェアしよう",
       "slide1Cta": "MEMORIESを見る",
       "slide2Title": "🎯 あなたにぴったりの旅を見つけよう",
-      "slide2Subtitle": "AIが分析するあなただけの韓国旅スタイル",
+      "slide2Subtitle": "あなたの好みがそのまま旅先になる",
       "slide2Cta": "スタイルテストへ"
     },
     "footerCompany": "会社情報",

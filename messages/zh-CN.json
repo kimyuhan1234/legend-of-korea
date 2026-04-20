@@ -125,7 +125,7 @@
     "categoryStyle": "GOODS",
     "categoryCreate": "DIY",
     "foodMatchingTitle": "你已经知道自己喜欢什么",
-    "foodMatchingSubtitle": "剩下的交给我们",
+    "foodMatchingSubtitle": "害怕陌生料理？用你熟悉的味道为你找到它",
     "foodMatchingCta": "探索美食匹配 →",
     "explore": {
       "title": "通过韩国传说探索城市的全新旅程",
@@ -140,7 +140,7 @@
       "diy": "在韩国传统工坊创作属于自己的作品"
     },
     "plannerTitle": "我的定制旅行计划",
-    "plannerSubtitle": "收藏、选择、完成。为你量身打造的旅程",
+    "plannerSubtitle": "没有计划也没关系，让你不留遗憾的旅行",
     "plannerCta": "开始旅行规划 →",
     "community": {
       "title": "MEMORIES",
@@ -155,10 +155,10 @@
     },
     "memories": {
       "slide1Title": "✨ MEMORIES",
-      "slide1Subtitle": "冒险者们记录的传说旅程",
+      "slide1Subtitle": "独自珍藏太可惜的瞬间，在这里分享吧",
       "slide1Cta": "查看 MEMORIES",
       "slide2Title": "🎯 找到专属于你的旅行",
-      "slide2Subtitle": "AI 分析你独有的韩国旅行风格",
+      "slide2Subtitle": "你的喜好就是你的目的地",
       "slide2Cta": "开始风格测试"
     },
     "footerCompany": "关于我们",

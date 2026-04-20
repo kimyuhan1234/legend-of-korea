@@ -125,7 +125,7 @@
     "categoryStyle": "GOODS",
     "categoryCreate": "DIY",
     "foodMatchingTitle": "You already know what you like",
-    "foodMatchingSubtitle": "We'll connect you to the rest",
+    "foodMatchingSubtitle": "Afraid of unfamiliar food? We'll match it to flavors you already love",
     "foodMatchingCta": "Explore Food Matching →",
     "explore": {
       "title": "A new journey exploring cities through Korean legends",
@@ -140,7 +140,7 @@
       "diy": "Create your own masterpiece at Korean traditional workshops"
     },
     "plannerTitle": "My Custom Travel Plan",
-    "plannerSubtitle": "Save, choose, and complete. A trip crafted just for you",
+    "plannerSubtitle": "No plans? No problem. We'll make sure you won't regret a thing",
     "plannerCta": "Start Travel Planner →",
     "community": {
       "title": "MEMORIES",
@@ -155,10 +155,10 @@
     },
     "memories": {
       "slide1Title": "✨ MEMORIES",
-      "slide1Subtitle": "Legendary moments captured by adventurers",
+      "slide1Subtitle": "Moments too precious to keep alone — share them here",
       "slide1Cta": "Explore MEMORIES",
       "slide2Title": "🎯 Find Your Perfect Trip",
-      "slide2Subtitle": "AI-powered analysis of your ideal Korean travel style",
+      "slide2Subtitle": "Your taste is your destination",
       "slide2Cta": "Take the Style Test"
     },
     "footerCompany": "About Us",
