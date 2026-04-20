@@ -125,7 +125,7 @@
     "categoryStyle": "GOODS",
     "categoryCreate": "DIY",
     "foodMatchingTitle": "엄선된 각 지역의 스페셜 요리를",
-    "foodMatchingSubtitle": "당신이 알고 있는 맛으로 연결해 드려요",
+    "foodMatchingSubtitle": "낯선 요리가 두렵다면, 당신이 아는 맛으로 찾아드려요",
     "foodMatchingCta": "푸드매칭 탐색하기 →",
     "explore": {
       "title": "한국의 전설을 따라, 도시를 탐험하는 새로운 여행",
@@ -140,7 +140,7 @@
       "diy": "한국 전통 공방에서 나만의 작품을 만들어보세요"
     },
     "plannerTitle": "나만의 맞춤 여행 플랜",
-    "plannerSubtitle": "담고, 고르고, 완성하세요. 당신만을 위한 맞춤 여행",
+    "plannerSubtitle": "계획 없이 떠나도, 후회 없는 여행을 만들어드려요",
     "plannerCta": "여행 플래너 시작하기 →",
     "community": {
       "title": "MEMORIES",
@@ -152,6 +152,14 @@
       "likes": "좋아요",
       "missionTag": "미션완료",
       "communityTag": "커뮤니티"
+    },
+    "memories": {
+      "slide1Title": "✨ MEMORIES",
+      "slide1Subtitle": "혼자 간직하기엔 아까운 순간들, 여기서 나누세요",
+      "slide1Cta": "MEMORIES 보러 가기",
+      "slide2Title": "🎯 나에게 맞는 여행을 찾아보세요",
+      "slide2Subtitle": "당신의 취향이 곧 여행지입니다",
+      "slide2Cta": "여행 스타일 테스트"
     },
     "footerCompany": "회사 정보",
     "footerTerms": "이용약관",
