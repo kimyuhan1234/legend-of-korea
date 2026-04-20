@@ -1,4 +1,30 @@
 {
+  "pass": {
+    "title": "당신의 여행에 딱 맞는 패스를 선택하세요",
+    "subtitle": "필요한 기능만 골라서, 부담 없이",
+    "sectionPasses": "패스",
+    "orCredits": "또는 크레딧으로 개별 구매",
+    "creditCosts": "기능별 크레딧 소모",
+    "lpExchange": "LP로 크레딧 교환",
+    "currentLp": "현재 LP",
+    "exchange": "교환하기",
+    "exchangeSuccess": "{credits} 크레딧을 받았습니다",
+    "insufficientLp": "LP가 부족합니다 (최소 100 LP)",
+    "owned": "보유 중",
+    "purchase": "구매하기",
+    "purchaseSuccess": "구매가 완료되었습니다",
+    "free": "무료 체험",
+    "freeDesc": "미리보기 + 미션 1개 체험 — 지금 바로 시작!",
+    "tryFree": "체험하러 가기",
+    "addMore": "패스 추가 구매",
+    "myPasses": "나의 패스",
+    "validUntil": "{date}까지",
+    "savings": "₩{amount} 절약",
+    "credits": "크레딧",
+    "feature_ai_curation": "큐레이션",
+    "feature_mission_unlock": "미션 해금",
+    "feature_retro_camera": "레트로 카메라"
+  },
   "seo": {
     "title": "Legend of Korea - 한국 전설을 따라가는 미션 어드벤처",
     "description": "한국의 전설 속 장소를 직접 탐험하며 미션을 해결하는 프리미엄 어드벤처 서비스입니다."

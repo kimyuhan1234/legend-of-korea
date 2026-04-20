@@ -1,4 +1,30 @@
 {
+  "pass": {
+    "title": "選擇最適合你旅行的通行證",
+    "subtitle": "只選你需要的功能，輕鬆無負擔",
+    "sectionPasses": "通行證",
+    "orCredits": "或用積分單獨購買",
+    "creditCosts": "各功能積分消耗",
+    "lpExchange": "用LP兌換積分",
+    "currentLp": "目前LP",
+    "exchange": "兌換",
+    "exchangeSuccess": "獲得了{credits}積分",
+    "insufficientLp": "LP不足（至少100 LP）",
+    "owned": "已擁有",
+    "purchase": "購買",
+    "purchaseSuccess": "購買成功",
+    "free": "免費體驗",
+    "freeDesc": "預覽 + 1個試玩任務 — 立即開始！",
+    "tryFree": "前往體驗",
+    "addMore": "購買更多通行證",
+    "myPasses": "我的通行證",
+    "validUntil": "有效期至{date}",
+    "savings": "節省₩{amount}",
+    "credits": "積分",
+    "feature_ai_curation": "精選",
+    "feature_mission_unlock": "解鎖任務",
+    "feature_retro_camera": "復古相機"
+  },
   "seo": {
     "title": "Legend of Korea - 追隨韓國傳說的任務冒險",
     "description": "探索韓國傳說之地、完成任務的頂級冒險服務。"

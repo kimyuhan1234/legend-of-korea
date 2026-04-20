@@ -1,4 +1,30 @@
 {
+  "pass": {
+    "title": "あなたの旅にぴったりのパスを選ぼう",
+    "subtitle": "必要な機能だけ選んで、気軽に",
+    "sectionPasses": "パス",
+    "orCredits": "またはクレジットで個別購入",
+    "creditCosts": "機能別クレジット消費",
+    "lpExchange": "LPでクレジット交換",
+    "currentLp": "現在のLP",
+    "exchange": "交換する",
+    "exchangeSuccess": "{credits}クレジットを獲得しました",
+    "insufficientLp": "LPが不足しています（最小100 LP）",
+    "owned": "保有中",
+    "purchase": "購入する",
+    "purchaseSuccess": "購入が完了しました",
+    "free": "無料体験",
+    "freeDesc": "プレビュー + ミッション1つ体験 — 今すぐ！",
+    "tryFree": "体験してみる",
+    "addMore": "パスを追加購入",
+    "myPasses": "マイパス",
+    "validUntil": "{date}まで",
+    "savings": "₩{amount}節約",
+    "credits": "クレジット",
+    "feature_ai_curation": "キュレーション",
+    "feature_mission_unlock": "ミッション解除",
+    "feature_retro_camera": "レトロカメラ"
+  },
   "seo": {
     "title": "Legend of Korea - 韓国の伝説を辿るミッションアドベンチャー",
     "description": "韓国의伝説的な場所を探索し、ミッションを解決するプレミアムアドベンチャーサービスです。"

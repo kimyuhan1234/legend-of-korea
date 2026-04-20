@@ -1,4 +1,30 @@
 {
+  "pass": {
+    "title": "Choose the perfect pass for your trip",
+    "subtitle": "Pick only the features you need, without the commitment",
+    "sectionPasses": "Passes",
+    "orCredits": "Or buy individually with credits",
+    "creditCosts": "Credits per feature",
+    "lpExchange": "Exchange LP for credits",
+    "currentLp": "Current LP",
+    "exchange": "Exchange",
+    "exchangeSuccess": "You got {credits} credits",
+    "insufficientLp": "Not enough LP (minimum 100 LP)",
+    "owned": "Owned",
+    "purchase": "Purchase",
+    "purchaseSuccess": "Purchase complete",
+    "free": "Free Trial",
+    "freeDesc": "Preview + 1 trial mission — start now!",
+    "tryFree": "Try it now",
+    "addMore": "Get More Passes",
+    "myPasses": "My Passes",
+    "validUntil": "Valid until {date}",
+    "savings": "Save ₩{amount}",
+    "credits": "credits",
+    "feature_ai_curation": "Curation",
+    "feature_mission_unlock": "Unlock Mission",
+    "feature_retro_camera": "Retro Camera"
+  },
   "seo": {
     "title": "Legend of Korea - Mission Adventure following Korean Legends",
     "description": "A premium adventure service where you explore legendary places in Korea and solve missions."

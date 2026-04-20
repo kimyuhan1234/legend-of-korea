@@ -1,18 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { CREDIT_PACKS, getTotalCredits } from '@/lib/data/credit-packs'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
 // 서버에서만 신뢰되는 고정 패키지 — 클라이언트가 보낸 price 는 무시한다.
 // 배포 시 Toss 실제 결제 호출 붙일 때도 이 매핑이 결제 서버 금액과 일치해야 함.
-const CREDIT_PACKAGES = {
+// 새 팩 (starter/popular/mega) + 레거시 (small/medium/large) 둘 다 지원 — 기존 코드 호환성 유지
+const LEGACY_PACKAGES = {
   small: { credits: 10, price: 1900 },
   medium: { credits: 30, price: 4900 },
   large: { credits: 100, price: 12900 },
 } as const
 
-type PackageKey = keyof typeof CREDIT_PACKAGES
+function lookupPackage(key: string): { credits: number; price: number; packId: string } | null {
+  const newPack = CREDIT_PACKS.find((p) => p.id === key)
+  if (newPack) {
+    return { credits: getTotalCredits(newPack), price: newPack.price, packId: newPack.id }
+  }
+  if (key in LEGACY_PACKAGES) {
+    const legacy = LEGACY_PACKAGES[key as keyof typeof LEGACY_PACKAGES]
+    return { credits: legacy.credits, price: legacy.price, packId: key }
+  }
+  return null
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,16 +36,18 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json().catch(() => null) as { packageKey?: string } | null
-    const packageKey = body?.packageKey as PackageKey | undefined
+    const packageKey = body?.packageKey
 
-    if (!packageKey || !(packageKey in CREDIT_PACKAGES)) {
+    const pkg = packageKey ? lookupPackage(packageKey) : null
+    if (!pkg) {
       return NextResponse.json(
-        { error: 'invalid_package', valid: Object.keys(CREDIT_PACKAGES) },
+        {
+          error: 'invalid_package',
+          valid: [...CREDIT_PACKS.map((p) => p.id), ...Object.keys(LEGACY_PACKAGES)],
+        },
         { status: 400 }
       )
     }
-
-    const pkg = CREDIT_PACKAGES[packageKey]
 
     // 구독 중인 유저만 크레딧 추가 구매 허용
     const { data: sub, error: subErr } = await supabase
@@ -66,6 +80,7 @@ export async function POST(req: NextRequest) {
         credits: pkg.credits,
         price: pkg.price,
         payment_provider: 'manual',
+        pack_id: pkg.packId,
       })
 
     if (purchaseErr) {
@@ -94,7 +109,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      package: packageKey,
+      package: pkg.packId,
       creditsAdded: pkg.credits,
       priceCharged: pkg.price,
       creditsRemaining: newBalance,

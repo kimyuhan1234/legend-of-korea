@@ -2,23 +2,15 @@
 
 import { useTranslations } from 'next-intl'
 import { PlannerPricingCards } from './PlannerPricingCards'
-
-interface Plan {
-  id: string
-  plan_type: 'free' | 'explorer' | 'legend'
-  price: number
-  features: { ko: string[]; ja: string[]; en: string[] }
-  kit_discount_rate: number
-  tier_levelup: boolean
-}
+import type { PassId } from '@/lib/data/passes'
 
 interface PlannerSubscriptionWallProps {
-  plans: Plan[]
   locale: string
-  onSubscribe: (planId: string) => Promise<void>
+  ownedPassIds: PassId[]
+  onSubscribe: (passId: string) => Promise<void>
 }
 
-export function PlannerSubscriptionWall({ plans, locale, onSubscribe }: PlannerSubscriptionWallProps) {
+export function PlannerSubscriptionWall({ locale, ownedPassIds, onSubscribe }: PlannerSubscriptionWallProps) {
   const t = useTranslations('planner')
 
   return (
@@ -30,7 +22,7 @@ export function PlannerSubscriptionWall({ plans, locale, onSubscribe }: PlannerS
         <p className="text-sm text-[#6B7280]">{t('subscription.subtitle')}</p>
       </div>
 
-      <PlannerPricingCards plans={plans} locale={locale} onSubscribe={onSubscribe} />
+      <PlannerPricingCards locale={locale} ownedPassIds={ownedPassIds} onSubscribe={onSubscribe} />
     </section>
   )
 }

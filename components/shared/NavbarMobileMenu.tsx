@@ -19,6 +19,7 @@ interface NavbarMobileMenuProps {
     logout: string
     loginRequired: string
     loginBtn: string
+    pass?: string
   }
 }
 
@@ -88,6 +89,10 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
             ))}
 
             <div className="h-px bg-mist my-2 mx-4" />
+
+            <Link href={`/${locale}/pass`} onClick={() => setOpen(false)} className="flex items-center px-4 py-3.5 rounded-xl text-mint-deep font-semibold hover:bg-cloud transition-colors">
+              🎫 {t.pass ?? 'Pass'}
+            </Link>
 
             {user && (
               <>

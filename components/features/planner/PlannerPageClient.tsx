@@ -12,6 +12,7 @@ import { PlannerFinalPlan } from './PlannerFinalPlan'
 import { PlannerTripSetup, type TripStyle } from './PlannerTripSetup'
 import { PlannerOotd } from './PlannerOotd'
 import { PlannerCreditsDisplay } from './PlannerCreditsDisplay'
+import type { PassId } from '@/lib/data/passes'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -43,15 +44,6 @@ interface SubscriptionStatus {
   creditsResetAt: string | null
 }
 
-interface SubscriptionPlan {
-  id: string
-  plan_type: 'free' | 'explorer' | 'legend'
-  price: number
-  features: { ko: string[]; ja: string[]; en: string[] }
-  kit_discount_rate: number
-  tier_levelup: boolean
-}
-
 interface PlannerPageClientProps {
   locale: string
 }
@@ -63,7 +55,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   const [totalItems, setTotalItems] = useState(0)
   const [loading, setLoading] = useState(true)
   const [isSubscribed, setIsSubscribed] = useState(false)
-  const [subscriptionPlans, setSubscriptionPlans] = useState<SubscriptionPlan[]>([])
+  const [ownedPassIds, setOwnedPassIds] = useState<PassId[]>([])
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const [subStatus, setSubStatus] = useState<SubscriptionStatus>({
     subscribed: false,
@@ -73,22 +65,22 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   })
 
   // 구독/크레딧 상태 새로고침 — 크레딧 차감 이후 호출
+  // 플래너는 Move(traffic) 피처가 필요 — Move 또는 All in One 보유 시 "구독됨"
   const refreshSubscriptionStatus = async () => {
     try {
-      const res = await fetch('/api/subscription/status', { cache: 'no-store' })
+      const res = await fetch('/api/passes/status', { cache: 'no-store' })
       if (!res.ok) return
       const data = await res.json()
-      const sub = data.subscription
-      const plan = Array.isArray(sub?.subscription_plans)
-        ? sub.subscription_plans[0]
-        : sub?.subscription_plans
+      const owned: PassId[] = Array.isArray(data.passes) ? data.passes : []
+      const hasTraffic = data.hasAllInOne || owned.includes('move')
+      setOwnedPassIds(owned)
+      setIsSubscribed(!!hasTraffic)
       setSubStatus({
-        subscribed: !!data.subscribed,
-        creditsRemaining: sub?.credits_remaining ?? 0,
-        monthlyCredits: plan?.monthly_credits ?? 0,
-        creditsResetAt: sub?.credits_reset_at ?? null,
+        subscribed: !!hasTraffic,
+        creditsRemaining: data.creditsRemaining ?? 0,
+        monthlyCredits: data.hasAllInOne ? 100 : 0,
+        creditsResetAt: null,
       })
-      setIsSubscribed(!!data.subscribed)
     } catch {
       // ignore
     }
@@ -138,15 +130,15 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
     setTotalItems(d.totalItems || 0)
   }
 
-  // 초기 데이터 로드 — 3개 API 동시 호출
+  // 초기 데이터 로드 — 2개 API 동시 호출
+  // 구독 플랜(패스) 데이터는 PASSES 정적 데이터로 이동했으므로 API 호출 불필요
   useEffect(() => {
     let mounted = true
     async function load() {
       try {
-        const [itemsRes, statusRes, subPlansRes] = await Promise.all([
+        const [itemsRes, passStatusRes] = await Promise.all([
           fetch('/api/planner/items'),
-          fetch('/api/subscription/status'),
-          fetch('/api/subscription/plans'),
+          fetch('/api/passes/status'),
         ])
 
         if (mounted && itemsRes.ok) {
@@ -155,24 +147,18 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
           setTotalItems(d.totalItems || 0)
         }
 
-        if (mounted && statusRes.ok) {
-          const s = await statusRes.json()
-          const sub = s.subscription
-          const plan = Array.isArray(sub?.subscription_plans)
-            ? sub.subscription_plans[0]
-            : sub?.subscription_plans
-          setIsSubscribed(!!s.subscribed)
+        if (mounted && passStatusRes.ok) {
+          const s = await passStatusRes.json()
+          const owned: PassId[] = Array.isArray(s.passes) ? s.passes : []
+          const hasTraffic = s.hasAllInOne || owned.includes('move')
+          setOwnedPassIds(owned)
+          setIsSubscribed(!!hasTraffic)
           setSubStatus({
-            subscribed: !!s.subscribed,
-            creditsRemaining: sub?.credits_remaining ?? 0,
-            monthlyCredits: plan?.monthly_credits ?? 0,
-            creditsResetAt: sub?.credits_reset_at ?? null,
+            subscribed: !!hasTraffic,
+            creditsRemaining: s.creditsRemaining ?? 0,
+            monthlyCredits: s.hasAllInOne ? 100 : 0,
+            creditsResetAt: null,
           })
-        }
-
-        if (mounted && subPlansRes.ok) {
-          const sp = await subPlansRes.json()
-          setSubscriptionPlans(sp.plans || [])
         }
       } finally {
         if (mounted) setLoading(false)
@@ -217,27 +203,19 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
     }
   }
 
-  const handleSubscribe = async (planId: string) => {
+  const handleSubscribe = async (passId: string) => {
     try {
-      const res = await fetch('/api/subscription/create', {
+      const res = await fetch('/api/passes/purchase', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ planId, paymentProvider: 'manual' }),
+        body: JSON.stringify({ passId }),
       })
 
       if (!res.ok) return
 
-      const data = await res.json()
-      setIsSubscribed(true)
-
-      if (data.tierUp?.leveledUp) {
-        setSuccessMessage(t('subscription.congratsTierUp'))
-      } else if (data.tierUp?.bonusLp) {
-        setSuccessMessage(t('subscription.bonus500'))
-      } else {
-        setSuccessMessage(t('subscription.success'))
-      }
-
+      // 구매 성공 → 상태 재조회 (traffic 해제 여부 확인)
+      await refreshSubscriptionStatus()
+      setSuccessMessage(t('subscription.success'))
       setTimeout(() => setSuccessMessage(null), 4000)
     } catch {
       // ignore
@@ -362,10 +340,10 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
           onResetAll={handleResetAll}
         />
 
-        {!isSubscribed && subscriptionPlans.length > 0 && (
+        {!isSubscribed && (
           <PlannerSubscriptionWall
-            plans={subscriptionPlans}
             locale={locale}
+            ownedPassIds={ownedPassIds}
             onSubscribe={handleSubscribe}
           />
         )}

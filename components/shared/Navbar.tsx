@@ -50,17 +50,17 @@ const TEXT = {
   ko: {
     signup: "회원가입", login: "로그인", mypage: "마이페이지", logout: "로그아웃", lp: "LP",
     faq: "자주 묻는 질문", memories: "추억 남기기", points: "전설 상점", foodMatching: "음식 매칭",
-    loginRequired: "로그인이 필요합니다", loginBtn: "로그인하기",
+    loginRequired: "로그인이 필요합니다", loginBtn: "로그인하기", pass: "패스",
   },
   ja: {
     signup: "新規登録", login: "ログイン", mypage: "マイページ", logout: "ログアウト", lp: "LP",
     faq: "よくある質問", memories: "記録館", points: "ポイント", foodMatching: "グルメマッチング",
-    loginRequired: "ログインが必要です", loginBtn: "ログイン",
+    loginRequired: "ログインが必要です", loginBtn: "ログイン", pass: "パス",
   },
   en: {
     signup: "Sign Up", login: "Sign In", mypage: "My Page", logout: "Sign Out", lp: "LP",
     faq: "FAQ", memories: "Gallery", points: "Points", foodMatching: "Food Matching",
-    loginRequired: "Login required", loginBtn: "Log In",
+    loginRequired: "Login required", loginBtn: "Log In", pass: "Pass",
   },
 }
 
@@ -124,6 +124,14 @@ export async function Navbar({ locale }: NavbarProps) {
           )}
           {user && profile ? (
             <div className="hidden md:flex items-center gap-3">
+              {/* 패스 링크 — LP 뱃지 왼쪽 */}
+              <Link
+                href={`/${locale}/pass`}
+                className="flex items-center gap-1 text-xs font-bold text-mint-deep hover:underline"
+              >
+                🎫 {t.pass}
+              </Link>
+
               {/* LP 뱃지 */}
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1F2937]/5 border border-ink/10">
                 <span className="text-xs text-blossom-deep">⚡</span>

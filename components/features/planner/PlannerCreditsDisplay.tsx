@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { CREDIT_PACKS, getTotalCredits, type CreditPackId } from '@/lib/data/credit-packs'
 
 interface PlannerCreditsDisplayProps {
   credits: number
@@ -11,12 +12,12 @@ interface PlannerCreditsDisplayProps {
   onCreditsChanged: () => void
 }
 
-// 서버 고정 패키지와 동일 — 클라이언트 표시용
-const PACKAGES: Array<{ key: 'small' | 'medium' | 'large'; credits: number; price: number }> = [
-  { key: 'small', credits: 10, price: 1900 },
-  { key: 'medium', credits: 30, price: 4900 },
-  { key: 'large', credits: 100, price: 12900 },
-]
+type I18nKey = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
+
+function pickLabel(obj: Record<string, string>, locale: string): string {
+  const k = locale as I18nKey
+  return obj[k] || obj.en || obj.ko || ''
+}
 
 function formatResetDate(iso: string | null, locale: string): string {
   if (!iso) return ''
@@ -44,7 +45,7 @@ export function PlannerCreditsDisplay({
   const low = monthlyCredits > 0 ? credits < Math.max(1, monthlyCredits * 0.2) : credits < 5
   const resetLabel = formatResetDate(resetAt, locale)
 
-  const handlePurchase = async (packageKey: 'small' | 'medium' | 'large') => {
+  const handlePurchase = async (packageKey: CreditPackId) => {
     setError(null)
     setPurchasingKey(packageKey)
     try {
@@ -131,31 +132,33 @@ export function PlannerCreditsDisplay({
             </div>
 
             <div className="space-y-3 mb-4">
-              {PACKAGES.map((pkg) => {
-                const isPurchasing = purchasingKey === pkg.key
+              {CREDIT_PACKS.map((pkg) => {
+                const isPurchasing = purchasingKey === pkg.id
+                const totalCredits = getTotalCredits(pkg)
                 return (
                   <button
-                    key={pkg.key}
+                    key={pkg.id}
                     type="button"
                     disabled={!!purchasingKey}
-                    onClick={() => handlePurchase(pkg.key)}
+                    onClick={() => handlePurchase(pkg.id)}
                     className="w-full flex items-center justify-between gap-3 px-4 py-4 rounded-2xl border-2 border-mist bg-white hover:border-mint-deep hover:bg-snow transition-colors disabled:opacity-50 disabled:cursor-wait"
                   >
                     <div className="text-left">
                       <p className="text-base font-black text-[#111]">
-                        {pkg.credits} {t('credits.unit')}
+                        {pickLabel(pkg.label, locale)}
                       </p>
                       <p className="text-[11px] text-[#6B7280]">
-                        {pkg.credits >= 30 ? t('credits.bestValue') : ''}
+                        {pkg.badge ? pickLabel(pkg.badge, locale) : ''}
                       </p>
                     </div>
                     <div className="text-right">
                       <p className="text-sm font-black text-mint-deep">
                         ₩{pkg.price.toLocaleString()}
                       </p>
-                      {isPurchasing && (
-                        <p className="text-[10px] text-stone">{t('credits.purchasing')}</p>
-                      )}
+                      <p className="text-[10px] text-stone">
+                        {totalCredits} {t('credits.unit')}
+                        {isPurchasing && ` · ${t('credits.purchasing')}`}
+                      </p>
                     </div>
                   </button>
                 )
