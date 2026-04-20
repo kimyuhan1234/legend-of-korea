@@ -8,10 +8,10 @@ interface Props {
 }
 
 const PASS_BUTTONS = [
-  { id: 'move', name: 'Move', icon: '🚗', price: '₩6,900', special: false },
-  { id: 'live', name: 'Live', icon: '🍜', price: '₩6,900', special: false },
-  { id: 'story', name: 'Story', icon: '📖', price: '₩9,900', special: false },
-  { id: 'allinone', name: 'All in One', icon: '👑', price: '₩19,900', special: true },
+  { id: 'move', name: 'Move', icon: '🚗', price: '₩6,900', href: '/pass/move', special: false },
+  { id: 'live', name: 'Live', icon: '🍜', price: '₩6,900', href: '/pass/live', special: false },
+  { id: 'story', name: 'Story', icon: '📖', price: '₩9,900', href: '/pass/story', special: false },
+  { id: 'allinone', name: 'All in One', icon: '👑', price: '₩19,900', href: '/pass', special: true },
 ]
 
 const HERO_PASS_LABEL: Record<string, string> = {
@@ -49,7 +49,7 @@ export function HeroSection({ locale }: Props) {
         {PASS_BUTTONS.map((pass) => (
           <Link
             key={pass.id}
-            href={`/${locale}/pass`}
+            href={`/${locale}${pass.href}`}
             className={[
               'flex items-center gap-3 px-5 py-3.5 rounded-2xl transition-all backdrop-blur-md border',
               pass.special
@@ -77,7 +77,7 @@ export function HeroSection({ locale }: Props) {
           {PASS_BUTTONS.map((pass) => (
             <Link
               key={pass.id}
-              href={`/${locale}/pass`}
+              href={`/${locale}${pass.href}`}
               className={[
                 'flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all backdrop-blur-md border',
                 pass.special
