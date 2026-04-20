@@ -5,6 +5,17 @@ type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transpor
 
 const VALID_TYPES: ItemType[] = ['food', 'stay', 'diy', 'quest', 'ootd', 'goods', 'transport', 'surprise']
 
+// 아이템 → 필요 패스 매핑 (클라이언트와 동기화)
+// surprise/goods 는 누락(패스 불필요)
+const ITEM_PASS_MAP: Partial<Record<ItemType, string>> = {
+  food: 'live',
+  stay: 'live',
+  ootd: 'live',
+  quest: 'story',
+  diy: 'story',
+  transport: 'move',
+}
+
 export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient()
@@ -23,6 +34,33 @@ export async function POST(req: NextRequest) {
 
     if (!VALID_TYPES.includes(itemType)) {
       return NextResponse.json({ error: '유효하지 않은 itemType' }, { status: 400 })
+    }
+
+    // 패스 게이팅 — 특정 아이템은 해당 패스(또는 All in One) 보유 필수
+    const requiredPassType = ITEM_PASS_MAP[itemType as ItemType]
+    if (requiredPassType) {
+      const { data: subs } = await supabase
+        .from('user_subscriptions')
+        .select('subscription_plans(plan_type)')
+        .eq('user_id', user.id)
+        .eq('status', 'active')
+
+      const activePlanTypes = (subs ?? [])
+        .map((s) => {
+          const plan = s.subscription_plans as unknown as { plan_type: string } | { plan_type: string }[] | null
+          return Array.isArray(plan) ? plan[0]?.plan_type : plan?.plan_type
+        })
+        .filter((t): t is string => Boolean(t))
+
+      const hasAllInOne = activePlanTypes.includes('allinone')
+      const hasRequired = hasAllInOne || activePlanTypes.includes(requiredPassType)
+
+      if (!hasRequired) {
+        return NextResponse.json(
+          { error: 'pass_required', requiredPass: requiredPassType },
+          { status: 403 }
+        )
+      }
     }
 
     // 1. 해당 유저의 draft 플랜 조회 — 도시와 무관하게 유저당 1개만 유지.
