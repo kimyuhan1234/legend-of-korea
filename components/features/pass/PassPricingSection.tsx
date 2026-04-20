@@ -167,12 +167,12 @@ export function PassPricingSection({ locale }: Props) {
         <p className="text-sm text-slate-500">{t('subtitle')}</p>
       </div>
 
-      {/* 패스 4개 */}
+      {/* 패스 4개 — 팜플렛 티켓 세로 스택 */}
       <div>
         <h2 className="text-xs font-black text-mint-deep uppercase tracking-widest mb-4 text-center">
           {t('sectionPasses')}
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="space-y-4 max-w-3xl mx-auto">
           {PASSES.map((pass) => (
             <PassCard
               key={pass.id}
