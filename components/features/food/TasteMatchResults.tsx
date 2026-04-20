@@ -4,6 +4,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
+import { PassBlurOverlay } from '@/components/shared/PassBlurOverlay'
+import { usePassStatus } from '@/hooks/usePassStatus'
 
 interface TopFood {
   foodId: string
@@ -38,6 +40,8 @@ function getL(field: { ko: string; en: string; ja: string }, locale: string): st
 
 export function TasteMatchResults({ topFoods, surprises, locale, isVisible }: TasteMatchResultsProps) {
   const t = useTranslations('dupe')
+  const { hasPass } = usePassStatus()
+  const unlocked = hasPass('live')
 
   if (!isVisible || topFoods.length === 0) return null
 
@@ -89,9 +93,10 @@ export function TasteMatchResults({ topFoods, surprises, locale, isVisible }: Ta
         </div>
       </div>
 
-      {/* 2~3위 — 2열 그리드 */}
+      {/* 2~3위 — 2열 그리드 (live 패스 필요) */}
       {rest.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <PassBlurOverlay requiredPass="live" blur={!unlocked}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {rest.map((food, i) => (
             <div key={food.foodId} className="bg-white rounded-xl shadow-sm border border-mist p-4">
               <div className="flex items-center gap-3 mb-3">
@@ -126,11 +131,13 @@ export function TasteMatchResults({ topFoods, surprises, locale, isVisible }: Ta
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        </PassBlurOverlay>
       )}
 
-      {/* 서프라이즈 플래그 쿠킹 */}
+      {/* 서프라이즈 플래그 쿠킹 (live 패스 필요) */}
       {surprises.length > 0 && (
+        <PassBlurOverlay requiredPass="live" blur={!unlocked}>
         <div>
           <div className="border-t border-mist pt-6 mb-4">
             <h3 className="text-lg font-black text-ink text-center mb-1">{t('results.surprise.title')}</h3>
@@ -159,6 +166,7 @@ export function TasteMatchResults({ topFoods, surprises, locale, isVisible }: Ta
             ))}
           </div>
         </div>
+        </PassBlurOverlay>
       )}
 
       <style jsx>{`

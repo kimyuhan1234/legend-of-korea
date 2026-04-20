@@ -7,6 +7,8 @@ import Image from 'next/image'
 import { RefreshCw, Sparkles, ChevronDown, ChevronUp, Quote, BarChart3 } from 'lucide-react'
 import { SpotCard } from './SpotCard'
 import { RadarChart } from './RadarChart'
+import { PassBlurOverlay } from '@/components/shared/PassBlurOverlay'
+import { usePassStatus } from '@/hooks/usePassStatus'
 import { scoreSpots } from '@/lib/curation/scoring'
 import { CITY_STORIES, generateReasons, getTopMatchedTags, getTagLabel } from '@/lib/curation/city-stories'
 import { preferenceToRadar, cityToRadar, type RadarLabels } from '@/lib/curation/radar'
@@ -273,6 +275,8 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
   const top2 = cityScores[1]
 
   const [showSecond, setShowSecond] = useState(false)
+  const { hasPass } = usePassStatus()
+  const unlocked = hasPass('move')
 
   if (!top1) {
     return (
@@ -305,8 +309,9 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
         radarLabels={radarLabels}
       />
 
-      {/* TOP 2 — 아코디언 */}
+      {/* TOP 2 — 아코디언 (move 패스 필요) */}
       {top2 && (
+        <PassBlurOverlay requiredPass="move" blur={!unlocked}>
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-slate-200" />
@@ -365,6 +370,7 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
             />
           )}
         </div>
+        </PassBlurOverlay>
       )}
 
       {/* 다시 테스트 */}
