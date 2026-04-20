@@ -14,7 +14,17 @@ const PASS_BUTTONS = [
   { id: 'allinone', name: 'All in One', icon: '👑', price: '₩19,900', special: true },
 ]
 
-export function HeroSection({ cta, locale }: Props) {
+const HERO_PASS_LABEL: Record<string, string> = {
+  ko: '필요한 기능만 골라서, 부담 없이',
+  en: 'Pick only what you need, hassle-free',
+  ja: '必要な機能だけ選んで、気軽に',
+  'zh-CN': '只选你需要的，轻松无负担',
+  'zh-TW': '只選你需要的，輕鬆無負擔',
+}
+
+// cta 는 하위 호환 유지를 위해 prop 시그니처에 남기지만 현재는 렌더링하지 않음
+export function HeroSection({ locale }: Props) {
+  const heroLabel = HERO_PASS_LABEL[locale] ?? HERO_PASS_LABEL.en
   return (
     <section className="relative w-full h-screen overflow-hidden bg-[#1F2937]">
       {/* 배경 영상 */}
@@ -33,6 +43,9 @@ export function HeroSection({ cta, locale }: Props) {
 
       {/* 데스크탑: 오른쪽 세로 패스 버튼 */}
       <div className="hidden md:flex absolute right-8 lg:right-14 top-1/2 -translate-y-1/2 z-10 flex-col gap-3">
+        <p className="text-white/80 text-xs font-bold text-center mb-1 drop-shadow-sm">
+          {heroLabel}
+        </p>
         {PASS_BUTTONS.map((pass) => (
           <Link
             key={pass.id}
@@ -57,6 +70,9 @@ export function HeroSection({ cta, locale }: Props) {
 
       {/* 모바일: 하단 2x2 패스 버튼 */}
       <div className="md:hidden absolute bottom-24 left-1/2 -translate-x-1/2 z-10 w-full max-w-sm px-4">
+        <p className="text-white/80 text-xs font-bold text-center mb-2 drop-shadow-sm">
+          {heroLabel}
+        </p>
         <div className="grid grid-cols-2 gap-2">
           {PASS_BUTTONS.map((pass) => (
             <Link
@@ -81,17 +97,6 @@ export function HeroSection({ cta, locale }: Props) {
         </div>
       </div>
 
-      {/* 자세히 알아보기 — 카테고리 섹션으로 스크롤 (기존 유지) */}
-      <button
-        onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors animate-bounce z-10"
-        aria-label={cta}
-      >
-        <span className="text-sm font-medium">{cta}</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 5v14M5 12l7 7 7-7" />
-        </svg>
-      </button>
     </section>
   )
 }
