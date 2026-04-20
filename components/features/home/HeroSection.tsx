@@ -1,27 +1,27 @@
 'use client'
 
-import Image from 'next/image'
-
 interface HeroSectionProps {
   cta: string
 }
 
 export function HeroSection({ cta }: HeroSectionProps) {
   return (
-    <section className="relative h-screen overflow-hidden bg-[#1F2937]">
-      <Image
-        src="/images/dokkaebi-hero.png"
-        alt="Legend of Korea"
-        fill
-        sizes="100vw"
-        quality={90}
-        className="object-cover"
-        priority
+    <section className="relative w-full h-screen overflow-hidden bg-[#1F2937]">
+      {/* 배경 영상 */}
+      <video
+        src="/videos/hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/images/dokkaebi-hero.png"
+        className="absolute inset-0 w-full h-full object-cover"
       />
+
       {/* 자세히 알아보기 — 카테고리 섹션으로 스크롤 */}
       <button
         onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate hover:text-white transition-colors animate-bounce"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors animate-bounce z-10"
         aria-label={cta}
       >
         <span className="text-sm font-medium">{cta}</span>
