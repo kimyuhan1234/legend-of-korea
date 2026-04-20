@@ -1,21 +1,15 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { PASSES, ALLINONE_SAVINGS } from '@/lib/data/passes'
+import { CREDIT_PACKS, CREDIT_COSTS, LP_TO_CREDIT_RATE } from '@/lib/data/credit-packs'
 
+// 정적 패스 메타데이터 반환 — DB의 UUID 대신 plan_type(id) 기반
+// 이유: 5개 로케일 텍스트는 코드에 두는 편이 번역·검수 흐름이 간단함
 export async function GET() {
-  try {
-    const supabase = await createClient()
-    const { data, error } = await supabase
-      .from('subscription_plans')
-      .select('id, plan_type, name, price, features, kit_discount_rate, tier_levelup')
-      .eq('is_active', true)
-      .order('price', { ascending: true })
-
-    if (error) {
-      return NextResponse.json({ error: '플랜 조회 실패' }, { status: 500 })
-    }
-
-    return NextResponse.json({ plans: data ?? [] })
-  } catch {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
-  }
+  return NextResponse.json({
+    passes: PASSES,
+    allinoneSavings: ALLINONE_SAVINGS,
+    creditPacks: CREDIT_PACKS,
+    creditCosts: CREDIT_COSTS,
+    lpExchangeRate: LP_TO_CREDIT_RATE,
+  })
 }

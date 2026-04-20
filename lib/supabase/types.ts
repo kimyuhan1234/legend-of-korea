@@ -797,6 +797,7 @@ export interface Database {
           price: number
           payment_provider: string | null
           payment_id: string | null
+          pack_id: string | null
           created_at: string
         }
         Insert: {
@@ -806,6 +807,7 @@ export interface Database {
           price: number
           payment_provider?: string | null
           payment_id?: string | null
+          pack_id?: string | null
           created_at?: string
         }
         Update: {
@@ -813,10 +815,39 @@ export interface Database {
           price?: number
           payment_provider?: string | null
           payment_id?: string | null
+          pack_id?: string | null
         }
         Relationships: [
           {
             foreignKeyName: "credit_purchases_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      lp_exchanges: {
+        Row: {
+          id: string
+          user_id: string
+          lp_spent: number
+          credits_gained: number
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          lp_spent: number
+          credits_gained: number
+          created_at?: string
+        }
+        Update: {
+          lp_spent?: number
+          credits_gained?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lp_exchanges_user_id_fkey"
             columns: ["user_id"]
             referencedRelation: "users"
             referencedColumns: ["id"]
