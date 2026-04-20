@@ -153,6 +153,14 @@
       "missionTag": "ミッション完了",
       "communityTag": "コミュニティ"
     },
+    "memories": {
+      "slide1Title": "✨ MEMORIES",
+      "slide1Subtitle": "冒険者たちが残した伝説の記録",
+      "slide1Cta": "MEMORIESを見る",
+      "slide2Title": "🎯 あなたにぴったりの旅を見つけよう",
+      "slide2Subtitle": "AIが分析するあなただけの韓国旅スタイル",
+      "slide2Cta": "スタイルテストへ"
+    },
     "footerCompany": "会社情報",
     "footerTerms": "利用規約",
     "footerPrivacy": "プライバシーポリシー",

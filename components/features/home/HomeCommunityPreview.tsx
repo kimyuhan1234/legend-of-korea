@@ -1,267 +1,161 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Heart, ArrowRight, Sparkles, Trophy, MessageSquare } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
+import { ArrowRight } from 'lucide-react'
 
 interface Props {
   locale: string
 }
 
-type FeedItem =
-  | {
-      kind: 'post'
-      id: string
-      text: string | null
-      photoUrl: string | null
-      likesCount: number
-      createdAt: string
-      userNickname: string
-      userAvatar: string | null
-    }
-  | {
-      kind: 'mission'
-      id: string
-      photoUrl: string
-      lpEarned: number
-      createdAt: string
-      userNickname: string
-      userAvatar: string | null
-      missionTitle: Record<string, string>
-      courseTitle: Record<string, string>
-    }
-
-function getI18n(field: Record<string, string> | undefined, locale: string): string {
-  if (!field) return ''
-  return field[locale] || field.en || field.ko || ''
+interface Slide {
+  id: 'memories' | 'spot'
+  image: string
+  titleKey: string
+  subtitleKey: string
+  ctaKey: string
+  href: (locale: string) => string
 }
 
+const SLIDES: Slide[] = [
+  {
+    id: 'memories',
+    image: '/images/home/memories-slide.png',
+    titleKey: 'slide1Title',
+    subtitleKey: 'slide1Subtitle',
+    ctaKey: 'slide1Cta',
+    href: (locale) => `/${locale}/memories`,
+  },
+  {
+    id: 'spot',
+    image: '/images/home/spot-slide.png',
+    titleKey: 'slide2Title',
+    subtitleKey: 'slide2Subtitle',
+    ctaKey: 'slide2Cta',
+    href: (locale) => `/${locale}/sights`,
+  },
+]
+
+const AUTO_INTERVAL_MS = 5000
+
 export function HomeCommunityPreview({ locale }: Props) {
-  const t = useTranslations('home.community')
-  const [items, setItems] = useState<FeedItem[]>([])
-  const [loading, setLoading] = useState(true)
+  const t = useTranslations('home.memories')
+  const [active, setActive] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const touchStartX = useRef(0)
+  const count = SLIDES.length
 
+  const next = useCallback(() => setActive(i => (i + 1) % count), [count])
+  const prev = useCallback(() => setActive(i => (i - 1 + count) % count), [count])
+
+  // 자동 슬라이드
   useEffect(() => {
-    const supabase = createClient()
+    if (paused || count <= 1) return
+    const timer = setInterval(next, AUTO_INTERVAL_MS)
+    return () => clearInterval(timer)
+  }, [paused, next, count])
 
-    const postsPromise = supabase
-      .from('community_posts')
-      .select('id, text, photos, likes_count, created_at, user_id, users(nickname, avatar_url)')
-      .eq('is_hidden', false)
-      .order('created_at', { ascending: false })
-      .limit(6)
-
-    const missionsPromise = supabase
-      .from('mission_progress')
-      .select('id, photo_url, completed_at, lp_earned, user_id, missions(title, courses(title)), users(nickname, avatar_url)')
-      .not('photo_url', 'is', null)
-      .eq('status', 'completed')
-      .order('completed_at', { ascending: false })
-      .limit(6)
-
-    Promise.all([postsPromise, missionsPromise])
-      .then(([postsRes, missionsRes]) => {
-        const postItems: FeedItem[] = (postsRes.data || []).map((p: {
-          id: string
-          text: string | null
-          photos: string[] | null
-          likes_count: number | null
-          created_at: string
-          users?: { nickname?: string; avatar_url?: string | null } | null
-        }) => ({
-          kind: 'post',
-          id: p.id,
-          text: p.text,
-          photoUrl: p.photos?.[0] ?? null,
-          likesCount: p.likes_count || 0,
-          createdAt: p.created_at,
-          userNickname: p.users?.nickname || 'Anonymous',
-          userAvatar: p.users?.avatar_url || null,
-        }))
-
-        const missionItems: FeedItem[] = (missionsRes.data || [])
-          .filter((m: { photo_url: string | null }) => !!m.photo_url)
-          .map((m: {
-            id: string
-            photo_url: string | null
-            completed_at: string | null
-            lp_earned: number | null
-            users?: { nickname?: string; avatar_url?: string | null } | null
-            missions?: { title?: Record<string, string>; courses?: { title?: Record<string, string> } } | null
-          }) => ({
-            kind: 'mission',
-            id: m.id,
-            photoUrl: m.photo_url as string,
-            lpEarned: m.lp_earned || 0,
-            createdAt: m.completed_at || '',
-            userNickname: m.users?.nickname || 'Anonymous',
-            userAvatar: m.users?.avatar_url || null,
-            missionTitle: m.missions?.title ?? {},
-            courseTitle: m.missions?.courses?.title ?? {},
-          }))
-
-        const merged = [...postItems, ...missionItems]
-          .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-          .slice(0, 6)
-
-        setItems(merged)
-        setLoading(false)
-      })
-      .catch(() => {
-        setLoading(false)
-      })
-  }, [])
-
-  const getHref = (item: FeedItem) =>
-    item.kind === 'mission' ? `/${locale}/memories` : `/${locale}/community`
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const dx = e.changedTouches[0].clientX - touchStartX.current
+    if (Math.abs(dx) > 50) {
+      if (dx < 0) { next() } else { prev() }
+    }
+  }
 
   return (
-    <section className="bg-white py-16 md:py-24">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* 헤더 */}
-        <div className="flex items-start justify-between mb-8 gap-4">
-          <div>
-            <h2 className="flex items-center gap-2 text-2xl md:text-3xl font-black text-slate-800 tracking-tight mb-2">
-              <Sparkles className="w-6 h-6 text-mint-deep" />
-              {t('title')}
-            </h2>
-            <p className="text-sm md:text-base text-slate-500 font-bold">{t('subtitle')}</p>
-          </div>
-          <Link
-            href={`/${locale}/memories`}
-            className="flex items-center gap-1 text-sm font-black text-mint-deep hover:text-sky transition-colors shrink-0 mt-1"
+    <section
+      className="bg-white overflow-hidden relative"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div className="max-w-6xl mx-auto px-3 md:px-6 py-12 md:py-20 relative">
+        {/* 슬라이드 영역 */}
+        <div className="relative overflow-hidden">
+          <div
+            className="flex transition-transform duration-[600ms] ease-in-out"
+            style={{ transform: `translateX(-${active * 100}%)` }}
           >
-            {t('more')} <ArrowRight className="w-4 h-4" />
-          </Link>
+            {SLIDES.map(slide => (
+              <div key={slide.id} className="w-full shrink-0">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+                  {/* 좌: 텍스트 */}
+                  <div className="md:w-[320px] lg:w-[360px] shrink-0 text-center md:text-left order-2 md:order-1">
+                    <h2 className="text-2xl md:text-3xl font-black text-mint-deep leading-tight mb-3">
+                      {t(slide.titleKey)}
+                    </h2>
+                    <p className="text-base md:text-lg font-medium text-ink mb-8 leading-relaxed">
+                      {t(slide.subtitleKey)}
+                    </p>
+                    <Link
+                      href={slide.href(locale)}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-mint-deep text-white font-bold hover:bg-[#7BC8BC] transition-colors"
+                    >
+                      {t(slide.ctaKey)}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+
+                  {/* 우: 이미지 */}
+                  <div className="flex-1 relative aspect-[4/3] overflow-hidden rounded-2xl group order-1 md:order-2 w-full">
+                    <Image
+                      src={slide.image}
+                      alt={t(slide.titleKey)}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 60vw"
+                      quality={90}
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* 로딩 스켈레톤 */}
-        {loading && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[0, 1, 2].map(i => (
-              <div key={i} className="rounded-2xl bg-slate-50 aspect-[4/5] animate-pulse" />
-            ))}
-          </div>
-        )}
-
-        {/* 빈 상태 */}
-        {!loading && items.length === 0 && (
-          <div className="text-center py-16 space-y-2">
-            <div className="text-5xl mb-4">✨</div>
-            <p className="text-sm font-bold text-slate-400">{t('empty')}</p>
-            <p className="text-xs text-slate-300">{t('beFirst')}</p>
-          </div>
-        )}
-
-        {/* 통합 피드 그리드 */}
-        {!loading && items.length > 0 && (
-          <div className="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory -mx-6 px-6 md:mx-0 md:px-0">
-            {items.map((item) => (
-              <Link
-                key={`${item.kind}-${item.id}`}
-                href={getHref(item)}
-                className="group shrink-0 w-[280px] md:w-auto snap-start bg-white border border-slate-100 rounded-2xl overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all"
-              >
-                {/* 이미지 */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-mint/30 to-blossom/30">
-                  {item.photoUrl ? (
-                    <Image
-                      src={item.photoUrl}
-                      alt=""
-                      fill
-                      sizes="(max-width: 768px) 280px, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform"
-                      unoptimized
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-5xl">
-                      📖
-                    </div>
-                  )}
-
-                  {/* 타입 배지 */}
-                  <div className="absolute top-3 left-3">
-                    {item.kind === 'mission' ? (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-mint-deep/90 text-white text-[10px] font-black backdrop-blur-sm">
-                        <Trophy className="w-3 h-3" />
-                        {t('missionTag')}
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sky/90 text-white text-[10px] font-black backdrop-blur-sm">
-                        <MessageSquare className="w-3 h-3" />
-                        {t('communityTag')}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* 하단 정보 */}
-                <div className="p-4 space-y-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full overflow-hidden bg-slate-100 shrink-0">
-                      {item.userAvatar ? (
-                        <Image
-                          src={item.userAvatar}
-                          alt=""
-                          width={28}
-                          height={28}
-                          className="object-cover w-full h-full"
-                          unoptimized
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-xs font-black text-slate-400">
-                          {item.userNickname[0]}
-                        </div>
-                      )}
-                    </div>
-                    <span className="text-sm font-bold text-slate-700 truncate">
-                      {item.userNickname}
-                    </span>
-                  </div>
-
-                  {/* 내용 — 타입별 분기 */}
-                  {item.kind === 'post' && item.text && (
-                    <p className="text-sm text-slate-500 line-clamp-2 leading-relaxed">
-                      {item.text}
-                    </p>
-                  )}
-                  {item.kind === 'mission' && (
-                    <p className="text-sm text-slate-600 font-semibold line-clamp-2 leading-relaxed">
-                      🎯 {getI18n(item.courseTitle, locale)} · {getI18n(item.missionTitle, locale)}
-                    </p>
-                  )}
-
-                  {/* 하단 메타 — 타입별 */}
-                  {item.kind === 'post' ? (
-                    <div className="flex items-center gap-1.5 text-xs text-slate-400 font-bold">
-                      <Heart className="w-3.5 h-3.5" />
-                      <span>{item.likesCount}</span>
-                      <span>{t('likes')}</span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center gap-1.5 text-xs font-black text-mint-deep">
-                      <span>⚡</span>
-                      <span>+{item.lpEarned} LP</span>
-                    </div>
-                  )}
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
-
-        {/* "MEMORIES 더 보기" CTA */}
-        {!loading && items.length > 0 && (
-          <div className="flex justify-center mt-8">
-            <Link
-              href={`/${locale}/memories`}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white border-2 border-mint-deep text-mint-deep font-black text-sm hover:bg-mint-deep hover:text-white transition-colors"
+        {/* 좌우 화살표 — 모바일 숨김 */}
+        {count > 1 && (
+          <>
+            <button
+              onClick={prev}
+              className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-black/10 text-slate hover:bg-black/30 hover:text-white transition-colors z-10"
+              aria-label="Previous"
             >
-              🌟 {t('viewAll')}
-            </Link>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M13 4L7 10L13 16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button
+              onClick={next}
+              className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-black/10 text-slate hover:bg-black/30 hover:text-white transition-colors z-10"
+              aria-label="Next"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7 4L13 10L7 16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </>
+        )}
+
+        {/* 하단 점 인디케이터 */}
+        {count > 1 && (
+          <div className="flex items-center justify-center gap-2 mt-6">
+            {SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                  i === active ? 'bg-[#1F2937]' : 'bg-[#D1D5DB] hover:bg-[#9CA3AF]'
+                }`}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
           </div>
         )}
       </div>

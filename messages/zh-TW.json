@@ -153,6 +153,14 @@
       "missionTag": "任務完成",
       "communityTag": "社區"
     },
+    "memories": {
+      "slide1Title": "✨ MEMORIES",
+      "slide1Subtitle": "冒險者們記錄的傳說旅程",
+      "slide1Cta": "查看 MEMORIES",
+      "slide2Title": "🎯 找到專屬於你的旅行",
+      "slide2Subtitle": "AI 分析你獨有的韓國旅行風格",
+      "slide2Cta": "開始風格測試"
+    },
     "footerCompany": "關於我們",
     "footerTerms": "服務條款",
     "footerPrivacy": "隱私權政策",
