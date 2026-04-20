@@ -1,3 +1,9 @@
 files:
   - source: /messages/ko.json
     translation: /messages/%locale%.json
+    languages_mapping:
+      locale:
+        en: en
+        ja: ja
+        zh-CN: zh-CN
+        zh-TW: zh-TW
