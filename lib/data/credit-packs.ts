@@ -79,6 +79,12 @@ export const CREDIT_COSTS = {
   retro_camera: 2,        // 레트로 카메라 필터 1회
   diy_workshop: 3,        // DIY 공방 예약 1회
   kfood_dupe: 2,          // K-Food 대체 추천 1회
+  planner: 3,             // 플래너 1회 사용
+  traffic_route: 3,       // TRAFFIC 경로 조회
+  spot_detail: 3,         // SPOT 상세 보기
+  ootd: 3,                // OOTD 코디 추천
+  stay_recommend: 3,      // STAY 숙소 추천
+  memories_post: 3,       // MEMORIES 게시글 작성
 } as const
 
 export type CreditFeature = keyof typeof CREDIT_COSTS
