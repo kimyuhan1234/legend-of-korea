@@ -5445,7 +5445,7 @@ export const regions: Region[] = [
     code: "cheonan",
     name: { ko: "천안", ja: "天安", en: "Cheonan" },
     icon: "🌰",
-    image: "/images/village/천안.png",
+    image: "/images/village/cheonan.png",
     description: {
       ko: "호두과자와 순대의 고장, 교통의 중심지",
       ja: "クルミ菓子とスンデの里、交通の中心地",
@@ -6316,7 +6316,7 @@ export const regions: Region[] = [
     code: "yongin",
     name: { ko: "용인", ja: "龍仁", en: "Yongin" },
     icon: "🏘️",
-    image: "/images/village/용인.png",
+    image: "/images/village/yongin.png",
     description: {
       ko: "전통과 현대가 어우러진 민속의 맛",
       ja: "伝統と現代が調和した民俗の味",
@@ -7166,7 +7166,7 @@ export const regions: Region[] = [
     code: "icheon",
     name: { ko: "이천", ja: "利川", en: "Icheon" },
     icon: "🍚",
-    image: "/images/village/이천.png",
+    image: "/images/village/icheon.png",
     description: {
       ko: "임금님 수라상에 오르던 명품 쌀밥의 도시",
       ja: "王様の食卓に上がった名品ご飯の都市",
