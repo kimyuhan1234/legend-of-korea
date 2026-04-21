@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr"
+import { createClient as createSupabaseClient } from "@supabase/supabase-js"
 import { cookies } from "next/headers"
 
 export async function createClient() {
@@ -26,24 +27,16 @@ export async function createClient() {
   )
 }
 
+// async 시그니처 유지 (13곳의 await 호출부 호환)
+// createSupabaseClient 사용 → service_role JWT가 직접 전달되어 RLS 바이패스
 export async function createServiceClient() {
-  const cookieStore = await cookies()
-
-  return createServerClient(
+  return createSupabaseClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
     {
-      cookies: {
-        getAll() {
-          return cookieStore.getAll()
-        },
-        setAll(cookiesToSet) {
-          try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
-            )
-          } catch {}
-        },
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
       },
     }
   )

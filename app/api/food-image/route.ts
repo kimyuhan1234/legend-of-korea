@@ -41,7 +41,7 @@ export async function GET(req: NextRequest) {
 
   // 4. 결과 있으면 캐시 저장 후 반환
   if (result) {
-    await supabase.from('food_image_cache').insert({
+    const { error: insertError } = await supabase.from('food_image_cache').insert({
       food_name_ko: name,
       image_url: result.url,
       source: result.source,
@@ -49,6 +49,9 @@ export async function GET(req: NextRequest) {
       photographer_url: result.photographerUrl ?? null,
       query_used: query,
     })
+    if (insertError) {
+      console.error('[food-image] 캐시 저장 실패:', insertError)
+    }
     return NextResponse.json({ ...result, cached: false })
   }
 
