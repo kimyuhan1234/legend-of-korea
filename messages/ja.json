@@ -26,7 +26,7 @@
     "feature_retro_camera": "レトロカメラ"
   },
   "seo": {
-    "title": "Legend of Korea - 韓国の伝説を辿るミッションアドベンチャー",
+    "title": "Cloud with you - 韓国の伝説を辿るミッションアドベンチャー",
     "description": "韓国의伝説的な場所を探索し、ミッションを解決するプレミアムアドベンチャーサービスです。"
   },
   "error": {
@@ -38,7 +38,7 @@
     "retry": "再試行"
   },
   "common": {
-    "siteName": "Legend of Korea",
+    "siteName": "Cloud with you",
     "siteDescription": "韓国の伝説をたどるミッションアドベンチャー",
     "login": "ログイン",
     "signup": "新規登録",
@@ -191,7 +191,7 @@
     "footerTerms": "利用規約",
     "footerPrivacy": "プライバシーポリシー",
     "footerPartner": "パートナー問い合わせ",
-    "footerCopyright": "© 2026 Legend of Korea",
+    "footerCopyright": "© 2026 Cloud with you",
     "signup": "会員登録"
   },
   "course": {
@@ -212,7 +212,7 @@
     "noReviews": "最初の伝説の主人公になりましょう",
     "outOfStock": "品切れ",
     "restockAlert": "入荷通知を受け取る",
-    "disclaimer": "宿泊・交通の予約は外部サイトで直接行われ、Legend of Koreaは当該予約に対する責任を負いません。",
+    "disclaimer": "宿泊・交通の予約は外部サイトで直接行われ、Cloud with youは当該予約に対する責任を負いません。",
     "exploreCourses": "コース探索",
     "allCourses": "全コース",
     "filterDifficulty": "難易度を選択",
@@ -589,11 +589,11 @@
     "6": "神話"
   },
   "footer": {
-    "company": "Legend of Korea株式会社",
+    "company": "Cloud with you株式会社",
     "terms": "利用規約",
     "privacy": "プライバシーポリシー",
     "contact": "お問い合わせ",
-    "copyright": "© 2025 Legend of Korea. All rights reserved."
+    "copyright": "© 2025 Cloud with you. All rights reserved."
   },
   "purchase": {
     "stepKit": "プラン確認",
@@ -1843,7 +1843,7 @@
   },
   "memories": {
     "meta": {
-      "title": "メモリーズ | Legend of Korea",
+      "title": "メモリーズ | Cloud with you",
       "description": "伝説の旅の記録"
     },
     "title": "MEMORIES",

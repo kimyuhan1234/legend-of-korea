@@ -23,7 +23,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" })
 
 export const metadata: Metadata = {
-  title: "Legend of Korea | 한국의 전설을 따라서",
+  title: "Cloud with you | 한국의 전설을 따라서",
   description: "한국 전래동화 IP를 활용한 QR 기반 셀프 미션 여행 서비스",
   manifest: "/manifest.webmanifest",
 }

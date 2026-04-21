@@ -11,9 +11,9 @@ interface Props {
 }
 
 const META = {
-  ko: { title: "로그인 | Legend of Korea", description: "전설의 세계로 입장하세요" },
-  ja: { title: "ログイン | Legend of Korea", description: "伝説の世界へようこそ" },
-  en: { title: "Sign In | Legend of Korea", description: "Enter the world of legends" },
+  ko: { title: "로그인 | Cloud with you", description: "전설의 세계로 입장하세요" },
+  ja: { title: "ログイン | Cloud with you", description: "伝説の世界へようこそ" },
+  en: { title: "Sign In | Cloud with you", description: "Enter the world of legends" },
 }
 
 const TEXT = {
@@ -48,7 +48,7 @@ export default function LoginPage({ params, searchParams }: Props) {
               <div className="w-10 h-10 rounded-xl bg-[#F0B8B8] flex items-center justify-center">
                 <span className="text-[#111] font-black text-lg">伝</span>
               </div>
-              <span className="text-white font-bold text-xl tracking-wide">Legend of Korea</span>
+              <span className="text-white font-bold text-xl tracking-wide">Cloud with you</span>
             </div>
 
             <h1 className="text-white font-bold text-2xl leading-tight whitespace-pre-line">
@@ -85,7 +85,7 @@ export default function LoginPage({ params, searchParams }: Props) {
 
         {/* 하단 장식 */}
         <p className="text-center text-xs text-stone mt-6">
-          © 2025 Legend of Korea
+          © 2025 Cloud with you
         </p>
       </div>
     </div>

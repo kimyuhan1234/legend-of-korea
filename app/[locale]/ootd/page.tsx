@@ -7,15 +7,15 @@ interface Props {
 
 const META: Record<string, { title: string; description: string }> = {
   ko: {
-    title: '날씨 코디 추천 | Legend of Korea',
+    title: '날씨 코디 추천 | Cloud with you',
     description: '도시 분위기에 맞는 7일치 날씨와 옷차림을 한눈에 확인하세요.',
   },
   en: {
-    title: 'Weather Outfit Guide | Legend of Korea',
+    title: 'Weather Outfit Guide | Cloud with you',
     description: 'Check 7-day weather & outfit recommendations tailored to each Korean city vibe.',
   },
   ja: {
-    title: '天気コーデ案内 | Legend of Korea',
+    title: '天気コーデ案内 | Cloud with you',
     description: '都市の雰囲気に合わせた7日間の天気・コーデガイドをチェック。',
   },
 }

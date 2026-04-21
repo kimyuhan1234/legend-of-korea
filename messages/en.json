@@ -26,7 +26,7 @@
     "feature_retro_camera": "Retro Camera"
   },
   "seo": {
-    "title": "Legend of Korea - Mission Adventure following Korean Legends",
+    "title": "Cloud with you - Mission Adventure following Korean Legends",
     "description": "A premium adventure service where you explore legendary places in Korea and solve missions."
   },
   "error": {
@@ -38,7 +38,7 @@
     "retry": "Try again"
   },
   "common": {
-    "siteName": "Legend of Korea",
+    "siteName": "Cloud with you",
     "siteDescription": "A mission adventure through Korean legends",
     "login": "Sign In",
     "signup": "Sign Up",
@@ -191,7 +191,7 @@
     "footerTerms": "Terms of Service",
     "footerPrivacy": "Privacy Policy",
     "footerPartner": "Partner Inquiry",
-    "footerCopyright": "© 2026 Legend of Korea",
+    "footerCopyright": "© 2026 Cloud with you",
     "signup": "Sign Up"
   },
   "course": {
@@ -212,7 +212,7 @@
     "noReviews": "Be the first legendary hero",
     "outOfStock": "Out of Stock",
     "restockAlert": "Notify me when restocked",
-    "disclaimer": "Accommodation and transport bookings are made through external sites. Legend of Korea is not responsible for those bookings.",
+    "disclaimer": "Accommodation and transport bookings are made through external sites. Cloud with you is not responsible for those bookings.",
     "exploreCourses": "Explore Courses",
     "allCourses": "All Courses",
     "filterDifficulty": "Select Difficulty",
@@ -589,11 +589,11 @@
     "6": "Myth"
   },
   "footer": {
-    "company": "Legend of Korea Co., Ltd.",
+    "company": "Cloud with you Co., Ltd.",
     "terms": "Terms of Service",
     "privacy": "Privacy Policy",
     "contact": "Contact Us",
-    "copyright": "© 2025 Legend of Korea. All rights reserved."
+    "copyright": "© 2025 Cloud with you. All rights reserved."
   },
   "purchase": {
     "stepKit": "Plan",
@@ -1843,7 +1843,7 @@
   },
   "memories": {
     "meta": {
-      "title": "Memories | Legend of Korea",
+      "title": "Memories | Cloud with you",
       "description": "My legendary travel memories"
     },
     "title": "MEMORIES",

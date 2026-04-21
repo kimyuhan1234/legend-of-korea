@@ -99,7 +99,7 @@ export async function Navbar({ locale }: NavbarProps) {
               textDecoration: 'none',
             }}
           >
-            imagination
+            Cloud with you
           </Link>
         </div>
 

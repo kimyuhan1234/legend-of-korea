@@ -9,15 +9,15 @@ interface Props {
 
 const META: Record<string, { title: string; description: string }> = {
   ko: {
-    title: '전설 상점 | Legend of Korea',
+    title: '전설 상점 | Cloud with you',
     description: '전래동화 테마 굿즈와 기념품을 만나보세요.',
   },
   en: {
-    title: 'Legend Shop | Legend of Korea',
+    title: 'Legend Shop | Cloud with you',
     description: 'Korean legend themed goods and souvenirs.',
   },
   ja: {
-    title: '伝説ショップ | Legend of Korea',
+    title: '伝説ショップ | Cloud with you',
     description: '韓国伝説テーマのグッズとお土産をご覧ください。',
   },
 }

@@ -6,21 +6,21 @@ interface FooterProps {
 
 const TEXT = {
   ko: {
-    service: "서비스: Legend of Korea",
+    service: "핵심 콘텐츠: Legend of Korea (전설 여행 미션)",
     company: "회사 정보",
     terms: "이용약관",
     privacy: "개인정보처리방침",
     partner: "파트너 문의",
   },
   ja: {
-    service: "サービス: Legend of Korea",
+    service: "コアコンテンツ: Legend of Korea（伝説旅ミッション）",
     company: "会社情報",
     terms: "利用規約",
     privacy: "プライバシーポリシー",
     partner: "パートナーお問い合わせ",
   },
   en: {
-    service: "Service: Legend of Korea",
+    service: "Core Content: Legend of Korea (Legend Travel Missions)",
     company: "Company",
     terms: "Terms of Service",
     privacy: "Privacy Policy",
@@ -46,10 +46,10 @@ export function Footer({ locale }: FooterProps) {
           }}
           className="mb-2"
         >
-          imagination
+          Cloud with you
         </p>
         <p className="text-xs text-white/40 uppercase tracking-[4px] mb-6">
-          IMAGINE YOUR JOURNEY
+          YOUR TRAVEL COMPANION
         </p>
 
         {/* 서비스명 */}
@@ -73,7 +73,7 @@ export function Footer({ locale }: FooterProps) {
 
         {/* 카피라이트 */}
         <p className="text-xs text-white/30">
-          © 2026 imagination. All rights reserved.
+          © 2026 Cloud with you. All rights reserved.
         </p>
       </div>
     </footer>

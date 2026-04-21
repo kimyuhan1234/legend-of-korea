@@ -7,9 +7,9 @@ interface Props {
 }
 
 const META = {
-  ko: { title: "지역별 맛 듀프 | Legend of Korea", desc: "지역을 선택하고 한국 음식의 맛 유사성을 발견하세요" },
-  ja: { title: "地域別味デュープ | Legend of Korea", desc: "地域を選んで韓国料理の味の類似性を発見しよう" },
-  en: { title: "Regional Taste Dupe | Legend of Korea", desc: "Pick a region and discover Korean food flavor connections" },
+  ko: { title: "지역별 맛 듀프 | Cloud with you", desc: "지역을 선택하고 한국 음식의 맛 유사성을 발견하세요" },
+  ja: { title: "地域別味デュープ | Cloud with you", desc: "地域を選んで韓国料理の味の類似性を発見しよう" },
+  en: { title: "Regional Taste Dupe | Cloud with you", desc: "Pick a region and discover Korean food flavor connections" },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

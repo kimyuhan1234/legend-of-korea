@@ -3,15 +3,15 @@ import { Metadata } from 'next'
 interface Props { params: { locale: string } }
 
 const META: Record<string, { title: string; desc: string }> = {
-  ko: { title: '개인정보처리방침 | Legend of Korea', desc: '개인정보 보호 정책' },
-  en: { title: 'Privacy Policy | Legend of Korea', desc: 'Privacy Policy' },
-  ja: { title: 'プライバシーポリシー | Legend of Korea', desc: 'プライバシーポリシー' },
+  ko: { title: '개인정보처리방침 | Cloud with you', desc: '개인정보 보호 정책' },
+  en: { title: 'Privacy Policy | Cloud with you', desc: 'Privacy Policy' },
+  ja: { title: 'プライバシーポリシー | Cloud with you', desc: 'プライバシーポリシー' },
 }
 
 const CONTENT: Record<string, { title: string; body: string }> = {
-  ko: { title: '개인정보처리방침', body: 'Legend of Korea는 이용자의 개인정보를 중요시하며, 개인정보 보호법을 준수합니다. 수집된 개인정보는 서비스 제공 목적으로만 사용되며, 이용자의 동의 없이 제3자에게 제공되지 않습니다.' },
-  en: { title: 'Privacy Policy', body: 'Legend of Korea values your privacy and complies with applicable data protection laws. Personal information collected is used solely for service provision and is not shared with third parties without your consent.' },
-  ja: { title: 'プライバシーポリシー', body: 'Legend of Koreaは利用者の個人情報を重要視し、個人情報保護法を遵守します。収集された個人情報はサービス提供目的にのみ使用され、利用者の同意なく第三者に提供されることはありません。' },
+  ko: { title: '개인정보처리방침', body: 'Cloud with you는 이용자의 개인정보를 중요시하며, 개인정보 보호법을 준수합니다. 수집된 개인정보는 서비스 제공 목적으로만 사용되며, 이용자의 동의 없이 제3자에게 제공되지 않습니다.' },
+  en: { title: 'Privacy Policy', body: 'Cloud with you values your privacy and complies with applicable data protection laws. Personal information collected is used solely for service provision and is not shared with third parties without your consent.' },
+  ja: { title: 'プライバシーポリシー', body: 'Cloud with youは利用者の個人情報を重要視し、個人情報保護法を遵守します。収集された個人情報はサービス提供目的にのみ使用され、利用者の同意なく第三者に提供されることはありません。' },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

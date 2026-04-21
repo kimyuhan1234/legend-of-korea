@@ -3,15 +3,15 @@ import { Metadata } from 'next'
 interface Props { params: { locale: string } }
 
 const META: Record<string, { title: string; desc: string }> = {
-  ko: { title: '제휴 문의 | Legend of Korea', desc: '비즈니스 제휴 및 협력 문의' },
-  en: { title: 'Partnership | Legend of Korea', desc: 'Business partnership inquiries' },
-  ja: { title: '提携お問い合わせ | Legend of Korea', desc: 'ビジネス提携のお問い合わせ' },
+  ko: { title: '제휴 문의 | Cloud with you', desc: '비즈니스 제휴 및 협력 문의' },
+  en: { title: 'Partnership | Cloud with you', desc: 'Business partnership inquiries' },
+  ja: { title: '提携お問い合わせ | Cloud with you', desc: 'ビジネス提携のお問い合わせ' },
 }
 
 const CONTENT: Record<string, { title: string; body: string; email: string }> = {
-  ko: { title: '제휴 문의', body: 'Legend of Korea와의 비즈니스 제휴를 원하시면 아래 이메일로 문의해 주세요.', email: '문의: hello@legendofkorea.kr' },
-  en: { title: 'Partnership', body: 'Interested in a business partnership with Legend of Korea? Contact us at the email below.', email: 'Contact: hello@legendofkorea.kr' },
-  ja: { title: '提携お問い合わせ', body: 'Legend of Koreaとのビジネス提携をご希望の方は、以下のメールアドレスまでお問い合わせください。', email: 'お問い合わせ: hello@legendofkorea.kr' },
+  ko: { title: '제휴 문의', body: 'Cloud with you와의 비즈니스 제휴를 원하시면 아래 이메일로 문의해 주세요.', email: '문의: hello@legendofkorea.kr' },
+  en: { title: 'Partnership', body: 'Interested in a business partnership with Cloud with you? Contact us at the email below.', email: 'Contact: hello@legendofkorea.kr' },
+  ja: { title: '提携お問い合わせ', body: 'Cloud with youとのビジネス提携をご希望の方は、以下のメールアドレスまでお問い合わせください。', email: 'お問い合わせ: hello@legendofkorea.kr' },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -115,7 +115,7 @@ export function DigitalPassport({ userId, locale }: Props) {
 
   const handleShare = useCallback(async () => {
     const shareData = {
-      title: 'Legend of Korea - Digital Passport',
+      title: 'Cloud with you - Digital Passport',
       text: `${nickname} | ${clearedCount}/${COURSES.length} stamps collected!`,
       url: typeof window !== 'undefined' ? window.location.href : '',
     }

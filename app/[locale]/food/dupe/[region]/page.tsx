@@ -16,7 +16,7 @@ function getL(field: { ko: string; ja: string; en: string }, locale: string): st
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const region = regions.find((r) => r.code === params.region)
   if (!region) return { title: "Not Found" }
-  return { title: `${getL(region.name, params.locale)} ${params.locale === "ko" ? "음식" : params.locale === "ja" ? "料理" : "Food"} | Legend of Korea` }
+  return { title: `${getL(region.name, params.locale)} ${params.locale === "ko" ? "음식" : params.locale === "ja" ? "料理" : "Food"} | Cloud with you` }
 }
 
 const UI = {

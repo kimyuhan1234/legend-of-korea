@@ -11,7 +11,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "purchase" })
-  return { title: `${t("stepKit")} | Legend of Korea` }
+  return { title: `${t("stepKit")} | Cloud with you` }
 }
 
 function getI18n(field: I18nText, locale: string): string {

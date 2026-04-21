@@ -41,10 +41,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legendofkorea.com'
 
   return {
-    title: `${title} | Legend of Korea`,
+    title: `${title} | Cloud with you`,
     description: description,
     openGraph: {
-      title: `${title} | Legend of Korea`,
+      title: `${title} | Cloud with you`,
       description: description,
       url: `${siteUrl}/${locale}/courses/${courseId}`,
       images: course.thumbnail_url ? [{ url: course.thumbnail_url }] : [],

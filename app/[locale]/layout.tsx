@@ -29,9 +29,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const { locale } = params
 
   const titles: Record<string, string> = {
-    ko: "Legend of Korea - 한국 전설을 따라가는 미션 어드벤처",
-    en: "Legend of Korea - Mission Adventure following Korean Legends",
-    ja: "Legend of Korea - 韓国の伝説を辿るミッションアドベンチャー",
+    ko: "Cloud with you - 한국 전설을 따라가는 미션 어드벤처",
+    en: "Cloud with you - Mission Adventure following Korean Legends",
+    ja: "Cloud with you - 韓国の伝説を辿るミッションアドベンチャー",
   }
 
   const descriptions: Record<string, string> = {
@@ -45,13 +45,13 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return {
     title: {
       default: titles[locale] || titles.en || titles.ko,
-      template: "%s | Legend of Korea",
+      template: "%s | Cloud with you",
     },
     description: descriptions[locale] || descriptions.en || descriptions.ko,
     formatDetection: { telephone: false },
     openGraph: {
       type: "website",
-      siteName: "Legend of Korea",
+      siteName: "Cloud with you",
       title: titles[locale] || titles.en || titles.ko,
       description: descriptions[locale] || descriptions.en || descriptions.ko,
       url: `${siteUrl}/${locale}`,

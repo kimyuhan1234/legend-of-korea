@@ -8,9 +8,9 @@ interface Props {
 }
 
 const META = {
-  ko: { title: 'K-FOOD | Legend of Korea', desc: '지역별 K-Food Spot 큐레이션' },
-  ja: { title: 'K-FOOD | Legend of Korea', desc: '地域別K-Foodスポットキュレーション' },
-  en: { title: 'K-FOOD | Legend of Korea', desc: 'Regional K-Food Spot curation' },
+  ko: { title: 'K-FOOD | Cloud with you', desc: '지역별 K-Food Spot 큐레이션' },
+  ja: { title: 'K-FOOD | Cloud with you', desc: '地域別K-Foodスポットキュレーション' },
+  en: { title: 'K-FOOD | Cloud with you', desc: 'Regional K-Food Spot curation' },
 }
 
 const HERO = {

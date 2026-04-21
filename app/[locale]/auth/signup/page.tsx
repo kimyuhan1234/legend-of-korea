@@ -9,9 +9,9 @@ interface Props {
 }
 
 const META = {
-  ko: { title: "회원가입 | Legend of Korea" },
-  ja: { title: "新規登録 | Legend of Korea" },
-  en: { title: "Sign Up | Legend of Korea" },
+  ko: { title: "회원가입 | Cloud with you" },
+  ja: { title: "新規登録 | Cloud with you" },
+  en: { title: "Sign Up | Cloud with you" },
 }
 
 const TEXT = {
@@ -42,7 +42,7 @@ export default function SignupPage({ params }: Props) {
               <div className="w-10 h-10 rounded-xl bg-[#F0B8B8] flex items-center justify-center">
                 <span className="text-[#111] font-black text-lg">伝</span>
               </div>
-              <span className="text-white font-bold text-xl tracking-wide">Legend of Korea</span>
+              <span className="text-white font-bold text-xl tracking-wide">Cloud with you</span>
             </div>
 
             <h1 className="text-white font-bold text-2xl leading-tight whitespace-pre-line">
@@ -69,7 +69,7 @@ export default function SignupPage({ params }: Props) {
         </div>
 
         <p className="text-center text-xs text-stone mt-6">
-          © 2025 Legend of Korea
+          © 2025 Cloud with you
         </p>
       </div>
     </div>

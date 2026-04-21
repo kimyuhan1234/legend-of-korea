@@ -8,9 +8,9 @@ interface Props {
 }
 
 const META = {
-  ko: { title: "K-Food Spot | Legend of Korea", desc: "한국 현지 맛집 & 시장 가이드" },
-  ja: { title: "K-Food Spot | Legend of Korea", desc: "韓国現地のグルメ＆市場ガイド" },
-  en: { title: "K-Food Spot | Legend of Korea", desc: "Korea local food & market guide" },
+  ko: { title: "K-Food Spot | Cloud with you", desc: "한국 현지 맛집 & 시장 가이드" },
+  ja: { title: "K-Food Spot | Cloud with you", desc: "韓国現地のグルメ＆市場ガイド" },
+  en: { title: "K-Food Spot | Cloud with you", desc: "Korea local food & market guide" },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

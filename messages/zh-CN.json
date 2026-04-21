@@ -26,7 +26,7 @@
     "feature_retro_camera": "复古相机"
   },
   "seo": {
-    "title": "Legend of Korea - 追寻韩国传说的任务冒险",
+    "title": "Cloud with you - 追寻韩国传说的任务冒险",
     "description": "探索韩国传说中的名胜古迹，完成各种任务的高端冒险体验服务。"
   },
   "error": {
@@ -38,7 +38,7 @@
     "retry": "重试"
   },
   "common": {
-    "siteName": "Legend of Korea",
+    "siteName": "Cloud with you",
     "siteDescription": "穿越韩国传说的任务冒险",
     "login": "登录",
     "signup": "注册",
@@ -191,7 +191,7 @@
     "footerTerms": "服务条款",
     "footerPrivacy": "隐私政策",
     "footerPartner": "合作咨询",
-    "footerCopyright": "© 2026 Legend of Korea",
+    "footerCopyright": "© 2026 Cloud with you",
     "signup": "注册"
   },
   "course": {
@@ -212,7 +212,7 @@
     "noReviews": "成为第一位传奇英雄",
     "outOfStock": "已售罄",
     "restockAlert": "到货通知",
-    "disclaimer": "住宿和交通预订通过外部网站完成。Legend of Korea不对这些预订负责。",
+    "disclaimer": "住宿和交通预订通过外部网站完成。Cloud with you不对这些预订负责。",
     "exploreCourses": "探索路线",
     "allCourses": "全部路线",
     "filterDifficulty": "选择难度",
@@ -589,11 +589,11 @@
     "6": "神话"
   },
   "footer": {
-    "company": "Legend of Korea Co., Ltd.",
+    "company": "Cloud with you Co., Ltd.",
     "terms": "服务条款",
     "privacy": "隐私政策",
     "contact": "联系我们",
-    "copyright": "© 2025 Legend of Korea. All rights reserved."
+    "copyright": "© 2025 Cloud with you. All rights reserved."
   },
   "purchase": {
     "stepKit": "确认方案",
@@ -1843,7 +1843,7 @@
   },
   "memories": {
     "meta": {
-      "title": "回忆录 | Legend of Korea",
+      "title": "回忆录 | Cloud with you",
       "description": "我的传说旅行记录"
     },
     "title": "MEMORIES",

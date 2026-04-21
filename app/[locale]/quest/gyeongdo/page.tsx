@@ -14,7 +14,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: 'quest.gyeongdo' })
   return {
-    title: `${t('title')} | Legend of Korea`,
+    title: `${t('title')} | Cloud with you`,
     description: t('subtitle'),
   }
 }
