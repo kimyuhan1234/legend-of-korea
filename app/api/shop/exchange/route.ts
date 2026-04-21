@@ -14,8 +14,13 @@ export async function POST(req: NextRequest) {
     if (!user) return NextResponse.json({ error: '로그인이 필요합니다.' }, { status: 401 });
 
     const { discountRate } = await req.json();
-    const lpCost = COUPON_COSTS[discountRate];
 
+    const validRates = [10, 20, 30];
+    if (!validRates.includes(Number(discountRate))) {
+      return NextResponse.json({ error: '잘못된 요청입니다.' }, { status: 400 });
+    }
+
+    const lpCost = COUPON_COSTS[discountRate as keyof typeof COUPON_COSTS];
     if (!lpCost) {
       return NextResponse.json({ error: '잘못된 요청입니다.' }, { status: 400 });
     }

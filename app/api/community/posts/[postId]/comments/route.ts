@@ -17,9 +17,9 @@ export async function GET(
     if (error) throw error;
 
     return NextResponse.json({ success: true, comments });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('Comments GET Error:', err);
-    return NextResponse.json({ error: err.message || '서버 오류' }, { status: 500 });
+    return NextResponse.json({ error: '서버 오류' }, { status: 500 });
   }
 }
 
@@ -35,6 +35,10 @@ export async function POST(
     const { text } = await request.json();
     if (!text || text.trim() === '') {
       return NextResponse.json({ error: '댓글 내용을 입력해주세요.' }, { status: 400 });
+    }
+
+    if (text.length > 1000) {
+      return NextResponse.json({ error: '댓글은 1000자 이하로 입력해주세요.' }, { status: 400 });
     }
 
     const { data: comment, error } = await supabase
@@ -55,8 +59,8 @@ export async function POST(
     await supabase.from('community_posts').update({ comments_count: currentCount }).eq('id', params.postId);
 
     return NextResponse.json({ success: true, comment });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('Comments POST Error:', err);
-    return NextResponse.json({ error: err.message || '서버 오류' }, { status: 500 });
+    return NextResponse.json({ error: '서버 오류' }, { status: 500 });
   }
 }

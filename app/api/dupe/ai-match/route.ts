@@ -151,7 +151,7 @@ export async function POST(req: NextRequest) {
       parsed = JSON.parse(jsonStr)
     } catch {
       return NextResponse.json(
-        { error: 'ai_parse_error', message: 'Failed to parse AI response', raw: textBlock.text },
+        { error: 'ai_parse_error', message: 'Failed to parse AI response' },
         { status: 502 }
       )
     }

@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     )
 
     if (dbError) {
-      return NextResponse.json({ error: 'Failed to save progress', detail: dbError.message }, { status: 500 })
+      return NextResponse.json({ error: 'Failed to save progress' }, { status: 500 })
     }
 
     return NextResponse.json({ success: true, photoUrl: publicUrl })
@@ -70,6 +70,6 @@ export async function POST(req: NextRequest) {
     const msg = err instanceof Error ? err.message : String(err)
     const stack = err instanceof Error ? err.stack : ''
     console.error('[mission-register] FATAL:', msg, stack)
-    return NextResponse.json({ error: 'Server error', detail: msg }, { status: 500 })
+    return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
 }

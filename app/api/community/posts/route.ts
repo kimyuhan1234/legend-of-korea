@@ -67,8 +67,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: '내용을 5자 이상 입력해주세요.' }, { status: 400 });
     }
 
+    if (text.length > 5000) {
+      return NextResponse.json({ error: '내용은 5000자 이하로 입력해주세요.' }, { status: 400 });
+    }
+
     if (!title) {
       return NextResponse.json({ error: '제목을 입력해주세요.' }, { status: 400 });
+    }
+
+    if (title.length > 100) {
+      return NextResponse.json({ error: '제목은 100자 이하로 입력해주세요.' }, { status: 400 });
     }
 
     const { data: post, error } = await supabase
