@@ -24,25 +24,39 @@ export function PlannerPricingCards({ locale, ownedPassIds, onSubscribe }: Plann
     }
   }
 
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null)
   const hasAllInOne = ownedPassIds.includes('allinone')
   const ownedSet = new Set(ownedPassIds)
   const savingsLabel = t('savings', { amount: ALLINONE_SAVINGS.toLocaleString() })
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {PASSES.map((pass) => (
-        <PassCard
+    <div className="flex flex-col md:flex-row md:items-stretch gap-3">
+      {PASSES.map((pass, i) => (
+        <div
           key={pass.id}
-          pass={pass}
-          locale={locale}
-          isOwned={hasAllInOne || ownedSet.has(pass.id)}
-          isProcessing={processingId === pass.id}
-          disabled={!!processingId}
-          savingsLabel={pass.id === 'allinone' ? savingsLabel : undefined}
-          ownedLabel={t('owned')}
-          purchaseLabel={t('purchase')}
-          onPurchase={handleClick}
-        />
+          onMouseEnter={() => setHoveredIdx(i)}
+          onMouseLeave={() => setHoveredIdx(null)}
+          className="min-w-0"
+          style={{
+            flexBasis: hoveredIdx === null ? '25%' : hoveredIdx === i ? '43%' : '19%',
+            flexShrink: 1,
+            flexGrow: 0,
+            transition: 'flex-basis 300ms ease-in-out',
+          }}
+        >
+          <PassCard
+            pass={pass}
+            locale={locale}
+            isOwned={hasAllInOne || ownedSet.has(pass.id)}
+            isProcessing={processingId === pass.id}
+            disabled={!!processingId}
+            savingsLabel={pass.id === 'allinone' ? savingsLabel : undefined}
+            ownedLabel={t('owned')}
+            purchaseLabel={t('purchase')}
+            onPurchase={handleClick}
+            layout="vertical"
+          />
+        </div>
       ))}
     </div>
   )
