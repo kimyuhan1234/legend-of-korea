@@ -1,7 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import { useFoodImage } from '@/hooks/useFoodImage'
+import { FoodImagePlaceholder } from '@/components/features/food/FoodImagePlaceholder'
+import { PhotoAttribution } from '@/components/features/food/PhotoAttribution'
 
 interface FoodImageWithFallbackProps {
   foodNameKo: string
@@ -22,29 +25,26 @@ export function FoodImageWithFallback({
   className = 'object-cover',
   sizes,
   priority,
-  placeholderEmoji = '🍽️',
+  placeholderEmoji,
 }: FoodImageWithFallbackProps) {
-  const { image, loading, error, triggerFetch } = useFoodImage({
-    name: foodNameKo,
-    tags,
-    fallbackUrl,
-  })
+  const { image, loading } = useFoodImage({ name: foodNameKo, tags, fallbackUrl })
+  const [imgError, setImgError] = useState(false)
 
-  // 플레이스홀더 (모든 소스 실패)
-  if (error || (!image && !loading)) {
-    return (
-      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blossom-light to-mint">
-        <span className="text-4xl select-none">{placeholderEmoji}</span>
-      </div>
-    )
-  }
-
-  // 로딩 스켈레톤
-  if (loading || !image) {
+  if (loading) {
     return <div className="absolute inset-0 bg-mist animate-pulse" />
   }
 
-  const isRemote = image.source !== 'tour_api'
+  if (!image?.url || imgError) {
+    return (
+      <FoodImagePlaceholder
+        name={foodNameKo}
+        tags={tags}
+        placeholderEmoji={placeholderEmoji}
+      />
+    )
+  }
+
+  const isRemote = image.source === 'pexels' || image.source === 'unsplash'
 
   return (
     <>
@@ -55,20 +55,14 @@ export function FoodImageWithFallback({
         className={className}
         sizes={sizes}
         priority={priority}
-        onError={triggerFetch}
+        unoptimized={isRemote}
+        onError={() => setImgError(true)}
       />
-      {/* Pexels/Unsplash 출처 표기 */}
-      {isRemote && image.photographer && (
-        <a
-          href={image.photographerUrl ?? '#'}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute bottom-1 right-1 z-10 text-[9px] text-white/70 hover:text-white bg-black/30 backdrop-blur-sm px-1.5 py-0.5 rounded-full transition-colors leading-tight"
-          onClick={(e) => e.stopPropagation()}
-        >
-          📷 {image.source === 'pexels' ? 'Pexels' : 'Unsplash'}
-        </a>
-      )}
+      <PhotoAttribution
+        source={image.source}
+        photographer={image.photographer}
+        photographerUrl={image.photographerUrl}
+      />
     </>
   )
 }
