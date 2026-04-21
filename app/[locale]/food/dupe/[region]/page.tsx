@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
 import Link from "next/link"
-import Image from "next/image"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
+import { FoodImageWithFallback } from "@/components/features/food/FoodImageWithFallback"
 import { regions } from "@/lib/data/food-dupes"
 
 interface Props {
@@ -88,10 +88,11 @@ export default function RegionFoodsPage({ params }: Props) {
               >
                 {/* 이미지 */}
                 <div className="relative h-44 bg-gradient-to-br from-cloud to-blossom-light overflow-hidden">
-                  <Image
-                    src={food.image}
+                  <FoodImageWithFallback
+                    foodNameKo={food.name.ko}
+                    tags={food.tags}
+                    fallbackUrl={food.image}
                     alt={getL(food.name, locale)}
-                    fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* 맛 강도 오버레이 */}

@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { FoodImageWithFallback } from '@/components/features/food/FoodImageWithFallback'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 import { PassBlurOverlay } from '@/components/shared/PassBlurOverlay'
 import { usePassStatus } from '@/hooks/usePassStatus'
@@ -94,12 +94,14 @@ function renderDupeItem(item: DupeItem, countryCode: string, locale: string, t: 
             className="shrink-0"
           >
             <div className="relative w-16 h-16 rounded-lg overflow-hidden">
-              <Image
-                src={korean.image}
+              <FoodImageWithFallback
+                foodNameKo={korean.name.ko}
+                tags={[]}
+                fallbackUrl={korean.image}
                 alt={getL(korean.name, locale)}
-                fill
                 sizes="64px"
                 className="object-cover"
+                placeholderEmoji="🍜"
               />
             </div>
           </Link>

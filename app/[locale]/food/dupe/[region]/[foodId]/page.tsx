@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
 import Link from "next/link"
-import Image from "next/image"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
+import { FoodImageWithFallback } from "@/components/features/food/FoodImageWithFallback"
 import { DupeCountrySelector } from "@/components/features/food/DupeCountrySelector"
 import { regions } from "@/lib/data/food-dupes"
 import { kfoodSpots } from "@/lib/data/kfood-spots"
@@ -91,10 +91,11 @@ export default function FoodDetailPage({ params }: Props) {
         {/* 음식 히어로 */}
         <div className="bg-cloud rounded-3xl overflow-hidden mb-8">
           <div className="relative h-56 md:h-72">
-            <Image
-              src={food.image}
+            <FoodImageWithFallback
+              foodNameKo={food.name.ko}
+              tags={food.tags}
+              fallbackUrl={food.image}
               alt={getL(food.name, locale)}
-              fill
               className="object-cover opacity-70"
               priority
             />
