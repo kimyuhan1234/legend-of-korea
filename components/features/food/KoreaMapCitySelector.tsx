@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -12,7 +12,7 @@ interface KoreaMapCitySelectorProps {
 }
 
 function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return field[locale as string] || field.en || field.ko
+  return (field as Record<string, string>)[locale] || field.en || field.ko
 }
 
 // 확정 좌표 (드래그 도구로 실측)

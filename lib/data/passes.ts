@@ -13,6 +13,7 @@ export interface PassI18n {
   en: string
   'zh-CN': string
   'zh-TW': string
+  [key: string]: string
 }
 
 export interface Pass {

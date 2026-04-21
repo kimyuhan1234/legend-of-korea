@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -35,7 +35,7 @@ interface TasteMatchResultsProps {
 }
 
 function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return field[locale as string] || field.en || field.ko
+  return (field as Record<string, string>)[locale] || field.en || field.ko
 }
 
 export function TasteMatchResults({ topFoods, surprises, locale, isVisible }: TasteMatchResultsProps) {

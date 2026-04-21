@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { TasteRadarChart } from './TasteRadarChart'
@@ -59,11 +59,11 @@ function similarityColor(pct: number): string {
 }
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as string] || field.en || field.ko
+  return (field as Record<string, string>)[locale] || field.en || field.ko
 }
 
 function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: string): string[] {
-  return field[locale as string] || field.en || field.ko
+  return (field as Record<string, string[]>)[locale] || field.en || field.ko
 }
 
 interface Props {

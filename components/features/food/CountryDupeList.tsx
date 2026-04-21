@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -16,7 +16,7 @@ interface CountryDupeListProps {
 }
 
 function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return field[locale as string] || field.en || field.ko
+  return (field as Record<string, string>)[locale] || field.en || field.ko
 }
 
 const INITIAL_SHOW = 5

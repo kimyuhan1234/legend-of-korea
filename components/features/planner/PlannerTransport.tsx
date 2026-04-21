@@ -70,7 +70,7 @@ export function PlannerTransport({ items, locale, onRemove }: PlannerTransportPr
                         {d.duration ? `, ${t('approx')} ${d.duration}` : ''}
                         {d.price ? `, ${d.price}` : ''}
                       </p>
-                      {d.departureTime && (
+                      {!!d.departureTime && (
                         <p className="text-xs text-mint-deep mt-1">
                           🕐 {t('transport.depart')} {d.departureTime as string}
                           {d.arrivalTime ? ` → ${t('transport.arrive')} ${t('approx')} ${d.arrivalTime as string}` : ''}
@@ -117,7 +117,7 @@ export function PlannerTransport({ items, locale, onRemove }: PlannerTransportPr
                         {d.duration ? `, ${t('approx')} ${d.duration}` : ''}
                         {d.price ? `, ${d.price}` : ''}
                       </p>
-                      {d.departureTime && (
+                      {!!d.departureTime && (
                         <p className="text-xs text-blossom-deep mt-1">
                           🕐 {t('transport.depart')} {d.departureTime as string}
                           {d.arrivalTime ? ` → ${t('transport.arrive')} ${t('approx')} ${d.arrivalTime as string}` : ''}

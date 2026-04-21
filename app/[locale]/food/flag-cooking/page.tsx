@@ -9,7 +9,7 @@ import { flagCountries, getRecipesByCountry, getFlagCountry } from "@/lib/data/f
 import type { FusionRecipe } from "@/lib/data/flag-cooking"
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as string] || field.en || field.ko
+  return field[locale as keyof typeof field] || field.en || field.ko
 }
 
 const DIFFICULTY_LABEL: Record<string, Record<string, string>> = {

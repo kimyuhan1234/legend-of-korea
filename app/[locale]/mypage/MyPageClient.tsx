@@ -87,13 +87,13 @@ export function MyPageClient({ locale }: MyPageClientProps) {
         if (cData.success) setCoupons(cData.coupons);
         if (oData.success) {
           setOrders(oData.orders);
-          const courseIds: string[] = [
-            ...new Set(
+          const courseIds: string[] = Array.from(
+            new Set(
               (oData.orders as any[])
                 .map((o: any) => o.kit_products?.courses?.id)
                 .filter(Boolean)
-            ),
-          ];
+            )
+          );
           if (courseIds.length) {
             try {
               const { data: courseRows } = await supabase

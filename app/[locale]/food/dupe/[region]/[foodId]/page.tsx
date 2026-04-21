@@ -12,11 +12,11 @@ interface Props {
 }
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as string] || field.en || field.ko
+  return field[locale as keyof typeof field] || field.en || field.ko
 }
 
 function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: string): string[] {
-  return field[locale as string] || field.en || field.ko
+  return field[locale as keyof typeof field] || field.en || field.ko
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

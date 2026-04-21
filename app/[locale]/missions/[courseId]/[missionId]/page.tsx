@@ -38,7 +38,8 @@ export default async function MissionExecutionPage({ params }: MissionExecutionP
 
   const progress    = mission.mission_progress?.find((p: any) => p.user_id === user.id) ?? { status: 'locked' };
   const courseName  = (mission.courses as any)?.title?.[locale] ?? (mission.courses as any)?.title?.ko ?? '코스';
-  const lang        = locale as string;
+  type I18nKey = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW';
+  const lang        = locale as I18nKey;
   const isBoss      = mission.type === 'boss';
   const isHidden    = mission.is_hidden;
 

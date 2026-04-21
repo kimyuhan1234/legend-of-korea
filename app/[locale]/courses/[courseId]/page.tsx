@@ -197,7 +197,7 @@ export default async function CourseDetailPage({ params }: Props) {
         price={6900}
         locale={locale}
         isLoggedIn={isLoggedIn}
-        kitId={firstKit?.id}
+        kitId={undefined}
         cityId={course.region || 'jeonju'}
       />
 

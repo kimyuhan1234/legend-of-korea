@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
@@ -63,7 +63,7 @@ function getItemName(item: PlanItem, locale: string): string {
 function getCityLabel(code: string, locale: string): string {
   const city = CITIES.find((c) => c.code === code)
   if (!city) return code
-  return city.name[locale as string] || city.name.en || city.name.ko
+  return (city.name as Record<string, string>)[locale] || city.name.en || city.name.ko
 }
 
 export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHotelSaved, onResetAll }: PlannerPreviewProps) {

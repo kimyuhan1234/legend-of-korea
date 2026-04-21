@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Image from 'next/image'
@@ -8,7 +8,7 @@ import { CITY_WORKSHOPS, type CityWorkshop, type CityWorkshopExperience } from '
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return field[locale as string] || field.en || field.ko
+  return (field as Record<string, string>)[locale] || field.en || field.ko
 }
 
 // ── 오른쪽 상세 패널 (데스크톱 공용 / 모바일 아코디언 내부)
@@ -65,7 +65,7 @@ function ExperienceDetail({
 
       {/* 특징 태그 */}
       <div className="flex flex-wrap gap-2 mb-5">
-        {(exp.features[locale as string] ?? exp.features.ko).map((f, i) => (
+        {((exp.features as Record<string, string[]>)[locale] ?? exp.features.ko).map((f, i) => (
           <span
             key={i}
             className="text-xs bg-snow text-ink px-3 py-1.5 rounded-lg border border-mist"

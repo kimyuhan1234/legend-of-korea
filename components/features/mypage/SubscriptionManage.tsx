@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Loader2, Sparkles, XCircle, AlertTriangle, TrendingUp, Plus } from 'lucide-react'
 import { toast } from '@/components/ui/use-toast'
 import { createClient } from '@/lib/supabase/client'
-import { PASSES, type PassId } from '@/lib/data/passes'
+import { PASSES, type PassId, type PassI18n } from '@/lib/data/passes'
 import { LP_TO_CREDIT_RATE } from '@/lib/data/credit-packs'
 
 interface Props {
@@ -22,9 +22,9 @@ interface PassStatusResponse {
 
 type I18nKey = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
 
-function pickI18n(obj: Record<string, string>, locale: string): string {
+function pickI18n(obj: PassI18n | Record<string, string>, locale: string): string {
   const k = locale as I18nKey
-  return obj[k] || obj.en || obj.ko || ''
+  return (obj as Record<string, string>)[k] || (obj as Record<string, string>).en || (obj as Record<string, string>).ko || ''
 }
 
 export function SubscriptionManage({ locale }: Props) {

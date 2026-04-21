@@ -1,4 +1,4 @@
-import { kfoodSpots, CITIES, CATEGORY_LABEL, type KFoodSpot } from "@/lib/data/kfood-spots"
+﻿import { kfoodSpots, CITIES, CATEGORY_LABEL, type KFoodSpot } from "@/lib/data/kfood-spots"
 import Link from "next/link"
 import { AddToPlannerButton } from "@/components/features/planner/AddToPlannerButton"
 
@@ -8,11 +8,11 @@ interface KFoodSpotListProps {
 }
 
 function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as string] || field.en || field.ko
+  return (field as Record<string, string>)[locale] || field.en || field.ko
 }
 
 function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: string): string[] {
-  return field[locale as string] || field.en || field.ko
+  return (field as Record<string, string[]>)[locale] || field.en || field.ko
 }
 
 const PRICE_COLOR: Record<string, string> = {
@@ -43,7 +43,7 @@ export function KFoodSpotList({ locale, cityFilter }: KFoodSpotListProps) {
       <div className="flex flex-wrap gap-2 mb-8">
         {cities.map((city) => {
           const isActive = (cityFilter || "all") === city.code
-          const label = city[locale as string] || city.en || city.ko
+          const label = (city as Record<string, string>)[locale] || city.en || city.ko
           return (
             <Link
               key={city.code}

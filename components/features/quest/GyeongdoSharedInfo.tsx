@@ -58,7 +58,7 @@ export function GyeongdoSharedInfo({ locale }: Props) {
           {GYEONGDO_KIT.includes.map((item, i) => (
             <div key={i} className="flex items-start gap-3 text-sm">
               <span className="text-[#5BBDAD] font-bold mt-0.5">✓</span>
-              <span className="text-slate">{(item as Record<string, string>)[lk] || item.en || item.ko}</span>
+              <span className="text-slate">{(item as Record<string, string>)[lk] || (item as Record<string, string>).en || (item as Record<string, string>).ko}</span>
             </div>
           ))}
         </div>

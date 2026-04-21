@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
@@ -26,7 +26,7 @@ export function CartSidePanel() {
   }
 
   const getLocaleName = (name: { ko: string; en: string; ja: string }) =>
-    name[locale as string] || name.en || name.ko
+    (name as Record<string, string>)[locale] || name.en || name.ko
 
   return (
     <>

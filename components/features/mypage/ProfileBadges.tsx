@@ -123,7 +123,7 @@ export function ProfileBadges({ userId }: Props) {
               <span className={`text-[10px] font-bold leading-tight text-center ${
                 isCleared ? 'text-amber-700' : 'text-slate-300'
               }`}>
-                {course.name[locale]}
+                {(course.name as Record<string, string>)[locale] || course.name.ko}
               </span>
               {!isCleared && (
                 <Lock size={8} className="absolute top-1.5 right-1.5 text-slate-300" />

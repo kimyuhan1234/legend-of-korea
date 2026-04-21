@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useMemo } from 'react'
 import { useTranslations } from 'next-intl'
@@ -34,7 +34,7 @@ function formatDateLabel(dateStr: string, locale: string): string {
   const month = d.getMonth() + 1
   const day = d.getDate()
   const dayKey = String(d.getDay())
-  const weekday = WEEKDAY[dayKey]?.[locale as string] ?? WEEKDAY[dayKey]?.ko ?? ''
+  const weekday = (WEEKDAY[dayKey] as Record<string, string> | undefined)?.[locale] ?? WEEKDAY[dayKey]?.ko ?? ''
   if (locale === 'en') return `${month}/${day} (${weekday})`
   if (locale === 'ja') return `${month}月${day}日 (${weekday})`
   return `${month}월 ${day}일 (${weekday})`

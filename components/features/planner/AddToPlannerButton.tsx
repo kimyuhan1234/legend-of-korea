@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
@@ -61,7 +61,7 @@ const CITY_NAMES: Record<string, { ko: string; en: string; ja: string }> = {
 }
 
 function getCityName(cityId: string, locale: string): string {
-  return CITY_NAMES[cityId]?.[locale as string] || cityId
+  return (CITY_NAMES[cityId] as Record<string, string> | undefined)?.[locale] || cityId
 }
 
 function extractName(data: Record<string, unknown>): string {

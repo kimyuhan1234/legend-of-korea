@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useRef } from 'react'
 import { useTranslations } from 'next-intl'
@@ -22,7 +22,7 @@ interface AiDupeSearchProps {
 }
 
 function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return field[locale as string] || field.en || field.ko
+  return (field as Record<string, string>)[locale] || field.en || field.ko
 }
 
 export function AiDupeSearch({ locale }: AiDupeSearchProps) {

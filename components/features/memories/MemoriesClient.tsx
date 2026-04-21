@@ -71,13 +71,13 @@ export function MemoriesClient({ locale }: Props) {
       .not('photo_url', 'is', null)
       .order('completed_at', { ascending: false })
       .then(({ data }) => {
-        const items: PhotoItem[] = (data || [])
-          .filter((p: { photo_url: string | null }) => !!p.photo_url)
-          .map((p: {
-            photo_url: string | null
-            completed_at: string | null
-            missions?: { title?: Record<string, string>; courses?: { title?: Record<string, string> } } | null
-          }) => ({
+        const items: PhotoItem[] = ((data || []) as Array<{
+          photo_url: string | null
+          completed_at: string | null
+          missions?: { title?: Record<string, string>; courses?: { title?: Record<string, string> } } | null
+        }>)
+          .filter((p) => !!p.photo_url)
+          .map((p) => ({
             photoUrl: p.photo_url as string,
             completedAt: p.completed_at || '',
             missionTitle: p.missions?.title ?? {},

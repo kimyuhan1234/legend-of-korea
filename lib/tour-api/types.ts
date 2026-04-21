@@ -26,6 +26,7 @@ export interface I18nString {
   ja: string
   'zh-CN': string
   'zh-TW': string
+  [key: string]: string
 }
 
 export interface NormalizedSpot {

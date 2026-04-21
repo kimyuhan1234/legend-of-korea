@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState, useMemo, type ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
@@ -25,7 +25,7 @@ function i18nText(
   locale: string
 ): string {
   if (!field) return ''
-  return field[locale as string] || field.en || field.ko || ''
+  return (field as Record<string, string>)[locale] || field.en || field.ko || ''
 }
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'

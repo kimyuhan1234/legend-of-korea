@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { getCurrentTier, getNextTier, TIERS } from '@/lib/constants/tiers';
@@ -52,7 +52,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
   };
 
   const loc = (obj: { ko: string; ja: string; en: string }) =>
-    obj[locale as string] || obj.en || obj.ko;
+    (obj as Record<string, string>)[locale] || obj.en || obj.ko;
 
   return (
     <>

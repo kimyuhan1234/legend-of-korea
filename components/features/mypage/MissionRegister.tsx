@@ -26,7 +26,8 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
 
-  const lang = locale as string;
+  type I18nKey = 'ko' | 'ja' | 'en';
+  const lang = (locale in { ko: 1, ja: 1, en: 1 } ? locale : 'ko') as I18nKey;
 
   return (
     <div className="space-y-4">
