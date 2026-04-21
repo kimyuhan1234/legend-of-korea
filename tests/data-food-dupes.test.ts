@@ -46,13 +46,12 @@ describe("food-dupes: 지역(Region) 구조", () => {
 })
 
 describe("food-dupes: 음식(RegionalFood) 구조", () => {
-  it("전주를 제외한 8개 도시가 10개 음식을 가져야 한다", () => {
+  it("각 지역이 최소 10개 음식을 가져야 한다", () => {
     for (const region of regions) {
-      if (region.code === "jeonju") continue
       expect(
-        region.foods,
-        `${region.code}: 음식이 10개여야 하는데 ${region.foods.length}개`
-      ).toHaveLength(10)
+        region.foods.length,
+        `${region.code}: 음식이 최소 10개여야 하는데 ${region.foods.length}개`
+      ).toBeGreaterThanOrEqual(10)
     }
   })
 
