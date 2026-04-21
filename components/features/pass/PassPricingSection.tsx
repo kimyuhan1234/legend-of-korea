@@ -32,6 +32,7 @@ export function PassPricingSection({ locale }: Props) {
   const [processingPass, setProcessingPass] = useState<string | null>(null)
   const [processingPack, setProcessingPack] = useState<string | null>(null)
   const [exchanging, setExchanging] = useState(false)
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null)
 
   const loadStatus = useCallback(async () => {
     try {
@@ -167,25 +168,39 @@ export function PassPricingSection({ locale }: Props) {
         <p className="text-sm text-slate-500">{t('subtitle')}</p>
       </div>
 
-      {/* 패스 4개 — 팜플렛 티켓 세로 스택 */}
+      {/* 패스 4개 — 아코디언 호버 확장 */}
       <div>
         <h2 className="text-xs font-black text-mint-deep uppercase tracking-widest mb-4 text-center">
           {t('sectionPasses')}
         </h2>
-        <div className="space-y-4 max-w-3xl mx-auto">
-          {PASSES.map((pass) => (
-            <PassCard
+        {/* 데스크탑: 가로 아코디언 / 모바일: 세로 스택 */}
+        <div className="flex flex-col md:flex-row md:items-stretch gap-3">
+          {PASSES.map((pass, i) => (
+            <div
               key={pass.id}
-              pass={pass}
-              locale={locale}
-              isOwned={hasAllInOne || ownedSet.has(pass.id)}
-              isProcessing={processingPass === pass.id}
-              disabled={!!processingPass}
-              savingsLabel={pass.id === 'allinone' ? savingsLabel : undefined}
-              ownedLabel={t('owned')}
-              purchaseLabel={t('purchase')}
-              onPurchase={handlePurchasePass}
-            />
+              onMouseEnter={() => setHoveredIdx(i)}
+              onMouseLeave={() => setHoveredIdx(null)}
+              className="min-w-0"
+              style={{
+                flexBasis: hoveredIdx === null ? '25%' : hoveredIdx === i ? '43%' : '19%',
+                flexShrink: 1,
+                flexGrow: 0,
+                transition: 'flex-basis 300ms ease-in-out',
+              }}
+            >
+              <PassCard
+                pass={pass}
+                locale={locale}
+                isOwned={hasAllInOne || ownedSet.has(pass.id)}
+                isProcessing={processingPass === pass.id}
+                disabled={!!processingPass}
+                savingsLabel={pass.id === 'allinone' ? savingsLabel : undefined}
+                ownedLabel={t('owned')}
+                purchaseLabel={t('purchase')}
+                onPurchase={handlePurchasePass}
+                layout="vertical"
+              />
+            </div>
           ))}
         </div>
       </div>

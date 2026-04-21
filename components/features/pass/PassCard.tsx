@@ -14,6 +14,7 @@ interface Props {
   ownedLabel: string
   purchaseLabel: string
   onPurchase: (passId: string) => void
+  layout?: 'horizontal' | 'vertical'
 }
 
 type I18nKey = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
@@ -49,27 +50,34 @@ export function PassCard({
   ownedLabel,
   purchaseLabel,
   onPurchase,
+  layout = 'horizontal',
 }: Props) {
   const isAllInOne = pass.id === 'allinone'
+  const isVertical = layout === 'vertical'
   const tagline = pick(pass.tagline, locale)
   const badge = pass.badge ? pick(pass.badge, locale) : null
 
   return (
     <div
       className={[
-        'flex flex-col md:flex-row rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-all border',
+        isVertical ? 'flex flex-col h-full' : 'flex flex-col md:flex-row',
+        'rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-all border',
         isAllInOne
           ? 'border-amber-400/40 ring-2 ring-amber-400/60 shadow-[0_0_20px_rgba(245,158,11,0.15)]'
           : 'border-slate-200/80',
       ].join(' ')}
     >
-      {/* 왼쪽: 이미지 */}
-      <div className="relative w-full md:w-[45%] h-48 md:h-auto md:min-h-[220px] shrink-0">
+      {/* 이미지 */}
+      <div className={
+        isVertical
+          ? 'relative w-full h-44 shrink-0'
+          : 'relative w-full md:w-[45%] h-48 md:h-auto md:min-h-[220px] shrink-0'
+      }>
         <Image
           src={`/images/pass/${pass.id}.png`}
           alt={pass.name}
           fill
-          sizes="(max-width: 768px) 100vw, 360px"
+          sizes={isVertical ? '(max-width: 768px) 100vw, 360px' : '(max-width: 768px) 100vw, 360px'}
           className="object-cover"
         />
 
@@ -82,19 +90,28 @@ export function PassCard({
         </div>
       </div>
 
-      {/* 절취선 — 데스크탑 세로선 */}
-      <div className="hidden md:block relative w-0 border-l-2 border-dashed border-slate-200">
-        <div className="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-slate-50" aria-hidden />
-        <div className="absolute -bottom-3 -left-3 w-6 h-6 rounded-full bg-slate-50" aria-hidden />
-      </div>
+      {/* 절취선 */}
+      {isVertical ? (
+        <div className="relative h-0 border-t-2 border-dashed border-slate-200">
+          <div className="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-slate-50" aria-hidden />
+          <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-slate-50" aria-hidden />
+        </div>
+      ) : (
+        <>
+          {/* 데스크탑 세로선 */}
+          <div className="hidden md:block relative w-0 border-l-2 border-dashed border-slate-200">
+            <div className="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-slate-50" aria-hidden />
+            <div className="absolute -bottom-3 -left-3 w-6 h-6 rounded-full bg-slate-50" aria-hidden />
+          </div>
+          {/* 모바일 가로선 */}
+          <div className="block md:hidden relative h-0 border-t-2 border-dashed border-slate-200">
+            <div className="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-slate-50" aria-hidden />
+            <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-slate-50" aria-hidden />
+          </div>
+        </>
+      )}
 
-      {/* 절취선 — 모바일 가로선 */}
-      <div className="block md:hidden relative h-0 border-t-2 border-dashed border-slate-200">
-        <div className="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-slate-50" aria-hidden />
-        <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-slate-50" aria-hidden />
-      </div>
-
-      {/* 오른쪽: 설명 + 가격 + CTA */}
+      {/* 오른쪽/하단: 설명 + 가격 + CTA */}
       <div className="flex-1 p-5 flex flex-col justify-between">
         <div>
           {/* 가격 + 뱃지 */}
