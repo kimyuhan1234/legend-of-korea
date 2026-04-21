@@ -1,37 +1,29 @@
-interface UnsplashPhoto {
-  urls: { regular: string; small: string }
-  user: { name: string; links: { html: string } }
-}
+import type { FoodImageResult } from './types'
 
-interface UnsplashResponse {
-  results: UnsplashPhoto[]
-}
+const UNSPLASH_API = 'https://api.unsplash.com/search/photos'
 
-interface ImageResult {
-  url: string
-  photographer: string
-  photographerUrl: string
-}
-
-export async function searchUnsplash(query: string): Promise<ImageResult | null> {
-  const accessKey = process.env.UNSPLASH_ACCESS_KEY
-  if (!accessKey) return null
+export async function searchUnsplash(query: string): Promise<FoodImageResult | null> {
+  const key = process.env.UNSPLASH_ACCESS_KEY
+  if (!key) return null
 
   try {
-    const params = new URLSearchParams({ query, per_page: '5', orientation: 'landscape' })
-    const res = await fetch(`https://api.unsplash.com/search/photos?${params}`, {
-      headers: { Authorization: `Client-ID ${accessKey}` },
-      next: { revalidate: 86400 },
-    })
+    const res = await fetch(
+      `${UNSPLASH_API}?query=${encodeURIComponent(query)}&per_page=1&orientation=landscape`,
+      {
+        headers: { Authorization: `Client-ID ${key}` },
+        next: { revalidate: 86400 },
+      }
+    )
 
     if (!res.ok) return null
 
-    const data: UnsplashResponse = await res.json()
+    const data = await res.json()
     const photo = data.results?.[0]
     if (!photo) return null
 
     return {
       url: photo.urls.regular || photo.urls.small,
+      source: 'unsplash',
       photographer: photo.user.name,
       photographerUrl: photo.user.links.html,
     }
