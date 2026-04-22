@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 
 /**
@@ -59,4 +60,13 @@ export async function requireAdmin(): Promise<NextResponse | null> {
   }
 
   return null
+}
+
+/**
+ * 서버 컴포넌트(페이지·레이아웃)용 가드.
+ * 관리자 아니면 locale 홈으로 redirect (throw로 중단되므로 이후 JSX는 렌더링되지 않음).
+ */
+export async function requireAdminPage(locale = 'ko'): Promise<void> {
+  const ok = await isAdmin()
+  if (!ok) redirect(`/${locale}`)
 }
