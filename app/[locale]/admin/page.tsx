@@ -134,29 +134,37 @@ export default function AdminDashboardPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {data.recentOrders.map((order) => (
-                  <TableRow key={order.id} className="border-slate-50">
-                    <TableCell className="font-medium text-xs text-slate-500 truncate max-w-[100px]">
-                      {order.id.split('-')[0]}
-                    </TableCell>
-                    <TableCell className="font-bold text-[#111]">{order.customer_name}</TableCell>
-                    <TableCell>₩{order.total_amount.toLocaleString()}</TableCell>
-                    <TableCell>
-                      <Badge 
-                        className={
-                          order.payment_status === 'paid' 
-                            ? "bg-emerald-100 text-emerald-700 border-none" 
-                            : "bg-slate-100 text-slate-500 border-none"
-                        }
-                      >
-                        {order.payment_status === 'paid' ? '결제완료' : '대기'}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="text-right text-slate-400 text-xs">
-                      {new Date(order.created_at).toLocaleDateString()}
+                {data.recentOrders && data.recentOrders.length > 0 ? (
+                  data.recentOrders.map((order) => (
+                    <TableRow key={order.id} className="border-slate-50">
+                      <TableCell className="font-medium text-xs text-slate-500 truncate max-w-[100px]">
+                        {order.id.split('-')[0]}
+                      </TableCell>
+                      <TableCell className="font-bold text-[#111]">{order.customer_name}</TableCell>
+                      <TableCell>₩{order.total_amount.toLocaleString()}</TableCell>
+                      <TableCell>
+                        <Badge
+                          className={
+                            order.payment_status === 'paid'
+                              ? "bg-emerald-100 text-emerald-700 border-none"
+                              : "bg-slate-100 text-slate-500 border-none"
+                          }
+                        >
+                          {order.payment_status === 'paid' ? '결제완료' : '대기'}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-right text-slate-400 text-xs">
+                        {new Date(order.created_at).toLocaleDateString()}
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={5} className="text-center text-sm text-slate-400 py-8">
+                      주문 데이터가 없습니다
                     </TableCell>
                   </TableRow>
-                ))}
+                )}
               </TableBody>
             </Table>
           </CardContent>
@@ -170,25 +178,29 @@ export default function AdminDashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
-              {data.recentPosts.map((post) => (
-                <div key={post.id} className="flex gap-3 group cursor-pointer">
-                  <div className="w-1 aspect-square rounded-full bg-[#F0B8B8] mt-2 shrink-0 group-hover:scale-150 transition-transform" />
-                  <div className="min-w-0">
-                    <p className="text-sm text-[#111] font-bold truncate group-hover:text-blossom-deep transition-colors">
-                      {post.content}
-                    </p>
-                    <div className="flex items-center gap-2 mt-1">
-                      <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">
-                        @{post.users?.nickname || 'Unknown'}
-                      </span>
-                      <span className="text-[10px] text-slate-300">•</span>
-                      <span className="text-[11px] text-slate-400">
-                        {new Date(post.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                      </span>
+              {data.recentPosts && data.recentPosts.length > 0 ? (
+                data.recentPosts.map((post) => (
+                  <div key={post.id} className="flex gap-3 group cursor-pointer">
+                    <div className="w-1 aspect-square rounded-full bg-[#F0B8B8] mt-2 shrink-0 group-hover:scale-150 transition-transform" />
+                    <div className="min-w-0">
+                      <p className="text-sm text-[#111] font-bold truncate group-hover:text-blossom-deep transition-colors">
+                        {post.content}
+                      </p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                          @{post.users?.nickname || 'Unknown'}
+                        </span>
+                        <span className="text-[10px] text-slate-300">•</span>
+                        <span className="text-[11px] text-slate-400">
+                          {new Date(post.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))
+              ) : (
+                <p className="text-sm text-slate-400 text-center py-8">커뮤니티 글이 없습니다</p>
+              )}
             </div>
           </CardContent>
         </Card>

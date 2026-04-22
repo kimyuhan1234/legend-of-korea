@@ -64,8 +64,8 @@ export async function GET(req: NextRequest) {
         totalOrders,
         totalUsers,
       },
-      recentOrders,
-      recentPosts,
+      recentOrders: recentOrders ?? [],
+      recentPosts: recentPosts ?? [],
     });
   } catch (error) {
     console.error('Admin Stats API Error:', error);
