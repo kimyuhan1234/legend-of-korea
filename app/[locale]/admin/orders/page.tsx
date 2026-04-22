@@ -33,7 +33,7 @@ export default function AdminOrdersPage() {
       setLoading(true)
       const res = await fetch(`/api/admin/orders?search=${query}`)
       const data = await res.json()
-      setOrders(data)
+      setOrders(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error("Failed to fetch orders:", error)
     } finally {
@@ -121,7 +121,7 @@ export default function AdminOrdersPage() {
               <TableRow key={order.id} className="border-slate-50 group hover:bg-slate-50/30 transition-colors">
                 <TableCell>
                   <div className="space-y-1">
-                    <p className="font-mono text-[10px] text-slate-400 uppercase">{order.id.split('-')[0]}</p>
+                    <p className="font-mono text-[10px] text-slate-400 uppercase">{order.id?.split('-')[0] ?? 'N/A'}</p>
                     <p className="text-xs text-slate-500">{new Date(order.created_at).toLocaleDateString()}</p>
                   </div>
                 </TableCell>
@@ -172,7 +172,7 @@ export default function AdminOrdersPage() {
                   </div>
                 </TableCell>
                 <TableCell className="text-right">
-                  <p className="font-black text-[#111]">₩{order.total_amount.toLocaleString()}</p>
+                  <p className="font-black text-[#111]">₩{(order.total_amount ?? 0).toLocaleString()}</p>
                 </TableCell>
               </TableRow>
             ))}

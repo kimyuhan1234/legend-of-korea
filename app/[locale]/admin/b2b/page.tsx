@@ -48,7 +48,7 @@ export default function AdminB2BPage() {
         ])
         const b2bData = await b2bRes.json()
         const coursesData = await coursesRes.json()
-        setB2BOrders(b2bData)
+        setB2BOrders(Array.isArray(b2bData) ? b2bData : [])
         setCourses(coursesData.courses || [])
       } catch (error) {
         console.error("Failed to fetch B2B data:", error)
@@ -278,8 +278,8 @@ export default function AdminB2BPage() {
                   </Select>
                 </TableCell>
                 <TableCell className="text-right">
-                  <p className="font-black text-[#111]">₩{order.total_amount.toLocaleString()}</p>
-                  <p className="text-[10px] text-slate-400">단가: ₩{order.unit_price.toLocaleString()}</p>
+                  <p className="font-black text-[#111]">₩{(order.total_amount ?? 0).toLocaleString()}</p>
+                  <p className="text-[10px] text-slate-400">단가: ₩{(order.unit_price ?? 0).toLocaleString()}</p>
                 </TableCell>
               </TableRow>
             ))}

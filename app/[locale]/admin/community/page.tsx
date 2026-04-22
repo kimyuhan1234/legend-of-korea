@@ -32,7 +32,7 @@ export default function AdminCommunityPage() {
       setLoading(true)
       const res = await fetch("/api/admin/community")
       const data = await res.json()
-      setPosts(data)
+      setPosts(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error("Failed to fetch community posts:", error)
     } finally {

@@ -51,7 +51,7 @@ export default function AdminMissionsPage() {
       setLoading(true)
       const res = await fetch(`/api/admin/missions?courseId=${selectedCourseId}`)
       const data = await res.json()
-      setMissions(data)
+      setMissions(Array.isArray(data) ? data : [])
       setLoading(false)
     }
     fetchMissions()

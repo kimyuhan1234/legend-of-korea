@@ -38,7 +38,9 @@ export default function AdminStatsPage() {
   }, [])
 
   if (loading) return <div className="p-8 text-center text-slate-500 font-medium font-bold">통계 데이터를 분석 중...</div>
-  if (!data) return null
+  if (!data || !Array.isArray(data.revenue)) {
+    return <div className="p-8 text-center text-slate-500">통계 데이터를 불러올 수 없습니다. (로그인 또는 관리자 권한 확인)</div>
+  }
 
   // Data Processing for Revenue Chart
   const revenueChartData = data.revenue.reduce((acc: any[], item: any) => {

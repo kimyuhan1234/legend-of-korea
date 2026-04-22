@@ -50,11 +50,11 @@ export async function GET(req: NextRequest) {
       .select('status');
 
     return NextResponse.json({
-      revenue: revenueData,
-      courseSales: ordersWithCourses,
-      affiliate: affiliateStats,
-      languages: langDist,
-      missions: missionStats
+      revenue: revenueData ?? [],
+      courseSales: ordersWithCourses ?? [],
+      affiliate: affiliateStats ?? [],
+      languages: langDist ?? [],
+      missions: missionStats ?? []
     });
   } catch (error) {
     console.error('Admin Full Stats API Error:', error);
