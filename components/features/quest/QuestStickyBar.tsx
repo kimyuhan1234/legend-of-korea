@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
+import { PassRequiredModal } from '@/components/shared/PassRequiredModal'
 
 interface QuestStickyBarProps {
   courseId: string
@@ -20,6 +21,7 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
   const router = useRouter()
   const [visible, setVisible] = useState(false)
   const [addState, setAddState] = useState<'idle' | 'loading' | 'added' | 'error'>('idle')
+  const [showPassModal, setShowPassModal] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.7)
@@ -70,6 +72,11 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
           },
         }),
       })
+      if (res.status === 403) {
+        setAddState('idle')
+        setShowPassModal(true)
+        return
+      }
       if (!res.ok) {
         setAddState('error')
         setTimeout(() => setAddState('idle'), 2500)
@@ -83,7 +90,15 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
     }
   }
 
-  if (!visible) return null
+  const passModal = showPassModal ? (
+    <PassRequiredModal
+      locale={locale}
+      passId="story"
+      onClose={() => setShowPassModal(false)}
+    />
+  ) : null
+
+  if (!visible) return passModal
 
   const subscribeLabel = locale === 'ko' ? '구독 시작' : locale === 'ja' ? 'サブスク開始' : 'Subscribe'
   const priceLabel = locale === 'ko' ? '₩6,900/월' : locale === 'ja' ? '¥750/月' : '$5/mo'
@@ -113,7 +128,9 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
   }[addState]
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-mist shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+    <>
+      {passModal}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-mist shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
       <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
         <div className="min-w-0 flex-shrink">
           <p className="text-sm font-bold text-[#111] truncate">{title}</p>
@@ -138,5 +155,6 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
         </div>
       </div>
     </div>
+    </>
   )
 }

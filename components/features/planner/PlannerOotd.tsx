@@ -3,7 +3,8 @@
 import { useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { getCityWeather, type WeatherCondition, type CityWeatherDay } from '@/lib/data/city-weather-mock'
+import { getCityWeather, type CityWeatherDay } from '@/lib/data/city-weather-mock'
+import { PassRequiredModal } from '@/components/shared/PassRequiredModal'
 
 interface OotdCheckedItem {
   name: string
@@ -88,6 +89,7 @@ export function PlannerOotd({
   const [addingDate, setAddingDate] = useState<string | null>(null)
   const [addedDates, setAddedDates] = useState<Set<string>>(new Set())
   const [error, setError] = useState<string | null>(null)
+  const [showPassModal, setShowPassModal] = useState(false)
 
   // 이미 담은 OOTD 날짜들
   const existingDates = useMemo(
@@ -136,6 +138,10 @@ export function PlannerOotd({
           },
         }),
       })
+      if (res.status === 403) {
+        setShowPassModal(true)
+        return
+      }
       if (!res.ok) {
         setError(t('ootd.addFailed'))
         return
@@ -153,7 +159,15 @@ export function PlannerOotd({
   const hasExisting = existingOotd.length > 0
 
   return (
-    <div className="bg-pink-50 rounded-2xl p-5 border border-pink-200 h-full">
+    <>
+      {showPassModal && (
+        <PassRequiredModal
+          locale={locale}
+          passId="live"
+          onClose={() => setShowPassModal(false)}
+        />
+      )}
+      <div className="bg-pink-50 rounded-2xl p-5 border border-pink-200 h-full">
       <div className="flex items-center justify-between mb-3">
         <p className="text-[10px] font-black text-pink-700 uppercase tracking-widest">
           👗 {t('ootd.title')}
@@ -271,5 +285,6 @@ export function PlannerOotd({
         </div>
       )}
     </div>
+    </>
   )
 }

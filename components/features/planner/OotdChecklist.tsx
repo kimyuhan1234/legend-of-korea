@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
+import { PassRequiredModal } from '@/components/shared/PassRequiredModal'
 
 interface OutfitItem {
   nameKey: string
@@ -25,6 +26,7 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
 
   const [checked, setChecked] = useState<Set<string>>(new Set())
   const [state, setState] = useState<'idle' | 'loading' | 'added' | 'login-required'>('idle')
+  const [showPassModal, setShowPassModal] = useState(false)
 
   const toggle = (key: string) => {
     setChecked((prev) => {
@@ -74,6 +76,12 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
         return
       }
 
+      if (res.status === 403) {
+        setState('idle')
+        setShowPassModal(true)
+        return
+      }
+
       if (!res.ok) {
         setState('idle')
         return
@@ -87,7 +95,15 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
   }
 
   return (
-    <div className="border-t border-mist/40 mt-4 pt-4">
+    <>
+      {showPassModal && (
+        <PassRequiredModal
+          locale={locale}
+          passId="live"
+          onClose={() => setShowPassModal(false)}
+        />
+      )}
+      <div className="border-t border-mist/40 mt-4 pt-4">
       <p className="text-[10px] font-black text-mint-deep uppercase tracking-widest mb-2">
         {t('ootd.check')}
       </p>
@@ -132,5 +148,6 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
               : `+ ${t('ootd.addChecked')} (${checked.size})`}
       </button>
     </div>
+    </>
   )
 }
