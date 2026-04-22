@@ -1,4 +1,5 @@
 import { PROVINCE_AREA_CODES } from './area-codes'
+import type { StayTags } from './stay-tags'
 
 const BASE_URL = 'https://apis.data.go.kr/B551011/KorService2'
 const ENDPOINT = 'searchStay2'
@@ -41,6 +42,8 @@ export interface NormalizedStay {
   areaCode: string
   sigunguCode: string
   source: 'tourapi'
+  /** 9축 성향 태그 — tagStays() 로 자동 부여, 데이터에 따라 없을 수 있음 */
+  tags?: StayTags
 }
 
 /**
