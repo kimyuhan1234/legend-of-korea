@@ -34,6 +34,10 @@ const CITY_POS: Record<string, { top: string; left: string }> = {
   tongyeong: { top: '73.6%', left: '60.6%' },
   busan: { top: '67.4%', left: '72.2%' },
   jeju: { top: '96%', left: '35.8%' },
+  // Day 5 추가 — 실제 위·경도 기반 공식 역산 좌표
+  sokcho: { top: '16.7%', left: '64.8%' },
+  yeosu: { top: '74.3%', left: '50.8%' },
+  andong: { top: '44.1%', left: '66.9%' },
 }
 
 const CITY_IMAGE: Record<string, string> = {
