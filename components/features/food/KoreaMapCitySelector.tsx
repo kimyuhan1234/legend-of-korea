@@ -5,10 +5,18 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
-import type { Region } from '@/lib/data/food-dupes'
+
+export interface RegionSummary {
+  code: string
+  name: { ko: string; ja: string; en: string }
+  icon: string
+  description: { ko: string; ja: string; en: string }
+  foodCount: number
+  topFoods: { id: string; name: { ko: string; ja: string; en: string } }[]
+}
 
 interface KoreaMapCitySelectorProps {
-  regions: Region[]
+  regions: RegionSummary[]
 }
 
 function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
@@ -97,7 +105,7 @@ export function KoreaMapCitySelector({ regions }: KoreaMapCitySelectorProps) {
                     {getL(region.name, locale)}
                   </span>
                   <span className="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[8px] font-bold text-white bg-ink/80 px-2 py-0.5 rounded-full whitespace-nowrap">
-                    {t('map.foods', { count: region.foods.length })}
+                    {t('map.foods', { count: region.foodCount })}
                   </span>
                 </button>
               )
@@ -138,22 +146,22 @@ export function KoreaMapCitySelector({ regions }: KoreaMapCitySelectorProps) {
                   {getL(selectedRegion.name, locale)}
                 </h3>
                 <p className="text-xs text-stone mb-1">
-                  {t('map.foods', { count: selectedRegion.foods.length })}
+                  {t('map.foods', { count: selectedRegion.foodCount })}
                 </p>
                 <p className="text-sm text-slate mb-4 leading-relaxed">
                   {getL(selectedRegion.description, locale)}
                 </p>
 
                 <div className="space-y-2 mb-5">
-                  {selectedRegion.foods.slice(0, 5).map((food) => (
+                  {selectedRegion.topFoods.map((food) => (
                     <div key={food.id} className="flex items-center gap-2 text-sm">
                       <span>🍜</span>
                       <span className="text-ink font-medium truncate">{getL(food.name, locale)}</span>
                     </div>
                   ))}
-                  {selectedRegion.foods.length > 5 && (
+                  {selectedRegion.foodCount > 5 && (
                     <p className="text-xs text-stone pl-6">
-                      +{selectedRegion.foods.length - 5} more
+                      +{selectedRegion.foodCount - 5} more
                     </p>
                   )}
                 </div>

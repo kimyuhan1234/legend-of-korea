@@ -4,14 +4,28 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { COUNTRIES, getCountryDupes } from '@/lib/utils/country-dupe-aggregator'
-import { regions } from '@/lib/data/food-dupes'
+import { COUNTRIES } from '@/lib/utils/country-dupe-aggregator'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
+
+export interface SlimDupeEntry {
+  foreignFoodName: { ko: string; ja: string; en: string }
+  koreanFoodName: { ko: string; ja: string; en: string }
+  koreanFoodId: string
+  regionCode: string
+  regionName: { ko: string; ja: string; en: string }
+  similarityPercent: number
+}
+
+export interface CountrySummary {
+  totalMatches: number
+  dupes: SlimDupeEntry[]
+}
 
 interface WorldDupeMapProps {
   onCountrySelect: (code: string) => void
   selectedCountry: string | null
   countryCounts: Record<string, number>
+  allCountryDupes: Record<string, CountrySummary>
   locale: string
 }
 
@@ -38,13 +52,13 @@ const KOREA_POS = { x: 41.6, y: 28.8 }
 
 const codes = Object.keys(COUNTRIES)
 
-export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, locale }: WorldDupeMapProps) {
+export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, allCountryDupes, locale }: WorldDupeMapProps) {
   const t = useTranslations('dupe')
   const [hovered, setHovered] = useState<string | null>(null)
   const [showAll, setShowAll] = useState(false)
 
   const active = hovered || selectedCountry
-  const dupeData = active ? getCountryDupes(active, regions) : null
+  const dupeData = active ? (allCountryDupes[active] ?? null) : null
   const dupes = dupeData?.dupes ?? []
   const activeMeta = active ? COUNTRIES[active] : null
 
@@ -204,34 +218,34 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {(showAll ? dupes : dupes.slice(0, 6)).map((dupe, i) => (
               <div
-                key={`${active}-${dupe.koreanFood.id}`}
+                key={`${active}-${dupe.koreanFoodId}`}
                 className="bg-white rounded-xl p-4 border border-mist hover:border-mint hover:shadow-md transition-all"
                 style={{ animation: `fadeUp 0.4s ease-out ${i * 0.08}s both` }}
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-sm text-slate truncate">{getL(dupe.foreignFood.name, locale)}</span>
+                  <span className="text-sm text-slate truncate">{getL(dupe.foreignFoodName, locale)}</span>
                   <span className="text-mint-deep font-bold shrink-0">→</span>
-                  <span className="text-sm font-bold text-ink truncate">{getL(dupe.koreanFood.name, locale)}</span>
+                  <span className="text-sm font-bold text-ink truncate">{getL(dupe.koreanFoodName, locale)}</span>
                 </div>
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-[10px] bg-blossom-light text-blossom-deep rounded-full px-2 py-0.5 font-bold shrink-0">
                     {getL(dupe.regionName, locale)}
                   </span>
                   <div className="flex-1 h-1.5 bg-mist rounded-full">
-                    <div className="h-full bg-mint-deep rounded-full transition-all duration-500" style={{ width: `${dupe.foreignFood.similarityPercent}%` }} />
+                    <div className="h-full bg-mint-deep rounded-full transition-all duration-500" style={{ width: `${dupe.similarityPercent}%` }} />
                   </div>
-                  <span className="text-xs font-bold text-mint-deep shrink-0">{dupe.foreignFood.similarityPercent}%</span>
+                  <span className="text-xs font-bold text-mint-deep shrink-0">{dupe.similarityPercent}%</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Link
-                    href={`/${locale}/food/dupe/${dupe.regionCode}/${dupe.koreanFood.id}`}
+                    href={`/${locale}/food/dupe/${dupe.regionCode}/${dupe.koreanFoodId}`}
                     className="text-[10px] font-bold text-mint-deep hover:underline"
                   >
                     {t('world.detail')}
                   </Link>
                   <AddToPlannerButton
                     itemType="food"
-                    itemData={{ name: dupe.koreanFood.name, foodId: dupe.koreanFood.id, region: dupe.regionCode, source: 'world-map' }}
+                    itemData={{ name: dupe.koreanFoodName, foodId: dupe.koreanFoodId, region: dupe.regionCode, source: 'world-map' }}
                     cityId={dupe.regionCode}
                     size="sm"
                   />

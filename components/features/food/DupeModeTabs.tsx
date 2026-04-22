@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { AiDupeSearch } from './AiDupeSearch'
 import { TastePreferenceFilter } from './TastePreferenceFilter'
@@ -8,8 +8,8 @@ import { TasteMatchResults } from './TasteMatchResults'
 import { WorldDupeMap } from './WorldDupeMap'
 import { KoreaMapCitySelector } from './KoreaMapCitySelector'
 import { DupeSwipeContainer } from './DupeSwipeContainer'
-import { regions } from '@/lib/data/food-dupes'
-import { getAllCountryCounts } from '@/lib/utils/country-dupe-aggregator'
+import type { RegionSummary } from './KoreaMapCitySelector'
+import type { CountrySummary } from './WorldDupeMap'
 
 interface TopFood {
   foodId: string
@@ -33,9 +33,12 @@ interface Surprise {
 
 interface DupeModeTabsProps {
   locale: string
+  regionSummaries: RegionSummary[]
+  countryCounts: Record<string, number>
+  allCountryDupes: Record<string, CountrySummary>
 }
 
-export function DupeModeTabs({ locale }: DupeModeTabsProps) {
+export function DupeModeTabs({ locale, regionSummaries, countryCounts, allCountryDupes }: DupeModeTabsProps) {
   const t = useTranslations('dupe')
 
   // 취향 매칭 상태
@@ -48,7 +51,6 @@ export function DupeModeTabs({ locale }: DupeModeTabsProps) {
 
   // 세계지도 상태
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
-  const countryCounts = useMemo(() => getAllCountryCounts(regions), [])
 
   const handleTasteSearch = async (pref: { sweet: number; salty: number; spicy: number; umami: number; sour: number }) => {
     setTasteLoading(true)
@@ -77,7 +79,7 @@ export function DupeModeTabs({ locale }: DupeModeTabsProps) {
     {
       key: 'city',
       label: t('mode.city'),
-      content: <KoreaMapCitySelector regions={regions} />,
+      content: <KoreaMapCitySelector regions={regionSummaries} />,
     },
     {
       key: 'ai',
@@ -120,6 +122,7 @@ export function DupeModeTabs({ locale }: DupeModeTabsProps) {
           onCountrySelect={setSelectedCountry}
           selectedCountry={selectedCountry}
           countryCounts={countryCounts}
+          allCountryDupes={allCountryDupes}
           locale={locale}
         />
       ),

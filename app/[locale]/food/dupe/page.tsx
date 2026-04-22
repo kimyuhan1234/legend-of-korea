@@ -1,6 +1,10 @@
 import { Metadata } from "next"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
 import { DupeModeTabs } from "@/components/features/food/DupeModeTabs"
+import { regions } from "@/lib/data/food-dupes"
+import { getAllCountryCounts, getCountryDupes, COUNTRIES } from "@/lib/utils/country-dupe-aggregator"
+import type { RegionSummary } from "@/components/features/food/KoreaMapCitySelector"
+import type { CountrySummary } from "@/components/features/food/WorldDupeMap"
 
 interface Props {
   params: { locale: string }
@@ -39,6 +43,33 @@ export default function DupePage({ params }: Props) {
   const { locale } = params
   const h = HERO[locale as keyof typeof HERO] || HERO.en || HERO.ko
 
+  const regionSummaries: RegionSummary[] = regions.map((r) => ({
+    code: r.code,
+    name: r.name,
+    icon: r.icon,
+    description: r.description,
+    foodCount: r.foods.length,
+    topFoods: r.foods.slice(0, 5).map((f) => ({ id: f.id, name: f.name })),
+  }))
+
+  const countryCounts = getAllCountryCounts(regions)
+
+  const allCountryDupes: Record<string, CountrySummary> = {}
+  for (const code of Object.keys(COUNTRIES)) {
+    const result = getCountryDupes(code, regions)
+    allCountryDupes[code] = {
+      totalMatches: result.totalMatches,
+      dupes: result.dupes.map((d) => ({
+        foreignFoodName: d.foreignFood.name,
+        koreanFoodName: d.koreanFood.name,
+        koreanFoodId: d.koreanFood.id,
+        regionCode: d.regionCode,
+        regionName: d.regionName,
+        similarityPercent: d.foreignFood.similarityPercent,
+      })),
+    }
+  }
+
   return (
     <div>
       <FoodTabNav locale={locale} activeTab="dupe" />
@@ -55,7 +86,12 @@ export default function DupePage({ params }: Props) {
       </section>
 
       {/* 4모드 스와이프 탭 (도시별 / AI 매칭 / 취향 / 세계지도) */}
-      <DupeModeTabs locale={locale} />
+      <DupeModeTabs
+        locale={locale}
+        regionSummaries={regionSummaries}
+        countryCounts={countryCounts}
+        allCountryDupes={allCountryDupes}
+      />
     </div>
   )
 }
