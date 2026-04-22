@@ -1,12 +1,52 @@
 import { type NextRequest, NextResponse } from "next/server"
 import createMiddleware from "next-intl/middleware"
 import { updateSession } from "@/lib/supabase/middleware"
+import { rateLimitGuard, type RateLimitPreset } from "@/lib/security/rate-limit-guard"
 
 const locales = ["ko", "ja", "en", "zh-CN", "zh-TW"] as const
 const defaultLocale = "ko"
 
 // 비로그인 접근 허용 경로 (locale prefix 제외, 화이트리스트)
 const PUBLIC_PATHS = ["/", "/auth", "/login", "/signup", "/stay"]
+
+/**
+ * API 경로별 Rate Limit 프리셋 결정.
+ * 'NONE' 은 Rate Limit 미적용 (결제 정상 재시도·웹훅 등과 충돌 방지).
+ */
+function determineRateLimitPreset(pathname: string): RateLimitPreset | 'NONE' {
+  // 결제 / 주문 / 구독 — Toss·Stripe 재시도 정책과 충돌할 수 있어 제외
+  if (
+    pathname.startsWith('/api/payments/') ||
+    pathname.startsWith('/api/orders') ||
+    pathname === '/api/passes/purchase' ||
+    pathname === '/api/subscription/create' ||
+    pathname === '/api/subscription/cancel'
+  ) {
+    return 'NONE'
+  }
+
+  // 관리자 전용 배치 — 무차별 대입 방지로 가장 엄격
+  if (
+    pathname.startsWith('/api/admin/') ||
+    pathname === '/api/tour-stays/refresh' ||
+    pathname === '/api/tour-stays/tag'
+  ) {
+    return 'ADMIN'
+  }
+
+  // 비로그인 공개 API — 봇 보호 우선
+  if (
+    pathname === '/api/tour-stays/recommend' ||
+    pathname === '/api/tour-stays/test' ||
+    pathname === '/api/community/ads' ||
+    pathname === '/api/lp/leaderboard'
+  ) {
+    return 'PUBLIC'
+  }
+
+  // 나머지는 사용자 API
+  return 'USER'
+}
 
 const intlMiddleware = createMiddleware({
   locales,
@@ -17,12 +57,21 @@ const intlMiddleware = createMiddleware({
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // ── 정적 자산 / API: 패스스루 ──────────────────────────
+  // ── 정적 자산: 패스스루 ──────────────────────────
   if (
     pathname.startsWith("/_next/") ||
-    pathname.startsWith("/api/") ||
     /\.(?:ico|svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot|webmanifest|json)$/.test(pathname)
   ) {
+    return NextResponse.next()
+  }
+
+  // ── API: Rate Limit 체크 후 패스스루 ──────────────────
+  if (pathname.startsWith("/api/")) {
+    const preset = determineRateLimitPreset(pathname)
+    if (preset !== 'NONE') {
+      const limited = rateLimitGuard(request, preset)
+      if (limited) return limited
+    }
     return NextResponse.next()
   }
 
