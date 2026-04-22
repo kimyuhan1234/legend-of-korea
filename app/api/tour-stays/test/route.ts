@@ -38,31 +38,40 @@ export async function GET() {
   }
 
   if (result.resultCode !== '0000') {
+    const bodyUpper = (result.resultMsg || '').toUpperCase()
     let diagnosis = '알 수 없는 TourAPI 응답 코드'
+
     if (result.resultCode === '30') diagnosis = 'SERVICE KEY IS NOT REGISTERED — 키 미등록/오타, Decoding이 아닌 Encoding 키 사용 여부 확인'
     else if (result.resultCode === '31') diagnosis = 'DEADLINE HAS EXPIRED — 키 만료'
     else if (result.resultCode === '32') diagnosis = 'UNREGISTERED IP — 등록된 IP에서만 호출 가능'
     else if (result.resultCode === '33') diagnosis = 'UNREGISTERED DOMAIN — 등록된 도메인에서만 호출 가능'
     else if (result.resultCode === '22') diagnosis = 'LIMITED NUMBER OF SERVICE REQUESTS — 일일 호출 한도 초과'
     else if (result.resultCode === '99') diagnosis = 'UNKNOWN ERROR — 활성화 대기 중일 수 있음 (승인 후 1-2시간 소요)'
-    else if (result.resultCode === 'HTTP_500') {
-      // 본문에 SERVICE_KEY_NOT_REGISTERED_ERROR 등이 섞여 올 수 있음
-      const body = (result.resultMsg || '').toUpperCase()
-      if (body.includes('SERVICE_KEY_NOT_REGISTERED') || body.includes('SERVICEKEY')) {
-        diagnosis = 'SERVICE KEY NOT REGISTERED — TOUR_API_KEY가 등록되지 않았거나 Decoding 키를 복사했을 가능성. data.go.kr 마이페이지에서 Encoding 키를 그대로 붙여넣어야 함. 승인 후 활성화까지 1-2시간 대기 필요할 수 있음.'
-      } else if (body.includes('LIMITED') || body.includes('TRAFFIC')) {
-        diagnosis = 'TRAFFIC LIMIT EXCEEDED — 일일 호출 한도 초과'
-      } else {
-        diagnosis = 'TourAPI 서버 500 — 응답 본문을 resultMsg에서 확인 (서버 일시 장애 or 키 인증 실패 가능성)'
-      }
+    else if (bodyUpper.includes('SERVICE_KEY_IS_NOT_REGISTERED')) {
+      diagnosis = 'SERVICE_KEY_IS_NOT_REGISTERED_ERROR — TOUR_API_KEY 미등록/오타/Decoding 키 사용 가능성. data.go.kr에서 Encoding 키를 그대로 복사'
+    } else if (bodyUpper.includes('NO_OPENAPI_SERVICE')) {
+      diagnosis = 'NO_OPENAPI_SERVICE_ERROR — API 메서드 이름이 잘못됨 (엔드포인트 경로 문제 가능성)'
+    } else if (bodyUpper.includes('LIMITED_NUMBER_OF_SERVICE') || bodyUpper.includes('TRAFFIC')) {
+      diagnosis = 'LIMITED_NUMBER_OF_SERVICE_REQUESTS_EXCEEDS_ERROR — 일일 호출 한도(1000건) 초과'
+    } else if (bodyUpper.includes('SERVICETYPE_IS_NOT_REGISTERED')) {
+      diagnosis = 'SERVICETYPE_IS_NOT_REGISTERED_ERROR — 이 serviceKey로 신청한 API가 아님'
+    } else if (result.resultCode === 'HTTP_500') {
+      diagnosis = 'TourAPI 서버 500 — rawSnippet을 확인해 구체적 에러 파악 필요'
+    } else if (result.resultCode === 'NON_JSON') {
+      diagnosis = 'TourAPI가 JSON이 아닌 응답을 반환 (XML 에러 본문 가능성) — rawSnippet 확인'
     }
 
     return NextResponse.json(
       {
         ok: false,
+        endpoint: 'KorService2/searchStay2',
         resultCode: result.resultCode,
         resultMsg: result.resultMsg,
         diagnosis,
+        debug: {
+          requestUrl: result.requestUrl,
+          rawSnippet: result.rawSnippet,
+        },
       },
       { status: 500 }
     )
@@ -70,11 +79,16 @@ export async function GET() {
 
   return NextResponse.json({
     ok: true,
+    endpoint: 'KorService2/searchStay2',
     areaCode: 1,
     areaName: '서울',
     count: result.stays.length,
     totalAvailable: result.totalCount,
     resultCode: result.resultCode,
     stays: result.stays,
+    debug: {
+      requestUrl: result.requestUrl,
+      rawSnippetHead: result.rawSnippet?.slice(0, 500),
+    },
   })
 }

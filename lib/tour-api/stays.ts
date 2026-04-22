@@ -1,10 +1,10 @@
 import { PROVINCE_AREA_CODES } from './area-codes'
 
-const BASE_URL = 'https://apis.data.go.kr/B551011/KorService1'
-const ENDPOINT = 'searchStay1'
+const BASE_URL = 'https://apis.data.go.kr/B551011/KorService2'
+const ENDPOINT = 'searchStay2'
 
 /**
- * TourAPI searchStay1 원본 응답 항목
+ * TourAPI searchStay2 원본 응답 항목
  * 숙박은 contenttypeid = 32 고정.
  */
 export interface TourAPIStay {
@@ -87,6 +87,10 @@ export interface FetchStaysResult {
   resultCode: string
   resultMsg: string
   totalCount: number
+  /** 디버깅용: 키 마스킹된 요청 URL */
+  requestUrl?: string
+  /** 디버깅용: 응답 본문 앞부분(최대 2000자) */
+  rawSnippet?: string
 }
 
 /**
@@ -112,49 +116,70 @@ export async function fetchStaysByArea(
   url.searchParams.set('pageNo', String(options.pageNo ?? 1))
   url.searchParams.set('areaCode', String(areaCode))
 
-  // 키 제외한 URL만 로그
+  // 키 제외한 URL만 로그/반환
   const safeUrl = url.toString().replace(/serviceKey=[^&]+/, 'serviceKey=***')
   console.log(`[TourAPI Stays] Fetching stays for area ${areaCode}...`)
   console.log(`[TourAPI Stays] URL: ${safeUrl}`)
 
   try {
     const res = await fetch(url.toString(), { next: { revalidate: 3600 } })
+    const rawText = await res.text()
+    const rawSnippet = rawText.slice(0, 2000)
+
     if (!res.ok) {
-      // 에러 본문도 잡아서 진단에 활용 (TourAPI는 500 + XML 에러 본문을 자주 보냄)
-      const errorBody = await res.text().catch(() => '')
-      const snippet = errorBody.slice(0, 500).replace(/\s+/g, ' ')
-      console.error(`[TourAPI Stays] HTTP ${res.status} for area ${areaCode}: ${snippet}`)
+      const condensed = rawSnippet.replace(/\s+/g, ' ')
+      console.error(`[TourAPI Stays] HTTP ${res.status} for area ${areaCode}: ${condensed}`)
       return {
         stays: [],
         resultCode: `HTTP_${res.status}`,
-        resultMsg: snippet || `HTTP error ${res.status}`,
+        resultMsg: condensed || `HTTP error ${res.status}`,
         totalCount: 0,
+        requestUrl: safeUrl,
+        rawSnippet,
       }
     }
 
-    const json = await res.json()
-    const header = json?.response?.header
+    // 성공 응답은 JSON, 에러 응답은 XML로 올 수 있음
+    let json: unknown = null
+    try {
+      json = JSON.parse(rawText)
+    } catch {
+      // 비-JSON 응답 (XML 에러 등)
+      const condensed = rawSnippet.replace(/\s+/g, ' ')
+      console.error(`[TourAPI Stays] Non-JSON response for area ${areaCode}: ${condensed}`)
+      return {
+        stays: [],
+        resultCode: 'NON_JSON',
+        resultMsg: condensed,
+        totalCount: 0,
+        requestUrl: safeUrl,
+        rawSnippet,
+      }
+    }
+
+    const response = (json as { response?: { header?: { resultCode?: string; resultMsg?: string }; body?: { items?: { item?: TourAPIStay | TourAPIStay[] }; totalCount?: number } } }).response
+    const header = response?.header
     const resultCode: string = header?.resultCode ?? 'UNKNOWN'
     const resultMsg: string = header?.resultMsg ?? ''
-    const totalCount: number = json?.response?.body?.totalCount ?? 0
+    const totalCount: number = response?.body?.totalCount ?? 0
 
     console.log(`[TourAPI Stays] Response status: ${resultCode} (${resultMsg})`)
 
     if (resultCode !== '0000') {
-      return { stays: [], resultCode, resultMsg, totalCount: 0 }
+      return { stays: [], resultCode, resultMsg, totalCount: 0, requestUrl: safeUrl, rawSnippet }
     }
 
-    const rawItems = json?.response?.body?.items?.item
+    const rawItems = response?.body?.items?.item
     const items: TourAPIStay[] = Array.isArray(rawItems) ? rawItems : rawItems ? [rawItems] : []
     const stays = items.map(normalizeStay)
 
     console.log(`[TourAPI Stays] Got ${stays.length} stays (total available: ${totalCount})`)
 
-    return { stays, resultCode, resultMsg, totalCount }
+    return { stays, resultCode, resultMsg, totalCount, requestUrl: safeUrl, rawSnippet }
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err)
     console.error(`[TourAPI Stays] Network error for area ${areaCode}:`, msg)
-    return { stays: [], resultCode: 'NETWORK_ERROR', resultMsg: msg, totalCount: 0 }
+    return { stays: [], resultCode: 'NETWORK_ERROR', resultMsg: msg, totalCount: 0, requestUrl: safeUrl }
   }
 }
 

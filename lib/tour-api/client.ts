@@ -1,6 +1,6 @@
 import { TourAPIItem } from './types'
 
-const BASE_URL = 'https://apis.data.go.kr/B551011/KorService1'
+const BASE_URL = 'https://apis.data.go.kr/B551011/KorService2'
 
 function getKey(): string | null {
   return process.env.TOUR_API_KEY || null
@@ -48,7 +48,7 @@ export async function fetchTourSpots(params: {
   if (params.sigunguCode) sp.sigunguCode = String(params.sigunguCode)
   if (params.contentTypeId) sp.contentTypeId = String(params.contentTypeId)
 
-  return callTourApi('areaBasedList1', sp)
+  return callTourApi('areaBasedList2', sp)
 }
 
 export async function fetchCurrentFestivals(areaCode: number): Promise<TourAPIItem[]> {
@@ -57,7 +57,7 @@ export async function fetchCurrentFestivals(areaCode: number): Promise<TourAPIIt
   const m = String(now.getMonth() + 1).padStart(2, '0')
   const eventStartDate = `${y}${m}01`
 
-  return callTourApi('searchFestival1', {
+  return callTourApi('searchFestival2', {
     numOfRows: '10',
     pageNo: '1',
     arrange: 'P',
