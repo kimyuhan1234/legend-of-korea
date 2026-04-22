@@ -56,12 +56,12 @@ export function CourseCompletionModal({
            <div className="flex justify-around items-center bg-slate-50 p-6 rounded-[2rem] border border-slate-100 shadow-inner">
               <div className="text-center">
                  <p className="text-xs font-black text-slate-400 mb-1">총 획득 보상</p>
-                 <p className="text-2xl font-black text-primary">+{totalLp} LP</p>
+                 <p className="text-2xl font-black text-primary">+{totalLp} 빗방울</p>
               </div>
               <div className="w-px h-10 bg-slate-200" />
               <div className="text-center">
                  <p className="text-xs font-black text-slate-400 mb-1">완주 보너스</p>
-                 <p className="text-2xl font-black text-blossom-deep">+500 LP</p>
+                 <p className="text-2xl font-black text-blossom-deep">+500 빗방울</p>
               </div>
            </div>
 

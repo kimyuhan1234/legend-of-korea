@@ -117,7 +117,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
 
       const data = await res.json();
       if (res.ok) {
-        toast({ title: '기록 완료!', description: '전설의 페이지에 당신의 기록이 남겨졌습니다. (+LP)' });
+        toast({ title: '기록 완료!', description: '전설의 페이지에 당신의 기록이 남겨졌습니다. (+빗방울)' });
         router.push(`/${locale}/community`);
         router.refresh();
       } else {
@@ -215,7 +215,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
           <div className="space-y-4">
             <Label className="text-sm font-black text-slate-500 ml-1 flex justify-between items-center">
               <span>{t('photo')} ({images.length}/5)</span>
-              <span className="text-[10px] text-mint-deep bg-mint-light px-2 py-0.5 rounded-full">+30 LP</span>
+              <span className="text-[10px] text-mint-deep bg-mint-light px-2 py-0.5 rounded-full">+30 빗방울</span>
             </Label>
             
             <div className="flex flex-wrap gap-4">
@@ -255,7 +255,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
           <div className="flex items-center gap-3 p-4 bg-mint-light/30 rounded-2xl border border-mint/30">
             <AlertCircle className="w-5 h-5 text-mint-deep/70" />
             <p className="text-xs font-bold text-mint-deep/80">
-              이야기를 기록하면 <span className="text-mint-deep font-extrabold">{images.length > 0 ? '50 LP' : '30 LP'}</span>가 즉시 적립됩니다.
+              이야기를 기록하면 <span className="text-mint-deep font-extrabold">{images.length > 0 ? '50 빗방울' : '30 빗방울'}</span>가 즉시 적립됩니다.
             </p>
           </div>
 

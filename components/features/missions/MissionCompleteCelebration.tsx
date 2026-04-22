@@ -89,7 +89,7 @@ export function MissionCompleteCelebration({ isOpen, onClose, missionTitle, lpEa
         <p className="text-sm text-slate mb-4">&ldquo;{missionTitle}&rdquo;</p>
 
         <div className={`text-3xl font-black mb-6 ${isBoss ? 'text-amber-500' : 'text-mint-deep'}`}>
-          ⚡ +{displayLp} LP
+          💧 +{displayLp} 빗방울
         </div>
 
         {onNext && (

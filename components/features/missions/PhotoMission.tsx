@@ -143,7 +143,7 @@ export function PhotoMission({
         } else {
           toast({
             title: t('missionComplete') || '미션 완료!',
-            description: t('lpEarned', { lp: verifyData.lpEarned ?? lpReward }) || `${lpReward} LP 획득!`,
+            description: t('lpEarned', { lp: verifyData.lpEarned ?? lpReward }) || `${lpReward} 빗방울 획득!`,
           });
         }
       } else {
@@ -165,7 +165,7 @@ export function PhotoMission({
             <CheckCircle2 className="w-12 h-12 text-green-600 animate-bounce" />
           </div>
           <h3 className="text-4xl font-black text-green-700 mb-2">{t('missionComplete') || '미션 완료!'}</h3>
-          <p className="text-muted-foreground font-bold text-xl mb-10">{t('lpEarned', { lp: lpReward }) || `${lpReward} LP 획득`}</p>
+          <p className="text-muted-foreground font-bold text-xl mb-10">{t('lpEarned', { lp: lpReward }) || `${lpReward} 빗방울 획득`}</p>
           <Button size="lg" className="h-14 px-12 rounded-[2rem] shadow-xl hover:scale-105 transition-transform" asChild>
             <Link href="./">{t('nextMission') || '다음 여정으로'}</Link>
           </Button>
@@ -201,7 +201,7 @@ export function PhotoMission({
             <Camera className="w-4 h-4" />
             {t('photo') || '사진 인증'}
           </Badge>
-          <div className="text-xl font-black text-primary">+{lpReward} LP</div>
+          <div className="text-xl font-black text-primary">+{lpReward} 빗방울</div>
         </div>
         <CardTitle className="text-2xl md:text-3xl font-black leading-tight text-slate-800">
           {description}

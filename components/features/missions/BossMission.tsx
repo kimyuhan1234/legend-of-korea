@@ -111,7 +111,7 @@ export function BossMission({
         } else {
           toast({
             title: t('bossDefeated') || '보스 격파!',
-            description: t('lpEarned', { lp: data.lpEarned ?? lpReward }) || `${lpReward} LP 획득!`,
+            description: t('lpEarned', { lp: data.lpEarned ?? lpReward }) || `${lpReward} 빗방울 획득!`,
           });
         }
       } else {
@@ -138,7 +138,7 @@ export function BossMission({
             {t('bossDefeated') || 'BOSS CLEARED'}
           </h3>
           <p className="text-amber-200/70 font-bold text-xl mb-12 relative z-10">
-            {t('lpEarned', { lp: lpReward }) || `${lpReward} LP 획득`}
+            {t('lpEarned', { lp: lpReward }) || `${lpReward} 빗방울 획득`}
           </p>
           <Button
             size="lg"
@@ -169,7 +169,7 @@ export function BossMission({
           </div>
           <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20">
             <Trophy className="w-4 h-4 text-amber-400" />
-            <span className="text-xl font-black text-amber-400">+{lpReward} LP</span>
+            <span className="text-xl font-black text-amber-400">+{lpReward} 빗방울</span>
           </div>
         </div>
         <h2 className="text-3xl md:text-4xl font-black text-amber-50 leading-tight mb-3 relative z-10 tracking-tight">

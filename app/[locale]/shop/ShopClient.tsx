@@ -114,7 +114,7 @@ export function ShopClient({ locale }: ShopClientProps) {
             <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">My Balance</p>
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-black text-slate-800">{user?.total_lp.toLocaleString() || 0}</span>
-              <span className="text-sm font-black text-blossom-deep">LP</span>
+              <span className="text-sm font-black text-blossom-deep">빗방울</span>
             </div>
             {user && <TierBadge level={user.current_tier} className="mt-2" />}
           </div>
@@ -157,7 +157,7 @@ export function ShopClient({ locale }: ShopClientProps) {
               <CardContent className="p-8 pb-4">
                 <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl">
                   <span className="text-slate-400 font-bold text-sm">필요 LP</span>
-                  <span className="text-sky font-extrabold">{item.cost.toLocaleString()} LP</span>
+                  <span className="text-sky font-extrabold">{item.cost.toLocaleString()} 빗방울</span>
                 </div>
               </CardContent>
               <CardFooter className="p-8 pt-4">

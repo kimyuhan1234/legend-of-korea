@@ -152,7 +152,7 @@ export default function AdminMissionsPage() {
                     {m.qr_code}
                   </div>
                 </TableCell>
-                <TableCell className="font-black text-blossom-deep">{m.lp_reward} LP</TableCell>
+                <TableCell className="font-black text-blossom-deep">{m.lp_reward} 빗방울</TableCell>
                 <TableCell className="text-right">
                   <Button 
                     variant="ghost" 

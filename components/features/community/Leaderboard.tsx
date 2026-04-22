@@ -178,7 +178,7 @@ export function Leaderboard({ locale }: Props) {
               </div>
               <div className="text-right flex-shrink-0">
                 <p className="text-lg font-black text-slate-800">{entry.monthlyLp.toLocaleString()}</p>
-                <p className="text-[10px] font-bold text-slate-400 uppercase">LP</p>
+                <p className="text-[10px] font-bold text-slate-400 uppercase">빗방울</p>
               </div>
             </div>
           )
@@ -213,7 +213,7 @@ export function Leaderboard({ locale }: Props) {
                   {isMe && (
                     <span className="text-[10px] font-black text-mint-deep">← {t('leaderboard.you')}</span>
                   )}
-                  <span className="font-black text-slate-600">{entry.monthlyLp.toLocaleString()} <span className="text-[10px] text-slate-400">LP</span></span>
+                  <span className="font-black text-slate-600">{entry.monthlyLp.toLocaleString()} <span className="text-[10px] text-slate-400">빗방울</span></span>
                 </div>
               )
             })}

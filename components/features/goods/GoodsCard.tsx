@@ -47,7 +47,7 @@ export function GoodsCard({ product, locale }: GoodsCardProps) {
           <p className="text-lg font-black text-[#111]">₩{product.price.toLocaleString()}</p>
           {product.lpPrice && (
             <p className="text-xs font-bold text-mint-deep">
-              or {product.lpPrice} LP
+              or {product.lpPrice} 빗방울
             </p>
           )}
         </div>

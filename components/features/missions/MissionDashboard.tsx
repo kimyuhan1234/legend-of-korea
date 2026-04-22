@@ -209,7 +209,7 @@ export function MissionDashboard({ userId, locale }: Props) {
                     </div>
                     <div className="flex items-center gap-1.5 shrink-0">
                       <CheckCircle2 className="w-4 h-4 text-mint-deep" />
-                      <span className="text-sm font-black text-mint-deep">+{item.lpEarned} LP</span>
+                      <span className="text-sm font-black text-mint-deep">+{item.lpEarned} 빗방울</span>
                     </div>
                   </div>
                 )

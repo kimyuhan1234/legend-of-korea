@@ -53,7 +53,7 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
           {user ? (
             <div className="px-6 py-5 bg-mint-deep text-white">
               <p className="font-semibold">{user.nickname}</p>
-              <p className="text-white/80 text-sm mt-1 font-bold">⚡ {user.lp?.toLocaleString() ?? 0} LP</p>
+              <p className="text-white/80 text-sm mt-1 font-bold">⚡ {user.lp?.toLocaleString() ?? 0} 빗방울</p>
             </div>
           ) : (
             <div className="px-6 py-5 bg-mint-deep space-y-2">

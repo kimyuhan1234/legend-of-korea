@@ -130,7 +130,7 @@ export function OpenMission({
         } else {
           toast({
             title: t('missionComplete') || '미션 완료!',
-            description: t('lpEarned', { lp: data.lpEarned ?? lpReward }) || `${lpReward} LP 획득!`,
+            description: t('lpEarned', { lp: data.lpEarned ?? lpReward }) || `${lpReward} 빗방울 획득!`,
           });
         }
       } else {
@@ -167,7 +167,7 @@ export function OpenMission({
             {isHidden ? 'HIDDEN MISSION' : isBoss ? 'BOSS MISSION' : 'OPEN MISSION'}
           </Badge>
           <div className={`text-xl font-black ${isBoss ? 'text-blossom-deep' : isHidden ? 'text-sky' : 'text-primary'}`}>
-            +{lpReward} LP
+            +{lpReward} 빗방울
           </div>
         </div>
         <CardTitle className="text-2xl md:text-3xl font-black leading-tight text-slate-800 mb-2">

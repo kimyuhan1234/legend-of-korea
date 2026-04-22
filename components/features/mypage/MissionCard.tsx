@@ -79,7 +79,7 @@ export default function MissionCard({
                 {mission.location}
               </span>
               <span className="text-xs font-bold text-mint-deep">
-                +{mission.lp} LP
+                +{mission.lp} 빗방울
               </span>
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function MissionCard({
                   {mission.location}
                 </span>
                 <span className="text-xs text-stone font-medium">
-                  🏆 {mission.lp} LP
+                  🏆 {mission.lp} 빗방울
                 </span>
               </div>
               {/* boss mission badge */}

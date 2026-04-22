@@ -94,7 +94,7 @@ export function QuestComparison() {
                     <span className="text-[8px] font-bold text-[#374151] leading-tight">
                       {t(tier.nameKey as Parameters<typeof t>[0])}
                     </span>
-                    <span className="text-[8px] text-[#6B7280]">{tier.lp} LP</span>
+                    <span className="text-[8px] text-[#6B7280]">{tier.lp} 빗방울</span>
                     <span className="text-[8px] text-mint-deep font-bold">{tier.benefit}</span>
                   </div>
                 ))}

@@ -332,7 +332,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                 {lpHistory.length === 0 ? (
                   <div className="flex flex-col items-center justify-center text-slate-400 gap-2 py-8 opacity-40">
                     <History className="w-8 h-8" />
-                    <p className="text-sm font-bold">{t('noLp') || '적립된 LP 내역이 없습니다.'}</p>
+                    <p className="text-sm font-bold">{t('noLp') || '적립된 빗방울 내역이 없습니다.'}</p>
                   </div>
                 ) : (
                   lpHistory.map((item: any) => {
@@ -356,7 +356,7 @@ export function MyPageClient({ locale }: MyPageClientProps) {
                         <div className="flex items-center gap-2 shrink-0">
                           <span className={`text-sm font-black ${isApplied ? 'text-slate-400' : isPositive ? 'text-sky' : 'text-rose-500'}`}>
                             {isPositive ? '+' : ''}{item.amount.toLocaleString()}
-                            <span className="text-[9px] ml-0.5">LP</span>
+                            <span className="text-[9px] ml-0.5">빗방울</span>
                           </span>
                           {isPositive && !isApplied && (
                             <button

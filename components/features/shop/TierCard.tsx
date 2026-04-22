@@ -66,7 +66,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
             </div>
           </div>
           <div className="text-right">
-            <p className="text-sm text-slate">보유 LP</p>
+            <p className="text-sm text-slate">보유 빗방울</p>
             <p className="text-2xl font-bold text-mint-deep">{currentLP.toLocaleString()}</p>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
           <div className="mb-4">
             <div className="flex justify-between text-xs text-slate mb-1">
               <span>다음 티어: {nextTier.emoji} {loc(nextTier.name)}</span>
-              <span>{currentLP.toLocaleString()} / {nextTier.requiredLP.toLocaleString()} LP</span>
+              <span>{currentLP.toLocaleString()} / {nextTier.requiredLP.toLocaleString()} 빗방울</span>
             </div>
             <div className="w-full h-3 bg-white/20 rounded-full overflow-hidden">
               <div
@@ -89,11 +89,11 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
             </div>
             {canUpgrade ? (
               <p className="text-sm text-green-300 mt-2">
-                ✅ 승급 가능합니다! (승급 후 잔여: {afterUpgradeLP.toLocaleString()} LP)
+                ✅ 승급 가능합니다! (승급 후 잔여: {afterUpgradeLP.toLocaleString()} 빗방울)
               </p>
             ) : (
               <p className="text-sm text-white/50 mt-2">
-                🔒 {remaining.toLocaleString()} LP 더 모으면 {loc(nextTier.name)}로 승급!
+                🔒 {remaining.toLocaleString()} 빗방울 더 모으면 {loc(nextTier.name)}로 승급!
               </p>
             )}
           </div>
@@ -117,8 +117,8 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
               {isUpgrading
                 ? '승급 중...'
                 : canUpgrade
-                  ? `${nextTier.emoji} ${loc(nextTier.name)}로 승급하기 (-${nextTier.requiredLP.toLocaleString()} LP)`
-                  : `LP 부족 (${remaining.toLocaleString()} LP 필요)`}
+                  ? `${nextTier.emoji} ${loc(nextTier.name)}로 승급하기 (-${nextTier.requiredLP.toLocaleString()} 빗방울)`
+                  : `빗방울 부족 (${remaining.toLocaleString()} 빗방울 필요)`}
             </button>
           )}
           <button
@@ -178,7 +178,7 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
                           <span className="text-xs text-stone">기본</span>
                         ) : (
                           <span className="text-sm font-bold text-mint-deep">
-                            {isLocked ? '🔒' : ''} {tier.requiredLP.toLocaleString()} LP
+                            {isLocked ? '🔒' : ''} {tier.requiredLP.toLocaleString()} 빗방울
                           </span>
                         )}
                         {tier.discount > 0 && (
@@ -212,12 +212,12 @@ export default function TierCard({ currentTierLevel, currentLP, locale, onUpgrad
             </p>
             <div className="bg-snow rounded-xl p-4 mb-4 space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-stone">차감 LP</span>
-                <span className="text-red-500 font-bold">-{upgradedTier.deducted.toLocaleString()} LP</span>
+                <span className="text-stone">차감 빗방울</span>
+                <span className="text-red-500 font-bold">-{upgradedTier.deducted.toLocaleString()} 빗방울</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-stone">잔여 LP</span>
-                <span className="text-mint-deep font-bold">{upgradedTier.newLP.toLocaleString()} LP</span>
+                <span className="text-stone">잔여 빗방울</span>
+                <span className="text-mint-deep font-bold">{upgradedTier.newLP.toLocaleString()} 빗방울</span>
               </div>
             </div>
             <button onClick={() => setShowSuccess(false)}

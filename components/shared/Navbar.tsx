@@ -48,17 +48,17 @@ const NAV_LINKS = {
 
 const TEXT = {
   ko: {
-    signup: "회원가입", login: "로그인", mypage: "마이페이지", logout: "로그아웃", lp: "LP",
+    signup: "회원가입", login: "로그인", mypage: "마이페이지", logout: "로그아웃", lp: "빗방울",
     faq: "자주 묻는 질문", memories: "추억 남기기", points: "전설 상점", foodMatching: "음식 매칭",
     loginRequired: "로그인이 필요합니다", loginBtn: "로그인하기", pass: "패스",
   },
   ja: {
-    signup: "新規登録", login: "ログイン", mypage: "マイページ", logout: "ログアウト", lp: "LP",
+    signup: "新規登録", login: "ログイン", mypage: "マイページ", logout: "ログアウト", lp: "雨滴",
     faq: "よくある質問", memories: "記録館", points: "ポイント", foodMatching: "グルメマッチング",
     loginRequired: "ログインが必要です", loginBtn: "ログイン", pass: "パス",
   },
   en: {
-    signup: "Sign Up", login: "Sign In", mypage: "My Page", logout: "Sign Out", lp: "LP",
+    signup: "Sign Up", login: "Sign In", mypage: "My Page", logout: "Sign Out", lp: "Raindrops",
     faq: "FAQ", memories: "Gallery", points: "Points", foodMatching: "Food Matching",
     loginRequired: "Login required", loginBtn: "Log In", pass: "Pass",
   },

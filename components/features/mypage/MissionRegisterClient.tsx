@@ -181,7 +181,7 @@ export default function MissionRegisterClient({
               <p className="text-lg font-black">{completedCount}</p>
             </div>
             <div className="bg-mint-deep/20 backdrop-blur-sm rounded-xl p-3 text-center  border-0 border-mint-deep/20">
-              <p className="text-[10px] text-white/50 font-bold mb-0.5">⚡ LP</p>
+              <p className="text-[10px] text-white/50 font-bold mb-0.5">💧 빗방울</p>
               <p className="text-lg font-black text-mint-deep">
                 {earnedLP}<span className="text-[10px] text-white/40">/{totalLP}</span>
               </p>

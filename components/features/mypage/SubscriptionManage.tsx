@@ -177,7 +177,7 @@ export function SubscriptionManage({ locale }: Props) {
             </div>
             <div className="rounded-xl bg-amber-50/60 border border-amber-200/40 p-3">
               <p className="text-[10px] font-black text-amber-600 uppercase tracking-wider">
-                🏆 LP
+                💧 빗방울
               </p>
               <p className="text-lg font-black text-slate-800 mt-0.5">
                 {userLp.toLocaleString()}

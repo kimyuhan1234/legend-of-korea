@@ -185,7 +185,7 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
                     )}
                   </Badge>
                   <span className={`text-lg font-black ${isCompleted ? 'text-green-600' : 'text-slate-800'}`}>
-                    +{m.lp_reward} LP
+                    +{m.lp_reward} 빗방울
                   </span>
                 </div>
 

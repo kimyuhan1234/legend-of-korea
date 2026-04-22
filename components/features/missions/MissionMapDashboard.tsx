@@ -109,7 +109,7 @@ export function MissionMapDashboard({ missions, progress, courseId }: Props) {
 
               {/* LP */}
               <span className={`text-[10px] font-bold ${isCompleted ? 'text-amber-600' : 'text-stone/50'}`}>
-                +{m.lp_reward} LP
+                +{m.lp_reward} 빗방울
               </span>
             </button>
           )

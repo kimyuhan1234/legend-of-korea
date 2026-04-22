@@ -36,7 +36,7 @@ const FEATURE_LABELS: Record<string, Record<I18nKey, string>> = {
   memories: { ko: 'MEMORIES 기록관', ja: 'MEMORIES記録室', en: 'MEMORIES archive', 'zh-CN': 'MEMORIES 记录室', 'zh-TW': 'MEMORIES 記錄室' },
   all: { ko: '전 기능 무제한', ja: '全機能無制限', en: 'All features unlimited', 'zh-CN': '全功能无限', 'zh-TW': '全功能無限' },
   vip_badge: { ko: 'VIP 뱃지', ja: 'VIPバッジ', en: 'VIP badge', 'zh-CN': 'VIP 徽章', 'zh-TW': 'VIP 徽章' },
-  lp_multiplier_2x: { ko: 'LP 2배 적립', ja: 'LP 2倍獲得', en: '2x LP earning', 'zh-CN': 'LP 双倍积累', 'zh-TW': 'LP 雙倍累積' },
+  lp_multiplier_2x: { ko: '빗방울 2배 적립', ja: '雨滴2倍獲得', en: '2x Raindrops earning', 'zh-CN': '雨滴双倍积累', 'zh-TW': '雨滴雙倍累積' },
   monthly_credits_100: { ko: '매달 100 크레딧', ja: '毎月100クレジット', en: '100 credits / month', 'zh-CN': '每月 100 积分', 'zh-TW': '每月 100 積分' },
 }
 
