@@ -1,3 +1,5 @@
+'use client'
+
 import type { TasteProfile } from "@/lib/data/food-dupes"
 
 interface TasteRadarChartProps {
