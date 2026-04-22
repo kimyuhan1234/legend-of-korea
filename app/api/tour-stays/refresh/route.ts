@@ -1,13 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { refreshAreaCache } from '@/lib/tour-api/stays-cache'
 import { PROVINCE_AREA_CODES } from '@/lib/tour-api/area-codes'
+import { requireAdmin } from '@/lib/auth/admin'
 
 export const dynamic = 'force-dynamic'
 
 const CONCURRENCY = 5
 
-// TODO: 관리자 인증 추가 (프로덕션 전) — 현재는 dev 전용
 export async function POST(req: NextRequest) {
+  const guard = await requireAdmin()
+  if (guard) return guard
+
   const body = (await req.json().catch(() => ({}))) as { areaCode?: string | number }
 
   const targetCodes: number[] =

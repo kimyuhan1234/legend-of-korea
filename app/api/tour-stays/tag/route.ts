@@ -2,16 +2,18 @@ import { NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/server'
 import { inferTagsFromStay } from '@/lib/tour-api/stay-tags'
 import type { NormalizedStay } from '@/lib/tour-api/stays'
+import { requireAdmin } from '@/lib/auth/admin'
 
 export const dynamic = 'force-dynamic'
 
-// TODO: 관리자 인증 추가 (프로덕션 전) — 현재는 dev 전용
-//
 // POST /api/tour-stays/tag
 // Body(optional): { force?: boolean } — true면 이미 태그 있는 숙소도 재태깅
 //
 // tour_stays_cache에서 전체 레코드를 읽어 각 숙소에 9축 태그를 부여하고 저장.
 export async function POST(req: Request) {
+  const guard = await requireAdmin()
+  if (guard) return guard
+
   const body = (await req.json().catch(() => ({}))) as { force?: boolean }
   const force = body.force === true
 
