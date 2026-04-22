@@ -1,17 +1,45 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { fetchStaysByArea } from '@/lib/tour-api/stays'
+import { getStaysWithCache } from '@/lib/tour-api/stays-cache'
 
 export const dynamic = 'force-dynamic'
 
 /**
- * Day 1 검증용 테스트 엔드포인트.
- * GET /api/tour-stays/test → 서울(areaCode=1) 숙박 상위 5개 반환
- *
- * 성공 응답: { ok: true, count, resultCode, stays: NormalizedStay[5] }
- * 실패 응답: { ok: false, resultCode, resultMsg, diagnosis } (500)
+ * 테스트 엔드포인트.
+ * GET /api/tour-stays/test           → 서울(areaCode=1) 직접 조회 5개
+ * GET /api/tour-stays/test?area=6    → 부산 직접 조회 5개
+ * GET /api/tour-stays/test?cache=true → 캐시 read-through 경유 (전체 결과)
+ * GET /api/tour-stays/test?area=6&cache=true → 부산 캐시 경유
  */
-export async function GET() {
-  const result = await fetchStaysByArea(1, { numOfRows: 5, pageNo: 1 })
+export async function GET(req: NextRequest) {
+  const url = new URL(req.url)
+  const areaParam = url.searchParams.get('area')
+  const useCache = url.searchParams.get('cache') === 'true'
+  const areaCode = areaParam ? parseInt(areaParam, 10) : 1
+
+  if (Number.isNaN(areaCode)) {
+    return NextResponse.json(
+      { ok: false, error: `Invalid area param: ${areaParam}` },
+      { status: 400 }
+    )
+  }
+
+  // 캐시 경로 — getStaysWithCache 사용
+  if (useCache) {
+    const cached = await getStaysWithCache(areaCode)
+    return NextResponse.json({
+      ok: cached.source !== 'empty',
+      endpoint: 'KorService2/searchStay2',
+      cache: true,
+      areaCode,
+      source: cached.source,
+      count: cached.count,
+      stays: cached.stays.slice(0, 5),
+      note: cached.note,
+    })
+  }
+
+  const result = await fetchStaysByArea(areaCode, { numOfRows: 5, pageNo: 1 })
 
   if (result.resultCode === 'NO_KEY') {
     return NextResponse.json(
@@ -80,8 +108,8 @@ export async function GET() {
   return NextResponse.json({
     ok: true,
     endpoint: 'KorService2/searchStay2',
-    areaCode: 1,
-    areaName: '서울',
+    cache: false,
+    areaCode,
     count: result.stays.length,
     totalAvailable: result.totalCount,
     resultCode: result.resultCode,
