@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { createPortal } from 'react-dom'
 
 type PassModalLocale = 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW'
 
@@ -28,7 +29,11 @@ export function PassRequiredModal({ locale, passId, onClose }: PassRequiredModal
   const modalText = PASS_MODAL_TEXT[locale as PassModalLocale] ?? PASS_MODAL_TEXT.en
   const passName = PASS_NAMES[passId] ?? passId
 
-  return (
+  // 조상의 CSS transform(예: hover:scale-105)이 position:fixed containing block을 바꾸므로
+  // 반드시 document.body 직하위에 포털로 렌더링한다.
+  if (typeof document === 'undefined') return null
+
+  return createPortal(
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/50"
       onClick={onClose}
@@ -61,6 +66,7 @@ export function PassRequiredModal({ locale, passId, onClose }: PassRequiredModal
           </Link>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

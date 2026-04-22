@@ -38,7 +38,7 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
   }
 
   const handleSubmit = async () => {
-    if (checked.size === 0 || state === 'loading' || state === 'added') return
+    if (checked.size === 0 || state === 'loading' || state === 'added' || showPassModal) return
 
     // 체크된 아이템만 수집 — 자동 선택 절대 금지
     const checkedItems = items
@@ -129,8 +129,9 @@ export function OotdChecklist({ date, cityId, cityName, items }: OotdChecklistPr
       </ul>
 
       <button
+        type="button"
         onClick={handleSubmit}
-        disabled={checked.size === 0 || state === 'loading' || state === 'added'}
+        disabled={checked.size === 0 || state === 'loading' || state === 'added' || showPassModal}
         className={`w-full py-2 rounded-full text-xs font-bold transition-colors ${
           state === 'added'
             ? 'bg-emerald-500 text-white'
