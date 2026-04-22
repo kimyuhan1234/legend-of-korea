@@ -6,7 +6,7 @@ const locales = ["ko", "ja", "en", "zh-CN", "zh-TW"] as const
 const defaultLocale = "ko"
 
 // 비로그인 접근 허용 경로 (locale prefix 제외, 화이트리스트)
-const PUBLIC_PATHS = ["/", "/auth", "/login", "/signup"]
+const PUBLIC_PATHS = ["/", "/auth", "/login", "/signup", "/stay"]
 
 const intlMiddleware = createMiddleware({
   locales,

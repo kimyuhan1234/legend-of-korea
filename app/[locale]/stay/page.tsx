@@ -23,21 +23,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-async function loadInitialStays(): Promise<NormalizedStay[]> {
+async function loadInitialStays(): Promise<{ stays: NormalizedStay[]; total: number }> {
   const supabase = await createServiceClient()
-  const { data, error } = await supabase
+  const { data, error, count } = await supabase
     .from('tour_stays_cache')
-    .select('data')
-    .limit(30)
+    .select('data', { count: 'exact' })
+    .limit(20)
     .returns<{ data: NormalizedStay }[]>()
   if (error) {
     console.error('[StayPage] Initial load failed:', error.message)
-    return []
+    return { stays: [], total: 0 }
   }
-  return (data ?? []).map((r) => r.data)
+  return {
+    stays: (data ?? []).map((r) => r.data),
+    total: count ?? (data?.length ?? 0),
+  }
 }
 
 export default async function StayPage({ params }: Props) {
-  const initialStays = await loadInitialStays()
-  return <StayPageClient locale={params.locale} initialStays={initialStays} />
+  const { stays, total } = await loadInitialStays()
+  return <StayPageClient locale={params.locale} initialStays={stays} initialTotal={total} />
 }
