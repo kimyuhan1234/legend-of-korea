@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { getVideoUrl } from '@/lib/utils/storage'
 
 interface Props {
   cta: string
@@ -29,7 +30,7 @@ export function HeroSection({ locale }: Props) {
     <section className="relative w-full h-screen overflow-hidden bg-[#1F2937]">
       {/* 배경 영상 */}
       <video
-        src="/videos/hero.mp4"
+        src={getVideoUrl('hero.mp4')}
         autoPlay
         muted
         loop

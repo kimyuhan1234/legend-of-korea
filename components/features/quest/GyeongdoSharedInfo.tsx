@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { GYEONGDO_KIT } from '@/lib/data/gyeongdo-events'
+import { getVideoUrl } from '@/lib/utils/storage'
 
 interface Props {
   locale: string
@@ -19,11 +20,10 @@ export function GyeongdoSharedInfo({ locale }: Props) {
         <div className="bg-gradient-to-r from-mint/20 to-blossom/20 rounded-2xl p-5 space-y-3">
           <p className="text-sm text-slate leading-relaxed">{t('whatIsDesc')}</p>
 
-          {/* 경도 소개 영상 — 163MB로 Supabase 플랜 제한 초과 → 로컬 유지
-              배포 전: 영상 압축(<50MB) 후 Supabase 업로드 또는 외부 CDN 사용 */}
+          {/* 경도 소개 영상 — 169MB → 30MB 압축 후 Supabase Storage로 이전 */}
           <div className="w-full rounded-2xl overflow-hidden shadow-lg">
             <video
-              src="/videos/gyeongdo.mp4"
+              src={getVideoUrl('gyeongdo.mp4')}
               autoPlay
               muted
               loop
