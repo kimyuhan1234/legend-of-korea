@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createServiceClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 import {
   parsePreferencesFromQuery,
   rankStaysByPreferences,
@@ -39,7 +39,9 @@ export async function GET(req: NextRequest) {
   const hasUserCoord = !Number.isNaN(userLat) && !Number.isNaN(userLng)
   const sortBy = url.searchParams.get('sortBy') ?? 'match'
 
-  const supabase = await createServiceClient()
+  // 순수 SELECT — anon client로 충분. RLS 정책 "Anyone can read tour_stays_cache"
+  // (028_tour_stays_cache.sql) 가 공개 읽기를 허용하므로 service_role 불필요.
+  const supabase = await createClient()
 
   let query = supabase.from('tour_stays_cache').select('data')
   if (areaFilter) query = query.eq('area_code', areaFilter)
