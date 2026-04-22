@@ -81,11 +81,17 @@ export default function RegionFoodsPage({ params }: Props) {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {region.foods.map((food) => (
-              <Link
+              <div
                 key={food.id}
-                href={`/${locale}/food/dupe/${regionCode}/${food.id}`}
-                className="group bg-white rounded-3xl border border-mist hover:border-blossom-deep/50 hover:shadow-md transition-all overflow-hidden"
+                className="group bg-white rounded-3xl border border-mist hover:border-blossom-deep/50 hover:shadow-md transition-all overflow-hidden relative"
               >
+                {/* stretched link — <a> 중첩 방지: PhotoAttribution(z-10)보다 낮은 z-[1] */}
+                <Link
+                  href={`/${locale}/food/dupe/${regionCode}/${food.id}`}
+                  className="absolute inset-0 z-[1]"
+                  aria-label={getL(food.name, locale)}
+                />
+
                 {/* 이미지 */}
                 <div className="relative h-44 bg-gradient-to-br from-cloud to-blossom-light overflow-hidden">
                   <FoodImageWithFallback
@@ -96,7 +102,7 @@ export default function RegionFoodsPage({ params }: Props) {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* 맛 강도 오버레이 */}
-                  <div className="absolute bottom-2 left-2 right-2 flex gap-1">
+                  <div className="absolute bottom-2 left-2 right-2 flex gap-1 z-[5]">
                     {food.tags.map((tag) => (
                       <span key={tag} className="px-2 py-0.5 rounded-full bg-black/40 text-white text-xs backdrop-blur-sm">
                         #{tag}
@@ -118,7 +124,7 @@ export default function RegionFoodsPage({ params }: Props) {
                     </span>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         )}

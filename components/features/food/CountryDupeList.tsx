@@ -89,10 +89,12 @@ function renderDupeItem(item: DupeItem, countryCode: string, locale: string, t: 
       <div className="flex gap-3">
         {/* 한국 음식 이미지 */}
         {korean.image && (
-          <Link
-            href={`/${locale}/food/dupe/${item.regionCode}/${korean.id}`}
-            className="shrink-0"
-          >
+          <div className="shrink-0 relative">
+            <Link
+              href={`/${locale}/food/dupe/${item.regionCode}/${korean.id}`}
+              className="absolute inset-0 z-[1] rounded-lg"
+              aria-label={getL(korean.name, locale)}
+            />
             <div className="relative w-16 h-16 rounded-lg overflow-hidden">
               <FoodImageWithFallback
                 foodNameKo={korean.name.ko}
@@ -104,7 +106,7 @@ function renderDupeItem(item: DupeItem, countryCode: string, locale: string, t: 
                 placeholderEmoji="🍜"
               />
             </div>
-          </Link>
+          </div>
         )}
 
         <div className="flex-1 min-w-0">
