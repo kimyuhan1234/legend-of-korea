@@ -1,5 +1,5 @@
 import { SIGHTS, type Sight } from '@/lib/data/sights'
-import { CITY_AREA_CODES, CONTENT_TYPES } from './area-codes'
+import { PROVINCE_AREA_CODES, CONTENT_TYPES } from './area-codes'
 import { fetchTourSpots, fetchCurrentFestivals } from './client'
 import { NormalizedSpot, SpotCategory, TourAPIItem, I18nString } from './types'
 
@@ -82,7 +82,7 @@ function normalizeStaticSight(s: Sight): NormalizedSpot {
 }
 
 /**
- * 정적 SIGHTS + TourAPI 9개 도시 관광지/축제 병합
+ * 정적 SIGHTS + TourAPI 전국 17개 광역시도 관광지/축제 병합
  * TourAPI 키 없으면 정적 데이터만 반환 (graceful fallback)
  */
 export async function getAllSpots(): Promise<NormalizedSpot[]> {
@@ -92,20 +92,20 @@ export async function getAllSpots(): Promise<NormalizedSpot[]> {
     all.push(normalizeStaticSight(s))
   }
 
-  const cityEntries = Object.entries(CITY_AREA_CODES)
-  const tourFetches = cityEntries.map(async ([city, codes]) => {
+  // 전국 17개 광역시도 순회 — 각 지역당 관광지 8개 + 축제 현재 진행 중
+  const provinceEntries = Object.entries(PROVINCE_AREA_CODES)
+  const tourFetches = provinceEntries.map(async ([region, codes]) => {
     const [tourists, festivals] = await Promise.all([
       fetchTourSpots({
         areaCode: codes.areaCode,
-        sigunguCode: codes.sigunguCode,
         contentTypeId: CONTENT_TYPES.tourist,
-        numOfRows: 10,
+        numOfRows: 8,
       }),
       fetchCurrentFestivals(codes.areaCode),
     ])
     const items: NormalizedSpot[] = []
-    for (const it of tourists) items.push(normalizeTourItem(it, city))
-    for (const it of festivals) items.push(normalizeTourItem(it, city))
+    for (const it of tourists) items.push(normalizeTourItem(it, region))
+    for (const it of festivals) items.push(normalizeTourItem(it, region))
     return items
   })
 
