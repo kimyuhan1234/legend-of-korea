@@ -22,6 +22,7 @@ export async function GET() {
     }
 
     // [ADMIN 우회] ADMIN_EMAILS 에 포함된 계정은 AllInOne 보유자처럼 처리
+    // creditsRemaining 은 UI 에서 제거됐지만 planner 등에서 필드 자체는 참조하므로 0 반환
     if (isAdminEmail(user.email)) {
       return NextResponse.json({
         authenticated: true,
@@ -34,7 +35,7 @@ export async function GET() {
           quest: true, diy: true, memories: true,
           vip_badge: true, lp_multiplier_2x: true,
         },
-        creditsRemaining: 9999,
+        creditsRemaining: 0,
       })
     }
 

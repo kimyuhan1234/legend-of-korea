@@ -56,6 +56,18 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
   const [showCoupons, setShowCoupons] = useState(false);
   const [showLp, setShowLp] = useState(false);
 
+  // 빗방울만 refetch (focus/visibility 복귀 시 stale 방지)
+  const refreshLpBalance = async () => {
+    const { data: { user: authUser } } = await supabase.auth.getUser();
+    if (!authUser) return;
+    const { data } = await supabase
+      .from('users')
+      .select('total_lp')
+      .eq('id', authUser.id)
+      .single();
+    if (data) setLpBalance(data.total_lp ?? 0);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -126,6 +138,21 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
 
     fetchData();
   }, [supabase, locale, router]);
+
+  // 탭 복귀·창 포커스 시 빗방울 동기화 — 타 페이지(상점/미션)에서 LP 변동 후 돌아올 때 stale 방지
+  useEffect(() => {
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') refreshLpBalance();
+    };
+    window.addEventListener('focus', refreshLpBalance);
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      window.removeEventListener('focus', refreshLpBalance);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
+    // refreshLpBalance 는 클로저 — supabase 참조만 하므로 의존성 비어도 안전
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleApplyLP = async (transactionId: string) => {
     if (appliedIds.has(transactionId) || applyingId) return;

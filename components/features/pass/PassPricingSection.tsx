@@ -4,13 +4,12 @@ import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { Loader2, Sparkles, TrendingUp } from 'lucide-react'
+import { Loader2, Sparkles } from 'lucide-react'
 import { toast } from '@/components/ui/use-toast'
-import { createClient } from '@/lib/supabase/client'
 import { PassCard } from './PassCard'
 import { CreditPackCard } from './CreditPackCard'
 import { PASSES, ALLINONE_SAVINGS, type PassId } from '@/lib/data/passes'
-import { CREDIT_PACKS, CREDIT_COSTS, LP_TO_CREDIT_RATE } from '@/lib/data/credit-packs'
+import { CREDIT_PACKS, CREDIT_COSTS } from '@/lib/data/credit-packs'
 
 interface Props {
   locale: string
@@ -28,10 +27,8 @@ export function PassPricingSection({ locale }: Props) {
   const router = useRouter()
   const [status, setStatus] = useState<PassStatus | null>(null)
   const [loading, setLoading] = useState(true)
-  const [userLp, setUserLp] = useState(0)
   const [processingPass, setProcessingPass] = useState<string | null>(null)
   const [processingPack, setProcessingPack] = useState<string | null>(null)
-  const [exchanging, setExchanging] = useState(false)
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null)
 
   const loadStatus = useCallback(async () => {
@@ -40,19 +37,6 @@ export function PassPricingSection({ locale }: Props) {
       if (passRes.ok) {
         const data = await passRes.json()
         setStatus(data)
-        if (data.authenticated) {
-          // 로그인된 경우에만 LP 조회 (Supabase RLS: users 본인 행만)
-          const sb = createClient()
-          const { data: { user } } = await sb.auth.getUser()
-          if (user) {
-            const { data: row } = await sb
-              .from('users')
-              .select('total_lp')
-              .eq('id', user.id)
-              .single()
-            setUserLp(row?.total_lp ?? 0)
-          }
-        }
       }
     } catch {
       // noop — 비로그인/네트워크 오류는 비회원 상태로 렌더
@@ -112,38 +96,6 @@ export function PassPricingSection({ locale }: Props) {
       toast({ variant: 'destructive', title: 'network_error' })
     } finally {
       setProcessingPack(null)
-    }
-  }
-
-  const handleExchange = async () => {
-    if (!status?.authenticated) {
-      router.push(`/${locale}/auth/login`)
-      return
-    }
-    if (userLp < LP_TO_CREDIT_RATE.lp) {
-      toast({ variant: 'destructive', title: t('insufficientLp') })
-      return
-    }
-    const batches = Math.floor(userLp / LP_TO_CREDIT_RATE.lp)
-    const lpAmount = batches * LP_TO_CREDIT_RATE.lp
-    setExchanging(true)
-    try {
-      const res = await fetch('/api/credits/exchange', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lpAmount }),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (res.ok) {
-        toast({ title: t('exchangeSuccess', { credits: data.creditsGained ?? 0 }) })
-        loadStatus()
-      } else {
-        toast({ variant: 'destructive', title: data?.error || 'exchange_failed' })
-      }
-    } catch {
-      toast({ variant: 'destructive', title: 'network_error' })
-    } finally {
-      setExchanging(false)
     }
   }
 
@@ -239,29 +191,7 @@ export function PassPricingSection({ locale }: Props) {
         </div>
       </div>
 
-      {/* LP 교환 */}
-      <div className="rounded-2xl bg-gradient-to-br from-amber-50 to-rose-50 border border-amber-200/60 p-5 max-w-2xl mx-auto">
-        <h2 className="text-xs font-black text-amber-600 uppercase tracking-widest mb-3 text-center flex items-center justify-center gap-1.5">
-          <TrendingUp className="w-3.5 h-3.5" /> {t('lpExchange')}
-        </h2>
-        <p className="text-center text-sm font-black text-slate-700 mb-3">
-          🏆 {LP_TO_CREDIT_RATE.lp} LP = 💎 {LP_TO_CREDIT_RATE.credits} {t('credits')}
-        </p>
-        <div className="flex items-center justify-between gap-3">
-          <p className="text-xs text-slate-500 font-bold">
-            {t('currentLp')}: <span className="text-slate-800 font-black">{userLp.toLocaleString()}</span>
-          </p>
-          <button
-            type="button"
-            onClick={handleExchange}
-            disabled={exchanging || userLp < LP_TO_CREDIT_RATE.lp}
-            className="px-4 py-2 rounded-full bg-gradient-to-r from-amber-400 to-rose-400 text-white font-black text-xs hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-1.5"
-          >
-            {exchanging && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-            {t('exchange')}
-          </button>
-        </div>
-      </div>
+      {/* LP 교환 섹션은 크레딧 UI 제거 방침에 따라 숨김 (1720 크레딧 토스트 경로) */}
 
       {/* 무료 체험 */}
       <div className="rounded-2xl bg-slate-50 border border-slate-200/60 p-5 max-w-2xl mx-auto text-center">

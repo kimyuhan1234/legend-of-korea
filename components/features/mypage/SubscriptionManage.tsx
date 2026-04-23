@@ -3,11 +3,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { Loader2, Sparkles, XCircle, AlertTriangle, TrendingUp, Plus } from 'lucide-react'
+import { Loader2, Sparkles, XCircle, AlertTriangle, Plus } from 'lucide-react'
 import { toast } from '@/components/ui/use-toast'
-import { createClient } from '@/lib/supabase/client'
 import { PASSES, type PassId, type PassI18n } from '@/lib/data/passes'
-import { LP_TO_CREDIT_RATE } from '@/lib/data/credit-packs'
 
 interface Props {
   locale: string
@@ -17,7 +15,6 @@ interface PassStatusResponse {
   authenticated: boolean
   passes: PassId[]
   hasAllInOne: boolean
-  creditsRemaining: number
 }
 
 type I18nKey = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
@@ -32,9 +29,7 @@ export function SubscriptionManage({ locale }: Props) {
   const tPass = useTranslations('pass')
   const [status, setStatus] = useState<PassStatusResponse | null>(null)
   const [loading, setLoading] = useState(true)
-  const [userLp, setUserLp] = useState(0)
   const [cancelling, setCancelling] = useState(false)
-  const [exchanging, setExchanging] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
 
   const load = useCallback(async () => {
@@ -44,18 +39,6 @@ export function SubscriptionManage({ locale }: Props) {
       if (res.ok) {
         const data: PassStatusResponse = await res.json()
         setStatus(data)
-        if (data.authenticated) {
-          const sb = createClient()
-          const { data: { user } } = await sb.auth.getUser()
-          if (user) {
-            const { data: row } = await sb
-              .from('users')
-              .select('total_lp')
-              .eq('id', user.id)
-              .single()
-            setUserLp(row?.total_lp ?? 0)
-          }
-        }
       }
     } catch {
       // noop
@@ -82,34 +65,6 @@ export function SubscriptionManage({ locale }: Props) {
       toast({ variant: 'destructive', title: 'Failed' })
     } finally {
       setCancelling(false)
-    }
-  }
-
-  const handleExchange = async () => {
-    if (userLp < LP_TO_CREDIT_RATE.lp) {
-      toast({ variant: 'destructive', title: tPass('insufficientLp') })
-      return
-    }
-    const batches = Math.floor(userLp / LP_TO_CREDIT_RATE.lp)
-    const lpAmount = batches * LP_TO_CREDIT_RATE.lp
-    setExchanging(true)
-    try {
-      const res = await fetch('/api/credits/exchange', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lpAmount }),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (res.ok) {
-        toast({ title: tPass('exchangeSuccess', { credits: data.creditsGained ?? 0 }) })
-        load()
-      } else {
-        toast({ variant: 'destructive', title: data?.error || 'exchange_failed' })
-      }
-    } catch {
-      toast({ variant: 'destructive', title: 'network_error' })
-    } finally {
-      setExchanging(false)
     }
   }
 
@@ -164,38 +119,6 @@ export function SubscriptionManage({ locale }: Props) {
               </div>
             ))}
           </div>
-
-          {/* 크레딧 + LP */}
-          <div className="grid grid-cols-2 gap-2 pt-2">
-            <div className="rounded-xl bg-slate-50 border border-slate-100 p-3">
-              <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">
-                💎 {t('settings.sub.credits')}
-              </p>
-              <p className="text-lg font-black text-slate-800 mt-0.5">
-                {status.creditsRemaining}
-              </p>
-            </div>
-            <div className="rounded-xl bg-amber-50/60 border border-amber-200/40 p-3">
-              <p className="text-[10px] font-black text-amber-600 uppercase tracking-wider">
-                💧 빗방울
-              </p>
-              <p className="text-lg font-black text-slate-800 mt-0.5">
-                {userLp.toLocaleString()}
-              </p>
-            </div>
-          </div>
-
-          {/* LP 교환 버튼 */}
-          {userLp >= LP_TO_CREDIT_RATE.lp && (
-            <button
-              onClick={handleExchange}
-              disabled={exchanging}
-              className="w-full py-2 rounded-xl bg-gradient-to-r from-amber-400 to-rose-400 text-white font-black text-xs hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-1.5"
-            >
-              {exchanging ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <TrendingUp className="w-3.5 h-3.5" />}
-              {tPass('lpExchange')} ({LP_TO_CREDIT_RATE.lp} LP → {LP_TO_CREDIT_RATE.credits})
-            </button>
-          )}
 
           {/* 액션 버튼 */}
           <div className="flex gap-2 pt-2">
