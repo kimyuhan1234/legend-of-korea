@@ -1,9 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { RankBadge } from '@/components/features/rank/RankBadge'
+import { RankBadge, invalidateRankCache } from '@/components/features/rank/RankBadge'
 import { BranchSelectionModal } from '@/components/features/dashboard/BranchSelectionModal'
 
 type ShopLocale = 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW'
@@ -162,7 +161,6 @@ function formatDate(iso: string | null): string {
 }
 
 export function LegendShop({ locale }: Props) {
-  const router = useRouter()
   const lc = (['ko', 'en', 'ja', 'zh-CN', 'zh-TW'] as const).includes(locale as ShopLocale) ? (locale as ShopLocale) : 'en'
   const t = UI[lc]
 
@@ -173,6 +171,8 @@ export function LegendShop({ locale }: Props) {
   const [busy, setBusy] = useState<null | 'rank-up' | number>(null)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [branchOpen, setBranchOpen] = useState(false)
+  // RankBadge 재조회 트리거 — 랭크업·분기 선택 후 증가시키면 뱃지가 최신 값으로 갱신.
+  const [rankRefresh, setRankRefresh] = useState(0)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -248,8 +248,10 @@ export function LegendShop({ locale }: Props) {
         return
       }
       setMessage({ type: 'success', text: t.success(json.newLevel) })
+      // RankBadge 캐시 무효화 → refreshKey 증가로 useEffect 재실행 강제
+      invalidateRankCache(user.id)
+      setRankRefresh((k) => k + 1)
       await load()
-      router.refresh()
     } finally {
       setBusy(null)
     }
@@ -266,6 +268,9 @@ export function LegendShop({ locale }: Props) {
       return
     }
     setBranchOpen(false)
+    // route 변경 시에도 뱃지 갱신 필요 (Lv 4+ 직책 이름이 route 에 따라 바뀜)
+    if (user) invalidateRankCache(user.id)
+    setRankRefresh((k) => k + 1)
     await load()
   }
 
@@ -328,7 +333,7 @@ export function LegendShop({ locale }: Props) {
         <div className="flex items-center gap-4">
           <div className="flex-1">
             <p className="text-[10px] font-black text-stone uppercase tracking-widest">{t.rankUpNow}</p>
-            <div className="mt-2"><RankBadge userId={user.id} size="md" /></div>
+            <div className="mt-2"><RankBadge userId={user.id} size="md" refreshKey={rankRefresh} /></div>
           </div>
         </div>
 

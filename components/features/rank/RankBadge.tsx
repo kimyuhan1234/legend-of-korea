@@ -18,6 +18,21 @@ interface RankData {
 const cache = new Map<string, RankData | null>()
 const pending = new Map<string, Promise<RankData | null>>()
 
+/**
+ * 랭크 캐시 무효화 — 랭크업·분기 선택 등 current_level 또는 tech_tree_route
+ * 가 바뀐 직후 반드시 호출해야 뱃지가 최신 값으로 재조회됨.
+ * userId 생략 시 전체 캐시 클리어.
+ */
+export function invalidateRankCache(userId?: string) {
+  if (userId) {
+    cache.delete(userId)
+    pending.delete(userId)
+  } else {
+    cache.clear()
+    pending.clear()
+  }
+}
+
 async function fetchRank(userId: string): Promise<RankData | null> {
   if (cache.has(userId)) return cache.get(userId) ?? null
   let p = pending.get(userId)
@@ -49,9 +64,15 @@ interface Props {
   size?: 'sm' | 'md' | 'lg'
   showName?: boolean
   className?: string
+  /**
+   * 값이 바뀌면 useEffect 가 재실행되어 재조회.
+   * 호출 측에서 invalidateRankCache(userId) 로 캐시를 먼저 비운 뒤 증가시키면
+   * 최신 데이터 확보 보장.
+   */
+  refreshKey?: number | string
 }
 
-export function RankBadge({ userId, size = 'md', showName = true, className = '' }: Props) {
+export function RankBadge({ userId, size = 'md', showName = true, className = '', refreshKey }: Props) {
   const pathname = usePathname()
   const locale = (pathname.split('/')[1] || 'ko') as BadgeLocale
   const [rank, setRank] = useState<RankData | null>(() => cache.get(userId) ?? null)
@@ -68,7 +89,7 @@ export function RankBadge({ userId, size = 'md', showName = true, className = ''
     return () => {
       mounted = false
     }
-  }, [userId])
+  }, [userId, refreshKey])
 
   if (!ready) {
     const h = size === 'sm' ? 'h-5 w-16' : size === 'lg' ? 'h-14 w-40' : 'h-6 w-20'
