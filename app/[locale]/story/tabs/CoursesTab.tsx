@@ -1,6 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
 import { CourseSlider } from '@/components/features/courses/CourseSlider'
-import { GyeongdoEventBanner } from '@/components/features/quest/GyeongdoEventBanner'
 import { getRegionName } from '@/lib/constants/regions'
 import type { I18nText } from '@/lib/supabase/types'
 
@@ -63,9 +62,7 @@ export async function CoursesTab({ locale }: CoursesTabProps) {
 
   return (
     <div>
-      {/* 경도 스페셜 이벤트 배너 — 활성 이벤트 있을 때만 표시 */}
-      <GyeongdoEventBanner locale={locale} />
-
+      {/* Day 4: 경도 배너는 '스페셜 이벤트' 탭으로 이동됨 */}
       <h2 className="text-xl font-black text-[#111] mb-6">{label.heading}</h2>
       <CourseSlider
         courses={sliderItems}

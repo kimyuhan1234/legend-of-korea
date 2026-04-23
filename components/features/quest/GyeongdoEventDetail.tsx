@@ -2,7 +2,17 @@
 
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { GYEONGDO_KIT, resolveEventStatus, type GyeongdoEvent } from '@/lib/data/gyeongdo-events'
+import { resolveEventStatus, type GyeongdoEvent } from '@/lib/data/gyeongdo-events'
+
+type DetailLocale = 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW'
+
+const PASS_INCLUDED: Record<DetailLocale, string> = {
+  ko: '🎫 패스 권 사용자는 무료로 참여 가능합니다',
+  en: '🎫 Free for Pass holders',
+  ja: '🎫 パスホルダーは無料参加可能',
+  'zh-CN': '🎫 通票用户免费参加',
+  'zh-TW': '🎫 通票用戶免費參加',
+}
 
 function getDDay(deadline: string, today: string): number {
   const d = new Date(deadline)
@@ -35,13 +45,17 @@ export function GyeongdoEventDetail({ event, locale, isLoggedIn }: Props) {
   const weekdays: Record<string, string[]> = { ko: ['일', '월', '화', '수', '목', '금', '토'], en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], ja: ['日', '月', '火', '水', '木', '金', '土'], 'zh-CN': ['日', '一', '二', '三', '四', '五', '六'], 'zh-TW': ['日', '一', '二', '三', '四', '五', '六'] }
   const wd = (weekdays[lk] || weekdays.en)[dateObj.getDay()]
 
-  function handleBuy() {
+  const lkKey = (['ko', 'en', 'ja', 'zh-CN', 'zh-TW'] as const).includes(locale as DetailLocale)
+    ? (locale as DetailLocale)
+    : 'en'
+
+  function handleJoin() {
     if (!isLoggedIn) {
       router.push(`/${locale}/auth`)
       return
     }
-    // 결제 연동 금지 규칙 준수 — 현재는 플래너 담기로 대체
-    router.push(`/${locale}/shop`)
+    // 패스 권에 포함된 서비스 — 결제/키트 없음. 파티 참여는 /memories 에서.
+    router.push(`/${locale}/memories`)
   }
 
   return (
@@ -104,25 +118,20 @@ export function GyeongdoEventDetail({ event, locale, isLoggedIn }: Props) {
           )}
         </div>
 
-        {/* 구매 버튼 */}
-        {/* 구독자 할인 안내 */}
-        <div className="mt-3 mb-2 bg-gradient-to-r from-mint-light/50 to-sky/10 border border-mint/30 rounded-xl px-3 py-2 flex items-center justify-between">
-          <span className="text-xs text-slate">
-            <span className="line-through text-stone mr-1">₩{GYEONGDO_KIT.price.toLocaleString()}</span>
-            <span className="font-black text-mint-deep">₩{GYEONGDO_KIT.subscriberPrice.toLocaleString()}</span>
-          </span>
-          <span className="text-[10px] font-bold text-white bg-mint-deep px-2 py-0.5 rounded-full">
-            {lk === 'ko' ? '구독자 34% 할인' : lk === 'ja' ? 'サブスク34%割引' : '34% off for subscribers'}
-          </span>
+        {/* 패스 권 포함 안내 */}
+        <div className="mt-3 mb-2 bg-gradient-to-r from-mint-light/50 to-sky/10 border border-mint/30 rounded-xl px-3 py-2">
+          <p className="text-xs font-bold text-mint-deep text-center">
+            {PASS_INCLUDED[lkKey]}
+          </p>
         </div>
 
         <div className="mt-2">
           {status === 'upcoming' ? (
             <button
-              onClick={handleBuy}
+              onClick={handleJoin}
               className="w-full py-3.5 rounded-2xl text-sm font-black bg-gradient-to-r from-[#1a4fd6] to-[#dc2626] text-white hover:opacity-90 transition"
             >
-              {t('buy')} · ₩{GYEONGDO_KIT.price.toLocaleString()}
+              {t('buy')}
             </button>
           ) : status === 'sold-out' ? (
             <button disabled className="w-full py-3.5 rounded-2xl text-sm font-black bg-stone/30 text-slate cursor-not-allowed">

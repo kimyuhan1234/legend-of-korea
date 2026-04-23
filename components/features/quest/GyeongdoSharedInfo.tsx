@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { GYEONGDO_KIT } from '@/lib/data/gyeongdo-events'
 import { getVideoUrl } from '@/lib/utils/storage'
 
 interface Props {
@@ -51,25 +50,12 @@ export function GyeongdoSharedInfo({ locale }: Props) {
         </div>
       </div>
 
-      {/* 키트 구성품 */}
-      <div>
-        <h3 className="text-base font-black text-ink mb-3">🎁 {t('includes')}</h3>
-        <div className="space-y-2">
-          {GYEONGDO_KIT.includes.map((item, i) => (
-            <div key={i} className="flex items-start gap-3 text-sm">
-              <span className="text-[#5BBDAD] font-bold mt-0.5">✓</span>
-              <span className="text-slate">{(item as Record<string, string>)[lk] || (item as Record<string, string>).en || (item as Record<string, string>).ko}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* 참여 흐름 3단계 */}
+      {/* 참여 흐름 3단계 (Day 4: 키트 구성품 섹션 제거, 패스 권 포함) */}
       <div>
         <h3 className="text-base font-black text-ink mb-3">👣 {t('howTo')}</h3>
         <div className="grid grid-cols-3 gap-3">
           {[
-            { icon: '🛒', step: '1', label: t('step1'), sub: `₩${GYEONGDO_KIT.subscriberPrice.toLocaleString()}~` },
+            { icon: '🎫', step: '1', label: t('step1'), sub: '' },
             { icon: '📍', step: '2', label: t('step2'), sub: '' },
             { icon: '🏃', step: '3', label: t('step3'), sub: '' },
           ].map((s) => (
