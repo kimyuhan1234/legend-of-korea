@@ -26,12 +26,15 @@ import { SettingsSection, SettingsRow } from '@/components/features/mypage/Setti
 import { ProfileSettings } from '@/components/features/mypage/ProfileSettings';
 import { SubscriptionManage } from '@/components/features/mypage/SubscriptionManage';
 import { AccountDanger } from '@/components/features/mypage/AccountDanger';
+import { RankCard } from '@/components/features/dashboard/RankCard';
+import type { UserRankResult } from '@/lib/tiers/get-user-rank';
 
 interface MyPageClientProps {
   locale: string;
+  initialRank?: UserRankResult | null;
 }
 
-export function MyPageClient({ locale }: MyPageClientProps) {
+export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) {
   const t = useTranslations('mypage');
   const router = useRouter();
   const supabase = createClient();
@@ -160,6 +163,11 @@ export function MyPageClient({ locale }: MyPageClientProps) {
 
   return (
     <div className="flex-1 container max-w-6xl mx-auto px-4 py-8 md:py-12">
+      {initialRank && (
+        <div className="mb-8">
+          <RankCard locale={locale} rank={initialRank} />
+        </div>
+      )}
       <div className="grid lg:grid-cols-[320px_1fr] gap-8">
 
         {/* 좌측 사이드바 — 프로필 요약 카드 (기본 구조 유지) */}
