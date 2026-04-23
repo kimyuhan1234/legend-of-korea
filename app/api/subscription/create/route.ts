@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
 
+// [Day 4 디자인 B] 자동 승급 제거 — 랭크업은 /memories 상점에서 수동만 가능
 export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient()
@@ -33,7 +34,7 @@ export async function POST(req: NextRequest) {
     // 2. 플랜 정보 서버에서 직접 조회 (클라이언트 금액 무시)
     const { data: plan, error: planErr } = await service
       .from('subscription_plans')
-      .select('id, plan_type, price, tier_levelup, kit_discount_rate, monthly_credits')
+      .select('id, plan_type, price, kit_discount_rate, monthly_credits')
       .eq('id', planId)
       .eq('is_active', true)
       .single()
@@ -55,7 +56,6 @@ export async function POST(req: NextRequest) {
       payment_subscription_id: paymentSubscriptionId || null,
       current_period_start: periodStart.toISOString(),
       current_period_end: periodEnd.toISOString(),
-      tier_levelup_used: false,
       credits_remaining: plan.monthly_credits ?? 0,
       credits_reset_at: periodEnd.toISOString(),
     }
@@ -87,70 +87,10 @@ export async function POST(req: NextRequest) {
       subscriptionId = created.id
     }
 
-    // 4. 전설 플랜 레벨업 혜택 처리
-    let tierUpResult: {
-      leveledUp: boolean
-      newTierLevel?: number
-      bonusLp?: number
-      alreadyUsed?: boolean
-    } = { leveledUp: false }
-
-    if (plan.plan_type === 'legend' && plan.tier_levelup) {
-      // 유저 현재 티어 조회
-      const { data: userData } = await service
-        .from('users')
-        .select('current_tier, total_lp')
-        .eq('id', user.id)
-        .single()
-
-      if (userData) {
-        const currentTier = userData.current_tier || 1
-
-        if (currentTier >= 6) {
-          // Lv.6이면 LP 500 보너스
-          await service.from('lp_transactions').insert({
-            user_id: user.id,
-            amount: 500,
-            type: 'admin',
-            description: '전설 플랜 구독 보너스 (최고 티어)',
-          })
-          await service
-            .from('users')
-            .update({ total_lp: userData.total_lp + 500 })
-            .eq('id', user.id)
-
-          tierUpResult = { leveledUp: false, bonusLp: 500 }
-        } else {
-          // 1랭크 레벨업
-          const nextTierLevel = currentTier + 1
-          const { data: nextTier } = await service
-            .from('tiers')
-            .select('level, min_lp')
-            .eq('level', nextTierLevel)
-            .single()
-
-          if (nextTier) {
-            await service
-              .from('users')
-              .update({ current_tier: nextTierLevel })
-              .eq('id', user.id)
-
-            await service
-              .from('user_subscriptions')
-              .update({ tier_levelup_used: true })
-              .eq('id', subscriptionId)
-
-            tierUpResult = { leveledUp: true, newTierLevel: nextTierLevel }
-          }
-        }
-      }
-    }
-
     return NextResponse.json({
       success: true,
       subscriptionId,
       planType: plan.plan_type,
-      tierUp: tierUpResult,
     })
   } catch {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
