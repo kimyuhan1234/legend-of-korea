@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { getRegionName } from '@/lib/constants/regions';
 import { toast } from '@/components/ui/use-toast';
+import { RankBadge } from '@/components/features/rank/RankBadge';
 
 export interface PostType {
   id: string;
@@ -259,6 +260,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <p className="font-bold text-slate-800 text-sm">{post.user?.nickname || 'Unknown'}</p>
+                {post.user_id && <RankBadge userId={post.user_id} size="sm" />}
                 {post.region && post.region !== 'all' && (
                   <span className="inline-flex items-center gap-0.5 bg-mint-light text-mint-deep rounded-full px-2 py-0.5 text-xs font-medium">
                     <MapPin className="w-3 h-3" />
