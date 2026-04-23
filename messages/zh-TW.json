@@ -754,6 +754,7 @@
     "tabMissionKit": "QUEST",
     "tabMemories": "추억 남기기",
     "tabPoints": "전설 상점",
+    "tabSpecial": "스페셜 이벤트",
     "loginRequired": "로그인 후 확인 가능합니다",
     "loginBtn": "로그인",
     "pointsTitle": "나의 포인트",
@@ -1393,10 +1394,10 @@
       "keydoroDesc": "한국의 경도와 같은 놀이예요! 서울에서 함께 즐겨보세요.",
       "includes": "키트 구성품",
       "howTo": "참여 방법",
-      "step1": "키트 구매",
+      "step1": "참가 신청",
       "step2": "이벤트 당일 집합",
       "step3": "경도 + 맛집 투어",
-      "buy": "키트 구매하기",
+      "buy": "참가하기",
       "soldOut": "마감되었습니다",
       "closed": "판매가 종료되었습니다",
       "completed": "종료된 이벤트입니다",
@@ -1880,7 +1881,8 @@
       "ranking": "랭킹",
       "achievements": "업적",
       "photos": "포토",
-      "together": "함께하기"
+      "together": "함께하기",
+      "shop": "전설 상점"
     },
     "feed": {
       "write": "글쓰기"
