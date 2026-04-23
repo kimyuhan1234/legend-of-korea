@@ -23,13 +23,16 @@ export async function GET(req: NextRequest) {
 
   const { data: userRow } = await supabase
     .from('users')
-    .select('total_lp, tech_tree_route')
+    .select('total_lp, tech_tree_route, current_level')
     .eq('id', userId)
-    .maybeSingle<{ total_lp: number | null; tech_tree_route: string | null }>()
+    .maybeSingle<{ total_lp: number | null; tech_tree_route: string | null; current_level: number | null }>()
 
   const raindrops = userRow?.total_lp ?? 0
   const route = userRow?.tech_tree_route ?? null
-  const level = calculateLevelFromRaindrops(raindrops)
+  // [Day 4] current_level 우선, 없으면 자동 계산 fallback
+  const level = typeof userRow?.current_level === 'number' && userRow.current_level >= 1
+    ? Math.min(10, userRow.current_level)
+    : calculateLevelFromRaindrops(raindrops)
 
   const routeKey = level <= 3 ? 'common' : (route === 'scholar' || route === 'warrior' ? route : null)
   if (!routeKey) {

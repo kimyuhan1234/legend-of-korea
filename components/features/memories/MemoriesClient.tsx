@@ -11,9 +11,7 @@ import { MissionDashboard } from '@/components/features/missions/MissionDashboar
 import { Leaderboard } from '@/components/features/community/Leaderboard'
 import { ProfileBadges } from '@/components/features/mypage/ProfileBadges'
 import { DigitalPassport } from '@/components/features/mypage/DigitalPassport'
-import { QuestPartySection } from '@/components/features/quest/QuestPartySection'
-import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton'
-import { courses } from '@/lib/data/courses'
+import { LegendShop } from './LegendShop'
 
 interface Props {
   locale: string
@@ -26,7 +24,7 @@ interface PhotoItem {
   courseTitle: Record<string, string>
 }
 
-type Tab = 'feed' | 'dashboard' | 'ranking' | 'achievements' | 'photos' | 'together'
+type Tab = 'feed' | 'dashboard' | 'ranking' | 'achievements' | 'photos' | 'shop'
 
 function getI18n(field: Record<string, string> | undefined, locale: string): string {
   if (!field) return ''
@@ -39,7 +37,7 @@ const TABS: { id: Tab; icon: string; labelKey: string; requiresAuth: boolean }[]
   { id: 'ranking', icon: '🏆', labelKey: 'tab.ranking', requiresAuth: true },
   { id: 'achievements', icon: '🛂', labelKey: 'tab.achievements', requiresAuth: true },
   { id: 'photos', icon: '📷', labelKey: 'tab.photos', requiresAuth: true },
-  { id: 'together', icon: '👥', labelKey: 'tab.together', requiresAuth: true },
+  { id: 'shop', icon: '🛒', labelKey: 'tab.shop', requiresAuth: true },
 ]
 
 export function MemoriesClient({ locale }: Props) {
@@ -50,7 +48,6 @@ export function MemoriesClient({ locale }: Props) {
   const [photos, setPhotos] = useState<PhotoItem[]>([])
   const [photosLoading, setPhotosLoading] = useState(false)
   const [lightbox, setLightbox] = useState<PhotoItem | null>(null)
-  const [selectedCourseId, setSelectedCourseId] = useState<string>('')
 
   useEffect(() => {
     const supabase = createClient()
@@ -231,64 +228,9 @@ export function MemoriesClient({ locale }: Props) {
         </div>
       )}
 
-      {/* 탭 6: 함께하기 */}
-      {!needsAuth && tab === 'together' && userId && (
-        <div className="space-y-8">
-          {/* ZEP 메타버스 */}
-          <div className="bg-gradient-to-r from-violet-50 to-indigo-50 rounded-2xl p-6 border border-violet-100">
-            <h4 className="text-lg font-black flex items-center gap-2 mb-2">
-              🌐 {t('together.zepTitle')}
-            </h4>
-            <p className="text-sm text-slate-500 mb-4">{t('together.zepDesc')}</p>
-
-            {/* 코스 선택 */}
-            <select
-              value={selectedCourseId}
-              onChange={(e) => setSelectedCourseId(e.target.value)}
-              className="w-full p-3 rounded-xl border border-slate-200 mb-4 text-sm font-bold text-slate-700 bg-white"
-            >
-              <option value="">{t('together.selectCourse')}</option>
-              {courses.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {getI18n(c.title, locale)}
-                </option>
-              ))}
-            </select>
-
-            {selectedCourseId ? (
-              <ZepMeetingButton
-                courseId={courses.find((c) => c.id === selectedCourseId)?.region ?? ''}
-                hasPurchased={true}
-                locale={locale}
-              />
-            ) : (
-              <p className="text-center text-sm text-slate-400 py-4">
-                {t('together.selectCourseHint')}
-              </p>
-            )}
-          </div>
-
-          {/* Quest Party */}
-          <div className="bg-gradient-to-r from-mint/10 to-sky/10 rounded-2xl p-6 border border-mint/20">
-            <h4 className="text-lg font-black flex items-center gap-2 mb-2">
-              👥 {t('together.partyTitle')}
-            </h4>
-            <p className="text-sm text-slate-500 mb-4">{t('together.partyDesc')}</p>
-
-            {selectedCourseId ? (
-              <QuestPartySection
-                courseId={selectedCourseId}
-                isLoggedIn={!!userId}
-                currentUserId={userId}
-                locale={locale}
-              />
-            ) : (
-              <p className="text-center text-sm text-slate-400 py-8">
-                {t('together.selectCourseHint')}
-              </p>
-            )}
-          </div>
-        </div>
+      {/* 탭 6: 전설 상점 (Day 4 디자인 B) */}
+      {!needsAuth && tab === 'shop' && userId && (
+        <LegendShop locale={locale} />
       )}
 
       {/* 라이트박스 */}

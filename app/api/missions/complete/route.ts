@@ -1,7 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 import { LP_REWARDS } from '@/lib/constants/lp';
-import { checkAndPromoteTier } from '@/lib/utils/tier';
+// [Day 4 디자인 B] 자동 승급 제거 — 레벨업은 상점에서 수동만 가능
+// import { checkAndPromoteTier } from '@/lib/utils/tier';
 
 export async function POST(req: NextRequest) {
   try {
@@ -97,10 +98,9 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 4. 티어 재계산 (유틸리티 사용)
-    const tierResult = await checkAndPromoteTier(supabase, user.id, newLp, userData?.current_tier || 1);
-    const tierUp = tierResult.tierUp;
-    const finalTier = tierUp ? tierResult.newTier?.level : (userData?.current_tier || 1);
+    // 4. [Day 4 디자인 B] 자동 승급 비활성. 레벨업은 /memories 상점에서 수동만 가능.
+    const tierUp = false;
+    const finalTier = userData?.current_tier || 1;
 
     // 5. 다음 미션 해제 (is_hidden 제외한 순차적 미션 중 다음 단계)
     const nextSeq = mission.sequence + 1;
@@ -156,11 +156,7 @@ export async function POST(req: NextRequest) {
                 description: `코스 완주 보너스 (${LP_REWARDS.COURSE_COMPLETE} LP)`
             });
 
-            // 보너스 지급 후 티어 다시 체크
-            const bonusTierResult = await checkAndPromoteTier(supabase, user.id, newLp, finalTier);
-            if (bonusTierResult.tierUp) {
-                // 추가 승급 시 업데이트 (생략 가능하나 정확성을 위해)
-            }
+            // [Day 4] 자동 승급 비활성 — 보너스 지급만 수행
         }
     }
 
@@ -195,7 +191,7 @@ export async function POST(req: NextRequest) {
       bonusLp,
       newTotalLp: newLp,
       tierUp,
-      newTier: tierUp ? tierResult.newTier : null,
+      newTier: null,
       courseCompleted: isCourseCompleted
     });
 

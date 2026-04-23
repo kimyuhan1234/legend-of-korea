@@ -50,9 +50,9 @@ export async function getUserRank(locale: string): Promise<UserRankResult | null
   const [{ data: userRow }, { data: titles }] = await Promise.all([
     supabase
       .from('users')
-      .select('total_lp, tech_tree_route')
+      .select('total_lp, tech_tree_route, current_level')
       .eq('id', user.id)
-      .maybeSingle<{ total_lp: number; tech_tree_route: string | null }>(),
+      .maybeSingle<{ total_lp: number; tech_tree_route: string | null; current_level: number | null }>(),
     supabase
       .from('tier_titles')
       .select('level, route, name_ko, name_en, name_ja, name_zh_cn, name_zh_tw, emoji, is_special')
@@ -63,7 +63,10 @@ export async function getUserRank(locale: string): Promise<UserRankResult | null
   const rawRoute = userRow?.tech_tree_route
   const route: TechTreeRoute | null = rawRoute === 'scholar' || rawRoute === 'warrior' ? rawRoute : null
 
-  const level = calculateLevelFromRaindrops(raindrops)
+  // [Day 4 디자인 B] current_level 우선 사용, 없으면 빗방울 기반 자동 계산 (하위 호환)
+  const level = typeof userRow?.current_level === 'number' && userRow.current_level >= 1
+    ? Math.min(MAX_LEVEL, userRow.current_level)
+    : calculateLevelFromRaindrops(raindrops)
   const isMaxLevel = level >= MAX_LEVEL
   const needsBranchSelection = level >= 4 && route === null
 

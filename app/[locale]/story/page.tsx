@@ -2,11 +2,9 @@ export const dynamic = 'force-dynamic'
 
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
-import { createClient } from '@/lib/supabase/server'
 import { StoryTabNav } from './StoryTabNav'
 import { CoursesTab } from './tabs/CoursesTab'
-import { MemoriesTab } from './tabs/MemoriesTab'
-import { PointsTab } from './tabs/PointsTab'
+import { SpecialEventTab } from '@/components/features/story/tabs/SpecialEventTab'
 
 interface Props {
   params: { locale: string }
@@ -25,23 +23,9 @@ export default async function StoryPage({ params, searchParams }: Props) {
 
   const t = await getTranslations({ locale, namespace: 'story' })
 
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-
-  let profile = null
-  if (user) {
-    const { data } = await supabase
-      .from('users')
-      .select('nickname, total_lp, current_tier')
-      .eq('id', user.id)
-      .single()
-    profile = data
-  }
-
   const tabs = [
     { id: 'mission-kit', label: t('tabMissionKit') },
-    { id: 'memories',    label: t('tabMemories') },
-    { id: 'points',      label: t('tabPoints') },
+    { id: 'special',     label: t('tabSpecial') },
   ]
 
   return (
@@ -58,13 +42,7 @@ export default async function StoryPage({ params, searchParams }: Props) {
       {/* 탭 콘텐츠 (서버) */}
       <div className="max-w-5xl mx-auto px-8 md:px-10 py-20 md:py-28">
         {activeTab === 'mission-kit' && <CoursesTab locale={locale} />}
-        {activeTab === 'memories'    && <MemoriesTab locale={locale} />}
-        {activeTab === 'points'      && (
-          <PointsTab
-            locale={locale}
-            user={user ? { id: user.id, ...profile } : null}
-          />
-        )}
+        {activeTab === 'special'     && <SpecialEventTab locale={locale} />}
       </div>
     </div>
   )

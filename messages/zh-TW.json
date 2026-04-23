@@ -729,6 +729,7 @@
     "tabMissionKit": "QUEST",
     "tabMemories": "回憶",
     "tabPoints": "傳說商店",
+    "tabSpecial": "特別活動",
     "loginRequired": "請登入以查看",
     "loginBtn": "登入",
     "pointsTitle": "我的點數",
@@ -1855,7 +1856,8 @@
       "ranking": "排行榜",
       "achievements": "成就",
       "photos": "照片",
-      "together": "一起玩"
+      "together": "一起玩",
+      "shop": "傳說商店"
     },
     "feed": {
       "write": "發帖"

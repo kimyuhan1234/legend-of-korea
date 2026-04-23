@@ -754,6 +754,7 @@
     "tabMissionKit": "QUEST",
     "tabMemories": "추억 남기기",
     "tabPoints": "전설 상점",
+    "tabSpecial": "스페셜 이벤트",
     "loginRequired": "로그인 후 확인 가능합니다",
     "loginBtn": "로그인",
     "pointsTitle": "나의 포인트",
@@ -1880,7 +1881,8 @@
       "ranking": "랭킹",
       "achievements": "업적",
       "photos": "포토",
-      "together": "함께하기"
+      "together": "함께하기",
+      "shop": "전설 상점"
     },
     "feed": {
       "write": "글쓰기"

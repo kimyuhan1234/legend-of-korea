@@ -729,6 +729,7 @@
     "tabMissionKit": "QUEST",
     "tabMemories": "回忆",
     "tabPoints": "传说商店",
+    "tabSpecial": "特别活动",
     "loginRequired": "请登录后查看",
     "loginBtn": "登录",
     "pointsTitle": "我的积分",
@@ -1855,7 +1856,8 @@
       "ranking": "排行榜",
       "achievements": "成就",
       "photos": "照片",
-      "together": "一起玩"
+      "together": "一起玩",
+      "shop": "传说商店"
     },
     "feed": {
       "write": "发帖"

@@ -729,6 +729,7 @@
     "tabMissionKit": "QUEST",
     "tabMemories": "思い出記録",
     "tabPoints": "伝説の店",
+    "tabSpecial": "スペシャルイベント",
     "loginRequired": "ログイン後に確認できます",
     "loginBtn": "ログイン",
     "pointsTitle": "マイポイント",
@@ -1855,7 +1856,8 @@
       "ranking": "ランキング",
       "achievements": "アチーブメント",
       "photos": "フォト",
-      "together": "一緒に"
+      "together": "一緒に",
+      "shop": "レジェンドショップ"
     },
     "feed": {
       "write": "投稿する"

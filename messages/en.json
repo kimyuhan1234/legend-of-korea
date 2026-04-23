@@ -729,6 +729,7 @@
     "tabMissionKit": "QUEST",
     "tabMemories": "Memories",
     "tabPoints": "Legend Shop",
+    "tabSpecial": "Special Event",
     "loginRequired": "Please sign in to view",
     "loginBtn": "Sign In",
     "pointsTitle": "My Points",
@@ -1855,7 +1856,8 @@
       "ranking": "Ranking",
       "achievements": "Achievements",
       "photos": "Photos",
-      "together": "Together"
+      "together": "Together",
+      "shop": "Legend Shop"
     },
     "feed": {
       "write": "Write"
