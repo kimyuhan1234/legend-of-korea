@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select"
 import { Search, Save, Truck, ExternalLink } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
+import { maskName, maskPhone } from "@/lib/utils/masking"
 
 export default function AdminOrdersPage() {
   const [orders, setOrders] = useState<any[]>([])
@@ -127,8 +128,8 @@ export default function AdminOrdersPage() {
                 </TableCell>
                 <TableCell>
                   <div className="space-y-0.5">
-                    <p className="font-bold text-[#111]">{order.customer_name}</p>
-                    <p className="text-[10px] text-slate-400">{order.customer_phone}</p>
+                    <p className="font-bold text-[#111]">{maskName(order.shipping_name)}</p>
+                    <p className="text-[10px] text-slate-400">{maskPhone(order.shipping_phone)}</p>
                   </div>
                 </TableCell>
                 <TableCell>

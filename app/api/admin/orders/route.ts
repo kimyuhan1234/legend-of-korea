@@ -13,13 +13,16 @@ export async function GET(req: NextRequest) {
     const { data: profile } = await supabase.from('users').select('role').eq('id', user.id).single();
     if (profile?.role !== 'admin') return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
 
+    // [PIPA 준수] 관리자 목록에서는 필요한 필드만 반환. shipping_address 는
+    // 배송 상세 진입 시에만 별도 조회하도록 제외 — 목록 일괄 노출 방지.
     let query = supabase
       .from('orders')
-      .select('*')
+      .select('id, created_at, total_price, payment_status, shipping_status, shipping_name, shipping_phone, tracking_number, coupon_id, kit_id')
       .order('created_at', { ascending: false });
 
     if (search) {
-      query = query.or(`id.ilike.%${search}%,customer_name.ilike.%${search}%`);
+      // shipping_name 으로 검색 (customer_name 은 실제 DB 컬럼이 아님)
+      query = query.or(`id.ilike.%${search}%,shipping_name.ilike.%${search}%`);
     }
 
     const { data: orders, error } = await query;
