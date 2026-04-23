@@ -9217,93 +9217,386 @@ export const regions: Region[] = [
     foods: [
       {
         id: "sokcho-dakgangjeong",
-        name: { ko: "속초 닭강정", ja: "속초 닭강정", en: "속초 닭강정" },
+        name: { ko: "속초 닭강정", ja: "束草ダッカンジョン", en: "Sokcho Dakgangjeong" },
         region: "sokcho",
         tasteProfile: { sweet: 60, salty: 40, spicy: 50, umami: 50, sour: 10 },
         storyDescription: {
           ko: "속초중앙시장 만석닭강정으로 전국구가 된 달콤매콤한 튀김닭. 바삭한 껍질에 끈적한 양념이 배어 한 조각만 먹어도 시장의 활기가 입안에 퍼져요.",
-          ja: "속초중앙시장 만석닭강정으로 전국구가 된 달콤매콤한 튀김닭. 바삭한 껍질에 끈적한 양념이 배어 한 조각만 먹어도 시장의 활기가 입안에 퍼져요.",
-          en: "속초중앙시장 만석닭강정으로 전국구가 된 달콤매콤한 튀김닭. 바삭한 껍질에 끈적한 양념이 배어 한 조각만 먹어도 시장의 활기가 입안에 퍼져요."
+          ja: "束草中央市場の「マンソクダッカンジョン」で全国区になった甘辛い揚げ鶏。サクサクの衣にとろりとしたタレが絡み、一口で市場の活気が口いっぱいに広がります。",
+          en: "Sweet-and-spicy fried chicken made famous by Manseok Dakgangjeong in Sokcho Central Market. A crispy coating glazed with sticky sauce brings the bustle of the market alive in every bite."
         },
         ingredients: {
           ko: ["닭고기", "감자 전분", "물엿", "고추장", "간장", "마늘", "땅콩"],
-          ja: ["닭고기", "감자 전분", "물엿", "고추장", "간장", "마늘", "땅콩"],
-          en: ["닭고기", "감자 전분", "물엿", "고추장", "간장", "마늘", "땅콩"]
+          ja: ["鶏肉", "じゃがいもでんぷん", "水あめ", "コチュジャン", "醤油", "にんにく", "ピーナッツ"],
+          en: ["Chicken", "Potato starch", "Corn syrup", "Gochujang", "Soy sauce", "Garlic", "Peanuts"]
         },
         tags: ["닭고기", "달콤매콤", "길거리"],
-        dupes: {}
+        dupes: {
+          JP: {
+            name: { ko: "나고야 데바사키", ja: "名古屋手羽先", en: "Nagoya Tebasaki" },
+            tasteProfile: { sweet: 50, salty: 55, spicy: 30, umami: 60, sour: 10 },
+            description: { ko: "두 번 튀긴 닭 날개에 달콤 짭짤한 간장 양념을 바르고 검은 후추·깨를 뿌리는 나고야 명물.", ja: "二度揚げした手羽先に甘辛い醤油ダレを塗り、黒胡椒とごまを振った名古屋名物。", en: "Twice-fried chicken wings brushed with a sweet-savory soy glaze, topped with black pepper and sesame — Nagoya's signature." },
+            ingredients: { ko: ["닭 날개", "간장", "미림", "설탕", "후추", "깨"], ja: ["手羽先", "醤油", "みりん", "砂糖", "胡椒", "ごま"], en: ["Chicken wings", "Soy sauce", "Mirin", "Sugar", "Pepper", "Sesame"] },
+            similarityPercent: 82,
+            matchReason: { ko: "두 번 튀김 + 끈적한 달콤짭짤 양념을 코팅하는 조리법이 거의 동일하고, 이자카야·시장 안주라는 문화적 위치도 닮았어요.", ja: "二度揚げ+甘辛いタレをまとわせる工程がほぼ同じで、居酒屋・市場のつまみという文化的な立ち位置もよく似ています。", en: "Nearly identical twice-fry-then-glaze technique, and both occupy the same cultural slot as market-stall / izakaya snacks." }
+          },
+          US: {
+            name: { ko: "내슈빌 핫 치킨", ja: "ナッシュビル・ホットチキン", en: "Nashville Hot Chicken" },
+            tasteProfile: { sweet: 15, salty: 50, spicy: 85, umami: 55, sour: 15 },
+            description: { ko: "튀긴 닭을 카옌·브라운슈거 오일에 담가 강렬한 매운맛을 코팅하는 테네시의 명물.", ja: "揚げた鶏をカイエンペッパーと黒砂糖を溶かした油に浸して激辛に仕上げるテネシー名物。", en: "Tennessee icon where fried chicken is dunked in cayenne-and-brown-sugar oil for a blazing heat coating." },
+            ingredients: { ko: ["닭고기", "카옌페퍼", "브라운슈거", "파프리카", "버터밀크", "피클"], ja: ["鶏肉", "カイエンペッパー", "黒砂糖", "パプリカ", "バターミルク", "ピクルス"], en: ["Chicken", "Cayenne", "Brown sugar", "Paprika", "Buttermilk", "Pickles"] },
+            similarityPercent: 74,
+            matchReason: { ko: "튀긴 닭에 매운 양념을 '바깥쪽으로' 덧씌우는 구조가 같고, 지역 맛집에서 시작해 전국 명성을 얻은 내러티브도 닮았어요.", ja: "揚げ鶏の『外側に』辛いタレを塗り重ねる構造が同じで、地元の名店から全国区になった物語も似ています。", en: "Same structural idea of coating the outside of fried chicken with a bold spicy layer, plus the shared narrative of a local shop turning into a nationwide icon." }
+          },
+          CN: {
+            name: { ko: "라즈지", ja: "辣子鶏", en: "Laziji" },
+            tasteProfile: { sweet: 15, salty: 50, spicy: 85, umami: 65, sour: 10 },
+            description: { ko: "한 입 크기 닭튀김을 고추·화자오 산 더미와 함께 볶아 매운 향이 코를 찌르는 쓰촨 요리.", ja: "一口サイズに揚げた鶏肉を唐辛子と花椒の山と一緒に炒め、痺れる辛さが香る四川料理。", en: "Sichuan dish where bite-size fried chicken is stir-fried with mounds of dried chilies and Sichuan peppercorns for a numbing, aromatic heat." },
+            ingredients: { ko: ["닭고기", "건고추", "화자오", "마늘", "생강", "간장"], ja: ["鶏肉", "乾燥唐辛子", "花椒", "にんにく", "生姜", "醤油"], en: ["Chicken", "Dried chilies", "Sichuan peppercorn", "Garlic", "Ginger", "Soy sauce"] },
+            similarityPercent: 70,
+            matchReason: { ko: "'한 입 튀김닭 + 후속 매운 조리' 2단 구조는 동일하지만, 속초는 달콤한 양념 코팅, 쓰촨은 마라 볶음으로 갈라져요.", ja: "『一口揚げ+後追いの辛い仕上げ』という二段構えは同じですが、束草は甘辛ダレ、四川は麻辣炒めと仕上げが分かれます。", en: "Both share the two-step structure of 'bite-size fry then a spicy second stage,' diverging in the finish — sweet glaze vs. numbing stir-fry." }
+          },
+          TH: {
+            name: { ko: "가이 텃 핫야이", ja: "ハジャイ風ガイトード", en: "Hat Yai Gai Tod" },
+            tasteProfile: { sweet: 20, salty: 55, spicy: 35, umami: 60, sour: 10 },
+            description: { ko: "남부 핫야이식 튀김닭. 쌀가루 옷을 입혀 바삭하게 튀기고 바삭한 프라이드 샬롯을 듬뿍 뿌려요.", ja: "南部ハジャイ風の揚げ鶏。米粉の衣でカリッと揚げ、揚げエシャロットをたっぷり振りかけます。", en: "Hat Yai-style southern Thai fried chicken, coated in rice flour for crunch and showered with crispy fried shallots." },
+            ingredients: { ko: ["닭고기", "쌀가루", "피쉬소스", "마늘", "터머릭", "프라이드 샬롯"], ja: ["鶏肉", "米粉", "ナンプラー", "にんにく", "ターメリック", "揚げエシャロット"], en: ["Chicken", "Rice flour", "Fish sauce", "Garlic", "Turmeric", "Fried shallots"] },
+            similarityPercent: 68,
+            matchReason: { ko: "길거리 간판 메뉴로 자리 잡은 튀김닭이라는 점이 같고, 둘 다 바삭함을 최우선으로 잡는 옷 입히기 기법을 써요.", ja: "屋台の看板メニューとして定着した揚げ鶏という立ち位置が同じで、どちらも衣で『サクサク感』を最優先する作りです。", en: "Both hold the spot of signature street-stand fried chicken and prioritize an ultra-crisp coating technique." }
+          },
+          IN: {
+            name: { ko: "치킨 65", ja: "チキン65", en: "Chicken 65" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 75, umami: 60, sour: 25 },
+            description: { ko: "요구르트와 매운 향신료에 재운 닭을 붉게 튀겨내는 남인도 타밀나두의 매운 튀김닭.", ja: "ヨーグルトとスパイスでマリネした鶏を真っ赤に揚げる南インド・タミルナドゥの辛口揚げ鶏。", en: "South Indian Tamil Nadu fried chicken — marinated in yogurt and fiery spices, then fried to a deep red." },
+            ingredients: { ko: ["닭고기", "요구르트", "카슈미리 칠리", "커리잎", "생강마늘", "쌀가루"], ja: ["鶏肉", "ヨーグルト", "カシミールチリ", "カレーリーフ", "生姜にんにく", "米粉"], en: ["Chicken", "Yogurt", "Kashmiri chili", "Curry leaves", "Ginger-garlic", "Rice flour"] },
+            similarityPercent: 72,
+            matchReason: { ko: "'한 입 튀김닭을 매운 양념으로 두드러지게 만드는' 노점·펍 안주 카테고리가 동일해요. 양념 베이스가 간장 대신 요구르트·향신료로 바뀌는 것만 차이.", ja: "『一口揚げ鶏を辛味で際立たせる』屋台・パブのおつまみジャンルが同じで、タレのベースが醤油ではなくヨーグルトとスパイスに変わるだけ。", en: "Same category of 'bite-size fried chicken amplified by bold spice' pub/street food, diverging only in the base — soy glaze vs. yogurt-and-spice marinade." }
+          },
+          MY: {
+            name: { ko: "아얌 고렝 브렘파", ja: "アヤム・ゴレン・ブレンパ", en: "Ayam Goreng Berempah" },
+            tasteProfile: { sweet: 15, salty: 50, spicy: 45, umami: 65, sour: 10 },
+            description: { ko: "강황·고수·고추·레몬그라스를 간 향신료 반죽으로 닭을 감싸 튀기는 말레이식 향신 튀김닭.", ja: "ターメリック・コリアンダー・唐辛子・レモングラスを挽いた香辛料ペーストをまとわせて揚げる、マレーシア風スパイス揚げ鶏。", en: "Malaysian spiced fried chicken — marinated in a ground paste of turmeric, coriander, chili, and lemongrass before frying." },
+            ingredients: { ko: ["닭고기", "터머릭", "고수 씨", "레몬그라스", "고추", "코코넛 가루"], ja: ["鶏肉", "ターメリック", "コリアンダーシード", "レモングラス", "唐辛子", "ココナッツパウダー"], en: ["Chicken", "Turmeric", "Coriander seed", "Lemongrass", "Chili", "Coconut flour"] },
+            similarityPercent: 65,
+            matchReason: { ko: "한 입 크기 튀김닭을 향신료·양념으로 차별화하는 발상이 같아요. 매콤함·짭짤함의 결은 다르지만 '길거리·시장의 중독성 닭'이라는 맥락이 겹쳐요.", ja: "一口サイズの揚げ鶏をスパイスとタレで個性化する発想が同じで、辛さと塩気の方向性は違えど『屋台・市場の中毒的な鶏』という文脈が重なります。", en: "Shared idea of differentiating bite-size fried chicken through signature seasoning. Heat profiles differ, but both fit the 'addictive street-market chicken' archetype." }
+          },
+          ID: {
+            name: { ko: "아얌 그프렉", ja: "アヤム・ゲプレク", en: "Ayam Geprek" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 80, umami: 60, sour: 15 },
+            description: { ko: "바삭하게 튀긴 닭을 돌절구에 삼발과 함께 으깨 매운 양념을 옷처럼 입히는 자바식 길거리 음식.", ja: "サクッと揚げた鶏を石臼でサンバルと一緒に叩き潰し、辛いタレを衣のように絡ませるジャワの屋台料理。", en: "Javanese street food where crispy fried chicken is smashed together with sambal in a stone mortar so the fiery paste clings like a second coating." },
+            ingredients: { ko: ["닭고기", "쌀가루", "삼발", "청고추", "샬롯", "마늘"], ja: ["鶏肉", "米粉", "サンバル", "青唐辛子", "エシャロット", "にんにく"], en: ["Chicken", "Rice flour", "Sambal", "Green chili", "Shallots", "Garlic"] },
+            similarityPercent: 74,
+            matchReason: { ko: "'튀긴 뒤 강한 양념을 겉에 입힌다'는 2단 공정이 거의 동일. 소스가 고추장 기반 달콤매콤 vs 삼발 기반 폭탄매운맛으로 갈릴 뿐이에요.", ja: "『揚げた後に強いタレを外側にまとわせる』二段工程がほぼ同じ。タレがコチュジャン甘辛か、サンバル激辛かの違いだけ。", en: "Virtually identical two-step process of coating a fried piece with a bold sauce afterward. The only real split is gochujang-sweet-heat vs. sambal-explosion-heat." }
+          },
+          VN: {
+            name: { ko: "가 지엔 느억 맘", ja: "ヌクマムがけフライドチキン", en: "Gà Chiên Nước Mắm" },
+            tasteProfile: { sweet: 40, salty: 70, spicy: 25, umami: 75, sour: 15 },
+            description: { ko: "튀긴 닭을 설탕·피쉬소스·마늘을 졸인 소스에 버무려 달콤짭짤한 코팅을 만드는 베트남식 튀김닭.", ja: "揚げた鶏を砂糖・ナンプラー・にんにくを煮詰めたタレで和え、甘辛い艶のある衣に仕上げるベトナム式揚げ鶏。", en: "Vietnamese fried chicken tossed in a caramelized fish-sauce-and-garlic glaze for a glossy, salty-sweet finish." },
+            ingredients: { ko: ["닭고기", "피쉬소스", "설탕", "마늘", "고추", "라임"], ja: ["鶏肉", "ナンプラー", "砂糖", "にんにく", "唐辛子", "ライム"], en: ["Chicken", "Fish sauce", "Sugar", "Garlic", "Chili", "Lime"] },
+            similarityPercent: 76,
+            matchReason: { ko: "'튀긴 닭+끈적한 단짠 소스를 토스해서 코팅'이라는 핵심 구조가 똑같고, 둘 다 시장·노상 술안주로 자리 잡았어요.", ja: "『揚げた鶏+とろみのある甘辛ダレで和える』核心構造が同じで、どちらも市場や屋台の酒のつまみとして定着しています。", en: "The core structure — fried chicken tossed in a sticky sweet-salty glaze — matches closely, and both are rooted in market-stand, drinking-snack culture." }
+          }
+        }
       },
       {
         id: "sokcho-abai-sundae",
-        name: { ko: "아바이순대", ja: "아바이순대", en: "아바이순대" },
+        name: { ko: "아바이순대", ja: "アバイスンデ", en: "Abai Sundae" },
         region: "sokcho",
         tasteProfile: { sweet: 10, salty: 60, spicy: 30, umami: 75, sour: 5 },
         storyDescription: {
           ko: "함경도에서 피난 온 실향민들이 청호동 아바이마을에서 이어 온 북방식 순대. 돼지 대창을 통째로 써서 굵고 푸짐하며 찹쌀과 선지가 꽉 차 있어요.",
-          ja: "함경도에서 피난 온 실향민들이 청호동 아바이마을에서 이어 온 북방식 순대. 돼지 대창을 통째로 써서 굵고 푸짐하며 찹쌀과 선지가 꽉 차 있어요.",
-          en: "함경도에서 피난 온 실향민들이 청호동 아바이마을에서 이어 온 북방식 순대. 돼지 대창을 통째로 써서 굵고 푸짐하며 찹쌀과 선지가 꽉 차 있어요."
+          ja: "咸鏡道から避難してきた離散民たちが青湖洞のアバイ村で受け継いできた北部式スンデ(ブラッドソーセージ)。豚の大腸を丸ごと使って太くボリュームがあり、もち米と血(ソンジ)がぎっしり詰まっています。",
+          en: "A North Korean-style blood sausage kept alive by displaced families from Hamgyeong Province in Sokcho's Abai Village. Made with whole pork large intestine, it is thick and hearty, tightly packed with glutinous rice and blood curd."
         },
         ingredients: {
           ko: ["돼지 대창", "찹쌀", "선지", "숙주", "배추", "두부", "마늘"],
-          ja: ["돼지 대창", "찹쌀", "선지", "숙주", "배추", "두부", "마늘"],
-          en: ["돼지 대창", "찹쌀", "선지", "숙주", "배추", "두부", "마늘"]
+          ja: ["豚の大腸", "もち米", "ソンジ(豚の血)", "もやし", "白菜", "豆腐", "にんにく"],
+          en: ["Pork large intestine", "Glutinous rice", "Pig's blood curd", "Bean sprouts", "Cabbage", "Tofu", "Garlic"]
         },
         tags: ["순대", "실향민", "북방음식"],
-        dupes: {}
+        dupes: {
+          CN: {
+            name: { ko: "쉐창", ja: "血腸 (シュエチャン)", en: "Xuechang (Blood Sausage)" },
+            tasteProfile: { sweet: 5, salty: 60, spicy: 10, umami: 75, sour: 5 },
+            description: { ko: "돼지 피와 찹쌀을 돼지 창자에 채워 삶아내는 동북 3성의 전통 블러드 소시지. 시큼한 배추 절임과 함께 끓이는 '쉐창 쑤안차이'로 유명해요.", ja: "豚の血ともち米を豚腸に詰めて茹でる中国東北地方の伝統的なブラッドソーセージ。酸っぱい白菜漬けと煮込む『血腸酸菜』が有名。", en: "Traditional blood sausage from China's northeastern provinces, stuffing pork intestine with pig's blood and glutinous rice. Famously stewed with fermented cabbage as 'xuechang suancai.'" },
+            ingredients: { ko: ["돼지 창자", "돼지 피", "찹쌀", "생강", "대파"], ja: ["豚腸", "豚の血", "もち米", "生姜", "長ねぎ"], en: ["Pork casing", "Pig's blood", "Glutinous rice", "Ginger", "Green onion"] },
+            similarityPercent: 86,
+            matchReason: { ko: "함경도 아바이순대의 직접적 뿌리가 동북 3성의 쉐창이에요. 돼지 대창+선지+찹쌀이라는 재료 구성이 거의 동일하고, 추운 지방의 저장·보양 음식이라는 맥락도 같아요.", ja: "咸鏡道のアバイスンデの直接的なルーツが東北地方の血腸。豚の大腸+血+もち米という構成がほぼ同じで、寒冷地の保存・滋養食という文脈も共通します。", en: "Hamgyeong's Abai Sundae traces its direct ancestry to Northeast China's xuechang — near-identical build of pork casing, blood, and glutinous rice, sharing the cold-region preservation-and-nourishment role." }
+          },
+          MX: {
+            name: { ko: "모롱가", ja: "モロンガ", en: "Moronga" },
+            tasteProfile: { sweet: 5, salty: 65, spicy: 35, umami: 70, sour: 5 },
+            description: { ko: "돼지 피와 양파·할라페뇨·허브·쌀을 창자에 채워 삶는 멕시코의 매콤한 블러드 소시지. 타코·토르티야에 곁들여요.", ja: "豚の血に玉ねぎ・ハラペーニョ・ハーブ・米を混ぜて腸詰めにし茹で上げる、メキシコのピリ辛ブラッドソーセージ。タコスに挟んで食べます。", en: "Mexican blood sausage stuffing pork casing with blood, onion, jalapeños, herbs, and rice, then boiled. Often tucked into tacos or served with tortillas." },
+            ingredients: { ko: ["돼지 창자", "돼지 피", "양파", "할라페뇨", "쌀", "오레가노"], ja: ["豚腸", "豚の血", "玉ねぎ", "ハラペーニョ", "米", "オレガノ"], en: ["Pork casing", "Pig's blood", "Onion", "Jalapeño", "Rice", "Oregano"] },
+            similarityPercent: 78,
+            matchReason: { ko: "'돼지 창자에 피와 쌀을 함께 채워 삶는' 핵심이 같고, 매운 청양고추·할라페뇨로 풍미를 열어주는 공통점도 있어요.", ja: "『豚腸に血と米を一緒に詰めて茹でる』核心が同じで、青唐辛子やハラペーニョでピリッとした風味を足す点でも共通します。", en: "Shares the core of 'blood and rice stuffed into pork casing, then boiled,' and both lean on green-chili heat (cheongyang vs. jalapeño) to brighten the flavor." }
+          },
+          ES: {
+            name: { ko: "모르시야", ja: "モルシージャ", en: "Morcilla" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 10, umami: 75, sour: 5 },
+            description: { ko: "쌀이나 양파를 돼지 피와 섞어 창자에 채우는 스페인·남미식 블러드 소시지. 부르고스식은 쌀을 듬뿍 넣어 씹는 맛이 풍부해요.", ja: "米や玉ねぎを豚の血と混ぜて腸詰めにするスペイン・南米式ブラッドソーセージ。ブルゴス風は米をたっぷり入れて食感が豊か。", en: "Spanish and Latin American blood sausage mixing pig's blood with rice or onion inside pork casing. The Burgos style is packed with rice for a hearty bite." },
+            ingredients: { ko: ["돼지 창자", "돼지 피", "쌀", "양파", "파프리카", "오레가노"], ja: ["豚腸", "豚の血", "米", "玉ねぎ", "パプリカ", "オレガノ"], en: ["Pork casing", "Pig's blood", "Rice", "Onion", "Paprika", "Oregano"] },
+            similarityPercent: 80,
+            matchReason: { ko: "'쌀을 피와 함께 창자에 채우는' 구조가 찹쌀 아바이순대와 거의 동일. 부르고스 모르시야는 쌀이 꽉 차 있어 아바이순대와 씹는 질감까지 비슷해요.", ja: "『米を血と一緒に腸詰めにする』構造がもち米入りアバイスンデとほぼ同じ。ブルゴス風モルシージャは米がぎっしりで食感までよく似ています。", en: "The 'rice-with-blood inside a pork casing' structure mirrors Abai Sundae's glutinous rice. Burgos-style morcilla is rice-dense, echoing the chew of Abai Sundae." }
+          },
+          FR: {
+            name: { ko: "부댕 누아르", ja: "ブーダン・ノワール", en: "Boudin Noir" },
+            tasteProfile: { sweet: 15, salty: 60, spicy: 10, umami: 70, sour: 5 },
+            description: { ko: "돼지 피·양파·사과·허브를 창자에 채워 구워 먹는 프랑스 전통 블러드 소시지. 사과 콤포트와 함께 내는 게 고전이에요.", ja: "豚の血・玉ねぎ・りんご・ハーブを腸詰めにして焼き上げるフランス伝統のブラッドソーセージ。りんごのコンポートを添えるのが定番。", en: "French traditional blood sausage stuffing pork casing with blood, onion, apple, and herbs, typically pan-seared and served with apple compote." },
+            ingredients: { ko: ["돼지 창자", "돼지 피", "양파", "사과", "생크림", "타임"], ja: ["豚腸", "豚の血", "玉ねぎ", "りんご", "生クリーム", "タイム"], en: ["Pork casing", "Pig's blood", "Onion", "Apple", "Cream", "Thyme"] },
+            similarityPercent: 68,
+            matchReason: { ko: "같은 블러드 소시지 계통이지만 한국 순대가 찹쌀로 단단한 질감을 잡는 반면, 부댕 누아르는 양파·사과로 부드럽고 촉촉한 질감을 살려요.", ja: "同じブラッドソーセージ系統でも、韓国のスンデがもち米でぎゅっとした食感を作るのに対し、ブーダン・ノワールは玉ねぎとりんごで柔らかくしっとりした食感に仕上げます。", en: "Same blood-sausage lineage, but where Korean sundae builds a firm glutinous-rice bite, boudin noir leans into a soft, moist texture from onion and apple." }
+          },
+          US: {
+            name: { ko: "케이준 부댕", ja: "ケイジャンブーダン", en: "Cajun Boudin" },
+            tasteProfile: { sweet: 5, salty: 60, spicy: 35, umami: 70, sour: 5 },
+            description: { ko: "루이지애나 케이준이 돼지고기, 간, 쌀, 매운 향신료를 창자에 채워 찐 뒤 굽는 두툼한 소시지. 흰 쌀이 가득해요.", ja: "ルイジアナのケイジャンが豚肉、レバー、米、スパイスを腸詰めにして蒸してから焼く、ライスの多いソーセージ。", en: "Louisiana Cajun sausage stuffing pork, liver, rice, and spice into casing, then steaming and grilling — a rice-heavy link." },
+            ingredients: { ko: ["돼지 창자", "돼지고기", "돼지 간", "쌀", "카옌페퍼", "셀러리"], ja: ["豚腸", "豚肉", "豚レバー", "米", "カイエンペッパー", "セロリ"], en: ["Pork casing", "Pork", "Pork liver", "Rice", "Cayenne", "Celery"] },
+            similarityPercent: 72,
+            matchReason: { ko: "'창자에 고기와 쌀을 함께 채우는' 발상이 아바이순대와 직결되고, 지역 이민자 커뮤니티가 이어온 전통 식품이라는 배경까지 같아요.", ja: "『腸に肉と米を一緒に詰める』発想がアバイスンデと直結し、地域の移民コミュニティが受け継いだ伝統食品という背景まで重なります。", en: "The 'meat-and-rice stuffed into pork casing' concept is a direct parallel to Abai Sundae, and both share the story of a regional immigrant community keeping the tradition alive." }
+          },
+          JP: {
+            name: { ko: "치탈린 모츠니", ja: "もつ煮込み", en: "Motsu Nikomi (Pork Offal Stew)" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 75, sour: 5 },
+            description: { ko: "돼지 곱창·대창을 뿌리채소와 함께 미소 국물에 푹 끓인 일본의 서민 포장마차 음식.", ja: "豚のもつ(大腸・小腸)を根菜と一緒に味噌で長時間煮込む、日本の居酒屋・屋台の大衆料理。", en: "Japanese izakaya staple slow-stewing pork offal — large and small intestines — with root vegetables in a miso broth." },
+            ingredients: { ko: ["돼지 대창", "무", "당근", "곤약", "미소", "생강"], ja: ["豚もつ", "大根", "人参", "こんにゃく", "味噌", "生姜"], en: ["Pork intestine", "Daikon", "Carrot", "Konjac", "Miso", "Ginger"] },
+            similarityPercent: 62,
+            matchReason: { ko: "'돼지 대창을 주재료로 오래 익혀 슴슴한 국물·안주로 즐긴다'는 면이 닮았어요. 아바이순대는 속을 채워 찌는 방식, 모츠니는 끓여 먹는 방식이라는 점에서 갈라져요.", ja: "『豚の大腸を主役に長時間火を通して、汁ものやつまみとして楽しむ』面が似ています。アバイスンデは詰めて蒸すタイプ、もつ煮は煮込むタイプで分岐します。", en: "Both treat pork intestine as the star, slow-cooked to be enjoyed as a soupy snack/meal. They diverge in technique — Abai Sundae is stuffed and steamed, motsu nikomi is simmered." }
+          },
+          VN: {
+            name: { ko: "도이 띠엣", ja: "ドイティエット", en: "Dồi Tiết" },
+            tasteProfile: { sweet: 5, salty: 60, spicy: 20, umami: 70, sour: 5 },
+            description: { ko: "돼지 피와 잘게 다진 땅콩·허브·고기를 창자에 채워 삶는 베트남 북부식 블러드 소시지.", ja: "豚の血と砕いたピーナッツ、香草、ひき肉を腸詰めにして茹でるベトナム北部のブラッドソーセージ。", en: "Northern Vietnamese blood sausage stuffing pork casing with pig's blood, chopped peanuts, herbs, and minced meat, then boiled." },
+            ingredients: { ko: ["돼지 창자", "돼지 피", "다진 돼지고기", "땅콩", "파", "고수"], ja: ["豚腸", "豚の血", "豚挽肉", "ピーナッツ", "ねぎ", "パクチー"], en: ["Pork casing", "Pig's blood", "Minced pork", "Peanuts", "Scallion", "Cilantro"] },
+            similarityPercent: 82,
+            matchReason: { ko: "'창자+돼지피+소를 채워 삶는' 구조가 아바이순대와 거의 동일. 동아시아 블러드 소시지 벨트 안에서 한국·중국·베트남이 직접 이어져 있음을 보여줘요.", ja: "『腸+豚の血+具を詰めて茹でる』構造がアバイスンデとほぼ同じ。東アジアのブラッドソーセージベルト上で韓国・中国・ベトナムが直線的につながっていることがよく分かります。", en: "The 'casing + pig's blood + filling, then boiled' structure aligns closely with Abai Sundae, showing how Korea, China, and Vietnam sit on a continuous East Asian blood-sausage belt." }
+          }
+        }
       },
       {
         id: "sokcho-ojingeo-sundae",
-        name: { ko: "오징어순대", ja: "오징어순대", en: "오징어순대" },
+        name: { ko: "오징어순대", ja: "イカスンデ", en: "Ojingeo Sundae (Stuffed Squid)" },
         region: "sokcho",
         tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 70, sour: 10 },
         storyDescription: {
           ko: "속초 앞바다에서 잡힌 오징어 몸통 속에 두부·야채·찹쌀 소를 채워 쪄낸 향토 요리. 썰어 놓으면 검은 테두리와 속 재료가 김밥처럼 예쁘게 드러나요.",
-          ja: "속초 앞바다에서 잡힌 오징어 몸통 속에 두부·야채·찹쌀 소를 채워 쪄낸 향토 요리. 썰어 놓으면 검은 테두리와 속 재료가 김밥처럼 예쁘게 드러나요.",
-          en: "속초 앞바다에서 잡힌 오징어 몸통 속에 두부·야채·찹쌀 소를 채워 쪄낸 향토 요리. 썰어 놓으면 검은 테두리와 속 재료가 김밥처럼 예쁘게 드러나요."
+          ja: "束草沖で獲れたイカの胴に、豆腐・野菜・もち米の具を詰めて蒸し上げる郷土料理。輪切りにすると黒い縁と色とりどりの具が海苔巻きのように美しく現れます。",
+          en: "A coastal specialty from Sokcho: whole squid bodies stuffed with tofu, vegetables, and glutinous rice, then steamed. Sliced into rounds, the dark squid ring frames the colorful filling like gimbap."
         },
         ingredients: {
           ko: ["오징어", "두부", "당근", "찹쌀", "달걀", "부추"],
-          ja: ["오징어", "두부", "당근", "찹쌀", "달걀", "부추"],
-          en: ["오징어", "두부", "당근", "찹쌀", "달걀", "부추"]
+          ja: ["イカ", "豆腐", "人参", "もち米", "卵", "ニラ"],
+          en: ["Squid", "Tofu", "Carrot", "Glutinous rice", "Egg", "Chives"]
         },
         tags: ["오징어", "순대", "해산물"],
-        dupes: {}
+        dupes: {
+          JP: {
+            name: { ko: "이카메시", ja: "いかめし", en: "Ikameshi" },
+            tasteProfile: { sweet: 25, salty: 55, spicy: 5, umami: 75, sour: 5 },
+            description: { ko: "오징어 몸통에 찹쌀을 채워 간장·설탕·미림 국물에 졸이는 홋카이도 모리마치 명물. 에키벤(역도시락)의 전설.", ja: "イカの胴にもち米を詰め、醤油・砂糖・みりんの汁で炊き上げる北海道森町の名物。駅弁の伝説的存在。", en: "Hokkaido Morimachi specialty: squid stuffed with glutinous rice and simmered in a soy-sugar-mirin broth. A legendary ekiben (station bento)." },
+            ingredients: { ko: ["오징어", "찹쌀", "간장", "설탕", "미림"], ja: ["イカ", "もち米", "醤油", "砂糖", "みりん"], en: ["Squid", "Glutinous rice", "Soy sauce", "Sugar", "Mirin"] },
+            similarityPercent: 88,
+            matchReason: { ko: "'오징어 몸통에 찹쌀을 채워 익힌다'는 발상이 거의 완벽하게 일치해요. 동해·홋카이도 오징어가 풍부한 두 항구가 비슷한 길로 가닿은 대표적 평행진화.", ja: "『イカの胴にもち米を詰めて火を通す』という発想がほぼ完全一致。東海と北海道という、イカが豊富な二つの港が似た道に辿り着いた典型的な平行進化です。", en: "The 'glutinous rice stuffed inside a squid body, then cooked' concept matches almost perfectly — a textbook parallel-evolution between two squid-rich ports, East Sea and Hokkaido." }
+          },
+          CN: {
+            name: { ko: "니앙유', 오징어 속 채움", ja: "釀魷魚", en: "Niàng Yóuyú (Stuffed Squid)" },
+            tasteProfile: { sweet: 15, salty: 60, spicy: 15, umami: 75, sour: 5 },
+            description: { ko: "오징어 몸통에 다진 돼지고기·생강·쪽파를 채워 찜통에 쪄내는 중국 동남부 해안 요리. 간장 소스 끼얹어 먹어요.", ja: "イカの胴に豚ひき肉・生姜・細ねぎを詰めて蒸籠で蒸す中国東南沿岸の料理。醤油ダレをかけていただきます。", en: "Southeast coastal Chinese dish where squid bodies are stuffed with minced pork, ginger, and scallion, then steamed and finished with a soy sauce drizzle." },
+            ingredients: { ko: ["오징어", "다진 돼지고기", "생강", "쪽파", "간장", "쌀주"], ja: ["イカ", "豚ひき肉", "生姜", "細ねぎ", "醤油", "紹興酒"], en: ["Squid", "Minced pork", "Ginger", "Scallion", "Soy sauce", "Shaoxing wine"] },
+            similarityPercent: 80,
+            matchReason: { ko: "속 재료가 고기 중심으로 바뀌긴 했지만, '오징어 자체를 케이스로 써서 속을 채우고 찐다'는 기술이 동일하고 간장 베이스 양념도 겹쳐요.", ja: "具が肉中心に変わるものの、『イカそのものを器にして具を詰め、蒸す』技法は同じで、醤油ベースの味付けも重なります。", en: "The filling leans to meat, but the technique — using the squid itself as a vessel, stuffing, and steaming — is identical, with overlapping soy-based seasoning." }
+          },
+          IT: {
+            name: { ko: "칼라마리 리피에니", ja: "カラマリ・リピエニ", en: "Calamari Ripieni" },
+            tasteProfile: { sweet: 15, salty: 55, spicy: 10, umami: 70, sour: 15 },
+            description: { ko: "오징어 몸통에 빵가루·파슬리·마늘·오징어 다리를 섞은 소를 채워 토마토 소스에 조리는 이탈리아 남부 해안 요리.", ja: "イカの胴にパン粉・パセリ・にんにく・イカゲソを混ぜた具を詰め、トマトソースで煮込むイタリア南部の海辺料理。", en: "Southern Italian coastal dish stuffing squid bodies with a mix of bread crumbs, parsley, garlic, and chopped tentacles, then simmered in tomato sauce." },
+            ingredients: { ko: ["오징어", "빵가루", "파슬리", "마늘", "토마토", "화이트와인"], ja: ["イカ", "パン粉", "パセリ", "にんにく", "トマト", "白ワイン"], en: ["Squid", "Bread crumbs", "Parsley", "Garlic", "Tomato", "White wine"] },
+            similarityPercent: 78,
+            matchReason: { ko: "'오징어를 그릇 삼아 탄수화물 베이스의 속을 채워 익히는' 구조가 같아요. 속은 찹쌀 vs 빵가루, 마지막 손질은 찜 vs 토마토 조림으로 갈라져요.", ja: "『イカを器にして炭水化物ベースの具を詰めて火を通す』構造が同じ。具はもち米かパン粉、仕上げは蒸すかトマト煮かで分かれます。", en: "Same structural idea — using squid as a vessel for a carb-based stuffing, then cooking it. Splits on the filler (glutinous rice vs. bread crumbs) and the finish (steam vs. tomato braise)." }
+          },
+          ES: {
+            name: { ko: "칼라마레스 레예노스", ja: "カラマレス・レジェノス", en: "Calamares Rellenos" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 75, sour: 15 },
+            description: { ko: "오징어 몸통에 잘게 다진 하몽·양파·다진 오징어 다리를 채우고 먹물 소스에 조리는 갈리시아·바스크식 해산물 요리.", ja: "イカの胴にハモン・玉ねぎ・みじん切りのイカゲソを詰め、イカ墨のソースで煮込むガリシアやバスクの海産料理。", en: "Galician and Basque seafood dish: squid bodies stuffed with chopped jamón, onion, and squid tentacles, then braised in a squid-ink sauce." },
+            ingredients: { ko: ["오징어", "하몽", "양파", "마늘", "오징어 먹물", "화이트와인"], ja: ["イカ", "ハモン", "玉ねぎ", "にんにく", "イカ墨", "白ワイン"], en: ["Squid", "Jamón", "Onion", "Garlic", "Squid ink", "White wine"] },
+            similarityPercent: 72,
+            matchReason: { ko: "속 채운 오징어를 그대로 한 접시의 주인공으로 내는 형식이 같고, 잘린 단면이 '검은 오징어+알록달록한 속'이라는 시각적 매력도 닮았어요.", ja: "具を詰めたイカそのものを一皿の主役として出す形式が同じで、断面の『黒いイカ+カラフルな具』というビジュアルの魅力もよく似ています。", en: "Both plate whole stuffed squid as the centerpiece, and both share the visual appeal of a 'dark squid ring framing colorful filling' in the cross-section." }
+          },
+          TH: {
+            name: { ko: "쁠라믁양 싸이(속 채운 오징어 구이)", ja: "プラームックヤーン サイ", en: "Pla Muk Yang Sai" },
+            tasteProfile: { sweet: 20, salty: 55, spicy: 45, umami: 70, sour: 25 },
+            description: { ko: "오징어 몸통에 다진 돼지고기·바질·고추를 채워 숯불에 구운 뒤 매콤 시큼한 시푸드 소스에 찍어 먹는 태국 해안 음식.", ja: "イカの胴に豚ひき肉・バジル・唐辛子を詰めて炭火で焼き、酸っぱ辛いシーフードソースにつけて食べるタイの海岸料理。", en: "Thai coastal dish stuffing squid with minced pork, basil, and chili, then grilling over charcoal and serving with a tart, spicy seafood dipping sauce." },
+            ingredients: { ko: ["오징어", "다진 돼지고기", "바질", "고추", "라임", "피쉬소스"], ja: ["イカ", "豚ひき肉", "バジル", "唐辛子", "ライム", "ナンプラー"], en: ["Squid", "Minced pork", "Basil", "Chili", "Lime", "Fish sauce"] },
+            similarityPercent: 70,
+            matchReason: { ko: "'속 채운 오징어'라는 틀은 같지만 조리법이 찜 vs 숯불구이로 갈라져요. 매콤한 디핑소스와 함께 먹는 식문화는 한국·태국 해안의 공통점이에요.", ja: "『具を詰めたイカ』という枠組みは同じで、調理法が蒸すか炭火焼きかで分かれます。ピリ辛のタレと一緒に食べる食文化は、韓国とタイの海岸が共有するポイント。", en: "Same framework of 'stuffed squid,' splitting on technique (steam vs. charcoal grill). Pairing with a fiery dipping sauce is a shared coastal habit in Korea and Thailand." }
+          },
+          VN: {
+            name: { ko: "므 동 팃 (속 채운 오징어)", ja: "ムック・ニョイ・ティット", en: "Mực Nhồi Thịt" },
+            tasteProfile: { sweet: 15, salty: 55, spicy: 15, umami: 75, sour: 10 },
+            description: { ko: "오징어 몸통에 다진 돼지고기·당면·목이버섯·쪽파를 채워 토마토 소스에 조리는 베트남 가정식.", ja: "イカの胴に豚ひき肉・春雨・きくらげ・細ねぎを詰めて、トマトソースで煮込むベトナムの家庭料理。", en: "Vietnamese home-style dish with squid stuffed by minced pork, glass noodles, wood ear mushrooms, and scallion, simmered in tomato sauce." },
+            ingredients: { ko: ["오징어", "다진 돼지고기", "당면", "목이버섯", "토마토", "피쉬소스"], ja: ["イカ", "豚ひき肉", "春雨", "きくらげ", "トマト", "ナンプラー"], en: ["Squid", "Minced pork", "Glass noodles", "Wood ear", "Tomato", "Fish sauce"] },
+            similarityPercent: 76,
+            matchReason: { ko: "속 재료에 당면·채소·고기를 섞어 넣는 구성이 한국 순대 소의 감수성과 매우 가까워요. 오징어를 통째 속 채운 뒤 익힌다는 큰 구조가 동일.", ja: "具に春雨・野菜・肉を混ぜて詰める構成が、韓国のスンデの具の感性にとても近いです。『イカを丸ごと詰めて火を通す』大枠が同じ。", en: "Stuffing mix of glass noodles, vegetables, and meat is remarkably close in spirit to Korean sundae fillings. The 'whole squid stuffed, then cooked' skeleton is identical." }
+          },
+          US: {
+            name: { ko: "로드아일랜드식 스터프드 칼라마리", ja: "ロードアイランド風スタッフド・カラマリ", en: "Rhode Island Stuffed Calamari" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 70, sour: 10 },
+            description: { ko: "이탈리아계 이민자가 정착한 로드아일랜드 해안 마을에서 발전한 칼라마리 요리. 빵가루·허브·체리페퍼 오일을 채워 오븐에 굽는다.", ja: "イタリア系移民が定住したロードアイランドの海岸町で発展したイカ料理。パン粉・ハーブ・チェリーペッパーオイルを詰めてオーブンで焼き上げる。", en: "A Rhode Island coastal-town evolution of the Italian-American classic: squid stuffed with bread crumbs, herbs, and cherry-pepper oil, then baked." },
+            ingredients: { ko: ["오징어", "빵가루", "파슬리", "마늘", "체리페퍼", "올리브오일"], ja: ["イカ", "パン粉", "パセリ", "にんにく", "チェリーペッパー", "オリーブオイル"], en: ["Squid", "Bread crumbs", "Parsley", "Garlic", "Cherry peppers", "Olive oil"] },
+            similarityPercent: 66,
+            matchReason: { ko: "이탈리아계 이민자가 '오징어 속 채움 + 매콤한 액센트'로 재해석한 미국 북동부 버전. 찜 대신 오븐 구이지만 결과물의 형식이 닮았어요.", ja: "イタリア系移民が『詰めイカ+ピリ辛のアクセント』として再解釈したアメリカ北東部版。蒸すのではなくオーブン焼きだけれど、出来上がりの形式は似ています。", en: "A Northeast US version reinterpreted by Italian-American immigrants, keeping 'stuffed squid + spicy accent.' Oven-baked rather than steamed, but the finished form rhymes." }
+          }
+        }
       },
       {
         id: "sokcho-mulhoe",
-        name: { ko: "속초 물회", ja: "속초 물회", en: "속초 물회" },
+        name: { ko: "속초 물회", ja: "束草ムルフェ", en: "Sokcho Mulhoe (Cold Sashimi Soup)" },
         region: "sokcho",
         tasteProfile: { sweet: 25, salty: 50, spicy: 55, umami: 60, sour: 60 },
         storyDescription: {
           ko: "동해에서 바로 잡은 광어·가자미·오징어를 얼음 육수에 말아 내는 여름 별미. 새콤달콤한 초고추장 국물에 말아 후루룩 들이키면 더위가 순식간에 가셔요.",
-          ja: "동해에서 바로 잡은 광어·가자미·오징어를 얼음 육수에 말아 내는 여름 별미. 새콤달콤한 초고추장 국물에 말아 후루룩 들이키면 더위가 순식간에 가셔요.",
-          en: "동해에서 바로 잡은 광어·가자미·오징어를 얼음 육수에 말아 내는 여름 별미. 새콤달콤한 초고추장 국물에 말아 후루룩 들이키면 더위가 순식간에 가셔요."
+          ja: "東海で獲れたばかりのヒラメ・カレイ・イカを氷出汁に浸して食べる夏の名物。甘酸っぱい酢コチュジャンの汁にさらさらと流し込むと、暑さが一気に吹き飛びます。",
+          en: "A summertime Sokcho icon: freshly caught flounder, flatfish, and squid plunged into an icy broth of sweet-sour chili paste. Slurp it down and the heat vanishes in an instant."
         },
         ingredients: {
           ko: ["광어", "오징어", "오이", "배", "초고추장", "얼음물", "소면"],
-          ja: ["광어", "오징어", "오이", "배", "초고추장", "얼음물", "소면"],
-          en: ["광어", "오징어", "오이", "배", "초고추장", "얼음물", "소면"]
+          ja: ["ヒラメ", "イカ", "きゅうり", "梨", "酢コチュジャン", "氷水", "素麺"],
+          en: ["Flounder", "Squid", "Cucumber", "Asian pear", "Vinegar-gochujang", "Iced broth", "Somen"]
         },
         tags: ["회", "시원한", "여름"],
-        dupes: {}
+        dupes: {
+          JP: {
+            name: { ko: "히야지루 소멘", ja: "冷や汁素麺", en: "Hiyajiru Somen" },
+            tasteProfile: { sweet: 15, salty: 55, spicy: 10, umami: 70, sour: 20 },
+            description: { ko: "차가운 미소·참깨 육수에 오이·차조기를 넣고 소면을 말아 먹는 규슈 미야자키의 여름 별미.", ja: "冷たい味噌と練りごまの汁にきゅうりと大葉を加え、素麺を冷やしていただく宮崎・九州の夏名物。", en: "A Miyazaki/Kyushu summer classic: somen noodles dunked in a chilled miso-and-sesame broth brightened with cucumber and shiso." },
+            ingredients: { ko: ["소면", "미소", "참깨", "오이", "차조기", "얼음물"], ja: ["素麺", "味噌", "ごま", "きゅうり", "大葉", "氷水"], en: ["Somen", "Miso", "Sesame", "Cucumber", "Shiso", "Iced water"] },
+            similarityPercent: 76,
+            matchReason: { ko: "'차가운 발효 육수+얼음+면'이라는 한여름 시원함을 노리는 발상이 완벽히 일치해요. 매운 초고추장 대 구수한 미소라는 맛의 결만 다를 뿐.", ja: "『冷たい発酵系スープ+氷+麺』という真夏の涼を狙う発想が完全一致。辛い酢コチュジャンか、香ばしい味噌かという味の方向性だけが異なります。", en: "Perfect alignment on the 'chilled fermented broth + ice + noodles' concept for beating summer heat. Only the base diverges — spicy vinegar-gochujang vs. savory miso." }
+          },
+          VN: {
+            name: { ko: "분 맘 똠 (새우장 비빔쌀국수)", ja: "ブン・マム・トム", en: "Bún Mắm Tôm" },
+            tasteProfile: { sweet: 15, salty: 65, spicy: 35, umami: 75, sour: 35 },
+            description: { ko: "삭힌 새우장에 라임·고추·마늘을 섞어 신맛을 올린 소스를 찬 쌀국수에 끼얹어 해산물·허브를 얹어 먹는 북부 베트남 여름 음식.", ja: "発酵エビ醤に、ライム・唐辛子・にんにくを混ぜて酸味を引き出したソースを、冷たいブン(ビーフン)にかけて海鮮やハーブと共に食べる北部ベトナムの夏料理。", en: "Northern Vietnamese summer dish: a tart sauce of fermented shrimp paste, lime, chili, and garlic poured over chilled rice noodles, served with seafood and fresh herbs." },
+            ingredients: { ko: ["쌀국수", "새우장", "라임", "고추", "허브", "해산물"], ja: ["ブン", "発酵エビ醤", "ライム", "唐辛子", "ハーブ", "海産物"], en: ["Rice noodles", "Fermented shrimp paste", "Lime", "Chili", "Herbs", "Seafood"] },
+            similarityPercent: 70,
+            matchReason: { ko: "시큼한 발효 소스+해산물+찬 면이라는 조합이 여름 한 그릇 음식으로 통해요. 초고추장과 새우장은 서로 발효 유산을 공유하는 '신맛 폭탄' 역할이에요.", ja: "酸味のある発酵ソース+海鮮+冷たい麺という組み合わせが『夏のワンボウル』として響き合います。酢コチュジャンと発酵エビ醤はともに『酸味の爆弾』として機能する発酵仲間です。", en: "The trio of tangy fermented sauce + seafood + cold noodles reads as a summer one-bowl in both cultures. Vinegar-gochujang and shrimp paste both act as 'acid bombs' born of fermentation." }
+          },
+          MX: {
+            name: { ko: "아구아칠레", ja: "アグアチレ", en: "Aguachile" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 70, umami: 65, sour: 80 },
+            description: { ko: "생새우를 라임즙·풋고추·고수·오이와 함께 즉석에서 '익혀' 먹는 멕시코 시날로아 해안의 세비체. 얼음처럼 차갑게 내요.", ja: "生のエビをライム汁・青唐辛子・パクチー・きゅうりと混ぜて即席で『火入れ』するメキシコ・シナロアのセビーチェ。氷のようにキンキンに冷やして出す。", en: "Sinaloa-style Mexican ceviche where raw shrimp is 'cooked' in real time with lime juice, green chili, cilantro, and cucumber — served ice-cold." },
+            ingredients: { ko: ["생새우", "라임즙", "풋고추", "고수", "오이", "양파"], ja: ["生エビ", "ライム汁", "青唐辛子", "パクチー", "きゅうり", "玉ねぎ"], en: ["Raw shrimp", "Lime juice", "Green chili", "Cilantro", "Cucumber", "Onion"] },
+            similarityPercent: 82,
+            matchReason: { ko: "생 해산물+얼음같이 차가운 매콤 시큼한 국물이라는 구조가 놀랄 만큼 비슷해요. 둘 다 '신맛+매운맛'으로 해산물의 비린내를 잡는 해안 문화의 정점.", ja: "生の海産物+キンキンに冷えた辛酸っぱい汁という構造が驚くほど似ています。どちらも『酸味+辛味』で海産物の臭みを抑える、海岸文化の到達点。", en: "Remarkably similar structure — raw seafood in an icy, sour-spicy bath. Both represent coastal cuisines using the acid-plus-heat combo to tame seafood." }
+          },
+          TH: {
+            name: { ko: "얌 탈레 (태국식 시푸드 샐러드)", ja: "ヤム・タレー", en: "Yam Talay" },
+            tasteProfile: { sweet: 15, salty: 55, spicy: 60, umami: 70, sour: 60 },
+            description: { ko: "새우·오징어·홍합을 라임즙, 피쉬소스, 고추, 허브와 즉석에서 버무려 차갑게 내는 태국 해안 샐러드.", ja: "エビ・イカ・ムール貝をライム汁、ナンプラー、唐辛子、ハーブで和えて冷製で出すタイの海岸サラダ。", en: "Thai coastal salad tossing shrimp, squid, and mussels with lime, fish sauce, chili, and herbs, served cold." },
+            ingredients: { ko: ["새우", "오징어", "홍합", "라임즙", "고추", "고수"], ja: ["エビ", "イカ", "ムール貝", "ライム汁", "唐辛子", "パクチー"], en: ["Shrimp", "Squid", "Mussels", "Lime juice", "Chili", "Cilantro"] },
+            similarityPercent: 74,
+            matchReason: { ko: "해산물에 신맛+매운맛을 입혀 차가운 상태로 내는 공식이 같아요. 국물의 두께 (묽은 육수 vs 드레싱)만 다를 뿐.", ja: "海産物に酸味+辛味を重ねて冷たく出す公式が同じで、汁の厚み(薄い出汁か、ドレッシングか)だけが違います。", en: "Same formula of 'seafood layered with acid and heat, served cold.' They split only on broth density — thin iced soup vs. a tight dressing." }
+          },
+          ES: {
+            name: { ko: "가스파초 데 마리스코스", ja: "海鮮ガスパチョ", en: "Gazpacho de Mariscos" },
+            tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 70, sour: 50 },
+            description: { ko: "토마토·오이·마늘·식초를 갈아 차갑게 내린 스페인식 가스파초에 새우나 문어를 더한 안달루시아 해안 버전.", ja: "トマト・きゅうり・にんにく・酢をペーストにして冷やすスペインのガスパチョに、エビやタコを加えたアンダルシア海岸風。", en: "Andalusian coastal spin on Spanish gazpacho — a chilled puree of tomato, cucumber, garlic, and vinegar topped with shrimp or octopus." },
+            ingredients: { ko: ["토마토", "오이", "마늘", "식초", "새우", "올리브오일"], ja: ["トマト", "きゅうり", "にんにく", "酢", "エビ", "オリーブオイル"], en: ["Tomato", "Cucumber", "Garlic", "Vinegar", "Shrimp", "Olive oil"] },
+            similarityPercent: 72,
+            matchReason: { ko: "'차가운 시큼한 국물+해산물 토핑+오이로 청량감'이라는 3박자가 닮았어요. 지중해 태양을 피하려는 방식이 한국 동해의 여름 별미와 교차해요.", ja: "『冷たい酸っぱい汁+海産物トッピング+きゅうりの清涼感』という三拍子が似ています。地中海の強い日差しを避ける作戦が、東海の夏名物と交差します。", en: "The trio of 'chilled acidic broth + seafood topping + cucumber freshness' lines up. Escaping the Mediterranean sun converges with beating the East Sea summer heat." }
+          },
+          IT: {
+            name: { ko: "스파게티 알 마레 프레도", ja: "冷製シーフードパスタ", en: "Spaghetti al Mare Freddo" },
+            tasteProfile: { sweet: 15, salty: 55, spicy: 15, umami: 70, sour: 45 },
+            description: { ko: "삶은 파스타를 얼음물에 식힌 뒤 새우·오징어·조개와 레몬·올리브오일·체리 토마토를 버무린 남부 이탈리아 여름 해산물 파스타.", ja: "茹でたパスタを氷水でしめ、エビ・イカ・貝類とレモン・オリーブオイル・チェリートマトで和える南イタリアの夏の冷製シーフードパスタ。", en: "Southern Italian summer pasta: noodles shocked in ice water, then tossed with shrimp, squid, clams, lemon, olive oil, and cherry tomato." },
+            ingredients: { ko: ["스파게티", "새우", "오징어", "레몬", "올리브오일", "체리토마토"], ja: ["スパゲッティ", "エビ", "イカ", "レモン", "オリーブオイル", "チェリートマト"], en: ["Spaghetti", "Shrimp", "Squid", "Lemon", "Olive oil", "Cherry tomato"] },
+            similarityPercent: 66,
+            matchReason: { ko: "'얼음물로 면을 식히고 해산물을 얹어 여름에 차갑게 내는' 공식이 같아요. 산미를 고추장 대신 레몬으로 가져온다는 점만 달라요.", ja: "『氷水で麺をしめ、海産物を合わせて夏に冷たく出す』公式が一致します。酸味をコチュジャンの代わりにレモンから取るだけが違いです。", en: "Same formula — shock the noodles in ice water, pile on seafood, serve chilled for summer. Only the acid source differs: lemon instead of gochujang." }
+          }
+        }
       },
       {
         id: "sokcho-gamja-ongsimi",
-        name: { ko: "감자옹심이", ja: "감자옹심이", en: "감자옹심이" },
+        name: { ko: "감자옹심이", ja: "ジャガイモ団子スープ（カムジャオンシミ）", en: "Gamja Ongsimi (Potato Dumpling Soup)" },
         region: "sokcho",
         tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 55, sour: 5 },
         storyDescription: {
-          ko: "강원도 감자를 갈아 전분만 남긴 뒤 동그란 경단으로 빚어 끓이는 향토 수제비. 쫀득한 식감과 구수한 멸치 육수가 설악산 바람처럼 슴슴하게 어울려요.",
-          ja: "강원도 감자를 갈아 전분만 남긴 뒤 동그란 경단으로 빚어 끓이는 향토 수제비. 쫀득한 식감과 구수한 멸치 육수가 설악산 바람처럼 슴슴하게 어울려요.",
-          en: "강원도 감자를 갈아 전분만 남긴 뒤 동그란 경단으로 빚어 끓이는 향토 수제비. 쫀득한 식감과 구수한 멸치 육수가 설악산 바람처럼 슴슴하게 어울려요."
+          ko: "강원도 감자를 곱게 갈아 전분을 가라앉힌 뒤 동글동글 빚어 멸치 육수에 풀어 끓이는 향토 수제비. 쫀득한 식감과 구수한 국물이 설악산 바람처럼 슴슴하게 마음까지 녹여요.",
+          ja: "江原道のジャガイモをすりおろして澱粉を沈め、丸く団子に成形して煮干し出汁で煮込む郷土料理。もちもちの食感と香ばしい汁が、雪嶽山の風のように優しく体を温めます。",
+          en: "A Gangwon-province comfort soup: freshly grated potatoes pressed to extract starch, shaped into tiny dumplings, and simmered in an anchovy broth. The chewy bite and gentle savor warm you like a Seoraksan mountain breeze."
         },
         ingredients: {
-          ko: ["감자", "감자 전분", "멸치 육수", "애호박", "대파", "김"],
-          ja: ["감자", "감자 전분", "멸치 육수", "애호박", "대파", "김"],
-          en: ["감자", "감자 전분", "멸치 육수", "애호박", "대파", "김"]
+          ko: ["햇감자", "감자 전분", "멸치·다시마 육수", "애호박", "대파", "김", "달걀"],
+          ja: ["新ジャガイモ", "ジャガイモ澱粉", "煮干し・昆布出汁", "ズッキーニ", "長ねぎ", "海苔", "卵"],
+          en: ["New potatoes", "Potato starch", "Anchovy-kelp broth", "Zucchini", "Scallion", "Seaweed", "Egg"]
         },
         tags: ["감자", "수제비", "향토"],
-        dupes: {}
+        dupes: {
+          IT: {
+            name: { ko: "뇨키", ja: "ニョッキ", en: "Gnocchi" },
+            tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 60, sour: 10 },
+            description: { ko: "삶은 감자를 으깨고 밀가루와 달걀을 섞어 엄지손가락 크기의 덩이로 빚어 삶아 먹는 북부 이탈리아의 국민 감자 경단. 버터·세이지·토마토 소스 등 육수나 소스에 말아 내요.", ja: "茹でて潰したジャガイモに小麦粉と卵を混ぜ、親指サイズの団子に成形して茹で上げる北イタリアの国民食。バター＆セージや出汁、トマトソースなどで提供されます。", en: "Northern Italian potato dumplings: boiled and mashed potato combined with flour and egg, rolled into thumb-sized pillows, boiled, then finished in broth or a sauce like butter-sage or tomato." },
+            ingredients: { ko: ["감자", "밀가루", "달걀", "소금", "버터", "세이지"], ja: ["ジャガイモ", "小麦粉", "卵", "塩", "バター", "セージ"], en: ["Potato", "Flour", "Egg", "Salt", "Butter", "Sage"] },
+            similarityPercent: 85,
+            matchReason: { ko: "'감자를 반죽해 작은 덩이로 빚어 국물·소스에 익힌다'는 핵심 기법이 거의 동일해요. 옹심이는 전분만 사용해 더 쫀득하고, 뇨키는 밀가루를 섞어 포근한 식감이라는 차이가 전부.", ja: "『ジャガイモを練って小さな団子に成形し、汁やソースで火を通す』という核心技法がほぼ一致。オンシミは澱粉のみでよりもっちり、ニョッキは小麦粉を加えてふんわり、その違いだけ。", en: "Near-identical core technique: shape potato dough into small dumplings, cook in broth or sauce. Ongsimi leans on pure starch for extra chew, gnocchi adds flour for a pillowy bite — that's the only split." }
+          },
+          ES: {
+            name: { ko: "뇨키스 (스페인·아르헨티나식 감자 뇨키)", ja: "ニョキス", en: "Ñoquis" },
+            tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 60, sour: 10 },
+            description: { ko: "이탈리아 이민자가 전한 감자 뇨키가 아르헨티나·스페인에서 토착화된 버전. 매달 29일에 먹는 풍습이 있어 'Ñoquis del 29'로 불려요.", ja: "イタリア移民が伝えたジャガイモのニョッキがアルゼンチン・スペインで土着化した料理。毎月29日に食べる習慣があり『29日のニョキス』と呼ばれます。", en: "The Italian potato gnocchi reinvented by Argentine and Spanish immigrants. A monthly tradition on the 29th, known as 'Ñoquis del 29.'" },
+            ingredients: { ko: ["감자", "밀가루", "달걀", "소금", "파르메산", "토마토 소스"], ja: ["ジャガイモ", "小麦粉", "卵", "塩", "パルメザン", "トマトソース"], en: ["Potato", "Flour", "Egg", "Salt", "Parmesan", "Tomato sauce"] },
+            similarityPercent: 78,
+            matchReason: { ko: "감자 반죽으로 빚는 덩이 요리라는 정체성은 같고, 가난한 시절 한 끼를 책임진 서민 음식이라는 출신도 닮았어요. 옹심이가 맑은 멸치 국물이라면, 뇨키스는 진한 토마토·크림 소스로 갈리는 차이.", ja: "ジャガイモ生地の団子料理というアイデンティティが共通し、貧しい時代の庶民の一食という出自も似通っています。オンシミが澄んだ煮干し汁なら、ニョキスは濃厚なトマトやクリームソースという分岐。", en: "Same DNA — potato-dough dumplings — and both emerged as humble food that fed lean households. Ongsimi keeps a clear anchovy broth; ñoquis veer into a rich tomato or cream sauce." }
+          },
+          FR: {
+            name: { ko: "크넬 드 폼므 드 테르", ja: "クネル・ド・ポム・ド・テール", en: "Quenelle de Pomme de Terre" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 70, sour: 10 },
+            description: { ko: "감자와 밀가루·달걀을 섞어 럭비공 모양으로 빚은 뒤 육수에 삶아 크림 소스를 끼얹어 내는 리옹 지역의 전통 덩이 요리.", ja: "ジャガイモと小麦粉・卵を練ってラグビーボール型に成形し、出汁で茹でてクリームソースで提供するリヨン地方の伝統料理。", en: "A Lyonnais specialty: potato dough mixed with flour and egg, shaped into rugby-ball ovals, poached in broth, and finished with cream sauce." },
+            ingredients: { ko: ["감자", "밀가루", "달걀", "버터", "육수", "크림"], ja: ["ジャガイモ", "小麦粉", "卵", "バター", "出汁", "クリーム"], en: ["Potato", "Flour", "Egg", "Butter", "Broth", "Cream"] },
+            similarityPercent: 74,
+            matchReason: { ko: "감자 반죽을 육수에 삶아 부드럽게 익혀 낸다는 조리 원리가 동일해요. 옹심이는 소박한 경단 모양, 크넬은 두 숟가락으로 빚는 타원형이라는 생김새만 다를 뿐.", ja: "ジャガイモ生地を出汁で茹で上げてしっとり仕上げる調理原理が同じ。オンシミは素朴な団子、クネルはスプーン二本で整える楕円形という見た目の違いだけ。", en: "Same cooking principle: poach potato dough in broth until tender. Ongsimi stays as a rustic round, quenelles are shaped into ovals between two spoons — that's the visible split." }
+          },
+          JP: {
+            name: { ko: "스이톤 (밀가루 수제비)", ja: "すいとん", en: "Suiton" },
+            tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 65, sour: 5 },
+            description: { ko: "밀가루 반죽을 손으로 떼어 가쓰오·다시마 육수에 넣어 끓이는 일본의 소박한 수제비. 전후 배급 시절 허기를 달래던 향수 음식으로도 유명해요.", ja: "小麦粉の生地を手でちぎって、かつお・昆布出汁に落として煮込む日本の素朴な汁物。戦後の配給時代に飢えをしのいだ郷愁の一杯としても知られます。", en: "A simple Japanese soup where hand-torn wheat dough drops into bonito-kelp broth. Also remembered as postwar ration food that filled hungry bellies." },
+            ingredients: { ko: ["밀가루", "가쓰오 육수", "당근", "우엉", "대파", "간장"], ja: ["小麦粉", "かつお出汁", "人参", "ごぼう", "長ねぎ", "醤油"], en: ["Flour", "Bonito dashi", "Carrot", "Burdock", "Scallion", "Soy sauce"] },
+            similarityPercent: 80,
+            matchReason: { ko: "손으로 빚은 덩이 반죽을 맑은 육수에 끓여 한 그릇에 담는 구조가 쌍둥이처럼 닮았어요. 한국은 감자 전분, 일본은 밀가루라는 곡물 선택만 달라요. 둘 다 전쟁·가난을 버티게 한 향토 음식.", ja: "手で形作った生地を澄んだ出汁で煮てワンボウルに仕立てる構造が双子のように似ています。韓国はジャガイモ澱粉、日本は小麦粉と、選ぶ素材だけが違う。どちらも戦争と貧困を乗り越えてきた郷土料理。", en: "Twin structure: hand-shaped dough cooked in a clear broth and served as a one-bowl. Only the grain differs — potato starch in Korea, wheat in Japan. Both are comfort soups born of wartime scarcity." }
+          },
+          CN: {
+            name: { ko: "거다탕 (疙瘩汤, 밀가루 뜯어국)", ja: "グダタン", en: "Gēda Tāng" },
+            tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 60, sour: 10 },
+            description: { ko: "밀가루에 물을 뿌려가며 손으로 뜯은 오돌토돌한 덩이를 채소 육수에 끓이는 중국 북방의 가정식 국물 요리. 토마토·계란을 넣기도 해요.", ja: "小麦粉に水を吹き付け、手でつまんで作る不揃いな生地を野菜出汁で煮込む中国北方の家庭料理。トマトや卵を加えることもある。", en: "A Northern Chinese home soup: flour sprinkled with water and pinched by hand into irregular lumps, simmered in vegetable broth, sometimes with tomato and egg." },
+            ingredients: { ko: ["밀가루", "달걀", "토마토", "대파", "간장", "채소 육수"], ja: ["小麦粉", "卵", "トマト", "長ねぎ", "醤油", "野菜出汁"], en: ["Flour", "Egg", "Tomato", "Scallion", "Soy sauce", "Vegetable broth"] },
+            similarityPercent: 72,
+            matchReason: { ko: "손으로 뜯거나 빚은 덩이 반죽을 국물에 풀어 끓이는 가정식이라는 지점에서 만나요. 옹심이가 둥글게 빚는다면 거다탕은 불규칙한 덩이 그대로라는 모양 차이 정도.", ja: "手でちぎって成形した生地を汁に落として煮る家庭料理という点で交差。オンシミは丸く成形、グダタンは不揃いのまま落とす、その形の違いだけ。", en: "They meet at the 'hand-torn dough simmered in a home broth' point. Ongsimi is carefully rolled round; geda tang keeps the rough pinched shape — only the form diverges." }
+          },
+          MX: {
+            name: { ko: "초초요테스 (마사 경단)", ja: "チョチョヨテス", en: "Chochoyotes" },
+            tasteProfile: { sweet: 5, salty: 55, spicy: 20, umami: 60, sour: 10 },
+            description: { ko: "니슈타말화한 옥수수 반죽(마사)에 가운데 홈을 내어 콩·모레·수프에 넣어 끓이는 오악사카의 전통 덩이 요리. 반죽이 국물을 머금어 쫀득해져요.", ja: "ニシュタマル処理したトウモロコシ生地(マサ)に指で凹みを作って豆や『モレ』やスープで煮込むオアハカの伝統料理。生地が出汁を吸ってもちもちになります。", en: "Oaxacan masa dumplings: nixtamalized corn dough thumbprinted with a dimple and simmered in bean soup or mole. The dough drinks the broth and turns chewy." },
+            ingredients: { ko: ["마사 (닉스타말 옥수수)", "물", "소금", "검은콩 수프", "에파소테", "치즈"], ja: ["マサ", "水", "塩", "黒豆スープ", "エパソーテ", "チーズ"], en: ["Masa (nixtamal corn)", "Water", "Salt", "Black bean soup", "Epazote", "Cheese"] },
+            similarityPercent: 70,
+            matchReason: { ko: "주곡을 반죽해 경단으로 빚고 국물에 익혀 한 그릇으로 내는 가난한 살림의 지혜가 같아요. 곡물이 감자냐 옥수수냐로 갈릴 뿐, 구조는 자매 요리.", ja: "主食を練って団子に成形し、汁で煮込んでワンボウルで出す貧しい暮らしの知恵が共通。穀物がジャガイモかトウモロコシかで分かれるだけの姉妹料理。", en: "Same thrift wisdom — knead your staple grain, roll it into dumplings, cook in broth, serve as one bowl. The only divide is the base: potato vs. corn masa. Sisters across cuisines." }
+          },
+          VN: {
+            name: { ko: "반 깐 (쫀득한 타피오카 국수)", ja: "バインカン", en: "Bánh Canh" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 15, umami: 75, sour: 10 },
+            description: { ko: "쌀·타피오카 전분을 뭉쳐 굵은 국수나 뭉툭한 덩이로 썰어 돼지·해산물 육수에 끓이는 베트남 남부의 쫀득 국물요리.", ja: "米粉とタピオカ澱粉を練って太いうどんや団子状に切り分け、豚や魚介の出汁で煮込む南部ベトナムのもちもち汁料理。", en: "A chewy Southern Vietnamese soup: rice and tapioca starch dough cut into thick noodles or stubby lumps, simmered in pork or seafood broth." },
+            ingredients: { ko: ["타피오카 전분", "쌀가루", "돼지 육수", "새우", "쪽파", "고수"], ja: ["タピオカ澱粉", "米粉", "豚出汁", "エビ", "小ねぎ", "パクチー"], en: ["Tapioca starch", "Rice flour", "Pork broth", "Shrimp", "Chive", "Cilantro"] },
+            similarityPercent: 65,
+            matchReason: { ko: "전분 기반 반죽의 쫀득한 식감을 국물과 함께 즐긴다는 식감의 결이 같아요. 옹심이는 감자 전분 동그란 덩이, 반 깐은 타피오카 굵은 국수라는 모양 차이가 있을 뿐.", ja: "澱粉生地のもちもち食感を汁と一緒に楽しむ食感の方向性が一致。オンシミはジャガイモ澱粉の団子、バインカンはタピオカの太い麺という形の違いのみ。", en: "Both center on the bouncy chew of starch dough suspended in broth. Ongsimi is a potato-starch round, bánh canh is a thick tapioca strand — the shape is the split." }
+          },
+          ID: {
+            name: { ko: "찔록 (타피오카 미트볼 수프)", ja: "チロック", en: "Cilok" },
+            tasteProfile: { sweet: 5, salty: 55, spicy: 30, umami: 65, sour: 10 },
+            description: { ko: "타피오카 전분에 다진 고기와 마늘을 섞어 구슬 크기로 빚은 뒤 삶거나 육수에 내는 서자바 지역의 길거리 간식. 땅콩 소스나 매운 삼발 소스를 곁들여요.", ja: "タピオカ澱粉にひき肉とにんにくを混ぜてビー玉サイズに成形し、茹でるか出汁で食べる西ジャワの屋台おやつ。ピーナッツソースやサンバルを添えます。", en: "A West Javanese street snack: tapioca starch mixed with minced meat and garlic, rolled into marble-sized balls, boiled or served in broth with peanut or sambal sauce." },
+            ingredients: { ko: ["타피오카 전분", "다진 고기", "마늘", "삼발 소스", "대파", "육수"], ja: ["タピオカ澱粉", "ひき肉", "にんにく", "サンバル", "長ねぎ", "出汁"], en: ["Tapioca starch", "Minced meat", "Garlic", "Sambal", "Scallion", "Broth"] },
+            similarityPercent: 62,
+            matchReason: { ko: "전분 반죽을 동그랗게 빚어 탱글탱글한 식감으로 즐긴다는 구조가 닮았어요. 옹심이가 맑은 육수에 담백하게 풀린다면, 찔록은 매운 소스로 노점 간식 감성을 살린다는 결 차이.", ja: "澱粉生地を丸く成形してぷりぷり食感を楽しむ構造が共通。オンシミは澄んだ出汁であっさり、チロックは辛いソースで屋台感を出す方向性の違い。", en: "Same structural hook: starch dough shaped into bouncy rounds. Ongsimi stays clean in an anchovy broth; cilok leans into spicy sauces for street-food swagger — that's the mood split." }
+          }
+        }
       }
     ]
   },
