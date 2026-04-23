@@ -72,8 +72,14 @@ function tripDateRange(start: string, end: string): string[] {
 }
 
 const TYPE_EMOJI: Record<ItemType, string> = {
-  food: '🍜', stay: '🏯', quest: '⚔️', diy: '🏺',
-  ootd: '👗', goods: '🛍️', transport: '🚄', surprise: '🎁',
+  food: '🍜', stay: '🏨', quest: '📌', diy: '🏺',
+  ootd: '👗', goods: '🛍️', transport: '🚌', surprise: '🎁',
+}
+
+// 아이템별 이모지 — item_data.kind 까지 고려해 세분화 (food+kind='sight' 는 📍)
+function getItemEmoji(item: PlanItem): string {
+  if (item.item_type === 'food' && item.item_data?.kind === 'sight') return '📍'
+  return TYPE_EMOJI[item.item_type] || '📋'
 }
 
 // 상단 요약 아코디언 — 섹션별 접기/펴기
@@ -474,15 +480,6 @@ export function PlannerFinalPlan({
         const places = [...sights, ...quests, ...surprises, ...dedupedTransport]
         const label = SUMMARY_LABEL[locale] || SUMMARY_LABEL.en
 
-        // "가야할 곳" 카드의 아이콘 — quest/surprise/transport/sight 구분
-        const placeEmoji = (it: PlanItem): string => {
-          if (it.item_type === 'quest') return '🎯'
-          if (it.item_type === 'transport') return '🚌'
-          if (it.item_type === 'surprise') return '🎁'
-          if (it.item_type === 'food' && it.item_data?.kind === 'sight') return '📍'
-          return TYPE_EMOJI[it.item_type]
-        }
-
         return (
           <div className="space-y-2 mb-8">
             {/* 1. 📅 날짜·코디·날씨 — 기본 펼침 (날씨는 항상 있음) */}
@@ -582,7 +579,7 @@ export function PlannerFinalPlan({
                 <ul className="space-y-1.5">
                   {places.slice(0, 5).map((it) => (
                     <li key={it.id} className="flex items-start gap-2 text-sm">
-                      <span className="text-base shrink-0">{placeEmoji(it)}</span>
+                      <span className="text-base shrink-0">{getItemEmoji(it)}</span>
                       <span className="font-semibold text-[#111] truncate">{itemName(it, locale)}</span>
                     </li>
                   ))}
@@ -701,7 +698,7 @@ export function PlannerFinalPlan({
                                 key={it.id}
                                 className="flex items-center gap-2 text-sm text-[#374151]"
                               >
-                                <span className="text-base">{TYPE_EMOJI[it.item_type]}</span>
+                                <span className="text-base">{getItemEmoji(it)}</span>
                                 <span className="truncate">{itemName(it, locale)}</span>
                               </li>
                             ))}
