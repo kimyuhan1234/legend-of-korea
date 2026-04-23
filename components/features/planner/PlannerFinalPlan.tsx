@@ -420,10 +420,10 @@ export function PlannerFinalPlan({
       </h2>
       <p className="text-sm text-[#6B7280] mb-6">{t('final.subtitle')}</p>
 
-      {/* 상단 4칸 요약 그리드 — items-start 로 각 칸 높이 독립 (빈 칸 compact) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-8 items-start">
-        {/* 칸 1: 📅 날짜 + 코디 + 날씨 (세로 스택) */}
-        <div className="bg-white rounded-2xl p-4 border border-mist/40 space-y-3">
+      {/* 상단 요약 — 가로 슬라이드 (빈 공간 제거 + 카드 단위 스냅) */}
+      <div className="flex gap-3 mb-8 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+        {/* 카드 1: 📅 날짜 + 코디 + 날씨 (세로 스택) */}
+        <div className="min-w-[280px] max-w-[320px] flex-shrink-0 snap-start bg-white rounded-2xl p-4 border border-mist/40 space-y-3">
           <p className="text-[10px] font-black text-mint-deep uppercase tracking-widest">
             📅 {SUMMARY_LABEL[locale]?.dateOutfit || SUMMARY_LABEL.en.dateOutfit}
           </p>
@@ -431,8 +431,8 @@ export function PlannerFinalPlan({
           <PlannerWeather cityId={cityId} dates={planDates} />
         </div>
 
-        {/* 칸 2: 🍜 먹고 싶은 요리 */}
-        <div className="bg-white rounded-2xl p-4 border border-mist/40">
+        {/* 카드 2: 🍜 먹고 싶은 요리 */}
+        <div className="min-w-[280px] max-w-[320px] flex-shrink-0 snap-start bg-white rounded-2xl p-4 border border-mist/40">
           <p className="text-[10px] font-black text-rose-500 uppercase tracking-widest mb-2">
             🍜 {SUMMARY_LABEL[locale]?.foodWish || SUMMARY_LABEL.en.foodWish}
           </p>
@@ -470,8 +470,8 @@ export function PlannerFinalPlan({
           })()}
         </div>
 
-        {/* 칸 3: 🏨 호텔 정보 */}
-        <div className="bg-white rounded-2xl p-4 border border-mist/40">
+        {/* 카드 3: 🏨 호텔 정보 */}
+        <div className="min-w-[280px] max-w-[320px] flex-shrink-0 snap-start bg-white rounded-2xl p-4 border border-mist/40">
           <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-2">
             🏨 {SUMMARY_LABEL[locale]?.hotelInfo || SUMMARY_LABEL.en.hotelInfo}
           </p>
@@ -504,8 +504,8 @@ export function PlannerFinalPlan({
           )}
         </div>
 
-        {/* 칸 4: 🎯 가야할 곳 (quest + surprise + transport) */}
-        <div className="bg-white rounded-2xl p-4 border border-mist/40">
+        {/* 카드 4: 🎯 가야할 곳 (quest + surprise + transport) */}
+        <div className="min-w-[280px] max-w-[320px] flex-shrink-0 snap-start bg-white rounded-2xl p-4 border border-mist/40">
           <p className="text-[10px] font-black text-amber-600 uppercase tracking-widest mb-2">
             🎯 {SUMMARY_LABEL[locale]?.placesToGo || SUMMARY_LABEL.en.placesToGo}
           </p>
