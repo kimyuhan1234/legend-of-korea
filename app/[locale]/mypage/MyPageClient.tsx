@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { TierBadge } from '@/components/features/community/TierBadge';
+import { RankBadge } from '@/components/features/rank/RankBadge';
 import { ProfileBadges } from '@/components/features/mypage/ProfileBadges';
 import {
   ShoppingBag,
@@ -176,22 +176,25 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
             <div className="h-24 bg-gradient-to-br from-mint-deep to-sky" />
             <CardContent className="px-6 pb-8 -mt-12 text-center">
               <div className="relative inline-block mb-4">
-                <div className="w-24 h-24 rounded-[2rem] border-4 border-white shadow-xl overflow-hidden bg-white mx-auto">
+                <div className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white mx-auto">
                   {user?.avatar_url ? (
-                    <Image src={user.avatar_url} alt="Profile" fill className="object-cover" />
+                    <Image src={user.avatar_url} alt="Profile" fill className="object-cover" sizes="128px" />
                   ) : (
-                    <div className="w-full h-full bg-slate-100 flex items-center justify-center text-3xl font-black text-slate-300">
+                    <div className="w-full h-full bg-slate-100 flex items-center justify-center text-5xl font-black text-slate-300">
                       {user?.nickname?.[0]}
                     </div>
                   )}
                 </div>
-                <div className="absolute -bottom-1 -right-1">
-                  <TierBadge level={user?.current_tier || 1} className="shadow-lg border-2 border-white scale-110" />
-                </div>
               </div>
 
               <h2 className="text-2xl font-black text-slate-800">{user?.nickname}</h2>
-              <p className="text-sm text-slate-400 font-bold mb-6">{user?.email}</p>
+              <p className="text-sm text-slate-400 font-bold mb-4">{user?.email}</p>
+
+              {user?.id && (
+                <div className="mb-6">
+                  <RankBadge userId={user.id} size="lg" />
+                </div>
+              )}
 
               <div className="grid grid-cols-2 gap-4 text-left">
                 <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100">

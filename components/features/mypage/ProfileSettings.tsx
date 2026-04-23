@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { Camera, Loader2, Pencil, Check, X } from 'lucide-react'
 import { toast } from '@/components/ui/use-toast'
+import { AvatarCropModal } from './AvatarCropModal'
 
 interface Props {
   user: { nickname?: string; avatar_url?: string | null; email?: string }
@@ -31,14 +32,26 @@ export function ProfileSettings({ user, locale, onUpdate }: Props) {
   const [avatarFile, setAvatarFile] = useState<File | null>(null)
   const [avatarPreview, setAvatarPreview] = useState(user?.avatar_url || '')
   const [saving, setSaving] = useState(false)
+  const [cropSrc, setCropSrc] = useState<string | null>(null)
   const avatarRef = useRef<HTMLInputElement>(null)
 
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
-    setAvatarFile(file)
-    setAvatarPreview(URL.createObjectURL(file))
+    // 크롭 모달에 원본 이미지 전달
+    setCropSrc(URL.createObjectURL(file))
     e.target.value = ''
+  }
+
+  const handleCropConfirm = (croppedBlob: Blob) => {
+    const cropped = new File([croppedBlob], 'avatar.jpg', { type: 'image/jpeg' })
+    setAvatarFile(cropped)
+    setAvatarPreview(URL.createObjectURL(croppedBlob))
+    setCropSrc(null)
+  }
+
+  const handleCropCancel = () => {
+    setCropSrc(null)
   }
 
   const handleSave = async () => {
@@ -83,6 +96,15 @@ export function ProfileSettings({ user, locale, onUpdate }: Props) {
   }
 
   return (
+    <>
+      {cropSrc && (
+        <AvatarCropModal
+          imageSrc={cropSrc}
+          locale={locale}
+          onCancel={handleCropCancel}
+          onConfirm={handleCropConfirm}
+        />
+      )}
     <div className="divide-y divide-slate-100">
       {/* 프로필 편집 */}
       <div className="p-5">
@@ -183,5 +205,6 @@ export function ProfileSettings({ user, locale, onUpdate }: Props) {
         </select>
       </div>
     </div>
+    </>
   )
 }

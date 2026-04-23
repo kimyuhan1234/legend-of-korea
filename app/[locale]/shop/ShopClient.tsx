@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { TierBadge } from '@/components/features/community/TierBadge';
+import { RankBadge } from '@/components/features/rank/RankBadge';
 import { toast } from '@/components/ui/use-toast';
 import { Loader2, Ticket, ChevronRight, Coins, History, Calendar, CheckCircle2, Sparkles } from 'lucide-react';
 import TierCard from '@/components/features/shop/TierCard';
@@ -21,6 +21,7 @@ interface Coupon {
 }
 
 interface UserData {
+  id?: string;
   total_lp: number;
   current_tier: number;
 }
@@ -116,7 +117,7 @@ export function ShopClient({ locale }: ShopClientProps) {
               <span className="text-3xl font-black text-slate-800">{user?.total_lp.toLocaleString() || 0}</span>
               <span className="text-sm font-black text-blossom-deep">빗방울</span>
             </div>
-            {user && <TierBadge level={user.current_tier} className="mt-2" />}
+            {user?.id && <div className="mt-2"><RankBadge userId={user.id} size="sm" /></div>}
           </div>
         </div>
       </section>

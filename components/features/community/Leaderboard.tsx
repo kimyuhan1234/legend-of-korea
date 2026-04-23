@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { ChevronLeft, ChevronRight, Gift, Trophy } from 'lucide-react'
-import { TierBadge } from './TierBadge'
+import { RankBadge } from '@/components/features/rank/RankBadge'
 import { createClient } from '@/lib/supabase/client'
 import Image from 'next/image'
 
@@ -173,7 +173,7 @@ export function Leaderboard({ locale }: Props) {
                   )}
                 </div>
                 <div className="flex items-center gap-1.5 mt-0.5">
-                  <TierBadge level={entry.tier} className="scale-75 origin-left" />
+                  <RankBadge userId={entry.userId} size="sm" />
                 </div>
               </div>
               <div className="text-right flex-shrink-0">

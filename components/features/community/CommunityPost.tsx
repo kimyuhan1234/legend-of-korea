@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { TierBadge } from './TierBadge';
+import { RankBadge } from '@/components/features/rank/RankBadge';
 import { Heart, MessageSquare, Share2, MoreHorizontal, Eye } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -39,6 +39,7 @@ interface CommunityPostProps {
     is_spoiler: boolean;
     created_at: string;
     user: {
+      id?: string;
       nickname: string;
       avatar_url?: string;
       current_tier: number;
@@ -73,7 +74,7 @@ export function CommunityPost({ post, locale, onLike, onComment }: CommunityPost
         <div className="flex-1 flex flex-col items-start gap-1">
           <div className="flex items-center gap-2">
             <span className="font-black text-slate-800">{post.user.nickname}</span>
-            <TierBadge level={post.user.current_tier} />
+            {post.user.id && <RankBadge userId={post.user.id} size="sm" />}
           </div>
           <span className="text-xs text-slate-400 font-bold">
             {timeAgo(post.created_at, locale)}
