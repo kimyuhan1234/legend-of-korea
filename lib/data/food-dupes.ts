@@ -9613,93 +9613,394 @@ export const regions: Region[] = [
     foods: [
       {
         id: "yeosu-gat-kimchi",
-        name: { ko: "돌산 갓김치", ja: "돌산 갓김치", en: "돌산 갓김치" },
+        name: { ko: "돌산 갓김치", ja: "突山カッキムチ", en: "Dolsan Gat-Kimchi (Mustard Greens Kimchi)" },
         region: "yeosu",
         tasteProfile: { sweet: 10, salty: 60, spicy: 65, umami: 55, sour: 70 },
         storyDescription: {
           ko: "여수 돌산도의 해풍 맞고 자란 갓으로 담근 톡 쏘는 김치. 알싸한 갓 특유의 향과 아삭한 줄기가 입안에서 강한 인상을 남겨요.",
-          ja: "여수 돌산도의 해풍 맞고 자란 갓으로 담근 톡 쏘는 김치. 알싸한 갓 특유의 향과 아삭한 줄기가 입안에서 강한 인상을 남겨요.",
-          en: "여수 돌산도의 해풍 맞고 자란 갓으로 담근 톡 쏘는 김치. 알싸한 갓 특유의 향과 아삭한 줄기가 입안에서 강한 인상을 남겨요."
+          ja: "麗水・突山島の海風を浴びて育ったカラシ菜で漬け込む、ピリッとしたキムチ。鼻に抜ける辛味とシャキッとした茎が強い印象を残します。",
+          en: "A pungent kimchi pickled from mustard greens grown by the sea breeze on Yeosu's Dolsan Island. The sharp, almost wasabi-like bite and crisp stalks leave a strong impression."
         },
         ingredients: {
           ko: ["갓", "고춧가루", "멸치액젓", "마늘", "생강", "찹쌀풀"],
-          ja: ["갓", "고춧가루", "멸치액젓", "마늘", "생강", "찹쌀풀"],
-          en: ["갓", "고춧가루", "멸치액젓", "마늘", "생강", "찹쌀풀"]
+          ja: ["カラシ菜", "粉唐辛子", "イワシ魚醤", "にんにく", "生姜", "もち米糊"],
+          en: ["Mustard greens", "Korean chili powder", "Anchovy fish sauce", "Garlic", "Ginger", "Glutinous rice paste"]
         },
         tags: ["갓", "김치", "돌산"],
-        dupes: {}
+        dupes: {
+          JP: {
+            name: { ko: "다카나즈케", ja: "高菜漬け", en: "Takana-zuke" },
+            tasteProfile: { sweet: 5, salty: 65, spicy: 35, umami: 60, sour: 55 },
+            description: { ko: "일본 규슈의 특산 채소인 다카나(고엽 갓)를 소금으로 한 달 이상 절여 시큼하고 알싸하게 발효시킨 일본식 갓절임. 주먹밥·라멘 토핑으로 인기예요.", ja: "九州特産の高菜を塩で一か月以上漬け、酸味と辛味を引き出した日本の定番漬け物。おにぎりやラーメンのトッピングとして親しまれています。", en: "A Kyushu regional pickle: mustard greens (takana) cured in salt for a month or more, fermenting into a tangy, mustard-sharp relish. Beloved as an onigiri filling and ramen topping." },
+            ingredients: { ko: ["다카나(갓)", "소금", "고춧가루", "참깨", "간장", "미림"], ja: ["高菜", "塩", "唐辛子", "ごま", "醤油", "みりん"], en: ["Takana (mustard greens)", "Salt", "Chili", "Sesame", "Soy sauce", "Mirin"] },
+            similarityPercent: 86,
+            matchReason: { ko: "같은 갓(카라시나)을 주재료로 발효시키는 쌍둥이 절임이에요. 한국은 고춧가루·젓갈로 강렬하게, 일본은 소금 위주로 은근하게 익히는 방향성 차이일 뿐.", ja: "同じカラシ菜を主役に発酵させる双子のような漬物。韓国は粉唐辛子と魚醤で強烈に、日本は塩ベースで穏やかに仕上げるという方向性の違いだけ。", en: "Both build around the same vegetable — mustard greens — fermented into a pickle. Korea dials up heat with chili and fish sauce; Japan stays salt-forward for a quieter profile." }
+          },
+          CN: {
+            name: { ko: "쉐리홍 (雪里紅, 겨자 잎 절임)", ja: "雪里紅", en: "Xuě Lǐ Hóng" },
+            tasteProfile: { sweet: 5, salty: 70, spicy: 20, umami: 65, sour: 45 },
+            description: { ko: "강남·상하이 지역에서 겨자 잎(갓의 사촌 격)을 소금에 절여 발효시킨 뒤, 잘게 썰어 국·볶음·만두소로 쓰는 중국식 발효 채소.", ja: "江南・上海地方でからし菜の葉を塩漬け発酵させ、細かく刻んでスープや炒め物、餃子の具に使う中国式の発酵野菜。", en: "Shanghai and Jiangnan salt-fermented mustard greens — minced and stirred into soups, stir-fries, and dumpling fillings across eastern China." },
+            ingredients: { ko: ["겨자 잎", "소금", "고추", "생강", "식용유"], ja: ["からし菜", "塩", "唐辛子", "生姜", "サラダ油"], en: ["Mustard greens", "Salt", "Chili", "Ginger", "Vegetable oil"] },
+            similarityPercent: 82,
+            matchReason: { ko: "갓과 같은 브라시카속 잎채소를 절여 발효시키는 동아시아 절임 벨트의 대표 주자예요. 찬 반찬에서 끝내느냐 요리 재료로 쓰느냐로 갈립니다.", ja: "カラシ菜と同じアブラナ属の葉物を塩漬け発酵させる東アジア『発酵ベルト』の代表格。冷菜で完結するか料理の具材に使うかで分岐します。", en: "Both are flagship players on the East Asian fermentation belt for brassica leaves. The split is in use — a standalone side dish vs. a building block that flavors other recipes." }
+          },
+          VN: {
+            name: { ko: "즈어 까이 쭈어 (발효 갓)", ja: "ズアカイチュア", en: "Dưa Cải Chua" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 15, umami: 55, sour: 75 },
+            description: { ko: "갓이나 겨자 잎에 소금·설탕·쌀뜨물을 부어 3~5일간 자연 발효시키는 베트남식 신 채소 절임. 탕이나 볶음에 넣어 신맛을 입혀요.", ja: "カラシ菜を塩・砂糖・米のとぎ汁で3〜5日間自然発酵させるベトナム式酸味野菜。スープや炒め物に酸味を添えるのに使われます。", en: "Vietnamese sour pickle: mustard greens fermented 3–5 days in salt, sugar, and rice-rinse water. Folded into soups and stir-fries to brighten them with acid." },
+            ingredients: { ko: ["갓", "소금", "설탕", "쌀뜨물", "생강", "마늘"], ja: ["カラシ菜", "塩", "砂糖", "米のとぎ汁", "生姜", "にんにく"], en: ["Mustard greens", "Salt", "Sugar", "Rice-rinse water", "Ginger", "Garlic"] },
+            similarityPercent: 78,
+            matchReason: { ko: "갓을 짧게 발효시켜 강한 신맛으로 끌어올린 결과물이라는 점에서 갓김치 초반 숙성과 식감까지 겹쳐요. 고추를 쓸 정도만 다를 뿐.", ja: "カラシ菜を短期発酵させて鋭い酸味に仕上げる結果として、カッキムチの若漬けと食感まで重なります。唐辛子を使う量の違いだけ。", en: "Both transform mustard greens via a short ferment that amps up acid — the texture and sourness echo young gat-kimchi. The chili volume is the only real divergence." }
+          },
+          TH: {
+            name: { ko: "팍까이 동 (태국식 발효 갓)", ja: "パックガードーン", en: "Pak Gaad Dong" },
+            tasteProfile: { sweet: 15, salty: 60, spicy: 10, umami: 55, sour: 75 },
+            description: { ko: "갓과 비슷한 아시아 머스터드 그린을 소금·쌀뜨물에 절여 새콤하게 발효시키는 태국·중국계 절임. 무침이나 조림에 쓰여요.", ja: "カラシ菜に近いアジアマスタードグリーンを塩と米のとぎ汁で発酵させ、酸味を引き出すタイ系中華漬物。和え物や煮込みの素材。", en: "A Thai-Chinese pickle: Asian mustard greens fermented in salt and rice water into a sharp, tart relish — used in salads and braises." },
+            ingredients: { ko: ["아시아 갓", "소금", "쌀뜨물", "설탕", "마늘"], ja: ["アジアマスタード", "塩", "米のとぎ汁", "砂糖", "にんにく"], en: ["Asian mustard greens", "Salt", "Rice-rinse water", "Sugar", "Garlic"] },
+            similarityPercent: 76,
+            matchReason: { ko: "동남아 화교 요리에서 '신 갓'을 빚는 방식이 한국 갓김치의 숙성 지점과 교차해요. 화끈한 한국산 고춧가루 대신 단맛과 신맛으로 완성된 형태.", ja: "東南アジアの華僑料理で『酸っぱいカラシ菜』を作る方式がカッキムチの熟成域と重なります。韓国の強い唐辛子を、甘味と酸味で置き換えた姿。", en: "The way Southeast Asian Chinese cooking crafts 'sour mustard greens' overlaps with mid-ferment gat-kimchi. Korea's fierce chili is swapped for sweetness and acidity." }
+          },
+          MY: {
+            name: { ko: "까이암 차이 (절임 갓)", ja: "キアムチャイ", en: "Kiam Chai" },
+            tasteProfile: { sweet: 5, salty: 75, spicy: 5, umami: 60, sour: 65 },
+            description: { ko: "말레이·페라나칸 화교 요리에서 쓰는 짠·신 맛이 강한 갓 절임. 오리·돼지와 함께 오래 끓여 국물에 깊은 감칠맛을 더해요.", ja: "マレー・プラナカン華僑料理で使われる塩気と酸味が強いカラシ菜の漬物。鴨や豚と長時間煮込んで出汁に旨味を加えます。", en: "A Malay-Peranakan pantry staple: salty-sour pickled mustard greens, slow-cooked with duck or pork to round out the broth with deep umami." },
+            ingredients: { ko: ["갓", "소금", "식초", "생강", "고추"], ja: ["カラシ菜", "塩", "酢", "生姜", "唐辛子"], en: ["Mustard greens", "Salt", "Vinegar", "Ginger", "Chili"] },
+            similarityPercent: 70,
+            matchReason: { ko: "갓의 원향을 발효로 끌어내 '요리 속 감칠맛 담당'으로 활용하는 점에서 김치찌개 속 묵은 갓김치의 역할과 맞닿아요.", ja: "カラシ菜の旨味を発酵で引き出し『料理の中の旨味担当』として使う面で、キムチチゲの古漬けカッキムチの役割と通じます。", en: "Both leverage the fermented depth of mustard greens as a 'flavor engine' inside larger stews — mirroring how aged gat-kimchi anchors a kimchi-jjigae." }
+          },
+          ID: {
+            name: { ko: "사유르 아신 (발효 겨자 잎 수프)", ja: "サユール・アシン", en: "Sayur Asin" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 60, sour: 70 },
+            description: { ko: "인도네시아 화교식 발효 겨자 잎을 토마토와 함께 끓이는 새콤한 국물 요리 또는 반찬. 잎 그대로 썰어 반찬으로도 먹어요.", ja: "インドネシア華僑式の発酵からし菜をトマトと煮込むさっぱりしたスープ、あるいはそのまま切って副菜にする料理。", en: "An Indonesian Chinese dish: fermented mustard greens simmered with tomato into a tangy soup, or chopped and served as a side pickle." },
+            ingredients: { ko: ["발효 갓", "토마토", "마늘", "소금", "생강"], ja: ["発酵カラシ菜", "トマト", "にんにく", "塩", "生姜"], en: ["Fermented mustard greens", "Tomato", "Garlic", "Salt", "Ginger"] },
+            similarityPercent: 68,
+            matchReason: { ko: "'발효시킨 갓의 새콤함을 그대로 즐기는' 식사 방식이 김치찌개·갓김치 반찬 구도와 닮아요. 고춧가루 매운맛 대신 토마토 산미로 짠다는 차이.", ja: "『発酵させたカラシ菜の酸味をそのまま楽しむ』食べ方がキムチチゲやカッキムチの食卓構成と似ています。唐辛子の辛味をトマトの酸味で置き換えた形。", en: "Both treat the ferment's sharpness as the star of the dish — parallel to kimchi-jjigae or gat-kimchi as banchan. The chili heat is traded for tomato acidity." }
+          },
+          IN: {
+            name: { ko: "사르손 까 삭 (겨자 잎 스튜)", ja: "サルソンカサグ", en: "Sarson Ka Saag" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 45, umami: 70, sour: 25 },
+            description: { ko: "겨자 잎을 시금치·무청과 함께 장시간 뭉근히 끓여 향신료로 마무리하는 북인도 펀자브 지방의 대표 요리. 옥수수 빵(막키 디 로티)와 함께 내요.", ja: "からし菜をほうれん草や大根葉と一緒にじっくり煮込み、スパイスで仕上げる北インド・パンジャーブ地方の郷土料理。トウモロコシのパン(マッキ・ディ・ロティ)と共に食べます。", en: "Punjab's signature winter dish: mustard greens slow-stewed with spinach and radish leaves, finished with spices. Traditionally served with cornmeal roti." },
+            ingredients: { ko: ["겨자 잎", "시금치", "버터", "생강", "마늘", "녹고추"], ja: ["からし菜", "ほうれん草", "バター", "生姜", "にんにく", "青唐辛子"], en: ["Mustard greens", "Spinach", "Butter", "Ginger", "Garlic", "Green chili"] },
+            similarityPercent: 62,
+            matchReason: { ko: "같은 '머스터드 그린'을 주인공으로 삼지만, 한국은 생으로 절여 알싸함을 살리고 인도는 오래 끓여 부드럽게 녹이는 정반대 접근이에요.", ja: "同じ『マスタードグリーン』を主役にしながら、韓国は生で漬け込んで辛味を活かし、インドは長時間煮込んで柔らかく溶かす対照的なアプローチです。", en: "Same hero ingredient — mustard greens — but opposite methods. Korea preserves the raw sharpness through a ferment; India slow-melts it into a gentle, spiced stew." }
+          },
+          US: {
+            name: { ko: "차우차우 (남부식 겨자 피클)", ja: "チャウチャウ", en: "Chow-Chow (Southern Mustard Relish)" },
+            tasteProfile: { sweet: 30, salty: 55, spicy: 25, umami: 40, sour: 70 },
+            description: { ko: "미국 남부 애팔래치아 가정에서 겨자씨와 채소(양배추·토마토·고추)를 식초·설탕에 절여 만드는 상큼한 피클 렐리시. 콜라드 그린 요리의 필수 양념.", ja: "米国南部アパラチア地方の家庭で、からし種と野菜(キャベツ・トマト・青唐辛子)を酢と砂糖で漬け込む爽やかなピクルスレリッシュ。コラードグリーンのお供。", en: "An Appalachian Southern relish: mustard seed and vegetables (cabbage, tomato, chili) quick-pickled in vinegar and sugar. Served alongside collard greens and cornbread." },
+            ingredients: { ko: ["양배추", "겨자씨", "식초", "설탕", "고추", "양파"], ja: ["キャベツ", "からし種", "酢", "砂糖", "唐辛子", "玉ねぎ"], en: ["Cabbage", "Mustard seed", "Vinegar", "Sugar", "Chili", "Onion"] },
+            similarityPercent: 64,
+            matchReason: { ko: "겨자 풍미로 맛을 잡고 채소·고추를 신맛으로 끌어올리는 밑바탕이 같아요. 갓김치가 발효로 깊이를 얻는 반면 차우차우는 식초로 즉석에서 쏘는 맛을 내요.", ja: "カラシの風味を軸に、野菜と唐辛子を酸味で引き立てる骨格が共通。カッキムチが発酵で深みを得るのに対し、チャウチャウは酢で即席のパンチを出します。", en: "Shared skeleton: mustard-driven flavor lifted by acid over vegetables and chili. Gat-kimchi earns depth through fermentation; chow-chow gets its instant bite from vinegar." }
+          }
+        }
       },
       {
         id: "yeosu-seodae-hoemuchim",
-        name: { ko: "서대회무침", ja: "서대회무침", en: "서대회무침" },
+        name: { ko: "서대회무침", ja: "ソデフェムチム（舌平目の酢和え）", en: "Seodae Hoemuchim (Sole Sashimi Salad)" },
         region: "yeosu",
         tasteProfile: { sweet: 35, salty: 45, spicy: 60, umami: 65, sour: 75 },
         storyDescription: {
           ko: "여수 앞바다 서대(가자미류)를 쫀쫀하게 썰어 막걸리 식초에 절인 뒤 고추장·채소와 버무린 새콤달콤한 회무침. 밥 위에 올려 쓱쓱 비벼 먹으면 한 대접 뚝딱이에요.",
-          ja: "여수 앞바다 서대(가자미류)를 쫀쫀하게 썰어 막걸리 식초에 절인 뒤 고추장·채소와 버무린 새콤달콤한 회무침. 밥 위에 올려 쓱쓱 비벼 먹으면 한 대접 뚝딱이에요.",
-          en: "여수 앞바다 서대(가자미류)를 쫀쫀하게 썰어 막걸리 식초에 절인 뒤 고추장·채소와 버무린 새콤달콤한 회무침. 밥 위에 올려 쓱쓱 비벼 먹으면 한 대접 뚝딱이에요."
+          ja: "麗水近海で獲れた舌平目を厚めに切って、マッコリ酢で締めたあと、コチュジャンと野菜で和えた甘酸っぱい刺身和え。ご飯に乗せて豪快に混ぜると、丼一杯があっという間に消えます。",
+          en: "Yeosu's signature sole sashimi salad: firm tongue-sole fillets cured in makgeolli vinegar, then tossed with gochujang, scallions, and crunchy vegetables. Heaped over hot rice, a bowl vanishes in minutes."
         },
         ingredients: {
           ko: ["서대", "막걸리 식초", "고추장", "미나리", "양파", "참기름", "깨"],
-          ja: ["서대", "막걸리 식초", "고추장", "미나리", "양파", "참기름", "깨"],
-          en: ["서대", "막걸리 식초", "고추장", "미나리", "양파", "참기름", "깨"]
+          ja: ["舌平目", "マッコリ酢", "コチュジャン", "セリ", "玉ねぎ", "ごま油", "胡麻"],
+          en: ["Tongue sole", "Makgeolli vinegar", "Gochujang", "Minari", "Onion", "Sesame oil", "Sesame"]
         },
         tags: ["회무침", "새콤달콤", "해산물"],
-        dupes: {}
+        dupes: {
+          MX: {
+            name: { ko: "세비체 데 페스카도", ja: "セビーチェ・デ・ペスカード", en: "Ceviche de Pescado" },
+            tasteProfile: { sweet: 10, salty: 50, spicy: 45, umami: 65, sour: 85 },
+            description: { ko: "라임즙으로 생선을 '익혀' 양파·고수·할라페뇨와 버무리는 중남미 해안의 국민 요리. 토스타다나 토르티야에 올려 먹어요.", ja: "ライム汁で生魚を『火入れ』し、玉ねぎ・パクチー・ハラペーニョで和える中南米海岸の国民食。トスタダやトルティーヤに乗せて食べます。", en: "A Latin American coastal staple: raw fish 'cooked' by citrus, tossed with onion, cilantro, and jalapeño, served atop tostadas or tortillas." },
+            ingredients: { ko: ["흰살 생선", "라임즙", "양파", "고수", "할라페뇨", "토마토"], ja: ["白身魚", "ライム汁", "玉ねぎ", "パクチー", "ハラペーニョ", "トマト"], en: ["White fish", "Lime juice", "Onion", "Cilantro", "Jalapeño", "Tomato"] },
+            similarityPercent: 84,
+            matchReason: { ko: "'회에 산미를 입혀 채소와 버무린다'는 뼈대가 완벽히 일치해요. 산미 원천이 식초/라임으로 갈리고, 매운맛은 고추장/할라페뇨로 교차하는 쌍둥이 구조.", ja: "『刺身に酸味を重ね、野菜と和える』骨組みが完全一致。酸味源が酢かライムか、辛味がコチュジャンかハラペーニョか、という素材の違いだけの双子料理。", en: "The backbone — acid-cured sashimi tossed with vegetables — is a perfect match. Only the acid source (vinegar vs. lime) and the heat vehicle (gochujang vs. jalapeño) diverge." }
+          },
+          TH: {
+            name: { ko: "얌 쁠라 딥 (태국식 회 샐러드)", ja: "ヤム・プラー・ディップ", en: "Yam Pla Dib" },
+            tasteProfile: { sweet: 20, salty: 55, spicy: 65, umami: 70, sour: 70 },
+            description: { ko: "생선회를 라임즙·피쉬소스·고추·레몬그라스에 즉석 절여 허브와 버무리는 태국 북부의 매콤 새콤 샐러드.", ja: "生魚をライム汁・ナンプラー・唐辛子・レモングラスで即席に締め、ハーブと和える北部タイのピリ辛酸味サラダ。", en: "A Northern Thai spicy-sour salad: raw fish flash-cured with lime juice, fish sauce, chili, and lemongrass, then tossed with herbs." },
+            ingredients: { ko: ["흰살 생선", "라임즙", "피쉬소스", "고추", "레몬그라스", "샬롯"], ja: ["白身魚", "ライム汁", "ナンプラー", "唐辛子", "レモングラス", "エシャロット"], en: ["White fish", "Lime juice", "Fish sauce", "Chili", "Lemongrass", "Shallot"] },
+            similarityPercent: 78,
+            matchReason: { ko: "'회+산미+고추+허브'라는 4가지 축이 똑같아요. 한국은 고추장 점성으로 소스를 묵직하게, 태국은 피쉬소스로 가볍고 또렷하게 풀어요.", ja: "『刺身+酸味+唐辛子+ハーブ』の4軸が完全一致。韓国はコチュジャンの粘度でソースを重厚に、タイはナンプラーで軽やかに仕上げます。", en: "Same four axes: sashimi + acid + chili + herbs. Korea uses gochujang's thickness for body; Thailand lets fish sauce keep it light and bright." }
+          },
+          VN: {
+            name: { ko: "고이 까 (베트남식 회 샐러드)", ja: "ゴイ・カー", en: "Gỏi Cá" },
+            tasteProfile: { sweet: 25, salty: 50, spicy: 40, umami: 70, sour: 75 },
+            description: { ko: "신선한 흰살 생선을 라임·설탕·피쉬소스로 무쳐 땅콩·허브·바나나꽃과 함께 내는 베트남 해안 지방의 회 샐러드.", ja: "新鮮な白身魚をライム・砂糖・ナンプラーで和え、ピーナッツ・ハーブ・バナナの花と共に出すベトナム沿岸のゴイ(刺身サラダ)。", en: "A Vietnamese coastal raw-fish salad: white fish dressed in lime, sugar, and fish sauce, then finished with crushed peanuts, herbs, and banana blossom." },
+            ingredients: { ko: ["흰살 생선", "라임", "설탕", "피쉬소스", "땅콩", "허브", "바나나꽃"], ja: ["白身魚", "ライム", "砂糖", "ナンプラー", "ピーナッツ", "ハーブ", "バナナの花"], en: ["White fish", "Lime", "Sugar", "Fish sauce", "Peanuts", "Herbs", "Banana blossom"] },
+            similarityPercent: 76,
+            matchReason: { ko: "생선+산미+단맛+허브의 균형 감각이 한국 회무침과 같은 선상에 있어요. 땅콩의 고소함이 더해지며 식감에 포인트가 생기는 정도의 차이.", ja: "魚+酸味+甘味+ハーブのバランス感覚がフェムチムと同じライン上にあります。ピーナッツの香ばしさで食感にアクセントが加わる程度の違い。", en: "The balance of fish + acid + sweetness + herbs runs parallel to hoemuchim. Crushed peanuts add a textural flourish — the main point of divergence." }
+          },
+          JP: {
+            name: { ko: "아지노 타타키", ja: "鯵のたたき", en: "Aji no Tataki" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 80, sour: 35 },
+            description: { ko: "신선한 전갱이를 잘게 두드려 다진 뒤 생강·파·차조기와 간장·식초로 무치는 일본식 회 무침. 규슈·시코쿠 해안 지방의 여름 별미.", ja: "新鮮な鯵を包丁で叩き、生姜・ねぎ・大葉と一緒に醤油と酢で和える九州・四国沿岸の夏の郷土料理。", en: "A Kyushu and Shikoku coastal summer favorite: fresh mackerel minced with a knife, then dressed with ginger, scallion, shiso, soy, and rice vinegar." },
+            ingredients: { ko: ["전갱이", "생강", "파", "차조기", "간장", "식초"], ja: ["鯵", "生姜", "ねぎ", "大葉", "醤油", "酢"], en: ["Horse mackerel", "Ginger", "Scallion", "Shiso", "Soy sauce", "Vinegar"] },
+            similarityPercent: 72,
+            matchReason: { ko: "생선살을 잘게 손질해 산미 있는 양념에 버무려 즉석에서 내는 구조가 똑같아요. 한국은 고추장으로 단맛·매운맛을 동시에, 일본은 간장·식초로 맑은 결을 살려요.", ja: "魚の身を細かく仕立て、酸味のある調味料で即席に和える構造が同じ。韓国はコチュジャンで甘辛を同時に、日本は醤油と酢で澄んだ味わいを活かします。", en: "Shared format: finely worked raw fish dressed on the spot with acid. Korea lets gochujang deliver sweet and spice together; Japan keeps a clean line with soy and vinegar." }
+          },
+          ES: {
+            name: { ko: "보께로네스 엔 비나그레", ja: "ボケロネス・エン・ビナグレ", en: "Boquerones en Vinagre" },
+            tasteProfile: { sweet: 5, salty: 60, spicy: 5, umami: 75, sour: 80 },
+            description: { ko: "신선한 안초비를 셰리 식초와 올리브오일·마늘·파슬리에 절여 상큼하게 내는 스페인 안달루시아 지방의 타파스 고전.", ja: "生のアンチョビをシェリー酢とオリーブオイル・にんにく・パセリに漬ける、スペイン・アンダルシアの定番タパス。", en: "A classic Andalusian tapa: fresh anchovies cured in sherry vinegar with olive oil, garlic, and parsley — bright and briny." },
+            ingredients: { ko: ["안초비", "셰리 식초", "올리브오일", "마늘", "파슬리", "소금"], ja: ["アンチョビ", "シェリー酢", "オリーブオイル", "にんにく", "パセリ", "塩"], en: ["Anchovies", "Sherry vinegar", "Olive oil", "Garlic", "Parsley", "Salt"] },
+            similarityPercent: 70,
+            matchReason: { ko: "생선을 식초에 절여 단백질을 부드럽게 익히고 산미를 입히는 기법이 동일해요. 막걸리 식초 대 셰리 식초라는 '지역 식초' 선택의 차이가 개성을 만들어요.", ja: "魚を酢で締めてタンパク質を柔らかくしつつ酸味をまとわせる技法が同じ。マッコリ酢かシェリー酢か、という『地域の酢』の違いが個性を分けます。", en: "Same technique — acid softens the fish while layering a bright tartness. The local vinegar choice (makgeolli vs. sherry) becomes the regional signature." }
+          },
+          IT: {
+            name: { ko: "크루도 디 페셰 콘 리모네", ja: "クルード・ディ・ペシェ", en: "Crudo di Pesce" },
+            tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 80, sour: 55 },
+            description: { ko: "시칠리아·리구리아 해안의 신선한 생선을 얇게 저며 레몬즙·올리브오일·굵은 소금·후추만으로 마무리하는 이탈리아 날생선 요리.", ja: "シチリア・リグーリアの新鮮な魚を薄くスライスし、レモン汁・オリーブオイル・粗塩・胡椒だけで仕上げるイタリアの生魚料理。", en: "A coastal Italian raw-fish preparation: paper-thin slices of Sicilian or Ligurian fish, dressed with lemon juice, olive oil, sea salt, and pepper." },
+            ingredients: { ko: ["흰살 생선", "레몬즙", "올리브오일", "소금", "후추", "케이퍼"], ja: ["白身魚", "レモン汁", "オリーブオイル", "塩", "胡椒", "ケッパー"], en: ["White fish", "Lemon juice", "Olive oil", "Salt", "Pepper", "Capers"] },
+            similarityPercent: 66,
+            matchReason: { ko: "날생선에 산미와 오일을 더해 생의 풍미를 그대로 끌어내는 해안 요리라는 결이 같아요. 한국은 고추장의 발효 단맛을 얹는 반면, 이탈리아는 오일과 소금으로 극도의 미니멀리즘.", ja: "生魚に酸味とオイルを添えて素材感を引き出す沿岸料理という点で一致。韓国はコチュジャンの発酵甘みを乗せるのに対し、イタリアは油と塩で極端にミニマル。", en: "Both are coastal raw-fish plates that layer acid and oil to foreground the fish's natural flavor. Korea adds gochujang's fermented sweetness; Italy keeps it severely minimal with oil and salt." }
+          },
+          FR: {
+            name: { ko: "타르타르 드 푸아송", ja: "タルタル・ド・ポワソン", en: "Tartare de Poisson" },
+            tasteProfile: { sweet: 5, salty: 55, spicy: 10, umami: 75, sour: 50 },
+            description: { ko: "참치·연어·도미를 깍둑 썰어 샬롯·케이퍼·레몬·올리브오일로 버무리는 프랑스 비스트로의 고전 날생선 요리.", ja: "マグロやサーモン、鯛を角切りにしてエシャロット・ケッパー・レモン・オリーブオイルで和えるフランス・ビストロ定番の生魚料理。", en: "A French bistro classic: diced tuna, salmon, or sea bream tossed with shallot, capers, lemon, and olive oil." },
+            ingredients: { ko: ["참치/연어", "샬롯", "케이퍼", "레몬", "올리브오일", "허브"], ja: ["マグロ/サーモン", "エシャロット", "ケッパー", "レモン", "オリーブオイル", "ハーブ"], en: ["Tuna/Salmon", "Shallot", "Capers", "Lemon", "Olive oil", "Herbs"] },
+            similarityPercent: 64,
+            matchReason: { ko: "생선을 작게 손질해 산미·향신 양념에 버무려 내는 즉석 조리 구조가 같아요. 프랑스는 샬롯·케이퍼로 섬세함을, 한국은 고추장·깨로 강렬함을 살려요.", ja: "魚を小さくカットし、酸味と香味調味料で和える即席料理構造が同じ。フランスはエシャロット・ケッパーで繊細に、韓国はコチュジャン・胡麻で力強く仕上げます。", en: "Same on-the-spot format — finely cut raw fish tossed with acid and aromatics. France leans into delicate shallot and capers; Korea goes bold with gochujang and sesame." }
+          }
+        }
       },
       {
         id: "yeosu-jangeo-tang",
-        name: { ko: "여수 장어탕", ja: "여수 장어탕", en: "여수 장어탕" },
+        name: { ko: "여수 장어탕", ja: "麗水のウナギ汁（チャンオタン）", en: "Yeosu Jangeo-Tang (Eel Soup)" },
         region: "yeosu",
         tasteProfile: { sweet: 10, salty: 55, spicy: 45, umami: 80, sour: 5 },
         storyDescription: {
           ko: "여수 하동 장어를 뼈째 고아 우거지와 함께 끓인 보양탕. 진한 국물에 방아잎 향이 은근히 퍼지며 숟가락을 놓을 수 없는 감칠맛을 내요.",
-          ja: "여수 하동 장어를 뼈째 고아 우거지와 함께 끓인 보양탕. 진한 국물에 방아잎 향이 은근히 퍼지며 숟가락을 놓을 수 없는 감칠맛을 내요.",
-          en: "여수 하동 장어를 뼈째 고아 우거지와 함께 끓인 보양탕. 진한 국물에 방아잎 향이 은근히 퍼지며 숟가락을 놓을 수 없는 감칠맛을 내요."
+          ja: "麗水・河東のウナギを骨ごと煮込み、白菜の外葉(ウゴジ)と一緒にじっくり煮る滋養スープ。濃厚な出汁にカワミドリの葉の香りがふわりと広がり、スプーンが止まりません。",
+          en: "A Yeosu restorative soup: local Hadong eel simmered whole, bones and all, together with outer cabbage leaves. The rich broth carries a whisper of Korean mint (bangah), turning the umami unstoppable."
         },
         ingredients: {
           ko: ["장어", "우거지", "된장", "고추장", "방아잎", "대파", "마늘"],
-          ja: ["장어", "우거지", "된장", "고추장", "방아잎", "대파", "마늘"],
-          en: ["장어", "우거지", "된장", "고추장", "방아잎", "대파", "마늘"]
+          ja: ["ウナギ", "白菜の外葉", "味噌(テンジャン)", "コチュジャン", "カワミドリの葉", "長ねぎ", "にんにく"],
+          en: ["Eel", "Outer cabbage leaves", "Doenjang miso", "Gochujang", "Korean mint (bangah)", "Scallion", "Garlic"]
         },
         tags: ["장어", "보양", "뚝배기"],
-        dupes: {}
+        dupes: {
+          VN: {
+            name: { ko: "라우 르언 (베트남식 장어 전골)", ja: "ラウ・ルオン", en: "Lẩu Lươn" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 40, umami: 80, sour: 20 },
+            description: { ko: "장어를 뼈째 푹 끓여 농축한 육수에 타마린드·레몬그라스·칠리를 넣어 시원하고 매콤하게 먹는 베트남 북부·중부 장어 전골.", ja: "ウナギを骨ごとじっくり煮出した濃厚な出汁にタマリンド・レモングラス・唐辛子を加えて、すっきりと辛味のあるベトナム北部・中部のウナギ鍋。", en: "Northern/central Vietnamese eel hot pot: eel simmered bone-in to build a dense broth, brightened with tamarind, lemongrass, and chili." },
+            ingredients: { ko: ["장어", "레몬그라스", "타마린드", "갈랑갈", "고추", "허브"], ja: ["ウナギ", "レモングラス", "タマリンド", "ガランガル", "唐辛子", "ハーブ"], en: ["Eel", "Lemongrass", "Tamarind", "Galangal", "Chili", "Herbs"] },
+            similarityPercent: 86,
+            matchReason: { ko: "'장어를 통째로 고아 농축한 보양 국물'이라는 핵심이 일치. 한국은 된장·방아잎으로 무게감을, 베트남은 타마린드·레몬그라스로 산뜻함을 더한 방향의 차이뿐.", ja: "『ウナギを丸ごと煮出して濃縮した滋養スープ』という核心が一致。韓国は味噌とカワミドリで重厚感を、ベトナムはタマリンド・レモングラスで爽やかさを加える方向の違いだけ。", en: "Identical core: a restorative broth built by simmering the whole eel. Korea grounds it with doenjang and mint; Vietnam lifts it with tamarind and lemongrass." }
+          },
+          FR: {
+            name: { ko: "부이예뛰르 당귀으 (루아르식 장어 스튜)", ja: "ブイユチュール・ダンギーユ", en: "Bouilleture d'Anguille" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 80, sour: 30 },
+            description: { ko: "루아르 강 유역에서 장어를 자르고 레드와인·양파·허브에 푹 졸여 낸 프랑스의 가정식 장어 스튜. 뼈에서 녹아 나온 콜라겐이 국물을 묵직하게 만들어요.", ja: "ロワール川流域で、ぶつ切りのウナギを赤ワイン・玉ねぎ・ハーブでコトコト煮込むフランスの家庭料理。骨から溶け出したコラーゲンが汁にコクを与えます。", en: "A Loire Valley home stew: eel cut into segments and braised in red wine, onion, and herbs until the bones release collagen into a glossy broth." },
+            ingredients: { ko: ["장어", "레드와인", "양파", "월계수", "타임", "버터", "밀가루"], ja: ["ウナギ", "赤ワイン", "玉ねぎ", "月桂樹", "タイム", "バター", "小麦粉"], en: ["Eel", "Red wine", "Onion", "Bay leaf", "Thyme", "Butter", "Flour"] },
+            similarityPercent: 78,
+            matchReason: { ko: "장어 뼈에서 콜라겐을 우려내 걸쭉한 보양 국물로 만드는 조리 방식이 쌍둥이예요. 된장이 와인으로 치환되고 방아잎이 월계수·타임으로 교차할 뿐.", ja: "ウナギの骨からコラーゲンを引き出してとろりとした滋養スープに仕立てる調理法が双子。味噌をワインに、カワミドリを月桂樹やタイムに置き換えた姿。", en: "Twin cooking method: pull collagen from eel bones to build a thick, nourishing liquid. Doenjang is swapped for red wine; bangah becomes bay leaf and thyme." }
+          },
+          CN: {
+            name: { ko: "황산 뱀장어탕 (黃鱔湯)", ja: "ホワンシャンタン", en: "Huáng Shàn Tāng (Rice-Field Eel Soup)" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 85, sour: 5 },
+            description: { ko: "논뱀장어(황선)를 생강·후추·구기자와 함께 푹 끓인 중국 강남·쓰촨 지방의 보양탕. 몸을 덥히는 약재를 넣어 겨울 보양식으로 통해요.", ja: "田ウナギ(黄鱔)を生姜・胡椒・クコの実と一緒にじっくり煮込む、中国江南・四川地方の滋養スープ。体を温める生薬を合わせ冬の補養食として重宝されます。", en: "A Jiangnan and Sichuan warming broth: paddy eel simmered with ginger, pepper, and goji berries. Winter tonic territory, with medicinal herbs threaded through." },
+            ingredients: { ko: ["논뱀장어", "생강", "흰 후추", "구기자", "당귀", "대파"], ja: ["田ウナギ", "生姜", "白胡椒", "クコの実", "当帰", "長ねぎ"], en: ["Paddy eel", "Ginger", "White pepper", "Goji berry", "Dang gui", "Scallion"] },
+            similarityPercent: 80,
+            matchReason: { ko: "'장어를 약재와 함께 오래 끓여 보양'이라는 동아시아 공통 문법을 따르고, 몸에 열을 넣어주는 목적과 양념 레이어까지 서로 겹쳐요.", ja: "『ウナギを生薬と共に長時間煮て滋養にする』という東アジア共通文法に従い、体を温める目的と調味レイヤーまで重なります。", en: "Both follow the East Asian tonic grammar of 'slow-simmer eel with medicinal herbs.' The warming intent and layered seasoning profile line up neatly." }
+          },
+          JP: {
+            name: { ko: "야나가와 나베 (붕장어·우엉 전골)", ja: "柳川鍋", en: "Yanagawa-Nabe" },
+            tasteProfile: { sweet: 25, salty: 60, spicy: 5, umami: 80, sour: 5 },
+            description: { ko: "미꾸라지나 작은 붕장어를 우엉과 함께 간장·미림 국물에 얹어 달걀을 풀어 끓이는 에도 시대 이래의 일본 전통 보양 전골.", ja: "どじょうや小さな穴子をごぼうと共に醤油・みりんの汁で煮て、卵でとじる江戸時代以来の日本伝統の滋養鍋。", en: "An Edo-era Japanese one-pot: loach or small conger eel simmered with burdock in a soy-mirin broth, finished with beaten egg." },
+            ingredients: { ko: ["미꾸라지/붕장어", "우엉", "간장", "미림", "달걀", "쪽파"], ja: ["どじょう/穴子", "ごぼう", "醤油", "みりん", "卵", "小ねぎ"], en: ["Loach/conger eel", "Burdock", "Soy sauce", "Mirin", "Egg", "Scallion"] },
+            similarityPercent: 72,
+            matchReason: { ko: "민물·해안 장어류를 뿌리채소와 끓여 '여름·겨울 보양탕'으로 즐기는 동아시아 전통이 맞닿아 있어요. 우엉·달걀이 우거지·방아잎을 대신할 뿐.", ja: "淡水や沿岸のウナギ類を根菜と煮込み『夏・冬の滋養鍋』として楽しむ東アジア伝統が共通。ごぼうと卵が白菜の外葉とカワミドリの葉を置き換えた姿。", en: "Both reflect the East Asian tradition of cooking eels with roots for seasonal tonic. Burdock and egg stand in for outer cabbage leaves and bangah mint." }
+          },
+          IT: {
+            name: { ko: "앙귈라 인 우미도 (토스카나식 장어 스튜)", ja: "アンギッラ・イン・ウミド", en: "Anguilla in Umido" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 75, sour: 30 },
+            description: { ko: "토스카나·베네토 지방에서 장어를 토마토·화이트와인·마늘·로즈마리와 함께 약한 불로 졸여 뼈까지 부드럽게 하는 이탈리아식 장어 찜.", ja: "トスカーナやベネト地方でウナギをトマト・白ワイン・にんにく・ローズマリーと弱火で煮込み、骨まで柔らかく仕上げるイタリア式ウナギの煮込み。", en: "A Tuscan and Veneto braise: eel simmered gently with tomato, white wine, garlic, and rosemary until the bones soften into the sauce." },
+            ingredients: { ko: ["장어", "토마토", "화이트와인", "마늘", "로즈마리", "올리브오일"], ja: ["ウナギ", "トマト", "白ワイン", "にんにく", "ローズマリー", "オリーブオイル"], en: ["Eel", "Tomato", "White wine", "Garlic", "Rosemary", "Olive oil"] },
+            similarityPercent: 70,
+            matchReason: { ko: "'장어를 진한 국물에 오래 졸여 뼈까지 연하게 만든다'는 전통 기법이 같아요. 된장을 토마토와 와인으로 치환한 지중해식 변주로 읽으면 자매 요리.", ja: "『ウナギを濃厚な出汁で長時間煮込み、骨まで柔らかくする』伝統技法が共通。味噌をトマトとワインに置き換えた地中海バージョンと読める姉妹料理。", en: "Same old technique — slow-braise eel until even the bones yield. Read it as a Mediterranean rewrite where doenjang is swapped for tomato and wine." }
+          },
+          ES: {
+            name: { ko: "칼데레타 데 앙귈라 (장어 칼데레타)", ja: "カルデレータ・デ・アンギラ", en: "Caldereta de Anguila" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 30, umami: 80, sour: 20 },
+            description: { ko: "발렌시아 알부페라 호수 지역의 어부가 통째로 잡은 장어와 쌀·파프리카·마늘을 한 냄비에 끓여 내는 전통 장어 스튜.", ja: "バレンシア・アルブフェラ湖の漁師が丸ごと獲ったウナギに米・パプリカ・にんにくを加え、一つの鍋で煮込む伝統ウナギシチュー。", en: "A Valencian Albufera fisherman's stew: whole eel simmered with rice, paprika, and garlic in a single pot over open flame." },
+            ingredients: { ko: ["장어", "쌀", "파프리카", "마늘", "토마토", "올리브오일"], ja: ["ウナギ", "米", "パプリカ", "にんにく", "トマト", "オリーブオイル"], en: ["Eel", "Rice", "Paprika", "Garlic", "Tomato", "Olive oil"] },
+            similarityPercent: 72,
+            matchReason: { ko: "'어부의 한 냄비 보양 요리'라는 문법이 똑같아요. 한국은 국물을 진하게 남기고 밥을 따로 낸다면, 스페인은 쌀을 함께 넣어 한 그릇에 완성해요.", ja: "『漁師のワンポット滋養料理』という文法が同じ。韓国はスープを濃く残してご飯を別に添えるのに対し、スペインは米を一緒に炊き込んで一皿で完成させます。", en: "Both live in the 'fisherman's one-pot tonic' genre. Korea keeps the broth rich and serves rice on the side; Spain folds the rice in and finishes everything together." }
+          },
+          TH: {
+            name: { ko: "깽 쁠라 라이 (태국식 장어 카레)", ja: "ゲーン・プラー・ライ", en: "Gaeng Pla Lai" },
+            tasteProfile: { sweet: 15, salty: 60, spicy: 60, umami: 80, sour: 15 },
+            description: { ko: "민물 장어를 코코넛 밀크나 투명 카레 베이스에 갈랑갈·레몬그라스·홀리바질과 함께 끓이는 태국 농촌식 장어탕.", ja: "淡水ウナギをココナッツミルクまたは透明カレーベースに、ガランガル・レモングラス・ホーリーバジルと一緒に煮込むタイの農村スタイル。", en: "A rural Thai curry-soup: freshwater eel simmered in coconut or clear curry, with galangal, lemongrass, and holy basil layered in." },
+            ingredients: { ko: ["민물 장어", "갈랑갈", "레몬그라스", "홀리바질", "고추", "피쉬소스"], ja: ["淡水ウナギ", "ガランガル", "レモングラス", "ホーリーバジル", "唐辛子", "ナンプラー"], en: ["Freshwater eel", "Galangal", "Lemongrass", "Holy basil", "Chili", "Fish sauce"] },
+            similarityPercent: 66,
+            matchReason: { ko: "장어에 허브 향(방아잎↔홀리바질)을 입혀 보양 국물로 완성하는 감각이 같아요. 매운맛 강도와 허브 향의 결이 살짝 다를 뿐.", ja: "ウナギにハーブの香り(カワミドリ↔ホーリーバジル)をまとわせて滋養スープに仕上げる感覚が同じ。辛味の強度とハーブの方向性が少し違うだけ。", en: "Both wrap eel in a herb-forward broth — bangah mint vs. holy basil. Only the chili intensity and herbal direction drift slightly apart." }
+          }
+        }
       },
       {
         id: "yeosu-gejang-baekban",
-        name: { ko: "여수 게장백반", ja: "여수 게장백반", en: "여수 게장백반" },
+        name: { ko: "여수 게장백반", ja: "麗水カンジャンケジャン定食", en: "Yeosu Gejang Baekban (Soy-Marinated Crab Set)" },
         region: "yeosu",
         tasteProfile: { sweet: 20, salty: 65, spicy: 50, umami: 80, sour: 20 },
         storyDescription: {
           ko: "남해 꽃게·돌게를 간장에 숙성시켜 냉장고 속에서 며칠 잠재운 뒤, 따끈한 밥에 등딱지째 올려 비벼 먹는 상차림. '밥도둑'이라는 별명이 괜히 붙은 게 아니에요.",
-          ja: "남해 꽃게·돌게를 간장에 숙성시켜 냉장고 속에서 며칠 잠재운 뒤, 따끈한 밥에 등딱지째 올려 비벼 먹는 상차림. '밥도둑'이라는 별명이 괜히 붙은 게 아니에요.",
-          en: "남해 꽃게·돌게를 간장에 숙성시켜 냉장고 속에서 며칠 잠재운 뒤, 따끈한 밥에 등딱지째 올려 비벼 먹는 상차림. '밥도둑'이라는 별명이 괜히 붙은 게 아니에요."
+          ja: "南海の渡り蟹・石蟹を醤油だれで数日間熟成させ、熱々ご飯に甲羅ごと乗せて混ぜて食べる定食。『ご飯泥棒』というあだ名は伊達ではありません。",
+          en: "Southern-sea blue crab and rock crab marinated in soy sauce, rested for days in the fridge, then heaped over steaming rice — shell and all — for mixing. No wonder Koreans nickname it 'the rice thief.'"
         },
         ingredients: {
           ko: ["꽃게", "돌게", "간장", "마늘", "생강", "양파", "청양고추"],
-          ja: ["꽃게", "돌게", "간장", "마늘", "생강", "양파", "청양고추"],
-          en: ["꽃게", "돌게", "간장", "마늘", "생강", "양파", "청양고추"]
+          ja: ["渡り蟹", "石蟹", "醤油", "にんにく", "生姜", "玉ねぎ", "青唐辛子"],
+          en: ["Blue crab", "Rock crab", "Soy sauce", "Garlic", "Ginger", "Onion", "Cheongyang chili"]
         },
         tags: ["게장", "밥도둑", "백반"],
-        dupes: {}
+        dupes: {
+          CN: {
+            name: { ko: "쭈이시에 (醉蟹, 중국식 술 게장)", ja: "酔蟹", en: "Zuì Xiè (Drunken Crab)" },
+            tasteProfile: { sweet: 15, salty: 60, spicy: 10, umami: 80, sour: 15 },
+            description: { ko: "살아 있는 민물게(털게 혹은 꽃게)를 소흥주·간장·생강·설탕에 며칠 담가 숙성시키는 강남 지방의 전통 요리. 게장의 직접적 뿌리로 여겨져요.", ja: "生きた淡水ガニ(毛蟹や渡り蟹)を紹興酒・醤油・生姜・砂糖に数日漬けて熟成させる江南地方の伝統料理。ケジャンの直接のルーツとされます。", en: "A Jiangnan tradition: live freshwater crab (hairy or blue) steeped for days in Shaoxing wine, soy sauce, ginger, and sugar — widely considered the direct ancestor of gejang." },
+            ingredients: { ko: ["민물게", "소흥주", "간장", "생강", "설탕", "팔각"], ja: ["淡水ガニ", "紹興酒", "醤油", "生姜", "砂糖", "八角"], en: ["Freshwater crab", "Shaoxing wine", "Soy sauce", "Ginger", "Sugar", "Star anise"] },
+            similarityPercent: 88,
+            matchReason: { ko: "'생게를 간장 베이스에 장기 숙성시켜 날것으로 즐긴다'는 핵심이 거의 같아요. 소흥주를 추가해 향을 올리는 차이 정도이며, 역사적으로는 조선시대 게장의 원형으로 여겨져요.", ja: "『生蟹を醤油ベースで長期熟成させて生のまま味わう』核心がほぼ同じ。紹興酒を加えて香りを乗せる違い程度で、歴史的には朝鮮時代のケジャンの原型とされます。", en: "Near-identical core: live crab cured for days in a soy-based marinade and eaten raw. Shaoxing wine adds aromatic depth; historically it's regarded as the direct prototype for Joseon-era gejang." }
+          },
+          JP: {
+            name: { ko: "카니노 쇼유즈케", ja: "蟹の醤油漬け", en: "Kani no Shoyu-zuke" },
+            tasteProfile: { sweet: 10, salty: 70, spicy: 5, umami: 85, sour: 10 },
+            description: { ko: "홋카이도·토호쿠 지방의 어부들이 털게나 대게를 잘라 간장·다시마·미림에 절여 숙성시키는 일본식 게 간장 절임. 뜨거운 밥에 올려 먹어요.", ja: "北海道や東北地方の漁師たちが毛蟹やズワイガニを切って醤油・昆布・みりんに漬ける日本式カニの醤油漬け。熱いご飯に乗せていただきます。", en: "A Hokkaido/Tohoku fisherman's preparation: hair crab or snow crab chopped and marinated in soy, kombu, and mirin until it reaches a silky, ready-to-rice state." },
+            ingredients: { ko: ["털게/대게", "간장", "다시마", "미림", "생강", "청주"], ja: ["毛蟹/ズワイガニ", "醤油", "昆布", "みりん", "生姜", "日本酒"], en: ["Hair/Snow crab", "Soy sauce", "Kombu", "Mirin", "Ginger", "Sake"] },
+            similarityPercent: 82,
+            matchReason: { ko: "'간장 베이스 양념으로 게를 숙성시켜 밥 반찬으로 먹는' 큰 그림이 동일해요. 다시마·미림으로 단맛을 잡느냐, 청양고추로 매운맛을 올리느냐의 갈림길.", ja: "『醤油ベースの漬け汁で蟹を熟成させ、ご飯のお供として食べる』大枠が同じ。昆布とみりんで甘味を整えるか、青唐辛子で辛味を立てるかの分岐。", en: "Same blueprint: cure crab in a soy-based marinade, serve over rice. The fork is kombu/mirin softness vs. Cheongyang chili heat." }
+          },
+          TH: {
+            name: { ko: "뿌 쁠라라 / 뿌 돔 (태국식 염장 게)", ja: "プー・ドーン", en: "Pu Dong (Salted Raw Crab)" },
+            tasteProfile: { sweet: 10, salty: 75, spicy: 55, umami: 80, sour: 30 },
+            description: { ko: "작은 민물게를 소금물에 절여 날것으로 숙성시킨 뒤 라임·고추·피쉬소스로 무쳐 쏨땀(파파야 샐러드)에 넣는 이싼 지방의 전통 절임.", ja: "小さな淡水ガニを塩水で漬けて生のまま熟成させ、ライム・唐辛子・ナンプラーで和えてソムタムに混ぜるイサーン地方の発酵食材。", en: "A fermented condiment from Isaan: tiny freshwater crabs cured raw in brine, then dressed with lime, chili, and fish sauce — often stirred into som tam." },
+            ingredients: { ko: ["민물게", "소금", "라임", "피쉬소스", "고추", "마늘"], ja: ["淡水ガニ", "塩", "ライム", "ナンプラー", "唐辛子", "にんにく"], en: ["Freshwater crab", "Salt", "Lime", "Fish sauce", "Chili", "Garlic"] },
+            similarityPercent: 74,
+            matchReason: { ko: "'생 게를 염장해 숙성시켜 밥·샐러드 양념으로 쓴다'는 발상이 같아요. 한국은 간장 기반, 태국은 소금·피쉬소스·라임 기반이라는 지역 저장법의 차이.", ja: "『生蟹を塩漬け発酵させてご飯やサラダの調味素材として使う』発想が同じ。韓国は醤油ベース、タイは塩・ナンプラー・ライムベースという地域保存法の違い。", en: "Same idea — raw crab cured to become a flavor booster for rice or salad. Korea uses a soy-based brine; Thailand anchors on salt, fish sauce, and lime." }
+          },
+          VN: {
+            name: { ko: "꾸어 응엄 느억 맘 (베트남식 느억맘 게절임)", ja: "クア・ガム・ヌクマム", en: "Cua Ngâm Nước Mắm" },
+            tasteProfile: { sweet: 20, salty: 70, spicy: 40, umami: 85, sour: 20 },
+            description: { ko: "남부 베트남 해안에서 꽃게를 느억맘·설탕·마늘·레몬그라스 양념에 며칠 재워 먹는 발효 게 절임. 흰쌀밥과 곁들여요.", ja: "ベトナム南部沿岸で渡り蟹をヌクマム・砂糖・にんにく・レモングラスに数日漬け込む発酵カニの漬け物。白ご飯と一緒に食べます。", en: "Southern Vietnamese coastal cure: blue crab steeped for days in a fish sauce, sugar, garlic, and lemongrass marinade. Served with white rice." },
+            ingredients: { ko: ["꽃게", "느억맘", "설탕", "마늘", "레몬그라스", "고추"], ja: ["渡り蟹", "ヌクマム", "砂糖", "にんにく", "レモングラス", "唐辛子"], en: ["Blue crab", "Fish sauce", "Sugar", "Garlic", "Lemongrass", "Chili"] },
+            similarityPercent: 78,
+            matchReason: { ko: "발효된 짠 소스로 생 게를 숙성시켜 밥에 얹어 먹는 공식이 같아요. 발효 소스가 간장이냐 느억맘이냐, 향신료가 마늘·고추냐 레몬그라스냐의 차이만.", ja: "発酵させた塩ソースで生蟹を熟成させてご飯に乗せる公式が同じ。発酵ソースが醤油かヌクマムか、香味料がにんにく・唐辛子かレモングラスか、の違いだけ。", en: "Shared formula: cure raw crab in a fermented salt sauce and eat it over rice. Only the ferment source (soy vs. fish sauce) and aromatic lane (garlic-chili vs. lemongrass) differ." }
+          },
+          IT: {
+            name: { ko: "그란치오 마리나토 (이탈리아식 마리네이드 게)", ja: "グランキオ・マリナート", en: "Granchio Marinato" },
+            tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 70, sour: 60 },
+            description: { ko: "베네토·시칠리아 해안에서 조그만 게를 화이트와인·올리브오일·레몬·마늘·허브에 재워 냉장 숙성시키는 이탈리아식 날생선 마리네이드.", ja: "ベネトやシチリアの沿岸で小さな蟹を白ワイン・オリーブオイル・レモン・にんにく・ハーブに漬け込み冷蔵熟成させるイタリア式マリネ。", en: "A Veneto and Sicily coastal preparation: small crabs marinated raw in white wine, olive oil, lemon, garlic, and herbs — rested cold until tender." },
+            ingredients: { ko: ["작은 게", "화이트와인", "올리브오일", "레몬", "마늘", "파슬리"], ja: ["小蟹", "白ワイン", "オリーブオイル", "レモン", "にんにく", "パセリ"], en: ["Small crab", "White wine", "Olive oil", "Lemon", "Garlic", "Parsley"] },
+            similarityPercent: 66,
+            matchReason: { ko: "생 게를 산·향신·알코올이 든 양념에 장시간 재워 '익히지 않고 숙성'시킨다는 기법이 같아요. 간장 문화권/지중해 문화권의 차이가 양념의 결을 가릅니다.", ja: "生蟹を酸・香味・アルコールを含む漬け汁に長時間漬けて『火を通さず熟成』させる技法が同じ。醤油文化圏と地中海文化圏の差が漬け汁の方向性を分けます。", en: "Same technique — cure raw crab in an acid-aromatic-alcohol bath without cooking. The soy-culture vs. Mediterranean cultural split shapes the seasoning lane." }
+          },
+          US: {
+            name: { ko: "체서피크 피클드 크랩 (메릴랜드 블루크랩 절임)", ja: "チェサピーク・ピクルドクラブ", en: "Chesapeake Pickled Crab" },
+            tasteProfile: { sweet: 15, salty: 65, spicy: 40, umami: 75, sour: 55 },
+            description: { ko: "미국 동부 체서피크 만에서 블루크랩을 식초·머스터드·올드베이 향신료에 절여 냉장 숙성시키는 미국 남부 해안 지방의 절임 요리.", ja: "米国東海岸のチェサピーク湾でブルークラブを酢・マスタード・オールドベイスパイスに漬け込み冷蔵熟成させる南部沿岸のピクルス。", en: "A Chesapeake Bay classic: blue crab pickled in vinegar, mustard, and Old Bay spice blend, then rested cold until the flavors meld." },
+            ingredients: { ko: ["블루크랩", "사과식초", "머스터드", "올드베이", "설탕", "셀러리씨"], ja: ["ブルークラブ", "リンゴ酢", "マスタード", "オールドベイ", "砂糖", "セロリシード"], en: ["Blue crab", "Apple cider vinegar", "Mustard", "Old Bay", "Sugar", "Celery seed"] },
+            similarityPercent: 60,
+            matchReason: { ko: "블루크랩(꽃게)을 절임 양념에 장기간 보관해 밥·빵에 곁들인다는 맥락은 같아요. 간장 대신 식초·머스터드가 중심이 되어 방향이 크게 갈립니다.", ja: "ブルークラブを漬け汁で長期保存して主食に添える文脈は同じ。醤油の代わりに酢とマスタードが中心となり方向性が大きく分かれます。", en: "Same cultural role — long-cured blue crab served alongside a starch. The acid-mustard base sends the flavor in a notably different direction than soy-fermented gejang." }
+          },
+          MX: {
+            name: { ko: "세비체 데 캉그레호", ja: "セビーチェ・デ・カングレホ", en: "Ceviche de Cangrejo" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 50, umami: 70, sour: 80 },
+            description: { ko: "멕시코 유카탄 해안에서 살아 있는 게살을 라임즙·토마토·할라페뇨·고수에 절여 토스타다 위에 올려 먹는 해산물 세비체.", ja: "メキシコ・ユカタン海岸で生きたカニの身をライム汁・トマト・ハラペーニョ・パクチーで締めてトスタダに乗せるシーフード・セビーチェ。", en: "A Yucatán coastal ceviche: live crab meat cured in lime juice with tomato, jalapeño, and cilantro, piled onto crispy tostadas." },
+            ingredients: { ko: ["게살", "라임즙", "토마토", "할라페뇨", "고수", "양파"], ja: ["カニ身", "ライム汁", "トマト", "ハラペーニョ", "パクチー", "玉ねぎ"], en: ["Crab meat", "Lime juice", "Tomato", "Jalapeño", "Cilantro", "Onion"] },
+            similarityPercent: 62,
+            matchReason: { ko: "'생 게살을 산미에 절여 주식과 함께 먹는다'는 콘셉트가 직결돼요. 간장이 라임으로, 청양고추가 할라페뇨로 옮겨간 형태.", ja: "『生蟹の身を酸味で締めて主食と共に食べる』コンセプトが直結。醤油がライム、青唐辛子がハラペーニョに置き換わった姿。", en: "Direct parallel: raw crab meat cured with acid and eaten with a starch. Soy gives way to lime, Cheongyang chili yields to jalapeño." }
+          }
+        }
       },
       {
         id: "yeosu-gul-yori",
-        name: { ko: "여수 굴요리", ja: "여수 굴요리", en: "여수 굴요리" },
+        name: { ko: "여수 굴요리", ja: "麗水の牡蠣料理", en: "Yeosu Oyster Dishes" },
         region: "yeosu",
         tasteProfile: { sweet: 15, salty: 60, spicy: 20, umami: 85, sour: 10 },
         storyDescription: {
           ko: "가막만에서 자란 통통한 굴을 구이·전·국으로 즐기는 겨울철 별미. 한 입 물면 바닷물 머금은 크리미한 풍미가 혀에 확 번져요.",
-          ja: "가막만에서 자란 통통한 굴을 구이·전·국으로 즐기는 겨울철 별미. 한 입 물면 바닷물 머금은 크리미한 풍미가 혀에 확 번져요.",
-          en: "가막만에서 자란 통통한 굴을 구이·전·국으로 즐기는 겨울철 별미. 한 입 물면 바닷물 머금은 크리미한 풍미가 혀에 확 번져요."
+          ja: "加莫湾で育った肉厚の牡蠣を焼き・チヂミ・スープで楽しむ冬の味覚。口に入れると、海水をたっぷり含んだクリーミーな風味が広がります。",
+          en: "Plump oysters from Gamak Bay turned into grilled oysters, oyster pancakes, and briny oyster stew — a winter treat. One bite releases a creamy sea-salt wave on the tongue."
         },
         ingredients: {
           ko: ["굴", "밀가루", "달걀", "부추", "쪽파", "고춧가루", "참기름"],
-          ja: ["굴", "밀가루", "달걀", "부추", "쪽파", "고춧가루", "참기름"],
-          en: ["굴", "밀가루", "달걀", "부추", "쪽파", "고춧가루", "참기름"]
+          ja: ["牡蠣", "小麦粉", "卵", "ニラ", "小ねぎ", "粉唐辛子", "ごま油"],
+          en: ["Oysters", "Flour", "Egg", "Garlic chives", "Scallion", "Korean chili powder", "Sesame oil"]
         },
         tags: ["굴", "해산물", "바다"],
-        dupes: {}
+        dupes: {
+          TH: {
+            name: { ko: "허이텃 (태국식 굴전)", ja: "ホイトート", en: "Hoi Tod" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 85, sour: 15 },
+            description: { ko: "태국·싱가포르 화교 노점의 대표 메뉴로, 굴을 쌀가루·타피오카 반죽에 섞어 기름에 부쳐 바삭하게 구워 내는 굴전. 숙주·라임·스리라차와 함께 내요.", ja: "タイ・シンガポールの華僑屋台の代表メニュー。牡蠣を米粉とタピオカの生地に混ぜ、油で外はカリッと焼き上げる牡蠣のお好み焼き。もやしとライム、シラチャーを添えます。", en: "A signature Thai-Chinese street food: oysters bound in a rice-and-tapioca flour batter, pan-fried crispy on the edges. Served with bean sprouts, lime, and sriracha." },
+            ingredients: { ko: ["굴", "쌀가루", "타피오카 전분", "달걀", "숙주", "쪽파"], ja: ["牡蠣", "米粉", "タピオカ澱粉", "卵", "もやし", "小ねぎ"], en: ["Oysters", "Rice flour", "Tapioca starch", "Egg", "Bean sprouts", "Scallion"] },
+            similarityPercent: 88,
+            matchReason: { ko: "'굴을 반죽에 섞어 기름에 부쳐 먹는 굴전' 구조가 여수 굴전과 거의 일대일 대응이에요. 반죽 곡물만 밀가루↔쌀가루+타피오카로 갈릴 뿐.", ja: "『牡蠣を生地に混ぜて油で焼く牡蠣のチヂミ』構造が麗水のクルジョンとほぼ一対一対応。生地の粉が小麦粉か、米粉＋タピオカ澱粉かの違いだけ。", en: "Near one-to-one match on the 'oyster bound in batter and pan-fried' structure. Only the flour changes — wheat for gul-jeon, rice-and-tapioca for hoi tod." }
+          },
+          JP: {
+            name: { ko: "카키나베", ja: "牡蠣鍋", en: "Kaki Nabe" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 5, umami: 85, sour: 5 },
+            description: { ko: "히로시마·미야기 지역에서 싱싱한 굴과 배추·버섯·두부를 미소·다시 국물에 끓이는 일본의 겨울철 대표 굴 전골.", ja: "広島や宮城の冬の味覚。新鮮な牡蠣と白菜・きのこ・豆腐を味噌と出汁で煮込む日本代表の牡蠣鍋。", en: "A Hiroshima and Miyagi winter classic: fresh oysters simmered with cabbage, mushrooms, and tofu in a miso-dashi broth." },
+            ingredients: { ko: ["굴", "배추", "표고", "두부", "미소", "다시마"], ja: ["牡蠣", "白菜", "椎茸", "豆腐", "味噌", "昆布"], en: ["Oysters", "Napa cabbage", "Shiitake", "Tofu", "Miso", "Kombu"] },
+            similarityPercent: 80,
+            matchReason: { ko: "굴을 발효 장(된장·미소) 국물에 채소와 함께 끓여 겨울 보양식으로 내는 동아시아 방식이 쌍둥이예요. 굴국밥·어리굴젓 문화와 직결.", ja: "牡蠣を発酵調味料(味噌)の汁に野菜と一緒に煮込み、冬の滋養食として出す東アジアの方式が双子。カキ国밥やオリグルジョッの食文化と直結します。", en: "Same East Asian blueprint: oysters stewed with vegetables in a fermented-miso broth as winter comfort. Direct kin to Korean oyster-rice soup and aged oyster pickle culture." }
+          },
+          FR: {
+            name: { ko: "위트르 오 나튀렐", ja: "ユイートル・オ・ナチュレル", en: "Huîtres au Naturel" },
+            tasteProfile: { sweet: 5, salty: 65, spicy: 5, umami: 85, sour: 40 },
+            description: { ko: "브르타뉴·노르망디 해안의 굴을 껍데기째 얹고 레몬과 샬롯·셰리 식초 소스(미뇨네트)만 곁들여 생으로 먹는 프랑스의 고전 굴 접시.", ja: "ブルターニュやノルマンディの殻つき牡蠣に、レモンとシャロット・シェリー酢のソース(ミニョネット)を添えて生で食べるフランスの定番牡蠣料理。", en: "A French classic: Brittany or Normandy oysters served raw on the half shell with lemon and mignonette — a shallot-sherry vinegar sauce." },
+            ingredients: { ko: ["생굴", "레몬", "샬롯", "셰리 식초", "검은 후추"], ja: ["生牡蠣", "レモン", "シャロット", "シェリー酢", "黒胡椒"], en: ["Raw oyster", "Lemon", "Shallot", "Sherry vinegar", "Black pepper"] },
+            similarityPercent: 74,
+            matchReason: { ko: "'껍데기째 올라온 굴의 본연의 맛을 즐기는' 해안 문화가 굴구이·생굴무침과 만납니다. 산미 원천이 레몬·식초로 갈리고 고추장 대신 후추가 들어가는 정도의 차이.", ja: "『殻付きのまま、牡蠣そのものの味を味わう』沿岸文化がクルグイや生クルムチムと出会います。酸味源がレモン・酢に変わり、コチュジャンの代わりに胡椒が入る程度の違い。", en: "Both coastal cultures prize eating oysters in the shell, letting the shellfish speak. The acid swap (lemon/vinegar), and pepper standing in for gochujang, are the main divergences." }
+          },
+          US: {
+            name: { ko: "오이스터 록펠러", ja: "オイスター・ロックフェラー", en: "Oysters Rockefeller" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 10, umami: 80, sour: 10 },
+            description: { ko: "뉴올리언스 식당 앙투안스가 1899년 고안한 굴 요리로, 반쪽 껍데기에 파슬리·시금치·버터·허브를 올려 오븐에 구워 내는 남부 미국의 고전.", ja: "ニューオーリンズの老舗アントワーヌが1899年に生み出した料理で、半殻付き牡蠣にパセリ・ほうれん草・バター・ハーブを乗せオーブンで焼き上げる南部アメリカの古典。", en: "Invented at Antoine's in New Orleans in 1899: half-shell oysters blanketed with parsley, spinach, butter, and herbs, then baked until bubbling." },
+            ingredients: { ko: ["굴", "시금치", "파슬리", "버터", "빵가루", "파르메산"], ja: ["牡蠣", "ほうれん草", "パセリ", "バター", "パン粉", "パルメザン"], en: ["Oyster", "Spinach", "Parsley", "Butter", "Breadcrumbs", "Parmesan"] },
+            similarityPercent: 70,
+            matchReason: { ko: "굴 위에 채소·지방을 얹어 열을 가해 먹는 구조가 '굴구이+양념장' 콤보와 닿아요. 버터·빵가루의 서양 베이스와 고춧가루·참기름의 한국 베이스라는 차이.", ja: "牡蠣の上に野菜や油脂を乗せ加熱して食べる構造が『牡蠣焼き+薬味』コンボと通じます。バター・パン粉の西洋ベースと粉唐辛子・ごま油の韓国ベースとの違い。", en: "Same format — top an oyster with greens and fat, then heat — parallels grilled oysters with a seasoned sauce. The butter-breadcrumb Western base and chili-sesame-oil Korean base are the splits." }
+          },
+          IT: {
+            name: { ko: "오스트리케 그라티나테", ja: "オストリケ・グラティナーテ", en: "Ostriche Gratinate" },
+            tasteProfile: { sweet: 5, salty: 60, spicy: 5, umami: 80, sour: 15 },
+            description: { ko: "반쪽 껍데기에 올린 굴에 빵가루·파슬리·마늘·올리브오일을 얹어 오븐에 구워 내는 이탈리아 남부 해안 지방의 굴 그라탕.", ja: "半殻牡蠣にパン粉・パセリ・にんにく・オリーブオイルを乗せてオーブンで焼き上げる、南イタリア沿岸の牡蠣グラタン。", en: "A Southern Italian oyster gratin: half-shell oysters topped with breadcrumbs, parsley, garlic, and olive oil, then roasted until golden." },
+            ingredients: { ko: ["굴", "빵가루", "파슬리", "마늘", "레몬", "올리브오일"], ja: ["牡蠣", "パン粉", "パセリ", "にんにく", "レモン", "オリーブオイル"], en: ["Oyster", "Breadcrumbs", "Parsley", "Garlic", "Lemon", "Olive oil"] },
+            similarityPercent: 68,
+            matchReason: { ko: "굴 위에 고소한 파우더(빵가루)를 덮어 오븐·숯불에 익힌다는 기법이 굴 양념구이와 겹칩니다. 올리브오일·파슬리가 참기름·깻잎의 자리에 올라간 이탈리아 버전.", ja: "牡蠣の上に香ばしい粉(パン粉)を重ねてオーブンや炭火で焼く技法がクル・ヤンニョムグイと重なります。オリーブオイルとパセリがごま油と荏胡麻の葉の位置に置かれたイタリア版。", en: "Shared technique: crown oysters with a savory topping and fire them in an oven or over coals. Olive oil and parsley take the seats held by sesame oil and perilla leaves." }
+          },
+          VN: {
+            name: { ko: "하우 느엉 머 한 (쪽파 기름 굴구이)", ja: "ハウ・ヌオン・モーハン", en: "Hàu Nướng Mỡ Hành" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 85, sour: 15 },
+            description: { ko: "베트남 중남부 해안에서 껍데기째 구운 굴 위에 뜨거운 파 기름(모 한)과 땅콩을 얹어 피쉬소스에 찍어 먹는 굴구이.", ja: "ベトナム中南部沿岸で、殻ごと焼いた牡蠣の上に熱々の青ねぎ油(モーハン)とピーナッツを乗せ、ナンプラーに浸して食べる牡蠣焼き。", en: "A central-southern Vietnamese grilled oyster: half-shell oysters crowned with hot scallion oil and crushed peanuts, dipped in fish sauce." },
+            ingredients: { ko: ["굴", "쪽파", "식용유", "땅콩", "피쉬소스", "라임"], ja: ["牡蠣", "小ねぎ", "サラダ油", "ピーナッツ", "ナンプラー", "ライム"], en: ["Oyster", "Scallion", "Vegetable oil", "Peanuts", "Fish sauce", "Lime"] },
+            similarityPercent: 78,
+            matchReason: { ko: "굴구이에 파 향 기름을 얹어 불향+파향으로 풍미를 올리는 기법이 동일. 한국은 고춧가루·참기름, 베트남은 파 기름·땅콩으로 올려 마무리.", ja: "炭火牡蠣にねぎ油を垂らして『香ばしさ+ねぎの香り』で風味を立てる技法が同じ。韓国は粉唐辛子とごま油、ベトナムはねぎ油とピーナッツで仕上げます。", en: "Same technique — finish grilled oysters with an aromatic oil to compound the char and scallion notes. Korea uses chili powder and sesame oil; Vietnam uses scallion oil and crushed peanuts." }
+          },
+          ES: {
+            name: { ko: "오스트라스 알 까바", ja: "オストラス・アル・カバ", en: "Ostras al Cava" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 80, sour: 45 },
+            description: { ko: "카탈루냐 해안에서 굴 위에 스페인 스파클링 와인 까바를 베이스로 한 샬롯·레몬·후추 소스를 얹어 즉석에서 내는 핑거푸드.", ja: "カタルーニャ沿岸で牡蠣の上にスペインスパークリングワイン『カバ』をベースにシャロット・レモン・胡椒ソースを乗せる前菜。", en: "A Catalan aperitif: raw oysters crowned with a sauce of Cava sparkling wine, shallot, lemon, and black pepper." },
+            ingredients: { ko: ["생굴", "까바(스파클링 와인)", "샬롯", "레몬", "검은 후추", "차이브"], ja: ["生牡蠣", "カバ", "シャロット", "レモン", "黒胡椒", "チャイブ"], en: ["Raw oyster", "Cava", "Shallot", "Lemon", "Black pepper", "Chive"] },
+            similarityPercent: 64,
+            matchReason: { ko: "생굴에 산미와 향신을 얹어 식전·식중주와 함께 즐기는 해안 문화가 겹쳐요. 스파클링 와인이 막걸리의 자리에 앉은 모습.", ja: "生牡蠣に酸味と香りを重ねて、食前酒や食中酒と共に楽しむ沿岸文化が重なります。スパークリングワインがマッコリの席に座った姿。", en: "Parallel coastal ritual — raw oysters dressed with acid and aromatics, enjoyed alongside a drink. Cava slots into the seat that makgeolli holds in Korea." }
+          },
+          MX: {
+            name: { ko: "오스티오네스 아 라 디아블라 (매운 소스 굴)", ja: "オスティオネス・ア・ラ・ディアブラ", en: "Ostiones a la Diabla" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 70, umami: 80, sour: 35 },
+            description: { ko: "멕시코 해안 지방에서 굴에 토마토·칠리·마늘로 끓인 매운 '디아블라' 소스를 끼얹어 레몬즙과 함께 내는 매운 굴 요리.", ja: "メキシコ沿岸地方で、牡蠣にトマト・チリ・にんにくで煮込んだ辛い『ディアブラ』ソースをかけ、レモン汁と共に出す辛口牡蠣料理。", en: "A Mexican coastal preparation: oysters slicked in a fiery 'diabla' sauce of tomato, chili, and garlic, finished with lime." },
+            ingredients: { ko: ["생굴", "토마토", "아르볼 고추", "마늘", "라임", "고수"], ja: ["生牡蠣", "トマト", "アルボル唐辛子", "にんにく", "ライム", "パクチー"], en: ["Raw oyster", "Tomato", "Chile de árbol", "Garlic", "Lime", "Cilantro"] },
+            similarityPercent: 68,
+            matchReason: { ko: "굴에 매운 양념을 얹어 매콤하게 즐기는 '굴+매운맛' 조합이 굴무침·고추장 굴구이와 통해요. 칠리·토마토 vs 고춧가루·고추장의 매운 소스 베이스 차이.", ja: "牡蠣に辛い調味料を重ねて楽しむ『牡蠣＋辛味』の組み合わせが、クルムチムやコチュジャン牡蠣焼きと通じ合います。チリ・トマト vs 粉唐辛子・コチュジャンの違い。", en: "Both pair oysters with heat, echoing spicy oyster salads and gochujang-glazed grilled oysters. The chili+tomato base simply replaces chili powder and gochujang." }
+          }
+        }
       }
     ]
   },
