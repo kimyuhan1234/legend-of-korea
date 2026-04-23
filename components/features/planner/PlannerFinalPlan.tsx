@@ -420,8 +420,8 @@ export function PlannerFinalPlan({
       </h2>
       <p className="text-sm text-[#6B7280] mb-6">{t('final.subtitle')}</p>
 
-      {/* 상단 4칸 요약 그리드 — 데스크탑: 4열, 태블릿: 2열, 모바일: 1열 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+      {/* 상단 4칸 요약 그리드 — items-start 로 각 칸 높이 독립 (빈 칸 compact) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-8 items-start">
         {/* 칸 1: 📅 날짜 + 코디 + 날씨 (세로 스택) */}
         <div className="bg-white rounded-2xl p-4 border border-mist/40 space-y-3">
           <p className="text-[10px] font-black text-mint-deep uppercase tracking-widest">
@@ -536,6 +536,9 @@ export function PlannerFinalPlan({
           })()}
         </div>
       </div>
+
+      {/* 구분선 — 상단 요약과 스케줄 명확히 분리 */}
+      <div className="h-px bg-mist/60 mb-6" />
 
       {/* Day별 스마트 스케줄 */}
       <div className="space-y-5">
