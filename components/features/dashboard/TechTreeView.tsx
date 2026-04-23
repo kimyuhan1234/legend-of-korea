@@ -28,6 +28,12 @@ const UI: Record<TreeLocale, {
   requiredRaindrops: (n: number) => string
   clickForDetail: string
   backToDashboard: string
+  branchTitle: string
+  branchLead: string
+  scholarSuits: string
+  scholarBullets: string[]
+  warriorSuits: string
+  warriorBullets: string[]
 }> = {
   ko: {
     title: '전체 성장 지도',
@@ -43,6 +49,20 @@ const UI: Record<TreeLocale, {
     requiredRaindrops: (n) => `필요 빗방울 ${n.toLocaleString()}`,
     clickForDetail: '노드를 누르면 상세 정보',
     backToDashboard: '← 대시보드로',
+    branchTitle: '⚡ Lv 4에서 길이 나뉩니다',
+    branchLead: '당신의 활동에 따라 어울리는 길이 다릅니다.',
+    scholarSuits: '📖 문관의 길에 적합',
+    scholarBullets: [
+      '리뷰 작성을 즐기는 사람',
+      '역사/문화 콘텐츠를 좋아하는 사람',
+      '퀘스트 스토리를 깊이 탐험하는 사람',
+    ],
+    warriorSuits: '🥋 무관의 길에 적합',
+    warriorBullets: [
+      '다양한 장소를 방문하는 사람',
+      '미션 클리어를 즐기는 사람',
+      '액티비티 중심 여행자',
+    ],
   },
   en: {
     title: 'Growth Map',
@@ -58,6 +78,20 @@ const UI: Record<TreeLocale, {
     requiredRaindrops: (n) => `${n.toLocaleString()} raindrops`,
     clickForDetail: 'Tap a node for details',
     backToDashboard: '← Back to dashboard',
+    branchTitle: '⚡ Paths diverge at Lv 4',
+    branchLead: 'Your activities shape the path that suits you.',
+    scholarSuits: '📖 Scholar path suits',
+    scholarBullets: [
+      'Those who enjoy writing reviews',
+      'Those who love history/culture content',
+      'Those who deeply explore quest stories',
+    ],
+    warriorSuits: '🥋 Warrior path suits',
+    warriorBullets: [
+      'Those who visit many places',
+      'Those who enjoy mission clearing',
+      'Activity-focused travelers',
+    ],
   },
   ja: {
     title: '成長マップ',
@@ -73,6 +107,20 @@ const UI: Record<TreeLocale, {
     requiredRaindrops: (n) => `必要雨滴 ${n.toLocaleString()}`,
     clickForDetail: 'ノードを押すと詳細',
     backToDashboard: '← ダッシュボードへ',
+    branchTitle: '⚡ Lv 4で道が分かれます',
+    branchLead: 'あなたの活動によって合う道が異なります。',
+    scholarSuits: '📖 文官の道に向いています',
+    scholarBullets: [
+      'レビューを書くのが好きな人',
+      '歴史・文化コンテンツを好む人',
+      'クエストのストーリーを深く探索する人',
+    ],
+    warriorSuits: '🥋 武官の道に向いています',
+    warriorBullets: [
+      '様々な場所を訪れる人',
+      'ミッションクリアを楽しむ人',
+      'アクティビティ中心の旅行者',
+    ],
   },
   'zh-CN': {
     title: '成长地图',
@@ -88,6 +136,20 @@ const UI: Record<TreeLocale, {
     requiredRaindrops: (n) => `需要 ${n.toLocaleString()} 雨滴`,
     clickForDetail: '点击节点查看详情',
     backToDashboard: '← 返回仪表板',
+    branchTitle: '⚡ Lv 4 道路分岔',
+    branchLead: '您的活动决定适合的道路。',
+    scholarSuits: '📖 适合文官之路',
+    scholarBullets: [
+      '喜欢撰写评论的人',
+      '喜爱历史/文化内容的人',
+      '深入探索任务剧情的人',
+    ],
+    warriorSuits: '🥋 适合武官之路',
+    warriorBullets: [
+      '喜欢探访多地的人',
+      '喜欢完成任务的人',
+      '以活动为主的旅行者',
+    ],
   },
   'zh-TW': {
     title: '成長地圖',
@@ -103,6 +165,20 @@ const UI: Record<TreeLocale, {
     requiredRaindrops: (n) => `需要 ${n.toLocaleString()} 雨滴`,
     clickForDetail: '點擊節點查看詳情',
     backToDashboard: '← 返回儀表板',
+    branchTitle: '⚡ Lv 4 道路分岔',
+    branchLead: '您的活動決定適合的道路。',
+    scholarSuits: '📖 適合文官之路',
+    scholarBullets: [
+      '喜歡撰寫評論的人',
+      '喜愛歷史/文化內容的人',
+      '深入探索任務劇情的人',
+    ],
+    warriorSuits: '🥋 適合武官之路',
+    warriorBullets: [
+      '喜歡探訪多地的人',
+      '喜歡完成任務的人',
+      '以活動為主的旅行者',
+    ],
   },
 }
 
@@ -257,6 +333,42 @@ export function TechTreeView({ locale, rank, nodes }: Props) {
           <span className="inline-block text-xs font-black bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 text-white px-4 py-1.5 rounded-full shadow-lg">
             {t.branchPoint}
           </span>
+        </div>
+      </div>
+
+      {/* 분기점 활동 가이드 설명 박스 */}
+      <div className="max-w-3xl mx-auto px-4 mb-6">
+        <div className="rounded-3xl border border-mist bg-white shadow-sm p-5 md:p-6">
+          <div className="text-center mb-5">
+            <p className="text-base md:text-lg font-black text-[#111]">{t.branchTitle}</p>
+            <p className="text-xs text-stone mt-1">{t.branchLead}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* 문관 */}
+            <div className="rounded-2xl border-l-4 border-blue-400 bg-blue-50/40 p-4">
+              <p className="text-sm font-black text-blue-700 mb-2">{t.scholarSuits}</p>
+              <ul className="space-y-1">
+                {t.scholarBullets.map((b, i) => (
+                  <li key={i} className="text-xs text-slate flex gap-1.5">
+                    <span className="text-blue-400 shrink-0">•</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* 무관 */}
+            <div className="rounded-2xl border-l-4 border-red-400 bg-red-50/40 p-4">
+              <p className="text-sm font-black text-red-700 mb-2">{t.warriorSuits}</p>
+              <ul className="space-y-1">
+                {t.warriorBullets.map((b, i) => (
+                  <li key={i} className="text-xs text-slate flex gap-1.5">
+                    <span className="text-red-400 shrink-0">•</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 
