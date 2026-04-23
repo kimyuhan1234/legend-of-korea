@@ -581,14 +581,6 @@
     "sharePassport": "Share on SNS",
     "legendaryAdventurer": "Legendary Adventurer — All cities conquered!"
   },
-  "tier": {
-    "1": "Villager",
-    "2": "Traveler",
-    "3": "Adventurer",
-    "4": "Hero",
-    "5": "Legend",
-    "6": "Myth"
-  },
   "footer": {
     "company": "Cloud with you Co., Ltd.",
     "terms": "Terms of Service",
@@ -1274,37 +1266,6 @@
       "card2": "The hero of the legend set out to solve riddles and find hidden treasures.",
       "card3": "The people and places along the journey became eternal memories.",
       "card4": "Now, you are the new hero of this legend."
-    },
-    "comparison": {
-      "title": "Regular Tourism vs Mission Travel",
-      "normalTitle": "Regular Tourism",
-      "legendTitle": "Legend of Korea",
-      "normal": {
-        "1": "Just take photos at tourist spots",
-        "2": "Visit only guidebook locations",
-        "3": "Superficial cultural experience",
-        "4": "Memories fade after the trip",
-        "5": "No motivation to return"
-      },
-      "legend": {
-        "1": "Become the hero of a legend and adventure",
-        "2": "Discover hidden local gems",
-        "3": "Deep cultural immersion through missions",
-        "4": "Lifetime memories with badges & certificates",
-        "5": "Complete missions → Earn Raindrops → Partner store discounts",
-        "6": "Level up your tier with Raindrops → Exclusive rewards per rank",
-        "lp": "Earn Raindrops points per mission → Redeem for discounts",
-        "tier": "Level up your tier! Exclusive rewards at each rank"
-      },
-      "tier": {
-        "lv1": "Villager",
-        "lv2": "Traveler",
-        "lv3": "Adventurer",
-        "lv4": "Hero",
-        "lv5": "Legend",
-        "lv6": "Myth"
-      },
-      "cta": "Start Your Mission Travel →"
     },
     "kit": {
       "title": "What's in the Kit",

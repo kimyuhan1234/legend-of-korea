@@ -10,7 +10,6 @@ interface ReviewPost {
   users: {
     nickname: string
     avatar_url: string | null
-    current_tier: number
   } | null
 }
 
@@ -50,12 +49,6 @@ const LABEL = {
   },
 }
 
-const TIER_NAMES = {
-  ko: ["", "마을 주민", "여행자", "모험가", "영웅", "전설", "신화"],
-  ja: ["", "村の住民", "旅行者", "冒険家", "英雄", "伝説", "神話"],
-  en: ["", "Villager", "Traveler", "Adventurer", "Hero", "Legend", "Myth"],
-}
-
 function timeAgo(dateStr: string, locale: string): string {
   const diff = Date.now() - new Date(dateStr).getTime()
   const days = Math.floor(diff / 86400000)
@@ -79,7 +72,6 @@ function timeAgo(dateStr: string, locale: string): string {
 
 export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
   const label = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
-  const tierNames = TIER_NAMES[locale as keyof typeof TIER_NAMES] || TIER_NAMES.en || TIER_NAMES.ko
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">
@@ -155,10 +147,7 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-[#111]">
-                      {post.users?.nickname || "모험가"}
-                    </p>
-                    <p className="text-xs text-blossom-deep">
-                      {tierNames[post.users?.current_tier || 1]}
+                      {post.users?.nickname || "—"}
                     </p>
                   </div>
                   <span className="ml-auto text-xs text-stone">

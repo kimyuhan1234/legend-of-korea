@@ -5,7 +5,6 @@ import { AffiliateLinks } from "@/components/features/courses/AffiliateLinks"
 import { QuestHero } from "@/components/features/quest/QuestHero"
 import { QuestHowItWorks } from "@/components/features/quest/QuestHowItWorks"
 import { QuestStorySlider } from "@/components/features/quest/QuestStorySlider"
-import { QuestComparison } from "@/components/features/quest/QuestComparison"
 import { QuestKitShowcase } from "@/components/features/quest/QuestKitShowcase"
 import { QuestReviews } from "@/components/features/quest/QuestReviews"
 import { QuestFAQ } from "@/components/features/quest/QuestFAQ"
@@ -155,9 +154,6 @@ export default async function CourseDetailPage({ params }: Props) {
 
       {/* 3. 인터랙티브 스토리 */}
       <QuestStorySlider storyCards={storyCards} region={course.region || ''} />
-
-      {/* 4. 일반 관광 vs 미션 여행 */}
-      <QuestComparison />
 
       {/* 5. 키트 언박싱 & 구매 */}
       <div id="kit-purchase">

@@ -2,7 +2,6 @@ import { createClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 import { LP_REWARDS } from '@/lib/constants/lp';
 // [Day 4 디자인 B] 자동 승급 제거 — 레벨업은 상점에서 수동만 가능
-// import { checkAndPromoteTier } from '@/lib/utils/tier';
 
 export async function POST(req: NextRequest) {
   try {
