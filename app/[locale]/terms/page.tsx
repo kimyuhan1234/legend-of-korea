@@ -27,7 +27,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '제3조 (서비스 이용)',
-        body: '① 회원가입은 만 14세 이상이어야 합니다.\n② 이용자는 자신의 계정을 제3자에게 양도하거나 공유할 수 없습니다.\n③ 회사는 서비스 품질 향상 등을 위해 사전 공지 후 서비스 내용을 변경하거나 종료할 수 있습니다.\n④ 서비스 이용료: 미션 키트 구매 시 상품 안내 페이지에 표시된 금액을 지불하며, 결제는 토스페이먼츠 또는 Stripe를 통해 처리됩니다.\n⑤ 청약 철회: 전자상거래법 제17조에 따라 구매일로부터 7일 이내 청약 철회가 가능합니다. 단, 이미 사용된 QR 코드(미션 진행 이력이 있는 경우) 또는 키트 포장이 개봉된 경우 청약 철회가 제한될 수 있습니다.',
+        body: '① 회원가입은 만 14세 이상이어야 합니다.\n② 이용자는 자신의 계정을 제3자에게 양도하거나 공유할 수 없습니다.\n③ 회사는 서비스 품질 향상 등을 위해 사전 공지 후 서비스 내용을 변경하거나 종료할 수 있습니다.\n④ 서비스 이용료: 미션 키트 구매 시 상품 안내 페이지에 표시된 금액을 지불하며, 결제는 토스페이먼츠 또는 Stripe를 통해 처리됩니다.\n⑤ 청약 철회: 전자상거래법 제17조에 따라 재화를 수령한 날로부터 7일 이내 청약 철회가 가능합니다. 단, 이미 사용된 QR 코드(미션 진행 이력이 있는 경우) 또는 키트 포장이 개봉된 경우 청약 철회가 제한될 수 있습니다.',
       },
       {
         heading: '제4조 (개인정보 보호)',
@@ -61,7 +61,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: 'Article 3 — Use of Service',
-        body: '① Users must be at least 14 years of age to register.\n② Users may not transfer or share their account with third parties.\n③ The Company may modify or terminate service content with prior notice.\n④ Fees: Mission kit prices are displayed on the product page. Payments are processed via Toss Payments or Stripe.\n⑤ Cancellation: Users may cancel within 7 days of purchase pursuant to applicable e-commerce law, except where a QR code has already been used or kit packaging has been opened.',
+        body: '① Users must be at least 14 years of age to register.\n② Users may not transfer or share their account with third parties.\n③ The Company may modify or terminate service content with prior notice.\n④ Fees: Mission kit prices are displayed on the product page. Payments are processed via Toss Payments or Stripe.\n⑤ Cancellation: Users may cancel within 7 days of receipt of goods pursuant to applicable e-commerce law, except where a QR code has already been used or kit packaging has been opened.',
       },
       {
         heading: 'Article 4 — Privacy',
@@ -95,7 +95,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第3条（サービスの利用）',
-        body: '① 会員登録は14歳以上であることが必要です。\n② 利用者は自身のアカウントを第三者に譲渡・共有することができません。\n③ 当社はサービス品質向上等のため、事前告知の上でサービス内容を変更・終了できます。\n④ 利用料金: ミッションキット購入時は商品ページに表示された金額を支払います。決済はトスペイメンツまたはStripeで処理されます。\n⑤ キャンセル: 電子商取引法に基づき購入日から7日以内に申し込みの撤回が可能です。ただし、QRコードが使用済みまたはキットの梱包が開封された場合は制限されることがあります。',
+        body: '① 会員登録は14歳以上であることが必要です。\n② 利用者は自身のアカウントを第三者に譲渡・共有することができません。\n③ 当社はサービス品質向上等のため、事前告知の上でサービス内容を変更・終了できます。\n④ 利用料金: ミッションキット購入時は商品ページに表示された金額を支払います。決済はトスペイメンツまたはStripeで処理されます。\n⑤ キャンセル: 電子商取引法に基づき商品受取日から7日以内に申し込みの撤回が可能です。ただし、QRコードが使用済みまたはキットの梱包が開封された場合は制限されることがあります。',
       },
       {
         heading: '第4条（個人情報の保護）',
@@ -129,7 +129,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第三条（服务使用）',
-        body: '① 注册会员需年满14周岁。\n② 用户不得将账号转让或共享给第三方。\n③ 本公司可在事先公告后变更或终止服务内容。\n④ 使用费用：购买任务套件时按商品页面显示的金额支付，通过Toss Payments或Stripe处理。\n⑤ 取消：依据电子商务法，购买之日起7天内可申请撤销。但二维码已使用或套件包装已开封的情况下可能受到限制。',
+        body: '① 注册会员需年满14周岁。\n② 用户不得将账号转让或共享给第三方。\n③ 本公司可在事先公告后变更或终止服务内容。\n④ 使用费用：购买任务套件时按商品页面显示的金额支付，通过Toss Payments或Stripe处理。\n⑤ 取消：依据电子商务法，收到商品之日起7天内可申请撤销。但二维码已使用或套件包装已开封的情况下可能受到限制。',
       },
       {
         heading: '第四条（个人信息保护）',
@@ -163,7 +163,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第三條（服務使用）',
-        body: '① 會員須年滿14歲方可註冊。\n② 使用者不得將帳號轉讓或共享給第三方。\n③ 本公司可在事先公告後變更或終止服務內容。\n④ 使用費用：購買任務套件時依商品頁面所示金額支付，透過Toss Payments或Stripe處理。\n⑤ 取消：依電子商務法規定，購買日起7天內可申請撤銷。但QR碼已使用或套件包裝已開封的情況下可能受到限制。',
+        body: '① 會員須年滿14歲方可註冊。\n② 使用者不得將帳號轉讓或共享給第三方。\n③ 本公司可在事先公告後變更或終止服務內容。\n④ 使用費用：購買任務套件時依商品頁面所示金額支付，透過Toss Payments或Stripe處理。\n⑤ 取消：依電子商務法規定，收到商品之日起7天內可申請撤銷。但QR碼已使用或套件包裝已開封的情況下可能受到限制。',
       },
       {
         heading: '第四條（個人資料保護）',
