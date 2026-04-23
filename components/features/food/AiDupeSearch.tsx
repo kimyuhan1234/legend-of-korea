@@ -53,10 +53,6 @@ export function AiDupeSearch({ locale }: AiDupeSearchProps) {
         setError('loginRequired')
         return
       }
-      if (res.status === 402) {
-        setError('insufficient')
-        return
-      }
       if (res.status === 403) {
         setError('subscription')
         return
@@ -115,13 +111,10 @@ export function AiDupeSearch({ locale }: AiDupeSearchProps) {
         </button>
       </div>
 
-      {/* 예시 + 크레딧 */}
+      {/* 예시 */}
       <div className="text-center mb-6">
         <p className="text-xs text-stone mb-1">
           💡 {t('ai.examples')}
-        </p>
-        <p className="text-xs text-blossom-deep font-bold">
-          {t('ai.credits')}
         </p>
       </div>
 
@@ -138,7 +131,6 @@ export function AiDupeSearch({ locale }: AiDupeSearchProps) {
         <div className="text-center py-8">
           <p className="text-sm text-blossom-deep font-bold">
             {error === 'loginRequired' && t('ai.loginRequired')}
-            {error === 'insufficient' && t('ai.insufficient')}
             {error === 'subscription' && t('ai.subscription')}
             {error === 'notConfigured' && t('ai.notConfigured')}
             {error === 'aiError' && t('ai.aiError')}

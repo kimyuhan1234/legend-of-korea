@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { deductCredits } from '@/lib/credits'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -29,39 +28,12 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: '좌표 4개 필수' }, { status: 400 })
     }
 
-    // v1.2 — 거리 계산은 크레딧 1개 차감 (구독자 전용)
+    // [단일 화폐 통일] 크레딧 차감 제거 — 거리 계산은 로그인만 요구
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
 
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
-
-    const deduct = await deductCredits(supabase, user.id, 'distance', {
-      fromLat, fromLng, toLat, toLng,
-    })
-
-    if (!deduct.ok) {
-      if (deduct.error === 'insufficient_credits') {
-        return NextResponse.json(
-          {
-            error: 'insufficient_credits',
-            remaining: deduct.remaining,
-            required: deduct.required,
-          },
-          { status: 402 }
-        )
-      }
-      if (deduct.error === 'no_active_subscription') {
-        return NextResponse.json(
-          { error: 'subscription_required' },
-          { status: 403 }
-        )
-      }
-      return NextResponse.json(
-        { error: deduct.error },
-        { status: 500 }
-      )
     }
 
     const distanceKm = haversineKm(fromLat, fromLng, toLat, toLng)
@@ -75,7 +47,6 @@ export async function GET(req: NextRequest) {
       distanceKm: Math.round(distanceKm * 10) / 10,
       walkMinutes,
       taxiMinutes,
-      creditsRemaining: deduct.remaining,
     })
   } catch (err) {
     return NextResponse.json(

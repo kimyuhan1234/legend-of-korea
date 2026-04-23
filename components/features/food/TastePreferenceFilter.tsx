@@ -123,10 +123,6 @@ export function TastePreferenceFilter({ onSearch, isLoading }: TastePreferenceFi
           {isLoading ? '...' : t('dupe.taste.search')}
         </button>
       </div>
-
-      <p className="text-center text-xs text-blossom-deep font-bold mt-3">
-        ⚡ {t('dupe.ai.credits')}
-      </p>
     </div>
   )
 }

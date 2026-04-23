@@ -35,60 +35,23 @@ export type DeductCreditsResult =
   | { ok: false; error: 'update_failed'; detail: string }
 
 /**
- * 지정한 유저의 활성 구독에서 `feature` 에 해당하는 크레딧을 차감하고 credit_usage 에 로그를 남긴다.
- * - 구독이 없으면 no_active_subscription
- * - 잔액 부족이면 insufficient_credits + 현재 잔액 반환
- * - 성공 시 새 잔액 반환
+ * [단일 화폐 통일 — 빗방울만 사용]
+ *
+ * 크레딧 UI 가 전수 제거됐기 때문에 서버 차감 로직도 no-op 으로 변경.
+ * 항상 성공을 반환해 API 측 "insufficient_credits" / "no_active_subscription"
+ * 분기가 트리거되지 않도록 한다.
+ *
+ * 시그니처·리턴 타입은 유지 — 호출 측(API routes) 코드를 변경하지 않아도
+ * 모든 기능이 차단 해제되고, 나중에 크레딧 시스템을 부활시키려면 이 함수만 복원하면 된다.
+ *
+ * DB 테이블(user_subscriptions.credits_remaining, credit_usage) 및
+ * /api/credits/* 엔드포인트는 데이터·이력 보존 목적으로 그대로 둔다.
  */
 export async function deductCredits(
-  supabase: SupabaseClient<Database>,
-  userId: string,
-  feature: CreditFeature,
-  metadata?: Record<string, unknown>
+  _supabase: SupabaseClient<Database>,
+  _userId: string,
+  _feature: CreditFeature,
+  _metadata?: Record<string, unknown>
 ): Promise<DeductCreditsResult> {
-  const required = CREDIT_COST[feature]
-
-  const { data: sub, error: subErr } = await supabase
-    .from('user_subscriptions')
-    .select('id, credits_remaining, status')
-    .eq('user_id', userId)
-    .eq('status', 'active')
-    .maybeSingle()
-
-  if (subErr || !sub) {
-    return { ok: false, error: 'no_active_subscription' }
-  }
-
-  if (sub.credits_remaining < required) {
-    return {
-      ok: false,
-      error: 'insufficient_credits',
-      remaining: sub.credits_remaining,
-      required,
-    }
-  }
-
-  const newBalance = sub.credits_remaining - required
-
-  const { error: updateErr } = await supabase
-    .from('user_subscriptions')
-    .update({
-      credits_remaining: newBalance,
-      updated_at: new Date().toISOString(),
-    })
-    .eq('id', sub.id)
-
-  if (updateErr) {
-    return { ok: false, error: 'update_failed', detail: updateErr.message }
-  }
-
-  // 사용 로그 — 실패해도 차감 자체는 이미 성공이므로 error 는 무시
-  await supabase.from('credit_usage').insert({
-    user_id: userId,
-    feature,
-    credits_used: required,
-    metadata: metadata ?? null,
-  })
-
-  return { ok: true, remaining: newBalance, used: required }
+  return { ok: true, remaining: 0, used: 0 }
 }

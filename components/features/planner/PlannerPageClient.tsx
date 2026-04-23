@@ -11,7 +11,6 @@ import { PlannerSpotDistance } from './PlannerSpotDistance'
 import { PlannerFinalPlan } from './PlannerFinalPlan'
 import { PlannerTripSetup, type TripStyle } from './PlannerTripSetup'
 import { PlannerOotd } from './PlannerOotd'
-import { PlannerCreditsDisplay } from './PlannerCreditsDisplay'
 import type { PassId } from '@/lib/data/passes'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
@@ -37,13 +36,6 @@ interface Plan {
   plan_items: PlanItem[]
 }
 
-interface SubscriptionStatus {
-  subscribed: boolean
-  creditsRemaining: number
-  monthlyCredits: number
-  creditsResetAt: string | null
-}
-
 interface PlannerPageClientProps {
   locale: string
 }
@@ -57,34 +49,6 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [ownedPassIds, setOwnedPassIds] = useState<PassId[]>([])
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
-  const [subStatus, setSubStatus] = useState<SubscriptionStatus>({
-    subscribed: false,
-    creditsRemaining: 0,
-    monthlyCredits: 0,
-    creditsResetAt: null,
-  })
-
-  // 구독/크레딧 상태 새로고침 — 크레딧 차감 이후 호출
-  // 플래너는 Move(traffic) 피처가 필요 — Move 또는 All in One 보유 시 "구독됨"
-  const refreshSubscriptionStatus = async () => {
-    try {
-      const res = await fetch('/api/passes/status', { cache: 'no-store' })
-      if (!res.ok) return
-      const data = await res.json()
-      const owned: PassId[] = Array.isArray(data.passes) ? data.passes : []
-      const hasTraffic = data.hasAllInOne || owned.includes('move')
-      setOwnedPassIds(owned)
-      setIsSubscribed(!!hasTraffic)
-      setSubStatus({
-        subscribed: !!hasTraffic,
-        creditsRemaining: data.creditsRemaining ?? 0,
-        monthlyCredits: data.hasAllInOne ? 100 : 0,
-        creditsResetAt: null,
-      })
-    } catch {
-      // ignore
-    }
-  }
 
   // 여행 기간/스타일/도시 (localStorage 보존)
   const [tripStart, setTripStart] = useState<string>('')
@@ -153,12 +117,6 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
           const hasTraffic = s.hasAllInOne || owned.includes('move')
           setOwnedPassIds(owned)
           setIsSubscribed(!!hasTraffic)
-          setSubStatus({
-            subscribed: !!hasTraffic,
-            creditsRemaining: s.creditsRemaining ?? 0,
-            monthlyCredits: s.hasAllInOne ? 100 : 0,
-            creditsResetAt: null,
-          })
         }
       } finally {
         if (mounted) setLoading(false)
@@ -214,7 +172,17 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
       if (!res.ok) return
 
       // 구매 성공 → 상태 재조회 (traffic 해제 여부 확인)
-      await refreshSubscriptionStatus()
+      try {
+        const statusRes = await fetch('/api/passes/status', { cache: 'no-store' })
+        if (statusRes.ok) {
+          const data = await statusRes.json()
+          const owned: PassId[] = Array.isArray(data.passes) ? data.passes : []
+          setOwnedPassIds(owned)
+          setIsSubscribed(!!(data.hasAllInOne || owned.includes('move')))
+        }
+      } catch {
+        // ignore
+      }
       setSuccessMessage(t('subscription.success'))
       setTimeout(() => setSuccessMessage(null), 4000)
     } catch {
@@ -458,13 +426,6 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
 
         {isSubscribed && mainPlan && (
           <>
-            <PlannerCreditsDisplay
-              credits={subStatus.creditsRemaining}
-              monthlyCredits={subStatus.monthlyCredits}
-              resetAt={subStatus.creditsResetAt}
-              locale={locale}
-              onCreditsChanged={refreshSubscriptionStatus}
-            />
             <PlannerTripSetup
               cityId={selectedCityId}
               startDate={tripStart}
@@ -481,7 +442,6 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
               hotelLat={mainPlan.hotel_lat}
               hotelLng={mainPlan.hotel_lng}
               spots={spotsForDistance}
-              onCreditsChanged={refreshSubscriptionStatus}
             />
             <PlannerFinalPlan
               items={allItems}
@@ -491,7 +451,6 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
               tripStartDate={tripStart}
               tripEndDate={tripEnd}
               tripStyle={tripStyle}
-              onCreditsChanged={refreshSubscriptionStatus}
               ootdSlot={
                 <PlannerOotd
                   cityId={selectedCityId}

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { deductCredits } from '@/lib/credits'
 import { regions } from '@/lib/data/food-dupes'
 import { fusionRecipes } from '@/lib/data/flag-cooking'
 import { getTopMatchingFoods, getSurpriseFlagCooking } from '@/lib/utils/taste-matching'
@@ -37,20 +36,7 @@ export async function POST(req: NextRequest) {
 
     const pref = body.preference as TasteProfile
 
-    // 크레딧 3 차감
-    const deduct = await deductCredits(supabase, user.id, 'taste_match', { preference: pref })
-    if (!deduct.ok) {
-      if (deduct.error === 'insufficient_credits') {
-        return NextResponse.json(
-          { error: 'insufficient_credits', remaining: deduct.remaining, required: deduct.required },
-          { status: 402 }
-        )
-      }
-      if (deduct.error === 'no_active_subscription') {
-        return NextResponse.json({ error: 'subscription_required' }, { status: 403 })
-      }
-      return NextResponse.json({ error: deduct.error }, { status: 500 })
-    }
+    // [단일 화폐 통일] 크레딧 차감 제거 — 취향 매칭은 로그인만 요구
 
     // TOP 3 + 서프라이즈 2
     const topFoods = getTopMatchingFoods(pref, regions)
@@ -80,7 +66,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       topFoods: topFoodsSerialized,
       surprises: surprisesSerialized,
-      creditsRemaining: deduct.remaining,
     })
   } catch (err) {
     return NextResponse.json(

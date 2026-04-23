@@ -45,7 +45,6 @@ interface PlannerFinalPlanProps {
   tripEndDate?: string
   tripStyle?: TripStyle
   ootdSlot?: ReactNode
-  onCreditsChanged?: () => void
 }
 
 const MAX_MISSIONS_PER_DAY: Record<TripStyle, number> = {
@@ -201,10 +200,9 @@ export function PlannerFinalPlan({
   tripEndDate,
   tripStyle = 'active',
   ootdSlot,
-  onCreditsChanged,
 }: PlannerFinalPlanProps) {
   const t = useTranslations('planner')
-  const [pdfState, setPdfState] = useState<'idle' | 'charging' | 'insufficient' | 'error'>('idle')
+  const [pdfState, setPdfState] = useState<'idle' | 'error'>('idle')
 
   // 도시 필터 — 선택한 도시 아이템만 (교통/OOTD는 도시 무관)
   const filteredItems = useMemo(
@@ -544,43 +542,17 @@ export function PlannerFinalPlan({
         )}
 
         <button
-          onClick={async () => {
-            if (pdfState === 'charging') return
-            setPdfState('charging')
+          onClick={() => {
             try {
-              const res = await fetch('/api/credits/use', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ feature: 'pdf' }),
-              })
-              if (res.status === 402) {
-                setPdfState('insufficient')
-                setTimeout(() => setPdfState('idle'), 3000)
-                return
-              }
-              if (!res.ok) {
-                setPdfState('error')
-                setTimeout(() => setPdfState('idle'), 3000)
-                return
-              }
-              if (onCreditsChanged) onCreditsChanged()
-              setPdfState('idle')
               window.print()
             } catch {
               setPdfState('error')
               setTimeout(() => setPdfState('idle'), 3000)
             }
           }}
-          disabled={pdfState === 'charging'}
-          className="w-full mt-5 py-3 rounded-full bg-neutral-900 text-white font-bold text-sm hover:bg-neutral-700 transition-colors disabled:opacity-60"
+          className="w-full mt-5 py-3 rounded-full bg-neutral-900 text-white font-bold text-sm hover:bg-neutral-700 transition-colors"
         >
-          {pdfState === 'insufficient'
-            ? `⚠ ${t('credits.insufficient')}`
-            : pdfState === 'charging'
-              ? '...'
-              : pdfState === 'error'
-                ? '⚠ Error'
-                : `📄 ${t('final.downloadPdfWithCost')}`}
+          {pdfState === 'error' ? '⚠ Error' : `📄 ${t('final.downloadPdf')}`}
         </button>
       </div>
 

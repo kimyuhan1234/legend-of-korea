@@ -63,7 +63,6 @@ export function DupeModeTabs({ locale, regionSummaries, countryCounts, allCountr
         body: JSON.stringify({ preference: pref }),
       })
       if (res.status === 401) { setTasteError('login'); return }
-      if (res.status === 402) { setTasteError('credits'); return }
       if (res.status === 403) { setTasteError('subscription'); return }
       if (!res.ok) { setTasteError('error'); return }
       const data = await res.json()
@@ -96,7 +95,6 @@ export function DupeModeTabs({ locale, regionSummaries, countryCounts, allCountr
             <div className="text-center mt-4">
               <p className="text-sm text-blossom-deep font-bold">
                 {tasteError === 'login' && t('ai.loginRequired')}
-                {tasteError === 'credits' && t('ai.insufficient')}
                 {tasteError === 'subscription' && t('ai.subscription')}
                 {tasteError === 'error' && t('ai.aiError')}
                 {tasteError === 'network' && t('ai.networkError')}

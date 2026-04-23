@@ -15,7 +15,6 @@ interface PlannerSpotDistanceProps {
   hotelLat: number | null
   hotelLng: number | null
   spots: SpotItem[]
-  onCreditsChanged?: () => void
 }
 
 interface Distance {
@@ -23,13 +22,12 @@ interface Distance {
   taxiMinutes: number
 }
 
-type ErrorState = null | 'insufficient_credits' | 'subscription_required' | 'unknown'
+type ErrorState = null | 'subscription_required' | 'unknown'
 
 export function PlannerSpotDistance({
   hotelLat,
   hotelLng,
   spots,
-  onCreditsChanged,
 }: PlannerSpotDistanceProps) {
   const t = useTranslations('planner')
   const [distances, setDistances] = useState<Record<string, Distance>>({})
@@ -44,8 +42,6 @@ export function PlannerSpotDistance({
       setComputing(true)
       setErrorState(null)
       const results: Record<string, Distance> = {}
-      let creditsChanged = false
-      let hitInsufficient = false
       let hitSubRequired = false
 
       for (const spot of spots) {
@@ -59,15 +55,11 @@ export function PlannerSpotDistance({
               walkMinutes: data.walkMinutes,
               taxiMinutes: data.taxiMinutes,
             }
-            creditsChanged = true
-          } else if (res.status === 402) {
-            // 크레딧 부족 — 이후 spot 요청 중단 (동일 결과)
-            hitInsufficient = true
-            break
           } else if (res.status === 403) {
             hitSubRequired = true
             break
           }
+          // 402 (insufficient_credits) 는 deductCredits no-op 으로 더 이상 발생 안 함 — 분기 제거
         } catch {
           // 개별 네트워크 실패는 무시
         }
@@ -76,19 +68,13 @@ export function PlannerSpotDistance({
       if (cancelled) return
 
       setDistances(results)
-      if (hitInsufficient) setErrorState('insufficient_credits')
-      else if (hitSubRequired) setErrorState('subscription_required')
-      else setErrorState(null)
-
+      setErrorState(hitSubRequired ? 'subscription_required' : null)
       setComputing(false)
-
-      // 성공적으로 한 번이라도 차감됐으면 부모에게 잔액 갱신 알림
-      if (creditsChanged && onCreditsChanged) onCreditsChanged()
     }
 
     compute()
     return () => { cancelled = true }
-  }, [hotelLat, hotelLng, spots, onCreditsChanged])
+  }, [hotelLat, hotelLng, spots])
 
   // 호텔 좌표나 스팟 좌표가 없으면 섹션 전체 숨김 (빈 placeholder 제거)
   const hasSpotsWithCoords = useMemo(
@@ -110,15 +96,6 @@ export function PlannerSpotDistance({
       <p className="text-sm text-[#6B7280] mb-4">
         호텔 기준 각 장소까지의 {approx} 이동 시간 ({t('spot.creditNote')})
       </p>
-
-      {errorState === 'insufficient_credits' && (
-        <div className="mb-4 p-4 rounded-2xl bg-red-50 border border-red-200 text-center">
-          <p className="text-sm font-bold text-red-700 mb-1">
-            ⚠ {t('credits.insufficient')}
-          </p>
-          <p className="text-[11px] text-red-600">{t('spot.insufficientHint')}</p>
-        </div>
-      )}
 
       {errorState === 'subscription_required' && (
         <div className="mb-4 p-4 rounded-2xl bg-peach border border-blossom text-center">
