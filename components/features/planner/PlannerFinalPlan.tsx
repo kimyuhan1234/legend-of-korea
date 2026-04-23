@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo, type ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
+import { ChevronDown } from 'lucide-react'
 import { PlannerWeather } from './PlannerWeather'
 import { getCityWeather, type CityWeatherDay } from '@/lib/data/city-weather-mock'
 import { getItemName, filterItemsByCity, getFirstDayStartTime, getLastDayEndTime } from '@/lib/utils/planner-helpers'
@@ -75,7 +76,50 @@ const TYPE_EMOJI: Record<ItemType, string> = {
   ootd: '👗', goods: '🛍️', transport: '🚄', surprise: '🎁',
 }
 
-// 상단 4칸 요약 그리드 라벨 (5개국어)
+// 상단 요약 아코디언 — 섹션별 접기/펴기
+interface AccordionItemProps {
+  title: string
+  emoji: string
+  accentClass: string  // 제목 색상 (mint-deep, rose-500, blue-600, amber-600)
+  defaultOpen: boolean
+  count: number
+  children: ReactNode
+}
+
+function AccordionItem({ title, emoji, accentClass, defaultOpen, count, children }: AccordionItemProps) {
+  const [isOpen, setIsOpen] = useState(defaultOpen)
+  return (
+    <div className="bg-white rounded-2xl border border-mist/40 overflow-hidden">
+      <button
+        type="button"
+        onClick={() => setIsOpen((v) => !v)}
+        className="w-full flex items-center justify-between px-4 py-3 hover:bg-snow transition-colors"
+        aria-expanded={isOpen}
+      >
+        <span className={`text-[11px] font-black uppercase tracking-widest ${accentClass}`}>
+          {emoji} {title}
+        </span>
+        <div className="flex items-center gap-2">
+          {count > 0 && (
+            <span className="text-[10px] font-black bg-mint-light/60 text-mint-deep px-2 py-0.5 rounded-full">
+              {count}
+            </span>
+          )}
+          <ChevronDown
+            className={`w-4 h-4 text-stone transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          />
+        </div>
+      </button>
+      {isOpen && (
+        <div className="px-4 py-3 border-t border-mist/40">
+          {children}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// 상단 요약 라벨 (5개국어)
 const SUMMARY_LABEL: Record<string, {
   dateOutfit: string; foodWish: string; foodEmpty: string
   hotelInfo: string; hotelEmpty: string; placesToGo: string; placesEmpty: string
@@ -420,122 +464,126 @@ export function PlannerFinalPlan({
       </h2>
       <p className="text-sm text-[#6B7280] mb-6">{t('final.subtitle')}</p>
 
-      {/* 상단 요약 — 가로 슬라이드 (빈 공간 제거 + 카드 단위 스냅) */}
-      <div className="flex gap-3 mb-8 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
-        {/* 카드 1: 📅 날짜 + 코디 + 날씨 (세로 스택) */}
-        <div className="min-w-[280px] max-w-[320px] flex-shrink-0 snap-start bg-white rounded-2xl p-4 border border-mist/40 space-y-3">
-          <p className="text-[10px] font-black text-mint-deep uppercase tracking-widest">
-            📅 {SUMMARY_LABEL[locale]?.dateOutfit || SUMMARY_LABEL.en.dateOutfit}
-          </p>
-          {ootdSlot}
-          <PlannerWeather cityId={cityId} dates={planDates} />
-        </div>
+      {/* 상단 요약 — 세로 아코디언 (빈 섹션 기본 접힘, 데이터 있는 섹션 펼침) */}
+      {(() => {
+        const foods = filteredItems.filter((i) => i.item_type === 'food')
+        const quests = filteredItems.filter((i) => i.item_type === 'quest')
+        const surprises = filteredItems.filter((i) => i.item_type === 'surprise')
+        const places = [...quests, ...surprises, ...dedupedTransport]
+        const label = SUMMARY_LABEL[locale] || SUMMARY_LABEL.en
 
-        {/* 카드 2: 🍜 먹고 싶은 요리 */}
-        <div className="min-w-[280px] max-w-[320px] flex-shrink-0 snap-start bg-white rounded-2xl p-4 border border-mist/40">
-          <p className="text-[10px] font-black text-rose-500 uppercase tracking-widest mb-2">
-            🍜 {SUMMARY_LABEL[locale]?.foodWish || SUMMARY_LABEL.en.foodWish}
-          </p>
-          {(() => {
-            const foods = filteredItems.filter((i) => i.item_type === 'food')
-            if (foods.length === 0) {
-              return (
-                <p className="text-[11px] text-stone italic mt-2">
-                  {SUMMARY_LABEL[locale]?.foodEmpty || SUMMARY_LABEL.en.foodEmpty}
-                </p>
-              )
-            }
-            return (
-              <ul className="space-y-1.5">
-                {foods.slice(0, 5).map((f) => {
-                  const img = typeof f.item_data.image === 'string' ? f.item_data.image : null
-                  return (
-                    <li key={f.id} className="flex items-center gap-2 text-sm">
-                      {img ? (
-                        <span className="w-7 h-7 rounded-lg bg-cloud overflow-hidden shrink-0">
-                          <img src={img} alt="" className="w-full h-full object-cover" />
-                        </span>
-                      ) : (
-                        <span className="text-base shrink-0">🍜</span>
-                      )}
-                      <span className="font-semibold text-[#111] truncate">{itemName(f, locale)}</span>
+        return (
+          <div className="space-y-2 mb-8">
+            {/* 1. 📅 날짜·코디·날씨 — 기본 펼침 (날씨는 항상 있음) */}
+            <AccordionItem
+              title={label.dateOutfit}
+              emoji="📅"
+              accentClass="text-mint-deep"
+              defaultOpen={true}
+              count={ootdItems.length}
+            >
+              <div className="space-y-3">
+                {ootdSlot}
+                <PlannerWeather cityId={cityId} dates={planDates} />
+              </div>
+            </AccordionItem>
+
+            {/* 2. 🍜 먹고 싶은 요리 */}
+            <AccordionItem
+              title={label.foodWish}
+              emoji="🍜"
+              accentClass="text-rose-500"
+              defaultOpen={foods.length > 0}
+              count={foods.length}
+            >
+              {foods.length === 0 ? (
+                <p className="text-[11px] text-stone italic">{label.foodEmpty}</p>
+              ) : (
+                <ul className="space-y-1.5">
+                  {foods.slice(0, 5).map((f) => {
+                    const img = typeof f.item_data.image === 'string' ? f.item_data.image : null
+                    return (
+                      <li key={f.id} className="flex items-center gap-2 text-sm">
+                        {img ? (
+                          <span className="w-7 h-7 rounded-lg bg-cloud overflow-hidden shrink-0">
+                            <img src={img} alt="" className="w-full h-full object-cover" />
+                          </span>
+                        ) : (
+                          <span className="text-base shrink-0">🍜</span>
+                        )}
+                        <span className="font-semibold text-[#111] truncate">{itemName(f, locale)}</span>
+                      </li>
+                    )
+                  })}
+                  {foods.length > 5 && (
+                    <li className="text-[10px] text-stone">+{foods.length - 5}</li>
+                  )}
+                </ul>
+              )}
+            </AccordionItem>
+
+            {/* 3. 🏨 호텔 정보 */}
+            <AccordionItem
+              title={label.hotelInfo}
+              emoji="🏨"
+              accentClass="text-blue-600"
+              defaultOpen={stayItems.length > 0}
+              count={stayItems.length}
+            >
+              {stayItems.length === 0 ? (
+                <p className="text-[11px] text-stone italic">{label.hotelEmpty}</p>
+              ) : (
+                <ul className="space-y-2">
+                  {stayItems.slice(0, 2).map((s) => {
+                    const address = typeof s.item_data.address === 'string' ? s.item_data.address : ''
+                    const checkIn = typeof s.item_data.checkIn === 'string' ? s.item_data.checkIn : ''
+                    const checkOut = typeof s.item_data.checkOut === 'string' ? s.item_data.checkOut : ''
+                    return (
+                      <li key={s.id} className="text-sm">
+                        <p className="font-bold text-[#111] truncate">{itemName(s, locale)}</p>
+                        {address && (
+                          <p className="text-[11px] text-stone truncate mt-0.5">📍 {address}</p>
+                        )}
+                        {(checkIn || checkOut) && (
+                          <p className="text-[11px] text-stone mt-0.5">
+                            🕐 {checkIn || '—'}
+                            {checkOut && ` · 체크아웃 ${checkOut}`}
+                          </p>
+                        )}
+                      </li>
+                    )
+                  })}
+                </ul>
+              )}
+            </AccordionItem>
+
+            {/* 4. 🎯 가야할 곳 (quest + surprise + transport) */}
+            <AccordionItem
+              title={label.placesToGo}
+              emoji="🎯"
+              accentClass="text-amber-600"
+              defaultOpen={places.length > 0}
+              count={places.length}
+            >
+              {places.length === 0 ? (
+                <p className="text-[11px] text-stone italic">{label.placesEmpty}</p>
+              ) : (
+                <ul className="space-y-1.5">
+                  {places.slice(0, 5).map((it) => (
+                    <li key={it.id} className="flex items-start gap-2 text-sm">
+                      <span className="text-base shrink-0">{TYPE_EMOJI[it.item_type]}</span>
+                      <span className="font-semibold text-[#111] truncate">{itemName(it, locale)}</span>
                     </li>
-                  )
-                })}
-                {foods.length > 5 && (
-                  <li className="text-[10px] text-stone">+{foods.length - 5}</li>
-                )}
-              </ul>
-            )
-          })()}
-        </div>
-
-        {/* 카드 3: 🏨 호텔 정보 */}
-        <div className="min-w-[280px] max-w-[320px] flex-shrink-0 snap-start bg-white rounded-2xl p-4 border border-mist/40">
-          <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-2">
-            🏨 {SUMMARY_LABEL[locale]?.hotelInfo || SUMMARY_LABEL.en.hotelInfo}
-          </p>
-          {stayItems.length === 0 ? (
-            <p className="text-[11px] text-stone italic mt-2">
-              {SUMMARY_LABEL[locale]?.hotelEmpty || SUMMARY_LABEL.en.hotelEmpty}
-            </p>
-          ) : (
-            <ul className="space-y-2">
-              {stayItems.slice(0, 2).map((s) => {
-                const address = typeof s.item_data.address === 'string' ? s.item_data.address : ''
-                const checkIn = typeof s.item_data.checkIn === 'string' ? s.item_data.checkIn : ''
-                const checkOut = typeof s.item_data.checkOut === 'string' ? s.item_data.checkOut : ''
-                return (
-                  <li key={s.id} className="text-sm">
-                    <p className="font-bold text-[#111] truncate">{itemName(s, locale)}</p>
-                    {address && (
-                      <p className="text-[11px] text-stone truncate mt-0.5">📍 {address}</p>
-                    )}
-                    {(checkIn || checkOut) && (
-                      <p className="text-[11px] text-stone mt-0.5">
-                        🕐 {checkIn || '—'}
-                        {checkOut && ` · 체크아웃 ${checkOut}`}
-                      </p>
-                    )}
-                  </li>
-                )
-              })}
-            </ul>
-          )}
-        </div>
-
-        {/* 카드 4: 🎯 가야할 곳 (quest + surprise + transport) */}
-        <div className="min-w-[280px] max-w-[320px] flex-shrink-0 snap-start bg-white rounded-2xl p-4 border border-mist/40">
-          <p className="text-[10px] font-black text-amber-600 uppercase tracking-widest mb-2">
-            🎯 {SUMMARY_LABEL[locale]?.placesToGo || SUMMARY_LABEL.en.placesToGo}
-          </p>
-          {(() => {
-            const quests = filteredItems.filter((i) => i.item_type === 'quest')
-            const surprises = filteredItems.filter((i) => i.item_type === 'surprise')
-            const combined = [...quests, ...surprises, ...dedupedTransport]
-            if (combined.length === 0) {
-              return (
-                <p className="text-[11px] text-stone italic mt-2">
-                  {SUMMARY_LABEL[locale]?.placesEmpty || SUMMARY_LABEL.en.placesEmpty}
-                </p>
-              )
-            }
-            return (
-              <ul className="space-y-1.5">
-                {combined.slice(0, 5).map((it) => (
-                  <li key={it.id} className="flex items-start gap-2 text-sm">
-                    <span className="text-base shrink-0">{TYPE_EMOJI[it.item_type]}</span>
-                    <span className="font-semibold text-[#111] truncate">{itemName(it, locale)}</span>
-                  </li>
-                ))}
-                {combined.length > 5 && (
-                  <li className="text-[10px] text-stone">+{combined.length - 5}</li>
-                )}
-              </ul>
-            )
-          })()}
-        </div>
-      </div>
+                  ))}
+                  {places.length > 5 && (
+                    <li className="text-[10px] text-stone">+{places.length - 5}</li>
+                  )}
+                </ul>
+              )}
+            </AccordionItem>
+          </div>
+        )
+      })()}
 
       {/* 구분선 — 상단 요약과 스케줄 명확히 분리 */}
       <div className="h-px bg-mist/60 mb-6" />
