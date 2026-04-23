@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Loader2, Share2, X, PenLine } from 'lucide-react'
+import { Loader2, Share2, X } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { CommunityFeed } from '@/components/features/community/CommunityFeed'
 import { MissionDashboard } from '@/components/features/missions/MissionDashboard'
@@ -153,19 +153,9 @@ export function MemoriesClient({ locale }: Props) {
       {/* 로그인 필요 탭 */}
       {needsAuth && <LoginPrompt />}
 
-      {/* 탭 1: 피드 */}
+      {/* 탭 1: 피드 — 글쓰기 버튼은 CommunityFeed 내부에서 렌더 (중복 제거) */}
       {!needsAuth && tab === 'feed' && (
-        <div>
-          <div className="flex justify-end mb-4">
-            <Link
-              href={`/${locale}/community/write`}
-              className="inline-flex items-center gap-1.5 bg-mint-deep text-white px-4 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-opacity"
-            >
-              <PenLine className="w-4 h-4" /> {t('feed.write')}
-            </Link>
-          </div>
-          <CommunityFeed locale={locale} />
-        </div>
+        <CommunityFeed locale={locale} />
       )}
 
       {/* 탭 2: 대시보드 */}

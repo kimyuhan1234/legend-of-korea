@@ -30,6 +30,14 @@ const DIFF_LABEL: Record<string, Record<string, string>> = {
   en: { easy: 'Easy', medium: 'Medium', hard: 'Hard' },
 }
 
+const PASS_INCLUDED: Record<string, string> = {
+  ko: '🎫 패스 권에 포함',
+  ja: '🎫 パス券に含む',
+  en: '🎫 Included with Pass',
+  'zh-CN': '🎫 通票包含',
+  'zh-TW': '🎫 通票包含',
+}
+
 export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -111,16 +119,13 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
                   </p>
                 </div>
 
-                {/* 하단: 가격 + 버튼 */}
+                {/* 하단: 패스 포함 안내 + 버튼 */}
                 {course.isActive && (
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-mist/60">
-                    <div>
-                      <p className="text-xs text-stone">1인 {label.from}</p>
-                      <p className="text-lg font-black text-[#111]">
-                        ₩{course.price_1p.toLocaleString()}
-                      </p>
-                    </div>
-                    <span className="px-5 py-2.5 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-sm font-bold hover:bg-[#7BC8BC] transition-colors">
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-mist/60 gap-3">
+                    <p className="text-xs font-bold text-mint-deep">
+                      {PASS_INCLUDED[locale] || PASS_INCLUDED.en}
+                    </p>
+                    <span className="shrink-0 px-5 py-2.5 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-sm font-bold hover:bg-[#7BC8BC] transition-colors">
                       {label.detail} →
                     </span>
                   </div>
