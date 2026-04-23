@@ -466,11 +466,22 @@ export function PlannerFinalPlan({
 
       {/* 상단 요약 — 세로 아코디언 (빈 섹션 기본 접힘, 데이터 있는 섹션 펼침) */}
       {(() => {
-        const foods = filteredItems.filter((i) => i.item_type === 'food')
+        // spot은 item_type='food' 로 저장되지만 item_data.kind='sight' 로 구분됨
+        const foods = filteredItems.filter((i) => i.item_type === 'food' && i.item_data?.kind !== 'sight')
+        const sights = filteredItems.filter((i) => i.item_type === 'food' && i.item_data?.kind === 'sight')
         const quests = filteredItems.filter((i) => i.item_type === 'quest')
         const surprises = filteredItems.filter((i) => i.item_type === 'surprise')
-        const places = [...quests, ...surprises, ...dedupedTransport]
+        const places = [...sights, ...quests, ...surprises, ...dedupedTransport]
         const label = SUMMARY_LABEL[locale] || SUMMARY_LABEL.en
+
+        // "가야할 곳" 카드의 아이콘 — quest/surprise/transport/sight 구분
+        const placeEmoji = (it: PlanItem): string => {
+          if (it.item_type === 'quest') return '🎯'
+          if (it.item_type === 'transport') return '🚌'
+          if (it.item_type === 'surprise') return '🎁'
+          if (it.item_type === 'food' && it.item_data?.kind === 'sight') return '📍'
+          return TYPE_EMOJI[it.item_type]
+        }
 
         return (
           <div className="space-y-2 mb-8">
@@ -571,7 +582,7 @@ export function PlannerFinalPlan({
                 <ul className="space-y-1.5">
                   {places.slice(0, 5).map((it) => (
                     <li key={it.id} className="flex items-start gap-2 text-sm">
-                      <span className="text-base shrink-0">{TYPE_EMOJI[it.item_type]}</span>
+                      <span className="text-base shrink-0">{placeEmoji(it)}</span>
                       <span className="font-semibold text-[#111] truncate">{itemName(it, locale)}</span>
                     </li>
                   ))}
