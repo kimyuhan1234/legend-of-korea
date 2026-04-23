@@ -180,8 +180,14 @@ export interface Database {
           updated_at?: string
         }
         Update: {
+          user_id?: string | null
           payment_method?: "toss" | "manual" | null
           payment_status?: "pending" | "paid" | "failed" | "refunded"
+          shipping_name?: string
+          shipping_phone?: string
+          shipping_address?: string
+          shipping_address_detail?: string | null
+          shipping_zipcode?: string | null
           shipping_status?: "preparing" | "shipped" | "delivered"
           tracking_number?: string | null
           updated_at?: string
@@ -317,7 +323,7 @@ export interface Database {
       lp_transactions: {
         Row: {
           id: string
-          user_id: string
+          user_id: string | null
           amount: number
           type: "mission" | "photo_upload" | "review" | "referral" | "coupon_exchange" | "admin"
           reference_id: string | null
@@ -326,14 +332,16 @@ export interface Database {
         }
         Insert: {
           id?: string
-          user_id: string
+          user_id?: string | null
           amount: number
           type: "mission" | "photo_upload" | "review" | "referral" | "coupon_exchange" | "admin"
           reference_id?: string | null
           description?: string | null
           created_at?: string
         }
-        Update: never
+        Update: {
+          user_id?: string | null
+        }
         Relationships: [
           {
             foreignKeyName: "lp_transactions_user_id_fkey"
@@ -1159,6 +1167,28 @@ export interface Database {
           }
         ]
       }
+      withdrawal_requests: {
+        Row: {
+          id: string
+          user_id: string
+          email_hash: string
+          requested_at: string
+          reason: string | null
+          completed_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          email_hash: string
+          requested_at?: string
+          reason?: string | null
+          completed_at?: string | null
+        }
+        Update: {
+          completed_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -1243,7 +1273,7 @@ export type OrderWithCourse = Order & {
 // ============================================================
 // 타입 안전 Supabase 클라이언트 생성 헬퍼
 // ============================================================
-import { createBrowserClient, createServerClient } from "@supabase/ssr"
+import { createBrowserClient } from "@supabase/ssr"
 
 export function createTypedBrowserClient() {
   return createBrowserClient<Database>(
