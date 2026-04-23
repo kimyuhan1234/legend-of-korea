@@ -218,7 +218,7 @@ export function SignupForm({ locale }: SignupFormProps) {
             required
           />
           <span className="flex-1">{t.agreePrivacy}</span>
-          <Link href={`/${locale}/privacy`} className="text-blossom-deep underline ml-1 shrink-0">{t.view}</Link>
+          <Link href={`/${locale}/privacy`} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-blossom-deep underline ml-1 shrink-0">{t.view}</Link>
         </label>
         <label className="flex items-start gap-2 text-sm text-slate cursor-pointer">
           <input
@@ -229,7 +229,7 @@ export function SignupForm({ locale }: SignupFormProps) {
             required
           />
           <span className="flex-1">{t.agreeTerms}</span>
-          <Link href={`/${locale}/terms`} className="text-blossom-deep underline ml-1 shrink-0">{t.view}</Link>
+          <Link href={`/${locale}/terms`} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-blossom-deep underline ml-1 shrink-0">{t.view}</Link>
         </label>
       </div>
 
