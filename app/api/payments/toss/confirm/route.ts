@@ -16,10 +16,10 @@ export async function POST(request: NextRequest) {
 
     const service = await createServiceClient()
 
-    // DB에서 주문 확인 및 금액 검증
+    // 사전 체크 (RPC 호출 전 빠른 에러 경로) — 금액/상태 기본 검증
     const { data: order, error: orderError } = await service
       .from("orders")
-      .select("id, total_price, payment_status, coupon_id")
+      .select("id, total_price, payment_status")
       .eq("id", orderId)
       .single()
 
@@ -31,7 +31,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ orderId, message: "이미 결제된 주문입니다" })
     }
 
-    // 금액 이중 검증
     if (order.total_price !== amount) {
       return NextResponse.json({ error: "금액 불일치" }, { status: 400 })
     }
@@ -56,21 +55,26 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 주문 상태 업데이트
-    await service
-      .from("orders")
-      .update({
-        payment_status: "paid",
-        payment_method: "toss",
-      })
-      .eq("id", orderId)
+    // 주문 확정 + 쿠폰 사용 표시 (RPC로 트랜잭션 원자화 — 중간 실패 시 쿠폰 재사용 차단)
+    const { data: rpcResult, error: rpcError } = await service.rpc(
+      "confirm_order_with_coupon",
+      {
+        p_order_id: orderId,
+        p_amount: amount,
+      }
+    )
 
-    // 쿠폰 사용 처리
-    if (order.coupon_id) {
-      await service
-        .from("coupons")
-        .update({ is_used: true })
-        .eq("id", order.coupon_id)
+    if (rpcError) {
+      return NextResponse.json({ error: "주문 확정 실패", detail: rpcError.message }, { status: 500 })
+    }
+
+    const row = Array.isArray(rpcResult) ? rpcResult[0] : rpcResult
+    if (!row?.success) {
+      // ALREADY_PAID는 멱등 처리 (Toss 재시도로 인한 중복 호출 대비)
+      if (row?.error_message === "ALREADY_PAID") {
+        return NextResponse.json({ orderId, message: "이미 결제된 주문입니다" })
+      }
+      return NextResponse.json({ error: row?.error_message || "주문 확정 실패" }, { status: 400 })
     }
 
     return NextResponse.json({ orderId, success: true })

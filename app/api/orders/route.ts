@@ -147,37 +147,33 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "금액이 일치하지 않습니다" }, { status: 400 })
     }
 
-    // 트랜잭션: 주문 생성 + 재고 차감
-    const { data: order, error: orderError } = await service
-      .from("orders")
-      .insert({
-        user_id: user.id,
-        kit_id: kitId,
-        quantity,
-        total_price: expectedTotal,
-        payment_status: "pending",
-        shipping_name: shippingName,
-        shipping_phone: shippingPhone,
-        shipping_address: shippingAddress,
-        shipping_address_detail: shippingAddressDetail || null,
-        shipping_zipcode: shippingZipcode || null,
-        shipping_status: "preparing",
-        coupon_id: couponId || null,
-      })
-      .select("id")
-      .single()
+    // 주문 생성 + 재고 차감 (RPC로 트랜잭션 원자화 — race condition 차단)
+    const { data: rpcResult, error: rpcError } = await service.rpc(
+      "create_order_with_inventory",
+      {
+        p_user_id: user.id,
+        p_kit_id: kitId,
+        p_quantity: quantity,
+        p_total_price: expectedTotal,
+        p_shipping_name: shippingName,
+        p_shipping_phone: shippingPhone,
+        p_shipping_address: shippingAddress,
+        p_shipping_address_detail: shippingAddressDetail || null,
+        p_shipping_zipcode: shippingZipcode || null,
+        p_coupon_id: couponId || null,
+      }
+    )
 
-    if (orderError || !order) {
-      return NextResponse.json({ error: "주문 생성 실패", detail: orderError?.message }, { status: 500 })
+    if (rpcError) {
+      return NextResponse.json({ error: "주문 생성 실패", detail: rpcError.message }, { status: 500 })
     }
 
-    // 재고 차감
-    await service
-      .from("kit_products")
-      .update({ stock: kit.stock - quantity })
-      .eq("id", kitId)
+    const row = Array.isArray(rpcResult) ? rpcResult[0] : rpcResult
+    if (!row?.success) {
+      return NextResponse.json({ error: row?.error_message || "주문 생성 실패" }, { status: 400 })
+    }
 
-    return NextResponse.json({ orderId: order.id, amount: expectedTotal })
+    return NextResponse.json({ orderId: row.order_id, amount: expectedTotal })
   } catch (err: any) {
     return NextResponse.json({ error: err.message || "서버 오류" }, { status: 500 })
   }
