@@ -4,7 +4,18 @@ import { useState } from 'react'
 import Image from 'next/image'
 import type { NormalizedStay } from '@/lib/tour-api/stays'
 import type { StayTags } from '@/lib/tour-api/stay-tags'
+import { PROVINCE_AREA_CODES } from '@/lib/tour-api/area-codes'
 import { BookingLinkButtons } from './BookingLinkButtons'
+import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
+
+// TourAPI areaCode (숫자 문자열) → cityId (seoul/busan/...)
+const AREA_TO_CITY_ID: Record<string, string> = (() => {
+  const map: Record<string, string> = {}
+  for (const [key, val] of Object.entries(PROVINCE_AREA_CODES)) {
+    map[String(val.areaCode)] = key
+  }
+  return map
+})()
 
 type CardLocale = 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW'
 
@@ -73,6 +84,22 @@ export function StayCard({ stay, locale }: StayCardProps) {
             {stay.matchScore}%
           </span>
         )}
+        {/* 플래너 담기 버튼 (우하단) */}
+        <div className="absolute bottom-2 right-2 z-[2]">
+          <AddToPlannerButton
+            itemType="stay"
+            cityId={AREA_TO_CITY_ID[stay.areaCode] ?? stay.areaCode}
+            itemData={{
+              id: stay.id,
+              name: stay.name,
+              address: stay.address,
+              image: stay.image,
+              stayType: stay.stayType,
+              tel: stay.tel,
+            }}
+            size="sm"
+          />
+        </div>
       </div>
 
       <div className="p-5 flex-1 flex flex-col">

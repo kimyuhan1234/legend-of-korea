@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { resolveEventStatus, type GyeongdoEvent } from '@/lib/data/gyeongdo-events'
+import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
 type DetailLocale = 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW'
 
@@ -125,14 +126,31 @@ export function GyeongdoEventDetail({ event, locale, isLoggedIn }: Props) {
           </p>
         </div>
 
-        <div className="mt-2">
+        <div className="mt-2 flex gap-2">
           {status === 'upcoming' ? (
-            <button
-              onClick={handleJoin}
-              className="w-full py-3.5 rounded-2xl text-sm font-black bg-gradient-to-r from-[#1a4fd6] to-[#dc2626] text-white hover:opacity-90 transition"
-            >
-              {t('buy')}
-            </button>
+            <>
+              <button
+                onClick={handleJoin}
+                className="flex-1 py-3.5 rounded-2xl text-sm font-black bg-gradient-to-r from-[#1a4fd6] to-[#dc2626] text-white hover:opacity-90 transition"
+              >
+                {t('buy')}
+              </button>
+              <AddToPlannerButton
+                itemType="surprise"
+                cityId="seoul"
+                itemData={{
+                  id: event.id,
+                  name: event.location,
+                  date: event.date,
+                  time: event.time,
+                  location: event.location,
+                  meetingPoint: event.meetingPoint,
+                  source: 'gyeongdo',
+                }}
+                size="md"
+                className="shrink-0"
+              />
+            </>
           ) : status === 'sold-out' ? (
             <button disabled className="w-full py-3.5 rounded-2xl text-sm font-black bg-stone/30 text-slate cursor-not-allowed">
               {t('soldOut')}

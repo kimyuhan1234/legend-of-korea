@@ -11,6 +11,7 @@ import { QuestReviews } from "@/components/features/quest/QuestReviews"
 import { QuestFAQ } from "@/components/features/quest/QuestFAQ"
 import { QuestStickyBar } from "@/components/features/quest/QuestStickyBar"
 import { QuestPartySection } from "@/components/features/quest/QuestPartySection"
+import { AddToPlannerButton } from "@/components/features/planner/AddToPlannerButton"
 import { ZepMeetingButton } from "@/components/features/quest/ZepMeetingButton"
 import { ZepBanner } from "@/components/features/quest/ZepBanner"
 import { getZepZoneByCourseId } from "@/lib/data/zep-spaces"
@@ -130,6 +131,24 @@ export default async function CourseDetailPage({ params }: Props) {
         duration={durationText}
         missionCount={missions.length}
       />
+
+      {/* 플래너 담기 — 코스 상세 상단 CTA */}
+      <div className="max-w-3xl mx-auto px-4 -mt-6 mb-8 flex justify-end">
+        <AddToPlannerButton
+          itemType="quest"
+          cityId={course.region || ''}
+          itemData={{
+            id: course.id,
+            courseId: course.id,
+            name: course.title,
+            region: course.region,
+            difficulty: course.difficulty,
+            duration: durationText,
+            thumbnail: thumbnailUrl,
+          }}
+          size="md"
+        />
+      </div>
 
       {/* 2. 3단계 프로세스 */}
       <QuestHowItWorks />

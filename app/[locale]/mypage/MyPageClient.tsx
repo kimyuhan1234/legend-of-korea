@@ -27,6 +27,7 @@ import { ProfileSettings } from '@/components/features/mypage/ProfileSettings';
 import { SubscriptionManage } from '@/components/features/mypage/SubscriptionManage';
 import { AccountDanger } from '@/components/features/mypage/AccountDanger';
 import { RankCard } from '@/components/features/dashboard/RankCard';
+import { MyPlannerCard } from '@/components/features/mypage/MyPlannerCard';
 import type { UserRankResult } from '@/lib/tiers/levels';
 
 interface MyPageClientProps {
@@ -208,6 +209,9 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
               </div>
             </CardContent>
           </Card>
+
+          {/* 내 플래너 카드 */}
+          <MyPlannerCard userId={user?.id ?? null} locale={locale} />
 
           {/* 프로필 훈장 */}
           {user?.id && <ProfileBadges userId={user.id} />}
