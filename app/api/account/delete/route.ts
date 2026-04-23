@@ -39,7 +39,7 @@ export async function DELETE() {
         nickname: 'deleted_user',
         avatar_url: null,
         total_lp: 0,
-        current_tier: 1,
+        current_level: 1,
       })
       .eq('id', userId)
 

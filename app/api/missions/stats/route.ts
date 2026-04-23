@@ -95,27 +95,31 @@ export async function GET() {
     // 유저 프로필
     const { data: userData } = await supabase
       .from('users')
-      .select('nickname, avatar_url, current_tier, total_lp')
+      .select('nickname, avatar_url, current_level, total_lp')
       .eq('id', user.id)
       .single()
 
-    // 다음 티어까지 필요한 LP
-    const { data: nextTier } = await supabase
-      .from('tiers')
-      .select('level, name, min_lp')
-      .gt('min_lp', userData?.total_lp ?? 0)
-      .order('min_lp', { ascending: true })
-      .limit(1)
-      .maybeSingle()
+    // 다음 랭크까지 필요한 빗방울 (rank_up_costs 조회 — 구 tiers 테이블 대체)
+    const currentLevel = userData?.current_level ?? 1
+    const nextLevel = Math.min(currentLevel + 1, 10)
+    const { data: nextRankCost } = currentLevel >= 10
+      ? { data: null }
+      : await supabase
+          .from('rank_up_costs')
+          .select('level, raindrops_required')
+          .eq('level', nextLevel)
+          .maybeSingle()
 
-    const lpToNextTier = nextTier ? nextTier.min_lp - (userData?.total_lp ?? 0) : 0
+    const lpToNextTier = nextRankCost
+      ? Math.max(0, nextRankCost.raindrops_required - (userData?.total_lp ?? 0))
+      : 0
 
     return NextResponse.json({
       stats: { total, completed, inProgress, totalLp, streak, lpToNextTier },
       courseProgress: courseMap,
       recentCompleted,
       user: userData,
-      nextTier,
+      nextTier: nextRankCost ? { level: nextRankCost.level, min_lp: nextRankCost.raindrops_required } : null,
     })
   } catch (err) {
     console.error('Mission stats error:', err)

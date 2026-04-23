@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
     if (upError) throw upError;
 
     // 3-2. User LP 업데이트
-    const { data: userData } = await supabase.from('users').select('total_lp, current_tier').eq('id', user.id).single();
+    const { data: userData } = await supabase.from('users').select('total_lp').eq('id', user.id).single();
     const currentLp = userData?.total_lp || 0;
     
     // LP 보상 결정 (미션 타입별)
@@ -98,8 +98,6 @@ export async function POST(req: NextRequest) {
     }
 
     // 4. [Day 4 디자인 B] 자동 승급 비활성. 레벨업은 /memories 상점에서 수동만 가능.
-    const tierUp = false;
-    const finalTier = userData?.current_tier || 1;
 
     // 5. 다음 미션 해제 (is_hidden 제외한 순차적 미션 중 다음 단계)
     const nextSeq = mission.sequence + 1;
@@ -189,8 +187,6 @@ export async function POST(req: NextRequest) {
       lpEarned: addedLp,
       bonusLp,
       newTotalLp: newLp,
-      tierUp,
-      newTier: null,
       courseCompleted: isCourseCompleted
     });
 

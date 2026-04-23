@@ -29,7 +29,7 @@ export interface PostType {
   user?: {
     nickname: string;
     avatar_url?: string;
-    current_tier?: number;
+    current_level?: number;
   };
 }
 

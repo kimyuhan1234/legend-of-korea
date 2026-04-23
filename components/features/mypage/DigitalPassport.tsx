@@ -44,14 +44,14 @@ export function DigitalPassport({ userId, locale }: Props) {
 
     async function load() {
       const [userRes, missionsRes, progressRes] = await Promise.all([
-        supabase.from('users').select('nickname, current_tier, created_at').eq('id', userId).single(),
+        supabase.from('users').select('nickname, current_level, created_at').eq('id', userId).single(),
         supabase.from('missions').select('id, course_id, is_hidden'),
         supabase.from('mission_progress').select('mission_id, status, completed_at').eq('user_id', userId).eq('status', 'completed'),
       ])
 
       if (userRes.data) {
         setNickname(userRes.data.nickname || '')
-        setTierLevel(userRes.data.current_tier || 1)
+        setTierLevel(userRes.data.current_level || 1)
         setCreatedAt(userRes.data.created_at || '')
       }
 

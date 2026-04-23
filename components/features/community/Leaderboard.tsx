@@ -16,7 +16,7 @@ interface LeaderboardEntry {
   userId: string
   nickname: string
   avatarUrl: string | null
-  tier: number
+  level: number
   language: string
   monthlyLp: number
 }

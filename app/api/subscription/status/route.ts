@@ -21,7 +21,6 @@ export async function GET() {
         status,
         current_period_start,
         current_period_end,
-        tier_levelup_used,
         credits_remaining,
         credits_reset_at,
         subscription_plans (
@@ -31,7 +30,6 @@ export async function GET() {
           price,
           features,
           kit_discount_rate,
-          tier_levelup,
           monthly_credits
         )
       `)

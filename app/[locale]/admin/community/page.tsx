@@ -101,7 +101,7 @@ export default function AdminCommunityPage() {
                     <div className="space-y-0.5">
                       <p className="font-bold text-[#111] text-xs">@{post.users?.nickname || 'Unknown'}</p>
                       <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-slate-200 text-slate-400">
-                        {post.users?.current_tier || 'Villager'}
+                        Lv.{post.users?.current_level || 1}
                       </Badge>
                     </div>
                   </div>

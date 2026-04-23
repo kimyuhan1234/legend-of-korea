@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
 
     const { data: posts, error } = await supabase
       .from('community_posts')
-      .select('*, users(nickname, current_tier), courses(title)')
+      .select('*, users(nickname, current_level), courses(title)')
       .order('created_at', { ascending: false });
 
     if (error) throw error;

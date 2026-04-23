@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
       .from('community_posts')
       .select(`
         *,
-        user:users (nickname, avatar_url, current_tier)
+        user:users (nickname, avatar_url, current_level)
       `);
 
     // Popular sort

@@ -82,7 +82,6 @@ export async function POST(req: NextRequest) {
         payment_provider: 'manual',
         current_period_start: periodStart.toISOString(),
         current_period_end: periodEnd.toISOString(),
-        tier_levelup_used: false,
         credits_remaining: plan.monthly_credits ?? 0,
         credits_reset_at: periodEnd.toISOString(),
       })

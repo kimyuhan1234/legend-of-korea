@@ -75,7 +75,7 @@ export async function Navbar({ locale }: NavbarProps) {
   if (user) {
     const { data } = await supabase
       .from("users")
-      .select("nickname, avatar_url, total_lp, current_tier")
+      .select("nickname, avatar_url, total_lp")
       .eq("id", user.id)
       .single()
     profile = data

@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
     const userIds = topUsers.map(u => u.userId)
     const { data: profiles } = await supabase
       .from('users')
-      .select('id, nickname, avatar_url, current_tier, language')
+      .select('id, nickname, avatar_url, current_level, language')
       .in('id', userIds)
 
     const profileMap = new Map((profiles || []).map(p => [p.id, p]))
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
         userId: u.userId,
         nickname: profile?.nickname || 'Anonymous',
         avatarUrl: profile?.avatar_url || null,
-        tier: profile?.current_tier || 1,
+        level: profile?.current_level || 1,
         language: profile?.language || 'en',
         monthlyLp: u.lp,
       }

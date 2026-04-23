@@ -42,7 +42,7 @@ interface CommunityPostProps {
       id?: string;
       nickname: string;
       avatar_url?: string;
-      current_tier: number;
+      current_level?: number;
     };
     course?: {
       title: { [key: string]: string };

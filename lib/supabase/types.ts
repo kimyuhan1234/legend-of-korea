@@ -30,7 +30,7 @@ export interface Database {
           social_provider: string | null
           avatar_url: string | null
           total_lp: number
-          current_tier: number
+          current_level: number
           role: "user" | "admin"
           created_at: string
           updated_at: string
@@ -43,7 +43,7 @@ export interface Database {
           social_provider?: string | null
           avatar_url?: string | null
           total_lp?: number
-          current_tier?: number
+          current_level?: number
           role?: "user" | "admin"
           created_at?: string
           updated_at?: string
@@ -55,7 +55,7 @@ export interface Database {
           social_provider?: string | null
           avatar_url?: string | null
           total_lp?: number
-          current_tier?: number
+          current_level?: number
           role?: "user" | "admin"
           updated_at?: string
         }
@@ -632,7 +632,6 @@ export interface Database {
           plan_type: "free" | "explorer" | "legend"
           features: { ko: string[]; ja: string[]; en: string[] }
           kit_discount_rate: number
-          tier_levelup: boolean
           monthly_credits: number
           is_active: boolean
           created_at: string
@@ -644,7 +643,6 @@ export interface Database {
           plan_type: "free" | "explorer" | "legend"
           features: { ko: string[]; ja: string[]; en: string[] }
           kit_discount_rate?: number
-          tier_levelup?: boolean
           monthly_credits?: number
           is_active?: boolean
           created_at?: string
@@ -655,7 +653,6 @@ export interface Database {
           plan_type?: "free" | "explorer" | "legend"
           features?: { ko: string[]; ja: string[]; en: string[] }
           kit_discount_rate?: number
-          tier_levelup?: boolean
           monthly_credits?: number
           is_active?: boolean
         }
@@ -671,7 +668,6 @@ export interface Database {
           payment_subscription_id: string | null
           current_period_start: string
           current_period_end: string
-          tier_levelup_used: boolean
           credits_remaining: number
           credits_reset_at: string | null
           created_at: string
@@ -686,7 +682,6 @@ export interface Database {
           payment_subscription_id?: string | null
           current_period_start?: string
           current_period_end: string
-          tier_levelup_used?: boolean
           credits_remaining?: number
           credits_reset_at?: string | null
           created_at?: string
@@ -699,7 +694,6 @@ export interface Database {
           payment_subscription_id?: string | null
           current_period_start?: string
           current_period_end?: string
-          tier_levelup_used?: boolean
           credits_remaining?: number
           credits_reset_at?: string | null
           updated_at?: string
@@ -1235,7 +1229,7 @@ export type MissionWithProgress = Mission & {
 }
 
 export type CommunityPostWithUser = CommunityPost & {
-  users: Pick<User, "id" | "nickname" | "avatar_url" | "current_tier">
+  users: Pick<User, "id" | "nickname" | "avatar_url" | "current_level">
   courses: Pick<Course, "id" | "title"> | null
   isLiked?: boolean
 }
