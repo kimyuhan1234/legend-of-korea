@@ -1,35 +1,16 @@
 import { createClient } from '@/lib/supabase/server'
+import {
+  LEVEL_THRESHOLDS,
+  MAX_LEVEL,
+  calculateLevelFromRaindrops,
+  type TechTreeRoute,
+  type RankTitle,
+  type UserRankResult,
+} from './levels'
 
-export type TechTreeRoute = 'scholar' | 'warrior'
-
-/**
- * 빗방울(total_lp) → 레벨 임계값 (1~10).
- * 공통 구간 Lv 1~3, 그 이후 분기(Lv 4+).
- * 10단계 체계로 기존 tiers(1~6)와는 독립적으로 동작.
- */
-export const LEVEL_THRESHOLDS = [
-  0,      // Lv 1
-  100,    // Lv 2
-  300,    // Lv 3
-  700,    // Lv 4 ← 분기 필요
-  1_500,  // Lv 5
-  3_000,  // Lv 6
-  6_000,  // Lv 7
-  12_000, // Lv 8 (특수직)
-  25_000, // Lv 9
-  50_000, // Lv 10
-] as const
-
-const MAX_LEVEL = LEVEL_THRESHOLDS.length // 10
-
-export function calculateLevelFromRaindrops(raindrops: number): number {
-  let level = 1
-  for (let i = 0; i < LEVEL_THRESHOLDS.length; i += 1) {
-    if (raindrops >= LEVEL_THRESHOLDS[i]) level = i + 1
-    else break
-  }
-  return Math.min(level, MAX_LEVEL)
-}
+// 하위 호환성 유지를 위한 re-export
+export { LEVEL_THRESHOLDS, calculateLevelFromRaindrops }
+export type { TechTreeRoute, RankTitle, UserRankResult }
 
 interface TierTitleRow {
   level: number
@@ -51,28 +32,6 @@ function pickName(row: TierTitleRow, locale: string): string {
     case 'zh-TW': return row.name_zh_tw
     default: return row.name_ko
   }
-}
-
-export interface RankTitle {
-  name: string
-  emoji: string
-  isSpecial: boolean
-  level: number
-  route: string
-}
-
-export interface UserRankResult {
-  level: number
-  route: TechTreeRoute | null
-  currentTitle: RankTitle | null
-  nextTitle: RankTitle | null
-  raindrops: number
-  raindropsToNext: number
-  progressPercent: number
-  /** Lv 4+인데 route=null — 분기 선택 모달 강제 필요 */
-  needsBranchSelection: boolean
-  /** 최고 레벨 도달 */
-  isMaxLevel: boolean
 }
 
 function findTitle(rows: TierTitleRow[], level: number, route: string): TierTitleRow | undefined {

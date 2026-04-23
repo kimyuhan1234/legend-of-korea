@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { BranchSelectionModal } from './BranchSelectionModal'
-import type { UserRankResult } from '@/lib/tiers/get-user-rank'
+import type { UserRankResult } from '@/lib/tiers/levels'
 
 type CardLocale = 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW'
 
@@ -20,6 +21,7 @@ const UI: Record<CardLocale, {
   maxLevel: string
   branchAnnouncement: string
   raindropUnit: string
+  viewTree: string
 }> = {
   ko: {
     level: '레벨',
@@ -34,6 +36,7 @@ const UI: Record<CardLocale, {
     maxLevel: '최고 레벨 도달!',
     branchAnnouncement: '다음 레벨에서 문관/무관 분기!',
     raindropUnit: '빗방울',
+    viewTree: '전체 성장 지도 보기 →',
   },
   en: {
     level: 'Level',
@@ -48,6 +51,7 @@ const UI: Record<CardLocale, {
     maxLevel: 'Max level reached!',
     branchAnnouncement: 'Branch at next level!',
     raindropUnit: 'raindrops',
+    viewTree: 'View full growth map →',
   },
   ja: {
     level: 'レベル',
@@ -62,6 +66,7 @@ const UI: Record<CardLocale, {
     maxLevel: '最高レベル到達！',
     branchAnnouncement: '次のレベルで文官/武官分岐！',
     raindropUnit: '雨滴',
+    viewTree: '全体の成長マップを見る →',
   },
   'zh-CN': {
     level: '等级',
@@ -76,6 +81,7 @@ const UI: Record<CardLocale, {
     maxLevel: '已达最高等级！',
     branchAnnouncement: '下一级将分为文官/武官！',
     raindropUnit: '雨滴',
+    viewTree: '查看完整成长地图 →',
   },
   'zh-TW': {
     level: '等級',
@@ -90,6 +96,7 @@ const UI: Record<CardLocale, {
     maxLevel: '已達最高等級！',
     branchAnnouncement: '下一級將分為文官/武官！',
     raindropUnit: '雨滴',
+    viewTree: '查看完整成長地圖 →',
   },
 }
 
@@ -221,6 +228,13 @@ export function RankCard({ locale, rank }: Props) {
           {errorMsg && (
             <p className="mt-3 text-xs text-yellow-100 font-bold">{errorMsg}</p>
           )}
+
+          <Link
+            href={`/${locale}/mypage/tech-tree`}
+            className="mt-3 block text-center text-xs font-bold text-white/90 hover:text-white underline-offset-2 hover:underline"
+          >
+            {t.viewTree}
+          </Link>
         </div>
       </div>
 

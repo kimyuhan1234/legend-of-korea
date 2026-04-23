@@ -27,7 +27,7 @@ import { ProfileSettings } from '@/components/features/mypage/ProfileSettings';
 import { SubscriptionManage } from '@/components/features/mypage/SubscriptionManage';
 import { AccountDanger } from '@/components/features/mypage/AccountDanger';
 import { RankCard } from '@/components/features/dashboard/RankCard';
-import type { UserRankResult } from '@/lib/tiers/get-user-rank';
+import type { UserRankResult } from '@/lib/tiers/levels';
 
 interface MyPageClientProps {
   locale: string;
