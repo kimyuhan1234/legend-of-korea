@@ -75,6 +75,58 @@ const TYPE_EMOJI: Record<ItemType, string> = {
   ootd: '👗', goods: '🛍️', transport: '🚄', surprise: '🎁',
 }
 
+// 상단 4칸 요약 그리드 라벨 (5개국어)
+const SUMMARY_LABEL: Record<string, {
+  dateOutfit: string; foodWish: string; foodEmpty: string
+  hotelInfo: string; hotelEmpty: string; placesToGo: string; placesEmpty: string
+}> = {
+  ko: {
+    dateOutfit: '날짜·코디·날씨',
+    foodWish: '먹고 싶은 요리',
+    foodEmpty: '아직 음식을 담지 않았어요',
+    hotelInfo: '호텔 정보',
+    hotelEmpty: '숙소를 담아보세요',
+    placesToGo: '가야할 곳',
+    placesEmpty: '일정을 담아보세요',
+  },
+  ja: {
+    dateOutfit: '日付・コーデ・天気',
+    foodWish: '食べたい料理',
+    foodEmpty: 'まだ料理が登録されていません',
+    hotelInfo: '宿泊情報',
+    hotelEmpty: '宿泊先を登録してください',
+    placesToGo: '訪問先',
+    placesEmpty: '予定を登録してください',
+  },
+  en: {
+    dateOutfit: 'Date · Outfit · Weather',
+    foodWish: 'Foods to Try',
+    foodEmpty: 'No foods picked yet',
+    hotelInfo: 'Hotel Info',
+    hotelEmpty: 'Add your stay',
+    placesToGo: 'Places to Visit',
+    placesEmpty: 'Add your plans',
+  },
+  'zh-CN': {
+    dateOutfit: '日期·穿搭·天气',
+    foodWish: '想吃的美食',
+    foodEmpty: '尚未添加美食',
+    hotelInfo: '酒店信息',
+    hotelEmpty: '请添加住宿',
+    placesToGo: '要去的地方',
+    placesEmpty: '请添加行程',
+  },
+  'zh-TW': {
+    dateOutfit: '日期·穿搭·天氣',
+    foodWish: '想吃的美食',
+    foodEmpty: '尚未添加美食',
+    hotelInfo: '飯店資訊',
+    hotelEmpty: '請添加住宿',
+    placesToGo: '要去的地方',
+    placesEmpty: '請添加行程',
+  },
+}
+
 // 아이템명 추출 — 공유 헬퍼 사용
 function itemName(item: PlanItem, locale: string): string {
   return getItemName(item, locale)
@@ -368,47 +420,121 @@ export function PlannerFinalPlan({
       </h2>
       <p className="text-sm text-[#6B7280] mb-6">{t('final.subtitle')}</p>
 
-      {/* 교통편 (중복 제거된 가는편/오는편) */}
-      {dedupedTransport.length > 0 && (
-        <div className="bg-white rounded-2xl p-5 mb-4 border-l-4 border-mint-deep">
-          <p className="text-[10px] font-black text-mint-deep uppercase tracking-widest mb-2">
-            🚄 교통편
+      {/* 상단 4칸 요약 그리드 — 데스크탑: 4열, 태블릿: 2열, 모바일: 1열 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+        {/* 칸 1: 📅 날짜 + 코디 + 날씨 (세로 스택) */}
+        <div className="bg-white rounded-2xl p-4 border border-mist/40 space-y-3">
+          <p className="text-[10px] font-black text-mint-deep uppercase tracking-widest">
+            📅 {SUMMARY_LABEL[locale]?.dateOutfit || SUMMARY_LABEL.en.dateOutfit}
           </p>
-          {dedupedTransport.map((tr) => (
-            <div key={tr.id} className="text-sm text-[#374151] mb-1">
-              <span className="text-xs font-bold text-mint-deep mr-1.5">
-                {tr.item_data?.direction === 'going' ? '✈️' : '🏠'}
-              </span>
-              {itemName(tr, locale)}{' '}
-              {typeof tr.item_data.departureTime === 'string' && (
-                <span className="text-stone ml-1">
-                  {String(tr.item_data.departureTime)}
-                  {typeof tr.item_data.arrivalTime === 'string' && ` → ${String(tr.item_data.arrivalTime)}`}
-                </span>
-              )}
-            </div>
-          ))}
+          {ootdSlot}
+          <PlannerWeather cityId={cityId} dates={planDates} />
         </div>
-      )}
 
-      {/* 숙소 (Stay) */}
-      {stayItems.length > 0 && (
-        <div className="bg-white rounded-2xl p-5 mb-4 border-l-4 border-blue-400">
+        {/* 칸 2: 🍜 먹고 싶은 요리 */}
+        <div className="bg-white rounded-2xl p-4 border border-mist/40">
+          <p className="text-[10px] font-black text-rose-500 uppercase tracking-widest mb-2">
+            🍜 {SUMMARY_LABEL[locale]?.foodWish || SUMMARY_LABEL.en.foodWish}
+          </p>
+          {(() => {
+            const foods = filteredItems.filter((i) => i.item_type === 'food')
+            if (foods.length === 0) {
+              return (
+                <p className="text-[11px] text-stone italic mt-2">
+                  {SUMMARY_LABEL[locale]?.foodEmpty || SUMMARY_LABEL.en.foodEmpty}
+                </p>
+              )
+            }
+            return (
+              <ul className="space-y-1.5">
+                {foods.slice(0, 5).map((f) => {
+                  const img = typeof f.item_data.image === 'string' ? f.item_data.image : null
+                  return (
+                    <li key={f.id} className="flex items-center gap-2 text-sm">
+                      {img ? (
+                        <span className="w-7 h-7 rounded-lg bg-cloud overflow-hidden shrink-0">
+                          <img src={img} alt="" className="w-full h-full object-cover" />
+                        </span>
+                      ) : (
+                        <span className="text-base shrink-0">🍜</span>
+                      )}
+                      <span className="font-semibold text-[#111] truncate">{itemName(f, locale)}</span>
+                    </li>
+                  )
+                })}
+                {foods.length > 5 && (
+                  <li className="text-[10px] text-stone">+{foods.length - 5}</li>
+                )}
+              </ul>
+            )
+          })()}
+        </div>
+
+        {/* 칸 3: 🏨 호텔 정보 */}
+        <div className="bg-white rounded-2xl p-4 border border-mist/40">
           <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-2">
-            🏨 숙소
+            🏨 {SUMMARY_LABEL[locale]?.hotelInfo || SUMMARY_LABEL.en.hotelInfo}
           </p>
-          {stayItems.map((s) => (
-            <div key={s.id} className="text-sm font-bold text-[#111]">
-              {itemName(s, locale)}
-            </div>
-          ))}
+          {stayItems.length === 0 ? (
+            <p className="text-[11px] text-stone italic mt-2">
+              {SUMMARY_LABEL[locale]?.hotelEmpty || SUMMARY_LABEL.en.hotelEmpty}
+            </p>
+          ) : (
+            <ul className="space-y-2">
+              {stayItems.slice(0, 2).map((s) => {
+                const address = typeof s.item_data.address === 'string' ? s.item_data.address : ''
+                const checkIn = typeof s.item_data.checkIn === 'string' ? s.item_data.checkIn : ''
+                const checkOut = typeof s.item_data.checkOut === 'string' ? s.item_data.checkOut : ''
+                return (
+                  <li key={s.id} className="text-sm">
+                    <p className="font-bold text-[#111] truncate">{itemName(s, locale)}</p>
+                    {address && (
+                      <p className="text-[11px] text-stone truncate mt-0.5">📍 {address}</p>
+                    )}
+                    {(checkIn || checkOut) && (
+                      <p className="text-[11px] text-stone mt-0.5">
+                        🕐 {checkIn || '—'}
+                        {checkOut && ` · 체크아웃 ${checkOut}`}
+                      </p>
+                    )}
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </div>
-      )}
 
-      {/* 오늘의 코디 + 날씨 — 2열 그리드 (모바일 스택) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        {ootdSlot ? ootdSlot : <div className="hidden md:block" />}
-        <PlannerWeather cityId={cityId} dates={planDates} />
+        {/* 칸 4: 🎯 가야할 곳 (quest + surprise + transport) */}
+        <div className="bg-white rounded-2xl p-4 border border-mist/40">
+          <p className="text-[10px] font-black text-amber-600 uppercase tracking-widest mb-2">
+            🎯 {SUMMARY_LABEL[locale]?.placesToGo || SUMMARY_LABEL.en.placesToGo}
+          </p>
+          {(() => {
+            const quests = filteredItems.filter((i) => i.item_type === 'quest')
+            const surprises = filteredItems.filter((i) => i.item_type === 'surprise')
+            const combined = [...quests, ...surprises, ...dedupedTransport]
+            if (combined.length === 0) {
+              return (
+                <p className="text-[11px] text-stone italic mt-2">
+                  {SUMMARY_LABEL[locale]?.placesEmpty || SUMMARY_LABEL.en.placesEmpty}
+                </p>
+              )
+            }
+            return (
+              <ul className="space-y-1.5">
+                {combined.slice(0, 5).map((it) => (
+                  <li key={it.id} className="flex items-start gap-2 text-sm">
+                    <span className="text-base shrink-0">{TYPE_EMOJI[it.item_type]}</span>
+                    <span className="font-semibold text-[#111] truncate">{itemName(it, locale)}</span>
+                  </li>
+                ))}
+                {combined.length > 5 && (
+                  <li className="text-[10px] text-stone">+{combined.length - 5}</li>
+                )}
+              </ul>
+            )
+          })()}
+        </div>
       </div>
 
       {/* Day별 스마트 스케줄 */}
