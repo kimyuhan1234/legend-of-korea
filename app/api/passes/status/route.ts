@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { PASSES, type PassId } from '@/lib/data/passes'
+import { isAdminEmail } from '@/lib/auth/admin'
 
 export const dynamic = 'force-dynamic'
 
@@ -17,6 +18,23 @@ export async function GET() {
         passes: [],
         features: {},
         creditsRemaining: 0,
+      })
+    }
+
+    // [ADMIN 우회] ADMIN_EMAILS 에 포함된 계정은 AllInOne 보유자처럼 처리
+    if (isAdminEmail(user.email)) {
+      return NextResponse.json({
+        authenticated: true,
+        isAdmin: true,
+        passes: ['move', 'live', 'story', 'allinone'] as PassId[],
+        hasAllInOne: true,
+        features: {
+          traffic: true, spot: true, ai_curation: true,
+          kfood: true, stay: true, ootd: true,
+          quest: true, diy: true, memories: true,
+          vip_badge: true, lp_multiplier_2x: true,
+        },
+        creditsRemaining: 9999,
       })
     }
 

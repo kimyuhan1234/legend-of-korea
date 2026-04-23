@@ -12,6 +12,22 @@ import { createClient } from '@/lib/supabase/server'
  * 기존 /api/admin/* 라우트는 users.role='admin' 방식을 쓰고 있어 건드리지 않음.
  * 이 유틸은 tour-stays/refresh, tag 같은 운영 전용 배치 API 보호용.
  */
+/**
+ * 이메일 문자열만으로 관리자 여부 판단. Supabase 호출 없음 — 동기 헬퍼.
+ * 서버/클라이언트 양쪽에서 재사용 가능 (ADMIN_EMAILS 는 Vercel Env 에 있어야 함).
+ */
+export function isAdminEmail(email: string | null | undefined): boolean {
+  if (!email) return false
+  const raw = process.env.ADMIN_EMAILS
+  if (!raw) return false
+  const adminEmails = raw
+    .split(',')
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean)
+  if (adminEmails.length === 0) return false
+  return adminEmails.includes(email.toLowerCase())
+}
+
 export async function isAdmin(): Promise<boolean> {
   const raw = process.env.ADMIN_EMAILS
   if (!raw) return false

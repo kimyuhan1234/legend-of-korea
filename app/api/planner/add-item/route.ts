@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { isAdminEmail } from '@/lib/auth/admin'
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -36,9 +37,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: '유효하지 않은 itemType' }, { status: 400 })
     }
 
+    // [ADMIN 우회] ADMIN_EMAILS 에 포함된 사용자는 패스 체크 스킵
+    const adminBypass = isAdminEmail(user.email)
+
     // 패스 게이팅 — 특정 아이템은 해당 패스(또는 All in One) 보유 필수
     const requiredPassType = ITEM_PASS_MAP[itemType as ItemType]
-    if (requiredPassType) {
+    if (requiredPassType && !adminBypass) {
       const { data: subs } = await supabase
         .from('user_subscriptions')
         .select('subscription_plans(plan_type)')
