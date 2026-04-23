@@ -18,6 +18,19 @@ function extractI18n(field: unknown, locale: string): string {
   return ''
 }
 
+// ── 이름을 찾지 못했을 때 사용하는 타입별 로케일 폴백 라벨 ──
+const TYPE_FALLBACK: Record<string, Record<ItemType, string>> = {
+  ko:       { food: '식당', stay: '숙소', diy: 'DIY 체험', quest: '퀘스트', ootd: '코디', goods: '굿즈', transport: '교통편', surprise: '깜짝 이벤트' },
+  ja:       { food: '飲食店', stay: '宿泊', diy: 'DIY体験', quest: 'クエスト', ootd: 'コーデ', goods: 'グッズ', transport: '交通', surprise: 'サプライズ' },
+  en:       { food: 'Restaurant', stay: 'Stay', diy: 'DIY', quest: 'Quest', ootd: 'Outfit', goods: 'Goods', transport: 'Transport', surprise: 'Surprise' },
+  'zh-CN':  { food: '餐厅', stay: '住宿', diy: 'DIY 体验', quest: '任务', ootd: '穿搭', goods: '商品', transport: '交通', surprise: '惊喜' },
+  'zh-TW':  { food: '餐廳', stay: '住宿', diy: 'DIY 體驗', quest: '任務', ootd: '穿搭', goods: '商品', transport: '交通', surprise: '驚喜' },
+}
+
+function typeFallback(type: ItemType, locale: string): string {
+  return TYPE_FALLBACK[locale]?.[type] || TYPE_FALLBACK.en[type] || type
+}
+
 // ── 아이템 이름 추출 (모든 item_type 대응) ──
 export function getItemName(item: PlanItem, locale: string): string {
   const d = item.item_data
@@ -99,12 +112,18 @@ export function getItemName(item: PlanItem, locale: string): string {
   }
 
   // 12. 최종 폴백: item_data의 첫 번째 짧은 문자열 값
-  const firstString = Object.values(d).find(
-    (v) => typeof v === 'string' && v.length > 1 && v.length < 50
-  )
-  if (firstString) return firstString as string
+  //    단 UUID·ID 키는 제외 (사용자에게 "1111-1111-..." 노출 방지)
+  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+  for (const [key, v] of Object.entries(d)) {
+    if (typeof v !== 'string') continue
+    if (v.length < 2 || v.length >= 50) continue
+    if (UUID_RE.test(v)) continue           // UUID 형식 값 스킵
+    if (/id$/i.test(key)) continue          // id, courseId, kitId, eventId 등 키 스킵
+    return v
+  }
 
-  return item.item_type
+  // 13. 아무 유의미한 문자열도 못 찾으면 타입별 로케일 폴백 라벨
+  return typeFallback(item.item_type, locale)
 }
 
 // ── 도시 필터 (교통/OOTD는 도시 무관) ──

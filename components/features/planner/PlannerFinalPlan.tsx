@@ -126,8 +126,8 @@ const SUMMARY_LABEL: Record<string, {
 }> = {
   ko: {
     dateOutfit: '날짜·코디·날씨',
-    foodWish: '먹고 싶은 요리',
-    foodEmpty: '아직 음식을 담지 않았어요',
+    foodWish: '식사할 곳',
+    foodEmpty: '식당을 아직 담지 않았어요',
     hotelInfo: '호텔 정보',
     hotelEmpty: '숙소를 담아보세요',
     placesToGo: '가야할 곳',
@@ -135,8 +135,8 @@ const SUMMARY_LABEL: Record<string, {
   },
   ja: {
     dateOutfit: '日付・コーデ・天気',
-    foodWish: '食べたい料理',
-    foodEmpty: 'まだ料理が登録されていません',
+    foodWish: '食事する場所',
+    foodEmpty: 'まだお店が登録されていません',
     hotelInfo: '宿泊情報',
     hotelEmpty: '宿泊先を登録してください',
     placesToGo: '訪問先',
@@ -144,8 +144,8 @@ const SUMMARY_LABEL: Record<string, {
   },
   en: {
     dateOutfit: 'Date · Outfit · Weather',
-    foodWish: 'Foods to Try',
-    foodEmpty: 'No foods picked yet',
+    foodWish: 'Where to Eat',
+    foodEmpty: 'No restaurants picked yet',
     hotelInfo: 'Hotel Info',
     hotelEmpty: 'Add your stay',
     placesToGo: 'Places to Visit',
@@ -153,8 +153,8 @@ const SUMMARY_LABEL: Record<string, {
   },
   'zh-CN': {
     dateOutfit: '日期·穿搭·天气',
-    foodWish: '想吃的美食',
-    foodEmpty: '尚未添加美食',
+    foodWish: '用餐地点',
+    foodEmpty: '尚未添加餐厅',
     hotelInfo: '酒店信息',
     hotelEmpty: '请添加住宿',
     placesToGo: '要去的地方',
@@ -162,8 +162,8 @@ const SUMMARY_LABEL: Record<string, {
   },
   'zh-TW': {
     dateOutfit: '日期·穿搭·天氣',
-    foodWish: '想吃的美食',
-    foodEmpty: '尚未添加美食',
+    foodWish: '用餐地點',
+    foodEmpty: '尚未添加餐廳',
     hotelInfo: '飯店資訊',
     hotelEmpty: '請添加住宿',
     placesToGo: '要去的地方',
