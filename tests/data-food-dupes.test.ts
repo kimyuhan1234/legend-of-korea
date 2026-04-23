@@ -13,10 +13,6 @@ const REQUIRED_REGION_CODES = [
   "busan", "gyeongju", "cheonan", "yongin", "icheon",
   "sokcho", "yeosu", "andong",
 ]
-// Day 6 작업중 — 한국어 뼈대만 있고 외국 음식 매칭(dupes)은 아직 비어있음.
-// 매칭 완료 시 이 Set에서 해당 코드를 제거하면 기본 규칙이 자동 적용됨.
-const WIP_REGIONS = new Set(["sokcho", "yeosu", "andong"])
-
 describe("food-dupes: 지역(Region) 구조", () => {
   it("12개 도시가 모두 존재해야 한다", () => {
     const codes = regions.map((r) => r.code)
@@ -50,13 +46,12 @@ describe("food-dupes: 지역(Region) 구조", () => {
 })
 
 describe("food-dupes: 음식(RegionalFood) 구조", () => {
-  it("각 지역이 최소 10개 음식을 가져야 한다 (Day 6 WIP 지역은 최소 5개)", () => {
+  it("각 지역이 최소 5개 음식을 가져야 한다", () => {
     for (const region of regions) {
-      const min = WIP_REGIONS.has(region.code) ? 5 : 10
       expect(
         region.foods.length,
-        `${region.code}: 음식이 최소 ${min}개여야 하는데 ${region.foods.length}개`
-      ).toBeGreaterThanOrEqual(min)
+        `${region.code}: 음식이 최소 5개여야 하는데 ${region.foods.length}개`
+      ).toBeGreaterThanOrEqual(5)
     }
   })
 
@@ -100,9 +95,8 @@ describe("food-dupes: 음식(RegionalFood) 구조", () => {
     }
   })
 
-  it("모든 음식에 듀프(dupe)가 1개 이상 있어야 한다 (Day 6 WIP 지역 제외)", () => {
+  it("모든 음식에 듀프(dupe)가 1개 이상 있어야 한다", () => {
     for (const region of regions) {
-      if (WIP_REGIONS.has(region.code)) continue
       for (const food of region.foods) {
         expect(
           Object.keys(food.dupes).length,

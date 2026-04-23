@@ -10017,93 +10017,378 @@ export const regions: Region[] = [
     foods: [
       {
         id: "andong-jjimdak",
-        name: { ko: "안동찜닭", ja: "안동찜닭", en: "안동찜닭" },
+        name: { ko: "안동찜닭", ja: "安東チムタク（醤油煮込みチキン）", en: "Andong Jjimdak (Braised Soy Chicken)" },
         region: "andong",
         tasteProfile: { sweet: 50, salty: 60, spicy: 45, umami: 75, sour: 10 },
         storyDescription: {
           ko: "안동 구시장 닭골목에서 시작된 국민 외식 메뉴. 간장·설탕·청양고추로 졸인 닭과 당면, 감자가 한 접시에 푸짐하게 담겨 나눠 먹기에 딱 좋아요.",
-          ja: "안동 구시장 닭골목에서 시작된 국민 외식 메뉴. 간장·설탕·청양고추로 졸인 닭과 당면, 감자가 한 접시에 푸짐하게 담겨 나눠 먹기에 딱 좋아요.",
-          en: "안동 구시장 닭골목에서 시작된 국민 외식 메뉴. 간장·설탕·청양고추로 졸인 닭과 당면, 감자가 한 접시에 푸짐하게 담겨 나눠 먹기에 딱 좋아요."
+          ja: "安東・旧市場の『鶏路地』から全国に広がった国民的外食メニュー。醤油・砂糖・青唐辛子でじっくり煮込んだ鶏肉にタンミョン(春雨)とじゃがいもを合わせ、一皿に山盛り。みんなで囲むのに最適です。",
+          en: "Born on Andong's old-market 'Chicken Alley' and now a national favorite: chicken braised in soy sauce, sugar, and Cheongyang chilies, piled high with glass noodles and potatoes on a single sharing platter."
         },
         ingredients: {
           ko: ["닭고기", "당면", "감자", "당근", "양파", "청양고추", "간장", "설탕"],
-          ja: ["닭고기", "당면", "감자", "당근", "양파", "청양고추", "간장", "설탕"],
-          en: ["닭고기", "당면", "감자", "당근", "양파", "청양고추", "간장", "설탕"]
+          ja: ["鶏肉", "春雨(タンミョン)", "じゃがいも", "人参", "玉ねぎ", "青唐辛子", "醤油", "砂糖"],
+          en: ["Chicken", "Glass noodles", "Potato", "Carrot", "Onion", "Cheongyang chili", "Soy sauce", "Sugar"]
         },
         tags: ["닭고기", "간장", "당면"],
-        dupes: {}
+        dupes: {
+          CN: {
+            name: { ko: "따판지 (大盘鸡, 신장 큰 접시 닭볶음)", ja: "ダーパンジー", en: "Dà Pán Jī (Big Plate Chicken)" },
+            tasteProfile: { sweet: 20, salty: 55, spicy: 70, umami: 75, sour: 10 },
+            description: { ko: "신장 위구르 지역에서 닭을 토막 내 감자·양파·고추와 함께 진간장·고추기름에 졸인 뒤 납작한 밀국수를 얹어 나눠 먹는 큰 접시 요리.", ja: "新疆ウイグル地方で、鶏をぶつ切りにしてじゃがいも・玉ねぎ・唐辛子と醤油・辣油でじっくり煮込み、最後に幅広の手打ち麺(ピェンピェン麺)を乗せる大皿料理。", en: "A Xinjiang Uyghur dish: chunked chicken slow-braised with potato, onion, and chili in dark soy and chili oil, then crowned with wide hand-pulled noodles on a single big plate." },
+            ingredients: { ko: ["닭고기", "감자", "양파", "건고추", "진간장", "밀 납작면"], ja: ["鶏肉", "じゃがいも", "玉ねぎ", "乾燥唐辛子", "醤油", "幅広麺"], en: ["Chicken", "Potato", "Onion", "Dried chili", "Dark soy sauce", "Wide wheat noodles"] },
+            similarityPercent: 88,
+            matchReason: { ko: "'닭+감자+고추+간장을 큰 접시에 담고 면을 얹어 여럿이 나눠 먹는다'는 구성이 찜닭과 거의 동일. 두 요리 모두 시장·노동자 중심의 '큰 접시 공유 문화' 유산을 공유해요.", ja: "『鶏+じゃがいも+唐辛子+醤油を大皿に盛り、麺を合わせて大人数でシェアする』構成がチムタクとほぼ同じ。両者とも市場・労働者文化の『大皿共有』遺産を共有しています。", en: "Near-identical build: chicken + potato + chili + soy on a big plate, noodles tossed in for sharing. Both inherit a market and laborer tradition of communal, generous-plate eating." }
+          },
+          JP: {
+            name: { ko: "치킨 니코미 (일본식 닭조림)", ja: "鶏の煮込み", en: "Chicken Nikomi" },
+            tasteProfile: { sweet: 40, salty: 60, spicy: 5, umami: 75, sour: 5 },
+            description: { ko: "닭을 잘라 간장·미림·설탕·생강에 감자·당근과 함께 뭉근히 끓여 내는 일본 가정의 대표 닭조림. 국물이 진득해지도록 졸여요.", ja: "鶏肉をぶつ切りにし、醤油・みりん・砂糖・生姜でじゃがいも・人参と共にじっくり煮込む、日本家庭料理の定番。煮汁がとろりとするまで煮詰めます。", en: "A Japanese home-cooking staple: chunked chicken simmered with potato and carrot in soy, mirin, sugar, and ginger until the braising liquid turns glossy." },
+            ingredients: { ko: ["닭고기", "감자", "당근", "간장", "미림", "설탕", "생강"], ja: ["鶏肉", "じゃがいも", "人参", "醤油", "みりん", "砂糖", "生姜"], en: ["Chicken", "Potato", "Carrot", "Soy sauce", "Mirin", "Sugar", "Ginger"] },
+            similarityPercent: 82,
+            matchReason: { ko: "간장·설탕으로 단짠 국물을 졸여 닭과 뿌리채소에 배게 만드는 동아시아 닭조림의 기본 레시피가 같아요. 매운맛의 유무만 큰 차이.", ja: "醤油と砂糖で甘辛い煮汁を煮詰め、鶏と根菜に染み込ませる東アジア鶏煮込みの基本レシピが共通。辛味の有無だけが大きな違い。", en: "Same backbone of East Asian chicken braises: soy-sugar sauce reduced until it glazes the chicken and roots. The main split is whether chili enters the pot." }
+          },
+          TH: {
+            name: { ko: "가이 팔로 (태국식 간장 닭조림)", ja: "ガイ・パロー", en: "Gai Palo" },
+            tasteProfile: { sweet: 30, salty: 60, spicy: 15, umami: 75, sour: 10 },
+            description: { ko: "닭을 삶은 달걀·두부와 함께 계피·팔각·정향을 넣은 간장 육수에 뭉근히 졸이는 태국 화교 요리. 진한 갈색 국물이 특징이에요.", ja: "鶏肉をゆで卵や豆腐と一緒に、シナモン・八角・丁子を入れた醤油出汁でじっくり煮込むタイ華僑料理。濃い褐色のタレが特徴。", en: "A Thai-Chinese braise: chicken stewed with boiled eggs and tofu in a five-spice-scented soy broth, simmered until a deep brown glaze forms." },
+            ingredients: { ko: ["닭고기", "삶은 달걀", "두부", "간장", "팔각", "계피", "설탕"], ja: ["鶏肉", "ゆで卵", "豆腐", "醤油", "八角", "シナモン", "砂糖"], en: ["Chicken", "Boiled egg", "Tofu", "Soy sauce", "Star anise", "Cinnamon", "Sugar"] },
+            similarityPercent: 74,
+            matchReason: { ko: "간장 베이스로 닭을 단짠하게 졸여 한 그릇에 담는 공식이 같아요. 한국은 청양고추로 매운맛을 얹고, 태국은 팔각·계피로 향신 방향을 풉니다.", ja: "醤油ベースで鶏を甘辛く煮込み、ワンプレートで出す公式が同じ。韓国は青唐辛子で辛味を、タイは八角・シナモンで香りを足します。", en: "Shared formula: soy-braised chicken served as a one-dish meal. Korea layers heat with Cheongyang chilies; Thailand warms it with five-spice aromatics." }
+          },
+          VN: {
+            name: { ko: "가 꼬 공 (베트남식 닭조림)", ja: "ガー・コー・グン", en: "Gà Kho Gừng" },
+            tasteProfile: { sweet: 25, salty: 65, spicy: 25, umami: 75, sour: 10 },
+            description: { ko: "닭을 느억맘·설탕·카라멜·생강에 뚝배기째 졸여 진한 갈색 양념이 배도록 만드는 베트남 가정식 닭조림.", ja: "鶏肉をヌクマム・砂糖・カラメル・生姜で土鍋ごと煮込み、濃い褐色のタレを染み込ませるベトナム家庭料理。", en: "A Vietnamese home braise: chicken simmered in fish sauce, sugar, caramel, and ginger inside a clay pot until a dark, lacquered sauce coats every piece." },
+            ingredients: { ko: ["닭고기", "느억맘", "카라멜", "설탕", "생강", "고추"], ja: ["鶏肉", "ヌクマム", "カラメル", "砂糖", "生姜", "唐辛子"], en: ["Chicken", "Fish sauce", "Caramel", "Sugar", "Ginger", "Chili"] },
+            similarityPercent: 72,
+            matchReason: { ko: "'닭을 단짠 간장·생선 소스에 졸여 뚝배기 한 그릇에 내는' 구조가 쌍둥이예요. 느억맘·카라멜로 감칠맛을 극대화한다는 베트남식 변주.", ja: "『鶏を甘辛い醤油・魚醤で煮込んで土鍋ワンプレートで出す』構造が双子。ヌクマム・カラメルで旨味を最大化するのがベトナム流。", en: "Twin structure — chicken braised in a sweet-salty sauce and served in a single clay pot. Vietnam uses fish sauce and caramel to push the umami further." }
+          },
+          ID: {
+            name: { ko: "아얌 크찹 (Ayam Kecap, 케찹 마니스 닭조림)", ja: "アヤム・クチャップ", en: "Ayam Kecap" },
+            tasteProfile: { sweet: 45, salty: 60, spicy: 20, umami: 70, sour: 10 },
+            description: { ko: "인도네시아 가정식 닭조림으로, 달콤한 케찹 마니스(달콤 간장)에 닭을 마늘·양파·칠리와 함께 졸여 밥과 곁들여 먹어요.", ja: "インドネシア家庭料理の鶏煮込み。甘口醤油『ケチャップ・マニス』でにんにく・玉ねぎ・唐辛子と一緒に煮込み、ご飯に添えます。", en: "An Indonesian home braise: chicken simmered in sweet kecap manis (sweet soy) with garlic, onion, and chilies, served over rice." },
+            ingredients: { ko: ["닭고기", "케찹 마니스", "마늘", "샬롯", "칠리", "토마토"], ja: ["鶏肉", "ケチャップ・マニス", "にんにく", "エシャロット", "唐辛子", "トマト"], en: ["Chicken", "Kecap manis", "Garlic", "Shallot", "Chili", "Tomato"] },
+            similarityPercent: 76,
+            matchReason: { ko: "달짝지근한 발효 간장으로 닭을 졸여 밥과 함께 먹는 공식이 찜닭과 같은 자리에 있어요. 케찹 마니스가 한국 진간장+설탕의 역할을 단일 재료로 해결.", ja: "甘口の発酵醤油で鶏を煮込みご飯と一緒に食べる公式がチムタクと同じ席にあります。ケチャップ・マニスが『濃口醤油+砂糖』の役割を1つの調味料で担います。", en: "Same niche — chicken braised in a sweet fermented soy and served with rice. Kecap manis does the job of Korea's dark soy plus sugar in a single pour." }
+          },
+          FR: {
+            name: { ko: "코코뱅 (Coq au Vin)", ja: "コック・オ・ヴァン", en: "Coq au Vin" },
+            tasteProfile: { sweet: 15, salty: 60, spicy: 5, umami: 80, sour: 30 },
+            description: { ko: "부르고뉴 지방의 수탉을 버건디 레드와인·버섯·베이컨·펄 양파와 함께 뭉근히 끓여 졸인 프랑스 시골 요리의 정점.", ja: "ブルゴーニュ地方の雄鶏をブルゴーニュの赤ワイン・マッシュルーム・ベーコン・パールオニオンと共に長時間煮込んだフランス田舎料理の名作。", en: "A Burgundy country classic: rooster slow-braised with Pinot Noir, mushrooms, bacon, and pearl onions until the sauce turns rich and velvety." },
+            ingredients: { ko: ["수탉", "레드와인", "베이컨", "버섯", "펄 양파", "당근", "허브"], ja: ["雄鶏", "赤ワイン", "ベーコン", "マッシュルーム", "パールオニオン", "人参", "ハーブ"], en: ["Rooster", "Red wine", "Bacon", "Mushroom", "Pearl onion", "Carrot", "Herbs"] },
+            similarityPercent: 68,
+            matchReason: { ko: "닭을 통째로 뭉근히 오래 졸여 진한 국물에 뿌리채소를 함께 익히는 서양 대표 조림 요리. 간장 대신 와인, 청양고추 대신 베이컨의 짠맛이 자리를 지켜요.", ja: "鶏を丸ごと長時間煮込んで濃厚なソースと根菜を同時に仕上げる西洋の代表煮込み料理。醤油の代わりにワイン、青唐辛子の代わりにベーコンの塩気が役割を担います。", en: "The Western counterpart to Jjimdak's low-and-slow chicken braise. Wine stands in for soy, and bacon's salt takes the seat of Cheongyang chili heat." }
+          },
+          MX: {
+            name: { ko: "포요 엔 몰레 네그로 (멕시코 몰레 치킨)", ja: "ポヨ・エン・モーレ・ネグロ", en: "Pollo en Mole Negro" },
+            tasteProfile: { sweet: 20, salty: 55, spicy: 45, umami: 80, sour: 15 },
+            description: { ko: "오악사카 지방의 블랙 몰레 소스(다양한 말린 고추·초콜릿·견과류)에 삶은 닭을 푹 졸여 한 접시에 흰쌀밥·또르띠야와 함께 내는 멕시코 잔칫상 요리.", ja: "オアハカ地方の黒モレソース(多種の乾燥唐辛子・チョコレート・ナッツ)に茹でた鶏肉をじっくり煮込み、白ご飯やトルティーヤと共に大皿で出すメキシコの祝祭料理。", en: "An Oaxacan celebration plate: poached chicken simmered in 'black mole' — a sauce of dried chilies, chocolate, and nuts — served with rice and tortillas." },
+            ingredients: { ko: ["닭고기", "말린 고추 믹스", "다크 초콜릿", "견과류", "참깨", "토마토"], ja: ["鶏肉", "乾燥唐辛子ミックス", "ダークチョコレート", "ナッツ", "ごま", "トマト"], en: ["Chicken", "Dried chili mix", "Dark chocolate", "Nuts", "Sesame", "Tomato"] },
+            similarityPercent: 62,
+            matchReason: { ko: "여러 사람이 나눠 먹는 '잔칫상 한 접시 닭 요리'라는 위치가 겹쳐요. 간장 기반의 단짠매 소스가 아닌, 고추·초콜릿 기반의 복잡한 몰레 소스가 한국과의 가장 큰 차이.", ja: "大人数で囲む『祝祭の鶏料理』という位置付けが重なります。醤油ベースの甘辛ソースではなく、唐辛子とチョコのモーレソースという複雑系が韓国との最大の違い。", en: "Both hold the 'festive chicken platter for a crowd' role. The split is the sauce universe — not a soy-sweet-heat glaze but a complex chili-and-chocolate mole." }
+          }
+        }
       },
       {
         id: "andong-heot-jesabap",
-        name: { ko: "헛제사밥", ja: "헛제사밥", en: "헛제사밥" },
+        name: { ko: "헛제사밥", ja: "ホッチェサパプ（もどき祭祀膳）", en: "Heot Jesabap (Mock Ancestral Rite Meal)" },
         region: "andong",
         tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 65, sour: 10 },
         storyDescription: {
           ko: "제사 지내지 않은 평일에도 제사상 음식을 맛보고 싶었던 안동 양반가의 장난스러운 발상에서 비롯된 한 상. 고소한 나물·전·탕국이 정갈하게 차려져요.",
-          ja: "제사 지내지 않은 평일에도 제사상 음식을 맛보고 싶었던 안동 양반가의 장난스러운 발상에서 비롯된 한 상. 고소한 나물·전·탕국이 정갈하게 차려져요.",
-          en: "제사 지내지 않은 평일에도 제사상 음식을 맛보고 싶었던 안동 양반가의 장난스러운 발상에서 비롯된 한 상. 고소한 나물·전·탕국이 정갈하게 차려져요."
+          ja: "祭祀(チェサ)のない日でも先祖供物の味を楽しみたいという安東の両班(ヤンバン)の茶目っ気から生まれた定食。香ばしいナムル・チヂミ・タングク(汁もの)が整然と並びます。",
+          en: "Andong's Confucian gentry had a cheeky idea: even on non-rite days, let's eat the ancestral offering menu. The result is a neat tray of pristine vegetable banchan, savory pancakes, and a clear broth."
         },
         ingredients: {
           ko: ["밥", "도라지", "고사리", "시금치", "탕국", "산적", "부침개"],
-          ja: ["밥", "도라지", "고사리", "시금치", "탕국", "산적", "부침개"],
-          en: ["밥", "도라지", "고사리", "시금치", "탕국", "산적", "부침개"]
+          ja: ["ご飯", "桔梗の根", "ワラビ", "ほうれん草", "タングク(汁物)", "串焼き", "チヂミ"],
+          en: ["Rice", "Bellflower root", "Bracken fern", "Spinach", "Clear soup", "Skewered meat", "Pancake"]
         },
         tags: ["제사", "양반", "나물"],
-        dupes: {}
+        dupes: {
+          JP: {
+            name: { ko: "쇼진 료리 (精進料理)", ja: "精進料理", en: "Shōjin Ryōri (Buddhist Monastic Cuisine)" },
+            tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 65, sour: 10 },
+            description: { ko: "일본 선불교에서 내려온 채식 정찬. 두부·뿌리채소·제철 산채를 다섯 가지 조리법·색·맛으로 정갈하게 담아내며, 공양의 정신을 담아요.", ja: "日本の禅宗から伝わる精進料理。豆腐・根菜・季節の山菜を『五法・五色・五味』に従って整然と盛り付け、供養の精神を表現します。", en: "A Zen-Buddhist monastic meal: tofu, roots, and seasonal wild greens arranged by the 'five methods, five colors, five flavors' rubric — offering cuisine elevated to ritual." },
+            ingredients: { ko: ["두부", "우엉", "표고", "뿌리채소", "유바", "제철 나물"], ja: ["豆腐", "ごぼう", "椎茸", "根菜", "湯葉", "季節の山菜"], en: ["Tofu", "Burdock", "Shiitake", "Root vegetables", "Yuba", "Seasonal greens"] },
+            similarityPercent: 86,
+            matchReason: { ko: "'제사·공양이라는 의례 맥락에서 태어난 정갈한 채식 한 상'이라는 정체성이 거의 같아요. 불교(일본)와 유교(한국)의 의례 배경만 다를 뿐, '생선·고기 없이 맑게'라는 원칙이 일치해요.", ja: "『祭祀や供養という儀礼から生まれた整然とした精進膳』というアイデンティティがほぼ同じ。仏教(日本)か儒教(韓国)かの宗教的背景が違うだけで、『魚肉なしで清らかに』という原則が一致します。", en: "Same identity — a reverent vegetarian tray born from ritual offerings. The religious frame (Zen Buddhism vs. Confucian ancestral rites) differs, but both hold to 'no fish or meat; keep it pure.'" }
+          },
+          CN: {
+            name: { ko: "지 차이 (祭菜, 중국 제사 음식)", ja: "ジーツァイ", en: "Jì Cài (Chinese Ancestral Offering Meal)" },
+            tasteProfile: { sweet: 15, salty: 55, spicy: 10, umami: 70, sour: 10 },
+            description: { ko: "청명·추절에 조상 제사상에 올리는 중국 전통 제례 음식. 쌀밥·나물볶음·삼겹살찜·생선찜·채소국을 격식 있는 그릇에 정갈히 올려요.", ja: "清明節や中元節に祖先祭壇に供える中国伝統の祭礼料理。白米・野菜炒め・豚の角煮・蒸し魚・野菜スープを格式ある器に整然と並べます。", en: "A traditional Chinese ritual menu for Qingming and Zhongyuan festivals: white rice, stir-fried vegetables, braised pork belly, steamed fish, and vegetable broth arranged on ceremonial ware." },
+            ingredients: { ko: ["쌀밥", "나물", "삼겹살", "생선", "달걀", "채소국"], ja: ["白米", "野菜", "豚バラ", "魚", "卵", "野菜スープ"], en: ["White rice", "Vegetables", "Pork belly", "Fish", "Egg", "Vegetable soup"] },
+            similarityPercent: 80,
+            matchReason: { ko: "유교 문화권의 조상 제례상이라는 뿌리를 공유해요. 안동 헛제사밥은 '격식을 따르되 실제 제사를 치르지 않는' 변형이지만, 상차림 원칙과 재료 구성은 중국 제례와 직접 닿아요.", ja: "儒教文化圏の祖先祭祀膳という根を共有します。安東ホッチェサパプは『格式を守りつつ実際の祭祀は行わない』変奏ですが、膳の原則と素材構成は中国祭祀膳と直結します。", en: "Both descend from Confucian ancestor-offering trays. Andong's heot jesabap is a 'honor the form without performing the rite' twist, but the layout grammar and ingredient list run directly parallel to Chinese jì cài." }
+          },
+          IN: {
+            name: { ko: "타리 밀 (Thali, 인도식 정찬 한 상)", ja: "ターリー", en: "Thali (Indian Set Meal)" },
+            tasteProfile: { sweet: 15, salty: 55, spicy: 40, umami: 65, sour: 25 },
+            description: { ko: "인도의 원형 금속 쟁반에 쌀·난·달·채소 카레·요거트·피클·디저트 등 여러 반찬을 작은 그릇에 담아 한 상으로 내는 힌두 종교 의례와 결합된 정찬.", ja: "インドの金属製円形トレーに、ご飯・ナン・ダル・野菜カレー・ヨーグルト・ピクルス・デザートなど多数の副菜を小鉢で並べて供する、ヒンドゥー教の儀礼と結びついた定食。", en: "A circular Indian platter of small bowls: rice, naan, dal, vegetable curries, yogurt, pickle, dessert — a Hindu ritual-linked set meal." },
+            ingredients: { ko: ["쌀밥", "난", "달(렌틸 수프)", "채소 카레", "요거트", "피클", "디저트"], ja: ["米飯", "ナン", "ダル", "野菜カレー", "ヨーグルト", "ピクルス", "デザート"], en: ["Rice", "Naan", "Dal (lentil soup)", "Vegetable curry", "Yogurt", "Pickle", "Dessert"] },
+            similarityPercent: 70,
+            matchReason: { ko: "'밥을 중심에 두고 여러 종류의 반찬을 작은 그릇으로 둘러 배치하는 한 상 차림' 공식이 같아요. 둘 다 종교·의례적 의미를 품은 격식 있는 정찬으로 발전.", ja: "『ご飯を中心に据え、多種の副菜を小鉢で周囲に並べる定膳』公式が同じ。両者とも宗教・儀礼的意味を帯びた格式ある正食として発展しました。", en: "Shared grammar: rice as the hub, many small bowls of banchan/side dishes arrayed around it. Both evolved into ritual-coded formal meals." }
+          },
+          ES: {
+            name: { ko: "만하르 블랑꼬 (Manjar Blanco, 중세 수도원 정찬)", ja: "マンハル・ブランコ", en: "Manjar Blanco" },
+            tasteProfile: { sweet: 15, salty: 50, spicy: 5, umami: 60, sour: 10 },
+            description: { ko: "중세 스페인 수도원에서 단식 기간에 내던 '흰 음식' 정찬. 흰 살코기·쌀·아몬드 우유·설탕으로 구성된 극도로 절제된 식단.", ja: "中世スペインの修道院で斎戒期間に供された『白い料理』の定膳。白身肉・米・アーモンドミルク・砂糖で構成された極めて節制された食事。", en: "A medieval Spanish monastic fasting-table tradition: an austere 'white foods' set — white meat, rice, almond milk, sugar — served during Lent and other fasts." },
+            ingredients: { ko: ["흰 닭살", "쌀", "아몬드 우유", "설탕", "계피", "장미수"], ja: ["鶏ささみ", "米", "アーモンドミルク", "砂糖", "シナモン", "ローズウォーター"], en: ["White chicken", "Rice", "Almond milk", "Sugar", "Cinnamon", "Rose water"] },
+            similarityPercent: 62,
+            matchReason: { ko: "종교적·의례적 맥락에서 '절제된 상차림'을 예법으로 정한 문화가 맞닿아요. 재료와 조리법은 완전히 다르지만, '격식 있는 소박함'이라는 정신이 겹칩니다.", ja: "宗教的・儀礼的文脈で『節制された膳』を作法として定めた文化が重なります。素材と調理法は大きく異なりますが、『格式ある素朴さ』という精神が共通。", en: "Both fix a 'formal restraint table' as ritual etiquette. Ingredients and technique diverge completely, but the spirit of 'codified humility at the table' aligns." }
+          },
+          IT: {
+            name: { ko: "체나 델라 비질리아 (Cena della Vigilia, 크리스마스이브 정찬)", ja: "チェーナ・デッラ・ヴィジーリア", en: "Cena della Vigilia" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 70, sour: 15 },
+            description: { ko: "이탈리아 남부·가톨릭 가정의 크리스마스이브 만찬. 육류 대신 7가지 생선·해산물 요리를 코스로 내는 '7가지 생선의 축제(Feast of the Seven Fishes)'로 유명.", ja: "イタリア南部やカトリック家庭のクリスマス・イブ晩餐。肉の代わりに7種類の魚介料理をコースで出す『7つの魚の祝宴』として知られます。", en: "A Southern Italian and Catholic Christmas Eve dinner: no meat, but seven seafood courses — the famed 'Feast of the Seven Fishes.'" },
+            ingredients: { ko: ["염장 대구", "조개", "새우", "오징어", "파스타", "샐러드", "와인"], ja: ["塩漬け鱈", "貝", "エビ", "イカ", "パスタ", "サラダ", "ワイン"], en: ["Salt cod", "Shellfish", "Shrimp", "Squid", "Pasta", "Salad", "Wine"] },
+            similarityPercent: 68,
+            matchReason: { ko: "'종교 의례에 맞춰 정형화된 다품목 정찬'이라는 틀이 같아요. 가톨릭의 금육일과 유교의 제사상이 서로 다른 결이지만, 격식·절제 원칙은 공명해요.", ja: "『宗教儀礼に沿って定型化された多品目正食』という枠が共通。カトリックの肉断ちと儒教の祭祀膳は方向性が違いますが、格式と節制の原則が響き合います。", en: "Both are 'ritually codified, multi-course meals.' Catholic abstinence from meat and Confucian ancestral rites go in different directions, but the formal-restraint logic rhymes." }
+          },
+          VN: {
+            name: { ko: "마엄 쪼이 (Mâm Cỗ, 베트남 제사상)", ja: "マムコー", en: "Mâm Cỗ (Vietnamese Ancestral Tray)" },
+            tasteProfile: { sweet: 15, salty: 60, spicy: 20, umami: 75, sour: 15 },
+            description: { ko: "구정·추석 등 명절에 조상에게 올리는 베트남 전통 제사상. 쌀밥·반쯩(찹쌀떡)·돼지 삼겹살·닭찜·국·채소·과일을 여러 단에 쌓아 올려요.", ja: "旧正月や中秋に祖先へ供えるベトナムの伝統祭祀膳。ご飯・バインチュン(ちまき)・豚バラ煮・蒸し鶏・スープ・野菜・果物を何段にも重ねて飾ります。", en: "A Vietnamese ancestral tray laid out for Tết or mid-autumn: rice, bánh chưng sticky-rice cake, braised pork belly, steamed chicken, soup, vegetables, and fruit stacked across multiple tiers." },
+            ingredients: { ko: ["쌀밥", "반쯩", "삼겹살", "닭찜", "채소국", "과일", "생선조림"], ja: ["米飯", "バインチュン", "豚バラ", "蒸し鶏", "野菜スープ", "果物", "魚の煮込み"], en: ["Rice", "Bánh chưng", "Pork belly", "Steamed chicken", "Vegetable soup", "Fruit", "Braised fish"] },
+            similarityPercent: 78,
+            matchReason: { ko: "유교·도교 영향권의 조상 제례 밥상이라는 뿌리를 공유해요. 정성껏 여러 품목을 맞춰 올리는 상차림 문법이 거의 동일하게 흘러요.", ja: "儒教・道教圏の祖先祭祀膳という根を共有します。丁寧に多品目を揃えて供える膳の文法がほぼ同じ流れ。", en: "Both descend from the Confucian-Daoist cultural sphere's ancestral ritual meal. The 'many dishes carefully arranged as an offering' grammar runs nearly parallel." }
+          },
+          US: {
+            name: { ko: "땡스기빙 디너 (Thanksgiving Dinner)", ja: "サンクスギビング・ディナー", en: "Thanksgiving Dinner" },
+            tasteProfile: { sweet: 25, salty: 55, spicy: 5, umami: 75, sour: 15 },
+            description: { ko: "미국의 추수감사절 가족 만찬. 통칠면조·스터핑·매쉬드 포테이토·그레이비·크랜베리 소스·펌킨 파이 등 정해진 구성으로 한 상에 차려요.", ja: "アメリカの感謝祭家族晩餐。ロースト七面鳥・スタッフィング・マッシュポテト・グレービー・クランベリーソース・パンプキンパイなど、決まった献立を一卓に並べます。", en: "The American Thanksgiving family dinner: roast turkey, stuffing, mashed potato, gravy, cranberry sauce, and pumpkin pie arrayed on a single ceremonial table." },
+            ingredients: { ko: ["칠면조", "스터핑", "매쉬드 포테이토", "그레이비", "크랜베리 소스", "옥수수", "펌킨 파이"], ja: ["七面鳥", "スタッフィング", "マッシュポテト", "グレービー", "クランベリーソース", "とうもろこし", "パンプキンパイ"], en: ["Turkey", "Stuffing", "Mashed potato", "Gravy", "Cranberry sauce", "Corn", "Pumpkin pie"] },
+            similarityPercent: 64,
+            matchReason: { ko: "가족·공동체가 의례적 기념일에 '정해진 품목 세트'로 차려 먹는다는 의례 식사 구조가 같아요. 기원은 추수 감사·청교도 전통이라 유교 제사와 다르지만, 격식 있는 정찬이라는 자리가 공유돼요.", ja: "家族や共同体が儀礼的記念日に『決まった献立セット』で食卓を整える儀礼食構造が同じ。感謝祭・清教徒伝統がルーツなので儒教祭祀と方向性は違いますが、格式ある正食の席を共有します。", en: "Same ritual-meal architecture: families gather on a ceremonial day around a fixed menu set. The Puritan-harvest origin differs from Confucian ancestral rites, but the formal-table role overlaps." }
+          }
+        }
       },
       {
         id: "andong-gan-godeungeo",
-        name: { ko: "안동 간고등어", ja: "안동 간고등어", en: "안동 간고등어" },
+        name: { ko: "안동 간고등어", ja: "安東の塩サバ（カンコドゥンオ）", en: "Andong Gan-Godeungeo (Salt-Cured Mackerel)" },
         region: "andong",
         tasteProfile: { sweet: 5, salty: 75, spicy: 10, umami: 80, sour: 10 },
         storyDescription: {
           ko: "동해에서 잡힌 고등어가 내륙 안동까지 실려 오는 동안 상하지 않도록 장인들이 왕소금을 쳐서 숙성시킨 보존식. 쫀쫀한 살과 짭쪼름한 기름이 흰밥과 환상 궁합이에요.",
-          ja: "동해에서 잡힌 고등어가 내륙 안동까지 실려 오는 동안 상하지 않도록 장인들이 왕소금을 쳐서 숙성시킨 보존식. 쫀쫀한 살과 짭쪼름한 기름이 흰밥과 환상 궁합이에요.",
-          en: "동해에서 잡힌 고등어가 내륙 안동까지 실려 오는 동안 상하지 않도록 장인들이 왕소금을 쳐서 숙성시킨 보존식. 쫀쫀한 살과 짭쪼름한 기름이 흰밥과 환상 궁합이에요."
+          ja: "東海で獲れた鯖が内陸の安東まで運ばれる間に傷まないよう、職人が粗塩をまぶして熟成させた保存食。ぎゅっと締まった身と塩気のある脂が、白ご飯と黄金コンビです。",
+          en: "A preservation craft: mackerel caught in the East Sea had to survive the journey to inland Andong, so master salters rubbed them with coarse sea salt to age. The firm flesh and briny oil make pure magic with hot rice."
         },
         ingredients: {
           ko: ["고등어", "천일염", "무", "대파", "고춧가루"],
-          ja: ["고등어", "천일염", "무", "대파", "고춧가루"],
-          en: ["고등어", "천일염", "무", "대파", "고춧가루"]
+          ja: ["鯖", "天日塩", "大根", "長ねぎ", "粉唐辛子"],
+          en: ["Mackerel", "Sea salt", "Daikon", "Scallion", "Korean chili powder"]
         },
         tags: ["고등어", "염장", "구이"],
-        dupes: {}
+        dupes: {
+          JP: {
+            name: { ko: "시메사바 (しめ鯖, 초절임 고등어)", ja: "しめ鯖", en: "Shime Saba" },
+            tasteProfile: { sweet: 5, salty: 70, spicy: 5, umami: 80, sour: 45 },
+            description: { ko: "신선한 고등어를 소금으로 절인 뒤 식초에 담가 살을 단단하게 숙성시키는 일본의 고등어 보존·식탁 요리. 에도 시대 내륙 운송을 위해 발달.", ja: "新鮮な鯖を塩で締めた後、酢に漬け込んで身を引き締める日本の鯖の保存兼食卓料理。江戸時代に内陸輸送のために発達しました。", en: "A Japanese mackerel cure: fresh saba pressed in salt, then marinated in rice vinegar to firm the flesh. Developed in the Edo era precisely to move fish inland." },
+            ingredients: { ko: ["고등어", "소금", "쌀식초", "미림", "다시마"], ja: ["鯖", "塩", "米酢", "みりん", "昆布"], en: ["Mackerel", "Salt", "Rice vinegar", "Mirin", "Kombu"] },
+            similarityPercent: 88,
+            matchReason: { ko: "'내륙에서 신선한 고등어를 먹기 위한 염장 보존 기술'이라는 배경과 기법이 거의 일치해요. 소금 염장 뒤 식초를 추가하느냐(일본), 염장 자체로 완성하느냐(한국)의 차이.", ja: "『内陸で鮮度を保って鯖を食べるための塩蔵保存技術』という背景と技法がほぼ一致。塩蔵の後に酢を加えるか(日本)、塩蔵だけで完成させるか(韓国)の違い。", en: "Identical origin story — salting mackerel to get it inland alive with flavor. The fork is whether vinegar enters after the salt cure (Japan) or the salt alone finishes the job (Korea)." }
+          },
+          ES: {
+            name: { ko: "카바야 엔 살라손 (Caballa en Salazón)", ja: "カバージャ・エン・サラソン", en: "Caballa en Salazón" },
+            tasteProfile: { sweet: 5, salty: 80, spicy: 5, umami: 80, sour: 10 },
+            description: { ko: "안달루시아·카나리아 해안에서 고등어에 굵은 소금을 뿌려 햇볕에 말린 뒤 올리브오일에 저장하는 스페인의 전통 고등어 염장식.", ja: "アンダルシアやカナリア諸島の沿岸で、鯖に粗塩をまぶして天日干しし、オリーブオイルで保存するスペイン伝統の塩蔵料理。", en: "A Spanish Andalusian and Canary Islands tradition: mackerel rubbed with coarse salt, sun-dried on the coast, then stored under olive oil." },
+            ingredients: { ko: ["고등어", "굵은 소금", "올리브오일", "월계수", "마늘", "후추"], ja: ["鯖", "粗塩", "オリーブオイル", "月桂樹", "にんにく", "胡椒"], en: ["Mackerel", "Coarse salt", "Olive oil", "Bay leaf", "Garlic", "Pepper"] },
+            similarityPercent: 82,
+            matchReason: { ko: "'고등어를 소금으로 절여 장기 보존한다'는 공식이 쌍둥이. 안동 간고등어는 내륙 운송이 목적, 스페인은 해안 저장이 목적이지만, 염장으로 기름진 고등어 살을 단단하게 만드는 원리는 같아요.", ja: "『鯖を塩で漬けて長期保存する』公式が双子。安東カンコドゥンオは内陸輸送が目的、スペインは沿岸保存が目的ですが、塩蔵で脂の乗った鯖身を引き締める原理は同じ。", en: "Twin formula — salt-cure mackerel for long storage. Andong aimed at inland transport, Spain at coastal preservation, but both harness salt to tighten the fatty mackerel flesh." }
+          },
+          IT: {
+            name: { ko: "스곰브로 소토 살레 (Sgombro sotto Sale)", ja: "スゴンブロ・ソットサーレ", en: "Sgombro sotto Sale" },
+            tasteProfile: { sweet: 5, salty: 75, spicy: 5, umami: 80, sour: 10 },
+            description: { ko: "시칠리아 어촌에서 싱싱한 고등어를 통째로 소금에 절여 바람에 말리는 이탈리아 남부 전통 보존식. 올리브오일과 레몬을 곁들여 내요.", ja: "シチリアの漁村で新鮮な鯖をまるごと塩漬けにし、海風で乾燥させる南イタリア伝統の保存食。オリーブオイルとレモンを添えて食べます。", en: "A Sicilian fisherman's cure: whole fresh mackerel salted and dried in the sea breeze, served with olive oil and lemon." },
+            ingredients: { ko: ["고등어", "굵은 소금", "올리브오일", "레몬", "파슬리"], ja: ["鯖", "粗塩", "オリーブオイル", "レモン", "パセリ"], en: ["Mackerel", "Coarse salt", "Olive oil", "Lemon", "Parsley"] },
+            similarityPercent: 78,
+            matchReason: { ko: "굵은 소금으로 고등어 전체를 절여 숙성·건조하는 동일한 기법. 바닷바람으로 말리는 이탈리아의 방식과 내륙 운송 과정에서 숙성되는 한국 방식이 평행.", ja: "粗塩で鯖を全体塩蔵し熟成・乾燥させる同一技法。海風で干すイタリアと、内陸輸送中に熟成する韓国が並行関係。", en: "Same technique — coat the whole mackerel in coarse salt to cure and dry. Italy relies on the sea breeze; Korea lets the overland journey do the aging." }
+          },
+          FR: {
+            name: { ko: "마크로 오 뱅 블랑 (Maquereaux au Vin Blanc, 프랑스식 염장 고등어)", ja: "マクロー・オ・ヴァン・ブラン", en: "Maquereaux au Vin Blanc" },
+            tasteProfile: { sweet: 10, salty: 65, spicy: 5, umami: 75, sour: 40 },
+            description: { ko: "프랑스 브르타뉴 해안에서 고등어를 소금물에 하룻밤 절인 뒤 화이트와인·양파·허브에 재워 보존하는 전통 요리. 주로 오르되브르로 냉장 상태로 먹어요.", ja: "フランス・ブルターニュ沿岸で鯖を塩水で一晩漬け、白ワイン・玉ねぎ・ハーブで保存する伝統料理。主に冷製の前菜として食べます。", en: "A Brittany coastal cure: mackerel brined overnight, then preserved in white wine with onion and herbs. Typically served chilled as an hors d'oeuvre." },
+            ingredients: { ko: ["고등어", "소금물", "화이트와인", "양파", "당근", "월계수"], ja: ["鯖", "塩水", "白ワイン", "玉ねぎ", "人参", "月桂樹"], en: ["Mackerel", "Brine", "White wine", "Onion", "Carrot", "Bay leaf"] },
+            similarityPercent: 70,
+            matchReason: { ko: "고등어의 염장 보존이라는 큰 지붕을 공유해요. 한국이 숯불 구이로 마무리하는 반면, 프랑스는 와인 마리네이드로 식탁에 올린다는 조리 단계가 갈려요.", ja: "鯖の塩蔵保存という大きな屋根を共有。韓国は炭火焼きで仕上げるのに対し、フランスはワインマリネで食卓に出すという調理段階が分かれます。", en: "Shared umbrella of salt-cured mackerel. Korea finishes on charcoal grill; France extends the cure with a wine marinade for the table." }
+          },
+          CN: {
+            name: { ko: "셴위 (鹹魚, 중국 염장 생선)", ja: "シェンユー", en: "Xián Yú (Chinese Salted Fish)" },
+            tasteProfile: { sweet: 5, salty: 85, spicy: 5, umami: 85, sour: 5 },
+            description: { ko: "광동·푸젠 해안에서 생선을 굵은 소금에 절여 햇볕에 말린 뒤 찜·볶음 요리의 조미 재료로 쓰는 중국 남부의 전통 염장 생선.", ja: "広東や福建の沿岸で、魚を粗塩で漬け天日で干して、蒸し物や炒め物の調味素材に使う中国南部の伝統塩蔵魚。", en: "A Southern Chinese preservation: fish (often mackerel or snapper) rubbed with coarse salt and sun-dried, then used to season stir-fries and steamed dishes." },
+            ingredients: { ko: ["고등어/도미", "굵은 소금", "쌀식초", "생강", "대파"], ja: ["鯖/鯛", "粗塩", "米酢", "生姜", "長ねぎ"], en: ["Mackerel/Snapper", "Coarse salt", "Rice vinegar", "Ginger", "Scallion"] },
+            similarityPercent: 80,
+            matchReason: { ko: "'소금으로 생선을 장기 보존한 뒤 밥 반찬으로 쓰는' 동아시아 해안 문화권의 공통 문법. 광동 셴위의 방식이 중국에서 한반도 동해안으로 전파된 흐름과 맞닿아요.", ja: "『塩で魚を長期保存してご飯のおかずにする』東アジア沿岸文化圏の共通文法。広東シェンユーの方式が中国から朝鮮東海岸へ伝播した流れと重なります。", en: "Both belong to the East Asian coastal grammar of 'salt-cure a fish for long storage and serve it with rice.' The Cantonese xián yú tradition aligns with the wave that reached the Korean east coast." }
+          },
+          VN: {
+            name: { ko: "까 느엉 무이 (Cá Nướng Muối, 베트남 소금구이 생선)", ja: "カー・ヌオン・ムオイ", en: "Cá Nướng Muối" },
+            tasteProfile: { sweet: 5, salty: 70, spicy: 15, umami: 80, sour: 10 },
+            description: { ko: "베트남 해안·메콩 지역에서 고등어·메기를 굵은 소금에 절여 숯불에 구워 내는 전통 생선구이. 라임과 허브를 곁들여요.", ja: "ベトナムの沿岸やメコン地域で、鯖やナマズを粗塩で漬けて炭火で焼き上げる伝統魚料理。ライムとハーブを添えます。", en: "A Vietnamese coastal and Mekong tradition: mackerel or catfish packed in coarse salt, then grilled over charcoal. Served with lime and fresh herbs." },
+            ingredients: { ko: ["고등어/메기", "굵은 소금", "라임", "라이스페이퍼", "허브", "피쉬소스"], ja: ["鯖/ナマズ", "粗塩", "ライム", "ライスペーパー", "ハーブ", "ナンプラー"], en: ["Mackerel/Catfish", "Coarse salt", "Lime", "Rice paper", "Herbs", "Fish sauce"] },
+            similarityPercent: 74,
+            matchReason: { ko: "'소금에 절인 생선을 숯불에 구워 밥과 함께 먹는' 조리·식사 방식이 직결돼요. 안동 간고등어의 '소금→숙성→구이' 3단계와 거의 평행해요.", ja: "『塩漬けの魚を炭火で焼いてご飯と共に食べる』調理・食事方法が直結。安東カンコドゥンオの『塩→熟成→焼き』3段階とほぼ平行です。", en: "Direct parallel on cooking and eating method: salt-cured fish grilled over charcoal and served with rice. Mirrors Andong's three-step salt → age → grill flow." }
+          },
+          US: {
+            name: { ko: "솔트 코드 (Salt Cod, 뉴잉글랜드 염장 대구)", ja: "ソルト・コッド", en: "Salt Cod" },
+            tasteProfile: { sweet: 5, salty: 85, spicy: 5, umami: 80, sour: 5 },
+            description: { ko: "뉴잉글랜드 어부들이 대구를 굵은 소금에 절여 해풍에 말린 뒤 나무통에 담아 내륙 도시와 카리브 해까지 수출하던 미국 초기 식민지 시대의 핵심 보존식.", ja: "ニューイングランドの漁師がタラを粗塩で漬け海風で干し、樽詰めで内陸都市やカリブ海まで輸出していた米国植民地時代の核心保存食。", en: "A cornerstone of colonial New England: cod salt-cured and wind-dried on the coast, then barreled and shipped inland and to the Caribbean." },
+            ingredients: { ko: ["대구", "굵은 소금", "올리브오일", "감자", "양파", "마늘"], ja: ["タラ", "粗塩", "オリーブオイル", "じゃがいも", "玉ねぎ", "にんにく"], en: ["Cod", "Coarse salt", "Olive oil", "Potato", "Onion", "Garlic"] },
+            similarityPercent: 72,
+            matchReason: { ko: "'바닷가에서 염장한 생선을 내륙까지 운송해 단백질을 공급한다'는 경제사적 배경이 쌍둥이. 생선 종류만 대구/고등어로 다를 뿐, 염장 운송식의 대명사라는 위치가 같아요.", ja: "『海岸で塩蔵した魚を内陸まで運んでタンパク源として供給する』経済史的背景が双子。魚の種類がタラか鯖かの違いで、塩蔵輸送食の代名詞という位置が同じです。", en: "Twin economic-history role: salt a fish on the coast and ship it inland to provide protein. Only the species differs (cod vs. mackerel) — both serve as the defining salted-transport fish of their region." }
+          }
+        }
       },
       {
         id: "andong-guksi",
-        name: { ko: "안동국시", ja: "안동국시", en: "안동국시" },
+        name: { ko: "안동국시", ja: "安東クッシ（大豆粉入り手打ち麺）", en: "Andong Guksi (Bean-Flour Hand-Cut Noodles)" },
         region: "andong",
         tasteProfile: { sweet: 15, salty: 50, spicy: 25, umami: 70, sour: 10 },
         storyDescription: {
           ko: "밀가루에 콩가루를 섞어 얇게 밀어낸 안동식 칼국수(건진국수). 멸치·다시마 육수에 애호박과 들기름을 올려 간이 슴슴하고 고소한 여름 별미예요.",
-          ja: "밀가루에 콩가루를 섞어 얇게 밀어낸 안동식 칼국수(건진국수). 멸치·다시마 육수에 애호박과 들기름을 올려 간이 슴슴하고 고소한 여름 별미예요.",
-          en: "밀가루에 콩가루를 섞어 얇게 밀어낸 안동식 칼국수(건진국수). 멸치·다시마 육수에 애호박과 들기름을 올려 간이 슴슴하고 고소한 여름 별미예요."
+          ja: "小麦粉に大豆粉(コンカル)を混ぜ、薄く伸ばして切る安東式カルグクス(ゴンジンククス)。煮干しと昆布の出汁にズッキーニとえごま油を添え、あっさり香ばしい夏の味覚です。",
+          en: "Andong's hand-cut 'pulled' noodle: wheat flour blended with soybean flour, rolled thin, and lifted from boiling water into a gentle anchovy-kelp broth with zucchini and a drizzle of perilla oil."
         },
         ingredients: {
           ko: ["밀가루", "콩가루", "멸치 육수", "애호박", "김", "들기름"],
-          ja: ["밀가루", "콩가루", "멸치 육수", "애호박", "김", "들기름"],
-          en: ["밀가루", "콩가루", "멸치 육수", "애호박", "김", "들기름"]
+          ja: ["小麦粉", "大豆粉", "煮干し出汁", "ズッキーニ", "海苔", "えごま油"],
+          en: ["Flour", "Soybean flour", "Anchovy broth", "Zucchini", "Seaweed", "Perilla oil"]
         },
         tags: ["국수", "콩가루", "향토"],
-        dupes: {}
+        dupes: {
+          JP: {
+            name: { ko: "자루 우동 (ざるうどん, 냉우동)", ja: "ざるうどん", en: "Zaru Udon" },
+            tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 70, sour: 10 },
+            description: { ko: "삶아 찬물에 헹군 우동을 대나무 소쿠리에 얹어 가쓰오·다시마 츠유에 찍어 먹는 일본 여름 면요리. 간을 슴슴하게 유지하는 방식.", ja: "茹でて冷水でしめたうどんを竹ざるに盛り、かつおと昆布のつゆに浸けて食べる日本の夏の麺料理。あっさりと淡白な味付けが特徴。", en: "Japanese summer noodle dish: udon boiled, shocked cold, piled on a bamboo zaru, and dipped into a dashi-soy tsuyu — a deliberately gentle-flavored preparation." },
+            ingredients: { ko: ["우동 면", "가쓰오", "다시마", "간장", "파", "와사비"], ja: ["うどん", "かつお", "昆布", "醤油", "ねぎ", "わさび"], en: ["Udon", "Bonito flakes", "Kombu", "Soy sauce", "Scallion", "Wasabi"] },
+            similarityPercent: 78,
+            matchReason: { ko: "'삶아 건진 면+맑은 육수+슴슴한 간'이라는 공식이 같아요. 안동국시의 '건진국수'라는 별명 자체가 면을 건져 육수에 말아 내는 방식이라 일본 냉면 계보와 직결.", ja: "『茹でて引き上げた麺+澄んだ出汁+淡白な味付け』という公式が同じ。安東クッシの別名『ゴンジンククス(引き上げ麺)』は、麺を湯から上げて出汁に入れる方式で日本の冷麺系譜と直結。", en: "Shared formula: noodles lifted from the water, a clear broth, restrained seasoning. Andong guksi's other name — 'geonjin guksu' meaning 'lifted-out noodle' — links directly to the Japanese cold-noodle lineage." }
+          },
+          CN: {
+            name: { ko: "쯔젠 미엔 (手擀面, 손으로 민 면)", ja: "ショウ・ガン・ミエン", en: "Shǒu Gǎn Miàn (Hand-Rolled Noodle)" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 70, sour: 10 },
+            description: { ko: "중국 산동·산시 지방에서 밀가루 반죽을 손으로 얇게 밀어 가늘게 썬 뒤 닭·돼지 육수나 볶음 양념에 넣어 먹는 북방식 손국수.", ja: "中国の山東・山西地方で、小麦粉生地を手で薄く伸ばし細く切って、鶏や豚の出汁、または炒め調味料に入れて食べる北方の手打ち麺。", en: "A Northern Chinese hand-rolled noodle from Shandong and Shanxi: dough rolled thin by hand, cut into thin strands, then served in chicken or pork broth or tossed with sauce." },
+            ingredients: { ko: ["밀가루", "소금", "물", "닭 육수", "파", "고추기름"], ja: ["小麦粉", "塩", "水", "鶏出汁", "ねぎ", "ラー油"], en: ["Wheat flour", "Salt", "Water", "Chicken broth", "Scallion", "Chili oil"] },
+            similarityPercent: 80,
+            matchReason: { ko: "'밀가루 반죽을 얇게 밀어 칼로 썰고 육수에 끓여 낸다'는 손칼국수의 원형이 산동 수건면에서 한반도로 전해졌다는 설과 직결돼요.", ja: "『小麦粉生地を薄く伸ばして刃で切り、出汁で煮る』手打ち麺の原型が、山東手擀面から朝鮮半島に伝わったという説と直結。", en: "The very archetype of 'roll wheat dough thin, cut by knife, cook in broth' — widely held to have reached Korea from Shandong, making this a direct ancestor tie." }
+          },
+          IT: {
+            name: { ko: "타글리아텔레 인 브로도 (Tagliatelle in Brodo)", ja: "タリアテッレ・イン・ブロード", en: "Tagliatelle in Brodo" },
+            tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 75, sour: 10 },
+            description: { ko: "에밀리아 로마냐 지방의 수타 납작면을 치킨·소고기 맑은 육수(브로도)에 말아 낸 이탈리아 북부의 고전 파스타 요리.", ja: "エミリア・ロマーニャ地方の手打ちタリアテッレを、鶏または牛の澄んだ出汁(ブロード)で提供する北イタリアの古典パスタ料理。", en: "A Northern Italian classic: hand-rolled tagliatelle served in a clear chicken or beef brodo from the Emilia-Romagna region." },
+            ingredients: { ko: ["밀가루", "달걀", "소금", "치킨 브로도", "파르메산", "후추"], ja: ["小麦粉", "卵", "塩", "チキン・ブロード", "パルメザン", "胡椒"], en: ["Flour", "Egg", "Salt", "Chicken brodo", "Parmesan", "Pepper"] },
+            similarityPercent: 74,
+            matchReason: { ko: "'수타로 민 납작한 면을 맑은 육수에 말아 먹는다'는 유라시아 수타 국수 문화의 서쪽 끝에 해당해요. 안동국시와의 지리적 거리는 멀어도 조리법의 원형은 가까워요.", ja: "『手打ちの幅広麺を澄んだ出汁に合わせて食べる』ユーラシア手打ち麺文化の西端に当たります。地理的距離は遠くても調理法の原型は近いです。", en: "Occupies the western edge of the Eurasian hand-rolled-noodle tradition: flat ribbons hand-cut and bathed in clear broth. Geographically distant from Andong, but the base technique is close kin." }
+          },
+          VN: {
+            name: { ko: "미 꽝 (Mì Quảng)", ja: "ミークアン", en: "Mì Quảng" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 30, umami: 75, sour: 15 },
+            description: { ko: "베트남 중부 꽝남 지방의 쌀국수로, 강황으로 노란빛을 낸 납작한 쌀국수를 적은 양의 진한 육수에 새우·닭고기·땅콩·허브와 함께 담아 내요.", ja: "ベトナム中部クアンナム地方の米麺料理。ターメリックで黄色く染めた幅広の米麺を、少量の濃厚スープにエビ・鶏肉・ピーナッツ・ハーブと共に盛り付けます。", en: "A central Vietnamese noodle from Quảng Nam: turmeric-tinted flat rice noodles, dressed with a small pour of rich broth and topped with shrimp, chicken, peanuts, and herbs." },
+            ingredients: { ko: ["쌀국수", "강황", "새우", "닭고기", "땅콩", "허브", "라이스크래커"], ja: ["米麺", "ターメリック", "エビ", "鶏肉", "ピーナッツ", "ハーブ", "ライスクラッカー"], en: ["Rice noodle", "Turmeric", "Shrimp", "Chicken", "Peanuts", "Herbs", "Rice cracker"] },
+            similarityPercent: 68,
+            matchReason: { ko: "향토 지방 이름을 가진 '지역 대표 국수'라는 위상이 닮아요. 안동국시가 내륙의 맑은 면이라면, 미 꽝은 해안의 노란 면이라는 지역 정체성이 평행 관계.", ja: "郷土地名を冠した『地域代表麺』という位置付けが似ています。安東クッシが内陸の澄んだ麺なら、ミークアンは沿岸の黄色い麺という地域アイデンティティが並行関係。", en: "Both carry the 'signature regional noodle' status tied to their place name. Andong guksi as the inland clear noodle runs parallel to Mì Quảng as the coastal turmeric noodle." }
+          },
+          TH: {
+            name: { ko: "꾸웨이 티아오 남 (Kuay Teow Nam, 태국식 맑은 쌀국수)", ja: "クイッティアオ・ナム", en: "Kuay Teow Nam" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 20, umami: 75, sour: 15 },
+            description: { ko: "태국 노점에서 팔리는 맑은 돼지·닭 육수의 쌀국수로, 고수·숙주·땅콩·고춧가루·라임을 각자 올려 간을 맞추는 간편 식사.", ja: "タイの屋台で売られる澄んだ豚や鶏の出汁の米麺。パクチー・もやし・ピーナッツ・唐辛子粉・ライムを各自で加えて味を整える簡便食。", en: "A Thai street-stall rice noodle in clear pork or chicken broth, seasoned at the table with cilantro, bean sprouts, peanuts, chili flakes, and lime." },
+            ingredients: { ko: ["쌀국수", "돼지 육수", "고수", "숙주", "라임", "고춧가루"], ja: ["米麺", "豚出汁", "パクチー", "もやし", "ライム", "唐辛子粉"], en: ["Rice noodle", "Pork broth", "Cilantro", "Bean sprouts", "Lime", "Chili flakes"] },
+            similarityPercent: 66,
+            matchReason: { ko: "맑은 육수에 면을 말아 간이 슴슴한 채 손님이 직접 간을 더하는 '베이스 + 조미료 선택' 방식이 안동국시 상차림 문법과 비슷해요.", ja: "澄んだ出汁に麺を入れあっさり味のまま、食べる側が自分で味を調える『ベース+薬味選択』方式が安東クッシの食卓文法と似ています。", en: "Both hand the diner a gently seasoned base and let them build up flavor at the table — shared 'clear foundation plus chosen condiments' grammar." }
+          },
+          US: {
+            name: { ko: "치킨 누들 수프 (Chicken Noodle Soup)", ja: "チキンヌードルスープ", en: "Chicken Noodle Soup" },
+            tasteProfile: { sweet: 10, salty: 60, spicy: 5, umami: 75, sour: 5 },
+            description: { ko: "닭과 뿌리채소를 장시간 끓여 만든 맑은 치킨 스톡에 에그 누들과 당근·셀러리를 넣어 내는 미국 가정의 치유식. 감기 걸린 가족에게 대표 처방.", ja: "鶏と根菜を長時間煮込んだ澄んだチキンストックに、エッグヌードルと人参・セロリを入れる米国家庭の癒し料理。風邪をひいた家族の定番処方。", en: "An American home comfort: long-simmered chicken stock with root vegetables, egg noodles, carrot, and celery. The household prescription for a cold." },
+            ingredients: { ko: ["닭", "에그 누들", "당근", "셀러리", "양파", "파슬리", "후추"], ja: ["鶏", "エッグヌードル", "人参", "セロリ", "玉ねぎ", "パセリ", "胡椒"], en: ["Chicken", "Egg noodles", "Carrot", "Celery", "Onion", "Parsley", "Pepper"] },
+            similarityPercent: 70,
+            matchReason: { ko: "'맑은 육수에 면을 넣어 몸을 편안하게 만드는 위로 음식'이라는 자리가 딱 겹쳐요. 멸치 육수가 치킨 스톡으로, 콩가루 면이 에그 누들로 치환될 뿐.", ja: "『澄んだ出汁に麺を入れて体を癒す慰安食』の位置がぴったり重なります。煮干し出汁がチキンストックに、大豆粉麺がエッグヌードルに置き換わっただけ。", en: "Same cultural seat: clear broth + noodles as a soothing restorative. Anchovy dashi becomes chicken stock; the bean-flour noodle becomes an egg noodle." }
+          },
+          FR: {
+            name: { ko: "콩소메 쥘리엔 (Consommé Julienne)", ja: "コンソメ・ジュリエンヌ", en: "Consommé Julienne" },
+            tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 75, sour: 5 },
+            description: { ko: "맑게 거른 콩소메에 채소를 가늘게 채 썰어(쥘리엔) 띄우는 프랑스의 격식 있는 맑은 수프. 레스토랑의 전채 클래식.", ja: "澄んだコンソメに細切り(ジュリエンヌ)の野菜を浮かべる格式あるフランスの澄ましスープ。レストランの前菜古典。", en: "A formal French clear soup: crystal-filtered consommé carrying julienne vegetable ribbons — a restaurant appetizer classic." },
+            ingredients: { ko: ["맑은 콩소메", "당근", "리크", "셀러리", "순무", "허브"], ja: ["澄んだコンソメ", "人参", "リーキ", "セロリ", "かぶ", "ハーブ"], en: ["Clear consommé", "Carrot", "Leek", "Celery", "Turnip", "Herbs"] },
+            similarityPercent: 62,
+            matchReason: { ko: "'극도로 맑은 육수'라는 정체성을 양반 문화권의 슴슴한 국수와 서양 파인 다이닝이 공유해요. 면이 없다는 차이가 크지만, 맑음에 대한 존중 감각은 평행.", ja: "『極度に澄んだ出汁』というアイデンティティを、両班文化圏の淡白な麺と西洋ファインダイニングが共有しています。麺の有無という差はありますが、澄みへの敬意は並行。", en: "Both revere the 'crystal-clear broth.' The Confucian gentry's restrained noodle and the French fine-dining consommé share that respect for purity, even without a noodle in the French bowl." }
+          }
+        }
       },
       {
         id: "andong-sikhye",
-        name: { ko: "안동식혜", ja: "안동식혜", en: "안동식혜" },
+        name: { ko: "안동식혜", ja: "安東シッケ（赤い発酵米飲料）", en: "Andong Sikhye (Spicy Red Rice Punch)" },
         region: "andong",
         tasteProfile: { sweet: 65, salty: 15, spicy: 40, umami: 20, sour: 30 },
         storyDescription: {
           ko: "일반 식혜와 다르게 고춧가루·생강·무를 넣고 발효시키는 안동의 붉은 식혜. 매콤하면서도 달고 시원해 명절과 제사 뒤 입가심으로 오래 사랑받아 왔어요.",
-          ja: "일반 식혜와 다르게 고춧가루·생강·무를 넣고 발효시키는 안동의 붉은 식혜. 매콤하면서도 달고 시원해 명절과 제사 뒤 입가심으로 오래 사랑받아 왔어요.",
-          en: "일반 식혜와 다르게 고춧가루·생강·무를 넣고 발효시키는 안동의 붉은 식혜. 매콤하면서도 달고 시원해 명절과 제사 뒤 입가심으로 오래 사랑받아 왔어요."
+          ja: "一般的なシッケとは違い、粉唐辛子・生姜・大根を加えて発酵させる安東の赤いシッケ。ピリッとしながらも甘くて爽やかで、祝祭や祭祀の後の口直しとして長く愛されてきました。",
+          en: "Unlike standard sweet sikhye, Andong's red version ferments with chili powder, ginger, and radish. Warmly spicy yet sweet and refreshing, it has long served as the palate-reset drink after holiday feasts and ancestral rites."
         },
         ingredients: {
           ko: ["찹쌀", "엿기름", "무", "생강", "고춧가루", "설탕"],
-          ja: ["찹쌀", "엿기름", "무", "생강", "고춧가루", "설탕"],
-          en: ["찹쌀", "엿기름", "무", "생강", "고춧가루", "설탕"]
+          ja: ["もち米", "麦芽(ヨッキルム)", "大根", "生姜", "粉唐辛子", "砂糖"],
+          en: ["Glutinous rice", "Malted barley", "Daikon", "Ginger", "Korean chili powder", "Sugar"]
         },
         tags: ["식혜", "발효", "디저트"],
-        dupes: {}
+        dupes: {
+          CN: {
+            name: { ko: "라오 짜오 (醪糟, 중국식 발효 쌀 음료)", ja: "ラオザオ", en: "Láo Zāo" },
+            tasteProfile: { sweet: 65, salty: 5, spicy: 5, umami: 25, sour: 35 },
+            description: { ko: "중국 북부·쓰촨 지방에서 찹쌀을 누룩(주취)으로 발효시켜 만든 달짝지근한 발효 쌀 음료. 따뜻하게 데워 디저트로 먹거나 계란을 넣어 달걀 술로 즐겨요.", ja: "中国北部や四川地方でもち米を麹(酒麹)で発酵させた甘い発酵米飲料。温めてデザートにしたり、卵を入れて甘酒として楽しみます。", en: "A northern Chinese and Sichuan fermented rice drink: glutinous rice cultured with jiuqu starter into a sweet, wine-scented liquid, served warm as dessert or with a poached egg." },
+            ingredients: { ko: ["찹쌀", "누룩", "물", "설탕", "계란(선택)"], ja: ["もち米", "酒麹", "水", "砂糖", "卵(任意)"], en: ["Glutinous rice", "Jiuqu starter", "Water", "Sugar", "Egg (optional)"] },
+            similarityPercent: 82,
+            matchReason: { ko: "'찹쌀을 발효시켜 만든 달짝지근한 알코올성 쌀 음료'라는 원형이 같아요. 식혜는 엿기름 효소 발효(무알콜), 라오짜오는 누룩 알코올 발효라는 미생물학적 차이가 있을 뿐.", ja: "『もち米を発酵させて作る甘くアルコール性のある米飲料』という原型が同じ。シッケは麦芽酵素の発酵(ノンアルコール)、ラオザオは酒麹のアルコール発酵という微生物学の違いだけ。", en: "Both descend from the 'fermented glutinous rice sweet drink' archetype. Sikhye uses barley-malt enzyme fermentation (non-alcoholic); láo zāo uses jiuqu alcoholic fermentation — a microbiological split." }
+          },
+          JP: {
+            name: { ko: "아마자케 (甘酒, 일본식 발효 쌀 음료)", ja: "甘酒", en: "Amazake" },
+            tasteProfile: { sweet: 70, salty: 10, spicy: 5, umami: 30, sour: 10 },
+            description: { ko: "찐 쌀에 코지(쌀누룩)를 섞어 6~12시간 발효시켜 만드는 일본의 달콤한 발효 쌀 음료. 무알콜 버전이 주를 이루며 신사 축제에서 따뜻하게 나눠 마셔요.", ja: "蒸したご飯に麹を混ぜて6〜12時間発酵させる日本の甘い発酵米飲料。ノンアルコール版が主流で、神社の祭りで温かく振る舞われます。", en: "A Japanese sweet fermented rice drink: cooked rice inoculated with kōji and fermented 6–12 hours into a creamy, caramel-scented liquid. Mostly non-alcoholic, served warm at shrine festivals." },
+            ingredients: { ko: ["찐 쌀", "쌀누룩", "물", "생강(선택)"], ja: ["蒸し米", "米麹", "水", "生姜(任意)"], en: ["Steamed rice", "Kōji starter", "Water", "Ginger (optional)"] },
+            similarityPercent: 85,
+            matchReason: { ko: "엿기름/누룩(쌀 코지)으로 쌀의 당화를 유도해 단맛을 내는 무알코올 발효 쌀 음료라는 구조가 거의 같아요. 안동식혜는 고춧가루·무로 매운 반전, 아마자케는 생강으로 잔잔한 매콤함을 넣어요.", ja: "麦芽や麹で米の糖化を誘導して甘味を引き出すノンアルコール発酵米飲料という構造がほぼ同じ。安東シッケは粉唐辛子と大根で辛さを、甘酒は生姜で穏やかなピリッと感を加えます。", en: "Near-identical structure: barley malt or kōji drives rice saccharification for a non-alcoholic sweet ferment. Andong sikhye adds chili and radish for a fiery twist; amazake reaches for ginger for a gentler warmth." }
+          },
+          MX: {
+            name: { ko: "아톨레 데 치레 (Atole de Chile, 매운 옥수수 죽음료)", ja: "アトーレ・デ・チレ", en: "Atole de Chile" },
+            tasteProfile: { sweet: 40, salty: 15, spicy: 55, umami: 30, sour: 10 },
+            description: { ko: "멕시코 오악사카·푸에블라 지방에서 옥수수 마사·고추·초콜릿·피롱시요를 끓여 따뜻하게 내는 스파이시 디저트 음료. 고대 아즈텍 의례음식의 후손.", ja: "メキシコ・オアハカやプエブラ地方で、トウモロコシのマサ・唐辛子・チョコレート・ピロンシーヨを煮込んで温かく飲む、スパイシーなデザート飲料。古代アステカの儀礼飲料の末裔。", en: "A warm spicy dessert drink from Oaxaca and Puebla: corn masa thickened with chili, chocolate, and piloncillo sugar — a descendant of ancient Aztec ritual beverages." },
+            ingredients: { ko: ["옥수수 마사", "말린 고추", "초콜릿", "계피", "피롱시요"], ja: ["トウモロコシのマサ", "乾燥唐辛子", "チョコレート", "シナモン", "ピロンシーヨ"], en: ["Corn masa", "Dried chili", "Chocolate", "Cinnamon", "Piloncillo"] },
+            similarityPercent: 72,
+            matchReason: { ko: "'곡물 베이스 + 고추의 매운맛 + 단맛의 대비'라는 희귀한 매콤 단 음료 조합이 두 요리의 정체성. 안동식혜가 쌀+고춧가루라면, 아톨레 데 치레는 옥수수+말린 고추의 변주.", ja: "『穀物ベース+唐辛子の辛味+甘味のコントラスト』という珍しい辛甘飲料の組み合わせが、両料理のアイデンティティ。シッケは米+粉唐辛子、アトーレ・デ・チレはトウモロコシ+乾燥唐辛子の変奏。", en: "Rare shared identity: a grain-based drink built on the contrast of chili heat and sweetness. Sikhye plays rice against chili powder; atole de chile plays corn against dried chilies." }
+          },
+          TH: {
+            name: { ko: "카오 차에 (Khao Chae, 태국식 차가운 쌀 음료)", ja: "カオ・チェー", en: "Khao Chae" },
+            tasteProfile: { sweet: 25, salty: 40, spicy: 10, umami: 40, sour: 15 },
+            description: { ko: "태국 왕실 요리에서 유래한 여름 더위를 식히는 음식으로, 삶은 쌀을 재스민·장미 향 물에 담가 짭조름한 반찬(새우젓·무장아찌 등)과 함께 내요.", ja: "タイ王室料理に由来する夏の涼味料理。炊いた米をジャスミン・バラの花水に浸し、塩気のある副菜(エビの塩漬け・大根の漬物など)と共に供します。", en: "A Thai royal court summer cooler: cooked rice steeped in jasmine-and-rose-infused water, served with savory side bites like salted shrimp paste and pickled radish." },
+            ingredients: { ko: ["삶은 쌀", "재스민 물", "장미 물", "얼음", "새우젓", "무장아찌"], ja: ["ご飯", "ジャスミン水", "バラ水", "氷", "エビの塩漬け", "大根の漬物"], en: ["Cooked rice", "Jasmine water", "Rose water", "Ice", "Salted shrimp paste", "Pickled radish"] },
+            similarityPercent: 66,
+            matchReason: { ko: "'쌀을 음료화해 디저트·입가심으로 즐기는 왕실/양반 문화의 유산'이라는 결이 같아요. 안동식혜가 발효 단맛을 주축으로 한다면, 카오 차에는 향기·청량감 중심이라는 방향 차이.", ja: "『米を飲料化してデザートや口直しとして楽しむ王室・両班文化の遺産』という方向性が同じ。シッケが発酵甘味軸、カオ・チェーが香りと清涼感軸という違い。", en: "Both descend from 'rice transformed into a drink for dessert or palate reset,' rooted in royal or aristocratic tradition. Sikhye leans on fermented sweetness; khao chae leans on floral aromatics and coolness." }
+          },
+          IN: {
+            name: { ko: "라씨 (라시, Lassi with Spice)", ja: "ラッシー", en: "Spiced Lassi" },
+            tasteProfile: { sweet: 45, salty: 20, spicy: 25, umami: 25, sour: 40 },
+            description: { ko: "인도 북부 펀자브 지방의 발효 요거트 음료로, 소금·커민·생강·청고추를 넣은 '짠 라씨'와 설탕·망고를 넣은 '단 라씨' 등 매우 다양한 버전이 있어요.", ja: "インド北部パンジャーブ地方の発酵ヨーグルト飲料。塩・クミン・生姜・青唐辛子を入れた『塩ラッシー』や、砂糖・マンゴーを入れた『甘ラッシー』など多様なバージョン。", en: "A Punjabi fermented yogurt drink: a salty-spicy version with cumin, ginger, and green chili, or a sweet version with mango — many forms exist across North India." },
+            ingredients: { ko: ["요거트", "물", "생강", "커민", "청고추", "설탕/소금"], ja: ["ヨーグルト", "水", "生姜", "クミン", "青唐辛子", "砂糖/塩"], en: ["Yogurt", "Water", "Ginger", "Cumin", "Green chili", "Sugar/Salt"] },
+            similarityPercent: 68,
+            matchReason: { ko: "'발효된 음료에 향신료의 매운맛·생강의 알싸함을 얹어 제사·명절 후 소화제로 마시는' 활용 맥락이 닮았어요. 곡물 대 유제품이라는 발효 기반의 차이.", ja: "『発酵飲料にスパイスの辛味と生姜の風味を重ねて、祭祀や祝祭の後の消化剤として飲む』活用文脈が似ています。穀物か乳製品かという発酵基盤の違い。", en: "Similar use case: a fermented drink spiked with chili heat and ginger, sipped after festive meals to aid digestion. The split is the fermentation base — grain vs. dairy." }
+          },
+          ID: {
+            name: { ko: "웨당 자헤 (Wedang Jahe, 인도네시아 생강 차)", ja: "ウェダン・ジャヘ", en: "Wedang Jahe" },
+            tasteProfile: { sweet: 55, salty: 5, spicy: 60, umami: 10, sour: 10 },
+            description: { ko: "인도네시아 자바 지방에서 생강·팜 슈가·레몬그라스·고추를 끓여 만드는 따뜻한 스파이스 음료. 몸을 덥히는 전통 보양 음료로 통해요.", ja: "インドネシア・ジャワ地方で、生姜・パームシュガー・レモングラス・唐辛子を煮出して作る温かいスパイス飲料。体を温める伝統滋養飲料。", en: "A Javanese warm spice infusion: ginger, palm sugar, lemongrass, and chili simmered together — a traditional warming tonic." },
+            ingredients: { ko: ["생강", "팜 슈가", "레몬그라스", "고추", "시나몬", "정향"], ja: ["生姜", "パームシュガー", "レモングラス", "唐辛子", "シナモン", "丁子"], en: ["Ginger", "Palm sugar", "Lemongrass", "Chili", "Cinnamon", "Clove"] },
+            similarityPercent: 64,
+            matchReason: { ko: "'생강·고추·단맛을 결합해 몸을 덥히는 음료'라는 정체성이 같아요. 발효 곡물(식혜) 대 허브 추출(웨당 자헤)이라는 추출 방식의 차이가 있을 뿐.", ja: "『生姜・唐辛子・甘味を組み合わせて体を温める飲料』というアイデンティティが同じ。発酵穀物(シッケ)か、ハーブ抽出(ウェダン・ジャヘ)かという製法の違い。", en: "Same identity — ginger-chili-sweetness as a warming drink. Grain fermentation (sikhye) vs. herbal decoction (wedang jahe) is the production-method split." }
+          },
+          US: {
+            name: { ko: "스위처 (Switchel, 식민지 아메리카의 생강 음료)", ja: "スウィッチェル", en: "Switchel" },
+            tasteProfile: { sweet: 45, salty: 5, spicy: 35, umami: 5, sour: 55 },
+            description: { ko: "18세기 뉴잉글랜드 농부들이 여름 건초 작업 후 수분·원기 보충을 위해 사과식초·메이플 시럽·생강을 물에 섞어 마시던 미국 식민지 시대 음료.", ja: "18世紀のニューイングランドの農夫が夏の干し草作業後、水分とエネルギーを補給するためにリンゴ酢・メープルシロップ・生姜を水で割って飲んだ米国植民地時代の飲料。", en: "An 18th-century New England farmer's drink: apple cider vinegar, maple syrup, ginger, and water — mixed for hydration after summer haying." },
+            ingredients: { ko: ["물", "사과식초", "메이플시럽", "생강", "라임", "꿀"], ja: ["水", "リンゴ酢", "メープルシロップ", "生姜", "ライム", "蜂蜜"], en: ["Water", "Apple cider vinegar", "Maple syrup", "Ginger", "Lime", "Honey"] },
+            similarityPercent: 58,
+            matchReason: { ko: "'노동·의례 후 몸을 달래기 위해 마시던 달콤·매콤·상쾌한 음료'라는 역할이 비슷해요. 발효 대 즉석 혼합이라는 제조 방식의 차이가 가장 큽니다.", ja: "『労働・儀礼の後に体を癒すために飲む甘くピリッと爽やかな飲料』という役割が似ています。発酵か即席ブレンドかという製法の差が最大の違い。", en: "Parallel role — a sweet-spicy-refreshing drink to restore the body after labor or ritual. Fermentation vs. on-the-spot mixing is the biggest production split." }
+          }
+        }
       }
     ]
   }
