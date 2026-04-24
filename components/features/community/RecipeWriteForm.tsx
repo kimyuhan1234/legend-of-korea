@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Plus, Trash2, X, Loader2, Camera } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
+import { RetroFilterCanvas } from '@/components/features/camera/RetroFilterCanvas';
+import { RETRO_FILTERS, applyFilterToFile } from '@/lib/camera/filters';
 
 const COUNTRY_OPTIONS = [
   { code: 'JP', flag: '🇯🇵', name: { ko: '일본',     en: 'Japan',   ja: '日本' } },
@@ -40,6 +42,11 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
   const [uploadingPhotos, setUploadingPhotos] = useState(false);
   const [tasteProfile, setTasteProfile] = useState({ sweet: 0, salty: 0, spicy: 0, sour: 0, umami: 0 });
 
+  // Filter step state
+  const [pendingFiles, setPendingFiles] = useState<File[]>([]);
+  const [filterIndex, setFilterIndex] = useState(0);
+  const filterStep = pendingFiles.length > 0;
+
   // ── Photo handling ─────────────────────────────────────────
   async function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
     const files = Array.from(e.target.files || []);
@@ -47,10 +54,44 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
     const remaining = 5 - photos.length;
     const toAdd = files.slice(0, remaining);
 
-    const previews = toAdd.map(f => URL.createObjectURL(f));
-    setPhotos(prev => [...prev, ...previews]);
-    setPhotoFiles(prev => [...prev, ...toAdd]);
+    setPendingFiles(toAdd);
+    setFilterIndex(0);
     e.target.value = '';
+  }
+
+  function advanceFilter(processed: File) {
+    const preview = URL.createObjectURL(processed);
+    setPhotos((prev) => [...prev, preview]);
+    setPhotoFiles((prev) => [...prev, processed]);
+    if (filterIndex + 1 < pendingFiles.length) {
+      setFilterIndex(filterIndex + 1);
+    } else {
+      setPendingFiles([]);
+      setFilterIndex(0);
+    }
+  }
+
+  async function handleFilterApply(filterId: string) {
+    const src = pendingFiles[filterIndex];
+    if (!src) return;
+    try {
+      const filter = RETRO_FILTERS.find((f) => f.id === filterId) ?? RETRO_FILTERS[0];
+      const processed = await applyFilterToFile(src, filter);
+      advanceFilter(processed);
+    } catch (err) {
+      console.error('Filter apply error:', err);
+      advanceFilter(src);
+    }
+  }
+
+  function handleFilterSkip() {
+    const src = pendingFiles[filterIndex];
+    if (src) advanceFilter(src);
+  }
+
+  function handleFilterCancel() {
+    setPendingFiles([]);
+    setFilterIndex(0);
   }
 
   function removePhoto(idx: number) {
@@ -151,6 +192,26 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
     hard:   { ko: '어려움', en: 'Hard',   ja: '難しい' },
   };
   const getDiffLabel = (d: string) => DIFFICULTY_LABELS[d]?.[locale] ?? DIFFICULTY_LABELS[d]?.ko ?? d;
+
+  // 필터 단계
+  if (filterStep && pendingFiles[filterIndex]) {
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className="bg-white rounded-2xl shadow p-6 md:p-8">
+          <p className="text-xs text-stone mb-3 text-center">
+            ✨ {filterIndex + 1} / {pendingFiles.length}
+          </p>
+          <RetroFilterCanvas
+            imageFile={pendingFiles[filterIndex]}
+            onApply={handleFilterApply}
+            onSkip={handleFilterSkip}
+            onCancel={handleFilterCancel}
+            locale={locale}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto px-4 py-8 space-y-6">
@@ -276,7 +337,8 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         <input
           ref={photoInputRef}
           type="file"
-          accept="image/*"
+          accept="image/jpeg,image/png,image/webp"
+          capture="environment"
           multiple
           className="hidden"
           onChange={handlePhotoChange}

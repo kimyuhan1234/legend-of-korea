@@ -11,6 +11,8 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { CourseCompletionModal } from './CourseCompletionModal';
+import { RetroFilterCanvas } from '@/components/features/camera/RetroFilterCanvas';
+import { RETRO_FILTERS, applyFilterToFile } from '@/lib/camera/filters';
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 
@@ -47,9 +49,13 @@ export function BossMission({
   const [totalEarned,   setTotalEarned]   = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Filter step (PhotoMission과 동일 패턴)
+  const [filterStep, setFilterStep] = useState(false);
+  const [pendingFile, setPendingFile] = useState<File | null>(null);
+
   const hasQuiz = !!correctAnswer;
 
-  // ── 파일 선택 ────────────────────────────────────────────────
+  // ── 파일 선택 → 필터 단계로 진입 ─────────────────────────────
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
     if (!f) return;
@@ -61,9 +67,42 @@ export function BossMission({
       });
       return;
     }
-    setFile(f);
-    setPreview(URL.createObjectURL(f));
+    setPendingFile(f);
+    setFilterStep(true);
     e.target.value = '';
+  };
+
+  // ── 필터 적용 후 최종 파일 세팅 ───────────────────────────────
+  const handleFilterApply = async (filterId: string) => {
+    if (!pendingFile) return;
+    try {
+      const filter = RETRO_FILTERS.find((f) => f.id === filterId) ?? RETRO_FILTERS[0];
+      const processed = await applyFilterToFile(pendingFile, filter);
+      setFile(processed);
+      setPreview(URL.createObjectURL(processed));
+    } catch (err) {
+      console.error('Filter apply error:', err);
+      // 실패 시 원본 그대로 사용
+      setFile(pendingFile);
+      setPreview(URL.createObjectURL(pendingFile));
+    } finally {
+      setFilterStep(false);
+      setPendingFile(null);
+    }
+  };
+
+  const handleFilterSkip = () => {
+    if (pendingFile) {
+      setFile(pendingFile);
+      setPreview(URL.createObjectURL(pendingFile));
+    }
+    setFilterStep(false);
+    setPendingFile(null);
+  };
+
+  const handleFilterCancel = () => {
+    setFilterStep(false);
+    setPendingFile(null);
   };
 
   // ── 제출 ─────────────────────────────────────────────────────
@@ -149,6 +188,21 @@ export function BossMission({
           </Button>
         </div>
         <CourseCompletionModal isOpen={showCompletion} onClose={() => setShowCompletion(false)} courseName={courseName} totalLp={totalEarned} locale={locale} />
+      </div>
+    );
+  }
+
+  // ── 필터 단계 (사진 선택 후) ─────────────────────────────────
+  if (filterStep && pendingFile) {
+    return (
+      <div className="w-full rounded-[2.5rem] overflow-hidden border-2 border-amber-500/30 bg-white p-6 md:p-8">
+        <RetroFilterCanvas
+          imageFile={pendingFile}
+          onApply={handleFilterApply}
+          onSkip={handleFilterSkip}
+          onCancel={handleFilterCancel}
+          locale={locale}
+        />
       </div>
     );
   }

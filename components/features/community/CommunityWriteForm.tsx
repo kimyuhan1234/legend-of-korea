@@ -7,12 +7,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Camera, X, Loader2, AlertCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { toast } from '@/components/ui/use-toast';
 import Image from 'next/image';
 import { REGIONS } from '@/lib/constants/regions';
+import { RetroFilterCanvas } from '@/components/features/camera/RetroFilterCanvas';
+import { RETRO_FILTERS, applyFilterToFile } from '@/lib/camera/filters';
 
 interface CommunityWriteFormProps {
   locale: string;
@@ -34,19 +35,54 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Filter step (PhotoMission 패턴 재사용)
+  const [pendingFiles, setPendingFiles] = useState<File[]>([]);
+  const [filterIndex, setFilterIndex] = useState(0);
+  const filterStep = pendingFiles.length > 0;
+
   const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     if (files.length + images.length > 5) {
       toast({ variant: 'destructive', title: '사진 초과', description: '사진은 최대 5장까지 업로드 가능합니다.' });
       return;
     }
+    setPendingFiles(files);
+    setFilterIndex(0);
+    e.target.value = '';
+  };
 
-    const newImages = files.map(file => ({
-      file,
-      preview: URL.createObjectURL(file)
-    }));
+  const advanceFilter = (processedFile: File) => {
+    const preview = URL.createObjectURL(processedFile);
+    setImages((prev) => [...prev, { file: processedFile, preview }]);
+    if (filterIndex + 1 < pendingFiles.length) {
+      setFilterIndex(filterIndex + 1);
+    } else {
+      setPendingFiles([]);
+      setFilterIndex(0);
+    }
+  };
 
-    setImages(prev => [...prev, ...newImages]);
+  const handleFilterApply = async (filterId: string) => {
+    const src = pendingFiles[filterIndex];
+    if (!src) return;
+    try {
+      const filter = RETRO_FILTERS.find((f) => f.id === filterId) ?? RETRO_FILTERS[0];
+      const processed = await applyFilterToFile(src, filter);
+      advanceFilter(processed);
+    } catch (err) {
+      console.error('Filter apply error:', err);
+      advanceFilter(src);
+    }
+  };
+
+  const handleFilterSkip = () => {
+    const src = pendingFiles[filterIndex];
+    if (src) advanceFilter(src);
+  };
+
+  const handleFilterCancel = () => {
+    setPendingFiles([]);
+    setFilterIndex(0);
   };
 
   const removeImage = (index: number) => {
@@ -94,7 +130,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
         const formData = new FormData();
         formData.append('file', img.file);
         
-        const uploadRes = await fetch('/api/missions/upload', {
+        const uploadRes = await fetch('/api/community/upload', {
           method: 'POST',
           body: formData,
         });
@@ -129,6 +165,26 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
       setIsSubmitting(false);
     }
   };
+
+  // 필터 단계 (선택된 파일에 순차적으로 필터 적용)
+  if (filterStep && pendingFiles[filterIndex]) {
+    return (
+      <div className="max-w-3xl mx-auto p-6">
+        <div className="bg-white rounded-3xl border border-mist p-6 md:p-8">
+          <p className="text-xs text-stone mb-3 text-center">
+            ✨ {filterIndex + 1} / {pendingFiles.length}
+          </p>
+          <RetroFilterCanvas
+            imageFile={pendingFiles[filterIndex]}
+            onApply={handleFilterApply}
+            onSkip={handleFilterSkip}
+            onCancel={handleFilterCancel}
+            locale={locale}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-3xl mx-auto space-y-8">
@@ -241,12 +297,13 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
                 </button>
               )}
             </div>
-            <input 
-              type="file" 
-              ref={fileInputRef} 
-              className="hidden" 
-              accept="image/*" 
-              multiple 
+            <input
+              type="file"
+              ref={fileInputRef}
+              className="hidden"
+              accept="image/jpeg,image/png,image/webp"
+              capture="environment"
+              multiple
               onChange={handleImageSelect}
             />
           </div>
