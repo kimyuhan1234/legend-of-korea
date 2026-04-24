@@ -8,6 +8,7 @@ import { notFound, redirect } from 'next/navigation';
 import { Metadata } from 'next';
 import type { I18nText } from '@/lib/supabase/types';
 import { MissionDashboardClient } from '@/components/features/missions/MissionDashboardClient';
+import { MissionKakaoMap } from '@/components/features/missions/MissionKakaoMap';
 
 interface CourseMapProps {
   params: {
@@ -121,10 +122,33 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
     is_hidden: m.is_hidden as boolean,
   }));
 
+  const missionsForMap = missions.map((m: Record<string, unknown>) => ({
+    id: m.id as string,
+    sequence: m.sequence as number,
+    title: m.title as Record<string, string>,
+    latitude: m.latitude != null ? Number(m.latitude) : null,
+    longitude: m.longitude != null ? Number(m.longitude) : null,
+    is_hidden: m.is_hidden as boolean,
+    status: (progressMap.get(m.id as string) as string) || 'locked',
+  }));
+
   return (
     <div className="container max-w-3xl mx-auto py-20 md:py-28 px-8 md:px-10 pb-32 min-h-screen bg-slate-50/30">
       <div className="mb-8 text-center">
         <h1 className="text-4xl font-black mb-4 tracking-tight">전설의 여정</h1>
+      </div>
+
+      {/* 미션 지도 (카카오맵) */}
+      <div className="mb-8">
+        <MissionKakaoMap
+          missions={missionsForMap}
+          courseId={courseId}
+          locale={locale}
+          className="w-full h-80"
+        />
+        <p className="text-xs text-stone mt-2 text-center">
+          🟢 완료 · 🟠 현재 · 🔒 잠금 · 📍 히든 (마커 클릭 시 미션 페이지로 이동)
+        </p>
       </div>
 
       {/* 게임형 대시보드 + 파티원 현황 + 채팅 */}

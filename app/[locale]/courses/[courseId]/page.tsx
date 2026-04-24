@@ -5,6 +5,7 @@ import { AffiliateLinks } from "@/components/features/courses/AffiliateLinks"
 import { QuestHero } from "@/components/features/quest/QuestHero"
 import { QuestHowItWorks } from "@/components/features/quest/QuestHowItWorks"
 import { QuestMissionGuide } from "@/components/features/quest/QuestMissionGuide"
+import { MissionKakaoMap } from "@/components/features/missions/MissionKakaoMap"
 import { QuestStorySlider } from "@/components/features/quest/QuestStorySlider"
 import { QuestKitShowcase } from "@/components/features/quest/QuestKitShowcase"
 import { QuestReviews } from "@/components/features/quest/QuestReviews"
@@ -92,7 +93,7 @@ export default async function CourseDetailPage({ params }: Props) {
       .single(),
     supabase
       .from("missions")
-      .select("id, sequence, type, title, location_name, lp_reward, is_hidden")
+      .select("id, sequence, type, title, location_name, lp_reward, is_hidden, latitude, longitude")
       .eq("course_id", courseId)
       .order("sequence", { ascending: true }),
     supabase
@@ -154,6 +155,33 @@ export default async function CourseDetailPage({ params }: Props) {
 
       {/* 2-1. GPS 미션 진행 방법 */}
       <QuestMissionGuide />
+
+      {/* 2-2. 미션 지도 프리뷰 (카카오맵) */}
+      {missions.some((m) => (m as Record<string, unknown>).latitude != null) && (
+        <section className="max-w-5xl mx-auto px-6 md:px-10 py-8">
+          <h2 className="text-xl md:text-2xl font-black text-[#111] text-center mb-4">
+            🗺️ 미션 위치 한눈에 보기
+          </h2>
+          <MissionKakaoMap
+            missions={missions.map((m) => {
+              const row = m as Record<string, unknown>
+              return {
+                id: row.id as string,
+                sequence: row.sequence as number,
+                title: row.title as Record<string, string>,
+                latitude: row.latitude != null ? Number(row.latitude) : null,
+                longitude: row.longitude != null ? Number(row.longitude) : null,
+                is_hidden: Boolean(row.is_hidden),
+                status: 'locked',
+              }
+            })}
+            courseId={courseId}
+            locale={locale}
+            clickableNavigation={false}
+            className="w-full h-72 md:h-96"
+          />
+        </section>
+      )}
 
       {/* 3. 인터랙티브 스토리 */}
       <QuestStorySlider storyCards={storyCards} region={course.region || ''} />
