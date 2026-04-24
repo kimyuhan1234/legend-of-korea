@@ -58,7 +58,8 @@ function timeAgo(dateStr: string, locale: string): string {
   return lx.just
 }
 
-function getI18n(field: Record<string, string>, locale: string): string {
+function getI18n(field: Record<string, string> | null | undefined, locale: string): string {
+  if (!field) return ''
   return field[locale] || field.en || field.ko || ''
 }
 
