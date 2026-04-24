@@ -3,7 +3,10 @@
 import * as React from "react"
 
 const TOAST_LIMIT = 1
-const TOAST_REMOVE_DELAY = 1000000
+// Auto-dismiss: toast fires DISMISS_TOAST this long after being added
+const TOAST_AUTO_DISMISS_MS = 3000
+// Cleanup: DISMISS_TOAST → REMOVE_TOAST this long after (transition out animation time)
+const TOAST_REMOVE_DELAY = 300
 
 type ToasterToast = {
   id: string
@@ -153,6 +156,9 @@ function toast({ ...props }: Omit<ToasterToast, "id">) {
       },
     },
   } as any)
+
+  // 자동 dismiss (수동 X 클릭 없어도 3초 후 사라짐)
+  setTimeout(dismiss, TOAST_AUTO_DISMISS_MS)
 
   return {
     id: id,

@@ -1,11 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Loader2, Share2, X } from 'lucide-react'
+import { Loader2, Share2, X, Trash2, RefreshCw } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { toast } from '@/components/ui/use-toast'
 import { CommunityFeed } from '@/components/features/community/CommunityFeed'
 import { MissionDashboard } from '@/components/features/missions/MissionDashboard'
 import { Leaderboard } from '@/components/features/community/Leaderboard'
@@ -18,10 +19,19 @@ interface Props {
 }
 
 interface PhotoItem {
+  missionId: string
   photoUrl: string
   completedAt: string
   missionTitle: Record<string, string>
   courseTitle: Record<string, string>
+}
+
+const PHOTO_UI: Record<string, { delete: string; replace: string; deleteConfirm: string; deleted: string; replaced: string; failed: string }> = {
+  ko:      { delete: '삭제',       replace: '교체',       deleteConfirm: '이 사진을 삭제할까요?',        deleted: '사진이 삭제되었습니다',       replaced: '사진이 교체되었습니다',       failed: '처리 실패' },
+  ja:      { delete: '削除',       replace: '差し替え',   deleteConfirm: 'この写真を削除しますか?',      deleted: '写真を削除しました',           replaced: '写真を差し替えました',         failed: '処理に失敗しました' },
+  en:      { delete: 'Delete',     replace: 'Replace',    deleteConfirm: 'Delete this photo?',           deleted: 'Photo deleted',                replaced: 'Photo replaced',               failed: 'Action failed' },
+  'zh-CN': { delete: '删除',       replace: '替换',       deleteConfirm: '确定删除此照片?',              deleted: '照片已删除',                    replaced: '照片已替换',                   failed: '操作失败' },
+  'zh-TW': { delete: '刪除',       replace: '替換',       deleteConfirm: '確定刪除此照片?',              deleted: '照片已刪除',                    replaced: '照片已替換',                   failed: '操作失敗' },
 }
 
 type Tab = 'feed' | 'dashboard' | 'ranking' | 'achievements' | 'photos' | 'shop'
@@ -63,18 +73,20 @@ export function MemoriesClient({ locale }: Props) {
     const supabase = createClient()
     supabase
       .from('mission_progress')
-      .select('photo_url, completed_at, missions(title, courses(title))')
+      .select('mission_id, photo_url, completed_at, missions(title, courses(title))')
       .eq('user_id', userId)
       .not('photo_url', 'is', null)
       .order('completed_at', { ascending: false })
       .then(({ data }) => {
         const items: PhotoItem[] = ((data || []) as Array<{
+          mission_id: string
           photo_url: string | null
           completed_at: string | null
           missions?: { title?: Record<string, string>; courses?: { title?: Record<string, string> } } | null
         }>)
           .filter((p) => !!p.photo_url)
           .map((p) => ({
+            missionId: p.mission_id,
             photoUrl: p.photo_url as string,
             completedAt: p.completed_at || '',
             missionTitle: p.missions?.title ?? {},
@@ -84,6 +96,61 @@ export function MemoriesClient({ locale }: Props) {
         setPhotosLoading(false)
       })
   }, [userId, tab])
+
+  // ── Photo 삭제 / 교체 ─────────────────────────────────────
+  const [photoMutating, setPhotoMutating] = useState(false)
+  const replaceInputRef = useRef<HTMLInputElement>(null)
+
+  const photoUi = PHOTO_UI[locale] ?? PHOTO_UI.ko
+
+  const handleDelete = async (item: PhotoItem) => {
+    if (!window.confirm(photoUi.deleteConfirm)) return
+    setPhotoMutating(true)
+    try {
+      const res = await fetch('/api/memories/photo', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ missionId: item.missionId }),
+      })
+      if (!res.ok) throw new Error('delete_failed')
+      setPhotos((prev) => prev.filter((p) => p.missionId !== item.missionId))
+      setLightbox(null)
+      toast({ title: photoUi.deleted })
+    } catch {
+      toast({ variant: 'destructive', title: photoUi.failed })
+    } finally {
+      setPhotoMutating(false)
+    }
+  }
+
+  const handleReplaceClick = () => {
+    replaceInputRef.current?.click()
+  }
+
+  const handleReplaceFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file || !lightbox) return
+
+    setPhotoMutating(true)
+    try {
+      const fd = new FormData()
+      fd.append('file', file)
+      fd.append('missionId', lightbox.missionId)
+      const res = await fetch('/api/memories/photo', { method: 'PATCH', body: fd })
+      const data = await res.json()
+      if (!res.ok || !data.url) throw new Error('replace_failed')
+      setPhotos((prev) => prev.map((p) =>
+        p.missionId === lightbox.missionId ? { ...p, photoUrl: data.url } : p,
+      ))
+      setLightbox({ ...lightbox, photoUrl: data.url })
+      toast({ title: photoUi.replaced })
+    } catch {
+      toast({ variant: 'destructive', title: photoUi.failed })
+    } finally {
+      setPhotoMutating(false)
+    }
+  }
 
   const handleShare = async (item: PhotoItem) => {
     const text = `${getI18n(item.courseTitle, locale)} - ${getI18n(item.missionTitle, locale)}`
@@ -247,21 +314,47 @@ export function MemoriesClient({ locale }: Props) {
                 unoptimized
               />
             </div>
-            <div className="flex items-center justify-between text-white gap-4">
-              <div className="min-w-0">
+            <div className="flex items-center justify-between text-white gap-4 flex-wrap">
+              <div className="min-w-0 flex-1">
                 <p className="font-black truncate">{getI18n(lightbox.missionTitle, locale)}</p>
                 <p className="text-sm opacity-80 truncate">
                   {getI18n(lightbox.courseTitle, locale)}
                   {lightbox.completedAt && ' · ' + new Date(lightbox.completedAt).toLocaleDateString()}
                 </p>
               </div>
-              <button
-                onClick={() => handleShare(lightbox)}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-mint-deep text-white font-bold text-sm shrink-0 hover:opacity-90"
-              >
-                <Share2 className="w-4 h-4" /> {t('photos.share')}
-              </button>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  onClick={handleReplaceClick}
+                  disabled={photoMutating}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm disabled:opacity-50"
+                  aria-label={photoUi.replace}
+                >
+                  <RefreshCw className="w-4 h-4" /> {photoUi.replace}
+                </button>
+                <button
+                  onClick={() => handleDelete(lightbox)}
+                  disabled={photoMutating}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-red-500/80 hover:bg-red-500 text-white font-bold text-sm disabled:opacity-50"
+                  aria-label={photoUi.delete}
+                >
+                  <Trash2 className="w-4 h-4" /> {photoUi.delete}
+                </button>
+                <button
+                  onClick={() => handleShare(lightbox)}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-mint-deep text-white font-bold text-sm hover:opacity-90"
+                >
+                  <Share2 className="w-4 h-4" /> {t('photos.share')}
+                </button>
+              </div>
             </div>
+            <input
+              ref={replaceInputRef}
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              capture="environment"
+              className="hidden"
+              onChange={handleReplaceFile}
+            />
           </div>
         </div>
       )}
