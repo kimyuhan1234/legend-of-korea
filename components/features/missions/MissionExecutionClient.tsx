@@ -51,6 +51,7 @@ export function MissionExecutionClient({
       {/* GPS 위치 확인 (좌표가 있고 아직 확인 전) */}
       {!gpsVerified && hasGps && (
         <GpsVerification
+          missionId={missionId}
           missionLat={latitude as number}
           missionLng={longitude as number}
           onVerified={() => setGpsVerified(true)}

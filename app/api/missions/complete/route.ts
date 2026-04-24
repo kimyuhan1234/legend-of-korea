@@ -23,13 +23,23 @@ export async function POST(req: NextRequest) {
     // 2. 이미 완료 여부 확인 (중복 보상 방지)
     const { data: progress } = await supabase
       .from('mission_progress')
-      .select('status')
+      .select('status, gps_verified')
       .eq('user_id', user.id)
       .eq('mission_id', missionId)
       .maybeSingle();
 
     if (progress?.status === 'completed') {
       return NextResponse.json({ message: '이미 완료된 미션입니다.', alreadyCompleted: true, success: true });
+    }
+
+    // 2-0. GPS 필수 미션 가드 — 좌표가 있는 미션은 반드시 서버 GPS 검증 완료 후에만 완료 가능
+    if (mission.latitude != null && mission.longitude != null) {
+      if (!progress?.gps_verified) {
+        return NextResponse.json(
+          { error: 'GPS 체크인이 필요합니다. 미션 장소 200m 이내에서 위치 확인 후 진행해주세요.', requiresGps: true, success: false },
+          { status: 403 },
+        );
+      }
     }
 
     // 2-1. 퀴즈 정답 검증 (퀴즈 타입인 경우)

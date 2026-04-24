@@ -4,11 +4,14 @@ import { useState } from 'react'
 import { Navigation, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 
 interface Props {
+  missionId: string
   missionLat: number
   missionLng: number
   onVerified: () => void
   locale: string
 }
+
+const IS_DEV = process.env.NODE_ENV === 'development'
 
 /** Haversine 공식 — 두 좌표 간 거리 (미터) */
 function getDistanceMeters(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -88,7 +91,7 @@ const TEXTS: Record<string, Record<string, string>> = {
 
 type Status = 'idle' | 'checking' | 'success' | 'too_far' | 'error' | 'denied'
 
-export function GpsVerification({ missionLat, missionLng, onVerified, locale }: Props) {
+export function GpsVerification({ missionId, missionLat, missionLng, onVerified, locale }: Props) {
   const [status, setStatus] = useState<Status>('idle')
   const [distance, setDistance] = useState<number | null>(null)
 
@@ -96,27 +99,41 @@ export function GpsVerification({ missionLat, missionLng, onVerified, locale }: 
 
   const handleCheck = () => {
     if (!navigator.geolocation) {
-      // GPS 미지원 브라우저 → 자동 건너뛰기
-      onVerified()
+      setStatus('error')
       return
     }
 
     setStatus('checking')
 
     navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const dist = getDistanceMeters(
-          pos.coords.latitude,
-          pos.coords.longitude,
-          missionLat,
-          missionLng,
-        )
+      async (pos) => {
+        const userLat = pos.coords.latitude
+        const userLng = pos.coords.longitude
+        const dist = getDistanceMeters(userLat, userLng, missionLat, missionLng)
         setDistance(dist)
-        if (dist <= RADIUS_METERS) {
-          setStatus('success')
-          setTimeout(() => onVerified(), 1500)
-        } else {
+
+        if (dist > RADIUS_METERS) {
           setStatus('too_far')
+          return
+        }
+
+        // 클라이언트 거리 OK → 서버 재검증 (Haversine + DB 업데이트)
+        try {
+          const res = await fetch('/api/missions/verify-gps', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ missionId, userLat, userLng }),
+          })
+          const data = await res.json()
+          if (res.ok && data.verified) {
+            setStatus('success')
+            setTimeout(() => onVerified(), 1200)
+          } else {
+            setDistance(typeof data.distance === 'number' ? data.distance : dist)
+            setStatus('too_far')
+          }
+        } catch {
+          setStatus('error')
         }
       },
       (err) => {
@@ -180,14 +197,14 @@ export function GpsVerification({ missionLat, missionLng, onVerified, locale }: 
         </button>
       )}
 
-      {/* 건너뛰기 (성공 제외) */}
-      {status !== 'success' && (
+      {/* 건너뛰기 — 개발 환경에서만 노출 (프로덕션에서는 GPS 필수) */}
+      {IS_DEV && status !== 'success' && (
         <div className="text-center">
           <button
             onClick={onVerified}
             className="text-sm text-stone hover:text-[#111] underline underline-offset-2 transition-colors"
           >
-            {tx.skip}
+            {tx.skip} (dev only)
           </button>
         </div>
       )}
