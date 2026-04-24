@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import { Metadata } from "next"
 import Link from "next/link"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
-import { FoodImageWithFallback } from "@/components/features/food/FoodImageWithFallback"
+import { FoodEmojiThumb } from "@/components/features/food/FoodEmojiThumb"
 import { regions } from "@/lib/data/food-dupes"
 
 interface Props {
@@ -93,19 +93,18 @@ export default function RegionFoodsPage({ params }: Props) {
                   aria-label={getL(food.name, locale)}
                 />
 
-                {/* 이미지 */}
-                <div className="relative h-44 bg-gradient-to-br from-cloud to-blossom-light overflow-hidden">
-                  <FoodImageWithFallback
-                    foodNameKo={food.name.ko}
-                    tags={food.tags}
-                    fallbackUrl={food.image}
-                    alt={getL(food.name, locale)}
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                {/* 이미지 (이모지 + 흰 배경) */}
+                <div className="relative h-44 bg-white overflow-hidden border-b border-mist">
+                  <FoodEmojiThumb
+                    food={{ name: food.name, tags: food.tags }}
+                    size="text-7xl"
+                    bordered={false}
+                    className="group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* 맛 강도 오버레이 */}
                   <div className="absolute bottom-2 left-2 right-2 flex gap-1 z-[5]">
                     {food.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 rounded-full bg-black/40 text-white text-xs backdrop-blur-sm">
+                      <span key={tag} className="px-2 py-0.5 rounded-full bg-slate-700/70 text-white text-xs">
                         #{tag}
                       </span>
                     ))}

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import { Metadata } from "next"
 import Link from "next/link"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
-import { FoodImageWithFallback } from "@/components/features/food/FoodImageWithFallback"
+import { FoodEmojiThumb } from "@/components/features/food/FoodEmojiThumb"
 import { DupeCountrySelector } from "@/components/features/food/DupeCountrySelector"
 import { HealthSection } from "@/components/features/food/HealthSection"
 import { regions } from "@/lib/data/food-dupes"
@@ -95,28 +95,24 @@ export default function FoodDetailPage({ params }: Props) {
           {t.backRegion}
         </Link>
 
-        {/* 음식 히어로 */}
-        <div className="bg-cloud rounded-3xl overflow-hidden mb-8">
+        {/* 음식 히어로 — 이모지 + 흰 배경 */}
+        <div className="bg-white rounded-3xl overflow-hidden mb-8 border border-mist">
           <div className="relative h-56 md:h-72">
-            <FoodImageWithFallback
-              foodNameKo={food.name.ko}
-              tags={food.tags}
-              fallbackUrl={food.image}
-              alt={getL(food.name, locale)}
-              className="object-cover opacity-70"
-              priority
+            <FoodEmojiThumb
+              food={{ name: food.name, tags: food.tags }}
+              size="text-9xl"
+              bordered={false}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1F2937] via-[#1F2937]/40 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {food.tags.map((tag) => (
-                  <span key={tag} className="px-2.5 py-1 rounded-full bg-[#F0B8B8]/20 border border-blossom-deep/40 text-xs text-blossom-deep font-medium">
+                  <span key={tag} className="px-2.5 py-1 rounded-full bg-blossom-light border border-blossom-deep/40 text-xs text-blossom-deep font-medium">
                     #{tag}
                   </span>
                 ))}
               </div>
-              <h1 className="text-2xl md:text-3xl font-black text-white">{getL(food.name, locale)}</h1>
-              <p className="text-slate text-sm mt-1">{region.icon} {getL(region.name, locale)}</p>
+              <h1 className="text-2xl md:text-3xl font-black text-[#111]">{getL(food.name, locale)}</h1>
+              <p className="text-stone text-sm mt-1">{region.icon} {getL(region.name, locale)}</p>
             </div>
           </div>
         </div>

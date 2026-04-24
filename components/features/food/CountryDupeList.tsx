@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { FoodImageWithFallback } from '@/components/features/food/FoodImageWithFallback'
+import { FoodEmojiThumb } from '@/components/features/food/FoodEmojiThumb'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 import { PassBlurOverlay } from '@/components/shared/PassBlurOverlay'
 import { usePassStatus } from '@/hooks/usePassStatus'
@@ -97,14 +97,10 @@ function renderDupeItem(item: DupeItem, countryCode: string, locale: string, t: 
               aria-label={getL(korean.name, locale)}
             />
             <div className="relative w-16 h-16 rounded-lg overflow-hidden">
-              <FoodImageWithFallback
-                foodNameKo={korean.name.ko}
-                tags={[]}
-                fallbackUrl={korean.image}
-                alt={getL(korean.name, locale)}
-                sizes="64px"
-                className="object-cover"
-                placeholderEmoji="🍜"
+              <FoodEmojiThumb
+                food={{ name: korean.name, tags: [] }}
+                size="text-3xl"
+                bordered={false}
               />
             </div>
           </div>
