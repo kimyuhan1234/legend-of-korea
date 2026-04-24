@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Loader2, Share2, X, Trash2, RefreshCw } from 'lucide-react'
+import { Loader2, Share2, X, Trash2, Heart, MessageCircle, Camera, Send } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from '@/components/ui/use-toast'
 import { CommunityFeed } from '@/components/features/community/CommunityFeed'
@@ -13,30 +13,83 @@ import { Leaderboard } from '@/components/features/community/Leaderboard'
 import { ProfileBadges } from '@/components/features/mypage/ProfileBadges'
 import { DigitalPassport } from '@/components/features/mypage/DigitalPassport'
 import { LegendShop } from './LegendShop'
+import { RetroFilterCanvas } from '@/components/features/camera/RetroFilterCanvas'
+import { RETRO_FILTERS, applyFilterToFile } from '@/lib/camera/filters'
 
 interface Props {
   locale: string
 }
 
 interface PhotoItem {
-  missionId: string
+  postId: string
   photoUrl: string
-  completedAt: string
-  missionTitle: Record<string, string>
-  courseTitle: Record<string, string>
+  caption: string
+  createdAt: string
+  likesCount: number
+  commentsCount: number
+  liked: boolean
+  missionTitle: Record<string, string> | null
+  courseTitle: Record<string, string> | null
 }
 
-const PHOTO_UI: Record<string, { delete: string; replace: string; deleteConfirm: string; deleted: string; replaced: string; failed: string }> = {
-  ko:      { delete: '삭제',       replace: '교체',       deleteConfirm: '이 사진을 삭제할까요?',        deleted: '사진이 삭제되었습니다',       replaced: '사진이 교체되었습니다',       failed: '처리 실패' },
-  ja:      { delete: '削除',       replace: '差し替え',   deleteConfirm: 'この写真を削除しますか?',      deleted: '写真を削除しました',           replaced: '写真を差し替えました',         failed: '処理に失敗しました' },
-  en:      { delete: 'Delete',     replace: 'Replace',    deleteConfirm: 'Delete this photo?',           deleted: 'Photo deleted',                replaced: 'Photo replaced',               failed: 'Action failed' },
-  'zh-CN': { delete: '删除',       replace: '替换',       deleteConfirm: '确定删除此照片?',              deleted: '照片已删除',                    replaced: '照片已替换',                   failed: '操作失败' },
-  'zh-TW': { delete: '刪除',       replace: '替換',       deleteConfirm: '確定刪除此照片?',              deleted: '照片已刪除',                    replaced: '照片已替換',                   failed: '操作失敗' },
+interface CommentItem {
+  id: string
+  text: string
+  created_at: string
+  user?: { nickname?: string; avatar_url?: string | null }
+}
+
+const PHOTO_UI: Record<string, {
+  upload: string
+  delete: string
+  deleteConfirm: string
+  deleted: string
+  failed: string
+  uploaded: string
+  caption: string
+  captionPlaceholder: string
+  upload_cta: string
+  commentPlaceholder: string
+  commentEmpty: string
+  commentSend: string
+  likes: string
+  comments: string
+}> = {
+  ko: {
+    upload: '📸 사진 올리기',  delete: '삭제',  deleteConfirm: '이 사진을 삭제할까요?',  deleted: '사진이 삭제되었습니다',  failed: '처리 실패',
+    uploaded: '사진이 올라갔습니다',  caption: '캡션 (선택)',  captionPlaceholder: '사진에 대한 이야기를 들려주세요…',
+    upload_cta: '올리기',  commentPlaceholder: '댓글을 남겨주세요',  commentEmpty: '아직 댓글이 없어요',  commentSend: '전송',
+    likes: '좋아요',  comments: '댓글',
+  },
+  ja: {
+    upload: '📸 写真を投稿',  delete: '削除',  deleteConfirm: 'この写真を削除しますか?',  deleted: '写真を削除しました',  failed: '処理に失敗しました',
+    uploaded: '写真を投稿しました',  caption: 'キャプション (任意)',  captionPlaceholder: '写真についてのストーリーを…',
+    upload_cta: '投稿',  commentPlaceholder: 'コメントを残す',  commentEmpty: 'まだコメントがありません',  commentSend: '送信',
+    likes: 'いいね',  comments: 'コメント',
+  },
+  en: {
+    upload: '📸 Upload Photo',  delete: 'Delete',  deleteConfirm: 'Delete this photo?',  deleted: 'Photo deleted',  failed: 'Action failed',
+    uploaded: 'Photo uploaded',  caption: 'Caption (optional)',  captionPlaceholder: 'Share the story behind this photo…',
+    upload_cta: 'Upload',  commentPlaceholder: 'Leave a comment',  commentEmpty: 'No comments yet',  commentSend: 'Send',
+    likes: 'Likes',  comments: 'Comments',
+  },
+  'zh-CN': {
+    upload: '📸 上传照片',  delete: '删除',  deleteConfirm: '确定删除此照片?',  deleted: '照片已删除',  failed: '操作失败',
+    uploaded: '照片已上传',  caption: '标题 (可选)',  captionPlaceholder: '分享这张照片背后的故事…',
+    upload_cta: '上传',  commentPlaceholder: '留下评论',  commentEmpty: '暂无评论',  commentSend: '发送',
+    likes: '点赞',  comments: '评论',
+  },
+  'zh-TW': {
+    upload: '📸 上傳照片',  delete: '刪除',  deleteConfirm: '確定刪除此照片?',  deleted: '照片已刪除',  failed: '操作失敗',
+    uploaded: '照片已上傳',  caption: '標題 (可選)',  captionPlaceholder: '分享這張照片背後的故事…',
+    upload_cta: '上傳',  commentPlaceholder: '留下評論',  commentEmpty: '暫無評論',  commentSend: '發送',
+    likes: '點讚',  comments: '評論',
+  },
 }
 
 type Tab = 'feed' | 'dashboard' | 'ranking' | 'achievements' | 'photos' | 'shop'
 
-function getI18n(field: Record<string, string> | undefined, locale: string): string {
+function getI18n(field: Record<string, string> | null | undefined, locale: string): string {
   if (!field) return ''
   return field[locale] || field.en || field.ko || ''
 }
@@ -67,53 +120,114 @@ export function MemoriesClient({ locale }: Props) {
     })
   }, [])
 
-  useEffect(() => {
-    if (!userId || tab !== 'photos') return
-    setPhotosLoading(true)
-    const supabase = createClient()
-    supabase
-      .from('mission_progress')
-      .select('mission_id, photo_url, completed_at, missions(title, courses(title))')
-      .eq('user_id', userId)
-      .not('photo_url', 'is', null)
-      .order('completed_at', { ascending: false })
-      .then(({ data }) => {
-        const items: PhotoItem[] = ((data || []) as Array<{
-          mission_id: string
-          photo_url: string | null
-          completed_at: string | null
-          missions?: { title?: Record<string, string>; courses?: { title?: Record<string, string> } } | null
-        }>)
-          .filter((p) => !!p.photo_url)
-          .map((p) => ({
-            missionId: p.mission_id,
-            photoUrl: p.photo_url as string,
-            completedAt: p.completed_at || '',
-            missionTitle: p.missions?.title ?? {},
-            courseTitle: p.missions?.courses?.title ?? {},
-          }))
-        setPhotos(items)
-        setPhotosLoading(false)
-      })
-  }, [userId, tab])
-
-  // ── Photo 삭제 / 교체 ─────────────────────────────────────
-  const [photoMutating, setPhotoMutating] = useState(false)
-  const replaceInputRef = useRef<HTMLInputElement>(null)
-
   const photoUi = PHOTO_UI[locale] ?? PHOTO_UI.ko
 
+  // ── 포토 목록 로드 (/api/memories/photos) ────────────────
+  const loadPhotos = useCallback(async () => {
+    setPhotosLoading(true)
+    try {
+      const res = await fetch('/api/memories/photos')
+      const data = await res.json()
+      if (res.ok) setPhotos((data.photos ?? []) as PhotoItem[])
+    } finally {
+      setPhotosLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!userId || tab !== 'photos') return
+    loadPhotos()
+  }, [userId, tab, loadPhotos])
+
+  // ── Photo 액션 상태 ──────────────────────────────────────
+  const [photoMutating, setPhotoMutating] = useState(false)
+  const [pendingUploadFile, setPendingUploadFile] = useState<File | null>(null)
+  const [uploadCaption, setUploadCaption] = useState('')
+  const uploadInputRef = useRef<HTMLInputElement>(null)
+
+  // 댓글
+  const [comments, setComments] = useState<CommentItem[]>([])
+  const [commentsLoading, setCommentsLoading] = useState(false)
+  const [newCommentText, setNewCommentText] = useState('')
+  const [sendingComment, setSendingComment] = useState(false)
+
+  // 라이트박스 열릴 때 댓글 로드
+  useEffect(() => {
+    if (!lightbox) {
+      setComments([])
+      setNewCommentText('')
+      return
+    }
+    let cancelled = false
+    setCommentsLoading(true)
+    fetch(`/api/community/posts/${lightbox.postId}/comments`)
+      .then((r) => r.ok ? r.json() : [])
+      .then((data) => { if (!cancelled) setComments(Array.isArray(data) ? data : []) })
+      .catch(() => { if (!cancelled) setComments([]) })
+      .finally(() => { if (!cancelled) setCommentsLoading(false) })
+    return () => { cancelled = true }
+  }, [lightbox])
+
+  // 업로드 버튼 클릭 → 파일 선택 → 필터 단계
+  const handleUploadClick = () => uploadInputRef.current?.click()
+
+  const handleUploadPick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file) return
+    setPendingUploadFile(file)
+    setUploadCaption('')
+  }
+
+  const submitUpload = async (filteredFile: File) => {
+    setPhotoMutating(true)
+    try {
+      const fd = new FormData()
+      fd.append('file', filteredFile)
+      fd.append('caption', uploadCaption.trim())
+      const res = await fetch('/api/memories/photos', { method: 'POST', body: fd })
+      const data = await res.json()
+      if (!res.ok || !data.postId) throw new Error('upload_failed')
+      toast({ title: photoUi.uploaded })
+      setPendingUploadFile(null)
+      setUploadCaption('')
+      await loadPhotos()
+    } catch {
+      toast({ variant: 'destructive', title: photoUi.failed })
+    } finally {
+      setPhotoMutating(false)
+    }
+  }
+
+  const handleFilterApply = async (filterId: string) => {
+    if (!pendingUploadFile) return
+    try {
+      const filter = RETRO_FILTERS.find((f) => f.id === filterId) ?? RETRO_FILTERS[0]
+      const processed = await applyFilterToFile(pendingUploadFile, filter)
+      await submitUpload(processed)
+    } catch {
+      await submitUpload(pendingUploadFile) // 필터 실패 시 원본
+    }
+  }
+
+  const handleFilterSkip = async () => {
+    if (!pendingUploadFile) return
+    await submitUpload(pendingUploadFile)
+  }
+
+  const handleFilterCancel = () => {
+    setPendingUploadFile(null)
+    setUploadCaption('')
+  }
+
+  // 삭제 (community post 삭제)
   const handleDelete = async (item: PhotoItem) => {
     if (!window.confirm(photoUi.deleteConfirm)) return
     setPhotoMutating(true)
     try {
-      const res = await fetch('/api/memories/photo', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ missionId: item.missionId }),
-      })
+      const res = await fetch(`/api/community/posts/${item.postId}`, { method: 'DELETE' })
       if (!res.ok) throw new Error('delete_failed')
-      setPhotos((prev) => prev.filter((p) => p.missionId !== item.missionId))
+      setPhotos((prev) => prev.filter((p) => p.postId !== item.postId))
       setLightbox(null)
       toast({ title: photoUi.deleted })
     } catch {
@@ -123,32 +237,55 @@ export function MemoriesClient({ locale }: Props) {
     }
   }
 
-  const handleReplaceClick = () => {
-    replaceInputRef.current?.click()
+  // 좋아요 토글
+  const handleLike = async (item: PhotoItem) => {
+    // optimistic
+    const wasLiked = item.liked
+    const updater = (p: PhotoItem) =>
+      p.postId === item.postId
+        ? { ...p, liked: !wasLiked, likesCount: p.likesCount + (wasLiked ? -1 : 1) }
+        : p
+    setPhotos((prev) => prev.map(updater))
+    if (lightbox?.postId === item.postId) setLightbox(updater(lightbox))
+    try {
+      const res = await fetch(`/api/community/posts/${item.postId}/like`, { method: 'POST' })
+      if (!res.ok) throw new Error('like_failed')
+    } catch {
+      // 롤백
+      const rollback = (p: PhotoItem) =>
+        p.postId === item.postId
+          ? { ...p, liked: wasLiked, likesCount: p.likesCount + (wasLiked ? 1 : -1) }
+          : p
+      setPhotos((prev) => prev.map(rollback))
+      if (lightbox?.postId === item.postId) setLightbox(rollback(lightbox))
+      toast({ variant: 'destructive', title: photoUi.failed })
+    }
   }
 
-  const handleReplaceFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    e.target.value = ''
-    if (!file || !lightbox) return
-
-    setPhotoMutating(true)
+  // 댓글 작성
+  const handleCommentSubmit = async () => {
+    if (!lightbox || !newCommentText.trim() || sendingComment) return
+    setSendingComment(true)
     try {
-      const fd = new FormData()
-      fd.append('file', file)
-      fd.append('missionId', lightbox.missionId)
-      const res = await fetch('/api/memories/photo', { method: 'PATCH', body: fd })
+      const res = await fetch(`/api/community/posts/${lightbox.postId}/comments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: newCommentText.trim() }),
+      })
       const data = await res.json()
-      if (!res.ok || !data.url) throw new Error('replace_failed')
+      if (!res.ok) throw new Error('comment_failed')
+      const newItem = (data?.comment ?? data) as CommentItem
+      setComments((prev) => [...prev, newItem])
+      setNewCommentText('')
+      // 카운트 업데이트
       setPhotos((prev) => prev.map((p) =>
-        p.missionId === lightbox.missionId ? { ...p, photoUrl: data.url } : p,
+        p.postId === lightbox.postId ? { ...p, commentsCount: p.commentsCount + 1 } : p,
       ))
-      setLightbox({ ...lightbox, photoUrl: data.url })
-      toast({ title: photoUi.replaced })
+      setLightbox({ ...lightbox, commentsCount: lightbox.commentsCount + 1 })
     } catch {
       toast({ variant: 'destructive', title: photoUi.failed })
     } finally {
-      setPhotoMutating(false)
+      setSendingComment(false)
     }
   }
 
@@ -244,6 +381,26 @@ export function MemoriesClient({ locale }: Props) {
       {/* 탭 5: 포토갤러리 */}
       {!needsAuth && tab === 'photos' && userId && (
         <div>
+          {/* 상단: 업로드 버튼 */}
+          <div className="flex justify-end mb-5">
+            <button
+              onClick={handleUploadClick}
+              disabled={photoMutating}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-mint-deep text-white font-black text-sm hover:opacity-90 disabled:opacity-50 shadow-md"
+            >
+              <Camera className="w-4 h-4" />
+              {photoUi.upload}
+            </button>
+            <input
+              ref={uploadInputRef}
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              capture="environment"
+              className="hidden"
+              onChange={handleUploadPick}
+            />
+          </div>
+
           {photosLoading ? (
             <div className="flex items-center justify-center py-20">
               <Loader2 className="w-6 h-6 animate-spin text-slate-300" />
@@ -254,9 +411,9 @@ export function MemoriesClient({ locale }: Props) {
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {photos.map((item, i) => (
+              {photos.map((item) => (
                 <button
-                  key={i}
+                  key={item.postId}
                   onClick={() => setLightbox(item)}
                   className="relative aspect-square rounded-2xl overflow-hidden group bg-slate-100"
                 >
@@ -268,20 +425,67 @@ export function MemoriesClient({ locale }: Props) {
                     className="object-cover group-hover:scale-105 transition-transform"
                     unoptimized
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
-                    <div className="text-white text-left">
-                      <p className="text-xs font-black truncate">
-                        {getI18n(item.courseTitle, locale)}
-                      </p>
-                      <p className="text-[10px] opacity-80">
-                        {item.completedAt && new Date(item.completedAt).toLocaleDateString()}
-                      </p>
+                  {/* 하단 좋아요/댓글 카운트 오버레이 (항상 표시) */}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pt-10 p-2 flex items-end justify-between text-white">
+                    <div className="flex gap-3 text-xs font-black drop-shadow">
+                      <span className="inline-flex items-center gap-1">
+                        <Heart className={`w-3.5 h-3.5 ${item.liked ? 'fill-red-500 text-red-500' : ''}`} />
+                        {item.likesCount}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <MessageCircle className="w-3.5 h-3.5" />
+                        {item.commentsCount}
+                      </span>
                     </div>
+                    <span className="text-[10px] opacity-70">
+                      {new Date(item.createdAt).toLocaleDateString()}
+                    </span>
                   </div>
                 </button>
               ))}
             </div>
           )}
+        </div>
+      )}
+
+      {/* 업로드 필터 모달 */}
+      {pendingUploadFile && (
+        <div className="fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-3xl w-full max-w-lg p-6 my-auto space-y-4" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-black text-slate-800">{photoUi.upload}</h3>
+              <button onClick={handleFilterCancel} aria-label="Close" className="w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center">
+                <X className="w-4 h-4 text-slate-600" />
+              </button>
+            </div>
+
+            <RetroFilterCanvas
+              imageFile={pendingUploadFile}
+              onApply={handleFilterApply}
+              onSkip={handleFilterSkip}
+              onCancel={handleFilterCancel}
+              locale={locale}
+            />
+
+            <div>
+              <label className="block text-xs font-bold text-slate-500 mb-1">{photoUi.caption}</label>
+              <textarea
+                value={uploadCaption}
+                onChange={(e) => setUploadCaption(e.target.value.slice(0, 500))}
+                placeholder={photoUi.captionPlaceholder}
+                rows={2}
+                maxLength={500}
+                className="w-full rounded-xl border border-slate-200 p-3 text-sm focus:outline-none focus:border-mint-deep"
+              />
+            </div>
+
+            {photoMutating && (
+              <div className="flex items-center justify-center text-mint-deep text-sm gap-2">
+                <Loader2 className="w-4 h-4 animate-spin" />
+                {photoUi.upload_cta}…
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -314,47 +518,100 @@ export function MemoriesClient({ locale }: Props) {
                 unoptimized
               />
             </div>
-            <div className="flex items-center justify-between text-white gap-4 flex-wrap">
-              <div className="min-w-0 flex-1">
-                <p className="font-black truncate">{getI18n(lightbox.missionTitle, locale)}</p>
-                <p className="text-sm opacity-80 truncate">
+            {/* 캡션 + 미션 메타 */}
+            <div className="text-white space-y-1">
+              {lightbox.caption && lightbox.caption !== '📸' && (
+                <p className="text-sm leading-relaxed whitespace-pre-wrap">{lightbox.caption}</p>
+              )}
+              {(lightbox.missionTitle || lightbox.courseTitle) && (
+                <p className="text-xs opacity-70">
                   {getI18n(lightbox.courseTitle, locale)}
-                  {lightbox.completedAt && ' · ' + new Date(lightbox.completedAt).toLocaleDateString()}
+                  {lightbox.missionTitle && ' · ' + getI18n(lightbox.missionTitle, locale)}
                 </p>
-              </div>
-              <div className="flex items-center gap-2 shrink-0">
+              )}
+              <p className="text-[11px] opacity-50">
+                {new Date(lightbox.createdAt).toLocaleString()}
+              </p>
+            </div>
+
+            {/* 액션 바: 좋아요 / 댓글 수 / 공유 / 삭제 */}
+            <div className="flex items-center justify-between gap-3 border-y border-white/10 py-3">
+              <div className="flex items-center gap-4 text-white">
                 <button
-                  onClick={handleReplaceClick}
-                  disabled={photoMutating}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm disabled:opacity-50"
-                  aria-label={photoUi.replace}
+                  onClick={() => handleLike(lightbox)}
+                  className="inline-flex items-center gap-1.5 text-sm font-bold hover:opacity-80"
+                  aria-label={photoUi.likes}
                 >
-                  <RefreshCw className="w-4 h-4" /> {photoUi.replace}
+                  <Heart className={`w-5 h-5 ${lightbox.liked ? 'fill-red-500 text-red-500' : ''}`} />
+                  {lightbox.likesCount}
+                </button>
+                <span className="inline-flex items-center gap-1.5 text-sm font-bold">
+                  <MessageCircle className="w-5 h-5" />
+                  {lightbox.commentsCount}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleShare(lightbox)}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-bold"
+                  aria-label={t('photos.share')}
+                >
+                  <Share2 className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => handleDelete(lightbox)}
                   disabled={photoMutating}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-red-500/80 hover:bg-red-500 text-white font-bold text-sm disabled:opacity-50"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-red-500/70 hover:bg-red-500 text-white text-sm font-bold disabled:opacity-50"
                   aria-label={photoUi.delete}
                 >
-                  <Trash2 className="w-4 h-4" /> {photoUi.delete}
-                </button>
-                <button
-                  onClick={() => handleShare(lightbox)}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-mint-deep text-white font-bold text-sm hover:opacity-90"
-                >
-                  <Share2 className="w-4 h-4" /> {t('photos.share')}
+                  <Trash2 className="w-4 h-4" />
                 </button>
               </div>
             </div>
-            <input
-              ref={replaceInputRef}
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              capture="environment"
-              className="hidden"
-              onChange={handleReplaceFile}
-            />
+
+            {/* 댓글 */}
+            <div className="bg-white/5 rounded-2xl p-3 max-h-60 overflow-y-auto space-y-2">
+              {commentsLoading ? (
+                <div className="flex items-center justify-center py-4 text-white/60">
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                </div>
+              ) : comments.length === 0 ? (
+                <p className="text-xs text-white/50 text-center py-2">{photoUi.commentEmpty}</p>
+              ) : (
+                comments.map((c) => (
+                  <div key={c.id} className="text-xs text-white">
+                    <span className="font-black">{c.user?.nickname ?? 'User'}</span>
+                    <span className="ml-2 opacity-80 whitespace-pre-wrap">{c.text}</span>
+                  </div>
+                ))
+              )}
+            </div>
+
+            {/* 댓글 입력 */}
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={newCommentText}
+                onChange={(e) => setNewCommentText(e.target.value.slice(0, 300))}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault()
+                    handleCommentSubmit()
+                  }
+                }}
+                placeholder={photoUi.commentPlaceholder}
+                maxLength={300}
+                className="flex-1 bg-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:bg-white/15"
+              />
+              <button
+                onClick={handleCommentSubmit}
+                disabled={!newCommentText.trim() || sendingComment}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-mint-deep text-white hover:opacity-90 disabled:opacity-50"
+                aria-label={photoUi.commentSend}
+              >
+                {sendingComment ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+              </button>
+            </div>
           </div>
         </div>
       )}
