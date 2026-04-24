@@ -226,7 +226,9 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
 
               <div className="grid grid-cols-2 gap-4 text-left">
                 <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100">
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-tighter mb-0.5">LP Balance</p>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-tighter mb-0.5">{
+                    ({ ko: '빗방울 잔액', ja: 'しずく残高', en: 'Raindrops Balance', 'zh-CN': '雨滴余额', 'zh-TW': '雨滴餘額' } as Record<string, string>)[locale] ?? '빗방울 잔액'
+                  }</p>
                   <p className="text-xl font-black text-sky transition-all duration-500">{lpBalance.toLocaleString()}</p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100">

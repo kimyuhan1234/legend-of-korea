@@ -63,6 +63,18 @@ function getI18n(field: Record<string, string> | null | undefined, locale: strin
   return field[locale] || field.en || field.ko || ''
 }
 
+const RAINDROPS_LABEL: Record<string, string> = {
+  ko: '빗방울',
+  ja: 'しずく',
+  en: 'Raindrops',
+  'zh-CN': '雨滴',
+  'zh-TW': '雨滴',
+}
+
+function raindrops(locale: string): string {
+  return RAINDROPS_LABEL[locale] ?? RAINDROPS_LABEL.ko
+}
+
 function missionTypeIcon(type: string): string {
   return type === 'boss' ? '👑' : type === 'hidden' ? '⭐' : type === 'photo' ? '📸' : type === 'open' ? '✍️' : '❓'
 }
@@ -145,7 +157,7 @@ export function MissionDashboard({ userId, locale }: Props) {
         completed={stats.completed}
         total={stats.total}
         lpEarned={stats.totalLp}
-        nextMissionName={nextTier ? `${getI18n(nextTier.name, locale)} (+${stats.lpToNextTier} LP)` : undefined}
+        nextMissionName={nextTier ? `${getI18n(nextTier.name, locale)} (+${stats.lpToNextTier.toLocaleString()} ${raindrops(locale)})` : undefined}
       />
 
       {/* 뷰 토글 */}

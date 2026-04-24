@@ -112,7 +112,7 @@ export function QuizMission({
         setUnlockedHints([...unlockedHints, level]);
         toast({
           title: '힌트 잠금 해제',
-          description: level === 1 ? '무료 힌트를 확인하세요.' : `${cost} LP가 차감되었습니다.`,
+          description: level === 1 ? '무료 힌트를 확인하세요.' : `${cost} 빗방울이 차감되었습니다.`,
         });
       } else {
         toast({
@@ -243,7 +243,7 @@ export function QuizMission({
                         <DialogHeader>
                           <DialogTitle className="text-xl font-bold">힌트를 사용하시겠습니까?</DialogTitle>
                           <DialogDescription className="pt-2 text-base font-medium">
-                            {level === 1 ? '첫 번째 힌트는 무료입니다.' : `${level}단계 힌트를 위해 ${cost} LP를 사용합니다.`}
+                            {level === 1 ? '첫 번째 힌트는 무료입니다.' : `${level}단계 힌트를 위해 ${cost} 빗방울을 사용합니다.`}
                           </DialogDescription>
                         </DialogHeader>
                         <DialogFooter className="flex gap-2 sm:gap-0 sm:justify-between pt-6">
