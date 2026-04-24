@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import { PostCard, PostType } from './PostCard';
 import { AdCard } from './AdCard';
 import { CategoryTabs } from './CategoryTabs';
-import { RecipeFeed } from './RecipeFeed';
 import { Button } from '@/components/ui/button';
 import { Loader2, PenLine } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -62,8 +61,6 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
   const [themeFilter, setThemeFilter] = useState('all');
   const [hasMore, setHasMore] = useState(true);
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
-
-  const isRecipeTab = themeFilter === 'recipe';
 
   const observerTarget = useRef(null);
 
@@ -157,16 +154,6 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-3xl font-black text-slate-800 tracking-tight">{t('title')}</h1>
         <div className="hidden md:flex items-center gap-3">
-          <button
-            onClick={() => setThemeFilter('recipe')}
-            className={`px-5 py-2.5 font-bold transition-all rounded-xl
-              ${themeFilter === 'recipe'
-                ? 'bg-mint-deep text-white'
-                : 'bg-white border border-mist text-ink hover:border-mint-deep'
-              }`}
-          >
-            🍳 요리 레시피
-          </button>
           <Link href={`/${locale}/community/write`}>
             <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold bg-gradient-to-br from-mint to-blossom text-ink hover:opacity-90 hover:scale-[1.02] transition-all">
               <PenLine className="w-4 h-4" />
@@ -183,10 +170,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
         locale={locale}
       />
 
-      {/* Recipe tab */}
-      {isRecipeTab ? (
-        <RecipeFeed locale={locale} />
-      ) : loading ? (
+      {loading ? (
         <div className="py-20 flex flex-col items-center gap-4">
           <Loader2 className="w-10 h-10 animate-spin text-sky" />
           <p className="text-slate-400 font-bold animate-pulse">{t('loading', { defaultValue: 'Loading adventures...' })}</p>
