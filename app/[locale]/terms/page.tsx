@@ -15,7 +15,7 @@ type Section = { heading: string; body: string }
 const CONTENT: Record<string, { title: string; updated: string; sections: Section[] }> = {
   ko: {
     title: '이용약관',
-    updated: '최종 수정일: 2026년 4월 23일',
+    updated: '최종 수정일: 2026년 4월 24일',
     sections: [
       {
         heading: '제1조 (목적)',
@@ -23,11 +23,11 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '제2조 (정의)',
-        body: '• "서비스": 회사가 제공하는 미션 키트 판매, QR 미션 게임, LP 시스템, 커뮤니티 등 모든 온라인 서비스\n• "이용자": 본 약관에 동의하고 서비스를 이용하는 회원 및 비회원\n• "회원": 회사에 개인정보를 제공하여 회원 등록을 완료한 자\n• "LP(Legend Point)": 서비스 내 미션 완료 등으로 적립되는 가상 포인트',
+        body: '• "서비스": 회사가 제공하는 여행 패스 구독, 여행 코스 체험, 미션 퀘스트, 커뮤니티 등 모든 온라인 서비스\n• "이용자": 본 약관에 동의하고 서비스를 이용하는 회원 및 비회원\n• "회원": 회사에 개인정보를 제공하여 회원 등록을 완료한 자\n• "빗방울(Raindrop)": 서비스 내 활동으로 적립되는 가상 포인트. 랭크업 및 쿠폰 교환에 사용',
       },
       {
         heading: '제3조 (서비스 이용)',
-        body: '① 회원가입은 만 14세 이상이어야 합니다.\n② 이용자는 자신의 계정을 제3자에게 양도하거나 공유할 수 없습니다.\n③ 회사는 서비스 품질 향상 등을 위해 사전 공지 후 서비스 내용을 변경하거나 종료할 수 있습니다.\n④ 서비스 이용료: 미션 키트 구매 시 상품 안내 페이지에 표시된 금액을 지불하며, 결제는 토스페이먼츠 또는 Stripe를 통해 처리됩니다.\n⑤ 청약 철회: 전자상거래법 제17조에 따라 재화를 수령한 날로부터 7일 이내 청약 철회가 가능합니다. 단, 이미 사용된 QR 코드(미션 진행 이력이 있는 경우) 또는 키트 포장이 개봉된 경우 청약 철회가 제한될 수 있습니다.',
+        body: '① 회원가입은 만 14세 이상이어야 합니다.\n② 이용자는 자신의 계정을 제3자에게 양도하거나 공유할 수 없습니다.\n③ 회사는 서비스 품질 향상 등을 위해 사전 공지 후 서비스 내용을 변경하거나 종료할 수 있습니다.\n④ 서비스 이용료: 여행 패스(Move/Live/Story/All-in-One) 구독 시 상품 페이지에 표시된 금액을 지불하며, 결제는 토스페이먼츠를 통해 처리됩니다.\n⑤ 청약 철회: 전자상거래법 제17조에 따라 구독 결제일로부터 7일 이내 청약 철회가 가능합니다. 단, 서비스 이용 이력이 있는 경우(미션 완료, 빗방울 적립 등) 청약 철회가 제한될 수 있습니다.\n⑥ 빗방울은 현금으로 환급되지 않으며, 서비스 내에서만 사용 가능합니다. 회원 탈퇴 시 잔여 빗방울은 소멸됩니다.',
       },
       {
         heading: '제4조 (개인정보 보호)',
@@ -35,7 +35,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '제5조 (지적재산권)',
-        body: '① 서비스 내 모든 콘텐츠(텍스트, 이미지, 코스 정보, 미션 내용 등)의 저작권은 회사 또는 원저작권자에게 있습니다.\n② 이용자는 회사의 사전 서면 동의 없이 서비스 콘텐츠를 복제·배포·판매·편집하거나 2차 저작물을 작성할 수 없습니다.\n③ 이용자가 서비스에 등록한 게시물(커뮤니티 글, 사진 등)의 저작권은 해당 이용자에게 있습니다. 단, 이용자는 회사에 서비스 개선 및 홍보 목적으로 해당 게시물을 사용할 수 있는 비독점적·무상·전 세계적 라이선스를 부여합니다.',
+        body: '① 서비스 내 모든 콘텐츠(텍스트, 이미지, 코스 정보, 미션 내용, 여행 코스 큐레이션, 음식 매칭 데이터 등)의 저작권은 회사 또는 원저작권자에게 있습니다.\n② 이용자는 회사의 사전 서면 동의 없이 서비스 콘텐츠를 복제·배포·판매·편집하거나 2차 저작물을 작성할 수 없습니다.\n③ 이용자가 서비스에 등록한 게시물(커뮤니티 글, 사진 등)의 저작권은 해당 이용자에게 있습니다. 단, 이용자는 회사에 서비스 개선 및 홍보 목적으로 해당 게시물을 사용할 수 있는 비독점적·무상·전 세계적 라이선스를 부여합니다.',
       },
       {
         heading: '제6조 (면책 및 책임 제한)',
@@ -45,11 +45,15 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
         heading: '제7조 (분쟁 해결 및 준거법)',
         body: '① 서비스 이용과 관련하여 발생한 분쟁은 회사와 이용자가 성실히 협의하여 해결합니다.\n② 협의로 해결되지 않은 경우, 소비자분쟁조정위원회 또는 관할 법원에 해결을 요청할 수 있습니다.\n③ 본 약관은 대한민국 법률에 따라 규율되며, 분쟁 발생 시 관할 법원은 회사 본사 소재지 관할 법원으로 합니다.',
       },
+      {
+        heading: '부칙',
+        body: '본 약관은 2026년 4월 24일부터 시행됩니다.',
+      },
     ],
   },
   en: {
     title: 'Terms of Service',
-    updated: 'Last updated: April 23, 2026',
+    updated: 'Last updated: April 24, 2026',
     sections: [
       {
         heading: 'Article 1 — Purpose',
@@ -57,11 +61,11 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: 'Article 2 — Definitions',
-        body: '• "Service": all online services provided by the Company, including mission kit sales, QR mission game, LP system, and community features\n• "User": any person who agrees to these Terms and uses the Service\n• "Member": a person who has completed membership registration\n• "LP (Legend Point)": virtual points earned through mission completion and other activities',
+        body: '• "Service": all online services provided by the Company, including travel pass subscriptions, journey course experiences, mission quests, and community features\n• "User": any person who agrees to these Terms and uses the Service\n• "Member": a person who has completed membership registration\n• "Raindrop (빗방울)": virtual points earned through service activities, used for rank-up rewards and coupon exchange',
       },
       {
         heading: 'Article 3 — Use of Service',
-        body: '① Users must be at least 14 years of age to register.\n② Users may not transfer or share their account with third parties.\n③ The Company may modify or terminate service content with prior notice.\n④ Fees: Mission kit prices are displayed on the product page. Payments are processed via Toss Payments or Stripe.\n⑤ Cancellation: Users may cancel within 7 days of receipt of goods pursuant to applicable e-commerce law, except where a QR code has already been used or kit packaging has been opened.',
+        body: '① Users must be at least 14 years of age to register.\n② Users may not transfer or share their account with third parties.\n③ The Company may modify or terminate service content with prior notice.\n④ Fees: Travel pass (Move/Live/Story/All-in-One) subscription prices are displayed on the product page. Payments are processed via Toss Payments.\n⑤ Cancellation: Users may cancel within 7 days of the subscription payment date pursuant to applicable e-commerce law, except where service usage history exists (mission completion, Raindrop accrual, etc.).\n⑥ Raindrops are non-refundable and may only be used within the Service. Any remaining Raindrops are forfeited upon account deletion.',
       },
       {
         heading: 'Article 4 — Privacy',
@@ -69,7 +73,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: 'Article 5 — Intellectual Property',
-        body: '① All Service content (text, images, course information, mission content, etc.) is owned by the Company or respective rights holders.\n② Users may not reproduce, distribute, sell, edit, or create derivative works from Service content without prior written consent.\n③ Posts submitted by users (community posts, photos, etc.) remain the user\'s property, but users grant the Company a non-exclusive, royalty-free, worldwide license to use such content for service improvement and promotion.',
+        body: '① All Service content (text, images, course information, mission content, travel course curation, food-matching data, etc.) is owned by the Company or respective rights holders.\n② Users may not reproduce, distribute, sell, edit, or create derivative works from Service content without prior written consent.\n③ Posts submitted by users (community posts, photos, etc.) remain the user\'s property, but users grant the Company a non-exclusive, royalty-free, worldwide license to use such content for service improvement and promotion.',
       },
       {
         heading: 'Article 6 — Disclaimer and Limitation of Liability',
@@ -79,11 +83,15 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
         heading: 'Article 7 — Governing Law and Dispute Resolution',
         body: '① Disputes arising from use of the Service shall be resolved through good-faith negotiation between the Company and the user.\n② If unresolved, disputes may be submitted to the Consumer Dispute Mediation Committee or a competent court.\n③ These Terms are governed by the laws of the Republic of Korea.',
       },
+      {
+        heading: 'Supplementary Provision',
+        body: 'These Terms are effective as of April 24, 2026.',
+      },
     ],
   },
   ja: {
     title: '利用規約',
-    updated: '最終更新日: 2026年4月23日',
+    updated: '最終更新日: 2026年4月24日',
     sections: [
       {
         heading: '第1条（目的）',
@@ -91,11 +99,11 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第2条（定義）',
-        body: '• 「サービス」: 当社が提供するミッションキット販売、QRミッションゲーム、LPシステム、コミュニティ等すべてのオンラインサービス\n• 「利用者」: 本規約に同意してサービスを利用する会員および非会員\n• 「会員」: 個人情報を提供して会員登録を完了した者\n• 「LP（Legend Point）」: ミッション完了などにより付与される仮想ポイント',
+        body: '• 「サービス」: 当社が提供する旅行パスの購読、旅行コース体験、ミッションクエスト、コミュニティ等すべてのオンラインサービス\n• 「利用者」: 本規約に同意してサービスを利用する会員および非会員\n• 「会員」: 個人情報を提供して会員登録を完了した者\n• 「雨粒（빗방울 / Raindrop）」: サービス内の活動により付与される仮想ポイント。ランクアップおよびクーポン交換に使用',
       },
       {
         heading: '第3条（サービスの利用）',
-        body: '① 会員登録は14歳以上であることが必要です。\n② 利用者は自身のアカウントを第三者に譲渡・共有することができません。\n③ 当社はサービス品質向上等のため、事前告知の上でサービス内容を変更・終了できます。\n④ 利用料金: ミッションキット購入時は商品ページに表示された金額を支払います。決済はトスペイメンツまたはStripeで処理されます。\n⑤ キャンセル: 電子商取引法に基づき商品受取日から7日以内に申し込みの撤回が可能です。ただし、QRコードが使用済みまたはキットの梱包が開封された場合は制限されることがあります。',
+        body: '① 会員登録は14歳以上であることが必要です。\n② 利用者は自身のアカウントを第三者に譲渡・共有することができません。\n③ 当社はサービス品質向上等のため、事前告知の上でサービス内容を変更・終了できます。\n④ 利用料金: 旅行パス（Move/Live/Story/All-in-One）購読時は商品ページに表示された金額を支払います。決済はトスペイメンツで処理されます。\n⑤ キャンセル: 電子商取引法に基づき購読決済日から7日以内に申し込みの撤回が可能です。ただし、サービス利用実績がある場合（ミッション完了、雨粒付与等）は制限されることがあります。\n⑥ 雨粒は現金での払い戻しはできず、サービス内でのみ使用可能です。会員退会時に残余の雨粒は消滅します。',
       },
       {
         heading: '第4条（個人情報の保護）',
@@ -103,7 +111,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第5条（知的財産権）',
-        body: '① サービス内のすべてのコンテンツ（テキスト、画像、コース情報、ミッション内容等）の著作権は当社または原著作権者に帰属します。\n② 利用者は当社の事前書面による同意なしにコンテンツの複製・配布・販売・編集・二次著作物の作成を行うことができません。\n③ 利用者が投稿したコンテンツ（コミュニティ投稿・写真等）の著作権は当該利用者に帰属します。ただし、利用者は当社にサービス改善・宣伝目的での使用について非独占的・無償・全世界的ライセンスを付与するものとします。',
+        body: '① サービス内のすべてのコンテンツ（テキスト、画像、コース情報、ミッション内容、旅行コースキュレーション、フードマッチングデータ等）の著作権は当社または原著作権者に帰属します。\n② 利用者は当社の事前書面による同意なしにコンテンツの複製・配布・販売・編集・二次著作物の作成を行うことができません。\n③ 利用者が投稿したコンテンツ（コミュニティ投稿・写真等）の著作権は当該利用者に帰属します。ただし、利用者は当社にサービス改善・宣伝目的での使用について非独占的・無償・全世界的ライセンスを付与するものとします。',
       },
       {
         heading: '第6条（免責および責任の制限）',
@@ -113,11 +121,15 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
         heading: '第7条（紛争解決・準拠法）',
         body: '① サービスの利用に関して生じた紛争は、当社と利用者が誠実に協議して解決します。\n② 協議により解決しない場合は、消費者紛争調整委員会または管轄裁判所に解決を申し立てることができます。\n③ 本規約は大韓民国法律に準拠し、紛争発生時の管轄裁判所は当社本社所在地の管轄裁判所とします。',
       },
+      {
+        heading: '附則',
+        body: '本規約は2026年4月24日より施行されます。',
+      },
     ],
   },
   'zh-CN': {
     title: '服务条款',
-    updated: '最后更新：2026年4月23日',
+    updated: '最后更新：2026年4月24日',
     sections: [
       {
         heading: '第一条（目的）',
@@ -125,11 +137,11 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第二条（定义）',
-        body: '• "服务"：本公司提供的任务套件销售、二维码任务游戏、LP系统、社区等所有在线服务\n• "用户"：同意本条款并使用服务的会员及非会员\n• "会员"：提供个人信息并完成会员注册的人员\n• "LP（Legend Point）"：通过完成任务等获得的虚拟积分',
+        body: '• "服务"：本公司提供的旅行通行证订阅、旅行路线体验、任务探索、社区等所有在线服务\n• "用户"：同意本条款并使用服务的会员及非会员\n• "会员"：提供个人信息并完成会员注册的人员\n• "雨滴（빗방울 / Raindrop）"：通过服务内活动获得的虚拟积分，可用于升级奖励及兑换优惠券',
       },
       {
         heading: '第三条（服务使用）',
-        body: '① 注册会员需年满14周岁。\n② 用户不得将账号转让或共享给第三方。\n③ 本公司可在事先公告后变更或终止服务内容。\n④ 使用费用：购买任务套件时按商品页面显示的金额支付，通过Toss Payments或Stripe处理。\n⑤ 取消：依据电子商务法，收到商品之日起7天内可申请撤销。但二维码已使用或套件包装已开封的情况下可能受到限制。',
+        body: '① 注册会员需年满14周岁。\n② 用户不得将账号转让或共享给第三方。\n③ 本公司可在事先公告后变更或终止服务内容。\n④ 使用费用：订阅旅行通行证（Move/Live/Story/All-in-One）时按商品页面显示的金额支付，通过Toss Payments处理。\n⑤ 取消：依据电子商务法，可在订阅付款日起7天内申请撤销。但有服务使用记录的情况下（任务完成、雨滴积累等）可能受到限制。\n⑥ 雨滴不可兑换现金，仅限在服务内使用。会员注销时剩余雨滴将消失。',
       },
       {
         heading: '第四条（个人信息保护）',
@@ -137,7 +149,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第五条（知识产权）',
-        body: '① 服务内所有内容（文字、图片、路线信息、任务内容等）的版权归本公司或原版权人所有。\n② 用户未经本公司事先书面同意，不得复制、分发、销售、编辑或制作二次创作内容。\n③ 用户发布的内容（社区帖子、照片等）版权归该用户所有，但用户授予本公司用于服务改善及推广的非独占、免费、全球性许可。',
+        body: '① 服务内所有内容（文字、图片、路线信息、任务内容、旅行路线策划、美食匹配数据等）的版权归本公司或原版权人所有。\n② 用户未经本公司事先书面同意，不得复制、分发、销售、编辑或制作二次创作内容。\n③ 用户发布的内容（社区帖子、照片等）版权归该用户所有，但用户授予本公司用于服务改善及推广的非独占、免费、全球性许可。',
       },
       {
         heading: '第六条（免责及责任限制）',
@@ -147,11 +159,15 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
         heading: '第七条（争议解决及适用法律）',
         body: '① 因使用服务产生的争议，由本公司与用户诚信协商解决。\n② 协商未能解决的，可向消费者纠纷调解委员会或有管辖权的法院申请解决。\n③ 本条款受大韩民国法律管辖。',
       },
+      {
+        heading: '附则',
+        body: '本条款自2026年4月24日起施行。',
+      },
     ],
   },
   'zh-TW': {
     title: '服務條款',
-    updated: '最後更新：2026年4月23日',
+    updated: '最後更新：2026年4月24日',
     sections: [
       {
         heading: '第一條（目的）',
@@ -159,11 +175,11 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第二條（定義）',
-        body: '• 「服務」：本公司提供的任務套件銷售、QR碼任務遊戲、LP系統、社群等所有線上服務\n• 「使用者」：同意本條款並使用服務的會員及非會員\n• 「會員」：提供個人資料並完成會員註冊的人員\n• 「LP（Legend Point）」：透過完成任務等獲得的虛擬積分',
+        body: '• 「服務」：本公司提供的旅行通行證訂閱、旅行路線體驗、任務探索、社群等所有線上服務\n• 「使用者」：同意本條款並使用服務的會員及非會員\n• 「會員」：提供個人資料並完成會員註冊的人員\n• 「雨滴（빗방울 / Raindrop）」：透過服務內活動獲得的虛擬積分，可用於升級獎勵及兌換優惠券',
       },
       {
         heading: '第三條（服務使用）',
-        body: '① 會員須年滿14歲方可註冊。\n② 使用者不得將帳號轉讓或共享給第三方。\n③ 本公司可在事先公告後變更或終止服務內容。\n④ 使用費用：購買任務套件時依商品頁面所示金額支付，透過Toss Payments或Stripe處理。\n⑤ 取消：依電子商務法規定，收到商品之日起7天內可申請撤銷。但QR碼已使用或套件包裝已開封的情況下可能受到限制。',
+        body: '① 會員須年滿14歲方可註冊。\n② 使用者不得將帳號轉讓或共享給第三方。\n③ 本公司可在事先公告後變更或終止服務內容。\n④ 使用費用：訂閱旅行通行證（Move/Live/Story/All-in-One）時依商品頁面所示金額支付，透過Toss Payments處理。\n⑤ 取消：依電子商務法規定，可在訂閱付款日起7天內申請撤銷。但有服務使用紀錄的情況下（任務完成、雨滴積累等）可能受到限制。\n⑥ 雨滴不可兌換現金，僅限在服務內使用。會員刪除帳號時剩餘雨滴將消滅。',
       },
       {
         heading: '第四條（個人資料保護）',
@@ -171,7 +187,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第五條（智慧財產權）',
-        body: '① 服務內所有內容（文字、圖片、路線資訊、任務內容等）之著作權歸本公司或原著作權人所有。\n② 使用者未經本公司事先書面同意，不得複製、散布、銷售、編輯或製作二次創作內容。\n③ 使用者發布的內容（社群貼文、照片等）著作權歸該使用者所有，但使用者授予本公司用於服務改善及推廣的非獨家、免費、全球性授權。',
+        body: '① 服務內所有內容（文字、圖片、路線資訊、任務內容、旅行路線策劃、美食配對資料等）之著作權歸本公司或原著作權人所有。\n② 使用者未經本公司事先書面同意，不得複製、散布、銷售、編輯或製作二次創作內容。\n③ 使用者發布的內容（社群貼文、照片等）著作權歸該使用者所有，但使用者授予本公司用於服務改善及推廣的非獨家、免費、全球性授權。',
       },
       {
         heading: '第六條（免責及責任限制）',
@@ -180,6 +196,10 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       {
         heading: '第七條（爭議解決及準據法）',
         body: '① 因使用服務產生的爭議，由本公司與使用者誠信協商解決。\n② 協商未能解決的，可向消費者爭議調解委員會或有管轄權的法院申請解決。\n③ 本條款受大韓民國法律管轄。',
+      },
+      {
+        heading: '附則',
+        body: '本條款自2026年4月24日起施行。',
       },
     ],
   },
