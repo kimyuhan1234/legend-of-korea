@@ -1,13 +1,86 @@
 import { type NextRequest, NextResponse } from "next/server"
 import createMiddleware from "next-intl/middleware"
 import { updateSession } from "@/lib/supabase/middleware"
+import { getSessionEmail } from "@/lib/supabase/middleware-user"
 import { rateLimitGuard, type RateLimitPreset } from "@/lib/security/rate-limit-guard"
+import { isAdminEmail } from "@/lib/auth/admin"
 
 const locales = ["ko", "ja", "en", "zh-CN", "zh-TW"] as const
 const defaultLocale = "ko"
+const LOCALE_REGEX = /^\/([a-z]{2}(?:-[A-Z]{2})?)(\/|$)/
 
 // 비로그인 접근 허용 경로 (locale prefix 제외, 화이트리스트)
-const PUBLIC_PATHS = ["/", "/auth", "/login", "/signup", "/stay", "/privacy", "/terms"]
+const PUBLIC_PATHS = ["/", "/auth", "/login", "/signup", "/stay", "/privacy", "/terms", "/maintenance"]
+
+// ── 일일 접속자 제한 (테스트 기간) ───────────────────────────
+// Edge/Serverless 인스턴스별 독립 메모리이므로 엄밀한 글로벌 제한은 아님 —
+// 테스트 기간 '대략적' 접속 게이트로 동작한다.
+let dailyVisitorIps = new Set<string>()
+let lastResetDate = ""
+
+function getMaxDailyVisitors(): number {
+  const raw = process.env.MAX_DAILY_VISITORS
+  const n = raw ? parseInt(raw, 10) : NaN
+  return Number.isFinite(n) && n > 0 ? n : 50
+}
+
+function isMaintenanceMode(): boolean {
+  return process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true"
+}
+
+function getClientIp(request: NextRequest): string {
+  const fwd = request.headers.get("x-forwarded-for")
+  if (fwd) return fwd.split(",")[0].trim()
+  return request.headers.get("x-real-ip") ?? request.ip ?? "unknown"
+}
+
+/** 접속자 제한에서 항상 통과시킬 경로. locale prefix 유무 모두 매칭. */
+function isGateBypassPath(pathname: string): boolean {
+  // 헬스체크
+  if (pathname === "/api/health") return true
+  // /maintenance 페이지 자체 (locale prefix 있든 없든)
+  if (pathname === "/maintenance") return true
+  const localeMatch = pathname.match(LOCALE_REGEX)
+  if (localeMatch) {
+    const rest = pathname.slice(localeMatch[0].length - 1) || "/"
+    if (rest === "/maintenance" || rest.startsWith("/maintenance/")) return true
+    // 인증 경로는 관리자 로그인을 위해 열어둠
+    if (rest.startsWith("/auth/")) return true
+  }
+  return false
+}
+
+/** 오늘 방문자 집합 갱신 후 허용 여부 반환. 이미 방문했거나 정원 내면 true. */
+function recordVisitor(ip: string): boolean {
+  const today = new Date().toISOString().slice(0, 10) // UTC 날짜
+  if (today !== lastResetDate) {
+    dailyVisitorIps = new Set()
+    lastResetDate = today
+  }
+  if (dailyVisitorIps.has(ip)) return true
+  if (dailyVisitorIps.size >= getMaxDailyVisitors()) return false
+  dailyVisitorIps.add(ip)
+  return true
+}
+
+function extractLocaleFromPath(pathname: string): string {
+  return pathname.match(LOCALE_REGEX)?.[1] ?? defaultLocale
+}
+
+function buildBlockedResponse(request: NextRequest, pathname: string, reason: "maintenance" | "capacity"): NextResponse {
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.json(
+      {
+        error: reason === "maintenance" ? "Service under maintenance" : "Daily visitor limit reached",
+        code: reason === "maintenance" ? "MAINTENANCE" : "CAPACITY",
+      },
+      { status: 503 }
+    )
+  }
+  const locale = extractLocaleFromPath(pathname)
+  const url = new URL(`/${locale}/maintenance`, request.url)
+  return NextResponse.redirect(url)
+}
 
 /**
  * API 경로별 Rate Limit 프리셋 결정.
@@ -63,6 +136,22 @@ export async function middleware(request: NextRequest) {
     /\.(?:ico|svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot|webmanifest|json)$/.test(pathname)
   ) {
     return NextResponse.next()
+  }
+
+  // ── 테스트 기간 접속자 게이트 ─────────────────────────
+  // 바이패스 경로(/maintenance, /api/health, /auth/*) 는 즉시 통과.
+  // 그 외: maintenance 모드이거나 일일 정원 초과면 관리자 여부 확인 후 차단.
+  if (!isGateBypassPath(pathname)) {
+    const maintenance = isMaintenanceMode()
+    const withinCapacity = maintenance ? false : recordVisitor(getClientIp(request))
+
+    if (maintenance || !withinCapacity) {
+      const email = await getSessionEmail(request)
+      if (!isAdminEmail(email)) {
+        return buildBlockedResponse(request, pathname, maintenance ? "maintenance" : "capacity")
+      }
+      // 관리자 — 그대로 통과 (아래 정상 플로우 진입)
+    }
   }
 
   // ── API: Rate Limit 체크 후 패스스루 ──────────────────
