@@ -173,14 +173,14 @@ export function ProfileSettings({ user, locale, onUpdate }: Props) {
                 onClick={handleCancel}
                 className="flex-1 py-2.5 bg-slate-100 text-slate-600 rounded-xl font-bold text-sm hover:bg-slate-200 transition-colors flex items-center justify-center gap-1.5"
               >
-                <X className="w-4 h-4" /> {t('cancelButton')}
+                <X className="w-4 h-4" /> {t('cancel')}
               </button>
               <button
                 onClick={handleSave}
                 disabled={saving || !nickname.trim()}
                 className="flex-1 py-2.5 bg-gradient-to-br from-mint to-blossom text-ink rounded-xl font-black text-sm hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed transition-opacity flex items-center justify-center gap-1.5"
               >
-                {saving ? <><Loader2 className="w-4 h-4 animate-spin" /> ...</> : <><Check className="w-4 h-4" /> {t('saveButton')}</>}
+                {saving ? <><Loader2 className="w-4 h-4 animate-spin" /> ...</> : <><Check className="w-4 h-4" /> {t('save')}</>}
               </button>
             </div>
           </div>
