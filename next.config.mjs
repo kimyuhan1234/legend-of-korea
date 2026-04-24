@@ -21,7 +21,6 @@ const nextConfig = {
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
       { protocol: "https", hostname: "k.kakaocdn.net" },
       { protocol: "https", hostname: "profile.line-scdn.net" },
-      { protocol: "https", hostname: "images.pexels.com" },
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "http", hostname: "tong.visitkorea.or.kr" },
       { protocol: "https", hostname: "tong.visitkorea.or.kr" },
