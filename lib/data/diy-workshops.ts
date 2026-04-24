@@ -12,6 +12,7 @@ export interface CityWorkshopExperience {
   price: string
   duration: string
   image: string
+  videoSrc?: string
   detailDesc: I18n
   location: I18n
   features: { ko: string[]; en: string[]; ja: string[] }
@@ -46,6 +47,7 @@ export const CITY_WORKSHOPS: CityWorkshop[] = [
         price: '₩35,000~',
         duration: '1.5~2h',
         image: '/images/diy/seoul-perfume-hanok.jpg',
+        videoSrc: '/videos/diy/perfume.mp4',
         detailDesc: {
           ko: '전통 한옥에서 500가지 이상의 향료를 직접 시향하고, 전문 조향사의 안내로 나만의 시그니처 향수를 만드는 체험입니다. 완성된 향수(50ml)는 고급 패키지에 담아 가져갈 수 있어 여행 기념품으로도 완벽합니다.',
           en: 'In a traditional Hanok, explore 500+ fragrance materials and create your own signature perfume guided by a professional perfumer. Take home your finished 50ml perfume in luxury packaging — a perfect travel souvenir.',
@@ -69,6 +71,7 @@ export const CITY_WORKSHOPS: CityWorkshop[] = [
         price: '₩45,000~',
         duration: '1.5h',
         image: '/images/diy/seoul-perfume-hongdae.jpg',
+        videoSrc: '/videos/diy/niche-perfume.mp4',
         detailDesc: {
           ko: '홍대 골목의 아늑한 향수 공방에서 100% 천연 에센셜 오일과 앱솔루트로 나만의 니치 향수를 조향합니다. 한국적 감성의 독자적인 베이스 향료를 사용하여 세상에 하나뿐인 향수를 만들 수 있습니다. 50ml EDP + 10ml 트래블 사이즈 세트를 가져갑니다.',
           en: "In a cozy perfume house in a Hongdae alley, blend your own niche perfume using 100% natural essential oils with unique Korean-inspired base scents. Take home a 50ml EDP + 10ml travel-size tester set — a fragrance you can't find anywhere else.",
@@ -96,6 +99,7 @@ export const CITY_WORKSHOPS: CityWorkshop[] = [
         price: '₩30,000~',
         duration: '1.5~2h',
         image: '/images/diy/seoul-silver-ring.jpg',
+        videoSrc: '/videos/diy/silver-ring.mp4',
         detailDesc: {
           ko: '성수, 잠실, 혜화, 홍대 등 서울 주요 지역의 아틀리에에서 순은을 직접 망치질하고 성형하여 나만의 실버링을 만드는 체험입니다. 커플링, 우정반지, 혼자만의 기념반지 등 어떤 목적이든 환영합니다. 보석 세팅도 가능합니다.',
           en: 'At ateliers in Seongsu, Jamsil, Hyehwa, and Hongdae, hammer and shape pure silver into your own ring. Perfect for couple rings, friendship rings, or a personal keepsake. Gemstone setting available.',
@@ -119,6 +123,7 @@ export const CITY_WORKSHOPS: CityWorkshop[] = [
         price: '₩15,000~',
         duration: '1~1.5h',
         image: '/images/diy/seoul-hanji.jpg',
+        videoSrc: '/videos/diy/hanji.mp4',
         detailDesc: {
           ko: '북촌 한옥마을의 실제 한옥에서 1000년 전통의 한지(한국 전통 종이)를 사용하여 엽서, 부채, 소품함 등을 만드는 체험입니다. 한지의 독특한 질감과 내구성을 직접 느끼며 한국 전통 공예를 배울 수 있습니다.',
           en: 'In a genuine Hanok in Bukchon Village, create postcards, fans, and accessory boxes using hanji — Korean traditional paper with 1000 years of history. Feel the unique texture and durability of hanji while learning Korean traditional craft.',
@@ -142,6 +147,7 @@ export const CITY_WORKSHOPS: CityWorkshop[] = [
         price: '₩20,000~',
         duration: '1.5h',
         image: '/images/diy/seoul-nacre.jpg',
+        videoSrc: '/videos/diy/najeonchilgi.mp4',
         detailDesc: {
           ko: '한국 전통 나전칠기 기법으로 자개(조개 껍데기의 진주층)를 활용하여 보석함, 브로치, 손거울, 엽서 등을 만드는 체험입니다. 한국 무형문화재 장인의 기술을 체험할 수 있는 귀한 기회입니다.',
           en: 'Using traditional Korean mother-of-pearl inlay technique (najeon-chilgi), create a jewelry box, brooch, hand mirror, or postcard. A rare opportunity to experience the skills of Korean intangible cultural heritage artisans.',
@@ -165,6 +171,7 @@ export const CITY_WORKSHOPS: CityWorkshop[] = [
         price: '₩25,000~',
         duration: '1.5h',
         image: '/images/diy/seoul-bojagi.jpg',
+        videoSrc: '/videos/diy/bojagi.mp4',
         detailDesc: {
           ko: '연세대학교 1급 인증 전문가에게 한국 전통 보자기 포장 아트를 배우는 체험입니다. 단순한 공예가 아니라 한국의 미학과 문화를 담은 포장 예술을 배울 수 있습니다. 완성된 보자기 작품은 가져갈 수 있습니다.',
           en: "Learn the art of Bojagi (Korean traditional wrapping cloth) from a Level 1 certified expert from Yonsei University. More than just craft — it's Korean aesthetic and cultural art of wrapping. Take home your finished piece.",
@@ -202,6 +209,7 @@ export const CITY_WORKSHOPS: CityWorkshop[] = [
         price: '₩30,000~',
         duration: '1.5h',
         image: '/images/diy/busan-perfume.jpg',
+        videoSrc: '/videos/diy/perfume.mp4',
         detailDesc: {
           ko: '해운대·광안리 바다 전망이 펼쳐지는 공방에서 바다 향을 모티브로 나만의 시그니처 향수를 조향하는 체험입니다. 부산의 여름 바다, 갈맷길 솔향 등 지역 감성을 담은 향료를 사용합니다. 완성된 향수(30ml)는 바로 가져갈 수 있습니다.',
           en: 'At a workshop overlooking Haeundae or Gwangalli Beach, craft your own signature perfume inspired by the sea. Choose from ocean, pine, and local Busan-inspired fragrance materials. Take home your finished 30ml perfume immediately.',
@@ -225,6 +233,7 @@ export const CITY_WORKSHOPS: CityWorkshop[] = [
         price: '₩30,000~',
         duration: '1.5~2h',
         image: '/images/diy/busan-silver-ring.jpg',
+        videoSrc: '/videos/diy/silver-ring.mp4',
         detailDesc: {
           ko: '광안리 바다가 보이는 주얼리 아틀리에에서 순은 소재를 직접 망치질하여 나만의 실버링을 제작합니다. 커플링, 우정반지, 개인 기념반지 어떤 형태든 가능하며 사이즈 각인 서비스도 포함됩니다.',
           en: 'At a jewelry atelier overlooking Gwangalli Beach, hammer pure silver into your own ring. Couple rings, friendship rings, and solo commemorative rings are all welcome. Ring sizing and engraving service included.',
@@ -248,6 +257,7 @@ export const CITY_WORKSHOPS: CityWorkshop[] = [
         price: '₩25,000~',
         duration: '1h',
         image: '/images/diy/busan-candle.jpg',
+        videoSrc: '/videos/diy/candle.mp4',
         detailDesc: {
           ko: '천연 소이왁스와 부산 바다를 모티브로 한 에센셜 오일을 사용하여 나만의 향초를 만드는 체험입니다. 유리 컨테이너에 담긴 완성 캔들은 여행 기념품으로 가져가거나 지인에게 선물하기에 완벽합니다. 굳는 시간 동안 주변 카페를 즐길 수 있습니다.',
           en: 'Using natural soy wax and ocean-inspired essential oils from Busan, create your own scented candle. The finished candle in a glass container makes a perfect souvenir or gift. Enjoy a nearby cafe while it sets.',
@@ -271,6 +281,7 @@ export const CITY_WORKSHOPS: CityWorkshop[] = [
         price: '₩20,000~',
         duration: '1~1.5h',
         image: '/images/diy/busan-ceramics.jpg',
+        videoSrc: '/videos/diy/pottery.mp4',
         detailDesc: {
           ko: '이미 성형·소성된 도자기(컵, 접시, 화병 중 선택)에 자유롭게 그림을 그리고 유약을 칠하는 체험입니다. 도예 초보자도 부담 없이 즐길 수 있으며, 아이와 함께 하기에도 적합합니다. 완성작은 현장에서 바로 가져갈 수 있습니다.',
           en: 'Paint freely on a pre-formed and bisque-fired ceramic (choose from cup, plate, or vase) and glaze it. Perfectly accessible for beginners and great for kids too. Take your finished piece home right away.',

@@ -23,17 +23,30 @@ function ExperienceDetail({
 }) {
   return (
     <div>
-      {/* 이미지 */}
+      {/* 영상 (있으면) 또는 이미지 */}
       <div className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden bg-snow mb-4">
-        <Image
-          src={exp.image || '/images/diy/placeholder.jpg'}
-          alt={getL(exp.name, locale)}
-          fill
-          className="object-cover"
-          onError={undefined}
-          unoptimized
-        />
-        {/* 이미지 로드 실패 시 폴백 — CSS로 처리 */}
+        {exp.videoSrc ? (
+          <video
+            key={exp.videoSrc}
+            src={exp.videoSrc}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover"
+            aria-label={getL(exp.name, locale)}
+          />
+        ) : (
+          <Image
+            src={exp.image || '/images/diy/placeholder.jpg'}
+            alt={getL(exp.name, locale)}
+            fill
+            className="object-cover"
+            unoptimized
+          />
+        )}
+        {/* 로드 실패 시 폴백 — 아이콘 그라디언트 */}
         <div className="absolute inset-0 bg-gradient-to-br from-mint to-blossom flex items-center justify-center -z-10">
           <span className="text-6xl">{exp.icon}</span>
         </div>
