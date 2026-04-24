@@ -44,7 +44,7 @@ export default function AdminB2BPage() {
       try {
         const [b2bRes, coursesRes] = await Promise.all([
           fetch("/api/admin/b2b"),
-          fetch("/api/missions") // using existing missions/courses API
+          fetch("/api/admin/courses")
         ])
         const b2bData = await b2bRes.json()
         const coursesData = await coursesRes.json()

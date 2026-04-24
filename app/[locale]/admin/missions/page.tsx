@@ -35,7 +35,7 @@ export default function AdminMissionsPage() {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const res = await fetch("/api/missions")
+      const res = await fetch("/api/admin/courses")
       const data = await res.json()
       setCourses(data.courses || [])
       if (data.courses?.length > 0) {
