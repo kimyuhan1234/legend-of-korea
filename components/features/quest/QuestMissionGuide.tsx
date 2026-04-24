@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 type Lang = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
@@ -15,10 +16,12 @@ const UI: Record<Lang, {
   tipTitle: string
   tips: string[]
   stepLabel: string
+  fullGuideLink: string
 }> = {
   ko: {
     title: '📱 미션 진행 방법',
     stepLabel: 'STEP',
+    fullGuideLink: '📖 미션 전체 가이드 보기 →',
     step1Title: '📍 목적지로 이동',
     step1Desc: '미션 장소까지 이동하세요. 지도에서 위치를 확인할 수 있습니다.',
     step2Title: '📸 GPS 체크인',
@@ -47,6 +50,7 @@ const UI: Record<Lang, {
       '屋内ではGPS精度が低下することがあります',
       'Wi-Fiを併用すると位置精度が向上します',
     ],
+    fullGuideLink: '📖 ミッション全体ガイドを見る →',
   },
   en: {
     title: '📱 How Missions Work',
@@ -63,6 +67,7 @@ const UI: Record<Lang, {
       'GPS accuracy can drop indoors',
       'Keep Wi-Fi on to improve location accuracy',
     ],
+    fullGuideLink: '📖 See the full mission guide →',
   },
   'zh-CN': {
     title: '📱 任务进行方式',
@@ -79,6 +84,7 @@ const UI: Record<Lang, {
       '室内 GPS 精度可能下降',
       '同时开启 Wi-Fi 可以提升定位精度',
     ],
+    fullGuideLink: '📖 查看任务完整指南 →',
   },
   'zh-TW': {
     title: '📱 任務進行方式',
@@ -95,6 +101,7 @@ const UI: Record<Lang, {
       '室內 GPS 精確度可能下降',
       '同時開啟 Wi-Fi 可以提升定位精確度',
     ],
+    fullGuideLink: '📖 查看任務完整指南 →',
   },
 }
 
@@ -157,6 +164,16 @@ export function QuestMissionGuide() {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* 전체 가이드 링크 */}
+        <div className="mt-6 text-center">
+          <Link
+            href={`/${locale}/quest/guide`}
+            className="inline-flex items-center gap-1 text-sm font-bold text-mint-deep hover:text-ink transition-colors underline underline-offset-4"
+          >
+            {t.fullGuideLink}
+          </Link>
         </div>
       </div>
     </section>

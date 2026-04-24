@@ -11,6 +11,7 @@ const TEXT = {
     terms: "이용약관",
     privacy: "개인정보처리방침",
     partner: "파트너 문의",
+    guide: "미션 가이드",
   },
   ja: {
     service: "コアコンテンツ: Legend of Korea（伝説旅ミッション）",
@@ -18,6 +19,7 @@ const TEXT = {
     terms: "利用規約",
     privacy: "プライバシーポリシー",
     partner: "パートナーお問い合わせ",
+    guide: "ミッションガイド",
   },
   en: {
     service: "Core Content: Legend of Korea (Legend Travel Missions)",
@@ -25,6 +27,7 @@ const TEXT = {
     terms: "Terms of Service",
     privacy: "Privacy Policy",
     partner: "Partnership",
+    guide: "Mission Guide",
   },
 }
 
@@ -59,6 +62,9 @@ export function Footer({ locale }: FooterProps) {
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm mb-8">
           <Link href={`/${locale}/about`} className="hover:text-white transition-colors">
             {t.company}
+          </Link>
+          <Link href={`/${locale}/quest/guide`} className="hover:text-white transition-colors">
+            📖 {t.guide}
           </Link>
           <Link href={`/${locale}/terms`} className="hover:text-white transition-colors">
             {t.terms}
