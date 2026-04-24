@@ -25,7 +25,8 @@ const LABEL = {
   en: { from: "from", region: "Region", duration: "Duration", detail: "View details" },
 }
 
-function getI18n(field: I18nText, locale: string): string {
+function getI18n(field: I18nText | null | undefined, locale: string): string {
+  if (!field) return ""
   return (field as unknown as Record<string, string>)[locale] || field.en || field.ko || ""
 }
 

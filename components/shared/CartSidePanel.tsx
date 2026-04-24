@@ -25,8 +25,10 @@ export function CartSidePanel() {
     closeCart()
   }
 
-  const getLocaleName = (name: { ko: string; en: string; ja: string }) =>
-    (name as Record<string, string>)[locale] || name.en || name.ko
+  const getLocaleName = (name: { ko: string; en: string; ja: string } | null | undefined) => {
+    if (!name) return ''
+    return (name as Record<string, string>)[locale] || name.en || name.ko || ''
+  }
 
   return (
     <>

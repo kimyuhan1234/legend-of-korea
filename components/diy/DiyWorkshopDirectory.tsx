@@ -7,8 +7,9 @@ import { usePathname } from 'next/navigation'
 import { CITY_WORKSHOPS, type CityWorkshop, type CityWorkshopExperience } from '@/lib/data/diy-workshops'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
-function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return (field as Record<string, string>)[locale] || field.en || field.ko
+function getL(field: { ko: string; en: string; ja: string } | null | undefined, locale: string): string {
+  if (!field) return ''
+  return (field as Record<string, string>)[locale] || field.en || field.ko || ''
 }
 
 // ── 오른쪽 상세 패널 (데스크톱 공용 / 모바일 아코디언 내부)

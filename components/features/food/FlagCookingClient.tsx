@@ -6,8 +6,9 @@ import Image from "next/image"
 import { TasteRadarChart } from "@/components/features/food/TasteRadarChart"
 import type { FusionRecipe, FlagCountry } from "@/lib/data/flag-cooking"
 
-function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as keyof typeof field] || field.en || field.ko
+function getL(field: { ko: string; ja: string; en: string } | null | undefined, locale: string): string {
+  if (!field) return ''
+  return field[locale as keyof typeof field] || field.en || field.ko || ''
 }
 
 const DIFFICULTY_LABEL: Record<string, Record<string, string>> = {

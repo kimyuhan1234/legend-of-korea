@@ -79,12 +79,14 @@ const SECTION_LABELS: Record<string, {
   },
 }
 
-function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return field[locale as keyof typeof field] || field.en || field.ko
+function getL(field: { ko: string; ja: string; en: string } | null | undefined, locale: string): string {
+  if (!field) return ''
+  return field[locale as keyof typeof field] || field.en || field.ko || ''
 }
 
-function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: string): string[] {
-  return field[locale as keyof typeof field] || field.en || field.ko
+function getLA(field: { ko: string[]; ja: string[]; en: string[] } | null | undefined, locale: string): string[] {
+  if (!field) return []
+  return field[locale as keyof typeof field] || field.en || field.ko || []
 }
 
 function formatMonths(months: number[], labelFn: (m: string) => string): string {

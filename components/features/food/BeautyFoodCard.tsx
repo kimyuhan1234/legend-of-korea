@@ -52,12 +52,14 @@ function getRadarLabels(locale: string): Record<string, string> {
 }
 
 function getName(food: FoodHealthData, locale: string): string {
-  return food.name[locale as keyof typeof food.name] || food.name.en || food.name.ko
+  if (!food?.name) return ''
+  return food.name[locale as keyof typeof food.name] || food.name.en || food.name.ko || ''
 }
 
 function getDesc(food: FoodHealthData, locale: string): string {
-  const d = food.healthDescription
-  return d[locale as keyof typeof d] || d.en || d.ko
+  const d = food?.healthDescription
+  if (!d) return ''
+  return d[locale as keyof typeof d] || d.en || d.ko || ''
 }
 
 export function BeautyFoodCard({ food, locale }: BeautyFoodCardProps) {

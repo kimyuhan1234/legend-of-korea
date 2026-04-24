@@ -21,8 +21,9 @@ interface AiDupeSearchProps {
   locale: string
 }
 
-function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return (field as Record<string, string>)[locale] || field.en || field.ko
+function getL(field: { ko: string; en: string; ja: string } | null | undefined, locale: string): string {
+  if (!field) return ''
+  return (field as Record<string, string>)[locale] || field.en || field.ko || ''
 }
 
 export function AiDupeSearch({ locale }: AiDupeSearchProps) {

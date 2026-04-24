@@ -63,7 +63,7 @@ export function FilterSelector({ selectedFilter, onSelect, locale }: Props) {
               }`}
             >
               <span>{cat.icon}</span>
-              <span>{cat.name[locale] ?? cat.name.ko}</span>
+              <span>{cat.name?.[locale] ?? cat.name?.ko ?? ''}</span>
             </button>
           )
         })}
@@ -97,7 +97,7 @@ export function FilterSelector({ selectedFilter, onSelect, locale }: Props) {
                     isActive ? 'text-mint-deep' : 'text-slate-500'
                   }`}
                 >
-                  {f.name[locale] ?? f.name.ko}
+                  {f.name?.[locale] ?? f.name?.ko ?? ''}
                 </span>
                 {isActive && (
                   <span className="text-[8px] font-black text-mint-deep leading-none">

@@ -53,8 +53,8 @@ export function MissionDashboardClient({ missions, progress, courseId, locale, u
   const lpEarned = progress.reduce((sum, p) => sum + (p.lp_earned || 0), 0)
 
   const firstIncomplete = normalMissions.find(m => progressMap.get(m.id)?.status !== 'completed')
-  const nextMissionName = firstIncomplete
-    ? (firstIncomplete.title[locale] || firstIncomplete.title.en || firstIncomplete.title.ko)
+  const nextMissionName = firstIncomplete?.title
+    ? (firstIncomplete.title[locale] || firstIncomplete.title.en || firstIncomplete.title.ko || '')
     : undefined
 
   return (

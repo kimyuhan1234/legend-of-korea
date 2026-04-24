@@ -19,8 +19,9 @@ interface KoreaMapCitySelectorProps {
   regions: RegionSummary[]
 }
 
-function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return (field as Record<string, string>)[locale] || field.en || field.ko
+function getL(field: { ko: string; en: string; ja: string } | null | undefined, locale: string): string {
+  if (!field) return ''
+  return (field as Record<string, string>)[locale] || field.en || field.ko || ''
 }
 
 // 확정 좌표 (드래그 도구로 실측)

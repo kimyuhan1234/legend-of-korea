@@ -87,10 +87,10 @@ export default function MissionRegister({ locale }: MissionRegisterProps) {
                       <span className="text-3xl">{course.emoji}</span>
                       <div className="flex-1 min-w-0">
                         <p className="font-bold text-[#111] text-sm md:text-base truncate">
-                          {course.name[lang]}
+                          {course.name?.[lang] ?? course.name?.ko ?? ''}
                         </p>
                         <p className="text-xs text-stone mt-0.5">
-                          📍 {course.region[lang]}
+                          📍 {course.region?.[lang] ?? course.region?.ko ?? ''}
                         </p>
                         {/* 진행률 바 */}
                         <div className="mt-2 flex items-center gap-2">

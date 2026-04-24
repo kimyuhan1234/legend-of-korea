@@ -14,7 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: `${t("stepKit")} | Cloud with you` }
 }
 
-function getI18n(field: I18nText, locale: string): string {
+function getI18n(field: I18nText | null | undefined, locale: string): string {
+  if (!field) return ""
   return (field as unknown as Record<string, string>)[locale] || field.en || field.ko || ""
 }
 

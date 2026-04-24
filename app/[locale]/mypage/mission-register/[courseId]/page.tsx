@@ -29,8 +29,8 @@ export default async function MissionRegisterPage({ params }: PageProps) {
   type I18nKey = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW';
   const lang = locale as I18nKey;
 
-  const courseName = courseData?.name[lang] ?? courseData?.name['ko'] ?? courseId;
-  const courseRegion = courseData?.region[lang] ?? courseData?.region['ko'] ?? '';
+  const courseName = courseData?.name?.[lang] ?? courseData?.name?.['ko'] ?? courseId;
+  const courseRegion = courseData?.region?.[lang] ?? courseData?.region?.['ko'] ?? '';
   const courseEmoji = courseData?.emoji ?? '🗺️';
   const courseDifficulty = courseData?.difficulty ?? 'easy';
   const totalMissions = DIFFICULTY_MISSION_COUNT[courseDifficulty] ?? 5;
@@ -60,8 +60,8 @@ export default async function MissionRegisterPage({ params }: PageProps) {
       id: m.id,
       seq: m.sequence,
       title:
-        (m.title as Record<string, string>)[locale] ??
-        (m.title as Record<string, string>)['ko'] ??
+        (m.title as Record<string, string> | null)?.[locale] ??
+        (m.title as Record<string, string> | null)?.['ko'] ??
         `Mission #${m.sequence}`,
       location: '', // DB missions don't have location yet, TODO
       lp: m.lp_reward,
@@ -72,8 +72,8 @@ export default async function MissionRegisterPage({ params }: PageProps) {
     missionsForClient = localMissions.map((m) => ({
       id: m.id,
       seq: m.seq,
-      title: m.title[lang] ?? m.title['ko'],
-      location: m.location[lang] ?? m.location['ko'],
+      title: m.title?.[lang] ?? m.title?.['ko'] ?? '',
+      location: m.location?.[lang] ?? m.location?.['ko'] ?? '',
       lp: m.lp,
       isBoss: m.isBoss,
     }));

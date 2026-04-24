@@ -73,8 +73,9 @@ const TYPE_LABEL: Record<string, { ko: string; en: string; ja: string }> = {
   flight: { ko: '항공', en: 'Flight', ja: '航空' },
 }
 
-function getL(field: Record<string, string>, locale: string): string {
-  return field[locale] || field.en || field.ko
+function getL(field: Record<string, string> | null | undefined, locale: string): string {
+  if (!field) return ''
+  return field[locale] || field.en || field.ko || ''
 }
 
 function minLabel(locale: string): string {

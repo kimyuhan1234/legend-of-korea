@@ -81,12 +81,12 @@ export default async function MissionExecutionPage({ params }: MissionExecutionP
         {!isBoss && (
           <div className="mb-10">
             <h1 className="text-4xl font-black mb-4 tracking-tight text-slate-800">
-              {mission.title[lang] ?? mission.title.ko}
+              {mission.title?.[lang] ?? mission.title?.ko ?? ''}
             </h1>
             <p className="text-lg text-slate-500 font-bold leading-relaxed">
               {isHidden
                 ? t('hiddenDesc') ?? '비밀의 장소에서 특별한 보상을 발견했습니다.'
-                : (mission.description[lang] ?? mission.description.ko)}
+                : (mission.description?.[lang] ?? mission.description?.ko ?? '')}
             </p>
           </div>
         )}
@@ -97,8 +97,8 @@ export default async function MissionExecutionPage({ params }: MissionExecutionP
           courseName={courseName}
           locale={locale}
           missionType={mission.type}
-          title={mission.title[lang] ?? mission.title.ko}
-          description={mission.description[lang] ?? mission.description.ko}
+          title={mission.title?.[lang] ?? mission.title?.ko ?? ''}
+          description={mission.description?.[lang] ?? mission.description?.ko ?? ''}
           hints={[
             mission.hint_1?.[lang] ?? mission.hint_1?.ko,
             mission.hint_2?.[lang] ?? mission.hint_2?.ko,

@@ -24,12 +24,14 @@ interface KFoodSpotListProps {
   cityFilter: string
 }
 
-function getL(field: { ko: string; ja: string; en: string }, locale: string): string {
-  return (field as Record<string, string>)[locale] || field.en || field.ko
+function getL(field: { ko: string; ja: string; en: string } | null | undefined, locale: string): string {
+  if (!field) return ''
+  return (field as Record<string, string>)[locale] || field.en || field.ko || ''
 }
 
-function getLA(field: { ko: string[]; ja: string[]; en: string[] }, locale: string): string[] {
-  return (field as Record<string, string[]>)[locale] || field.en || field.ko
+function getLA(field: { ko: string[]; ja: string[]; en: string[] } | null | undefined, locale: string): string[] {
+  if (!field) return []
+  return (field as Record<string, string[]>)[locale] || field.en || field.ko || []
 }
 
 const PRICE_COLOR: Record<string, string> = {
