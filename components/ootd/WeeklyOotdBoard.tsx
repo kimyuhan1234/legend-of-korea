@@ -15,17 +15,14 @@ import {
 } from '@/lib/data/ootd'
 import { OotdChecklist } from '@/components/features/planner/OotdChecklist'
 import { OOTD_CATEGORIES, getItemCategory, getItemIcon } from '@/lib/data/ootd-categories'
+import { OOTD_REGIONS, pickL5, type OotdRegion } from '@/lib/data/ootd-regions'
 
-const CITY_NAME_MAP: Record<string, { ko: string; ja: string; en: string }> = {
-  seoul:     { ko: '서울', ja: 'ソウル', en: 'Seoul' },
-  busan:     { ko: '부산', ja: '釜山', en: 'Busan' },
-  jeju:      { ko: '제주', ja: '済州', en: 'Jeju' },
-  gyeongju:  { ko: '경주', ja: '慶州', en: 'Gyeongju' },
-  tongyeong: { ko: '통영', ja: '統営', en: 'Tongyeong' },
-  cheonan:   { ko: '천안', ja: '天安', en: 'Cheonan' },
-  yongin:    { ko: '용인', ja: '龍仁', en: 'Yongin' },
-  icheon:    { ko: '이천', ja: '利川', en: 'Icheon' },
-  jeonju:    { ko: '전주', ja: '全州', en: 'Jeonju' },
+const MAJOR_CITIES_LABEL: Record<string, string> = {
+  ko: '주요 도시',
+  ja: '主要都市',
+  en: 'Major cities',
+  'zh-CN': '主要城市',
+  'zh-TW': '主要城市',
 }
 
 // ─────────────────────────────────────────────
@@ -34,32 +31,33 @@ const CITY_NAME_MAP: Record<string, { ko: string; ja: string; en: string }> = {
 type Gender = 'male' | 'female'
 
 // ─────────────────────────────────────────────
-//  서브 컴포넌트: CitySelector
+//  서브 컴포넌트: RegionSelector (17개 광역시도)
 // ─────────────────────────────────────────────
-interface CitySelectorProps {
-  cities: CityTheme[]
+interface RegionSelectorProps {
+  regions: OotdRegion[]
   selected: string
   onSelect: (id: string) => void
+  locale: string
 }
 
-function CitySelector({ cities, selected, onSelect }: CitySelectorProps) {
-  const t = useTranslations('ootd')
+function RegionSelector({ regions, selected, onSelect, locale }: RegionSelectorProps) {
   return (
     <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
-      {cities.map((city) => {
-        const isActive = city.cityId === selected
+      {regions.map((region) => {
+        const isActive = region.id === selected
         return (
           <button
-            key={city.cityId}
-            onClick={() => onSelect(city.cityId)}
+            key={region.id}
+            onClick={() => onSelect(region.id)}
             className={[
-              'shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200',
+              'shrink-0 px-3.5 py-2 rounded-full text-sm font-semibold transition-all duration-200 inline-flex items-center gap-1.5',
               isActive
                 ? 'bg-mint-deep text-white shadow-md scale-105'
                 : 'bg-cloud border border-mist text-slate hover:border-mint hover:text-ink',
             ].join(' ')}
           >
-            {t(`cities.${city.cityId}.name`)}
+            <span className="text-base leading-none">{region.emoji}</span>
+            <span>{pickL5(region.name, locale)}</span>
           </button>
         )
       })}
@@ -98,24 +96,35 @@ function GenderToggle({ selected, onChange }: GenderToggleProps) {
 }
 
 // ─────────────────────────────────────────────
-//  서브 컴포넌트: ThemeHeader
+//  서브 컴포넌트: ThemeHeader (region + major cities)
 // ─────────────────────────────────────────────
 interface ThemeHeaderProps {
-  city: CityTheme
+  region: OotdRegion
+  theme: CityTheme
+  locale: string
 }
 
-function ThemeHeader({ city }: ThemeHeaderProps) {
+function ThemeHeader({ region, theme, locale }: ThemeHeaderProps) {
   const t = useTranslations('ootd')
+  const majorLabel = MAJOR_CITIES_LABEL[locale] ?? MAJOR_CITIES_LABEL.en
+  const cityNames = region.majorCities.map((c) => pickL5(c, locale)).join(' · ')
+
   return (
     <div className="py-6 px-1">
       <p className="text-xs font-bold uppercase tracking-widest text-stone mb-1">
-        {city.theme}
+        {theme.theme}
       </p>
-      <h2 className="text-3xl md:text-4xl font-black text-ink tracking-tight">
-        {t(`cities.${city.cityId}.name`)}
+      <h2 className="text-3xl md:text-4xl font-black text-ink tracking-tight flex items-center gap-2">
+        <span>{region.emoji}</span>
+        <span>{pickL5(region.name, locale)}</span>
       </h2>
-      <p className="mt-2 text-base text-stone">
-        {t(`cities.${city.cityId}.description`)}
+      {cityNames && (
+        <p className="mt-2 text-sm text-mint-deep font-semibold">
+          {majorLabel}: {cityNames}
+        </p>
+      )}
+      <p className="mt-1.5 text-base text-stone">
+        {t(`cities.${theme.cityId}.description`)}
       </p>
     </div>
   )
@@ -437,7 +446,9 @@ function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: Outf
 // ─────────────────────────────────────────────
 export function WeeklyOotdBoard() {
   const t = useTranslations('ootd')
-  const [selectedCity, setSelectedCity] = useState<string>('seoul')
+  const pathname = usePathname()
+  const locale = pathname.split('/')[1] || 'ko'
+  const [selectedRegionId, setSelectedRegionId] = useState<string>('seoul')
   const [selectedGender, setSelectedGender] = useState<Gender>('female')
   const [liveWeather, setLiveWeather] = useState<Record<string, DailyWeather[]> | null>(null)
 
@@ -448,11 +459,17 @@ export function WeeklyOotdBoard() {
       .catch(() => {})
   }, [])
 
-  const cityTheme = CITY_THEMES.find((c) => c.cityId === selectedCity)!
-  const weatherList = liveWeather?.[selectedCity]?.length
-    ? liveWeather[selectedCity]
-    : (CITY_WEATHER[selectedCity] ?? [])
+  const region = OOTD_REGIONS.find((r) => r.id === selectedRegionId) ?? OOTD_REGIONS[0]
+  const cityTheme = CITY_THEMES.find((c) => c.cityId === region.themeId)!
+  const weatherList = liveWeather?.[region.id]?.length
+    ? liveWeather[region.id]
+    : (CITY_WEATHER[region.themeId] ?? [])
   const today = weatherList[0]?.date
+  const regionNameForChecklist = {
+    ko: pickL5(region.name, 'ko'),
+    ja: pickL5(region.name, 'ja'),
+    en: pickL5(region.name, 'en'),
+  }
 
   return (
     <div className="min-h-screen bg-snow">
@@ -471,12 +488,13 @@ export function WeeklyOotdBoard() {
       {/* ── 컨트롤 영역 ──────────────────────── */}
       <div className="max-w-5xl mx-auto px-4 md:px-8 pt-8">
         <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between mb-2">
-          {/* 도시 선택 */}
+          {/* 광역시도 선택 */}
           <div className="flex-1 min-w-0">
-            <CitySelector
-              cities={CITY_THEMES}
-              selected={selectedCity}
-              onSelect={setSelectedCity}
+            <RegionSelector
+              regions={OOTD_REGIONS}
+              selected={selectedRegionId}
+              onSelect={setSelectedRegionId}
+              locale={locale}
             />
           </div>
           {/* 성별 토글 */}
@@ -485,8 +503,8 @@ export function WeeklyOotdBoard() {
           </div>
         </div>
 
-        {/* ── 도시 테마 헤더 ──────────────────── */}
-        <ThemeHeader city={cityTheme} />
+        {/* ── 광역시도 헤더 ──────────────────── */}
+        <ThemeHeader region={region} theme={cityTheme} locale={locale} />
 
         {/* ── 7일 카드 ───────────────────────── */}
         <div className="flex gap-3 overflow-x-auto pb-6 scrollbar-hide">
@@ -501,8 +519,8 @@ export function WeeklyOotdBoard() {
                 weather={weather}
                 outfit={outfit}
                 isToday={weather.date === today}
-                cityId={selectedCity}
-                cityName={CITY_NAME_MAP[selectedCity] ?? CITY_NAME_MAP.seoul}
+                cityId={region.id}
+                cityName={regionNameForChecklist}
               />
             )
           })}
@@ -516,9 +534,11 @@ export function WeeklyOotdBoard() {
               {t(`tempRange.${range}`)}
             </span>
           ))}
-          <span className="flex items-center gap-1 ml-auto">
-            💧 {t('humidity')} {weatherList[0]?.humidity}%
-          </span>
+          {weatherList[0] && (
+            <span className="flex items-center gap-1 ml-auto">
+              💧 {t('humidity')} {weatherList[0].humidity}%
+            </span>
+          )}
         </div>
       </div>
     </div>
