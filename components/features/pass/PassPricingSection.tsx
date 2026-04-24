@@ -7,9 +7,7 @@ import Link from 'next/link'
 import { Loader2, Sparkles } from 'lucide-react'
 import { toast } from '@/components/ui/use-toast'
 import { PassCard } from './PassCard'
-import { CreditPackCard } from './CreditPackCard'
 import { PASSES, ALLINONE_SAVINGS, type PassId } from '@/lib/data/passes'
-import { CREDIT_PACKS, CREDIT_COSTS } from '@/lib/data/credit-packs'
 
 interface Props {
   locale: string
@@ -28,7 +26,6 @@ export function PassPricingSection({ locale }: Props) {
   const [status, setStatus] = useState<PassStatus | null>(null)
   const [loading, setLoading] = useState(true)
   const [processingPass, setProcessingPass] = useState<string | null>(null)
-  const [processingPack, setProcessingPack] = useState<string | null>(null)
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null)
 
   const loadStatus = useCallback(async () => {
@@ -70,32 +67,6 @@ export function PassPricingSection({ locale }: Props) {
       toast({ variant: 'destructive', title: 'network_error' })
     } finally {
       setProcessingPass(null)
-    }
-  }
-
-  const handlePurchasePack = async (packId: string) => {
-    if (!status?.authenticated) {
-      router.push(`/${locale}/auth/login`)
-      return
-    }
-    setProcessingPack(packId)
-    try {
-      const res = await fetch('/api/credits/purchase', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ packageKey: packId }),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (res.ok) {
-        toast({ title: t('purchaseSuccess') })
-        loadStatus()
-      } else {
-        toast({ variant: 'destructive', title: data?.error || 'purchase_failed' })
-      }
-    } catch {
-      toast({ variant: 'destructive', title: 'network_error' })
-    } finally {
-      setProcessingPack(null)
     }
   }
 
@@ -157,41 +128,7 @@ export function PassPricingSection({ locale }: Props) {
         </div>
       </div>
 
-      {/* 크레딧 팩 */}
-      <div>
-        <h2 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 text-center">
-          {t('orCredits')}
-        </h2>
-        <div className="grid grid-cols-3 gap-3 max-w-2xl mx-auto">
-          {CREDIT_PACKS.map((pack) => (
-            <CreditPackCard
-              key={pack.id}
-              pack={pack}
-              locale={locale}
-              isProcessing={processingPack === pack.id}
-              disabled={!!processingPack}
-              purchaseLabel={t('purchase')}
-              onPurchase={handlePurchasePack}
-            />
-          ))}
-        </div>
-
-        {/* 크레딧 소모 표 */}
-        <div className="mt-4 rounded-2xl bg-slate-50 border border-slate-100 p-4 max-w-2xl mx-auto">
-          <p className="text-[11px] font-black text-slate-500 uppercase tracking-widest mb-2">
-            {t('creditCosts')}
-          </p>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-600 font-bold">
-            <span>AI {t('feature_ai_curation')} {CREDIT_COSTS.ai_curation}</span>
-            <span>{t('feature_mission_unlock')} {CREDIT_COSTS.mission_unlock}</span>
-            <span>{t('feature_retro_camera')} {CREDIT_COSTS.retro_camera}</span>
-            <span>DIY {CREDIT_COSTS.diy_workshop}</span>
-            <span>K-Food {CREDIT_COSTS.kfood_dupe}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* LP 교환 섹션은 크레딧 UI 제거 방침에 따라 숨김 (1720 크레딧 토스트 경로) */}
+      {/* 크레딧 팩 UI 제거 — 빗방울 단일 화폐 정책 */}
 
       {/* 무료 체험 */}
       <div className="rounded-2xl bg-slate-50 border border-slate-200/60 p-5 max-w-2xl mx-auto text-center">

@@ -101,7 +101,7 @@ export const PASSES: Pass[] = [
     price: 19900,
     icon: '👑',
     color: '#EF4444',
-    features: ['all', 'vip_badge', 'lp_multiplier_2x', 'monthly_credits_100'],
+    features: ['all', 'vip_badge', 'lp_multiplier_2x'],
     tagline: {
       ko: '고민할 시간에 이것 하나면, 한국 여행 완전 정복',
       ja: 'これ1つで韓国旅行を完全征服',
@@ -110,11 +110,11 @@ export const PASSES: Pass[] = [
       'zh-TW': '一個通行證，征服韓國旅行',
     },
     description: {
-      ko: '전 기능 무제한 + VIP 뱃지 + LP 2배 + 매달 100 크레딧. 3,800원 절약.',
-      ja: '全機能無制限 + VIPバッジ + LP 2倍 + 毎月100クレジット。3,800ウォン節約。',
-      en: 'All features + VIP badge + 2x LP + 100 monthly credits. Save ₩3,800.',
-      'zh-CN': '全功能无限 + VIP 徽章 + LP 双倍 + 每月 100 积分。节省 3,800 韩元。',
-      'zh-TW': '全功能無限 + VIP 徽章 + LP 雙倍 + 每月 100 積分。節省 3,800 韓元。',
+      ko: '전 기능 무제한 + VIP 뱃지 + 빗방울 2배 적립. 3,800원 절약.',
+      ja: '全機能無制限 + VIPバッジ + 雨滴2倍獲得。3,800ウォン節約。',
+      en: 'All features + VIP badge + 2× Raindrops. Save ₩3,800.',
+      'zh-CN': '全功能无限 + VIP 徽章 + 雨滴双倍累积。节省 3,800 韩元。',
+      'zh-TW': '全功能無限 + VIP 徽章 + 雨滴雙倍累積。節省 3,800 韓元。',
     },
     badge: {
       ko: '인기',
