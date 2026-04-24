@@ -7,6 +7,7 @@ import { Footer } from "@/components/shared/Footer"
 import { Toaster } from "@/components/ui/toaster"
 import { CartProvider } from "@/lib/contexts/CartContext"
 import { CartSidePanel } from "@/components/shared/CartSidePanel"
+import { CookieBanner } from "@/components/shared/CookieBanner"
 import { locales } from "@/i18n"
 
 interface LocaleLayoutProps {
@@ -89,6 +90,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <Footer locale={locale} />
           <Toaster />
           <CartSidePanel />
+          <CookieBanner />
         </CartProvider>
       </NextIntlClientProvider>
     </div>
