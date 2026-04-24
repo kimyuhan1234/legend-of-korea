@@ -1,6 +1,23 @@
 ﻿import { kfoodSpots, CITIES, CATEGORY_LABEL, type KFoodSpot } from "@/lib/data/kfood-spots"
+import { getCityInfo } from "@/lib/curation/cities"
 import Link from "next/link"
 import { AddToPlannerButton } from "@/components/features/planner/AddToPlannerButton"
+
+const EMPTY_LABEL: Record<string, string> = {
+  ko: '준비 중입니다',
+  ja: '準備中です',
+  en: 'Coming soon',
+  'zh-CN': '准备中',
+  'zh-TW': '準備中',
+}
+
+const MUST_TRY_LABEL: Record<string, string> = {
+  ko: '꼭 먹어봐야 할 것',
+  ja: '必食メニュー',
+  en: 'Must try',
+  'zh-CN': '必吃推荐',
+  'zh-TW': '必吃推薦',
+}
 
 interface KFoodSpotListProps {
   locale: string
@@ -39,22 +56,23 @@ export function KFoodSpotList({ locale, cityFilter }: KFoodSpotListProps) {
 
   return (
     <div>
-      {/* 도시 필터 */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      {/* 도시 필터 (가로 스크롤) */}
+      <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2 mb-6">
         {cities.map((city) => {
           const isActive = (cityFilter || "all") === city.code
-          const label = (city as Record<string, string>)[locale] || city.en || city.ko
+          const label = (city as unknown as Record<string, string>)[locale] || city.en || city.ko
           return (
             <Link
               key={city.code}
               href={`?city=${city.code}`}
-              className={`px-4 py-2 rounded-xl text-sm font-medium border transition-colors ${
+              className={`shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium border transition-colors whitespace-nowrap ${
                 isActive
                   ? "bg-gradient-to-br from-mint to-blossom text-ink border-ink"
                   : "bg-white text-slate border-mist hover:border-ink/40"
               }`}
             >
-              {label}
+              <span className="text-base leading-none">{city.emoji}</span>
+              <span>{label}</span>
             </Link>
           )
         })}
@@ -64,7 +82,7 @@ export function KFoodSpotList({ locale, cityFilter }: KFoodSpotListProps) {
       {filtered.length === 0 ? (
         <div className="text-center py-16 text-stone">
           <p className="text-4xl mb-3">🍜</p>
-          <p className="font-medium">준비 중입니다</p>
+          <p className="font-medium">{EMPTY_LABEL[locale] ?? EMPTY_LABEL.en}</p>
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 gap-5">
@@ -101,7 +119,7 @@ function SpotCard({
             <p className="text-xs text-blossom-deep font-semibold mt-0.5">{getL(spot.speciality, locale)}</p>
           </div>
           <span className="text-2xl shrink-0">
-            {spot.cityCode === "jeonju" ? "🏯" : spot.cityCode === "seoul" ? "🗼" : spot.cityCode === "busan" ? "🌊" : "📍"}
+            {getCityInfo(spot.cityCode)?.emoji ?? "📍"}
           </span>
         </div>
         <p className="text-sm text-stone leading-relaxed">{getL(spot.description, locale)}</p>
@@ -110,7 +128,7 @@ function SpotCard({
       {/* 머스트 트라이 */}
       <div className="px-6 pb-4">
         <p className="text-xs font-bold text-[#111] mb-2">
-          {locale === "ko" ? "꼭 먹어봐야 할 것" : locale === "ja" ? "必食メニュー" : "Must try"}
+          {MUST_TRY_LABEL[locale] ?? MUST_TRY_LABEL.en}
         </p>
         <div className="flex flex-wrap gap-1.5">
           {getLA(spot.mustTry, locale).map((item: string) => (

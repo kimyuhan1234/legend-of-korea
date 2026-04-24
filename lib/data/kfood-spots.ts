@@ -227,19 +227,326 @@ export const kfoodSpots: KFoodSpot[] = [
     tags: ["카페", "이천", "도자기"],
     openHours: "10:00–18:00"
   },
+  // ── 인천 (Incheon) ─────────────────────────────
+  {
+    id: "spot-016",
+    name: { ko: "인천 차이나타운", ja: "仁川チャイナタウン", en: "Incheon Chinatown" },
+    city: "인천",
+    cityCode: "incheon",
+    category: "street",
+    speciality: { ko: "짜장면", ja: "ジャージャー麺", en: "Jjajangmyeon" },
+    description: { ko: "한국 짜장면의 발상지. 100년 넘은 노포에서 원조 짜장면과 공갈빵을 맛볼 수 있다.", ja: "韓国ジャージャー麺の発祥地。100年超の老舗で元祖ジャージャー麺とコンガルパンが味わえる。", en: "Birthplace of Korean jjajangmyeon — try the original black-bean noodles and puffy gonggal-bbang at century-old eateries." },
+    address: "인천 중구 차이나타운로",
+    priceRange: "₩₩",
+    mustTry: { ko: ["원조 짜장면", "공갈빵", "짬뽕"], ja: ["元祖ジャージャー麺", "コンガルパン", "チャンポン"], en: ["Original jjajangmyeon", "Gonggal-bbang", "Jjamppong"] },
+    tags: ["차이나타운", "짜장면", "인천"],
+    openHours: "10:00–21:00"
+  },
+  // ── 대전 (Daejeon) ─────────────────────────────
+  {
+    id: "spot-017",
+    name: { ko: "성심당 본점", ja: "聖心堂本店", en: "Sungsimdang Main Store" },
+    city: "대전",
+    cityCode: "daejeon",
+    category: "restaurant",
+    speciality: { ko: "튀김소보로·부추빵", ja: "揚げそぼろ・ニラパン", en: "Twigim soboro & chive bread" },
+    description: { ko: "대전을 대표하는 전설의 빵집. 튀김소보로 한 개 맛보려 줄 서는 국민 명소.", ja: "大田を代表する伝説のパン屋。揚げそぼろを一つ味わうために行列ができる国民的スポット。", en: "Daejeon's legendary bakery — people queue just for one twigim-soboro doughnut." },
+    address: "대전 중구 대종로480번길 15",
+    priceRange: "₩",
+    mustTry: { ko: ["튀김소보로", "부추빵", "판타롱 부추빵"], ja: ["揚げそぼろ", "ニラパン", "パンタロンニラパン"], en: ["Twigim soboro", "Chive bread", "Pantalon chive loaf"] },
+    tags: ["빵집", "대전", "성심당"],
+    openHours: "08:00–22:00"
+  },
+  {
+    id: "spot-018",
+    name: { ko: "대전 중앙시장", ja: "大田中央市場", en: "Daejeon Jungang Market" },
+    city: "대전",
+    cityCode: "daejeon",
+    category: "market",
+    speciality: { ko: "칼국수·육회비빔밥", ja: "カルグクス・ユッケビビンバ", en: "Kalguksu & yukhoe bibimbap" },
+    description: { ko: "대전 최대 전통시장. 대전 3대 칼국수와 육회비빔밥을 저렴하게 즐길 수 있다.", ja: "大田最大の伝統市場。大田三大カルグクスとユッケビビンバをリーズナブルに楽しめる。", en: "Daejeon's largest traditional market — try the famed kalguksu and yukhoe bibimbap at local prices." },
+    address: "대전 동구 중앙로215번길",
+    priceRange: "₩",
+    mustTry: { ko: ["두부 두루치기", "칼국수", "육회비빔밥"], ja: ["豆腐ドゥルチギ", "カルグクス", "ユッケビビンバ"], en: ["Dubu duruchigi", "Kalguksu noodles", "Yukhoe bibimbap"] },
+    tags: ["전통시장", "대전", "칼국수"],
+    openHours: "08:00–21:00"
+  },
+  // ── 대구 (Daegu) ───────────────────────────────
+  {
+    id: "spot-019",
+    name: { ko: "서문시장 야시장", ja: "西門市場夜市", en: "Seomun Night Market" },
+    city: "대구",
+    cityCode: "daegu",
+    category: "market",
+    speciality: { ko: "납작만두·무침회", ja: "ナプチャクマンドゥ・ムチムフェ", en: "Flat dumplings & spicy sashimi" },
+    description: { ko: "대구 3대 시장 중 최대 규모. 매일 밤 야시장으로 변신하는 먹거리의 성지.", ja: "大邱三大市場の中で最大規模。毎晩夜市に変身するグルメの聖地。", en: "The largest of Daegu's three major markets — transforms into a nightly food paradise." },
+    address: "대구 중구 큰장로26길",
+    priceRange: "₩",
+    mustTry: { ko: ["납작만두", "무침회", "오징어 버터구이"], ja: ["ナプチャクマンドゥ", "ムチムフェ", "イカバター焼き"], en: ["Flat dumplings", "Spicy raw fish salad", "Butter-grilled squid"] },
+    tags: ["야시장", "대구", "납작만두"],
+    openHours: "19:00–24:00"
+  },
+  // ── 광주 (Gwangju) ─────────────────────────────
+  {
+    id: "spot-020",
+    name: { ko: "1913 송정역시장", ja: "1913松汀駅市場", en: "1913 Songjeong Station Market" },
+    city: "광주",
+    cityCode: "gwangju",
+    category: "market",
+    speciality: { ko: "계란밥·떡갈비", ja: "卵ご飯・トックカルビ", en: "Egg rice & tteokgalbi" },
+    description: { ko: "1913년 개장한 전통시장이 현대적으로 리모델링된 뉴트로 감성 시장. 광주 대표 핫플.", ja: "1913年開場の伝統市場が現代的にリニューアル。光州のニュートロ感性スポット。", en: "A 1913 traditional market reimagined as a retro-chic destination — one of Gwangju's hottest food streets." },
+    address: "광주 광산구 송정로8번길",
+    priceRange: "₩₩",
+    mustTry: { ko: ["계란밥", "떡갈비", "상추튀김"], ja: ["卵ご飯", "トックカルビ", "サンチュの天ぷら"], en: ["Egg rice", "Tteokgalbi ribs", "Lettuce tempura"] },
+    tags: ["뉴트로", "광주", "전통시장"],
+    openHours: "10:00–22:00"
+  },
+  // ── 울산 (Ulsan) ───────────────────────────────
+  {
+    id: "spot-021",
+    name: { ko: "장생포 고래문화마을", ja: "長生浦クジラ文化村", en: "Jangsaengpo Whale Culture Village" },
+    city: "울산",
+    cityCode: "ulsan",
+    category: "street",
+    speciality: { ko: "고래고기 수육", ja: "クジラ肉スユク", en: "Whale meat suyuk" },
+    description: { ko: "국내 유일 고래잡이 문화가 남은 장생포. 고래고기 수육과 해산물 전문 식당이 모여있다.", ja: "国内唯一の捕鯨文化が残る長生浦。クジラ肉スユクや海鮮専門店が集まる。", en: "Korea's last whaling heritage site — restaurants cluster around serving whale-meat suyuk and seafood." },
+    address: "울산 남구 장생포고래로",
+    priceRange: "₩₩₩",
+    mustTry: { ko: ["고래 수육", "문어 숙회", "곰장어구이"], ja: ["クジラスユク", "タコ熟膾", "アナゴ焼き"], en: ["Whale suyuk", "Boiled octopus", "Grilled sea eel"] },
+    tags: ["고래", "울산", "해산물"],
+    openHours: "11:00–21:00"
+  },
+  // ── 세종 (Sejong) ──────────────────────────────
+  {
+    id: "spot-022",
+    name: { ko: "조치원 전통시장", ja: "鳥致院伝統市場", en: "Jochiwon Traditional Market" },
+    city: "세종",
+    cityCode: "sejong",
+    category: "market",
+    speciality: { ko: "조치원 복숭아·장칼국수", ja: "鳥致院桃・ジャンカルグクス", en: "Jochiwon peaches & jang kalguksu" },
+    description: { ko: "세종시의 유일한 대형 전통시장. 조치원 복숭아와 장칼국수가 대표 먹거리.", ja: "世宗市唯一の大型伝統市場。鳥致院桃とジャンカルグクスが看板メニュー。", en: "Sejong's only large traditional market — famed for Jochiwon peaches and hearty jang kalguksu noodles." },
+    address: "세종 조치원읍 남리",
+    priceRange: "₩",
+    mustTry: { ko: ["장칼국수", "복숭아 주스", "녹두빈대떡"], ja: ["ジャンカルグクス", "桃ジュース", "緑豆チヂミ"], en: ["Jang kalguksu", "Peach juice", "Mung-bean pancake"] },
+    tags: ["전통시장", "세종", "복숭아"],
+    openHours: "08:00–20:00"
+  },
+  // ── 경기 (Gyeonggi) ────────────────────────────
+  {
+    id: "spot-023",
+    name: { ko: "수원 통닭거리", ja: "水原トンダッ通り", en: "Suwon Fried Chicken Street" },
+    city: "수원",
+    cityCode: "gyeonggi",
+    category: "street",
+    speciality: { ko: "수원 통닭", ja: "水原トンダッ", en: "Suwon whole fried chicken" },
+    description: { ko: "수원 팔달문 근처 통닭 원조 거리. 60년대부터 이어져 온 통마리 통닭의 성지.", ja: "水原八達門近くのトンダッ元祖通り。60年代から続くトンマリ通鶏の聖地。", en: "The original whole-chicken alley near Paldalmun — a tradition dating back to the 1960s." },
+    address: "경기 수원시 팔달구 팔달문로",
+    priceRange: "₩₩",
+    mustTry: { ko: ["통마리 통닭", "간장 닭", "닭똥집 볶음"], ja: ["トンマリトンダッ", "醤油チキン", "砂ずり炒め"], en: ["Whole fried chicken", "Soy-glazed chicken", "Stir-fried gizzards"] },
+    tags: ["통닭", "수원", "경기"],
+    openHours: "15:00–24:00"
+  },
+  // ── 강원 (Gangwon) ─────────────────────────────
+  {
+    id: "spot-024",
+    name: { ko: "강릉 초당순두부마을", ja: "江陵草堂スンドゥブ村", en: "Gangneung Chodang Tofu Village" },
+    city: "강릉",
+    cityCode: "gangwon",
+    category: "street",
+    speciality: { ko: "초당 순두부", ja: "草堂スンドゥブ", en: "Chodang soft tofu" },
+    description: { ko: "동해 바닷물로 간을 맞춘 강릉 초당순두부의 원조 마을. 따끈한 순두부 한 그릇이 별미.", ja: "東海の海水で味を整える江陵草堂スンドゥブの元祖村。温かいスンドゥブが絶品。", en: "The original village of Chodang tofu — seasoned with East Sea seawater for its signature savory flavor." },
+    address: "강원 강릉시 초당동",
+    priceRange: "₩₩",
+    mustTry: { ko: ["초당순두부", "두부전골", "콩물국수"], ja: ["草堂スンドゥブ", "豆腐チョンゴル", "豆乳ククス"], en: ["Chodang sundubu", "Tofu hotpot", "Soy milk noodle"] },
+    tags: ["순두부", "강릉", "강원"],
+    openHours: "08:00–20:00"
+  },
+  {
+    id: "spot-025",
+    name: { ko: "속초 중앙시장", ja: "束草中央市場", en: "Sokcho Jungang Market" },
+    city: "속초",
+    cityCode: "gangwon",
+    category: "market",
+    speciality: { ko: "닭강정·오징어순대", ja: "タッカンジョン・イカスンデ", en: "Dakgangjeong & squid sundae" },
+    description: { ko: "속초 대표 전통시장. 닭강정 원조와 오징어순대, 아바이순대 등 강원도 먹거리가 한자리에.", ja: "束草を代表する伝統市場。元祖タッカンジョン、イカスンデ、アバイスンデなど江原道の味覚が集結。", en: "Sokcho's signature market — home of original dakgangjeong, squid sundae, and Abai-style blood sausage." },
+    address: "강원 속초시 중앙시장로",
+    priceRange: "₩",
+    mustTry: { ko: ["닭강정", "오징어순대", "아바이순대"], ja: ["タッカンジョン", "イカスンデ", "アバイスンデ"], en: ["Dakgangjeong", "Squid sundae", "Abai sundae"] },
+    tags: ["시장", "속초", "닭강정"],
+    openHours: "08:00–21:00"
+  },
+  {
+    id: "spot-026",
+    name: { ko: "춘천 명동 닭갈비골목", ja: "春川明洞タッカルビ横丁", en: "Chuncheon Myeongdong Dakgalbi Street" },
+    city: "춘천",
+    cityCode: "gangwon",
+    category: "street",
+    speciality: { ko: "춘천 닭갈비", ja: "春川タッカルビ", en: "Chuncheon dakgalbi" },
+    description: { ko: "춘천 닭갈비의 원조 골목. 넓은 철판에 양념 닭과 야채를 볶아 먹는 춘천 대표 음식.", ja: "春川タッカルビの元祖横丁。鉄板でヤンニョムチキンと野菜を炒めて食べる春川の代表料理。", en: "The original dakgalbi alley — watch stir-fried spicy chicken come together on a giant griddle, Chuncheon-style." },
+    address: "강원 춘천시 중앙로 일대",
+    priceRange: "₩₩",
+    mustTry: { ko: ["닭갈비", "볶음밥", "막국수"], ja: ["タッカルビ", "ポックンパプ", "マッククス"], en: ["Dakgalbi", "Fried rice finisher", "Makguksu noodle"] },
+    tags: ["닭갈비", "춘천", "강원"],
+    openHours: "11:00–22:00"
+  },
+  // ── 충북 (Chungbuk) ────────────────────────────
+  {
+    id: "spot-027",
+    name: { ko: "청주 육거리종합시장", ja: "清州六巨里総合市場", en: "Cheongju Yukgeori Market" },
+    city: "청주",
+    cityCode: "chungbuk",
+    category: "market",
+    speciality: { ko: "청주 족발·장칼국수", ja: "清州チョッパル・ジャンカルグクス", en: "Cheongju jokbal & jang kalguksu" },
+    description: { ko: "청주 최대 전통시장. 청주 3대 족발과 장칼국수를 저렴하게 맛볼 수 있는 현지인 맛집 집결지.", ja: "清州最大の伝統市場。清州三大チョッパルとジャンカルグクスが地元価格で味わえる。", en: "Cheongju's largest market — home to the city's top three jokbal spots and comforting jang kalguksu." },
+    address: "충북 청주시 상당구 석교동",
+    priceRange: "₩",
+    mustTry: { ko: ["족발", "장칼국수", "수수부꾸미"], ja: ["チョッパル", "ジャンカルグクス", "コーリャンブクミ"], en: ["Jokbal", "Jang kalguksu", "Susu-bukkumi pancake"] },
+    tags: ["전통시장", "청주", "족발"],
+    openHours: "08:00–21:00"
+  },
+  // ── 충남 (Chungnam, 공주) ──────────────────────
+  {
+    id: "spot-028",
+    name: { ko: "공주 산성시장 국밥거리", ja: "公州山城市場クッパ通り", en: "Gongju Sanseong Gukbap Street" },
+    city: "공주",
+    cityCode: "chungnam",
+    category: "street",
+    speciality: { ko: "공주 국밥", ja: "公州クッパ", en: "Gongju gukbap" },
+    description: { ko: "백제 고도 공주의 전통 국밥거리. 얼큰한 콩나물국밥과 양지머리 국밥이 대표 메뉴.", ja: "百済古都・公州の伝統クッパ通り。ピリッと辛い豆もやしクッパとヤンジクッパが看板。", en: "Traditional gukbap street in the old Baekje capital — spicy bean-sprout rice soup and brisket gukbap are the stars." },
+    address: "충남 공주시 산성동",
+    priceRange: "₩",
+    mustTry: { ko: ["콩나물국밥", "양지국밥", "밤막걸리"], ja: ["豆もやしクッパ", "ヤンジクッパ", "栗マッコリ"], en: ["Bean sprout gukbap", "Brisket gukbap", "Chestnut makgeolli"] },
+    tags: ["국밥", "공주", "충남"],
+    openHours: "07:00–20:00"
+  },
+  // ── 경북 (Gyeongbuk, 포항·안동) ────────────────
+  {
+    id: "spot-029",
+    name: { ko: "포항 죽도시장", ja: "浦項竹島市場", en: "Pohang Jukdo Market" },
+    city: "포항",
+    cityCode: "gyeongbuk",
+    category: "market",
+    speciality: { ko: "물회·과메기", ja: "ムルフェ・クァメギ", en: "Mulhoe & gwamegi" },
+    description: { ko: "동해안 최대 수산시장. 물회와 겨울 별미 과메기가 포항의 대표 음식.", ja: "東海岸最大の水産市場。ムルフェと冬の珍味クァメギが浦項の看板料理。", en: "The East Coast's largest fish market — famed for chilled mulhoe and winter's signature gwamegi." },
+    address: "경북 포항시 북구 죽도시장길",
+    priceRange: "₩₩",
+    mustTry: { ko: ["물회", "과메기", "피데기 오징어"], ja: ["ムルフェ", "クァメギ", "ピデギイカ"], en: ["Mulhoe", "Gwamegi", "Half-dried squid"] },
+    tags: ["수산시장", "포항", "물회"],
+    openHours: "06:00–20:00"
+  },
+  {
+    id: "spot-030",
+    name: { ko: "안동 찜닭 골목", ja: "安東チムタク横丁", en: "Andong Jjimdak Alley" },
+    city: "안동",
+    cityCode: "gyeongbuk",
+    category: "street",
+    speciality: { ko: "안동 찜닭", ja: "安東チムタク", en: "Andong jjimdak" },
+    description: { ko: "안동 구시장 안 찜닭 원조 골목. 간장 베이스의 달콤짭조름한 찜닭이 탄생한 곳.", ja: "安東旧市場内のチムタク元祖横丁。醤油ベースの甘辛チムタクが誕生した地。", en: "The birthplace of Andong jjimdak — soy-glazed, sweet-savory braised chicken in the old market alley." },
+    address: "경북 안동시 서부동 구시장",
+    priceRange: "₩₩",
+    mustTry: { ko: ["안동 찜닭", "간고등어구이", "헛제사밥"], ja: ["安東チムタク", "塩サバ焼き", "ホッチェサパプ"], en: ["Andong jjimdak", "Grilled salted mackerel", "Heotjesa-bap ritual rice"] },
+    tags: ["찜닭", "안동", "경북"],
+    openHours: "11:00–22:00"
+  },
+  // ── 경남 (Gyeongnam, 창원) ─────────────────────
+  {
+    id: "spot-031",
+    name: { ko: "창원 창동 예술 골목", ja: "昌原昌洞アート横丁", en: "Changwon Changdong Art Alley" },
+    city: "창원",
+    cityCode: "gyeongnam",
+    category: "street",
+    speciality: { ko: "마산 아구찜·통술", ja: "馬山アグチム・トンスル", en: "Masan agujjim & tongsul" },
+    description: { ko: "마산의 옛 번화가인 창동에 자리한 예술 골목. 아구찜과 통술(반찬 한상) 맛집이 모여있다.", ja: "馬山の旧繁華街・昌洞のアート横丁。アグチムとトンスル(おかずコース)の名店が集まる。", en: "Masan's old downtown turned art alley — clustered with agujjim (spicy monkfish) and tongsul banchan courses." },
+    address: "경남 창원시 마산합포구 창동",
+    priceRange: "₩₩",
+    mustTry: { ko: ["마산 아구찜", "통술", "홍합탕"], ja: ["馬山アグチム", "トンスル", "ムール貝スープ"], en: ["Masan agujjim", "Tongsul course", "Mussel soup"] },
+    tags: ["아구찜", "창원", "경남"],
+    openHours: "11:00–23:00"
+  },
+  // ── 전북 (Jeonbuk, 군산) ───────────────────────
+  {
+    id: "spot-032",
+    name: { ko: "군산 이성당 빵집거리", ja: "群山李盛堂パン屋通り", en: "Gunsan Leesungdang Bakery Street" },
+    city: "군산",
+    cityCode: "jeonbuk",
+    category: "street",
+    speciality: { ko: "단팥빵·야채빵", ja: "あんパン・野菜パン", en: "Red-bean bun & vegetable bun" },
+    description: { ko: "1945년부터 운영 중인 한국 최장수 빵집 이성당 본점과 주변 빵집 거리. 줄 서서 맛보는 단팥빵이 명물.", ja: "1945年から続く韓国最古のパン屋・李盛堂本店を中心としたパン屋通り。行列必至のあんパンが名物。", en: "Home of Korea's oldest bakery (est. 1945) — locals queue for the famed red-bean and vegetable buns." },
+    address: "전북 군산시 중앙로 일대",
+    priceRange: "₩",
+    mustTry: { ko: ["단팥빵", "야채빵", "짬뽕"], ja: ["あんパン", "野菜パン", "チャンポン"], en: ["Red-bean bun", "Vegetable bun", "Jjamppong"] },
+    tags: ["빵집", "군산", "전북"],
+    openHours: "08:00–21:00"
+  },
+  // ── 전남 (Jeonnam, 여수·순천) ──────────────────
+  {
+    id: "spot-033",
+    name: { ko: "여수 중앙시장", ja: "麗水中央市場", en: "Yeosu Jungang Market" },
+    city: "여수",
+    cityCode: "jeonnam",
+    category: "market",
+    speciality: { ko: "돌산갓김치·서대회", ja: "突山カッキムチ・舌平目の刺身和え", en: "Dolsan mustard kimchi & seodaehoe" },
+    description: { ko: "여수 최대 재래시장. 돌산 갓김치와 서대회, 장어탕 등 여수 향토 음식의 집결지.", ja: "麗水最大の伝統市場。突山カッキムチや舌平目の和え物、うなぎスープなど麗水の郷土料理が集まる。", en: "Yeosu's largest market — hub of local flavors like Dolsan mustard kimchi, seodaehoe, and eel soup." },
+    address: "전남 여수시 중앙시장길",
+    priceRange: "₩",
+    mustTry: { ko: ["돌산갓김치", "서대회", "장어탕"], ja: ["突山カッキムチ", "舌平目の和え", "うなぎスープ"], en: ["Dolsan gat-kimchi", "Seodaehoe", "Eel soup"] },
+    tags: ["전통시장", "여수", "전남"],
+    openHours: "07:00–20:00"
+  },
+  {
+    id: "spot-034",
+    name: { ko: "순천 웃장 국밥거리", ja: "順天ウッチャン・クッパ通り", en: "Suncheon Utjang Gukbap Street" },
+    city: "순천",
+    cityCode: "jeonnam",
+    category: "street",
+    speciality: { ko: "순천 돼지국밥", ja: "順天テジクッパ", en: "Suncheon pork gukbap" },
+    description: { ko: "순천 웃장(상위 시장) 안에 자리한 국밥 원조 거리. 구수한 돼지국밥 한 그릇이 순천 새벽 맛집.", ja: "順天ウッチャン(上市場)内にあるクッパ元祖通り。香ばしいテジクッパが順天の早朝グルメ。", en: "Original gukbap alley inside Suncheon's Utjang market — earthy pork gukbap is a local breakfast staple." },
+    address: "전남 순천시 웃장길",
+    priceRange: "₩",
+    mustTry: { ko: ["돼지국밥", "수육", "콩나물해장국"], ja: ["テジクッパ", "スユク", "豆もやしヘジャンクッ"], en: ["Pork gukbap", "Suyuk sliced pork", "Haejang bean-sprout soup"] },
+    tags: ["국밥", "순천", "전남"],
+    openHours: "05:00–20:00"
+  },
 ]
 
-export const CITIES = [
-  { code: "all",      ko: "전체", ja: "すべて", en: "All" },
-  { code: "jeonju",   ko: "전주", ja: "全州",   en: "Jeonju" },
-  { code: "cheonan",  ko: "천안", ja: "天安",   en: "Cheonan" },
-  { code: "yongin",   ko: "용인", ja: "龍仁",   en: "Yongin" },
-  { code: "icheon",   ko: "이천", ja: "利川",   en: "Icheon" },
-  { code: "seoul",    ko: "서울", ja: "ソウル",  en: "Seoul" },
-  { code: "busan",    ko: "부산", ja: "釜山",   en: "Busan" },
-  { code: "gyeongju",  ko: "경주", ja: "慶州",   en: "Gyeongju" },
-  { code: "jeju",      ko: "제주", ja: "済州",   en: "Jeju" },
-  { code: "tongyeong", ko: "통영", ja: "統営",   en: "Tongyeong" },
+export interface KFoodCity {
+  code: string
+  ko: string
+  ja: string
+  en: string
+  'zh-CN': string
+  'zh-TW': string
+  emoji: string
+}
+
+// 전국 17개 광역시도 + 레거시 6개 시군 (SIGHTS CITIES와 동기화)
+export const CITIES: KFoodCity[] = [
+  { code: "all",       ko: "전체",       ja: "すべて",    en: "All",       "zh-CN": "全部",       "zh-TW": "全部",       emoji: "📍" },
+  // ── 17개 광역시도 ──
+  { code: "seoul",     ko: "서울",       ja: "ソウル",    en: "Seoul",     "zh-CN": "首尔",       "zh-TW": "首爾",       emoji: "🏙️" },
+  { code: "incheon",   ko: "인천",       ja: "仁川",      en: "Incheon",   "zh-CN": "仁川",       "zh-TW": "仁川",       emoji: "✈️" },
+  { code: "daejeon",   ko: "대전",       ja: "大田",      en: "Daejeon",   "zh-CN": "大田",       "zh-TW": "大田",       emoji: "🔬" },
+  { code: "daegu",     ko: "대구",       ja: "大邱",      en: "Daegu",     "zh-CN": "大邱",       "zh-TW": "大邱",       emoji: "🍎" },
+  { code: "gwangju",   ko: "광주",       ja: "光州",      en: "Gwangju",   "zh-CN": "光州",       "zh-TW": "光州",       emoji: "🌻" },
+  { code: "busan",     ko: "부산",       ja: "釜山",      en: "Busan",     "zh-CN": "釜山",       "zh-TW": "釜山",       emoji: "🌊" },
+  { code: "ulsan",     ko: "울산",       ja: "蔚山",      en: "Ulsan",     "zh-CN": "蔚山",       "zh-TW": "蔚山",       emoji: "🐳" },
+  { code: "sejong",    ko: "세종",       ja: "世宗",      en: "Sejong",    "zh-CN": "世宗",       "zh-TW": "世宗",       emoji: "🏛️" },
+  { code: "gyeonggi",  ko: "경기도",     ja: "京畿道",    en: "Gyeonggi",  "zh-CN": "京畿道",     "zh-TW": "京畿道",     emoji: "🌆" },
+  { code: "gangwon",   ko: "강원도",     ja: "江原道",    en: "Gangwon",   "zh-CN": "江原道",     "zh-TW": "江原道",     emoji: "⛰️" },
+  { code: "chungbuk",  ko: "충청북도",   ja: "忠清北道",  en: "Chungbuk",  "zh-CN": "忠清北道",   "zh-TW": "忠清北道",   emoji: "🌾" },
+  { code: "chungnam",  ko: "충청남도",   ja: "忠清南道",  en: "Chungnam",  "zh-CN": "忠清南道",   "zh-TW": "忠清南道",   emoji: "🌊" },
+  { code: "gyeongbuk", ko: "경상북도",   ja: "慶尚北道",  en: "Gyeongbuk", "zh-CN": "庆尚北道",   "zh-TW": "慶尚北道",   emoji: "🏯" },
+  { code: "gyeongnam", ko: "경상남도",   ja: "慶尚南道",  en: "Gyeongnam", "zh-CN": "庆尚南道",   "zh-TW": "慶尚南道",   emoji: "⛵" },
+  { code: "jeonbuk",   ko: "전라북도",   ja: "全羅北道",  en: "Jeonbuk",   "zh-CN": "全罗北道",   "zh-TW": "全羅北道",   emoji: "🏮" },
+  { code: "jeonnam",   ko: "전라남도",   ja: "全羅南道",  en: "Jeonnam",   "zh-CN": "全罗南道",   "zh-TW": "全羅南道",   emoji: "🎋" },
+  { code: "jeju",      ko: "제주",       ja: "済州",      en: "Jeju",      "zh-CN": "济州",       "zh-TW": "濟州",       emoji: "🌴" },
+  // ── 레거시 하위 시군 (기존 스팟 호환) ──
+  { code: "gyeongju",  ko: "경주",       ja: "慶州",      en: "Gyeongju",  "zh-CN": "庆州",       "zh-TW": "慶州",       emoji: "👑" },
+  { code: "jeonju",    ko: "전주",       ja: "全州",      en: "Jeonju",    "zh-CN": "全州",       "zh-TW": "全州",       emoji: "🏮" },
+  { code: "tongyeong", ko: "통영",       ja: "統営",      en: "Tongyeong", "zh-CN": "统营",       "zh-TW": "統營",       emoji: "⛵" },
+  { code: "cheonan",   ko: "천안",       ja: "天安",      en: "Cheonan",   "zh-CN": "天安",       "zh-TW": "天安",       emoji: "🎋" },
+  { code: "yongin",    ko: "용인",       ja: "龍仁",      en: "Yongin",   "zh-CN": "龙仁",       "zh-TW": "龍仁",       emoji: "🎢" },
+  { code: "icheon",    ko: "이천",       ja: "利川",      en: "Icheon",    "zh-CN": "利川",       "zh-TW": "利川",       emoji: "🏺" },
 ]
 
 export const CATEGORY_LABEL = {

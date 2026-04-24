@@ -4,11 +4,17 @@
 import { describe, it, expect } from "vitest"
 import { kfoodSpots as spots, CITIES } from "../lib/data/kfood-spots"
 
-const REQUIRED_CITIES = ["all", "seoul", "busan", "jeju", "jeonju", "tongyeong", "gyeongju", "cheonan", "yongin", "icheon"]
+// 17개 광역시도 + 6개 레거시 시군 + all
+const REQUIRED_CITIES = [
+  "all",
+  "seoul", "incheon", "daejeon", "daegu", "gwangju", "busan", "ulsan", "sejong",
+  "gyeonggi", "gangwon", "chungbuk", "chungnam", "gyeongbuk", "gyeongnam", "jeonbuk", "jeonnam", "jeju",
+  "jeonju", "tongyeong", "gyeongju", "cheonan", "yongin", "icheon",
+]
 const LOCALES = ["ko", "ja", "en"] as const
 
 describe("kfood-spots: CITIES 구조", () => {
-  it("10개 도시 필터(all 포함)가 있어야 한다", () => {
+  it("24개 도시 필터(all + 17개 광역시도 + 6개 레거시)가 있어야 한다", () => {
     const codes = CITIES.map((c) => c.code)
     for (const code of REQUIRED_CITIES) {
       expect(codes, `${code} 도시가 CITIES에 없습니다`).toContain(code)
