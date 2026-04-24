@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
     // 3. 최근 주문 5건
     const { data: recentOrders } = await supabase
       .from('orders')
-      .select('id, created_at, customer_name, total_amount, payment_status, shipping_status')
+      .select('id, created_at, shipping_name, total_price, payment_status, shipping_status')
       .order('created_at', { ascending: false })
       .limit(5);
 
