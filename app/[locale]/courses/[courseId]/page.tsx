@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server"
 import { AffiliateLinks } from "@/components/features/courses/AffiliateLinks"
 import { QuestHero } from "@/components/features/quest/QuestHero"
 import { QuestHowItWorks } from "@/components/features/quest/QuestHowItWorks"
+import { QuestMissionGuide } from "@/components/features/quest/QuestMissionGuide"
 import { QuestStorySlider } from "@/components/features/quest/QuestStorySlider"
 import { QuestKitShowcase } from "@/components/features/quest/QuestKitShowcase"
 import { QuestReviews } from "@/components/features/quest/QuestReviews"
@@ -110,7 +111,6 @@ export default async function CourseDetailPage({ params }: Props) {
 
   const courseTitle = getI18n(course.title as I18nText, locale)
   const thumbnailUrl = course.thumbnail_url || '/images/dokkaebi-hero.png'
-  const firstKit = null
 
   const storyCards = [
     { image: thumbnailUrl, textKey: 'story.card1' },
@@ -151,6 +151,9 @@ export default async function CourseDetailPage({ params }: Props) {
 
       {/* 2. 3단계 프로세스 */}
       <QuestHowItWorks />
+
+      {/* 2-1. GPS 미션 진행 방법 */}
+      <QuestMissionGuide />
 
       {/* 3. 인터랙티브 스토리 */}
       <QuestStorySlider storyCards={storyCards} region={course.region || ''} />
