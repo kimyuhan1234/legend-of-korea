@@ -11,6 +11,7 @@ import {
 } from '@/lib/curation/scoring'
 import { getTopMatchedTags, getTagLabel } from '@/lib/curation/city-stories'
 import { preferenceToRadar, cityToRadar, type RadarLabels } from '@/lib/curation/radar'
+import { getCityName } from '@/lib/curation/cities'
 import { RadarChart } from './RadarChart'
 import type { UserPreference } from '@/lib/curation/types'
 
@@ -25,20 +26,8 @@ function getI18n(field: { [k: string]: string } | undefined, locale: string): st
   return field[locale] || field.en || field.ko || ''
 }
 
-const CITY_NAMES: Record<string, Record<string, string>> = {
-  jeonju:    { ko: '전주', en: 'Jeonju', ja: '全州', 'zh-CN': '全州', 'zh-TW': '全州' },
-  gyeongju:  { ko: '경주', en: 'Gyeongju', ja: '慶州', 'zh-CN': '庆州', 'zh-TW': '慶州' },
-  busan:     { ko: '부산', en: 'Busan', ja: '釜山', 'zh-CN': '釜山', 'zh-TW': '釜山' },
-  seoul:     { ko: '서울', en: 'Seoul', ja: 'ソウル', 'zh-CN': '首尔', 'zh-TW': '首爾' },
-  jeju:      { ko: '제주', en: 'Jeju', ja: '済州', 'zh-CN': '济州', 'zh-TW': '濟州' },
-  tongyeong: { ko: '통영', en: 'Tongyeong', ja: '統営', 'zh-CN': '统营', 'zh-TW': '統營' },
-  cheonan:   { ko: '천안', en: 'Cheonan', ja: '天安', 'zh-CN': '天安', 'zh-TW': '天安' },
-  yongin:    { ko: '용인', en: 'Yongin', ja: '龍仁', 'zh-CN': '龙仁', 'zh-TW': '龍仁' },
-  icheon:    { ko: '이천', en: 'Icheon', ja: '利川', 'zh-CN': '利川', 'zh-TW': '利川' },
-}
-
 function cityName(code: string, locale: string): string {
-  return CITY_NAMES[code]?.[locale] || CITY_NAMES[code]?.ko || code
+  return getCityName(code, locale)
 }
 
 const SCALE_LABELS: Record<string, string[]> = {

@@ -83,6 +83,7 @@ export const SWIPE_QUESTIONS: SwipeQuestion[] = [
 ]
 
 export const CITY_TAG_SCORES: Record<string, Record<string, number>> = {
+  // ── 기존 9개 (변경 금지) ────────────────────────────────────────
   jeonju:    { traditional: 0.9, food: 1.0, experience: 0.9, historic: 0.8, market: 0.7, cafe: 0.6, walking: 0.9, 'street-food': 0.8, budget: 0.7, photo: 0.7, daytime: 0.7, 'night-market': 0.6 },
   gyeongju:  { traditional: 1.0, historic: 1.0, scenic: 0.8, temple: 0.9, relax: 0.7, nature: 0.6, walking: 0.8, driving: 0.6, romantic: 0.7, daytime: 0.8, meditation: 0.6, photo: 0.8 },
   busan:     { ocean: 1.0, city: 0.8, food: 0.9, nightlife: 0.7, instagram: 0.8, active: 0.6, coastal: 0.9, 'night-market': 0.7, sunset: 0.8, driving: 0.7, group: 0.7, shopping: 0.6 },
@@ -92,6 +93,36 @@ export const CITY_TAG_SCORES: Record<string, Record<string, number>> = {
   cheonan:   { active: 0.7, food: 0.6, historic: 0.5, cafe: 0.5, nature: 0.4, solo: 0.5, budget: 0.7, walking: 0.5, daytime: 0.6, market: 0.5, experience: 0.5 },
   yongin:    { themepark: 1.0, group: 0.8, active: 0.7, traditional: 0.5, family: 0.9, driving: 0.7, daytime: 0.8, shopping: 0.5, adventure: 0.6 },
   icheon:    { traditional: 0.8, relax: 0.7, food: 0.6, nature: 0.5, experience: 0.7, cafe: 0.5, walking: 0.5, budget: 0.6, countryside: 0.6, daytime: 0.7, spa: 0.5 },
+
+  // ── 14개 광역시도 추가 (전국 확장) ──────────────────────────────
+  // 인천 — 공항 관문, 차이나타운, 월미도, 송도
+  incheon:    { city: 0.8, modern: 0.8, shopping: 0.7, food: 0.7, 'street-food': 0.7, market: 0.6, ocean: 0.5, walking: 0.6, nightlife: 0.6, instagram: 0.6, trendy: 0.6, family: 0.6 },
+  // 대전 — 과학도시, 유성온천, 보문산, 한밭수목원
+  daejeon:    { modern: 0.7, spa: 0.7, food: 0.6, cafe: 0.5, city: 0.6, relax: 0.6, nature: 0.4, walking: 0.5, family: 0.5, daytime: 0.6, budget: 0.6, experience: 0.5 },
+  // 대구 — 팔공산, 서문시장, 약전골목, 김광석 거리
+  daegu:      { food: 0.9, market: 0.9, 'street-food': 0.8, traditional: 0.6, historic: 0.6, nightlife: 0.7, temple: 0.6, hiking: 0.6, walking: 0.7, budget: 0.7, 'night-market': 0.7, cafe: 0.5 },
+  // 광주 — 예향, 무등산, 아시아문화전당, 양림동
+  gwangju:    { food: 0.8, historic: 0.7, traditional: 0.6, experience: 0.6, cafe: 0.7, market: 0.6, modern: 0.6, nature: 0.5, hiking: 0.7, walking: 0.6, trendy: 0.5, budget: 0.6 },
+  // 울산 — 태화강, 대왕암, 간절곶 일출, 장생포
+  ulsan:      { nature: 0.7, ocean: 0.8, scenic: 0.7, coastal: 0.7, sunset: 0.7, food: 0.6, family: 0.6, walking: 0.5, hiking: 0.5, market: 0.5, driving: 0.6, relax: 0.5 },
+  // 세종 — 행정중심, 호수공원, 영평사
+  sejong:     { modern: 0.8, relax: 0.6, nature: 0.5, walking: 0.5, cafe: 0.5, daytime: 0.6, family: 0.5, budget: 0.5, solo: 0.5 },
+  // 경기도 — 수원화성, 파주, 가평, 포천, 양평
+  gyeonggi:   { historic: 0.7, traditional: 0.6, nature: 0.6, family: 0.7, themepark: 0.6, hiking: 0.6, driving: 0.7, 'scenic-road': 0.6, market: 0.5, food: 0.6, cafe: 0.6, experience: 0.6, walking: 0.5 },
+  // 강원도 — 설악산, 강릉, 속초, 양양 서핑, 평창 스키
+  gangwon:    { nature: 1.0, hiking: 0.9, ocean: 0.9, scenic: 0.9, coastal: 0.8, adventure: 0.8, active: 0.8, driving: 0.8, 'scenic-road': 0.9, relax: 0.7, cafe: 0.7, sunset: 0.8, countryside: 0.7, romantic: 0.7, family: 0.6 },
+  // 충청북도 — 단양, 충주호, 속리산, 청주
+  chungbuk:   { nature: 0.8, hiking: 0.7, scenic: 0.7, temple: 0.7, traditional: 0.6, relax: 0.7, driving: 0.7, countryside: 0.7, 'scenic-road': 0.7, historic: 0.6, walking: 0.6 },
+  // 충청남도 — 공주 백제, 부여, 태안, 대천 해수욕장, 덕산온천
+  chungnam:   { historic: 0.9, traditional: 0.8, temple: 0.7, ocean: 0.6, scenic: 0.6, food: 0.6, coastal: 0.6, spa: 0.7, nature: 0.5, walking: 0.6, experience: 0.6, daytime: 0.6 },
+  // 경상북도 — 안동 하회마을, 영주 부석사, 청송, 문경
+  gyeongbuk:  { traditional: 1.0, historic: 1.0, temple: 0.9, nature: 0.7, hiking: 0.6, scenic: 0.7, experience: 0.7, walking: 0.7, meditation: 0.7, countryside: 0.7, romantic: 0.6, relax: 0.6 },
+  // 경상남도 — 거제, 남해, 진주, 하동, 통영 권역
+  gyeongnam:  { ocean: 0.8, scenic: 0.9, coastal: 0.8, nature: 0.7, food: 0.7, driving: 0.7, romantic: 0.7, sunset: 0.8, 'scenic-road': 0.7, historic: 0.6, relax: 0.7, walking: 0.6 },
+  // 전라북도 — 변산반도, 무주 덕유산, 남원, 고창, 전주 권역
+  jeonbuk:    { traditional: 0.8, food: 0.9, nature: 0.7, historic: 0.7, hiking: 0.7, market: 0.7, experience: 0.7, walking: 0.7, romantic: 0.6, temple: 0.6, 'street-food': 0.6, countryside: 0.6 },
+  // 전라남도 — 여수 밤바다, 순천만, 담양, 목포, 보성
+  jeonnam:    { ocean: 0.9, scenic: 0.9, nature: 0.8, food: 0.8, sunset: 0.9, coastal: 0.9, nightlife: 0.6, 'night-market': 0.6, relax: 0.7, romantic: 0.8, 'scenic-road': 0.8, driving: 0.7, cafe: 0.6 },
 }
 
 // ─── 슬라이더 9축 + 동행 1개 ──────────────────────────────────────
