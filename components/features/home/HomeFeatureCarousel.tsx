@@ -41,7 +41,7 @@ export function HomeFeatureCarousel({ children }: HomeFeatureCarouselProps) {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="max-w-7xl mx-auto px-3 md:px-6 py-12 md:py-20 relative">
+      <div className="max-w-7xl mx-auto px-3 md:px-6 py-6 md:py-20 relative">
         {/* 슬라이드 영역 */}
         <div className="relative overflow-hidden">
           <div

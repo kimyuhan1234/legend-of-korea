@@ -80,8 +80,8 @@ export function CreatePartyModal({ courseId, onClose, onCreated }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
-      <div className="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-3 py-4 sm:px-4">
+      <div className="bg-white rounded-2xl w-full max-w-md p-5 sm:p-6 shadow-xl max-h-[calc(100vh-2rem)] overflow-y-auto overflow-x-hidden">
         <h2 className="text-lg font-black text-ink mb-5">🎉 {t('modal.title')}</h2>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">

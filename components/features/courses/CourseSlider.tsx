@@ -121,11 +121,11 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
 
                 {/* 하단: 패스 포함 안내 + 버튼 */}
                 {course.isActive && (
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-mist/60 gap-3">
-                    <p className="text-xs font-bold text-mint-deep">
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-mist/60 gap-2 md:gap-3">
+                    <p className="text-[11px] md:text-xs font-bold text-mint-deep min-w-0 truncate">
                       {PASS_INCLUDED[locale] || PASS_INCLUDED.en}
                     </p>
-                    <span className="shrink-0 px-5 py-2.5 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-sm font-bold hover:bg-[#7BC8BC] transition-colors">
+                    <span className="shrink-0 px-3.5 md:px-5 py-2 md:py-2.5 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-xs md:text-sm font-bold hover:bg-[#7BC8BC] transition-colors whitespace-nowrap">
                       {label.detail} →
                     </span>
                   </div>
@@ -142,12 +142,12 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
               {course.isActive ? (
                 <Link
                   href={`/${locale}/courses/${course.id}`}
-                  className="block bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-mist/40 h-[280px] md:h-[320px]"
+                  className="block bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-mist/40 min-h-[280px] md:h-[320px]"
                 >
                   {inner}
                 </Link>
               ) : (
-                <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-mist/40 cursor-not-allowed h-[280px] md:h-[320px]">
+                <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-mist/40 cursor-not-allowed min-h-[280px] md:h-[320px]">
                   {inner}
                 </div>
               )}

@@ -12,13 +12,13 @@ interface SlideFeaturePlannerProps {
 
 export function SlideFeaturePlanner({ locale, title, subtitle, cta }: SlideFeaturePlannerProps) {
   return (
-    <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-12 items-center">
       {/* 좌: 텍스트 */}
       <div className="md:w-[280px] lg:w-[320px] shrink-0 text-center md:text-left">
-        <h2 className="text-2xl md:text-3xl font-black text-mint-deep leading-tight mb-3">
+        <h2 className="text-2xl md:text-3xl font-black text-mint-deep leading-tight mb-2 md:mb-3">
           {title}
         </h2>
-        <p className="text-lg font-medium text-ink mb-8">
+        <p className="text-base md:text-lg font-medium text-ink mb-4 md:mb-8">
           {subtitle}
         </p>
         <Link

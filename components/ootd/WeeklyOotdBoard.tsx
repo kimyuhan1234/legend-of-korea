@@ -154,7 +154,7 @@ function DayCard({ weather, outfit, isToday, cityId, cityName }: DayCardProps) {
   return (
     <div
       className={[
-        'group shrink-0 w-44 md:w-48 rounded-2xl border transition-all duration-200',
+        'group shrink-0 w-36 sm:w-44 md:w-48 rounded-2xl border transition-all duration-200',
         'hover:scale-105 hover:shadow-xl cursor-default',
         isToday
           ? 'border-mint-deep bg-mint-deep text-white shadow-lg'
