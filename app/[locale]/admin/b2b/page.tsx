@@ -278,7 +278,7 @@ export default function AdminB2BPage() {
                   </Select>
                 </TableCell>
                 <TableCell className="text-right">
-                  <p className="font-black text-[#111]">₩{(order.total_amount ?? 0).toLocaleString()}</p>
+                  <p className="font-black text-[#111]">₩{(order.total_price ?? 0).toLocaleString()}</p>
                   <p className="text-[10px] text-slate-400">단가: ₩{(order.unit_price ?? 0).toLocaleString()}</p>
                 </TableCell>
               </TableRow>

@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
     // 1. 기간별 매출 (최근 30일)
     const { data: revenueData } = await supabase
       .from('orders')
-      .select('created_at, total_amount')
+      .select('created_at, total_price')
       .eq('payment_status', 'paid')
       .gte('created_at', thirtyDaysAgo.toISOString())
       .order('created_at', { ascending: true });
@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
     // Let's do a manual join for now just in case.
     const { data: ordersWithCourses } = await supabase
       .from('orders')
-      .select('id, total_amount, courses(title)')
+      .select('id, total_price, courses(title)')
       .eq('payment_status', 'paid');
 
     // 3. 어필리에이트 클릭수

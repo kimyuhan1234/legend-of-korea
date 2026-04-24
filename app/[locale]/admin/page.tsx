@@ -11,14 +11,15 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
-import { 
-  TrendingUp, 
-  Users, 
-  ShoppingBag, 
+import {
+  TrendingUp,
+  Users,
+  ShoppingBag,
   CreditCard,
   ArrowUpRight,
   MessageSquare
 } from "lucide-react"
+import { maskName } from "@/lib/utils/masking"
 
 interface DashboardData {
   summary: {
@@ -140,8 +141,8 @@ export default function AdminDashboardPage() {
                       <TableCell className="font-medium text-xs text-slate-500 truncate max-w-[100px]">
                         {order.id.split('-')[0]}
                       </TableCell>
-                      <TableCell className="font-bold text-[#111]">{order.customer_name}</TableCell>
-                      <TableCell>₩{order.total_amount.toLocaleString()}</TableCell>
+                      <TableCell className="font-bold text-[#111]">{maskName(order.shipping_name)}</TableCell>
+                      <TableCell>₩{order.total_price.toLocaleString()}</TableCell>
                       <TableCell>
                         <Badge
                           className={

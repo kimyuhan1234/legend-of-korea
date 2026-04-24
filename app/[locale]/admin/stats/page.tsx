@@ -47,9 +47,9 @@ export default function AdminStatsPage() {
     const date = new Date(item.created_at).toLocaleDateString()
     const existing = acc.find(a => a.date === date)
     if (existing) {
-      existing.amount += item.total_amount
+      existing.amount += item.total_price
     } else {
-      acc.push({ date, amount: item.total_amount })
+      acc.push({ date, amount: item.total_price })
     }
     return acc
   }, [])

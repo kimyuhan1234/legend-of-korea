@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
 
     const { data: b2bOrders, error } = await supabase
       .from('b2b_orders')
-      .select('*, courses(title)')
+      .select('id, agency_name, contact_person, contact_phone, course_id, quantity, unit_price, total_price, status, created_at, courses(title)')
       .order('created_at', { ascending: false });
 
     if (error) throw error;
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     const { data: profile } = await supabase.from('users').select('role').eq('id', user.id).single();
     if (profile?.role !== 'admin') return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
 
-    const total_amount = body.quantity * body.unit_price;
+    const total_price = body.quantity * body.unit_price;
 
     const { data: newB2B, error } = await supabase
       .from('b2b_orders')
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
         course_id: body.course_id,
         quantity: body.quantity,
         unit_price: body.unit_price,
-        total_amount,
+        total_price,
         status: 'pending',
       })
       .select()

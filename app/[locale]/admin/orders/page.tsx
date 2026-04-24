@@ -173,7 +173,7 @@ export default function AdminOrdersPage() {
                   </div>
                 </TableCell>
                 <TableCell className="text-right">
-                  <p className="font-black text-[#111]">₩{(order.total_amount ?? 0).toLocaleString()}</p>
+                  <p className="font-black text-[#111]">₩{(order.total_price ?? 0).toLocaleString()}</p>
                 </TableCell>
               </TableRow>
             ))}
