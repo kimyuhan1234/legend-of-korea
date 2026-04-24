@@ -55,7 +55,7 @@ export function QRScanner({ onScanSuccess }: QRScannerProps) {
 
   const handleManualSubmit = async () => {
     if (manualCode.length < 6) {
-        toast({ variant: 'destructive', title: '코드 형식 오류', description: '6자리 코드를 입력해주세요.' });
+        toast({ variant: 'destructive', title: t('qrCodeFormatError'), description: t('qrCodeFormatDesc') });
         return;
     }
     onScanSuccess(manualCode);
@@ -71,15 +71,15 @@ export function QRScanner({ onScanSuccess }: QRScannerProps) {
             onClick={() => setScanMode('camera')}
           >
             <Camera className="w-4 h-4 mr-2" />
-            카메라 스캔
+            {t('cameraScan')}
           </Button>
-          <Button 
-            variant={scanMode === 'manual' ? 'default' : 'ghost'} 
+          <Button
+            variant={scanMode === 'manual' ? 'default' : 'ghost'}
             className="rounded-xl px-6"
             onClick={() => setScanMode('manual')}
           >
             <Keyboard className="w-4 h-4 mr-2" />
-            직접 입력
+            {t('manualInput')}
           </Button>
       </div>
 
@@ -97,7 +97,7 @@ export function QRScanner({ onScanSuccess }: QRScannerProps) {
             <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto mb-6">
                 <QrCode className="w-10 h-10 text-primary" />
             </div>
-            <h3 className="text-xl font-bold mb-6">6자리 코드를 입력하세요</h3>
+            <h3 className="text-xl font-bold mb-6">{t('enter6DigitCode')}</h3>
             <div className="flex gap-2 justify-center mb-8">
                 <Input 
                     maxLength={6}
@@ -112,7 +112,7 @@ export function QRScanner({ onScanSuccess }: QRScannerProps) {
                 disabled={manualCode.length < 6}
                 className="w-full h-14 text-lg font-bold rounded-2xl shadow-lg"
             >
-                확인하기
+                {t('confirmCode')}
                 <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Card>
@@ -121,9 +121,7 @@ export function QRScanner({ onScanSuccess }: QRScannerProps) {
 
       <div className="text-center px-6">
           <p className="text-sm text-muted-foreground font-medium leading-relaxed">
-             {scanMode === 'camera' 
-                ? '미션 장소에 있는 QR 코드를 카메라 정중앙에 맞춰주세요.' 
-                : '스캔이 작동하지 않는 경우, QR 코드 하단의 6자리 영문/숫자 조합을 입력해 주세요.'}
+             {scanMode === 'camera' ? t('qrScanHint') : t('qrManualHint')}
           </p>
       </div>
     </div>

@@ -11,15 +11,19 @@ interface Props {
 }
 
 const META = {
-  ko: { title: "로그인 | Cloud with you", description: "전설의 세계로 입장하세요" },
-  ja: { title: "ログイン | Cloud with you", description: "伝説の世界へようこそ" },
-  en: { title: "Sign In | Cloud with you", description: "Enter the world of legends" },
+  ko:      { title: "로그인 | Cloud with you",    description: "전설의 세계로 입장하세요" },
+  ja:      { title: "ログイン | Cloud with you",  description: "伝説の世界へようこそ" },
+  en:      { title: "Sign In | Cloud with you",    description: "Enter the world of legends" },
+  'zh-CN': { title: "登录 | Cloud with you",       description: "进入传说的世界" },
+  'zh-TW': { title: "登入 | Cloud with you",       description: "進入傳說的世界" },
 }
 
 const TEXT = {
-  ko: { title: "전설의 세계로\n입장하세요", subtitle: "한국 전래동화 속 주인공이 되어보세요", divider: "또는" },
-  ja: { title: "伝説の世界へ\nようこそ", subtitle: "韓国の昔話の主人公になってみましょう", divider: "または" },
-  en: { title: "Enter the World\nof Legends", subtitle: "Become the hero of Korean folklore", divider: "or" },
+  ko:      { title: "전설의 세계로\n입장하세요",           subtitle: "한국 전래동화 속 주인공이 되어보세요",  divider: "또는",    loginFailed: "로그인에 실패했습니다. 다시 시도해주세요." },
+  ja:      { title: "伝説の世界へ\nようこそ",               subtitle: "韓国の昔話の主人公になってみましょう",    divider: "または",  loginFailed: "ログインに失敗しました。もう一度お試しください。" },
+  en:      { title: "Enter the World\nof Legends",         subtitle: "Become the hero of Korean folklore",      divider: "or",      loginFailed: "Login failed. Please try again." },
+  'zh-CN': { title: "进入传说的\n世界",                     subtitle: "成为韩国民间故事的主角",                   divider: "或",      loginFailed: "登录失败，请重试。" },
+  'zh-TW': { title: "進入傳說的\n世界",                     subtitle: "成為韓國民間故事的主角",                   divider: "或",      loginFailed: "登入失敗，請重試。" },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -62,9 +66,7 @@ export default function LoginPage({ params, searchParams }: Props) {
             {/* 에러 파라미터 */}
             {searchParams.error === "auth_failed" && (
               <div className="px-8 md:px-10 py-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm text-center">
-                {locale === "ko" ? "로그인에 실패했습니다. 다시 시도해주세요." :
-                 locale === "ja" ? "ログインに失敗しました。もう一度お試しください。" :
-                 "Login failed. Please try again."}
+                {t.loginFailed}
               </div>
             )}
 

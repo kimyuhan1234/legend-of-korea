@@ -20,7 +20,17 @@ interface NavbarMobileMenuProps {
     loginRequired: string
     loginBtn: string
     pass?: string
+    menu?: string
+    lp?: string
   }
+}
+
+const LANG_LABEL: Record<string, string> = {
+  ko: "한국어",
+  ja: "日本語",
+  en: "English",
+  "zh-CN": "简体中文",
+  "zh-TW": "繁體中文",
 }
 
 export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuProps) {
@@ -32,7 +42,7 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
       <button
         onClick={() => setOpen(!open)}
         className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-cloud transition-colors"
-        aria-label="메뉴"
+        aria-label={t.menu ?? "Menu"}
       >
         <span className={`w-5 h-0.5 bg-mint-deep transition-all duration-200 ${open ? "rotate-45 translate-y-2" : ""}`} />
         <span className={`w-5 h-0.5 bg-mint-deep transition-all duration-200 ${open ? "opacity-0" : ""}`} />
@@ -53,7 +63,7 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
           {user ? (
             <div className="px-6 py-5 bg-mint-deep text-white">
               <p className="font-semibold">{user.nickname}</p>
-              <p className="text-white/80 text-sm mt-1 font-bold">⚡ {user.lp?.toLocaleString() ?? 0} 빗방울</p>
+              <p className="text-white/80 text-sm mt-1 font-bold">⚡ {user.lp?.toLocaleString() ?? 0} {t.lp ?? "Raindrops"}</p>
             </div>
           ) : (
             <div className="px-6 py-5 bg-mint-deep space-y-2">
@@ -109,7 +119,7 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
           {/* 언어 전환 */}
           <div className="px-6 py-4 border-t border-mist">
             <div className="flex gap-2">
-              {["ko", "ja", "en"].map((lang) => (
+              {["ko", "ja", "en", "zh-CN", "zh-TW"].map((lang) => (
                 <Link
                   key={lang}
                   href={`/${lang}`}
@@ -120,7 +130,7 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
                       : "bg-cloud text-stone hover:bg-mist"
                   }`}
                 >
-                  {lang === "ko" ? "한국어" : lang === "ja" ? "日本語" : "English"}
+                  {LANG_LABEL[lang]}
                 </Link>
               ))}
             </div>

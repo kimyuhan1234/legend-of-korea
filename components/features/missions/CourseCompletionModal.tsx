@@ -1,18 +1,36 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
 } from "@/components/ui/dialog"
-import { Trophy, Sparkles, Share2, ArrowRight, MessageSquare } from 'lucide-react';
+import { Trophy, ArrowRight, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+
+type Lang = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
+
+const LANGS: readonly Lang[] = ['ko', 'ja', 'en', 'zh-CN', 'zh-TW']
+
+const TEXT: Record<Lang, {
+  congrats: string
+  completed: string
+  totalReward: string
+  completionBonus: string
+  raindrops: string
+  shareCommunity: string
+  browseCourses: string
+}> = {
+  ko:      { congrats: '축하합니다!',   completed: '{name} 코스를 완주하셨습니다!',   totalReward: '총 획득 보상',  completionBonus: '완주 보너스', raindrops: '빗방울',     shareCommunity: '커뮤니티에 완주 기록 남기기',      browseCourses: '다음 코스 둘러보기' },
+  ja:      { congrats: 'おめでとうございます！', completed: '{name} コースを完走しました！',  totalReward: '獲得報酬合計', completionBonus: '完走ボーナス', raindrops: '雨滴',       shareCommunity: 'コミュニティに完走記録を残す',      browseCourses: '次のコースを見る' },
+  en:      { congrats: 'Congratulations!', completed: "You've completed the {name} course!", totalReward: 'Total reward',  completionBonus: 'Completion bonus', raindrops: 'raindrops', shareCommunity: 'Share your completion in the community', browseCourses: 'Browse more courses' },
+  'zh-CN': { congrats: '恭喜！',         completed: '您已完成 {name} 路线！',             totalReward: '总获得奖励',    completionBonus: '完成奖励',     raindrops: '雨滴',       shareCommunity: '在社区记录完赛心得',                 browseCourses: '浏览下一条路线' },
+  'zh-TW': { congrats: '恭喜！',         completed: '您已完成 {name} 路線！',             totalReward: '總獲得獎勵',    completionBonus: '完成獎勵',     raindrops: '雨滴',       shareCommunity: '在社群記錄完賽心得',                 browseCourses: '瀏覽下一條路線' },
+}
+
+function toLang(raw: string): Lang {
+  return (LANGS as readonly string[]).includes(raw) ? (raw as Lang) : 'ko'
+}
 
 interface CourseCompletionModalProps {
   isOpen: boolean;
@@ -22,14 +40,14 @@ interface CourseCompletionModalProps {
   locale: string;
 }
 
-export function CourseCompletionModal({ 
-  isOpen, 
-  onClose, 
-  courseName, 
+export function CourseCompletionModal({
+  isOpen,
+  onClose,
+  courseName,
   totalLp,
   locale
 }: CourseCompletionModalProps) {
-  const router = useRouter();
+  const t = TEXT[toLang(locale)];
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -45,9 +63,9 @@ export function CourseCompletionModal({
               <div className="w-24 h-24 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl border border-white/30 animate-bounce">
                 <Trophy className="w-12 h-12 text-white" />
               </div>
-              <h2 className="text-3xl font-black text-white">축하합니다!</h2>
+              <h2 className="text-3xl font-black text-white">{t.congrats}</h2>
               <p className="text-white/80 font-bold text-lg">
-                {courseName} 코스를 완주하셨습니다!
+                {t.completed.replace('{name}', courseName)}
               </p>
            </div>
         </div>
@@ -55,13 +73,13 @@ export function CourseCompletionModal({
         <div className="p-8 space-y-8 bg-white">
            <div className="flex justify-around items-center bg-slate-50 p-6 rounded-[2rem] border border-slate-100 shadow-inner">
               <div className="text-center">
-                 <p className="text-xs font-black text-slate-400 mb-1">총 획득 보상</p>
-                 <p className="text-2xl font-black text-primary">+{totalLp} 빗방울</p>
+                 <p className="text-xs font-black text-slate-400 mb-1">{t.totalReward}</p>
+                 <p className="text-2xl font-black text-primary">+{totalLp} {t.raindrops}</p>
               </div>
               <div className="w-px h-10 bg-slate-200" />
               <div className="text-center">
-                 <p className="text-xs font-black text-slate-400 mb-1">완주 보너스</p>
-                 <p className="text-2xl font-black text-blossom-deep">+500 빗방울</p>
+                 <p className="text-xs font-black text-slate-400 mb-1">{t.completionBonus}</p>
+                 <p className="text-2xl font-black text-blossom-deep">+500 {t.raindrops}</p>
               </div>
            </div>
 
@@ -69,12 +87,12 @@ export function CourseCompletionModal({
                <Button className="w-full h-14 rounded-2xl font-black text-lg gap-2" asChild>
                   <Link href={`/${locale}/community`}>
                      <MessageSquare className="w-5 h-5" />
-                     커뮤니티에 완주 기록 남기기
+                     {t.shareCommunity}
                   </Link>
                </Button>
                <Button variant="outline" className="w-full h-14 rounded-2xl font-black text-lg gap-2 border-2" asChild>
                   <Link href={`/${locale}/courses`}>
-                    다음 코스 둘러보기
+                    {t.browseCourses}
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                </Button>

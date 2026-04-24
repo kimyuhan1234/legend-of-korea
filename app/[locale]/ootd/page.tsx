@@ -18,10 +18,18 @@ const META: Record<string, { title: string; description: string }> = {
     title: '天気コーデ案内 | Cloud with you',
     description: '都市の雰囲気に合わせた7日間の天気・コーデガイドをチェック。',
   },
+  'zh-CN': {
+    title: '天气穿搭推荐 | Cloud with you',
+    description: '查看契合各城市氛围的7天天气与穿搭建议。',
+  },
+  'zh-TW': {
+    title: '天氣穿搭推薦 | Cloud with you',
+    description: '查看契合各城市氛圍的7天天氣與穿搭建議。',
+  },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const m = META[params.locale] ?? META.ko
+  const m = META[params.locale] ?? META.en ?? META.ko
   return {
     title: m.title,
     description: m.description,

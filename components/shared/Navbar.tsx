@@ -47,23 +47,55 @@ const NAV_LINKS = {
     { href: "/memories", label: "MEMORIES" },
     { href: "/diy",   label: "DIY" },
   ],
+  'zh-CN': [
+    { href: "/ootd",  label: "OOTD" },
+    { href: "/food",  label: "K-Food" },
+    { href: "/stay",    label: "STAY" },
+    { href: "/traffic", label: "TRAFFIC" },
+    { href: "/story",   label: "QUEST" },
+    { href: "/sights",label: "SPOT" },
+    { href: "/planner", label: "PLANNER" },
+    { href: "/memories", label: "MEMORIES" },
+    { href: "/diy",   label: "DIY" },
+  ],
+  'zh-TW': [
+    { href: "/ootd",  label: "OOTD" },
+    { href: "/food",  label: "K-Food" },
+    { href: "/stay",    label: "STAY" },
+    { href: "/traffic", label: "TRAFFIC" },
+    { href: "/story",   label: "QUEST" },
+    { href: "/sights",label: "SPOT" },
+    { href: "/planner", label: "PLANNER" },
+    { href: "/memories", label: "MEMORIES" },
+    { href: "/diy",   label: "DIY" },
+  ],
 }
 
 const TEXT = {
   ko: {
     signup: "회원가입", login: "로그인", mypage: "마이페이지", logout: "로그아웃", lp: "빗방울",
     faq: "자주 묻는 질문", memories: "추억 남기기", points: "전설 상점", foodMatching: "음식 매칭",
-    loginRequired: "로그인이 필요합니다", loginBtn: "로그인하기", pass: "패스",
+    loginRequired: "로그인이 필요합니다", loginBtn: "로그인하기", pass: "패스", menu: "메뉴",
   },
   ja: {
     signup: "新規登録", login: "ログイン", mypage: "マイページ", logout: "ログアウト", lp: "雨滴",
     faq: "よくある質問", memories: "記録館", points: "ポイント", foodMatching: "グルメマッチング",
-    loginRequired: "ログインが必要です", loginBtn: "ログイン", pass: "パス",
+    loginRequired: "ログインが必要です", loginBtn: "ログイン", pass: "パス", menu: "メニュー",
   },
   en: {
     signup: "Sign Up", login: "Sign In", mypage: "My Page", logout: "Sign Out", lp: "Raindrops",
     faq: "FAQ", memories: "Gallery", points: "Points", foodMatching: "Food Matching",
-    loginRequired: "Login required", loginBtn: "Log In", pass: "Pass",
+    loginRequired: "Login required", loginBtn: "Log In", pass: "Pass", menu: "Menu",
+  },
+  'zh-CN': {
+    signup: "注册", login: "登录", mypage: "我的页面", logout: "登出", lp: "雨滴",
+    faq: "常见问题", memories: "回忆记录", points: "传说商店", foodMatching: "美食匹配",
+    loginRequired: "需要登录", loginBtn: "去登录", pass: "通行证", menu: "菜单",
+  },
+  'zh-TW': {
+    signup: "註冊", login: "登入", mypage: "我的頁面", logout: "登出", lp: "雨滴",
+    faq: "常見問題", memories: "回憶記錄", points: "傳說商店", foodMatching: "美食配對",
+    loginRequired: "需要登入", loginBtn: "前往登入", pass: "通行證", menu: "選單",
   },
 }
 

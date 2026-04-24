@@ -17,6 +17,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function SightsPage({ params }: Props) {
   const { locale } = params
-  const spots = await getAllSpots()
+  const spots = await getAllSpots(locale as 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW')
   return <SpotsClient initialSpots={spots} locale={locale} />
 }

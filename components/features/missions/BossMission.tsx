@@ -62,8 +62,8 @@ export function BossMission({
     if (!ALLOWED_TYPES.includes(f.type) || f.size > 5 * 1024 * 1024) {
       toast({
         variant: 'destructive',
-        title: t('photoFormatError') || '파일 형식 오류',
-        description: t('photoFormatDesc') || 'JPEG·PNG·WebP, 5MB 이하만 가능합니다.',
+        title: t('photoFormatError'),
+        description: t('photoFormatDesc'),
       });
       return;
     }
@@ -109,7 +109,7 @@ export function BossMission({
   const handleSubmit = async () => {
     if (isSubmitting) return;
     if (hasQuiz && !answer.trim()) {
-      toast({ variant: 'destructive', title: t('error') || '오류', description: t('enterAnswerFirst') || '정답을 입력해주세요.' });
+      toast({ variant: 'destructive', title: t('error'), description: t('enterAnswerFirst') });
       return;
     }
     setIsSubmitting(true);
@@ -124,7 +124,7 @@ export function BossMission({
         form.append('missionId', missionId);
         const up = await fetch('/api/missions/upload', { method: 'POST', body: form });
         const upData = await up.json();
-        if (!up.ok) throw new Error(upData.error || t('uploadError') || '업로드 실패');
+        if (!up.ok) throw new Error(upData.error || t('uploadError'));
         photoUrls = [upData.url ?? upData.publicUrl];
       }
 
@@ -149,15 +149,15 @@ export function BossMission({
           setShowCompletion(true);
         } else {
           toast({
-            title: t('bossDefeated') || '보스 격파!',
-            description: t('lpEarned', { lp: data.lpEarned ?? lpReward }) || `${lpReward} 빗방울 획득!`,
+            title: t('bossDefeated'),
+            description: t('lpEarned', { lp: data.lpEarned ?? lpReward }),
           });
         }
       } else {
-        toast({ variant: 'destructive', title: t('tryAgain') || '다시 도전!', description: data.error });
+        toast({ variant: 'destructive', title: t('tryAgain'), description: data.error });
       }
     } catch (err: any) {
-      toast({ variant: 'destructive', title: t('error') || '오류', description: err.message });
+      toast({ variant: 'destructive', title: t('error'), description: err.message });
     } finally {
       setIsSubmitting(false);
     }
@@ -174,17 +174,17 @@ export function BossMission({
             <Crown className="w-14 h-14 text-stone-950" />
           </div>
           <h3 className="text-4xl font-black text-amber-400 mb-3 relative z-10 tracking-widest uppercase">
-            {t('bossDefeated') || 'BOSS CLEARED'}
+            {t('bossDefeated')}
           </h3>
           <p className="text-amber-200/70 font-bold text-xl mb-12 relative z-10">
-            {t('lpEarned', { lp: lpReward }) || `${lpReward} 빗방울 획득`}
+            {t('lpEarned', { lp: lpReward })}
           </p>
           <Button
             size="lg"
             className="h-14 px-14 rounded-[2rem] bg-gradient-to-r from-amber-500 to-yellow-600 text-stone-950 font-black hover:scale-105 transition-transform shadow-xl shadow-amber-500/30 relative z-10"
             asChild
           >
-            <Link href="./">{t('nextMission') || '다음 여정으로'}</Link>
+            <Link href="./">{t('nextMission')}</Link>
           </Button>
         </div>
         <CourseCompletionModal isOpen={showCompletion} onClose={() => setShowCompletion(false)} courseName={courseName} totalLp={totalEarned} locale={locale} />
@@ -218,12 +218,12 @@ export function BossMission({
           <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30">
             <Swords className="w-4 h-4 text-amber-400" />
             <span className="text-xs font-black text-amber-400 tracking-widest uppercase">
-              {t('boss') || 'Boss Mission'}
+              {t('boss')}
             </span>
           </div>
           <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20">
             <Trophy className="w-4 h-4 text-amber-400" />
-            <span className="text-xl font-black text-amber-400">+{lpReward} 빗방울</span>
+            <span className="text-xl font-black text-amber-400">+{t('costLp', { cost: lpReward })}</span>
           </div>
         </div>
         <h2 className="text-3xl md:text-4xl font-black text-amber-50 leading-tight mb-3 relative z-10 tracking-tight">
@@ -240,13 +240,13 @@ export function BossMission({
           <div className="space-y-3">
             <label className="text-xs font-black text-amber-400/80 tracking-widest uppercase flex items-center gap-2">
               <Flame className="w-4 h-4" />
-              {t('finalAnswer') || '최종 정답'}
+              {t('finalAnswer')}
             </label>
             <Input
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-              placeholder={t('enterAnswer') || '정답을 입력하세요'}
+              placeholder={t('enterAnswer')}
               className="h-14 bg-stone-800/80 border-amber-500/20 text-amber-50 placeholder:text-stone-500 rounded-2xl text-lg px-5 focus-visible:ring-amber-500/40 focus-visible:border-amber-500/50"
             />
           </div>
@@ -256,12 +256,12 @@ export function BossMission({
         <div className="space-y-3">
           <label className="text-xs font-black text-amber-400/80 tracking-widest uppercase flex items-center gap-2">
             <Sparkles className="w-4 h-4" />
-            {t('bossRecord') || '전투 기록 (선택)'}
+            {t('bossRecord')}
           </label>
           <Textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder={t('bossRecordPlaceholder') || '이 보스를 어떻게 물리쳤는지 기록으로 남겨보세요.'}
+            placeholder={t('bossRecordPlaceholder')}
             className="min-h-[100px] bg-stone-800/80 border-amber-500/20 text-amber-50 placeholder:text-stone-500 rounded-2xl text-base p-5 resize-none focus-visible:ring-amber-500/40 focus-visible:border-amber-500/50"
           />
         </div>
@@ -270,7 +270,7 @@ export function BossMission({
         <div className="space-y-3">
           <label className="text-xs font-black text-amber-400/80 tracking-widest uppercase flex items-center gap-2">
             <Upload className="w-4 h-4" />
-            {t('bossTrophy') || '전리품 사진 (선택)'}
+            {t('bossTrophy')}
           </label>
           {preview ? (
             <div className="relative aspect-video rounded-2xl overflow-hidden border border-amber-500/20 group">
@@ -291,7 +291,7 @@ export function BossMission({
                 <Upload className="w-7 h-7 text-amber-500/60 group-hover:text-amber-400" />
               </div>
               <span className="text-sm font-bold text-stone-500 group-hover:text-amber-400/70">
-                {t('uploadPhoto') || '사진 업로드'}
+                {t('uploadPhoto')}
               </span>
             </button>
           )}
@@ -305,9 +305,9 @@ export function BossMission({
           className="w-full h-16 text-xl font-black rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-600 text-stone-950 hover:from-amber-400 hover:to-yellow-500 shadow-xl shadow-amber-500/20 hover:shadow-amber-500/40 transition-all duration-300 disabled:opacity-40"
         >
           {isSubmitting ? (
-            <><Loader2 className="w-6 h-6 animate-spin mr-3" />{t('submitting') || '처리 중...'}</>
+            <><Loader2 className="w-6 h-6 animate-spin mr-3" />{t('submitting')}</>
           ) : (
-            <><Swords className="w-6 h-6 mr-3" />{t('bossSubmit') || '보스 격파하기'}</>
+            <><Swords className="w-6 h-6 mr-3" />{t('bossSubmit')}</>
           )}
         </Button>
       </div>

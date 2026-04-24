@@ -43,7 +43,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
   const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     if (files.length + images.length > 5) {
-      toast({ variant: 'destructive', title: '사진 초과', description: '사진은 최대 5장까지 업로드 가능합니다.' });
+      toast({ variant: 'destructive', title: t('photoLimitTitle'), description: t('photoLimitDesc') });
       return;
     }
     setPendingFiles(files);
@@ -102,7 +102,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
         setTags(prev => [...prev, val]);
         setTagInput('');
       } else if (tags.length >= 5) {
-        toast({ variant: 'destructive', title: '태그 제한', description: '태그는 최대 5개까지 가능합니다.' });
+        toast({ variant: 'destructive', title: t('tagLimitTitle'), description: t('tagLimitDesc') });
       }
     }
   };
@@ -113,16 +113,16 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
 
   const handleSubmit = async () => {
     if (!title.trim()) {
-      toast({ variant: 'destructive', title: '제목 누락', description: '이야기의 제목을 적어주세요.' });
+      toast({ variant: 'destructive', title: t('titleMissingTitle'), description: t('titleMissingDesc') });
       return;
     }
-    
+
     if (text.length < 5) {
-      toast({ variant: 'destructive', title: '내용 부족', description: '이야기를 최소 5자 이상 적어주세요.' });
+      toast({ variant: 'destructive', title: t('textShortTitle'), description: t('textShortDesc') });
       return;
     }
     if (!selectedTheme) {
-      toast({ variant: 'destructive', title: '테마 선택', description: '게시글의 테마를 하나 선택해주세요.' });
+      toast({ variant: 'destructive', title: t('themeMissingTitle'), description: t('themeMissingDesc') });
       return;
     }
 
@@ -157,14 +157,14 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
 
       const data = await res.json();
       if (res.ok) {
-        toast({ title: '기록 완료!', description: '전설의 페이지에 당신의 기록이 남겨졌습니다. (+빗방울)' });
+        toast({ title: t('postSuccessTitle'), description: t('postSuccessDesc') });
         router.push(`/${locale}/community`);
         router.refresh();
       } else {
         throw new Error(data.error);
       }
     } catch (error: any) {
-      toast({ variant: 'destructive', title: '오류 발생', description: error.message || '업로드 중 오류가 발생했습니다.' });
+      toast({ variant: 'destructive', title: t('errorTitle'), description: error.message || t('errorDesc') });
     } finally {
       setIsSubmitting(false);
     }
@@ -194,7 +194,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
     <div className="max-w-3xl mx-auto space-y-8">
       <div className="space-y-2">
         <h1 className="text-3xl font-black text-slate-800 tracking-tight">{t('writePost')}</h1>
-        <p className="text-slate-400 font-bold">당신의 모험을 전설로 남기세요</p>
+        <p className="text-slate-400 font-bold">{t('writeSubtitle')}</p>
       </div>
 
       <Card className="rounded-[2.5rem] border-none shadow-2xl overflow-hidden bg-white/80 backdrop-blur-xl">
@@ -202,7 +202,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
           
           {/* Theme Selector (필수) */}
           <div className="space-y-3">
-            <Label className="text-sm font-black text-slate-500 ml-1">테마 선택 *</Label>
+            <Label className="text-sm font-black text-slate-500 ml-1">{t('themeLabel')} *</Label>
             <div className="flex flex-wrap gap-2">
               {SELECTABLE_THEMES.map((theme) => {
                 const isSelected = selectedTheme === theme.id;
@@ -228,9 +228,9 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
 
           {/* Title */}
           <div className="space-y-3">
-            <Label className="text-sm font-black text-slate-500 ml-1">제목</Label>
-            <Input 
-              placeholder="게시글의 제목을 입력해주세요"
+            <Label className="text-sm font-black text-slate-500 ml-1">{t('titleLabel')}</Label>
+            <Input
+              placeholder={t('titlePlaceholder')}
               className="h-14 rounded-2xl border-slate-100 bg-slate-50/50 p-4 text-lg font-bold focus:ring-2 focus:ring-mint-light transition-all font-sans"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -250,7 +250,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
 
           {/* Tags (Chips) */}
           <div className="space-y-3">
-            <Label className="text-sm font-black text-slate-500 ml-1">태그</Label>
+            <Label className="text-sm font-black text-slate-500 ml-1">{t('tagLabel')}</Label>
             <div className="min-h-[56px] rounded-2xl border border-slate-100 bg-slate-50/50 p-3 flex flex-wrap gap-2 items-center focus-within:ring-2 focus-within:ring-mint-light transition-all">
               {tags.map((tag, i) => (
                 <span key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-mint-light text-mint-deep rounded-xl text-sm font-bold">
@@ -262,7 +262,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
               ))}
               <input
                 type="text"
-                placeholder={tags.length < 5 ? '태그 입력 후 스페이스바 또는 엔터...' : ''}
+                placeholder={tags.length < 5 ? t('tagPlaceholder') : ''}
                 className="flex-1 bg-transparent border-none outline-none min-w-[200px] text-sm font-bold text-slate-700 placeholder:text-slate-400 placeholder:font-medium"
                 value={tagInput}
                 onChange={e => setTagInput(e.target.value)}
@@ -298,7 +298,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
                   className="w-24 h-24 rounded-2xl bg-slate-50 border-2 border-dashed border-slate-200 flex flex-col items-center justify-center gap-2 hover:bg-slate-100 hover:border-sky transition-all group"
                 >
                   <Camera className="w-6 h-6 text-slate-400 group-hover:text-mint-deep group-hover:scale-110 transition-all" />
-                  <span className="text-[10px] font-black text-slate-400">사진 추가</span>
+                  <span className="text-[10px] font-black text-slate-400">{t('addPhoto')}</span>
                 </button>
               )}
             </div>
@@ -317,7 +317,13 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
           <div className="flex items-center gap-3 p-4 bg-mint-light/30 rounded-2xl border border-mint/30">
             <AlertCircle className="w-5 h-5 text-mint-deep/70" />
             <p className="text-xs font-bold text-mint-deep/80">
-              이야기를 기록하면 <span className="text-mint-deep font-extrabold">{images.length > 0 ? '50 빗방울' : '30 빗방울'}</span>가 즉시 적립됩니다.
+              {t.rich('rewardInfo', {
+                reward: () => (
+                  <span className="text-mint-deep font-extrabold">
+                    {images.length > 0 ? '50 🌧️' : '30 🌧️'}
+                  </span>
+                ),
+              })}
             </p>
           </div>
 
@@ -330,10 +336,10 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
             {isSubmitting ? (
               <>
                 <Loader2 className="w-6 h-6 animate-spin mr-3" />
-                기록하는 중...
+                {t('submitting')}
               </>
             ) : (
-              '기록 남기기'
+              t('writePost')
             )}
           </Button>
         </CardContent>
