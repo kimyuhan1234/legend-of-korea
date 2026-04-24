@@ -4,8 +4,10 @@ import Link from "next/link"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
 import { FoodImageWithFallback } from "@/components/features/food/FoodImageWithFallback"
 import { DupeCountrySelector } from "@/components/features/food/DupeCountrySelector"
+import { HealthSection } from "@/components/features/food/HealthSection"
 import { regions } from "@/lib/data/food-dupes"
 import { kfoodSpots } from "@/lib/data/kfood-spots"
+import { foodHealthData } from "@/lib/data/food-health"
 
 interface Props {
   params: { locale: string; region: string; foodId: string }
@@ -75,6 +77,9 @@ export default function FoodDetailPage({ params }: Props) {
   // 같은 도시의 K-Food Spot 최대 3개
   const relatedSpots = kfoodSpots.filter((s) => s.cityCode === food.region).slice(0, 3)
 
+  // 건강 효능 데이터 조회
+  const healthData = foodHealthData.find((h) => h.foodId === foodId)
+
   return (
     <div>
       <FoodTabNav locale={locale} activeTab="dupe" />
@@ -131,6 +136,9 @@ export default function FoodDetailPage({ params }: Props) {
             ))}
           </div>
         </div>
+
+        {/* 건강 효능 섹션 */}
+        {healthData && <HealthSection health={healthData} locale={locale} />}
 
         {/* 12개국 듀프 선택기 (레이더 차트 + 탭) */}
         <DupeCountrySelector food={food} locale={locale} />
