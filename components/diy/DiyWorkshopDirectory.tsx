@@ -24,7 +24,7 @@ function ExperienceDetail({
   return (
     <div>
       {/* 영상 (있으면) 또는 이미지 */}
-      <div className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden bg-snow mb-4">
+      <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-50 mb-4">
         {exp.videoSrc ? (
           <video
             key={exp.videoSrc}
@@ -34,7 +34,7 @@ function ExperienceDetail({
             muted
             playsInline
             preload="metadata"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
             aria-label={getL(exp.name, locale)}
           />
         ) : (
@@ -42,7 +42,7 @@ function ExperienceDetail({
             src={exp.image || '/images/diy/placeholder.jpg'}
             alt={getL(exp.name, locale)}
             fill
-            className="object-cover"
+            className="object-contain"
             unoptimized
           />
         )}
