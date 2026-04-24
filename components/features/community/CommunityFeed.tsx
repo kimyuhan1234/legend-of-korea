@@ -59,11 +59,11 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [cursor, setCursor] = useState<string | null>(null);
-  const [regionFilter, setRegionFilter] = useState('all');
+  const [themeFilter, setThemeFilter] = useState('all');
   const [hasMore, setHasMore] = useState(true);
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
 
-  const isRecipeTab = regionFilter === 'recipe';
+  const isRecipeTab = themeFilter === 'recipe';
 
   const observerTarget = useRef(null);
 
@@ -81,7 +81,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
       const url = new URL('/api/community/posts', window.location.origin);
       if (currentCursor) url.searchParams.set('cursor', currentCursor);
-      if (regionFilter !== 'all') url.searchParams.set('region', regionFilter);
+      if (themeFilter !== 'all' && themeFilter !== 'recipe') url.searchParams.set('theme', themeFilter);
 
       const res = await fetch(url.toString());
       const data = await res.json();
@@ -105,7 +105,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
   useEffect(() => {
     fetchPosts(null, true);
-  }, [regionFilter]);
+  }, [themeFilter]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -158,9 +158,9 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
         <h1 className="text-3xl font-black text-slate-800 tracking-tight">{t('title')}</h1>
         <div className="hidden md:flex items-center gap-3">
           <button
-            onClick={() => setRegionFilter('recipe')}
+            onClick={() => setThemeFilter('recipe')}
             className={`px-5 py-2.5 font-bold transition-all rounded-xl
-              ${regionFilter === 'recipe'
+              ${themeFilter === 'recipe'
                 ? 'bg-mint-deep text-white'
                 : 'bg-white border border-mist text-ink hover:border-mint-deep'
               }`}
@@ -178,8 +178,8 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
       {/* Category Tabs */}
       <CategoryTabs
-        currentCategory={regionFilter}
-        onSelect={setRegionFilter}
+        currentCategory={themeFilter}
+        onSelect={setThemeFilter}
         locale={locale}
       />
 

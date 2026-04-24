@@ -11,7 +11,7 @@ import { Camera, X, Loader2, AlertCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { toast } from '@/components/ui/use-toast';
 import Image from 'next/image';
-import { REGIONS } from '@/lib/constants/regions';
+import { SELECTABLE_THEMES, type PostTheme } from '@/lib/data/post-themes';
 import { RetroFilterCanvas } from '@/components/features/camera/RetroFilterCanvas';
 import { RETRO_FILTERS, applyFilterToFile } from '@/lib/camera/filters';
 
@@ -25,7 +25,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
   
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState<string>('all');
+  const [selectedTheme, setSelectedTheme] = useState<PostTheme | ''>('');
   
   // Tags logic
   const [tags, setTags] = useState<string[]>([]);
@@ -121,6 +121,10 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
       toast({ variant: 'destructive', title: '내용 부족', description: '이야기를 최소 5자 이상 적어주세요.' });
       return;
     }
+    if (!selectedTheme) {
+      toast({ variant: 'destructive', title: '테마 선택', description: '게시글의 테마를 하나 선택해주세요.' });
+      return;
+    }
 
     setIsSubmitting(true);
     try {
@@ -146,7 +150,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
           title,
           text,
           photos: photoUrls,
-          region: selectedRegion,
+          theme: selectedTheme || null,
           tags,
         }),
       });
@@ -196,28 +200,29 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
       <Card className="rounded-[2.5rem] border-none shadow-2xl overflow-hidden bg-white/80 backdrop-blur-xl">
         <CardContent className="p-8 space-y-8">
           
-          {/* Region Selector */}
-          <div className="space-y-3 relative z-30">
-            <Label className="text-sm font-black text-slate-500 ml-1">지역 선택</Label>
-            <div className="relative">
-              <select
-                value={selectedRegion}
-                onChange={(e) => setSelectedRegion(e.target.value)}
-                className="w-full max-w-[200px] h-14 px-4 py-3 border border-slate-100 rounded-2xl bg-slate-50/50 text-slate-700 font-bold
-                           appearance-none cursor-pointer focus:outline-none focus:ring-2 
-                           focus:ring-mint-light focus:border-mint-deep transition-all"
-              >
-                <option value="all">지역 선택</option>
-                {REGIONS.filter(r => r.code !== 'ad').map(region => (
-                  <option key={region.code} value={region.code}>
-                    {(region.name as any)[locale] || region.name.en}
-                  </option>
-                ))}
-              </select>
-              {/* Custom arrow for native select to keep it looking nice */}
-              <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 flex items-center">
-                <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-              </div>
+          {/* Theme Selector (필수) */}
+          <div className="space-y-3">
+            <Label className="text-sm font-black text-slate-500 ml-1">테마 선택 *</Label>
+            <div className="flex flex-wrap gap-2">
+              {SELECTABLE_THEMES.map((theme) => {
+                const isSelected = selectedTheme === theme.id;
+                const label = theme.label[locale as keyof typeof theme.label] || theme.label.en;
+                return (
+                  <button
+                    key={theme.id}
+                    type="button"
+                    onClick={() => setSelectedTheme(theme.id)}
+                    className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-sm transition-all ${
+                      isSelected
+                        ? 'bg-mint-deep text-white shadow-md scale-105'
+                        : 'bg-slate-50 border border-slate-200 text-slate-600 hover:border-mint-deep'
+                    }`}
+                  >
+                    <span className="text-base leading-none">{theme.emoji}</span>
+                    <span>{label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 

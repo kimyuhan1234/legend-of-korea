@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
+import { VALID_THEME_IDS } from '@/lib/data/post-themes';
 
 export async function GET(req: NextRequest) {
   try {
@@ -7,6 +8,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const cursor = searchParams.get('cursor');
     const region = searchParams.get('region');
+    const theme = searchParams.get('theme');
     const sort = searchParams.get('sort');
     const limitParam = searchParams.get('limit');
     
@@ -38,6 +40,10 @@ export async function GET(req: NextRequest) {
       query = query.eq('region', region);
     }
 
+    if (theme && theme !== 'all' && VALID_THEME_IDS.has(theme)) {
+      query = query.eq('theme', theme);
+    }
+
     const { data: posts, error } = await query;
 
     if (error) throw error;
@@ -61,7 +67,12 @@ export async function POST(req: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: '로그인이 필요합니다.' }, { status: 401 });
 
-    const { title, text, photos, region, tags } = await req.json();
+    const { title, text, photos, region, theme, tags } = await req.json();
+
+    // theme 유효성 체크 (null 허용 — 레거시/미분류 글)
+    const safeTheme = (typeof theme === 'string' && VALID_THEME_IDS.has(theme) && theme !== 'all')
+      ? theme
+      : null;
 
     if (!text || text.length < 5) {
       return NextResponse.json({ error: '내용을 5자 이상 입력해주세요.' }, { status: 400 });
@@ -86,6 +97,7 @@ export async function POST(req: NextRequest) {
         title,
         text,
         region: region || 'all',
+        theme: safeTheme,
         tags: tags || [],
         photos: photos || [],
         likes_count: 0

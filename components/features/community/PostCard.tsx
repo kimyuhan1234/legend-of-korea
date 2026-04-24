@@ -4,10 +4,11 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import {
-  Heart, MessageCircle, Share2, MapPin, MoreHorizontal,
+  Heart, MessageCircle, Share2, MoreHorizontal,
   Pencil, Trash2, X, Send, ChevronDown, ChevronUp,
 } from 'lucide-react';
 import { getRegionName } from '@/lib/constants/regions';
+import { getThemeLabel, getThemeEmoji } from '@/lib/data/post-themes';
 import { toast } from '@/components/ui/use-toast';
 import { RankBadge } from '@/components/features/rank/RankBadge';
 
@@ -15,6 +16,7 @@ export interface PostType {
   id: string;
   type: 'user' | 'ad';
   region: string;
+  theme?: string | null;
   title: string;
   text: string;
   tags: string[];
@@ -94,7 +96,8 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
   const [editSaving, setEditSaving] = useState(false);
 
   const isOwner = !!currentUserId && currentUserId === post.user_id;
-  const regionName = getRegionName(post.region, locale);
+  const themeLabel = getThemeLabel(post.theme, locale);
+  const themeEmoji = getThemeEmoji(post.theme);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -261,10 +264,10 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               <div className="flex items-center gap-2 flex-wrap">
                 <p className="font-bold text-slate-800 text-sm">{post.user?.nickname || 'Unknown'}</p>
                 {post.user_id && <RankBadge userId={post.user_id} size="sm" />}
-                {post.region && post.region !== 'all' && (
-                  <span className="inline-flex items-center gap-0.5 bg-mint-light text-mint-deep rounded-full px-2 py-0.5 text-xs font-medium">
-                    <MapPin className="w-3 h-3" />
-                    {regionName}
+                {post.theme && themeLabel && (
+                  <span className="inline-flex items-center gap-1 bg-mint-light text-mint-deep rounded-full px-2 py-0.5 text-xs font-bold">
+                    <span>{themeEmoji}</span>
+                    <span>{themeLabel}</span>
                   </span>
                 )}
               </div>
