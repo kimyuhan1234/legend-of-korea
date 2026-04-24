@@ -129,8 +129,10 @@ export default function TrafficPage() {
     (RECOMMENDED[departure] ?? []).includes(cityCode)
 
   // 서울 출발 → transport-routes.ts, 그 외 → departure-routes.ts
+  // 데이터는 방향과 무관하게 (departure, selectedCity) 쌍으로 조회하고,
+  // 렌더링 단계에서 isGoing 에 따라 from/to 레이블을 스왑한다.
   const seoulRoute = departure === 'seoul' ? TRANSPORT_ROUTES.find((r) => r.cityId === selectedCity) : null
-  const depRoute = departure !== 'seoul' ? getDepartureRoutes(effectiveDep, isGoing ? selectedCity : departure) : null
+  const depRoute = departure !== 'seoul' ? getDepartureRoutes(departure, selectedCity) : null
 
   const getDate = (key: string) => cardDates[key] ?? ''
   const getTime = (key: string) => cardTimes[key] ?? ''
@@ -239,9 +241,9 @@ export default function TrafficPage() {
               const time = getTime(cardKey)
               const durMin = parseDurationMinutes(opt.duration)
               const arrival = time ? calculateArrival(time, durMin) : ''
-              const transfer = getTransferInfo(effectiveDep, isGoing ? selectedCity : departure, opt.type)
-              const fromStation = getL(depName, locale)
-              const toStation = isGoing ? getL(opt.station, locale) : getL(depName, locale)
+              const transfer = getTransferInfo(departure, selectedCity, opt.type)
+              const fromStation = isGoing ? getL(depName, locale) : getL(opt.station, locale)
+              const toStation = isGoing ? getL(opt.station, locale) : getL(destName, locale)
 
               return (
                 <div
@@ -391,8 +393,8 @@ export default function TrafficPage() {
               const time = getTime(cardKey)
               const durMin = dopt.durationMinutes
               const arrival = time ? calculateArrival(time, durMin) : ''
-              const fromStation = getL(dopt.from, locale)
-              const toStation = getL(dopt.to, locale)
+              const fromStation = isGoing ? getL(dopt.from, locale) : getL(dopt.to, locale)
+              const toStation = isGoing ? getL(dopt.to, locale) : getL(dopt.from, locale)
 
               return (
                 <div key={cardKey} className={`bg-white rounded-2xl border p-6 transition-all ${dopt.available ? 'border-mist hover:border-mint hover:shadow-md' : 'border-mist opacity-60'}`}>
@@ -427,7 +429,7 @@ export default function TrafficPage() {
                         <div><label className="text-xs text-stone mb-1 block">{t('departDate')}</label><input type="date" value={date} onChange={(e) => setCardDates((p) => ({ ...p, [cardKey]: e.target.value }))} className="w-full bg-white border border-mist rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-mint-light focus:border-mint-deep" /></div>
                         <div><label className="text-xs text-stone mb-1 block">{t('departTime')}</label><input type="time" value={time} onChange={(e) => setCardTimes((p) => ({ ...p, [cardKey]: e.target.value }))} className="w-full bg-white border border-mist rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-mint-light focus:border-mint-deep" /></div>
                         {arrival && <p className="text-xs text-mint-deep font-bold">🕐 {t('arrivalEstimate', { time: arrival })}</p>}
-                        <AddToPlannerButton itemType="transport" itemData={{ direction, type: dopt.type, name: dopt.name, from: dopt.from, to: dopt.to, date: date || null, departureTime: time || null, arrivalTime: arrival || null, duration: dopt.duration, price: dopt.fixedPrice ?? '' }} cityId={selectedCity || departure} size="md" className="w-full justify-center" />
+                        <AddToPlannerButton itemType="transport" itemData={{ direction, type: dopt.type, name: dopt.name, from: isGoing ? dopt.from : dopt.to, to: isGoing ? dopt.to : dopt.from, date: date || null, departureTime: time || null, arrivalTime: arrival || null, duration: dopt.duration, price: dopt.fixedPrice ?? '' }} cityId={selectedCity || departure} size="md" className="w-full justify-center" />
                       </div>
                     </div>
                   )}
