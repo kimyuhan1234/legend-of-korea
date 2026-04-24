@@ -5,38 +5,59 @@ import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { TRANSPORT_ROUTES } from '@/lib/data/transport-routes'
 import { getTransferInfo } from '@/lib/data/transport-transfers'
-import { getDepartureRoutes, type DepartureOption } from '@/lib/data/departure-routes'
+import { getDepartureRoutes } from '@/lib/data/departure-routes'
 import { AddToPlannerButton } from '@/components/features/planner/AddToPlannerButton'
 
+type I18n5 = { ko: string; en: string; ja: string; 'zh-CN': string; 'zh-TW': string }
+
 // ── 출발지 5개 ──
-const DEPARTURES = [
-  { code: 'seoul', name: { ko: '서울', en: 'Seoul', ja: 'ソウル' }, icon: '🏙️' },
-  { code: 'incheon-airport', name: { ko: '인천국제공항', en: "Incheon Int'l Airport", ja: '仁川国際空港' }, icon: '✈️' },
-  { code: 'gimpo-airport', name: { ko: '김포국제공항', en: "Gimpo Int'l Airport", ja: '金浦国際空港' }, icon: '✈️' },
-  { code: 'busan', name: { ko: '부산', en: 'Busan', ja: '釜山' }, icon: '🌊' },
-  { code: 'gimhae-airport', name: { ko: '김해국제공항', en: "Gimhae Int'l Airport", ja: '金海国際空港' }, icon: '✈️' },
+const DEPARTURES: { code: string; name: I18n5; icon: string }[] = [
+  { code: 'seoul', name: { ko: '서울', en: 'Seoul', ja: 'ソウル', 'zh-CN': '首尔', 'zh-TW': '首爾' }, icon: '🏙️' },
+  { code: 'incheon-airport', name: { ko: '인천국제공항', en: "Incheon Int'l Airport", ja: '仁川国際空港', 'zh-CN': '仁川国际机场', 'zh-TW': '仁川國際機場' }, icon: '✈️' },
+  { code: 'gimpo-airport', name: { ko: '김포국제공항', en: "Gimpo Int'l Airport", ja: '金浦国際空港', 'zh-CN': '金浦国际机场', 'zh-TW': '金浦國際機場' }, icon: '✈️' },
+  { code: 'busan', name: { ko: '부산', en: 'Busan', ja: '釜山', 'zh-CN': '釜山', 'zh-TW': '釜山' }, icon: '🌊' },
+  { code: 'gimhae-airport', name: { ko: '김해국제공항', en: "Gimhae Int'l Airport", ja: '金海国際空港', 'zh-CN': '金海国际机场', 'zh-TW': '金海國際機場' }, icon: '✈️' },
 ]
 
-// ── 도착지 9개 도시 ──
-const CITIES = [
-  { code: 'jeonju', name: { ko: '전주', en: 'Jeonju', ja: '全州' } },
-  { code: 'seoul', name: { ko: '서울', en: 'Seoul', ja: 'ソウル' } },
-  { code: 'busan', name: { ko: '부산', en: 'Busan', ja: '釜山' } },
-  { code: 'jeju', name: { ko: '제주', en: 'Jeju', ja: '済州' } },
-  { code: 'gyeongju', name: { ko: '경주', en: 'Gyeongju', ja: '慶州' } },
-  { code: 'tongyeong', name: { ko: '통영', en: 'Tongyeong', ja: '統営' } },
-  { code: 'cheonan', name: { ko: '천안', en: 'Cheonan', ja: '天安' } },
-  { code: 'yongin', name: { ko: '용인', en: 'Yongin', ja: '龍仁' } },
-  { code: 'icheon', name: { ko: '이천', en: 'Icheon', ja: '利川' } },
+// ── 도착지 (17개 광역시도 + 주요 도시) ──
+const CITIES: { code: string; name: I18n5 }[] = [
+  // 기존 9개 (레거시 + 광역시)
+  { code: 'seoul',     name: { ko: '서울',   en: 'Seoul',     ja: 'ソウル', 'zh-CN': '首尔',     'zh-TW': '首爾' } },
+  { code: 'busan',     name: { ko: '부산',   en: 'Busan',     ja: '釜山',   'zh-CN': '釜山',     'zh-TW': '釜山' } },
+  { code: 'jeju',      name: { ko: '제주',   en: 'Jeju',      ja: '済州',   'zh-CN': '济州',     'zh-TW': '濟州' } },
+  { code: 'jeonju',    name: { ko: '전주',   en: 'Jeonju',    ja: '全州',   'zh-CN': '全州',     'zh-TW': '全州' } },
+  { code: 'gyeongju',  name: { ko: '경주',   en: 'Gyeongju',  ja: '慶州',   'zh-CN': '庆州',     'zh-TW': '慶州' } },
+  { code: 'tongyeong', name: { ko: '통영',   en: 'Tongyeong', ja: '統営',   'zh-CN': '统营',     'zh-TW': '統營' } },
+  { code: 'cheonan',   name: { ko: '천안',   en: 'Cheonan',   ja: '天安',   'zh-CN': '天安',     'zh-TW': '天安' } },
+  { code: 'yongin',    name: { ko: '용인',   en: 'Yongin',    ja: '龍仁',   'zh-CN': '龙仁',     'zh-TW': '龍仁' } },
+  { code: 'icheon',    name: { ko: '이천',   en: 'Icheon',    ja: '利川',   'zh-CN': '利川',     'zh-TW': '利川' } },
+  // 신규 광역시 (7개)
+  { code: 'incheon',   name: { ko: '인천',   en: 'Incheon',   ja: '仁川',   'zh-CN': '仁川',     'zh-TW': '仁川' } },
+  { code: 'daejeon',   name: { ko: '대전',   en: 'Daejeon',   ja: '大田',   'zh-CN': '大田',     'zh-TW': '大田' } },
+  { code: 'daegu',     name: { ko: '대구',   en: 'Daegu',     ja: '大邱',   'zh-CN': '大邱',     'zh-TW': '大邱' } },
+  { code: 'gwangju',   name: { ko: '광주',   en: 'Gwangju',   ja: '光州',   'zh-CN': '光州',     'zh-TW': '光州' } },
+  { code: 'ulsan',     name: { ko: '울산',   en: 'Ulsan',     ja: '蔚山',   'zh-CN': '蔚山',     'zh-TW': '蔚山' } },
+  { code: 'sejong',    name: { ko: '세종',   en: 'Sejong',    ja: '世宗',   'zh-CN': '世宗',     'zh-TW': '世宗' } },
+  // 신규 주요 도시 (6개)
+  { code: 'suwon',     name: { ko: '수원',   en: 'Suwon',     ja: '水原',   'zh-CN': '水原',     'zh-TW': '水原' } },
+  { code: 'gangneung', name: { ko: '강릉',   en: 'Gangneung', ja: '江陵',   'zh-CN': '江陵',     'zh-TW': '江陵' } },
+  { code: 'chuncheon', name: { ko: '춘천',   en: 'Chuncheon', ja: '春川',   'zh-CN': '春川',     'zh-TW': '春川' } },
+  { code: 'yeosu',     name: { ko: '여수',   en: 'Yeosu',     ja: '麗水',   'zh-CN': '丽水',     'zh-TW': '麗水' } },
+  { code: 'andong',    name: { ko: '안동',   en: 'Andong',    ja: '安東',   'zh-CN': '安东',     'zh-TW': '安東' } },
+  { code: 'sokcho',    name: { ko: '속초',   en: 'Sokcho',    ja: '束草',   'zh-CN': '束草',     'zh-TW': '束草' } },
 ]
 
 // ── 출발지별 도착지 필터 + 추천 ──
 const ROUTES: Record<string, string[]> = {
-  'seoul': ['jeonju', 'busan', 'jeju', 'gyeongju', 'tongyeong', 'cheonan', 'yongin', 'icheon'],
-  'incheon-airport': ['seoul', 'cheonan', 'yongin', 'icheon', 'jeonju', 'busan', 'jeju'],
-  'gimpo-airport': ['seoul', 'cheonan', 'yongin', 'icheon', 'jeonju', 'jeju'],
-  'busan': ['gyeongju', 'tongyeong', 'seoul', 'jeonju'],
-  'gimhae-airport': ['busan', 'gyeongju', 'tongyeong'],
+  'seoul': [
+    'jeonju', 'busan', 'jeju', 'gyeongju', 'tongyeong', 'cheonan', 'yongin', 'icheon',
+    'incheon', 'daejeon', 'daegu', 'gwangju', 'ulsan', 'sejong',
+    'suwon', 'gangneung', 'chuncheon', 'yeosu', 'andong', 'sokcho',
+  ],
+  'incheon-airport': ['seoul', 'cheonan', 'yongin', 'icheon', 'jeonju', 'busan', 'jeju', 'daejeon', 'daegu', 'gwangju'],
+  'gimpo-airport': ['seoul', 'cheonan', 'yongin', 'icheon', 'jeonju', 'jeju', 'gwangju', 'ulsan', 'yeosu'],
+  'busan': ['gyeongju', 'tongyeong', 'seoul', 'jeonju', 'daegu', 'ulsan'],
+  'gimhae-airport': ['busan', 'gyeongju', 'tongyeong', 'daegu', 'ulsan'],
 }
 
 const RECOMMENDED: Record<string, string[]> = {
@@ -52,8 +73,8 @@ const TYPE_LABEL: Record<string, { ko: string; en: string; ja: string }> = {
   flight: { ko: '항공', en: 'Flight', ja: '航空' },
 }
 
-function getL(field: { ko: string; en: string; ja: string }, locale: string): string {
-  return field[locale as keyof typeof field] || field.en || field.ko
+function getL(field: Record<string, string>, locale: string): string {
+  return field[locale] || field.en || field.ko
 }
 
 function minLabel(locale: string): string {

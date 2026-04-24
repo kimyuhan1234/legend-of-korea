@@ -274,6 +274,182 @@ export const TRANSPORT_ROUTES: TransportRoute[] = [
       },
     },
   },
+  // ── 신규 광역시 (7개) ─────────────────────────
+  {
+    cityId: 'incheon',
+    options: [
+      { type: 'bus', available: true,
+        station: { ko: '인천역 / 부평역', ja: '仁川駅／富平駅', en: 'Incheon / Bupyeong Station' },
+        duration: '1~1.5h', fixedPrice: '₩1,450~', bookingUrl: '' },
+    ],
+    lastMile: {
+      taxi: { minutes: 10, koreanAddress: { ko: '인천 시내로 가주세요', ja: '仁川市内までお願いします', en: 'To Incheon downtown, please' } },
+    },
+  },
+  {
+    cityId: 'daejeon',
+    options: [
+      { type: 'ktx', available: true,
+        station: { ko: '대전역', ja: '大田駅', en: 'Daejeon Station' },
+        duration: '50m~1h', fixedPrice: '₩23,700~', bookingUrl: KORAIL },
+      { type: 'bus', available: true,
+        station: { ko: '대전복합터미널', ja: '大田総合ターミナル', en: 'Daejeon Terminal' },
+        duration: '2h', fixedPrice: '₩11,400~', bookingUrl: KOBUS },
+    ],
+    lastMile: {
+      taxi: { minutes: 10, koreanAddress: { ko: '대전역/둔산동으로 가주세요', ja: '大田駅または屯山洞までお願いします', en: 'To Daejeon Station / Dunsan-dong, please' } },
+    },
+  },
+  {
+    cityId: 'daegu',
+    options: [
+      { type: 'ktx', available: true,
+        station: { ko: '동대구역', ja: '東大邱駅', en: 'Dongdaegu Station' },
+        duration: '1h 40m', fixedPrice: '₩43,500~', bookingUrl: KORAIL },
+      { type: 'bus', available: true,
+        station: { ko: '동대구복합환승센터', ja: '東大邱総合乗換センター', en: 'Dongdaegu Terminal' },
+        duration: '3h 30m', fixedPrice: '₩22,500~', bookingUrl: KOBUS },
+    ],
+    lastMile: {
+      taxi: { minutes: 12, koreanAddress: { ko: '동성로/수성못으로 가주세요', ja: '東城路または寿城池までお願いします', en: 'To Dongseong-ro / Suseong Lake, please' } },
+    },
+  },
+  {
+    cityId: 'gwangju',
+    options: [
+      { type: 'ktx', available: true,
+        station: { ko: '광주송정역', ja: '光州松汀駅', en: 'Gwangju Songjeong Station' },
+        duration: '1h 40m', fixedPrice: '₩46,800~', bookingUrl: KORAIL },
+      { type: 'bus', available: true,
+        station: { ko: '광주종합버스터미널 (유스퀘어)', ja: '光州総合ターミナル', en: 'Gwangju U-Square Terminal' },
+        duration: '3h 30m', fixedPrice: '₩21,700~', bookingUrl: KOBUS },
+      { type: 'flight', available: true,
+        station: { ko: '광주공항', ja: '光州空港', en: 'Gwangju Airport' },
+        duration: '1h', fixedPrice: '₩50,000~', bookingUrl: SKYSCANNER },
+    ],
+    lastMile: {
+      taxi: { minutes: 15, koreanAddress: { ko: '광주 상무지구/충장로로 가주세요', ja: '尚武地区または忠壯路までお願いします', en: 'To Sangmu / Chungjang-ro, please' } },
+    },
+  },
+  {
+    cityId: 'ulsan',
+    options: [
+      { type: 'ktx', available: true,
+        station: { ko: '울산역(통도사)', ja: '蔚山駅（通度寺）', en: 'Ulsan (Tongdosa) Station' },
+        duration: '2h 15m', fixedPrice: '₩53,500~', bookingUrl: KORAIL },
+      { type: 'bus', available: true,
+        station: { ko: '울산고속버스터미널', ja: '蔚山高速バスターミナル', en: 'Ulsan Bus Terminal' },
+        duration: '4h 30m', fixedPrice: '₩27,900~', bookingUrl: KOBUS },
+      { type: 'flight', available: true,
+        station: { ko: '울산공항', ja: '蔚山空港', en: 'Ulsan Airport' },
+        duration: '1h', fixedPrice: '₩60,000~', bookingUrl: SKYSCANNER },
+    ],
+    lastMile: {
+      taxi: { minutes: 20, koreanAddress: { ko: '태화강/해운대 방면으로 가주세요', ja: '太和江または海雲台までお願いします', en: 'To Taehwa River / Haeundae, please' } },
+    },
+  },
+  {
+    cityId: 'sejong',
+    options: [
+      { type: 'ktx', available: true,
+        station: { ko: '오송역 → 세종 셔틀', ja: '五松駅→世宗シャトル', en: 'Osong Station + shuttle' },
+        duration: '1h 30m', fixedPrice: '₩18,000~', bookingUrl: KORAIL },
+      { type: 'bus', available: true,
+        station: { ko: '세종고속시외버스터미널', ja: '世宗ターミナル', en: 'Sejong Terminal' },
+        duration: '1h 40m', fixedPrice: '₩13,000~', bookingUrl: KOBUS },
+    ],
+    lastMile: {
+      taxi: { minutes: 10, koreanAddress: { ko: '정부세종청사/호수공원으로 가주세요', ja: '政府世宗庁舎または湖水公園までお願いします', en: 'To Government Complex / Lake Park, please' } },
+    },
+  },
+  // ── 신규 주요 도시 (6개) ───────────────────────
+  {
+    cityId: 'suwon',
+    options: [
+      { type: 'ktx', available: true,
+        station: { ko: '수원역', ja: '水原駅', en: 'Suwon Station' },
+        duration: '26m', fixedPrice: '₩8,400~', bookingUrl: KORAIL },
+      { type: 'bus', available: true,
+        station: { ko: '수원역 (지하철 1호선)', ja: '水原駅（地下鉄1号線）', en: 'Suwon Station (Line 1)' },
+        duration: '50m~1h', fixedPrice: '₩1,450~', bookingUrl: '' },
+    ],
+    lastMile: {
+      taxi: { minutes: 8, koreanAddress: { ko: '수원 화성/행궁동으로 가주세요', ja: '水原華城または行宮洞までお願いします', en: 'To Hwaseong / Haenggung-dong, please' } },
+    },
+  },
+  {
+    cityId: 'gangneung',
+    options: [
+      { type: 'ktx', available: true,
+        station: { ko: '강릉역 (KTX 강릉선)', ja: '江陵駅（KTX江陵線）', en: 'Gangneung Station (KTX)' },
+        duration: '2h', fixedPrice: '₩27,600~', bookingUrl: KORAIL },
+      { type: 'bus', available: true,
+        station: { ko: '강릉고속버스터미널', ja: '江陵高速バスターミナル', en: 'Gangneung Bus Terminal' },
+        duration: '3h 30m', fixedPrice: '₩16,800~', bookingUrl: KOBUS },
+    ],
+    lastMile: {
+      taxi: { minutes: 10, koreanAddress: { ko: '경포해변/안목카페거리로 가주세요', ja: '鏡浦海辺または安木カフェ通りまでお願いします', en: 'To Gyeongpo Beach / Anmok Cafe Street, please' } },
+    },
+  },
+  {
+    cityId: 'chuncheon',
+    options: [
+      { type: 'ktx', available: true,
+        station: { ko: '춘천역 (ITX-청춘)', ja: '春川駅（ITX青春）', en: 'Chuncheon Station (ITX-Cheongchun)' },
+        duration: '1h 20m', fixedPrice: '₩9,800~', bookingUrl: KORAIL },
+      { type: 'bus', available: true,
+        station: { ko: '춘천고속버스터미널', ja: '春川高速バスターミナル', en: 'Chuncheon Bus Terminal' },
+        duration: '1h 30m', fixedPrice: '₩8,100~', bookingUrl: KOBUS },
+    ],
+    lastMile: {
+      taxi: { minutes: 8, koreanAddress: { ko: '명동 닭갈비골목/남이섬 선착장으로 가주세요', ja: '明洞タッカルビ横丁または南怡島船着場までお願いします', en: 'To Myeongdong dakgalbi / Nami Island dock, please' } },
+    },
+  },
+  {
+    cityId: 'yeosu',
+    options: [
+      { type: 'ktx', available: true,
+        station: { ko: '여수엑스포역', ja: '麗水エキスポ駅', en: 'Yeosu Expo Station' },
+        duration: '3h 10m', fixedPrice: '₩47,200~', bookingUrl: KORAIL },
+      { type: 'bus', available: true,
+        station: { ko: '여수종합버스터미널', ja: '麗水総合バスターミナル', en: 'Yeosu Bus Terminal' },
+        duration: '4h 30m', fixedPrice: '₩30,600~', bookingUrl: KOBUS },
+      { type: 'flight', available: true,
+        station: { ko: '여수공항', ja: '麗水空港', en: 'Yeosu Airport' },
+        duration: '1h', fixedPrice: '₩70,000~', bookingUrl: SKYSCANNER },
+    ],
+    lastMile: {
+      taxi: { minutes: 15, koreanAddress: { ko: '돌산공원/오동도로 가주세요', ja: '突山公園または梧桐島までお願いします', en: 'To Dolsan Park / Odongdo, please' } },
+    },
+  },
+  {
+    cityId: 'andong',
+    options: [
+      { type: 'ktx', available: true,
+        station: { ko: '안동역 (KTX-이음)', ja: '安東駅（KTX-イウム）', en: 'Andong Station (KTX-Eum)' },
+        duration: '2h', fixedPrice: '₩27,500~', bookingUrl: KORAIL },
+      { type: 'bus', available: true,
+        station: { ko: '안동터미널', ja: '安東ターミナル', en: 'Andong Terminal' },
+        duration: '3h', fixedPrice: '₩20,000~', bookingUrl: KOBUS },
+    ],
+    lastMile: {
+      taxi: { minutes: 15, koreanAddress: { ko: '하회마을/찜닭골목으로 가주세요', ja: '河回村または安東チムタク横丁までお願いします', en: 'To Hahoe Village / Jjimdak alley, please' } },
+    },
+  },
+  {
+    cityId: 'sokcho',
+    options: [
+      { type: 'ktx', available: false,
+        station: { ko: 'KTX 미연결', ja: 'KTX未接続', en: 'No KTX service' },
+        duration: '-', bookingUrl: '' },
+      { type: 'bus', available: true,
+        station: { ko: '속초시외버스터미널', ja: '束草市外バスターミナル', en: 'Sokcho Intercity Terminal' },
+        duration: '2h 30m', fixedPrice: '₩18,500~', bookingUrl: KOBUS },
+    ],
+    lastMile: {
+      taxi: { minutes: 10, koreanAddress: { ko: '속초중앙시장/설악산 입구로 가주세요', ja: '束草中央市場または雪岳山入口までお願いします', en: 'To Sokcho Jungang Market / Seoraksan, please' } },
+    },
+  },
 ]
 
 export function getRouteByCity(cityId: string): TransportRoute | null {
