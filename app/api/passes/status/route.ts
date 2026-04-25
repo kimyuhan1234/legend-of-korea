@@ -5,10 +5,36 @@ import { isAdminEmail } from '@/lib/auth/admin'
 
 export const dynamic = 'force-dynamic'
 
+// 모든 피처를 해제한 풀 액세스 응답 — TEST_MODE / ADMIN 바이패스에서 공용
+function fullAccessResponse(authenticated: boolean, flags?: { isAdmin?: boolean; testMode?: boolean }) {
+  return NextResponse.json({
+    authenticated,
+    ...(flags?.isAdmin ? { isAdmin: true } : {}),
+    ...(flags?.testMode ? { testMode: true } : {}),
+    passes: ['move', 'live', 'story', 'allinone'] as PassId[],
+    hasAllInOne: true,
+    features: {
+      traffic: true, spot: true, ai_curation: true,
+      kfood: true, stay: true, ootd: true,
+      quest: true, diy: true, memories: true,
+      vip_badge: true, lp_multiplier_2x: true,
+    },
+    creditsRemaining: 0,
+  })
+}
+
 // 유저 패스 상태 조회 — 활성 패스 목록 + 피처 잠금/해제 플래그
 // 프런트엔드에서 "이 유저가 AI 큐레이션 쓸 수 있나?" 판단에 사용
 export async function GET() {
   try {
+    // [TEST_MODE 우회] 테스트 기간 동안 모든 사용자(비로그인 포함)에게 풀 액세스.
+    // 환경변수만 false 로 바꾸면 실제 패스 체크 로직이 그대로 복원됨.
+    if (process.env.TEST_MODE === 'true') {
+      const supabase = await createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      return fullAccessResponse(!!user, { testMode: true })
+    }
+
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
 
@@ -22,21 +48,8 @@ export async function GET() {
     }
 
     // [ADMIN 우회] ADMIN_EMAILS 에 포함된 계정은 AllInOne 보유자처럼 처리
-    // creditsRemaining 은 UI 에서 제거됐지만 planner 등에서 필드 자체는 참조하므로 0 반환
     if (isAdminEmail(user.email)) {
-      return NextResponse.json({
-        authenticated: true,
-        isAdmin: true,
-        passes: ['move', 'live', 'story', 'allinone'] as PassId[],
-        hasAllInOne: true,
-        features: {
-          traffic: true, spot: true, ai_curation: true,
-          kfood: true, stay: true, ootd: true,
-          quest: true, diy: true, memories: true,
-          vip_badge: true, lp_multiplier_2x: true,
-        },
-        creditsRemaining: 0,
-      })
+      return fullAccessResponse(true, { isAdmin: true })
     }
 
     // 활성 구독 전체 + plan_type 조인
