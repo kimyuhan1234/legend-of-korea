@@ -98,6 +98,10 @@ export function KakaoMap({
   const circleRef = useRef<unknown>(null)
   const userOverlayRef = useRef<unknown>(null)
   const [error, setError] = useState<string | null>(null)
+  // SDK 로드 + 지도 인스턴스 준비 완료 신호.
+  // ref 할당만으로는 리렌더가 안 일어나 마커/원/사용자위치 effect 가
+  // 비어있는 상태로 한 번만 실행되고 끝나는 race 를 막는다.
+  const [mapReady, setMapReady] = useState(false)
 
   // SDK 로드 + 지도 초기화
   useEffect(() => {
@@ -116,6 +120,7 @@ export function KakaoMap({
           center,
           level,
         })
+        setMapReady(true)
       })
       .catch((e: Error) => setError(e.message))
 
@@ -125,14 +130,16 @@ export function KakaoMap({
 
   // 중심/줌 변경 시 반영
   useEffect(() => {
+    if (!mapReady) return
     const m = mapRef.current as { setCenter?: (c: unknown) => void; setLevel?: (n: number) => void } | null
     if (!m || !window.kakao?.maps) return
     m.setCenter?.(new window.kakao.maps.LatLng(centerLat, centerLng))
     m.setLevel?.(level)
-  }, [centerLat, centerLng, level])
+  }, [mapReady, centerLat, centerLng, level])
 
   // 마커 렌더링 (CustomOverlay로 색상 구분)
   useEffect(() => {
+    if (!mapReady) return
     const map = mapRef.current as { getLevel?: () => number } | null
     if (!map || !window.kakao?.maps) return
     const maps = window.kakao.maps
@@ -161,10 +168,11 @@ export function KakaoMap({
       o.setMap(mapRef.current)
       overlayRefs.current.push(overlay)
     })
-  }, [markers])
+  }, [mapReady, markers])
 
   // 반경 원
   useEffect(() => {
+    if (!mapReady) return
     if (!mapRef.current || !window.kakao?.maps) return
     const maps = window.kakao.maps
     if (circleRef.current) {
@@ -187,10 +195,11 @@ export function KakaoMap({
       c.setMap(mapRef.current)
       circleRef.current = circle
     }
-  }, [radiusMeters, centerLat, centerLng])
+  }, [mapReady, radiusMeters, centerLat, centerLng])
 
   // 사용자 위치 마커 (파란 점)
   useEffect(() => {
+    if (!mapReady) return
     if (!mapRef.current || !window.kakao?.maps) return
     const maps = window.kakao.maps
     if (userOverlayRef.current) {
@@ -210,7 +219,7 @@ export function KakaoMap({
     const o = overlay as { setMap: (m: unknown) => void }
     o.setMap(mapRef.current)
     userOverlayRef.current = overlay
-  }, [userLocation])
+  }, [mapReady, userLocation])
 
   if (error) {
     return (
