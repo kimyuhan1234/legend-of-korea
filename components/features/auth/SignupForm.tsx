@@ -37,6 +37,8 @@ const TEXT: Record<Lang, {
   successDesc: string
   emailConfirmTitle: string
   emailConfirmDesc: string
+  testBannerTitle: string
+  testBannerDesc: string
   errors: {
     MISSING_FIELDS: string
     NICKNAME_TOO_LONG: string
@@ -69,6 +71,8 @@ const TEXT: Record<Lang, {
     successDesc: "Cloud with you에 오신 것을 환영합니다!",
     emailConfirmTitle: "이메일 확인 필요",
     emailConfirmDesc: "받은편지함에서 인증 메일을 확인해주세요.",
+    testBannerTitle: "현재 테스트 기간 — 모든 기능 무료!",
+    testBannerDesc: "테스트 기간이 종료되면 일부 기능은 유료 패스가 필요합니다. 지금 가입하고 모든 기능을 체험해보세요!",
     errors: {
       MISSING_FIELDS: "모든 필드를 입력해주세요.",
       NICKNAME_TOO_LONG: "닉네임은 20자 이하로 입력해주세요.",
@@ -101,6 +105,8 @@ const TEXT: Record<Lang, {
     successDesc: "Cloud with you へようこそ！",
     emailConfirmTitle: "メール確認が必要",
     emailConfirmDesc: "受信トレイで認証メールをご確認ください。",
+    testBannerTitle: "ベータ期間 — 全機能無料！",
+    testBannerDesc: "ベータ期間終了後、一部の機能は有料パスが必要になります。今すぐ登録して全機能をお試しください！",
     errors: {
       MISSING_FIELDS: "すべての項目を入力してください。",
       NICKNAME_TOO_LONG: "ニックネームは20文字以内で入力してください。",
@@ -133,6 +139,8 @@ const TEXT: Record<Lang, {
     successDesc: "Welcome to Cloud with you!",
     emailConfirmTitle: "Email verification required",
     emailConfirmDesc: "Please check your inbox for the verification email.",
+    testBannerTitle: "Beta Period — All features free!",
+    testBannerDesc: "Some features will require a paid pass after the beta period. Sign up now and try everything for free!",
     errors: {
       MISSING_FIELDS: "Please fill in all fields.",
       NICKNAME_TOO_LONG: "Nickname must be 20 characters or fewer.",
@@ -165,6 +173,8 @@ const TEXT: Record<Lang, {
     successDesc: "欢迎来到 Cloud with you！",
     emailConfirmTitle: "需要邮箱验证",
     emailConfirmDesc: "请在收件箱查看验证邮件。",
+    testBannerTitle: "测试期间 — 所有功能免费！",
+    testBannerDesc: "测试期结束后，部分功能需要付费通行证。现在注册，免费体验所有功能！",
     errors: {
       MISSING_FIELDS: "请填写所有字段。",
       NICKNAME_TOO_LONG: "昵称不能超过20个字符。",
@@ -197,6 +207,8 @@ const TEXT: Record<Lang, {
     successDesc: "歡迎來到 Cloud with you！",
     emailConfirmTitle: "需要信箱驗證",
     emailConfirmDesc: "請在收件匣查看驗證信件。",
+    testBannerTitle: "測試期間 — 所有功能免費！",
+    testBannerDesc: "測試期結束後，部分功能需要付費通行證。現在註冊，免費體驗所有功能！",
     errors: {
       MISSING_FIELDS: "請填寫所有欄位。",
       NICKNAME_TOO_LONG: "暱稱不能超過20個字元。",
@@ -294,8 +306,21 @@ export function SignupForm({ locale }: SignupFormProps) {
     transition-all w-full
   `
 
+  const isTestMode = process.env.NEXT_PUBLIC_TEST_MODE === 'true'
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+      {isTestMode && (
+        <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
+          <p className="text-sm font-medium text-sky-800">
+            🎉 {t.testBannerTitle}
+          </p>
+          <p className="text-xs text-sky-600 mt-1 leading-relaxed">
+            {t.testBannerDesc}
+          </p>
+        </div>
+      )}
+
       {error && (
         <div className="px-4 py-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">
           {error}
