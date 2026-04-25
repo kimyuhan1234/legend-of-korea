@@ -1,17 +1,54 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { signupWithEmail } from "@/lib/auth/actions"
+import { checkPasswordRules, type PasswordRuleKey } from "@/lib/auth/password-rules"
+import { toast } from "@/components/ui/use-toast"
 
 interface SignupFormProps {
   locale: string
 }
 
-const TEXT = {
+type Lang = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
+
+const TEXT: Record<Lang, {
+  email: string
+  password: string
+  passwordConfirm: string
+  nickname: string
+  language: string
+  submit: string
+  submitting: string
+  hasAccount: string
+  login: string
+  emailPlaceholder: string
+  passwordPlaceholder: string
+  passwordConfirmPlaceholder: string
+  nicknamePlaceholder: string
+  agreePrivacy: string
+  agreeTerms: string
+  view: string
+  rules: Record<PasswordRuleKey, string>
+  passwordMismatch: string
+  passwordMatch: string
+  successTitle: string
+  successDesc: string
+  emailConfirmTitle: string
+  emailConfirmDesc: string
+  errors: {
+    MISSING_FIELDS: string
+    NICKNAME_TOO_LONG: string
+    PASSWORD_RULES: string
+    EMAIL_TAKEN: string
+    GENERIC: string
+  }
+}> = {
   ko: {
     email: "이메일",
-    password: "비밀번호 (8자 이상)",
+    password: "비밀번호",
+    passwordConfirm: "비밀번호 확인",
     nickname: "닉네임 (최대 20자)",
     language: "서비스 언어",
     submit: "회원가입",
@@ -20,15 +57,30 @@ const TEXT = {
     login: "로그인",
     emailPlaceholder: "이메일을 입력하세요",
     passwordPlaceholder: "비밀번호를 입력하세요",
+    passwordConfirmPlaceholder: "비밀번호를 다시 입력하세요",
     nicknamePlaceholder: "닉네임을 입력하세요",
-    success: "가입이 완료되었습니다! 로그인해주세요.",
     agreePrivacy: "개인정보처리방침에 동의합니다 (필수)",
     agreeTerms: "이용약관에 동의합니다 (필수)",
     view: "보기",
+    rules: { minLength: "8자 이상", hasUppercase: "영문 대문자 포함", hasLowercase: "영문 소문자 포함", hasNumber: "숫자 포함", hasSpecial: "특수문자 포함 (!@#$%^&* 등)" },
+    passwordMismatch: "비밀번호가 일치하지 않습니다",
+    passwordMatch: "비밀번호가 일치합니다",
+    successTitle: "🎉 회원가입 완료!",
+    successDesc: "Cloud with you에 오신 것을 환영합니다!",
+    emailConfirmTitle: "이메일 확인 필요",
+    emailConfirmDesc: "받은편지함에서 인증 메일을 확인해주세요.",
+    errors: {
+      MISSING_FIELDS: "모든 필드를 입력해주세요.",
+      NICKNAME_TOO_LONG: "닉네임은 20자 이하로 입력해주세요.",
+      PASSWORD_RULES: "비밀번호 규칙을 확인해주세요.",
+      EMAIL_TAKEN: "이미 사용 중인 이메일입니다.",
+      GENERIC: "회원가입 중 오류가 발생했습니다.",
+    },
   },
   ja: {
     email: "メールアドレス",
-    password: "パスワード（8文字以上）",
+    password: "パスワード",
+    passwordConfirm: "パスワード確認",
     nickname: "ニックネーム（20文字以内）",
     language: "言語設定",
     submit: "新規登録",
@@ -37,15 +89,30 @@ const TEXT = {
     login: "ログイン",
     emailPlaceholder: "メールアドレスを入力",
     passwordPlaceholder: "パスワードを入力",
+    passwordConfirmPlaceholder: "パスワードを再入力",
     nicknamePlaceholder: "ニックネームを入力",
-    success: "登録が完了しました！ログインしてください。",
     agreePrivacy: "プライバシーポリシーに同意します (必須)",
     agreeTerms: "利用規約に同意します (必須)",
     view: "見る",
+    rules: { minLength: "8文字以上", hasUppercase: "英大文字を含む", hasLowercase: "英小文字を含む", hasNumber: "数字を含む", hasSpecial: "特殊文字を含む (!@#$%^&* 等)" },
+    passwordMismatch: "パスワードが一致しません",
+    passwordMatch: "パスワードが一致しました",
+    successTitle: "🎉 新規登録完了！",
+    successDesc: "Cloud with you へようこそ！",
+    emailConfirmTitle: "メール確認が必要",
+    emailConfirmDesc: "受信トレイで認証メールをご確認ください。",
+    errors: {
+      MISSING_FIELDS: "すべての項目を入力してください。",
+      NICKNAME_TOO_LONG: "ニックネームは20文字以内で入力してください。",
+      PASSWORD_RULES: "パスワード規則をご確認ください。",
+      EMAIL_TAKEN: "すでに使用中のメールアドレスです。",
+      GENERIC: "登録中にエラーが発生しました。",
+    },
   },
   en: {
     email: "Email",
-    password: "Password (min. 8 characters)",
+    password: "Password",
+    passwordConfirm: "Confirm password",
     nickname: "Nickname (max 20 characters)",
     language: "Language",
     submit: "Sign Up",
@@ -54,15 +121,30 @@ const TEXT = {
     login: "Sign In",
     emailPlaceholder: "Enter your email",
     passwordPlaceholder: "Enter your password",
+    passwordConfirmPlaceholder: "Re-enter your password",
     nicknamePlaceholder: "Enter your nickname",
-    success: "Account created! Please sign in.",
     agreePrivacy: "I agree to the Privacy Policy (required)",
     agreeTerms: "I agree to the Terms of Service (required)",
     view: "View",
+    rules: { minLength: "8+ characters", hasUppercase: "Uppercase letter", hasLowercase: "Lowercase letter", hasNumber: "Number", hasSpecial: "Special character (!@#$%^&* etc.)" },
+    passwordMismatch: "Passwords do not match",
+    passwordMatch: "Passwords match",
+    successTitle: "🎉 Welcome aboard!",
+    successDesc: "Welcome to Cloud with you!",
+    emailConfirmTitle: "Email verification required",
+    emailConfirmDesc: "Please check your inbox for the verification email.",
+    errors: {
+      MISSING_FIELDS: "Please fill in all fields.",
+      NICKNAME_TOO_LONG: "Nickname must be 20 characters or fewer.",
+      PASSWORD_RULES: "Please check the password rules.",
+      EMAIL_TAKEN: "This email is already in use.",
+      GENERIC: "An error occurred during signup.",
+    },
   },
   'zh-CN': {
     email: "电子邮件",
-    password: "密码 (至少8个字符)",
+    password: "密码",
+    passwordConfirm: "确认密码",
     nickname: "昵称 (最多20个字符)",
     language: "语言",
     submit: "注册",
@@ -71,15 +153,30 @@ const TEXT = {
     login: "登录",
     emailPlaceholder: "请输入电子邮件",
     passwordPlaceholder: "请输入密码",
+    passwordConfirmPlaceholder: "请再次输入密码",
     nicknamePlaceholder: "请输入昵称",
-    success: "注册完成! 请登录。",
     agreePrivacy: "同意隐私政策 (必选)",
     agreeTerms: "同意服务条款 (必选)",
     view: "查看",
+    rules: { minLength: "8位以上", hasUppercase: "包含大写字母", hasLowercase: "包含小写字母", hasNumber: "包含数字", hasSpecial: "包含特殊字符 (!@#$%^&* 等)" },
+    passwordMismatch: "密码不一致",
+    passwordMatch: "密码一致",
+    successTitle: "🎉 注册成功！",
+    successDesc: "欢迎来到 Cloud with you！",
+    emailConfirmTitle: "需要邮箱验证",
+    emailConfirmDesc: "请在收件箱查看验证邮件。",
+    errors: {
+      MISSING_FIELDS: "请填写所有字段。",
+      NICKNAME_TOO_LONG: "昵称不能超过20个字符。",
+      PASSWORD_RULES: "请检查密码规则。",
+      EMAIL_TAKEN: "该邮箱已被使用。",
+      GENERIC: "注册过程中发生错误。",
+    },
   },
   'zh-TW': {
     email: "電子郵件",
-    password: "密碼 (至少8個字元)",
+    password: "密碼",
+    passwordConfirm: "確認密碼",
     nickname: "暱稱 (最多20個字元)",
     language: "語言",
     submit: "註冊",
@@ -88,11 +185,25 @@ const TEXT = {
     login: "登入",
     emailPlaceholder: "請輸入電子郵件",
     passwordPlaceholder: "請輸入密碼",
+    passwordConfirmPlaceholder: "請再次輸入密碼",
     nicknamePlaceholder: "請輸入暱稱",
-    success: "註冊完成! 請登入。",
     agreePrivacy: "同意隱私權政策 (必選)",
     agreeTerms: "同意服務條款 (必選)",
     view: "查看",
+    rules: { minLength: "8位以上", hasUppercase: "包含大寫字母", hasLowercase: "包含小寫字母", hasNumber: "包含數字", hasSpecial: "包含特殊字元 (!@#$%^&* 等)" },
+    passwordMismatch: "密碼不一致",
+    passwordMatch: "密碼一致",
+    successTitle: "🎉 註冊成功！",
+    successDesc: "歡迎來到 Cloud with you！",
+    emailConfirmTitle: "需要信箱驗證",
+    emailConfirmDesc: "請在收件匣查看驗證信件。",
+    errors: {
+      MISSING_FIELDS: "請填寫所有欄位。",
+      NICKNAME_TOO_LONG: "暱稱不能超過20個字元。",
+      PASSWORD_RULES: "請檢查密碼規則。",
+      EMAIL_TAKEN: "此信箱已被使用。",
+      GENERIC: "註冊過程中發生錯誤。",
+    },
   },
 }
 
@@ -100,22 +211,48 @@ const LANGUAGE_OPTIONS = [
   { value: "ko", label: "한국어" },
   { value: "ja", label: "日本語" },
   { value: "en", label: "English" },
+  { value: "zh-CN", label: "简体中文" },
+  { value: "zh-TW", label: "繁體中文" },
 ]
 
+const RULE_KEYS: PasswordRuleKey[] = ['minLength', 'hasUppercase', 'hasLowercase', 'hasNumber', 'hasSpecial']
+
+function resolveLang(raw: string): Lang {
+  return (['ko', 'ja', 'en', 'zh-CN', 'zh-TW'] as Lang[]).includes(raw as Lang) ? (raw as Lang) : 'ko'
+}
+
 export function SignupForm({ locale }: SignupFormProps) {
+  const router = useRouter()
+  const lang = resolveLang(locale)
+  const t = TEXT[lang]
+
+  const [email, setEmail] = useState("")
+  const [nickname, setNickname] = useState("")
+  const [password, setPassword] = useState("")
+  const [passwordConfirm, setPasswordConfirm] = useState("")
   const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-  const [nicknameLen, setNicknameLen] = useState(0)
   const [agreedPrivacy, setAgreedPrivacy] = useState(false)
   const [agreedTerms, setAgreedTerms] = useState(false)
 
-  const t = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
+  const ruleStatus = useMemo(() => checkPasswordRules(password), [password])
+  const allRulesMet = RULE_KEYS.every((k) => ruleStatus[k])
+  const passwordsMatch = password.length > 0 && password === passwordConfirm
+  const showMismatchError = passwordConfirm.length > 0 && !passwordsMatch
+
+  const canSubmit =
+    !loading &&
+    email.trim().length > 0 &&
+    nickname.trim().length > 0 &&
+    allRulesMet &&
+    passwordsMatch &&
+    agreedPrivacy &&
+    agreedTerms
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (!canSubmit) return
     setError(null)
-    setSuccess(null)
     setLoading(true)
 
     const formData = new FormData(e.currentTarget)
@@ -124,12 +261,30 @@ export function SignupForm({ locale }: SignupFormProps) {
     const result = await signupWithEmail(formData)
 
     if (result?.error) {
-      setError(result.error)
+      const code = result.error as keyof typeof t.errors
+      setError(t.errors[code] ?? t.errors.GENERIC)
       setLoading(false)
-    } else if (result?.success) {
-      setSuccess(result.success)
-      setLoading(false)
+      return
     }
+
+    if (result?.success === "SIGNED_IN") {
+      toast({ title: t.successTitle, description: t.successDesc })
+      setTimeout(() => {
+        router.push(`/${locale}`)
+        router.refresh()
+      }, 1500)
+      return
+    }
+
+    if (result?.success === "EMAIL_CONFIRM_REQUIRED") {
+      toast({ title: t.emailConfirmTitle, description: t.emailConfirmDesc })
+      setLoading(false)
+      return
+    }
+
+    // 알 수 없는 응답
+    setError(t.errors.GENERIC)
+    setLoading(false)
   }
 
   const inputClass = `
@@ -146,11 +301,6 @@ export function SignupForm({ locale }: SignupFormProps) {
           {error}
         </div>
       )}
-      {success && (
-        <div className="px-4 py-3 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm">
-          {success}
-        </div>
-      )}
 
       <div className="flex flex-col gap-1.5">
         <label className="text-sm font-medium text-slate">{t.email}</label>
@@ -158,6 +308,8 @@ export function SignupForm({ locale }: SignupFormProps) {
           type="email"
           name="email"
           required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder={t.emailPlaceholder}
           className={inputClass}
         />
@@ -169,17 +321,56 @@ export function SignupForm({ locale }: SignupFormProps) {
           type="password"
           name="password"
           required
-          minLength={8}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder={t.passwordPlaceholder}
           className={inputClass}
+          autoComplete="new-password"
         />
+        {/* 비밀번호 규칙 실시간 피드백 */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1 mt-1">
+          {RULE_KEYS.map((key) => {
+            const ok = ruleStatus[key]
+            return (
+              <li
+                key={key}
+                className={`flex items-center gap-1.5 text-xs ${ok ? 'text-green-600' : 'text-stone'}`}
+              >
+                <span className="w-3.5 text-center select-none" aria-hidden>
+                  {ok ? '✅' : '○'}
+                </span>
+                <span>{t.rules[key]}</span>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+
+      <div className="flex flex-col gap-1.5">
+        <label className="text-sm font-medium text-slate">{t.passwordConfirm}</label>
+        <input
+          type="password"
+          name="passwordConfirm"
+          required
+          value={passwordConfirm}
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+          placeholder={t.passwordConfirmPlaceholder}
+          className={`${inputClass} ${showMismatchError ? 'border-red-300 focus:border-red-400 focus:ring-red-200' : ''}`}
+          autoComplete="new-password"
+        />
+        {passwordConfirm.length > 0 && (
+          <p className={`text-xs flex items-center gap-1 ${passwordsMatch ? 'text-green-600' : 'text-red-600'}`}>
+            <span aria-hidden>{passwordsMatch ? '✅' : '⚠️'}</span>
+            {passwordsMatch ? t.passwordMatch : t.passwordMismatch}
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col gap-1.5">
         <div className="flex items-center justify-between">
           <label className="text-sm font-medium text-slate">{t.nickname}</label>
-          <span className={`text-xs ${nicknameLen > 18 ? "text-blossom-deep" : "text-stone"}`}>
-            {nicknameLen}/20
+          <span className={`text-xs ${nickname.length > 18 ? "text-blossom-deep" : "text-stone"}`}>
+            {nickname.length}/20
           </span>
         </div>
         <input
@@ -187,8 +378,9 @@ export function SignupForm({ locale }: SignupFormProps) {
           name="nickname"
           required
           maxLength={20}
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
           placeholder={t.nicknamePlaceholder}
-          onChange={(e) => setNicknameLen(e.target.value.length)}
           className={inputClass}
         />
       </div>
@@ -197,7 +389,7 @@ export function SignupForm({ locale }: SignupFormProps) {
         <label className="text-sm font-medium text-slate">{t.language}</label>
         <select
           name="language"
-          defaultValue={locale}
+          defaultValue={lang}
           className={inputClass}
         >
           {LANGUAGE_OPTIONS.map((opt) => (
@@ -235,7 +427,7 @@ export function SignupForm({ locale }: SignupFormProps) {
 
       <button
         type="submit"
-        disabled={loading || !agreedPrivacy || !agreedTerms}
+        disabled={!canSubmit}
         className="
           h-12 rounded-xl bg-gradient-to-br from-mint to-blossom text-ink font-semibold text-sm
           hover:bg-[#374151] active:bg-[#1F2937]

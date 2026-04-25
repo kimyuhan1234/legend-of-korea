@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
+import { isPasswordValid } from "@/lib/auth/password-rules"
 
 // ──────────────────────────────────────────
 // 이메일 로그인
@@ -36,13 +37,13 @@ export async function signupWithEmail(formData: FormData) {
   const locale = (formData.get("locale") as string) || "ko"
 
   if (!email || !password || !nickname) {
-    return { error: "모든 필드를 입력해주세요." }
+    return { error: "MISSING_FIELDS" as const }
   }
   if (nickname.length > 20) {
-    return { error: "닉네임은 20자 이하로 입력해주세요." }
+    return { error: "NICKNAME_TOO_LONG" as const }
   }
-  if (password.length < 8) {
-    return { error: "비밀번호는 8자 이상이어야 합니다." }
+  if (!isPasswordValid(password)) {
+    return { error: "PASSWORD_RULES" as const }
   }
 
   const supabase = await createClient()
@@ -58,18 +59,19 @@ export async function signupWithEmail(formData: FormData) {
 
   if (error) {
     if (error.message.includes("already registered")) {
-      return { error: "이미 사용 중인 이메일입니다." }
+      return { error: "EMAIL_TAKEN" as const }
     }
     return { error: error.message }
   }
 
-  // 이메일 확인 불필요한 경우 바로 로그인 시도
+  // 이메일 확인 불필요한 경우 바로 로그인 시도.
+  // (성공해도 redirect 하지 않고 코드만 반환 — 클라이언트가 토스트 노출 후 라우팅)
   const { error: loginError } = await supabase.auth.signInWithPassword({ email, password })
   if (!loginError) {
-    redirect(`/${locale}`)
+    return { success: "SIGNED_IN" as const }
   }
 
-  return { success: "가입이 완료되었습니다." }
+  return { success: "EMAIL_CONFIRM_REQUIRED" as const }
 }
 
 // ──────────────────────────────────────────
