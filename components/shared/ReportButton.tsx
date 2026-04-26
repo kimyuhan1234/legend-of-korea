@@ -118,7 +118,6 @@ export function ReportButton({
         body: JSON.stringify({ eventType, eventId, reportedId, reason, detail: detail || undefined }),
       })
       if (!res.ok) {
-        const data = await res.json()
         setError(res.status === 409 ? t.errorDuplicate : t.errorGeneric)
         return
       }

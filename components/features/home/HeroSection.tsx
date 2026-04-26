@@ -49,7 +49,7 @@ export function HeroSection({ locale }: Props) {
           </Link>
 
           <Link
-            href={`/${locale}/quest/guide`}
+            href={`/${locale}/pass`}
             className="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-slate-300 text-slate-700 font-bold text-base hover:bg-slate-50 transition-colors min-h-[48px]"
           >
             {t('ctaSecondary')}

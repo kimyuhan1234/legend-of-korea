@@ -22,10 +22,11 @@ export function CartSidePanel() {
     isOpen, closeCart, removeItem, updateQuantity, clearCart,
   } = useCart()
 
-  // 결제 미활성 시 패널 자체 렌더 X (자동 노출 + 헤더 카트 트리거 모두 무력화)
-  if (process.env.NEXT_PUBLIC_PAYMENTS_ENABLED !== 'true') return null
-
   const [showDelivery, setShowDelivery] = useState(false)
+
+  // 결제 미활성 시 패널 자체 렌더 X (자동 노출 + 헤더 카트 트리거 모두 무력화)
+  // ⚠️ React Hooks 규칙 — 모든 hook 호출 후 early return.
+  if (process.env.NEXT_PUBLIC_PAYMENTS_ENABLED !== 'true') return null
 
   const handleOrder = (_address: DeliveryAddress) => {
     setShowDelivery(false)
