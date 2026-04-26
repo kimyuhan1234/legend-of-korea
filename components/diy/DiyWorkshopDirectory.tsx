@@ -236,9 +236,9 @@ export function DiyWorkshopDirectory() {
 
   return (
     <div className="min-h-screen bg-snow">
-      {/* 히어로 */}
-      <div className="bg-gradient-to-br from-mint to-blossom text-ink py-16 px-6 md:px-10 text-center">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-xs font-black uppercase tracking-widest mb-4">
+      {/* 히어로 — P1-5: 강함 → Tier 2 (정보 페이지) */}
+      <div className="bg-tier-soft text-ink py-16 px-6 md:px-10 text-center">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-white/50 text-xs font-black uppercase tracking-widest mb-4">
           DIY
         </span>
         <h1 className="text-3xl md:text-4xl font-black tracking-tight">{t('title')}</h1>

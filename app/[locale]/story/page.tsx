@@ -30,8 +30,8 @@ export default async function StoryPage({ params, searchParams }: Props) {
 
   return (
     <div className="min-h-screen bg-snow">
-      {/* 헤더 */}
-      <div className="bg-gradient-to-br from-mint to-blossom text-ink py-20 md:py-28 px-8 md:px-10 text-center">
+      {/* 헤더 — P1-5: 강함 → Tier 2 (Quest 정보 페이지) */}
+      <div className="bg-tier-soft text-ink py-20 md:py-28 px-8 md:px-10 text-center">
         <h1 className="text-3xl md:text-4xl font-black mb-2">{t('title')}</h1>
         <p className="text-slate">{t('subtitle')}</p>
       </div>

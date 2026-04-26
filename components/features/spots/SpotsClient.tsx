@@ -54,8 +54,8 @@ export function SpotsClient({ initialSpots, locale }: Props) {
 
   return (
     <div className="min-h-screen bg-snow">
-      {/* 헤더 */}
-      <div className="bg-gradient-to-br from-mint to-blossom text-ink py-12 md:py-16 px-6 text-center">
+      {/* 헤더 — P1-5: 강함 → Tier 2 (정보 페이지) */}
+      <div className="bg-tier-soft text-ink py-12 md:py-16 px-6 text-center">
         <h1 className="text-3xl md:text-4xl font-black mb-2">{tSights('title')}</h1>
         <p className="text-slate">{tSights('subtitle')}</p>
       </div>

@@ -473,8 +473,8 @@ export function WeeklyOotdBoard() {
 
   return (
     <div className="min-h-screen bg-snow">
-      {/* ── 페이지 헤더 ───────────────────────── */}
-      <div className="bg-mint-light border-b border-mist py-14 px-6 md:px-10 text-center">
+      {/* ── 페이지 헤더 — P1-5: 단색 → Tier 2 (정보 페이지) ── */}
+      <div className="bg-tier-soft border-b border-mist py-14 px-6 md:px-10 text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-mint-deep text-white
                          text-xs font-black uppercase tracking-widest mb-4">
           OOTD

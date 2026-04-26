@@ -140,8 +140,8 @@ export default function TrafficPage() {
 
   return (
     <div className="min-h-screen bg-snow">
-      {/* 히어로 */}
-      <section className="bg-gradient-to-br from-mint to-blossom py-16 md:py-20 px-6 md:px-10 text-center">
+      {/* 히어로 — P1-5: 강함 → Tier 2 (정보 페이지) */}
+      <section className="bg-tier-soft py-16 md:py-20 px-6 md:px-10 text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-white/50 text-ink text-xs font-black uppercase tracking-widest mb-4">
           TRAFFIC
         </span>

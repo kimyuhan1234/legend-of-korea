@@ -32,8 +32,8 @@ export default function FoodPage({ params, searchParams }: Props) {
   return (
     <div className="min-h-screen bg-snow">
 
-      {/* ── 히어로 헤더 ──────────────────────────── */}
-      <div className="bg-mint-light border-b border-mint py-20 md:py-28 px-6 md:px-10 text-center">
+      {/* ── 히어로 헤더 — P1-5: 단색 → Tier 2 (정보 페이지) ── */}
+      <div className="bg-tier-soft border-b border-mint py-20 md:py-28 px-6 md:px-10 text-center">
         {/* 배지 */}
         <span className="inline-block px-4 py-1.5 rounded-full bg-white text-mint-deep
                          text-xs font-bold uppercase tracking-widest mb-5 shadow-sm">
