@@ -84,9 +84,8 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
             </div>
           )}
 
-          {/* 네비게이션 */}
+          {/* 네비게이션 — P1-10: 헤더 4-메뉴 (Discover/Quest/Pass/Community) */}
           <nav className="flex-1 px-4 py-4 overflow-y-auto space-y-1">
-            {/* 메인 5개 메뉴 */}
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -98,14 +97,9 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
               </Link>
             ))}
 
-            <div className="h-px bg-mist my-2 mx-4" />
-
-            <Link href={`/${locale}/pass`} onClick={() => setOpen(false)} className="flex items-center px-4 py-3.5 rounded-xl text-mint-deep font-semibold hover:bg-cloud transition-colors">
-              🎫 {t.pass ?? 'Pass'}
-            </Link>
-
             {user && (
               <>
+                <div className="h-px bg-mist my-2 mx-4" />
                 <Link href={`/${locale}/mypage`} onClick={() => setOpen(false)} className="flex items-center px-4 py-3.5 rounded-xl text-slate font-medium hover:bg-cloud transition-colors">
                   👤 {t.mypage}
                 </Link>

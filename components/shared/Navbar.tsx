@@ -13,61 +13,40 @@ interface NavbarProps {
   locale: string
 }
 
+// P1-10: 헤더 4-메뉴 재편 (Discover/Quest/Pass/Community).
+// 기존 9개 메뉴 (OOTD/K-Food/STAY/TRAFFIC/QUEST/SPOT/PLANNER/MEMORIES/DIY) 는
+// /discover (Discover 허브) 와 /community (Community 허브) 로 흡수.
+// PLANNER 는 헤더에서 제외 (필요 시 마이페이지/허브 카드로 진입).
 const NAV_LINKS = {
   ko: [
-    { href: "/ootd",  label: "OOTD" },
-    { href: "/food",  label: "K-Food" },
-    { href: "/stay",    label: "STAY" },
-    { href: "/traffic", label: "TRAFFIC" },
-    { href: "/story",   label: "QUEST" },
-    { href: "/sights",label: "SPOT" },
-    { href: "/planner", label: "PLANNER" },
-    { href: "/memories", label: "MEMORIES" },
-    { href: "/diy",   label: "DIY" },
+    { href: "/discover",  label: "DISCOVER" },
+    { href: "/story",     label: "QUEST" },
+    { href: "/pass",      label: "PASS" },
+    { href: "/community", label: "COMMUNITY" },
   ],
   ja: [
-    { href: "/ootd",  label: "OOTD" },
-    { href: "/food",  label: "K-Food" },
-    { href: "/stay",    label: "STAY" },
-    { href: "/traffic", label: "TRAFFIC" },
-    { href: "/story",   label: "QUEST" },
-    { href: "/sights",label: "SPOT" },
-    { href: "/planner", label: "PLANNER" },
-    { href: "/memories", label: "MEMORIES" },
-    { href: "/diy",   label: "DIY" },
+    { href: "/discover",  label: "DISCOVER" },
+    { href: "/story",     label: "QUEST" },
+    { href: "/pass",      label: "PASS" },
+    { href: "/community", label: "COMMUNITY" },
   ],
   en: [
-    { href: "/ootd",  label: "OOTD" },
-    { href: "/food",  label: "K-Food" },
-    { href: "/stay",    label: "STAY" },
-    { href: "/traffic", label: "TRAFFIC" },
-    { href: "/story",   label: "QUEST" },
-    { href: "/sights",label: "SPOT" },
-    { href: "/planner", label: "PLANNER" },
-    { href: "/memories", label: "MEMORIES" },
-    { href: "/diy",   label: "DIY" },
+    { href: "/discover",  label: "DISCOVER" },
+    { href: "/story",     label: "QUEST" },
+    { href: "/pass",      label: "PASS" },
+    { href: "/community", label: "COMMUNITY" },
   ],
   'zh-CN': [
-    { href: "/ootd",  label: "OOTD" },
-    { href: "/food",  label: "K-Food" },
-    { href: "/stay",    label: "STAY" },
-    { href: "/traffic", label: "TRAFFIC" },
-    { href: "/story",   label: "QUEST" },
-    { href: "/sights",label: "SPOT" },
-    { href: "/planner", label: "PLANNER" },
-    { href: "/memories", label: "MEMORIES" },
-    { href: "/diy",   label: "DIY" },
+    { href: "/discover",  label: "DISCOVER" },
+    { href: "/story",     label: "QUEST" },
+    { href: "/pass",      label: "PASS" },
+    { href: "/community", label: "COMMUNITY" },
   ],
   'zh-TW': [
-    { href: "/ootd",  label: "OOTD" },
-    { href: "/food",  label: "K-Food" },
-    { href: "/stay",    label: "STAY" },
-    { href: "/traffic", label: "TRAFFIC" },
-    { href: "/story",   label: "QUEST" },
-    { href: "/sights",label: "SPOT" },
-    { href: "/planner", label: "PLANNER" },
-    { href: "/memories", label: "MEMORIES" },
-    { href: "/diy",   label: "DIY" },
+    { href: "/discover",  label: "DISCOVER" },
+    { href: "/story",     label: "QUEST" },
+    { href: "/pass",      label: "PASS" },
+    { href: "/community", label: "COMMUNITY" },
   ],
 }
 
@@ -159,13 +138,7 @@ export async function Navbar({ locale }: NavbarProps) {
           )}
           {user && profile ? (
             <div className="hidden md:flex items-center gap-3">
-              {/* 패스 링크 — LP 뱃지 왼쪽 */}
-              <Link
-                href={`/${locale}/pass`}
-                className="flex items-center gap-1 text-xs font-bold text-mint-deep hover:underline"
-              >
-                🎫 {t.pass}
-              </Link>
+              {/* P1-10: Pass 링크는 헤더 4-메뉴(PASS) 로 이동 — 중복 제거 */}
 
               {/* LP 뱃지 */}
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1F2937]/5 border border-ink/10">
