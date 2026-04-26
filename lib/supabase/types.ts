@@ -1195,6 +1195,34 @@ export interface Database {
         }
         Relationships: []
       }
+      feedback: {
+        Row: {
+          id: string
+          user_id: string | null
+          page_path: string
+          locale: string
+          rating: number
+          comment: string | null
+          user_agent: string | null
+          ip_hash: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          page_path: string
+          locale: string
+          rating: number
+          comment?: string | null
+          user_agent?: string | null
+          ip_hash?: string | null
+          created_at?: string
+        }
+        Update: {
+          comment?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -9,6 +9,7 @@ import { CartProvider } from "@/lib/contexts/CartContext"
 import { CartSidePanel } from "@/components/shared/CartSidePanel"
 import { CookieBanner } from "@/components/shared/CookieBanner"
 import { FoundingMembersBanner } from "@/components/shared/FoundingMembersBanner"
+import { FeedbackWidget } from "@/components/shared/FeedbackWidget"
 import { locales } from "@/i18n"
 
 interface LocaleLayoutProps {
@@ -93,6 +94,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <Toaster />
           <CartSidePanel />
           <CookieBanner />
+          {/* 베타 피드백 — Sticky CTA 충돌 페이지에서는 hideOn 추가 */}
+          <FeedbackWidget hideOn={["/*/auth/*"]} />
         </CartProvider>
       </NextIntlClientProvider>
     </div>

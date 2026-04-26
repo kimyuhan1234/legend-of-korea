@@ -1922,5 +1922,12 @@
   },
   "pricing": {
     "beta_disclaimer": "※ 显示价格仅供参考，正式上线时可能调整。"
+  },
+  "feedback": {
+    "label": "发送反馈",
+    "prompt": "这个页面怎么样？",
+    "placeholder": "我们可以改进什么？（一句话也好）",
+    "submit": "发送",
+    "thanks": "已收到。我们的团队会一条一条认真阅读 🙏"
   }
 }

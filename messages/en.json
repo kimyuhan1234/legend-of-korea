@@ -1922,5 +1922,12 @@
   },
   "pricing": {
     "beta_disclaimer": "* Prices shown are for reference only. Pricing is subject to change before official launch."
+  },
+  "feedback": {
+    "label": "Send feedback",
+    "prompt": "How was this page?",
+    "placeholder": "What could we improve? (Even one line helps)",
+    "submit": "Send",
+    "thanks": "Got it. Every word reaches our team — we read them all 🙏"
   }
 }

@@ -1922,5 +1922,12 @@
   },
   "pricing": {
     "beta_disclaimer": "※ 顯示價格僅供參考，正式上線時可能調整。"
+  },
+  "feedback": {
+    "label": "傳送意見",
+    "prompt": "這個頁面如何？",
+    "placeholder": "我們可以改進什麼？（一句話也好）",
+    "submit": "傳送",
+    "thanks": "已收到。我們的團隊會一條一條認真閱讀 🙏"
   }
 }
