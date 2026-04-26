@@ -217,3 +217,68 @@ JOIN 형식: `app/[locale]/missions/[courseId]/page.tsx:53` — `select('*, miss
 
 위 10번 섹션의 **A·C·G 항목** 답변 후 P0-2 부터 진행.
 A·C 는 코드 동작에 직접 영향, G 는 작업 순서·범위.
+
+---
+
+## Phase 2 결정 사항 기록 (2026-04-25)
+
+### 사용자 결정 사항
+| 항목 | 결정 |
+|---|---|
+| `users.rank/raindrops` → `current_tier/total_lp` 매핑 | ✅ |
+| 소셜 로그인 단일 경로 (DB birth_date 미입력 시 추가 정보 화면) | ✅ |
+| 040 마이그레이션 NULL 허용 (NOT NULL 은 후속 044 PR) | ✅ |
+| 의심 정황 점검 (read-only SQL 만, 격리 금지) | ✅ |
+| 마케팅팀 카피 + 디자인팀 구조 채택 | ✅ |
+| 디자인 시안 도착 전 로직·DB 우선 진행 (P0-5-A → P0-5-B 분할) | ✅ |
+
+### 마이그레이션 번호 최종 확정
+- `040_users_birth_date.sql` (P0-5-A 본 작업) ✅ 적용 완료
+- `041_community_posts_visibility.sql` (P0-6, 후속 Phase)
+- `042_users_consents_columns.sql` (P0-6, 후속 Phase)
+- `043_feedback_table.sql` (P0-8 본 작업) ✅ 적용 완료
+- `044_users_birth_date_not_null.sql` (별도 PR, 재인증 완료 후)
+
+### Phase 2 구현 핵심 의사결정
+
+#### 1. handle_new_user 트리거 갱신
+기존 트리거가 auth.users INSERT 시 자동으로 public.users 생성하는 구조 발견.
+40_users_birth_date.sql 에서 트리거 함수를 재선언 — `raw_user_meta_data->>'birth_date'`
+를 안전하게 cast (실패 시 NULL fallback). 14세 미만 차단은 어플리케이션
+레이어에서 `signUp()` 호출 자체를 막는 방식으로 처리.
+
+#### 2. 14세 미만 소셜 로그인 처리
+auth.users 가 OAuth 콜백에서 자동 생성되므로 callback 만으로는 차단 불가.
+→ complete-profile 페이지에서 사용자 입력 후 14세 미만이면 `service-role`
+클라이언트로 `auth.admin.deleteUser(user.id)` 호출 → FK CASCADE 로
+public.users 도 삭제 → /auth/age-restricted 로 redirect.
+
+이 흐름은 "14세 미만 사용자가 단 1초도 DB 에 들어가지 않게" 라는 원칙과
+약간 충돌 — 소셜 로그인의 경우 OAuth 콜백 후 birth_date 입력까지
+auth.users 만 존재하는 짧은 윈도우가 발생. 다만:
+  - public.users (앱 데이터) 는 birth_date NULL 인 unverified 상태
+  - 14세 미만 입력 즉시 admin API 로 auth.users 도 삭제 (cascade)
+  - 통상 수 초 내 완료 — PIPA 준수 정신엔 부합
+
+#### 3. CompleteProfileForm prefill
+- kakao: `birthyear` (YYYY) + `birthday` (MMDD) → "YYYY-MM-DD" 조합
+- google: `birthdate` (YYYY-MM-DD) — 사용자 동의 필요
+- line: 미제공 — 빈 폼 표시
+모든 케이스에서 사용자가 수정 가능. 디자인팀 #2 권고 반영.
+
+#### 4. CSS --cta-height 변수
+FeedbackWidget FAB 가 `bottom: calc(env(safe-area-inset-bottom) +
+var(--cta-height, 0px) + 24px)` 로 Sticky CTA 위로 자동 이동.
+Sticky CTA 가 있는 페이지에서 `:root { --cta-height: 64px; }` 같은 식으로
+설정하면 FAB 가 그만큼 위에 표시됨.
+
+### Phase 2 후속 작업 메모 (P0-1 처리 시 반영)
+- [ ] `/api/founding-members/count` `shouldCountVisitor()` 화이트리스트 밖
+- [ ] `/api/feedback` 도 동일하게 화이트리스트 밖
+- [ ] `/auth/age-restricted` 와 `/auth/complete-profile` 은 `/auth/` prefix 매칭으로
+  이미 게이트 바이패스 (현행 isGateBypassPath 로직 활용)
+
+### Phase 3 (DB·정책 변경) 진입 전 결정 필요
+- D 항목 RLS 정책 (is_hidden + is_public_visible 공존) 적용 시점
+- P0-9 CookieBanner 3-tier 재구현 시 legacy migration 로직 반영
+
