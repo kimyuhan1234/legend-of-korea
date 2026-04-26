@@ -4,7 +4,6 @@ import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import { HeroSection } from '@/components/features/home/HeroSection'
 import { HeroPassButtons } from '@/components/features/home/HeroPassButtons'
-import { HomeTabExplorer } from '@/components/features/home/HomeTabExplorer'
 import { HomeFeatureCarousel } from '@/components/features/home/HomeFeatureCarousel'
 import { SlideFeatureDupe } from '@/components/features/home/SlideFeatureDupe'
 import { SlideFeaturePlanner } from '@/components/features/home/SlideFeaturePlanner'
@@ -33,10 +32,7 @@ export default async function HomePage({ params }: Props) {
       {/* 섹션 2: 패스 버튼 + 비디오 (구 HeroSection — 결제 동선) */}
       <HeroPassButtons cta={t('signup')} locale={locale} />
 
-      {/* 섹션 3: 탭 탐색 (3단 그리드 + 모바일 슬라이드) */}
-      <HomeTabExplorer />
-
-      {/* 섹션 4: 자동 슬라이드 캐러셀 (DUPE + 플래너) */}
+      {/* 섹션 3: 자동 슬라이드 캐러셀 (DUPE + 플래너) — P1-7 에서 HomeTabExplorer 제거됨 */}
       <HomeFeatureCarousel>
         <SlideFeatureDupe
           locale={locale}

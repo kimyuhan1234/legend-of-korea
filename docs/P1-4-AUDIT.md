@@ -225,3 +225,48 @@ PRD: OOTD/SPOT/K-Food/TRAFFIC/STAY (5개)
 - **F**: F-2 채택 (컴포넌트 자체 삭제, 사용처 0건)
 
 → Phase 1 만이라도 즉시 진행 OK 면 카피·카트·HomeTabExplorer 정리부터 바로 시작 가능.
+
+---
+
+## 11. 사용자 결정 사항 (2026-04-25 확정)
+
+| 항목 | 결정 | 이유 |
+|---|---|---|
+| **A-1** Quest 라우트 | `/courses` 채택 (`/story` 정체 추가 확인 필요) | 외국인에게 'courses' 가 'story' 보다 직관 |
+| **A-2** PLANNER 처리 | (c) 푸터·마이페이지에서만 — 헤더 미노출 | 로그인 도구라 외국인 첫인상에 부적합. 메인 HomeFeatureCarousel 의 진입점은 유지 |
+| **A-3** Community 라우트 | 기존 `/community` 활용. `/memories` 는 하위 기능 | 코드 변경 최소, recipe·write 하위 구조 보존 |
+| **B** STAY 시각 회귀 | **B-3** STAY 만 별도 클래스, 현재 2-stop 그대로 | STAY 의 from-mint to-blossom 자체가 의도된 디자인. Tier 는 의미 분류, 색상 조합은 페이지 정체성 |
+| **C** CSS hex | **기존 토큰 재사용**, PRD 추측값 폐기 | `--color-mint #B8E8E0` 등 이미 있음 |
+| **D** /discover 카테고리 | **D-2 변형** — 헤더 4개 유지, /discover 페이지 안에서 STAY 강조 카드 (1열 큰 카드) | 외국인 인지 부하 ↓, 레이아웃 위계로 STAY 강조 |
+| **E** 카트 비활성 범위 | **E-1** CartBadge + CartSidePanel 만 환경변수, CartProvider 유지 | GoodsCard 정상 보장, 결제 활성 시 환경변수 토글만 |
+| **F** HomeTabExplorer | **F-2** 컴포넌트 자체 삭제 | 사용처 0건, git history 에서 복원 가능 |
+| **G** CTA Secondary | 카피 PRD 그대로 + **링크 `/pass` 로 변경** | "패스 살펴보기" 의미와 일치 |
+
+### Phase 진행 순서 확정
+- **Phase 1** (즉시): P1-7 (F) + P1-8 (E) + P1-9 (G)
+- **Phase 2** (B·C 결정 적용): P1-4 토큰 정의 + P1-5 페이지별 그라데이션
+  - TRAFFIC 강한 → 옅은 그라데이션 약화 (Tier 2)
+  - STAY 별도 클래스로 현재 보존
+  - 다른 정보 페이지 Tier 2 통일
+- **Phase 3** (`/story` 정체 확인 후): P1-6 헤더 4개 + /discover 신규
+
+### Phase 3 진입 전 추가 조사 — **결과**
+**`/story` = Quest 메인 페이지 (실제 콘텐츠)**, `/courses` = `/story` 로 가는 단순 redirect.
+
+```ts
+// app/[locale]/courses/page.tsx 전체 (단순 redirect)
+export default function CoursesRedirect({ params }: Props) {
+  redirect(`/${params.locale}/story?tab=mission-kit`)
+}
+
+// app/[locale]/story/page.tsx — 실제 Quest 페이지
+//   탭 2개: mission-kit (CoursesTab) / special (SpecialEventTab)
+//   히어로: bg-gradient-to-br from-mint to-blossom (STAY 와 동일!)
+```
+
+**결론**:
+- A-1 결정 변경: Quest 헤더 라우트는 **`/story`** (실제 콘텐츠 라우트)
+- `/courses` 는 redirect 호환성 라우트로 유지 (외부 링크 SEO 보존)
+- `/story` 도 `bg-gradient-to-br from-mint to-blossom` (강한 그라데이션) 사용 중. PRD 의 Quest 는 정보 페이지이므로 Tier 2 (옅음) 변경 대상
+
+**P1-1 CTA Secondary 링크** (G 결정으로 `/pass` 변경됨) — 더 이상 `/quest/guide` 가 아니므로 영향 없음. 
