@@ -659,7 +659,7 @@
     "terms": "Terms of Service",
     "privacy": "Privacy Policy",
     "contact": "Contact Us",
-    "copyright": "© 2025 Cloud with you. All rights reserved."
+    "copyright": "Cloud with you ({beta}). All rights reserved."
   },
   "purchase": {
     "stepKit": "Plan",

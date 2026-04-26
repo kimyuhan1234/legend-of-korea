@@ -68,9 +68,6 @@ export default function SignupPage({ params }: Props) {
           </div>
         </div>
 
-        <p className="text-center text-xs text-stone mt-6">
-          © 2025 Cloud with you
-        </p>
       </div>
     </div>
   )

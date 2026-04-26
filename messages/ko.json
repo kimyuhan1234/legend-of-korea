@@ -659,7 +659,7 @@
     "terms": "이용약관",
     "privacy": "개인정보처리방침",
     "contact": "고객센터",
-    "copyright": "© 2025 Cloud with you. All rights reserved."
+    "copyright": "Cloud with you ({beta}). All rights reserved."
   },
   "purchase": {
     "stepKit": "플랜 확인",

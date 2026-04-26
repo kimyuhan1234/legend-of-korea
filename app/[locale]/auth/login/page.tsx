@@ -85,10 +85,6 @@ export default function LoginPage({ params, searchParams }: Props) {
           </div>
         </div>
 
-        {/* 하단 장식 */}
-        <p className="text-center text-xs text-stone mt-6">
-          © 2025 Cloud with you
-        </p>
       </div>
     </div>
   )

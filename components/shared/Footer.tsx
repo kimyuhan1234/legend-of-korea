@@ -12,6 +12,7 @@ const TEXT = {
     privacy: "개인정보처리방침",
     partner: "파트너 문의",
     guide: "미션 가이드",
+    betaLabel: "베타",
   },
   ja: {
     service: "コアコンテンツ: Legend of Korea（伝説旅ミッション）",
@@ -20,6 +21,7 @@ const TEXT = {
     privacy: "プライバシーポリシー",
     partner: "パートナーお問い合わせ",
     guide: "ミッションガイド",
+    betaLabel: "ベータ版",
   },
   en: {
     service: "Core Content: Legend of Korea (Legend Travel Missions)",
@@ -28,11 +30,31 @@ const TEXT = {
     privacy: "Privacy Policy",
     partner: "Partnership",
     guide: "Mission Guide",
+    betaLabel: "Beta",
+  },
+  "zh-CN": {
+    service: "核心内容：Legend of Korea（传说旅行任务）",
+    company: "公司信息",
+    terms: "服务条款",
+    privacy: "隐私政策",
+    partner: "合作咨询",
+    guide: "任务指南",
+    betaLabel: "测试版",
+  },
+  "zh-TW": {
+    service: "核心內容：Legend of Korea（傳說旅行任務）",
+    company: "公司資訊",
+    terms: "服務條款",
+    privacy: "隱私權政策",
+    partner: "合作諮詢",
+    guide: "任務指南",
+    betaLabel: "測試版",
   },
 }
 
 export function Footer({ locale }: FooterProps) {
   const t = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
+  const year = new Date().getFullYear()
 
   return (
     <footer className="bg-[#1F2937] text-white/70">
@@ -77,9 +99,9 @@ export function Footer({ locale }: FooterProps) {
           </Link>
         </div>
 
-        {/* 카피라이트 */}
+        {/* 카피라이트 — 동적 연도 + 베타 라벨 */}
         <p className="text-xs text-white/30">
-          © 2026 Cloud with you. All rights reserved.
+          © {year} Cloud with you ({t.betaLabel}). All rights reserved.
         </p>
       </div>
     </footer>

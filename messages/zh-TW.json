@@ -659,7 +659,7 @@
     "terms": "服務條款",
     "privacy": "隱私權政策",
     "contact": "聯絡我們",
-    "copyright": "© 2025 Cloud with you. All rights reserved."
+    "copyright": "Cloud with you ({beta}). All rights reserved."
   },
   "purchase": {
     "stepKit": "確認方案",
