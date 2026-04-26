@@ -1915,6 +1915,9 @@
   "beta": {
     "price_badge": {
       "label": "ベータ · 今は無料"
+    },
+    "banner": {
+      "message": "ファウンディングメンバー募集中 · {joined}/{target}名が参加 · 正式リリース時に特典"
     }
   },
   "pricing": {

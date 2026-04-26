@@ -1940,6 +1940,9 @@
   "beta": {
     "price_badge": {
       "label": "베타 · 지금은 무료"
+    },
+    "banner": {
+      "message": "Founding Members 모집 중 · {joined}/{target}명 합류 · 정식 출시 시 특별 혜택"
     }
   },
   "pricing": {

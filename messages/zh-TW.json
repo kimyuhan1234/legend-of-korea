@@ -1915,6 +1915,9 @@
   "beta": {
     "price_badge": {
       "label": "Beta · 現在免費"
+    },
+    "banner": {
+      "message": "創始成員招募中 · 已加入{joined}/{target}名 · 正式發布時特別優待"
     }
   },
   "pricing": {

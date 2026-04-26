@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { CartProvider } from "@/lib/contexts/CartContext"
 import { CartSidePanel } from "@/components/shared/CartSidePanel"
 import { CookieBanner } from "@/components/shared/CookieBanner"
+import { FoundingMembersBanner } from "@/components/shared/FoundingMembersBanner"
 import { locales } from "@/i18n"
 
 interface LocaleLayoutProps {
@@ -86,6 +87,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <NextIntlClientProvider messages={messages} locale={locale}>
         <CartProvider>
           <Navbar locale={locale} />
+          <FoundingMembersBanner />
           <main className="flex-1">{children}</main>
           <Footer locale={locale} />
           <Toaster />

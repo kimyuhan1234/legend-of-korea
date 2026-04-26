@@ -1915,6 +1915,9 @@
   "beta": {
     "price_badge": {
       "label": "Beta · Free now"
+    },
+    "banner": {
+      "message": "Founding Members Wanted · {joined}/{target} joined · Special perks at launch"
     }
   },
   "pricing": {

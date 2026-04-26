@@ -1915,6 +1915,9 @@
   "beta": {
     "price_badge": {
       "label": "内测 · 现在免费"
+    },
+    "banner": {
+      "message": "创始成员招募中 · 已加入{joined}/{target}名 · 正式发布时特别优待"
     }
   },
   "pricing": {
