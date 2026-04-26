@@ -22,6 +22,7 @@ interface PassStatus {
 
 export function PassPricingSection({ locale }: Props) {
   const t = useTranslations('pass')
+  const tPricing = useTranslations('pricing')
   const router = useRouter()
   const [status, setStatus] = useState<PassStatus | null>(null)
   const [loading, setLoading] = useState(true)
@@ -126,6 +127,11 @@ export function PassPricingSection({ locale }: Props) {
             </div>
           ))}
         </div>
+
+        {/* 베타 면책 문구 — 가격 카드 직하단 */}
+        <p className="text-xs text-gray-500 mt-2 text-center">
+          {tPricing('beta_disclaimer')}
+        </p>
       </div>
 
       {/* 크레딧 팩 UI 제거 — 빗방울 단일 화폐 정책 */}

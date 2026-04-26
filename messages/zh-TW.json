@@ -1911,5 +1911,13 @@
     "login": {
       "message": "登入創建屬於你的回憶"
     }
+  },
+  "beta": {
+    "price_badge": {
+      "label": "Beta · 現在免費"
+    }
+  },
+  "pricing": {
+    "beta_disclaimer": "※ 顯示價格僅供參考，正式上線時可能調整。"
   }
 }

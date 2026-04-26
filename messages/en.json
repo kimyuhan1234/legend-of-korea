@@ -1911,5 +1911,13 @@
     "login": {
       "message": "Log in to create your own memories"
     }
+  },
+  "beta": {
+    "price_badge": {
+      "label": "Beta · Free now"
+    }
+  },
+  "pricing": {
+    "beta_disclaimer": "* Prices shown are for reference only. Pricing is subject to change before official launch."
   }
 }

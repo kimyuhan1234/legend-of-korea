@@ -1911,5 +1911,13 @@
     "login": {
       "message": "登录创建属于你的回忆"
     }
+  },
+  "beta": {
+    "price_badge": {
+      "label": "内测 · 现在免费"
+    }
+  },
+  "pricing": {
+    "beta_disclaimer": "※ 显示价格仅供参考，正式上线时可能调整。"
   }
 }

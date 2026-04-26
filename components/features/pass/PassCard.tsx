@@ -3,6 +3,8 @@
 import Image from 'next/image'
 import { Check, Loader2 } from 'lucide-react'
 import type { Pass } from '@/lib/data/passes'
+import { formatPriceParts } from '@/lib/currency'
+import { BetaPriceBadge } from '@/components/shared/BetaPriceBadge'
 
 interface Props {
   pass: Pass
@@ -56,6 +58,7 @@ export function PassCard({
   const isVertical = layout === 'vertical'
   const tagline = pick(pass.tagline, locale)
   const badge = pass.badge ? pick(pass.badge, locale) : null
+  const price = formatPriceParts(pass.price, locale)
 
   return (
     <div
@@ -114,12 +117,19 @@ export function PassCard({
       {/* 오른쪽/하단: 설명 + 가격 + CTA */}
       <div className="flex-1 p-5 flex flex-col justify-between">
         <div>
-          {/* 가격 + 뱃지 */}
-          <div className="flex items-center justify-between gap-3 mb-2">
-            <span className="text-2xl font-black text-slate-800">
-              ₩{pass.price.toLocaleString()}
-              <span className="text-[10px] text-slate-400 font-bold ml-1">/ mo</span>
-            </span>
+          {/* 가격 + 뱃지 (환산값은 한국어 외 로케일에서만 노출) */}
+          <div className="flex items-start justify-between gap-3 mb-1">
+            <div className="min-w-0">
+              <span className="text-2xl font-black text-slate-800">
+                {price.primary}
+                <span className="text-[10px] text-slate-400 font-bold ml-1">/ mo</span>
+              </span>
+              {price.secondary && (
+                <span className="block text-[13px] text-slate-400 leading-tight mt-0.5">
+                  {price.secondary}
+                </span>
+              )}
+            </div>
             {badge && (
               <span
                 className={[
@@ -132,6 +142,11 @@ export function PassCard({
                 {badge}
               </span>
             )}
+          </div>
+
+          {/* 베타 배지 */}
+          <div className="mb-2">
+            <BetaPriceBadge />
           </div>
 
           {/* 절약 뱃지 (All in One) */}
