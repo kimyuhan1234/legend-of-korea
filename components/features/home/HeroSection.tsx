@@ -1,103 +1,60 @@
-'use client'
-
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { getVideoUrl } from '@/lib/utils/storage'
 
 interface Props {
-  cta: string
   locale: string
 }
 
-const PASS_BUTTONS = [
-  { id: 'move', name: 'Move', icon: '🚗', price: '₩6,900', href: '/pass/move', special: false },
-  { id: 'live', name: 'Live', icon: '🍜', price: '₩6,900', href: '/pass/live', special: false },
-  { id: 'story', name: 'Story', icon: '📖', price: '₩9,900', href: '/pass/story', special: false },
-  { id: 'allinone', name: 'All in One', icon: '👑', price: '₩19,900', href: '/pass', special: true },
-]
-
-const HERO_PASS_LABEL: Record<string, string> = {
-  ko: '필요한 기능만 골라서, 부담 없이',
-  en: 'Pick only what you need, hassle-free',
-  ja: '必要な機能だけ選んで、気軽に',
-  'zh-CN': '只选你需要的，轻松无负担',
-  'zh-TW': '只選你需要的，輕鬆無負擔',
-}
-
-// cta 는 하위 호환 유지를 위해 prop 시그니처에 남기지만 현재는 렌더링하지 않음
+/**
+ * 신규 가치 제안 히어로 (P1-1).
+ * 외국인 페르소나 (Yuki/Mike/Lin) 첫 3초 룰 통과를 목표로
+ * "Korea is not a destination. It's a quest." 형식의 헤드라인 + 서브카피 +
+ * Primary/Secondary CTA + 트러스트 배지를 노출한다.
+ *
+ * 결제 동선 (패스 4개) 은 본 섹션 직하단의 <HeroPassButtons /> 가 담당.
+ */
 export function HeroSection({ locale }: Props) {
-  const heroLabel = HERO_PASS_LABEL[locale] ?? HERO_PASS_LABEL.en
+  const t = useTranslations('homeHero')
+
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-[#1F2937]">
-      {/* 배경 영상 */}
-      <video
-        src={getVideoUrl('hero.mp4')}
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/images/dokkaebi-hero.png"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+    <section className="relative overflow-hidden bg-snow">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-12 md:pt-20 md:pb-16">
+        {/* 트러스트 배지 */}
+        <div className="mb-5 md:mb-6 inline-flex">
+          <span className="inline-flex items-center px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-[11px] md:text-xs font-medium">
+            {t('trustBadge')}
+          </span>
+        </div>
 
-      {/* 어두운 오버레이 — 버튼 가독성 확보 */}
-      <div className="absolute inset-0 bg-black/25" />
+        {/* 헤드라인 — 2줄 강조 */}
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-black leading-tight mb-3 md:mb-4 max-w-3xl text-[#111]">
+          <span className="block">{t('headline')}</span>
+          <span className="block text-mint-deep">{t('headlineEmphasis')}</span>
+        </h1>
 
-      {/* 데스크탑: 오른쪽 세로 패스 버튼 */}
-      <div className="hidden md:flex absolute right-8 lg:right-14 top-1/2 -translate-y-1/2 z-10 flex-col gap-3">
-        <p className="text-white/80 text-xs font-bold text-center mb-1 drop-shadow-sm">
-          {heroLabel}
+        {/* 서브 헤드라인 */}
+        <p className="text-sm sm:text-base md:text-lg text-slate leading-relaxed mb-6 md:mb-8 max-w-2xl">
+          {t('subheadline')}
         </p>
-        {PASS_BUTTONS.map((pass) => (
+
+        {/* CTA 버튼 묶음 (위계 명확) */}
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <Link
-            key={pass.id}
-            href={`/${locale}${pass.href}`}
-            className={[
-              'flex items-center gap-3 px-5 py-3.5 rounded-2xl transition-all backdrop-blur-md border',
-              pass.special
-                ? 'bg-gradient-to-r from-amber-500/25 to-rose-500/25 border-amber-400/40 hover:from-amber-500/35 hover:to-rose-500/35'
-                : 'bg-white/15 border-white/20 hover:bg-white/25',
-            ].join(' ')}
+            href={`/${locale}/auth/signup`}
+            className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-mint-deep text-white font-bold text-base hover:bg-[#7BC8BC] transition-colors min-h-[48px]"
           >
-            <span className="text-2xl">{pass.icon}</span>
-            <div>
-              <p className="text-white font-black text-sm leading-tight">{pass.name}</p>
-              <p className={`text-[10px] font-bold ${pass.special ? 'text-amber-300' : 'text-white/60'}`}>
-                {pass.price}
-              </p>
-            </div>
+            {t('ctaPrimary')}
+            <span className="ml-2" aria-hidden>→</span>
           </Link>
-        ))}
-      </div>
 
-      {/* 모바일: 하단 2x2 패스 버튼 */}
-      <div className="md:hidden absolute bottom-24 left-1/2 -translate-x-1/2 z-10 w-full max-w-sm px-4">
-        <p className="text-white/80 text-xs font-bold text-center mb-2 drop-shadow-sm">
-          {heroLabel}
-        </p>
-        <div className="grid grid-cols-2 gap-2">
-          {PASS_BUTTONS.map((pass) => (
-            <Link
-              key={pass.id}
-              href={`/${locale}${pass.href}`}
-              className={[
-                'flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all backdrop-blur-md border',
-                pass.special
-                  ? 'bg-gradient-to-r from-amber-500/25 to-rose-500/25 border-amber-400/40'
-                  : 'bg-white/15 border-white/20',
-              ].join(' ')}
-            >
-              <span className="text-lg">{pass.icon}</span>
-              <div>
-                <p className="text-white font-black text-xs leading-tight">{pass.name}</p>
-                <p className={`text-[9px] font-bold ${pass.special ? 'text-amber-300' : 'text-white/60'}`}>
-                  {pass.price}
-                </p>
-              </div>
-            </Link>
-          ))}
+          <Link
+            href={`/${locale}/quest/guide`}
+            className="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-slate-300 text-slate-700 font-bold text-base hover:bg-slate-50 transition-colors min-h-[48px]"
+          >
+            {t('ctaSecondary')}
+          </Link>
         </div>
       </div>
-
     </section>
   )
 }

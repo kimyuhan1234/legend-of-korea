@@ -3,6 +3,7 @@ export const revalidate = 3600
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import { HeroSection } from '@/components/features/home/HeroSection'
+import { HeroPassButtons } from '@/components/features/home/HeroPassButtons'
 import { HomeTabExplorer } from '@/components/features/home/HomeTabExplorer'
 import { HomeFeatureCarousel } from '@/components/features/home/HomeFeatureCarousel'
 import { SlideFeatureDupe } from '@/components/features/home/SlideFeatureDupe'
@@ -25,9 +26,12 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: 'home' })
 
   return (
-    <div className="bg-snow">
-      {/* 섹션 1: HERO */}
-      <HeroSection cta={t('signup')} locale={locale} />
+    <div className="bg-snow has-sticky-cta">
+      {/* 섹션 1: 가치 제안 히어로 (P1-1) — 외국인 첫 3초 룰 */}
+      <HeroSection locale={locale} />
+
+      {/* 섹션 2: 패스 버튼 + 비디오 (구 HeroSection — 결제 동선) */}
+      <HeroPassButtons cta={t('signup')} locale={locale} />
 
       {/* 섹션 3: 탭 탐색 (3단 그리드 + 모바일 슬라이드) */}
       <HomeTabExplorer />

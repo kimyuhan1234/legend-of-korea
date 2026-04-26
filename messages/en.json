@@ -1929,5 +1929,13 @@
     "placeholder": "What could we improve? (Even one line helps)",
     "submit": "Send",
     "thanks": "Got it. Every word reaches our team — we read them all 🙏"
+  },
+  "homeHero": {
+    "headline": "Korea is not a destination.",
+    "headlineEmphasis": "It's a quest.",
+    "subheadline": "GPS missions across 9 cities. AI food matching for your country. Photo filters that make every shot a story.",
+    "ctaPrimary": "Join the beta",
+    "ctaSecondary": "How it works",
+    "trustBadge": "🌱 Founding Members beta — limited to 50/day"
   }
 }

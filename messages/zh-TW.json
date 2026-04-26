@@ -1929,5 +1929,13 @@
     "placeholder": "我們可以改進什麼？（一句話也好）",
     "submit": "傳送",
     "thanks": "已收到。我們的團隊會一條一條認真閱讀 🙏"
+  },
+  "homeHero": {
+    "headline": "韓國不是目的地，",
+    "headlineEmphasis": "是一場冒險。",
+    "subheadline": "9個城市70個GPS任務。AI 配對你家鄉相似的韓國美食。30種濾鏡讓每張照片都成故事。",
+    "ctaPrimary": "加入Beta測試",
+    "ctaSecondary": "了解玩法",
+    "trustBadge": "🌱 創始成員招募中 · 每日限50名"
   }
 }

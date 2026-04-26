@@ -1954,5 +1954,13 @@
     "placeholder": "어떤 점을 개선하면 좋을까요? (한 줄도 좋아요)",
     "submit": "보내기",
     "thanks": "받았어요. 우리 팀이 한 명 한 명 직접 읽고 있어요 🙏"
+  },
+  "homeHero": {
+    "headline": "한국은 목적지가 아니에요.",
+    "headlineEmphasis": "퀘스트입니다.",
+    "subheadline": "9개 도시 70개 GPS 미션. 당신 나라 음식과 비슷한 한식 AI 매칭. 모든 사진을 이야기로 만드는 30종 필터.",
+    "ctaPrimary": "베타 가입하기",
+    "ctaSecondary": "작동 방식 보기",
+    "trustBadge": "🌱 Founding Members 베타 모집 중 · 일 50명 한정"
   }
 }
