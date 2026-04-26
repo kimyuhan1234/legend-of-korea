@@ -10,6 +10,7 @@ import { CartSidePanel } from "@/components/shared/CartSidePanel"
 import { CookieBanner } from "@/components/shared/CookieBanner"
 import { FoundingMembersBanner } from "@/components/shared/FoundingMembersBanner"
 import { FeedbackWidget } from "@/components/shared/FeedbackWidget"
+import { StickyCTA } from "@/components/shared/StickyCTA"
 import { locales } from "@/i18n"
 
 interface LocaleLayoutProps {
@@ -94,6 +95,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <Toaster />
           <CartSidePanel />
           <CookieBanner />
+          {/* P1-2: 모바일 전용 Sticky CTA (auth/mypage/checkout 페이지에서는 자동 숨김) */}
+          <StickyCTA />
           {/* 베타 피드백 — Sticky CTA 충돌 페이지에서는 hideOn 추가 */}
           <FeedbackWidget hideOn={["/*/auth/*"]} />
         </CartProvider>

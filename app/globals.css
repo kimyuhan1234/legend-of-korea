@@ -5,6 +5,26 @@
   font-family: var(--font-playfair, 'Playfair Display'), 'Noto Serif KR', 'Noto Serif JP', Georgia, serif;
 }
 
+/* ── Sticky CTA 변수 (P1-2) ─────────────────────────────
+   - 기본 0px (Sticky CTA 없는 페이지)
+   - .has-sticky-cta 가 붙은 페이지: 64px
+   - FeedbackWidget FAB (components/shared/FeedbackWidget.tsx) 가
+     env(safe-area-inset-bottom) + var(--cta-height) + 24px 로 자동 위로 올라감.
+   - 데스크톱은 StickyCTA 미노출 → 0 으로 복원. */
+:root {
+  --cta-height: 0px;
+}
+.has-sticky-cta {
+  --cta-height: 64px;
+  padding-bottom: calc(var(--cta-height) + env(safe-area-inset-bottom, 0px));
+}
+@media (min-width: 768px) {
+  .has-sticky-cta {
+    --cta-height: 0px;
+    padding-bottom: 0;
+  }
+}
+
 /* ── 테마 변수 (v3 — 파스텔 민트 + 벚꽃 핑크) ──────── */
 @theme {
   /* ── 폰트 ── */
