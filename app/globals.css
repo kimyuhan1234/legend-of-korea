@@ -25,6 +25,35 @@
   }
 }
 
+/* ── 시각 시스템 3-tier 그라데이션 (P1-4) ─────────────────
+   기존 색상 토큰 (--color-mint, --color-lavender, --color-blossom) 재사용.
+   Tier 는 의미 분류, 색상 조합은 페이지 정체성에 맞게 다양 (사용자 결정 B-3).
+
+   - .bg-tier-strong       — 가치 영역 기본 (3-stop, lavender 경유)
+   - .bg-tier-strong-stay  — STAY 전용 (현재 2-stop 보존, 회귀 0)
+   - .bg-tier-soft         — 정보 영역 (옅은 mint-light → white)
+   - .bg-tier-plain        — 사용자 영역 (흰 배경)
+*/
+.bg-tier-strong {
+  background: linear-gradient(135deg,
+    var(--color-mint) 0%,
+    var(--color-lavender) 50%,
+    var(--color-blossom) 100%);
+}
+.bg-tier-strong-stay {
+  background: linear-gradient(to bottom right,
+    var(--color-mint) 0%,
+    var(--color-blossom) 100%);
+}
+.bg-tier-soft {
+  background: linear-gradient(135deg,
+    var(--color-mint-light) 0%,
+    #ffffff 100%);
+}
+.bg-tier-plain {
+  background: #ffffff;
+}
+
 /* ── 테마 변수 (v3 — 파스텔 민트 + 벚꽃 핑크) ──────── */
 @theme {
   /* ── 폰트 ── */
