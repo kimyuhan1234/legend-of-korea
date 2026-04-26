@@ -6,6 +6,12 @@ import { usePathname } from 'next/navigation'
 import { useCart } from '@/lib/contexts/CartContext'
 import { DeliveryAddressModal, type DeliveryAddress } from '@/components/shared/DeliveryAddressModal'
 
+/**
+ * 우측 슬라이드 카트 패널.
+ * P1-8: 베타 단계 (NEXT_PUBLIC_PAYMENTS_ENABLED !== 'true') 에는 렌더 X.
+ * CartContext 자체는 layout 에 마운트되어 GoodsCard 의 useCart 가 깨지지 않음.
+ * 결제 활성화 시 환경변수만 'true' 로 토글하면 즉시 복원.
+ */
 export function CartSidePanel() {
   const t = useTranslations('cart')
   const pathname = usePathname()
@@ -15,6 +21,9 @@ export function CartSidePanel() {
     items, totalItems, totalPriceDisplay,
     isOpen, closeCart, removeItem, updateQuantity, clearCart,
   } = useCart()
+
+  // 결제 미활성 시 패널 자체 렌더 X (자동 노출 + 헤더 카트 트리거 모두 무력화)
+  if (process.env.NEXT_PUBLIC_PAYMENTS_ENABLED !== 'true') return null
 
   const [showDelivery, setShowDelivery] = useState(false)
 
