@@ -32,6 +32,8 @@ export interface Database {
           total_lp: number
           current_level: number
           role: "user" | "admin"
+          birth_date: string | null
+          birth_date_verified_at: string | null
           created_at: string
           updated_at: string
         }
@@ -45,6 +47,8 @@ export interface Database {
           total_lp?: number
           current_level?: number
           role?: "user" | "admin"
+          birth_date?: string | null
+          birth_date_verified_at?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -57,6 +61,8 @@ export interface Database {
           total_lp?: number
           current_level?: number
           role?: "user" | "admin"
+          birth_date?: string | null
+          birth_date_verified_at?: string | null
           updated_at?: string
         }
         Relationships: []

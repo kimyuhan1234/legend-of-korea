@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { isPasswordValid } from "@/lib/auth/password-rules"
+import { isAtLeastMinimumAge } from "@/lib/validation/age"
 
 // ──────────────────────────────────────────
 // 이메일 로그인
@@ -33,10 +34,11 @@ export async function signupWithEmail(formData: FormData) {
   const email = formData.get("email") as string
   const password = formData.get("password") as string
   const nickname = formData.get("nickname") as string
+  const birthDate = formData.get("birth_date") as string
   const language = (formData.get("language") as string) || "ko"
   const locale = (formData.get("locale") as string) || "ko"
 
-  if (!email || !password || !nickname) {
+  if (!email || !password || !nickname || !birthDate) {
     return { error: "MISSING_FIELDS" as const }
   }
   if (nickname.length > 20) {
@@ -45,6 +47,11 @@ export async function signupWithEmail(formData: FormData) {
   if (!isPasswordValid(password)) {
     return { error: "PASSWORD_RULES" as const }
   }
+  // 만 14세 검증 (PIPA §22-2): supabase.auth.signUp() 호출 전에 차단해
+  // auth.users 자체가 생성되지 않게 한다.
+  if (!isAtLeastMinimumAge(birthDate)) {
+    return { error: "UNDER_14" as const }
+  }
 
   const supabase = await createClient()
 
@@ -52,7 +59,8 @@ export async function signupWithEmail(formData: FormData) {
     email,
     password,
     options: {
-      data: { nickname, language },
+      // birth_date 는 raw_user_meta_data 로 전달 → 040 트리거가 public.users INSERT 시 함께 저장
+      data: { nickname, language, birth_date: birthDate },
       emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/auth/callback`,
     },
   })

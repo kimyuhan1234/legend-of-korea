@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { signupWithEmail } from "@/lib/auth/actions"
 import { checkPasswordRules, type PasswordRuleKey } from "@/lib/auth/password-rules"
+import { isAtLeastMinimumAge, getMaxBirthDateString } from "@/lib/validation/age"
 import { toast } from "@/components/ui/use-toast"
 
 interface SignupFormProps {
@@ -39,11 +40,14 @@ const TEXT: Record<Lang, {
   emailConfirmDesc: string
   testBannerTitle: string
   testBannerDesc: string
+  birthDateLabel: string
+  birthDateHint: string
   errors: {
     MISSING_FIELDS: string
     NICKNAME_TOO_LONG: string
     PASSWORD_RULES: string
     EMAIL_TAKEN: string
+    UNDER_14: string
     GENERIC: string
   }
 }> = {
@@ -73,11 +77,14 @@ const TEXT: Record<Lang, {
     emailConfirmDesc: "받은편지함에서 인증 메일을 확인해주세요.",
     testBannerTitle: "현재 테스트 기간 — 모든 기능 무료!",
     testBannerDesc: "테스트 기간이 종료되면 일부 기능은 유료 패스가 필요합니다. 지금 가입하고 모든 기능을 체험해보세요!",
+    birthDateLabel: "생년월일",
+    birthDateHint: "만 14세 이상부터 가입할 수 있어요",
     errors: {
       MISSING_FIELDS: "모든 필드를 입력해주세요.",
       NICKNAME_TOO_LONG: "닉네임은 20자 이하로 입력해주세요.",
       PASSWORD_RULES: "비밀번호 규칙을 확인해주세요.",
       EMAIL_TAKEN: "이미 사용 중인 이메일입니다.",
+      UNDER_14: "만 14세 이상부터 가입할 수 있어요",
       GENERIC: "회원가입 중 오류가 발생했습니다.",
     },
   },
@@ -107,11 +114,14 @@ const TEXT: Record<Lang, {
     emailConfirmDesc: "受信トレイで認証メールをご確認ください。",
     testBannerTitle: "ベータ期間 — 全機能無料！",
     testBannerDesc: "ベータ期間終了後、一部の機能は有料パスが必要になります。今すぐ登録して全機能をお試しください！",
+    birthDateLabel: "生年月日",
+    birthDateHint: "14歳以上の方からご登録いただけます",
     errors: {
       MISSING_FIELDS: "すべての項目を入力してください。",
       NICKNAME_TOO_LONG: "ニックネームは20文字以内で入力してください。",
       PASSWORD_RULES: "パスワード規則をご確認ください。",
       EMAIL_TAKEN: "すでに使用中のメールアドレスです。",
+      UNDER_14: "14歳以上の方からご登録いただけます",
       GENERIC: "登録中にエラーが発生しました。",
     },
   },
@@ -141,11 +151,14 @@ const TEXT: Record<Lang, {
     emailConfirmDesc: "Please check your inbox for the verification email.",
     testBannerTitle: "Beta Period — All features free!",
     testBannerDesc: "Some features will require a paid pass after the beta period. Sign up now and try everything for free!",
+    birthDateLabel: "Date of birth",
+    birthDateHint: "Sign-up is available for ages 14 and older",
     errors: {
       MISSING_FIELDS: "Please fill in all fields.",
       NICKNAME_TOO_LONG: "Nickname must be 20 characters or fewer.",
       PASSWORD_RULES: "Please check the password rules.",
       EMAIL_TAKEN: "This email is already in use.",
+      UNDER_14: "Sign-up is available for ages 14 and older",
       GENERIC: "An error occurred during signup.",
     },
   },
@@ -175,11 +188,14 @@ const TEXT: Record<Lang, {
     emailConfirmDesc: "请在收件箱查看验证邮件。",
     testBannerTitle: "测试期间 — 所有功能免费！",
     testBannerDesc: "测试期结束后，部分功能需要付费通行证。现在注册，免费体验所有功能！",
+    birthDateLabel: "出生日期",
+    birthDateHint: "年满14岁可注册",
     errors: {
       MISSING_FIELDS: "请填写所有字段。",
       NICKNAME_TOO_LONG: "昵称不能超过20个字符。",
       PASSWORD_RULES: "请检查密码规则。",
       EMAIL_TAKEN: "该邮箱已被使用。",
+      UNDER_14: "年满14岁可注册",
       GENERIC: "注册过程中发生错误。",
     },
   },
@@ -209,11 +225,14 @@ const TEXT: Record<Lang, {
     emailConfirmDesc: "請在收件匣查看驗證信件。",
     testBannerTitle: "測試期間 — 所有功能免費！",
     testBannerDesc: "測試期結束後，部分功能需要付費通行證。現在註冊，免費體驗所有功能！",
+    birthDateLabel: "出生日期",
+    birthDateHint: "年滿14歲可註冊",
     errors: {
       MISSING_FIELDS: "請填寫所有欄位。",
       NICKNAME_TOO_LONG: "暱稱不能超過20個字元。",
       PASSWORD_RULES: "請檢查密碼規則。",
       EMAIL_TAKEN: "此信箱已被使用。",
+      UNDER_14: "年滿14歲可註冊",
       GENERIC: "註冊過程中發生錯誤。",
     },
   },
@@ -242,6 +261,7 @@ export function SignupForm({ locale }: SignupFormProps) {
   const [nickname, setNickname] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
+  const [birthDate, setBirthDate] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [agreedPrivacy, setAgreedPrivacy] = useState(false)
@@ -251,11 +271,17 @@ export function SignupForm({ locale }: SignupFormProps) {
   const allRulesMet = RULE_KEYS.every((k) => ruleStatus[k])
   const passwordsMatch = password.length > 0 && password === passwordConfirm
   const showMismatchError = passwordConfirm.length > 0 && !passwordsMatch
+  // 만 14세 검증 — 입력 후 미달이면 즉시 에러 노출 (디자인팀 인라인 에러)
+  const isAgeOk = birthDate.length === 0 || isAtLeastMinimumAge(birthDate)
+  const showAgeError = birthDate.length > 0 && !isAgeOk
+  const maxBirthDate = useMemo(() => getMaxBirthDateString(), [])
 
   const canSubmit =
     !loading &&
     email.trim().length > 0 &&
     nickname.trim().length > 0 &&
+    birthDate.length > 0 &&
+    isAgeOk &&
     allRulesMet &&
     passwordsMatch &&
     agreedPrivacy &&
@@ -273,6 +299,11 @@ export function SignupForm({ locale }: SignupFormProps) {
     const result = await signupWithEmail(formData)
 
     if (result?.error) {
+      // 14세 미만은 별도 안내 페이지로 (users row 생성 X — 클라/서버 양쪽 검증으로 차단된 상태)
+      if (result.error === "UNDER_14") {
+        router.push(`/${locale}/auth/age-restricted`)
+        return
+      }
       const code = result.error as keyof typeof t.errors
       setError(t.errors[code] ?? t.errors.GENERIC)
       setLoading(false)
@@ -408,6 +439,25 @@ export function SignupForm({ locale }: SignupFormProps) {
           placeholder={t.nicknamePlaceholder}
           className={inputClass}
         />
+      </div>
+
+      <div className="flex flex-col gap-1.5">
+        <label className="text-sm font-medium text-slate">{t.birthDateLabel}</label>
+        <input
+          type="date"
+          name="birth_date"
+          required
+          value={birthDate}
+          max={maxBirthDate}
+          onChange={(e) => setBirthDate(e.target.value)}
+          className={`${inputClass} ${showAgeError ? 'border-red-300 focus:border-red-400 focus:ring-red-200' : ''}`}
+        />
+        {/* 입력 전: 안내 텍스트 / 입력 후 미달: 빨간 에러 (이모지 X — 디자인팀 우려 반영) */}
+        {showAgeError ? (
+          <p className="text-xs text-red-600">{t.errors.UNDER_14}</p>
+        ) : (
+          <p className="text-xs text-stone">{t.birthDateHint}</p>
+        )}
       </div>
 
       <div className="flex flex-col gap-1.5">
