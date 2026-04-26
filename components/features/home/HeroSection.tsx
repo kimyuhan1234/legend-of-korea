@@ -19,9 +19,10 @@ export function HeroSection({ locale }: Props) {
   return (
     <section className="relative overflow-hidden bg-snow">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-12 md:pt-20 md:pb-16">
-        {/* 트러스트 배지 */}
-        <div className="mb-5 md:mb-6 inline-flex">
-          <span className="inline-flex items-center px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-[11px] md:text-xs font-medium">
+        {/* 트러스트 배지 — 영문 'Founding Members beta — limited to 50/day' 가 최장(45자).
+            매우 좁은 뷰포트에서 wrap 가능하도록 max-w + whitespace-normal */}
+        <div className="mb-5 md:mb-6 max-w-full">
+          <span className="inline-flex items-center px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-[11px] md:text-xs font-medium leading-snug whitespace-normal">
             {t('trustBadge')}
           </span>
         </div>
