@@ -788,6 +788,50 @@
     "loginRequired": "请先登录",
     "loginBtn": "登录"
   },
+  "discover": {
+    "title": "发现韩国,从这里开始",
+    "subtitle": "从住处到玩法 — 一站式开启你的韩国之旅",
+    "cta": "去看看",
+    "stay": {
+      "label": "STAY",
+      "title": "在传说之城里入住",
+      "description": "选择靠近任务地点的住宿,完成你的传说之旅。可在外部网站直接预订并比较最低价。"
+    },
+    "food": {
+      "label": "K-FOOD",
+      "title": "地道美食与平替菜谱",
+      "description": "按城市精选的K-Food热门餐厅,以及在家也能复刻的平替食谱。"
+    },
+    "ootd": {
+      "label": "OOTD",
+      "title": "今日韩式穿搭",
+      "description": "旅行者上传的每周OOTD与韩国风格灵感。"
+    },
+    "traffic": {
+      "label": "TRAFFIC",
+      "title": "交通指南",
+      "description": "从机场到城市 — 外国游客最需要的韩国交通基础。"
+    },
+    "sights": {
+      "label": "SPOT",
+      "title": "实时城市匹配",
+      "description": "为你匹配此刻最火的城市热门地点。"
+    }
+  },
+  "communityHub": {
+    "title": "Community",
+    "subtitle": "旅行者的记录 · 共同打造的韩国之旅",
+    "memories": {
+      "label": "MEMORIES",
+      "title": "回忆记录",
+      "description": "通过旅行者上传的真实照片和故事认识韩国。"
+    },
+    "diy": {
+      "label": "DIY",
+      "title": "DIY 工作坊",
+      "description": "亲身体验韩国传统与文化的自助工作坊指南。"
+    }
+  },
   "story": {
     "title": "QUEST",
     "subtitle": "路线探索 · 故事 · 任务",

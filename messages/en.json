@@ -788,6 +788,50 @@
     "loginRequired": "Please sign in",
     "loginBtn": "Sign In"
   },
+  "discover": {
+    "title": "Discover Korea, Your Way",
+    "subtitle": "From where you stay to what you do — your Korea trip starts here.",
+    "cta": "Explore",
+    "stay": {
+      "label": "STAY",
+      "title": "Stay in legendary cities",
+      "description": "Pick a place close to mission spots and complete your legendary trip. Book directly through partner sites and compare lowest prices."
+    },
+    "food": {
+      "label": "K-FOOD",
+      "title": "Local spots & food dupes",
+      "description": "Curated K-Food spots by city and dupe recipes you can recreate at home."
+    },
+    "ootd": {
+      "label": "OOTD",
+      "title": "Today's Korea look",
+      "description": "Weekly OOTDs from real travelers and Korean style inspiration."
+    },
+    "traffic": {
+      "label": "TRAFFIC",
+      "title": "Transport guide",
+      "description": "From airport to city — the essential guide foreign travelers actually need."
+    },
+    "sights": {
+      "label": "SPOT",
+      "title": "Real-time city match",
+      "description": "We match you with the hottest spots in town, right now."
+    }
+  },
+  "communityHub": {
+    "title": "Community",
+    "subtitle": "Traveler stories · Korea trip, built together",
+    "memories": {
+      "label": "MEMORIES",
+      "title": "Memories",
+      "description": "Discover Korea through real photos and stories from travelers."
+    },
+    "diy": {
+      "label": "DIY",
+      "title": "DIY Workshops",
+      "description": "Hands-on guides for experiencing Korean tradition and culture yourself."
+    }
+  },
   "story": {
     "title": "QUEST",
     "subtitle": "Course Explore · Story · Quest",

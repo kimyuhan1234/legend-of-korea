@@ -10,7 +10,8 @@ const defaultLocale = "ko"
 const LOCALE_REGEX = /^\/([a-z]{2}(?:-[A-Z]{2})?)(\/|$)/
 
 // 비로그인 접근 허용 경로 (locale prefix 제외, 화이트리스트)
-const PUBLIC_PATHS = ["/", "/auth", "/login", "/signup", "/stay", "/privacy", "/terms", "/maintenance"]
+// P1-11: /discover 추가 — Discover 허브는 외국인 비로그인 첫 진입점.
+const PUBLIC_PATHS = ["/", "/auth", "/login", "/signup", "/stay", "/discover", "/privacy", "/terms", "/maintenance"]
 
 // ── 일일 접속자 제한 (테스트 기간) ───────────────────────────
 // Edge/Serverless 인스턴스별 독립 메모리이므로 엄밀한 글로벌 제한은 아님 —

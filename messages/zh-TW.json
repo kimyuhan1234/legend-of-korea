@@ -788,6 +788,50 @@
     "loginRequired": "請先登入",
     "loginBtn": "登入"
   },
+  "discover": {
+    "title": "發現韓國,從這裡開始",
+    "subtitle": "從住處到玩法 — 一站式開啟你的韓國之旅",
+    "cta": "去看看",
+    "stay": {
+      "label": "STAY",
+      "title": "在傳說之城裡入住",
+      "description": "選擇靠近任務地點的住宿,完成你的傳說之旅。可在外部網站直接預訂並比較最低價。"
+    },
+    "food": {
+      "label": "K-FOOD",
+      "title": "道地美食與平替食譜",
+      "description": "按城市精選的K-Food熱門餐廳,以及在家也能重現的平替食譜。"
+    },
+    "ootd": {
+      "label": "OOTD",
+      "title": "今日韓式穿搭",
+      "description": "旅行者上傳的每週OOTD與韓國風格靈感。"
+    },
+    "traffic": {
+      "label": "TRAFFIC",
+      "title": "交通指南",
+      "description": "從機場到城市 — 外國旅客最需要的韓國交通基礎。"
+    },
+    "sights": {
+      "label": "SPOT",
+      "title": "即時城市配對",
+      "description": "為你配對此刻最熱門的城市景點。"
+    }
+  },
+  "communityHub": {
+    "title": "Community",
+    "subtitle": "旅行者的記錄 · 共同打造的韓國之旅",
+    "memories": {
+      "label": "MEMORIES",
+      "title": "回憶記錄",
+      "description": "透過旅行者上傳的真實照片與故事認識韓國。"
+    },
+    "diy": {
+      "label": "DIY",
+      "title": "DIY 工作坊",
+      "description": "親身體驗韓國傳統與文化的自助工作坊指南。"
+    }
+  },
   "story": {
     "title": "QUEST",
     "subtitle": "路線探索 · 故事 · 任務",

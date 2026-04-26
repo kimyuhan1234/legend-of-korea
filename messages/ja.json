@@ -788,6 +788,50 @@
     "loginRequired": "ログインが必要です",
     "loginBtn": "ログインする"
   },
+  "discover": {
+    "title": "韓国を、こう出会う",
+    "subtitle": "泊まる場所から楽しみ方まで — 一か所から始まる韓国旅行",
+    "cta": "見てみる",
+    "stay": {
+      "label": "STAY",
+      "title": "伝説の街に泊まる",
+      "description": "ミッション地点に近い宿を選んで伝説の旅を完成。外部サイトから直接予約・最安値比較も可能です。"
+    },
+    "food": {
+      "label": "K-FOOD",
+      "title": "地域グルメと食べ物デュープ",
+      "description": "都市別K-Foodスポットと、自宅でも作れるデュープレシピ。"
+    },
+    "ootd": {
+      "label": "OOTD",
+      "title": "今日の韓国ルック",
+      "description": "旅行者が投稿するウィークリーOOTDと韓国スタイルのインサイト。"
+    },
+    "traffic": {
+      "label": "TRAFFIC",
+      "title": "交通ガイド",
+      "description": "空港から都市まで、外国人がいちばん迷う韓国交通の基本。"
+    },
+    "sights": {
+      "label": "SPOT",
+      "title": "リアルタイム都市マッチング",
+      "description": "今この瞬間いちばんホットな都市スポットをマッチング。"
+    }
+  },
+  "communityHub": {
+    "title": "Community",
+    "subtitle": "旅行者の記録 · みんなで作る韓国旅行",
+    "memories": {
+      "label": "MEMORIES",
+      "title": "思い出を残す",
+      "description": "旅行者が投稿した写真とストーリーで出会う韓国。"
+    },
+    "diy": {
+      "label": "DIY",
+      "title": "DIYワークショップ",
+      "description": "韓国の伝統と文化を体験するセルフワークショップガイド。"
+    }
+  },
   "story": {
     "title": "QUEST",
     "subtitle": "コース探索 · ストーリー · クエスト",
