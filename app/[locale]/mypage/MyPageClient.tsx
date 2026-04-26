@@ -79,7 +79,7 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
         }
 
         const [userProfile, historyRes, couponsRes, ordersRes] = await Promise.all([
-          supabase.from('users').select('*').eq('id', authUser.id).single(),
+          supabase.from('users').select('id, nickname, email, language, avatar_url, total_lp, current_level, role, birth_date, birth_date_verified_at, created_at').eq('id', authUser.id).single(),
           fetch('/api/lp/history'),
           fetch('/api/shop/coupons'),
           fetch('/api/orders'),

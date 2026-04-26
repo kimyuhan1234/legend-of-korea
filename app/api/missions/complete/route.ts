@@ -11,10 +11,10 @@ export async function POST(req: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: '로그인이 필요합니다.' }, { status: 401 });
 
-    // 1. 미션 조회
+    // 1. 미션 조회 — 서버 검증용. correct_answer 는 정답 비교에만 사용 (클라이언트 응답엔 미포함).
     const { data: mission, error: mError } = await supabase
       .from('missions')
-      .select('*')
+      .select('id, course_id, sequence, type, title, lp_reward, is_hidden, latitude, longitude, correct_answer')
       .eq('id', missionId)
       .single();
 

@@ -48,18 +48,20 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
   if (!user) redirect(`/${locale}/login?next=/${locale}/missions/${courseId}`);
 
   // 1. 코스 정보 및 모든 미션(히든 포함) 조회
+  // JOIN: missions + mission_progress (LEFT) 양쪽 컬럼 명시.
+  // correct_answer / qr_code 등 답안 필드는 클라이언트로 흘려보내면 안 되므로 제외.
   const { data: missions, error: mError } = await supabase
     .from('missions')
-    .select('*, mission_progress!left(*)')
+    .select('id, course_id, sequence, type, title, description, hint_1, hint_2, hint_3, lp_reward, is_hidden, location_name, location_description, latitude, longitude, mission_progress!left(id, user_id, mission_id, status, lp_earned, started_at, completed_at)')
     .eq('course_id', courseId)
     .order('sequence', { ascending: true });
 
   if (mError || !missions || missions.length === 0) notFound();
 
-  // 2. 진행 상태 가공
+  // 2. 진행 상태 가공 — 본인 진행만 (RLS 도 본인만 허용하지만 명시적으로)
   const { data: userProgress } = await supabase
     .from('mission_progress')
-    .select('*')
+    .select('id, mission_id, status, lp_earned, started_at, completed_at')
     .eq('user_id', user.id);
 
   const progressMap = new Map(userProgress?.map(p => [p.mission_id, p.status]) || []);

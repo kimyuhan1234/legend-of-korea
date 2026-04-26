@@ -53,7 +53,7 @@ export async function GET() {
     // 비구독자 → free 플랜 정보 반환
     const { data: freePlan } = await supabase
       .from('subscription_plans')
-      .select('*')
+      .select('id, name, price, plan_type, features, kit_discount_rate, tier_levelup, is_active')
       .eq('plan_type', 'free')
       .eq('is_active', true)
       .single()

@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
 
     const { data, error } = await supabase
       .from('lp_transactions')
-      .select('*')
+      .select('id, user_id, amount, type, reference_id, description, created_at')
       .eq('user_id', user.id)
       .order('created_at', { ascending: false });
 

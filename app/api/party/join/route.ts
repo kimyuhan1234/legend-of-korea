@@ -15,10 +15,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing partyId' }, { status: 400 })
     }
 
-    // 파티 정보 조회
+    // 파티 정보 조회 — 가입 검증 후 current_members/max_members/status 사용
     const { data: party, error: fetchError } = await supabase
       .from('quest_parties')
-      .select('*')
+      .select('id, course_id, adventure_date, current_members, max_members, status')
       .eq('id', partyId)
       .single()
 

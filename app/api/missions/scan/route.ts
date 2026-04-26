@@ -17,9 +17,10 @@ export async function POST(req: NextRequest) {
     }
 
     // 2. 미션 찾기 (QR 코드 또는 수동 입력 코드)
+    // 응답에 mission 정보가 흘러갈 수 있어 correct_answer 등 답안 필드는 제외.
     const { data: mission, error: missionError } = await supabase
       .from('missions')
-      .select('*')
+      .select('id, course_id, sequence, type, title, lp_reward, is_hidden, location_name, location_description, latitude, longitude')
       .or(`qr_code.eq."${qrCode}",qr_code.eq."${qrCode.toUpperCase()}"`)
       .maybeSingle();
 

@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
     // Fetch only active banners, ordered by priority
     const { data: ads, error } = await supabase
       .from('ad_banners')
-      .select('*')
+      .select('id, position, image, link, company, priority, created_at')
       .eq('active', true)
       .order('priority', { ascending: false })
       .order('created_at', { ascending: false });

@@ -28,7 +28,7 @@ export async function GET() {
 
     const { data: parties, error: partiesError } = await supabase
       .from('quest_parties')
-      .select('*')
+      .select('id, course_id, leader_id, title, description, adventure_date, max_members, current_members, status, language, leader_nationality, created_at, updated_at')
       .in('id', partyIds)
       .order('adventure_date', { ascending: true })
 

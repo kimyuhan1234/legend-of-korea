@@ -15,7 +15,8 @@ export async function GET(req: NextRequest) {
 
     let query = supabase
       .from('missions')
-      .select('*')
+      // 관리자 전용 — 모든 컬럼 명시 (correct_answer 포함, 운영 화면용)
+      .select('id, course_id, sequence, type, title, description, hint_1, hint_2, hint_3, correct_answer, lp_reward, is_hidden, location_name, location_description, latitude, longitude, qr_code, created_at')
       .order('sequence', { ascending: true });
 
     if (courseId) {
