@@ -51,11 +51,11 @@ export function CartSidePanel() {
         />
       )}
 
-      {/* 사이드 패널 */}
+      {/* 사이드 패널 — Tailwind v4 translate-x-full 호환성 fix (NavbarMobileMenu 와
+          동일 패턴): inline transform: translateX() 로 모든 브라우저 호환 보장 */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 transition-transform duration-300 ease-out"
+        style={{ transform: isOpen ? 'translateX(0)' : 'translateX(100%)' }}
       >
         <div className="flex flex-col h-full">
           {/* 헤더 */}

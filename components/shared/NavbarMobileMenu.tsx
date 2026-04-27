@@ -47,9 +47,15 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
         <div className="fixed inset-0 z-40 bg-black/20" onClick={() => setOpen(false)} />
       )}
 
-      {/* 슬라이드 메뉴 */}
+      {/* 슬라이드 메뉴
+          hotfix: Tailwind v4 는 .translate-x-full 을 modern CSS 'translate:'
+          shorthand 로만 빌드 (transform: translateX 폴백 없음). Samsung Internet
+          / 옛 모바일 브라우저 (Chromium 104 미만) 에서 미지원 → 메뉴가 항상
+          화면 안에 노출되는 회귀. inline style 로 'transform: translateX()'
+          legacy 명시 — 모든 브라우저 호환 보장. */}
       <div
-        className={`fixed top-16 right-0 bottom-0 z-50 w-72 bg-white shadow-2xl transform transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"}`}
+        className="fixed top-16 right-0 bottom-0 z-50 w-72 bg-white shadow-2xl transition-transform duration-300"
+        style={{ transform: open ? "translateX(0)" : "translateX(100%)" }}
       >
         <div className="flex flex-col h-full">
           {/* 유저 정보 */}
