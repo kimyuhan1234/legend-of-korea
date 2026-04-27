@@ -34,6 +34,7 @@ export interface Database {
           role: "user" | "admin"
           birth_date: string | null
           birth_date_verified_at: string | null
+          parent_consent_id: string | null
           created_at: string
           updated_at: string
         }
@@ -49,6 +50,7 @@ export interface Database {
           role?: "user" | "admin"
           birth_date?: string | null
           birth_date_verified_at?: string | null
+          parent_consent_id?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -63,6 +65,7 @@ export interface Database {
           role?: "user" | "admin"
           birth_date?: string | null
           birth_date_verified_at?: string | null
+          parent_consent_id?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -1220,6 +1223,47 @@ export interface Database {
         }
         Update: {
           comment?: string | null
+        }
+        Relationships: []
+      }
+      // P0-5-C-2 (045 마이그레이션): 법정대리인 동의 추적
+      parent_consents: {
+        Row: {
+          id: string
+          applicant_email: string | null
+          applicant_birth_date: string | null
+          applicant_nickname: string | null
+          parent_email: string
+          parent_consent_token: string
+          status: "pending" | "consented" | "rejected" | "expired"
+          consent_method: "email_link" | "digital_signature" | null
+          consented_at: string | null
+          expired_at: string
+          created_at: string
+          ip_hash: string | null
+        }
+        Insert: {
+          id?: string
+          applicant_email?: string | null
+          applicant_birth_date?: string | null
+          applicant_nickname?: string | null
+          parent_email: string
+          parent_consent_token: string
+          status?: "pending" | "consented" | "rejected" | "expired"
+          consent_method?: "email_link" | "digital_signature" | null
+          consented_at?: string | null
+          expired_at?: string
+          created_at?: string
+          ip_hash?: string | null
+        }
+        Update: {
+          applicant_email?: string | null
+          applicant_birth_date?: string | null
+          applicant_nickname?: string | null
+          status?: "pending" | "consented" | "rejected" | "expired"
+          consent_method?: "email_link" | "digital_signature" | null
+          consented_at?: string | null
+          expired_at?: string
         }
         Relationships: []
       }
