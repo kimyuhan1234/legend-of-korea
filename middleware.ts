@@ -134,9 +134,14 @@ const intlMiddleware = createMiddleware({
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // ── 정적 자산: 패스스루 ──────────────────────────
+  // ── 정적 자산 / SEO 라우트: 패스스루 ──────────────────────────
+  // /og — PRD-3B 동적 OG 이미지 (next-intl 의 /ko/og 리다이렉트 방지)
+  // /sitemap.xml, /robots.txt — Next.js 자동 라우트, locale 무관
   if (
     pathname.startsWith("/_next/") ||
+    pathname.startsWith("/og") ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/robots.txt" ||
     /\.(?:ico|svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot|webmanifest|json)$/.test(pathname)
   ) {
     return NextResponse.next()
@@ -221,9 +226,12 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * _next/static, _next/image, favicon.ico, 정적 파일 확장자 제외
-     * API 라우트도 제외 (updateSession은 위 if 분기에서 이미 패스스루)
+     * _next/static, _next/image, favicon.ico, 정적 파일 확장자 제외.
+     * API 라우트도 제외 (updateSession 은 위 if 분기에서 이미 패스스루).
+     *
+     * hotfix: /og, /sitemap.xml, /robots.txt 제외 — next-intl 가 가로채
+     * /ko/og 등 잘못된 locale prefix 리다이렉트 방지.
      */
-    "/((?!_next/static|_next/image|favicon\\.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot|mp4|mp3|wav|ogg|webm|mov|avi)$).*)",
+    "/((?!og|sitemap\\.xml|robots\\.txt|_next/static|_next/image|favicon\\.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff2?|ttf|otf|eot|mp4|mp3|wav|ogg|webm|mov|avi)$).*)",
   ],
 }
