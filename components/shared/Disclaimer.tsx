@@ -1,5 +1,7 @@
 'use client'
 
+import { AlertTriangle } from 'lucide-react'
+
 interface DisclaimerProps {
   locale: string
   className?: string
@@ -15,8 +17,9 @@ export function Disclaimer({ locale, className = "" }: DisclaimerProps) {
   const text = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
 
   return (
-    <p className={`text-xs text-stone leading-relaxed ${className}`}>
-      ⚠️ {text}
+    <p className={`text-xs text-stone leading-relaxed flex items-start gap-1.5 ${className}`}>
+      <AlertTriangle className="w-3.5 h-3.5 mt-0.5 shrink-0 text-stone" strokeWidth={1.8} aria-hidden />
+      <span>{text}</span>
     </p>
   )
 }

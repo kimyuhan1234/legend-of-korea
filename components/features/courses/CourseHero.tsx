@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { MapPin } from "lucide-react"
 import { DifficultyBadge } from "@/components/shared/DifficultyBadge"
 import type { I18nText } from "@/lib/supabase/types"
 
@@ -54,7 +55,10 @@ export function CourseHero({ course, missionCount, locale }: CourseHeroProps) {
           {/* 뱃지 */}
           <div className="flex items-center gap-3 mb-4">
             <DifficultyBadge difficulty={course.difficulty} locale={locale} size="md" />
-            <span className="text-sm text-slate">📍 {course.region}</span>
+            <span className="text-sm text-slate inline-flex items-center gap-1">
+              <MapPin className="w-3.5 h-3.5" strokeWidth={2} aria-hidden />
+              {course.region}
+            </span>
           </div>
 
           {/* 타이틀 */}

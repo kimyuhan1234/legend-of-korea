@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { MapPin, Clock } from "lucide-react"
 import { DifficultyBadge } from "@/components/shared/DifficultyBadge"
 import type { I18nText } from "@/lib/supabase/types"
 import { getRegionName } from "@/lib/constants/regions"
@@ -59,9 +60,15 @@ export function CourseCard({ course, locale }: CourseCardProps) {
       {/* 내용 */}
       <div className="p-5">
         <div className="flex items-center gap-2 text-xs text-stone mb-2">
-          <span>📍 {getRegionName(course.region, locale)}</span>
+          <span className="inline-flex items-center gap-1">
+            <MapPin className="w-3 h-3" strokeWidth={2} aria-hidden />
+            {getRegionName(course.region, locale)}
+          </span>
           <span>·</span>
-          <span>⏱ {duration}</span>
+          <span className="inline-flex items-center gap-1">
+            <Clock className="w-3 h-3" strokeWidth={2} aria-hidden />
+            {duration}
+          </span>
         </div>
 
         <h3 className="text-base font-bold text-[#111] mb-2 line-clamp-1">

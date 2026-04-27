@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { X } from 'lucide-react'
+import { X, Sprout } from 'lucide-react'
 
 const SESSION_KEY = 'founding-banner-dismissed'
 
@@ -60,7 +60,7 @@ export function FoundingMembersBanner() {
     <div className="bg-gradient-to-r from-sky-100 to-sky-50 border-b border-sky-200">
       <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between gap-3 text-sm">
         <p className="flex items-center gap-2 min-w-0">
-          <span aria-hidden>🌱</span>
+          <Sprout className="w-4 h-4 text-emerald-600 shrink-0" strokeWidth={1.8} aria-hidden />
           <span className="truncate">
             {t('message', { joined: count.joined, target: count.target })}
           </span>

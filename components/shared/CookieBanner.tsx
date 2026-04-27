@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Cookie } from 'lucide-react'
 
 type Lang = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
 
@@ -78,14 +79,17 @@ export function CookieBanner() {
       className="fixed inset-x-0 bottom-0 z-[60] px-4 pb-4 pointer-events-none"
     >
       <div className="pointer-events-auto mx-auto max-w-3xl bg-white/95 backdrop-blur-md border border-mist shadow-[0_-4px_24px_rgba(0,0,0,0.08)] rounded-2xl p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
-        <p className="text-sm text-slate leading-relaxed flex-1">
-          🍪 {t.message}{' '}
-          <Link
-            href={`/${locale}/privacy`}
-            className="text-mint-deep font-semibold underline underline-offset-2 hover:text-ink"
-          >
-            {t.privacy}
-          </Link>
+        <p className="text-sm text-slate leading-relaxed flex-1 flex items-start gap-2">
+          <Cookie className="w-4 h-4 mt-0.5 shrink-0 text-amber-600" strokeWidth={1.8} aria-hidden />
+          <span>
+            {t.message}{' '}
+            <Link
+              href={`/${locale}/privacy`}
+              className="text-mint-deep font-semibold underline underline-offset-2 hover:text-ink"
+            >
+              {t.privacy}
+            </Link>
+          </span>
         </p>
         <button
           type="button"

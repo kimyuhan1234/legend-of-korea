@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Ticket, MapPin, Clock } from 'lucide-react'
 
 interface CourseSliderItem {
   id: string
@@ -31,11 +32,11 @@ const DIFF_LABEL: Record<string, Record<string, string>> = {
 }
 
 const PASS_INCLUDED: Record<string, string> = {
-  ko: '🎫 패스 권에 포함',
-  ja: '🎫 パス券に含む',
-  en: '🎫 Included with Pass',
-  'zh-CN': '🎫 通票包含',
-  'zh-TW': '🎫 通票包含',
+  ko: '패스 권에 포함',
+  ja: 'パス券に含む',
+  en: 'Included with Pass',
+  'zh-CN': '通票包含',
+  'zh-TW': '通票包含',
 }
 
 export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
@@ -103,9 +104,15 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
                 <div>
                   {/* 메타 정보 */}
                   <div className="flex items-center gap-2 text-xs text-stone mb-3">
-                    <span>📍 {course.regionName}</span>
+                    <span className="inline-flex items-center gap-1">
+                      <MapPin className="w-3 h-3" strokeWidth={2} aria-hidden />
+                      {course.regionName}
+                    </span>
                     <span>·</span>
-                    <span>⏱ {course.duration}</span>
+                    <span className="inline-flex items-center gap-1">
+                      <Clock className="w-3 h-3" strokeWidth={2} aria-hidden />
+                      {course.duration}
+                    </span>
                   </div>
 
                   {/* 제목 */}
@@ -122,8 +129,9 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
                 {/* 하단: 패스 포함 안내 + 버튼 */}
                 {course.isActive && (
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-mist/60 gap-2 md:gap-3">
-                    <p className="text-[11px] md:text-xs font-bold text-mint-deep min-w-0 truncate">
-                      {PASS_INCLUDED[locale] || PASS_INCLUDED.en}
+                    <p className="text-[11px] md:text-xs font-bold text-mint-deep min-w-0 truncate inline-flex items-center gap-1">
+                      <Ticket className="w-3.5 h-3.5 shrink-0" strokeWidth={2} aria-hidden />
+                      <span className="truncate">{PASS_INCLUDED[locale] || PASS_INCLUDED.en}</span>
                     </p>
                     <span className="shrink-0 px-3.5 md:px-5 py-2 md:py-2.5 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-xs md:text-sm font-bold hover:bg-[#7BC8BC] transition-colors whitespace-nowrap">
                       {label.detail} →

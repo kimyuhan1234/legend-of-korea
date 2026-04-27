@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
+import { Camera, Palette } from 'lucide-react'
 
 interface Props {
   params: { locale: string }
@@ -48,7 +49,7 @@ export default async function CommunityHubPage({ params }: Props) {
           className="md:col-span-2 group block bg-white rounded-3xl p-8 md:p-12 border border-mist
                      shadow-sm hover:shadow-lg hover:border-blossom transition-all duration-300 hover:-translate-y-1"
         >
-          <div className="text-4xl mb-4">📸</div>
+          <Camera className="w-10 h-10 mb-4 text-blossom-deep" strokeWidth={1.6} />
           <span className="block text-xs font-bold uppercase tracking-widest text-blossom-deep mb-2">
             {t('memories.label')}
           </span>
@@ -70,7 +71,7 @@ export default async function CommunityHubPage({ params }: Props) {
           className="group block bg-white rounded-3xl p-8 md:p-10 border border-mist
                      shadow-sm hover:shadow-lg hover:border-mint transition-all duration-300 hover:-translate-y-1"
         >
-          <div className="text-4xl mb-4">🎨</div>
+          <Palette className="w-10 h-10 mb-4 text-mint-deep" strokeWidth={1.6} />
           <span className="block text-xs font-bold uppercase tracking-widest text-mint-deep mb-2">
             {t('diy.label')}
           </span>

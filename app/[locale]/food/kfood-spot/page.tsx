@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { MapPin } from "lucide-react"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
 import { KFoodSpotList } from "@/components/features/food/KFoodSpotList"
 
@@ -20,17 +21,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const HERO = {
   ko: {
-    badge: "📍 K-Food Spot",
+    badge: "K-Food Spot",
     title: "현지인이 사랑하는\n그 맛집으로",
     subtitle: "전주·서울·부산·경주·제주 — 진짜 한국 맛을 찾아서",
   },
   ja: {
-    badge: "📍 K-Food Spot",
+    badge: "K-Food Spot",
     title: "地元が愛する\nあのお店へ",
     subtitle: "全州・ソウル・釜山・慶州・済州 — 本物の韓国の味を求めて",
   },
   en: {
-    badge: "📍 K-Food Spot",
+    badge: "K-Food Spot",
     title: "Where locals go\nto eat",
     subtitle: "Jeonju · Seoul · Busan · Gyeongju · Jeju — chasing real Korean flavor",
   },
@@ -49,6 +50,7 @@ export default function KFoodSpotPage({ params, searchParams }: Props) {
       <section className="bg-cloud py-14 border-b border-mist">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1F2937]/10 border border-ink/20 mb-5">
+            <MapPin className="w-3.5 h-3.5 text-ink" strokeWidth={2} aria-hidden />
             <span className="text-ink text-sm font-medium">{h.badge}</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-black text-ink mb-4 whitespace-pre-line">{h.title}</h1>

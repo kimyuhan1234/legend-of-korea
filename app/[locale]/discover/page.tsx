@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
+import { UtensilsCrossed, Shirt, Train, MapPin } from 'lucide-react'
 
 interface Props {
   params: { locale: string }
@@ -73,7 +74,7 @@ export default async function DiscoverPage({ params }: Props) {
             className="group block bg-white rounded-3xl p-8 md:p-10 border border-mist
                        shadow-sm hover:shadow-lg hover:border-mint transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">🍜</div>
+            <UtensilsCrossed className="w-10 h-10 mb-4 text-mint-deep" strokeWidth={1.6} />
             <span className="block text-xs font-bold uppercase tracking-widest text-mint-deep mb-2">
               {t('food.label')}
             </span>
@@ -94,7 +95,7 @@ export default async function DiscoverPage({ params }: Props) {
             className="group block bg-white rounded-3xl p-8 md:p-10 border border-mist
                        shadow-sm hover:shadow-lg hover:border-blossom transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4">👗</div>
+            <Shirt className="w-10 h-10 mb-4 text-blossom-deep" strokeWidth={1.6} />
             <span className="block text-xs font-bold uppercase tracking-widest text-blossom-deep mb-2">
               {t('ootd.label')}
             </span>
@@ -118,7 +119,7 @@ export default async function DiscoverPage({ params }: Props) {
             className="group block bg-white rounded-2xl p-6 border border-mist
                        shadow-sm hover:shadow-md hover:border-lavender transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-3xl mb-3">🚆</div>
+            <Train className="w-8 h-8 mb-3 text-lavender" strokeWidth={1.6} />
             <span className="block text-[10px] font-bold uppercase tracking-widest text-stone mb-1.5">
               {t('traffic.label')}
             </span>
@@ -135,7 +136,7 @@ export default async function DiscoverPage({ params }: Props) {
             className="group block bg-white rounded-2xl p-6 border border-mist
                        shadow-sm hover:shadow-md hover:border-mint transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-3xl mb-3">📍</div>
+            <MapPin className="w-8 h-8 mb-3 text-mint-deep" strokeWidth={1.6} />
             <span className="block text-[10px] font-bold uppercase tracking-widest text-stone mb-1.5">
               {t('sights.label')}
             </span>
