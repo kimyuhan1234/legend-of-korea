@@ -1,14 +1,19 @@
 import { MetadataRoute } from 'next'
-import { createClient } from '@/lib/supabase/server'
+import { createServiceClient } from '@/lib/supabase/server'
 
 /**
  * P3A-4: 다국어 sitemap.xml 생성.
+ * P3B-5: createServiceClient 로 전환 + is_active 필터 + course.created_at 활용.
  *
  * - 5 로케일 × 14 정적 routes = 70 entries (+ /pass noindex 제외)
  * - 각 entry 에 alternates.languages 5 로케일 자동 생성 (hreflang)
- * - dynamic courses 보존 (P0-4 이후 Supabase 쿼리 패턴)
+ * - dynamic courses 5 로케일 확장 (is_active = true 만)
+ * - missions 는 비공개 (비로그인 차단) 이므로 sitemap 미포함 — 코스 페이지에서 link discovery
  * - /admin, /auth/parent-consent/[token] 등 비공개 path 는 sitemap 미포함
  */
+
+// 매 1 시간마다 sitemap 재생성 (코스 추가/비활성 처리 반영)
+export const revalidate = 3600
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
 
@@ -74,18 +79,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // 동적 courses (Supabase) — 이전 sitemap 패턴 보존, 5 로케일 확장
+  // 동적 courses (Supabase) — service-role 클라이언트로 안정 접근.
+  // is_active = true 만 노출 (비활성 / 준비 중 코스는 sitemap 제외).
   try {
-    const supabase = await createClient()
-    const { data: courses } = await supabase.from('courses').select('id')
+    const supabase = await createServiceClient()
+    const { data: courses } = await supabase
+      .from('courses')
+      .select('id, created_at')
+      .eq('is_active', true)
     if (courses) {
       for (const course of courses) {
         const path = `/courses/${course.id}`
         const altLangs = buildLanguageAlternates(path)
+        const lastModified = course.created_at ? new Date(course.created_at) : now
         for (const locale of LOCALES) {
           entries.push({
             url: `${BASE_URL}/${locale}${path}`,
-            lastModified: now,
+            lastModified,
             changeFrequency: 'weekly',
             priority: 0.6,
             alternates: { languages: altLangs },
