@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+/* hotfix: Tailwind v4 @source directive — Next.js App Router 의 [locale]
+   dynamic segment 등에서 자동 content detection 이 누락되는 케이스가 있음.
+   명시적으로 source path 지정 → md:* / lg:* responsive variant 등이 모두
+   production CSS 에 빌드되도록 보장.
+   증상: production CSS 에 .md\:hidden / .md\:flex 등 정의 0 건 →
+   햄버거 버튼이 모바일에서 안 보임 / 데스크탑 사이드 메뉴가 모바일에서
+   안 숨겨짐. */
+@source "../app/**/*.{tsx,ts,jsx,js,mdx}";
+@source "../components/**/*.{tsx,ts,jsx,js}";
+
 /* ── 폰트 유틸리티 ──────────────────────────────── */
 .font-display {
   font-family: var(--font-playfair, 'Playfair Display'), 'Noto Serif KR', 'Noto Serif JP', Georgia, serif;
