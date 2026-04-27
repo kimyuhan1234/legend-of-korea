@@ -353,17 +353,23 @@ export function SignupForm({ locale }: SignupFormProps) {
       )}
 
       {error && (
-        <div className="px-4 py-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">
+        <div
+          role="alert"
+          aria-live="polite"
+          className="px-4 py-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm"
+        >
           {error}
         </div>
       )}
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-slate">{t.email}</label>
+        <label htmlFor="signup-email" className="text-sm font-medium text-slate">{t.email}</label>
         <input
+          id="signup-email"
           type="email"
           name="email"
           required
+          autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder={t.emailPlaceholder}
@@ -372,8 +378,9 @@ export function SignupForm({ locale }: SignupFormProps) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-slate">{t.password}</label>
+        <label htmlFor="signup-password" className="text-sm font-medium text-slate">{t.password}</label>
         <input
+          id="signup-password"
           type="password"
           name="password"
           required
@@ -403,11 +410,14 @@ export function SignupForm({ locale }: SignupFormProps) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-slate">{t.passwordConfirm}</label>
+        <label htmlFor="signup-password-confirm" className="text-sm font-medium text-slate">{t.passwordConfirm}</label>
         <input
+          id="signup-password-confirm"
           type="password"
           name="passwordConfirm"
           required
+          aria-invalid={showMismatchError ? 'true' : 'false'}
+          aria-describedby={passwordConfirm.length > 0 ? 'signup-password-confirm-status' : undefined}
           value={passwordConfirm}
           onChange={(e) => setPasswordConfirm(e.target.value)}
           placeholder={t.passwordConfirmPlaceholder}
@@ -415,7 +425,11 @@ export function SignupForm({ locale }: SignupFormProps) {
           autoComplete="new-password"
         />
         {passwordConfirm.length > 0 && (
-          <p className={`text-xs flex items-center gap-1 ${passwordsMatch ? 'text-green-600' : 'text-red-600'}`}>
+          <p
+            id="signup-password-confirm-status"
+            role={showMismatchError ? 'alert' : undefined}
+            className={`text-xs flex items-center gap-1 ${passwordsMatch ? 'text-green-600' : 'text-red-600'}`}
+          >
             <span aria-hidden>{passwordsMatch ? '✅' : '⚠️'}</span>
             {passwordsMatch ? t.passwordMatch : t.passwordMismatch}
           </p>
@@ -424,16 +438,18 @@ export function SignupForm({ locale }: SignupFormProps) {
 
       <div className="flex flex-col gap-1.5">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-slate">{t.nickname}</label>
+          <label htmlFor="signup-nickname" className="text-sm font-medium text-slate">{t.nickname}</label>
           <span className={`text-xs ${nickname.length > 18 ? "text-blossom-deep" : "text-stone"}`}>
             {nickname.length}/20
           </span>
         </div>
         <input
+          id="signup-nickname"
           type="text"
           name="nickname"
           required
           maxLength={20}
+          autoComplete="username"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
           placeholder={t.nicknamePlaceholder}
@@ -442,11 +458,15 @@ export function SignupForm({ locale }: SignupFormProps) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-slate">{t.birthDateLabel}</label>
+        <label htmlFor="signup-birth-date" className="text-sm font-medium text-slate">{t.birthDateLabel}</label>
         <input
+          id="signup-birth-date"
           type="date"
           name="birth_date"
           required
+          autoComplete="bday"
+          aria-invalid={showAgeError ? 'true' : 'false'}
+          aria-describedby="signup-birth-date-hint"
           value={birthDate}
           max={maxBirthDate}
           onChange={(e) => setBirthDate(e.target.value)}
@@ -454,15 +474,16 @@ export function SignupForm({ locale }: SignupFormProps) {
         />
         {/* 입력 전: 안내 텍스트 / 입력 후 미달: 빨간 에러 (이모지 X — 디자인팀 우려 반영) */}
         {showAgeError ? (
-          <p className="text-xs text-red-600">{t.errors.UNDER_14}</p>
+          <p id="signup-birth-date-hint" role="alert" className="text-xs text-red-600">{t.errors.UNDER_14}</p>
         ) : (
-          <p className="text-xs text-stone">{t.birthDateHint}</p>
+          <p id="signup-birth-date-hint" className="text-xs text-stone">{t.birthDateHint}</p>
         )}
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-slate">{t.language}</label>
+        <label htmlFor="signup-language" className="text-sm font-medium text-slate">{t.language}</label>
         <select
+          id="signup-language"
           name="language"
           defaultValue={lang}
           className={inputClass}

@@ -67,17 +67,23 @@ export function LoginForm({ locale, next }: LoginFormProps) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
       {error && (
-        <div className="px-4 py-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">
+        <div
+          role="alert"
+          aria-live="polite"
+          className="px-4 py-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm"
+        >
           {error}
         </div>
       )}
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-slate">{t.email}</label>
+        <label htmlFor="login-email" className="text-sm font-medium text-slate">{t.email}</label>
         <input
+          id="login-email"
           type="email"
           name="email"
           required
+          autoComplete="email"
           placeholder={t.emailPlaceholder}
           className="
             h-12 px-4 rounded-xl border border-mist bg-white
@@ -89,11 +95,13 @@ export function LoginForm({ locale, next }: LoginFormProps) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-slate">{t.password}</label>
+        <label htmlFor="login-password" className="text-sm font-medium text-slate">{t.password}</label>
         <input
+          id="login-password"
           type="password"
           name="password"
           required
+          autoComplete="current-password"
           placeholder={t.passwordPlaceholder}
           className="
             h-12 px-4 rounded-xl border border-mist bg-white
