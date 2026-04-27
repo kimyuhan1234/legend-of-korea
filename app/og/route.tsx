@@ -29,21 +29,43 @@ const TIER_GRADIENTS: Record<string, string> = {
   plain: '#FFFFFF',
 }
 
-const NOTO_SANS_KR_BOLD =
-  'https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-kr@5.0.16/files/noto-sans-kr-korean-700-normal.woff2'
+// Google Fonts 의 Noto Sans KR Variable TTF — 10.4 MB, 모든 weight 포함.
+// Satori 가 woff2 미지원 (Unsupported OpenType signature wOF2 에러) 해서 TTF 필수.
+// fetch.cache='force-cache' 로 Edge Network 가 캐싱 — cold start 외엔 빠름.
+const NOTO_SANS_KR_TTF_REMOTE =
+  'https://raw.githubusercontent.com/google/fonts/main/ofl/notosanskr/NotoSansKR%5Bwght%5D.ttf'
+
+// 사용자가 직접 추가 가능한 로컬 자산 (선택). 있으면 1 순위 — 빠르고 안정적.
+const NOTO_SANS_KR_TTF_LOCAL = '/fonts/NotoSansKR-Bold.ttf'
 
 const FALLBACK_IMAGE_PATH = '/images/dokkaebi-hero.png'
 
-async function loadFont(): Promise<ArrayBuffer | null> {
+/**
+ * 폰트 로딩 다중 폴백:
+ *   1. public/fonts/NotoSansKR-Bold.ttf (사용자 호스팅) — 빠름
+ *   2. GitHub raw Noto Sans KR Variable TTF — 10MB, Edge cache 후 빠름
+ *   3. null 반환 — sans-serif 폴백 (한글 깨짐 가능)
+ */
+async function loadFont(req: NextRequest): Promise<ArrayBuffer | null> {
+  // 1. 로컬 정적 자산 시도 (사용자가 public/fonts/ 에 추가했을 경우)
   try {
-    const res = await fetch(NOTO_SANS_KR_BOLD)
+    const localUrl = new URL(NOTO_SANS_KR_TTF_LOCAL, req.url)
+    const res = await fetch(localUrl, { cache: 'force-cache' })
+    if (res.ok) return await res.arrayBuffer()
+  } catch {
+    // 무시 — 다음 폴백 시도
+  }
+
+  // 2. GitHub raw Variable TTF (안정 동작 보장)
+  try {
+    const res = await fetch(NOTO_SANS_KR_TTF_REMOTE, { cache: 'force-cache' })
     if (!res.ok) {
-      console.error(`[og] Font fetch HTTP ${res.status}`)
+      console.error(`[og] GitHub TTF fetch HTTP ${res.status}`)
       return null
     }
     return await res.arrayBuffer()
   } catch (err) {
-    console.error('[og] Font fetch threw:', err)
+    console.error('[og] GitHub TTF fetch threw:', err)
     return null
   }
 }
@@ -59,7 +81,7 @@ export async function GET(req: NextRequest) {
     const category = searchParams.get('category') || ''
     const imagePath = searchParams.get('imageUrl') || ''
 
-    const fontData = await loadFont()
+    const fontData = await loadFont(req)
     const imageUrl = imagePath ? new URL(imagePath, origin).toString() : null
 
     const imageOptions: ConstructorParameters<typeof ImageResponse>[1] = {
