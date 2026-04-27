@@ -114,7 +114,7 @@ export function SubscriptionManage({ locale }: Props) {
                   <p className="text-sm font-black text-slate-700">
                     ₩{pass.price.toLocaleString()}
                   </p>
-                  <p className="text-[9px] text-slate-400 font-bold">/ mo</p>
+                  <p className="text-[9px] text-slate-500 font-bold">/ mo</p>
                 </div>
               </div>
             ))}

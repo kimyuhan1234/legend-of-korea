@@ -108,7 +108,7 @@ export function MissionDashboard({ userId, locale }: Props) {
   }
 
   if (!stats) {
-    return <div className="text-center py-10 text-slate-400 font-bold">{t('dashboard.loadError')}</div>
+    return <div className="text-center py-10 text-slate-500 font-bold">{t('dashboard.loadError')}</div>
   }
 
   return (
@@ -165,7 +165,7 @@ export function MissionDashboard({ userId, locale }: Props) {
         <button
           onClick={() => setView('map')}
           className={`flex items-center gap-1.5 px-4 py-2.5 font-bold text-sm transition-colors border-b-2 ${
-            view === 'map' ? 'border-mint-deep text-mint-deep' : 'border-transparent text-slate-400 hover:text-slate-600'
+            view === 'map' ? 'border-mint-deep text-mint-deep' : 'border-transparent text-slate-500 hover:text-slate-600'
           }`}
         >
           <Map className="w-4 h-4" /> {t('dashboard.mapView')}
@@ -173,7 +173,7 @@ export function MissionDashboard({ userId, locale }: Props) {
         <button
           onClick={() => setView('timeline')}
           className={`flex items-center gap-1.5 px-4 py-2.5 font-bold text-sm transition-colors border-b-2 ${
-            view === 'timeline' ? 'border-mint-deep text-mint-deep' : 'border-transparent text-slate-400 hover:text-slate-600'
+            view === 'timeline' ? 'border-mint-deep text-mint-deep' : 'border-transparent text-slate-500 hover:text-slate-600'
           }`}
         >
           <Clock className="w-4 h-4" /> {t('dashboard.timeline')}
@@ -188,7 +188,7 @@ export function MissionDashboard({ userId, locale }: Props) {
         <div className="bg-white rounded-2xl border border-slate-100 p-5">
           <h4 className="text-sm font-black text-slate-700 mb-4">{t('dashboard.recentActivity')}</h4>
           {recent.length === 0 ? (
-            <div className="text-center py-10 text-sm text-slate-400 font-bold">
+            <div className="text-center py-10 text-sm text-slate-500 font-bold">
               {t('dashboard.noRecentActivity')}
             </div>
           ) : (
@@ -216,7 +216,7 @@ export function MissionDashboard({ userId, locale }: Props) {
                         {isHidden && <Sparkles className="inline w-3 h-3 text-violet-500 mr-1" />}
                         {getI18n(item.missionTitle, locale)}
                       </p>
-                      <p className="text-xs text-slate-400 truncate">
+                      <p className="text-xs text-slate-500 truncate">
                         {getI18n(item.courseTitle, locale)} · {timeAgo(item.completedAt, locale)}
                       </p>
                     </div>

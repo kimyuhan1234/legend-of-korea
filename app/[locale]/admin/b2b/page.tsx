@@ -125,9 +125,9 @@ export default function AdminB2BPage() {
           <CardContent className="p-6">
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400 uppercase tracking-wider ml-1">여행사/기관명</label>
+                <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1">여행사/기관명</label>
                 <div className="relative">
-                  <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                   <Input 
                     required
                     placeholder="예: (주)전주투어" 
@@ -139,9 +139,9 @@ export default function AdminB2BPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400 uppercase tracking-wider ml-1">담당자 성함</label>
+                <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1">담당자 성함</label>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                   <Input 
                     required
                     placeholder="홍길동 팀장" 
@@ -153,9 +153,9 @@ export default function AdminB2BPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400 uppercase tracking-wider ml-1">연락처</label>
+                <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1">연락처</label>
                 <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                   <Input 
                     required
                     placeholder="010-0000-0000" 
@@ -167,7 +167,7 @@ export default function AdminB2BPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400 uppercase tracking-wider ml-1">코스 선택</label>
+                <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1">코스 선택</label>
                 <Select value={formData.course_id} onValueChange={(val) => setFormData({ ...formData, course_id: val })}>
                   <SelectTrigger className="h-12 border-slate-200 rounded-xl">
                     <SelectValue placeholder="코스를 선택하세요" />
@@ -181,9 +181,9 @@ export default function AdminB2BPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400 uppercase tracking-wider ml-1">수량</label>
+                <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1">수량</label>
                 <div className="relative">
-                  <Hash className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Hash className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                   <Input 
                     type="number"
                     required
@@ -196,9 +196,9 @@ export default function AdminB2BPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400 uppercase tracking-wider ml-1">공급 단가</label>
+                <label className="text-xs font-black text-slate-500 uppercase tracking-wider ml-1">공급 단가</label>
                 <div className="relative">
-                  <Banknote className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Banknote className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                   <Input 
                     type="number"
                     required
@@ -235,22 +235,22 @@ export default function AdminB2BPage() {
           <TableBody>
             {loading ? (
               <TableRow>
-                <TableCell colSpan={6} className="h-32 text-center text-slate-400">데이터를 불러오는 중...</TableCell>
+                <TableCell colSpan={6} className="h-32 text-center text-slate-500">데이터를 불러오는 중...</TableCell>
               </TableRow>
             ) : b2bOrders.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="h-32 text-center text-slate-400">B2B 주문 내역이 없습니다.</TableCell>
+                <TableCell colSpan={6} className="h-32 text-center text-slate-500">B2B 주문 내역이 없습니다.</TableCell>
               </TableRow>
             ) : b2bOrders.map((order) => (
               <TableRow key={order.id} className="border-slate-50 hover:bg-slate-50/30 transition-colors">
                 <TableCell>
                   <p className="font-bold text-[#111]">{order.agency_name}</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">{new Date(order.created_at).toLocaleDateString()}</p>
+                  <p className="text-[10px] text-slate-500 mt-0.5">{new Date(order.created_at).toLocaleDateString()}</p>
                 </TableCell>
                 <TableCell>
                   <div className="text-xs">
                     <p className="font-semibold text-slate-700">{order.contact_person}</p>
-                    <p className="text-slate-400">{order.contact_phone}</p>
+                    <p className="text-slate-500">{order.contact_phone}</p>
                   </div>
                 </TableCell>
                 <TableCell>
@@ -259,7 +259,7 @@ export default function AdminB2BPage() {
                   </Badge>
                 </TableCell>
                 <TableCell>
-                  <p className="font-black text-slate-700">{order.quantity} <span className="text-xs font-normal text-slate-400">개</span></p>
+                  <p className="font-black text-slate-700">{order.quantity} <span className="text-xs font-normal text-slate-500">개</span></p>
                 </TableCell>
                 <TableCell>
                   <Select 
@@ -279,7 +279,7 @@ export default function AdminB2BPage() {
                 </TableCell>
                 <TableCell className="text-right">
                   <p className="font-black text-[#111]">₩{(order.total_price ?? 0).toLocaleString()}</p>
-                  <p className="text-[10px] text-slate-400">단가: ₩{(order.unit_price ?? 0).toLocaleString()}</p>
+                  <p className="text-[10px] text-slate-500">단가: ₩{(order.unit_price ?? 0).toLocaleString()}</p>
                 </TableCell>
               </TableRow>
             ))}

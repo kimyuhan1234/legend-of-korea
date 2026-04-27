@@ -47,7 +47,7 @@ export function OfflineGuard({ children }: OfflineGuardProps) {
     return (
       <div className="container max-w-2xl mx-auto py-8 px-4 min-h-screen flex flex-col items-center justify-center gap-6">
         <div className="w-24 h-24 rounded-full bg-slate-100 flex items-center justify-center">
-          <WifiOff className="w-12 h-12 text-slate-400" />
+          <WifiOff className="w-12 h-12 text-slate-500" />
         </div>
         <div className="text-center space-y-2">
           <h2 className="text-2xl font-black text-slate-800">

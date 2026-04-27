@@ -87,7 +87,7 @@ export function AdminLayoutClient({ children, locale }: AdminLayoutClientProps) 
                     flex items-center gap-3 px-4 py-3 rounded-xl transition-all group
                     ${active 
                       ? 'bg-[#F0B8B8] text-[#111] font-bold shadow-lg shadow-[#F0B8B8]/20' 
-                      : 'hover:bg-white/5 text-slate-400 hover:text-white'}
+                      : 'hover:bg-white/5 text-slate-500 hover:text-white'}
                   `}
                 >
                   <item.icon className={`w-5 h-5 ${active ? 'text-[#111]' : 'group-hover:scale-110 transition-transform'}`} />
@@ -100,7 +100,7 @@ export function AdminLayoutClient({ children, locale }: AdminLayoutClientProps) 
 
           {/* Footer Actions */}
           <div className="p-4 border-t border-slate-800 space-y-2">
-            <Link href={`/${locale}`} className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-all text-sm">
+            <Link href={`/${locale}`} className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-500 hover:text-white transition-all text-sm">
               <Globe className="w-5 h-5" />
               <span>메인 홈페이지</span>
             </Link>

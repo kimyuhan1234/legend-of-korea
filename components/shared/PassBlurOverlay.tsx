@@ -44,7 +44,7 @@ export function PassBlurOverlay({ requiredPass, children, blur = true, compact =
 
       {/* 오버레이 */}
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/60 backdrop-blur-sm rounded-2xl p-4">
-        <Lock className={compact ? 'w-5 h-5 text-slate-400 mb-2' : 'w-8 h-8 text-slate-400 mb-3'} />
+        <Lock className={compact ? 'w-5 h-5 text-slate-500 mb-2' : 'w-8 h-8 text-slate-500 mb-3'} />
         <p
           className={[
             'font-bold text-slate-600 text-center mb-4',

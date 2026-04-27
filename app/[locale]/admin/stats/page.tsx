@@ -218,11 +218,11 @@ export default function AdminStatsPage() {
             </div>
             <div className="mt-4 grid grid-cols-2 gap-4 w-full">
               <div className="p-4 bg-slate-50 rounded-2xl text-center">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Primary Market</p>
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Primary Market</p>
                 <p className="text-xl font-black text-[#111] mt-1">{langChartData[0]?.name || 'N/A'}</p>
               </div>
               <div className="p-4 bg-slate-50 rounded-2xl text-center">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Active Users</p>
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Active Users</p>
                 <p className="text-xl font-black text-[#111] mt-1">{data.languages.length}</p>
               </div>
             </div>
@@ -241,7 +241,7 @@ export default function AdminStatsPage() {
               <Badge className="bg-[#F0B8B8] text-[#111] font-black border-none">LIVE PERFORMANCE</Badge>
             </div>
             <div className="space-y-1">
-              <p className="text-slate-400 font-bold">총 제휴 링크 클릭</p>
+              <p className="text-slate-500 font-bold">총 제휴 링크 클릭</p>
               <h2 className="text-4xl font-black">{data.affiliate.length.toLocaleString()} <span className="text-lg font-medium text-blossom-deep">Clicks</span></h2>
             </div>
             <div className="mt-8 p-4 bg-white/5 rounded-2xl border border-white/10">

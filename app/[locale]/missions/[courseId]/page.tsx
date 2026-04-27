@@ -215,7 +215,7 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
                   </span>
                 </div>
 
-                <h3 className={`text-2xl font-black mb-6 leading-tight ${isLocked ? 'text-slate-400 italic' : 'text-slate-800'}`}>
+                <h3 className={`text-2xl font-black mb-6 leading-tight ${isLocked ? 'text-slate-500 italic' : 'text-slate-800'}`}>
                   {isLocked ? '잠겨있는 미션' : (m.title?.[locale] || m.title?.en || m.title?.ko || '')}
                 </h3>
 
@@ -233,7 +233,7 @@ export default async function CourseMapPage({ params }: CourseMapProps) {
                       </Link>
                     </Button>
                   ) : (
-                    <div className="flex items-center gap-2 text-slate-400 font-bold">
+                    <div className="flex items-center gap-2 text-slate-500 font-bold">
                       <Lock className="w-5 h-5" />
                       이전 미션 완료 필요
                     </div>

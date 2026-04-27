@@ -173,7 +173,7 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
       {loading ? (
         <div className="py-20 flex flex-col items-center gap-4">
           <Loader2 className="w-10 h-10 animate-spin text-sky" />
-          <p className="text-slate-400 font-bold animate-pulse">{t('loading', { defaultValue: 'Loading adventures...' })}</p>
+          <p className="text-slate-500 font-bold animate-pulse">{t('loading', { defaultValue: 'Loading adventures...' })}</p>
         </div>
       ) : posts.length === 0 ? (
         <div className="py-20 text-center space-y-4 bg-white rounded-3xl border border-slate-100 shadow-sm p-10">

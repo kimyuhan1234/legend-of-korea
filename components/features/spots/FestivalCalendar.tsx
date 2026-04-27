@@ -141,7 +141,7 @@ export function FestivalCalendar({ spots, locale }: Props) {
         <div className="text-center py-16 space-y-2">
           <div className="text-5xl mb-2">📭</div>
           <p className="text-sm font-bold text-slate-500">{t('festival.noFestival')}</p>
-          <p className="text-xs text-slate-400">{t('festival.tourApiHint')}</p>
+          <p className="text-xs text-slate-500">{t('festival.tourApiHint')}</p>
         </div>
       ) : (
         <div className="space-y-3">

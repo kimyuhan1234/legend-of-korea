@@ -122,10 +122,10 @@ export function PassCard({
             <div className="min-w-0">
               <span className="text-2xl font-black text-slate-800">
                 {price.primary}
-                <span className="text-[10px] text-slate-400 font-bold ml-1">/ mo</span>
+                <span className="text-[10px] text-slate-500 font-bold ml-1">/ mo</span>
               </span>
               {price.secondary && (
-                <span className="block text-[13px] text-slate-400 leading-tight mt-0.5">
+                <span className="block text-[13px] text-slate-500 leading-tight mt-0.5">
                   {price.secondary}
                 </span>
               )}

@@ -345,7 +345,7 @@ export function MemoriesClient({ locale }: Props) {
             className={`flex items-center gap-2 px-4 md:px-5 py-3 font-bold text-sm transition-colors border-b-2 whitespace-nowrap shrink-0 ${
               tab === tb.id
                 ? 'border-mint-deep text-mint-deep'
-                : 'border-transparent text-slate-400 hover:text-slate-600'
+                : 'border-transparent text-slate-500 hover:text-slate-600'
             }`}
           >
             <span className="text-base">{tb.icon}</span>
@@ -406,7 +406,7 @@ export function MemoriesClient({ locale }: Props) {
               <Loader2 className="w-6 h-6 animate-spin text-slate-300" />
             </div>
           ) : photos.length === 0 ? (
-            <div className="text-center py-20 text-slate-400 font-bold">
+            <div className="text-center py-20 text-slate-500 font-bold">
               {t('photos.empty')}
             </div>
           ) : (

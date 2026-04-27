@@ -41,9 +41,9 @@ export function SettingsRow({ icon, label, onClick, href, isOpen, danger }: RowP
       <span className="text-lg">{icon}</span>
       <span className="flex-1 text-left">{label}</span>
       {onClick !== undefined ? (
-        isOpen ? <ChevronDown className="w-4 h-4 text-slate-400" /> : <ChevronRight className="w-4 h-4 text-slate-400" />
+        isOpen ? <ChevronDown className="w-4 h-4 text-slate-500" /> : <ChevronRight className="w-4 h-4 text-slate-500" />
       ) : (
-        <ChevronRight className="w-4 h-4 text-slate-400" />
+        <ChevronRight className="w-4 h-4 text-slate-500" />
       )}
     </>
   )

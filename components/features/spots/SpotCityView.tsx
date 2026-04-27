@@ -87,7 +87,7 @@ export function SpotCityView({ spots, locale }: Props) {
         {citySpots.hotspots.length > 0 && (
           <div>
             <h4 className="text-sm font-black text-slate-700 mb-3">
-              🔥 {t('category.hotspot')} <span className="text-xs text-slate-400 font-bold">({citySpots.hotspots.length})</span>
+              🔥 {t('category.hotspot')} <span className="text-xs text-slate-500 font-bold">({citySpots.hotspots.length})</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {citySpots.hotspots.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
@@ -98,7 +98,7 @@ export function SpotCityView({ spots, locale }: Props) {
         {citySpots.landmarks.length > 0 && (
           <div>
             <h4 className="text-sm font-black text-slate-700 mb-3">
-              🏛️ {t('category.landmark')} <span className="text-xs text-slate-400 font-bold">({citySpots.landmarks.length})</span>
+              🏛️ {t('category.landmark')} <span className="text-xs text-slate-500 font-bold">({citySpots.landmarks.length})</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {citySpots.landmarks.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
@@ -109,7 +109,7 @@ export function SpotCityView({ spots, locale }: Props) {
         {citySpots.festivals.length > 0 && (
           <div>
             <h4 className="text-sm font-black text-slate-700 mb-3">
-              🎊 {t('category.festival')} <span className="text-xs text-slate-400 font-bold">({citySpots.festivals.length})</span>
+              🎊 {t('category.festival')} <span className="text-xs text-slate-500 font-bold">({citySpots.festivals.length})</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {citySpots.festivals.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
@@ -118,7 +118,7 @@ export function SpotCityView({ spots, locale }: Props) {
         )}
 
         {citySpots.hotspots.length === 0 && citySpots.landmarks.length === 0 && citySpots.festivals.length === 0 && (
-          <div className="text-center py-12 text-sm text-slate-400 font-bold">
+          <div className="text-center py-12 text-sm text-slate-500 font-bold">
             {t('result.noCitySpots')}
           </div>
         )}

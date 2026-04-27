@@ -24,7 +24,7 @@ export function AdCard({ ad, locale }: AdCardProps) {
           </div>
           <div>
             <p className="font-black text-slate-800 text-sm">{ad.ad_company || 'Sponsor'}</p>
-            <p className="text-[10px] uppercase font-black text-slate-400 mt-0.5 tracking-wider">
+            <p className="text-[10px] uppercase font-black text-slate-500 mt-0.5 tracking-wider">
               {t('adLabel')} · {t('sponsored')}
             </p>
           </div>

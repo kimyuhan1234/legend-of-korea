@@ -154,14 +154,14 @@ export default function AdminDashboardPage() {
                           {order.payment_status === 'paid' ? '결제완료' : '대기'}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-right text-slate-400 text-xs">
+                      <TableCell className="text-right text-slate-500 text-xs">
                         {new Date(order.created_at).toLocaleDateString()}
                       </TableCell>
                     </TableRow>
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={5} className="text-center text-sm text-slate-400 py-8">
+                    <TableCell colSpan={5} className="text-center text-sm text-slate-500 py-8">
                       주문 데이터가 없습니다
                     </TableCell>
                   </TableRow>
@@ -175,7 +175,7 @@ export default function AdminDashboardPage() {
         <Card className="border-none shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-lg font-bold text-[#111]">방금 올라온 글</CardTitle>
-            <MessageSquare className="w-5 h-5 text-slate-400" />
+            <MessageSquare className="w-5 h-5 text-slate-500" />
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
@@ -188,11 +188,11 @@ export default function AdminDashboardPage() {
                         {post.content}
                       </p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                        <span className="text-[11px] font-black text-slate-500 uppercase tracking-wider">
                           @{post.users?.nickname || 'Unknown'}
                         </span>
                         <span className="text-[10px] text-slate-300">•</span>
-                        <span className="text-[11px] text-slate-400">
+                        <span className="text-[11px] text-slate-500">
                           {new Date(post.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </span>
                       </div>
@@ -200,7 +200,7 @@ export default function AdminDashboardPage() {
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-slate-400 text-center py-8">커뮤니티 글이 없습니다</p>
+                <p className="text-sm text-slate-500 text-center py-8">커뮤니티 글이 없습니다</p>
               )}
             </div>
           </CardContent>

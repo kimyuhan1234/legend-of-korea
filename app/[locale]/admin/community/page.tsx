@@ -85,22 +85,22 @@ export default function AdminCommunityPage() {
           <TableBody>
             {loading ? (
               <TableRow>
-                <TableCell colSpan={6} className="h-32 text-center text-slate-400">데이터를 불러오는 중...</TableCell>
+                <TableCell colSpan={6} className="h-32 text-center text-slate-500">데이터를 불러오는 중...</TableCell>
               </TableRow>
             ) : posts.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="h-32 text-center text-slate-400">게시물이 없습니다.</TableCell>
+                <TableCell colSpan={6} className="h-32 text-center text-slate-500">게시물이 없습니다.</TableCell>
               </TableRow>
             ) : posts.map((post) => (
               <TableRow key={post.id} className={`border-slate-50 transition-colors ${post.is_hidden ? 'bg-slate-50/50 grayscale-[0.5]' : 'hover:bg-slate-50/30'}`}>
                 <TableCell>
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
                       <UserIcon className="w-4 h-4" />
                     </div>
                     <div className="space-y-0.5">
                       <p className="font-bold text-[#111] text-xs">@{post.users?.nickname || 'Unknown'}</p>
-                      <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-slate-200 text-slate-400">
+                      <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-slate-200 text-slate-500">
                         Lv.{post.users?.current_level || 1}
                       </Badge>
                     </div>
@@ -113,7 +113,7 @@ export default function AdminCommunityPage() {
                     </p>
                     {post.photos && post.photos.length > 0 && (
                       <div className="flex gap-1 mt-2">
-                        <Badge variant="secondary" className="text-[10px] bg-slate-100 text-slate-400 py-0 px-1 border-none">
+                        <Badge variant="secondary" className="text-[10px] bg-slate-100 text-slate-500 py-0 px-1 border-none">
                           📸 {post.photos.length} photos
                         </Badge>
                         {post.is_spoiler && (
@@ -131,7 +131,7 @@ export default function AdminCommunityPage() {
                   </p>
                 </TableCell>
                 <TableCell>
-                  <div className="flex items-center gap-4 text-slate-400">
+                  <div className="flex items-center gap-4 text-slate-500">
                     <div className="flex items-center gap-1">
                       <ThumbsUp className="w-3.5 h-3.5" />
                       <span className="text-xs font-bold">{post.likes_count || 0}</span>

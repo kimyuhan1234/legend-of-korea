@@ -73,7 +73,7 @@ export function SpotsClient({ initialSpots, locale }: Props) {
                   className={`flex items-center gap-2 px-4 md:px-5 py-3.5 font-bold text-sm transition-colors border-b-2 whitespace-nowrap shrink-0 ${
                     isActive
                       ? 'border-mint-deep text-mint-deep'
-                      : 'border-transparent text-slate-400 hover:text-slate-600'
+                      : 'border-transparent text-slate-500 hover:text-slate-600'
                   }`}
                 >
                   <tab.Icon className="w-4 h-4" />

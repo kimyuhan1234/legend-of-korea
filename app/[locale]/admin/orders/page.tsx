@@ -86,7 +86,7 @@ export default function AdminOrdersPage() {
         </div>
         
         <div className="relative w-full sm:w-72">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
           <Input 
             placeholder="주문번호 또는 고객명 검색" 
             className="pl-10 h-11 bg-white border-slate-200 rounded-xl"
@@ -112,24 +112,24 @@ export default function AdminOrdersPage() {
           <TableBody>
             {loading ? (
               <TableRow>
-                <TableCell colSpan={6} className="h-32 text-center text-slate-400">데이터를 불러오는 중...</TableCell>
+                <TableCell colSpan={6} className="h-32 text-center text-slate-500">데이터를 불러오는 중...</TableCell>
               </TableRow>
             ) : orders.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="h-32 text-center text-slate-400">주문 내역이 없습니다.</TableCell>
+                <TableCell colSpan={6} className="h-32 text-center text-slate-500">주문 내역이 없습니다.</TableCell>
               </TableRow>
             ) : orders.map((order) => (
               <TableRow key={order.id} className="border-slate-50 group hover:bg-slate-50/30 transition-colors">
                 <TableCell>
                   <div className="space-y-1">
-                    <p className="font-mono text-[10px] text-slate-400 uppercase">{order.id?.split('-')[0] ?? 'N/A'}</p>
+                    <p className="font-mono text-[10px] text-slate-500 uppercase">{order.id?.split('-')[0] ?? 'N/A'}</p>
                     <p className="text-xs text-slate-500">{new Date(order.created_at).toLocaleDateString()}</p>
                   </div>
                 </TableCell>
                 <TableCell>
                   <div className="space-y-0.5">
                     <p className="font-bold text-[#111]">{maskName(order.shipping_name)}</p>
-                    <p className="text-[10px] text-slate-400">{maskPhone(order.shipping_phone)}</p>
+                    <p className="text-[10px] text-slate-500">{maskPhone(order.shipping_phone)}</p>
                   </div>
                 </TableCell>
                 <TableCell>
@@ -162,7 +162,7 @@ export default function AdminOrdersPage() {
                 <TableCell>
                   <div className="flex items-center gap-2 max-w-[200px]">
                     <div className="relative flex-1">
-                      <Truck className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+                      <Truck className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500" />
                       <Input 
                         defaultValue={order.tracking_number || ""} 
                         placeholder="운송장 입력"

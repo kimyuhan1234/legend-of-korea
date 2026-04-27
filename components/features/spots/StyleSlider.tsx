@@ -150,7 +150,7 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
                           />
                           <span
                             className={`text-[9px] font-bold leading-none ${
-                              isSelected ? 'text-mint-deep' : 'text-slate-400'
+                              isSelected ? 'text-mint-deep' : 'text-slate-500'
                             }`}
                           >
                             {scaleLabels[i]}
@@ -214,7 +214,7 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
               />
             </div>
           ) : (
-            <div className="h-[220px] flex items-center justify-center text-xs text-slate-400 font-bold">
+            <div className="h-[220px] flex items-center justify-center text-xs text-slate-500 font-bold">
               ...
             </div>
           )}
@@ -267,7 +267,7 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
         </button>
         <button
           onClick={onSkip}
-          className="text-xs text-slate-400 hover:text-slate-600 underline underline-offset-2 transition-colors"
+          className="text-xs text-slate-500 hover:text-slate-600 underline underline-offset-2 transition-colors"
         >
           {t('slider.skip')} →
         </button>

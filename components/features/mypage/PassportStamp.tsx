@@ -68,7 +68,7 @@ export function PassportStamp({
       <span className="text-2xl md:text-3xl mb-0.5">{emoji}</span>
       <p className="text-[9px] font-bold text-red-400/80 text-center leading-tight">{legendName}</p>
       {dateStr && (
-        <p className="text-[8px] font-bold text-slate-400 mt-1">{dateStr}</p>
+        <p className="text-[8px] font-bold text-slate-500 mt-1">{dateStr}</p>
       )}
       <div className="absolute inset-0 rounded-2xl border border-red-300/30 pointer-events-none" style={{ margin: '3px' }} />
     </div>

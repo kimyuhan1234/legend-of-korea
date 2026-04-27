@@ -255,7 +255,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
               {post.user?.avatar_url ? (
                 <Image src={post.user.avatar_url} alt="avatar" fill className="object-cover" unoptimized />
               ) : (
-                <div className="w-full h-full flex items-center justify-center font-bold text-slate-400 text-sm">
+                <div className="w-full h-full flex items-center justify-center font-bold text-slate-500 text-sm">
                   {post.user?.nickname?.[0] || 'A'}
                 </div>
               )}
@@ -271,7 +271,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
                   </span>
                 )}
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">{timeAgo(post.created_at, t)}</p>
+              <p className="text-xs text-slate-500 mt-0.5">{timeAgo(post.created_at, t)}</p>
             </div>
           </div>
 
@@ -280,7 +280,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
             <div className="relative" ref={menuRef}>
               <button
                 onClick={() => setMenuOpen(v => !v)}
-                className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500 hover:text-slate-600 transition-colors"
               >
                 <MoreHorizontal className="w-5 h-5" />
               </button>
@@ -426,7 +426,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
             onClick={handleLike}
             disabled={likeLoading}
             className={`flex items-center gap-2 text-sm font-bold transition-colors group
-              ${liked ? 'text-rose-500' : 'text-slate-400 hover:text-slate-600'}`}
+              ${liked ? 'text-rose-500' : 'text-slate-500 hover:text-slate-600'}`}
           >
             <Heart className={`w-5 h-5 transition-transform group-active:scale-90 ${liked ? 'fill-current' : ''}`} />
             {likesCount}
@@ -434,7 +434,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
 
           <button
             onClick={toggleComments}
-            className="flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-slate-600 transition-colors group"
+            className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-600 transition-colors group"
           >
             <MessageCircle className="w-5 h-5" />
             {commentsCount}
@@ -443,7 +443,7 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
 
           <button
             onClick={handleShare}
-            className="ml-auto flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-slate-600 transition-colors group"
+            className="ml-auto flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-600 transition-colors group"
           >
             <Share2 className="w-4 h-4 transition-transform group-active:scale-90" />
           </button>
@@ -453,12 +453,12 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
         {commentsOpen && (
           <div className="mt-4 pt-4 border-t border-slate-100 space-y-3">
             {comments.length === 0 ? (
-              <p className="text-sm text-slate-400 text-center py-3">{t('noComments')}</p>
+              <p className="text-sm text-slate-500 text-center py-3">{t('noComments')}</p>
             ) : (
               <div className="space-y-3 max-h-60 overflow-y-auto pr-1">
                 {comments.map(c => (
                   <div key={c.id} className="flex gap-2.5">
-                    <div className="w-7 h-7 rounded-full bg-slate-100 shrink-0 flex items-center justify-center text-xs font-bold text-slate-400  border-0 border-slate-200">
+                    <div className="w-7 h-7 rounded-full bg-slate-100 shrink-0 flex items-center justify-center text-xs font-bold text-slate-500  border-0 border-slate-200">
                       {c.user?.nickname?.[0] || 'A'}
                     </div>
                     <div className="flex-1 bg-slate-50 rounded-xl px-3 py-2">

@@ -135,7 +135,7 @@ export function Leaderboard({ locale }: Props) {
         {!loading && entries.length === 0 && (
           <div className="text-center py-10 space-y-2">
             <div className="text-4xl">🏔️</div>
-            <p className="text-sm font-bold text-slate-400">{t('leaderboard.empty')}</p>
+            <p className="text-sm font-bold text-slate-500">{t('leaderboard.empty')}</p>
             <p className="text-xs text-slate-300">{t('leaderboard.challenge')}</p>
           </div>
         )}
@@ -157,7 +157,7 @@ export function Leaderboard({ locale }: Props) {
                 {entry.avatarUrl ? (
                   <Image src={entry.avatarUrl} alt="" width={40} height={40} className="object-cover w-full h-full" />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-sm font-black text-slate-400">
+                  <div className="w-full h-full flex items-center justify-center text-sm font-black text-slate-500">
                     {entry.nickname[0]}
                   </div>
                 )}
@@ -178,7 +178,7 @@ export function Leaderboard({ locale }: Props) {
               </div>
               <div className="text-right flex-shrink-0">
                 <p className="text-lg font-black text-slate-800">{entry.monthlyLp.toLocaleString()}</p>
-                <p className="text-[10px] font-bold text-slate-400 uppercase">빗방울</p>
+                <p className="text-[10px] font-bold text-slate-500 uppercase">빗방울</p>
               </div>
             </div>
           )
@@ -196,12 +196,12 @@ export function Leaderboard({ locale }: Props) {
                     isMe ? 'bg-mint-deep/5 border border-mint-deep/20' : 'hover:bg-slate-50'
                   }`}
                 >
-                  <span className="w-6 text-center font-black text-slate-400">{entry.rank}</span>
+                  <span className="w-6 text-center font-black text-slate-500">{entry.rank}</span>
                   <div className="w-7 h-7 rounded-full overflow-hidden bg-slate-200 flex-shrink-0">
                     {entry.avatarUrl ? (
                       <Image src={entry.avatarUrl} alt="" width={28} height={28} className="object-cover w-full h-full" />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-xs font-black text-slate-400">
+                      <div className="w-full h-full flex items-center justify-center text-xs font-black text-slate-500">
                         {entry.nickname[0]}
                       </div>
                     )}
@@ -213,7 +213,7 @@ export function Leaderboard({ locale }: Props) {
                   {isMe && (
                     <span className="text-[10px] font-black text-mint-deep">← {t('leaderboard.you')}</span>
                   )}
-                  <span className="font-black text-slate-600">{entry.monthlyLp.toLocaleString()} <span className="text-[10px] text-slate-400">빗방울</span></span>
+                  <span className="font-black text-slate-600">{entry.monthlyLp.toLocaleString()} <span className="text-[10px] text-slate-500">빗방울</span></span>
                 </div>
               )
             })}

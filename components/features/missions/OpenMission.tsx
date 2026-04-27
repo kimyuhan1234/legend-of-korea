@@ -228,10 +228,10 @@ export function OpenMission({
                     <label className="flex flex-col items-center justify-center w-full aspect-video rounded-2xl border-4 border-dashed border-slate-200 bg-slate-50/50 hover:bg-slate-100 hover:border-slate-300 transition-all cursor-pointer group">
                         <div className="flex flex-col items-center justify-center pt-5 pb-6">
                             <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-md mb-4 group-hover:scale-110 transition-transform">
-                                <Upload className="w-8 h-8 text-slate-400 group-hover:text-primary transition-colors" />
+                                <Upload className="w-8 h-8 text-slate-500 group-hover:text-primary transition-colors" />
                             </div>
                             <p className="text-lg font-bold text-slate-500 group-hover:text-slate-800">{t('takeOrUploadPhoto')}</p>
-                            <p className="text-xs text-slate-400 mt-1 italic">JPG, PNG, WEBP (Max 5MB)</p>
+                            <p className="text-xs text-slate-500 mt-1 italic">JPG, PNG, WEBP (Max 5MB)</p>
                         </div>
                         <input type="file" className="hidden" accept="image/*" onChange={(e: ChangeEvent<HTMLInputElement>) => handleFileChange(e)} />
                     </label>

@@ -91,7 +91,7 @@ export function ProfileBadges({ userId }: Props) {
         <h3 className="text-sm font-black text-slate-700 flex items-center gap-1.5">
           🎖️ {t('badges.title')}
         </h3>
-        <span className="text-xs font-bold text-slate-400">
+        <span className="text-xs font-bold text-slate-500">
           {clearedCount}/{COURSES.length}
         </span>
       </div>

@@ -82,7 +82,7 @@ export function SwipeCard({ questions, locale, onComplete, onSkip }: Props) {
         <h2 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tight mb-2">
           🎯 {t('swipe.title')}
         </h2>
-        <p className="text-sm text-slate-400 font-bold">
+        <p className="text-sm text-slate-500 font-bold">
           {t('swipe.progress', { n: index + 1, total: questions.length })}
         </p>
       </div>
@@ -135,7 +135,7 @@ export function SwipeCard({ questions, locale, onComplete, onSkip }: Props) {
             </div>
 
             <div className="relative border-t border-slate-100 pt-4 text-center">
-              <p className="text-xs text-slate-400 font-bold">VS</p>
+              <p className="text-xs text-slate-500 font-bold">VS</p>
             </div>
           </div>
         </div>
@@ -177,7 +177,7 @@ export function SwipeCard({ questions, locale, onComplete, onSkip }: Props) {
       <div className="text-center mt-6">
         <button
           onClick={onSkip}
-          className="text-xs text-slate-400 hover:text-slate-600 underline underline-offset-2 transition-colors"
+          className="text-xs text-slate-500 hover:text-slate-600 underline underline-offset-2 transition-colors"
         >
           {t('swipe.skip')}
         </button>

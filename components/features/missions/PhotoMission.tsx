@@ -228,15 +228,15 @@ export function PhotoMission({
               onClick={() => fileInputRef.current?.click()}
               className="aspect-square rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 hover:bg-slate-100 hover:border-primary/50 transition-all flex flex-col items-center justify-center gap-2 group"
             >
-              <Upload className="w-8 h-8 text-slate-400 group-hover:text-primary transition-colors" />
-              <span className="text-xs font-bold text-slate-400 group-hover:text-primary">
+              <Upload className="w-8 h-8 text-slate-500 group-hover:text-primary transition-colors" />
+              <span className="text-xs font-bold text-slate-500 group-hover:text-primary">
                 {t('addPhoto') || '사진 추가'}
               </span>
             </button>
           )}
         </div>
 
-        <p className="text-xs text-slate-400 font-medium text-center">
+        <p className="text-xs text-slate-500 font-medium text-center">
           {files.length}/{MAX_FILES}{t('photoCount') || '장'} · JPEG/PNG/WebP · {t('maxSize', { mb: MAX_SIZE_MB }) || `최대 ${MAX_SIZE_MB}MB`}
         </p>
 

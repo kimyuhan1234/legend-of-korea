@@ -231,7 +231,7 @@ function CityDetailCard({
 
         {/* 3개 모두 비었을 때만 안내 */}
         {festivals.length === 0 && landmarks.length === 0 && hotspots.length === 0 && (
-          <div className="text-center py-6 text-xs text-slate-400 font-bold">
+          <div className="text-center py-6 text-xs text-slate-500 font-bold">
             {t('result.noCitySpots')}
           </div>
         )}
@@ -270,7 +270,7 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
   if (!top1) {
     return (
       <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-        <p className="text-slate-400 font-bold">{t('result.noCitySpots')}</p>
+        <p className="text-slate-500 font-bold">{t('result.noCitySpots')}</p>
         <button onClick={onRetry} className="mt-4 px-6 py-3 rounded-full bg-mint-deep text-white font-black text-sm">
           <RefreshCw className="inline w-4 h-4 mr-1.5" /> {t('result.retry')}
         </button>
@@ -304,7 +304,7 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-slate-200" />
-            <p className="text-xs font-black text-slate-400 uppercase tracking-wider">
+            <p className="text-xs font-black text-slate-500 uppercase tracking-wider">
               💡 {t('result.alsoCheck')}
             </p>
             <div className="flex-1 h-px bg-slate-200" />

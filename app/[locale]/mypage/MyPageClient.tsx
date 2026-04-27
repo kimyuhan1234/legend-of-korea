@@ -183,7 +183,7 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="flex flex-col items-center gap-4">
           <div className="w-16 h-16 border-4 border-mint-deep border-t-transparent rounded-full animate-spin" />
-          <p className="font-black text-slate-400">{t('loading') || 'Loading...'}</p>
+          <p className="font-black text-slate-500">{t('loading') || 'Loading...'}</p>
         </div>
       </div>
     );
@@ -216,7 +216,7 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
               </div>
 
               <h2 className="text-2xl font-black text-slate-800">{user?.nickname}</h2>
-              <p className="text-sm text-slate-400 font-bold mb-4">{user?.email}</p>
+              <p className="text-sm text-slate-500 font-bold mb-4">{user?.email}</p>
 
               {user?.id && (
                 <div className="mb-6">
@@ -226,13 +226,13 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
 
               <div className="grid grid-cols-2 gap-4 text-left">
                 <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100">
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-tighter mb-0.5">{
+                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-tighter mb-0.5">{
                     ({ ko: '빗방울 잔액', ja: 'しずく残高', en: 'Raindrops Balance', 'zh-CN': '雨滴余额', 'zh-TW': '雨滴餘額' } as Record<string, string>)[locale] ?? '빗방울 잔액'
                   }</p>
                   <p className="text-xl font-black text-sky transition-all duration-500">{lpBalance.toLocaleString()}</p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100">
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-tighter mb-0.5">Experience</p>
+                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-tighter mb-0.5">Experience</p>
                   <p className="text-xl font-black text-sky">{orders.length} <span className="text-[10px]">Courses</span></p>
                 </div>
               </div>
@@ -283,7 +283,7 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
             {showOrders && (
               <div className="px-5 py-4 bg-slate-50/50 space-y-3">
                 {orders.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center text-slate-400 gap-2 py-8 opacity-40">
+                  <div className="flex flex-col items-center justify-center text-slate-500 gap-2 py-8 opacity-40">
                     <ShoppingBag className="w-8 h-8" />
                     <p className="text-sm font-bold">{t('noOrders') || '주문 내역이 없습니다.'}</p>
                   </div>
@@ -291,7 +291,7 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
                   orders.map((order: any) => (
                     <div key={order.id} className="p-4 rounded-xl bg-white border border-slate-100 space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-black text-slate-400">
+                        <span className="text-xs font-mono font-black text-slate-500">
                           #{order.id.split('-')[0].toUpperCase()}
                         </span>
                         <Badge className="rounded-lg px-2 py-0.5 bg-sky-light text-sky border-none font-black text-[10px]">
@@ -306,7 +306,7 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
                           <h4 className="text-sm font-black text-slate-800 truncate">
                             {order.kit_products?.courses?.title?.[locale] || order.kit_products?.courses?.title?.ko || t('digitalPass') || 'Digital Quest Pass'}
                           </h4>
-                          <p className="text-xs text-slate-400 font-bold">
+                          <p className="text-xs text-slate-500 font-bold">
                             {new Date(order.created_at).toLocaleDateString()}
                           </p>
                         </div>
@@ -336,7 +336,7 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
             {showCoupons && (
               <div className="px-5 py-4 bg-slate-50/50 space-y-2">
                 {coupons.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center text-slate-400 gap-2 py-8 opacity-40">
+                  <div className="flex flex-col items-center justify-center text-slate-500 gap-2 py-8 opacity-40">
                     <Ticket className="w-8 h-8" />
                     <p className="text-sm font-bold">{t('noCoupons') || '보유 중인 쿠폰이 없습니다.'}</p>
                   </div>
@@ -353,9 +353,9 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
                             {coupon.is_used ? 'USED' : 'ACTIVE'}
                           </Badge>
                         </div>
-                        <p className="text-[11px] font-mono font-bold text-slate-400 tracking-wider truncate">{coupon.code}</p>
+                        <p className="text-[11px] font-mono font-bold text-slate-500 tracking-wider truncate">{coupon.code}</p>
                       </div>
-                      <div className="flex items-center gap-1 text-[10px] text-slate-400 font-bold shrink-0">
+                      <div className="flex items-center gap-1 text-[10px] text-slate-500 font-bold shrink-0">
                         <Calendar className="w-3 h-3" />
                         {new Date(coupon.expires_at).toLocaleDateString()}
                       </div>
@@ -374,7 +374,7 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
             {showLp && (
               <div className="px-5 py-4 bg-slate-50/50 space-y-2">
                 {lpHistory.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center text-slate-400 gap-2 py-8 opacity-40">
+                  <div className="flex flex-col items-center justify-center text-slate-500 gap-2 py-8 opacity-40">
                     <History className="w-8 h-8" />
                     <p className="text-sm font-bold">{t('noLp') || '적립된 빗방울 내역이 없습니다.'}</p>
                   </div>
@@ -390,15 +390,15 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
                           {isApplied ? <CheckCircle2 className="w-5 h-5" /> : isPositive ? <ArrowUpRight className="w-5 h-5" /> : <ArrowDownLeft className="w-5 h-5" />}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className={`text-sm font-black truncate ${isApplied ? 'text-slate-400' : 'text-slate-800'}`}>
+                          <p className={`text-sm font-black truncate ${isApplied ? 'text-slate-500' : 'text-slate-800'}`}>
                             {item.description}
                           </p>
-                          <p className="text-[10px] text-slate-400 font-bold">
+                          <p className="text-[10px] text-slate-500 font-bold">
                             {new Date(item.created_at).toLocaleDateString()} · {item.type}
                           </p>
                         </div>
                         <div className="flex items-center gap-2 shrink-0">
-                          <span className={`text-sm font-black ${isApplied ? 'text-slate-400' : isPositive ? 'text-sky' : 'text-rose-500'}`}>
+                          <span className={`text-sm font-black ${isApplied ? 'text-slate-500' : isPositive ? 'text-sky' : 'text-rose-500'}`}>
                             {isPositive ? '+' : ''}{item.amount.toLocaleString()}
                             <span className="text-[9px] ml-0.5">빗방울</span>
                           </span>

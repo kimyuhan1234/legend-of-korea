@@ -195,7 +195,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
     <div className="max-w-3xl mx-auto space-y-8">
       <div className="space-y-2">
         <h1 className="text-3xl font-black text-slate-800 tracking-tight">{t('writePost')}</h1>
-        <p className="text-slate-400 font-bold">{t('writeSubtitle')}</p>
+        <p className="text-slate-500 font-bold">{t('writeSubtitle')}</p>
       </div>
 
       <Card className="rounded-[2.5rem] border-none shadow-2xl overflow-hidden bg-white/80 backdrop-blur-xl">
@@ -264,7 +264,7 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
               <input
                 type="text"
                 placeholder={tags.length < 5 ? t('tagPlaceholder') : ''}
-                className="flex-1 bg-transparent border-none outline-none min-w-[200px] text-sm font-bold text-slate-700 placeholder:text-slate-400 placeholder:font-medium"
+                className="flex-1 bg-transparent border-none outline-none min-w-[200px] text-sm font-bold text-slate-700 placeholder:text-slate-500 placeholder:font-medium"
                 value={tagInput}
                 onChange={e => setTagInput(e.target.value)}
                 onKeyDown={handleTagInputKeyDown}
@@ -298,8 +298,8 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
                   onClick={() => fileInputRef.current?.click()}
                   className="w-24 h-24 rounded-2xl bg-slate-50 border-2 border-dashed border-slate-200 flex flex-col items-center justify-center gap-2 hover:bg-slate-100 hover:border-sky transition-all group"
                 >
-                  <Camera className="w-6 h-6 text-slate-400 group-hover:text-mint-deep group-hover:scale-110 transition-all" />
-                  <span className="text-[10px] font-black text-slate-400">{t('addPhoto')}</span>
+                  <Camera className="w-6 h-6 text-slate-500 group-hover:text-mint-deep group-hover:scale-110 transition-all" />
+                  <span className="text-[10px] font-black text-slate-500">{t('addPhoto')}</span>
                 </button>
               )}
             </div>

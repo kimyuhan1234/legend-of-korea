@@ -73,12 +73,12 @@ export function CourseCompletionModal({
         <div className="p-8 space-y-8 bg-white">
            <div className="flex justify-around items-center bg-slate-50 p-6 rounded-[2rem] border border-slate-100 shadow-inner">
               <div className="text-center">
-                 <p className="text-xs font-black text-slate-400 mb-1">{t.totalReward}</p>
+                 <p className="text-xs font-black text-slate-500 mb-1">{t.totalReward}</p>
                  <p className="text-2xl font-black text-primary">+{totalLp} {t.raindrops}</p>
               </div>
               <div className="w-px h-10 bg-slate-200" />
               <div className="text-center">
-                 <p className="text-xs font-black text-slate-400 mb-1">{t.completionBonus}</p>
+                 <p className="text-xs font-black text-slate-500 mb-1">{t.completionBonus}</p>
                  <p className="text-2xl font-black text-blossom-deep">+500 {t.raindrops}</p>
               </div>
            </div>

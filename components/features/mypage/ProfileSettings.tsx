@@ -121,7 +121,7 @@ export function ProfileSettings({ user, locale, onUpdate }: Props) {
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-black text-slate-800 truncate">{user?.nickname || '-'}</p>
-              <p className="text-xs text-slate-400 truncate">{user?.email || ''}</p>
+              <p className="text-xs text-slate-500 truncate">{user?.email || ''}</p>
             </div>
             <button
               onClick={() => setEditing(true)}
@@ -152,7 +152,7 @@ export function ProfileSettings({ user, locale, onUpdate }: Props) {
                 </div>
               </div>
               <input ref={avatarRef} type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
-              <p className="text-[10px] text-slate-400 mt-2">JPEG / PNG / WebP · max 2MB</p>
+              <p className="text-[10px] text-slate-500 mt-2">JPEG / PNG / WebP · max 2MB</p>
             </div>
 
             {/* 닉네임 */}

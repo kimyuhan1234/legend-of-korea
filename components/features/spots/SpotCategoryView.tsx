@@ -48,12 +48,12 @@ export function SpotCategoryView({ spots, locale }: Props) {
               key={cat}
               onClick={() => { setCategory(cat); setRegion('') }}
               className={`flex items-center gap-2 px-5 py-3 font-bold text-sm transition-colors border-b-2 ${
-                isActive ? 'border-mint-deep text-mint-deep' : 'border-transparent text-slate-400 hover:text-slate-600'
+                isActive ? 'border-mint-deep text-mint-deep' : 'border-transparent text-slate-500 hover:text-slate-600'
               }`}
             >
               <span className="text-base">{CATEGORY_EMOJI[cat]}</span>
               {t(`category.${cat}`)}
-              <span className="text-[10px] text-slate-400">({count})</span>
+              <span className="text-[10px] text-slate-500">({count})</span>
             </button>
           )
         })}
@@ -87,7 +87,7 @@ export function SpotCategoryView({ spots, locale }: Props) {
 
       {/* 스팟 카드 */}
       {filtered.length === 0 ? (
-        <div className="text-center py-16 text-sm text-slate-400 font-bold">
+        <div className="text-center py-16 text-sm text-slate-500 font-bold">
           {t('result.noCitySpots')}
         </div>
       ) : (

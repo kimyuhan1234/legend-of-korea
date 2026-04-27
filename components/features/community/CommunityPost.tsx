@@ -76,13 +76,13 @@ export function CommunityPost({ post, locale, onLike, onComment }: CommunityPost
             <span className="font-black text-slate-800">{post.user.nickname}</span>
             {post.user.id && <RankBadge userId={post.user.id} size="sm" />}
           </div>
-          <span className="text-xs text-slate-400 font-bold">
+          <span className="text-xs text-slate-500 font-bold">
             {timeAgo(post.created_at, locale)}
             {post.course?.title && ` • ${post.course.title[locale] || post.course.title.en || post.course.title.ko || ''}`}
           </span>
         </div>
         <Button variant="ghost" size="icon" className="rounded-full">
-          <MoreHorizontal className="w-5 h-5 text-slate-400" />
+          <MoreHorizontal className="w-5 h-5 text-slate-500" />
         </Button>
       </CardHeader>
 
@@ -158,7 +158,7 @@ export function CommunityPost({ post, locale, onLike, onComment }: CommunityPost
           </Button>
         </div>
         <Button variant="ghost" size="icon" className="rounded-full">
-          <Share2 className="w-5 h-5 text-slate-400" />
+          <Share2 className="w-5 h-5 text-slate-500" />
         </Button>
       </CardFooter>
     </Card>

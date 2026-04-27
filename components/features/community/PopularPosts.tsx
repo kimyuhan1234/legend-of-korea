@@ -55,7 +55,7 @@ export function PopularPosts() {
                 <p className="font-bold text-slate-800 text-sm truncate group-hover:text-sky transition-colors">
                   {post.title || post.text.slice(0, 30) + '...'}
                 </p>
-                <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-400 font-medium">
+                <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-500 font-medium">
                   <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{getRegionName(post.region, locale)}</span>
                   <span className="flex items-center gap-1"><Heart className="w-3 h-3 text-rose-400 fill-current" />{post.likes_count}</span>
                 </div>

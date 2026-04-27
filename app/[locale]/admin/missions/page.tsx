@@ -123,19 +123,19 @@ export default function AdminMissionsPage() {
           <TableBody>
             {loading ? (
               <TableRow>
-                <TableCell colSpan={6} className="h-32 text-center text-slate-400 font-medium">로딩 중...</TableCell>
+                <TableCell colSpan={6} className="h-32 text-center text-slate-500 font-medium">로딩 중...</TableCell>
               </TableRow>
             ) : missions.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="h-32 text-center text-slate-400 font-medium font-bold">등록된 미션이 없습니다.</TableCell>
+                <TableCell colSpan={6} className="h-32 text-center text-slate-500 font-medium font-bold">등록된 미션이 없습니다.</TableCell>
               </TableRow>
             ) : missions.map((m) => (
               <TableRow key={m.id} className="border-slate-50 group hover:bg-slate-50/20 transition-colors">
-                <TableCell className="text-center font-black text-slate-400">#{m.sequence}</TableCell>
+                <TableCell className="text-center font-black text-slate-500">#{m.sequence}</TableCell>
                 <TableCell className="py-5">
                   <div className="max-w-md space-y-1">
                     <p className="font-bold text-[#111]">{m.title.ko}</p>
-                    <p className="text-xs text-slate-400 line-clamp-1">{m.description.ko}</p>
+                    <p className="text-xs text-slate-500 line-clamp-1">{m.description.ko}</p>
                   </div>
                 </TableCell>
                 <TableCell>
@@ -157,7 +157,7 @@ export default function AdminMissionsPage() {
                   <Button 
                     variant="ghost" 
                     size="icon" 
-                    className="h-8 w-8 rounded-lg text-slate-400 hover:text-[#111] hover:bg-slate-100"
+                    className="h-8 w-8 rounded-lg text-slate-500 hover:text-[#111] hover:bg-slate-100"
                     onClick={() => handleEdit(m)}
                   >
                     <Edit2 className="w-4 h-4" />
@@ -181,7 +181,7 @@ export default function AdminMissionsPage() {
             <CardContent className="p-8 space-y-6">
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">상태 정보</label>
+                  <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">상태 정보</label>
                   <div className="flex gap-2">
                     <Badge variant="outline" className="border-slate-200 text-slate-500">#{editForm.sequence}</Badge>
                     <Badge className="bg-gradient-to-br from-mint to-blossom text-ink border-none">{editForm.type.toUpperCase()}</Badge>
@@ -190,7 +190,7 @@ export default function AdminMissionsPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">미션 제목 (한국어)</label>
+                  <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">미션 제목 (한국어)</label>
                   <Input 
                     value={editForm.title.ko}
                     onChange={(e) => setEditForm({...editForm, title: { ...editForm.title, ko: e.target.value }})}
@@ -199,7 +199,7 @@ export default function AdminMissionsPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">미션 설명 (한국어)</label>
+                  <label className="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">미션 설명 (한국어)</label>
                   <Textarea 
                     value={editForm.description.ko}
                     onChange={(e) => setEditForm({...editForm, description: { ...editForm.description, ko: e.target.value }})}
@@ -209,7 +209,7 @@ export default function AdminMissionsPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">힌트 1단계</label>
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">힌트 1단계</label>
                     <Input 
                       value={editForm.hint_1?.ko || ""}
                       onChange={(e) => setEditForm({...editForm, hint_1: { ...editForm.hint_1, ko: e.target.value }})}
@@ -217,7 +217,7 @@ export default function AdminMissionsPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">힌트 2단계</label>
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">힌트 2단계</label>
                     <Input 
                       value={editForm.hint_2?.ko || ""}
                       onChange={(e) => setEditForm({...editForm, hint_2: { ...editForm.hint_2, ko: e.target.value }})}
@@ -225,7 +225,7 @@ export default function AdminMissionsPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">힌트 3단계</label>
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">힌트 3단계</label>
                     <Input 
                       value={editForm.hint_3?.ko || ""}
                       onChange={(e) => setEditForm({...editForm, hint_3: { ...editForm.hint_3, ko: e.target.value }})}

@@ -265,7 +265,7 @@ export function PassHubPage({ passId, locale }: Props) {
 
       {/* 하단 패스 구매 CTA */}
       <div className="text-center mt-10">
-        <p className="text-sm text-slate-400 mb-3">{ctaLabel}</p>
+        <p className="text-sm text-slate-500 mb-3">{ctaLabel}</p>
         <Link
           href={`/${locale}/pass`}
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-br from-mint to-blossom text-ink font-black text-sm hover:opacity-90 transition-opacity shadow-md"

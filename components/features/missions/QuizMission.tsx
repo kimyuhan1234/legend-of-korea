@@ -201,7 +201,7 @@ export function QuizMission({
 
             {/* Hint System */}
             <div className="space-y-4 pt-4 border-t border-slate-100">
-              <h4 className="text-sm font-black text-slate-400 flex items-center gap-2">
+              <h4 className="text-sm font-black text-slate-500 flex items-center gap-2">
                  <Lightbulb className="w-4 h-4" />
                  {t('helpNeeded')}
               </h4>

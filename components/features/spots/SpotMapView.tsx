@@ -56,7 +56,7 @@ export function SpotMapView({ spots, locale }: Props) {
               <div className={`text-sm font-black ${isActive ? 'text-white' : 'text-slate-700'}`}>
                 {getCityName(city.code, locale)}
               </div>
-              <div className={`text-[10px] font-bold mt-0.5 ${isActive ? 'text-white/80' : 'text-slate-400'}`}>
+              <div className={`text-[10px] font-bold mt-0.5 ${isActive ? 'text-white/80' : 'text-slate-500'}`}>
                 {count}
               </div>
             </button>
@@ -99,7 +99,7 @@ export function SpotMapView({ spots, locale }: Props) {
           )}
 
           {citySpots.hotspots.length === 0 && citySpots.landmarks.length === 0 && citySpots.festivals.length === 0 && (
-            <div className="text-center py-12 text-sm text-slate-400 font-bold">
+            <div className="text-center py-12 text-sm text-slate-500 font-bold">
               {t('result.noCitySpots')}
             </div>
           )}
@@ -107,7 +107,7 @@ export function SpotMapView({ spots, locale }: Props) {
       )}
 
       {!selectedCity && (
-        <div className="text-center py-8 text-sm text-slate-400 font-bold">
+        <div className="text-center py-8 text-sm text-slate-500 font-bold">
           👆 {t('map.subtitle')}
         </div>
       )}
