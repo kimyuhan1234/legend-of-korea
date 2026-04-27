@@ -789,6 +789,19 @@
     "loginRequired": "請先登入",
     "loginBtn": "登入"
   },
+  "reauth": {
+    "title": "需要驗證出生日期",
+    "description": "依據韓國《個人資料保護法》第22條之2（保護未滿14歲兒童），請輸入一次出生日期。輸入後不會再次詢問。",
+    "birthDateLabel": "出生日期",
+    "submit": "驗證",
+    "submitting": "確認中...",
+    "warning": "距離驗證截止還剩{days}天。到期後將自動登出。",
+    "errorGeneric": "處理過程中發生錯誤，請稍後再試。",
+    "errorFutureDate": "不可輸入未來日期。",
+    "legalNotice": "依據《個人資料保護法》第22條之2（保護未滿14歲使用者）一次性收集。",
+    "blockedTitle": "出生日期驗證期限已過",
+    "blockedBody": "為保護帳號已自動登出。請重新登入並輸入出生日期。"
+  },
   "discover": {
     "title": "發現韓國,從這裡開始",
     "subtitle": "從住處到玩法 — 一站式開啟你的韓國之旅",

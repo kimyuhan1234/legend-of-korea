@@ -789,6 +789,19 @@
     "loginRequired": "请先登录",
     "loginBtn": "登录"
   },
+  "reauth": {
+    "title": "需要验证出生日期",
+    "description": "根据韩国《个人信息保护法》第22条之2（保护未满14岁儿童），请输入一次出生日期。输入后不会再次询问。",
+    "birthDateLabel": "出生日期",
+    "submit": "验证",
+    "submitting": "确认中...",
+    "warning": "距离认证截止还剩{days}天。到期后将自动退出登录。",
+    "errorGeneric": "处理过程中发生错误，请稍后再试。",
+    "errorFutureDate": "不可输入未来日期。",
+    "legalNotice": "根据《个人信息保护法》第22条之2（保护未满14岁用户）一次性收集。",
+    "blockedTitle": "出生日期认证期限已过",
+    "blockedBody": "为保护账户已自动退出登录。请重新登录并输入出生日期。"
+  },
   "discover": {
     "title": "发现韩国,从这里开始",
     "subtitle": "从住处到玩法 — 一站式开启你的韩国之旅",

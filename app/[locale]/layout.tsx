@@ -13,6 +13,7 @@ import { FeedbackWidget } from "@/components/shared/FeedbackWidget"
 import { StickyCTA } from "@/components/shared/StickyCTA"
 import { OrganizationSchema, WebSiteSchema } from "@/components/seo"
 import { SkipLink } from "@/components/shared/SkipLink"
+import { BirthDateGate } from "@/components/features/auth/BirthDateGate"
 import { locales } from "@/i18n"
 
 interface LocaleLayoutProps {
@@ -120,6 +121,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <StickyCTA />
           {/* 베타 피드백 — Sticky CTA 충돌 페이지에서는 hideOn 추가 */}
           <FeedbackWidget hideOn={["/*/auth/*"]} />
+          {/* P0F-2: birth_date NULL 사용자 강제 재인증 모달 (PIPA §22-2) */}
+          <BirthDateGate locale={locale} />
         </CartProvider>
       </NextIntlClientProvider>
     </div>
