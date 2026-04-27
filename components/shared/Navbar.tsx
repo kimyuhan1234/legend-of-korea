@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { createClient } from "@/lib/supabase/server"
 import { LogoutButton } from "@/components/features/auth/LogoutButton"
-import { NavbarMobileMenu } from "@/components/shared/NavbarMobileMenu"
+import { MobileHeader } from "@/components/shared/MobileHeader"
 import { LocaleSwitcher } from "@/components/shared/LocaleSwitcher"
 import { BackButton } from "@/components/shared/BackButton"
 import { PlannerBadge } from "@/components/features/planner/PlannerBadge"
@@ -87,9 +87,25 @@ export async function Navbar({ locale }: NavbarProps) {
   const links = NAV_LINKS[locale as keyof typeof NAV_LINKS] || NAV_LINKS.en || NAV_LINKS.ko
   const t = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
 
+  // 모바일에 전달할 사용자 정보 (avatar 포함)
+  const mobileUser = user
+    ? {
+        nickname: profile?.nickname,
+        avatar_url: profile?.avatar_url,
+        total_lp: profile?.total_lp,
+      }
+    : null
+
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-mist">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+    <>
+      {/* ── 모바일 헤더 (768px 미만) — 별도 client component ── */}
+      <div className="md:hidden">
+        <MobileHeader locale={locale} links={links} user={mobileUser} t={t} />
+      </div>
+
+      {/* ── 데스크탑 헤더 (768px 이상) — 기존 layout 그대로 보존 ── */}
+      <header className="hidden md:block sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-mist">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
         {/* 뒤로가기 및 로고 */}
         <div className="flex items-center gap-2 shrink-0">
           <BackButton />
@@ -195,15 +211,9 @@ export async function Navbar({ locale }: NavbarProps) {
             </div>
           )}
 
-          {/* 모바일 햄버거 */}
-          <NavbarMobileMenu
-            locale={locale}
-            links={links}
-            user={user ? { nickname: profile?.nickname, lp: profile?.total_lp } : null}
-            t={t}
-          />
         </div>
       </div>
     </header>
+    </>
   )
 }
