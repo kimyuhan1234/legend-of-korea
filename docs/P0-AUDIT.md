@@ -238,6 +238,7 @@ A·C 는 코드 동작에 직접 영향, G 는 작업 순서·범위.
 - `042_users_consents_columns.sql` (P0-6, 후속 Phase)
 - `043_feedback_table.sql` (P0-8 본 작업) ✅ 적용 완료
 - `044_users_birth_date_not_null.sql` (별도 PR, 재인증 완료 후)
+- `045_parent_consents.sql` (P0-5-C-2, 182 상담 반영) — 법정대리인 동의 최소 플로우
 
 ### Phase 2 구현 핵심 의사결정
 
