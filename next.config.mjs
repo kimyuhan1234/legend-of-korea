@@ -28,8 +28,18 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1440, 1920, 2560],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
   },
+  // P3C-7: production 번들에서 console.log 자동 제거 (error / warn 보존).
+  // 디버그 로그가 외국인 사용자 콘솔에 노출되는 보안/UX 위험 차단.
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production"
+      ? { exclude: ["error", "warn"] }
+      : false,
+  },
   experimental: {
     serverActions: { allowedOrigins: ["localhost:3000", "*.vercel.app"] },
+    // P3C-7: lucide-react / next-intl 등 큰 패키지 tree-shake 강화.
+    // 사용된 아이콘 / 함수만 번들 포함 — First Load JS 절감.
+    optimizePackageImports: ["lucide-react", "next-intl"],
   },
 }
 
