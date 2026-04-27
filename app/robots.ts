@@ -8,7 +8,7 @@ import { MetadataRoute } from 'next'
  * - host 추가 (Yandex 등 일부 봇이 활용)
  */
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legendofkorea.com'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
 
   return {
     rules: {

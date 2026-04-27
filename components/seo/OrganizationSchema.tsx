@@ -8,7 +8,7 @@
  *   https://search.google.com/test/rich-results
  */
 export function OrganizationSchema() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legendofkorea.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
 
   const schema = {
     '@context': 'https://schema.org',

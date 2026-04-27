@@ -10,7 +10,7 @@ import { createClient } from '@/lib/supabase/server'
  * - /admin, /auth/parent-consent/[token] 등 비공개 path 는 sitemap 미포함
  */
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://legendofkorea.com'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
 
 const LOCALES = ['ko', 'ja', 'en', 'zh-CN', 'zh-TW'] as const
 

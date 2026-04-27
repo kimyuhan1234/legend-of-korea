@@ -19,7 +19,7 @@ interface Props {
 }
 
 export function BreadcrumbSchema({ items }: Props) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legendofkorea.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
 
   const schema = {
     '@context': 'https://schema.org',

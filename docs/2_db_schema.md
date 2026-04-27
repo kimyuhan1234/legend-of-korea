@@ -349,11 +349,14 @@ CREATE POLICY "Admins full access"
 
 ## 5. Auth Provider 설정
 
-| Provider | 콜백 URL (프로덕션) |
-|----------|-------------------|
-| 카카오 | `https://legendofkorea.com/auth/callback` |
-| 구글 | `https://legendofkorea.com/auth/callback` |
-| LINE | `https://legendofkorea.com/auth/callback` |
+| Provider | 콜백 URL (현재) | 향후 운영 도메인 |
+|----------|-----------------|------------------|
+| 카카오 | `https://legend-of-korea.vercel.app/auth/callback` | `https://legendofkorea.com/auth/callback` |
+| 구글 | `https://legend-of-korea.vercel.app/auth/callback` | `https://legendofkorea.com/auth/callback` |
+| LINE | `https://legend-of-korea.vercel.app/auth/callback` | `https://legendofkorea.com/auth/callback` |
+
+> **운영 도메인 구매 시**: 위 3 개 provider 콘솔에서 callback URL 을 향후 도메인으로
+> 갱신해야 함. `NEXT_PUBLIC_SITE_URL` 환경변수 변경과 동시에 진행.
 
 ---
 

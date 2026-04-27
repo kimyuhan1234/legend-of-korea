@@ -6,6 +6,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PopularPosts } from './PopularPosts';
 
+/**
+ * hotfix (도메인 미구매): 광고 문의 placeholder 섹션 비활성.
+ * `ad@legendofkorea.com` 메일 도메인 미구매 = 송수신 불가 → 외국인 신뢰도 보호 위해 숨김.
+ * 향후 운영 도메인 구매 + 광고 사업 시작 시 true 로 토글하면 즉시 복원.
+ */
+const AD_INQUIRY_ENABLED = false
+
 interface AdBannerItem {
   id: string;
   position: string;
@@ -38,7 +45,8 @@ export function CommunitySidebar() {
 
   return (
     <aside className="w-full flex flex-col gap-6 sticky top-[100px]">
-      {/* Top Ad Banners — real ads if available, else placeholder */}
+      {/* Top Ad Banners — 실제 광고 있을 때만 노출. 광고 문의 placeholder 는
+          AD_INQUIRY_ENABLED=false 로 비활성 (도메인 미구매로 메일 송수신 불가). */}
       {topAds.length > 0 ? (
         <div className="flex flex-col gap-4">
           {topAds.map(ad => (
@@ -62,8 +70,8 @@ export function CommunitySidebar() {
             </Link>
           ))}
         </div>
-      ) : (
-        /* TODO: 나중에 ad_banners 테이블에서 동적 로드 */
+      ) : AD_INQUIRY_ENABLED ? (
+        /* TODO: 운영 도메인 구매 + 광고 사업 시작 시 AD_INQUIRY_ENABLED=true 로 복원 */
         <div className="rounded-3xl overflow-hidden shadow-sm">
           <div className="bg-ink p-6 text-white text-center">
             <div className="text-3xl mb-3">📢</div>
@@ -78,7 +86,7 @@ export function CommunitySidebar() {
             </a>
           </div>
         </div>
-      )}
+      ) : null}
 
       {/* Popular Posts */}
       <PopularPosts />

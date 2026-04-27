@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = params
   const m = await getTranslations({ locale, namespace: 'metadata.discover' })
   const tc = await getTranslations({ locale, namespace: 'common' })
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legendofkorea.com'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
   const ogLocale = getOgLocale(locale)
   const title = `${m('title')} | ${tc('siteName')}`
 

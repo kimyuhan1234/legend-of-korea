@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = getI18n(course.title as I18nText, locale)
   const description = getI18n(course.description as I18nText, locale)
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legendofkorea.com'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
 
   return {
     title: `${title} | Cloud with you`,

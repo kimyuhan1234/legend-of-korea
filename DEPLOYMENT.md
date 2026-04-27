@@ -32,7 +32,9 @@ CREATE POLICY "Admins full access"
 > **변경 이유**: `USING (is_active = true)` 정책은 비활성 코스(준비 중)를 완전히 차단하여
 > 프론트엔드에서 "준비 중" 상태를 표시할 수 없는 문제가 있었습니다.
 > `USING (true)`로 변경 후 앱 코드에서 `is_active` 기준으로 구분하여 처리합니다.
-- **Authentication**: Update 카카오, 구글, LINE providers with the production domain (`https://legendofkorea.com/auth/callback`).
+- **Authentication**: Update 카카오, 구글, LINE providers with the production domain (`https://legend-of-korea.vercel.app/auth/callback`).
+  > **현재**: `https://legend-of-korea.vercel.app/auth/callback` (Vercel preview/베타 도메인)
+  > **향후**: 운영 도메인 구매 시 `https://legendofkorea.com/auth/callback` 으로 변경
 - **Storage CORS**: Configure allowed origins to include the production domain.
 - **Bucket Creation**: Create public buckets `mission-photos` and `community-photos`.
 
@@ -41,7 +43,9 @@ CREATE POLICY "Admins full access"
 - **Stripe**: Swap the `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` and `STRIPE_SECRET_KEY`. Set up a Live Webhook URL in Stripe pointing to `/api/webhooks/stripe`.
 
 ## 4. Custom Domain
-- Connect `legendofkorea.com` from your registrar to Vercel via DNS (CNAME/A records).
+- **현재**: `legend-of-korea.vercel.app` (Vercel 자동 도메인 — 베타 단계 사용)
+- **향후 운영 도메인 구매 시**: `legendofkorea.com` 을 registrar 에서 Vercel 로 연결 (CNAME/A records).
+  도메인 연결 후 `NEXT_PUBLIC_SITE_URL` 환경변수 갱신 + OAuth provider callback URL 도 함께 변경.
 
 ## 5. SEO & Indexing
 - Submit the generated `sitemap.xml` to Google Search Console and Bing Webmaster Tools.

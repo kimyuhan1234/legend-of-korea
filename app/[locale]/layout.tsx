@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     "zh-TW": "親身探訪韓國傳說之地、解開任務的高端冒險服務。",
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://legendofkorea.com"
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://legend-of-korea.vercel.app"
 
   return {
     // P3A-1: metadataBase 설정 — OG 이미지 등 모든 절대 URL 자동 생성.
