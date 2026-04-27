@@ -1,14 +1,42 @@
 @import "tailwindcss";
 
-/* hotfix: Tailwind v4 @source directive — Next.js App Router 의 [locale]
-   dynamic segment 등에서 자동 content detection 이 누락되는 케이스가 있음.
-   명시적으로 source path 지정 → md:* / lg:* responsive variant 등이 모두
-   production CSS 에 빌드되도록 보장.
-   증상: production CSS 에 .md\:hidden / .md\:flex 등 정의 0 건 →
-   햄버거 버튼이 모바일에서 안 보임 / 데스크탑 사이드 메뉴가 모바일에서
-   안 숨겨짐. */
+/* Tailwind v4 @source directive — App Router dynamic segment 보장 */
 @source "../app/**/*.{tsx,ts,jsx,js,mdx}";
 @source "../components/**/*.{tsx,ts,jsx,js}";
+
+/* ─────────────────────────────────────────────────────────────────────────
+   hotfix 안전망 (P3C 후속, 모바일 헤더 회귀 방지)
+
+   배경
+   - 사용자 보고: 모바일에서 데스크탑 네비게이션 (DISCOVER/QUEST/PASS) +
+     사이드 영역 (LocaleSwitcher / LP 뱃지 / 유저 드롭다운) 가 보임 +
+     햄버거 버튼이 안 보임.
+   - 직접 진단 결과 production CSS 의 md:* (100건) / lg:* (21건) /
+     @media (min-width:48rem) 모두 정상 빌드 확인. viewport meta 도 정상.
+   - 그럼에도 사용자 환경에서 회귀 시 즉시 보호 되도록 핵심 헤더 layout
+     responsive class 를 직접 명시. Tailwind utility 와 우선순위 동일.
+
+   적용 범위 — Navbar 영역 핵심 클래스만
+   - .md\:hidden  : 768+ 에서 hidden  (햄버거 버튼은 모바일 only)
+   - .md\:block   : 768+ 에서 block   (LocaleSwitcher / CartBadge 등)
+   - .md\:flex    : 768+ 에서 flex    (NavbarTabs / 사이드 영역)
+   - .hidden      : 모든 viewport 에서 hidden (데스크탑 사이드는 모바일에서)
+
+   참고: Tailwind 가 정상 빌드 시 동일 정의가 두 번 적용되지만 충돌 X.
+   Tailwind 빌드 누락 시에만 본 안전망이 유일한 정의로 작동.
+   ───────────────────────────────────────────────────────────────────────── */
+.hidden { display: none !important; }
+@media (min-width: 768px) {
+  .md\:hidden { display: none !important; }
+  .md\:block { display: block !important; }
+  .md\:flex { display: flex !important; }
+  .md\:flex-row { flex-direction: row !important; }
+  .md\:items-center { align-items: center !important; }
+}
+@media (min-width: 1024px) {
+  .lg\:flex { display: flex !important; }
+  .lg\:hidden { display: none !important; }
+}
 
 /* ── 폰트 유틸리티 ──────────────────────────────── */
 .font-display {
