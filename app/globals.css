@@ -22,6 +22,30 @@ html {
   scroll-padding-top: 80px;
 }
 
+/* ── WCAG 2.3.3 / 2.3.7 (Motion) — prefers-reduced-motion (P3C-4) ─────────
+   OS 설정 'Reduce Motion' 활성 시 모든 애니메이션 / 트랜지션 무효화.
+   접근성 요구 + 어지럼증 / 멀미 사용자 보호 + 배터리 절약. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── WCAG 2.5.8 Target Size (Minimum) AA, 2.2 신규 (P3C-4) ─────────────────
+   터치 / 클릭 타겟 최소 24×24 CSS 픽셀.
+   :where() 우선순위 0 — 컴포넌트별 명시 width/height 가 항상 우선.
+   인라인 텍스트 링크 (텍스트 흐름) 는 면제 — 자연스러운 가독성 유지.
+   form control + 명시적 button / role=button 만 강제. */
+:where(button, [role='button'], input[type='checkbox'], input[type='radio']) {
+  min-height: 24px;
+  min-width: 24px;
+}
+
 /* ── Sticky CTA 변수 (P1-2) ─────────────────────────────
    - 기본 0px (Sticky CTA 없는 페이지)
    - .has-sticky-cta 가 붙은 페이지: 64px
