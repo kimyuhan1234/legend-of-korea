@@ -32,21 +32,30 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = params
 
+  // P3A-1: 5 로케일 fallback 메타. 페이지별 generateMetadata 에서 namespace
+  // 'metadata.*' 로 덮어씀 (P3A-2). 본 default 는 미정의 페이지의 안전망.
   const titles: Record<string, string> = {
     ko: "Cloud with you - 한국 전설을 따라가는 미션 어드벤처",
     en: "Cloud with you - Mission Adventure following Korean Legends",
     ja: "Cloud with you - 韓国の伝説を辿るミッションアドベンチャー",
+    "zh-CN": "Cloud with you - 跟随韩国传说的任务冒险",
+    "zh-TW": "Cloud with you - 跟隨韓國傳說的任務冒險",
   }
 
   const descriptions: Record<string, string> = {
     ko: "한국의 전설 속 장소를 직접 탐험하며 미션을 해결하는 프리미엄 어드벤처 서비스입니다.",
     en: "A premium adventure service where you explore legendary places in Korea and solve missions.",
     ja: "韓国の伝説的な場所を探索し、ミッションを解決するプレミアムアドベンチャーサービスです。",
+    "zh-CN": "亲身探访韩国传说之地、解开任务的高端冒险服务。",
+    "zh-TW": "親身探訪韓國傳說之地、解開任務的高端冒險服務。",
   }
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://legendofkorea.com"
 
   return {
+    // P3A-1: metadataBase 설정 — OG 이미지 등 모든 절대 URL 자동 생성.
+    // 빌드 시 "metadataBase property in metadata export is not set" 경고 해소.
+    metadataBase: new URL(siteUrl),
     title: {
       default: titles[locale] || titles.en || titles.ko,
       template: "%s | Cloud with you",
@@ -68,10 +77,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       images: ["/images/dokkaebi-hero.jpg"],
     },
     alternates: {
+      canonical: `${siteUrl}/${locale}`,
+      // P3A-1: 5 로케일 hreflang. x-default 는 영어 기본 (외국인 SEO 첫 진입).
       languages: {
-        "ko-KR": "/ko",
-        "ja-JP": "/ja",
-        "en-US": "/en",
+        "ko-KR": `${siteUrl}/ko`,
+        "ja-JP": `${siteUrl}/ja`,
+        "en-US": `${siteUrl}/en`,
+        "zh-CN": `${siteUrl}/zh-CN`,
+        "zh-TW": `${siteUrl}/zh-TW`,
+        "x-default": `${siteUrl}/en`,
       },
     },
   }

@@ -47,7 +47,10 @@ export function NavbarTabs({ locale, links }: Props) {
   }
 
   return (
-    <div className="hidden md:flex items-center flex-1 justify-center min-w-0 relative">
+    <nav
+      aria-label="Main navigation"
+      className="hidden md:flex items-center flex-1 justify-center min-w-0 relative"
+    >
       {/* 왼쪽 화살표 */}
       {canScrollLeft && (
         <button
@@ -94,6 +97,6 @@ export function NavbarTabs({ locale, links }: Props) {
           <ChevronRight size={14} className="text-slate" />
         </button>
       )}
-    </div>
+    </nav>
   )
 }
