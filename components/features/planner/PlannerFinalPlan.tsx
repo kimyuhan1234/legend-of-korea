@@ -1,6 +1,7 @@
 ﻿'use client'
 
 import { useEffect, useState, useMemo, type ReactNode } from 'react'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { ChevronDown } from 'lucide-react'
 import { PlannerWeather } from './PlannerWeather'
@@ -513,8 +514,8 @@ export function PlannerFinalPlan({
                     return (
                       <li key={f.id} className="flex items-center gap-2 text-sm">
                         {img ? (
-                          <span className="w-7 h-7 rounded-lg bg-cloud overflow-hidden shrink-0">
-                            <img src={img} alt="" className="w-full h-full object-cover" />
+                          <span className="relative w-7 h-7 rounded-lg bg-cloud overflow-hidden shrink-0 inline-block">
+                            <Image src={img} alt="" fill sizes="28px" className="object-cover" />
                           </span>
                         ) : (
                           <span className="text-base shrink-0">🍜</span>

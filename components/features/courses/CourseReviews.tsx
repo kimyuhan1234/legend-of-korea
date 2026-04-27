@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 interface ReviewPost {
   id: string
@@ -70,7 +71,7 @@ function timeAgo(dateStr: string, locale: string): string {
   return `${Math.floor(days / 30)}mo ago`
 }
 
-export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
+export function CourseReviews({ posts, courseId: _courseId, locale }: CourseReviewsProps) {
   const label = LABEL[locale as keyof typeof LABEL] || LABEL.en || LABEL.ko
 
   return (
@@ -109,10 +110,12 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
               {/* 사진 */}
               {post.photos && post.photos.length > 0 && !post.is_spoiler && (
                 <div className="relative h-40 bg-cloud">
-                  <img
+                  <Image
                     src={post.photos[0]}
                     alt={post.text ? post.text.slice(0, 40) : 'community post photo'}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 320px"
+                    className="object-cover"
                   />
                   {post.photos.length > 1 && (
                     <span className="absolute bottom-2 right-2 text-xs bg-black/50 text-white px-2 py-0.5 rounded-full">
@@ -134,12 +137,14 @@ export function CourseReviews({ posts, courseId, locale }: CourseReviewsProps) {
               <div className="p-4">
                 {/* 유저 */}
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-7 rounded-full bg-cloud flex items-center justify-center text-white text-xs font-bold shrink-0">
+                  <div className="relative w-7 h-7 rounded-full bg-cloud flex items-center justify-center text-white text-xs font-bold shrink-0 overflow-hidden">
                     {post.users?.avatar_url ? (
-                      <img
+                      <Image
                         src={post.users.avatar_url}
                         alt={post.users.nickname}
-                        className="w-7 h-7 rounded-full object-cover"
+                        fill
+                        sizes="28px"
+                        className="object-cover"
                       />
                     ) : (
                       post.users?.nickname?.[0]?.toUpperCase() || "?"

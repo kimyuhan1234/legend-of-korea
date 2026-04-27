@@ -239,6 +239,8 @@ export default function MissionPhotoUpload({ missionId, courseId, onSuccess }: M
         <>
           {/* preview with remove button */}
           <div className="relative rounded-2xl overflow-hidden border-2 border-mist bg-snow shadow-sm group">
+            {/* preview 는 URL.createObjectURL() blob — next/image 미호환 */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={preview}
               alt="preview"

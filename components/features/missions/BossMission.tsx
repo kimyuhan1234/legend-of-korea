@@ -274,6 +274,8 @@ export function BossMission({
           </label>
           {preview ? (
             <div className="relative aspect-video rounded-2xl overflow-hidden border border-amber-500/20 group">
+              {/* preview 는 URL.createObjectURL() blob — next/image 미호환, <img> 유지 */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={preview} alt="boss trophy" className="w-full h-full object-cover brightness-90" />
               <button
                 onClick={() => { setFile(null); setPreview(null); }}

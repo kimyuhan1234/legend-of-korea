@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Disclaimer } from "@/components/shared/Disclaimer"
 import type { I18nText } from "@/lib/supabase/types"
 import { createClient } from "@/lib/supabase/client"
@@ -131,11 +132,15 @@ export function AffiliateLinks({ links, locale, className }: AffiliateLinksProps
                     className="group flex items-start gap-4 bg-white rounded-2xl p-4 border border-mist hover:border-blossom-deep/50 hover:shadow-sm transition-all"
                   >
                     {link.image_url ? (
-                      <img
-                        src={link.image_url}
-                        alt={getI18n(link.title, locale)}
-                        className="w-16 h-16 rounded-xl object-cover shrink-0"
-                      />
+                      <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                        <Image
+                          src={link.image_url}
+                          alt={getI18n(link.title, locale)}
+                          fill
+                          sizes="64px"
+                          className="object-cover"
+                        />
+                      </div>
                     ) : (
                       <div className="w-16 h-16 rounded-xl bg-cloud flex items-center justify-center text-2xl shrink-0">
                         {icon}

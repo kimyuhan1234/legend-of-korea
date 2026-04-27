@@ -213,6 +213,8 @@ export function PhotoMission({
         <div className="grid grid-cols-3 gap-3">
           {previews.map((src, idx) => (
             <div key={idx} className="relative aspect-square rounded-2xl overflow-hidden border-2 border-primary/20 group">
+              {/* src 는 URL.createObjectURL() blob preview — next/image 미호환 */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={src} alt={`preview-${idx}`} className="w-full h-full object-cover" />
               <button
                 onClick={() => removeFile(idx)}
