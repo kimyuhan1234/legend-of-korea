@@ -97,8 +97,8 @@ html {
 
 /* ── 테마 변수 (v3 — 파스텔 민트 + 벚꽃 핑크) ──────── */
 @theme {
-  /* ── 폰트 ── */
-  --font-family-sans: var(--font-inter, 'Inter'), 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+  /* ── 폰트 (P3C-6: next/font self-host 변수 우선) ────────────────────────── */
+  --font-family-sans: var(--font-inter), var(--font-noto-kr), var(--font-noto-jp), 'Noto Sans KR', 'Noto Sans JP', sans-serif;
   --font-family-serif: var(--font-playfair, 'Playfair Display'), 'Noto Serif KR', 'Noto Serif JP', Georgia, serif;
   --font-family-logo: Georgia, 'Palatino', 'Times New Roman', serif;
 
