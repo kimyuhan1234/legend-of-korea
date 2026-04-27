@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { PassPricingSection } from '@/components/features/pass/PassPricingSection'
 import { getOgLocale, ALL_OG_LOCALES } from '@/lib/seo/og-locale'
 import { buildOgUrl } from '@/lib/seo/og-url'
+import { CategorySchema } from '@/components/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -54,5 +55,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PassPage({ params }: Props) {
   const { locale } = await params
-  return <PassPricingSection locale={locale} />
+  const m = await getTranslations({ locale, namespace: 'metadata.pass' })
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
+  return (
+    <>
+      <CategorySchema
+        type="product"
+        name={m('title')}
+        description={m('description')}
+        url={`${siteUrl}/${locale}/pass`}
+        image={`${siteUrl}/images/dokkaebi-hero.png`}
+        // All in One 패스 기준 가격 (₩19,900). 개별 패스는 후속 PR 에서 ItemList 로 분할.
+        price={{ amount: 19900, currency: 'KRW' }}
+      />
+      <PassPricingSection locale={locale} />
+    </>
+  )
 }

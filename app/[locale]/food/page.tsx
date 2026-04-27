@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { FoodTabNav } from '@/components/features/food/FoodTabNav'
 import { KFoodSpotList } from '@/components/features/food/KFoodSpotList'
 import { buildOgUrl } from '@/lib/seo/og-url'
+import { CategorySchema } from '@/components/seo'
 
 interface Props {
   params: { locale: string }
@@ -47,9 +48,18 @@ export default function FoodPage({ params, searchParams }: Props) {
   const { locale } = params
   const cityFilter = searchParams.city ?? 'all'
   const h = HERO[locale as keyof typeof HERO] ?? HERO.ko
+  const m = META[locale as keyof typeof META] ?? META.ko
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
 
   return (
     <div className="min-h-screen bg-snow">
+      <CategorySchema
+        type="food"
+        name={m.title}
+        description={m.desc}
+        url={`${siteUrl}/${locale}/food`}
+        image={`${siteUrl}/images/category-food.png`}
+      />
 
       {/* ── 히어로 헤더 — P1-5: 단색 → Tier 2 (정보 페이지) ── */}
       <div className="bg-tier-soft border-b border-mint py-20 md:py-28 px-6 md:px-10 text-center">

@@ -18,6 +18,7 @@ import { ZepBanner } from "@/components/features/quest/ZepBanner"
 import { getZepZoneByCourseId } from "@/lib/data/zep-spaces"
 import type { I18nText } from "@/lib/supabase/types"
 import { buildOgUrl } from "@/lib/seo/og-url"
+import { CategorySchema } from "@/components/seo"
 
 interface Props {
   params: { locale: string; courseId: string }
@@ -144,8 +145,19 @@ export default async function CourseDetailPage({ params }: Props) {
     { image: thumbnailUrl, textKey: 'story.card4' },
   ]
 
+  const courseDescription = getI18n(course.description as I18nText, locale)
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
+
   return (
     <div>
+      <CategorySchema
+        type="trip"
+        name={courseTitle}
+        description={courseDescription}
+        url={`${siteUrl}/${locale}/courses/${courseId}`}
+        image={thumbnailUrl.startsWith('http') ? thumbnailUrl : `${siteUrl}${thumbnailUrl}`}
+        duration={durationText}
+      />
       {/* 1. 몰입형 히어로 */}
       <QuestHero
         title={courseTitle}

@@ -5,6 +5,7 @@ import { Metadata } from 'next'
 import { SpotsClient } from '@/components/features/spots/SpotsClient'
 import { getAllSpots } from '@/lib/tour-api/spots'
 import { buildOgUrl } from '@/lib/seo/og-url'
+import { CategorySchema } from '@/components/seo'
 
 interface Props {
   params: { locale: string }
@@ -38,5 +39,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function SightsPage({ params }: Props) {
   const { locale } = params
   const spots = await getAllSpots(locale as 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW')
-  return <SpotsClient initialSpots={spots} locale={locale} />
+  const t = await getTranslations({ locale, namespace: 'sights' })
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
+  return (
+    <>
+      <CategorySchema
+        type="attraction"
+        name={t('title')}
+        description={t('subtitle')}
+        url={`${siteUrl}/${locale}/sights`}
+        image={`${siteUrl}/images/category-sights.png`}
+      />
+      <SpotsClient initialSpots={spots} locale={locale} />
+    </>
+  )
 }

@@ -7,6 +7,7 @@ import { createServiceClient } from '@/lib/supabase/server'
 import type { NormalizedStay } from '@/lib/tour-api/stays'
 import { getOgLocale, ALL_OG_LOCALES } from '@/lib/seo/og-locale'
 import { buildOgUrl } from '@/lib/seo/og-url'
+import { CategorySchema } from '@/components/seo'
 
 interface Props {
   params: { locale: string }
@@ -70,5 +71,20 @@ async function loadInitialStays(): Promise<{ stays: NormalizedStay[]; total: num
 
 export default async function StayPage({ params }: Props) {
   const { stays, total } = await loadInitialStays()
-  return <StayPageClient locale={params.locale} initialStays={stays} initialTotal={total} />
+  const { locale } = params
+  const m = await getTranslations({ locale, namespace: 'metadata.stay' })
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
+  return (
+    <>
+      <CategorySchema
+        type="lodging"
+        name={m('title')}
+        description={m('description')}
+        url={`${siteUrl}/${locale}/stay`}
+        image={`${siteUrl}/images/category-stay.png`}
+        location={{ addressCountry: 'KR' }}
+      />
+      <StayPageClient locale={locale} initialStays={stays} initialTotal={total} />
+    </>
+  )
 }
