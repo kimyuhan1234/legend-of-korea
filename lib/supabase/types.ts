@@ -34,6 +34,7 @@ export interface Database {
           role: "user" | "admin"
           birth_date: string | null
           birth_date_verified_at: string | null
+          birth_date_deadline: string | null
           parent_consent_id: string | null
           created_at: string
           updated_at: string
@@ -50,6 +51,7 @@ export interface Database {
           role?: "user" | "admin"
           birth_date?: string | null
           birth_date_verified_at?: string | null
+          birth_date_deadline?: string | null
           parent_consent_id?: string | null
           created_at?: string
           updated_at?: string
@@ -65,6 +67,7 @@ export interface Database {
           role?: "user" | "admin"
           birth_date?: string | null
           birth_date_verified_at?: string | null
+          birth_date_deadline?: string | null
           parent_consent_id?: string | null
           updated_at?: string
         }
