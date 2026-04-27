@@ -5,6 +5,23 @@
   font-family: var(--font-playfair, 'Playfair Display'), 'Noto Serif KR', 'Noto Serif JP', Georgia, serif;
 }
 
+/* ── 글로벌 focus-visible (P3C-1, WCAG 2.4.13 Focus Appearance AA) ────────
+   기본 브라우저 outline 보다 명확한 포커스 시각 — 키보드 사용자 지원.
+   .focus-visible: 키보드 포커스 시에만 노출 (마우스 클릭은 무관).
+   요소별 focus: 클래스가 있으면 해당 컴포넌트가 자체 처리한 것이라 기본 스타일을
+   덮지 않도록 outline-style: solid + offset 만 글로벌 적용. */
+*:focus-visible {
+  outline: 2px solid var(--color-mint-deep, #9DD8CE);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* WCAG 2.4.11 Focus Not Obscured — sticky 헤더 / Sticky CTA 가 포커스
+   요소를 가리지 않도록 anchor / focus 시 스크롤 여백 확보. 헤더 64px + 여유. */
+html {
+  scroll-padding-top: 80px;
+}
+
 /* ── Sticky CTA 변수 (P1-2) ─────────────────────────────
    - 기본 0px (Sticky CTA 없는 페이지)
    - .has-sticky-cta 가 붙은 페이지: 64px

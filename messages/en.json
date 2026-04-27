@@ -59,7 +59,8 @@
     "search": "Search",
     "noResults": "No results found",
     "viewMore": "View more",
-    "back": "Back"
+    "back": "Back",
+    "skipToContent": "Skip to main content"
   },
   "auth": {
     "loginTitle": "Enter the World of Legends",

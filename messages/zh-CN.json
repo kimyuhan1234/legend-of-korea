@@ -59,7 +59,8 @@
     "search": "搜索",
     "noResults": "未找到结果",
     "viewMore": "查看更多",
-    "back": "返回"
+    "back": "返回",
+    "skipToContent": "跳至正文"
   },
   "auth": {
     "loginTitle": "进入传说世界",

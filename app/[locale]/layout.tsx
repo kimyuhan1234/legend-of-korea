@@ -12,6 +12,7 @@ import { FoundingMembersBanner } from "@/components/shared/FoundingMembersBanner
 import { FeedbackWidget } from "@/components/shared/FeedbackWidget"
 import { StickyCTA } from "@/components/shared/StickyCTA"
 import { OrganizationSchema, WebSiteSchema } from "@/components/seo"
+import { SkipLink } from "@/components/shared/SkipLink"
 import { locales } from "@/i18n"
 
 interface LocaleLayoutProps {
@@ -106,9 +107,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <WebSiteSchema locale={locale} />
       <NextIntlClientProvider messages={messages} locale={locale}>
         <CartProvider>
+          {/* P3C-1: Skip to main content (WCAG 2.4.1) — Tab 포커스 시 노출 */}
+          <SkipLink locale={locale} />
           <Navbar locale={locale} />
           <FoundingMembersBanner />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">{children}</main>
           <Footer locale={locale} />
           <Toaster />
           <CartSidePanel />

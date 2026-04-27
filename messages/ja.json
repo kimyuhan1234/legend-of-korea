@@ -59,7 +59,8 @@
     "search": "検索",
     "noResults": "結果がありません",
     "viewMore": "もっと見る",
-    "back": "戻る"
+    "back": "戻る",
+    "skipToContent": "本文へスキップ"
   },
   "auth": {
     "loginTitle": "伝説の世界へようこそ",

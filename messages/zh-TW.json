@@ -59,7 +59,8 @@
     "search": "搜尋",
     "noResults": "沒有找到結果",
     "viewMore": "查看更多",
-    "back": "返回"
+    "back": "返回",
+    "skipToContent": "跳至正文"
   },
   "auth": {
     "loginTitle": "進入傳說的世界",
