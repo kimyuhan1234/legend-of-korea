@@ -9,6 +9,7 @@ import { SlideFeatureDupe } from '@/components/features/home/SlideFeatureDupe'
 import { SlideFeaturePlanner } from '@/components/features/home/SlideFeaturePlanner'
 import { HomeCommunityPreview } from '@/components/features/home/HomeCommunityPreview'
 import { getOgLocale, ALL_OG_LOCALES } from '@/lib/seo/og-locale'
+import { buildOgUrl } from '@/lib/seo/og-url'
 
 interface Props {
   params: { locale: string }
@@ -20,6 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tc = await getTranslations({ locale, namespace: 'common' })
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
   const ogLocale = getOgLocale(locale)
+  const ogImage = buildOgUrl({
+    baseUrl: siteUrl,
+    title: t('title'),
+    subtitle: t('description'),
+    tier: 'strong',
+    imagePath: '/images/dokkaebi-hero.png',
+  })
 
   return {
     title: t('title'),
@@ -33,13 +41,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${siteUrl}/${locale}`,
       locale: ogLocale,
       alternateLocale: ALL_OG_LOCALES.filter((l) => l !== ogLocale),
-      images: [{ url: '/images/dokkaebi-hero.jpg', width: 1200, height: 630, alt: t('title') }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: t('title') }],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/images/dokkaebi-hero.jpg'],
+      images: [ogImage],
     },
   }
 }

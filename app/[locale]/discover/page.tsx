@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import { UtensilsCrossed, Shirt, Train, MapPin } from 'lucide-react'
 import { getOgLocale, ALL_OG_LOCALES } from '@/lib/seo/og-locale'
+import { buildOgUrl } from '@/lib/seo/og-url'
 import { BreadcrumbSchema } from '@/components/seo'
 
 interface Props {
@@ -16,6 +17,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
   const ogLocale = getOgLocale(locale)
   const title = `${m('title')} | ${tc('siteName')}`
+  const ogImage = buildOgUrl({
+    baseUrl: siteUrl,
+    title: m('title'),
+    subtitle: m('description'),
+    tier: 'soft',
+    category: 'DISCOVER',
+  })
 
   return {
     title,
@@ -29,13 +37,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${siteUrl}/${locale}/discover`,
       locale: ogLocale,
       alternateLocale: ALL_OG_LOCALES.filter((l) => l !== ogLocale),
-      images: [{ url: '/images/dokkaebi-hero.jpg', width: 1200, height: 630, alt: m('title') }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: m('title') }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description: m('description'),
-      images: ['/images/dokkaebi-hero.jpg'],
+      images: [ogImage],
     },
   }
 }

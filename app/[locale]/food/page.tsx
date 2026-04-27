@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { FoodTabNav } from '@/components/features/food/FoodTabNav'
 import { KFoodSpotList } from '@/components/features/food/KFoodSpotList'
+import { buildOgUrl } from '@/lib/seo/og-url'
 
 interface Props {
   params: { locale: string }
@@ -21,7 +22,25 @@ const HERO = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const m = META[params.locale as keyof typeof META] ?? META.ko
-  return { title: m.title, description: m.desc }
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
+  const ogImage = buildOgUrl({
+    baseUrl: siteUrl,
+    title: m.title.split(' | ')[0],
+    subtitle: m.desc,
+    tier: 'soft',
+    category: 'K-FOOD',
+    imagePath: '/images/category-food.png',
+  })
+  return {
+    title: m.title,
+    description: m.desc,
+    openGraph: {
+      title: m.title,
+      description: m.desc,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: m.title }],
+    },
+    twitter: { card: 'summary_large_image', title: m.title, description: m.desc, images: [ogImage] },
+  }
 }
 
 export default function FoodPage({ params, searchParams }: Props) {

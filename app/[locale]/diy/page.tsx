@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { DiyWorkshopDirectory } from '@/components/diy/DiyWorkshopDirectory'
+import { buildOgUrl } from '@/lib/seo/og-url'
 
 interface Props {
   params: { locale: string }
@@ -30,10 +31,24 @@ const META: Record<string, { title: string; description: string }> = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const m = META[params.locale] ?? META.en ?? META.ko
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
+  const ogImage = buildOgUrl({
+    baseUrl: siteUrl,
+    title: m.title.split(' | ')[0],
+    subtitle: m.description,
+    tier: 'soft',
+    category: 'DIY',
+    imagePath: '/images/category-create.png',
+  })
   return {
     title: m.title,
     description: m.description,
-    openGraph: { title: m.title, description: m.description },
+    openGraph: {
+      title: m.title,
+      description: m.description,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: m.title }],
+    },
+    twitter: { card: 'summary_large_image', title: m.title, description: m.description, images: [ogImage] },
   }
 }
 

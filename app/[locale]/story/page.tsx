@@ -5,6 +5,7 @@ import { Metadata } from 'next'
 import { StoryTabNav } from './StoryTabNav'
 import { CoursesTab } from './tabs/CoursesTab'
 import { SpecialEventTab } from '@/components/features/story/tabs/SpecialEventTab'
+import { buildOgUrl } from '@/lib/seo/og-url'
 
 interface Props {
   params: { locale: string }
@@ -14,7 +15,26 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: 'story' })
   const tc = await getTranslations({ locale: params.locale, namespace: 'common' })
-  return { title: `${t('title')} | ${tc('siteName')}` }
+  const title = `${t('title')} | ${tc('siteName')}`
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
+  const ogImage = buildOgUrl({
+    baseUrl: siteUrl,
+    title: t('title'),
+    subtitle: t('subtitle'),
+    tier: 'soft',
+    category: 'QUEST',
+    imagePath: '/images/category-story.png',
+  })
+  return {
+    title,
+    description: t('subtitle'),
+    openGraph: {
+      title,
+      description: t('subtitle'),
+      images: [{ url: ogImage, width: 1200, height: 630, alt: t('title') }],
+    },
+    twitter: { card: 'summary_large_image', title, description: t('subtitle'), images: [ogImage] },
+  }
 }
 
 export default async function StoryPage({ params, searchParams }: Props) {

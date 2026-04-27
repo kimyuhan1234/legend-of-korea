@@ -6,6 +6,7 @@ import { StayPageClient } from '@/components/features/stay/StayPageClient'
 import { createServiceClient } from '@/lib/supabase/server'
 import type { NormalizedStay } from '@/lib/tour-api/stays'
 import { getOgLocale, ALL_OG_LOCALES } from '@/lib/seo/og-locale'
+import { buildOgUrl } from '@/lib/seo/og-url'
 
 interface Props {
   params: { locale: string }
@@ -18,6 +19,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
   const ogLocale = getOgLocale(locale)
   const title = `${m('title')} | ${tc('siteName')}`
+  const ogImage = buildOgUrl({
+    baseUrl: siteUrl,
+    title: m('title'),
+    subtitle: m('description'),
+    tier: 'strong-stay',
+    category: 'STAY',
+    imagePath: '/images/category-stay.png',
+  })
 
   return {
     title,
@@ -31,13 +40,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${siteUrl}/${locale}/stay`,
       locale: ogLocale,
       alternateLocale: ALL_OG_LOCALES.filter((l) => l !== ogLocale),
-      images: [{ url: '/images/dokkaebi-hero.jpg', width: 1200, height: 630, alt: m('title') }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: m('title') }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description: m('description'),
-      images: ['/images/dokkaebi-hero.jpg'],
+      images: [ogImage],
     },
   }
 }
