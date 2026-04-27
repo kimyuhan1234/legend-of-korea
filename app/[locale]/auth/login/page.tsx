@@ -1,13 +1,28 @@
 export const dynamic = 'force-dynamic'
 
 import { Metadata } from "next"
-import Image from "next/image"
+import { getTranslations } from "next-intl/server"
 import { LoginForm } from "@/components/features/auth/LoginForm"
 import { SocialLoginButtons } from "@/components/features/auth/SocialLoginButtons"
 
+// P0F-3: birth_date deadline 초과로 강제 sign out 된 사용자에게 표시되는 안내.
+// reauth.blockedTitle / reauth.blockedBody i18n 사용.
+async function BirthDateBlockedNotice({ locale }: { locale: string }) {
+  const t = await getTranslations({ locale, namespace: 'reauth' })
+  return (
+    <div
+      role="alert"
+      className="px-4 py-3 rounded-lg bg-amber-50 border border-amber-300 text-amber-900 text-sm"
+    >
+      <p className="font-bold mb-1">{t('blockedTitle')}</p>
+      <p className="text-xs leading-relaxed">{t('blockedBody')}</p>
+    </div>
+  )
+}
+
 interface Props {
   params: { locale: string }
-  searchParams: { error?: string; next?: string }
+  searchParams: { error?: string; next?: string; reason?: string }
 }
 
 const META = {
@@ -68,6 +83,11 @@ export default function LoginPage({ params, searchParams }: Props) {
               <div className="px-8 md:px-10 py-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm text-center">
                 {t.loginFailed}
               </div>
+            )}
+
+            {/* P0F-3: birth_date deadline 초과로 강제 sign out 된 경우 안내 */}
+            {searchParams.reason === "birthDateBlocked" && (
+              <BirthDateBlockedNotice locale={locale} />
             )}
 
             {/* 소셜 로그인 */}
