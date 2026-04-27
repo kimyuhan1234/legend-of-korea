@@ -17,6 +17,7 @@ import { ZepMeetingButton } from "@/components/features/quest/ZepMeetingButton"
 import { ZepBanner } from "@/components/features/quest/ZepBanner"
 import { getZepZoneByCourseId } from "@/lib/data/zep-spaces"
 import type { I18nText } from "@/lib/supabase/types"
+import { buildOgUrl } from "@/lib/seo/og-url"
 
 interface Props {
   params: { locale: string; courseId: string }
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const supabase = await createClient()
   const { data: course } = await supabase
     .from("courses")
-    .select("title, description, thumbnail_url")
+    .select("title, description, region, thumbnail_url")
     .eq("id", courseId)
     .single()
 
@@ -40,23 +41,46 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = getI18n(course.title as I18nText, locale)
   const description = getI18n(course.description as I18nText, locale)
+  const region = (course as { region?: string }).region ?? ""
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
+  const fullTitle = `${title} | Cloud with you`
+
+  // 동적 OG — 코스 제목 + 지역 (subtitle).
+  // P3B-1 buildOgUrl: tier 'strong-stay' 로 STAY 톤 (코스는 보통 한 도시 깊이 탐험).
+  const ogImage = buildOgUrl({
+    baseUrl: siteUrl,
+    title,
+    subtitle: region || undefined,
+    tier: 'strong-stay',
+    category: 'COURSE',
+    // 코스 자체 thumbnail 있으면 합성, 없으면 그라데이션만
+    imagePath: course.thumbnail_url ?? undefined,
+  })
 
   return {
-    title: `${title} | Cloud with you`,
-    description: description,
+    title: fullTitle,
+    description,
     openGraph: {
-      title: `${title} | Cloud with you`,
-      description: description,
+      title: fullTitle,
+      description,
       url: `${siteUrl}/${locale}/courses/${courseId}`,
-      images: course.thumbnail_url ? [{ url: course.thumbnail_url }] : [],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description,
+      images: [ogImage],
     },
     alternates: {
       canonical: `${siteUrl}/${locale}/courses/${courseId}`,
       languages: {
-        'ko-KR': `/ko/courses/${courseId}`,
-        'ja-JP': `/ja/courses/${courseId}`,
-        'en-US': `/en/courses/${courseId}`,
+        'ko-KR': `${siteUrl}/ko/courses/${courseId}`,
+        'ja-JP': `${siteUrl}/ja/courses/${courseId}`,
+        'en-US': `${siteUrl}/en/courses/${courseId}`,
+        'zh-CN': `${siteUrl}/zh-CN/courses/${courseId}`,
+        'zh-TW': `${siteUrl}/zh-TW/courses/${courseId}`,
+        'x-default': `${siteUrl}/en/courses/${courseId}`,
       },
     },
   }
