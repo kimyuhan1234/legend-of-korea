@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon'
 
 interface Props {
   isOpen: boolean
@@ -88,8 +89,9 @@ export function MissionCompleteCelebration({ isOpen, onClose, missionTitle, lpEa
 
         <p className="text-sm text-slate mb-4">&ldquo;{missionTitle}&rdquo;</p>
 
-        <div className={`text-3xl font-black mb-6 ${isBoss ? 'text-amber-500' : 'text-mint-deep'}`}>
-          💧 +{displayLp} 빗방울
+        <div className={`text-3xl font-black mb-6 flex items-center justify-center gap-2 ${isBoss ? 'text-amber-500' : 'text-mint-deep'}`}>
+          <RaindropIcon size={28} />
+          <span>+{displayLp} 빗방울</span>
         </div>
 
         {onNext && (

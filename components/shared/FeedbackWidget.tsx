@@ -3,6 +3,7 @@
 import { useTranslations, useLocale } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon'
 
 const STORAGE_KEY = 'feedback-last-shown'
 const COOLDOWN_HOURS = 24
@@ -93,7 +94,7 @@ export function FeedbackWidget({ hideOn = [] }: Props) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label={t('label')}
-        className={`fixed right-6 z-40 w-14 h-14 rounded-full bg-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center justify-center text-2xl ${
+        className={`fixed right-6 z-40 w-14 h-14 rounded-full bg-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center justify-center text-mint-deep ${
           open ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
         style={{
@@ -103,7 +104,7 @@ export function FeedbackWidget({ hideOn = [] }: Props) {
           transitionTimingFunction: 'ease-out',
         }}
       >
-        💧
+        <RaindropIcon size={24} />
       </button>
 
       {/* 모달 */}

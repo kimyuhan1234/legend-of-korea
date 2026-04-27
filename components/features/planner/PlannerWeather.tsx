@@ -2,7 +2,8 @@
 
 import { useMemo } from 'react'
 import { useTranslations } from 'next-intl'
-import { getCityWeather, type WeatherCondition } from '@/lib/data/city-weather-mock'
+import { getCityWeather } from '@/lib/data/city-weather-mock'
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon'
 
 interface PlannerWeatherProps {
   cityId: string
@@ -87,7 +88,10 @@ export function PlannerWeather({ cityId, dates }: PlannerWeatherProps) {
                   🌡️ <span className="font-bold">{w.lowTemp}°</span> ~{' '}
                   <span className="font-bold">{w.highTemp}°</span>
                 </span>
-                <span>💧 {w.humidity}%</span>
+                <span className="inline-flex items-center gap-1">
+                  <RaindropIcon size={11} className="text-blue-500" />
+                  {w.humidity}%
+                </span>
               </div>
             </div>
           )

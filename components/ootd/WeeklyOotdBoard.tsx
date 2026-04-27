@@ -16,6 +16,7 @@ import {
 import { OotdChecklist } from '@/components/features/planner/OotdChecklist'
 import { OOTD_CATEGORIES, getItemCategory, getItemIcon } from '@/lib/data/ootd-categories'
 import { OOTD_REGIONS, pickL5, type OotdRegion } from '@/lib/data/ootd-regions'
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon'
 
 const MAJOR_CITIES_LABEL: Record<string, string> = {
   ko: '주요 도시',
@@ -536,7 +537,8 @@ export function WeeklyOotdBoard() {
           ))}
           {weatherList[0] && (
             <span className="flex items-center gap-1 ml-auto">
-              💧 {t('humidity')} {weatherList[0].humidity}%
+              <RaindropIcon size={12} className="text-blue-500" />
+              {t('humidity')} {weatherList[0].humidity}%
             </span>
           )}
         </div>

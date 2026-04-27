@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { ArrowLeft, Trophy, Zap } from 'lucide-react';
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon';
 import MissionProgress from './MissionProgress';
 import MissionCard, {
   MissionStatus,
@@ -181,7 +182,10 @@ export default function MissionRegisterClient({
               <p className="text-lg font-black">{completedCount}</p>
             </div>
             <div className="bg-mint-deep/20 backdrop-blur-sm rounded-xl p-3 text-center  border-0 border-mint-deep/20">
-              <p className="text-[10px] text-white/50 font-bold mb-0.5">💧 빗방울</p>
+              <p className="text-[10px] text-white/50 font-bold mb-0.5 flex items-center justify-center gap-1">
+                <RaindropIcon size={10} className="text-mint-deep" />
+                빗방울
+              </p>
               <p className="text-lg font-black text-mint-deep">
                 {earnedLP}<span className="text-[10px] text-white/40">/{totalLP}</span>
               </p>

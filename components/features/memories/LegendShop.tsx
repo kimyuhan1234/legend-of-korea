@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { RankBadge, invalidateRankCache } from '@/components/features/rank/RankBadge'
 import { BranchSelectionModal } from '@/components/features/dashboard/BranchSelectionModal'
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon'
 
 type ShopLocale = 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW'
 
@@ -27,7 +28,7 @@ const UI: Record<ShopLocale, {
   couponUsed: string
 }> = {
   ko: {
-    balance: '💧 내 빗방울',
+    balance: '내 빗방울',
     unit: '빗방울',
     rankUpHeading: '⬆️ 조선 직업 랭크업',
     rankUpNow: '현재',
@@ -46,7 +47,7 @@ const UI: Record<ShopLocale, {
     couponUsed: '사용 완료',
   },
   en: {
-    balance: '💧 My Raindrops',
+    balance: 'My Raindrops',
     unit: 'raindrops',
     rankUpHeading: '⬆️ Joseon Rank Up',
     rankUpNow: 'Current',
@@ -65,7 +66,7 @@ const UI: Record<ShopLocale, {
     couponUsed: 'Used',
   },
   ja: {
-    balance: '💧 雨滴残高',
+    balance: '雨滴残高',
     unit: '雨滴',
     rankUpHeading: '⬆️ 朝鮮職位ランクアップ',
     rankUpNow: '現在',
@@ -84,7 +85,7 @@ const UI: Record<ShopLocale, {
     couponUsed: '使用済み',
   },
   'zh-CN': {
-    balance: '💧 我的雨滴',
+    balance: '我的雨滴',
     unit: '雨滴',
     rankUpHeading: '⬆️ 朝鲜职位升级',
     rankUpNow: '当前',
@@ -103,7 +104,7 @@ const UI: Record<ShopLocale, {
     couponUsed: '已使用',
   },
   'zh-TW': {
-    balance: '💧 我的雨滴',
+    balance: '我的雨滴',
     unit: '雨滴',
     rankUpHeading: '⬆️ 朝鮮職位升級',
     rankUpNow: '當前',
@@ -320,7 +321,10 @@ export function LegendShop({ locale }: Props) {
 
       {/* 빗방울 잔액 카드 */}
       <div className="rounded-3xl bg-gradient-to-br from-blue-400 to-indigo-500 text-white p-6 shadow-lg">
-        <p className="text-xs font-black uppercase tracking-widest opacity-80">{t.balance}</p>
+        <p className="text-xs font-black uppercase tracking-widest opacity-80 flex items-center gap-1.5">
+          <RaindropIcon size={14} />
+          {t.balance}
+        </p>
         <p className="text-4xl md:text-5xl font-black mt-2">{user.total_lp.toLocaleString()}
           <span className="text-base font-bold opacity-80 ml-2">{t.unit}</span>
         </p>

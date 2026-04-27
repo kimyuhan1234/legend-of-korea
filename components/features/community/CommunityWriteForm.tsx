@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Camera, X, Loader2, AlertCircle } from 'lucide-react';
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon';
 import { useTranslations } from 'next-intl';
 import { toast } from '@/components/ui/use-toast';
 import Image from 'next/image';
@@ -319,8 +320,9 @@ export function CommunityWriteForm({ locale }: CommunityWriteFormProps) {
             <p className="text-xs font-bold text-mint-deep/80">
               {t.rich('rewardInfo', {
                 reward: () => (
-                  <span className="text-mint-deep font-extrabold">
-                    {images.length > 0 ? '50 🌧️' : '30 🌧️'}
+                  <span className="text-mint-deep font-extrabold inline-flex items-center gap-1">
+                    {images.length > 0 ? '50' : '30'}
+                    <RaindropIcon size={14} />
                   </span>
                 ),
               })}

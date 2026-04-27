@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { BranchSelectionModal } from './BranchSelectionModal'
 import type { UserRankResult } from '@/lib/tiers/levels'
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon'
 
 type CardLocale = 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW'
 
@@ -187,7 +188,10 @@ export function RankCard({ locale, rank }: Props) {
           {/* 빗방울 진행률 */}
           <div className="space-y-1.5 mb-4">
             <div className="flex items-center justify-between text-xs font-bold">
-              <span>💧 {raindrops.toLocaleString()} {t.raindropUnit}</span>
+              <span className="inline-flex items-center gap-1">
+                <RaindropIcon size={12} />
+                {raindrops.toLocaleString()} {t.raindropUnit}
+              </span>
               <span>{progressPercent}%</span>
             </div>
             <div className="h-2 rounded-full bg-white/25 overflow-hidden">

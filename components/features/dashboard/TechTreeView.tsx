@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { LEVEL_THRESHOLDS, type UserRankResult } from '@/lib/tiers/levels'
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon'
 
 export interface TechTreeNode {
   level: number
@@ -437,7 +438,10 @@ export function TechTreeView({ locale, rank, nodes }: Props) {
             </div>
 
             <div className="flex items-center justify-between text-xs text-slate mt-4 pt-4 border-t border-mist">
-              <span>💧 {t.requiredRaindrops(requiredRaindrops(selected.level))}</span>
+              <span className="inline-flex items-center gap-1">
+                <RaindropIcon size={12} className="text-mint-deep" />
+                {t.requiredRaindrops(requiredRaindrops(selected.level))}
+              </span>
               <span className="font-bold">
                 {selectedState === 'completed' && `✓ ${t.completed}`}
                 {selectedState === 'current' && `★ ${t.current}`}
