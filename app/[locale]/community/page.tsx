@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import { Camera, Palette } from 'lucide-react'
 import { getOgLocale, ALL_OG_LOCALES } from '@/lib/seo/og-locale'
+import { BreadcrumbSchema } from '@/components/seo'
 
 interface Props {
   params: { locale: string }
@@ -41,10 +42,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CommunityHubPage({ params }: Props) {
   const t = await getTranslations({ locale: params.locale, namespace: 'communityHub' })
+  const tc = await getTranslations({ locale: params.locale, namespace: 'common' })
   const { locale } = params
 
   return (
     <div className="min-h-screen bg-snow">
+      <BreadcrumbSchema
+        items={[
+          { name: tc('home'), url: `/${locale}` },
+          { name: t('title'), url: `/${locale}/community` },
+        ]}
+      />
       {/* ── 히어로 ── */}
       <div className="bg-tier-soft border-b border-mint py-20 md:py-28 px-6 md:px-10 text-center">
         <span className="inline-block px-4 py-1.5 rounded-full bg-white text-mint-deep

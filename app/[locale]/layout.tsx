@@ -11,6 +11,7 @@ import { CookieBanner } from "@/components/shared/CookieBanner"
 import { FoundingMembersBanner } from "@/components/shared/FoundingMembersBanner"
 import { FeedbackWidget } from "@/components/shared/FeedbackWidget"
 import { StickyCTA } from "@/components/shared/StickyCTA"
+import { OrganizationSchema, WebSiteSchema } from "@/components/seo"
 import { locales } from "@/i18n"
 
 interface LocaleLayoutProps {
@@ -100,6 +101,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <div className="min-h-screen bg-snow flex flex-col">
+      {/* P3A-3: 전역 JSON-LD — Organization 1회 + WebSite (검색박스 SearchAction) 로케일별 */}
+      <OrganizationSchema />
+      <WebSiteSchema locale={locale} />
       <NextIntlClientProvider messages={messages} locale={locale}>
         <CartProvider>
           <Navbar locale={locale} />
