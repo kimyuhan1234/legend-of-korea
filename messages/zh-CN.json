@@ -59,7 +59,8 @@
     "search": "검색",
     "noResults": "결과가 없습니다",
     "viewMore": "더보기",
-    "back": "뒤로가기"
+    "back": "뒤로가기",
+    "skipToContent": "본문 바로가기"
   },
   "auth": {
     "loginTitle": "전설의 세계로 입장하세요",
