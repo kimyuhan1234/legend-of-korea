@@ -275,7 +275,7 @@ export default function RecipeWriteForm({ locale }: RecipeWriteFormProps) {
         {/* 퓨전 국가 */}
         <div>
           <label className="block text-sm font-bold text-slate mb-1.5">{s('fusionCountry')}</label>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
             {COUNTRY_OPTIONS.map(c => (
               <button
                 key={c.code}

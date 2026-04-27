@@ -76,7 +76,7 @@ export function ProfileBadges({ userId }: Props) {
     return (
       <div className="bg-white rounded-2xl border border-slate-100 p-5 animate-pulse">
         <div className="h-4 bg-slate-100 rounded w-24 mb-4" />
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
           {Array.from({ length: 9 }).map((_, i) => (
             <div key={i} className="h-16 bg-slate-50 rounded-xl" />
           ))}
@@ -103,7 +103,7 @@ export function ProfileBadges({ userId }: Props) {
         </div>
       )}
 
-      <div className="grid grid-cols-5 gap-2">
+      <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
         {COURSES.map(course => {
           const c = completionMap.get(course.id)
           const isCleared = c && c.total > 0 && c.completed === c.total

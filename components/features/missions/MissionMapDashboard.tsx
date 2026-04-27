@@ -62,7 +62,7 @@ export function MissionMapDashboard({ missions, progress, courseId }: Props) {
       </div>
 
       {/* 미션 맵 — 지그재그 그리드 */}
-      <div className="grid grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">
         {visibleMissions.map((m) => {
           const status = progressMap.get(m.id) || 'locked'
           const isCompleted = status === 'completed'
