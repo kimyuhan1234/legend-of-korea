@@ -8,20 +8,13 @@ interface NavbarMobileMenuProps {
   locale: string
   links: { href: string; label: string }[]
   user: { nickname?: string | null; lp?: number | null } | null
+  // P1-13: 헤더 4-메뉴 재편 후 실사용 키만 유지 (signup/login/mypage/lp/menu).
   t: {
     signup: string
     login: string
-    faq: string
-    memories: string
-    points: string
-    foodMatching: string
     mypage: string
-    logout: string
-    loginRequired: string
-    loginBtn: string
-    pass?: string
-    menu?: string
-    lp?: string
+    lp: string
+    menu: string
   }
 }
 
@@ -42,7 +35,7 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
       <button
         onClick={() => setOpen(!open)}
         className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-cloud transition-colors"
-        aria-label={t.menu ?? "Menu"}
+        aria-label={t.menu}
       >
         <span className={`w-5 h-0.5 bg-mint-deep transition-all duration-200 ${open ? "rotate-45 translate-y-2" : ""}`} />
         <span className={`w-5 h-0.5 bg-mint-deep transition-all duration-200 ${open ? "opacity-0" : ""}`} />
@@ -63,7 +56,7 @@ export function NavbarMobileMenu({ locale, links, user, t }: NavbarMobileMenuPro
           {user ? (
             <div className="px-6 py-5 bg-mint-deep text-white">
               <p className="font-semibold">{user.nickname}</p>
-              <p className="text-white/80 text-sm mt-1 font-bold">⚡ {user.lp?.toLocaleString() ?? 0} {t.lp ?? "Raindrops"}</p>
+              <p className="text-white/80 text-sm mt-1 font-bold">⚡ {user.lp?.toLocaleString() ?? 0} {t.lp}</p>
             </div>
           ) : (
             <div className="px-6 py-5 bg-mint-deep space-y-2">
