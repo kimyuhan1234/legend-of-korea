@@ -1981,5 +1981,32 @@
     "ctaPrimary": "加入Beta测试",
     "ctaSecondary": "查看通行证",
     "trustBadge": "🌱 创始成员招募中 · 每日限50名"
+  },
+  "metadata": {
+    "home": {
+      "title": "韩国不是目的地，是一场任务冒险",
+      "description": "9个城市、70个GPS任务。跟随韩国传说探索城市的全新旅行方式。外国人Beta用户招募中。",
+      "keywords": "韩国旅行, GPS任务, 韩国传说, 外国人旅行, 任务旅行"
+    },
+    "discover": {
+      "title": "发现",
+      "description": "一站式了解韩国。任务前后住哪里、吃什么、怎么穿。",
+      "keywords": "韩国指南, 外国人韩国旅行, 韩国美食, 韩国住宿"
+    },
+    "stay": {
+      "title": "在传说之城里入住",
+      "description": "选择靠近任务地点的住宿，完成你的传说之旅。从韩屋到酒店。",
+      "keywords": "韩国住宿, 韩屋住宿, 外国人韩国住宿推荐"
+    },
+    "community": {
+      "title": "社区",
+      "description": "旅行记录与韩国传统工艺工作坊。与其他冒险者的故事相遇。",
+      "keywords": "韩国旅行评论, DIY工作坊, 外国人社区"
+    },
+    "pass": {
+      "title": "通行证",
+      "description": "9个城市70个任务的永久使用权。按需选择，无负担。",
+      "keywords": "韩国旅行套餐, 外国人韩国任务通行证"
+    }
   }
 }

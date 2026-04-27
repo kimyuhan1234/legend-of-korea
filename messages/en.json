@@ -1981,5 +1981,32 @@
     "ctaPrimary": "Join the beta",
     "ctaSecondary": "See passes",
     "trustBadge": "🌱 Founding Members beta — limited to 50/day"
+  },
+  "metadata": {
+    "home": {
+      "title": "Korea isn't a destination, it's a quest",
+      "description": "9 cities, 70 GPS missions. Explore Korea through legends. Beta members wanted.",
+      "keywords": "Korea travel, GPS missions, Korean legends, foreigner travel, mission travel"
+    },
+    "discover": {
+      "title": "Discover Korea",
+      "description": "Everything Korea, in one place. Where to stay, what to eat, what to wear.",
+      "keywords": "Korea guide, Korea travel for foreigners, Korean food, Korea stays"
+    },
+    "stay": {
+      "title": "Stay in legendary cities",
+      "description": "Pick a place close to mission spots and complete your legendary trip. Hanok to hotels.",
+      "keywords": "Korea stays, Hanok stay, foreigner accommodation Korea"
+    },
+    "community": {
+      "title": "Community",
+      "description": "Travel stories and Korean traditional craft workshops. Meet fellow adventurers.",
+      "keywords": "Korea travel reviews, DIY workshops, foreigner community Korea"
+    },
+    "pass": {
+      "title": "Pass",
+      "description": "Lifetime access to 70 GPS missions across 9 cities. Pick only what you need.",
+      "keywords": "Korea travel package, foreigner Korea mission pass"
+    }
   }
 }

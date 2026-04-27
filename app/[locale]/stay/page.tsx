@@ -5,20 +5,39 @@ import { Metadata } from 'next'
 import { StayPageClient } from '@/components/features/stay/StayPageClient'
 import { createServiceClient } from '@/lib/supabase/server'
 import type { NormalizedStay } from '@/lib/tour-api/stays'
+import { getOgLocale, ALL_OG_LOCALES } from '@/lib/seo/og-locale'
 
 interface Props {
   params: { locale: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'stay' })
-  const tc = await getTranslations({ locale: params.locale, namespace: 'common' })
+  const { locale } = params
+  const m = await getTranslations({ locale, namespace: 'metadata.stay' })
+  const tc = await getTranslations({ locale, namespace: 'common' })
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legendofkorea.com'
+  const ogLocale = getOgLocale(locale)
+  const title = `${m('title')} | ${tc('siteName')}`
+
   return {
-    title: `${t('title')} | ${tc('siteName')}`,
-    description: t('hero.subline'),
+    title,
+    description: m('description'),
+    keywords: m('keywords'),
     openGraph: {
-      title: `${t('title')} | ${tc('siteName')}`,
-      description: t('hero.subline'),
+      type: 'website',
+      siteName: tc('siteName'),
+      title,
+      description: m('description'),
+      url: `${siteUrl}/${locale}/stay`,
+      locale: ogLocale,
+      alternateLocale: ALL_OG_LOCALES.filter((l) => l !== ogLocale),
+      images: [{ url: '/images/dokkaebi-hero.jpg', width: 1200, height: 630, alt: m('title') }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: m('description'),
+      images: ['/images/dokkaebi-hero.jpg'],
     },
   }
 }

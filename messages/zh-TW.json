@@ -1981,5 +1981,32 @@
     "ctaPrimary": "加入Beta測試",
     "ctaSecondary": "查看通行證",
     "trustBadge": "🌱 創始成員招募中 · 每日限50名"
+  },
+  "metadata": {
+    "home": {
+      "title": "韓國不是目的地，是一場任務冒險",
+      "description": "9個城市、70個GPS任務。跟隨韓國傳說探索城市的全新旅行方式。外國人Beta使用者招募中。",
+      "keywords": "韓國旅行, GPS任務, 韓國傳說, 外國人旅行, 任務旅行"
+    },
+    "discover": {
+      "title": "發現",
+      "description": "一站式了解韓國。任務前後住哪裡、吃什麼、怎麼穿。",
+      "keywords": "韓國指南, 外國人韓國旅行, 韓國美食, 韓國住宿"
+    },
+    "stay": {
+      "title": "在傳說之城裡入住",
+      "description": "選擇靠近任務地點的住宿，完成你的傳說之旅。從韓屋到飯店。",
+      "keywords": "韓國住宿, 韓屋住宿, 外國人韓國住宿推薦"
+    },
+    "community": {
+      "title": "社群",
+      "description": "旅行記錄與韓國傳統工藝工作坊。與其他冒險者的故事相遇。",
+      "keywords": "韓國旅行評論, DIY工作坊, 外國人社群"
+    },
+    "pass": {
+      "title": "通行證",
+      "description": "9個城市70個任務的永久使用權。按需選擇，無負擔。",
+      "keywords": "韓國旅行套餐, 外國人韓國任務通行證"
+    }
   }
 }
