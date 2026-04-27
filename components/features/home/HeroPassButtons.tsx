@@ -118,10 +118,12 @@ export function HeroPassButtons({ locale }: Props) {
         </div>
       </div>
 
-      {/* 모바일: 하단 2x2 패스 박스 — 헤더 + 토글 + 4 카드 */}
-      <div className="md:hidden absolute bottom-24 left-1/2 -translate-x-1/2 z-10 w-full max-w-sm px-4">
+      {/* 모바일: 하단 2x2 패스 박스 — 헤더 + 토글 + 4 카드.
+          hotfix: 토글 버튼이 시각적 거슬림 보고 → 아이콘 / padding 축소 (옵션 C).
+          박스 폭 max-w-sm → max-w-xs (384 → 320px) — 모바일 360px 에서 더 컴팩트. */}
+      <div className="md:hidden absolute bottom-24 left-1/2 -translate-x-1/2 z-10 w-full max-w-xs px-4">
         <div className="backdrop-blur-md bg-white/10 border border-white/15 rounded-2xl p-3 shadow-lg">
-          {/* 헤더 — 라벨 + 토글 버튼 우상단 */}
+          {/* 헤더 — 라벨 + 토글 버튼 우상단 (시각 부담 ↓) */}
           <div className="flex items-start justify-between gap-2">
             <p className="text-white/90 text-xs font-bold drop-shadow-sm flex-1">
               {heroLabel}
@@ -132,9 +134,9 @@ export function HeroPassButtons({ locale }: Props) {
               aria-expanded={isOpen}
               aria-controls="pass-cards-mobile"
               aria-label={isOpen ? toggle.close : toggle.open}
-              className="-mt-0.5 -mr-0.5 p-1.5 rounded-lg text-white/90 hover:text-white hover:bg-white/10 transition-colors shrink-0"
+              className="-mt-0.5 -mr-0.5 p-1 rounded-md text-white/90 hover:text-white hover:bg-white/10 transition-colors shrink-0"
             >
-              {isOpen ? <ChevronUp className="w-5 h-5" strokeWidth={2.2} /> : <ChevronDown className="w-5 h-5" strokeWidth={2.2} />}
+              {isOpen ? <ChevronUp className="w-4 h-4" strokeWidth={2.2} /> : <ChevronDown className="w-4 h-4" strokeWidth={2.2} />}
             </button>
           </div>
 
