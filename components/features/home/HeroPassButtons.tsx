@@ -26,10 +26,14 @@ const HERO_PASS_LABEL: Record<string, string> = {
 // (구) HeroSection — 풀스크린 비디오 + 패스 4개 버튼. P1-1 에서 신규 가치제안
 // HeroSection 이 추가되면서 이 컴포넌트는 두번째 섹션 (결제 동선) 으로 이동했다.
 // cta 는 하위 호환 유지를 위해 prop 시그니처에 남기지만 현재는 렌더링하지 않음.
+//
+// hotfix (모바일 viewport): 'h-screen' (100vh) 가 모바일에서 주소창 포함 영역
+// 차지 → 헤더 가림 보고. 모바일은 60vh 로 축소하여 sticky 헤더 + 메뉴 시야 확보.
+// 데스크탑 (lg+) 은 풀스크린 디자인 보존.
 export function HeroPassButtons({ locale }: Props) {
   const heroLabel = HERO_PASS_LABEL[locale] ?? HERO_PASS_LABEL.en
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-[#1F2937]">
+    <section className="relative w-full h-[60vh] md:h-[80vh] lg:h-screen overflow-hidden bg-[#1F2937]">
       {/* 배경 영상 */}
       <video
         src={getVideoUrl('hero.mp4')}
