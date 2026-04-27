@@ -1,7 +1,16 @@
 import { ImageResponse } from 'next/og'
 import { NextRequest, NextResponse } from 'next/server'
 
-export const runtime = 'edge'
+// hotfix: 'edge' 에서 ImageResponse 가 image/png 0 bytes silent fail 발생.
+// Node runtime 으로 전환 — cold start 느리지만 verbose 에러 출력 + Vercel Hobby
+// Edge function 환경 제약 회피 (10MB Variable TTF fetch / Satori 메모리).
+export const runtime = 'nodejs'
+
+// 🎯 ROOT CAUSE FIX: Next.js 가 /og 를 build-time static prerender 시도하면서
+// request.url 호출 throw → catch 블록의 빈 redirect 응답이 정적 자산으로 캐시 →
+// production 에서 image/png 0 bytes 반환되는 silent fail.
+// 'force-dynamic' 으로 prerender 차단 — 매 요청마다 동적 실행 보장.
+export const dynamic = 'force-dynamic'
 
 /**
  * P3B-1: 동적 OG 이미지 생성 라우트.
