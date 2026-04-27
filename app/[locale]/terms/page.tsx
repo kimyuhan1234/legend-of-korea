@@ -15,7 +15,7 @@ type Section = { heading: string; body: string }
 const CONTENT: Record<string, { title: string; updated: string; sections: Section[] }> = {
   ko: {
     title: '이용약관',
-    updated: '최종 수정일: 2026년 4월 24일',
+    updated: '최종 수정일: 2026년 4월 27일',
     sections: [
       {
         heading: '제1조 (목적)',
@@ -28,6 +28,10 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       {
         heading: '제3조 (서비스 이용)',
         body: '① 회원가입은 만 14세 이상이어야 합니다.\n② 이용자는 자신의 계정을 제3자에게 양도하거나 공유할 수 없습니다.\n③ 회사는 서비스 품질 향상 등을 위해 사전 공지 후 서비스 내용을 변경하거나 종료할 수 있습니다.\n④ 서비스 이용료: 여행 패스(Move/Live/Story/All-in-One) 구독 시 상품 페이지에 표시된 금액을 지불하며, 결제는 토스페이먼츠를 통해 처리됩니다.\n⑤ 청약 철회: 전자상거래법 제17조에 따라 구독 결제일로부터 7일 이내 청약 철회가 가능합니다. 단, 서비스 이용 이력이 있는 경우(미션 완료, 빗방울 적립 등) 청약 철회가 제한될 수 있습니다.\n⑥ 빗방울은 현금으로 환급되지 않으며, 서비스 내에서만 사용 가능합니다. 회원 탈퇴 시 잔여 빗방울은 소멸됩니다.',
+      },
+      {
+        heading: '제3조의2 (만 14세 미만 보호)',
+        body: '① 회사는 회원가입 시 만 14세 이상임을 전제로 서비스를 제공합니다.\n② 만 14세 미만 아동이 법정대리인 동의 없이 가입한 경우, 회사는 인지 즉시 해당 계정을 정지하고 개인정보를 파기합니다.\n③ 다만, 법정대리인의 동의 절차를 통해 가입한 경우는 예외로 합니다.\n④ 이용자는 가입 시 제공한 정보의 정확성에 대한 책임을 부담합니다.',
       },
       {
         heading: '제4조 (개인정보 보호)',
@@ -53,7 +57,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
   },
   en: {
     title: 'Terms of Service',
-    updated: 'Last updated: April 24, 2026',
+    updated: 'Last updated: April 27, 2026',
     sections: [
       {
         heading: 'Article 1 — Purpose',
@@ -66,6 +70,10 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       {
         heading: 'Article 3 — Use of Service',
         body: '① Users must be at least 14 years of age to register.\n② Users may not transfer or share their account with third parties.\n③ The Company may modify or terminate service content with prior notice.\n④ Fees: Travel pass (Move/Live/Story/All-in-One) subscription prices are displayed on the product page. Payments are processed via Toss Payments.\n⑤ Cancellation: Users may cancel within 7 days of the subscription payment date pursuant to applicable e-commerce law, except where service usage history exists (mission completion, Raindrop accrual, etc.).\n⑥ Raindrops are non-refundable and may only be used within the Service. Any remaining Raindrops are forfeited upon account deletion.',
+      },
+      {
+        heading: 'Article 3-2 — Protection of Users Under 14',
+        body: '① The Service is provided on the premise that members are aged 14 or older.\n② If a child under 14 registers without parental consent, the Company will immediately suspend the account and destroy the personal data upon discovery.\n③ However, this does not apply when parental consent has been obtained through the designated procedure.\n④ Users are responsible for the accuracy of the information provided at registration.',
       },
       {
         heading: 'Article 4 — Privacy',
@@ -91,7 +99,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
   },
   ja: {
     title: '利用規約',
-    updated: '最終更新日: 2026年4月24日',
+    updated: '最終更新日: 2026年4月27日',
     sections: [
       {
         heading: '第1条（目的）',
@@ -104,6 +112,10 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       {
         heading: '第3条（サービスの利用）',
         body: '① 会員登録は14歳以上であることが必要です。\n② 利用者は自身のアカウントを第三者に譲渡・共有することができません。\n③ 当社はサービス品質向上等のため、事前告知の上でサービス内容を変更・終了できます。\n④ 利用料金: 旅行パス（Move/Live/Story/All-in-One）購読時は商品ページに表示された金額を支払います。決済はトスペイメンツで処理されます。\n⑤ キャンセル: 電子商取引法に基づき購読決済日から7日以内に申し込みの撤回が可能です。ただし、サービス利用実績がある場合（ミッション完了、雨粒付与等）は制限されることがあります。\n⑥ 雨粒は現金での払い戻しはできず、サービス内でのみ使用可能です。会員退会時に残余の雨粒は消滅します。',
+      },
+      {
+        heading: '第3条の2（14歳未満の保護）',
+        body: '① 当社は会員登録時に14歳以上であることを前提にサービスを提供します。\n② 14歳未満の児童が法定代理人の同意なく登録した場合、当社は認知次第直ちに当該アカウントを停止し個人情報を破棄します。\n③ ただし、法定代理人の同意手続きを経て登録した場合は例外とします。\n④ 利用者は登録時に提供した情報の正確性について責任を負います。',
       },
       {
         heading: '第4条（個人情報の保護）',
@@ -129,7 +141,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
   },
   'zh-CN': {
     title: '服务条款',
-    updated: '最后更新：2026年4月24日',
+    updated: '最后更新：2026年4月27日',
     sections: [
       {
         heading: '第一条（目的）',
@@ -142,6 +154,10 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       {
         heading: '第三条（服务使用）',
         body: '① 注册会员需年满14周岁。\n② 用户不得将账号转让或共享给第三方。\n③ 本公司可在事先公告后变更或终止服务内容。\n④ 使用费用：订阅旅行通行证（Move/Live/Story/All-in-One）时按商品页面显示的金额支付，通过Toss Payments处理。\n⑤ 取消：依据电子商务法，可在订阅付款日起7天内申请撤销。但有服务使用记录的情况下（任务完成、雨滴积累等）可能受到限制。\n⑥ 雨滴不可兑换现金，仅限在服务内使用。会员注销时剩余雨滴将消失。',
+      },
+      {
+        heading: '第三条之二（未满14周岁保护）',
+        body: '① 本公司以注册会员需年满14周岁为前提提供服务。\n② 未满14周岁儿童未经法定代理人同意注册的，本公司一经发现立即停用该账户并销毁个人信息。\n③ 但通过法定代理人同意程序注册的除外。\n④ 用户应对注册时提供信息的准确性承担责任。',
       },
       {
         heading: '第四条（个人信息保护）',
@@ -167,7 +183,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
   },
   'zh-TW': {
     title: '服務條款',
-    updated: '最後更新：2026年4月24日',
+    updated: '最後更新：2026年4月27日',
     sections: [
       {
         heading: '第一條（目的）',
@@ -180,6 +196,10 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       {
         heading: '第三條（服務使用）',
         body: '① 會員須年滿14歲方可註冊。\n② 使用者不得將帳號轉讓或共享給第三方。\n③ 本公司可在事先公告後變更或終止服務內容。\n④ 使用費用：訂閱旅行通行證（Move/Live/Story/All-in-One）時依商品頁面所示金額支付，透過Toss Payments處理。\n⑤ 取消：依電子商務法規定，可在訂閱付款日起7天內申請撤銷。但有服務使用紀錄的情況下（任務完成、雨滴積累等）可能受到限制。\n⑥ 雨滴不可兌換現金，僅限在服務內使用。會員刪除帳號時剩餘雨滴將消滅。',
+      },
+      {
+        heading: '第三條之二（未滿14歲保護）',
+        body: '① 本公司以註冊會員須年滿14歲為前提提供服務。\n② 未滿14歲兒童未經法定代理人同意註冊的，本公司一經知悉立即停用該帳號並銷毀個人資料。\n③ 但透過法定代理人同意程序註冊的除外。\n④ 使用者應對註冊時提供資訊的準確性承擔責任。',
       },
       {
         heading: '第四條（個人資料保護）',
