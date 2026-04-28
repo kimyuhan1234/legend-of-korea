@@ -7,14 +7,14 @@ import { QuestHowItWorks } from "@/components/features/quest/QuestHowItWorks"
 import { QuestMissionGuide } from "@/components/features/quest/QuestMissionGuide"
 import { MissionKakaoMap } from "@/components/features/missions/MissionKakaoMap"
 import { QuestStorySlider } from "@/components/features/quest/QuestStorySlider"
-import { QuestKitShowcase } from "@/components/features/quest/QuestKitShowcase"
 import { QuestReviews } from "@/components/features/quest/QuestReviews"
 import { QuestFAQ } from "@/components/features/quest/QuestFAQ"
-import { QuestStickyBar } from "@/components/features/quest/QuestStickyBar"
 import { QuestPartySection } from "@/components/features/quest/QuestPartySection"
 import { AddToPlannerButton } from "@/components/features/planner/AddToPlannerButton"
 import { ZepMeetingButton } from "@/components/features/quest/ZepMeetingButton"
 import { ZepBanner } from "@/components/features/quest/ZepBanner"
+import { LockScreen } from "@/components/features/pricing/LockScreen"
+import { hasActivePass } from "@/lib/auth/pass"
 import { getZepZoneByCourseId } from "@/lib/data/zep-spaces"
 import type { I18nText } from "@/lib/supabase/types"
 import { buildOgUrl } from "@/lib/seo/og-url"
@@ -93,21 +93,9 @@ export default async function CourseDetailPage({ params }: Props) {
   const { data: { user } } = await supabase.auth.getUser()
   const isLoggedIn = !!user
 
-  // 구독 여부 확인 (ZEP 접근 권한 판단)
-  let hasSubscription = false
-  if (user) {
-    try {
-      const { data: orderRows } = await supabase
-        .from("orders")
-        .select("id")
-        .eq("user_id", user.id)
-        .eq("payment_status", "paid")
-        .limit(1)
-      hasSubscription = (orderRows?.length ?? 0) > 0
-    } catch {
-      hasSubscription = false
-    }
-  }
+  // PRD-PRICING-2026-001: 활성 패스 보유 여부로 ZEP / 미션 진행 권한 판단.
+  // (이전 구독 모델의 orders.payment_status='paid' 기준 폐기)
+  const hasPass = await hasActivePass(user?.id ?? null)
 
   const [courseRes, missionRes, affiliateRes] = await Promise.all([
     supabase
@@ -222,16 +210,14 @@ export default async function CourseDetailPage({ params }: Props) {
       {/* 3. 인터랙티브 스토리 */}
       <QuestStorySlider storyCards={storyCards} region={course.region || ''} />
 
-      {/* 5. 키트 언박싱 & 구매 */}
-      <div id="kit-purchase">
-      <QuestKitShowcase
-        courseId={courseId}
-        kits={[]}
-        locale={locale}
-        region={course.region || 'jeonju'}
-        isLoggedIn={isLoggedIn}
-      />
-      </div>
+      {/* 5. PRD-PRICING-2026-001: 패스 미보유 시 잠금 화면 (LockScreen 6 종 패턴).
+            구버전 'DIGITAL QUEST PASS' / ₩6,900/월 카드 (QuestKitShowcase) 폐기.
+            보유 시는 별도 미션 진행 페이지 (/missions/{courseId}) 로 진입. */}
+      {!hasPass && (
+        <section id="pass-cta" className="max-w-3xl mx-auto px-6 md:px-10 py-10">
+          <LockScreen type="generic" />
+        </section>
+      )}
 
       {/* 6. Quest Party 매칭 */}
       <QuestPartySection
@@ -242,12 +228,12 @@ export default async function CourseDetailPage({ params }: Props) {
       />
 
       {/* 6-1. ZEP 가상 모임
-            - 비구매자 : ZepBanner (풀 애니메이션 + 구매 유도 CTA)
-            - 구매자   : ZepMeetingButton (미니 프리뷰 + 입장 버튼)
+            - 패스 미보유 : ZepBanner (풀 애니메이션 + /pass 유도 CTA)
+            - 패스 보유   : ZepMeetingButton (미니 프리뷰 + 입장 버튼)
             - 해당 코스에 ZEP 스페이스 없으면 렌더링 안 함            */}
       {getZepZoneByCourseId(course.region || '') && (
         <section className="max-w-5xl mx-auto px-8 md:px-10 py-8" id="zep-meeting">
-          {hasSubscription ? (
+          {hasPass ? (
             <ZepMeetingButton
               courseId={course.region || ''}
               hasPurchased={true}
@@ -272,18 +258,8 @@ export default async function CourseDetailPage({ params }: Props) {
       {/* 9. FAQ */}
       <QuestFAQ />
 
-      {/* 하단 고정 구매 바 */}
-      <QuestStickyBar
-        courseId={courseId}
-        title={courseTitle}
-        price={6900}
-        locale={locale}
-        isLoggedIn={isLoggedIn}
-        kitId={undefined}
-        cityId={course.region || 'jeonju'}
-      />
-
-      <div className="h-20" />
+      {/* PRD-PRICING-2026-001: 하단 고정 'QuestStickyBar' (₩6,900/월 구독 시작) 폐기.
+          패스 게이팅은 위 LockScreen + 헤더 PASS 메뉴로 처리. */}
     </div>
   )
 }
