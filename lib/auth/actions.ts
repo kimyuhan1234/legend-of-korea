@@ -93,16 +93,24 @@ export async function loginWithSocial(provider: "kakao" | "google" | "line", loc
     provider: provider as any,
     options: {
       redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/auth/callback`,
-      // 카카오만 scope 명시 — Supabase 기본값에 account_email 포함되어
-      // 비즈 앱 미인증 (account_email 권한 없음) 상태에서 KOE205
-      // "설정하지 않은 동의항목" 에러 발생. profile_nickname 만 요청하면
-      // 카카오가 fake email 발급 → Supabase auth.users 정상 생성.
-      // (Supabase 'Allow users without an email' 토글 ON 전제)
-      scopes: provider === "kakao" ? "profile_nickname" : undefined,
-      queryParams:
-        provider === "kakao"
-          ? { prompt: "select_account" }
-          : undefined,
+      // 카카오 scope 강제 명시 — Supabase 가 OIDC default 로 openid+email 을
+      // 자동 추가해 비즈 앱 미인증 (account_email 권한 없음) 상태에서
+      // KOE205 "설정하지 않은 동의항목" 에러 발생.
+      //   - scopes: SDK 옵션 명시
+      //   - queryParams.scope: OAuth URL ?scope= 파라미터 강제 override
+      //     (둘 다 넣어야 Supabase 내부 default 가 우회됨)
+      //   - profile_image 는 카카오 콘솔에서 "선택 동의" 활성화 필요.
+      //   - email 은 받지 않음 → Supabase fake email 자동 발급
+      //     ('Allow users without an email' 토글 ON 전제).
+      scopes: provider === "kakao"
+        ? "profile_nickname profile_image"
+        : undefined,
+      queryParams: provider === "kakao"
+        ? {
+            prompt: "select_account",
+            scope: "profile_nickname profile_image",
+          }
+        : undefined,
     },
   })
 
