@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { isAtLeastMinimumAge, getMaxBirthDateString } from '@/lib/validation/age'
+import { isAtLeastMinimumAge } from '@/lib/validation/age'
+import { BirthDatePicker } from './BirthDatePicker'
 
 type Lang = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
 
@@ -19,6 +20,9 @@ const TEXT: Record<Lang, {
   subhead: string
   birthDateLabel: string
   birthDateHint: string
+  birthDateYear: string
+  birthDateMonth: string
+  birthDateDay: string
   prefillNote: (provider: string) => string
   submit: string
   submitting: string
@@ -32,6 +36,9 @@ const TEXT: Record<Lang, {
     subhead: '한 가지만 더 알려주세요',
     birthDateLabel: '생년월일',
     birthDateHint: '만 14세 이상부터 가입할 수 있어요',
+    birthDateYear: '년',
+    birthDateMonth: '월',
+    birthDateDay: '일',
     prefillNote: (p) => `🔒 ${p}에서 받아온 정보입니다. 수정할 수 있어요.`,
     submit: '가입 완료',
     submitting: '처리 중...',
@@ -45,6 +52,9 @@ const TEXT: Record<Lang, {
     subhead: 'あと一つだけ教えてください',
     birthDateLabel: '生年月日',
     birthDateHint: '14歳以上の方からご登録いただけます',
+    birthDateYear: '年',
+    birthDateMonth: '月',
+    birthDateDay: '日',
     prefillNote: (p) => `🔒 ${p} から取得した情報です。修正できます。`,
     submit: '登録完了',
     submitting: '処理中...',
@@ -58,6 +68,9 @@ const TEXT: Record<Lang, {
     subhead: 'Just one more step',
     birthDateLabel: 'Date of birth',
     birthDateHint: 'Sign-up is available for ages 14 and older',
+    birthDateYear: 'Year',
+    birthDateMonth: 'Month',
+    birthDateDay: 'Day',
     prefillNote: (p) => `🔒 Imported from ${p}. You can edit this.`,
     submit: 'Complete sign-up',
     submitting: 'Processing...',
@@ -71,6 +84,9 @@ const TEXT: Record<Lang, {
     subhead: '请再告诉我们一个信息',
     birthDateLabel: '出生日期',
     birthDateHint: '年满14岁可注册',
+    birthDateYear: '年',
+    birthDateMonth: '月',
+    birthDateDay: '日',
     prefillNote: (p) => `🔒 来自 ${p} 的信息。您可以修改。`,
     submit: '完成注册',
     submitting: '处理中...',
@@ -84,6 +100,9 @@ const TEXT: Record<Lang, {
     subhead: '請再告訴我們一個資訊',
     birthDateLabel: '出生日期',
     birthDateHint: '年滿14歲可註冊',
+    birthDateYear: '年',
+    birthDateMonth: '月',
+    birthDateDay: '日',
     prefillNote: (p) => `🔒 來自 ${p} 的資訊。您可以修改。`,
     submit: '完成註冊',
     submitting: '處理中...',
@@ -116,7 +135,6 @@ export function CompleteProfileForm({ locale, prefillBirthDate, prefillProvider 
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
-  const maxBirthDate = useMemo(() => getMaxBirthDateString(), [])
   const isAgeOk = birthDate.length === 0 || isAtLeastMinimumAge(birthDate)
   const showAgeError = birthDate.length > 0 && !isAgeOk
   const canSubmit = !loading && birthDate.length > 0 && isAgeOk
@@ -198,21 +216,19 @@ export function CompleteProfileForm({ locale, prefillBirthDate, prefillProvider 
       {/* birth_date */}
       <div className="flex flex-col gap-1.5">
         <label className="text-sm font-medium text-slate">{t.birthDateLabel}</label>
-        <input
-          type="date"
-          name="birth_date"
-          required
+        <BirthDatePicker
           value={birthDate}
-          max={maxBirthDate}
-          onChange={(e) => setBirthDate(e.target.value)}
-          className={`h-12 px-4 rounded-xl border bg-white text-[#111] text-sm focus:outline-none focus:ring-2 focus:ring-blossom-deep/40 transition-all ${
-            showAgeError ? 'border-red-300 focus:border-red-400 focus:ring-red-200' : 'border-mist focus:border-blossom-deep'
-          }`}
+          onChange={setBirthDate}
+          labels={{ year: t.birthDateYear, month: t.birthDateMonth, day: t.birthDateDay }}
+          idPrefix="complete-profile-birth-date"
+          required
+          invalid={showAgeError}
+          ariaDescribedBy="complete-profile-birth-date-hint"
         />
         {showAgeError ? (
-          <p className="text-xs text-red-600">{t.underAgeError}</p>
+          <p id="complete-profile-birth-date-hint" className="text-xs text-red-600">{t.underAgeError}</p>
         ) : (
-          <p className="text-xs text-stone">{t.birthDateHint}</p>
+          <p id="complete-profile-birth-date-hint" className="text-xs text-stone">{t.birthDateHint}</p>
         )}
       </div>
 

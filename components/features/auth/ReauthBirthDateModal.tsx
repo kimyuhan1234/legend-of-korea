@@ -3,6 +3,7 @@
 import { useEffect, useState, useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
+import { BirthDatePicker } from "./BirthDatePicker"
 
 interface Props {
   /** 현재 사용자 locale — 부모 동의 redirect 시 prefix 로 사용 */
@@ -10,8 +11,6 @@ interface Props {
   /** birth_date_deadline (ISO). null 이면 신규 가입자 (이미 입력 완료). */
   deadlineIso: string | null
 }
-
-const EARLIEST_BIRTH = "1900-01-01"
 
 /**
  * P0F-2: 재인증 birth_date 모달 — birth_date NULL 사용자에게 강제 노출.
@@ -122,24 +121,19 @@ export function ReauthBirthDateModal({ locale, deadlineIso }: Props) {
           </div>
         )}
 
-        <label className="block mb-5">
+        <div className="mb-5">
           <span className="block text-xs font-semibold text-slate-700 mb-2">
             {t("birthDateLabel")}
           </span>
-          <input
-            type="date"
-            required
-            min={EARLIEST_BIRTH}
-            max={today}
+          <BirthDatePicker
             value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-mist bg-snow text-base text-slate-800
-                       focus:outline-none focus:ring-2 focus:ring-mint-deep/40 focus:border-mint-deep
-                       transition"
-            aria-invalid={error ? "true" : "false"}
-            autoComplete="bday"
+            onChange={setBirthDate}
+            labels={{ year: t("birthDateYear"), month: t("birthDateMonth"), day: t("birthDateDay") }}
+            idPrefix="reauth-birth-date"
+            required
+            invalid={Boolean(error)}
           />
-        </label>
+        </div>
 
         {error && (
           <p role="alert" className="text-xs text-red-600 mb-4">

@@ -5,8 +5,9 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { signupWithEmail } from "@/lib/auth/actions"
 import { checkPasswordRules, type PasswordRuleKey } from "@/lib/auth/password-rules"
-import { isAtLeastMinimumAge, getMaxBirthDateString } from "@/lib/validation/age"
+import { isAtLeastMinimumAge } from "@/lib/validation/age"
 import { toast } from "@/components/ui/use-toast"
+import { BirthDatePicker } from "./BirthDatePicker"
 
 interface SignupFormProps {
   locale: string
@@ -42,6 +43,9 @@ const TEXT: Record<Lang, {
   testBannerDesc: string
   birthDateLabel: string
   birthDateHint: string
+  birthDateYear: string
+  birthDateMonth: string
+  birthDateDay: string
   errors: {
     MISSING_FIELDS: string
     NICKNAME_TOO_LONG: string
@@ -79,6 +83,9 @@ const TEXT: Record<Lang, {
     testBannerDesc: "테스트 기간이 종료되면 일부 기능은 유료 패스가 필요합니다. 지금 가입하고 모든 기능을 체험해보세요!",
     birthDateLabel: "생년월일",
     birthDateHint: "만 14세 이상부터 가입할 수 있어요",
+    birthDateYear: "년",
+    birthDateMonth: "월",
+    birthDateDay: "일",
     errors: {
       MISSING_FIELDS: "모든 필드를 입력해주세요.",
       NICKNAME_TOO_LONG: "닉네임은 20자 이하로 입력해주세요.",
@@ -116,6 +123,9 @@ const TEXT: Record<Lang, {
     testBannerDesc: "ベータ期間終了後、一部の機能は有料パスが必要になります。今すぐ登録して全機能をお試しください！",
     birthDateLabel: "生年月日",
     birthDateHint: "14歳以上の方からご登録いただけます",
+    birthDateYear: "年",
+    birthDateMonth: "月",
+    birthDateDay: "日",
     errors: {
       MISSING_FIELDS: "すべての項目を入力してください。",
       NICKNAME_TOO_LONG: "ニックネームは20文字以内で入力してください。",
@@ -153,6 +163,9 @@ const TEXT: Record<Lang, {
     testBannerDesc: "Some features will require a paid pass after the beta period. Sign up now and try everything for free!",
     birthDateLabel: "Date of birth",
     birthDateHint: "Sign-up is available for ages 14 and older",
+    birthDateYear: "Year",
+    birthDateMonth: "Month",
+    birthDateDay: "Day",
     errors: {
       MISSING_FIELDS: "Please fill in all fields.",
       NICKNAME_TOO_LONG: "Nickname must be 20 characters or fewer.",
@@ -190,6 +203,9 @@ const TEXT: Record<Lang, {
     testBannerDesc: "测试期结束后，部分功能需要付费通行证。现在注册，免费体验所有功能！",
     birthDateLabel: "出生日期",
     birthDateHint: "年满14岁可注册",
+    birthDateYear: "年",
+    birthDateMonth: "月",
+    birthDateDay: "日",
     errors: {
       MISSING_FIELDS: "请填写所有字段。",
       NICKNAME_TOO_LONG: "昵称不能超过20个字符。",
@@ -227,6 +243,9 @@ const TEXT: Record<Lang, {
     testBannerDesc: "測試期結束後，部分功能需要付費通行證。現在註冊，免費體驗所有功能！",
     birthDateLabel: "出生日期",
     birthDateHint: "年滿14歲可註冊",
+    birthDateYear: "年",
+    birthDateMonth: "月",
+    birthDateDay: "日",
     errors: {
       MISSING_FIELDS: "請填寫所有欄位。",
       NICKNAME_TOO_LONG: "暱稱不能超過20個字元。",
@@ -274,7 +293,6 @@ export function SignupForm({ locale }: SignupFormProps) {
   // 만 14세 검증 — 입력 후 미달이면 즉시 에러 노출 (디자인팀 인라인 에러)
   const isAgeOk = birthDate.length === 0 || isAtLeastMinimumAge(birthDate)
   const showAgeError = birthDate.length > 0 && !isAgeOk
-  const maxBirthDate = useMemo(() => getMaxBirthDateString(), [])
 
   const canSubmit =
     !loading &&
@@ -295,6 +313,8 @@ export function SignupForm({ locale }: SignupFormProps) {
 
     const formData = new FormData(e.currentTarget)
     formData.set("locale", locale)
+    // BirthDatePicker 는 native input 이 아니므로 formData 에 별도 set
+    formData.set("birth_date", birthDate)
 
     const result = await signupWithEmail(formData)
 
@@ -458,21 +478,16 @@ export function SignupForm({ locale }: SignupFormProps) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="signup-birth-date" className="text-sm font-medium text-slate">{t.birthDateLabel}</label>
-        <input
-          id="signup-birth-date"
-          type="date"
-          name="birth_date"
-          required
-          autoComplete="bday"
-          aria-invalid={showAgeError ? 'true' : 'false'}
-          aria-describedby="signup-birth-date-hint"
+        <label className="text-sm font-medium text-slate">{t.birthDateLabel}</label>
+        <BirthDatePicker
           value={birthDate}
-          max={maxBirthDate}
-          onChange={(e) => setBirthDate(e.target.value)}
-          className={`${inputClass} ${showAgeError ? 'border-red-300 focus:border-red-400 focus:ring-red-200' : ''}`}
+          onChange={setBirthDate}
+          labels={{ year: t.birthDateYear, month: t.birthDateMonth, day: t.birthDateDay }}
+          idPrefix="signup-birth-date"
+          required
+          invalid={showAgeError}
+          ariaDescribedBy="signup-birth-date-hint"
         />
-        {/* 입력 전: 안내 텍스트 / 입력 후 미달: 빨간 에러 (이모지 X — 디자인팀 우려 반영) */}
         {showAgeError ? (
           <p id="signup-birth-date-hint" role="alert" className="text-xs text-red-600">{t.errors.UNDER_14}</p>
         ) : (
