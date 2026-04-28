@@ -2030,6 +2030,38 @@
         "title": "高級內容",
         "description": "購買通行證以解鎖全部內容"
       }
+    },
+    "checkout": {
+      "title": "結帳",
+      "duration": "有效期 {days} 天",
+      "passes": {
+        "short": { "name": "Short Pass" },
+        "standard": { "name": "Standard Pass" },
+        "long": { "name": "Long Pass" }
+      },
+      "cta": "立即支付",
+      "test_mode_cta": "測試發放",
+      "test_mode_notice": "TEST_MODE — 無需實際支付，立即發放通行證。",
+      "processing": "處理中...",
+      "error": {
+        "init_failed": "支付系統初始化失敗，請重新整理後再試。",
+        "not_ready": "支付系統尚未準備好。",
+        "purchase_failed": "通行證發放失敗。",
+        "payment_failed": "支付過程中發生錯誤。",
+        "already_active": "您已持有有效通行證。"
+      }
+    },
+    "success": {
+      "title": "通行證已啟用！🎉",
+      "description": "{type} 已可以使用。",
+      "expires_at": "到期日",
+      "cta_start": "開始任務 →"
+    },
+    "fail": {
+      "title": "支付失敗",
+      "description": "支付未完成，請重試。",
+      "cta_retry": "重試",
+      "cta_home": "首頁"
     }
   },
   "feedback": {

@@ -2030,6 +2030,38 @@
         "title": "Premium content",
         "description": "Buy a pass to unlock everything"
       }
+    },
+    "checkout": {
+      "title": "Checkout",
+      "duration": "Valid for {days} days",
+      "passes": {
+        "short": { "name": "Short Pass" },
+        "standard": { "name": "Standard Pass" },
+        "long": { "name": "Long Pass" }
+      },
+      "cta": "Pay now",
+      "test_mode_cta": "Activate (test)",
+      "test_mode_notice": "TEST_MODE — pass is issued instantly without a real charge.",
+      "processing": "Processing...",
+      "error": {
+        "init_failed": "Failed to initialize payment. Please refresh and try again.",
+        "not_ready": "Payment system not ready yet.",
+        "purchase_failed": "Failed to issue the pass.",
+        "payment_failed": "An error occurred during payment.",
+        "already_active": "You already have an active pass."
+      }
+    },
+    "success": {
+      "title": "Pass activated! 🎉",
+      "description": "Your {type} is ready to use.",
+      "expires_at": "Valid until",
+      "cta_start": "Start a quest →"
+    },
+    "fail": {
+      "title": "Payment failed",
+      "description": "The payment was not completed. Please try again.",
+      "cta_retry": "Try again",
+      "cta_home": "Home"
     }
   },
   "feedback": {

@@ -888,6 +888,38 @@
         "title": "프리미엄 콘텐츠",
         "description": "패스 구매로 모든 콘텐츠 잠금 해제"
       }
+    },
+    "checkout": {
+      "title": "결제 진행",
+      "duration": "{days}일 유효",
+      "passes": {
+        "short": { "name": "Short Pass" },
+        "standard": { "name": "Standard Pass" },
+        "long": { "name": "Long Pass" }
+      },
+      "cta": "결제하기",
+      "test_mode_cta": "테스트 발급",
+      "test_mode_notice": "TEST_MODE — 실 결제 없이 패스가 즉시 발급됩니다.",
+      "processing": "처리 중...",
+      "error": {
+        "init_failed": "결제 시스템 초기화 실패. 새로고침 후 다시 시도해주세요.",
+        "not_ready": "결제 시스템이 준비되지 않았습니다.",
+        "purchase_failed": "패스 발급에 실패했습니다.",
+        "payment_failed": "결제 처리 중 오류가 발생했습니다.",
+        "already_active": "이미 활성 패스를 보유 중입니다."
+      }
+    },
+    "success": {
+      "title": "패스가 활성화되었습니다! 🎉",
+      "description": "{type} 사용을 시작할 수 있습니다.",
+      "expires_at": "사용 만료일",
+      "cta_start": "퀘스트 시작하기 →"
+    },
+    "fail": {
+      "title": "결제에 실패했습니다",
+      "description": "결제가 완료되지 않았습니다. 다시 시도해주세요.",
+      "cta_retry": "다시 시도",
+      "cta_home": "홈으로"
     }
   },
   "discover": {

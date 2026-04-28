@@ -2030,6 +2030,38 @@
         "title": "プレミアムコンテンツ",
         "description": "パス購入で全コンテンツ解放"
       }
+    },
+    "checkout": {
+      "title": "お支払い",
+      "duration": "{days}日間有効",
+      "passes": {
+        "short": { "name": "Short Pass" },
+        "standard": { "name": "Standard Pass" },
+        "long": { "name": "Long Pass" }
+      },
+      "cta": "お支払いへ",
+      "test_mode_cta": "テスト発行",
+      "test_mode_notice": "TEST_MODE — 実際の決済なしでパスが即時発行されます。",
+      "processing": "処理中...",
+      "error": {
+        "init_failed": "決済システムの初期化に失敗しました。再読み込みしてください。",
+        "not_ready": "決済システムがまだ準備中です。",
+        "purchase_failed": "パスの発行に失敗しました。",
+        "payment_failed": "決済処理中にエラーが発生しました。",
+        "already_active": "すでに有効なパスをお持ちです。"
+      }
+    },
+    "success": {
+      "title": "パスが有効になりました！🎉",
+      "description": "{type} の利用を開始できます。",
+      "expires_at": "有効期限",
+      "cta_start": "クエストを始める →"
+    },
+    "fail": {
+      "title": "お支払いに失敗しました",
+      "description": "決済が完了しませんでした。もう一度お試しください。",
+      "cta_retry": "再試行",
+      "cta_home": "ホーム"
     }
   },
   "feedback": {
