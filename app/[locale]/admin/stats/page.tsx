@@ -3,15 +3,12 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { 
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
+import {
+  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   BarChart, Bar, PieChart, Pie, Cell, Legend, AreaChart, Area
 } from "recharts"
-import { 
-  TrendingUp, 
-  Users, 
-  ShoppingBag, 
-  Zap, 
+import {
+  TrendingUp,
   MousePointer2,
   Globe2,
   CheckCircle2,

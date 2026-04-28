@@ -16,7 +16,6 @@ import {
   Users,
   ShoppingBag,
   CreditCard,
-  ArrowUpRight,
   MessageSquare
 } from "lucide-react"
 import { maskName } from "@/lib/utils/masking"

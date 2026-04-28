@@ -11,14 +11,12 @@ import {
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { 
-  Eye, 
-  EyeOff, 
-  MessageSquare, 
-  ThumbsUp, 
+import {
+  Eye,
+  EyeOff,
+  ThumbsUp,
   Calendar,
   User as UserIcon,
-  ShieldAlert
 } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 
@@ -58,7 +56,7 @@ export default function AdminCommunityPage() {
         })
         setPosts(posts.map(p => p.id === postId ? { ...p, is_hidden: !currentStatus } : p))
       }
-    } catch (error) {
+    } catch {
       toast({ title: "오류 발생", variant: "destructive" })
     }
   }
