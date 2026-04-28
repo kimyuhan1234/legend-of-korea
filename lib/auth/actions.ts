@@ -93,6 +93,12 @@ export async function loginWithSocial(provider: "kakao" | "google" | "line", loc
     provider: provider as any,
     options: {
       redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/auth/callback`,
+      // 카카오만 scope 명시 — Supabase 기본값에 account_email 포함되어
+      // 비즈 앱 미인증 (account_email 권한 없음) 상태에서 KOE205
+      // "설정하지 않은 동의항목" 에러 발생. profile_nickname 만 요청하면
+      // 카카오가 fake email 발급 → Supabase auth.users 정상 생성.
+      // (Supabase 'Allow users without an email' 토글 ON 전제)
+      scopes: provider === "kakao" ? "profile_nickname" : undefined,
       queryParams:
         provider === "kakao"
           ? { prompt: "select_account" }
