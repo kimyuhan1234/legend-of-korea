@@ -14,7 +14,10 @@ const LOCALE_REGEX = /^\/([a-z]{2}(?:-[A-Z]{2})?)(\/|$)/
 // P1-12: /community 추가 — Community 허브 (MEMORIES + DIY 카드) 도 첫 인상 노출.
 // P1-13: /story, /pass 추가 — 헤더 4-메뉴 (DISCOVER/QUEST/PASS/COMMUNITY) 첫 인상 일관성.
 //        4개 메뉴 모두 비로그인 둘러보기 가능해야 함 (로그인 강제 시 첫 인상 깨짐).
-const PUBLIC_PATHS = ["/", "/auth", "/login", "/signup", "/stay", "/discover", "/community", "/story", "/pass", "/privacy", "/terms", "/maintenance"]
+// PRD-PRICING-2026-001: /courses 추가 — 서울 첫 미션 무료 (is_free=true) 정책상
+//        코스 상세 페이지는 비로그인도 노출되어야 함. 패스 게이팅은 페이지 내부
+//        canAccessMission() 분기로 처리 (LockScreen 6 종 사용).
+const PUBLIC_PATHS = ["/", "/auth", "/login", "/signup", "/stay", "/discover", "/community", "/story", "/pass", "/courses", "/privacy", "/terms", "/maintenance"]
 
 // ── 일일 접속자 제한 (테스트 기간) ───────────────────────────
 // Edge/Serverless 인스턴스별 독립 메모리이므로 엄밀한 글로벌 제한은 아님 —
@@ -201,11 +204,16 @@ export async function middleware(request: NextRequest) {
 
     if (!isPublic) {
       // Supabase auth 쿠키 이름 패턴: sb-<project_ref>-auth-token
+      // hotfix: Supabase v2 SDK 가 큰 토큰을 sb-<ref>-auth-token.0 / .1 분할 저장 →
+      // request.cookies.has(정확한이름) 만 확인하면 false 가 되어 로그인 후
+      // 무한 redirect 루프 발생 (실제 사고 — /ko/courses/{id} 접근 불가).
       const projectRef =
         process.env.NEXT_PUBLIC_SUPABASE_URL?.split("//")[1]?.split(".")[0] ?? ""
       const authCookieName = `sb-${projectRef}-auth-token`
 
-      const hasSession = request.cookies.has(authCookieName)
+      const hasSession = request.cookies.getAll().some((c) =>
+        c.name === authCookieName || c.name.startsWith(`${authCookieName}.`)
+      )
 
       if (!hasSession) {
         const loginUrl = new URL(`/${locale}/auth/login`, request.url)
