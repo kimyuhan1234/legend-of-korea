@@ -11,6 +11,7 @@ import { getRegionName } from '@/lib/constants/regions';
 import { getThemeLabel, getThemeEmoji } from '@/lib/data/post-themes';
 import { toast } from '@/components/ui/use-toast';
 import { RankBadge } from '@/components/features/rank/RankBadge';
+import { useModalA11y } from '@/hooks/useModalA11y';
 
 export interface PostType {
   id: string;
@@ -85,6 +86,16 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
 
   // Confirm delete modal
   const [deleteConfirm, setDeleteConfirm] = useState(false);
+
+  // a11y: ESC + focus trap + previous active 복원 (lightbox / 삭제 확인)
+  const lightboxRef = useModalA11y<HTMLDivElement>(
+    lightboxIdx !== null,
+    () => setLightboxIdx(null),
+  );
+  const deleteRef = useModalA11y<HTMLDivElement>(
+    deleteConfirm,
+    () => setDeleteConfirm(false),
+  );
 
   // Edit mode
   const [editing, setEditing] = useState(false);
@@ -493,6 +504,10 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
       {/* ── Lightbox ── */}
       {lightboxIdx !== null && (
         <div
+          ref={lightboxRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="photo viewer"
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
           onClick={() => setLightboxIdx(null)}
         >
@@ -527,9 +542,15 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
 
       {/* ── Delete Confirm Modal ── */}
       {deleteConfirm && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div
+          ref={deleteRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="post-delete-confirm-title"
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+        >
           <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl">
-            <h3 className="text-lg font-black text-slate-800 mb-2">{t('deleteConfirmTitle')}</h3>
+            <h3 id="post-delete-confirm-title" className="text-lg font-black text-slate-800 mb-2">{t('deleteConfirmTitle')}</h3>
             <p className="text-sm text-slate-500 mb-6">{t('deleteConfirmMessage')}</p>
             <div className="flex gap-3">
               <button
