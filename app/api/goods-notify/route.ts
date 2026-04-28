@@ -12,10 +12,9 @@ export async function POST(req: NextRequest) {
 
     const supabase = await createServiceClient()
 
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("goods_notify_subscribers")
       .insert({ email: String(email).toLowerCase().trim(), locale: locale || "ko" })
-      .select()
 
     if (error) {
       if (error.code === "23505") {

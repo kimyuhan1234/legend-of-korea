@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic'
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   try {
     const supabase = await createClient();
 
@@ -24,10 +24,7 @@ export async function GET(req: NextRequest) {
       .gte('created_at', thirtyDaysAgo.toISOString())
       .order('created_at', { ascending: true });
 
-    // 2. 코스별 판매량
-    const { data: courseSales } = await supabase.rpc('get_course_sales_stats');
-    // If RPC doesn't exist, we can do it manually or assume it exists. 
-    // Let's do a manual join for now just in case.
+    // 2. 코스별 판매량 — 수동 join 로 처리 (RPC 미존재 케이스 대비)
     const { data: ordersWithCourses } = await supabase
       .from('orders')
       .select('id, total_price, courses(title)')
