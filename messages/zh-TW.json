@@ -1998,11 +1998,13 @@
       "long": { "name": "Long", "target": "一個月居住 / 遠端辦公" }
     },
     "features": {
-      "quest.unlimited": "全部任務無限制",
-      "kfood.dupe_match": "K-Food AI 配對 (110 條)",
-      "kfood.beauty": "K-Food 美容飲食 (31 種功效)",
-      "kfood.fusion": "融合食譜 (8 國 × 69 道)",
-      "spot.full": "SPOT 完整版 (30 濾鏡 + 9 城市)"
+      "quest": { "unlimited": "9 城市 70 任務無限制" },
+      "kfood": {
+        "dupe_match": "AI 料理配對 (110 組)",
+        "beauty": "美容食品 (31 功效)",
+        "fusion": "融合食譜 (8 國 69 種)"
+      },
+      "spot": { "full": "SPOT 完整版 (30 款濾鏡)" }
     },
     "lockScreen": {
       "cta": "查看通行證 →",

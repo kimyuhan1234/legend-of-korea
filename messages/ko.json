@@ -856,11 +856,13 @@
       }
     },
     "features": {
-      "quest.unlimited": "모든 미션 무제한",
-      "kfood.dupe_match": "K-Food AI 듀프매칭 (110개 데이터)",
-      "kfood.beauty": "K-Food 뷰티푸드 (31가지 효능)",
-      "kfood.fusion": "퓨전 레시피 (8개국 × 69종)",
-      "spot.full": "SPOT 풀버전 (30종 필터 + 9개 도시)"
+      "quest": { "unlimited": "9개 도시 × 70개 미션 무제한" },
+      "kfood": {
+        "dupe_match": "AI 듀프매칭 (110개)",
+        "beauty": "뷰티푸드 (31가지 효능)",
+        "fusion": "퓨전 레시피 (8개국 69종)"
+      },
+      "spot": { "full": "SPOT 풀버전 (30종 사진 필터)" }
     },
     "lockScreen": {
       "cta": "패스 보러 가기 →",

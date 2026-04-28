@@ -1998,11 +1998,13 @@
       "long": { "name": "Long", "target": "1 ヶ月滞在 / ワーケーション" }
     },
     "features": {
-      "quest.unlimited": "全ミッション無制限",
-      "kfood.dupe_match": "K-Food AI デュープマッチ (110 件)",
-      "kfood.beauty": "K-Food ビューティーフード (31 効能)",
-      "kfood.fusion": "フュージョンレシピ (8 ヶ国 × 69 種)",
-      "spot.full": "SPOT フル版 (30 フィルター + 9 都市)"
+      "quest": { "unlimited": "9 都市 70 ミッション無制限" },
+      "kfood": {
+        "dupe_match": "AI フードマッチ (110 マッチング)",
+        "beauty": "ビューティーフード (31 効能)",
+        "fusion": "フュージョンレシピ (8 カ国 69 種)"
+      },
+      "spot": { "full": "SPOT フル (30 種フィルター)" }
     },
     "lockScreen": {
       "cta": "パスを見る →",

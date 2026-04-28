@@ -1998,11 +1998,13 @@
       "long": { "name": "Long", "target": "Month-long stay / workation" }
     },
     "features": {
-      "quest.unlimited": "Unlimited missions",
-      "kfood.dupe_match": "K-Food AI Dupe Match (110 entries)",
-      "kfood.beauty": "K-Food Beauty Foods (31 effects)",
-      "kfood.fusion": "Fusion recipes (8 countries × 69 dishes)",
-      "spot.full": "SPOT full version (30 filters + 9 cities)"
+      "quest": { "unlimited": "Unlimited access to 70 quests in 9 cities" },
+      "kfood": {
+        "dupe_match": "AI Food Match (110 matches)",
+        "beauty": "Beauty Food (31 benefits)",
+        "fusion": "Fusion Recipes (69 across 8 countries)"
+      },
+      "spot": { "full": "SPOT Full Access (30 photo filters)" }
     },
     "lockScreen": {
       "cta": "See passes →",
