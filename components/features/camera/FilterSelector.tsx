@@ -25,8 +25,9 @@ const LOCK_MODAL_TEXT: Record<PassModalLocale, { title: string; desc: string; ct
 export function FilterSelector({ selectedFilter, onSelect, locale }: Props) {
   const [category, setCategory] = useState<FilterCategoryId>('all')
   const [showLockModal, setShowLockModal] = useState(false)
+  // PRD-PRICING-2026-001: 활성 패스 1 종 보유 시 모든 유료 콘텐츠 풀 액세스
   const { hasPass } = usePassStatus()
-  const unlocked = hasPass('story')
+  const unlocked = hasPass
 
   const filtered = useMemo(() => {
     if (category === 'all') return RETRO_FILTERS

@@ -24,7 +24,6 @@ import Image from 'next/image';
 import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton';
 import { SettingsSection, SettingsRow } from '@/components/features/mypage/SettingsSection';
 import { ProfileSettings } from '@/components/features/mypage/ProfileSettings';
-import { SubscriptionManage } from '@/components/features/mypage/SubscriptionManage';
 import { AccountDanger } from '@/components/features/mypage/AccountDanger';
 import { RankCard } from '@/components/features/dashboard/RankCard';
 import { MyPlannerCard } from '@/components/features/mypage/MyPlannerCard';
@@ -272,8 +271,6 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
 
           {/* 섹션 2: 결제 & 혜택 */}
           <SettingsSection icon="💳" title={t('settings.payment')}>
-            <SubscriptionManage locale={locale} />
-
             <SettingsRow
               icon="📦"
               label={t('settings.orders')}

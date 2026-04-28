@@ -25,8 +25,9 @@ const INITIAL_SHOW = 5
 export function CountryDupeList({ countryCode, data, locale }: CountryDupeListProps) {
   const t = useTranslations('dupe')
   const [showAll, setShowAll] = useState(false)
+  // PRD-PRICING-2026-001: 활성 패스 1 종 보유 시 모든 유료 콘텐츠 풀 액세스
   const { hasPass } = usePassStatus()
-  const unlocked = hasPass('live')
+  const unlocked = hasPass
 
   if (data.dupes.length === 0) return null
 

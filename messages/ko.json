@@ -830,6 +830,66 @@
     "blockedTitle": "생년월일 인증 기한이 지났습니다",
     "blockedBody": "계정 보호를 위해 자동 로그아웃되었습니다. 다시 로그인 후 생년월일을 입력해주세요."
   },
+  "pricing": {
+    "headline": "여행 기간에 맞는 패스 하나만 고르세요",
+    "subheadline": "구매 즉시 모든 유료 콘텐츠가 풀 액세스",
+    "footer_note": "한 번 구매하면 기간 동안 무제한 — 자동 갱신 없음, 환불은 미사용 시 7일 이내 가능합니다.",
+    "beta_disclaimer": "※ 표시 가격은 참고용이며, 베타 종료 후 정식 출시 시 변경될 수 있습니다.",
+    "cta_buy": "이 패스 구매하기",
+    "badge": {
+      "most_popular": "가장 인기"
+    },
+    "passes": {
+      "duration": "{days}일",
+      "daily": "일평균 ₩{daily}",
+      "short": {
+        "name": "Short",
+        "target": "주말 단기 여행자"
+      },
+      "standard": {
+        "name": "Standard",
+        "target": "1~2주 정통 여행자"
+      },
+      "long": {
+        "name": "Long",
+        "target": "한 달 살기 / 워케이션"
+      }
+    },
+    "features": {
+      "quest.unlimited": "모든 미션 무제한",
+      "kfood.dupe_match": "K-Food AI 듀프매칭 (110개 데이터)",
+      "kfood.beauty": "K-Food 뷰티푸드 (31가지 효능)",
+      "kfood.fusion": "퓨전 레시피 (8개국 × 69종)",
+      "spot.full": "SPOT 풀버전 (30종 필터 + 9개 도시)"
+    },
+    "lockScreen": {
+      "cta": "패스 보러 가기 →",
+      "mission_second": {
+        "title": "첫 미션 클리어! 🎉",
+        "description": "다음 모험은 ₩2,900부터 시작돼요"
+      },
+      "kfood_dupe_match": {
+        "title": "🤖 AI 듀프매칭",
+        "description": "당신 나라 음식과 비슷한 한국 음식을 찾아드려요\n110개의 매칭 데이터가 기다리고 있어요"
+      },
+      "kfood_beauty": {
+        "title": "💄 뷰티푸드",
+        "description": "피부·다이어트·면역력 — 효능별로 골라 먹는 한식\n31가지 효능 매칭"
+      },
+      "kfood_fusion": {
+        "title": "🌏 퓨전 레시피",
+        "description": "귀국 후에도 즐기는 한식 — 당신 나라 재료로\n8개국 × 69종 레시피"
+      },
+      "spot_full": {
+        "title": "📍 SPOT 풀버전",
+        "description": "30종 한국 컨셉 사진 필터로 인생샷 남기기\n9개 도시 핫플레이스 상세 가이드"
+      },
+      "generic": {
+        "title": "프리미엄 콘텐츠",
+        "description": "패스 구매로 모든 콘텐츠 잠금 해제"
+      }
+    }
+  },
   "discover": {
     "title": "한국, 이렇게 만나세요",
     "subtitle": "머무를 곳부터 즐길 거리까지 — 한곳에서 시작하는 한국 여행",
@@ -2005,9 +2065,6 @@
     "banner": {
       "message": "Founding Members 모집 중 · {joined}/{target}명 합류 · 정식 출시 시 특별 혜택"
     }
-  },
-  "pricing": {
-    "beta_disclaimer": "※ 표시 가격은 참고용이며, 베타 종료 후 정식 출시 시 변경될 수 있습니다."
   },
   "feedback": {
     "label": "의견 보내기",

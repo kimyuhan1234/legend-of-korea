@@ -1982,7 +1982,55 @@
     }
   },
   "pricing": {
-    "beta_disclaimer": "※ 显示价格仅供参考，正式上线时可能调整。"
+    "headline": "根据行程长度选择一张通行证",
+    "subheadline": "购买后立即解锁全部付费内容",
+    "footer_note": "有效期内无限使用 — 不会自动续费，未使用可在 7 天内退款。",
+    "beta_disclaimer": "※ 显示价格仅供参考，正式上线时可能调整。",
+    "cta_buy": "购买此通行证",
+    "badge": {
+      "most_popular": "最受欢迎"
+    },
+    "passes": {
+      "duration": "{days} 天",
+      "daily": "日均 ₩{daily}",
+      "short": { "name": "Short", "target": "周末短途旅客" },
+      "standard": { "name": "Standard", "target": "1-2 周旅客" },
+      "long": { "name": "Long", "target": "一个月居住 / 远程办公" }
+    },
+    "features": {
+      "quest.unlimited": "全部任务无限制",
+      "kfood.dupe_match": "K-Food AI 配对 (110 条)",
+      "kfood.beauty": "K-Food 美容饮食 (31 种功效)",
+      "kfood.fusion": "融合食谱 (8 国 × 69 道)",
+      "spot.full": "SPOT 完整版 (30 滤镜 + 9 城市)"
+    },
+    "lockScreen": {
+      "cta": "查看通行证 →",
+      "mission_second": {
+        "title": "首个任务通关！🎉",
+        "description": "下一次冒险从 ₩2,900 起"
+      },
+      "kfood_dupe_match": {
+        "title": "🤖 AI 配对",
+        "description": "找到与你国家相似的韩国美食\n110 条配对数据正在等候"
+      },
+      "kfood_beauty": {
+        "title": "💄 美容饮食",
+        "description": "护肤·瘦身·免疫力 — 按功效挑选的韩餐\n31 种功效匹配"
+      },
+      "kfood_fusion": {
+        "title": "🌏 融合食谱",
+        "description": "回国后仍可享用 — 用本国食材做韩餐\n8 国 × 69 道食谱"
+      },
+      "spot_full": {
+        "title": "📍 SPOT 完整版",
+        "description": "30 款韩式概念滤镜拍出心仪美照\n9 城市热门地详尽指南"
+      },
+      "generic": {
+        "title": "高级内容",
+        "description": "购买通行证以解锁全部内容"
+      }
+    }
   },
   "feedback": {
     "label": "发送反馈",

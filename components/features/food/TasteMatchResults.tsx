@@ -41,8 +41,9 @@ function getL(field: { ko: string; en: string; ja: string } | null | undefined, 
 
 export function TasteMatchResults({ topFoods, surprises, locale, isVisible }: TasteMatchResultsProps) {
   const t = useTranslations('dupe')
+  // PRD-PRICING-2026-001: 활성 패스 1 종 보유 시 모든 유료 콘텐츠 풀 액세스
   const { hasPass } = usePassStatus()
-  const unlocked = hasPass('live')
+  const unlocked = hasPass
 
   if (!isVisible || topFoods.length === 0) return null
 
