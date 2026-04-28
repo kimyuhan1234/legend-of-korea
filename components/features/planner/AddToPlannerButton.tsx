@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import { CrossTabToast } from './CrossTabToast'
-import { PassRequiredModal } from '@/components/shared/PassRequiredModal'
 import type { TabId } from '@/lib/data/cross-tab-recommendations'
 
 interface AddToPlannerButtonProps {
@@ -21,16 +20,8 @@ interface Warning {
   onConfirm: () => void
 }
 
-// 아이템 → 필요 패스 매핑 (서버와 동기화)
-// surprise, goods 는 누락(패스 불필요)
-const ITEM_PASS_MAP: Record<string, string> = {
-  food: 'live',
-  stay: 'live',
-  ootd: 'live',
-  quest: 'story',
-  diy: 'story',
-  transport: 'move',
-}
+// PRD-PRICING-2026-001: ITEM_PASS_MAP 폐기 — Planner 베타 무료, 추가 시 패스 체크 X.
+// 정식 출시 시 PRD 매트릭스에 따라 재도입 검토.
 
 const CITY_NAMES: Record<string, { ko: string; en: string; ja: string }> = {
   jeonju: { ko: '전주', en: 'Jeonju', ja: '全州' },
@@ -73,8 +64,7 @@ export function AddToPlannerButton({
   const [itemId, setItemId] = useState<string | null>(null)
   const [showConfirm, setShowConfirm] = useState(false)
   const [warning, setWarning] = useState<Warning | null>(null)
-  const [showPassModal, setShowPassModal] = useState(false)
-  const [requiredPassId, setRequiredPassId] = useState<string | null>(null)
+  // PRD-PRICING-2026-001: 패스 체크 모달 state 제거 (Planner 베타 무료)
 
   // 굿즈는 플래너에 담을 수 없음 (hooks 이후 early return)
   if (itemType === 'goods') return null
@@ -97,13 +87,9 @@ export function AddToPlannerButton({
         return
       }
 
-      // 서버 측 패스 게이팅 — 클라이언트 우회 방어
+      // PRD-PRICING-2026-001: Planner 베타 무료 — 서버 측 pass_required 분기 제거.
+      // 403 은 다른 이유 (인증 만료 등) 일 수 있으므로 단순히 idle 복귀.
       if (res.status === 403) {
-        const data = (await res.json().catch(() => null)) as { error?: string; requiredPass?: string } | null
-        if (data?.error === 'pass_required' && data.requiredPass) {
-          setRequiredPassId(data.requiredPass)
-          setShowPassModal(true)
-        }
         setState('idle')
         return
       }
@@ -138,27 +124,7 @@ export function AddToPlannerButton({
       return
     }
 
-    // 패스 체크 — 필요 패스 미보유 시 구매 유도 모달 (서버에서 재검증됨)
-    const requiredPass = ITEM_PASS_MAP[itemType]
-    if (requiredPass) {
-      try {
-        const passRes = await fetch('/api/passes/status')
-        if (passRes.ok) {
-          const passData = await passRes.json()
-          const hasPass =
-            passData.hasAllInOne || (Array.isArray(passData.passes) && passData.passes.includes(requiredPass))
-          if (!hasPass) {
-            setRequiredPassId(requiredPass)
-            setShowPassModal(true)
-            return
-          }
-        }
-        // passRes.ok 가 아니어도 일단 진행 — 서버에서 403 으로 막힘
-      } catch {
-        // 네트워크 오류 시에도 진행 — 서버가 최종 게이트키퍼
-      }
-    }
-
+    // PRD-PRICING-2026-001: 추가 시 패스 체크 제거 (Planner 베타 무료).
     // 기존 플랜 정보를 가져와서 검증
     let planCityId: string | undefined
     let existingItems: Array<{ item_type: string; item_data: Record<string, unknown> }> = []
@@ -335,14 +301,7 @@ export function AddToPlannerButton({
         />
       )}
 
-      {/* 패스 필요 모달 */}
-      {showPassModal && requiredPassId && (
-        <PassRequiredModal
-          locale={locale}
-          passId={requiredPassId}
-          onClose={() => setShowPassModal(false)}
-        />
-      )}
+      {/* PRD-PRICING-2026-001: PassRequiredModal 폐기 (Planner 베타 무료) */}
 
       {/* 경고 모달 */}
       {warning && (

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
-import { PassPricingSection } from '@/components/features/pass/PassPricingSection'
+import { PASS_TYPES, PASSES } from '@/lib/data/passes'
+import { PassCard } from '@/components/features/pricing/PassCard'
 import { getOgLocale, ALL_OG_LOCALES } from '@/lib/seo/og-locale'
 import { buildOgUrl } from '@/lib/seo/og-url'
 import { CategorySchema } from '@/components/seo'
@@ -10,9 +11,9 @@ interface Props {
 }
 
 /**
- * /pass 페이지 — robots noindex 의도적 유지.
- * 사유: Vercel Hobby 상업용 판단 회피 + 베타 가격 SEO 인덱싱 방지.
- * 메타 (title/description/OG) 는 풍부화하여 직접 링크 공유 / SNS 미리보기 품질만 확보.
+ * /pass 페이지 — PRD-PRICING-2026-001 적용.
+ * 4 패스 구독 → 3 패스 1 회 구매 (Short / Standard / Long).
+ * robots noindex 의도적 유지 (Vercel Hobby 상업용 회피 + 베타 가격 SEO 차단).
  */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
@@ -55,8 +56,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PassPage({ params }: Props) {
   const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'pricing' })
   const m = await getTranslations({ locale, namespace: 'metadata.pass' })
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
+
   return (
     <>
       <CategorySchema
@@ -65,10 +68,31 @@ export default async function PassPage({ params }: Props) {
         description={m('description')}
         url={`${siteUrl}/${locale}/pass`}
         image={`${siteUrl}/images/dokkaebi-hero.png`}
-        // All in One 패스 기준 가격 (₩19,900). 개별 패스는 후속 PR 에서 ItemList 로 분할.
-        price={{ amount: 19900, currency: 'KRW' }}
+        price={{ amount: PASSES.standard.priceKrw, currency: 'KRW' }}
       />
-      <PassPricingSection locale={locale} />
+
+      <main className="min-h-screen bg-cloud py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-4">
+          <header className="text-center mb-12">
+            <h1 className="text-3xl md:text-4xl font-black text-ink mb-3">
+              {t('headline')}
+            </h1>
+            <p className="text-stone text-sm md:text-base">
+              {t('subheadline')}
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+            {PASS_TYPES.map((type) => (
+              <PassCard key={type} pass={PASSES[type]} />
+            ))}
+          </div>
+
+          <p className="text-center text-xs text-stone mt-10 leading-relaxed">
+            {t('footer_note')}
+          </p>
+        </div>
+      </main>
     </>
   )
 }

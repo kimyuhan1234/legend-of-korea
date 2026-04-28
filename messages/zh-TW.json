@@ -1982,7 +1982,87 @@
     }
   },
   "pricing": {
-    "beta_disclaimer": "※ 顯示價格僅供參考，正式上線時可能調整。"
+    "headline": "根據行程長度選擇一張通行證",
+    "subheadline": "購買後立即解鎖全部付費內容",
+    "footer_note": "有效期內無限使用 — 不會自動續費，未使用可在 7 天內退款。",
+    "beta_disclaimer": "※ 顯示價格僅供參考，正式上線時可能調整。",
+    "cta_buy": "購買此通行證",
+    "badge": {
+      "most_popular": "最受歡迎"
+    },
+    "passes": {
+      "duration": "{days} 天",
+      "daily": "日均 ₩{daily}",
+      "short": { "name": "Short", "target": "週末短期旅客" },
+      "standard": { "name": "Standard", "target": "1-2 週旅客" },
+      "long": { "name": "Long", "target": "一個月居住 / 遠端辦公" }
+    },
+    "features": {
+      "quest.unlimited": "全部任務無限制",
+      "kfood.dupe_match": "K-Food AI 配對 (110 條)",
+      "kfood.beauty": "K-Food 美容飲食 (31 種功效)",
+      "kfood.fusion": "融合食譜 (8 國 × 69 道)",
+      "spot.full": "SPOT 完整版 (30 濾鏡 + 9 城市)"
+    },
+    "lockScreen": {
+      "cta": "查看通行證 →",
+      "mission_second": {
+        "title": "首個任務通關！🎉",
+        "description": "下一次冒險從 ₩2,900 起"
+      },
+      "kfood_dupe_match": {
+        "title": "🤖 AI 配對",
+        "description": "找到與你國家相似的韓國美食\n110 條配對資料正在等候"
+      },
+      "kfood_beauty": {
+        "title": "💄 美容飲食",
+        "description": "護膚·瘦身·免疫力 — 按功效挑選的韓餐\n31 種功效匹配"
+      },
+      "kfood_fusion": {
+        "title": "🌏 融合食譜",
+        "description": "回國後仍可享用 — 用本國食材做韓餐\n8 國 × 69 道食譜"
+      },
+      "spot_full": {
+        "title": "📍 SPOT 完整版",
+        "description": "30 款韓風概念濾鏡拍出心儀美照\n9 城市熱門地詳盡指南"
+      },
+      "generic": {
+        "title": "高級內容",
+        "description": "購買通行證以解鎖全部內容"
+      }
+    },
+    "checkout": {
+      "title": "結帳",
+      "duration": "有效期 {days} 天",
+      "passes": {
+        "short": { "name": "Short Pass" },
+        "standard": { "name": "Standard Pass" },
+        "long": { "name": "Long Pass" }
+      },
+      "cta": "立即支付",
+      "test_mode_cta": "測試發放",
+      "test_mode_notice": "TEST_MODE — 無需實際支付，立即發放通行證。",
+      "processing": "處理中...",
+      "error": {
+        "init_failed": "支付系統初始化失敗，請重新整理後再試。",
+        "not_ready": "支付系統尚未準備好。",
+        "purchase_failed": "通行證發放失敗。",
+        "payment_failed": "支付過程中發生錯誤。",
+        "already_active": "您已持有有效通行證。"
+      }
+    },
+    "success": {
+      "title": "通行證已啟用！🎉",
+      "description": "{type} 已可以使用。",
+      "expires_at": "到期日",
+      "cta_start": "開始任務 →"
+    },
+    "fail": {
+      "title": "支付失敗",
+      "description": "支付未完成，請重試。",
+      "cta_retry": "重試",
+      "cta_home": "首頁"
+    }
   },
   "feedback": {
     "label": "傳送意見",

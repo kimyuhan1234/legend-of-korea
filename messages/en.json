@@ -1982,7 +1982,87 @@
     }
   },
   "pricing": {
-    "beta_disclaimer": "* Prices shown are for reference only. Pricing is subject to change before official launch."
+    "headline": "Pick the pass that matches your trip",
+    "subheadline": "Full access to all premium content the moment you buy",
+    "footer_note": "Unlimited access during the period — no auto-renewal. Refunds available within 7 days if unused.",
+    "beta_disclaimer": "* Prices shown are for reference only. Pricing is subject to change before official launch.",
+    "cta_buy": "Buy this pass",
+    "badge": {
+      "most_popular": "Most popular"
+    },
+    "passes": {
+      "duration": "{days} days",
+      "daily": "₩{daily}/day",
+      "short": { "name": "Short", "target": "Weekend traveler" },
+      "standard": { "name": "Standard", "target": "1–2 week traveler" },
+      "long": { "name": "Long", "target": "Month-long stay / workation" }
+    },
+    "features": {
+      "quest.unlimited": "Unlimited missions",
+      "kfood.dupe_match": "K-Food AI Dupe Match (110 entries)",
+      "kfood.beauty": "K-Food Beauty Foods (31 effects)",
+      "kfood.fusion": "Fusion recipes (8 countries × 69 dishes)",
+      "spot.full": "SPOT full version (30 filters + 9 cities)"
+    },
+    "lockScreen": {
+      "cta": "See passes →",
+      "mission_second": {
+        "title": "First mission cleared! 🎉",
+        "description": "Your next adventure starts at ₩2,900"
+      },
+      "kfood_dupe_match": {
+        "title": "🤖 AI Dupe Match",
+        "description": "Find Korean foods similar to your country's favorites\n110 matched entries are waiting"
+      },
+      "kfood_beauty": {
+        "title": "💄 Beauty Foods",
+        "description": "Skin · diet · immunity — Korean food picked by effect\n31 effects matched"
+      },
+      "kfood_fusion": {
+        "title": "🌏 Fusion Recipes",
+        "description": "Korean food back home — with your country's ingredients\n8 countries × 69 recipes"
+      },
+      "spot_full": {
+        "title": "📍 SPOT Full Version",
+        "description": "30 Korea-themed photo filters for the perfect shot\nDetailed guides for 9 city hotspots"
+      },
+      "generic": {
+        "title": "Premium content",
+        "description": "Buy a pass to unlock everything"
+      }
+    },
+    "checkout": {
+      "title": "Checkout",
+      "duration": "Valid for {days} days",
+      "passes": {
+        "short": { "name": "Short Pass" },
+        "standard": { "name": "Standard Pass" },
+        "long": { "name": "Long Pass" }
+      },
+      "cta": "Pay now",
+      "test_mode_cta": "Activate (test)",
+      "test_mode_notice": "TEST_MODE — pass is issued instantly without a real charge.",
+      "processing": "Processing...",
+      "error": {
+        "init_failed": "Failed to initialize payment. Please refresh and try again.",
+        "not_ready": "Payment system not ready yet.",
+        "purchase_failed": "Failed to issue the pass.",
+        "payment_failed": "An error occurred during payment.",
+        "already_active": "You already have an active pass."
+      }
+    },
+    "success": {
+      "title": "Pass activated! 🎉",
+      "description": "Your {type} is ready to use.",
+      "expires_at": "Valid until",
+      "cta_start": "Start a quest →"
+    },
+    "fail": {
+      "title": "Payment failed",
+      "description": "The payment was not completed. Please try again.",
+      "cta_retry": "Try again",
+      "cta_home": "Home"
+    }
   },
   "feedback": {
     "label": "Send feedback",

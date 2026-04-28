@@ -1982,7 +1982,87 @@
     }
   },
   "pricing": {
-    "beta_disclaimer": "※ 表示価格は参考価格であり、ベータ版終了後の正式リリース時に変更される場合があります。"
+    "headline": "旅行期間に合うパスを 1 つお選びください",
+    "subheadline": "購入後すぐに全ての有料コンテンツがフルアクセス",
+    "footer_note": "期間中は使い放題 — 自動更新なし、未使用なら 7 日以内に返金可能。",
+    "beta_disclaimer": "※ 表示価格は参考価格であり、ベータ版終了後の正式リリース時に変更される場合があります。",
+    "cta_buy": "このパスを購入",
+    "badge": {
+      "most_popular": "一番人気"
+    },
+    "passes": {
+      "duration": "{days}日",
+      "daily": "1 日あたり ₩{daily}",
+      "short": { "name": "Short", "target": "週末の短期旅行者" },
+      "standard": { "name": "Standard", "target": "1〜2 週間の旅行者" },
+      "long": { "name": "Long", "target": "1 ヶ月滞在 / ワーケーション" }
+    },
+    "features": {
+      "quest.unlimited": "全ミッション無制限",
+      "kfood.dupe_match": "K-Food AI デュープマッチ (110 件)",
+      "kfood.beauty": "K-Food ビューティーフード (31 効能)",
+      "kfood.fusion": "フュージョンレシピ (8 ヶ国 × 69 種)",
+      "spot.full": "SPOT フル版 (30 フィルター + 9 都市)"
+    },
+    "lockScreen": {
+      "cta": "パスを見る →",
+      "mission_second": {
+        "title": "初ミッションクリア！🎉",
+        "description": "次の冒険は ₩2,900 から"
+      },
+      "kfood_dupe_match": {
+        "title": "🤖 AI デュープマッチ",
+        "description": "あなたの国の料理に似た韓国料理を見つけます\n110 件のマッチデータがお待ちしています"
+      },
+      "kfood_beauty": {
+        "title": "💄 ビューティーフード",
+        "description": "美肌・ダイエット・免疫力 — 効能別に選ぶ韓国料理\n31 種類の効能マッチ"
+      },
+      "kfood_fusion": {
+        "title": "🌏 フュージョンレシピ",
+        "description": "帰国後も楽しめる韓国料理 — あなたの国の食材で\n8 ヶ国 × 69 種のレシピ"
+      },
+      "spot_full": {
+        "title": "📍 SPOT フル版",
+        "description": "30 種の韓国コンセプトフィルターでベストショット\n9 都市のホットスポット詳細ガイド"
+      },
+      "generic": {
+        "title": "プレミアムコンテンツ",
+        "description": "パス購入で全コンテンツ解放"
+      }
+    },
+    "checkout": {
+      "title": "お支払い",
+      "duration": "{days}日間有効",
+      "passes": {
+        "short": { "name": "Short Pass" },
+        "standard": { "name": "Standard Pass" },
+        "long": { "name": "Long Pass" }
+      },
+      "cta": "お支払いへ",
+      "test_mode_cta": "テスト発行",
+      "test_mode_notice": "TEST_MODE — 実際の決済なしでパスが即時発行されます。",
+      "processing": "処理中...",
+      "error": {
+        "init_failed": "決済システムの初期化に失敗しました。再読み込みしてください。",
+        "not_ready": "決済システムがまだ準備中です。",
+        "purchase_failed": "パスの発行に失敗しました。",
+        "payment_failed": "決済処理中にエラーが発生しました。",
+        "already_active": "すでに有効なパスをお持ちです。"
+      }
+    },
+    "success": {
+      "title": "パスが有効になりました！🎉",
+      "description": "{type} の利用を開始できます。",
+      "expires_at": "有効期限",
+      "cta_start": "クエストを始める →"
+    },
+    "fail": {
+      "title": "お支払いに失敗しました",
+      "description": "決済が完了しませんでした。もう一度お試しください。",
+      "cta_retry": "再試行",
+      "cta_home": "ホーム"
+    }
   },
   "feedback": {
     "label": "ご意見を送る",

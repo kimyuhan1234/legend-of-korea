@@ -129,23 +129,28 @@ rm -rf .next node_modules && pnpm install && pnpm dev
 
 ---
 
-## ⚠️ 구독 결제 상태 (최종 배포 전까지 유지)
+## ⚠️ 요금제 모델 (PRD-PRICING-2026-001 적용)
 
-> **현재 `/api/subscription/create`는 실제 결제 연동 없이 DB 레코드만 생성한다.**
-> `paymentProvider='manual'`로 호출되며 Toss/Stripe API는 호출하지 않는다.
-> **최종 배포 전까지 이 상태를 그대로 유지할 것.**
-> 실제 결제 연동(Toss Billing / Stripe Subscriptions)은 배포 직전에만 추가한다.
+> **기존 구독 모델 (Move/Live/Story/All in One) 폐기 → 3 패스 1 회 구매 (Short/Standard/Long).**
+> `subscription_plans` / `user_subscriptions` / `credit_purchases` / `credit_usage` 테이블 모두 049/050 마이그레이션으로 DROP. 신규 `passes` 테이블 (047) 사용.
+> 자세한 사양: [docs/PRD-PRICING-2026-001.md](docs/PRD-PRICING-2026-001.md)
+
+**결제 — Toss 일반 결제 (Billing X)**
+- SDK: `@tosspayments/tosspayments-sdk` (이미 통합됨, [components/features/purchase/TossPaymentWidget.tsx](components/features/purchase/TossPaymentWidget.tsx))
+- 검증: [app/api/payments/toss/confirm/route.ts](app/api/payments/toss/confirm/route.ts) 재활용
+- 단발 결제 — paymentKey 1 회 검증 후 `passes` 레코드 생성
+
+**베타 → 정식 전환**
+- 베타: `TOSS_TEST_KEY` (실 결제 X), `TEST_MODE=true` 시 모든 사용자 풀 액세스
+- 정식: `TOSS_LIVE_KEY` 환경변수 교체 + `TEST_MODE=false` (한 줄 변경)
+- TEST_MODE 우회는 [lib/auth/pass.ts](lib/auth/pass.ts) 한 곳에서만 처리 (분산 X)
 
 **지금 해서는 안 되는 작업:**
-- `/api/subscription/create`에 Toss/Stripe 결제 호출 추가
-- 실제 카드 결제창 렌더링
-- Webhook 처리 엔드포인트 추가
-- 정기결제 갱신 크론 추가
+- 신규 `subscription_*` 테이블 추가 (모델 충돌)
+- `credits_remaining` / `monthly_credits` 컬럼 부활 시도
+- 패스 자동 갱신 / 정기결제 로직 추가 (1 회 구매 모델)
 
-**왜 유지하는가:**
-- 테스트 단계에서 실수로 카드가 청구되는 것을 방지
-- 현재는 UI·흐름 검증 단계이므로 DB 레코드만으로 충분
-- 결제 연동은 운영 배포 직전에 일괄 작업하여 사고 위험 최소화
+**Planner 베타 무료 — 정식 출시 시 가격 정책 재논의**
 
 ---
 

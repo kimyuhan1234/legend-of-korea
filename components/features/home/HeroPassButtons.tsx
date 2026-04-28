@@ -10,19 +10,19 @@ interface Props {
   locale: string
 }
 
+// PRD-PRICING-2026-001: 4 패스 구독 → 3 패스 1 회 구매 모델
 const PASS_BUTTONS = [
-  { id: 'move', name: 'Move', icon: '🚗', price: '₩6,900', href: '/pass/move', special: false },
-  { id: 'live', name: 'Live', icon: '🍜', price: '₩6,900', href: '/pass/live', special: false },
-  { id: 'story', name: 'Story', icon: '📖', price: '₩9,900', href: '/pass/story', special: false },
-  { id: 'allinone', name: 'All in One', icon: '👑', price: '₩19,900', href: '/pass', special: true },
+  { id: 'short',    name: 'Short',    icon: '⚡', price: '₩2,900', href: '/pass', special: false },
+  { id: 'standard', name: 'Standard', icon: '🌟', price: '₩4,900', href: '/pass', special: true  },
+  { id: 'long',     name: 'Long',     icon: '🏆', price: '₩7,900', href: '/pass', special: false },
 ]
 
 const HERO_PASS_LABEL: Record<string, string> = {
-  ko: '필요한 기능만 골라서, 부담 없이',
-  en: 'Pick only what you need, hassle-free',
-  ja: '必要な機能だけ選んで、気軽に',
-  'zh-CN': '只选你需要的，轻松无负担',
-  'zh-TW': '只選你需要的，輕鬆無負擔',
+  ko: '여행 기간에 맞는 패스 하나만 고르세요',
+  en: 'Pick the pass that matches your trip',
+  ja: '旅行期間に合うパスを 1 つお選びください',
+  'zh-CN': '根据行程长度选择一张通行证',
+  'zh-TW': '根據行程長度選擇一張通行證',
 }
 
 // PRD-PASS-TOGGLE: 4 카드 토글 헤더 i18n. 인라인 객체 패턴 (HERO_PASS_LABEL 동일).

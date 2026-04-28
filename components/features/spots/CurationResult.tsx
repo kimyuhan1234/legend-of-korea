@@ -264,8 +264,9 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
   const top2 = cityScores[1]
 
   const [showSecond, setShowSecond] = useState(false)
+  // PRD-PRICING-2026-001: 활성 패스 1 종 보유 시 모든 유료 콘텐츠 풀 액세스
   const { hasPass } = usePassStatus()
-  const unlocked = hasPass('move')
+  const unlocked = hasPass
 
   if (!top1) {
     return (

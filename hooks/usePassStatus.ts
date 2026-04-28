@@ -1,16 +1,21 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import type { PassType } from '@/lib/data/passes'
+
+export interface ActivePassClient {
+  id: string
+  type: PassType
+  expiresAt: string
+  durationDays: 7 | 15 | 30
+}
 
 export interface PassStatus {
   authenticated: boolean
-  passes: string[]
-  hasAllInOne: boolean
-  features: Record<string, boolean>
-  creditsRemaining: number
+  activePass: ActivePassClient | null
 }
 
-// 모듈 수준 캐시 — 페이지 전환 시에도 유지, /api/passes/status 는 세션당 1회만 호출
+// 모듈 수준 캐시 — 페이지 전환 시 재호출 방지 (세션당 1 회)
 let cachedStatus: PassStatus | null = null
 let inFlight: Promise<PassStatus | null> | null = null
 
@@ -35,6 +40,16 @@ async function fetchPassStatus(): Promise<PassStatus | null> {
   return inFlight
 }
 
+/**
+ * PRD-PRICING-2026-001: 클라이언트 패스 상태 hook.
+ *
+ * 사용처:
+ *   const { activePass, hasPass, loading } = usePassStatus()
+ *   if (!hasPass) return <LockScreen type="kfood_dupe_match" />
+ *
+ * 서버 컴포넌트에서는 lib/auth/pass.ts 의 getActivePass / hasActivePass
+ * 직접 호출 (round-trip 0).
+ */
 export function usePassStatus() {
   const [status, setStatus] = useState<PassStatus | null>(cachedStatus)
   const [loading, setLoading] = useState<boolean>(!cachedStatus)
@@ -58,20 +73,15 @@ export function usePassStatus() {
     }
   }, [])
 
-  const hasPass = (passId: string): boolean => {
-    if (!status) return false
-    return status.hasAllInOne || status.passes.includes(passId)
+  return {
+    activePass: status?.activePass ?? null,
+    hasPass: status?.activePass !== null && status?.activePass !== undefined,
+    authenticated: status?.authenticated ?? false,
+    loading,
   }
-
-  const hasFeature = (featureId: string): boolean => {
-    if (!status) return false
-    return status.features?.[featureId] ?? false
-  }
-
-  return { status, loading, hasPass, hasFeature }
 }
 
-// 테스트·명시적 초기화용 (로그아웃 등)
+/** 로그아웃 / 패스 구매 직후 캐시 무효화 */
 export function invalidatePassStatusCache(): void {
   cachedStatus = null
   inFlight = null

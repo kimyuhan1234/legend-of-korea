@@ -4,14 +4,16 @@ import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { PlannerHero } from './PlannerHero'
 import { PlannerPreview } from './PlannerPreview'
-import { PlannerSubscriptionWall } from './PlannerSubscriptionWall'
 import { PlannerCuration } from './PlannerCuration'
 import { PlannerTransport } from './PlannerTransport'
 import { PlannerSpotDistance } from './PlannerSpotDistance'
 import { PlannerFinalPlan } from './PlannerFinalPlan'
 import { PlannerTripSetup, type TripStyle } from './PlannerTripSetup'
 import { PlannerOotd } from './PlannerOotd'
-import type { PassId } from '@/lib/data/passes'
+
+// PRD-PRICING-2026-001: Planner 베타 무료 — SubscriptionWall 폐기, PassId 타입 deprecated.
+// ownedPassIds 는 호환성 위해 string[] alias 로 유지 (정식 출시 시 가격 정책 재논의).
+type PassId = string
 
 type ItemType = 'food' | 'stay' | 'diy' | 'quest' | 'ootd' | 'goods' | 'transport' | 'surprise'
 
@@ -46,9 +48,13 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
   const [plans, setPlans] = useState<Plan[]>([])
   const [totalItems, setTotalItems] = useState(0)
   const [loading, setLoading] = useState(true)
-  const [isSubscribed, setIsSubscribed] = useState(false)
-  const [ownedPassIds, setOwnedPassIds] = useState<PassId[]>([])
-  const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  // PRD-PRICING-2026-001: Planner 는 베타 무료 — 항상 true 유지
+  const [isSubscribed, setIsSubscribed] = useState(true)
+  // PRD-PRICING-2026-001: ownedPassIds 는 PlannerSubscriptionWall 폐기로 미사용 —
+  // setter 만 유지 (status fetch 호환성). 정식 출시 가격 정책 확정 시 제거.
+  const [, setOwnedPassIds] = useState<PassId[]>([])
+  // PRD-PRICING-2026-001: handleSubscribe 폐기로 setSuccessMessage 호출처 0
+  const [successMessage] = useState<string | null>(null)
 
   // 여행 기간/스타일/도시 (localStorage 보존)
   const [tripStart, setTripStart] = useState<string>('')
@@ -111,12 +117,11 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
           setTotalItems(d.totalItems || 0)
         }
 
+        // PRD-PRICING-2026-001: Planner 베타 무료 — 응답 무시하고 항상 활성 상태 유지
         if (mounted && passStatusRes.ok) {
-          const s = await passStatusRes.json()
-          const owned: PassId[] = Array.isArray(s.passes) ? s.passes : []
-          const hasTraffic = s.hasAllInOne || owned.includes('move')
-          setOwnedPassIds(owned)
-          setIsSubscribed(!!hasTraffic)
+          await passStatusRes.json().catch(() => null)
+          setOwnedPassIds([])
+          setIsSubscribed(true)
         }
       } finally {
         if (mounted) setLoading(false)
@@ -161,34 +166,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
     }
   }
 
-  const handleSubscribe = async (passId: string) => {
-    try {
-      const res = await fetch('/api/passes/purchase', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ passId }),
-      })
-
-      if (!res.ok) return
-
-      // 구매 성공 → 상태 재조회 (traffic 해제 여부 확인)
-      try {
-        const statusRes = await fetch('/api/passes/status', { cache: 'no-store' })
-        if (statusRes.ok) {
-          const data = await statusRes.json()
-          const owned: PassId[] = Array.isArray(data.passes) ? data.passes : []
-          setOwnedPassIds(owned)
-          setIsSubscribed(!!(data.hasAllInOne || owned.includes('move')))
-        }
-      } catch {
-        // ignore
-      }
-      setSuccessMessage(t('subscription.success'))
-      setTimeout(() => setSuccessMessage(null), 4000)
-    } catch {
-      // ignore
-    }
-  }
+  // PRD-PRICING-2026-001: handleSubscribe 는 PlannerSubscriptionWall 폐기로 호출처 0 → 제거됨.
 
   // 첫 번째 플랜 기준 (메인 플랜)
   const mainPlan = plans[0]
@@ -308,13 +286,7 @@ export function PlannerPageClient({ locale }: PlannerPageClientProps) {
           onResetAll={handleResetAll}
         />
 
-        {!isSubscribed && (
-          <PlannerSubscriptionWall
-            locale={locale}
-            ownedPassIds={ownedPassIds}
-            onSubscribe={handleSubscribe}
-          />
-        )}
+        {/* PRD-PRICING-2026-001: PlannerSubscriptionWall 폐기 (Planner 베타 무료) */}
 
         {/* 무료 유저: 블러 더미 플랜 + 타임라인 생성 애니메이션 */}
         {!isSubscribed && (
