@@ -24,6 +24,13 @@ export function useModalA11y<T extends HTMLElement = HTMLDivElement>(
 ): React.RefObject<T> {
   const modalRef = useRef<T>(null)
 
+  // onClose 가 inline arrow 일 때 부모 re-render 마다 effect 재실행되며
+  // focus 가 깜빡이는 문제를 ref 로 우회 — deps 는 [isOpen] 하나만 둔다.
+  const onCloseRef = useRef(onClose)
+  useEffect(() => {
+    onCloseRef.current = onClose
+  }, [onClose])
+
   useEffect(() => {
     if (!isOpen) return
 
@@ -41,7 +48,7 @@ export function useModalA11y<T extends HTMLElement = HTMLDivElement>(
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         e.stopPropagation()
-        onClose()
+        onCloseRef.current()
         return
       }
 
@@ -69,7 +76,7 @@ export function useModalA11y<T extends HTMLElement = HTMLDivElement>(
       document.removeEventListener("keydown", handleKey, true)
       previousActive?.focus()
     }
-  }, [isOpen, onClose])
+  }, [isOpen])
 
   return modalRef
 }

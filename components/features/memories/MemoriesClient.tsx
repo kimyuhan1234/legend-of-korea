@@ -13,6 +13,7 @@ import { Leaderboard } from '@/components/features/community/Leaderboard'
 import { ProfileBadges } from '@/components/features/mypage/ProfileBadges'
 import { DigitalPassport } from '@/components/features/mypage/DigitalPassport'
 import { LegendShop } from './LegendShop'
+import { useModalA11y } from '@/hooks/useModalA11y'
 import { RetroFilterCanvas } from '@/components/features/camera/RetroFilterCanvas'
 import { RETRO_FILTERS, applyFilterToFile } from '@/lib/camera/filters'
 
@@ -144,6 +145,16 @@ export function MemoriesClient({ locale }: Props) {
   const [pendingUploadFile, setPendingUploadFile] = useState<File | null>(null)
   const [uploadCaption, setUploadCaption] = useState('')
   const uploadInputRef = useRef<HTMLInputElement>(null)
+
+  // a11y: ESC + focus trap + previous active 복원 (업로드 필터 / lightbox)
+  const uploadModalRef = useModalA11y<HTMLDivElement>(
+    pendingUploadFile !== null,
+    () => setPendingUploadFile(null),
+  )
+  const lightboxRef = useModalA11y<HTMLDivElement>(
+    lightbox !== null,
+    () => setLightbox(null),
+  )
 
   // 댓글
   const [comments, setComments] = useState<CommentItem[]>([])
@@ -450,10 +461,16 @@ export function MemoriesClient({ locale }: Props) {
 
       {/* 업로드 필터 모달 */}
       {pendingUploadFile && (
-        <div className="fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4 overflow-y-auto">
+        <div
+          ref={uploadModalRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="memories-upload-title"
+          className="fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4 overflow-y-auto"
+        >
           <div className="bg-white rounded-3xl w-full max-w-lg p-6 my-auto space-y-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-black text-slate-800">{photoUi.upload}</h3>
+              <h3 id="memories-upload-title" className="text-lg font-black text-slate-800">{photoUi.upload}</h3>
               <button onClick={handleFilterCancel} aria-label="Close" className="w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center">
                 <X className="w-4 h-4 text-slate-600" />
               </button>
@@ -497,6 +514,10 @@ export function MemoriesClient({ locale }: Props) {
       {/* 라이트박스 */}
       {lightbox && (
         <div
+          ref={lightboxRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="photo viewer"
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
           onClick={() => setLightbox(null)}
         >
