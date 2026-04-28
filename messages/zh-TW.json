@@ -1370,18 +1370,25 @@
     }
   },
   "quest": {
+    "hub": {
+      "title": "韓國 9 城市任務",
+      "subtitle": "跟隨傳說，暢遊韓國",
+      "guide_link": "查看任務指南 →",
+      "meta_title": "QUEST",
+      "meta_description": "9 城市 70 個任務 — 成為韓國傳說的主角"
+    },
     "hero": {
       "headline": "成為韓國傳說的主角",
-      "subline": "訂閱 → 完成任務 → 獲取獎勵",
+      "subline": "選擇通行證 → 完成任務 → 獲取獎勵",
       "preview": "30秒預告",
-      "buy": "開始訂閱",
+      "buy": "查看通行證",
       "missions": "{count} 個任務"
     },
     "howItWorks": {
       "title": "如何運作",
       "step1": {
-        "title": "訂閱",
-        "desc": "每月6,900韓元立即解鎖所有城市任務"
+        "title": "購買通行證",
+        "desc": "₩2,900 起 — 在 7 / 15 / 30 天通行證中選擇"
       },
       "step2": {
         "title": "完成任務",

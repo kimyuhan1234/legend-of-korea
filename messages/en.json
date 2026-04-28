@@ -1370,18 +1370,25 @@
     }
   },
   "quest": {
+    "hub": {
+      "title": "Quests across 9 Korean cities",
+      "subtitle": "Follow the legends and travel through Korea",
+      "guide_link": "Read the mission guide →",
+      "meta_title": "QUEST",
+      "meta_description": "70 missions across 9 cities — Become the hero of a Korean legend"
+    },
     "hero": {
       "headline": "Become the Hero of a Korean Legend",
-      "subline": "Subscribe → Complete Missions → Earn Rewards",
+      "subline": "Pick a pass → Complete missions → Earn rewards",
       "preview": "30s Preview",
-      "buy": "Start Subscription",
+      "buy": "See passes",
       "missions": "{count} Missions"
     },
     "howItWorks": {
       "title": "How It Works",
       "step1": {
-        "title": "Subscribe",
-        "desc": "Unlock all city missions instantly for $5/month"
+        "title": "Buy a pass",
+        "desc": "From ₩2,900 — choose a 7 / 15 / 30 day pass"
       },
       "step2": {
         "title": "Complete Missions",

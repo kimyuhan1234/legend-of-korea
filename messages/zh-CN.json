@@ -1370,18 +1370,25 @@
     }
   },
   "quest": {
+    "hub": {
+      "title": "韩国 9 城市任务",
+      "subtitle": "跟随传说，畅游韩国",
+      "guide_link": "查看任务指南 →",
+      "meta_title": "QUEST",
+      "meta_description": "9 城市 70 个任务 — 成为韩国传说的主角"
+    },
     "hero": {
       "headline": "成为韩国传说的主角",
-      "subline": "订阅 → 完成任务 → 获取奖励",
+      "subline": "选择通行证 → 完成任务 → 获取奖励",
       "preview": "30秒预览",
-      "buy": "开始订阅",
+      "buy": "查看通行证",
       "missions": "{count}个任务"
     },
     "howItWorks": {
       "title": "如何参与",
       "step1": {
-        "title": "订阅",
-        "desc": "每月6,900韩元立即解锁所有城市任务"
+        "title": "购买通行证",
+        "desc": "₩2,900 起 — 在 7 / 15 / 30 天通行证中选择"
       },
       "step2": {
         "title": "完成任务",

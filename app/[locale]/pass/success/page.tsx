@@ -80,7 +80,7 @@ export default async function PassSuccessPage({ params, searchParams }: Props) {
         )}
 
         <Link
-          href={`/${locale}/courses`}
+          href={`/${locale}/quest`}
           className="inline-block px-8 py-3 bg-blossom-deep text-white rounded-xl font-bold hover:bg-blossom transition-colors"
         >
           {t('cta_start')}

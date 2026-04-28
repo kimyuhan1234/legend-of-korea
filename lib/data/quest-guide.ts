@@ -96,7 +96,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s2Step1Title: '코스 선택',
     s2Step1Items: ['전주·부산·서울·제주 등 9개 도시 코스 중 선택', '각 코스는 5~8개 미션으로 구성', '난이도: 쉬움 / 보통 / 어려움'],
     s2Step2Title: '패스 구매',
-    s2Step2Items: ['Move · Live · Story · All-in-One 중 선택', '패스가 있어야 미션 시작 가능', '패스 1개로 해당 도시 모든 미션 이용'],
+    s2Step2Items: ['Short (₩2,900 / 7일) · Standard (₩4,900 / 15일) · Long (₩7,900 / 30일) 중 선택', '패스가 있어야 미션 시작 가능', '활성 패스 1 개로 모든 도시 모든 미션 무제한'],
     s2Step3Title: '미션 시작',
     s2Step3Items: ['"미션 시작" 버튼을 눌러주세요', '첫 번째 미션 장소가 지도에 표시돼요', '지도를 보고 미션 장소로 이동!'],
 
@@ -199,7 +199,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s2Step1Title: 'コース選択',
     s2Step1Items: ['全州・釜山・ソウル・済州など9都市のコースから選択', '各コースは5〜8個のミッションで構成', '難易度: やさしい / ふつう / むずかしい'],
     s2Step2Title: 'パス購入',
-    s2Step2Items: ['Move・Live・Story・All-in-One から選択', 'パスがないとミッションを開始できません', 'パス1枚で該当都市の全ミッションを利用可能'],
+    s2Step2Items: ['Short (₩2,900 / 7日) ・ Standard (₩4,900 / 15日) ・ Long (₩7,900 / 30日) から選択', 'パスがないとミッションを開始できません', '有効なパス 1 枚で全都市・全ミッション無制限'],
     s2Step3Title: 'ミッション開始',
     s2Step3Items: ['「ミッション開始」ボタンをタップ', '最初のミッション場所が地図に表示されます', '地図を見てミッション場所へ移動!'],
 
@@ -302,7 +302,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s2Step1Title: 'Pick a Course',
     s2Step1Items: ['Choose from 9 city courses — Jeonju, Busan, Seoul, Jeju and more', 'Each course has 5–8 missions', 'Difficulty: Easy / Normal / Hard'],
     s2Step2Title: 'Buy a Pass',
-    s2Step2Items: ['Choose between Move · Live · Story · All-in-One', 'A pass is required to start missions', 'One pass unlocks every mission in that city'],
+    s2Step2Items: ['Pick Short (₩2,900 / 7d), Standard (₩4,900 / 15d), or Long (₩7,900 / 30d)', 'A pass is required to start missions', 'One active pass unlocks unlimited missions in every city'],
     s2Step3Title: 'Start Missions',
     s2Step3Items: ['Tap "Start Mission"', 'The first mission spot appears on the map', 'Follow the map and head to the location!'],
 
@@ -405,7 +405,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s2Step1Title: '选择课程',
     s2Step1Items: ['全州·釜山·首尔·济州等 9 个城市课程任选', '每个课程包含 5~8 个任务', '难度: 简单 / 普通 / 困难'],
     s2Step2Title: '购买通行证',
-    s2Step2Items: ['在 Move · Live · Story · All-in-One 中选择', '必须持有通行证才能开始任务', '一张通行证解锁该城市所有任务'],
+    s2Step2Items: ['在 Short (₩2,900 / 7天) · Standard (₩4,900 / 15天) · Long (₩7,900 / 30天) 中选择', '必须持有通行证才能开始任务', '一张有效通行证无限解锁所有城市所有任务'],
     s2Step3Title: '开始任务',
     s2Step3Items: ['点击"开始任务"按钮', '地图上显示第一个任务地点', '查看地图前往目的地!'],
 
@@ -508,7 +508,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s2Step1Title: '選擇課程',
     s2Step1Items: ['全州·釜山·首爾·濟州等 9 個城市課程任選', '每個課程包含 5~8 個任務', '難度: 簡單 / 普通 / 困難'],
     s2Step2Title: '購買通行證',
-    s2Step2Items: ['在 Move · Live · Story · All-in-One 中選擇', '必須持有通行證才能開始任務', '一張通行證解鎖該城市所有任務'],
+    s2Step2Items: ['在 Short (₩2,900 / 7天) · Standard (₩4,900 / 15天) · Long (₩7,900 / 30天) 中選擇', '必須持有通行證才能開始任務', '一張有效通行證無限解鎖所有城市所有任務'],
     s2Step3Title: '開始任務',
     s2Step3Items: ['點擊「開始任務」按鈕', '地圖上顯示第一個任務地點', '查看地圖前往目的地!'],
 

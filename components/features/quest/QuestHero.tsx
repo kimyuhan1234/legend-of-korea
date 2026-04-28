@@ -1,7 +1,8 @@
 'use client'
 
+import Link from 'next/link'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 
 interface QuestHeroProps {
   title: string
@@ -14,10 +15,7 @@ interface QuestHeroProps {
 
 export function QuestHero({ title, region, thumbnail, difficulty, duration, missionCount }: QuestHeroProps) {
   const t = useTranslations('quest')
-
-  const scrollToKit = () => {
-    document.getElementById('kit-purchase')?.scrollIntoView({ behavior: 'smooth' })
-  }
+  const locale = useLocale()
 
   const diffLabel: Record<string, string> = { easy: '⭐', medium: '⭐⭐', hard: '⭐⭐⭐' }
 
@@ -46,12 +44,13 @@ export function QuestHero({ title, region, thumbnail, difficulty, duration, miss
         </p>
 
         <div className="flex gap-3 mt-8">
-          <button
-            onClick={scrollToKit}
+          {/* PRD-PRICING-2026-001: scrollToKit 폐기 (#kit-purchase 영역 hotfix v5 에서 제거됨) → /pass 링크 */}
+          <Link
+            href={`/${locale}/pass`}
             className="px-6 py-3 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-sm font-bold hover:bg-[#7BC8BC] transition-colors"
           >
             {t('hero.buy')}
-          </button>
+          </Link>
         </div>
 
         <div className="flex gap-6 mt-10 text-slate text-sm">
