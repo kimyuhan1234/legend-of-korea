@@ -121,7 +121,7 @@ export function QuizMission({
           description: data.error || t('hintUseFailedDesc'),
         });
       }
-    } catch (_err) {
+    } catch {
       toast({
         variant: 'destructive',
         title: t('error'),

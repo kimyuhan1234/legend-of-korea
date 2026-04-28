@@ -1,8 +1,7 @@
 ﻿'use client'
 
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { usePathname } from 'next/navigation'
 import { HotelInputForm } from './HotelInputForm'
 import { PlannerResetButton } from './PlannerResetButton'
 import { PlannerEmptyGuide } from './PlannerEmptyGuide'
@@ -68,7 +67,6 @@ function getCityLabel(code: string, locale: string): string {
 
 export function PlannerPreview({ plans, locale, isSubscribed, onRemoveItem, onHotelSaved, onResetAll }: PlannerPreviewProps) {
   const t = useTranslations('planner')
-  const pathname = usePathname()
 
   const totalItemCount = plans.reduce((sum, p) => sum + p.plan_items.length, 0)
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})

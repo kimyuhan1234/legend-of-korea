@@ -11,7 +11,7 @@ interface AdCardProps {
   locale: string;
 }
 
-export function AdCard({ ad, locale }: AdCardProps) {
+export function AdCard({ ad, locale: _locale }: AdCardProps) {
   const t = useTranslations('community');
 
   return (

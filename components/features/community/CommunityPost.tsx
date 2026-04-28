@@ -57,7 +57,7 @@ export function CommunityPost({ post, locale, onLike, onComment }: CommunityPost
   const t = useTranslations('community');
   const [showSpoiler, setShowSpoiler] = useState(!post.is_spoiler);
   const [isLiked, setIsLiked] = useState(false); // Local state for immediate feedback
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [currentPhotoIndex] = useState(0);
 
   const handleLike = () => {
     setIsLiked(!isLiked);
