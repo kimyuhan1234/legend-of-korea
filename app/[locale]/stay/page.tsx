@@ -1,4 +1,6 @@
-export const revalidate = 3600
+// hotfix v8: TourAPI 의존 (lib/tour-api/stays) — 빌드 타임 timeout 발생.
+// force-dynamic 으로 첫 방문 시 SSR.
+export const dynamic = 'force-dynamic'
 
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'

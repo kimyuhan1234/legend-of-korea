@@ -1,4 +1,6 @@
-export const revalidate = 3600
+// hotfix v8: 메인 페이지 — getCurrentUser / Supabase 쿼리 등 server-side 호출 다수.
+// 빌드 타임 timeout 우회로 force-dynamic.
+export const dynamic = 'force-dynamic'
 
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'

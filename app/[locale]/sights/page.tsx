@@ -1,4 +1,6 @@
-export const revalidate = 3600
+// hotfix v8: TourAPI 의존 (getAllSpots) — 빌드 타임 60s timeout 발생.
+// force-dynamic 으로 첫 방문 시 SSR. fetch 의 next.revalidate 는 lib 내부에서 처리.
+export const dynamic = 'force-dynamic'
 
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'

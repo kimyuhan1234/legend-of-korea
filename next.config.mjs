@@ -12,6 +12,9 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // hotfix v8: 정적 페이지 생성 timeout 60s → 180s.
+  // 'use client' 페이지 (/traffic 등 28KB+ 모듈) 의 server-entry generation 여유 확보.
+  staticPageGenerationTimeout: 180,
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }]
   },

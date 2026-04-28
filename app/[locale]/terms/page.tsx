@@ -1,5 +1,8 @@
 import { Metadata } from 'next'
 
+// hotfix v8: 빌드 타임 timeout 우회 (큰 i18n 약관 본문 정적 generation 지연).
+export const dynamic = 'force-dynamic'
+
 interface Props { params: { locale: string } }
 
 const META: Record<string, { title: string; desc: string }> = {
