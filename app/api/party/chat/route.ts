@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
     if (error) throw error
 
     return NextResponse.json({ messages })
-  } catch (error) {
+  } catch {
     console.error('Party chat GET error')
     return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
     if (error) throw error
 
     return NextResponse.json({ success: true, message: data })
-  } catch (error) {
+  } catch {
     console.error('Party chat POST error')
     return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }

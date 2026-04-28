@@ -102,6 +102,8 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
 
   useEffect(() => {
     fetchPosts(null, true);
+    // fetchPosts 는 컴포넌트 내부 closure — themeFilter 변경 시에만 재실행 의도.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [themeFilter]);
 
   useEffect(() => {
@@ -115,6 +117,8 @@ export function CommunityFeed({ locale }: CommunityFeedProps) {
     );
     if (observerTarget.current) observer.observe(observerTarget.current);
     return () => observer.disconnect();
+    // fetchPosts 는 cursor 변경 시 trigger — 같은 reference 재호출 안전.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cursor, hasMore, loadingMore, loading]);
 
   function handleDelete(postId: string) {

@@ -81,7 +81,7 @@ export default function AdminB2BPage() {
           unit_price: 18000
         })
       }
-    } catch (error) {
+    } catch {
       toast({ title: "오류 발생", variant: "destructive" })
     }
   }
@@ -97,7 +97,7 @@ export default function AdminB2BPage() {
         toast({ title: "상태 변경 완료" })
         setB2BOrders(b2bOrders.map(o => o.id === orderId ? { ...o, status } : o))
       }
-    } catch (error) {
+    } catch {
       toast({ title: "오류 발생", variant: "destructive" })
     }
   }

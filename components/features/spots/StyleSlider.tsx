@@ -50,13 +50,13 @@ export function StyleSlider({ locale, onComplete, onSkip }: Props) {
   const cityScores = useMemo(() => calculateCityScores(preference), [preference])
   const top3 = cityScores.slice(0, 3)
 
-  const radarLabels: RadarLabels = {
+  const radarLabels: RadarLabels = useMemo(() => ({
     tradition: t('radar.tradition'),
     nature: t('radar.nature'),
     experience: t('radar.experience'),
     active: t('radar.active'),
     nightlife: t('radar.nightlife'),
-  }
+  }), [t])
   const userRadar = useMemo(() => preferenceToRadar(preference, radarLabels), [preference, radarLabels])
   const topCityRadar = useMemo(
     () => top3[0] ? cityToRadar(top3[0].city, radarLabels) : [],

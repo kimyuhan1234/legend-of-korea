@@ -6,7 +6,7 @@ import { QRScanner } from '@/components/features/missions/QRScanner';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, Info, MapPin, Sparkles } from 'lucide-react';
+import { ChevronLeft, MapPin, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 interface ScanPageProps {

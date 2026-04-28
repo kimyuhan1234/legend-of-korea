@@ -90,7 +90,7 @@ export function AffiliateLinks({ links, locale, className }: AffiliateLinksProps
     return acc
   }, {})
 
-  const handleLinkClick = async (linkId: string, url: string) => {
+  const handleLinkClick = async (linkId: string, _url: string) => {
     try {
       // 비동기로 클릭 로그 기록 (페이지 이동을 방해하지 않음)
       fetch("/api/affiliate/click", {

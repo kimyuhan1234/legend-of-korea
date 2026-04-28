@@ -5,9 +5,9 @@ import { Html5QrcodeScanner, Html5QrcodeSupportedFormats } from 'html5-qrcode';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { toast } from '@/components/ui/use-toast';
-import { Camera, Keyboard, Loader2, QrCode, ArrowRight, X } from 'lucide-react';
+import { Camera, Keyboard, QrCode, ArrowRight } from 'lucide-react';
 
 interface QRScannerProps {
   onScanSuccess: (decodedText: string) => void;
@@ -16,7 +16,6 @@ interface QRScannerProps {
 export function QRScanner({ onScanSuccess }: QRScannerProps) {
   const t = useTranslations('mission');
   const [manualCode, setManualCode] = useState('');
-  const [isVerifying, setIsVerifying] = useState(false);
   const [scanMode, setScanMode] = useState<'camera' | 'manual'>('camera');
   const scannerRef = useRef<Html5QrcodeScanner | null>(null);
 
@@ -38,7 +37,7 @@ export function QRScanner({ onScanSuccess }: QRScannerProps) {
           scanner.clear();
           onScanSuccess(decodedText);
         },
-        (error) => {
+        () => {
           // Silent errors during scanning
         }
       );

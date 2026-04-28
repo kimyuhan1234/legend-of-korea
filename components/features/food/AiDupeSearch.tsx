@@ -146,7 +146,7 @@ export function AiDupeSearch({ locale }: AiDupeSearchProps) {
           {results.length === 0 ? (
             <p className="text-center text-sm text-stone py-6">{t('ai.noResult')}</p>
           ) : (
-            results.map((match, i) => (
+            results.map((match, _i) => (
               <div
                 key={match.foodId}
                 className="bg-snow rounded-2xl border border-mist p-5 hover:border-mint transition-colors"

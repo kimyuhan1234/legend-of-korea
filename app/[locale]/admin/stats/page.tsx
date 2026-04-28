@@ -3,15 +3,12 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { 
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
+import {
+  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   BarChart, Bar, PieChart, Pie, Cell, Legend, AreaChart, Area
 } from "recharts"
-import { 
-  TrendingUp, 
-  Users, 
-  ShoppingBag, 
-  Zap, 
+import {
+  TrendingUp,
   MousePointer2,
   Globe2,
   CheckCircle2,
@@ -246,7 +243,7 @@ export default function AdminStatsPage() {
             </div>
             <div className="mt-8 p-4 bg-white/5 rounded-2xl border border-white/10">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-slate-300">최근 클릭 (Today)</span>
+                <span className="text-sm font-medium text-slate-500">최근 클릭 (Today)</span>
                 <span className="text-sm font-black text-blossom-deep">+{Math.floor(data.affiliate.length * 0.1)}</span>
               </div>
             </div>

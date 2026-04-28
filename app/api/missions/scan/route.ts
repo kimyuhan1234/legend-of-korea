@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 4. 미션 상태 업데이트 (unlocked로 변경)
-    const { data: progress, error: progressError } = await supabase
+    const { error: progressError } = await supabase
       .from('mission_progress')
       .upsert({
         user_id: user.id,

@@ -21,7 +21,7 @@ import {
   SelectValue 
 } from "@/components/ui/select"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Map, Edit2, Save, X, QrCode, Lock, Zap, Eye } from "lucide-react"
+import { Edit2, Save, X, QrCode } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 
 export default function AdminMissionsPage() {
@@ -81,7 +81,7 @@ export default function AdminMissionsPage() {
         setMissions(missions.map(m => m.id === editingId ? { ...m, ...editForm } : m))
         setEditingId(null)
       }
-    } catch (error) {
+    } catch {
       toast({ title: "오류 발생", variant: "destructive" })
     }
   }

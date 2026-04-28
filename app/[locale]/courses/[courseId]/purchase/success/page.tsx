@@ -26,7 +26,6 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
   const t = await getTranslations({ locale, namespace: "purchase" })
 
   let confirmedOrderId = orderId || session_id || ""
-  let paymentConfirmed = false
   let paymentError = ""
 
   // 코스 region 조회 (ZEP 스페이스 매칭용)
@@ -55,7 +54,6 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
       })
       const data = await res.json()
       if (res.ok) {
-        paymentConfirmed = true
         confirmedOrderId = data.orderId
       } else {
         paymentError = data.error || "결제 승인 실패"
@@ -63,11 +61,6 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
     } catch {
       paymentError = "결제 확인 중 오류가 발생했습니다"
     }
-  }
-
-  // 외부 결제 세션 성공 (session_id가 있으면 결제 완료 처리)
-  if (session_id) {
-    paymentConfirmed = true
   }
 
   if (paymentError) {

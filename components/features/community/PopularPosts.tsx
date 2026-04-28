@@ -48,7 +48,7 @@ export function PopularPosts() {
         {posts.map((post, idx) => (
           <Link key={post.id} href={`/${locale}/community?post=${post.id}`} className="group block">
             <div className="flex gap-3">
-              <span className="font-black text-slate-300 text-lg tabular-nums shrink-0 mt-0.5 group-hover:text-blossom-deep transition-colors">
+              <span className="font-black text-slate-400 text-lg tabular-nums shrink-0 mt-0.5 group-hover:text-blossom-deep transition-colors">
                 {idx + 1}
               </span>
               <div className="flex-1 min-w-0 flex flex-col justify-center">

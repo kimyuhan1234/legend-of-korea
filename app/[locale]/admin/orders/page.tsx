@@ -11,15 +11,14 @@ import {
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
 } from "@/components/ui/select"
-import { Search, Save, Truck, ExternalLink } from "lucide-react"
+import { Search, Truck } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { maskName, maskPhone } from "@/lib/utils/masking"
 
@@ -57,7 +56,7 @@ export default function AdminOrdersPage() {
         toast({ title: "상태 변경 완료", description: `주문 상태가 ${status}로 변경되었습니다.` })
         setOrders(orders.map(o => o.id === orderId ? { ...o, shipping_status: status } : o))
       }
-    } catch (error) {
+    } catch {
       toast({ title: "오류 발생", description: "상태 변경 중 오류가 발생했습니다.", variant: "destructive" })
     }
   }
@@ -72,7 +71,7 @@ export default function AdminOrdersPage() {
       if (res.ok) {
         toast({ title: "운송장 저장 완료", description: "운송장 번호가 업데이트되었습니다." })
       }
-    } catch (error) {
+    } catch {
       toast({ title: "오류 발생", description: "저장 중 오류가 발생했습니다.", variant: "destructive" })
     }
   }
