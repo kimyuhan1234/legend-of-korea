@@ -1499,18 +1499,25 @@
     }
   },
   "quest": {
+    "hub": {
+      "title": "한국 9개 도시 미션",
+      "subtitle": "전설을 따라 한국을 여행하세요",
+      "guide_link": "미션 가이드 보기 →",
+      "meta_title": "QUEST",
+      "meta_description": "9개 도시 70개 미션 — 한국 전설의 주인공이 되세요"
+    },
     "hero": {
       "headline": "한국 전설의 주인공이 되세요",
-      "subline": "구독 → 미션 수행 → 보상 획득",
+      "subline": "패스 선택 → 미션 수행 → 보상 획득",
       "preview": "30초 미리보기",
-      "buy": "구독 시작하기",
+      "buy": "패스 보러 가기",
       "missions": "{count}개 미션"
     },
     "howItWorks": {
       "title": "이렇게 진행됩니다",
       "step1": {
-        "title": "구독하기",
-        "desc": "월 ₩6,900로 모든 도시의 미션을 즉시 해금하세요"
+        "title": "패스 구매",
+        "desc": "₩2,900부터 — 7 / 15 / 30 일 이용권 중 선택"
       },
       "step2": {
         "title": "미션을 수행하세요",
