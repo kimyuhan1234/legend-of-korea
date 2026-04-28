@@ -243,7 +243,7 @@ export default function AdminStatsPage() {
             </div>
             <div className="mt-8 p-4 bg-white/5 rounded-2xl border border-white/10">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-slate-300">최근 클릭 (Today)</span>
+                <span className="text-sm font-medium text-slate-500">최근 클릭 (Today)</span>
                 <span className="text-sm font-black text-blossom-deep">+{Math.floor(data.affiliate.length * 0.1)}</span>
               </div>
             </div>

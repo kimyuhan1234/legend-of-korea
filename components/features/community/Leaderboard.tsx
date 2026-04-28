@@ -136,7 +136,7 @@ export function Leaderboard({ locale }: Props) {
           <div className="text-center py-10 space-y-2">
             <div className="text-4xl">🏔️</div>
             <p className="text-sm font-bold text-slate-500">{t('leaderboard.empty')}</p>
-            <p className="text-xs text-slate-300">{t('leaderboard.challenge')}</p>
+            <p className="text-xs text-slate-500">{t('leaderboard.challenge')}</p>
           </div>
         )}
 
