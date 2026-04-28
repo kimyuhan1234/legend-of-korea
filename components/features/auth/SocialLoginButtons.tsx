@@ -38,6 +38,12 @@ const SOCIAL_PROVIDERS = [
       </svg>
     ),
   },
+  // TODO: 정식 배포 후 LINE OAuth 활성화 — 아래 객체 주석 해제로 즉시 복원.
+  //   - Supabase 는 LINE 기본 미지원 → Custom OAuth Provider 설정 필요
+  //   - LINE Developers 콘솔에서 Channel 생성 + Redirect URI 등록
+  //   - lib/auth/actions.ts 의 provider 타입 / handleSocialLogin signature
+  //     ('kakao' | 'google' | 'line') 는 그대로 보존 — 활성화 시 즉시 사용
+  /*
   {
     id: "line" as const,
     label: { ko: "LINE으로 시작하기", ja: "LINEで始める", en: "Continue with LINE" },
@@ -51,9 +57,10 @@ const SOCIAL_PROVIDERS = [
       </svg>
     ),
   },
+  */
 ]
 
-export function SocialLoginButtons({ locale, mode }: SocialLoginButtonsProps) {
+export function SocialLoginButtons({ locale, mode: _mode }: SocialLoginButtonsProps) {
   const [loading, setLoading] = useState<string | null>(null)
 
   const handleSocialLogin = async (provider: "kakao" | "google" | "line") => {
