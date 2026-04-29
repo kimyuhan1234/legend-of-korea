@@ -1,6 +1,7 @@
 ﻿'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { FoodEmojiThumb } from '@/components/features/food/FoodEmojiThumb'
@@ -89,23 +90,32 @@ function renderDupeItem(item: DupeItem, countryCode: string, locale: string, t: 
       className="bg-white rounded-xl p-4 border border-mist hover:border-mint transition-colors"
     >
       <div className="flex gap-3">
-        {/* 한국 음식 이미지 */}
-        {korean.image && (
-          <div className="shrink-0 relative">
-            <Link
-              href={`/${locale}/food/dupe/${item.regionCode}/${korean.id}`}
-              className="absolute inset-0 z-[1] rounded-lg"
-              aria-label={getL(korean.name, locale)}
-            />
-            <div className="relative w-16 h-16 rounded-lg overflow-hidden">
+        {/* 한국 음식 썸네일 — TourAPI 이미지 우선 + 이모지 fallback */}
+        <div className="shrink-0 relative">
+          <Link
+            href={`/${locale}/food/dupe/${item.regionCode}/${korean.id}`}
+            className="absolute inset-0 z-[1] rounded-lg"
+            aria-label={getL(korean.name, locale)}
+          />
+          <div className="relative w-16 h-16 rounded-lg overflow-hidden">
+            {korean.image ? (
+              <Image
+                src={korean.image}
+                alt={getL(korean.name, locale)}
+                fill
+                sizes="64px"
+                className="object-cover"
+                unoptimized
+              />
+            ) : (
               <FoodEmojiThumb
                 food={{ name: korean.name, tags: [] }}
                 size="text-3xl"
                 bordered={false}
               />
-            </div>
+            )}
           </div>
-        )}
+        </div>
 
         <div className="flex-1 min-w-0">
           {/* 외국 → 한국 */}
