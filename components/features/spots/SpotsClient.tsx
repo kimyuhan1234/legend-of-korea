@@ -77,7 +77,9 @@ export function SpotsClient({ initialSpots, locale }: Props) {
                   }`}
                 >
                   <tab.Icon className="w-4 h-4" />
-                  <span className="hidden md:inline">{t(tab.labelKey)}</span>
+                  {/* hotfix: 모바일에서 라벨 노출 — 'hidden md:inline' 제거.
+                      컨테이너가 overflow-x-auto 라 5 탭 가로 스크롤 가능. */}
+                  <span>{t(tab.labelKey)}</span>
                 </button>
               )
             })}
