@@ -78,7 +78,7 @@ function findHeaderRow() {
     )
     if (hasNameKo) return i
   }
-  return 2 // 사용자 명시 fallback (Excel row 3 — 0-indexed 2)
+  return 1 // fallback (Excel row 2 — 0-indexed 1, 빈 Col 1 자동 trim 후 기준)
 }
 
 const HEADER_ROW = findHeaderRow()
@@ -86,11 +86,13 @@ const headerCells = rows[HEADER_ROW] || []
 console.log(`[xlsx] header row: ${HEADER_ROW} (Excel row ${HEADER_ROW + 1})`)
 console.log(`[xlsx] header: ${headerCells.map((c) => c ?? '').join(' | ').slice(0, 300)}`)
 
-// 헤더 검증 — row[3] 이 '요리명' 포함해야 정상 (한식진흥원 800선 기준)
-if (!headerCells[3] || !String(headerCells[3]).includes('요리명')) {
-  console.error('[error] 헤더 인식 실패. row[3] 가 "요리명" 포함하지 않음.')
-  console.error(`  현재 row[3]: ${JSON.stringify(headerCells[3])}`)
-  console.error('  실제 헤더 row 위치 + row[3] 컬럼 직접 확인 후 스크립트 조정 필요.')
+// 헤더 검증 — row[2] 가 '요리명' 포함해야 정상 (한식진흥원 800선 기준).
+// hotfix v2: sheet_to_json({header:1}) 가 빈 Col 1 자동 trim → 0-indexed 시작이
+// Excel Col B (요리번호) 부터. 따라서 요리명 인덱스는 row[3] 가 아닌 row[2].
+if (!headerCells[2] || !String(headerCells[2]).includes('요리명')) {
+  console.error('[error] 헤더 인식 실패. row[2] 가 "요리명" 포함하지 않음.')
+  console.error(`  현재 row[2]: ${JSON.stringify(headerCells[2])}`)
+  console.error('  실제 헤더 row 위치 + row[2] 컬럼 직접 확인 후 스크립트 조정 필요.')
   process.exit(1)
 }
 
@@ -98,29 +100,29 @@ const records = []
 for (let i = HEADER_ROW + 1; i < rows.length; i++) {
   const row = rows[i]
   if (!row) continue
-  // 한식진흥원 800선 컬럼 매핑 (사용자 명시):
-  //   row[1] 요리번호 / row[2] 카테고리 / row[3] 요리명(한글) / row[4] 라틴어
-  //   row[5] 요리명(중복 한글) — skip / row[6] 설명(한글)
-  //   row[7] 영어 요리명 / row[8] 영어 설명
-  //   row[9] 일본어 요리명 / row[10] 일본어 설명
-  //   row[11] 중문1 요리명 / row[12] 중문1 설명
-  //   row[13] 중문2 요리명 / row[14] 중문2 설명
-  const name_ko = row[3]
+  // 한식진흥원 800선 컬럼 매핑 (hotfix v2 — 빈 Col 1 trim 반영, -1 오프셋):
+  //   row[0] 요리번호 / row[1] 카테고리 / row[2] 요리명(한글) / row[3] 라틴어
+  //   row[4] 요리명(중복 한글) — skip / row[5] 설명(한글)
+  //   row[6] 영어 요리명 / row[7] 영어 설명
+  //   row[8] 일본어 요리명 / row[9] 일본어 설명
+  //   row[10] 중문1 요리명 / row[11] 중문1 설명
+  //   row[12] 중문2 요리명 / row[13] 중문2 설명
+  const name_ko = row[2]
   if (!name_ko || typeof name_ko !== 'string') continue
   records.push({
-    id: row[1],
-    category: row[2],
+    id: row[0],
+    category: row[1],
     name_ko: String(name_ko).trim(),
-    latin: row[4],
-    desc_ko: row[6],
-    name_en: row[7],
-    desc_en: row[8],
-    name_ja: row[9],
-    desc_ja: row[10],
-    name_zh_cn: row[11],
-    desc_zh_cn: row[12],
-    name_zh_tw: row[13],
-    desc_zh_tw: row[14],
+    latin: row[3],
+    desc_ko: row[5],
+    name_en: row[6],
+    desc_en: row[7],
+    name_ja: row[8],
+    desc_ja: row[9],
+    name_zh_cn: row[10],
+    desc_zh_cn: row[11],
+    name_zh_tw: row[12],
+    desc_zh_tw: row[13],
   })
 }
 console.log(`[hansik] records: ${records.length}`)
