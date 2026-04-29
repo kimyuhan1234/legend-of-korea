@@ -9,7 +9,7 @@ import { HeroPassButtons } from '@/components/features/home/HeroPassButtons'
 import { HomeFeatureCarousel } from '@/components/features/home/HomeFeatureCarousel'
 import { SlideFeatureDupe } from '@/components/features/home/SlideFeatureDupe'
 import { SlideFeaturePlanner } from '@/components/features/home/SlideFeaturePlanner'
-import { HomeCommunityPreview } from '@/components/features/home/HomeCommunityPreview'
+import { SlideHomeImage } from '@/components/features/home/SlideHomeImage'
 import { getOgLocale, ALL_OG_LOCALES } from '@/lib/seo/og-locale'
 import { buildOgUrl } from '@/lib/seo/og-url'
 
@@ -57,6 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = params
   const t = await getTranslations({ locale, namespace: 'home' })
+  const tm = await getTranslations({ locale, namespace: 'home.memories' })
 
   return (
     <div className="bg-snow has-sticky-cta">
@@ -66,7 +67,8 @@ export default async function HomePage({ params }: Props) {
       {/* 섹션 2: 패스 버튼 + 비디오 (구 HeroSection — 결제 동선) */}
       <HeroPassButtons cta={t('signup')} locale={locale} />
 
-      {/* 섹션 3: 자동 슬라이드 캐러셀 (DUPE + 플래너) — P1-7 에서 HomeTabExplorer 제거됨 */}
+      {/* 섹션 3: 자동 슬라이드 캐러셀 — 4 슬라이드 통합 (Dupe / Planner / Memorise / Discover).
+          이전 별도 HomeCommunityPreview 캐러셀을 흡수. */}
       <HomeFeatureCarousel>
         <SlideFeatureDupe
           locale={locale}
@@ -80,10 +82,21 @@ export default async function HomePage({ params }: Props) {
           subtitle={t('plannerSubtitle')}
           cta={t('plannerCta')}
         />
+        <SlideHomeImage
+          title={tm('slide1Title')}
+          subtitle={tm('slide1Subtitle')}
+          cta={tm('slide1Cta')}
+          href={`/${locale}/memories`}
+          image="/images/home/memories-slide.png"
+        />
+        <SlideHomeImage
+          title={tm('slide2Title')}
+          subtitle={tm('slide2Subtitle')}
+          cta={tm('slide2Cta')}
+          href={`/${locale}/sights`}
+          image="/images/home/spot-slide.png"
+        />
       </HomeFeatureCarousel>
-
-      {/* 섹션 5: 커뮤니티 프리뷰 */}
-      <HomeCommunityPreview locale={locale} />
     </div>
   )
 }
