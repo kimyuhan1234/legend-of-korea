@@ -30,6 +30,7 @@ const SOURCE_DIR = 'data/phoko-images'
 const OUTPUT_DIR = 'data/phoko-renamed'
 const CREDITS_PATH = 'data/phoko-credits.json'
 const LOG_PATH = 'data/phoko-rename-log.json'
+const ALIASES_PATH = 'data/phoko-aliases.json'
 const DUPES_PATH = 'lib/data/food-dupes.ts'
 const ENRICHED_PATH = 'lib/data/hansik-enriched.json'
 
@@ -65,6 +66,10 @@ if (existsSync(ENRICHED_PATH)) {
   console.log(`[hansik] enriched matches: ${Object.keys(hansikMap).length}`)
 }
 
+// 수동 alias — 자동 매칭 실패 케이스 (예: 치킨 → seoul-chimaek)
+const aliases = existsSync(ALIASES_PATH) ? JSON.parse(readFileSync(ALIASES_PATH, 'utf8')) : {}
+console.log(`[aliases] manual mappings: ${Object.keys(aliases).length}`)
+
 // ────────────────────────────────────────────────
 // 파일 스캔
 // ────────────────────────────────────────────────
@@ -91,6 +96,13 @@ function findMatch(targetName) {
   const targetNorm = normalize(targetName)
   const targetStripped = targetName.replace(REGION_PREFIX, '').trim()
   const targetStrippedNorm = normalize(targetStripped)
+
+  // 0. ALIAS (수동 매핑 — 최우선) — 자동 매칭 실패 케이스 (예: 치킨 → seoul-chimaek)
+  const aliasId = aliases[targetName] || aliases[targetStripped]
+  if (aliasId) {
+    const f = foodMap.find((x) => x.id === aliasId)
+    if (f) return { food: f, type: 'alias' }
+  }
 
   // 1. exact (정규화)
   let f = foodMap.find((x) => normalize(x.name_ko) === targetNorm)
