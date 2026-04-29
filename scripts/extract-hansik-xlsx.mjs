@@ -147,28 +147,73 @@ console.log(`[dupes] foods: ${dupes.length}`)
 // 매칭
 // ────────────────────────────────────────────────
 
-const REGION_PREFIX = /^(안동|전주|서울|부산|제주|경주|통영|천안|용인|이천|속초|여수|광주|대구|인천|수원|대전|춘천|강릉|영광|부안|영주|남원|홍성|보성|군산|진주|순천|광양)\s*/
+// hotfix v3 — 매칭 알고리즘 5 단계 (정규화 + suffix + keyword 추가)
+const REGION_PREFIX = /^(안동|전주|서울|부산|제주|경주|통영|천안|용인|이천|속초|여수|광주|대구|인천|수원|대전|춘천|강릉|영광|부안|영주|남원|홍성|보성|군산|진주|순천|광양|서울식|전주식|경주식|이천식)\s*/
+
+const SUFFIX_TO_TRY = ['', '정식', '상']
+const COMMON_SUFFIXES = ['찌개', '국밥', '국수', '탕', '갈비', '비빔밥', '전골', '구이', '볶음', '조림', '무침', '밥']
+
+function normalizeForMatch(name) {
+  return String(name)
+    .replace(/\s+/g, '')
+    .replace(/\([^)]*\)/g, '')
+    .toLowerCase()
+}
+
+function extractKeywords(name) {
+  const result = [name]
+  for (const sfx of COMMON_SUFFIXES) {
+    if (name.endsWith(sfx)) {
+      result.push(sfx)
+      const base = name.slice(0, -sfx.length)
+      if (base.length >= 2) result.push(base)
+    }
+  }
+  if (name.length >= 4) result.push(name.slice(0, 3))
+  return [...new Set(result)]
+}
 
 function findMatch(dupeName) {
-  const exact = records.find((r) => r.name_ko === dupeName)
-  if (exact) return { record: exact, type: 'exact' }
+  const dupeNorm = normalizeForMatch(dupeName)
+  const stripped = dupeName.replace(REGION_PREFIX, '').trim()
+  const strippedNorm = normalizeForMatch(stripped)
 
-  const stripped = dupeName.replace(REGION_PREFIX, '')
+  // 1. 정확 매칭 (정규화 — 공백 / 괄호 제거 후)
+  let m = records.find((r) => normalizeForMatch(r.name_ko) === dupeNorm)
+  if (m) return { record: m, type: 'exact' }
+
+  // 2. 지역 prefix 제거 후 정확
   if (stripped !== dupeName && stripped.length >= 2) {
-    const byPrefix = records.find((r) => r.name_ko === stripped)
-    if (byPrefix) return { record: byPrefix, type: 'fuzzy_prefix' }
+    m = records.find((r) => normalizeForMatch(r.name_ko) === strippedNorm)
+    if (m) return { record: m, type: 'fuzzy_prefix' }
   }
 
-  const byContain = records.find(
-    (r) => r.name_ko.includes(dupeName) || dupeName.includes(r.name_ko),
-  )
-  if (byContain) return { record: byContain, type: 'fuzzy_contain' }
+  // 3. suffix variant 시도 (stripped + 정식 / 상)
+  if (stripped.length >= 2) {
+    for (const suffix of SUFFIX_TO_TRY) {
+      const variantNorm = normalizeForMatch(stripped + suffix)
+      if (!variantNorm) continue
+      m = records.find((r) => normalizeForMatch(r.name_ko) === variantNorm)
+      if (m) return { record: m, type: 'fuzzy_suffix' }
+    }
+  }
 
-  if (stripped !== dupeName && stripped.length >= 2) {
-    const byContainStripped = records.find(
-      (r) => r.name_ko.includes(stripped) || stripped.includes(r.name_ko),
-    )
-    if (byContainStripped) return { record: byContainStripped, type: 'fuzzy_contain' }
+  // 4. 부분 매칭 (3 자 이상 — 오매칭 방지)
+  if (stripped.length >= 3) {
+    m = records.find((r) => {
+      const hNorm = normalizeForMatch(r.name_ko)
+      if (hNorm.length < 3) return false
+      return hNorm.includes(strippedNorm) || strippedNorm.includes(hNorm)
+    })
+    if (m) return { record: m, type: 'fuzzy_contain' }
+  }
+
+  // 5. 핵심 키워드 매칭 (찌개/국밥/탕 suffix 분리 후 base 매칭)
+  for (const kw of extractKeywords(stripped)) {
+    if (kw.length < 3) continue
+    const kwNorm = normalizeForMatch(kw)
+    m = records.find((r) => normalizeForMatch(r.name_ko) === kwNorm)
+    if (m) return { record: m, type: 'fuzzy_keyword' }
   }
 
   return null
@@ -198,7 +243,7 @@ function buildPromptBasic(dupeName) {
 // ────────────────────────────────────────────────
 
 const enriched = []
-const counts = { exact: 0, fuzzy_prefix: 0, fuzzy_contain: 0, unmatched: 0 }
+const counts = { exact: 0, fuzzy_prefix: 0, fuzzy_suffix: 0, fuzzy_contain: 0, fuzzy_keyword: 0, unmatched: 0 }
 
 for (const dupe of dupes) {
   const m = findMatch(dupe.name_ko)
@@ -239,12 +284,16 @@ for (const dupe of dupes) {
 const output = 'lib/data/hansik-enriched.json'
 writeFileSync(output, JSON.stringify(enriched, null, 2) + '\n')
 
+const matched = counts.exact + counts.fuzzy_prefix + counts.fuzzy_suffix + counts.fuzzy_contain + counts.fuzzy_keyword
 console.log('---')
 console.log(`Exact         : ${counts.exact}`)
 console.log(`Fuzzy prefix  : ${counts.fuzzy_prefix}`)
+console.log(`Fuzzy suffix  : ${counts.fuzzy_suffix}`)
 console.log(`Fuzzy contain : ${counts.fuzzy_contain}`)
+console.log(`Fuzzy keyword : ${counts.fuzzy_keyword}`)
 console.log(`Unmatched     : ${counts.unmatched}`)
 console.log(`Total         : ${enriched.length}`)
+console.log(`Match rate    : ${((matched / enriched.length) * 100).toFixed(1)}%`)
 console.log(`Output        : ${output}`)
 
 if (counts.unmatched > 0) {
