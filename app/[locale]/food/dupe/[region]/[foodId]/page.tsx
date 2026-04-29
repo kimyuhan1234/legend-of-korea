@@ -116,6 +116,12 @@ export default function FoodDetailPage({ params }: Props) {
                 bordered={false}
               />
             )}
+            {/* 이미지 출처 표기 (공공누리 1 유형 — 출처 표시 의무) */}
+            {food.image && food.imageCredit && (
+              <span className="absolute top-2 right-2 z-[6] text-[10px] md:text-xs text-white/95 bg-black/55 px-2 py-1 rounded">
+                {food.imageCredit}
+              </span>
+            )}
             <div className="absolute bottom-6 left-6 right-6">
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {food.tags.map((tag) => (

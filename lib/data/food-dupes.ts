@@ -28,6 +28,8 @@ export interface RegionalFood {
   name: { ko: string; ja: string; en: string }
   region: string
   image?: string
+  /** 이미지 출처 표기 (예: 'ⓒ한국관광공사 포토코리아-홍길동'). UI 에 그대로 노출. */
+  imageCredit?: string
   tasteProfile: TasteProfile
   storyDescription: { ko: string; ja: string; en: string }
   ingredients: { ko: string[]; ja: string[]; en: string[] }

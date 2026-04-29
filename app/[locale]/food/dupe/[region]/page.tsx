@@ -113,6 +113,12 @@ export default function RegionFoodsPage({ params }: Props) {
                       className="group-hover:scale-105 transition-transform duration-500"
                     />
                   )}
+                  {/* 이미지 출처 (공공누리 1 유형) — 카드는 작게 우상단 */}
+                  {food.image && food.imageCredit && (
+                    <span className="absolute top-1 right-1 z-[6] text-[8px] text-white/95 bg-black/45 px-1 py-0.5 rounded">
+                      {food.imageCredit}
+                    </span>
+                  )}
                   {/* 맛 강도 오버레이 */}
                   <div className="absolute bottom-2 left-2 right-2 flex gap-1 z-[5]">
                     {food.tags.map((tag) => (

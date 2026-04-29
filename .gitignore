@@ -68,3 +68,8 @@ public/videos/*.avi
 # TourAPI v2 검색 raw / curated — 라이선스 OK 이지만 Supabase 업로드 후 raw 미커밋
 /data/tourapi-v2-images/
 /data/tourapi-v2-curated/
+
+# 한국관광공사 포토코리아 이미지 raw + credits 매핑.
+# Supabase 업로드 후 lib/data/phoko-image-urls.json 결과만 커밋.
+# data/phoko-credits.json 은 사용자가 생성 — 커밋 여부는 사용자 결정 (촬영자명 출처 표기에 필요).
+/data/phoko-images/
