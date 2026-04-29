@@ -6,10 +6,13 @@
  *        lib/data/ai-images-map.json (id → 로컬 경로)
  *
  * 비용:  Flux Schnell ≈ $0.003 / 이미지. 240 → ~$0.72.
- * 시간:  240 × ~3 sec = ~12 분.
+ *
+ * 시간 (hotfix — Replicate 분당 6 req 제한 대응)
+ *   호출 간격 11 초 (분당 5.4 회 — 안전 마진).
+ *   240 → 240 × 11s = 약 44 분. 429 발생 시 retry-after 만큼 추가 대기.
  *
  * 사용자 작업 (실행 전)
- *   1. https://replicate.com 가입 + 신용카드 등록 (~$1 충전)
+ *   1. https://replicate.com 가입 + 신용카드 등록
  *   2. https://replicate.com/account/api-tokens 에서 token 발급
  *   3. 환경변수: $env:REPLICATE_API_TOKEN="r8_..." (PowerShell)
  *               export REPLICATE_API_TOKEN="r8_..."         (bash)
@@ -17,9 +20,11 @@
  * 실행:  node scripts/generate-ai-images.mjs
  *
  * 견고성
- *   - 이미 생성된 파일 skip (재실행 안전)
+ *   - 이미 생성된 파일 skip (재실행 안전 — 중간 종료 후 이어서 가능)
  *   - Prefer: wait=60 (sync 응답) — 폴링 fallback 추가
- *   - rate-limit 보호 500 ms 간격
+ *   - 429 자동 retry — Retry-After 헤더 우선, 없으면 12s. 최대 5 회.
+ *   - 매번 ai-images-map.json 저장 (중단 대비)
+ *   - 호출 사이 11s 대기 (rate limit 안전)
  *   - 개별 실패는 다음 음식으로 진행 (전체 중단 X)
  */
 
@@ -38,6 +43,13 @@ const ENRICHED_PATH = 'lib/data/hansik-enriched.json'
 const OUTPUT_DIR = 'data/ai-images'
 const MAP_PATH = 'lib/data/ai-images-map.json'
 
+// hotfix — Replicate 분당 6 req rate limit 대응 상수
+const INTER_CALL_DELAY_MS = 11_000 // 호출 사이 11 초 (분당 5.4 회 안전 마진)
+const MAX_RATE_LIMIT_RETRY = 5
+const DEFAULT_RETRY_AFTER_MS = 12_000
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+
 const enriched = JSON.parse(readFileSync(ENRICHED_PATH, 'utf8'))
 mkdirSync(OUTPUT_DIR, { recursive: true })
 
@@ -45,6 +57,13 @@ mkdirSync(OUTPUT_DIR, { recursive: true })
 const results = existsSync(MAP_PATH)
   ? JSON.parse(readFileSync(MAP_PATH, 'utf8'))
   : {}
+
+// 시작 시 예상 시간 출력
+const toGenerate = enriched.filter(
+  (f) => !existsSync(join(OUTPUT_DIR, `${f.id}.webp`)),
+).length
+const estimatedMin = Math.round((toGenerate * INTER_CALL_DELAY_MS) / 60_000)
+console.log(`[plan] total: ${enriched.length} / to generate: ${toGenerate} / est: ~${estimatedMin} min`)
 
 async function pollPrediction(id, maxAttempts = 60) {
   for (let i = 0; i < maxAttempts; i++) {
@@ -60,7 +79,7 @@ async function pollPrediction(id, maxAttempts = 60) {
   return null
 }
 
-async function generateOne(food) {
+async function generateOne(food, retryCount = 0) {
   const res = await fetch('https://api.replicate.com/v1/predictions', {
     method: 'POST',
     headers: {
@@ -81,6 +100,20 @@ async function generateOne(food) {
       },
     }),
   })
+
+  // 429 — rate limit. Retry-After 헤더 우선, 없으면 12 초 fallback.
+  if (res.status === 429) {
+    if (retryCount >= MAX_RATE_LIMIT_RETRY) {
+      throw new Error(`rate limit max retries (${MAX_RATE_LIMIT_RETRY}) exceeded`)
+    }
+    const retryAfterHeader = res.headers.get('retry-after')
+    const retryMs = retryAfterHeader
+      ? Math.max(parseInt(retryAfterHeader, 10) * 1000, 1000)
+      : DEFAULT_RETRY_AFTER_MS
+    console.log(`  rate limit (429), waiting ${Math.round(retryMs / 1000)}s (retry ${retryCount + 1}/${MAX_RATE_LIMIT_RETRY})`)
+    await sleep(retryMs)
+    return generateOne(food, retryCount + 1)
+  }
 
   if (!res.ok) {
     const errBody = await res.text().catch(() => '')
@@ -136,10 +169,12 @@ for (let i = 0; i < enriched.length; i++) {
     console.error(`${tag} ✗ ${e instanceof Error ? e.message : String(e)}`)
   }
 
-  // rate-limit 보호 + map 중간 저장 (실행 중단 시 진행 분 보존)
-  await new Promise((r) => setTimeout(r, 500))
-  if ((i + 1) % 10 === 0) {
-    writeFileSync(MAP_PATH, JSON.stringify(results, null, 2) + '\n')
+  // 매번 map 저장 (중단 대비 — 진행분 보존)
+  writeFileSync(MAP_PATH, JSON.stringify(results, null, 2) + '\n')
+
+  // rate-limit 안전 — 호출 사이 11s (분당 5.4 회). 마지막 항목 제외.
+  if (i < enriched.length - 1) {
+    await sleep(INTER_CALL_DELAY_MS)
   }
 }
 
