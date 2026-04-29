@@ -1,0 +1,697 @@
+{
+  "_meta": {
+    "generated_at": "2026-04-29T15:04:52.152Z",
+    "total_audited": 240,
+    "threshold": 3,
+    "candidate_cities": {
+      "daegu": 1
+    },
+    "new_regions_to_add": [],
+    "below_threshold_to_national": {
+      "daegu": 1
+    },
+    "summary": {
+      "total_corrections": 19,
+      "high_confidence": 18,
+      "medium_confidence": 1,
+      "low_confidence": 0,
+      "delete": 1,
+      "unchanged": 143,
+      "audit_hints": 78
+    },
+    "notes": [
+      "_meta.candidate_cities — 신규 후보 도시별 향토 신호 음식 수 (기존 12 개 도시 제외).",
+      "_meta.new_regions_to_add — 임계치 3+ 통과한 신규 광역. Step 3 에서 regions-hierarchy.ts 에 수동 추가 필요.",
+      "_meta.below_threshold_to_national — 임계치 미달 도시. 해당 음식은 national 로 분류 + note 에 후보 광역 명시.",
+      "corrections — 확신 있는 변경 (high/medium/delete 만). 자동 적용 대상.",
+      "audit_hints — 자동 변경 X. 사용자가 한국관광공사/나무위키로 검증 후 향토면 corrections 에 수동 추가.",
+      "corrections + audit_hints 어디에도 없는 음식 = 신호 부족, 보존."
+    ]
+  },
+  "corrections": {
+    "jeonju-baguette-burger": {
+      "delete": true,
+      "reason": "외국 음식 keyword 매칭 (버거)",
+      "confidence": "high"
+    },
+    "jeonju-japchae": {
+      "newRegion": "national",
+      "newId": "national-japchae",
+      "reason": "명백한 전국 한식 (정확 일치: \"잡채\")",
+      "confidence": "high"
+    },
+    "jeonju-sundubu": {
+      "newRegion": "national",
+      "newId": "national-sundubu",
+      "reason": "명백한 전국 한식 (정확 일치: \"순두부찌개\")",
+      "confidence": "high"
+    },
+    "jeonju-pajeon": {
+      "newRegion": "national",
+      "newId": "national-pajeon",
+      "reason": "명백한 전국 한식 (정확 일치: \"파전\")",
+      "confidence": "high"
+    },
+    "jeonju-doenjang-jjigae": {
+      "newRegion": "national",
+      "newId": "national-doenjang-jjigae",
+      "reason": "명백한 전국 한식 (정확 일치: \"된장찌개\")",
+      "confidence": "high"
+    },
+    "seoul-tteokbokki": {
+      "newRegion": "national",
+      "newId": "national-tteokbokki",
+      "reason": "명백한 전국 한식 (정확 일치: \"떡볶이\")",
+      "confidence": "high"
+    },
+    "seoul-jokbal": {
+      "newRegion": "national",
+      "newId": "national-jokbal",
+      "reason": "명백한 전국 한식 (정확 일치: \"족발\")",
+      "confidence": "high"
+    },
+    "seoul-kimchi-jjigae": {
+      "newRegion": "national",
+      "newId": "national-kimchi-jjigae",
+      "reason": "명백한 전국 한식 (정확 일치: \"김치찌개\")",
+      "confidence": "high"
+    },
+    "seoul-bossam": {
+      "newRegion": "national",
+      "newId": "national-bossam",
+      "reason": "명백한 전국 한식 (정확 일치: \"보쌈\")",
+      "confidence": "high"
+    },
+    "seoul-andong-jjimdak": {
+      "newRegion": "andong",
+      "newId": "andong-andong-jjimdak",
+      "reason": "이름에 \"안동\" 명시 + 한식진흥원 desc 도 \"안동\" 멘션",
+      "confidence": "high"
+    },
+    "busan-ojingeo-bokkeum": {
+      "newRegion": "national",
+      "newId": "national-ojingeo-bokkeum",
+      "reason": "명백한 전국 한식 (정확 일치: \"오징어볶음\")",
+      "confidence": "high"
+    },
+    "gyeongju-sundubu": {
+      "newRegion": "national",
+      "newId": "national-sundubu",
+      "reason": "명백한 전국 한식 (정확 일치: \"순두부찌개\")",
+      "confidence": "high"
+    },
+    "gyeongju-samgyetang": {
+      "newRegion": "national",
+      "newId": "national-samgyetang",
+      "reason": "명백한 전국 한식 (정확 일치: \"삼계탕\")",
+      "confidence": "high"
+    },
+    "gyeongju-galbi-tang": {
+      "newRegion": "national",
+      "newId": "national-galbi-tang",
+      "reason": "명백한 전국 한식 (정확 일치: \"갈비탕\")",
+      "confidence": "high"
+    },
+    "gyeongju-yakgwa": {
+      "newRegion": "national",
+      "newId": "national-yakgwa",
+      "reason": "명백한 전국 한식 (정확 일치: \"약과\")",
+      "confidence": "high"
+    },
+    "gyeongju-hangwa": {
+      "newRegion": "national",
+      "newId": "national-hangwa",
+      "reason": "명백한 전국 한식 (정확 일치: \"한과\")",
+      "confidence": "high"
+    },
+    "gyeongju-tteokguk": {
+      "newRegion": "national",
+      "newId": "national-tteokguk",
+      "reason": "명백한 전국 한식 (정확 일치: \"떡국\")",
+      "confidence": "high"
+    },
+    "cheonan-spicy-catfish": {
+      "newRegion": "national",
+      "newId": "national-spicy-catfish",
+      "reason": "한식진흥원 desc 에 \"대구\" 멘션 (이름에는 없음)",
+      "confidence": "medium",
+      "note": "후보 광역: daegu (현재 1개, 임계치 3 미달, 추후 daegu 신설 시 이동)"
+    },
+    "icheon-jeyuk-bokkeum": {
+      "newRegion": "national",
+      "newId": "national-jeyuk-bokkeum",
+      "reason": "명백한 전국 한식 (정확 일치: \"제육볶음\")",
+      "confidence": "high"
+    }
+  },
+  "audit_hints": {
+    "category_only_no_region_mention": [
+      {
+        "id": "jeonju-kongnamul",
+        "current_region": "jeonju",
+        "name_ko": "콩나물국밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeonju-pisundae",
+        "current_region": "jeonju",
+        "name_ko": "피순대와 순대국밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeonju-yukgaejang",
+        "current_region": "jeonju",
+        "name_ko": "육개장",
+        "hansik_category": "국 [Guk]",
+        "hint": "한식진흥원 category=\"국 [Guk]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeonju-bindaetteok",
+        "current_region": "jeonju",
+        "name_ko": "녹두전",
+        "hansik_category": "전 [Jeon]",
+        "hint": "한식진흥원 category=\"전 [Jeon]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeonju-cheonggukjang",
+        "current_region": "jeonju",
+        "name_ko": "청국장",
+        "hansik_category": "찌개 [Jjigae]",
+        "hint": "한식진흥원 category=\"찌개 [Jjigae]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeonju-yukoe",
+        "current_region": "jeonju",
+        "name_ko": "육회",
+        "hansik_category": "회 [Hoe]",
+        "hint": "한식진흥원 category=\"회 [Hoe]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeonju-nakji-bokkeum",
+        "current_region": "jeonju",
+        "name_ko": "낙지볶음",
+        "hansik_category": "볶음 [Bokkeum]",
+        "hint": "한식진흥원 category=\"볶음 [Bokkeum]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeonju-gomtang",
+        "current_region": "jeonju",
+        "name_ko": "곰탕",
+        "hansik_category": "탕 [Tang]",
+        "hint": "한식진흥원 category=\"탕 [Tang]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeonju-haemul-pajeon",
+        "current_region": "jeonju",
+        "name_ko": "해물파전",
+        "hansik_category": "전 [Jeon]",
+        "hint": "한식진흥원 category=\"전 [Jeon]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeonju-sikhye",
+        "current_region": "jeonju",
+        "name_ko": "식혜",
+        "hansik_category": "음청류 [Eumcheongryu]",
+        "hint": "한식진흥원 category=\"음청류 [Eumcheongryu]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeonju-ogokbap",
+        "current_region": "jeonju",
+        "name_ko": "오곡밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-samgyeopsal",
+        "current_region": "seoul",
+        "name_ko": "삼겹살",
+        "hansik_category": "구이 [Gui]",
+        "hint": "한식진흥원 category=\"구이 [Gui]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-dakhanmari",
+        "current_region": "seoul",
+        "name_ko": "닭한마리",
+        "hansik_category": "전골 [Jeongol]",
+        "hint": "한식진흥원 category=\"전골 [Jeongol]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-seolleongtang",
+        "current_region": "seoul",
+        "name_ko": "설렁탕",
+        "hansik_category": "탕 [Tang]",
+        "hint": "한식진흥원 category=\"탕 [Tang]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-bindaetteok",
+        "current_region": "seoul",
+        "name_ko": "광장시장 빈대떡",
+        "hansik_category": "전 [Jeon]",
+        "hint": "한식진흥원 category=\"전 [Jeon]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-yukhoe",
+        "current_region": "seoul",
+        "name_ko": "육회",
+        "hansik_category": "회 [Hoe]",
+        "hint": "한식진흥원 category=\"회 [Hoe]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-gamjatang",
+        "current_region": "seoul",
+        "name_ko": "감자탕",
+        "hansik_category": "탕 [Tang]",
+        "hint": "한식진흥원 category=\"탕 [Tang]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-sundaekook",
+        "current_region": "seoul",
+        "name_ko": "순대국",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-gopchang",
+        "current_region": "seoul",
+        "name_ko": "곱창구이",
+        "hansik_category": "구이 [Gui]",
+        "hint": "한식진흥원 category=\"구이 [Gui]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-budae-jjigae",
+        "current_region": "seoul",
+        "name_ko": "부대찌개",
+        "hansik_category": "찌개 [Jjigae]",
+        "hint": "한식진흥원 category=\"찌개 [Jjigae]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-rabokki",
+        "current_region": "seoul",
+        "name_ko": "라볶이",
+        "hansik_category": "볶음 [Bokkeum]",
+        "hint": "한식진흥원 category=\"볶음 [Bokkeum]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "seoul-kimchi-jeon",
+        "current_region": "seoul",
+        "name_ko": "김치전",
+        "hansik_category": "전 [Jeon]",
+        "hint": "한식진흥원 category=\"전 [Jeon]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "tongyeong-meongge-bibimbap",
+        "current_region": "tongyeong",
+        "name_ko": "멍게비빔밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "tongyeong-haemul-ttukbaegi",
+        "current_region": "tongyeong",
+        "name_ko": "해물뚝배기",
+        "hansik_category": "찌개 [Jjigae]",
+        "hint": "한식진흥원 category=\"찌개 [Jjigae]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "tongyeong-myeolchi-hoemuchim",
+        "current_region": "tongyeong",
+        "name_ko": "멸치회무침",
+        "hansik_category": "회 [Hoe]",
+        "hint": "한식진흥원 category=\"회 [Hoe]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeju-galchi-jorim",
+        "current_region": "jeju",
+        "name_ko": "갈치조림",
+        "hansik_category": "조림 [Jorim]",
+        "hint": "한식진흥원 category=\"조림 [Jorim]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeju-jeonbok-juk",
+        "current_region": "jeju",
+        "name_ko": "전복죽",
+        "hansik_category": "죽 [Juk]",
+        "hint": "한식진흥원 category=\"죽 [Juk]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeju-mulhoe",
+        "current_region": "jeju",
+        "name_ko": "물회",
+        "hansik_category": "회 [Hoe]",
+        "hint": "한식진흥원 category=\"회 [Hoe]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeju-bomal-kalguksu",
+        "current_region": "jeju",
+        "name_ko": "보말칼국수",
+        "hansik_category": "면 [Myeon]",
+        "hint": "한식진흥원 category=\"면 [Myeon]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "jeju-seonggae-miyeokguk",
+        "current_region": "jeju",
+        "name_ko": "성게미역국",
+        "hansik_category": "국 [Guk]",
+        "hint": "한식진흥원 category=\"국 [Guk]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-pork-soup",
+        "current_region": "busan",
+        "name_ko": "돼지국밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-hotteok",
+        "current_region": "busan",
+        "name_ko": "씨앗호떡",
+        "hansik_category": "떡 [Tteok]",
+        "hint": "한식진흥원 category=\"떡 [Tteok]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-mul-tteok",
+        "current_region": "busan",
+        "name_ko": "물떡",
+        "hansik_category": "볶음 [Bokkeum]",
+        "hint": "한식진흥원 category=\"볶음 [Bokkeum]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-naengchae-jokbal",
+        "current_region": "busan",
+        "name_ko": "냉채족발",
+        "hansik_category": "생채 [Saengchae]",
+        "hint": "한식진흥원 category=\"생채 [Saengchae]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-grilled-clams",
+        "current_region": "busan",
+        "name_ko": "조개구이",
+        "hansik_category": "구이 [Gui]",
+        "hint": "한식진흥원 category=\"구이 [Gui]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-eomuk",
+        "current_region": "busan",
+        "name_ko": "어묵",
+        "hansik_category": "국 [Guk]",
+        "hint": "한식진흥원 category=\"국 [Guk]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-gopchang",
+        "current_region": "busan",
+        "name_ko": "양곱창",
+        "hansik_category": "구이 [Gui]",
+        "hint": "한식진흥원 category=\"구이 [Gui]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-ssiat-hotteok",
+        "current_region": "busan",
+        "name_ko": "씨앗호떡",
+        "hansik_category": "떡 [Tteok]",
+        "hint": "한식진흥원 category=\"떡 [Tteok]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-saengseon-gui",
+        "current_region": "busan",
+        "name_ko": "생선구이",
+        "hansik_category": "구이 [Gui]",
+        "hint": "한식진흥원 category=\"구이 [Gui]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-gul-jeon",
+        "current_region": "busan",
+        "name_ko": "굴전",
+        "hansik_category": "전 [Jeon]",
+        "hint": "한식진흥원 category=\"전 [Jeon]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-haemul-pajeon",
+        "current_region": "busan",
+        "name_ko": "해물파전",
+        "hansik_category": "전 [Jeon]",
+        "hint": "한식진흥원 category=\"전 [Jeon]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-jeonbok-juk",
+        "current_region": "busan",
+        "name_ko": "전복죽",
+        "hansik_category": "죽 [Juk]",
+        "hint": "한식진흥원 category=\"죽 [Juk]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "busan-kkomak-bibimbap",
+        "current_region": "busan",
+        "name_ko": "꼬막비빔밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "gyeongju-gyori-gimbap",
+        "current_region": "gyeongju",
+        "name_ko": "교리김밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "gyeongju-hanwoo-mulhoe",
+        "current_region": "gyeongju",
+        "name_ko": "한우 물회",
+        "hansik_category": "회 [Hoe]",
+        "hint": "한식진흥원 category=\"회 [Hoe]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "gyeongju-ssambap",
+        "current_region": "gyeongju",
+        "name_ko": "쌈밥 정식",
+        "hansik_category": "상차림 [Sangcharim]",
+        "hint": "한식진흥원 category=\"상차림 [Sangcharim]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "gyeongju-hanwoo-bulgogi",
+        "current_region": "gyeongju",
+        "name_ko": "한우불고기",
+        "hansik_category": "구이 [Gui]",
+        "hint": "한식진흥원 category=\"구이 [Gui]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "gyeongju-gujeolpan",
+        "current_region": "gyeongju",
+        "name_ko": "구절판",
+        "hansik_category": "숙채 [Sukchae]",
+        "hint": "한식진흥원 category=\"숙채 [Sukchae]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "gyeongju-dubu-jeongol",
+        "current_region": "gyeongju",
+        "name_ko": "두부전골",
+        "hansik_category": "전골 [Jeongol]",
+        "hint": "한식진흥원 category=\"전골 [Jeongol]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "gyeongju-sanchae-bibimbap",
+        "current_region": "gyeongju",
+        "name_ko": "산채비빔밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "gyeongju-meomil-jeonbyeong",
+        "current_region": "gyeongju",
+        "name_ko": "메밀전병",
+        "hansik_category": "전 [Jeon]",
+        "hint": "한식진흥원 category=\"전 [Jeon]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "cheonan-byeongcheon-sundae",
+        "current_region": "cheonan",
+        "name_ko": "병천순대",
+        "hansik_category": "찜 [Jjim]",
+        "hint": "한식진흥원 category=\"찜 [Jjim]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "cheonan-sundae-soup",
+        "current_region": "cheonan",
+        "name_ko": "순대국밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "cheonan-hanwoo-yukhoe",
+        "current_region": "cheonan",
+        "name_ko": "한우 육회비빔밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "cheonan-lotus-rice",
+        "current_region": "cheonan",
+        "name_ko": "연잎밥 정식",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "cheonan-mushroom-stew",
+        "current_region": "cheonan",
+        "name_ko": "버섯전골",
+        "hansik_category": "전골 [Jeongol]",
+        "hint": "한식진흥원 category=\"전골 [Jeongol]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "cheonan-gwangdeok-sanchae",
+        "current_region": "cheonan",
+        "name_ko": "광덕산 산채비빔밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "yongin-baegam-sundae",
+        "current_region": "yongin",
+        "name_ko": "백암순대",
+        "hansik_category": "찜 [Jjim]",
+        "hint": "한식진흥원 category=\"찜 [Jjim]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "yongin-nurungji-baeksuk",
+        "current_region": "yongin",
+        "name_ko": "누룽지 백숙",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "yongin-pajeon",
+        "current_region": "yongin",
+        "name_ko": "민속촌 파전",
+        "hansik_category": "전 [Jeon]",
+        "hint": "한식진흥원 category=\"전 [Jeon]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "yongin-sanchae-bibimbap",
+        "current_region": "yongin",
+        "name_ko": "산채비빔밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "yongin-acorn-jelly",
+        "current_region": "yongin",
+        "name_ko": "도토리묵 무침",
+        "hansik_category": "생채 [Saengchae]",
+        "hint": "한식진흥원 category=\"생채 [Saengchae]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-bori-gulbi",
+        "current_region": "icheon",
+        "name_ko": "보리굴비",
+        "hansik_category": "구이 [Gui]",
+        "hint": "한식진흥원 category=\"구이 [Gui]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-ganjang-gejang",
+        "current_region": "icheon",
+        "name_ko": "간장게장",
+        "hansik_category": "장아찌 [Jangajji]",
+        "hint": "한식진흥원 category=\"장아찌 [Jangajji]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-straw-pork",
+        "current_region": "icheon",
+        "name_ko": "볏짚 삼겹살",
+        "hansik_category": "구이 [Gui]",
+        "hint": "한식진흥원 category=\"구이 [Gui]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-sotbap",
+        "current_region": "icheon",
+        "name_ko": "솥밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-yukhoe-bibimbap",
+        "current_region": "icheon",
+        "name_ko": "육회비빔밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-kongguksu",
+        "current_region": "icheon",
+        "name_ko": "콩국수",
+        "hansik_category": "면 [Myeon]",
+        "hint": "한식진흥원 category=\"면 [Myeon]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-dojagi-bulgogi",
+        "current_region": "icheon",
+        "name_ko": "도자기불고기",
+        "hansik_category": "구이 [Gui]",
+        "hint": "한식진흥원 category=\"구이 [Gui]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-sansuyu-makgeolli",
+        "current_region": "icheon",
+        "name_ko": "산수유 막걸리",
+        "hansik_category": "음청류 [Eumcheongryu]",
+        "hint": "한식진흥원 category=\"음청류 [Eumcheongryu]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-chapssal-tteok",
+        "current_region": "icheon",
+        "name_ko": "찹쌀떡",
+        "hansik_category": "떡 [Tteok]",
+        "hint": "한식진흥원 category=\"떡 [Tteok]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-somori-gukbap",
+        "current_region": "icheon",
+        "name_ko": "소머리국밥",
+        "hansik_category": "밥 [Bap]",
+        "hint": "한식진흥원 category=\"밥 [Bap]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-onggi-mandu",
+        "current_region": "icheon",
+        "name_ko": "옹기만두",
+        "hansik_category": "만두 [Mandu]",
+        "hint": "한식진흥원 category=\"만두 [Mandu]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-jangeo-jeongsik",
+        "current_region": "icheon",
+        "name_ko": "장어구이정식",
+        "hansik_category": "구이 [Gui]",
+        "hint": "한식진흥원 category=\"구이 [Gui]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "icheon-doenjang-jjigae-hansang",
+        "current_region": "icheon",
+        "name_ko": "된장찌개 한상",
+        "hansik_category": "찌개 [Jjigae]",
+        "hint": "한식진흥원 category=\"찌개 [Jjigae]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "sokcho-abai-sundae",
+        "current_region": "sokcho",
+        "name_ko": "아바이순대",
+        "hansik_category": "찜 [Jjim]",
+        "hint": "한식진흥원 category=\"찜 [Jjim]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "sokcho-ojingeo-sundae",
+        "current_region": "sokcho",
+        "name_ko": "오징어순대",
+        "hansik_category": "찜 [Jjim]",
+        "hint": "한식진흥원 category=\"찜 [Jjim]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      },
+      {
+        "id": "yeosu-seodae-hoemuchim",
+        "current_region": "yeosu",
+        "name_ko": "서대회무침",
+        "hansik_category": "회 [Hoe]",
+        "hint": "한식진흥원 category=\"회 [Hoe]\" + 광역 멘션 없음 — 향토 가능성 검증 필요"
+      }
+    ]
+  }
+}
