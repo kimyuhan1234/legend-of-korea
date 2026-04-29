@@ -57,3 +57,7 @@ public/videos/*.avi
 # AI 생성 음식 이미지 raw — Supabase Storage 업로드 후 URL 만 보존
 # (Vercel 번들 크기 절감 — public/ 에 두지 않고 별도 디렉토리)
 /data/ai-images/
+
+# Pexels 다운로드 raw / curated — 라이선스 OK 이지만 Supabase 업로드 후 raw 미커밋
+/data/pexels-images/
+/data/pexels-curated/
