@@ -1,0 +1,118 @@
+[
+  {
+    "oldId": "jeonju-japchae",
+    "newId": "national-japchae"
+  },
+  {
+    "oldId": "jeonju-sundubu",
+    "newId": "national-sundubu"
+  },
+  {
+    "oldId": "jeonju-pajeon",
+    "newId": "national-pajeon"
+  },
+  {
+    "oldId": "jeonju-doenjang-jjigae",
+    "newId": "national-doenjang-jjigae"
+  },
+  {
+    "oldId": "seoul-tteokbokki",
+    "newId": "national-tteokbokki"
+  },
+  {
+    "oldId": "seoul-jokbal",
+    "newId": "national-jokbal"
+  },
+  {
+    "oldId": "seoul-kimchi-jjigae",
+    "newId": "national-kimchi-jjigae"
+  },
+  {
+    "oldId": "seoul-bossam",
+    "newId": "national-bossam"
+  },
+  {
+    "oldId": "seoul-andong-jjimdak",
+    "newId": "andong-andong-jjimdak"
+  },
+  {
+    "oldId": "busan-ojingeo-bokkeum",
+    "newId": "national-ojingeo-bokkeum"
+  },
+  {
+    "oldId": "gyeongju-sundubu",
+    "newId": "national-sundubu-gyeongju"
+  },
+  {
+    "oldId": "gyeongju-samgyetang",
+    "newId": "national-samgyetang"
+  },
+  {
+    "oldId": "gyeongju-galbi-tang",
+    "newId": "national-galbi-tang"
+  },
+  {
+    "oldId": "gyeongju-yakgwa",
+    "newId": "national-yakgwa"
+  },
+  {
+    "oldId": "gyeongju-hangwa",
+    "newId": "national-hangwa"
+  },
+  {
+    "oldId": "gyeongju-tteokguk",
+    "newId": "national-tteokguk"
+  },
+  {
+    "oldId": "cheonan-spicy-catfish",
+    "newId": "national-spicy-catfish"
+  },
+  {
+    "oldId": "icheon-jeyuk-bokkeum",
+    "newId": "national-jeyuk-bokkeum"
+  },
+  {
+    "oldId": "jeonju-nakji-bokkeum",
+    "newId": "national-nakji-bokkeum"
+  },
+  {
+    "oldId": "jeonju-gomtang",
+    "newId": "national-gomtang"
+  },
+  {
+    "oldId": "seoul-budae-jjigae",
+    "newId": "national-budae-jjigae"
+  },
+  {
+    "oldId": "seoul-kimchi-jeon",
+    "newId": "national-kimchi-jeon"
+  },
+  {
+    "oldId": "busan-kkomak-bibimbap",
+    "newId": "national-kkomak-bibimbap"
+  },
+  {
+    "oldId": "gyeongju-sanchae-bibimbap",
+    "newId": "national-sanchae-bibimbap"
+  },
+  {
+    "oldId": "cheonan-hanwoo-yukhoe",
+    "newId": "national-hanwoo-yukhoe"
+  },
+  {
+    "oldId": "cheonan-gwangdeok-sanchae",
+    "newId": "national-gwangdeok-sanchae"
+  },
+  {
+    "oldId": "yongin-sanchae-bibimbap",
+    "newId": "national-sanchae-bibimbap-yongin"
+  },
+  {
+    "oldId": "icheon-yukhoe-bibimbap",
+    "newId": "national-yukhoe-bibimbap"
+  },
+  {
+    "oldId": "icheon-chapssal-tteok",
+    "newId": "national-chapssal-tteok"
+  }
+]

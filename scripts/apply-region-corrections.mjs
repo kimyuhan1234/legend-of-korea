@@ -153,6 +153,24 @@ function escapeRegex(s) {
 }
 
 /**
+ * insertPos 직전이 `}` (with optional whitespace) 인데 ',' 없는 경우 콤마 추가.
+ * 객체/배열 끝의 trailing comma 누락 보정.
+ * 반환: { src, offsetDelta } — offsetDelta 만큼 insertPos 가 뒤로 밀림
+ */
+function ensureCommaBefore(src, insertPos) {
+  let i = insertPos - 1
+  while (i >= 0 && /\s/.test(src[i])) i--
+  if (i >= 0 && src[i] === '}') {
+    // 닫기 `}` 직후 콤마 누락 — 추가
+    return {
+      src: src.slice(0, i + 1) + ',' + src.slice(i + 1),
+      offsetDelta: 1,
+    }
+  }
+  return { src, offsetDelta: 0 }
+}
+
+/**
  * outer region (`code: "X"` 가 들어있는 region 객체) 의 foods 배열 끝 `]` 위치를 찾는다.
  * 신규 음식 객체를 그 직전에 삽입하기 위한 위치.
  */
@@ -346,7 +364,10 @@ for (const r of allTargetRegions) {
     }
     i++
   }
-  // i 가 regions 배열 닫는 ']' 위치
+  // i 가 regions 배열 닫는 ']' 위치 — 직전 마지막 outer region `}` 후 콤마 누락 보정
+  const cb = ensureCommaBefore(dupesSrc, i)
+  dupesSrc = cb.src
+  i += cb.offsetDelta
   dupesSrc = dupesSrc.slice(0, i) + entry + dupesSrc.slice(i)
   addedOuterRegions.push(r)
   console.log(`[outer] 신규 region 추가: ${r}`)
@@ -393,18 +414,13 @@ for (const { oldId, newId, newRegion } of toMove) {
     process.exit(1)
   }
 
-  // 삽입 텍스트 구성: 한 칸 들여쓰기 + 객체 + ',' + '\n      '
-  // ']' 직전에 삽입. 직전 char 가 '\n' + spaces 면 들여쓰기 맞춰서.
+  // ']' 직전 — 마지막 음식 객체 `}` 후 콤마 누락 보정 (mandatory before injecting)
+  const cb = ensureCommaBefore(removed, insertEnd)
+  const fixed = cb.src
+  const finalEnd = insertEnd + cb.offsetDelta
+  // 삽입 텍스트 구성: 들여쓰기 + 객체 + ',' + '\n    '
   const insertText = `      ${objText.replace(/\n/g, '\n      ')},\n    `
-  // ']' 직전에 끼워 넣기 — 단 빈 배열 케이스 (foods: []) 도 동작
-  const before = removed.slice(0, insertEnd)
-  const after = removed.slice(insertEnd)
-  // 깔끔한 indent — 직전 char 들이 '[' 직후의 공백이면 앞 공백 정리
-  let final = before
-  // 빈 배열 케이스 ('foods: []' → before 가 'foods: [') — 들여쓰기 보정
-  // 단순히 그대로 끼워 넣고 prettier 가 정리하도록 (테스트에서 검증)
-  final += insertText + after
-  dupesSrc = final
+  dupesSrc = fixed.slice(0, finalEnd) + insertText + fixed.slice(finalEnd)
   moveCount++
   const idTag = newId !== oldId ? `${oldId} → ${newId}` : oldId
   console.log(`✓ move: ${idTag} → region=${newRegion}`)
@@ -414,8 +430,9 @@ for (const { oldId, newId, newRegion } of toMove) {
 // Phase 5: regions-hierarchy.ts 신규 광역 추가
 // ─────────────────────────────────────────────────────────────
 
+// PROVINCES 광역 id 와 cities[].id 둘 다 추출 — andong 같은 city 가 newRegion 인 경우 false-warning 방지
 const existingHierarchyIds = new Set(
-  [...hierarchySrc.matchAll(/^\s+id:\s*['"]([\w-]+)['"]/gm)].map((m) => m[1]),
+  [...hierarchySrc.matchAll(/\bid:\s*['"]([\w-]+)['"]/g)].map((m) => m[1]),
 )
 
 const addedHierarchyProvinces = []
@@ -462,6 +479,9 @@ for (const r of allTargetRegions) {
     }
     i++
   }
+  const hcb = ensureCommaBefore(hierarchySrc, i)
+  hierarchySrc = hcb.src
+  i += hcb.offsetDelta
   hierarchySrc = hierarchySrc.slice(0, i) + entry + hierarchySrc.slice(i)
   addedHierarchyProvinces.push(r)
   console.log(`[hierarchy] 신규 ProvinceItem 추가: ${r}`)

@@ -74,3 +74,6 @@ public/videos/*.avi
 # data/phoko-credits.json 은 사용자가 생성 — 커밋 여부는 사용자 결정 (촬영자명 출처 표기에 필요).
 /data/phoko-images/
 /data/phoko-renamed/
+
+# apply-region-corrections.mjs 백업 파일 — 임시, 작업 후 삭제
+*.bak

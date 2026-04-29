@@ -1,0 +1,200 @@
+{
+  "_meta": {
+    "generated_at": "2026-04-29T15:47:01.327Z",
+    "source": "auto-validated from draft (auto-validate-hints.mjs)",
+    "summary": {
+      "total_corrections": 30,
+      "from_draft": 19,
+      "from_hints_national": 11,
+      "hints_preserved_regional": 31,
+      "hints_ambiguous_preserved": 36
+    },
+    "notes": [
+      "corrections — apply-region-corrections.mjs 가 자동 적용할 변경.",
+      "audit_hints 중 PRESERVE_AS_REGIONAL / FORCE_NATIONAL 룰에 안 걸린 항목은 보존 (default safe).",
+      "베타 출시 후 잘못된 분류 발견 시 추가 정정 (지금 잘못 이동시키는 것보다 안전)."
+    ]
+  },
+  "corrections": {
+    "jeonju-baguette-burger": {
+      "delete": true,
+      "reason": "외국 음식 keyword 매칭 (버거)",
+      "confidence": "high"
+    },
+    "jeonju-japchae": {
+      "newRegion": "national",
+      "newId": "national-japchae",
+      "reason": "명백한 전국 한식 (정확 일치: \"잡채\")",
+      "confidence": "high"
+    },
+    "jeonju-sundubu": {
+      "newRegion": "national",
+      "newId": "national-sundubu",
+      "reason": "명백한 전국 한식 (정확 일치: \"순두부찌개\")",
+      "confidence": "high"
+    },
+    "jeonju-pajeon": {
+      "newRegion": "national",
+      "newId": "national-pajeon",
+      "reason": "명백한 전국 한식 (정확 일치: \"파전\")",
+      "confidence": "high"
+    },
+    "jeonju-doenjang-jjigae": {
+      "newRegion": "national",
+      "newId": "national-doenjang-jjigae",
+      "reason": "명백한 전국 한식 (정확 일치: \"된장찌개\")",
+      "confidence": "high"
+    },
+    "seoul-tteokbokki": {
+      "newRegion": "national",
+      "newId": "national-tteokbokki",
+      "reason": "명백한 전국 한식 (정확 일치: \"떡볶이\")",
+      "confidence": "high"
+    },
+    "seoul-jokbal": {
+      "newRegion": "national",
+      "newId": "national-jokbal",
+      "reason": "명백한 전국 한식 (정확 일치: \"족발\")",
+      "confidence": "high"
+    },
+    "seoul-kimchi-jjigae": {
+      "newRegion": "national",
+      "newId": "national-kimchi-jjigae",
+      "reason": "명백한 전국 한식 (정확 일치: \"김치찌개\")",
+      "confidence": "high"
+    },
+    "seoul-bossam": {
+      "newRegion": "national",
+      "newId": "national-bossam",
+      "reason": "명백한 전국 한식 (정확 일치: \"보쌈\")",
+      "confidence": "high"
+    },
+    "seoul-andong-jjimdak": {
+      "newRegion": "andong",
+      "newId": "andong-andong-jjimdak",
+      "reason": "이름에 \"안동\" 명시 + 한식진흥원 desc 도 \"안동\" 멘션",
+      "confidence": "high"
+    },
+    "busan-ojingeo-bokkeum": {
+      "newRegion": "national",
+      "newId": "national-ojingeo-bokkeum",
+      "reason": "명백한 전국 한식 (정확 일치: \"오징어볶음\")",
+      "confidence": "high"
+    },
+    "gyeongju-sundubu": {
+      "newRegion": "national",
+      "newId": "national-sundubu-gyeongju",
+      "reason": "명백한 전국 한식 (정확 일치: \"순두부찌개\") [disambiguated from origin=gyeongju]",
+      "confidence": "high"
+    },
+    "gyeongju-samgyetang": {
+      "newRegion": "national",
+      "newId": "national-samgyetang",
+      "reason": "명백한 전국 한식 (정확 일치: \"삼계탕\")",
+      "confidence": "high"
+    },
+    "gyeongju-galbi-tang": {
+      "newRegion": "national",
+      "newId": "national-galbi-tang",
+      "reason": "명백한 전국 한식 (정확 일치: \"갈비탕\")",
+      "confidence": "high"
+    },
+    "gyeongju-yakgwa": {
+      "newRegion": "national",
+      "newId": "national-yakgwa",
+      "reason": "명백한 전국 한식 (정확 일치: \"약과\")",
+      "confidence": "high"
+    },
+    "gyeongju-hangwa": {
+      "newRegion": "national",
+      "newId": "national-hangwa",
+      "reason": "명백한 전국 한식 (정확 일치: \"한과\")",
+      "confidence": "high"
+    },
+    "gyeongju-tteokguk": {
+      "newRegion": "national",
+      "newId": "national-tteokguk",
+      "reason": "명백한 전국 한식 (정확 일치: \"떡국\")",
+      "confidence": "high"
+    },
+    "cheonan-spicy-catfish": {
+      "newRegion": "national",
+      "newId": "national-spicy-catfish",
+      "reason": "한식진흥원 desc 에 \"대구\" 멘션 (이름에는 없음)",
+      "confidence": "medium",
+      "note": "후보 광역: daegu (현재 1개, 임계치 3 미달, 추후 daegu 신설 시 이동)"
+    },
+    "icheon-jeyuk-bokkeum": {
+      "newRegion": "national",
+      "newId": "national-jeyuk-bokkeum",
+      "reason": "명백한 전국 한식 (정확 일치: \"제육볶음\")",
+      "confidence": "high"
+    },
+    "jeonju-nakji-bokkeum": {
+      "newRegion": "national",
+      "newId": "national-nakji-bokkeum",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"낙지볶음\")",
+      "confidence": "auto-validated"
+    },
+    "jeonju-gomtang": {
+      "newRegion": "national",
+      "newId": "national-gomtang",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"곰탕\")",
+      "confidence": "auto-validated"
+    },
+    "seoul-budae-jjigae": {
+      "newRegion": "national",
+      "newId": "national-budae-jjigae",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"부대찌개\")",
+      "confidence": "auto-validated"
+    },
+    "seoul-kimchi-jeon": {
+      "newRegion": "national",
+      "newId": "national-kimchi-jeon",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"김치전\")",
+      "confidence": "auto-validated"
+    },
+    "busan-kkomak-bibimbap": {
+      "newRegion": "national",
+      "newId": "national-kkomak-bibimbap",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"비빔밥\")",
+      "confidence": "auto-validated"
+    },
+    "gyeongju-sanchae-bibimbap": {
+      "newRegion": "national",
+      "newId": "national-sanchae-bibimbap",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"비빔밥\")",
+      "confidence": "auto-validated"
+    },
+    "cheonan-hanwoo-yukhoe": {
+      "newRegion": "national",
+      "newId": "national-hanwoo-yukhoe",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"비빔밥\")",
+      "confidence": "auto-validated"
+    },
+    "cheonan-gwangdeok-sanchae": {
+      "newRegion": "national",
+      "newId": "national-gwangdeok-sanchae",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"비빔밥\")",
+      "confidence": "auto-validated"
+    },
+    "yongin-sanchae-bibimbap": {
+      "newRegion": "national",
+      "newId": "national-sanchae-bibimbap-yongin",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"비빔밥\") [disambiguated from origin=yongin]",
+      "confidence": "auto-validated"
+    },
+    "icheon-yukhoe-bibimbap": {
+      "newRegion": "national",
+      "newId": "national-yukhoe-bibimbap",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"비빔밥\")",
+      "confidence": "auto-validated"
+    },
+    "icheon-chapssal-tteok": {
+      "newRegion": "national",
+      "newId": "national-chapssal-tteok",
+      "reason": "전국 한식 (FORCE_NATIONAL 매칭: \"찹쌀떡\")",
+      "confidence": "auto-validated"
+    }
+  }
+}

@@ -102,4 +102,12 @@ export const PROVINCES: ProvinceItem[] = [
       { id: 'jeju', name: { ko: '제주', ja: '済州', en: 'Jeju', 'zh-CN': '济州', 'zh-TW': '濟州' } },
     ],
   },
+  {
+    id: 'national',
+    name: { ko: '🇰🇷 전국 (한국 전통)', ja: '🇰🇷 全国 (韓国伝統)', en: '🇰🇷 Nationwide (Korean Traditional)', 'zh-CN': '🇰🇷 全国 (韩国传统)', 'zh-TW': '🇰🇷 全國 (韓國傳統)' },
+    emoji: '🇰🇷',
+    cities: [
+      { id: 'national', name: { ko: '한국 전통', ja: '韓国伝統', en: 'Korean Traditional', 'zh-CN': '韩国传统', 'zh-TW': '韓國傳統' } },
+    ],
+  },
 ]
