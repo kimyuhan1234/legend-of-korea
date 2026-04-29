@@ -1,0 +1,1746 @@
+{
+  "uploaded": [
+    {
+      "id": "jeonju-kongnamul",
+      "name_ko": "콩나물국밥",
+      "filename": "Type1_콩나물국밥_디엔에이스튜디오_h2SnD2.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-kongnamul.jpg"
+    },
+    {
+      "id": "cheonan-kongnamul-gukbap",
+      "name_ko": "천안 콩나물국밥",
+      "filename": "Type1_콩나물국밥_디엔에이스튜디오_h2SnD2.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-kongnamul-gukbap.jpg"
+    },
+    {
+      "id": "jeonju-hanjeongsik",
+      "name_ko": "전주 한정식",
+      "filename": "Type1_한정식_토라이 리퍼블릭_IAcjlg.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-hanjeongsik.jpg"
+    },
+    {
+      "id": "gyeongju-hanjeongsik",
+      "name_ko": "경주 한정식",
+      "filename": "Type1_한정식_토라이 리퍼블릭_IAcjlg.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hanjeongsik.jpg"
+    },
+    {
+      "id": "jeonju-muljjajang",
+      "name_ko": "물짜장",
+      "filename": "Type1_물짜장_한국관광공사 박은경_jylHIa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-muljjajang.jpg"
+    },
+    {
+      "id": "cheonan-sundae-soup",
+      "name_ko": "순대국밥",
+      "filename": "Type1_순대국밥_김지영_tzGc2w.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-sundae-soup.jpg"
+    },
+    {
+      "id": "jeonju-pisundae",
+      "name_ko": "피순대와 순대국밥",
+      "filename": "Type1_순대국밥_김지영_tzGc2w.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-pisundae.jpg"
+    },
+    {
+      "id": "jeonju-yukoe",
+      "name_ko": "육회",
+      "filename": "Type1_육회_한국관광공사 김지호_FWuW4a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-yukoe.jpg"
+    },
+    {
+      "id": "seoul-yukhoe",
+      "name_ko": "육회",
+      "filename": "Type1_육회_한국관광공사 김지호_FWuW4a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-yukhoe.jpg"
+    },
+    {
+      "id": "jeonju-haemul-pajeon",
+      "name_ko": "해물파전",
+      "filename": "Type1_해물파전_한국관광공사 김지호_WCqdna.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-haemul-pajeon.jpg"
+    },
+    {
+      "id": "busan-haemul-pajeon",
+      "name_ko": "해물파전",
+      "filename": "Type1_해물파전_한국관광공사 김지호_WCqdna.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-haemul-pajeon.jpg"
+    },
+    {
+      "id": "cheonan-haemul-pajeon",
+      "name_ko": "천안 해물파전",
+      "filename": "Type1_해물파전_한국관광공사 김지호_WCqdna.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-haemul-pajeon.jpg"
+    },
+    {
+      "id": "jeonju-sikhye",
+      "name_ko": "식혜",
+      "filename": "Type1_식혜_한국관광공사 김지호_mHhQZa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-sikhye.jpg"
+    },
+    {
+      "id": "andong-sikhye",
+      "name_ko": "안동식혜",
+      "filename": "Type1_식혜_한국관광공사 김지호_mHhQZa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-sikhye.jpg"
+    },
+    {
+      "id": "jeonju-ogokbap",
+      "name_ko": "오곡밥",
+      "filename": "Type1_오곡밥_토라이 리퍼블릭_3jv09h.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-ogokbap.jpg"
+    },
+    {
+      "id": "seoul-samgyeopsal",
+      "name_ko": "삼겹살",
+      "filename": "Type1_삼겹살_토라이 리퍼블릭_OiCPWU.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-samgyeopsal.jpg"
+    },
+    {
+      "id": "icheon-straw-pork",
+      "name_ko": "볏짚 삼겹살",
+      "filename": "Type1_삼겹살_토라이 리퍼블릭_OiCPWU.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-straw-pork.jpg"
+    },
+    {
+      "id": "seoul-dakhanmari",
+      "name_ko": "닭한마리",
+      "filename": "Type1_진옥화할머니 닭한마리_한국관광공사 프레임스튜디오_rxoPBa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-dakhanmari.jpg"
+    },
+    {
+      "id": "seoul-seolleongtang",
+      "name_ko": "설렁탕",
+      "filename": "Type1_설렁탕_토라이 리퍼블릭_1id3AQ.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-seolleongtang.jpg"
+    },
+    {
+      "id": "yongin-seolleongtang",
+      "name_ko": "용인 설렁탕",
+      "filename": "Type1_설렁탕_토라이 리퍼블릭_1id3AQ.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-seolleongtang.jpg"
+    },
+    {
+      "id": "seoul-bindaetteok",
+      "name_ko": "광장시장 빈대떡",
+      "filename": "Type1_빈대떡_토라이 리퍼블릭_73NvS6.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-bindaetteok.jpg"
+    },
+    {
+      "id": "seoul-gamjatang",
+      "name_ko": "감자탕",
+      "filename": "Type1_감자탕_한국관광공사 프레임스튜디오_5Byc3a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-gamjatang.jpg"
+    },
+    {
+      "id": "seoul-sundaekook",
+      "name_ko": "순대국",
+      "filename": "Type1_순대_토라이 리퍼블릭_itEIfn.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-sundaekook.jpg"
+    },
+    {
+      "id": "cheonan-byeongcheon-sundae",
+      "name_ko": "병천순대",
+      "filename": "Type1_순대_토라이 리퍼블릭_itEIfn.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-byeongcheon-sundae.jpg"
+    },
+    {
+      "id": "yongin-baegam-sundae",
+      "name_ko": "백암순대",
+      "filename": "Type1_순대_토라이 리퍼블릭_itEIfn.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-baegam-sundae.jpg"
+    },
+    {
+      "id": "national-doenjang-jjigae",
+      "name_ko": "된장찌개",
+      "filename": "Type1_된장찌개_토라이 리퍼블릭_0kyMdH.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-doenjang-jjigae.jpg"
+    },
+    {
+      "id": "seoul-doenjang-jjigae",
+      "name_ko": "서울 된장찌개",
+      "filename": "Type1_된장찌개_토라이 리퍼블릭_0kyMdH.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-doenjang-jjigae.jpg"
+    },
+    {
+      "id": "gyeongju-doenjang-jjigae",
+      "name_ko": "경주 된장찌개",
+      "filename": "Type1_된장찌개_토라이 리퍼블릭_0kyMdH.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-doenjang-jjigae.jpg"
+    },
+    {
+      "id": "icheon-doenjang-jjigae-hansang",
+      "name_ko": "된장찌개 한상",
+      "filename": "Type1_된장찌개_토라이 리퍼블릭_0kyMdH.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-doenjang-jjigae-hansang.jpg"
+    },
+    {
+      "id": "seoul-hotteok",
+      "name_ko": "서울 호떡",
+      "filename": "Type1_호떡_알렉스 분도_2yy6ha.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-hotteok.jpg"
+    },
+    {
+      "id": "seoul-rabokki",
+      "name_ko": "라볶이",
+      "filename": "Type1_라볶이_부산관광공사_i6BNCf.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-rabokki.jpg"
+    },
+    {
+      "id": "tongyeong-chungmu-gimbap",
+      "name_ko": "충무김밥",
+      "filename": "Type1_충무김밥_김효서_1HsGZ6.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-chungmu-gimbap.jpg"
+    },
+    {
+      "id": "tongyeong-kkul-ppang",
+      "name_ko": "꿀빵",
+      "filename": "Type1_꿀빵_한국관광공사 송재근_efyNCC.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-kkul-ppang.jpg"
+    },
+    {
+      "id": "tongyeong-meongge-bibimbap",
+      "name_ko": "멍게비빔밥",
+      "filename": "Type1_멍게비빔밥_한국관광공사 송재근_13uCXX.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-meongge-bibimbap.jpg"
+    },
+    {
+      "id": "tongyeong-ujja",
+      "name_ko": "우짜",
+      "filename": "Type1_우짜_한국관광공사 프레임스튜디오_OgBnga.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-ujja.jpg"
+    },
+    {
+      "id": "tongyeong-haemul-ttukbaegi",
+      "name_ko": "해물뚝배기",
+      "filename": "Type1_해물뚝배기_한국관광공사 이범수_mCaz4a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-haemul-ttukbaegi.jpg"
+    },
+    {
+      "id": "jeju-haemul-ttukbaegi",
+      "name_ko": "제주 해물뚝배기",
+      "filename": "Type1_해물뚝배기_한국관광공사 이범수_mCaz4a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-haemul-ttukbaegi.jpg"
+    },
+    {
+      "id": "tongyeong-haemul-tang",
+      "name_ko": "통영 해물탕",
+      "filename": "Type1_해물탕_한국관광공사 김지호_TGCQ3a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-haemul-tang.jpg"
+    },
+    {
+      "id": "yongin-haemul-tang",
+      "name_ko": "용인 해물탕",
+      "filename": "Type1_해물탕_한국관광공사 김지호_TGCQ3a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-haemul-tang.jpg"
+    },
+    {
+      "id": "tongyeong-jangeo-gui",
+      "name_ko": "통영 장어구이",
+      "filename": "Type1_장어구이_스튜디오 4cats_Nnoaap.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-jangeo-gui.jpg"
+    },
+    {
+      "id": "busan-gomjangeo-gui",
+      "name_ko": "곰장어구이",
+      "filename": "Type1_장어구이_스튜디오 4cats_Nnoaap.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-gomjangeo-gui.jpg"
+    },
+    {
+      "id": "icheon-jangeo-jeongsik",
+      "name_ko": "장어구이정식",
+      "filename": "Type1_장어구이_스튜디오 4cats_Nnoaap.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-jangeo-jeongsik.jpg"
+    },
+    {
+      "id": "tongyeong-pi-kkomak",
+      "name_ko": "피꼬막",
+      "filename": "Type1_피꼬막_스튜디오 4cats_mzcGxy.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-pi-kkomak.jpg"
+    },
+    {
+      "id": "tongyeong-haemul-japtang",
+      "name_ko": "통영 해물잡탕",
+      "filename": "Type1_해물잡탕_한국관광공사 김지호_XiFfZa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-haemul-japtang.jpg"
+    },
+    {
+      "id": "tongyeong-galchi-gui",
+      "name_ko": "통영 갈치구이",
+      "filename": "Type1_갈치구이_한국관광공사 김지호_3UlC3p.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-galchi-gui.jpg"
+    },
+    {
+      "id": "jeju-galchi-gui",
+      "name_ko": "제주 갈치구이",
+      "filename": "Type1_갈치구이_한국관광공사 김지호_3UlC3p.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-galchi-gui.jpg"
+    },
+    {
+      "id": "busan-daegu-tang",
+      "name_ko": "대구탕",
+      "filename": "Type1_대구탕_한국관광공사 이범수 _huBofa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-daegu-tang.jpg"
+    },
+    {
+      "id": "tongyeong-daegu-tang",
+      "name_ko": "통영 대구탕",
+      "filename": "Type1_대구탕_한국관광공사 이범수 _huBofa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-daegu-tang.jpg"
+    },
+    {
+      "id": "tongyeong-myeolchi-hoemuchim",
+      "name_ko": "멸치회무침",
+      "filename": "Type1_멸치회무침_한국관광공사 김지호_tU7Xma.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-myeolchi-hoemuchim.jpg"
+    },
+    {
+      "id": "tongyeong-hakggongchi-hoe",
+      "name_ko": "학꽁치 회",
+      "filename": "Type1_학꽁치회_한국관광공사 김지호_rXeNta.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-hakggongchi-hoe.jpg"
+    },
+    {
+      "id": "jeju-gogi-guksu",
+      "name_ko": "고기국수",
+      "filename": "Type1_고기국수_황성훈_7LlS5N.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-gogi-guksu.jpg"
+    },
+    {
+      "id": "jeju-galchi-jorim",
+      "name_ko": "갈치조림",
+      "filename": "Type1_제주갈치조림_한국관광공사 김지호_qj2Dse.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-galchi-jorim.jpg"
+    },
+    {
+      "id": "jeju-jeonbok-juk",
+      "name_ko": "전복죽",
+      "filename": "Type1_전복죽_한국관광공사 김지호_LiPq2a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-jeonbok-juk.jpg"
+    },
+    {
+      "id": "busan-jeonbok-juk",
+      "name_ko": "전복죽",
+      "filename": "Type1_전복죽_한국관광공사 김지호_LiPq2a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-jeonbok-juk.jpg"
+    },
+    {
+      "id": "jeju-dombe",
+      "name_ko": "돔베고기",
+      "filename": "Type1_제주 돔베고기 _한국관광공사 김지호 _tH68Ia.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-dombe.jpg"
+    },
+    {
+      "id": "jeju-mulhoe",
+      "name_ko": "물회",
+      "filename": "Type1_물회_스튜디오 4cats_7ooZl7.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-mulhoe.jpg"
+    },
+    {
+      "id": "jeju-hanchi-mulhoe",
+      "name_ko": "제주 한치물회",
+      "filename": "Type1_물회_스튜디오 4cats_7ooZl7.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-hanchi-mulhoe.jpg"
+    },
+    {
+      "id": "jeju-jari-mulhoe",
+      "name_ko": "제주 자리물회",
+      "filename": "Type1_물회_스튜디오 4cats_7ooZl7.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-jari-mulhoe.jpg"
+    },
+    {
+      "id": "gyeongju-hanwoo-mulhoe",
+      "name_ko": "한우 물회",
+      "filename": "Type1_물회_스튜디오 4cats_7ooZl7.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hanwoo-mulhoe.jpg"
+    },
+    {
+      "id": "sokcho-mulhoe",
+      "name_ko": "속초 물회",
+      "filename": "Type1_물회_스튜디오 4cats_7ooZl7.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-mulhoe.jpg"
+    },
+    {
+      "id": "jeju-bomal-kalguksu",
+      "name_ko": "보말칼국수",
+      "filename": "Type1_보말칼국수_한국관광공사 이범수_K1c2Xa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-bomal-kalguksu.jpg"
+    },
+    {
+      "id": "jeju-omegi-tteok",
+      "name_ko": "오메기떡",
+      "filename": "Type1_오메기떡_한국관광공사 이범수_r0cNSa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-omegi-tteok.jpg"
+    },
+    {
+      "id": "jeju-hallabong",
+      "name_ko": "한라봉 디저트",
+      "filename": "Type1_한라봉디저트_한국관광공사 김지호_LHHuua.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-hallabong.jpg"
+    },
+    {
+      "id": "jeju-bomal-juk",
+      "name_ko": "제주 보말죽",
+      "filename": "Type1_보말죽_한국관광공사 이범수_K1c2Ta.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-bomal-juk.jpg"
+    },
+    {
+      "id": "jeju-seonggae-miyeokguk",
+      "name_ko": "성게미역국",
+      "filename": "Type1_미역국_알렉스 분도_joM8Xa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-seonggae-miyeokguk.jpg"
+    },
+    {
+      "id": "jeju-gosari-yukgaejang",
+      "name_ko": "제주 고사리 육개장",
+      "filename": "Type1_고사리_알렉스 분도_joM8xa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-gosari-yukgaejang.jpg"
+    },
+    {
+      "id": "jeju-gosari-bokkeum",
+      "name_ko": "제주 고사리볶음",
+      "filename": "Type1_고사리_알렉스 분도_joM8xa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-gosari-bokkeum.jpg"
+    },
+    {
+      "id": "busan-pork-soup",
+      "name_ko": "돼지국밥",
+      "filename": "Type1_돼지국밥_IR 스튜디오_c3sAaa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-pork-soup.jpg"
+    },
+    {
+      "id": "busan-milmyeon",
+      "name_ko": "밀면",
+      "filename": "Type1_밀면_디엔에이스튜디오_JclIeB.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-milmyeon.jpg"
+    },
+    {
+      "id": "gyeongju-milmyeon",
+      "name_ko": "경주 밀면",
+      "filename": "Type1_밀면_디엔에이스튜디오_JclIeB.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-milmyeon.jpg"
+    },
+    {
+      "id": "busan-hotteok",
+      "name_ko": "씨앗호떡",
+      "filename": "Type1_씨앗호떡_한국관광공사 김지호_sJ8bFa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-hotteok.jpg"
+    },
+    {
+      "id": "busan-ssiat-hotteok",
+      "name_ko": "씨앗호떡",
+      "filename": "Type1_씨앗호떡_한국관광공사 김지호_sJ8bFa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-ssiat-hotteok.jpg"
+    },
+    {
+      "id": "busan-naengchae-jokbal",
+      "name_ko": "냉채족발",
+      "filename": "Type1_부산 냉채족발_김효서_a8ey16.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-naengchae-jokbal.jpg"
+    },
+    {
+      "id": "national-jokbal",
+      "name_ko": "족발",
+      "filename": "Type1_부산 냉채족발_김효서_a8ey16.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-jokbal.jpg"
+    },
+    {
+      "id": "busan-grilled-clams",
+      "name_ko": "조개구이",
+      "filename": "Type1_조개구이_천준교_36JNIN.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-grilled-clams.jpg"
+    },
+    {
+      "id": "busan-eomuk",
+      "name_ko": "어묵",
+      "filename": "Type1_어묵(오뎅)_한국관광공사 김지호_3HjKXa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-eomuk.jpg"
+    },
+    {
+      "id": "busan-eomuk-tang",
+      "name_ko": "어묵탕",
+      "filename": "Type1_어묵(오뎅)_한국관광공사 김지호_3HjKXa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-eomuk-tang.jpg"
+    },
+    {
+      "id": "busan-bibim-dangmyeon",
+      "name_ko": "비빔당면",
+      "filename": "Type1_비빔당면_부산관광공사_jUkBlA.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-bibim-dangmyeon.jpg"
+    },
+    {
+      "id": "busan-saengseon-gui",
+      "name_ko": "생선구이",
+      "filename": "Type1_생선구이_알렉스 분도_xZMQba.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-saengseon-gui.jpg"
+    },
+    {
+      "id": "busan-haemul-jjamppong",
+      "name_ko": "해물짬뽕",
+      "filename": "Type1_해물짬뽕_한국관광공사 이범수_r0cNua.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-haemul-jjamppong.jpg"
+    },
+    {
+      "id": "busan-gul-jeon",
+      "name_ko": "굴전",
+      "filename": "Type1_굴전_한국관광공사 김지호_Mw1WUa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-gul-jeon.jpg"
+    },
+    {
+      "id": "busan-bokeo-tang",
+      "name_ko": "복어탕",
+      "filename": "Type1_복어탕_디엔에이스튜디오_BzVjF9.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-bokeo-tang.jpg"
+    },
+    {
+      "id": "busan-yubu-jeongol",
+      "name_ko": "유부전골",
+      "filename": "Type1_유부전골_한국관광공사 김지호_nWtLia.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-yubu-jeongol.jpg"
+    },
+    {
+      "id": "gyeongju-hwangnam-ppang",
+      "name_ko": "황남빵",
+      "filename": "Type1_경주황남빵_알렉스 분도_6FMuwa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hwangnam-ppang.jpg"
+    },
+    {
+      "id": "gyeongju-gyori-gimbap",
+      "name_ko": "교리김밥",
+      "filename": "Type1_교리김밥_한국관광공사 김지호_ZUUAma.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-gyori-gimbap.jpg"
+    },
+    {
+      "id": "gyeongju-hanwoo-bulgogi",
+      "name_ko": "한우불고기",
+      "filename": "Type1_불고기_알렉스 분도_xCXiHa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hanwoo-bulgogi.jpg"
+    },
+    {
+      "id": "icheon-dojagi-bulgogi",
+      "name_ko": "도자기불고기",
+      "filename": "Type1_불고기_알렉스 분도_xCXiHa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-dojagi-bulgogi.jpg"
+    },
+    {
+      "id": "gyeongju-gujeolpan",
+      "name_ko": "구절판",
+      "filename": "Type1_구절판_알렉스분도_4yZZr1.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-gujeolpan.jpg"
+    },
+    {
+      "id": "gyeongju-dubu-jeongol",
+      "name_ko": "두부전골",
+      "filename": "Type1_두부전골_디엔에이스튜디오_qTIS6A.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-dubu-jeongol.jpg"
+    },
+    {
+      "id": "yongin-dubu-jeongol",
+      "name_ko": "용인 두부전골",
+      "filename": "Type1_두부전골_디엔에이스튜디오_qTIS6A.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-dubu-jeongol.jpg"
+    },
+    {
+      "id": "gyeongju-meomil-jeonbyeong",
+      "name_ko": "메밀전병",
+      "filename": "Type1_메밀전병_IR 스튜디오_UpEQ5a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-meomil-jeonbyeong.jpg"
+    },
+    {
+      "id": "yongin-memil-jeonbyeong",
+      "name_ko": "용인 메밀전병",
+      "filename": "Type1_메밀전병_IR 스튜디오_UpEQ5a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-memil-jeonbyeong.jpg"
+    },
+    {
+      "id": "gyeongju-gyodongbeopju",
+      "name_ko": "교동법주",
+      "filename": "Type1_경주 교동법주_한국관광공사 김지호_McL7za.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-gyodongbeopju.jpg"
+    },
+    {
+      "id": "cheonan-walnut-cookie",
+      "name_ko": "호두과자",
+      "filename": "Type1_호두과자_알렉스 분도_6FMuya.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-walnut-cookie.jpg"
+    },
+    {
+      "id": "cheonan-charcoal-dakgalbi",
+      "name_ko": "천안 숯불 닭갈비",
+      "filename": "Type1_숯불닭갈비_스튜디오 4cats_Yrwl1A.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-charcoal-dakgalbi.jpg"
+    },
+    {
+      "id": "cheonan-lotus-rice",
+      "name_ko": "연잎밥 정식",
+      "filename": "Type1_연잎밥_한가람_한국관광공사 프레임스튜디오_g8KrOa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-lotus-rice.jpg"
+    },
+    {
+      "id": "cheonan-mushroom-stew",
+      "name_ko": "버섯전골",
+      "filename": "Type1_버섯전골_한국관광공사 김지호_B0Q2Xa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-mushroom-stew.jpg"
+    },
+    {
+      "id": "yongin-beoseot-jeongol",
+      "name_ko": "용인 버섯전골",
+      "filename": "Type1_버섯전골_한국관광공사 김지호_B0Q2Xa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-beoseot-jeongol.jpg"
+    },
+    {
+      "id": "cheonan-hongeo-samhap",
+      "name_ko": "천안 홍어삼합",
+      "filename": "Type1_홍어삼합_디엔에이스튜디오_FBEgct.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-hongeo-samhap.jpg"
+    },
+    {
+      "id": "national-galbi-tang",
+      "name_ko": "갈비탕",
+      "filename": "Type1_갈비탕_토라이 리퍼블릭_EzACc1.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-galbi-tang.jpg"
+    },
+    {
+      "id": "cheonan-galbitang",
+      "name_ko": "천안 갈비탕",
+      "filename": "Type1_갈비탕_토라이 리퍼블릭_EzACc1.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-galbitang.jpg"
+    },
+    {
+      "id": "icheon-galbitang",
+      "name_ko": "이천 갈비탕",
+      "filename": "Type1_갈비탕_토라이 리퍼블릭_EzACc1.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-galbitang.jpg"
+    },
+    {
+      "id": "cheonan-ureong-doenjang",
+      "name_ko": "천안 우렁된장",
+      "filename": "Type1_된장_한국관광공사 박은경_9YMwoa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-ureong-doenjang.jpg"
+    },
+    {
+      "id": "cheonan-dubu-kimchi",
+      "name_ko": "천안 두부김치",
+      "filename": "Type1_두부김치_한국관광공사 김지호_a90haa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-dubu-kimchi.jpg"
+    },
+    {
+      "id": "cheonan-sujebi",
+      "name_ko": "천안 수제비",
+      "filename": "Type1_수제비 _한국관광공사 김지호_6wvJFa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-sujebi.jpg"
+    },
+    {
+      "id": "yongin-makguksu",
+      "name_ko": "수지 막국수",
+      "filename": "Type1_막국수_천준교_1VXdBw.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-makguksu.jpg"
+    },
+    {
+      "id": "icheon-makguksu",
+      "name_ko": "이천 막국수",
+      "filename": "Type1_막국수_천준교_1VXdBw.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-makguksu.jpg"
+    },
+    {
+      "id": "yongin-acorn-jelly",
+      "name_ko": "도토리묵 무침",
+      "filename": "Type1_도토리묵_한국관광공사 김지호_ScbA1a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-acorn-jelly.jpg"
+    },
+    {
+      "id": "yongin-hanwoo",
+      "name_ko": "용인 한우 구이",
+      "filename": "Type1_한우구이_한국관광공사 이범수_9zxHra.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-hanwoo.jpg"
+    },
+    {
+      "id": "icheon-hanwoo-gui",
+      "name_ko": "이천 한우 구이",
+      "filename": "Type1_한우구이_한국관광공사 이범수_9zxHra.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-hanwoo-gui.jpg"
+    },
+    {
+      "id": "yongin-sundubu",
+      "name_ko": "용인 순두부찌개",
+      "filename": "Type1_순두부_한국관광공사 이범수_rwD3ba.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-sundubu.jpg"
+    },
+    {
+      "id": "national-sundubu",
+      "name_ko": "순두부찌개",
+      "filename": "Type1_순두부_한국관광공사 이범수_rwD3ba.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sundubu.jpg"
+    },
+    {
+      "id": "national-sundubu-gyeongju",
+      "name_ko": "순두부찌개",
+      "filename": "Type1_순두부_한국관광공사 이범수_rwD3ba.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sundubu-gyeongju.jpg"
+    },
+    {
+      "id": "yongin-cheoin-dakgalbi",
+      "name_ko": "용인 처인닭갈비",
+      "filename": "Type1_닭갈비_스튜디오 4cats_evsr55.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-cheoin-dakgalbi.jpg"
+    },
+    {
+      "id": "national-gomtang",
+      "name_ko": "곰탕",
+      "filename": "Type1_곰탕_토라이 리퍼블릭_u7dewQ.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-gomtang.jpg"
+    },
+    {
+      "id": "yongin-yangji-gomtang",
+      "name_ko": "용인 양지곰탕",
+      "filename": "Type1_곰탕_토라이 리퍼블릭_u7dewQ.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-yangji-gomtang.jpg"
+    },
+    {
+      "id": "yongin-bori-gulbi",
+      "name_ko": "용인 보리굴비정식",
+      "filename": "Type1_굴비정식_스튜디오 4cats_hECXD7.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-bori-gulbi.jpg"
+    },
+    {
+      "id": "national-samgyetang",
+      "name_ko": "삼계탕",
+      "filename": "Type1_삼계탕_알렉스 분도_FJxoYa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-samgyetang.jpg"
+    },
+    {
+      "id": "yongin-hanbang-samgyetang",
+      "name_ko": "용인 한방삼계탕",
+      "filename": "Type1_삼계탕_알렉스 분도_FJxoYa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-hanbang-samgyetang.jpg"
+    },
+    {
+      "id": "yongin-mukbap",
+      "name_ko": "용인 묵밥",
+      "filename": "Type1_묵밥_한국관광공사 김지호_ScbAra.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-mukbap.jpg"
+    },
+    {
+      "id": "yongin-dolsot-bibimbap",
+      "name_ko": "용인 돌솥비빔밥",
+      "filename": "Type1_돌솥비빔밥_한국관광공사 김지호_hEM1wa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-dolsot-bibimbap.jpg"
+    },
+    {
+      "id": "yongin-maeun-galbijjim",
+      "name_ko": "용인 매운갈비찜",
+      "filename": "Type1_갈비찜_토라이 리퍼블릭_nK2ajF.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-maeun-galbijjim.jpg"
+    },
+    {
+      "id": "icheon-rice-table",
+      "name_ko": "이천 쌀밥 정식",
+      "filename": "Type1_쌀밥정식_스튜디오 4cats_66SFlU.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-rice-table.jpg"
+    },
+    {
+      "id": "icheon-ganjang-gejang",
+      "name_ko": "간장게장",
+      "filename": "Type1_간장게장_천준교_qxTU9F.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-ganjang-gejang.jpg"
+    },
+    {
+      "id": "icheon-royal-table",
+      "name_ko": "임금님 수라상",
+      "filename": "Type1_수라상_스튜디오 4cats_Eg7Khl.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-royal-table.jpg"
+    },
+    {
+      "id": "icheon-sotbap",
+      "name_ko": "솥밥",
+      "filename": "Type1_돌솥밥_알렉스 분도_xCXiia.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-sotbap.jpg"
+    },
+    {
+      "id": "icheon-kongguksu",
+      "name_ko": "콩국수",
+      "filename": "Type1_땅콩국수_한국관광공사 이범수_Xg2N5a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-kongguksu.jpg"
+    },
+    {
+      "id": "icheon-maeun-dwaeji-galbi",
+      "name_ko": "매운돼지갈비",
+      "filename": "Type1_돼지갈비_한국관광공사 프레임스튜디오_klLOaa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-maeun-dwaeji-galbi.jpg"
+    },
+    {
+      "id": "icheon-somori-gukbap",
+      "name_ko": "소머리국밥",
+      "filename": "Type1_금탑소머리국밥_한국관광공사 이범수_ddNLGa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-somori-gukbap.jpg"
+    },
+    {
+      "id": "icheon-onggi-mandu",
+      "name_ko": "옹기만두",
+      "filename": "Type1_만두_토라이 리퍼블릭_tkIr3G.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-onggi-mandu.jpg"
+    },
+    {
+      "id": "icheon-gamja-ongsimi",
+      "name_ko": "감자옹심이",
+      "filename": "Type1_감자옹심이_디엔에이스튜디오_dPbYf8.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-gamja-ongsimi.jpg"
+    },
+    {
+      "id": "sokcho-gamja-ongsimi",
+      "name_ko": "감자옹심이",
+      "filename": "Type1_감자옹심이_디엔에이스튜디오_dPbYf8.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-gamja-ongsimi.jpg"
+    },
+    {
+      "id": "sokcho-dakgangjeong",
+      "name_ko": "속초 닭강정",
+      "filename": "Type1_닭강정_한국관광공사 김지호_0f05Ga.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-dakgangjeong.jpg"
+    },
+    {
+      "id": "sokcho-abai-sundae",
+      "name_ko": "아바이순대",
+      "filename": "Type1_아바이순대_테마상품팀 IR 스튜디오_zxHyXa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-abai-sundae.jpg"
+    },
+    {
+      "id": "sokcho-ojingeo-sundae",
+      "name_ko": "오징어순대",
+      "filename": "Type1_오징어순대_테마상품팀 IR 스튜디오_zxHyWa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-ojingeo-sundae.jpg"
+    },
+    {
+      "id": "yeosu-gat-kimchi",
+      "name_ko": "돌산 갓김치",
+      "filename": "Type1_갓김치_알렉스 분도_Xhkdca.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yeosu-gat-kimchi.jpg"
+    },
+    {
+      "id": "yeosu-jangeo-tang",
+      "name_ko": "여수 장어탕",
+      "filename": "Type1_장어탕_한국관광공사 이범수_EEI9xa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yeosu-jangeo-tang.jpg"
+    },
+    {
+      "id": "yeosu-gul-yori",
+      "name_ko": "여수 굴요리",
+      "filename": "Type1_굴요리_스튜디오 4cats_cuuZYc.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yeosu-gul-yori.jpg"
+    },
+    {
+      "id": "andong-jjimdak",
+      "name_ko": "안동찜닭",
+      "filename": "Type1_안동찜닭_IR 스튜디오_3Xgcba.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-jjimdak.jpg"
+    },
+    {
+      "id": "andong-andong-jjimdak",
+      "name_ko": "안동찜닭",
+      "filename": "Type1_안동찜닭_IR 스튜디오_3Xgcba.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-andong-jjimdak.jpg"
+    },
+    {
+      "id": "andong-gan-godeungeo",
+      "name_ko": "안동 간고등어",
+      "filename": "Type1_안동간고등어_디엔에이스튜디오_YhEeo8.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-gan-godeungeo.jpg"
+    },
+    {
+      "id": "andong-guksi",
+      "name_ko": "안동국시",
+      "filename": "Type1_안동국시_알렉스 분도_vG2AKa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-guksi.jpg"
+    },
+    {
+      "id": "national-japchae",
+      "name_ko": "잡채",
+      "filename": "Type1_잡채_토라이 리퍼블릭_3Q1PNf.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-japchae.jpg"
+    },
+    {
+      "id": "national-pajeon",
+      "name_ko": "파전",
+      "filename": "Type1_동래파전_부산관광공사_D9DioX.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-pajeon.jpg"
+    },
+    {
+      "id": "national-tteokbokki",
+      "name_ko": "떡볶이",
+      "filename": "Type1_떡볶이_부산관광공사_5IjaGe.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-tteokbokki.jpg"
+    },
+    {
+      "id": "national-ojingeo-bokkeum",
+      "name_ko": "오징어볶음",
+      "filename": "Type1_오징어볶음_한국관광공사_ui0MHa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-ojingeo-bokkeum.jpg"
+    },
+    {
+      "id": "national-yakgwa",
+      "name_ko": "약과",
+      "filename": "Type1_약과_토라이 리퍼블릭_Z8QBm5.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-yakgwa.jpg"
+    },
+    {
+      "id": "national-tteokguk",
+      "name_ko": "떡국",
+      "filename": "Type1_떡국_토라이 리퍼블릭_8QeXVA.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-tteokguk.jpg"
+    },
+    {
+      "id": "national-spicy-catfish",
+      "name_ko": "빠가사리 매운탕",
+      "filename": "Type1_매운탕_IR 스튜디오_cHfSVa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-spicy-catfish.jpg"
+    },
+    {
+      "id": "national-jeyuk-bokkeum",
+      "name_ko": "제육볶음",
+      "filename": "Type1_제육볶음_스튜디오 4cats_T3Ix7f.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-jeyuk-bokkeum.jpg"
+    },
+    {
+      "id": "national-nakji-bokkeum",
+      "name_ko": "낙지볶음",
+      "filename": "Type1_낙지볶음_한국관광공사_ui0MIa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-nakji-bokkeum.jpg"
+    },
+    {
+      "id": "national-budae-jjigae",
+      "name_ko": "부대찌개",
+      "filename": "Type1_부대찌개_IR 스튜디오_PjTU2a.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-budae-jjigae.jpg"
+    },
+    {
+      "id": "national-kimchi-jeon",
+      "name_ko": "김치전",
+      "filename": "Type1_김치전_한국관광공사 김지호_cZvjLa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-kimchi-jeon.jpg"
+    },
+    {
+      "id": "national-sanchae-bibimbap",
+      "name_ko": "산채비빔밥",
+      "filename": "Type1_산채비빔밥_IR 스튜디오_cHfSTa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sanchae-bibimbap.jpg"
+    },
+    {
+      "id": "national-sanchae-bibimbap-yongin",
+      "name_ko": "산채비빔밥",
+      "filename": "Type1_산채비빔밥_IR 스튜디오_cHfSTa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sanchae-bibimbap-yongin.jpg"
+    },
+    {
+      "id": "national-gwangdeok-sanchae",
+      "name_ko": "광덕산 산채비빔밥",
+      "filename": "Type1_산채비빔밥_IR 스튜디오_cHfSTa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-gwangdeok-sanchae.jpg"
+    },
+    {
+      "id": "national-yukhoe-bibimbap",
+      "name_ko": "육회비빔밥",
+      "filename": "Type1_육회비빔밥_한국관광공사 이범수_RbmPHa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-yukhoe-bibimbap.jpg"
+    },
+    {
+      "id": "national-hanwoo-yukhoe",
+      "name_ko": "한우 육회비빔밥",
+      "filename": "Type1_육회비빔밥_한국관광공사 이범수_RbmPHa.jpg",
+      "url": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-hanwoo-yukhoe.jpg"
+    }
+  ],
+  "patched": [
+    {
+      "id": "jeonju-kongnamul",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-kongnamul.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "cheonan-kongnamul-gukbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-kongnamul-gukbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "jeonju-hanjeongsik",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-hanjeongsik.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "gyeongju-hanjeongsik",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hanjeongsik.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "jeonju-muljjajang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-muljjajang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 박은경"
+    },
+    {
+      "id": "cheonan-sundae-soup",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-sundae-soup.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-김지영"
+    },
+    {
+      "id": "jeonju-pisundae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-pisundae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-김지영"
+    },
+    {
+      "id": "jeonju-yukoe",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-yukoe.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "seoul-yukhoe",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-yukhoe.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "jeonju-haemul-pajeon",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-haemul-pajeon.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "busan-haemul-pajeon",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-haemul-pajeon.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "cheonan-haemul-pajeon",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-haemul-pajeon.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "jeonju-sikhye",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-sikhye.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "andong-sikhye",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-sikhye.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "jeonju-ogokbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-ogokbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "seoul-samgyeopsal",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-samgyeopsal.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "icheon-straw-pork",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-straw-pork.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "seoul-dakhanmari",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-dakhanmari.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 프레임스튜디오"
+    },
+    {
+      "id": "seoul-seolleongtang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-seolleongtang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "yongin-seolleongtang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-seolleongtang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "seoul-bindaetteok",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-bindaetteok.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "seoul-gamjatang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-gamjatang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 프레임스튜디오"
+    },
+    {
+      "id": "seoul-sundaekook",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-sundaekook.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "cheonan-byeongcheon-sundae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-byeongcheon-sundae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "yongin-baegam-sundae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-baegam-sundae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "national-doenjang-jjigae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-doenjang-jjigae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "seoul-doenjang-jjigae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-doenjang-jjigae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "gyeongju-doenjang-jjigae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-doenjang-jjigae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "icheon-doenjang-jjigae-hansang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-doenjang-jjigae-hansang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "seoul-hotteok",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-hotteok.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "seoul-rabokki",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-rabokki.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-부산관광공사"
+    },
+    {
+      "id": "tongyeong-chungmu-gimbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-chungmu-gimbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-김효서"
+    },
+    {
+      "id": "tongyeong-kkul-ppang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-kkul-ppang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 송재근"
+    },
+    {
+      "id": "tongyeong-meongge-bibimbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-meongge-bibimbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 송재근"
+    },
+    {
+      "id": "tongyeong-ujja",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-ujja.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 프레임스튜디오"
+    },
+    {
+      "id": "tongyeong-haemul-ttukbaegi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-haemul-ttukbaegi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "jeju-haemul-ttukbaegi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-haemul-ttukbaegi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "tongyeong-haemul-tang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-haemul-tang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "yongin-haemul-tang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-haemul-tang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "tongyeong-jangeo-gui",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-jangeo-gui.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "busan-gomjangeo-gui",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-gomjangeo-gui.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "icheon-jangeo-jeongsik",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-jangeo-jeongsik.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "tongyeong-pi-kkomak",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-pi-kkomak.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "tongyeong-haemul-japtang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-haemul-japtang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "tongyeong-galchi-gui",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-galchi-gui.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "jeju-galchi-gui",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-galchi-gui.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "busan-daegu-tang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-daegu-tang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "tongyeong-daegu-tang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-daegu-tang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "tongyeong-myeolchi-hoemuchim",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-myeolchi-hoemuchim.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "tongyeong-hakggongchi-hoe",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-hakggongchi-hoe.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "jeju-gogi-guksu",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-gogi-guksu.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-황성훈"
+    },
+    {
+      "id": "jeju-galchi-jorim",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-galchi-jorim.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "jeju-jeonbok-juk",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-jeonbok-juk.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "busan-jeonbok-juk",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-jeonbok-juk.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "jeju-dombe",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-dombe.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "jeju-mulhoe",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-mulhoe.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "jeju-hanchi-mulhoe",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-hanchi-mulhoe.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "jeju-jari-mulhoe",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-jari-mulhoe.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "gyeongju-hanwoo-mulhoe",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hanwoo-mulhoe.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "sokcho-mulhoe",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-mulhoe.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "jeju-bomal-kalguksu",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-bomal-kalguksu.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "jeju-omegi-tteok",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-omegi-tteok.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "jeju-hallabong",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-hallabong.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "jeju-bomal-juk",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-bomal-juk.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "jeju-seonggae-miyeokguk",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-seonggae-miyeokguk.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "jeju-gosari-yukgaejang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-gosari-yukgaejang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "jeju-gosari-bokkeum",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-gosari-bokkeum.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "busan-pork-soup",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-pork-soup.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+    },
+    {
+      "id": "busan-milmyeon",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-milmyeon.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "gyeongju-milmyeon",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-milmyeon.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "busan-hotteok",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-hotteok.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "busan-ssiat-hotteok",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-ssiat-hotteok.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "busan-naengchae-jokbal",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-naengchae-jokbal.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-김효서"
+    },
+    {
+      "id": "national-jokbal",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-jokbal.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-김효서"
+    },
+    {
+      "id": "busan-grilled-clams",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-grilled-clams.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-천준교"
+    },
+    {
+      "id": "busan-eomuk",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-eomuk.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "busan-eomuk-tang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-eomuk-tang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "busan-bibim-dangmyeon",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-bibim-dangmyeon.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-부산관광공사"
+    },
+    {
+      "id": "busan-saengseon-gui",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-saengseon-gui.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "busan-haemul-jjamppong",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-haemul-jjamppong.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "busan-gul-jeon",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-gul-jeon.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "busan-bokeo-tang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-bokeo-tang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "busan-yubu-jeongol",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-yubu-jeongol.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "gyeongju-hwangnam-ppang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hwangnam-ppang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "gyeongju-gyori-gimbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-gyori-gimbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "gyeongju-hanwoo-bulgogi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hanwoo-bulgogi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "icheon-dojagi-bulgogi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-dojagi-bulgogi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "gyeongju-gujeolpan",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-gujeolpan.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스분도"
+    },
+    {
+      "id": "gyeongju-dubu-jeongol",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-dubu-jeongol.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "yongin-dubu-jeongol",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-dubu-jeongol.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "gyeongju-meomil-jeonbyeong",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-meomil-jeonbyeong.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+    },
+    {
+      "id": "yongin-memil-jeonbyeong",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-memil-jeonbyeong.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+    },
+    {
+      "id": "gyeongju-gyodongbeopju",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-gyodongbeopju.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "cheonan-walnut-cookie",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-walnut-cookie.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "cheonan-charcoal-dakgalbi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-charcoal-dakgalbi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "cheonan-lotus-rice",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-lotus-rice.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한가람_한국관광공사 프레임스튜디오"
+    },
+    {
+      "id": "cheonan-mushroom-stew",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-mushroom-stew.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "yongin-beoseot-jeongol",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-beoseot-jeongol.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "cheonan-hongeo-samhap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-hongeo-samhap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "national-galbi-tang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-galbi-tang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "cheonan-galbitang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-galbitang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "icheon-galbitang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-galbitang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "cheonan-ureong-doenjang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-ureong-doenjang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 박은경"
+    },
+    {
+      "id": "cheonan-dubu-kimchi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-dubu-kimchi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "cheonan-sujebi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-sujebi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "yongin-makguksu",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-makguksu.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-천준교"
+    },
+    {
+      "id": "icheon-makguksu",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-makguksu.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-천준교"
+    },
+    {
+      "id": "yongin-acorn-jelly",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-acorn-jelly.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "yongin-hanwoo",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-hanwoo.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "icheon-hanwoo-gui",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-hanwoo-gui.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "yongin-sundubu",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-sundubu.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "national-sundubu",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sundubu.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "national-sundubu-gyeongju",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sundubu-gyeongju.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "yongin-cheoin-dakgalbi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-cheoin-dakgalbi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "national-gomtang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-gomtang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "yongin-yangji-gomtang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-yangji-gomtang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "yongin-bori-gulbi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-bori-gulbi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "national-samgyetang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-samgyetang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "yongin-hanbang-samgyetang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-hanbang-samgyetang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "yongin-mukbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-mukbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "yongin-dolsot-bibimbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-dolsot-bibimbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "yongin-maeun-galbijjim",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-maeun-galbijjim.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "icheon-rice-table",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-rice-table.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "icheon-ganjang-gejang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-ganjang-gejang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-천준교"
+    },
+    {
+      "id": "icheon-royal-table",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-royal-table.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "icheon-sotbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-sotbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "icheon-kongguksu",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-kongguksu.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "icheon-maeun-dwaeji-galbi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-maeun-dwaeji-galbi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 프레임스튜디오"
+    },
+    {
+      "id": "icheon-somori-gukbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-somori-gukbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "icheon-onggi-mandu",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-onggi-mandu.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "icheon-gamja-ongsimi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-gamja-ongsimi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "sokcho-gamja-ongsimi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-gamja-ongsimi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "sokcho-dakgangjeong",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-dakgangjeong.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "sokcho-abai-sundae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-abai-sundae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-테마상품팀 IR 스튜디오"
+    },
+    {
+      "id": "sokcho-ojingeo-sundae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-ojingeo-sundae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-테마상품팀 IR 스튜디오"
+    },
+    {
+      "id": "yeosu-gat-kimchi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yeosu-gat-kimchi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "yeosu-jangeo-tang",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yeosu-jangeo-tang.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "yeosu-gul-yori",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yeosu-gul-yori.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "andong-jjimdak",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-jjimdak.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+    },
+    {
+      "id": "andong-andong-jjimdak",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-andong-jjimdak.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+    },
+    {
+      "id": "andong-gan-godeungeo",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-gan-godeungeo.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오"
+    },
+    {
+      "id": "andong-guksi",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-guksi.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도"
+    },
+    {
+      "id": "national-japchae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-japchae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "national-pajeon",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-pajeon.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-부산관광공사"
+    },
+    {
+      "id": "national-tteokbokki",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-tteokbokki.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-부산관광공사"
+    },
+    {
+      "id": "national-ojingeo-bokkeum",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-ojingeo-bokkeum.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사"
+    },
+    {
+      "id": "national-yakgwa",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-yakgwa.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "national-tteokguk",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-tteokguk.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭"
+    },
+    {
+      "id": "national-spicy-catfish",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-spicy-catfish.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+    },
+    {
+      "id": "national-jeyuk-bokkeum",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-jeyuk-bokkeum.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats"
+    },
+    {
+      "id": "national-nakji-bokkeum",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-nakji-bokkeum.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사"
+    },
+    {
+      "id": "national-budae-jjigae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-budae-jjigae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+    },
+    {
+      "id": "national-kimchi-jeon",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-kimchi-jeon.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호"
+    },
+    {
+      "id": "national-sanchae-bibimbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sanchae-bibimbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+    },
+    {
+      "id": "national-sanchae-bibimbap-yongin",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sanchae-bibimbap-yongin.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+    },
+    {
+      "id": "national-gwangdeok-sanchae",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-gwangdeok-sanchae.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오"
+    },
+    {
+      "id": "national-yukhoe-bibimbap",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-yukhoe-bibimbap.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    },
+    {
+      "id": "national-hanwoo-yukhoe",
+      "image": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-hanwoo-yukhoe.jpg",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수"
+    }
+  ],
+  "failed": [],
+  "skipped": []
+}
