@@ -2127,7 +2127,8 @@
   "homeHero": {
     "headline": "당신의 여행 스토리,",
     "headlineEmphasis": "스스로 만들어 보세요",
-    "subheadline": "clouds with you",
+    "headlineTagline": "clouds with you",
+    "subheadline": "",
     "ctaPrimary": "베타 가입하기",
     "ctaSecondary": "패스 살펴보기",
     "trustBadge": "🌱 Founding Members 베타 모집 중 · 일 50명 한정"
