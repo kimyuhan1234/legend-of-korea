@@ -147,10 +147,11 @@ console.log(`[dupes] foods: ${dupes.length}`)
 // 매칭
 // ────────────────────────────────────────────────
 
-// hotfix v3 — 매칭 알고리즘 5 단계 (정규화 + suffix + keyword 추가)
+// hotfix v3.1 — suffix STRIP / contain 2자 허용 / keyword 우선 / 길이차 4 제한
 const REGION_PREFIX = /^(안동|전주|서울|부산|제주|경주|통영|천안|용인|이천|속초|여수|광주|대구|인천|수원|대전|춘천|강릉|영광|부안|영주|남원|홍성|보성|군산|진주|순천|광양|서울식|전주식|경주식|이천식)\s*/
 
-const SUFFIX_TO_TRY = ['', '정식', '상']
+// 끝에서 제거 (append X) — '보리굴비정식' → '보리굴비'
+const SUFFIX_TO_STRIP = ['정식', '상']
 const COMMON_SUFFIXES = ['찌개', '국밥', '국수', '탕', '갈비', '비빔밥', '전골', '구이', '볶음', '조림', '무침', '밥']
 
 function normalizeForMatch(name) {
@@ -188,32 +189,39 @@ function findMatch(dupeName) {
     if (m) return { record: m, type: 'fuzzy_prefix' }
   }
 
-  // 3. suffix variant 시도 (stripped + 정식 / 상)
-  if (stripped.length >= 2) {
-    for (const suffix of SUFFIX_TO_TRY) {
-      const variantNorm = normalizeForMatch(stripped + suffix)
-      if (!variantNorm) continue
-      m = records.find((r) => normalizeForMatch(r.name_ko) === variantNorm)
-      if (m) return { record: m, type: 'fuzzy_suffix' }
+  // 3. suffix STRIP — '보리굴비정식' → '보리굴비'. append 가 아닌 끝 제거.
+  for (const suffix of SUFFIX_TO_STRIP) {
+    if (stripped.endsWith(suffix)) {
+      const base = stripped.slice(0, -suffix.length).trim()
+      if (base.length >= 2) {
+        const baseNorm = normalizeForMatch(base)
+        m = records.find((r) => normalizeForMatch(r.name_ko) === baseNorm)
+        if (m) return { record: m, type: 'fuzzy_suffix' }
+      }
     }
   }
 
-  // 4. 부분 매칭 (3 자 이상 — 오매칭 방지)
-  if (stripped.length >= 3) {
-    m = records.find((r) => {
-      const hNorm = normalizeForMatch(r.name_ko)
-      if (hNorm.length < 3) return false
-      return hNorm.includes(strippedNorm) || strippedNorm.includes(hNorm)
-    })
-    if (m) return { record: m, type: 'fuzzy_contain' }
-  }
-
-  // 5. 핵심 키워드 매칭 (찌개/국밥/탕 suffix 분리 후 base 매칭)
+  // 4. 핵심 키워드 매칭 (contain 보다 먼저 — '순두부찌개' → '순두부' 같은 의미 분해 우선).
+  //    자기 자신 / 기존 시도된 키워드 skip.
+  const seen = new Set([strippedNorm, dupeNorm])
   for (const kw of extractKeywords(stripped)) {
     if (kw.length < 3) continue
     const kwNorm = normalizeForMatch(kw)
+    if (seen.has(kwNorm)) continue
+    seen.add(kwNorm)
     m = records.find((r) => normalizeForMatch(r.name_ko) === kwNorm)
     if (m) return { record: m, type: 'fuzzy_keyword' }
+  }
+
+  // 5. 부분 매칭 (2 자 이상 — '곰탕'/'묵밥' 허용. 단 길이 차 4 초과면 오매칭 방지로 차단).
+  if (strippedNorm.length >= 2) {
+    m = records.find((r) => {
+      const hNorm = normalizeForMatch(r.name_ko)
+      if (hNorm.length < 2) return false
+      if (Math.abs(hNorm.length - strippedNorm.length) > 4) return false
+      return hNorm.includes(strippedNorm) || strippedNorm.includes(hNorm)
+    })
+    if (m) return { record: m, type: 'fuzzy_contain' }
   }
 
   return null
