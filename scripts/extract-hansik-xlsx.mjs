@@ -68,27 +68,43 @@ console.log(`[xlsx] total rows: ${rows.length} (sheet: ${wb.SheetNames[0]})`)
 // 데이터 추출 (사용자 보고 컬럼 매핑)
 // ────────────────────────────────────────────────
 
-// 헤더 row 자동 감지 — '한글' / '한국어' / '음식명' / 'NAME_KO' 같은 라벨이 있는 행
+// 헤더 row 자동 감지 — 한식진흥원 800선의 '요리명' 라벨 포함 행 검색.
+// 다른 데이터셋 호환 위해 한국어 / 영어 키워드 다양하게 포함.
 function findHeaderRow() {
   for (let i = 0; i < Math.min(10, rows.length); i++) {
     const row = rows[i] || []
     const hasNameKo = row.some((c) =>
-      typeof c === 'string' && /(한글|한국어|음식명|NAME_KO|name_ko)/i.test(c),
+      typeof c === 'string' && /(요리명|한글|한국어|음식명|메뉴명|NAME_KO|name_ko)/i.test(c),
     )
     if (hasNameKo) return i
   }
-  return 3 // 사용자 명시 fallback
+  return 2 // 사용자 명시 fallback (Excel row 3 — 0-indexed 2)
 }
 
 const HEADER_ROW = findHeaderRow()
-console.log(`[xlsx] header row: ${HEADER_ROW}`)
-console.log(`[xlsx] header: ${(rows[HEADER_ROW] || []).map((c) => c ?? '').join(' | ').slice(0, 300)}`)
+const headerCells = rows[HEADER_ROW] || []
+console.log(`[xlsx] header row: ${HEADER_ROW} (Excel row ${HEADER_ROW + 1})`)
+console.log(`[xlsx] header: ${headerCells.map((c) => c ?? '').join(' | ').slice(0, 300)}`)
+
+// 헤더 검증 — row[3] 이 '요리명' 포함해야 정상 (한식진흥원 800선 기준)
+if (!headerCells[3] || !String(headerCells[3]).includes('요리명')) {
+  console.error('[error] 헤더 인식 실패. row[3] 가 "요리명" 포함하지 않음.')
+  console.error(`  현재 row[3]: ${JSON.stringify(headerCells[3])}`)
+  console.error('  실제 헤더 row 위치 + row[3] 컬럼 직접 확인 후 스크립트 조정 필요.')
+  process.exit(1)
+}
 
 const records = []
 for (let i = HEADER_ROW + 1; i < rows.length; i++) {
   const row = rows[i]
   if (!row) continue
-  // 사용자 명시 컬럼 매핑 (row[3] = 한글명)
+  // 한식진흥원 800선 컬럼 매핑 (사용자 명시):
+  //   row[1] 요리번호 / row[2] 카테고리 / row[3] 요리명(한글) / row[4] 라틴어
+  //   row[5] 요리명(중복 한글) — skip / row[6] 설명(한글)
+  //   row[7] 영어 요리명 / row[8] 영어 설명
+  //   row[9] 일본어 요리명 / row[10] 일본어 설명
+  //   row[11] 중문1 요리명 / row[12] 중문1 설명
+  //   row[13] 중문2 요리명 / row[14] 중문2 설명
   const name_ko = row[3]
   if (!name_ko || typeof name_ko !== 'string') continue
   records.push({
@@ -96,9 +112,8 @@ for (let i = HEADER_ROW + 1; i < rows.length; i++) {
     category: row[2],
     name_ko: String(name_ko).trim(),
     latin: row[4],
-    name_en_short: row[5],
     desc_ko: row[6],
-    name_en: row[7] || row[5],
+    name_en: row[7],
     desc_en: row[8],
     name_ja: row[9],
     desc_ja: row[10],
@@ -162,7 +177,7 @@ function findMatch(dupeName) {
 // ────────────────────────────────────────────────
 
 function buildPromptMatched(dupeName, h) {
-  const en = h.name_en || h.name_en_short || dupeName
+  const en = h.name_en || dupeName
   const desc = (h.desc_en || '').replace(/\s+/g, ' ').slice(0, 250)
   return [
     `Professional food photography of ${en} (Korean dish: ${dupeName}).`,
