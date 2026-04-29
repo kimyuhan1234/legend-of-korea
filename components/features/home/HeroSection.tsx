@@ -27,8 +27,10 @@ export function HeroSection({ locale }: Props) {
           </span>
         </div>
 
-        {/* 헤드라인 — 2줄 강조 */}
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-black leading-tight mb-3 md:mb-4 max-w-3xl text-[#111]">
+        {/* 헤드라인 — 2 줄, 같은 크기 + 강조 부분 색상만 다름.
+            hotfix: text-3xl 제거 (모바일에서도 text-4xl 부터) + leading-[1.15] 로
+            두 줄 시각적 균형 강화. font-black / leading 모두 부모 상속 — 두 자식 동일 크기. */}
+        <h1 className="text-4xl md:text-6xl font-black leading-[1.15] mb-3 md:mb-4 max-w-3xl text-[#111]">
           <span className="block">{t('headline')}</span>
           <span className="block text-mint-deep">{t('headlineEmphasis')}</span>
         </h1>
