@@ -51,5 +51,9 @@ public/videos/*.mov
 public/videos/*.avi
 
 # 공공데이터 한식 raw 자료 (한식진흥원 등) — 라이선스 / 용량 이유로 git 미포함.
-# 매칭 스크립트가 lib/data/hansik-images.json 결과만 산출 → 그것만 커밋.
+# 매칭 스크립트가 lib/data/hansik-enriched.json 결과만 산출 → 그것만 커밋.
 /data/hansik-raw/
+
+# AI 생성 음식 이미지 raw — Supabase Storage 업로드 후 URL 만 보존
+# (Vercel 번들 크기 절감 — public/ 에 두지 않고 별도 디렉토리)
+/data/ai-images/
