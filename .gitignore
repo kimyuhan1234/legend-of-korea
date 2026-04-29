@@ -64,3 +64,7 @@ public/videos/*.avi
 
 # Flux Pro 재생성 raw — Supabase 덮어쓰기 후 raw 미커밋
 /data/ai-images-pro/
+
+# TourAPI v2 검색 raw / curated — 라이선스 OK 이지만 Supabase 업로드 후 raw 미커밋
+/data/tourapi-v2-images/
+/data/tourapi-v2-curated/
