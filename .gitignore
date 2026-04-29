@@ -49,3 +49,7 @@ supabase/.temp/
 public/videos/*.mp4
 public/videos/*.mov
 public/videos/*.avi
+
+# 공공데이터 한식 raw 자료 (한식진흥원 등) — 라이선스 / 용량 이유로 git 미포함.
+# 매칭 스크립트가 lib/data/hansik-images.json 결과만 산출 → 그것만 커밋.
+/data/hansik-raw/
