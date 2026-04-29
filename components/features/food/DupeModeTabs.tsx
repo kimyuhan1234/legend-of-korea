@@ -6,7 +6,7 @@ import { AiDupeSearch } from './AiDupeSearch'
 import { TastePreferenceFilter } from './TastePreferenceFilter'
 import { TasteMatchResults } from './TasteMatchResults'
 import { WorldDupeMap } from './WorldDupeMap'
-import { KoreaMapCitySelector } from './KoreaMapCitySelector'
+import { ProvinceAccordion } from './ProvinceAccordion'
 import { DupeSwipeContainer } from './DupeSwipeContainer'
 import type { RegionSummary } from './KoreaMapCitySelector'
 import type { CountrySummary } from './WorldDupeMap'
@@ -38,7 +38,7 @@ interface DupeModeTabsProps {
   allCountryDupes: Record<string, CountrySummary>
 }
 
-export function DupeModeTabs({ locale, regionSummaries, countryCounts, allCountryDupes }: DupeModeTabsProps) {
+export function DupeModeTabs({ locale, regionSummaries: _regionSummaries, countryCounts, allCountryDupes }: DupeModeTabsProps) {
   const t = useTranslations('dupe')
 
   // 취향 매칭 상태
@@ -78,7 +78,10 @@ export function DupeModeTabs({ locale, regionSummaries, countryCounts, allCountr
     {
       key: 'city',
       label: t('mode.city'),
-      content: <KoreaMapCitySelector regions={regionSummaries} />,
+      // PRD/UX: 12 평면 그리드 → 10 도/시 2 단계 Accordion (단일 도시 즉시 link).
+      // regionSummaries prop 은 page.tsx 의 정적 데이터 — 현재는 ProvinceAccordion
+      // 자체 PROVINCES 사용. 향후 음식 카운트 표시 등 동적 데이터 필요 시 prop 추가.
+      content: <ProvinceAccordion />,
     },
     {
       key: 'ai',
