@@ -167,7 +167,7 @@
       "diy": "한국 전통 공방에서 나만의 작품을 만들어보세요"
     },
     "plannerTitle": "나만의 맞춤 여행 플랜",
-    "plannerSubtitle": "계획 없이 떠나도, 후회 없는 여행을 만들어드려요",
+    "plannerSubtitle": "플래너에 넣기만 하세요. 당신에게 맞게 플랜을 짜 드려요.",
     "plannerCta": "여행 플래너 시작하기 →",
     "community": {
       "title": "MEMORIES",
@@ -181,11 +181,11 @@
       "communityTag": "커뮤니티"
     },
     "memories": {
-      "slide1Title": "✨ MEMORIES",
-      "slide1Subtitle": "혼자 간직하기엔 아까운 순간들, 여기서 나누세요",
+      "slide1Title": "Memorise",
+      "slide1Subtitle": "잊혀지면 아쉬운 추억, 여기에 기록하세요.",
       "slide1Cta": "MEMORIES 보러 가기",
-      "slide2Title": "🎯 나에게 맞는 여행을 찾아보세요",
-      "slide2Subtitle": "당신의 취향이 곧 여행지입니다",
+      "slide2Title": "나에게 맞는 한국의 도시는 어디?",
+      "slide2Subtitle": "당신의 취향에 맞는 한국 도시를 추천해 드려요.",
       "slide2Cta": "여행 스타일 테스트"
     },
     "footerCompany": "회사 정보",
@@ -2117,7 +2117,7 @@
   "homeHero": {
     "headline": "한국은 목적지가 아니에요.",
     "headlineEmphasis": "퀘스트입니다.",
-    "subheadline": "9개 도시 70개 GPS 미션. 당신 나라 음식과 비슷한 한식 AI 매칭. 모든 사진을 이야기로 만드는 30종 필터.",
+    "subheadline": "당신의 여행 스토리, 스스로 만들어 보세요. clouds with you",
     "ctaPrimary": "베타 가입하기",
     "ctaSecondary": "패스 살펴보기",
     "trustBadge": "🌱 Founding Members 베타 모집 중 · 일 50명 한정"

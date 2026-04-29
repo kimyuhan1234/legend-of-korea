@@ -166,8 +166,8 @@
       "memories": "旅の思い出を記録してシェアしましょう",
       "diy": "韓国の伝統工房で自分だけの作品を作りましょう"
     },
-    "plannerTitle": "私のカスタム旅行プラン",
-    "plannerSubtitle": "計画なしでも、後悔しない旅を作ります",
+    "plannerTitle": "あなただけのカスタム旅行プラン",
+    "plannerSubtitle": "プランナーに入れるだけ。あなたにぴったりのプランを作成します。",
     "plannerCta": "旅行プランナーを始める →",
     "community": {
       "title": "MEMORIES",
@@ -181,11 +181,11 @@
       "communityTag": "コミュニティ"
     },
     "memories": {
-      "slide1Title": "✨ MEMORIES",
-      "slide1Subtitle": "一人で抱えるにはもったいない瞬間、ここでシェアしよう",
+      "slide1Title": "Memorise",
+      "slide1Subtitle": "忘れたくない大切な思い出を、ここに記録しましょう。",
       "slide1Cta": "MEMORIESを見る",
-      "slide2Title": "🎯 あなたにぴったりの旅を見つけよう",
-      "slide2Subtitle": "あなたの好みがそのまま旅先になる",
+      "slide2Title": "私に合う韓国の都市はどこ？",
+      "slide2Subtitle": "あなたの好みに合う韓国の都市をおすすめします。",
       "slide2Cta": "スタイルテストへ"
     },
     "footerCompany": "会社情報",
@@ -2083,7 +2083,7 @@
   "homeHero": {
     "headline": "韓国は、目的地じゃない。",
     "headlineEmphasis": "クエストだ。",
-    "subheadline": "9都市70のGPSミッション。あなたの国の料理に似た韓国料理をAIがマッチング。すべての一枚を物語に変える30種のフィルター。",
+    "subheadline": "あなたの旅のストーリーを、自分で作ってみよう。clouds with you",
     "ctaPrimary": "ベータに参加",
     "ctaSecondary": "パスを見る",
     "trustBadge": "🌱 ファウンディングメンバー募集中 · 一日50名限定"

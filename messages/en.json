@@ -166,8 +166,8 @@
       "memories": "Record and share your travel moments",
       "diy": "Create your own masterpiece at Korean traditional workshops"
     },
-    "plannerTitle": "My Custom Travel Plan",
-    "plannerSubtitle": "No plans? No problem. We'll make sure you won't regret a thing",
+    "plannerTitle": "Your Personal Travel Plan",
+    "plannerSubtitle": "Just add to the planner. We'll craft a plan made for you.",
     "plannerCta": "Start Travel Planner →",
     "community": {
       "title": "MEMORIES",
@@ -181,11 +181,11 @@
       "communityTag": "Community"
     },
     "memories": {
-      "slide1Title": "✨ MEMORIES",
-      "slide1Subtitle": "Moments too precious to keep alone — share them here",
+      "slide1Title": "Memorise",
+      "slide1Subtitle": "Record the memories too precious to forget.",
       "slide1Cta": "Explore MEMORIES",
-      "slide2Title": "🎯 Find Your Perfect Trip",
-      "slide2Subtitle": "Your taste is your destination",
+      "slide2Title": "Which Korean City Is Right for You?",
+      "slide2Subtitle": "We recommend Korean cities that match your taste.",
       "slide2Cta": "Take the Style Test"
     },
     "footerCompany": "About Us",
@@ -2083,7 +2083,7 @@
   "homeHero": {
     "headline": "Korea is not a destination.",
     "headlineEmphasis": "It's a quest.",
-    "subheadline": "GPS missions across 9 cities. AI food matching for your country. Photo filters that make every shot a story.",
+    "subheadline": "Create your own travel story. clouds with you",
     "ctaPrimary": "Join the beta",
     "ctaSecondary": "See passes",
     "trustBadge": "🌱 Founding Members beta — limited to 50/day"

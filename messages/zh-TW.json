@@ -166,8 +166,8 @@
       "memories": "記錄並分享您的旅行回憶",
       "diy": "在韓國傳統工坊創作屬於自己的作品"
     },
-    "plannerTitle": "我的客製旅行計畫",
-    "plannerSubtitle": "沒有計劃也沒關係，讓你不留遺憾的旅行",
+    "plannerTitle": "專屬訂製旅行計劃",
+    "plannerSubtitle": "只需放入規劃器，我們將為您量身打造行程。",
     "plannerCta": "開始旅行規劃 →",
     "community": {
       "title": "MEMORIES",
@@ -181,11 +181,11 @@
       "communityTag": "社區"
     },
     "memories": {
-      "slide1Title": "✨ MEMORIES",
-      "slide1Subtitle": "獨自珍藏太可惜的瞬間，在這裡分享吧",
+      "slide1Title": "Memorise",
+      "slide1Subtitle": "記錄那些不願被遺忘的珍貴回憶。",
       "slide1Cta": "查看 MEMORIES",
-      "slide2Title": "🎯 找到專屬於你的旅行",
-      "slide2Subtitle": "你的喜好就是你的目的地",
+      "slide2Title": "哪座韓國城市最適合你？",
+      "slide2Subtitle": "為您推薦符合您喜好的韓國城市。",
       "slide2Cta": "開始風格測試"
     },
     "footerCompany": "關於我們",
@@ -2083,7 +2083,7 @@
   "homeHero": {
     "headline": "韓國不是目的地，",
     "headlineEmphasis": "是一場冒險。",
-    "subheadline": "9個城市70個GPS任務。AI 配對你家鄉相似的韓國美食。30種濾鏡讓每張照片都成故事。",
+    "subheadline": "親手創造屬於你的旅行故事。clouds with you",
     "ctaPrimary": "加入Beta測試",
     "ctaSecondary": "查看通行證",
     "trustBadge": "🌱 創始成員招募中 · 每日限50名"

@@ -166,8 +166,8 @@
       "memories": "记录并分享您的旅行回忆",
       "diy": "在韩国传统工坊创作属于自己的作品"
     },
-    "plannerTitle": "我的定制旅行计划",
-    "plannerSubtitle": "没有计划也没关系，让你不留遗憾的旅行",
+    "plannerTitle": "专属定制旅行计划",
+    "plannerSubtitle": "只需放入规划器，我们将为您量身定制行程。",
     "plannerCta": "开始旅行规划 →",
     "community": {
       "title": "MEMORIES",
@@ -181,11 +181,11 @@
       "communityTag": "社区"
     },
     "memories": {
-      "slide1Title": "✨ MEMORIES",
-      "slide1Subtitle": "独自珍藏太可惜的瞬间，在这里分享吧",
+      "slide1Title": "Memorise",
+      "slide1Subtitle": "记录下那些不愿被遗忘的珍贵回忆。",
       "slide1Cta": "查看 MEMORIES",
-      "slide2Title": "🎯 找到专属于你的旅行",
-      "slide2Subtitle": "你的喜好就是你的目的地",
+      "slide2Title": "哪座韩国城市最适合你？",
+      "slide2Subtitle": "为您推荐符合您喜好的韩国城市。",
       "slide2Cta": "开始风格测试"
     },
     "footerCompany": "关于我们",
@@ -2083,7 +2083,7 @@
   "homeHero": {
     "headline": "韩国不是目的地，",
     "headlineEmphasis": "是一场冒险。",
-    "subheadline": "9个城市70个GPS任务。AI 匹配你家乡相似的韩国美食。30种滤镜让每张照片都成故事。",
+    "subheadline": "亲手创造属于你的旅行故事。clouds with you",
     "ctaPrimary": "加入Beta测试",
     "ctaSecondary": "查看通行证",
     "trustBadge": "🌱 创始成员招募中 · 每日限50名"
