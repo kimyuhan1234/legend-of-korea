@@ -2083,7 +2083,8 @@
   "homeHero": {
     "headline": "あなたの旅のストーリー、",
     "headlineEmphasis": "自分で作ってみよう",
-    "subheadline": "clouds with you",
+    "headlineTagline": "clouds with you",
+    "subheadline": "",
     "ctaPrimary": "ベータに参加",
     "ctaSecondary": "パスを見る",
     "trustBadge": "🌱 ファウンディングメンバー募集中 · 一日50名限定"

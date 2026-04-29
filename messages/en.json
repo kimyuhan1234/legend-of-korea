@@ -2083,7 +2083,8 @@
   "homeHero": {
     "headline": "Create your own",
     "headlineEmphasis": "travel story",
-    "subheadline": "clouds with you",
+    "headlineTagline": "clouds with you",
+    "subheadline": "",
     "ctaPrimary": "Join the beta",
     "ctaSecondary": "See passes",
     "trustBadge": "🌱 Founding Members beta — limited to 50/day"

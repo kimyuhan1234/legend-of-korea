@@ -2083,7 +2083,8 @@
   "homeHero": {
     "headline": "親手創造",
     "headlineEmphasis": "屬於你的旅行故事",
-    "subheadline": "clouds with you",
+    "headlineTagline": "clouds with you",
+    "subheadline": "",
     "ctaPrimary": "加入Beta測試",
     "ctaSecondary": "查看通行證",
     "trustBadge": "🌱 創始成員招募中 · 每日限50名"

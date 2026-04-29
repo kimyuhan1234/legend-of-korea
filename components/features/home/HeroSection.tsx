@@ -27,22 +27,20 @@ export function HeroSection({ locale }: Props) {
           </span>
         </div>
 
-        {/* 헤드라인 — 두 줄 명시적 동일 size/weight/leading.
-            hotfix: 부모 cascade 의존 시 외부 CSS / 폰트 광학 효과로 시각 차이 보고됨.
-            두 span 모두 동일 className 직접 명시 → 같은 specificity 보장. */}
-        <h1 className="mb-3 md:mb-4 max-w-3xl">
+        {/* 헤드라인 — 3 줄, 모두 동일 size/weight/leading. 색상만 차별.
+            hotfix v3: 'clouds with you' 가 subheadline 으로 작게 표시되던 문제 →
+            headlineTagline 키로 격상해 동일 큰 글씨로 처리. */}
+        <h1 className="mb-6 md:mb-8 max-w-3xl">
           <span className="block text-4xl md:text-6xl font-black leading-[1.15] text-[#111]">
             {t('headline')}
           </span>
           <span className="block text-4xl md:text-6xl font-black leading-[1.15] text-mint-deep">
             {t('headlineEmphasis')}
           </span>
+          <span className="block text-4xl md:text-6xl font-black leading-[1.15] text-mint-deep">
+            {t('headlineTagline')}
+          </span>
         </h1>
-
-        {/* 서브 헤드라인 */}
-        <p className="text-sm sm:text-base md:text-lg text-slate leading-relaxed mb-6 md:mb-8 max-w-2xl">
-          {t('subheadline')}
-        </p>
 
         {/* CTA 버튼 묶음 (위계 명확) */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
