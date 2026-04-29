@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
 import { FoodEmojiThumb } from "@/components/features/food/FoodEmojiThumb"
@@ -95,14 +96,26 @@ export default function FoodDetailPage({ params }: Props) {
           {t.backRegion}
         </Link>
 
-        {/* 음식 히어로 — 이모지 + 흰 배경 */}
+        {/* 음식 히어로 — TourAPI 이미지 우선 + 이모지 fallback */}
         <div className="bg-white rounded-3xl overflow-hidden mb-8 border border-mist">
           <div className="relative h-56 md:h-72">
-            <FoodEmojiThumb
-              food={{ name: food.name, tags: food.tags }}
-              size="text-9xl"
-              bordered={false}
-            />
+            {food.image ? (
+              <Image
+                src={food.image}
+                alt={getL(food.name, locale)}
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                unoptimized
+                priority
+              />
+            ) : (
+              <FoodEmojiThumb
+                food={{ name: food.name, tags: food.tags }}
+                size="text-9xl"
+                bordered={false}
+              />
+            )}
             <div className="absolute bottom-6 left-6 right-6">
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {food.tags.map((tag) => (

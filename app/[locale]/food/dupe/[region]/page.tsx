@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
 import { FoodEmojiThumb } from "@/components/features/food/FoodEmojiThumb"
@@ -93,14 +94,25 @@ export default function RegionFoodsPage({ params }: Props) {
                   aria-label={getL(food.name, locale)}
                 />
 
-                {/* 이미지 (이모지 + 흰 배경) */}
+                {/* 썸네일 — TourAPI 이미지 우선 + 이모지 fallback */}
                 <div className="relative h-44 bg-white overflow-hidden border-b border-mist">
-                  <FoodEmojiThumb
-                    food={{ name: food.name, tags: food.tags }}
-                    size="text-7xl"
-                    bordered={false}
-                    className="group-hover:scale-105 transition-transform duration-500"
-                  />
+                  {food.image ? (
+                    <Image
+                      src={food.image}
+                      alt={getL(food.name, locale)}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      unoptimized
+                    />
+                  ) : (
+                    <FoodEmojiThumb
+                      food={{ name: food.name, tags: food.tags }}
+                      size="text-7xl"
+                      bordered={false}
+                      className="group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
                   {/* 맛 강도 오버레이 */}
                   <div className="absolute bottom-2 left-2 right-2 flex gap-1 z-[5]">
                     {food.tags.map((tag) => (
