@@ -390,6 +390,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-yukgaejang",
+        image: "http://tong.visitkorea.or.kr/cms/resource/22/2837522_image2_1.JPG",
         name: { ko: "육개장", ja: "ユッケジャン", en: "Yukgaejang" },
         region: "jeonju",
         image: undefined,
@@ -446,6 +447,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-cheonggukjang",
+        image: "http://tong.visitkorea.or.kr/cms/resource/85/2910085_image2_1.jpg",
         name: { ko: "청국장", ja: "チョングクジャン", en: "Cheonggukjang" },
         region: "jeonju",
         image: undefined,
@@ -502,6 +504,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-yukoe",
+        image: "https://tong.visitkorea.or.kr/cms/resource/02/3504102_image2_1.PNG",
         name: { ko: "육회", ja: "ユッケ", en: "Yukhoe (Korean Beef Tartare)" },
         region: "jeonju",
         image: undefined,
@@ -558,6 +561,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-nakji-bokkeum",
+        image: "http://tong.visitkorea.or.kr/cms/resource/40/2831740_image2_1.jpg",
         name: { ko: "낙지볶음", ja: "ナクチポックム", en: "Nakji Bokkeum (Spicy Stir-fried Octopus)" },
         region: "jeonju",
         image: undefined,
@@ -586,6 +590,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-pajeon",
+        image: "http://tong.visitkorea.or.kr/cms/resource/01/3474701_image2_1.jpg",
         name: { ko: "파전", ja: "パジョン", en: "Pajeon (Green Onion Pancake)" },
         region: "jeonju",
         image: undefined,
@@ -614,6 +619,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-gomtang",
+        image: "http://tong.visitkorea.or.kr/cms/resource/00/2834400_image2_1.jpg",
         name: { ko: "곰탕", ja: "コムタン", en: "Gomtang (Beef Bone Broth)" },
         region: "jeonju",
         image: undefined,
@@ -698,6 +704,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-gondrebap",
+        image: "http://tong.visitkorea.or.kr/cms/resource/81/2842281_image2_1.jpg",
         name: { ko: "곤드레밥", ja: "コンドゥレご飯", en: "Gondre Rice" },
         region: "jeonju",
         image: undefined,
@@ -1363,6 +1370,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-gamjatang",
+        image: "http://tong.visitkorea.or.kr/cms/resource/68/2846968_image2_1.jpg",
         name: { ko: "감자탕", ja: "カムジャタン", en: "Gamjatang (Pork Bone Potato Soup)" },
         region: "seoul",
         image: undefined,
@@ -1391,6 +1399,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-sundaekook",
+        image: "http://tong.visitkorea.or.kr/cms/resource/95/2891695_image2_1.jpg",
         name: { ko: "순대국", ja: "スンデクッ", en: "Sundaekook (Blood Sausage Soup)" },
         region: "seoul",
         image: undefined,
@@ -1447,6 +1456,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-bossam",
+        image: "http://tong.visitkorea.or.kr/cms/resource/51/2853851_image2_1.jpg",
         name: { ko: "보쌈", ja: "ポッサム", en: "Bossam (Pork Belly Wraps)" },
         region: "seoul",
         image: undefined,
@@ -1475,6 +1485,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-andong-jjimdak",
+        image: "https://tong.visitkorea.or.kr/cms/resource/97/4011097_image2_1.jpg",
         name: { ko: "안동찜닭", ja: "アンドンチムタッ", en: "Andong Jjimdak (Braised Chicken)" },
         region: "seoul",
         image: undefined,
@@ -1531,6 +1542,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-gopchang",
+        image: "http://tong.visitkorea.or.kr/cms/resource/57/2830357_image2_1.JPG",
         name: { ko: "곱창구이", ja: "コプチャン焼き", en: "Gopchang Gui (Grilled Tripe)" },
         region: "seoul",
         image: undefined,
@@ -1587,6 +1599,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-budae-jjigae",
+        image: "http://tong.visitkorea.or.kr/cms/resource/70/2789570_image2_1.jpg",
         name: { ko: "부대찌개", ja: "プデチゲ", en: "Budae Jjigae (Army Stew)" },
         region: "seoul",
         image: undefined,
@@ -1615,6 +1628,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-yang-kkochi",
+        image: "http://tong.visitkorea.or.kr/cms/resource/26/2663526_image2_1.jpg",
         name: { ko: "양꼬치", ja: "ヤンコチ（羊串焼き）", en: "Yang Kkochi (Lamb Skewers)" },
         region: "seoul",
         image: undefined,
@@ -1643,6 +1657,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-chimaek",
+        image: "https://tong.visitkorea.or.kr/cms/resource/95/3532795_image2_1.jpg",
         name: { ko: "치맥", ja: "チメク（チキン＋ビール）", en: "Chimaek (Fried Chicken & Beer)" },
         region: "seoul",
         image: undefined,
@@ -4148,6 +4163,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-hwae",
+        image: "http://tong.visitkorea.or.kr/cms/resource/20/2923820_image2_1.jpg",
         name: { ko: "활어회", ja: "活魚刺身", en: "Live Fish Sashimi" },
         region: "busan",
         image: undefined,
@@ -4176,6 +4192,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-agujjim",
+        image: "http://tong.visitkorea.or.kr/cms/resource/53/2849653_image2_1.jpg",
         name: { ko: "아구찜", ja: "アグチム", en: "Agujjim (Spicy Braised Monkfish)" },
         region: "busan",
         image: undefined,
@@ -4204,6 +4221,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-saengseon-gui",
+        image: "http://tong.visitkorea.or.kr/cms/resource/77/2872677_image2_1.jpg",
         name: { ko: "생선구이", ja: "焼き魚", en: "Grilled Fish" },
         region: "busan",
         image: undefined,
@@ -4232,6 +4250,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-haemul-jjamppong",
+        image: "http://tong.visitkorea.or.kr/cms/resource/61/3444061_image2_1.jpg",
         name: { ko: "해물짬뽕", ja: "海鮮チャンポン", en: "Busan Haemul Jjamppong" },
         region: "busan",
         image: undefined,
@@ -4316,6 +4335,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-gul-jeon",
+        image: "http://tong.visitkorea.or.kr/cms/resource/36/2727636_image2_1.jpg",
         name: { ko: "굴전", ja: "牡蠣チヂミ", en: "Gul Jeon (Oyster Pancake)" },
         region: "busan",
         image: undefined,
@@ -4372,6 +4392,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-daegu-tang",
+        image: "http://tong.visitkorea.or.kr/cms/resource/57/2902557_image2_1.jpg",
         name: { ko: "대구탕", ja: "タラ鍋", en: "Daegu Tang (Cod Stew)" },
         region: "busan",
         image: undefined,
@@ -4400,6 +4421,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-jeonbok-juk",
+        image: "http://tong.visitkorea.or.kr/cms/resource/06/2845106_image2_1.jpg",
         name: { ko: "전복죽", ja: "アワビ粥", en: "Jeonbok Juk (Abalone Porridge)" },
         region: "busan",
         image: undefined,
@@ -5021,6 +5043,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-samgyetang",
+        image: "http://tong.visitkorea.or.kr/cms/resource/24/2847724_image2_1.JPG",
         name: { ko: "삼계탕", ja: "サムゲタン", en: "Samgyetang" },
         region: "gyeongju",
         image: undefined,
@@ -5049,6 +5072,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-hanwoo-bulgogi",
+        image: "http://tong.visitkorea.or.kr/cms/resource/81/2913081_image2_1.JPG",
         name: { ko: "한우불고기", ja: "韓牛プルコギ", en: "Hanwoo Bulgogi" },
         region: "gyeongju",
         image: undefined,
@@ -5077,6 +5101,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-galbi-tang",
+        image: "http://tong.visitkorea.or.kr/cms/resource/78/2781978_image2_1.jpg",
         name: { ko: "갈비탕", ja: "カルビタン", en: "Galbi Tang (Short Rib Soup)" },
         region: "gyeongju",
         image: undefined,
@@ -5189,6 +5214,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-sanchae-bibimbap",
+        image: "http://tong.visitkorea.or.kr/cms/resource/11/3082511_image2_1.JPG",
         name: { ko: "산채비빔밥", ja: "山菜ビビンバ", en: "Sanchae Bibimbap (Mountain Herb Bibimbap)" },
         region: "gyeongju",
         image: undefined,
@@ -5217,6 +5243,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-meomil-jeonbyeong",
+        image: "https://tong.visitkorea.or.kr/cms/resource/36/4025536_image2_1.jpg",
         name: { ko: "메밀전병", ja: "蕎麦チヂミ", en: "Meomil Jeonbyeong (Buckwheat Crepe Roll)" },
         region: "gyeongju",
         image: undefined,
@@ -5273,6 +5300,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-hangwa",
+        image: "https://tong.visitkorea.or.kr/cms/resource/75/3029675_image2_1.jpg",
         name: { ko: "한과", ja: "ハングァ（韓菓）", en: "Hangwa (Traditional Rice Confection)" },
         region: "gyeongju",
         image: undefined,
@@ -5385,6 +5413,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-sujae-maekju",
+        image: "http://tong.visitkorea.or.kr/cms/resource/40/3489940_image2_1.jpg",
         name: { ko: "수제맥주", ja: "クラフトビール", en: "Sujae Maekju (Craft Beer)" },
         region: "gyeongju",
         image: undefined,
@@ -5413,6 +5442,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-solsongju",
+        image: "http://tong.visitkorea.or.kr/cms/resource/53/3538253_image2_1.jpg",
         name: { ko: "솔송주", ja: "松酒", en: "Solsongju (Pine Bud Liquor)" },
         region: "gyeongju",
         image: undefined,
@@ -7692,6 +7722,7 @@ export const regions: Region[] = [
       },
       {
         id: "icheon-kongguksu",
+        image: "http://tong.visitkorea.or.kr/cms/resource/75/2906775_image2_1.JPG",
         name: { ko: "콩국수", ja: "コングクス", en: "Kongguksu" },
         region: "icheon",
         image: undefined,
@@ -8340,6 +8371,7 @@ export const regions: Region[] = [
       },
       {
         id: "icheon-chapssal-tteok",
+        image: "https://tong.visitkorea.or.kr/cms/resource/92/3447992_image2_1.jpg",
         name: { ko: "찹쌀떡", ja: "チャプサルトック", en: "Chapssal-tteok" },
         region: "icheon",
         image: undefined,
@@ -8664,6 +8696,7 @@ export const regions: Region[] = [
       },
       {
         id: "icheon-somori-gukbap",
+        image: "http://tong.visitkorea.or.kr/cms/resource/81/3073381_image2_1.jpg",
         name: { ko: "소머리국밥", ja: "牛頭クッパ", en: "Somori Gukbap" },
         region: "icheon",
         image: undefined,
@@ -9096,6 +9129,7 @@ export const regions: Region[] = [
       },
       {
         id: "icheon-gamja-ongsimi",
+        image: "http://tong.visitkorea.or.kr/cms/resource/19/2837919_image2_1.jpg",
         name: { ko: "감자옹심이", ja: "じゃがいも団子スープ", en: "Gamja Ongsimi" },
         region: "icheon",
         image: undefined,
@@ -9300,6 +9334,7 @@ export const regions: Region[] = [
       },
       {
         id: "sokcho-abai-sundae",
+        image: "http://tong.visitkorea.or.kr/cms/resource/56/2919556_image2_1.jpg",
         name: { ko: "아바이순대", ja: "アバイスンデ", en: "Abai Sundae" },
         region: "sokcho",
         tasteProfile: { sweet: 10, salty: 60, spicy: 30, umami: 75, sour: 5 },
@@ -9517,6 +9552,7 @@ export const regions: Region[] = [
       },
       {
         id: "sokcho-gamja-ongsimi",
+        image: "http://tong.visitkorea.or.kr/cms/resource/19/2837919_image2_1.jpg",
         name: { ko: "감자옹심이", ja: "ジャガイモ団子スープ（カムジャオンシミ）", en: "Gamja Ongsimi (Potato Dumpling Soup)" },
         region: "sokcho",
         tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 55, sour: 5 },
@@ -10017,6 +10053,7 @@ export const regions: Region[] = [
     foods: [
       {
         id: "andong-jjimdak",
+        image: "https://tong.visitkorea.or.kr/cms/resource/97/4011097_image2_1.jpg",
         name: { ko: "안동찜닭", ja: "安東チムタク（醤油煮込みチキン）", en: "Andong Jjimdak (Braised Soy Chicken)" },
         region: "andong",
         tasteProfile: { sweet: 50, salty: 60, spicy: 45, umami: 75, sour: 10 },
@@ -10092,6 +10129,7 @@ export const regions: Region[] = [
       },
       {
         id: "andong-heot-jesabap",
+        image: "http://tong.visitkorea.or.kr/cms/resource/94/3573394_image2_1.jpg",
         name: { ko: "헛제사밥", ja: "ホッチェサパプ（もどき祭祀膳）", en: "Heot Jesabap (Mock Ancestral Rite Meal)" },
         region: "andong",
         tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 65, sour: 10 },
@@ -10242,6 +10280,7 @@ export const regions: Region[] = [
       },
       {
         id: "andong-guksi",
+        image: "http://tong.visitkorea.or.kr/cms/resource/97/2849997_image2_1.jpg",
         name: { ko: "안동국시", ja: "安東クッシ（大豆粉入り手打ち麺）", en: "Andong Guksi (Bean-Flour Hand-Cut Noodles)" },
         region: "andong",
         tasteProfile: { sweet: 15, salty: 50, spicy: 25, umami: 70, sour: 10 },
