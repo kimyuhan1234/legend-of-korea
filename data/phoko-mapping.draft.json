@@ -1,0 +1,2407 @@
+{
+  "_meta": {
+    "generated_at": "2026-04-29T16:20:52.386Z",
+    "total_files": 145,
+    "parsed_files": 145,
+    "skipped_non_food": 14,
+    "skipped_non_parsed": 0,
+    "eligible_files": 131,
+    "files_with_matches": 111,
+    "files_unmatched": 20,
+    "total_food_ids": 239,
+    "total_food_ids_matched": 158,
+    "unmatched_food_ids_count": 81,
+    "total_match_entries": 158,
+    "by_confidence": {
+      "high": 72,
+      "medium": 86,
+      "low": 0
+    },
+    "preservation_policy": "mapping 안 된 음식의 image URL 은 apply 단계에서 절대 변경 X (기존 AI/포토코리아 이미지 유지). apply-phoko-mapping.mjs 가 mapping 있는 음식만 patch."
+  },
+  "mappings": {
+    "Type1_콩나물국밥_디엔에이스튜디오_h2SnD2.jpg": {
+      "keyword": "콩나물국밥",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+      "author": "디엔에이스튜디오",
+      "matches": [
+        {
+          "id": "jeonju-kongnamul",
+          "name_ko": "콩나물국밥",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "cheonan-kongnamul-gukbap",
+          "name_ko": "천안 콩나물국밥",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 50
+        }
+      ]
+    },
+    "Type1_한정식_토라이 리퍼블릭_IAcjlg.jpg": {
+      "keyword": "한정식",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "jeonju-hanjeongsik",
+          "name_ko": "전주 한정식",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        },
+        {
+          "id": "gyeongju-hanjeongsik",
+          "name_ko": "경주 한정식",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_물짜장_한국관광공사 박은경_jylHIa.jpg": {
+      "keyword": "물짜장",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 박은경",
+      "author": "한국관광공사 박은경",
+      "matches": [
+        {
+          "id": "jeonju-muljjajang",
+          "name_ko": "물짜장",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_순대국밥_김지영_tzGc2w.jpg": {
+      "keyword": "순대국밥",
+      "credit": "ⓒ한국관광공사 포토코리아-김지영",
+      "author": "김지영",
+      "matches": [
+        {
+          "id": "cheonan-sundae-soup",
+          "name_ko": "순대국밥",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "jeonju-pisundae",
+          "name_ko": "피순대와 순대국밥",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_육회_한국관광공사 김지호_FWuW4a.jpg": {
+      "keyword": "육회",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "jeonju-yukoe",
+          "name_ko": "육회",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "seoul-yukhoe",
+          "name_ko": "육회",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_해물파전_한국관광공사 김지호_WCqdna.jpg": {
+      "keyword": "해물파전",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "jeonju-haemul-pajeon",
+          "name_ko": "해물파전",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "busan-haemul-pajeon",
+          "name_ko": "해물파전",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "cheonan-haemul-pajeon",
+          "name_ko": "천안 해물파전",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_식혜_한국관광공사 김지호_mHhQZa.jpg": {
+      "keyword": "식혜",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "jeonju-sikhye",
+          "name_ko": "식혜",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "andong-sikhye",
+          "name_ko": "안동식혜",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_오곡밥_토라이 리퍼블릭_3jv09h.jpg": {
+      "keyword": "오곡밥",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "jeonju-ogokbap",
+          "name_ko": "오곡밥",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_삼겹살_토라이 리퍼블릭_OiCPWU.jpg": {
+      "keyword": "삼겹살",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "seoul-samgyeopsal",
+          "name_ko": "삼겹살",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "icheon-straw-pork",
+          "name_ko": "볏짚 삼겹살",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_진옥화할머니 닭한마리_한국관광공사 프레임스튜디오_rxoPBa.jpg": {
+      "keyword": "진옥화할머니 닭한마리",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 프레임스튜디오",
+      "author": "한국관광공사 프레임스튜디오",
+      "matches": [
+        {
+          "id": "seoul-dakhanmari",
+          "name_ko": "닭한마리",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_설렁탕_토라이 리퍼블릭_1id3AQ.jpg": {
+      "keyword": "설렁탕",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "seoul-seolleongtang",
+          "name_ko": "설렁탕",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "yongin-seolleongtang",
+          "name_ko": "용인 설렁탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_빈대떡_토라이 리퍼블릭_73NvS6.jpg": {
+      "keyword": "빈대떡",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "seoul-bindaetteok",
+          "name_ko": "광장시장 빈대떡",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_감자탕_한국관광공사 프레임스튜디오_5Byc3a.jpg": {
+      "keyword": "감자탕",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 프레임스튜디오",
+      "author": "한국관광공사 프레임스튜디오",
+      "matches": [
+        {
+          "id": "seoul-gamjatang",
+          "name_ko": "감자탕",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_순대_토라이 리퍼블릭_itEIfn.jpg": {
+      "keyword": "순대",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "seoul-sundaekook",
+          "name_ko": "순대국",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        },
+        {
+          "id": "cheonan-byeongcheon-sundae",
+          "name_ko": "병천순대",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        },
+        {
+          "id": "yongin-baegam-sundae",
+          "name_ko": "백암순대",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_된장찌개_토라이 리퍼블릭_0kyMdH.jpg": {
+      "keyword": "된장찌개",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "national-doenjang-jjigae",
+          "name_ko": "된장찌개",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "seoul-doenjang-jjigae",
+          "name_ko": "서울 된장찌개",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        },
+        {
+          "id": "gyeongju-doenjang-jjigae",
+          "name_ko": "경주 된장찌개",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        },
+        {
+          "id": "icheon-doenjang-jjigae-hansang",
+          "name_ko": "된장찌개 한상",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_호떡_알렉스 분도_2yy6ha.jpg": {
+      "keyword": "호떡",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "seoul-hotteok",
+          "name_ko": "서울 호떡",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_라볶이_부산관광공사_i6BNCf.jpg": {
+      "keyword": "라볶이",
+      "credit": "ⓒ한국관광공사 포토코리아-부산관광공사",
+      "author": "부산관광공사",
+      "matches": [
+        {
+          "id": "seoul-rabokki",
+          "name_ko": "라볶이",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_충무김밥_김효서_1HsGZ6.jpg": {
+      "keyword": "충무김밥",
+      "credit": "ⓒ한국관광공사 포토코리아-김효서",
+      "author": "김효서",
+      "matches": [
+        {
+          "id": "tongyeong-chungmu-gimbap",
+          "name_ko": "충무김밥",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_꿀빵_한국관광공사 송재근_efyNCC.jpg": {
+      "keyword": "꿀빵",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 송재근",
+      "author": "한국관광공사 송재근",
+      "matches": [
+        {
+          "id": "tongyeong-kkul-ppang",
+          "name_ko": "꿀빵",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_멍게비빔밥_한국관광공사 송재근_13uCXX.jpg": {
+      "keyword": "멍게비빔밥",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 송재근",
+      "author": "한국관광공사 송재근",
+      "matches": [
+        {
+          "id": "tongyeong-meongge-bibimbap",
+          "name_ko": "멍게비빔밥",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_우짜_한국관광공사 프레임스튜디오_OgBnga.jpg": {
+      "keyword": "우짜",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 프레임스튜디오",
+      "author": "한국관광공사 프레임스튜디오",
+      "matches": [
+        {
+          "id": "tongyeong-ujja",
+          "name_ko": "우짜",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_해물뚝배기_한국관광공사 이범수_mCaz4a.jpg": {
+      "keyword": "해물뚝배기",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "tongyeong-haemul-ttukbaegi",
+          "name_ko": "해물뚝배기",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "jeju-haemul-ttukbaegi",
+          "name_ko": "제주 해물뚝배기",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 50
+        }
+      ]
+    },
+    "Type1_해물탕_한국관광공사 김지호_TGCQ3a.jpg": {
+      "keyword": "해물탕",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "tongyeong-haemul-tang",
+          "name_ko": "통영 해물탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        },
+        {
+          "id": "yongin-haemul-tang",
+          "name_ko": "용인 해물탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_장어구이_스튜디오 4cats_Nnoaap.jpg": {
+      "keyword": "장어구이",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+      "author": "스튜디오 4cats",
+      "matches": [
+        {
+          "id": "tongyeong-jangeo-gui",
+          "name_ko": "통영 장어구이",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        },
+        {
+          "id": "busan-gomjangeo-gui",
+          "name_ko": "곰장어구이",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        },
+        {
+          "id": "icheon-jangeo-jeongsik",
+          "name_ko": "장어구이정식",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_피꼬막_스튜디오 4cats_mzcGxy.jpg": {
+      "keyword": "피꼬막",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+      "author": "스튜디오 4cats",
+      "matches": [
+        {
+          "id": "tongyeong-pi-kkomak",
+          "name_ko": "피꼬막",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_해물잡탕_한국관광공사 김지호_XiFfZa.jpg": {
+      "keyword": "해물잡탕",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "tongyeong-haemul-japtang",
+          "name_ko": "통영 해물잡탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_갈치구이_한국관광공사 김지호_3UlC3p.jpg": {
+      "keyword": "갈치구이",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "tongyeong-galchi-gui",
+          "name_ko": "통영 갈치구이",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        },
+        {
+          "id": "jeju-galchi-gui",
+          "name_ko": "제주 갈치구이",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_대구탕_한국관광공사 이범수 _huBofa.jpg": {
+      "keyword": "대구탕",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "busan-daegu-tang",
+          "name_ko": "대구탕",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "tongyeong-daegu-tang",
+          "name_ko": "통영 대구탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_멸치회무침_한국관광공사 김지호_tU7Xma.jpg": {
+      "keyword": "멸치회무침",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "tongyeong-myeolchi-hoemuchim",
+          "name_ko": "멸치회무침",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_학꽁치회_한국관광공사 김지호_rXeNta.jpg": {
+      "keyword": "학꽁치회",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "tongyeong-hakggongchi-hoe",
+          "name_ko": "학꽁치 회",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_고기국수_황성훈_7LlS5N.jpg": {
+      "keyword": "고기국수",
+      "credit": "ⓒ한국관광공사 포토코리아-황성훈",
+      "author": "황성훈",
+      "matches": [
+        {
+          "id": "jeju-gogi-guksu",
+          "name_ko": "고기국수",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_제주갈치조림_한국관광공사 김지호_qj2Dse.jpg": {
+      "keyword": "제주갈치조림",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "jeju-galchi-jorim",
+          "name_ko": "갈치조림",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_전복죽_한국관광공사 김지호_LiPq2a.jpg": {
+      "keyword": "전복죽",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "jeju-jeonbok-juk",
+          "name_ko": "전복죽",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "busan-jeonbok-juk",
+          "name_ko": "전복죽",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_제주 돔베고기 _한국관광공사 김지호 _tH68Ia.jpg": {
+      "keyword": "제주 돔베고기",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "jeju-dombe",
+          "name_ko": "돔베고기",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_물회_스튜디오 4cats_7ooZl7.jpg": {
+      "keyword": "물회",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+      "author": "스튜디오 4cats",
+      "matches": [
+        {
+          "id": "jeju-mulhoe",
+          "name_ko": "물회",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "jeju-hanchi-mulhoe",
+          "name_ko": "제주 한치물회",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        },
+        {
+          "id": "jeju-jari-mulhoe",
+          "name_ko": "제주 자리물회",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        },
+        {
+          "id": "gyeongju-hanwoo-mulhoe",
+          "name_ko": "한우 물회",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        },
+        {
+          "id": "sokcho-mulhoe",
+          "name_ko": "속초 물회",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_보말칼국수_한국관광공사 이범수_K1c2Xa.jpg": {
+      "keyword": "보말칼국수",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "jeju-bomal-kalguksu",
+          "name_ko": "보말칼국수",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_오메기떡_한국관광공사 이범수_r0cNSa.jpg": {
+      "keyword": "오메기떡",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "jeju-omegi-tteok",
+          "name_ko": "오메기떡",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_한라봉디저트_한국관광공사 김지호_LHHuua.jpg": {
+      "keyword": "한라봉디저트",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "jeju-hallabong",
+          "name_ko": "한라봉 디저트",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_보말죽_한국관광공사 이범수_K1c2Ta.jpg": {
+      "keyword": "보말죽",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "jeju-bomal-juk",
+          "name_ko": "제주 보말죽",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_미역국_알렉스 분도_joM8Xa.jpg": {
+      "keyword": "미역국",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "jeju-seonggae-miyeokguk",
+          "name_ko": "성게미역국",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_고사리_알렉스 분도_joM8xa.jpg": {
+      "keyword": "고사리",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "jeju-gosari-yukgaejang",
+          "name_ko": "제주 고사리 육개장",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        },
+        {
+          "id": "jeju-gosari-bokkeum",
+          "name_ko": "제주 고사리볶음",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_돼지국밥_IR 스튜디오_c3sAaa.jpg": {
+      "keyword": "돼지국밥",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+      "author": "IR 스튜디오",
+      "matches": [
+        {
+          "id": "busan-pork-soup",
+          "name_ko": "돼지국밥",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_밀면_디엔에이스튜디오_JclIeB.jpg": {
+      "keyword": "밀면",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+      "author": "디엔에이스튜디오",
+      "matches": [
+        {
+          "id": "busan-milmyeon",
+          "name_ko": "밀면",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "gyeongju-milmyeon",
+          "name_ko": "경주 밀면",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_씨앗호떡_한국관광공사 김지호_sJ8bFa.jpg": {
+      "keyword": "씨앗호떡",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "busan-hotteok",
+          "name_ko": "씨앗호떡",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "busan-ssiat-hotteok",
+          "name_ko": "씨앗호떡",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_부산 냉채족발_김효서_a8ey16.jpg": {
+      "keyword": "부산 냉채족발",
+      "credit": "ⓒ한국관광공사 포토코리아-김효서",
+      "author": "김효서",
+      "matches": [
+        {
+          "id": "busan-naengchae-jokbal",
+          "name_ko": "냉채족발",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 20
+        },
+        {
+          "id": "national-jokbal",
+          "name_ko": "족발",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 10
+        }
+      ]
+    },
+    "Type1_조개구이_천준교_36JNIN.jpg": {
+      "keyword": "조개구이",
+      "credit": "ⓒ한국관광공사 포토코리아-천준교",
+      "author": "천준교",
+      "matches": [
+        {
+          "id": "busan-grilled-clams",
+          "name_ko": "조개구이",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_어묵(오뎅)_한국관광공사 김지호_3HjKXa.jpg": {
+      "keyword": "어묵(오뎅)",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "busan-eomuk",
+          "name_ko": "어묵",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "busan-eomuk-tang",
+          "name_ko": "어묵탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_비빔당면_부산관광공사_jUkBlA.jpg": {
+      "keyword": "비빔당면",
+      "credit": "ⓒ한국관광공사 포토코리아-부산관광공사",
+      "author": "부산관광공사",
+      "matches": [
+        {
+          "id": "busan-bibim-dangmyeon",
+          "name_ko": "비빔당면",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_생선구이_알렉스 분도_xZMQba.jpg": {
+      "keyword": "생선구이",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "busan-saengseon-gui",
+          "name_ko": "생선구이",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_해물짬뽕_한국관광공사 이범수_r0cNua.jpg": {
+      "keyword": "해물짬뽕",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "busan-haemul-jjamppong",
+          "name_ko": "해물짬뽕",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_굴전_한국관광공사 김지호_Mw1WUa.jpg": {
+      "keyword": "굴전",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "busan-gul-jeon",
+          "name_ko": "굴전",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_복어탕_디엔에이스튜디오_BzVjF9.jpg": {
+      "keyword": "복어탕",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+      "author": "디엔에이스튜디오",
+      "matches": [
+        {
+          "id": "busan-bokeo-tang",
+          "name_ko": "복어탕",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_유부전골_한국관광공사 김지호_nWtLia.jpg": {
+      "keyword": "유부전골",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "busan-yubu-jeongol",
+          "name_ko": "유부전골",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_경주황남빵_알렉스 분도_6FMuwa.jpg": {
+      "keyword": "경주황남빵",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "gyeongju-hwangnam-ppang",
+          "name_ko": "황남빵",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 15
+        }
+      ]
+    },
+    "Type1_교리김밥_한국관광공사 김지호_ZUUAma.jpg": {
+      "keyword": "교리김밥",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "gyeongju-gyori-gimbap",
+          "name_ko": "교리김밥",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_불고기_알렉스 분도_xCXiHa.jpg": {
+      "keyword": "불고기",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "gyeongju-hanwoo-bulgogi",
+          "name_ko": "한우불고기",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        },
+        {
+          "id": "icheon-dojagi-bulgogi",
+          "name_ko": "도자기불고기",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_구절판_알렉스분도_4yZZr1.jpg": {
+      "keyword": "구절판",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스분도",
+      "author": "알렉스분도",
+      "matches": [
+        {
+          "id": "gyeongju-gujeolpan",
+          "name_ko": "구절판",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_두부전골_디엔에이스튜디오_qTIS6A.jpg": {
+      "keyword": "두부전골",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+      "author": "디엔에이스튜디오",
+      "matches": [
+        {
+          "id": "gyeongju-dubu-jeongol",
+          "name_ko": "두부전골",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "yongin-dubu-jeongol",
+          "name_ko": "용인 두부전골",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_메밀전병_IR 스튜디오_UpEQ5a.jpg": {
+      "keyword": "메밀전병",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+      "author": "IR 스튜디오",
+      "matches": [
+        {
+          "id": "gyeongju-meomil-jeonbyeong",
+          "name_ko": "메밀전병",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "yongin-memil-jeonbyeong",
+          "name_ko": "용인 메밀전병",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_경주 교동법주_한국관광공사 김지호_McL7za.jpg": {
+      "keyword": "경주 교동법주",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "gyeongju-gyodongbeopju",
+          "name_ko": "교동법주",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_호두과자_알렉스 분도_6FMuya.jpg": {
+      "keyword": "호두과자",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "cheonan-walnut-cookie",
+          "name_ko": "호두과자",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_숯불닭갈비_스튜디오 4cats_Yrwl1A.jpg": {
+      "keyword": "숯불닭갈비",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+      "author": "스튜디오 4cats",
+      "matches": [
+        {
+          "id": "cheonan-charcoal-dakgalbi",
+          "name_ko": "천안 숯불 닭갈비",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 50
+        }
+      ]
+    },
+    "Type1_연잎밥_한가람_한국관광공사 프레임스튜디오_g8KrOa.jpg": {
+      "keyword": "연잎밥",
+      "credit": "ⓒ한국관광공사 포토코리아-한가람_한국관광공사 프레임스튜디오",
+      "author": "한가람_한국관광공사 프레임스튜디오",
+      "matches": [
+        {
+          "id": "cheonan-lotus-rice",
+          "name_ko": "연잎밥 정식",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_버섯전골_한국관광공사 김지호_B0Q2Xa.jpg": {
+      "keyword": "버섯전골",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "cheonan-mushroom-stew",
+          "name_ko": "버섯전골",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "yongin-beoseot-jeongol",
+          "name_ko": "용인 버섯전골",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_홍어삼합_디엔에이스튜디오_FBEgct.jpg": {
+      "keyword": "홍어삼합",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+      "author": "디엔에이스튜디오",
+      "matches": [
+        {
+          "id": "cheonan-hongeo-samhap",
+          "name_ko": "천안 홍어삼합",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_갈비탕_토라이 리퍼블릭_EzACc1.jpg": {
+      "keyword": "갈비탕",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "national-galbi-tang",
+          "name_ko": "갈비탕",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "cheonan-galbitang",
+          "name_ko": "천안 갈비탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        },
+        {
+          "id": "icheon-galbitang",
+          "name_ko": "이천 갈비탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_된장_한국관광공사 박은경_9YMwoa.jpg": {
+      "keyword": "된장",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 박은경",
+      "author": "한국관광공사 박은경",
+      "matches": [
+        {
+          "id": "cheonan-ureong-doenjang",
+          "name_ko": "천안 우렁된장",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_두부김치_한국관광공사 김지호_a90haa.jpg": {
+      "keyword": "두부김치",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "cheonan-dubu-kimchi",
+          "name_ko": "천안 두부김치",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_수제비 _한국관광공사 김지호_6wvJFa.jpg": {
+      "keyword": "수제비",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "cheonan-sujebi",
+          "name_ko": "천안 수제비",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_막국수_천준교_1VXdBw.jpg": {
+      "keyword": "막국수",
+      "credit": "ⓒ한국관광공사 포토코리아-천준교",
+      "author": "천준교",
+      "matches": [
+        {
+          "id": "yongin-makguksu",
+          "name_ko": "수지 막국수",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        },
+        {
+          "id": "icheon-makguksu",
+          "name_ko": "이천 막국수",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_도토리묵_한국관광공사 김지호_ScbA1a.jpg": {
+      "keyword": "도토리묵",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "yongin-acorn-jelly",
+          "name_ko": "도토리묵 무침",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_한우구이_한국관광공사 이범수_9zxHra.jpg": {
+      "keyword": "한우구이",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "yongin-hanwoo",
+          "name_ko": "용인 한우 구이",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        },
+        {
+          "id": "icheon-hanwoo-gui",
+          "name_ko": "이천 한우 구이",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_순두부_한국관광공사 이범수_rwD3ba.jpg": {
+      "keyword": "순두부",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "yongin-sundubu",
+          "name_ko": "용인 순두부찌개",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        },
+        {
+          "id": "national-sundubu",
+          "name_ko": "순두부찌개",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        },
+        {
+          "id": "national-sundubu-gyeongju",
+          "name_ko": "순두부찌개",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_닭갈비_스튜디오 4cats_evsr55.jpg": {
+      "keyword": "닭갈비",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+      "author": "스튜디오 4cats",
+      "matches": [
+        {
+          "id": "yongin-cheoin-dakgalbi",
+          "name_ko": "용인 처인닭갈비",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_곰탕_토라이 리퍼블릭_u7dewQ.jpg": {
+      "keyword": "곰탕",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "national-gomtang",
+          "name_ko": "곰탕",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "yongin-yangji-gomtang",
+          "name_ko": "용인 양지곰탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_굴비정식_스튜디오 4cats_hECXD7.jpg": {
+      "keyword": "굴비정식",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+      "author": "스튜디오 4cats",
+      "matches": [
+        {
+          "id": "yongin-bori-gulbi",
+          "name_ko": "용인 보리굴비정식",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_삼계탕_알렉스 분도_FJxoYa.jpg": {
+      "keyword": "삼계탕",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "national-samgyetang",
+          "name_ko": "삼계탕",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "yongin-hanbang-samgyetang",
+          "name_ko": "용인 한방삼계탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_묵밥_한국관광공사 김지호_ScbAra.jpg": {
+      "keyword": "묵밥",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "yongin-mukbap",
+          "name_ko": "용인 묵밥",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_돌솥비빔밥_한국관광공사 김지호_hEM1wa.jpg": {
+      "keyword": "돌솥비빔밥",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "yongin-dolsot-bibimbap",
+          "name_ko": "용인 돌솥비빔밥",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 50
+        }
+      ]
+    },
+    "Type1_갈비찜_토라이 리퍼블릭_nK2ajF.jpg": {
+      "keyword": "갈비찜",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "yongin-maeun-galbijjim",
+          "name_ko": "용인 매운갈비찜",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_쌀밥정식_스튜디오 4cats_66SFlU.jpg": {
+      "keyword": "쌀밥정식",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+      "author": "스튜디오 4cats",
+      "matches": [
+        {
+          "id": "icheon-rice-table",
+          "name_ko": "이천 쌀밥 정식",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_간장게장_천준교_qxTU9F.jpg": {
+      "keyword": "간장게장",
+      "credit": "ⓒ한국관광공사 포토코리아-천준교",
+      "author": "천준교",
+      "matches": [
+        {
+          "id": "icheon-ganjang-gejang",
+          "name_ko": "간장게장",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_수라상_스튜디오 4cats_Eg7Khl.jpg": {
+      "keyword": "수라상",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+      "author": "스튜디오 4cats",
+      "matches": [
+        {
+          "id": "icheon-royal-table",
+          "name_ko": "임금님 수라상",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_돌솥밥_알렉스 분도_xCXiia.jpg": {
+      "keyword": "돌솥밥",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "icheon-sotbap",
+          "name_ko": "솥밥",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 10
+        }
+      ]
+    },
+    "Type1_땅콩국수_한국관광공사 이범수_Xg2N5a.jpg": {
+      "keyword": "땅콩국수",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "icheon-kongguksu",
+          "name_ko": "콩국수",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 15
+        }
+      ]
+    },
+    "Type1_돼지갈비_한국관광공사 프레임스튜디오_klLOaa.jpg": {
+      "keyword": "돼지갈비",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 프레임스튜디오",
+      "author": "한국관광공사 프레임스튜디오",
+      "matches": [
+        {
+          "id": "icheon-maeun-dwaeji-galbi",
+          "name_ko": "매운돼지갈비",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 40
+        }
+      ]
+    },
+    "Type1_금탑소머리국밥_한국관광공사 이범수_ddNLGa.jpg": {
+      "keyword": "금탑소머리국밥",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "icheon-somori-gukbap",
+          "name_ko": "소머리국밥",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 25
+        }
+      ]
+    },
+    "Type1_만두_토라이 리퍼블릭_tkIr3G.jpg": {
+      "keyword": "만두",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "icheon-onggi-mandu",
+          "name_ko": "옹기만두",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 20
+        }
+      ]
+    },
+    "Type1_감자옹심이_디엔에이스튜디오_dPbYf8.jpg": {
+      "keyword": "감자옹심이",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+      "author": "디엔에이스튜디오",
+      "matches": [
+        {
+          "id": "icheon-gamja-ongsimi",
+          "name_ko": "감자옹심이",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "sokcho-gamja-ongsimi",
+          "name_ko": "감자옹심이",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_닭강정_한국관광공사 김지호_0f05Ga.jpg": {
+      "keyword": "닭강정",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "sokcho-dakgangjeong",
+          "name_ko": "속초 닭강정",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_아바이순대_테마상품팀 IR 스튜디오_zxHyXa.jpg": {
+      "keyword": "아바이순대",
+      "credit": "ⓒ한국관광공사 포토코리아-테마상품팀 IR 스튜디오",
+      "author": "테마상품팀 IR 스튜디오",
+      "matches": [
+        {
+          "id": "sokcho-abai-sundae",
+          "name_ko": "아바이순대",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_오징어순대_테마상품팀 IR 스튜디오_zxHyWa.jpg": {
+      "keyword": "오징어순대",
+      "credit": "ⓒ한국관광공사 포토코리아-테마상품팀 IR 스튜디오",
+      "author": "테마상품팀 IR 스튜디오",
+      "matches": [
+        {
+          "id": "sokcho-ojingeo-sundae",
+          "name_ko": "오징어순대",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_갓김치_알렉스 분도_Xhkdca.jpg": {
+      "keyword": "갓김치",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "yeosu-gat-kimchi",
+          "name_ko": "돌산 갓김치",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_장어탕_한국관광공사 이범수_EEI9xa.jpg": {
+      "keyword": "장어탕",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "yeosu-jangeo-tang",
+          "name_ko": "여수 장어탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_굴요리_스튜디오 4cats_cuuZYc.jpg": {
+      "keyword": "굴요리",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+      "author": "스튜디오 4cats",
+      "matches": [
+        {
+          "id": "yeosu-gul-yori",
+          "name_ko": "여수 굴요리",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_안동찜닭_IR 스튜디오_3Xgcba.jpg": {
+      "keyword": "안동찜닭",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+      "author": "IR 스튜디오",
+      "matches": [
+        {
+          "id": "andong-jjimdak",
+          "name_ko": "안동찜닭",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "andong-andong-jjimdak",
+          "name_ko": "안동찜닭",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_안동간고등어_디엔에이스튜디오_YhEeo8.jpg": {
+      "keyword": "안동간고등어",
+      "credit": "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
+      "author": "디엔에이스튜디오",
+      "matches": [
+        {
+          "id": "andong-gan-godeungeo",
+          "name_ko": "안동 간고등어",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_안동국시_알렉스 분도_vG2AKa.jpg": {
+      "keyword": "안동국시",
+      "credit": "ⓒ한국관광공사 포토코리아-알렉스 분도",
+      "author": "알렉스 분도",
+      "matches": [
+        {
+          "id": "andong-guksi",
+          "name_ko": "안동국시",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_잡채_토라이 리퍼블릭_3Q1PNf.jpg": {
+      "keyword": "잡채",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "national-japchae",
+          "name_ko": "잡채",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_동래파전_부산관광공사_D9DioX.jpg": {
+      "keyword": "동래파전",
+      "credit": "ⓒ한국관광공사 포토코리아-부산관광공사",
+      "author": "부산관광공사",
+      "matches": [
+        {
+          "id": "national-pajeon",
+          "name_ko": "파전",
+          "confidence": "medium",
+          "rule": "name_in_keyword",
+          "score": 10
+        }
+      ]
+    },
+    "Type1_떡볶이_부산관광공사_5IjaGe.jpg": {
+      "keyword": "떡볶이",
+      "credit": "ⓒ한국관광공사 포토코리아-부산관광공사",
+      "author": "부산관광공사",
+      "matches": [
+        {
+          "id": "national-tteokbokki",
+          "name_ko": "떡볶이",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_오징어볶음_한국관광공사_ui0MHa.jpg": {
+      "keyword": "오징어볶음",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사",
+      "author": "한국관광공사",
+      "matches": [
+        {
+          "id": "national-ojingeo-bokkeum",
+          "name_ko": "오징어볶음",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_약과_토라이 리퍼블릭_Z8QBm5.jpg": {
+      "keyword": "약과",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "national-yakgwa",
+          "name_ko": "약과",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_떡국_토라이 리퍼블릭_8QeXVA.jpg": {
+      "keyword": "떡국",
+      "credit": "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
+      "author": "토라이 리퍼블릭",
+      "matches": [
+        {
+          "id": "national-tteokguk",
+          "name_ko": "떡국",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_매운탕_IR 스튜디오_cHfSVa.jpg": {
+      "keyword": "매운탕",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+      "author": "IR 스튜디오",
+      "matches": [
+        {
+          "id": "national-spicy-catfish",
+          "name_ko": "빠가사리 매운탕",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 30
+        }
+      ]
+    },
+    "Type1_제육볶음_스튜디오 4cats_T3Ix7f.jpg": {
+      "keyword": "제육볶음",
+      "credit": "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
+      "author": "스튜디오 4cats",
+      "matches": [
+        {
+          "id": "national-jeyuk-bokkeum",
+          "name_ko": "제육볶음",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_낙지볶음_한국관광공사_ui0MIa.jpg": {
+      "keyword": "낙지볶음",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사",
+      "author": "한국관광공사",
+      "matches": [
+        {
+          "id": "national-nakji-bokkeum",
+          "name_ko": "낙지볶음",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_부대찌개_IR 스튜디오_PjTU2a.jpg": {
+      "keyword": "부대찌개",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+      "author": "IR 스튜디오",
+      "matches": [
+        {
+          "id": "national-budae-jjigae",
+          "name_ko": "부대찌개",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_김치전_한국관광공사 김지호_cZvjLa.jpg": {
+      "keyword": "김치전",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
+      "author": "한국관광공사 김지호",
+      "matches": [
+        {
+          "id": "national-kimchi-jeon",
+          "name_ko": "김치전",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        }
+      ]
+    },
+    "Type1_산채비빔밥_IR 스튜디오_cHfSTa.jpg": {
+      "keyword": "산채비빔밥",
+      "credit": "ⓒ한국관광공사 포토코리아-IR 스튜디오",
+      "author": "IR 스튜디오",
+      "matches": [
+        {
+          "id": "national-sanchae-bibimbap",
+          "name_ko": "산채비빔밥",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "national-sanchae-bibimbap-yongin",
+          "name_ko": "산채비빔밥",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "national-gwangdeok-sanchae",
+          "name_ko": "광덕산 산채비빔밥",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 50
+        }
+      ]
+    },
+    "Type1_육회비빔밥_한국관광공사 이범수_RbmPHa.jpg": {
+      "keyword": "육회비빔밥",
+      "credit": "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
+      "author": "한국관광공사 이범수",
+      "matches": [
+        {
+          "id": "national-yukhoe-bibimbap",
+          "name_ko": "육회비빔밥",
+          "confidence": "high",
+          "rule": "exact_match",
+          "score": 100
+        },
+        {
+          "id": "national-hanwoo-yukhoe",
+          "name_ko": "한우 육회비빔밥",
+          "confidence": "medium",
+          "rule": "keyword_in_name",
+          "score": 50
+        }
+      ]
+    }
+  },
+  "skipped_files": [
+    {
+      "filename": "Type1_광장시장_한국관광공사 이범수_84cpha.jpg",
+      "keyword": "광장시장",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_다찌_스튜디오 4cats_GbFTSV.jpg",
+      "keyword": "다찌",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_디저트_한국관광공사 이범수_okwjua.jpg",
+      "keyword": "디저트",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_막걸리_알렉스 분도_joM8Ta.jpg",
+      "keyword": "막걸리",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_맥주_한국관광공사 김지호_bDFYVa.jpg",
+      "keyword": "맥주",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_부산 온천장 곰장어골목_한국관광공사 이범수_J0pEpa.jpg",
+      "keyword": "부산 온천장 곰장어골목",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_생과일모찌_한국관광공사 김지호_bEK1Ma.jpg",
+      "keyword": "생과일모찌",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_신사동 아귀찜골목_한국관광공사 이범수_0FxMpa.jpg",
+      "keyword": "신사동 아귀찜골목",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_안지랑곱창골목_김지영_IHtYGF.jpg",
+      "keyword": "안지랑곱창골목",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_애담찹쌀떡_한국관광공사 김지호_bEK1Ia.jpg",
+      "keyword": "애담찹쌀떡",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_장충동 족발골목_한국관광공사 이범수_5lX5Ya.jpg",
+      "keyword": "장충동 족발골목",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_정남진 장흥토요시장_한국관광공사 김지호_22PZSa.jpg",
+      "keyword": "정남진 장흥토요시장",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_토스트_알렉스분도_EZMe4r.jpg",
+      "keyword": "토스트",
+      "reason": "non-food keyword"
+    },
+    {
+      "filename": "Type1_한강라면_알렉스 분도_DLWMza.jpg",
+      "keyword": "한강라면",
+      "reason": "non-food keyword"
+    }
+  ],
+  "unmatched_files": [
+    {
+      "filename": "Type1_간재미회무침_한국관광공사 김지호_iUagna.jpg",
+      "keyword": "간재미회무침",
+      "author": "한국관광공사 김지호"
+    },
+    {
+      "filename": "Type1_꼬막정식_스튜디오 4cats_GI5t0t.jpg",
+      "keyword": "꼬막정식",
+      "author": "스튜디오 4cats"
+    },
+    {
+      "filename": "Type1_닭백숙_한국관광공사 박은경_XxhKza.jpg",
+      "keyword": "닭백숙",
+      "author": "한국관광공사 박은경"
+    },
+    {
+      "filename": "Type1_돌게장_스튜디오 4cats_AkAcwc.jpg",
+      "keyword": "돌게장",
+      "author": "스튜디오 4cats"
+    },
+    {
+      "filename": "Type1_매생이굴국밥_한국관광공사 이범수_pcSiBa.jpg",
+      "keyword": "매생이굴국밥",
+      "author": "한국관광공사 이범수"
+    },
+    {
+      "filename": "Type1_멸치쌈밥_부산관광공사_JW0pPk.jpg",
+      "keyword": "멸치쌈밥",
+      "author": "부산관광공사"
+    },
+    {
+      "filename": "Type1_보문산 보리밥_한국관광공사 김지호_WCqdda.jpg",
+      "keyword": "보문산 보리밥",
+      "author": "한국관광공사 김지호"
+    },
+    {
+      "filename": "Type1_비빔막국수_천준교_0G5b5d.jpg",
+      "keyword": "비빔막국수",
+      "author": "천준교"
+    },
+    {
+      "filename": "Type1_삼겹살_한국관광공사 김지호_ENnhza.jpg",
+      "keyword": "삼겹살",
+      "author": "한국관광공사 김지호"
+    },
+    {
+      "filename": "Type1_속초 막걸리빵_테마상품팀 IR 스튜디오_zxHyFa.jpg",
+      "keyword": "속초 막걸리빵",
+      "author": "테마상품팀 IR 스튜디오"
+    },
+    {
+      "filename": "Type1_수육_황성훈_Ap3X96.jpg",
+      "keyword": "수육",
+      "author": "황성훈"
+    },
+    {
+      "filename": "Type1_연남 소갈비_한국관광공사 프레임스튜디오_mfsr4a.jpg",
+      "keyword": "연남 소갈비",
+      "author": "한국관광공사 프레임스튜디오"
+    },
+    {
+      "filename": "Type1_엿_한국관광공사 김지호_uv8KUa.jpg",
+      "keyword": "엿",
+      "author": "한국관광공사 김지호"
+    },
+    {
+      "filename": "Type1_전복버터구이_한국관광공사 김지호_cOddnB.jpg",
+      "keyword": "전복버터구이",
+      "author": "한국관광공사 김지호"
+    },
+    {
+      "filename": "Type1_전주 베테랑칼국수_한국관광공사 김지호_5wvfJa.jpg",
+      "keyword": "전주 베테랑칼국수",
+      "author": "한국관광공사 김지호"
+    },
+    {
+      "filename": "Type1_치킨_토라이 리퍼블릭_ScvEBZ.jpg",
+      "keyword": "치킨",
+      "author": "토라이 리퍼블릭"
+    },
+    {
+      "filename": "Type1_한가원(한과문화박물관)_한국관광공사 김지호_gJRUTa.jpg",
+      "keyword": "한가원(한과문화박물관)",
+      "author": "한국관광공사 김지호"
+    },
+    {
+      "filename": "Type1_한정식_토라이 리퍼블릭_YWDsyc.jpg",
+      "keyword": "한정식",
+      "author": "토라이 리퍼블릭"
+    },
+    {
+      "filename": "Type1_회_디엔에이스튜디오_Ij5p2g.jpg",
+      "keyword": "회",
+      "author": "디엔에이스튜디오"
+    },
+    {
+      "filename": "Type1_흑돼지 불고기_한국관광공사 이범수_mCazia.jpg",
+      "keyword": "흑돼지 불고기",
+      "author": "한국관광공사 이범수"
+    }
+  ],
+  "unmatched_food_ids": [
+    {
+      "id": "jeonju-bibimbap",
+      "name_ko": "전주비빔밥"
+    },
+    {
+      "id": "jeonju-tteokgalbi",
+      "name_ko": "전주 떡갈비"
+    },
+    {
+      "id": "jeonju-kalguksu",
+      "name_ko": "전주식 칼국수"
+    },
+    {
+      "id": "jeonju-omogaritang",
+      "name_ko": "오모가리탕"
+    },
+    {
+      "id": "jeonju-chocopie",
+      "name_ko": "수제 초코파이"
+    },
+    {
+      "id": "jeonju-yukgaejang",
+      "name_ko": "육개장"
+    },
+    {
+      "id": "jeonju-bindaetteok",
+      "name_ko": "녹두전"
+    },
+    {
+      "id": "jeonju-cheonggukjang",
+      "name_ko": "청국장"
+    },
+    {
+      "id": "jeonju-bori-guksu",
+      "name_ko": "보리국수"
+    },
+    {
+      "id": "jeonju-gondrebap",
+      "name_ko": "곤드레밥"
+    },
+    {
+      "id": "seoul-street-toast",
+      "name_ko": "길거리 토스트"
+    },
+    {
+      "id": "seoul-hangang-ramen",
+      "name_ko": "한강 라면"
+    },
+    {
+      "id": "seoul-kalguksu",
+      "name_ko": "서울 칼국수"
+    },
+    {
+      "id": "seoul-mayak-gimbap",
+      "name_ko": "광장시장 마약김밥"
+    },
+    {
+      "id": "seoul-gopchang",
+      "name_ko": "곱창구이"
+    },
+    {
+      "id": "seoul-yang-kkochi",
+      "name_ko": "양꼬치"
+    },
+    {
+      "id": "seoul-chimaek",
+      "name_ko": "치맥"
+    },
+    {
+      "id": "seoul-galbi",
+      "name_ko": "서울 소갈비"
+    },
+    {
+      "id": "tongyeong-oyster-soup",
+      "name_ko": "통영 굴국밥"
+    },
+    {
+      "id": "tongyeong-sirakguk",
+      "name_ko": "시락국"
+    },
+    {
+      "id": "tongyeong-ppaettaegi-juk",
+      "name_ko": "빼때기죽"
+    },
+    {
+      "id": "tongyeong-dacci",
+      "name_ko": "다찌 해산물"
+    },
+    {
+      "id": "tongyeong-dodari-ssuk",
+      "name_ko": "도다리쑥국"
+    },
+    {
+      "id": "tongyeong-gulbap",
+      "name_ko": "통영 굴밥"
+    },
+    {
+      "id": "tongyeong-jeonbok-gui",
+      "name_ko": "통영 전복구이"
+    },
+    {
+      "id": "tongyeong-mulmegi-tang",
+      "name_ko": "통영 물메기탕"
+    },
+    {
+      "id": "tongyeong-bajirak-kalguksu",
+      "name_ko": "통영 바지락칼국수"
+    },
+    {
+      "id": "tongyeong-saengseon-hoe-jeongsik",
+      "name_ko": "통영 생선회 정식"
+    },
+    {
+      "id": "tongyeong-honghap-tang",
+      "name_ko": "통영 홍합탕"
+    },
+    {
+      "id": "tongyeong-mideodeok-jjim",
+      "name_ko": "미더덕찜"
+    },
+    {
+      "id": "jeju-black-pork",
+      "name_ko": "흑돼지 구이"
+    },
+    {
+      "id": "jeju-momguk",
+      "name_ko": "몸국"
+    },
+    {
+      "id": "jeju-bingtteok",
+      "name_ko": "빙떡"
+    },
+    {
+      "id": "jeju-kkwong-memil-guksu",
+      "name_ko": "꿩메밀국수"
+    },
+    {
+      "id": "jeju-gamgyul-juice",
+      "name_ko": "감귤주스"
+    },
+    {
+      "id": "jeju-okdom-gui",
+      "name_ko": "제주 옥돔구이"
+    },
+    {
+      "id": "jeju-jeonbok-ttukbaegi",
+      "name_ko": "제주 전복뚝배기"
+    },
+    {
+      "id": "jeju-jeopjjak-bbyeoguk",
+      "name_ko": "제주 접짝뼈국"
+    },
+    {
+      "id": "jeju-dwaeji-kimchi-bokkeum",
+      "name_ko": "제주 흑돼지 김치볶음"
+    },
+    {
+      "id": "busan-mul-tteok",
+      "name_ko": "물떡"
+    },
+    {
+      "id": "busan-gopchang",
+      "name_ko": "양곱창"
+    },
+    {
+      "id": "busan-nakgopsae",
+      "name_ko": "낙곱새"
+    },
+    {
+      "id": "busan-hwae",
+      "name_ko": "활어회"
+    },
+    {
+      "id": "busan-agujjim",
+      "name_ko": "아구찜"
+    },
+    {
+      "id": "gyeongju-tteokgalbi",
+      "name_ko": "경주 떡갈비"
+    },
+    {
+      "id": "gyeongju-ssambap",
+      "name_ko": "쌈밥 정식"
+    },
+    {
+      "id": "gyeongju-haejangguk",
+      "name_ko": "경주 해장국"
+    },
+    {
+      "id": "gyeongju-chalborippang",
+      "name_ko": "찰보리빵"
+    },
+    {
+      "id": "gyeongju-bamyeot",
+      "name_ko": "밤엿"
+    },
+    {
+      "id": "gyeongju-sujae-maekju",
+      "name_ko": "수제맥주"
+    },
+    {
+      "id": "gyeongju-solsongju",
+      "name_ko": "솔송주"
+    },
+    {
+      "id": "cheonan-fruit-mochi",
+      "name_ko": "생과일 모찌"
+    },
+    {
+      "id": "cheonan-local-bakery",
+      "name_ko": "뚜쥬루 앙버터빵"
+    },
+    {
+      "id": "cheonan-heuk-dwaeji-gui",
+      "name_ko": "천안 흑돼지구이"
+    },
+    {
+      "id": "cheonan-jokbal",
+      "name_ko": "천안 족발"
+    },
+    {
+      "id": "cheonan-cheonggukjang",
+      "name_ko": "천안 청국장찌개"
+    },
+    {
+      "id": "cheonan-boribap-jeongsik",
+      "name_ko": "천안 보리밥정식"
+    },
+    {
+      "id": "cheonan-bossam",
+      "name_ko": "천안 보쌈"
+    },
+    {
+      "id": "cheonan-makgeolli-ppang",
+      "name_ko": "천안 막걸리빵"
+    },
+    {
+      "id": "cheonan-kalguksu",
+      "name_ko": "천안 칼국수"
+    },
+    {
+      "id": "yongin-jangter-gukbap",
+      "name_ko": "민속촌 장터국밥"
+    },
+    {
+      "id": "yongin-nurungji-baeksuk",
+      "name_ko": "누룽지 백숙"
+    },
+    {
+      "id": "yongin-pajeon",
+      "name_ko": "민속촌 파전"
+    },
+    {
+      "id": "yongin-cafe-dessert",
+      "name_ko": "보정동 카페거리 디저트"
+    },
+    {
+      "id": "yongin-makgeolli",
+      "name_ko": "용인 막걸리"
+    },
+    {
+      "id": "yongin-sanchae-jeongsik",
+      "name_ko": "용인 산채정식"
+    },
+    {
+      "id": "yongin-heuk-dwaeji",
+      "name_ko": "용인 흑돼지구이"
+    },
+    {
+      "id": "icheon-bori-gulbi",
+      "name_ko": "보리굴비"
+    },
+    {
+      "id": "icheon-hangwa",
+      "name_ko": "이천 한과"
+    },
+    {
+      "id": "icheon-sansuyu-makgeolli",
+      "name_ko": "산수유 막걸리"
+    },
+    {
+      "id": "icheon-cheonggukjang-jeongsik",
+      "name_ko": "청국장정식"
+    },
+    {
+      "id": "icheon-neungi-shabu",
+      "name_ko": "능이버섯샤브샤브"
+    },
+    {
+      "id": "icheon-bokjung-ppang",
+      "name_ko": "복숭아빵"
+    },
+    {
+      "id": "yeosu-seodae-hoemuchim",
+      "name_ko": "서대회무침"
+    },
+    {
+      "id": "yeosu-gejang-baekban",
+      "name_ko": "여수 게장백반"
+    },
+    {
+      "id": "andong-heot-jesabap",
+      "name_ko": "헛제사밥"
+    },
+    {
+      "id": "national-kimchi-jjigae",
+      "name_ko": "김치찌개"
+    },
+    {
+      "id": "national-bossam",
+      "name_ko": "보쌈"
+    },
+    {
+      "id": "national-hangwa",
+      "name_ko": "한과"
+    },
+    {
+      "id": "national-kkomak-bibimbap",
+      "name_ko": "꼬막비빔밥"
+    },
+    {
+      "id": "national-chapssal-tteok",
+      "name_ko": "찹쌀떡"
+    }
+  ]
+}
