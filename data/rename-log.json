@@ -1,0 +1,151 @@
+{
+  "success": [
+    {
+      "oldId": "jeonju-japchae",
+      "newId": "national-japchae",
+      "ext": "webp"
+    },
+    {
+      "oldId": "jeonju-sundubu",
+      "newId": "national-sundubu",
+      "ext": "webp"
+    },
+    {
+      "oldId": "jeonju-pajeon",
+      "newId": "national-pajeon",
+      "ext": "webp"
+    },
+    {
+      "oldId": "jeonju-doenjang-jjigae",
+      "newId": "national-doenjang-jjigae",
+      "ext": "webp"
+    },
+    {
+      "oldId": "seoul-tteokbokki",
+      "newId": "national-tteokbokki",
+      "ext": "webp"
+    },
+    {
+      "oldId": "seoul-jokbal",
+      "newId": "national-jokbal",
+      "ext": "webp"
+    },
+    {
+      "oldId": "seoul-kimchi-jjigae",
+      "newId": "national-kimchi-jjigae",
+      "ext": "webp"
+    },
+    {
+      "oldId": "seoul-bossam",
+      "newId": "national-bossam",
+      "ext": "webp"
+    },
+    {
+      "oldId": "seoul-andong-jjimdak",
+      "newId": "andong-andong-jjimdak",
+      "ext": "webp"
+    },
+    {
+      "oldId": "busan-ojingeo-bokkeum",
+      "newId": "national-ojingeo-bokkeum",
+      "ext": "webp"
+    },
+    {
+      "oldId": "gyeongju-sundubu",
+      "newId": "national-sundubu-gyeongju",
+      "ext": "webp"
+    },
+    {
+      "oldId": "gyeongju-samgyetang",
+      "newId": "national-samgyetang",
+      "ext": "webp"
+    },
+    {
+      "oldId": "gyeongju-galbi-tang",
+      "newId": "national-galbi-tang",
+      "ext": "webp"
+    },
+    {
+      "oldId": "gyeongju-yakgwa",
+      "newId": "national-yakgwa",
+      "ext": "webp"
+    },
+    {
+      "oldId": "gyeongju-hangwa",
+      "newId": "national-hangwa",
+      "ext": "webp"
+    },
+    {
+      "oldId": "gyeongju-tteokguk",
+      "newId": "national-tteokguk",
+      "ext": "webp"
+    },
+    {
+      "oldId": "cheonan-spicy-catfish",
+      "newId": "national-spicy-catfish",
+      "ext": "webp"
+    },
+    {
+      "oldId": "icheon-jeyuk-bokkeum",
+      "newId": "national-jeyuk-bokkeum",
+      "ext": "webp"
+    },
+    {
+      "oldId": "jeonju-nakji-bokkeum",
+      "newId": "national-nakji-bokkeum",
+      "ext": "webp"
+    },
+    {
+      "oldId": "jeonju-gomtang",
+      "newId": "national-gomtang",
+      "ext": "webp"
+    },
+    {
+      "oldId": "seoul-budae-jjigae",
+      "newId": "national-budae-jjigae",
+      "ext": "webp"
+    },
+    {
+      "oldId": "seoul-kimchi-jeon",
+      "newId": "national-kimchi-jeon",
+      "ext": "webp"
+    },
+    {
+      "oldId": "busan-kkomak-bibimbap",
+      "newId": "national-kkomak-bibimbap",
+      "ext": "webp"
+    },
+    {
+      "oldId": "gyeongju-sanchae-bibimbap",
+      "newId": "national-sanchae-bibimbap",
+      "ext": "webp"
+    },
+    {
+      "oldId": "cheonan-hanwoo-yukhoe",
+      "newId": "national-hanwoo-yukhoe",
+      "ext": "webp"
+    },
+    {
+      "oldId": "cheonan-gwangdeok-sanchae",
+      "newId": "national-gwangdeok-sanchae",
+      "ext": "webp"
+    },
+    {
+      "oldId": "yongin-sanchae-bibimbap",
+      "newId": "national-sanchae-bibimbap-yongin",
+      "ext": "webp"
+    },
+    {
+      "oldId": "icheon-yukhoe-bibimbap",
+      "newId": "national-yukhoe-bibimbap",
+      "ext": "webp"
+    },
+    {
+      "oldId": "icheon-chapssal-tteok",
+      "newId": "national-chapssal-tteok",
+      "ext": "webp"
+    }
+  ],
+  "skipped": [],
+  "failed": []
+}
