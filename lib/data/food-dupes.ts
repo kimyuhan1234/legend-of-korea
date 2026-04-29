@@ -60,7 +60,7 @@ export const regions: Region[] = [
         id: "jeonju-bibimbap",
         name: { ko: "전주비빔밥", ja: "全州ビビンバ", en: "Jeonju Bibimbap" },
         region: "jeonju",
-        image: "/images/food/jeonju-bibimbap.png",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-bibimbap.webp",
         tasteProfile: { sweet: 20, salty: 45, spicy: 60, umami: 65, sour: 15 },
         storyDescription: {
           ko: "하얀 밥 위에 알록달록한 나물과 고기가 미술 시간의 물감처럼 예쁘게 올려져 있어요. 쓱쓱 비벼 먹으면 입안에서 여러 가지 재료가 멋진 합창을 하는 것 같아요.",
@@ -500,7 +500,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-yukoe",
-        image: "https://tong.visitkorea.or.kr/cms/resource/02/3504102_image2_1.PNG",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-yukoe.webp",
         name: { ko: "육회", ja: "ユッケ", en: "Yukhoe (Korean Beef Tartare)" },
         region: "jeonju",
         tasteProfile: { sweet: 20, salty: 45, spicy: 15, umami: 70, sour: 25 },
@@ -993,7 +993,7 @@ export const regions: Region[] = [
         id: "seoul-seolleongtang",
         name: { ko: "설렁탕", ja: "ソルロンタン", en: "Seolleongtang" },
         region: "seoul",
-        image: "/images/food/설렁탕.png",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-seolleongtang.webp",
         tasteProfile: { sweet: 10, salty: 40, spicy: 10, umami: 90, sour: 0 },
         storyDescription: {
           ko: "뽀얀 우윳빛 국물이 뼈와 고기를 몇 시간이나 끓여 만든 서울의 오랜 영혼 같은 음식이에요. 기호에 맞게 소금과 깍두기를 곁들이면 새벽에도 따뜻하게 위를 달래주는 완벽한 한 끼가 됩니다.",
@@ -1521,7 +1521,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-gopchang",
-        image: "http://tong.visitkorea.or.kr/cms/resource/57/2830357_image2_1.JPG",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-gopchang.webp",
         name: { ko: "곱창구이", ja: "コプチャン焼き", en: "Gopchang Gui (Grilled Tripe)" },
         region: "seoul",
         tasteProfile: { sweet: 10, salty: 55, spicy: 50, umami: 85, sour: 5 },
@@ -1993,7 +1993,7 @@ export const regions: Region[] = [
         id: "tongyeong-sirakguk",
         name: { ko: "시락국", ja: "シラクグク", en: "Sirakguk" },
         region: "tongyeong",
-        image: "/images/food/시락국.png",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-sirakguk.webp",
         tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 80, sour: 5 },
         storyDescription: {
           ko: "무말랭이를 삶은 뽀얀 국물에 된장을 풀어 만든 통영 어민들의 새벽 밥상이에요. 생선 배 곯으러 바다에 나가기 전, 뜨끈한 시락국 한 사발이 몸과 마음을 함께 데워주었답니다.",
@@ -2479,6 +2479,7 @@ export const regions: Region[] = [
       },
       {
         id: "tongyeong-honghap-tang",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-honghap-tang.webp",
         name: { ko: "통영 홍합탕", ja: "統営・ムール貝スープ", en: "Tongyeong Honghap Tang (Mussel Soup)" },
         region: "tongyeong",
         tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 85, sour: 5 },
@@ -3070,7 +3071,7 @@ export const regions: Region[] = [
         id: "jeju-omegi-tteok",
         name: { ko: "오메기떡", ja: "オメギ餅", en: "Omegi Tteok" },
         region: "jeju",
-        image: "/images/food/오메기떡.jpg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-omegi-tteok.webp",
         tasteProfile: { sweet: 60, salty: 10, spicy: 0, umami: 20, sour: 5 },
         storyDescription: {
           ko: "차조로 만든 쫄깃한 반죽 안에 달콤한 팥고물이 가득 들어있는 제주 전통 떡이에요. 오메기술을 빚을 때 남은 차조 술지게미로 만들어온 역사 깊은 섬의 지혜가 담겨 있어요.",
@@ -3488,6 +3489,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeju-jeopjjak-bbyeoguk",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-jeopjjak-bbyeoguk.webp",
         name: { ko: "제주 접짝뼈국", ja: "済州・ジョプチャク骨スープ", en: "Jeju Jeopjjak Bbyeoguk (Pork Cartilage Soup)" },
         region: "jeju",
         tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 90, sour: 5 },
@@ -4075,6 +4077,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-ssiat-hotteok",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-ssiat-hotteok.webp",
         name: { ko: "씨앗호떡", ja: "シアッホットック", en: "Seed Hotteok" },
         region: "busan",
         tasteProfile: { sweet: 55, salty: 15, spicy: 5, umami: 20, sour: 5 },
@@ -4460,6 +4463,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-yubu-jeongol",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-yubu-jeongol.webp",
         name: { ko: "유부전골", ja: "油揚げ鍋", en: "Yubu Jeongol (Fried Tofu Hot Pot)" },
         region: "busan",
         tasteProfile: { sweet: 15, salty: 60, spicy: 25, umami: 85, sour: 5 },
@@ -5024,7 +5028,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-galbi-tang",
-        image: "http://tong.visitkorea.or.kr/cms/resource/78/2781978_image2_1.jpg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-galbi-tang.webp",
         name: { ko: "갈비탕", ja: "カルビタン", en: "Galbi Tang (Short Rib Soup)" },
         region: "gyeongju",
         tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 90, sour: 5 },
@@ -5444,7 +5448,7 @@ export const regions: Region[] = [
         id: "cheonan-byeongcheon-sundae",
         name: { ko: "병천순대", ja: "ビョンチョンスンデ", en: "Byeongcheon Sundae" },
         region: "cheonan",
-        image: "/images/food/병천순대.png",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-byeongcheon-sundae.webp",
         tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 75, sour: 5 },
         storyDescription: {
           ko: "당면과 채소, 선지를 듬뿍 넣어 꽉 채운 병천 특유의 순대예요. 다른 지역 순대보다 채소가 훨씬 많이 들어가 가볍고 깔끔한 맛이 나고, 천안 여행자들이 꼭 들러야 하는 명물 음식이랍니다.",
@@ -5942,6 +5946,7 @@ export const regions: Region[] = [
       },
       {
         id: "cheonan-hongeo-samhap",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-hongeo-samhap.webp",
         name: { ko: "천안 홍어삼합", ja: "天安・ホンオサマプ", en: "Cheonan Hongeo Samhap (Fermented Skate Trio)" },
         region: "cheonan",
         tasteProfile: { sweet: 5, salty: 65, spicy: 20, umami: 90, sour: 10 },
@@ -6332,7 +6337,7 @@ export const regions: Region[] = [
         id: "yongin-nurungji-baeksuk",
         name: { ko: "누룽지 백숙", ja: "おこげ白熟鶏", en: "Nurungji Baeksuk" },
         region: "yongin",
-        image: "/images/food/누룽지백숙.png",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-nurungji-baeksuk.webp",
         tasteProfile: { sweet: 15, salty: 40, spicy: 5, umami: 85, sour: 5 },
         storyDescription: {
           ko: "닭을 통째로 푹 끓인 백숙에 누룽지를 더해 구수함을 배로 끌어올린 용인의 별미예요. 닭 국물이 누룽지 속으로 스며들면서 걸쭉하고 고소해지는 국물의 변신이 마법 같고, 마지막 한 방울까지 아까운 맛이에요.",
@@ -6829,6 +6834,7 @@ export const regions: Region[] = [
       },
       {
         id: "yongin-hanbang-samgyetang",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-hanbang-samgyetang.webp",
         name: { ko: "용인 한방삼계탕", ja: "龍仁・漢方参鶏湯", en: "Yongin Hanbang Samgyetang" },
         region: "yongin",
         tasteProfile: { sweet: 15, salty: 45, spicy: 5, umami: 80, sour: 5 },
@@ -7288,7 +7294,7 @@ export const regions: Region[] = [
         id: "icheon-straw-pork",
         name: { ko: "볏짚 삼겹살", ja: "藁火豚バラ焼き", en: "Straw-Fire Pork Belly" },
         region: "icheon",
-        image: "/images/food/볏집삼겹살구이.png",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-straw-pork.webp",
         tasteProfile: { sweet: 15, salty: 50, spicy: 10, umami: 80, sour: 5 },
         storyDescription: {
           ko: "이천에서 생산되는 볏짚으로 삼겹살 표면을 훑어 구워낸 특별한 조리법이에요. 볏짚 불꽃이 고기 겉면을 스쳐지나가면서 은은한 짚 향이 배어들고, 겉은 바삭하면서 속은 촉촉한 환상적인 삼겹살이 완성된답니다.",
@@ -8459,6 +8465,7 @@ export const regions: Region[] = [
       },
       {
         id: "icheon-maeun-dwaeji-galbi",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-maeun-dwaeji-galbi.webp",
         name: { ko: "매운돼지갈비", ja: "激辛豚カルビ", en: "Spicy Pork Rib" },
         region: "icheon",
         tasteProfile: { sweet: 25, salty: 50, spicy: 75, umami: 80, sour: 5 },
@@ -9672,6 +9679,7 @@ export const regions: Region[] = [
       },
       {
         id: "yeosu-jangeo-tang",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yeosu-jangeo-tang.webp",
         name: { ko: "여수 장어탕", ja: "麗水のウナギ汁（チャンオタン）", en: "Yeosu Jangeo-Tang (Eel Soup)" },
         region: "yeosu",
         tasteProfile: { sweet: 10, salty: 55, spicy: 45, umami: 80, sour: 5 },
