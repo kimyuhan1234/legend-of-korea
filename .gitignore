@@ -73,3 +73,4 @@ public/videos/*.avi
 # Supabase 업로드 후 lib/data/phoko-image-urls.json 결과만 커밋.
 # data/phoko-credits.json 은 사용자가 생성 — 커밋 여부는 사용자 결정 (촬영자명 출처 표기에 필요).
 /data/phoko-images/
+/data/phoko-renamed/
