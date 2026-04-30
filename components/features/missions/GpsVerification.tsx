@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Navigation, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 import { KakaoMap } from '@/components/shared/KakaoMap'
+import { useLocationConsent } from '@/components/shared/LocationConsentModal'
 
 interface Props {
   missionId: string
@@ -110,11 +111,13 @@ export function GpsVerification({ missionId, missionLat, missionLng, onVerified,
   const [verifying, setVerifying] = useState(false)
   const watchIdRef = useRef<number | null>(null)
 
+  const { hasConsent, requestConsent, modalElement } = useLocationConsent({ locale })
   const tx = TEXTS[locale] ?? TEXTS.ko
 
-  // 실시간 위치 추적 (watchPosition) — 컴포넌트 마운트부터 성공까지
+  // 실시간 위치 추적 (watchPosition) — 동의 받은 후에만 시작
   useEffect(() => {
     if (typeof navigator === 'undefined' || !navigator.geolocation) return
+    if (!hasConsent) return
     if (status === 'success') return
 
     const id = navigator.geolocation.watchPosition(
@@ -143,11 +146,18 @@ export function GpsVerification({ missionId, missionLat, missionLng, onVerified,
         watchIdRef.current = null
       }
     }
-  }, [missionLat, missionLng, status])
+  }, [missionLat, missionLng, status, hasConsent])
 
   const handleCheck = async () => {
     if (!navigator.geolocation) {
       setStatus('error')
+      return
+    }
+
+    // 위치정보 사용 동의 확인 (첫 호출 시 모달 표시)
+    const consented = await requestConsent()
+    if (!consented) {
+      setStatus('denied')
       return
     }
 
@@ -302,6 +312,7 @@ export function GpsVerification({ missionId, missionLat, missionLng, onVerified,
           </button>
         </div>
       )}
+      {modalElement}
     </div>
   )
 }

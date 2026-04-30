@@ -7,6 +7,7 @@ import { StayPreferencePanel } from './StayPreferencePanel'
 import { StayFilters } from './StayFilters'
 import type { NormalizedStay } from '@/lib/tour-api/stays'
 import type { StayTags } from '@/lib/tour-api/stay-tags'
+import { useLocationConsent } from '@/components/shared/LocationConsentModal'
 
 type CardStay = NormalizedStay & { matchScore?: number; distanceKm?: number }
 
@@ -189,7 +190,9 @@ export function StayPageClient({ locale, initialStays, initialTotal }: StayPageC
     replaceList({ prefs: newPrefs, area, stayType, userCoord })
   }
 
-  const toggleLocation = () => {
+  const { requestConsent, modalElement: locationConsentModal } = useLocationConsent({ locale })
+
+  const toggleLocation = async () => {
     if (userCoord) {
       setUserCoord(null)
       setLocationStatus('idle')
@@ -197,6 +200,12 @@ export function StayPageClient({ locale, initialStays, initialTotal }: StayPageC
       return
     }
     if (typeof navigator === 'undefined' || !navigator.geolocation) {
+      setLocationStatus('denied')
+      return
+    }
+    // 위치정보 사용 동의 (첫 호출 시 모달 표시)
+    const consented = await requestConsent()
+    if (!consented) {
       setLocationStatus('denied')
       return
     }
@@ -282,6 +291,7 @@ export function StayPageClient({ locale, initialStays, initialTotal }: StayPageC
       </main>
 
       <div className="h-16" />
+      {locationConsentModal}
     </div>
   )
 }
