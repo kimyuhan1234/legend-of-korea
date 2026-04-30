@@ -32,11 +32,11 @@ const TAG_LABELS: Record<string, Record<HealthTag, string>> = {
 }
 
 const RADAR_LABELS: Record<string, Record<string, string>> = {
-  ko:      { skin: '피부', antiAging: '항산화', immunity: '면역', digestion: '소화', diet: '다이어트', bone: '뼈/관절' },
-  ja:      { skin: '肌', antiAging: '抗酸化', immunity: '免疫', digestion: '消化', diet: 'ダイエット', bone: '骨・関節' },
-  en:      { skin: 'Skin', antiAging: 'Anti-aging', immunity: 'Immunity', digestion: 'Digestion', diet: 'Diet', bone: 'Bone' },
-  'zh-CN': { skin: '护肤', antiAging: '抗氧化', immunity: '免疫', digestion: '消化', diet: '减脂', bone: '骨骼' },
-  'zh-TW': { skin: '護膚', antiAging: '抗氧化', immunity: '免疫', digestion: '消化', diet: '減脂', bone: '骨骼' },
+  ko:      { skin: '피부', antiAging: '항산화', immunity: '면역', digestion: '소화', diet: '다이어트' },
+  ja:      { skin: '肌', antiAging: '抗酸化', immunity: '免疫', digestion: '消化', diet: 'ダイエット' },
+  en:      { skin: 'Skin', antiAging: 'Anti-aging', immunity: 'Immunity', digestion: 'Digestion', diet: 'Diet' },
+  'zh-CN': { skin: '护肤', antiAging: '抗氧化', immunity: '免疫', digestion: '消化', diet: '减脂' },
+  'zh-TW': { skin: '護膚', antiAging: '抗氧化', immunity: '免疫', digestion: '消化', diet: '減脂' },
 }
 
 const SECTION_LABELS: Record<string, { title: string; nutrients: string; desc: string }> = {
@@ -63,7 +63,6 @@ export function HealthSection({ health, locale }: HealthSectionProps) {
     { subject: radarLabels.immunity,  value: health.healthRadar.immunity },
     { subject: radarLabels.digestion, value: health.healthRadar.digestion },
     { subject: radarLabels.diet,      value: health.healthRadar.diet },
-    { subject: radarLabels.bone,      value: health.healthRadar.bone },
   ]
 
   return (

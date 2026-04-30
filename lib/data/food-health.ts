@@ -19,8 +19,7 @@ export interface FoodHealthData {
     immunity: number
     digestion: number
     diet: number
-    bone: number
-  }
+    }
   healthDescription: { ko: string; ja: string; en: string }
   keyNutrients: string[]
 }
@@ -32,7 +31,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeonju',
     name: { ko: '전주비빔밥', ja: '全州ビビンバ', en: 'Jeonju Bibimbap' },
     healthTags: ['skin', 'diet', 'digestion'],
-    healthRadar: { skin: 75, antiAging: 65, immunity: 60, digestion: 85, diet: 80, bone: 50 },
+    healthRadar: { skin: 75, antiAging: 65, immunity: 60, digestion: 85, diet: 80 },
     healthDescription: {
       ko: '5가지 색 나물이 피부 비타민을 공급하고, 풍부한 식이섬유가 장 건강을 돕습니다.',
       ja: '5色のナムルが肌にビタミンを供給し、豊富な食物繊維が腸の健康を助けます。',
@@ -45,7 +44,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeonju',
     name: { ko: '전주 콩나물국밥', ja: '全州もやしクッパ', en: 'Jeonju Bean Sprout Rice Soup' },
     healthTags: ['diet', 'digestion', 'immunity'],
-    healthRadar: { skin: 55, antiAging: 60, immunity: 70, digestion: 80, diet: 75, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 60, immunity: 70, digestion: 80, diet: 75 },
     healthDescription: {
       ko: '콩나물의 아스파라긴산이 숙취 해소를 돕고, 비타민C가 면역력을 높여줍니다.',
       ja: 'もやしのアスパラギン酸が二日酔い回復を助け、ビタミンCが免疫力を高めます。',
@@ -58,7 +57,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeonju',
     name: { ko: '전주 청국장', ja: '全州チョングクジャン', en: 'Jeonju Fermented Soybean Paste' },
     healthTags: ['immunity', 'digestion', 'antiAging'],
-    healthRadar: { skin: 55, antiAging: 85, immunity: 90, digestion: 90, diet: 70, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 85, immunity: 90, digestion: 90, diet: 70 },
     healthDescription: {
       ko: '낫토키나제와 유산균이 풍부해 장 면역을 강화하고 혈액순환을 돕습니다.',
       ja: 'ナットウキナーゼと乳酸菌が豊富で、腸の免疫を強化し血液循環を助けます。',
@@ -71,7 +70,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeonju',
     name: { ko: '전주 잡채', ja: '全州チャプチェ', en: 'Jeonju Japchae' },
     healthTags: ['diet'],
-    healthRadar: { skin: 45, antiAging: 50, immunity: 55, digestion: 60, diet: 65, bone: 50 },
+    healthRadar: { skin: 45, antiAging: 50, immunity: 55, digestion: 60, diet: 65 },
     healthDescription: {
       ko: '당면의 낮은 GI와 채소의 철분·비타민이 지속적인 에너지를 공급합니다.',
       ja: '春雨の低GIと野菜の鉄分・ビタミンが持続的なエネルギーを供給します。',
@@ -84,7 +83,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeonju',
     name: { ko: '전주 육개장', ja: '全州ユッケジャン', en: 'Jeonju Spicy Beef Soup' },
     healthTags: ['immunity'],
-    healthRadar: { skin: 50, antiAging: 60, immunity: 70, digestion: 55, diet: 60, bone: 50 },
+    healthRadar: { skin: 50, antiAging: 60, immunity: 70, digestion: 55, diet: 60 },
     healthDescription: {
       ko: '소고기 단백질과 고사리, 대파가 어우러져 체력 회복과 면역력에 탁월합니다.',
       ja: '牛肉のたんぱく質とわらび、ネギが組み合わさり、体力回復と免疫力に優れています。',
@@ -97,7 +96,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeonju',
     name: { ko: '전주 된장찌개', ja: '全州テンジャンチゲ', en: 'Jeonju Soybean Paste Stew' },
     healthTags: ['immunity', 'digestion', 'antiAging'],
-    healthRadar: { skin: 60, antiAging: 80, immunity: 85, digestion: 80, diet: 65, bone: 50 },
+    healthRadar: { skin: 60, antiAging: 80, immunity: 85, digestion: 80, diet: 65 },
     healthDescription: {
       ko: '발효 된장의 유익균과 이소플라본이 장 건강과 항산화에 탁월한 효과를 냅니다.',
       ja: '発酵味噌の有益菌とイソフラボンが腸の健康と抗酸化に優れた効果を発揮します。',
@@ -110,7 +109,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeonju',
     name: { ko: '전주 보리국수', ja: '全州大麦麺', en: 'Jeonju Barley Noodles' },
     healthTags: ['diet', 'digestion'],
-    healthRadar: { skin: 40, antiAging: 50, immunity: 55, digestion: 85, diet: 80, bone: 50 },
+    healthRadar: { skin: 40, antiAging: 50, immunity: 55, digestion: 85, diet: 80 },
     healthDescription: {
       ko: '보리의 베타글루칸이 콜레스테롤을 조절하고 식이섬유가 장 운동을 활발히 합니다.',
       ja: '大麦のβグルカンがコレステロールを調節し、食物繊維が腸の動きを活発にします。',
@@ -125,7 +124,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'seoul',
     name: { ko: '서울 삼겹살', ja: 'ソウルサムギョプサル', en: 'Seoul Samgyeopsal' },
     healthTags: ['skin'],
-    healthRadar: { skin: 65, antiAging: 50, immunity: 50, digestion: 40, diet: 45, bone: 50 },
+    healthRadar: { skin: 65, antiAging: 50, immunity: 50, digestion: 40, diet: 45 },
     healthDescription: {
       ko: '고단백 돼지고기와 쌈채소의 조합이 근육 합성과 비타민 흡수를 동시에 돕습니다.',
       ja: '高たんぱく豚肉とサムチェの組み合わせが筋肉合成とビタミン吸収を同時に助けます。',
@@ -138,7 +137,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'seoul',
     name: { ko: '서울 설렁탕', ja: 'ソウル・ソルロンタン', en: 'Seoul Seolleongtang' },
     healthTags: ['skin', 'bone'],
-    healthRadar: { skin: 85, antiAging: 70, immunity: 60, digestion: 65, diet: 55, bone: 50 },
+    healthRadar: { skin: 85, antiAging: 70, immunity: 60, digestion: 65, diet: 55 },
     healthDescription: {
       ko: '장시간 우려낸 사골의 콜라겐과 칼슘이 피부 탄력과 뼈 건강을 동시에 지원합니다.',
       ja: '長時間煮込んだ牛骨のコラーゲンとカルシウムが肌の弾力と骨の健康を同時にサポートします。',
@@ -151,7 +150,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'seoul',
     name: { ko: '서울 김치찌개', ja: 'ソウル・キムチチゲ', en: 'Seoul Kimchi Jjigae' },
     healthTags: ['immunity', 'digestion', 'antiAging'],
-    healthRadar: { skin: 55, antiAging: 80, immunity: 90, digestion: 85, diet: 60, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 80, immunity: 90, digestion: 85, diet: 60 },
     healthDescription: {
       ko: '발효 김치의 유산균이 장내 환경을 개선하고, 캡사이신이 항산화 효과를 높입니다.',
       ja: '発酵キムチの乳酸菌が腸内環境を改善し、カプサイシンが抗酸化効果を高めます。',
@@ -164,7 +163,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'seoul',
     name: { ko: '서울 족발', ja: 'ソウル・チョクパル', en: 'Seoul Braised Pork Feet' },
     healthTags: ['skin', 'antiAging', 'bone'],
-    healthRadar: { skin: 90, antiAging: 75, immunity: 45, digestion: 45, diet: 35, bone: 50 },
+    healthRadar: { skin: 90, antiAging: 75, immunity: 45, digestion: 45, diet: 35 },
     healthDescription: {
       ko: '족발의 콜라겐과 하이알루론산이 피부 탄력 유지에 탁월한 효과를 발휘합니다.',
       ja: '豚足のコラーゲンとヒアルロン酸が肌の弾力維持に優れた効果を発揮します。',
@@ -177,7 +176,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'seoul',
     name: { ko: '서울 보쌈', ja: 'ソウル・ポッサム', en: 'Seoul Bossam' },
     healthTags: ['skin'],
-    healthRadar: { skin: 70, antiAging: 60, immunity: 55, digestion: 65, diet: 50, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 60, immunity: 55, digestion: 65, diet: 50 },
     healthDescription: {
       ko: '삶은 돼지고기의 콜라겐과 김치 유산균이 피부 탄력과 장 건강을 함께 케어합니다.',
       ja: '茹で豚のコラーゲンとキムチの乳酸菌が肌の弾力と腸の健康をともにケアします。',
@@ -190,7 +189,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'seoul',
     name: { ko: '서울 닭한마리', ja: 'ソウル・タッハンマリ', en: 'Seoul Whole Chicken Soup' },
     healthTags: ['immunity', 'bone'],
-    healthRadar: { skin: 60, antiAging: 60, immunity: 80, digestion: 60, diet: 65, bone: 50 },
+    healthRadar: { skin: 60, antiAging: 60, immunity: 80, digestion: 60, diet: 65 },
     healthDescription: {
       ko: '통닭을 장시간 끓인 국물이 콜라겐과 콘드로이틴을 풍부하게 공급합니다.',
       ja: '丸鶏を長時間煮込んだスープがコラーゲンとコンドロイチンを豊富に供給します。',
@@ -203,7 +202,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'seoul',
     name: { ko: '서울 감자탕', ja: 'ソウル・カムジャタン', en: 'Seoul Gamjatang' },
     healthTags: ['bone'],
-    healthRadar: { skin: 55, antiAging: 55, immunity: 65, digestion: 55, diet: 50, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 55, immunity: 65, digestion: 55, diet: 50 },
     healthDescription: {
       ko: '돼지 등뼈의 콜라겐과 들깻가루 오메가3가 뼈 건강과 항염에 도움을 줍니다.',
       ja: '豚背骨のコラーゲンとえごまの粉のオメガ3が骨の健康と抗炎症に役立ちます。',
@@ -218,7 +217,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'tongyeong',
     name: { ko: '충무김밥', ja: 'チュンムキンパ', en: 'Chungmu Gimbap' },
     healthTags: ['diet', 'digestion'],
-    healthRadar: { skin: 45, antiAging: 50, immunity: 55, digestion: 70, diet: 75, bone: 50 },
+    healthRadar: { skin: 45, antiAging: 50, immunity: 55, digestion: 70, diet: 75 },
     healthDescription: {
       ko: '요오드 풍부한 김과 오징어 단백질, 무김치의 비타민C가 균형 잡힌 영양을 제공합니다.',
       ja: 'ヨウ素豊富な海苔とイカのたんぱく質、大根キムチのビタミンCがバランスの良い栄養を提供します。',
@@ -231,7 +230,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'tongyeong',
     name: { ko: '멍게비빔밥', ja: 'ホヤビビンバ', en: 'Sea Squirt Bibimbap' },
     healthTags: ['skin', 'immunity'],
-    healthRadar: { skin: 65, antiAging: 65, immunity: 70, digestion: 70, diet: 65, bone: 50 },
+    healthRadar: { skin: 65, antiAging: 65, immunity: 70, digestion: 70, diet: 65 },
     healthDescription: {
       ko: '멍게 특유의 시네올 성분이 피로 회복을 돕고, 채소의 비타민이 피부를 가꿉니다.',
       ja: 'ホヤ特有のシネオール成分が疲労回復を助け、野菜のビタミンが肌を整えます。',
@@ -244,7 +243,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'tongyeong',
     name: { ko: '굴국밥', ja: '牡蠣クッパ', en: 'Oyster Rice Soup' },
     healthTags: ['immunity', 'skin'],
-    healthRadar: { skin: 75, antiAging: 65, immunity: 85, digestion: 60, diet: 60, bone: 50 },
+    healthRadar: { skin: 75, antiAging: 65, immunity: 85, digestion: 60, diet: 60 },
     healthDescription: {
       ko: '굴의 아연과 타우린이 면역력 강화와 피부 재생에 탁월한 효과를 발휘합니다.',
       ja: '牡蠣の亜鉛とタウリンが免疫強化と肌再生に優れた効果を発揮します。',
@@ -257,7 +256,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'tongyeong',
     name: { ko: '전복구이', ja: 'アワビの焼き物', en: 'Grilled Abalone' },
     healthTags: ['immunity', 'skin'],
-    healthRadar: { skin: 70, antiAging: 70, immunity: 80, digestion: 65, diet: 65, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 70, immunity: 80, digestion: 65, diet: 65 },
     healthDescription: {
       ko: '전복의 아르기닌과 타우린이 피로 회복과 면역력 증진에 탁월합니다.',
       ja: 'アワビのアルギニンとタウリンが疲労回復と免疫力増進に優れています。',
@@ -270,7 +269,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'tongyeong',
     name: { ko: '굴밥', ja: '牡蠣ご飯', en: 'Oyster Rice' },
     healthTags: ['immunity', 'skin'],
-    healthRadar: { skin: 70, antiAging: 65, immunity: 85, digestion: 65, diet: 60, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 65, immunity: 85, digestion: 65, diet: 60 },
     healthDescription: {
       ko: '굴의 아연이 면역세포를 활성화하고 셀레늄이 항산화 작용으로 노화를 억제합니다.',
       ja: '牡蠣の亜鉛が免疫細胞を活性化し、セレンが抗酸化作用で老化を抑制します。',
@@ -283,7 +282,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'tongyeong',
     name: { ko: '해물탕', ja: '海鮮鍋', en: 'Seafood Stew' },
     healthTags: ['skin'],
-    healthRadar: { skin: 65, antiAging: 60, immunity: 70, digestion: 65, diet: 60, bone: 50 },
+    healthRadar: { skin: 65, antiAging: 60, immunity: 70, digestion: 65, diet: 60 },
     healthDescription: {
       ko: '다양한 해산물의 오메가3와 타우린이 에너지 대사를 촉진하고 피부를 윤기있게 합니다.',
       ja: '多様な海産物のオメガ3とタウリンがエネルギー代謝を促進し、肌に潤いを与えます。',
@@ -296,7 +295,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'tongyeong',
     name: { ko: '갈치구이', ja: '太刀魚の塩焼き', en: 'Grilled Hairtail Fish' },
     healthTags: ['skin'],
-    healthRadar: { skin: 75, antiAging: 70, immunity: 60, digestion: 55, diet: 65, bone: 50 },
+    healthRadar: { skin: 75, antiAging: 70, immunity: 60, digestion: 55, diet: 65 },
     healthDescription: {
       ko: '갈치의 DHA와 EPA가 혈관 건강을 지키고 비타민D가 피부 재생을 촉진합니다.',
       ja: '太刀魚のDHAとEPAが血管の健康を守り、ビタミンDが肌の再生を促進します。',
@@ -311,7 +310,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeju',
     name: { ko: '제주 흑돼지', ja: '済州黒豚', en: 'Jeju Black Pork' },
     healthTags: ['skin'],
-    healthRadar: { skin: 70, antiAging: 60, immunity: 55, digestion: 45, diet: 45, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 60, immunity: 55, digestion: 45, diet: 45 },
     healthDescription: {
       ko: '제주 흑돼지는 일반 돼지보다 단백질 함량이 높고 콜라겐이 풍부해 피부에 좋습니다.',
       ja: '済州黒豚は一般の豚よりたんぱく質含量が高く、コラーゲンが豊富で肌に良いです。',
@@ -324,7 +323,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeju',
     name: { ko: '제주 전복죽', ja: '済州アワビ粥', en: 'Jeju Abalone Porridge' },
     healthTags: ['immunity', 'antiAging'],
-    healthRadar: { skin: 65, antiAging: 70, immunity: 80, digestion: 80, diet: 70, bone: 50 },
+    healthRadar: { skin: 65, antiAging: 70, immunity: 80, digestion: 80, diet: 70 },
     healthDescription: {
       ko: '전복의 아르기닌과 소화하기 쉬운 죽 형태가 면역력과 장 건강을 동시에 지원합니다.',
       ja: 'アワビのアルギニンと消化しやすいお粥の形態が免疫力と腸の健康を同時にサポートします。',
@@ -337,7 +336,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeju',
     name: { ko: '제주 몸국', ja: '済州モムグク', en: 'Jeju Seaweed Pork Soup' },
     healthTags: ['immunity', 'digestion', 'diet'],
-    healthRadar: { skin: 50, antiAging: 65, immunity: 75, digestion: 85, diet: 80, bone: 50 },
+    healthRadar: { skin: 50, antiAging: 65, immunity: 75, digestion: 85, diet: 80 },
     healthDescription: {
       ko: '제주 특산 모자반의 식이섬유와 요오드가 갑상선 건강과 장 운동을 활성화합니다.',
       ja: '済州特産のモクの食物繊維とヨウ素が甲状腺の健康と腸の運動を活性化します。',
@@ -350,7 +349,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeju',
     name: { ko: '제주 갈치조림', ja: '済州太刀魚煮付け', en: 'Jeju Braised Hairtail' },
     healthTags: ['skin'],
-    healthRadar: { skin: 75, antiAging: 70, immunity: 60, digestion: 55, diet: 65, bone: 50 },
+    healthRadar: { skin: 75, antiAging: 70, immunity: 60, digestion: 55, diet: 65 },
     healthDescription: {
       ko: '갈치의 불포화지방산이 혈관 건강을 지키고, 비타민D가 피부 재생을 도와줍니다.',
       ja: '太刀魚の不飽和脂肪酸が血管の健康を守り、ビタミンDが肌の再生を助けます。',
@@ -363,7 +362,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeju',
     name: { ko: '제주 물회', ja: '済州ムルフェ', en: 'Jeju Cold Raw Fish Soup' },
     healthTags: ['diet', 'skin'],
-    healthRadar: { skin: 70, antiAging: 65, immunity: 65, digestion: 65, diet: 80, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 65, immunity: 65, digestion: 65, diet: 80 },
     healthDescription: {
       ko: '고단백 저칼로리 회와 신선한 채소가 다이어트 중에도 피부와 에너지를 케어합니다.',
       ja: '高たんぱく低カロリーの刺身と新鮮な野菜がダイエット中でも肌とエネルギーをケアします。',
@@ -376,7 +375,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeju',
     name: { ko: '제주 성게미역국', ja: '済州ウニわかめスープ', en: 'Jeju Sea Urchin Seaweed Soup' },
     healthTags: ['immunity', 'skin', 'bone'],
-    healthRadar: { skin: 75, antiAging: 70, immunity: 85, digestion: 70, diet: 65, bone: 50 },
+    healthRadar: { skin: 75, antiAging: 70, immunity: 85, digestion: 70, diet: 65 },
     healthDescription: {
       ko: '미역의 요오드와 칼슘, 성게의 아미노산이 뼈 건강과 면역력에 시너지를 냅니다.',
       ja: 'わかめのヨウ素とカルシウム、ウニのアミノ酸が骨の健康と免疫力にシナジーを生みます。',
@@ -389,7 +388,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'jeju',
     name: { ko: '제주 오메기떡', ja: '済州オメギ餅', en: 'Jeju Omegi Rice Cake' },
     healthTags: ['digestion'],
-    healthRadar: { skin: 40, antiAging: 55, immunity: 50, digestion: 65, diet: 55, bone: 50 },
+    healthRadar: { skin: 40, antiAging: 55, immunity: 50, digestion: 65, diet: 55 },
     healthDescription: {
       ko: '차조의 철분과 팥의 식이섬유가 에너지를 보충하고 장 건강을 부드럽게 케어합니다.',
       ja: 'キビの鉄分と小豆の食物繊維がエネルギーを補給し、腸の健康を穏やかにケアします。',
@@ -404,7 +403,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'busan',
     name: { ko: '부산 돼지국밥', ja: '釜山豚クッパ', en: 'Busan Pork Rice Soup' },
     healthTags: ['skin', 'bone'],
-    healthRadar: { skin: 80, antiAging: 65, immunity: 60, digestion: 60, diet: 50, bone: 50 },
+    healthRadar: { skin: 80, antiAging: 65, immunity: 60, digestion: 60, diet: 50 },
     healthDescription: {
       ko: '돼지 뼈를 오래 끓인 국물의 콜라겐이 피부 탄력과 뼈 밀도에 탁월한 영향을 줍니다.',
       ja: '豚骨を長時間煮込んだスープのコラーゲンが肌の弾力と骨密度に優れた影響を与えます。',
@@ -417,7 +416,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'busan',
     name: { ko: '부산 밀면', ja: '釜山ミルミョン', en: 'Busan Milmyeon Noodles' },
     healthTags: ['diet', 'digestion'],
-    healthRadar: { skin: 40, antiAging: 50, immunity: 50, digestion: 75, diet: 80, bone: 50 },
+    healthRadar: { skin: 40, antiAging: 50, immunity: 50, digestion: 75, diet: 80 },
     healthDescription: {
       ko: '저칼로리 냉면 스타일의 면 요리로, 소화가 잘 되어 다이어트 식단에 적합합니다.',
       ja: '低カロリー冷麺スタイルの麺料理で、消化が良くダイエット食に適しています。',
@@ -430,7 +429,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'busan',
     name: { ko: '부산 조개구이', ja: '釜山貝焼き', en: 'Busan Grilled Clams' },
     healthTags: ['immunity', 'skin'],
-    healthRadar: { skin: 70, antiAging: 65, immunity: 80, digestion: 60, diet: 60, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 65, immunity: 80, digestion: 60, diet: 60 },
     healthDescription: {
       ko: '조개의 아연과 타우린이 면역 세포를 활성화하고 오메가3가 심혈관 건강을 지원합니다.',
       ja: '貝の亜鉛とタウリンが免疫細胞を活性化し、オメガ3が心血管の健康をサポートします。',
@@ -443,7 +442,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'busan',
     name: { ko: '부산 어묵', ja: '釜山おでん', en: 'Busan Fish Cake' },
     healthTags: ['diet'],
-    healthRadar: { skin: 40, antiAging: 45, immunity: 50, digestion: 65, diet: 65, bone: 50 },
+    healthRadar: { skin: 40, antiAging: 45, immunity: 50, digestion: 65, diet: 65 },
     healthDescription: {
       ko: '저지방 고단백 어육과 따뜻한 국물이 칼로리 부담 없이 포만감을 줍니다.',
       ja: '低脂肪高たんぱくの魚肉と温かいスープがカロリー負担なく満腹感を与えます。',
@@ -456,7 +455,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'busan',
     name: { ko: '부산 낙곱새', ja: '釜山ナクコプセ', en: 'Busan Nakgopsae (Octopus & Tripe)' },
     healthTags: ['immunity'],
-    healthRadar: { skin: 55, antiAging: 55, immunity: 65, digestion: 50, diet: 55, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 55, immunity: 65, digestion: 50, diet: 55 },
     healthDescription: {
       ko: '낙지 타우린이 피로를 즉각 해소하고, 아스타잔틴이 항산화와 면역력에 기여합니다.',
       ja: 'タコのタウリンが疲労を即座に解消し、アスタキサンチンが抗酸化と免疫力に貢献します。',
@@ -469,7 +468,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'busan',
     name: { ko: '부산 회', ja: '釜山刺身', en: 'Busan Raw Fish (Hoe)' },
     healthTags: ['skin'],
-    healthRadar: { skin: 80, antiAging: 70, immunity: 65, digestion: 60, diet: 75, bone: 50 },
+    healthRadar: { skin: 80, antiAging: 70, immunity: 65, digestion: 60, diet: 75 },
     healthDescription: {
       ko: '신선한 생선회의 오메가3와 DHA가 심혈관 건강과 피부 보습에 탁월한 효과를 냅니다.',
       ja: '新鮮な刺身のオメガ3とDHAが心血管の健康と肌の保湿に優れた効果を発揮します。',
@@ -482,7 +481,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'busan',
     name: { ko: '부산 아귀찜', ja: '釜山アンコウ蒸し', en: 'Busan Spicy Monkfish' },
     healthTags: ['immunity', 'skin', 'bone'],
-    healthRadar: { skin: 65, antiAging: 60, immunity: 70, digestion: 65, diet: 65, bone: 50 },
+    healthRadar: { skin: 65, antiAging: 60, immunity: 70, digestion: 65, diet: 65 },
     healthDescription: {
       ko: '아귀의 콜라겐과 콩나물 비타민C, 미나리 엽산이 피부와 면역을 함께 케어합니다.',
       ja: 'アンコウのコラーゲンとモヤシのビタミンC、セリの葉酸が肌と免疫をともにケアします。',
@@ -497,7 +496,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'gyeongju',
     name: { ko: '경주 떡갈비', ja: '慶州トックカルビ', en: 'Gyeongju Tteokgalbi' },
     healthTags: ['bone'],
-    healthRadar: { skin: 55, antiAging: 55, immunity: 55, digestion: 50, diet: 50, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 55, immunity: 55, digestion: 50, diet: 50 },
     healthDescription: {
       ko: '갈비 단백질과 철분이 체력 유지를 돕고, 뼈에서 우러나온 칼슘이 뼈 건강을 지원합니다.',
       ja: 'カルビのたんぱく質と鉄分が体力維持を助け、骨から滲み出したカルシウムが骨の健康をサポートします。',
@@ -510,7 +509,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'gyeongju',
     name: { ko: '경주 순두부찌개', ja: '慶州スンドゥブチゲ', en: 'Gyeongju Soft Tofu Stew' },
     healthTags: ['skin', 'diet', 'bone'],
-    healthRadar: { skin: 70, antiAging: 65, immunity: 60, digestion: 70, diet: 75, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 65, immunity: 60, digestion: 70, diet: 75 },
     healthDescription: {
       ko: '순두부의 이소플라본이 에스트로겐을 지원하고 식물성 단백질이 피부 탄력을 높입니다.',
       ja: '純豆腐のイソフラボンがエストロゲンをサポートし、植物性たんぱく質が肌の弾力を高めます。',
@@ -523,7 +522,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'gyeongju',
     name: { ko: '경주 삼계탕', ja: '慶州サムゲタン', en: 'Gyeongju Samgyetang' },
     healthTags: ['immunity', 'antiAging'],
-    healthRadar: { skin: 60, antiAging: 75, immunity: 90, digestion: 65, diet: 60, bone: 50 },
+    healthRadar: { skin: 60, antiAging: 75, immunity: 90, digestion: 65, diet: 60 },
     healthDescription: {
       ko: '인삼 사포닌과 마늘이 면역력을 극대화하고, 대추의 항산화 성분이 노화를 억제합니다.',
       ja: '人参サポニンとニンニクが免疫力を最大化し、なつめの抗酸化成分が老化を抑制します。',
@@ -536,7 +535,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'gyeongju',
     name: { ko: '경주 한우불고기', ja: '慶州韓牛プルコギ', en: 'Gyeongju Hanwoo Bulgogi' },
     healthTags: ['skin'],
-    healthRadar: { skin: 60, antiAging: 55, immunity: 55, digestion: 50, diet: 45, bone: 50 },
+    healthRadar: { skin: 60, antiAging: 55, immunity: 55, digestion: 50, diet: 45 },
     healthDescription: {
       ko: '한우의 필수 아미노산과 헴철이 체력 회복과 빈혈 예방에 탁월합니다.',
       ja: '韓牛の必須アミノ酸とヘム鉄が体力回復と貧血予防に優れています。',
@@ -549,7 +548,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'gyeongju',
     name: { ko: '경주 쌈밥', ja: '慶州サムパプ', en: 'Gyeongju Ssambap (Wrapped Rice)' },
     healthTags: ['diet', 'digestion', 'skin'],
-    healthRadar: { skin: 65, antiAging: 65, immunity: 65, digestion: 75, diet: 80, bone: 50 },
+    healthRadar: { skin: 65, antiAging: 65, immunity: 65, digestion: 75, diet: 80 },
     healthDescription: {
       ko: '다양한 쌈채소의 폴리페놀과 클로로필이 항산화, 해독 작용으로 피부를 맑게 합니다.',
       ja: '多様なサム野菜のポリフェノールとクロロフィルが抗酸化・解毒作用で肌を明るくします。',
@@ -562,7 +561,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'gyeongju',
     name: { ko: '경주 약과', ja: '慶州ヤックァ', en: 'Gyeongju Yakgwa (Honey Pastry)' },
     healthTags: ['antiAging'],
-    healthRadar: { skin: 40, antiAging: 65, immunity: 50, digestion: 50, diet: 35, bone: 50 },
+    healthRadar: { skin: 40, antiAging: 65, immunity: 50, digestion: 50, diet: 35 },
     healthDescription: {
       ko: '참기름의 비타민E와 꿀의 항균 물질, 생강의 항산화 성분이 몸을 건강하게 합니다.',
       ja: 'ごま油のビタミンEと蜂蜜の抗菌物質、生姜の抗酸化成分が体を健康にします。',
@@ -577,7 +576,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'cheonan',
     name: { ko: '천안 호두과자', ja: '天安クルミ菓子', en: 'Cheonan Walnut Cookie' },
     healthTags: ['antiAging'],
-    healthRadar: { skin: 50, antiAging: 75, immunity: 60, digestion: 50, diet: 40, bone: 50 },
+    healthRadar: { skin: 50, antiAging: 75, immunity: 60, digestion: 50, diet: 40 },
     healthDescription: {
       ko: '호두의 오메가3와 폴리페놀이 뇌 건강과 항산화에 기여하고 비타민E가 피부를 지킵니다.',
       ja: 'クルミのオメガ3とポリフェノールが脳の健康と抗酸化に貢献し、ビタミンEが肌を守ります。',
@@ -590,7 +589,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'cheonan',
     name: { ko: '천안 순대국밥', ja: '天安スンデクッパ', en: 'Cheonan Sundae Soup' },
     healthTags: ['bone'],
-    healthRadar: { skin: 55, antiAging: 50, immunity: 55, digestion: 65, diet: 50, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 50, immunity: 55, digestion: 65, diet: 50 },
     healthDescription: {
       ko: '순대의 철분과 단백질이 에너지와 혈액 건강에 기여하고, 국물의 칼슘이 뼈를 강화합니다.',
       ja: 'スンデの鉄分とたんぱく質がエネルギーと血液の健康に貢献し、スープのカルシウムが骨を強化します。',
@@ -603,7 +602,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'cheonan',
     name: { ko: '천안 숯불닭갈비', ja: '天安炭火チキンカルビ', en: 'Cheonan Charcoal Chicken Ribs' },
     healthTags: ['immunity'],
-    healthRadar: { skin: 55, antiAging: 55, immunity: 65, digestion: 55, diet: 60, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 55, immunity: 65, digestion: 55, diet: 60 },
     healthDescription: {
       ko: '닭고기의 고단백과 마늘·생강의 항균 성분이 면역력을 높이고 체력을 유지시킵니다.',
       ja: '鶏肉の高たんぱくとニンニク・生姜の抗菌成分が免疫力を高め、体力を維持させます。',
@@ -616,7 +615,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'cheonan',
     name: { ko: '천안 한우육회', ja: '天安韓牛ユッケ', en: 'Cheonan Hanwoo Yukhoe (Raw Beef)' },
     healthTags: ['skin', 'antiAging'],
-    healthRadar: { skin: 65, antiAging: 60, immunity: 55, digestion: 45, diet: 55, bone: 50 },
+    healthRadar: { skin: 65, antiAging: 60, immunity: 55, digestion: 45, diet: 55 },
     healthDescription: {
       ko: '생으로 섭취하여 열에 파괴되지 않은 효소와 아미노산이 피부와 에너지에 기여합니다.',
       ja: '生で摂取することで熱で破壊されない酵素とアミノ酸が肌とエネルギーに貢献します。',
@@ -629,7 +628,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'cheonan',
     name: { ko: '천안 청국장', ja: '天安チョングクジャン', en: 'Cheonan Cheonggukjang' },
     healthTags: ['immunity', 'digestion', 'antiAging'],
-    healthRadar: { skin: 55, antiAging: 85, immunity: 90, digestion: 90, diet: 70, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 85, immunity: 90, digestion: 90, diet: 70 },
     healthDescription: {
       ko: '천안 지역 전통 청국장의 강력한 유산균이 장 면역과 혈관 건강을 동시에 개선합니다.',
       ja: '天安地域の伝統的なチョングクジャンの強力な乳酸菌が腸の免疫と血管の健康を同時に改善します。',
@@ -642,7 +641,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'cheonan',
     name: { ko: '천안 보쌈', ja: '天安ポッサム', en: 'Cheonan Bossam' },
     healthTags: ['skin'],
-    healthRadar: { skin: 70, antiAging: 60, immunity: 55, digestion: 60, diet: 50, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 60, immunity: 55, digestion: 60, diet: 50 },
     healthDescription: {
       ko: '삶은 돼지고기의 콜라겐과 쌈채소 비타민이 피부 탄력과 전반적인 건강을 지원합니다.',
       ja: '茹でた豚肉のコラーゲンとサム野菜のビタミンが肌の弾力と全体的な健康をサポートします。',
@@ -655,7 +654,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'cheonan',
     name: { ko: '천안 연잎밥', ja: '天安ハスの葉ご飯', en: 'Cheonan Lotus Leaf Rice' },
     healthTags: ['digestion', 'antiAging'],
-    healthRadar: { skin: 55, antiAging: 75, immunity: 70, digestion: 80, diet: 70, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 75, immunity: 70, digestion: 80, diet: 70 },
     healthDescription: {
       ko: '연잎의 폴리페놀과 항균 성분이 소화를 돕고 몸의 노폐물 배출을 촉진합니다.',
       ja: 'ハスの葉のポリフェノールと抗菌成分が消化を助け、体の老廃物排出を促進します。',
@@ -670,7 +669,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yongin',
     name: { ko: '용인 백암순대', ja: '龍仁ペガムスンデ', en: 'Yongin Baegam Sundae' },
     healthTags: ['digestion'],
-    healthRadar: { skin: 50, antiAging: 55, immunity: 60, digestion: 70, diet: 50, bone: 50 },
+    healthRadar: { skin: 50, antiAging: 55, immunity: 60, digestion: 70, diet: 50 },
     healthDescription: {
       ko: '백암순대의 철분과 단백질이 에너지를 보충하고, 선지의 성분이 혈액 건강을 돕습니다.',
       ja: 'ペガムスンデの鉄分とたんぱく質がエネルギーを補給し、センジの成分が血液の健康を助けます。',
@@ -683,7 +682,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yongin',
     name: { ko: '용인 누룽지백숙', ja: '龍仁ヌルンジペクスク', en: 'Yongin Nurungji Baeksuk' },
     healthTags: ['immunity', 'digestion'],
-    healthRadar: { skin: 55, antiAging: 65, immunity: 80, digestion: 85, diet: 65, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 65, immunity: 80, digestion: 85, diet: 65 },
     healthDescription: {
       ko: '인삼과 마늘의 면역 성분이 누룽지의 소화 촉진 효과와 시너지를 이룹니다.',
       ja: '人参とニンニクの免疫成分がヌルンジの消化促進効果とシナジーを生みます。',
@@ -696,7 +695,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yongin',
     name: { ko: '용인 산채비빔밥', ja: '龍仁山菜ビビンバ', en: 'Yongin Wild Herb Bibimbap' },
     healthTags: ['diet', 'digestion', 'antiAging', 'skin'],
-    healthRadar: { skin: 70, antiAging: 75, immunity: 70, digestion: 85, diet: 85, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 75, immunity: 70, digestion: 85, diet: 85 },
     healthDescription: {
       ko: '야생 산나물의 폴리페놀과 클로로필이 체내 독소를 제거하고 피부를 맑게 합니다.',
       ja: '野生山菜のポリフェノールとクロロフィルが体内の毒素を除去し、肌を明るくします。',
@@ -709,7 +708,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yongin',
     name: { ko: '용인 한우구이', ja: '龍仁韓牛焼き', en: 'Yongin Hanwoo Grilled Beef' },
     healthTags: ['skin'],
-    healthRadar: { skin: 60, antiAging: 55, immunity: 55, digestion: 50, diet: 45, bone: 50 },
+    healthRadar: { skin: 60, antiAging: 55, immunity: 55, digestion: 50, diet: 45 },
     healthDescription: {
       ko: '용인 한우의 마블링에서 나오는 양질의 단백질과 철분이 체력 유지에 탁월합니다.',
       ja: '龍仁韓牛のマーブリングから生まれる良質のたんぱく質と鉄分が体力維持に優れています。',
@@ -722,7 +721,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yongin',
     name: { ko: '용인 한방삼계탕', ja: '龍仁韓方サムゲタン', en: 'Yongin Herbal Samgyetang' },
     healthTags: ['immunity', 'antiAging'],
-    healthRadar: { skin: 65, antiAging: 80, immunity: 95, digestion: 70, diet: 60, bone: 50 },
+    healthRadar: { skin: 65, antiAging: 80, immunity: 95, digestion: 70, diet: 60 },
     healthDescription: {
       ko: '황기·당귀·숙지황 등 한약재와 인삼이 면역 시스템을 강화하고 노화를 억제합니다.',
       ja: '黄耆・当帰・熟地黄などの漢方薬材と人参が免疫システムを強化し、老化を抑制します。',
@@ -735,7 +734,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yongin',
     name: { ko: '용인 돌솥비빔밥', ja: '龍仁石鍋ビビンバ', en: 'Yongin Dolsot Bibimbap' },
     healthTags: ['skin', 'diet', 'digestion'],
-    healthRadar: { skin: 70, antiAging: 65, immunity: 60, digestion: 80, diet: 80, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 65, immunity: 60, digestion: 80, diet: 80 },
     healthDescription: {
       ko: '뜨거운 돌솥이 나물의 영양 흡수를 높이고, 누룽지가 장 건강을 부드럽게 케어합니다.',
       ja: '熱い石鍋がナムルの栄養吸収を高め、おこげが腸の健康を穏やかにケアします。',
@@ -748,7 +747,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yongin',
     name: { ko: '용인 버섯전골', ja: '龍仁キノコチョンゴル', en: 'Yongin Mushroom Hot Pot' },
     healthTags: ['immunity', 'antiAging', 'diet'],
-    healthRadar: { skin: 60, antiAging: 80, immunity: 85, digestion: 70, diet: 75, bone: 50 },
+    healthRadar: { skin: 60, antiAging: 80, immunity: 85, digestion: 70, diet: 75 },
     healthDescription: {
       ko: '버섯의 베타글루칸이 면역세포를 활성화하고 항산화 물질이 세포 노화를 억제합니다.',
       ja: 'キノコのβグルカンが免疫細胞を活性化し、抗酸化物質が細胞の老化を抑制します。',
@@ -761,7 +760,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yongin',
     name: { ko: '용인 막걸리', ja: '龍仁マッコリ', en: 'Yongin Makgeolli' },
     healthTags: ['digestion', 'immunity'],
-    healthRadar: { skin: 50, antiAging: 60, immunity: 65, digestion: 70, diet: 40, bone: 50 },
+    healthRadar: { skin: 50, antiAging: 60, immunity: 65, digestion: 70, diet: 40 },
     healthDescription: {
       ko: '막걸리의 유산균과 효모가 장내 환경을 개선하고 비타민B군이 피로 해소를 돕습니다.',
       ja: 'マッコリの乳酸菌と酵母が腸内環境を改善し、ビタミンB群が疲労解消を助けます。',
@@ -776,7 +775,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'icheon',
     name: { ko: '이천 쌀밥상', ja: '利川米膳', en: 'Icheon Rice Table' },
     healthTags: ['digestion'],
-    healthRadar: { skin: 50, antiAging: 60, immunity: 65, digestion: 80, diet: 65, bone: 50 },
+    healthRadar: { skin: 50, antiAging: 60, immunity: 65, digestion: 80, diet: 65 },
     healthDescription: {
       ko: '이천 특산 쌀의 풍부한 비타민B1과 다채로운 반찬의 영양이 균형 잡힌 건강을 제공합니다.',
       ja: '利川特産米の豊富なビタミンB1と多彩なおかずの栄養がバランスの取れた健康を提供します。',
@@ -789,7 +788,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'icheon',
     name: { ko: '이천 간장게장', ja: '利川醤油カニ漬け', en: 'Icheon Soy-Marinated Crab' },
     healthTags: ['immunity', 'skin', 'digestion'],
-    healthRadar: { skin: 65, antiAging: 70, immunity: 80, digestion: 75, diet: 60, bone: 50 },
+    healthRadar: { skin: 65, antiAging: 70, immunity: 80, digestion: 75, diet: 60 },
     healthDescription: {
       ko: '게의 타우린과 아연, 간장 발효의 항산화 성분이 면역과 피부를 함께 케어합니다.',
       ja: 'カニのタウリンと亜鉛、醤油発酵の抗酸化成分が免疫と肌をともにケアします。',
@@ -802,7 +801,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'icheon',
     name: { ko: '이천 한우구이', ja: '利川韓牛焼き', en: 'Icheon Hanwoo Grilled Beef' },
     healthTags: ['skin'],
-    healthRadar: { skin: 60, antiAging: 55, immunity: 55, digestion: 50, diet: 45, bone: 50 },
+    healthRadar: { skin: 60, antiAging: 55, immunity: 55, digestion: 50, diet: 45 },
     healthDescription: {
       ko: '이천 한우의 헴철과 비타민B12가 혈액 건강과 에너지 대사를 활성화합니다.',
       ja: '利川韓牛のヘム鉄とビタミンB12が血液の健康とエネルギー代謝を活性化します。',
@@ -815,7 +814,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'icheon',
     name: { ko: '이천 솥밥', ja: '利川釜ご飯', en: 'Icheon Sotbap (Pot Rice)' },
     healthTags: ['digestion'],
-    healthRadar: { skin: 45, antiAging: 55, immunity: 60, digestion: 80, diet: 65, bone: 50 },
+    healthRadar: { skin: 45, antiAging: 55, immunity: 60, digestion: 80, diet: 65 },
     healthDescription: {
       ko: '솥에서 천천히 익힌 쌀의 소화 효소와 누룽지 성분이 장 건강을 부드럽게 지원합니다.',
       ja: '釜でゆっくり炊いたお米の消化酵素とおこげ成分が腸の健康を穏やかにサポートします。',
@@ -828,7 +827,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'icheon',
     name: { ko: '이천 청국장 정식', ja: '利川チョングクジャン定食', en: 'Icheon Cheonggukjang Set Meal' },
     healthTags: ['immunity', 'digestion', 'antiAging', 'skin'],
-    healthRadar: { skin: 60, antiAging: 85, immunity: 90, digestion: 90, diet: 70, bone: 50 },
+    healthRadar: { skin: 60, antiAging: 85, immunity: 90, digestion: 90, diet: 70 },
     healthDescription: {
       ko: '청국장의 낫토키나제가 혈전을 예방하고, 이소플라본이 여성 호르몬 균형과 피부에 기여합니다.',
       ja: 'チョングクジャンのナットウキナーゼが血栓を予防し、イソフラボンが女性ホルモンのバランスと肌に貢献します。',
@@ -841,7 +840,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'icheon',
     name: { ko: '이천 콩국수', ja: '利川コングクス', en: 'Icheon Cold Soy Milk Noodles' },
     healthTags: ['skin', 'diet', 'bone'],
-    healthRadar: { skin: 70, antiAging: 65, immunity: 60, digestion: 70, diet: 80, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 65, immunity: 60, digestion: 70, diet: 80 },
     healthDescription: {
       ko: '대두 이소플라본이 피부 탄력을 높이고, 저칼로리 고단백 식물성 단백질이 다이어트를 돕습니다.',
       ja: '大豆イソフラボンが肌の弾力を高め、低カロリー高たんぱく植物性たんぱく質がダイエットを助けます。',
@@ -856,7 +855,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'sokcho',
     name: { ko: '속초 아바이순대', ja: '束草アバイスンデ', en: 'Sokcho Abai Sundae' },
     healthTags: ['digestion'],
-    healthRadar: { skin: 50, antiAging: 50, immunity: 55, digestion: 65, diet: 50, bone: 50 },
+    healthRadar: { skin: 50, antiAging: 50, immunity: 55, digestion: 65, diet: 50 },
     healthDescription: {
       ko: '선지와 찹쌀이 어우러진 아바이순대는 철분과 에너지를 효과적으로 보충합니다.',
       ja: 'センジともち米が組み合わさったアバイスンデは鉄分とエネルギーを効果的に補給します。',
@@ -869,7 +868,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'sokcho',
     name: { ko: '속초 오징어순대', ja: '束草イカスンデ', en: 'Sokcho Squid Sundae' },
     healthTags: ['digestion'],
-    healthRadar: { skin: 55, antiAging: 55, immunity: 55, digestion: 65, diet: 60, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 55, immunity: 55, digestion: 65, diet: 60 },
     healthDescription: {
       ko: '오징어의 타우린이 피로 해소를 돕고, 속재료의 식이섬유가 소화를 원활하게 합니다.',
       ja: 'イカのタウリンが疲労解消を助け、具材の食物繊維が消化をスムーズにします。',
@@ -882,7 +881,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'sokcho',
     name: { ko: '속초 물회', ja: '束草ムルフェ', en: 'Sokcho Cold Raw Fish Soup' },
     healthTags: ['diet', 'skin'],
-    healthRadar: { skin: 70, antiAging: 65, immunity: 65, digestion: 65, diet: 80, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 65, immunity: 65, digestion: 65, diet: 80 },
     healthDescription: {
       ko: '동해의 신선한 해산물과 채소의 조합이 저칼로리로 피부 영양을 공급합니다.',
       ja: '東海の新鮮な海産物と野菜の組み合わせが低カロリーで肌の栄養を供給します。',
@@ -895,7 +894,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'sokcho',
     name: { ko: '속초 감자옹심이', ja: '束草ジャガイモ団子汁', en: 'Sokcho Potato Dumpling Soup' },
     healthTags: ['digestion'],
-    healthRadar: { skin: 40, antiAging: 50, immunity: 50, digestion: 70, diet: 55, bone: 50 },
+    healthRadar: { skin: 40, antiAging: 50, immunity: 50, digestion: 70, diet: 55 },
     healthDescription: {
       ko: '감자의 비타민C와 칼륨이 에너지 대사를 돕고 장을 편안하게 해줍니다.',
       ja: 'ジャガイモのビタミンCとカリウムがエネルギー代謝を助け、腸を落ち着かせます。',
@@ -910,7 +909,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yeosu',
     name: { ko: '여수 갓김치', ja: '麗水カットキムチ', en: 'Yeosu Leaf Mustard Kimchi' },
     healthTags: ['immunity', 'digestion', 'antiAging'],
-    healthRadar: { skin: 55, antiAging: 80, immunity: 90, digestion: 85, diet: 65, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 80, immunity: 90, digestion: 85, diet: 65 },
     healthDescription: {
       ko: '갓의 비타민C와 K, 발효 유산균이 면역·소화·항산화 3가지 효과를 동시에 냅니다.',
       ja: 'カットのビタミンCとK、発酵乳酸菌が免疫・消化・抗酸化の3つの効果を同時に発揮します。',
@@ -923,7 +922,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yeosu',
     name: { ko: '여수 서대회무침', ja: '麗水ソデ刺身和え', en: 'Yeosu Seodae Raw Fish Salad' },
     healthTags: ['skin'],
-    healthRadar: { skin: 75, antiAging: 65, immunity: 60, digestion: 65, diet: 70, bone: 50 },
+    healthRadar: { skin: 75, antiAging: 65, immunity: 60, digestion: 65, diet: 70 },
     healthDescription: {
       ko: '서대회의 오메가3와 채소 비타민C가 피부 보습과 심혈관 건강을 함께 케어합니다.',
       ja: 'ソデ刺身のオメガ3と野菜のビタミンCが肌の保湿と心血管の健康をともにケアします。',
@@ -936,7 +935,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yeosu',
     name: { ko: '여수 장어탕', ja: '麗水アナゴスープ', en: 'Yeosu Conger Eel Soup' },
     healthTags: ['skin', 'antiAging'],
-    healthRadar: { skin: 80, antiAging: 75, immunity: 65, digestion: 60, diet: 55, bone: 50 },
+    healthRadar: { skin: 80, antiAging: 75, immunity: 65, digestion: 60, diet: 55 },
     healthDescription: {
       ko: '장어의 오메가3, 비타민A, 비타민E가 피부 광채를 더하고 만성 피로를 개선합니다.',
       ja: 'アナゴのオメガ3、ビタミンA、ビタミンEが肌に輝きを与え、慢性疲労を改善します。',
@@ -949,7 +948,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yeosu',
     name: { ko: '여수 게장백반', ja: '麗水ケジャンバクバン', en: 'Yeosu Gejang Baekban' },
     healthTags: ['immunity', 'skin', 'digestion'],
-    healthRadar: { skin: 65, antiAging: 65, immunity: 80, digestion: 70, diet: 60, bone: 50 },
+    healthRadar: { skin: 65, antiAging: 65, immunity: 80, digestion: 70, diet: 60 },
     healthDescription: {
       ko: '간장게장의 아연과 타우린, 발효 효소가 면역력과 피부 재생을 부드럽게 지원합니다.',
       ja: '醤油カニ漬けの亜鉛とタウリン、発酵酵素が免疫力と肌の再生を穏やかにサポートします。',
@@ -962,7 +961,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'yeosu',
     name: { ko: '여수 굴요리', ja: '麗水牡蠣料理', en: 'Yeosu Oyster Dishes' },
     healthTags: ['immunity', 'skin'],
-    healthRadar: { skin: 70, antiAging: 65, immunity: 85, digestion: 60, diet: 60, bone: 50 },
+    healthRadar: { skin: 70, antiAging: 65, immunity: 85, digestion: 60, diet: 60 },
     healthDescription: {
       ko: '바다의 우유라 불리는 굴의 아연과 타우린이 면역력과 심혈관 건강을 강화합니다.',
       ja: '海のミルクと呼ばれる牡蠣の亜鉛とタウリンが免疫力と心血管の健康を強化します。',
@@ -977,7 +976,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'andong',
     name: { ko: '안동 찜닭', ja: '安東チムタク', en: 'Andong Jjimdak (Braised Chicken)' },
     healthTags: ['immunity'],
-    healthRadar: { skin: 55, antiAging: 60, immunity: 65, digestion: 60, diet: 60, bone: 50 },
+    healthRadar: { skin: 55, antiAging: 60, immunity: 65, digestion: 60, diet: 60 },
     healthDescription: {
       ko: '닭고기의 고단백과 마늘·생강의 항균 성분이 체력 회복과 면역력에 탁월합니다.',
       ja: '鶏肉の高たんぱくとニンニク・生姜の抗菌成分が体力回復と免疫力に優れています。',
@@ -990,7 +989,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'andong',
     name: { ko: '안동 헛제사밥', ja: '安東ホッチェサパプ', en: 'Andong Heot-jesabap' },
     healthTags: ['digestion'],
-    healthRadar: { skin: 50, antiAging: 55, immunity: 60, digestion: 75, diet: 65, bone: 50 },
+    healthRadar: { skin: 50, antiAging: 55, immunity: 60, digestion: 75, diet: 65 },
     healthDescription: {
       ko: '다양한 나물과 탄수화물의 균형이 소화를 돕고 지속적인 에너지를 제공합니다.',
       ja: '多様なナムルと炭水化物のバランスが消化を助け、持続的なエネルギーを提供します。',
@@ -1003,7 +1002,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'andong',
     name: { ko: '안동 간고등어', ja: '安東塩漬けサバ', en: 'Andong Salted Mackerel' },
     healthTags: ['skin'],
-    healthRadar: { skin: 75, antiAging: 70, immunity: 60, digestion: 55, diet: 65, bone: 50 },
+    healthRadar: { skin: 75, antiAging: 70, immunity: 60, digestion: 55, diet: 65 },
     healthDescription: {
       ko: '고등어의 DHA와 EPA가 두뇌와 심혈관 건강을 지키고 피부 보습에도 탁월합니다.',
       ja: 'サバのDHAとEPAが脳と心血管の健康を守り、肌の保湿にも優れています。',
@@ -1016,7 +1015,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'andong',
     name: { ko: '안동 국시', ja: '安東グクシ', en: 'Andong Guksi Noodles' },
     healthTags: ['digestion'],
-    healthRadar: { skin: 40, antiAging: 45, immunity: 55, digestion: 75, diet: 65, bone: 50 },
+    healthRadar: { skin: 40, antiAging: 45, immunity: 55, digestion: 75, diet: 65 },
     healthDescription: {
       ko: '안동의 손칼국수는 부드럽게 소화되어 속을 편안하게 하고 에너지를 보충합니다.',
       ja: '安東の手打ちカルグクスは柔らかく消化され、胃を落ち着かせエネルギーを補います。',
@@ -1029,7 +1028,7 @@ export const foodHealthData: FoodHealthData[] = [
     region: 'andong',
     name: { ko: '안동 식혜', ja: '安東シッケ', en: 'Andong Sikhye (Sweet Rice Punch)' },
     healthTags: ['digestion'],
-    healthRadar: { skin: 40, antiAging: 55, immunity: 60, digestion: 80, diet: 55, bone: 50 },
+    healthRadar: { skin: 40, antiAging: 55, immunity: 60, digestion: 80, diet: 55 },
     healthDescription: {
       ko: '발효 과정에서 생성된 디아스타제가 식후 소화를 촉진하고 장내 환경을 정화합니다.',
       ja: '発酵過程で生成されたジアスターゼが食後の消化を促進し、腸内環境を浄化します。',
