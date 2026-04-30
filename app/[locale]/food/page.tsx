@@ -1,12 +1,11 @@
 import { Metadata } from 'next'
 import { FoodTabNav } from '@/components/features/food/FoodTabNav'
-import { KFoodSpotList } from '@/components/features/food/KFoodSpotList'
+import { KFoodCityGrid } from '@/components/features/food/KFoodCityGrid'
 import { buildOgUrl } from '@/lib/seo/og-url'
 import { CategorySchema } from '@/components/seo'
 
 interface Props {
   params: { locale: string }
-  searchParams: { city?: string }
 }
 
 const META = {
@@ -44,9 +43,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function FoodPage({ params, searchParams }: Props) {
+export default function FoodPage({ params }: Props) {
   const { locale } = params
-  const cityFilter = searchParams.city ?? 'all'
   const h = HERO[locale as keyof typeof HERO] ?? HERO.ko
   const m = META[locale as keyof typeof META] ?? META.ko
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
@@ -81,9 +79,9 @@ export default function FoodPage({ params, searchParams }: Props) {
       {/* ── 탭 네비게이션 ───────────────────────── */}
       <FoodTabNav locale={locale} activeTab="kfood-spot" />
 
-      {/* ── K-Food Spot 목록 ─────────────────────── */}
-      <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20">
-        <KFoodSpotList locale={locale} cityFilter={cityFilter} />
+      {/* ── K-Food Spot 도시 그리드 (TourAPI) ─────────────── */}
+      <div className="max-w-5xl mx-auto px-6 md:px-10 py-16 md:py-20">
+        <KFoodCityGrid locale={locale} />
       </div>
     </div>
   )

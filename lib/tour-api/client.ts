@@ -18,11 +18,11 @@ function getKey(): string | null {
   return process.env.TOUR_API_KEY || null
 }
 
-async function callTourApi(
+export async function callTourApi<T = TourAPIItem>(
   locale: Locale,
   endpoint: string,
   searchParams: Record<string, string>
-): Promise<TourAPIItem[]> {
+): Promise<T[]> {
   const key = getKey()
   if (!key) return []
 
@@ -40,8 +40,8 @@ async function callTourApi(
     if (!res.ok) return []
     const json = await res.json()
     const items = json?.response?.body?.items?.item
-    if (Array.isArray(items)) return items
-    if (items) return [items]
+    if (Array.isArray(items)) return items as T[]
+    if (items) return [items as T]
     return []
   } catch (err) {
     console.error(`TourAPI ${endpoint} (${locale}) error:`, err)

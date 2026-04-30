@@ -7,7 +7,8 @@ import { FoodEmojiThumb } from "@/components/features/food/FoodEmojiThumb"
 import { DupeCountrySelector } from "@/components/features/food/DupeCountrySelector"
 import { HealthSection } from "@/components/features/food/HealthSection"
 import { regions } from "@/lib/data/food-dupes"
-import { kfoodSpots } from "@/lib/data/kfood-spots"
+import { fetchRestaurantsByArea, type Locale as TourLocale } from "@/lib/tour-api/restaurants"
+import { CITY_AREA_CODES } from "@/lib/tour-api/area-codes"
 import { foodHealthData } from "@/lib/data/food-health"
 
 interface Props {
@@ -67,7 +68,7 @@ const UI = {
   },
 }
 
-export default function FoodDetailPage({ params }: Props) {
+export default async function FoodDetailPage({ params }: Props) {
   const { locale, region: regionCode, foodId } = params
   const region = regions.find((r) => r.code === regionCode)
   if (!region) notFound()
@@ -77,8 +78,20 @@ export default function FoodDetailPage({ params }: Props) {
 
   const t = UI[locale as keyof typeof UI] || UI.en || UI.ko
 
-  // 같은 도시의 K-Food Spot 최대 3개
-  const relatedSpots = kfoodSpots.filter((s) => s.cityCode === food.region).slice(0, 3)
+  // 같은 도시의 K-Food Spot 최대 3개 — TourAPI 동적 fetch
+  const cityArea = CITY_AREA_CODES[food.region]
+  const tourLocale: TourLocale = (['ko', 'ja', 'en', 'zh-CN', 'zh-TW'] as TourLocale[]).includes(
+    locale as TourLocale,
+  )
+    ? (locale as TourLocale)
+    : 'ko'
+  const relatedSpots = cityArea
+    ? (await fetchRestaurantsByArea(cityArea.areaCode, {
+        sigunguCode: cityArea.sigunguCode,
+        numOfRows: 3,
+        locale: tourLocale,
+      })).slice(0, 3)
+    : []
 
   // 건강 효능 데이터 조회
   const healthData = foodHealthData.find((h) => h.foodId === foodId)
@@ -166,7 +179,7 @@ export default function FoodDetailPage({ params }: Props) {
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-black text-[#111]">🍽️ {t.spotsTitle}</h2>
               <Link
-                href={`/${locale}/food/kfood-spot?city=${food.region}`}
+                href={`/${locale}/food/kfood-spot/${food.region}`}
                 className="text-sm text-blossom-deep font-bold hover:underline"
               >
                 {t.spotsLink}
@@ -174,18 +187,20 @@ export default function FoodDetailPage({ params }: Props) {
             </div>
             <div className="grid sm:grid-cols-3 gap-4">
               {relatedSpots.map((spot) => (
-                <div
-                  key={spot.id}
+                <Link
+                  key={spot.contentid}
+                  href={`/${locale}/food/kfood-spot/${food.region}/${spot.contentid}`}
                   className="bg-white rounded-2xl border border-mist p-4 hover:border-blossom-deep/50 hover:shadow-sm transition-all"
                 >
-                  <p className="font-bold text-[#111] text-sm mb-1">
-                    {getL(spot.name, locale)}
+                  <p className="font-bold text-[#111] text-sm mb-1 line-clamp-1">
+                    {spot.title}
                   </p>
-                  <p className="text-xs text-stone line-clamp-2">
-                    {getL(spot.speciality, locale)}
-                  </p>
-                  <p className="text-xs text-stone mt-2">{spot.priceRange} · {spot.openHours}</p>
-                </div>
+                  {spot.addr1 && (
+                    <p className="text-xs text-stone line-clamp-2">
+                      {spot.addr1}
+                    </p>
+                  )}
+                </Link>
               ))}
             </div>
           </div>

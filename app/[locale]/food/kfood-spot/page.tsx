@@ -1,17 +1,18 @@
 import { Metadata } from "next"
 import { MapPin } from "lucide-react"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
-import { KFoodSpotList } from "@/components/features/food/KFoodSpotList"
+import { KFoodCityGrid } from "@/components/features/food/KFoodCityGrid"
 
 interface Props {
   params: { locale: string }
-  searchParams: { city?: string }
 }
 
 const META = {
-  ko: { title: "K-Food Spot | Cloud with you", desc: "한국 현지 맛집 & 시장 가이드" },
-  ja: { title: "K-Food Spot | Cloud with you", desc: "韓国現地のグルメ＆市場ガイド" },
-  en: { title: "K-Food Spot | Cloud with you", desc: "Korea local food & market guide" },
+  ko: { title: "K-Food Spot | Cloud with you", desc: "한국 현지 맛집 가이드 (한국관광공사 공식 데이터)" },
+  ja: { title: "K-Food Spot | Cloud with you", desc: "韓国現地のグルメガイド (韓国観光公社 公式)" },
+  en: { title: "K-Food Spot | Cloud with you", desc: "Korea local food guide (KTO official data)" },
+  'zh-CN': { title: "K-Food Spot | Cloud with you", desc: "韩国当地美食指南（韩国观光公社官方）" },
+  'zh-TW': { title: "K-Food Spot | Cloud with you", desc: "韓國在地美食指南（韓國觀光公社官方）" },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -23,23 +24,32 @@ const HERO = {
   ko: {
     badge: "K-Food Spot",
     title: "현지인이 사랑하는\n그 맛집으로",
-    subtitle: "전주·서울·부산·경주·제주 — 진짜 한국 맛을 찾아서",
+    subtitle: "도시를 선택해 보세요 — 한국관광공사 공식 데이터",
   },
   ja: {
     badge: "K-Food Spot",
     title: "地元が愛する\nあのお店へ",
-    subtitle: "全州・ソウル・釜山・慶州・済州 — 本物の韓国の味を求めて",
+    subtitle: "都市を選んでください — 韓国観光公社の公式データ",
   },
   en: {
     badge: "K-Food Spot",
     title: "Where locals go\nto eat",
-    subtitle: "Jeonju · Seoul · Busan · Gyeongju · Jeju — chasing real Korean flavor",
+    subtitle: "Pick a city — official data from the Korea Tourism Organization",
+  },
+  'zh-CN': {
+    badge: "K-Food Spot",
+    title: "当地人爱去的\n那家餐厅",
+    subtitle: "请选择城市 — 韩国观光公社官方数据",
+  },
+  'zh-TW': {
+    badge: "K-Food Spot",
+    title: "在地人愛去的\n那家餐廳",
+    subtitle: "請選擇城市 — 韓國觀光公社官方資料",
   },
 }
 
-export default function KFoodSpotPage({ params, searchParams }: Props) {
+export default function KFoodSpotPage({ params }: Props) {
   const { locale } = params
-  const cityFilter = searchParams.city || "all"
   const h = HERO[locale as keyof typeof HERO] || HERO.en || HERO.ko
 
   return (
@@ -58,9 +68,9 @@ export default function KFoodSpotPage({ params, searchParams }: Props) {
         </div>
       </section>
 
-      {/* 스팟 목록 */}
-      <section className="max-w-6xl mx-auto px-4 py-12">
-        <KFoodSpotList locale={locale} cityFilter={cityFilter} />
+      {/* 도시 그리드 */}
+      <section className="max-w-5xl mx-auto px-4 py-12">
+        <KFoodCityGrid locale={locale} />
       </section>
     </div>
   )

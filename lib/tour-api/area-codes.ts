@@ -14,6 +14,12 @@ export const CITY_AREA_CODES: Record<string, { areaCode: number; sigunguCode?: n
   cheonan:   { areaCode: 34, sigunguCode: 4 },
   yongin:    { areaCode: 31, sigunguCode: 13 },
   icheon:    { areaCode: 31, sigunguCode: 4 },
+  // Phase 7 신규 도시 + 포토코리아 매칭으로 활성화된 도시
+  sokcho:    { areaCode: 32, sigunguCode: 7 },   // 강원도 속초시
+  yeosu:     { areaCode: 38, sigunguCode: 12 },  // 전라남도 여수시
+  andong:    { areaCode: 35, sigunguCode: 7 },   // 경상북도 안동시
+  // national — 전국 fallback (서울 areaCode 사용)
+  national:  { areaCode: 1 },
 }
 
 export const CONTENT_TYPES = {
