@@ -1,0 +1,958 @@
+[
+  {
+    "id": "jeonju-bibimbap",
+    "name_ko": "전주비빔밥"
+  },
+  {
+    "id": "jeonju-kongnamul",
+    "name_ko": "콩나물국밥"
+  },
+  {
+    "id": "jeonju-hanjeongsik",
+    "name_ko": "전주 한정식"
+  },
+  {
+    "id": "jeonju-tteokgalbi",
+    "name_ko": "전주 떡갈비"
+  },
+  {
+    "id": "jeonju-kalguksu",
+    "name_ko": "전주식 칼국수"
+  },
+  {
+    "id": "jeonju-muljjajang",
+    "name_ko": "물짜장"
+  },
+  {
+    "id": "jeonju-pisundae",
+    "name_ko": "피순대와 순대국밥"
+  },
+  {
+    "id": "jeonju-omogaritang",
+    "name_ko": "오모가리탕"
+  },
+  {
+    "id": "jeonju-chocopie",
+    "name_ko": "수제 초코파이"
+  },
+  {
+    "id": "jeonju-yukgaejang",
+    "name_ko": "육개장"
+  },
+  {
+    "id": "jeonju-bindaetteok",
+    "name_ko": "녹두전"
+  },
+  {
+    "id": "jeonju-cheonggukjang",
+    "name_ko": "청국장"
+  },
+  {
+    "id": "jeonju-yukoe",
+    "name_ko": "육회"
+  },
+  {
+    "id": "jeonju-bori-guksu",
+    "name_ko": "보리국수"
+  },
+  {
+    "id": "jeonju-gondrebap",
+    "name_ko": "곤드레밥"
+  },
+  {
+    "id": "jeonju-haemul-pajeon",
+    "name_ko": "해물파전"
+  },
+  {
+    "id": "jeonju-sikhye",
+    "name_ko": "식혜"
+  },
+  {
+    "id": "jeonju-ogokbap",
+    "name_ko": "오곡밥"
+  },
+  {
+    "id": "seoul-samgyeopsal",
+    "name_ko": "삼겹살"
+  },
+  {
+    "id": "seoul-dakhanmari",
+    "name_ko": "닭한마리"
+  },
+  {
+    "id": "seoul-seolleongtang",
+    "name_ko": "설렁탕"
+  },
+  {
+    "id": "seoul-street-toast",
+    "name_ko": "길거리 토스트"
+  },
+  {
+    "id": "seoul-bindaetteok",
+    "name_ko": "광장시장 빈대떡"
+  },
+  {
+    "id": "seoul-yukhoe",
+    "name_ko": "육회"
+  },
+  {
+    "id": "seoul-hangang-ramen",
+    "name_ko": "한강 라면"
+  },
+  {
+    "id": "seoul-gamjatang",
+    "name_ko": "감자탕"
+  },
+  {
+    "id": "seoul-sundaekook",
+    "name_ko": "순대국"
+  },
+  {
+    "id": "seoul-kalguksu",
+    "name_ko": "서울 칼국수"
+  },
+  {
+    "id": "seoul-mayak-gimbap",
+    "name_ko": "광장시장 마약김밥"
+  },
+  {
+    "id": "seoul-gopchang",
+    "name_ko": "곱창구이"
+  },
+  {
+    "id": "seoul-doenjang-jjigae",
+    "name_ko": "서울 된장찌개"
+  },
+  {
+    "id": "seoul-yang-kkochi",
+    "name_ko": "양꼬치"
+  },
+  {
+    "id": "seoul-chimaek",
+    "name_ko": "치맥"
+  },
+  {
+    "id": "seoul-hotteok",
+    "name_ko": "서울 호떡"
+  },
+  {
+    "id": "seoul-rabokki",
+    "name_ko": "라볶이"
+  },
+  {
+    "id": "seoul-galbi",
+    "name_ko": "서울 소갈비"
+  },
+  {
+    "id": "tongyeong-chungmu-gimbap",
+    "name_ko": "충무김밥"
+  },
+  {
+    "id": "tongyeong-kkul-ppang",
+    "name_ko": "꿀빵"
+  },
+  {
+    "id": "tongyeong-meongge-bibimbap",
+    "name_ko": "멍게비빔밥"
+  },
+  {
+    "id": "tongyeong-oyster-soup",
+    "name_ko": "통영 굴국밥"
+  },
+  {
+    "id": "tongyeong-ujja",
+    "name_ko": "우짜"
+  },
+  {
+    "id": "tongyeong-sirakguk",
+    "name_ko": "시락국"
+  },
+  {
+    "id": "tongyeong-haemul-ttukbaegi",
+    "name_ko": "해물뚝배기"
+  },
+  {
+    "id": "tongyeong-ppaettaegi-juk",
+    "name_ko": "빼때기죽"
+  },
+  {
+    "id": "tongyeong-dacci",
+    "name_ko": "다찌 해산물"
+  },
+  {
+    "id": "tongyeong-dodari-ssuk",
+    "name_ko": "도다리쑥국"
+  },
+  {
+    "id": "tongyeong-gulbap",
+    "name_ko": "통영 굴밥"
+  },
+  {
+    "id": "tongyeong-haemul-tang",
+    "name_ko": "통영 해물탕"
+  },
+  {
+    "id": "tongyeong-jangeo-gui",
+    "name_ko": "통영 장어구이"
+  },
+  {
+    "id": "tongyeong-jeonbok-gui",
+    "name_ko": "통영 전복구이"
+  },
+  {
+    "id": "tongyeong-mulmegi-tang",
+    "name_ko": "통영 물메기탕"
+  },
+  {
+    "id": "tongyeong-pi-kkomak",
+    "name_ko": "피꼬막"
+  },
+  {
+    "id": "tongyeong-bajirak-kalguksu",
+    "name_ko": "통영 바지락칼국수"
+  },
+  {
+    "id": "tongyeong-saengseon-hoe-jeongsik",
+    "name_ko": "통영 생선회 정식"
+  },
+  {
+    "id": "tongyeong-haemul-japtang",
+    "name_ko": "통영 해물잡탕"
+  },
+  {
+    "id": "tongyeong-honghap-tang",
+    "name_ko": "통영 홍합탕"
+  },
+  {
+    "id": "tongyeong-galchi-gui",
+    "name_ko": "통영 갈치구이"
+  },
+  {
+    "id": "tongyeong-mideodeok-jjim",
+    "name_ko": "미더덕찜"
+  },
+  {
+    "id": "tongyeong-daegu-tang",
+    "name_ko": "통영 대구탕"
+  },
+  {
+    "id": "tongyeong-myeolchi-hoemuchim",
+    "name_ko": "멸치회무침"
+  },
+  {
+    "id": "tongyeong-hakggongchi-hoe",
+    "name_ko": "학꽁치 회"
+  },
+  {
+    "id": "jeju-black-pork",
+    "name_ko": "흑돼지 구이"
+  },
+  {
+    "id": "jeju-gogi-guksu",
+    "name_ko": "고기국수"
+  },
+  {
+    "id": "jeju-galchi-jorim",
+    "name_ko": "갈치조림"
+  },
+  {
+    "id": "jeju-jeonbok-juk",
+    "name_ko": "전복죽"
+  },
+  {
+    "id": "jeju-momguk",
+    "name_ko": "몸국"
+  },
+  {
+    "id": "jeju-dombe",
+    "name_ko": "돔베고기"
+  },
+  {
+    "id": "jeju-mulhoe",
+    "name_ko": "물회"
+  },
+  {
+    "id": "jeju-bomal-kalguksu",
+    "name_ko": "보말칼국수"
+  },
+  {
+    "id": "jeju-omegi-tteok",
+    "name_ko": "오메기떡"
+  },
+  {
+    "id": "jeju-hallabong",
+    "name_ko": "한라봉 디저트"
+  },
+  {
+    "id": "jeju-bingtteok",
+    "name_ko": "빙떡"
+  },
+  {
+    "id": "jeju-kkwong-memil-guksu",
+    "name_ko": "꿩메밀국수"
+  },
+  {
+    "id": "jeju-haemul-ttukbaegi",
+    "name_ko": "제주 해물뚝배기"
+  },
+  {
+    "id": "jeju-hanchi-mulhoe",
+    "name_ko": "제주 한치물회"
+  },
+  {
+    "id": "jeju-bomal-juk",
+    "name_ko": "제주 보말죽"
+  },
+  {
+    "id": "jeju-gamgyul-juice",
+    "name_ko": "감귤주스"
+  },
+  {
+    "id": "jeju-seonggae-miyeokguk",
+    "name_ko": "성게미역국"
+  },
+  {
+    "id": "jeju-okdom-gui",
+    "name_ko": "제주 옥돔구이"
+  },
+  {
+    "id": "jeju-gosari-yukgaejang",
+    "name_ko": "제주 고사리 육개장"
+  },
+  {
+    "id": "jeju-jeonbok-ttukbaegi",
+    "name_ko": "제주 전복뚝배기"
+  },
+  {
+    "id": "jeju-jari-mulhoe",
+    "name_ko": "제주 자리물회"
+  },
+  {
+    "id": "jeju-gosari-bokkeum",
+    "name_ko": "제주 고사리볶음"
+  },
+  {
+    "id": "jeju-jeopjjak-bbyeoguk",
+    "name_ko": "제주 접짝뼈국"
+  },
+  {
+    "id": "jeju-dwaeji-kimchi-bokkeum",
+    "name_ko": "제주 흑돼지 김치볶음"
+  },
+  {
+    "id": "jeju-galchi-gui",
+    "name_ko": "제주 갈치구이"
+  },
+  {
+    "id": "busan-pork-soup",
+    "name_ko": "돼지국밥"
+  },
+  {
+    "id": "busan-milmyeon",
+    "name_ko": "밀면"
+  },
+  {
+    "id": "busan-hotteok",
+    "name_ko": "씨앗호떡"
+  },
+  {
+    "id": "busan-mul-tteok",
+    "name_ko": "물떡"
+  },
+  {
+    "id": "busan-naengchae-jokbal",
+    "name_ko": "냉채족발"
+  },
+  {
+    "id": "busan-grilled-clams",
+    "name_ko": "조개구이"
+  },
+  {
+    "id": "busan-eomuk",
+    "name_ko": "어묵"
+  },
+  {
+    "id": "busan-bibim-dangmyeon",
+    "name_ko": "비빔당면"
+  },
+  {
+    "id": "busan-gopchang",
+    "name_ko": "양곱창"
+  },
+  {
+    "id": "busan-nakgopsae",
+    "name_ko": "낙곱새"
+  },
+  {
+    "id": "busan-ssiat-hotteok",
+    "name_ko": "씨앗호떡"
+  },
+  {
+    "id": "busan-hwae",
+    "name_ko": "활어회"
+  },
+  {
+    "id": "busan-agujjim",
+    "name_ko": "아구찜"
+  },
+  {
+    "id": "busan-saengseon-gui",
+    "name_ko": "생선구이"
+  },
+  {
+    "id": "busan-haemul-jjamppong",
+    "name_ko": "해물짬뽕"
+  },
+  {
+    "id": "busan-eomuk-tang",
+    "name_ko": "어묵탕"
+  },
+  {
+    "id": "busan-gomjangeo-gui",
+    "name_ko": "곰장어구이"
+  },
+  {
+    "id": "busan-gul-jeon",
+    "name_ko": "굴전"
+  },
+  {
+    "id": "busan-haemul-pajeon",
+    "name_ko": "해물파전"
+  },
+  {
+    "id": "busan-daegu-tang",
+    "name_ko": "대구탕"
+  },
+  {
+    "id": "busan-jeonbok-juk",
+    "name_ko": "전복죽"
+  },
+  {
+    "id": "busan-bokeo-tang",
+    "name_ko": "복어탕"
+  },
+  {
+    "id": "busan-yubu-jeongol",
+    "name_ko": "유부전골"
+  },
+  {
+    "id": "gyeongju-hwangnam-ppang",
+    "name_ko": "황남빵"
+  },
+  {
+    "id": "gyeongju-gyori-gimbap",
+    "name_ko": "교리김밥"
+  },
+  {
+    "id": "gyeongju-tteokgalbi",
+    "name_ko": "경주 떡갈비"
+  },
+  {
+    "id": "gyeongju-hanwoo-mulhoe",
+    "name_ko": "한우 물회"
+  },
+  {
+    "id": "gyeongju-ssambap",
+    "name_ko": "쌈밥 정식"
+  },
+  {
+    "id": "gyeongju-haejangguk",
+    "name_ko": "경주 해장국"
+  },
+  {
+    "id": "gyeongju-hanjeongsik",
+    "name_ko": "경주 한정식"
+  },
+  {
+    "id": "gyeongju-chalborippang",
+    "name_ko": "찰보리빵"
+  },
+  {
+    "id": "gyeongju-milmyeon",
+    "name_ko": "경주 밀면"
+  },
+  {
+    "id": "gyeongju-hanwoo-bulgogi",
+    "name_ko": "한우불고기"
+  },
+  {
+    "id": "gyeongju-gujeolpan",
+    "name_ko": "구절판"
+  },
+  {
+    "id": "gyeongju-doenjang-jjigae",
+    "name_ko": "경주 된장찌개"
+  },
+  {
+    "id": "gyeongju-dubu-jeongol",
+    "name_ko": "두부전골"
+  },
+  {
+    "id": "gyeongju-meomil-jeonbyeong",
+    "name_ko": "메밀전병"
+  },
+  {
+    "id": "gyeongju-gyodongbeopju",
+    "name_ko": "교동법주"
+  },
+  {
+    "id": "gyeongju-bamyeot",
+    "name_ko": "밤엿"
+  },
+  {
+    "id": "gyeongju-sujae-maekju",
+    "name_ko": "수제맥주"
+  },
+  {
+    "id": "gyeongju-solsongju",
+    "name_ko": "솔송주"
+  },
+  {
+    "id": "cheonan-walnut-cookie",
+    "name_ko": "호두과자"
+  },
+  {
+    "id": "cheonan-byeongcheon-sundae",
+    "name_ko": "병천순대"
+  },
+  {
+    "id": "cheonan-sundae-soup",
+    "name_ko": "순대국밥"
+  },
+  {
+    "id": "cheonan-charcoal-dakgalbi",
+    "name_ko": "천안 숯불 닭갈비"
+  },
+  {
+    "id": "cheonan-fruit-mochi",
+    "name_ko": "생과일 모찌"
+  },
+  {
+    "id": "cheonan-lotus-rice",
+    "name_ko": "연잎밥 정식"
+  },
+  {
+    "id": "cheonan-mushroom-stew",
+    "name_ko": "버섯전골"
+  },
+  {
+    "id": "cheonan-local-bakery",
+    "name_ko": "뚜쥬루 앙버터빵"
+  },
+  {
+    "id": "cheonan-heuk-dwaeji-gui",
+    "name_ko": "천안 흑돼지구이"
+  },
+  {
+    "id": "cheonan-jokbal",
+    "name_ko": "천안 족발"
+  },
+  {
+    "id": "cheonan-kongnamul-gukbap",
+    "name_ko": "천안 콩나물국밥"
+  },
+  {
+    "id": "cheonan-cheonggukjang",
+    "name_ko": "천안 청국장찌개"
+  },
+  {
+    "id": "cheonan-hongeo-samhap",
+    "name_ko": "천안 홍어삼합"
+  },
+  {
+    "id": "cheonan-galbitang",
+    "name_ko": "천안 갈비탕"
+  },
+  {
+    "id": "cheonan-boribap-jeongsik",
+    "name_ko": "천안 보리밥정식"
+  },
+  {
+    "id": "cheonan-ureong-doenjang",
+    "name_ko": "천안 우렁된장"
+  },
+  {
+    "id": "cheonan-haemul-pajeon",
+    "name_ko": "천안 해물파전"
+  },
+  {
+    "id": "cheonan-dubu-kimchi",
+    "name_ko": "천안 두부김치"
+  },
+  {
+    "id": "cheonan-bossam",
+    "name_ko": "천안 보쌈"
+  },
+  {
+    "id": "cheonan-makgeolli-ppang",
+    "name_ko": "천안 막걸리빵"
+  },
+  {
+    "id": "cheonan-kalguksu",
+    "name_ko": "천안 칼국수"
+  },
+  {
+    "id": "cheonan-sujebi",
+    "name_ko": "천안 수제비"
+  },
+  {
+    "id": "yongin-baegam-sundae",
+    "name_ko": "백암순대"
+  },
+  {
+    "id": "yongin-jangter-gukbap",
+    "name_ko": "민속촌 장터국밥"
+  },
+  {
+    "id": "yongin-nurungji-baeksuk",
+    "name_ko": "누룽지 백숙"
+  },
+  {
+    "id": "yongin-pajeon",
+    "name_ko": "민속촌 파전"
+  },
+  {
+    "id": "yongin-makguksu",
+    "name_ko": "수지 막국수"
+  },
+  {
+    "id": "yongin-acorn-jelly",
+    "name_ko": "도토리묵 무침"
+  },
+  {
+    "id": "yongin-hanwoo",
+    "name_ko": "용인 한우 구이"
+  },
+  {
+    "id": "yongin-cafe-dessert",
+    "name_ko": "보정동 카페거리 디저트"
+  },
+  {
+    "id": "yongin-makgeolli",
+    "name_ko": "용인 막걸리"
+  },
+  {
+    "id": "yongin-sundubu",
+    "name_ko": "용인 순두부찌개"
+  },
+  {
+    "id": "yongin-cheoin-dakgalbi",
+    "name_ko": "용인 처인닭갈비"
+  },
+  {
+    "id": "yongin-yangji-gomtang",
+    "name_ko": "용인 양지곰탕"
+  },
+  {
+    "id": "yongin-haemul-tang",
+    "name_ko": "용인 해물탕"
+  },
+  {
+    "id": "yongin-bori-gulbi",
+    "name_ko": "용인 보리굴비정식"
+  },
+  {
+    "id": "yongin-sanchae-jeongsik",
+    "name_ko": "용인 산채정식"
+  },
+  {
+    "id": "yongin-hanbang-samgyetang",
+    "name_ko": "용인 한방삼계탕"
+  },
+  {
+    "id": "yongin-seolleongtang",
+    "name_ko": "용인 설렁탕"
+  },
+  {
+    "id": "yongin-heuk-dwaeji",
+    "name_ko": "용인 흑돼지구이"
+  },
+  {
+    "id": "yongin-memil-jeonbyeong",
+    "name_ko": "용인 메밀전병"
+  },
+  {
+    "id": "yongin-mukbap",
+    "name_ko": "용인 묵밥"
+  },
+  {
+    "id": "yongin-beoseot-jeongol",
+    "name_ko": "용인 버섯전골"
+  },
+  {
+    "id": "yongin-dolsot-bibimbap",
+    "name_ko": "용인 돌솥비빔밥"
+  },
+  {
+    "id": "yongin-dubu-jeongol",
+    "name_ko": "용인 두부전골"
+  },
+  {
+    "id": "yongin-maeun-galbijjim",
+    "name_ko": "용인 매운갈비찜"
+  },
+  {
+    "id": "icheon-rice-table",
+    "name_ko": "이천 쌀밥 정식"
+  },
+  {
+    "id": "icheon-bori-gulbi",
+    "name_ko": "보리굴비"
+  },
+  {
+    "id": "icheon-ganjang-gejang",
+    "name_ko": "간장게장"
+  },
+  {
+    "id": "icheon-hanwoo-gui",
+    "name_ko": "이천 한우 구이"
+  },
+  {
+    "id": "icheon-straw-pork",
+    "name_ko": "볏짚 삼겹살"
+  },
+  {
+    "id": "icheon-royal-table",
+    "name_ko": "임금님 수라상"
+  },
+  {
+    "id": "icheon-makguksu",
+    "name_ko": "이천 막국수"
+  },
+  {
+    "id": "icheon-hangwa",
+    "name_ko": "이천 한과"
+  },
+  {
+    "id": "icheon-sotbap",
+    "name_ko": "솥밥"
+  },
+  {
+    "id": "icheon-kongguksu",
+    "name_ko": "콩국수"
+  },
+  {
+    "id": "icheon-dojagi-bulgogi",
+    "name_ko": "도자기불고기"
+  },
+  {
+    "id": "icheon-sansuyu-makgeolli",
+    "name_ko": "산수유 막걸리"
+  },
+  {
+    "id": "icheon-galbitang",
+    "name_ko": "이천 갈비탕"
+  },
+  {
+    "id": "icheon-cheonggukjang-jeongsik",
+    "name_ko": "청국장정식"
+  },
+  {
+    "id": "icheon-neungi-shabu",
+    "name_ko": "능이버섯샤브샤브"
+  },
+  {
+    "id": "icheon-bokjung-ppang",
+    "name_ko": "복숭아빵"
+  },
+  {
+    "id": "icheon-maeun-dwaeji-galbi",
+    "name_ko": "매운돼지갈비"
+  },
+  {
+    "id": "icheon-somori-gukbap",
+    "name_ko": "소머리국밥"
+  },
+  {
+    "id": "icheon-onggi-mandu",
+    "name_ko": "옹기만두"
+  },
+  {
+    "id": "icheon-jangeo-jeongsik",
+    "name_ko": "장어구이정식"
+  },
+  {
+    "id": "icheon-doenjang-jjigae-hansang",
+    "name_ko": "된장찌개 한상"
+  },
+  {
+    "id": "icheon-gamja-ongsimi",
+    "name_ko": "감자옹심이"
+  },
+  {
+    "id": "sokcho-dakgangjeong",
+    "name_ko": "속초 닭강정"
+  },
+  {
+    "id": "sokcho-abai-sundae",
+    "name_ko": "아바이순대"
+  },
+  {
+    "id": "sokcho-ojingeo-sundae",
+    "name_ko": "오징어순대"
+  },
+  {
+    "id": "sokcho-mulhoe",
+    "name_ko": "속초 물회"
+  },
+  {
+    "id": "sokcho-gamja-ongsimi",
+    "name_ko": "감자옹심이"
+  },
+  {
+    "id": "yeosu-gat-kimchi",
+    "name_ko": "돌산 갓김치"
+  },
+  {
+    "id": "yeosu-seodae-hoemuchim",
+    "name_ko": "서대회무침"
+  },
+  {
+    "id": "yeosu-jangeo-tang",
+    "name_ko": "여수 장어탕"
+  },
+  {
+    "id": "yeosu-gejang-baekban",
+    "name_ko": "여수 게장백반"
+  },
+  {
+    "id": "yeosu-gul-yori",
+    "name_ko": "여수 굴요리"
+  },
+  {
+    "id": "andong-jjimdak",
+    "name_ko": "안동찜닭"
+  },
+  {
+    "id": "andong-heot-jesabap",
+    "name_ko": "헛제사밥"
+  },
+  {
+    "id": "andong-gan-godeungeo",
+    "name_ko": "안동 간고등어"
+  },
+  {
+    "id": "andong-guksi",
+    "name_ko": "안동국시"
+  },
+  {
+    "id": "andong-sikhye",
+    "name_ko": "안동식혜"
+  },
+  {
+    "id": "andong-andong-jjimdak",
+    "name_ko": "안동찜닭"
+  },
+  {
+    "id": "national-japchae",
+    "name_ko": "잡채"
+  },
+  {
+    "id": "national-sundubu",
+    "name_ko": "순두부찌개"
+  },
+  {
+    "id": "national-pajeon",
+    "name_ko": "파전"
+  },
+  {
+    "id": "national-doenjang-jjigae",
+    "name_ko": "된장찌개"
+  },
+  {
+    "id": "national-tteokbokki",
+    "name_ko": "떡볶이"
+  },
+  {
+    "id": "national-jokbal",
+    "name_ko": "족발"
+  },
+  {
+    "id": "national-kimchi-jjigae",
+    "name_ko": "김치찌개"
+  },
+  {
+    "id": "national-bossam",
+    "name_ko": "보쌈"
+  },
+  {
+    "id": "national-ojingeo-bokkeum",
+    "name_ko": "오징어볶음"
+  },
+  {
+    "id": "national-sundubu-gyeongju",
+    "name_ko": "순두부찌개"
+  },
+  {
+    "id": "national-samgyetang",
+    "name_ko": "삼계탕"
+  },
+  {
+    "id": "national-galbi-tang",
+    "name_ko": "갈비탕"
+  },
+  {
+    "id": "national-yakgwa",
+    "name_ko": "약과"
+  },
+  {
+    "id": "national-hangwa",
+    "name_ko": "한과"
+  },
+  {
+    "id": "national-tteokguk",
+    "name_ko": "떡국"
+  },
+  {
+    "id": "national-spicy-catfish",
+    "name_ko": "빠가사리 매운탕"
+  },
+  {
+    "id": "national-jeyuk-bokkeum",
+    "name_ko": "제육볶음"
+  },
+  {
+    "id": "national-nakji-bokkeum",
+    "name_ko": "낙지볶음"
+  },
+  {
+    "id": "national-gomtang",
+    "name_ko": "곰탕"
+  },
+  {
+    "id": "national-budae-jjigae",
+    "name_ko": "부대찌개"
+  },
+  {
+    "id": "national-kimchi-jeon",
+    "name_ko": "김치전"
+  },
+  {
+    "id": "national-kkomak-bibimbap",
+    "name_ko": "꼬막비빔밥"
+  },
+  {
+    "id": "national-sanchae-bibimbap",
+    "name_ko": "산채비빔밥"
+  },
+  {
+    "id": "national-hanwoo-yukhoe",
+    "name_ko": "한우 육회비빔밥"
+  },
+  {
+    "id": "national-gwangdeok-sanchae",
+    "name_ko": "광덕산 산채비빔밥"
+  },
+  {
+    "id": "national-sanchae-bibimbap-yongin",
+    "name_ko": "산채비빔밥"
+  },
+  {
+    "id": "national-yukhoe-bibimbap",
+    "name_ko": "육회비빔밥"
+  },
+  {
+    "id": "national-chapssal-tteok",
+    "name_ko": "찹쌀떡"
+  }
+]

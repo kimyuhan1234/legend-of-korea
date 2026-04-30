@@ -1,0 +1,1618 @@
+[
+  {
+    "province": "seoul",
+    "id": "ddosuni-yangpyeongdong",
+    "searchName": "또순이네집 양평동점",
+    "rank": 1,
+    "contentid": "2836227",
+    "contenttypeid": "39",
+    "matchedTitle": "또순이네집",
+    "matchStage": "정제",
+    "matchedKeyword": "또순이네집"
+  },
+  {
+    "province": "seoul",
+    "id": "starbucks-bukhansan",
+    "searchName": "스타벅스 더북한산점",
+    "rank": 2,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "seoul",
+    "id": "yeongdong-seolleongtang",
+    "searchName": "영동설렁탕",
+    "rank": 3,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "seoul",
+    "id": "samwon-garden",
+    "searchName": "삼원가든 본점",
+    "rank": 4,
+    "contentid": "132892",
+    "contenttypeid": "39",
+    "matchedTitle": "삼원가든",
+    "matchStage": "정제",
+    "matchedKeyword": "삼원가든"
+  },
+  {
+    "province": "seoul",
+    "id": "uraeok",
+    "searchName": "우래옥 본점",
+    "rank": 5,
+    "contentid": "133339",
+    "contenttypeid": "39",
+    "matchedTitle": "우래옥",
+    "matchStage": "정제",
+    "matchedKeyword": "우래옥"
+  },
+  {
+    "province": "seoul",
+    "id": "edyacoffee-lab",
+    "searchName": "이디야커피랩",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "seoul",
+    "id": "gangsulae-sanggye",
+    "searchName": "강강술래 상계점",
+    "rank": 7,
+    "contentid": "135136",
+    "contenttypeid": "39",
+    "matchedTitle": "강강술래 신림동",
+    "matchStage": "정제",
+    "matchedKeyword": "강강술래"
+  },
+  {
+    "province": "seoul",
+    "id": "apgujeong-gongjudduk",
+    "searchName": "압구정공주떡",
+    "rank": 9,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "seoul",
+    "id": "gamnamu-gisasikdang",
+    "searchName": "감나무집기사식당",
+    "rank": 10,
+    "contentid": "2843816",
+    "contenttypeid": "39",
+    "matchedTitle": "감나무집기사식당",
+    "matchStage": "원본",
+    "matchedKeyword": "감나무집기사식당"
+  },
+  {
+    "province": "incheon",
+    "id": "joyangbangjik",
+    "searchName": "조양방직",
+    "rank": 1,
+    "contentid": "2590794",
+    "contenttypeid": "39",
+    "matchedTitle": "조양방직",
+    "matchStage": "원본",
+    "matchedKeyword": "조양방직"
+  },
+  {
+    "province": "incheon",
+    "id": "forest-outings-songdo",
+    "searchName": "포레스트아웃팅스 송도점",
+    "rank": 2,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "incheon",
+    "id": "gongdan-tteokbokki",
+    "searchName": "공단떡볶이",
+    "rank": 3,
+    "contentid": "2837034",
+    "contenttypeid": "39",
+    "matchedTitle": "남동공단떡볶이",
+    "matchStage": "원본",
+    "matchedKeyword": "공단떡볶이"
+  },
+  {
+    "province": "incheon",
+    "id": "cafe-mium",
+    "searchName": "카페미음",
+    "rank": 4,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "incheon",
+    "id": "omokgol-meminudong",
+    "searchName": "오목골즉석메밀우동",
+    "rank": 5,
+    "contentid": "2767489",
+    "contenttypeid": "39",
+    "matchedTitle": "오목골즉석메밀우동 박문점",
+    "matchStage": "원본",
+    "matchedKeyword": "오목골즉석메밀우동"
+  },
+  {
+    "province": "incheon",
+    "id": "haesom-ssambap",
+    "searchName": "해솜쌈밥",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "incheon",
+    "id": "jayeon-do-soltbbang",
+    "searchName": "자연도소금빵 본점",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "incheon",
+    "id": "dongyang-yeomjeon-bakery",
+    "searchName": "동양염전베이커리카페",
+    "rank": 8,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "incheon",
+    "id": "beolmal-maeuntang",
+    "searchName": "벌말매운탕 본점",
+    "rank": 9,
+    "contentid": "2840126",
+    "contenttypeid": "39",
+    "matchedTitle": "벌말매운탕",
+    "matchStage": "정제",
+    "matchedKeyword": "벌말매운탕"
+  },
+  {
+    "province": "incheon",
+    "id": "lolbeach-coffee",
+    "searchName": "롤비치커피앤브레드",
+    "rank": 10,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daejeon",
+    "id": "sungsimdang-main",
+    "searchName": "성심당 본점",
+    "rank": 1,
+    "contentid": "1796079",
+    "contenttypeid": "39",
+    "matchedTitle": "성심당",
+    "matchStage": "정제",
+    "matchedKeyword": "성심당"
+  },
+  {
+    "province": "daejeon",
+    "id": "sungsimdang-dcc",
+    "searchName": "성심당 DCC점",
+    "rank": 2,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": "성심당",
+    "matchStage": "정제",
+    "matchedKeyword": "성심당"
+  },
+  {
+    "province": "daejeon",
+    "id": "sungsimdang-lotte",
+    "searchName": "성심당 롯데백화점대전점",
+    "rank": 3,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": "성심당",
+    "matchStage": "정제",
+    "matchedKeyword": "성심당"
+  },
+  {
+    "province": "daejeon",
+    "id": "taepyeongso-gukbap-bongwan",
+    "searchName": "태평소국밥 본관",
+    "rank": 4,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daejeon",
+    "id": "omoonchang-sundae-gukbap",
+    "searchName": "오문창순대국밥",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daejeon",
+    "id": "changeok-tteokjip-daejeon",
+    "searchName": "창억떡집 대전본점",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daejeon",
+    "id": "wonjo-taepyeongso",
+    "searchName": "원조태평소국밥 태평본점",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daejeon",
+    "id": "besta-buffet",
+    "searchName": "베스타프리미엄뷔페",
+    "rank": 8,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daejeon",
+    "id": "osi-kalguksu",
+    "searchName": "오씨칼국수 본점",
+    "rank": 9,
+    "contentid": "2581759",
+    "contenttypeid": "39",
+    "matchedTitle": "오씨칼국수",
+    "matchStage": "정제",
+    "matchedKeyword": "오씨칼국수"
+  },
+  {
+    "province": "daejeon",
+    "id": "gomesquare-daejeon",
+    "searchName": "고메스퀘어 대전둔산직영점",
+    "rank": 10,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daegu",
+    "id": "gunwi-irouni-hanwoo",
+    "searchName": "군위이로운한우",
+    "rank": 1,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daegu",
+    "id": "anouk-apsan",
+    "searchName": "아눅앞산",
+    "rank": 2,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daegu",
+    "id": "lian-jungsik",
+    "searchName": "리안",
+    "rank": 3,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daegu",
+    "id": "pureun-hoesikdang",
+    "searchName": "푸른회식당",
+    "rank": 4,
+    "contentid": "2738031",
+    "contenttypeid": "39",
+    "matchedTitle": "푸른회식당",
+    "matchStage": "원본",
+    "matchedKeyword": "푸른회식당"
+  },
+  {
+    "province": "daegu",
+    "id": "barmis-doosan",
+    "searchName": "바르미스시앤그릴뷔페 두산점",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daegu",
+    "id": "yuksolchon-jjigae",
+    "searchName": "육솔촌돼지찌개",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daegu",
+    "id": "daedeok-sikdang",
+    "searchName": "대덕식당",
+    "rank": 7,
+    "contentid": "133894",
+    "contenttypeid": "39",
+    "matchedTitle": "대덕식당",
+    "matchStage": "원본",
+    "matchedKeyword": "대덕식당"
+  },
+  {
+    "province": "daegu",
+    "id": "opung-doova",
+    "searchName": "오풍드부아",
+    "rank": 8,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "daegu",
+    "id": "nakyeong-jjimgalbi",
+    "searchName": "낙영찜갈비 본점",
+    "rank": 9,
+    "contentid": "637751",
+    "contenttypeid": "39",
+    "matchedTitle": "낙영찜갈비",
+    "matchStage": "정제",
+    "matchedKeyword": "낙영찜갈비"
+  },
+  {
+    "province": "daegu",
+    "id": "seomin-galbi",
+    "searchName": "서민갈비",
+    "rank": 10,
+    "contentid": "2767414",
+    "contenttypeid": "39",
+    "matchedTitle": "서민갈비",
+    "matchStage": "원본",
+    "matchedKeyword": "서민갈비"
+  },
+  {
+    "province": "gwangju",
+    "id": "changeok-tteokjip",
+    "searchName": "창억떡집 중흥본점",
+    "rank": 1,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gwangju",
+    "id": "funny-cafe-and-lounge",
+    "searchName": "퍼니스카페앤라운지",
+    "rank": 2,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gwangju",
+    "id": "gomesquare-shinsegae",
+    "searchName": "고메스퀘어 광주신세계사거리점",
+    "rank": 3,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gwangju",
+    "id": "sansu-ssambap",
+    "searchName": "산수쌈밥",
+    "rank": 4,
+    "contentid": "2859166",
+    "contenttypeid": "39",
+    "matchedTitle": "산수쌈밥 동명점",
+    "matchStage": "원본",
+    "matchedKeyword": "산수쌈밥"
+  },
+  {
+    "province": "gwangju",
+    "id": "gomesquare-sangmu",
+    "searchName": "고메스퀘어 광주상무점",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gwangju",
+    "id": "maek-mundong",
+    "searchName": "맥문동",
+    "rank": 6,
+    "contentid": "2837876",
+    "contenttypeid": "39",
+    "matchedTitle": "맥문동",
+    "matchStage": "원본",
+    "matchedKeyword": "맥문동"
+  },
+  {
+    "province": "gwangju",
+    "id": "changeok-tteok-dongmyeong",
+    "searchName": "창억떡 동명점",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gwangju",
+    "id": "myeonghwa-yuksiksikdang",
+    "searchName": "명화식육식당",
+    "rank": 8,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gwangju",
+    "id": "yeongmi-oritang",
+    "searchName": "영미오리탕",
+    "rank": 9,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gwangju",
+    "id": "jinsikdang",
+    "searchName": "진식당 본점",
+    "rank": 10,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "busan",
+    "id": "ijaemo-pizza-busan",
+    "searchName": "이재모피자 본점",
+    "rank": 1,
+    "contentid": "2836450",
+    "contenttypeid": "39",
+    "matchedTitle": "이재모피자 본점",
+    "matchStage": "원본",
+    "matchedKeyword": "이재모피자 본점"
+  },
+  {
+    "province": "busan",
+    "id": "hapcheon-iryu-dwaejigukbap",
+    "searchName": "합천일류돼지국밥 본점",
+    "rank": 2,
+    "contentid": "2911217",
+    "contenttypeid": "39",
+    "matchedTitle": "합천일류돼지국밥",
+    "matchStage": "정제",
+    "matchedKeyword": "합천일류돼지국밥"
+  },
+  {
+    "province": "busan",
+    "id": "chilam-sagye",
+    "searchName": "칠암사계",
+    "rank": 3,
+    "contentid": "2822840",
+    "contenttypeid": "39",
+    "matchedTitle": "칠암사계",
+    "matchStage": "원본",
+    "matchedKeyword": "칠암사계"
+  },
+  {
+    "province": "busan",
+    "id": "momos-coffee-busan",
+    "searchName": "모모스커피 본점",
+    "rank": 4,
+    "contentid": "2832729",
+    "contenttypeid": "39",
+    "matchedTitle": "모모스커피 본점",
+    "matchStage": "원본",
+    "matchedKeyword": "모모스커피 본점"
+  },
+  {
+    "province": "busan",
+    "id": "ijaemo-pizza-seomyeon",
+    "searchName": "이재모피자 서면점",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": "이재모피자 본점",
+    "matchStage": "정제",
+    "matchedKeyword": "이재모피자"
+  },
+  {
+    "province": "busan",
+    "id": "tanti",
+    "searchName": "탄티",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "busan",
+    "id": "subyeon-choigodwaeji",
+    "searchName": "수변최고돼지국밥 민락본점",
+    "rank": 7,
+    "contentid": "2668102",
+    "contenttypeid": "39",
+    "matchedTitle": "수변최고돼지국밥 민락본점",
+    "matchStage": "원본",
+    "matchedKeyword": "수변최고돼지국밥 민락본점"
+  },
+  {
+    "province": "busan",
+    "id": "seven-island",
+    "searchName": "세븐아일랜드",
+    "rank": 8,
+    "contentid": "3373600",
+    "contenttypeid": "39",
+    "matchedTitle": "세븐아일랜드",
+    "matchStage": "원본",
+    "matchedKeyword": "세븐아일랜드"
+  },
+  {
+    "province": "busan",
+    "id": "momos-yeongdo",
+    "searchName": "모모스커피 영도로스터리&커피바",
+    "rank": 9,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": "모모스커피 본점",
+    "matchStage": "첫단어",
+    "matchedKeyword": "모모스커피"
+  },
+  {
+    "province": "busan",
+    "id": "piaq-cafe",
+    "searchName": "피아크카페앤베이커리",
+    "rank": 10,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "ulsan",
+    "id": "eonyang-giwajip-bulgogi",
+    "searchName": "언양기와집불고기",
+    "rank": 1,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "ulsan",
+    "id": "gritbi-seosaeng",
+    "searchName": "그릿비 서생점",
+    "rank": 2,
+    "contentid": "2811799",
+    "contenttypeid": "39",
+    "matchedTitle": "카페그릿비",
+    "matchStage": "정제",
+    "matchedKeyword": "그릿비"
+  },
+  {
+    "province": "ulsan",
+    "id": "hofpolaa",
+    "searchName": "호피폴라",
+    "rank": 3,
+    "contentid": "2794781",
+    "contenttypeid": "39",
+    "matchedTitle": "호피폴라",
+    "matchStage": "원본",
+    "matchedKeyword": "호피폴라"
+  },
+  {
+    "province": "ulsan",
+    "id": "tteokbau-hoetjip",
+    "searchName": "떡바우횟집",
+    "rank": 4,
+    "contentid": "2871459",
+    "contenttypeid": "39",
+    "matchedTitle": "떡바우횟집",
+    "matchStage": "원본",
+    "matchedKeyword": "떡바우횟집"
+  },
+  {
+    "province": "ulsan",
+    "id": "yulijeong",
+    "searchName": "율리정",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "ulsan",
+    "id": "hangawi",
+    "searchName": "한가위",
+    "rank": 6,
+    "contentid": "2572805",
+    "contenttypeid": "39",
+    "matchedTitle": "한가위",
+    "matchStage": "원본",
+    "matchedKeyword": "한가위"
+  },
+  {
+    "province": "ulsan",
+    "id": "cafe-meok",
+    "searchName": "카페먹",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "ulsan",
+    "id": "nine-hill",
+    "searchName": "나인힐",
+    "rank": 8,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "ulsan",
+    "id": "nongdo",
+    "searchName": "농도",
+    "rank": 9,
+    "contentid": "2808932",
+    "contenttypeid": "39",
+    "matchedTitle": "농도",
+    "matchStage": "원본",
+    "matchedKeyword": "농도"
+  },
+  {
+    "province": "ulsan",
+    "id": "bbangpaje",
+    "searchName": "빵파제",
+    "rank": 10,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "sejong",
+    "id": "sanjang-garden",
+    "searchName": "산장가든",
+    "rank": 1,
+    "contentid": "1018641",
+    "contenttypeid": "39",
+    "matchedTitle": "산장가든",
+    "matchStage": "원본",
+    "matchedKeyword": "산장가든"
+  },
+  {
+    "province": "sejong",
+    "id": "bugang-ok",
+    "searchName": "부강옥 세종부강본점",
+    "rank": 2,
+    "contentid": "2678886",
+    "contenttypeid": "39",
+    "matchedTitle": "부강옥",
+    "matchStage": "첫단어",
+    "matchedKeyword": "부강옥"
+  },
+  {
+    "province": "sejong",
+    "id": "jangwon-galkalguksu",
+    "searchName": "장원갑칼국수 세종본점",
+    "rank": 4,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "sejong",
+    "id": "pang-gwajajeom",
+    "searchName": "팡과자점",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "sejong",
+    "id": "cafe-noho",
+    "searchName": "카페노호",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "sejong",
+    "id": "gomesquare-sejong",
+    "searchName": "고메스퀘어 세종점",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "sejong",
+    "id": "songeunjeong-boribap",
+    "searchName": "송은정보리밥 본점",
+    "rank": 9,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "sejong",
+    "id": "chungnam-sundaegukbap",
+    "searchName": "충남순대국밥",
+    "rank": 10,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeonggi",
+    "id": "jangeo-uikkum",
+    "searchName": "장어의꿈",
+    "rank": 1,
+    "contentid": "2766583",
+    "contenttypeid": "39",
+    "matchedTitle": "장어의꿈",
+    "matchStage": "원본",
+    "matchedKeyword": "장어의꿈"
+  },
+  {
+    "province": "gyeonggi",
+    "id": "ilsan-kalguksu",
+    "searchName": "일산칼국수 본점",
+    "rank": 2,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeonggi",
+    "id": "sanyiro-gan-godeungeo",
+    "searchName": "산으로간고등어",
+    "rank": 3,
+    "contentid": "2756816",
+    "contenttypeid": "39",
+    "matchedTitle": "산으로간고등어",
+    "matchStage": "원본",
+    "matchedKeyword": "산으로간고등어"
+  },
+  {
+    "province": "gyeonggi",
+    "id": "haengju-sanseong-gukjip",
+    "searchName": "행주산성원조국수집",
+    "rank": 4,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeonggi",
+    "id": "gangsulae-neulbom",
+    "searchName": "강강술래 늘봄농원점",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeonggi",
+    "id": "forest-outings-yongin",
+    "searchName": "포레스트아웃팅스 용인점",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeonggi",
+    "id": "gabojeong-galbi",
+    "searchName": "가보정갈비 1관",
+    "rank": 7,
+    "contentid": "602895",
+    "contenttypeid": "39",
+    "matchedTitle": "가보정갈비",
+    "matchStage": "정제",
+    "matchedKeyword": "가보정갈비"
+  },
+  {
+    "province": "gyeonggi",
+    "id": "cheongdam-chueojeong",
+    "searchName": "청담추어정 본점",
+    "rank": 8,
+    "contentid": "2753888",
+    "contenttypeid": "39",
+    "matchedTitle": "청담추어정",
+    "matchStage": "정제",
+    "matchedKeyword": "청담추어정"
+  },
+  {
+    "province": "gyeonggi",
+    "id": "yuchi-hoegwan",
+    "searchName": "유치회관 본점",
+    "rank": 9,
+    "contentid": "2873600",
+    "contenttypeid": "39",
+    "matchedTitle": "북문 유치회관",
+    "matchStage": "정제",
+    "matchedKeyword": "유치회관"
+  },
+  {
+    "province": "gyeonggi",
+    "id": "songchu-gamagol",
+    "searchName": "송추가마골 본관",
+    "rank": 10,
+    "contentid": "2789360",
+    "contenttypeid": "39",
+    "matchedTitle": "송추가마골 본관",
+    "matchStage": "원본",
+    "matchedKeyword": "송추가마골 본관"
+  },
+  {
+    "province": "gangwon",
+    "id": "donghwa-garden",
+    "searchName": "동화가든 본점",
+    "rank": 1,
+    "contentid": "623223",
+    "contenttypeid": "39",
+    "matchedTitle": "강릉짬뽕순두부 동화가든 본점",
+    "matchStage": "원본",
+    "matchedKeyword": "동화가든 본점"
+  },
+  {
+    "province": "gangwon",
+    "id": "toetmaru-dakgalbi",
+    "searchName": "툇마루집닭갈비 본점",
+    "rank": 2,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gangwon",
+    "id": "cheongcho-mulhoe-sokcho",
+    "searchName": "청초수물회 속초본점",
+    "rank": 3,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gangwon",
+    "id": "bada-jeongwon",
+    "searchName": "바다정원",
+    "rank": 4,
+    "contentid": "2809044",
+    "contenttypeid": "39",
+    "matchedTitle": "바다정원",
+    "matchStage": "원본",
+    "matchedKeyword": "바다정원"
+  },
+  {
+    "province": "gangwon",
+    "id": "gallery-bobs",
+    "searchName": "갤러리밥스",
+    "rank": 5,
+    "contentid": "2753134",
+    "contenttypeid": "39",
+    "matchedTitle": "갤러리밥스",
+    "matchStage": "원본",
+    "matchedKeyword": "갤러리밥스"
+  },
+  {
+    "province": "gangwon",
+    "id": "toetmaru-namchuncheon",
+    "searchName": "툇마루집닭갈비 남춘천점",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gangwon",
+    "id": "manseok-dakgangjeong",
+    "searchName": "만석닭강정 본점",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gangwon",
+    "id": "choilsoon-jjamppong",
+    "searchName": "최일순짬뽕순두부",
+    "rank": 8,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gangwon",
+    "id": "yangji-mal-hwaroguyi",
+    "searchName": "양지말화로구이",
+    "rank": 9,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gangwon",
+    "id": "cafe-gamjabat",
+    "searchName": "카페감자밭",
+    "rank": 10,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungbuk",
+    "id": "cafe-san",
+    "searchName": "카페산",
+    "rank": 1,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungbuk",
+    "id": "memilmadang",
+    "searchName": "메밀마당 충주중앙탑본점",
+    "rank": 2,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungbuk",
+    "id": "poyd-carrot",
+    "searchName": "포이드캐럿",
+    "rank": 3,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungbuk",
+    "id": "uri-bakery",
+    "searchName": "우리베이커리",
+    "rank": 4,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungbuk",
+    "id": "deomsil-bunsik",
+    "searchName": "덤실분식",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungbuk",
+    "id": "bungyong-bulgogi",
+    "searchName": "붕용불고기",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungbuk",
+    "id": "lazy-crocodile",
+    "searchName": "게으른악어",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungbuk",
+    "id": "majunganeun-gil",
+    "searchName": "마중가는길",
+    "rank": 8,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungnam",
+    "id": "tujourou-bbangdolgama",
+    "searchName": "뚜쥬루 빵돌가마점",
+    "rank": 1,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungnam",
+    "id": "road-1950",
+    "searchName": "로드1950",
+    "rank": 2,
+    "contentid": "2834614",
+    "contenttypeid": "39",
+    "matchedTitle": "로드1950카페",
+    "matchStage": "원본",
+    "matchedKeyword": "로드1950"
+  },
+  {
+    "province": "chungnam",
+    "id": "urungi-baksa",
+    "searchName": "우렁이박사",
+    "rank": 3,
+    "contentid": "801887",
+    "contenttypeid": "39",
+    "matchedTitle": "우렁이박사",
+    "matchStage": "원본",
+    "matchedKeyword": "우렁이박사"
+  },
+  {
+    "province": "chungnam",
+    "id": "mokhwa-banjeom",
+    "searchName": "목화반점",
+    "rank": 4,
+    "contentid": "800487",
+    "contenttypeid": "39",
+    "matchedTitle": "목화반점(아산)",
+    "matchStage": "원본",
+    "matchedKeyword": "목화반점"
+  },
+  {
+    "province": "chungnam",
+    "id": "jangwon-makguksu",
+    "searchName": "장원막국수",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungnam",
+    "id": "landmark-195",
+    "searchName": "랜드마크195",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "chungnam",
+    "id": "pitang-gimtang",
+    "searchName": "피탕김탕",
+    "rank": 7,
+    "contentid": "2736658",
+    "contenttypeid": "39",
+    "matchedTitle": "피탕김탕",
+    "matchStage": "원본",
+    "matchedKeyword": "피탕김탕"
+  },
+  {
+    "province": "chungnam",
+    "id": "haereum",
+    "searchName": "해어름",
+    "rank": 8,
+    "contentid": "2832869",
+    "contenttypeid": "39",
+    "matchedTitle": "해어름",
+    "matchStage": "원본",
+    "matchedKeyword": "해어름"
+  },
+  {
+    "province": "chungnam",
+    "id": "chungnamjip-sundae",
+    "searchName": "충남집순대",
+    "rank": 9,
+    "contentid": "1014021",
+    "contenttypeid": "39",
+    "matchedTitle": "충남집순대",
+    "matchStage": "원본",
+    "matchedKeyword": "충남집순대"
+  },
+  {
+    "province": "chungnam",
+    "id": "halmeoni-hakhwa-hodugwaja",
+    "searchName": "할머니학화호두과자 본점",
+    "rank": 10,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongbuk",
+    "id": "hwangnam-bbang",
+    "searchName": "황남빵",
+    "rank": 1,
+    "contentid": "2765063",
+    "contenttypeid": "39",
+    "matchedTitle": "황남빵",
+    "matchStage": "원본",
+    "matchedKeyword": "황남빵"
+  },
+  {
+    "province": "gyeongbuk",
+    "id": "maetdol-sundubu",
+    "searchName": "맷돌순두부",
+    "rank": 2,
+    "contentid": "2838924",
+    "contenttypeid": "39",
+    "matchedTitle": "기와골맷돌순두부",
+    "matchStage": "원본",
+    "matchedKeyword": "맷돌순두부"
+  },
+  {
+    "province": "gyeongbuk",
+    "id": "breath-coffee-works",
+    "searchName": "브레스커피웍스",
+    "rank": 3,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongbuk",
+    "id": "aurora",
+    "searchName": "아우로라",
+    "rank": 4,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongbuk",
+    "id": "hwanyeo-hoetjip",
+    "searchName": "환여횟집",
+    "rank": 5,
+    "contentid": "403868",
+    "contenttypeid": "39",
+    "matchedTitle": "환여횟집",
+    "matchStage": "원본",
+    "matchedKeyword": "환여횟집"
+  },
+  {
+    "province": "gyeongbuk",
+    "id": "gyori-gimbap",
+    "searchName": "교리김밥 경주본점",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongbuk",
+    "id": "nokyeongbo-charapa",
+    "searchName": "노경보차라파",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongbuk",
+    "id": "terarosa-gyeongju",
+    "searchName": "테라로사 경주점",
+    "rank": 8,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongbuk",
+    "id": "hanjae-mineri",
+    "searchName": "한재참미나리식육식당",
+    "rank": 9,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongbuk",
+    "id": "verdant",
+    "searchName": "버던트",
+    "rank": 10,
+    "contentid": "2832790",
+    "contenttypeid": "39",
+    "matchedTitle": "버던트",
+    "matchStage": "원본",
+    "matchedKeyword": "버던트"
+  },
+  {
+    "province": "gyeongnam",
+    "id": "twosomeplace-changwon",
+    "searchName": "투썸플레이스 창원귀산해변점",
+    "rank": 1,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongnam",
+    "id": "dongbuhoe-center",
+    "searchName": "동부회센터",
+    "rank": 2,
+    "contentid": "2756735",
+    "contenttypeid": "39",
+    "matchedTitle": "동부회센터",
+    "matchStage": "원본",
+    "matchedKeyword": "동부회센터"
+  },
+  {
+    "province": "gyeongnam",
+    "id": "daedong-halmae-guksu",
+    "searchName": "대동할매국수",
+    "rank": 3,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongnam",
+    "id": "hayeon-ok",
+    "searchName": "하연옥 본점",
+    "rank": 4,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongnam",
+    "id": "haju-ok",
+    "searchName": "하주옥",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongnam",
+    "id": "starbucks-tongdosa",
+    "searchName": "스타벅스 양산통도사점",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongnam",
+    "id": "mokhwa-hugye-sikdang",
+    "searchName": "목화휴게소식당",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "gyeongnam",
+    "id": "green-house-jujam",
+    "searchName": "그린하우스 주남점",
+    "rank": 8,
+    "contentid": "2846161",
+    "contenttypeid": "39",
+    "matchedTitle": "그린하우스",
+    "matchStage": "정제",
+    "matchedKeyword": "그린하우스"
+  },
+  {
+    "province": "gyeongnam",
+    "id": "soto",
+    "searchName": "소토",
+    "rank": 9,
+    "contentid": "2862429",
+    "contenttypeid": "39",
+    "matchedTitle": "소토",
+    "matchStage": "원본",
+    "matchedKeyword": "소토"
+  },
+  {
+    "province": "gyeongnam",
+    "id": "starbucks-changwonmachang",
+    "searchName": "스타벅스 창원마창대교점",
+    "rank": 10,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeonbuk",
+    "id": "lee-seongdang-main",
+    "searchName": "이성당 본점",
+    "rank": 1,
+    "contentid": "2010199",
+    "contenttypeid": "39",
+    "matchedTitle": "이성당",
+    "matchStage": "정제",
+    "matchedKeyword": "이성당"
+  },
+  {
+    "province": "jeonbuk",
+    "id": "hyundae-ok-jeonju",
+    "searchName": "현대옥 전주본점",
+    "rank": 2,
+    "contentid": "2778475",
+    "contenttypeid": "39",
+    "matchedTitle": "현대옥 본점",
+    "matchStage": "첫단어",
+    "matchedKeyword": "현대옥"
+  },
+  {
+    "province": "jeonbuk",
+    "id": "hwasim-sundubu",
+    "searchName": "화심순두부 본점",
+    "rank": 3,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeonbuk",
+    "id": "hanil-ok",
+    "searchName": "한일옥",
+    "rank": 4,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeonbuk",
+    "id": "jirinseong",
+    "searchName": "지린성",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeonbuk",
+    "id": "sulji-bakery",
+    "searchName": "슬지제빵소",
+    "rank": 6,
+    "contentid": "2840161",
+    "contenttypeid": "39",
+    "matchedTitle": "슬지제빵소",
+    "matchStage": "원본",
+    "matchedKeyword": "슬지제빵소"
+  },
+  {
+    "province": "jeonbuk",
+    "id": "veteran",
+    "searchName": "베테랑",
+    "rank": 7,
+    "contentid": "2759615",
+    "contenttypeid": "39",
+    "matchedTitle": "베테랑칼국수",
+    "matchStage": "원본",
+    "matchedKeyword": "베테랑"
+  },
+  {
+    "province": "jeonbuk",
+    "id": "binhae-won",
+    "searchName": "빈해원",
+    "rank": 8,
+    "contentid": "854679",
+    "contenttypeid": "39",
+    "matchedTitle": "빈해원",
+    "matchStage": "원본",
+    "matchedKeyword": "빈해원"
+  },
+  {
+    "province": "jeonbuk",
+    "id": "seonam-manchan",
+    "searchName": "서남만찬",
+    "rank": 9,
+    "contentid": "2839167",
+    "contenttypeid": "39",
+    "matchedTitle": "서남만찬",
+    "matchStage": "원본",
+    "matchedKeyword": "서남만찬"
+  },
+  {
+    "province": "jeonbuk",
+    "id": "bokseong-ru",
+    "searchName": "복성루",
+    "rank": 10,
+    "contentid": "1827859",
+    "contenttypeid": "39",
+    "matchedTitle": "복성루",
+    "matchStage": "원본",
+    "matchedKeyword": "복성루"
+  },
+  {
+    "province": "jeonnam",
+    "id": "naju-gomtang-hayanjip",
+    "searchName": "나주곰탕하얀집",
+    "rank": 1,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeonnam",
+    "id": "ssanggyo-sutbul-galbi",
+    "searchName": "쌍교숯불갈비 담양본점",
+    "rank": 2,
+    "contentid": "2841818",
+    "contenttypeid": "39",
+    "matchedTitle": "쌍교숯불갈비 담양 본점",
+    "matchStage": "정제",
+    "matchedKeyword": "쌍교숯불갈비 담양"
+  },
+  {
+    "province": "jeonnam",
+    "id": "mokwol-bbangjip",
+    "searchName": "목월빵집",
+    "rank": 3,
+    "contentid": "2605429",
+    "contenttypeid": "39",
+    "matchedTitle": "목월빵집.cafe",
+    "matchStage": "원본",
+    "matchedKeyword": "목월빵집"
+  },
+  {
+    "province": "jeonnam",
+    "id": "samdae-gwangyang-bulgogi",
+    "searchName": "삼대광양불고기집",
+    "rank": 4,
+    "contentid": "642995",
+    "contenttypeid": "39",
+    "matchedTitle": "삼대광양불고기집",
+    "matchStage": "원본",
+    "matchedKeyword": "삼대광양불고기집"
+  },
+  {
+    "province": "jeonnam",
+    "id": "deulkkot-sup",
+    "searchName": "들꽃숲",
+    "rank": 5,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeonnam",
+    "id": "cafe-guman",
+    "searchName": "카페구만",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeonnam",
+    "id": "ddokbang-guksu",
+    "searchName": "똑방국수",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeonnam",
+    "id": "baviere-damyang",
+    "searchName": "베비에르 담양점",
+    "rank": 8,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeonnam",
+    "id": "kkotdolgejang-1",
+    "searchName": "꽃돌게장1번가",
+    "rank": 9,
+    "contentid": "2858408",
+    "contenttypeid": "39",
+    "matchedTitle": "꽃돌게장1번가",
+    "matchStage": "원본",
+    "matchedKeyword": "꽃돌게장1번가"
+  },
+  {
+    "province": "jeonnam",
+    "id": "naju-gomtang-noan",
+    "searchName": "나주곰탕노안집",
+    "rank": 10,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeju",
+    "id": "ujin-haejangguk",
+    "searchName": "우진해장국 본관",
+    "rank": 1,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeju",
+    "id": "sosaek-chaebon",
+    "searchName": "소색채본",
+    "rank": 2,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeju",
+    "id": "yeondon",
+    "searchName": "연돈",
+    "rank": 3,
+    "contentid": "2829949",
+    "contenttypeid": "39",
+    "matchedTitle": "연돈",
+    "matchStage": "원본",
+    "matchedKeyword": "연돈"
+  },
+  {
+    "province": "jeju",
+    "id": "jamae-guksu",
+    "searchName": "자매국수 본점",
+    "rank": 4,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeju",
+    "id": "oneunjeong-gimbap",
+    "searchName": "오는정김밥",
+    "rank": 5,
+    "contentid": "2831635",
+    "contenttypeid": "39",
+    "matchedTitle": "오는정김밥",
+    "matchStage": "원본",
+    "matchedKeyword": "오는정김밥"
+  },
+  {
+    "province": "jeju",
+    "id": "ijaemo-pizza-jeju",
+    "searchName": "이재모피자 제주점",
+    "rank": 6,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeju",
+    "id": "jejudang-bakery",
+    "searchName": "제주당베이커리카페",
+    "rank": 7,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeju",
+    "id": "haejigae",
+    "searchName": "해지개",
+    "rank": 8,
+    "contentid": null,
+    "contenttypeid": null,
+    "matchedTitle": null
+  },
+  {
+    "province": "jeju",
+    "id": "cafe-lucia",
+    "searchName": "카페루시아 본점",
+    "rank": 9,
+    "contentid": "2836825",
+    "contenttypeid": "39",
+    "matchedTitle": "카페루시아 본점",
+    "matchStage": "원본",
+    "matchedKeyword": "카페루시아 본점"
+  }
+]

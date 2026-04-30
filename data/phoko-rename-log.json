@@ -1,0 +1,26 @@
+{
+  "renamed": [
+    {
+      "from": "Type1_삼겹살_토라이 리퍼블릭_OiCPWU.jpg",
+      "to": "seoul-samgyeopsal.jpg",
+      "foodName": "삼겹살",
+      "author": "토라이 리퍼블릭",
+      "matchType": "exact"
+    },
+    {
+      "from": "Type1_치킨_토라이 리퍼블릭_ScvEBZ.jpg",
+      "to": "seoul-chimaek.jpg",
+      "foodName": "치킨",
+      "author": "토라이 리퍼블릭",
+      "matchType": "alias"
+    },
+    {
+      "from": "Type1_한정식_토라이 리퍼블릭_IAcjlg.jpg",
+      "to": "jeonju-hanjeongsik.jpg",
+      "foodName": "한정식",
+      "author": "토라이 리퍼블릭",
+      "matchType": "hansik_exact"
+    }
+  ],
+  "unmatched": []
+}

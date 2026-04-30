@@ -106,19 +106,19 @@
     "name_ko": "피순대와 순대국밥",
     "match_type": "fuzzy_contain",
     "hansik": {
-      "name_ko": "밥",
-      "name_en": "Steamed Rice",
-      "name_ja": "ご飯",
-      "name_zh_cn": "米饭",
-      "name_zh_tw": "米飯",
-      "desc_ko": "멥쌀을 씻어 솥에 안치고 물을 알맞게 붓고 끓여 익힌 것으로 한국인의 주식이다. 부드럽고 소화가 잘되며 여러 반찬과 두루 어울린다.",
-      "desc_en": "Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal.",
-      "desc_ja": "米をといで水と一緒に釜で炊いたもので、韓国人の主食となる。柔らかい口当たりで消化によく、あらゆるおかずに合う。",
-      "desc_zh_cn": "将大米洗净放入锅中加入适量水煮制而成，是韩国人的主食。米饭软嫩易消化，适宜与各种配菜佐餐。",
-      "desc_zh_tw": "米飯是不混合雜糧, 只把粳米放入鍋裡，加水煮成的飯。",
+      "name_ko": "순대국밥",
+      "name_en": "Blood Sausage and Rice Soup",
+      "name_ja": "スンデクッパ",
+      "name_zh_cn": "血肠汤饭",
+      "name_zh_tw": "血腸湯飯",
+      "desc_ko": "돼지 곱창에 각종 채소와 양념을 넣고 쪄서 만든 순대를 넣어 끓인 국밥이다. 국물을 우려낼 때 누린내를 없애기 위해 들깨와 생강, 한약재 등을 넣기도 한다.",
+      "desc_en": "This dish consists of sundae, which is steamed pig intestines stuffed with seasoned, minced vegetables, and rice with soup. Perilla seeds, ginger, and a variety of medicinal herbs are boiled with the sundae to remove any unpleasant meat smell.",
+      "desc_ja": "豚の腸詰めクッパは、豚モツに色々な野菜と調味料を入れて蒸した豚の腸詰めを入れて煮込んだ料理。だしを取るとき、臭みをなくすためにエゴマや生姜、漢方薬材などを入れることもある。",
+      "desc_zh_cn": "用血肠熬制的汤饭。血肠是猪大肠里灌入各种蔬菜和调料后放进蒸笼里蒸煮而成，熬汤时放入适量的白苏子、生姜和中药材等以去除腥味。",
+      "desc_zh_tw": "用血腸熬製的湯飯。血腸是豬大腸裡灌入各種蔬菜和調料後放進蒸籠裡蒸煮而成的，把血腸放進牛骨湯水後煮出湯飯。飯可先泡湯吃，也可以另外配湯吃。",
       "category": "밥 [Bap]"
     },
-    "ai_prompt": "Professional food photography of Steamed Rice (Korean dish: 피순대와 순대국밥). Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "ai_prompt": "Professional food photography of Blood Sausage and Rice Soup (Korean dish: 피순대와 순대국밥). This dish consists of sundae, which is steamed pig intestines stuffed with seasoned, minced vegetables, and rice with soup. Perilla seeds, ginger, and a variety of medicinal herbs are boiled with the sundae to remove any unpleasant meat smell. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "jeonju-omogaritang",
@@ -341,21 +341,9 @@
   {
     "id": "jeonju-gondrebap",
     "name_ko": "곤드레밥",
-    "match_type": "fuzzy_contain",
-    "hansik": {
-      "name_ko": "밥",
-      "name_en": "Steamed Rice",
-      "name_ja": "ご飯",
-      "name_zh_cn": "米饭",
-      "name_zh_tw": "米飯",
-      "desc_ko": "멥쌀을 씻어 솥에 안치고 물을 알맞게 붓고 끓여 익힌 것으로 한국인의 주식이다. 부드럽고 소화가 잘되며 여러 반찬과 두루 어울린다.",
-      "desc_en": "Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal.",
-      "desc_ja": "米をといで水と一緒に釜で炊いたもので、韓国人の主食となる。柔らかい口当たりで消化によく、あらゆるおかずに合う。",
-      "desc_zh_cn": "将大米洗净放入锅中加入适量水煮制而成，是韩国人的主食。米饭软嫩易消化，适宜与各种配菜佐餐。",
-      "desc_zh_tw": "米飯是不混合雜糧, 只把粳米放入鍋裡，加水煮成的飯。",
-      "category": "밥 [Bap]"
-    },
-    "ai_prompt": "Professional food photography of Steamed Rice (Korean dish: 곤드레밥). Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "match_type": "unmatched",
+    "hansik": null,
+    "ai_prompt": "Professional food photography of 곤드레밥, a Korean traditional dish, top-down view on ceramic plate or bowl, natural daylight, appetizing presentation, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "jeonju-haemul-pajeon",
@@ -678,21 +666,9 @@
   {
     "id": "seoul-mayak-gimbap",
     "name_ko": "광장시장 마약김밥",
-    "match_type": "fuzzy_contain",
-    "hansik": {
-      "name_ko": "김밥",
-      "name_en": "Gimbap",
-      "name_ja": "キンパプ",
-      "name_zh_cn": "紫菜卷饭",
-      "name_zh_tw": "紫菜捲飯",
-      "desc_ko": "흰밥을 소금과 참기름으로 밑간한 뒤 살짝 구운 김 위에 얇게 펼쳐 놓고 시금치, 당근, 단무지, 고기볶음 등을 넣어 둘둘 말아 알맞은 크기로 썰어 먹는 음식이다.",
-      "desc_en": "Rice seasoned with salt and sesame oil and rolled up in a sheet of roasted gim (dried laver) with spinach, carrots, and pickled white radish. The long roll is sliced and served in bite-sized pieces .",
-      "desc_ja": "塩とごま油で下味をつけたご飯を、さっとあぶった海苔の上に薄くのばし、ほうれん草、にんじん、たくあんなどをのせて巻いたものを一口大に切って食べる。",
-      "desc_zh_cn": "米饭用食盐和麻油调味后薄薄铺 在烤熟的海苔上，将菠菜、胡萝卜条、黄萝 卜条、炒肉丝等放中间后卷成圆筒状，切成 适当大小即可。",
-      "desc_zh_tw": "白米飯用食鹽和麻油調味後薄薄地鋪在烤熟的海苔上，放上多種蔬菜和肉類等後卷成圓筒狀，並切成適當大小後食用。做法簡單，適合當郊遊、旅行時的餐盒。",
-      "category": "밥 [Bap]"
-    },
-    "ai_prompt": "Professional food photography of Gimbap (Korean dish: 광장시장 마약김밥). Rice seasoned with salt and sesame oil and rolled up in a sheet of roasted gim (dried laver) with spinach, carrots, and pickled white radish. The long roll is sliced and served in bite-sized pieces . Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "match_type": "unmatched",
+    "hansik": null,
+    "ai_prompt": "Professional food photography of 광장시장 마약김밥, a Korean traditional dish, top-down view on ceramic plate or bowl, natural daylight, appetizing presentation, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "seoul-gopchang",
@@ -1083,7 +1059,7 @@
   {
     "id": "tongyeong-saengseon-hoe-jeongsik",
     "name_ko": "통영 생선회 정식",
-    "match_type": "fuzzy_contain",
+    "match_type": "fuzzy_suffix",
     "hansik": {
       "name_ko": "생선회",
       "name_en": "Sliced Raw Fish",
@@ -1161,7 +1137,7 @@
   {
     "id": "tongyeong-myeolchi-hoemuchim",
     "name_ko": "멸치회무침",
-    "match_type": "fuzzy_contain",
+    "match_type": "fuzzy_keyword",
     "hansik": {
       "name_ko": "멸치회",
       "name_en": "Sliced Raw Anchovy",
@@ -2369,21 +2345,21 @@
   {
     "id": "cheonan-charcoal-dakgalbi",
     "name_ko": "천안 숯불 닭갈비",
-    "match_type": "fuzzy_contain",
+    "match_type": "fuzzy_prefix",
     "hansik": {
-      "name_ko": "닭갈비",
-      "name_en": "Spicy Stir-fried Chicken",
-      "name_ja": "タッカルビ",
-      "name_zh_cn": "铁板鸡",
-      "name_zh_tw": "鐵板雞",
-      "desc_ko": "닭고기를 고추장 양념장에 재웠다가 뜨겁게 달군 팬에 기름을 두르고 양배추, 고구마, 당근, 떡과 함께 볶아 먹는 강원도 춘천의 향토 음식이다.",
-      "desc_en": "Chicken pieces marinated in a gochujang, and stir-fried in a flat grill pan with cabbage, sweet potato, carrots, and tteok (rice cakes). A local dish of Chuncheon city in Gangwon Province.",
-      "desc_ja": "鶏肉をコチュジャンベースの薬味に漬けこみ、キャベツやさつまいも、にんじん、餅などと一緒に油をひいた鉄板で炒める。江原道春川（カンウォンド・チュンチョン）の郷土料理。",
-      "desc_zh_cn": "先将鸡肉切成块状，用辣椒酱腌制一 下，煎锅烧热下油后，将腌制好的鸡肉连同圆 白菜、红薯、胡萝卜、年糕等一起翻炒至熟即 可，是江原道春川的乡土饮食。",
-      "desc_zh_tw": "先將雞肉切成塊狀，用辣椒醬調味料醃製，在燒熱的鍋裡倒入油後與高麗菜、地瓜等蔬菜一起拌炒食用。",
-      "category": "볶음 [Bokkeum]"
+      "name_ko": "숯불닭갈비",
+      "name_en": "Spicy Charcoal-grilled Chicken",
+      "name_ja": "炭火タッカルビ",
+      "name_zh_cn": "炭烤鸡块",
+      "name_zh_tw": "炭烤雞塊",
+      "desc_ko": "닭고기를 고추장 양념장에 재웠다가 숯불에 구워먹는 음식으로, 강원도 춘천의 향토음식이다.",
+      "desc_en": "Chicken marinated in a gochujang (red chili paste) sauce and cooked on a charcoal grill. This dish is a local specialty of Chuncheon, Gangwon Province.",
+      "desc_ja": "コチュジャンベースのたれに漬けておいた鶏肉を炭火で焼いて食べる。江原道春川の郷土料理。",
+      "desc_zh_cn": "鸡肉用辣椒酱调制的调味酱腌一会儿，入味后放在炭火上烤熟即可，是江原道春川的地方特色美食。",
+      "desc_zh_tw": "雞肉用辣椒醬調味料醃製好，然後用炭火烤製。這道菜肴是江原道春川的代表性地方美食。",
+      "category": "구이 [Gui]"
     },
-    "ai_prompt": "Professional food photography of Spicy Stir-fried Chicken (Korean dish: 천안 숯불 닭갈비). Chicken pieces marinated in a gochujang, and stir-fried in a flat grill pan with cabbage, sweet potato, carrots, and tteok (rice cakes). A local dish of Chuncheon city in Gangwon Province. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "ai_prompt": "Professional food photography of Spicy Charcoal-grilled Chicken (Korean dish: 천안 숯불 닭갈비). Chicken marinated in a gochujang (red chili paste) sauce and cooked on a charcoal grill. This dish is a local specialty of Chuncheon, Gangwon Province. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "cheonan-spicy-catfish",
@@ -2407,21 +2383,21 @@
   {
     "id": "cheonan-hanwoo-yukhoe",
     "name_ko": "한우 육회비빔밥",
-    "match_type": "fuzzy_contain",
+    "match_type": "fuzzy_keyword",
     "hansik": {
-      "name_ko": "밥",
-      "name_en": "Steamed Rice",
-      "name_ja": "ご飯",
-      "name_zh_cn": "米饭",
-      "name_zh_tw": "米飯",
-      "desc_ko": "멥쌀을 씻어 솥에 안치고 물을 알맞게 붓고 끓여 익힌 것으로 한국인의 주식이다. 부드럽고 소화가 잘되며 여러 반찬과 두루 어울린다.",
-      "desc_en": "Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal.",
-      "desc_ja": "米をといで水と一緒に釜で炊いたもので、韓国人の主食となる。柔らかい口当たりで消化によく、あらゆるおかずに合う。",
-      "desc_zh_cn": "将大米洗净放入锅中加入适量水煮制而成，是韩国人的主食。米饭软嫩易消化，适宜与各种配菜佐餐。",
-      "desc_zh_tw": "米飯是不混合雜糧, 只把粳米放入鍋裡，加水煮成的飯。",
+      "name_ko": "비빔밥",
+      "name_en": "Bibimbap",
+      "name_ja": "ビビンバ",
+      "name_zh_cn": "拌饭",
+      "name_zh_tw": "拌飯",
+      "desc_ko": "쌀밥에 고기볶음, 갖은 나물과 고명을 올리고 고추장에 비벼 먹는 음식이다. 참기름을 첨가하면 더욱 맛있다.",
+      "desc_en": "Rice topped with sautéed beef and a variety of colorful vegetables that is mixed at the table with spicy gochujang. A hint of sesame oil helps bring out the flavor.",
+      "desc_ja": "ご飯に炒めた肉や数種類のナムルをのせ、コミョンを飾りつけたものにコチュジャンを混ぜて食べる。ごま油を加えるといっそう風味が増す。",
+      "desc_zh_cn": "米饭中加入炒肉丝、各种小菜和，用辣椒酱或酱油搅拌即可。搅拌时适当加入麻油会更加美味。",
+      "desc_zh_tw": "在米飯中加入各種素菜和炒肉，放入辣椒醬再將所有食材均勻攪拌後食用。用醬油調料拌著食用也十分美味。",
       "category": "밥 [Bap]"
     },
-    "ai_prompt": "Professional food photography of Steamed Rice (Korean dish: 한우 육회비빔밥). Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "ai_prompt": "Professional food photography of Bibimbap (Korean dish: 한우 육회비빔밥). Rice topped with sautéed beef and a variety of colorful vegetables that is mixed at the table with spicy gochujang. A hint of sesame oil helps bring out the flavor. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "cheonan-fruit-mochi",
@@ -2433,21 +2409,21 @@
   {
     "id": "cheonan-lotus-rice",
     "name_ko": "연잎밥 정식",
-    "match_type": "fuzzy_contain",
+    "match_type": "fuzzy_suffix",
     "hansik": {
-      "name_ko": "밥",
-      "name_en": "Steamed Rice",
-      "name_ja": "ご飯",
-      "name_zh_cn": "米饭",
-      "name_zh_tw": "米飯",
-      "desc_ko": "멥쌀을 씻어 솥에 안치고 물을 알맞게 붓고 끓여 익힌 것으로 한국인의 주식이다. 부드럽고 소화가 잘되며 여러 반찬과 두루 어울린다.",
-      "desc_en": "Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal.",
-      "desc_ja": "米をといで水と一緒に釜で炊いたもので、韓国人の主食となる。柔らかい口当たりで消化によく、あらゆるおかずに合う。",
-      "desc_zh_cn": "将大米洗净放入锅中加入适量水煮制而成，是韩国人的主食。米饭软嫩易消化，适宜与各种配菜佐餐。",
-      "desc_zh_tw": "米飯是不混合雜糧, 只把粳米放入鍋裡，加水煮成的飯。",
+      "name_ko": "연잎밥",
+      "name_en": "Lotus Leaf Rice",
+      "name_ja": "蓮の葉ご飯 ",
+      "name_zh_cn": "荷叶饭",
+      "name_zh_tw": "荷葉飯",
+      "desc_ko": "연잎에 찹쌀과 대추, 밤 등의 곡식을 넣고 싼 것을 찜통에서 쪄낸 음식이다. 예전에는 사찰에서 스님들이 먹던 음식이었으나 요즘엔 웰빙 음식으로 각광받고 있다.",
+      "desc_en": "Glutinous rice, dates, and chestnuts wrapped in a lotus leaf and steamed in a steamer. In the past, this dish was made and consumed by Buddhist monks, but it is now popular among health-conscious people.",
+      "desc_ja": "蓮の葉にもち米となつめ、栗などの穀物を入れて巻き、蒸し器で蒸した料理。以前はお寺などで食べられていた僧侶の料理とされていたが、最近は健康料理として脚光を浴びている。",
+      "desc_zh_cn": "将糯米、大枣、栗子等谷物用荷叶包住，放入蒸笼蒸熟即可。荷叶饭过去是寺庙里的僧人常吃的斋饭，如今成为备受青睐的健康美食。",
+      "desc_zh_tw": "用蓮葉包住糯米、大棗和栗子等食材，用蒸籠蒸熟。蓮葉飯過去是寺廟裡的僧人吃的齋飯，如今作為健康美食備受青睞。",
       "category": "밥 [Bap]"
     },
-    "ai_prompt": "Professional food photography of Steamed Rice (Korean dish: 연잎밥 정식). Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "ai_prompt": "Professional food photography of Lotus Leaf Rice (Korean dish: 연잎밥 정식). Glutinous rice, dates, and chestnuts wrapped in a lotus leaf and steamed in a steamer. In the past, this dish was made and consumed by Buddhist monks, but it is now popular among health-conscious people. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "cheonan-mushroom-stew",
@@ -2601,19 +2577,19 @@
     "name_ko": "천안 우렁된장",
     "match_type": "fuzzy_contain",
     "hansik": {
-      "name_ko": "된장",
-      "name_en": "Soybean Paste",
-      "name_ja": "テンジャン",
-      "name_zh_cn": "大酱",
-      "name_zh_tw": "大醬",
-      "desc_ko": "콩을 삶아 만든 메주를 발효시켜 장을 담가 장물을 떠내고 남은 건더기를 숙성시킨 장이다. 구수하고 짭짤한 맛으로 국, 찌개, 쌈장 등을 만들 때 쓴다.",
-      "desc_en": "After fermenting mejuin brine to make soy sauce, the meju is removed from the soy sauce and fermented to make doenjang (soybean paste). It is a salty condiment with a nutty taste used for seasoning soups and stews and to make ssamjang (red soybean paste dip).",
-      "desc_ja": "蒸した豆で作った麹を発酵させて塩水に漬け、分離した固体を熟成させたもの。塩の利いた香ばしい味が特徴で、スープやチゲ、合わせ味噌などに使われる。",
-      "desc_zh_cn": "把大豆煮熟做成酱曲，然后将发酵的酱曲泡在盐水中一定时间，再将盐水舀出来，剩下的酱曲进行发酵即成为大酱。大酱味道咸香，用来做清汤，炖汤，包菜酱等。",
-      "desc_zh_tw": "將煮豆發酵的醬曲浸泡於鹽水中，經過40天左右撈出醬曲搗碎，就能製成大醬。這時發酵出的黑色液體就是傳統醬油。大醬可用於清湯、醬湯、調味醬等。",
-      "category": "장 [Jang]"
+      "name_ko": "우렁된장비빔밥",
+      "name_en": "Freshwater Snail Soybean PasteBibimbap",
+      "name_ja": "タニシ入りテンジャンビビンバ",
+      "name_zh_cn": "田螺大酱拌饭",
+      "name_zh_tw": "田螺大醬拌飯",
+      "desc_ko": "양파, 풋고추, 버섯, 우렁이살 등을 굵직하게 다져서 된장에 버무려 쌀뜨물을 바특하게 넣고 끓여 우렁된장을 만든다. 그릇에 밥을 담고 우렁된장과 각종 채소 등을 넣어 비벼 먹는다.",
+      "desc_en": "The essential ingredient of this dish is ureongdoenjang, which is soybean paste boiled with chopped onion, green pepper, mushrooms, and freshwater snails in rice water. This is then served with a bowl of rice topped with a variety of vegetables.",
+      "desc_ja": "たまねぎや青唐辛子、きのこ、タニシの身などを大きめのみじん切りにし、味噌で和えたあと、米の研水をひたひたに入れて煮てウロンデンジャン(タニシ味噌)を作る。器にご飯を盛り、タニシ味噌と色々な野菜を入れて混ぜて食べる。",
+      "desc_zh_cn": "将洋葱、尖椒、蘑菇、田螺肉等剁碎成较大的块儿状后用大酱搅拌，再倒入少量的淘米水熬成浓稠的田螺酱汤。用大碗盛适量的米饭，将适当的田螺大酱汤和各种蔬菜放在米饭上拌着吃即可。",
+      "desc_zh_tw": "將洋蔥、田螺肉等剁成塊狀後用大醬攪拌，再倒入水熬成濃稠醬狀，田螺調味大醬就完成了。將田螺調味大醬倒入米飯中，放上蔬菜一起拌著吃。",
+      "category": "밥 [Bap]"
     },
-    "ai_prompt": "Professional food photography of Soybean Paste (Korean dish: 천안 우렁된장). After fermenting mejuin brine to make soy sauce, the meju is removed from the soy sauce and fermented to make doenjang (soybean paste). It is a salty condiment with a nutty taste used for seasoning soups and stews and to make ssamjang (red soybean pa Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "ai_prompt": "Professional food photography of Freshwater Snail Soybean PasteBibimbap (Korean dish: 천안 우렁된장). The essential ingredient of this dish is ureongdoenjang, which is soybean paste boiled with chopped onion, green pepper, mushrooms, and freshwater snails in rice water. This is then served with a bowl of rice topped with a variety of vegetables. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "cheonan-haemul-pajeon",
@@ -2656,21 +2632,21 @@
   {
     "id": "cheonan-gwangdeok-sanchae",
     "name_ko": "광덕산 산채비빔밥",
-    "match_type": "fuzzy_contain",
+    "match_type": "fuzzy_keyword",
     "hansik": {
-      "name_ko": "밥",
-      "name_en": "Steamed Rice",
-      "name_ja": "ご飯",
-      "name_zh_cn": "米饭",
-      "name_zh_tw": "米飯",
-      "desc_ko": "멥쌀을 씻어 솥에 안치고 물을 알맞게 붓고 끓여 익힌 것으로 한국인의 주식이다. 부드럽고 소화가 잘되며 여러 반찬과 두루 어울린다.",
-      "desc_en": "Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal.",
-      "desc_ja": "米をといで水と一緒に釜で炊いたもので、韓国人の主食となる。柔らかい口当たりで消化によく、あらゆるおかずに合う。",
-      "desc_zh_cn": "将大米洗净放入锅中加入适量水煮制而成，是韩国人的主食。米饭软嫩易消化，适宜与各种配菜佐餐。",
-      "desc_zh_tw": "米飯是不混合雜糧, 只把粳米放入鍋裡，加水煮成的飯。",
+      "name_ko": "비빔밥",
+      "name_en": "Bibimbap",
+      "name_ja": "ビビンバ",
+      "name_zh_cn": "拌饭",
+      "name_zh_tw": "拌飯",
+      "desc_ko": "쌀밥에 고기볶음, 갖은 나물과 고명을 올리고 고추장에 비벼 먹는 음식이다. 참기름을 첨가하면 더욱 맛있다.",
+      "desc_en": "Rice topped with sautéed beef and a variety of colorful vegetables that is mixed at the table with spicy gochujang. A hint of sesame oil helps bring out the flavor.",
+      "desc_ja": "ご飯に炒めた肉や数種類のナムルをのせ、コミョンを飾りつけたものにコチュジャンを混ぜて食べる。ごま油を加えるといっそう風味が増す。",
+      "desc_zh_cn": "米饭中加入炒肉丝、各种小菜和，用辣椒酱或酱油搅拌即可。搅拌时适当加入麻油会更加美味。",
+      "desc_zh_tw": "在米飯中加入各種素菜和炒肉，放入辣椒醬再將所有食材均勻攪拌後食用。用醬油調料拌著食用也十分美味。",
       "category": "밥 [Bap]"
     },
-    "ai_prompt": "Professional food photography of Steamed Rice (Korean dish: 광덕산 산채비빔밥). Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "ai_prompt": "Professional food photography of Bibimbap (Korean dish: 광덕산 산채비빔밥). Rice topped with sautéed beef and a variety of colorful vegetables that is mixed at the table with spicy gochujang. A hint of sesame oil helps bring out the flavor. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "cheonan-bossam",
@@ -2694,7 +2670,7 @@
   {
     "id": "cheonan-makgeolli-ppang",
     "name_ko": "천안 막걸리빵",
-    "match_type": "fuzzy_contain",
+    "match_type": "fuzzy_keyword",
     "hansik": {
       "name_ko": "막걸리",
       "name_en": "Unrefined Rice Wine",
@@ -2770,26 +2746,14 @@
   {
     "id": "yongin-jangter-gukbap",
     "name_ko": "민속촌 장터국밥",
-    "match_type": "fuzzy_contain",
-    "hansik": {
-      "name_ko": "밥",
-      "name_en": "Steamed Rice",
-      "name_ja": "ご飯",
-      "name_zh_cn": "米饭",
-      "name_zh_tw": "米飯",
-      "desc_ko": "멥쌀을 씻어 솥에 안치고 물을 알맞게 붓고 끓여 익힌 것으로 한국인의 주식이다. 부드럽고 소화가 잘되며 여러 반찬과 두루 어울린다.",
-      "desc_en": "Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal.",
-      "desc_ja": "米をといで水と一緒に釜で炊いたもので、韓国人の主食となる。柔らかい口当たりで消化によく、あらゆるおかずに合う。",
-      "desc_zh_cn": "将大米洗净放入锅中加入适量水煮制而成，是韩国人的主食。米饭软嫩易消化，适宜与各种配菜佐餐。",
-      "desc_zh_tw": "米飯是不混合雜糧, 只把粳米放入鍋裡，加水煮成的飯。",
-      "category": "밥 [Bap]"
-    },
-    "ai_prompt": "Professional food photography of Steamed Rice (Korean dish: 민속촌 장터국밥). Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "match_type": "unmatched",
+    "hansik": null,
+    "ai_prompt": "Professional food photography of 민속촌 장터국밥, a Korean traditional dish, top-down view on ceramic plate or bowl, natural daylight, appetizing presentation, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "yongin-nurungji-baeksuk",
     "name_ko": "누룽지 백숙",
-    "match_type": "fuzzy_contain",
+    "match_type": "fuzzy_keyword",
     "hansik": {
       "name_ko": "누룽지",
       "name_en": "Scorched Rice",
@@ -2865,21 +2829,21 @@
   {
     "id": "yongin-acorn-jelly",
     "name_ko": "도토리묵 무침",
-    "match_type": "fuzzy_contain",
+    "match_type": "exact",
     "hansik": {
-      "name_ko": "도토리묵",
-      "name_en": "Acorn Jelly Salad",
+      "name_ko": "도토리묵무침",
+      "name_en": "Acorn Jelly Salad ",
       "name_ja": "どんぐりこんにゃくの和え物",
       "name_zh_cn": "橡子凉粉",
       "name_zh_tw": "橡子涼粉",
-      "desc_ko": "도토리 녹말을 물에 풀어 끓인 다음 굳힌 음식이다. 당근, 쑥갓, 오이, 풋고추 등을 넣고 양념장에 버무려 먹는다.",
-      "desc_en": "A smooth gelatin made of acorn starch sliced and tossed with carrots, crown daisy, cucumber, and greenchili pepper in a seasoned soy-sesamesauce.",
-      "desc_ja": "どんぐりのでん粉を煮詰めてゼリー状に固めたもの。にんじんや春菊、きゅうり、青唐辛子などと一緒に薬味で和えて食べる。",
-      "desc_zh_cn": "橡子冻是用橡子粉加水煮熟后凝 固的食品，加入胡萝卜、茼蒿、黄瓜、尖椒等， 用调味酱搅拌一下即可食用。",
-      "desc_zh_tw": "橡子凍是將橡子粉放入水中煮熟凝固的食品，加入胡蘿蔔、小黃瓜等蔬菜後用調味醬攪拌一下即可食用。",
+      "desc_ko": "도토리 가루를 물에 풀어 계속 저으면서 끓여 굳인 것을 도토리묵이라 한다. 도토리묵무침은 도토리묵에 당근, 쑥갓, 오이, 고추 등을 넣고 양념장에 버무린 음식이다. 기호에 따라 구운 김과 미나리를 넣기도 한다.",
+      "desc_en": "For this dish, dotorimuk (acorn jelly), which is made by mixing acorn starch powder with water and hardening, is sliced and tossed with carrots, crown daisy, cucumber, and green chili pepper in a seasoned soy-sesame sauce. Toasted and crushed laver and water parsley may be added according to one’s taste.",
+      "desc_ja": "どんぐりの粉を水に溶き、かきまぜながら煮て固めたものをどんぐりこんにゃくという。どんぐりこんにゃくの和え物は、どんぐりこんにゃくに、人参、春菊、キュウリ、唐辛子などを加えてたれで和えたもの。好みにより焼きのりとセリを入れることも。",
+      "desc_zh_cn": "将橡子粉在水中化开，一边煮一边搅拌，等汁液凉了凝固后就成了橡子凉粉。橡子凉粉和胡萝卜、茼蒿、黄瓜、辣椒等材料一起用调味酱进行搅拌即可。根据个人的口味，也可以放一下烤紫菜和水芹。",
+      "desc_zh_tw": "把橡子粉用水沖開，然後邊攪邊使其凝固。橡子涼粉裡放入胡蘿蔔、艾蒿、黃瓜、辣椒等，再用調味醬拌勻。可根據喜好放入烤紫菜和水芹。",
       "category": "생채 [Saengchae]"
     },
-    "ai_prompt": "Professional food photography of Acorn Jelly Salad (Korean dish: 도토리묵 무침). A smooth gelatin made of acorn starch sliced and tossed with carrots, crown daisy, cucumber, and greenchili pepper in a seasoned soy-sesamesauce. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "ai_prompt": "Professional food photography of Acorn Jelly Salad  (Korean dish: 도토리묵 무침). For this dish, dotorimuk (acorn jelly), which is made by mixing acorn starch powder with water and hardening, is sliced and tossed with carrots, crown daisy, cucumber, and green chili pepper in a seasoned soy-sesame sauce. Toasted and crushed laver a Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "yongin-hanwoo",
@@ -2993,7 +2957,7 @@
   {
     "id": "yongin-bori-gulbi",
     "name_ko": "용인 보리굴비정식",
-    "match_type": "fuzzy_contain",
+    "match_type": "fuzzy_suffix",
     "hansik": {
       "name_ko": "보리굴비",
       "name_en": "Barley-aged Dried Yellow Croaker",
@@ -3012,9 +2976,21 @@
   {
     "id": "yongin-sanchae-jeongsik",
     "name_ko": "용인 산채정식",
-    "match_type": "unmatched",
-    "hansik": null,
-    "ai_prompt": "Professional food photography of 용인 산채정식, a Korean traditional dish, top-down view on ceramic plate or bowl, natural daylight, appetizing presentation, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "match_type": "fuzzy_prefix",
+    "hansik": {
+      "name_ko": "산채 정식",
+      "name_en": "Wild Vegetable Dish Combo",
+      "name_ja": "山菜定食",
+      "name_zh_cn": "山菜套餐",
+      "name_zh_tw": "山菜套餐",
+      "desc_ko": "산에서 나는 고사리, 취나물, 버섯, 더덕, 두릅 등 갖은 채로로 차린 백반 한 상을 말한다. 자극적이지 않고 간이 세지 않아 산나물 고유의 향과 맛을 느낄 수 있는 별미음식이다.",
+      "desc_en": "This course meal consists of rice and soup with vegetable side dishes, such as seasoned bracken, aster, mushroom, bonnet bellflower root, and fatsia shoot. These mild-tasting wild vegetables have distinctive flavors and fragrances.",
+      "desc_ja": "山で採れるワラビ、シラヤマギク、きのこ、蔓人参、タラの芽などの野菜が使われた定食。刺激が少なく、薄味で山菜ならではの固有の香りと味を楽しむことができる。",
+      "desc_zh_cn": "用蕨菜、马蹄菜、蘑菇、沙参、刺老芽等各种山野菜烹制的一桌家常套餐，味道清淡不刺激，咸淡适中，可品尝到山野菜特有的自然清香和味道。",
+      "desc_zh_tw": "是用山裡生長的蕨菜、馬蹄葉、蘑菇、沙參、刺老芽等各種野菜準備的白飯擺席。山菜套餐沒有刺激性食材，口味清淡，且保留了山野菜固有的香氣與滋味，是非常美味的特色套餐。",
+      "category": "상차림 [Sangcharim]"
+    },
+    "ai_prompt": "Professional food photography of Wild Vegetable Dish Combo (Korean dish: 용인 산채정식). This course meal consists of rice and soup with vegetable side dishes, such as seasoned bracken, aster, mushroom, bonnet bellflower root, and fatsia shoot. These mild-tasting wild vegetables have distinctive flavors and fragrances. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "yongin-hanbang-samgyetang",
@@ -3178,21 +3154,9 @@
   {
     "id": "icheon-rice-table",
     "name_ko": "이천 쌀밥 정식",
-    "match_type": "fuzzy_contain",
-    "hansik": {
-      "name_ko": "밥",
-      "name_en": "Steamed Rice",
-      "name_ja": "ご飯",
-      "name_zh_cn": "米饭",
-      "name_zh_tw": "米飯",
-      "desc_ko": "멥쌀을 씻어 솥에 안치고 물을 알맞게 붓고 끓여 익힌 것으로 한국인의 주식이다. 부드럽고 소화가 잘되며 여러 반찬과 두루 어울린다.",
-      "desc_en": "Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal.",
-      "desc_ja": "米をといで水と一緒に釜で炊いたもので、韓国人の主食となる。柔らかい口当たりで消化によく、あらゆるおかずに合う。",
-      "desc_zh_cn": "将大米洗净放入锅中加入适量水煮制而成，是韩国人的主食。米饭软嫩易消化，适宜与各种配菜佐餐。",
-      "desc_zh_tw": "米飯是不混合雜糧, 只把粳米放入鍋裡，加水煮成的飯。",
-      "category": "밥 [Bap]"
-    },
-    "ai_prompt": "Professional food photography of Steamed Rice (Korean dish: 이천 쌀밥 정식). Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "match_type": "unmatched",
+    "hansik": null,
+    "ai_prompt": "Professional food photography of 이천 쌀밥 정식, a Korean traditional dish, top-down view on ceramic plate or bowl, natural daylight, appetizing presentation, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "icheon-bori-gulbi",
@@ -3315,19 +3279,19 @@
     "name_ko": "솥밥",
     "match_type": "fuzzy_contain",
     "hansik": {
-      "name_ko": "밥",
-      "name_en": "Steamed Rice",
-      "name_ja": "ご飯",
-      "name_zh_cn": "米饭",
-      "name_zh_tw": "米飯",
-      "desc_ko": "멥쌀을 씻어 솥에 안치고 물을 알맞게 붓고 끓여 익힌 것으로 한국인의 주식이다. 부드럽고 소화가 잘되며 여러 반찬과 두루 어울린다.",
-      "desc_en": "Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal.",
-      "desc_ja": "米をといで水と一緒に釜で炊いたもので、韓国人の主食となる。柔らかい口当たりで消化によく、あらゆるおかずに合う。",
-      "desc_zh_cn": "将大米洗净放入锅中加入适量水煮制而成，是韩国人的主食。米饭软嫩易消化，适宜与各种配菜佐餐。",
-      "desc_zh_tw": "米飯是不混合雜糧, 只把粳米放入鍋裡，加水煮成的飯。",
+      "name_ko": "영양돌솥밥",
+      "name_en": "Nutritious Hot Stone Pot Rice",
+      "name_ja": "栄養釜飯",
+      "name_zh_cn": "营养石锅饭",
+      "name_zh_tw": "營養石鍋飯",
+      "desc_ko": "돌솥에 멥쌀과 잡곡을 섞어 담고 밤, 대추, 은행, 콩 등을 넣어 즉석에서 지은 밥이다. 다 먹고 나면 바닥에 눌어붙은 밥에 물을 부어 숭늉을 만들어 먹는다.",
+      "desc_en": "Rice, various grains, chestnuts, ginko nuts, and pine nuts are cooked and served in a stone bowl. After the bowl is empty, hot water is poured over the crispy layer of rice at the bottom to make a rice infusion (sungnyung).",
+      "desc_ja": "石釜に白米、雑穀、栗、銀杏、松の実などを入れ、一人前ずつ即席で炊く。ご飯を食べ終えたら水を加え、スンニュン(おこげ)をふやかして食べる。",
+      "desc_zh_cn": "石锅中放入可供一人食用的大米、杂粮、板栗、银杏、松籽等新鲜食材现煮现吃。吃完饭还可在石锅底加入水，做成锅巴汤食用。",
+      "desc_zh_tw": "在石鍋中放入粳米和雜糧、水蔘、香菇、大棗等食材現煮現吃。吃完飯還可在石鍋底加水，把鍋巴做成鍋巴湯食用。",
       "category": "밥 [Bap]"
     },
-    "ai_prompt": "Professional food photography of Steamed Rice (Korean dish: 솥밥). Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "ai_prompt": "Professional food photography of Nutritious Hot Stone Pot Rice (Korean dish: 솥밥). Rice, various grains, chestnuts, ginko nuts, and pine nuts are cooked and served in a stone bowl. After the bowl is empty, hot water is poured over the crispy layer of rice at the bottom to make a rice infusion (sungnyung). Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "icheon-yukhoe-bibimbap",
@@ -3512,7 +3476,7 @@
   {
     "id": "icheon-jangeo-jeongsik",
     "name_ko": "장어구이정식",
-    "match_type": "fuzzy_contain",
+    "match_type": "fuzzy_suffix",
     "hansik": {
       "name_ko": "장어구이",
       "name_en": "Grilled Eel",
@@ -3666,19 +3630,19 @@
     "name_ko": "돌산 갓김치",
     "match_type": "fuzzy_contain",
     "hansik": {
-      "name_ko": "김",
-      "name_en": "Laver",
-      "name_ja": "のり",
-      "name_zh_cn": "海苔",
-      "name_zh_tw": "紫菜",
-      "desc_ko": "바다의 암초에 이끼처럼 붙어서 자라는 해조류로 바람에 말려서 반찬으로 먹는다. 참기름이나 들기름을 발라 구워 먹기도 하고 각종 재료를 넣어 김밥을 만들어 먹기도 한다.",
-      "desc_en": "This is a type of edible seaweed, or dried laver, made from seaweed that grows on rocks like moss. It is eaten by toasting it with sesame or perilla oil. Also, gimbap is made by rolling a variety of ingredients and rice in sheets of gim.",
-      "desc_ja": "海の暗礁に苔のようにくっついて生息する海藻で、風で乾燥させ、おかずとして食べる。ゴマ油やエゴマ油を塗って焼いて食べたり、色々な材料を入れてのり巻きにして食べたりする。",
-      "desc_zh_cn": "海苔是生长于浅海岩石上的藻类植物， 风干后可供食用。可抹上香油或白苏油烤来 吃，也可以放入各种材料做成卷饭。",
-      "desc_zh_tw": "在屬於海藻類的海苔上塗抹麻油後烤製而成，包飯吃別有風味。",
-      "category": "구이 [Gui]"
+      "name_ko": "갓김치",
+      "name_en": "Leaf Mustard Kimchi",
+      "name_ja": "カラシナキムチ",
+      "name_zh_cn": "芥菜辛奇",
+      "name_zh_tw": "芥菜辛奇",
+      "desc_ko": "갓에 액젓과 갖은 양념을 넣어 만든 김치이다. 전라도에서 주로 많이 먹는데, 특히 여수 돌산 갓으로 만든 김치가 유명하다. 쌉쌀하고 매운 맛이 특징이다.",
+      "desc_en": "Leaf mustard mixed with salted seafood juice and a variety of seasonings. Enjoyed widely in Jeolla Province, gatkimchi made with leaf mustard grown in Dolsan, Yeosu, is especially popular. This kimchi has a unique pungent and spicy taste.",
+      "desc_ja": "からし菜に液状の塩辛とたれを入れて和えたキムチ。主に全羅道でよく食べられる。特に麗水の突山カラシナで作ったキムチが有名で、苦味と辛味が特徴。",
+      "desc_zh_cn": "将芥菜和鱼露等各种调料腌制而成的辛奇，是全罗道地区常吃的一种辛奇，尤其用丽水地区的突山芥菜腌制的辛奇最为有名。芥菜辛奇的味道鲜辣中带着微微的苦涩，很有特色。",
+      "desc_zh_tw": "在芥菜中加入魚露與各種調味料製作而成。主要在全羅道食用廣泛，尤其是用麗水突山芥菜製作而成的辛奇十分有名，其特點是口味微咸，有辣味。",
+      "category": "김치 [Kimchi]"
     },
-    "ai_prompt": "Professional food photography of Laver (Korean dish: 돌산 갓김치). This is a type of edible seaweed, or dried laver, made from seaweed that grows on rocks like moss. It is eaten by toasting it with sesame or perilla oil. Also, gimbap is made by rolling a variety of ingredients and rice in sheets of gim. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "ai_prompt": "Professional food photography of Leaf Mustard Kimchi (Korean dish: 돌산 갓김치). Leaf mustard mixed with salted seafood juice and a variety of seasonings. Enjoyed widely in Jeolla Province, gatkimchi made with leaf mustard grown in Dolsan, Yeosu, is especially popular. This kimchi has a unique pungent and spicy taste. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "yeosu-seodae-hoemuchim",
@@ -3766,21 +3730,9 @@
   {
     "id": "andong-heot-jesabap",
     "name_ko": "헛제사밥",
-    "match_type": "fuzzy_contain",
-    "hansik": {
-      "name_ko": "밥",
-      "name_en": "Steamed Rice",
-      "name_ja": "ご飯",
-      "name_zh_cn": "米饭",
-      "name_zh_tw": "米飯",
-      "desc_ko": "멥쌀을 씻어 솥에 안치고 물을 알맞게 붓고 끓여 익힌 것으로 한국인의 주식이다. 부드럽고 소화가 잘되며 여러 반찬과 두루 어울린다.",
-      "desc_en": "Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal.",
-      "desc_ja": "米をといで水と一緒に釜で炊いたもので、韓国人の主食となる。柔らかい口当たりで消化によく、あらゆるおかずに合う。",
-      "desc_zh_cn": "将大米洗净放入锅中加入适量水煮制而成，是韩国人的主食。米饭软嫩易消化，适宜与各种配菜佐餐。",
-      "desc_zh_tw": "米飯是不混合雜糧, 只把粳米放入鍋裡，加水煮成的飯。",
-      "category": "밥 [Bap]"
-    },
-    "ai_prompt": "Professional food photography of Steamed Rice (Korean dish: 헛제사밥). Regular short grain rice cooked until soft, moist, and glossy. It is easy to digest and goes well with any banchan (side dish), which is likely why it is the central and staple dish of every Korean meal. Top-down view on traditional Korean ceramic plate or bowl, natural daylight, appetizing presentation, restaurant-quality, photorealistic, 4k. No people, no text, no logos, no watermarks."
+    "match_type": "unmatched",
+    "hansik": null,
+    "ai_prompt": "Professional food photography of 헛제사밥, a Korean traditional dish, top-down view on ceramic plate or bowl, natural daylight, appetizing presentation, photorealistic, 4k. No people, no text, no logos, no watermarks."
   },
   {
     "id": "andong-gan-godeungeo",

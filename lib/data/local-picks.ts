@@ -43,9 +43,9 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
     { id: 'starbucks-bukhansan', searchName: '스타벅스 더북한산점', rank: 2,
       curation: { tags: ['북한산 뷰', '특화매장'] } },
     { id: 'yeongdong-seolleongtang', searchName: '영동설렁탕', rank: 3 },
-    { id: 'samwon-garden', searchName: '삼원가든 본점', rank: 4,
+    { id: 'samwon-garden', searchName: '삼원가든 본점', rank: 4, contentid: '132892', contenttypeid: '39',
       curation: { tags: ['갈비', '강남 명소'] } },
-    { id: 'uraeok', searchName: '우래옥 본점', rank: 5,
+    { id: 'uraeok', searchName: '우래옥 본점', rank: 5, contentid: '133339', contenttypeid: '39',
       curation: {
         tagline: { ko: '서울 평양냉면의 살아있는 전설', en: 'A legendary Pyongyang naengmyeon institution in Seoul' },
         tags: ['평양냉면', '70년 전통'],
@@ -58,22 +58,22 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
   ],
 
   busan: [
-    { id: 'ijaemo-pizza-busan', searchName: '이재모피자 본점', rank: 1,
+    { id: 'ijaemo-pizza-busan', searchName: '이재모피자 본점', rank: 1, contentid: '2836450', contenttypeid: '39',
       curation: { tags: ['부산 명물 피자'] } },
-    { id: 'hapcheon-iryu-dwaejigukbap', searchName: '합천일류돼지국밥 본점', rank: 2,
+    { id: 'hapcheon-iryu-dwaejigukbap', searchName: '합천일류돼지국밥 본점', rank: 2, contentid: '2911217', contenttypeid: '39',
       curation: {
         tagline: { ko: '부산 돼지국밥의 정수', en: 'Pinnacle of Busan dwaeji-gukbap' },
         tags: ['돼지국밥', '부산 향토'],
       } },
     { id: 'chilam-sagye', searchName: '칠암사계', rank: 3 },
-    { id: 'momos-coffee-busan', searchName: '모모스커피 본점', rank: 4,
+    { id: 'momos-coffee-busan', searchName: '모모스커피 본점', rank: 4, contentid: '2832729', contenttypeid: '39',
       curation: {
         tagline: { ko: '부산 스페셜티 커피 문화의 상징', en: 'Symbol of Busan specialty coffee culture' },
         tags: ['스페셜티 커피', '월드바리스타'],
       } },
     { id: 'ijaemo-pizza-seomyeon', searchName: '이재모피자 서면점', rank: 5 },
     { id: 'tanti', searchName: '탄티', rank: 6 },
-    { id: 'subyeon-choigodwaeji', searchName: '수변최고돼지국밥 민락본점', rank: 7,
+    { id: 'subyeon-choigodwaeji', searchName: '수변최고돼지국밥 민락본점', rank: 7, contentid: '2668102', contenttypeid: '39',
       curation: { tags: ['돼지국밥'] } },
     { id: 'seven-island', searchName: '세븐아일랜드', rank: 8 },
     { id: 'momos-yeongdo', searchName: '모모스커피 영도로스터리&커피바', rank: 9,
@@ -90,19 +90,19 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
     { id: 'pureun-hoesikdang', searchName: '푸른회식당', rank: 4 },
     { id: 'barmis-doosan', searchName: '바르미스시앤그릴뷔페 두산점', rank: 5 },
     { id: 'yuksolchon-jjigae', searchName: '육솔촌돼지찌개', rank: 6 },
-    { id: 'daedeok-sikdang', searchName: '대덕식당', rank: 7,
+    { id: 'daedeok-sikdang', searchName: '대덕식당', rank: 7, contentid: '133894', contenttypeid: '39',
       curation: {
         tagline: { ko: '대구 따로국밥의 살아있는 전설', en: 'Living legend of Daegu ttaro-gukbap' },
         tags: ['따로국밥', '대구 향토'],
       } },
     { id: 'opung-doova', searchName: '오풍드부아', rank: 8 },
-    { id: 'nakyeong-jjimgalbi', searchName: '낙영찜갈비 본점', rank: 9,
+    { id: 'nakyeong-jjimgalbi', searchName: '낙영찜갈비 본점', rank: 9, contentid: '637751', contenttypeid: '39',
       curation: { tags: ['찜갈비'] } },
     { id: 'seomin-galbi', searchName: '서민갈비', rank: 10 },
   ],
 
   incheon: [
-    { id: 'joyangbangjik', searchName: '조양방직', rank: 1,
+    { id: 'joyangbangjik', searchName: '조양방직', rank: 1, contentid: '2590794', contenttypeid: '39',
       curation: {
         tagline: { ko: '강화도 폐방직공장 카페', en: 'Strawberry-themed cafe in former Ganghwa textile factory' },
         tags: ['강화도', '카페'],
@@ -123,7 +123,7 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
     { id: 'changeok-tteokjip', searchName: '창억떡집 중흥본점', rank: 1 },
     { id: 'funny-cafe-and-lounge', searchName: '퍼니스카페앤라운지', rank: 2 },
     { id: 'gomesquare-shinsegae', searchName: '고메스퀘어 광주신세계사거리점', rank: 3 },
-    { id: 'sansu-ssambap', searchName: '산수쌈밥', rank: 4,
+    { id: 'sansu-ssambap', searchName: '산수쌈밥', rank: 4, contentid: '2859166', contenttypeid: '39',
       curation: { tags: ['쌈밥', '광주 향토'] } },
     { id: 'gomesquare-sangmu', searchName: '고메스퀘어 광주상무점', rank: 5 },
     { id: 'maek-mundong', searchName: '맥문동', rank: 6 },
@@ -135,7 +135,7 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
   ],
 
   daejeon: [
-    { id: 'sungsimdang-main', searchName: '성심당 본점', rank: 1,
+    { id: 'sungsimdang-main', searchName: '성심당 본점', rank: 1, contentid: '1796079', contenttypeid: '39',
       curation: {
         tagline: { ko: '대전을 대표하는 70년 전통 베이커리', en: "Daejeon's iconic 70-year-old bakery" },
         tags: ['70년 전통', '튀김소보로', '대전 명물'],
@@ -190,16 +190,16 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
       curation: { tags: ['행주산성', '잔치국수'] } },
     { id: 'gangsulae-neulbom', searchName: '강강술래 늘봄농원점', rank: 5 },
     { id: 'forest-outings-yongin', searchName: '포레스트아웃팅스 용인점', rank: 6 },
-    { id: 'gabojeong-galbi', searchName: '가보정갈비 1관', rank: 7,
+    { id: 'gabojeong-galbi', searchName: '가보정갈비 1관', rank: 7, contentid: '602895', contenttypeid: '39',
       curation: { tags: ['수원 갈비', '경기 명소'] } },
     { id: 'cheongdam-chueojeong', searchName: '청담추어정 본점', rank: 8 },
     { id: 'yuchi-hoegwan', searchName: '유치회관 본점', rank: 9 },
-    { id: 'songchu-gamagol', searchName: '송추가마골 본관', rank: 10,
+    { id: 'songchu-gamagol', searchName: '송추가마골 본관', rank: 10, contentid: '2789360', contenttypeid: '39',
       curation: { tags: ['갈비'] } },
   ],
 
   gangwon: [
-    { id: 'donghwa-garden', searchName: '동화가든 본점', rank: 1,
+    { id: 'donghwa-garden', searchName: '동화가든 본점', rank: 1, contentid: '623223', contenttypeid: '39',
       curation: {
         tagline: { ko: '강원 초당순두부의 대명사', en: 'Famous Gangwon chodang sundubu spot' },
         tags: ['초당순두부', '강원 향토'],
@@ -240,7 +240,7 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
       } },
     { id: 'road-1950', searchName: '로드1950', rank: 2 },
     { id: 'urungi-baksa', searchName: '우렁이박사', rank: 3 },
-    { id: 'mokhwa-banjeom', searchName: '목화반점', rank: 4,
+    { id: 'mokhwa-banjeom', searchName: '목화반점', rank: 4, contentid: '800487', contenttypeid: '39',
       curation: { tags: ['중식'] } },
     { id: 'jangwon-makguksu', searchName: '장원막국수', rank: 5 },
     { id: 'landmark-195', searchName: '랜드마크195', rank: 6 },
@@ -255,12 +255,12 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
   ],
 
   jeonbuk: [
-    { id: 'lee-seongdang-main', searchName: '이성당 본점', rank: 1,
+    { id: 'lee-seongdang-main', searchName: '이성당 본점', rank: 1, contentid: '2010199', contenttypeid: '39',
       curation: {
         tagline: { ko: '한국에서 가장 오래된 빵집', en: "Korea's oldest bakery" },
         tags: ['군산', '단팥빵', '100년 전통'],
       } },
-    { id: 'hyundae-ok-jeonju', searchName: '현대옥 전주본점', rank: 2,
+    { id: 'hyundae-ok-jeonju', searchName: '현대옥 전주본점', rank: 2, contentid: '2778475', contenttypeid: '39',
       curation: {
         tagline: { ko: '전주 콩나물국밥의 명가', en: 'Famous Jeonju kongnamul-gukbap' },
         tags: ['콩나물국밥', '전주 향토'],
@@ -270,15 +270,15 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
     { id: 'jirinseong', searchName: '지린성', rank: 5,
       curation: { tags: ['중식'] } },
     { id: 'sulji-bakery', searchName: '슬지제빵소', rank: 6 },
-    { id: 'veteran', searchName: '베테랑', rank: 7,
+    { id: 'veteran', searchName: '베테랑', rank: 7, contentid: '2759615', contenttypeid: '39',
       curation: {
         tagline: { ko: '전주 칼국수의 살아있는 전설', en: 'Legendary Jeonju kalguksu' },
         tags: ['칼국수', '전주 향토'],
       } },
-    { id: 'binhae-won', searchName: '빈해원', rank: 8,
+    { id: 'binhae-won', searchName: '빈해원', rank: 8, contentid: '854679', contenttypeid: '39',
       curation: { tags: ['중식', '군산'] } },
     { id: 'seonam-manchan', searchName: '서남만찬', rank: 9 },
-    { id: 'bokseong-ru', searchName: '복성루', rank: 10,
+    { id: 'bokseong-ru', searchName: '복성루', rank: 10, contentid: '1827859', contenttypeid: '39',
       curation: { tags: ['중식'] } },
   ],
 
@@ -288,11 +288,11 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
         tagline: { ko: '나주곰탕의 살아있는 전설', en: 'Legendary Naju gomtang' },
         tags: ['나주곰탕', '향토'],
       } },
-    { id: 'ssanggyo-sutbul-galbi', searchName: '쌍교숯불갈비 담양본점', rank: 2,
+    { id: 'ssanggyo-sutbul-galbi', searchName: '쌍교숯불갈비 담양본점', rank: 2, contentid: '2841818', contenttypeid: '39',
       curation: { tags: ['담양 떡갈비'] } },
-    { id: 'mokwol-bbangjip', searchName: '목월빵집', rank: 3,
+    { id: 'mokwol-bbangjip', searchName: '목월빵집', rank: 3, contentid: '2605429', contenttypeid: '39',
       curation: { tags: ['구례 베이커리'] } },
-    { id: 'samdae-gwangyang-bulgogi', searchName: '삼대광양불고기집', rank: 4,
+    { id: 'samdae-gwangyang-bulgogi', searchName: '삼대광양불고기집', rank: 4, contentid: '642995', contenttypeid: '39',
       curation: {
         tagline: { ko: '광양 불고기의 명가', en: 'Famous Gwangyang bulgogi' },
         tags: ['광양불고기', '향토'],
@@ -301,22 +301,22 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
     { id: 'cafe-guman', searchName: '카페구만', rank: 6 },
     { id: 'ddokbang-guksu', searchName: '똑방국수', rank: 7 },
     { id: 'baviere-damyang', searchName: '베비에르 담양점', rank: 8 },
-    { id: 'kkotdolgejang-1', searchName: '꽃돌게장1번가', rank: 9,
+    { id: 'kkotdolgejang-1', searchName: '꽃돌게장1번가', rank: 9, contentid: '2858408', contenttypeid: '39',
       curation: { tags: ['여수', '돌게장'] } },
     { id: 'naju-gomtang-noan', searchName: '나주곰탕노안집', rank: 10 },
   ],
 
   gyeongbuk: [
-    { id: 'hwangnam-bbang', searchName: '황남빵', rank: 1,
+    { id: 'hwangnam-bbang', searchName: '황남빵', rank: 1, contentid: '2765063', contenttypeid: '39',
       curation: {
         tagline: { ko: '경주 황남빵의 원조', en: 'Origin of Gyeongju Hwangnam bread' },
         tags: ['경주 명물', '90년 전통'],
       } },
-    { id: 'maetdol-sundubu', searchName: '맷돌순두부', rank: 2,
+    { id: 'maetdol-sundubu', searchName: '맷돌순두부', rank: 2, contentid: '2838924', contenttypeid: '39',
       curation: { tags: ['경주', '순두부'] } },
     { id: 'breath-coffee-works', searchName: '브레스커피웍스', rank: 3 },
     { id: 'aurora', searchName: '아우로라', rank: 4 },
-    { id: 'hwanyeo-hoetjip', searchName: '환여횟집', rank: 5,
+    { id: 'hwanyeo-hoetjip', searchName: '환여횟집', rank: 5, contentid: '403868', contenttypeid: '39',
       curation: { tags: ['포항', '회'] } },
     { id: 'gyori-gimbap', searchName: '교리김밥 경주본점', rank: 6,
       curation: {
@@ -358,14 +358,14 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
         tags: ['제주', '고사리해장국'],
       } },
     { id: 'sosaek-chaebon', searchName: '소색채본', rank: 2 },
-    { id: 'yeondon', searchName: '연돈', rank: 3,
+    { id: 'yeondon', searchName: '연돈', rank: 3, contentid: '2829949', contenttypeid: '39',
       curation: {
         tagline: { ko: '백종원이 인정한 제주 돈가스', en: "Jeju's famed donkatsu, recommended by Baek Jong-won" },
         tags: ['돈가스', '백종원 추천'],
       } },
     { id: 'jamae-guksu', searchName: '자매국수 본점', rank: 4,
       curation: { tags: ['제주 고기국수'] } },
-    { id: 'oneunjeong-gimbap', searchName: '오는정김밥', rank: 5,
+    { id: 'oneunjeong-gimbap', searchName: '오는정김밥', rank: 5, contentid: '2831635', contenttypeid: '39',
       curation: {
         tagline: { ko: '서귀포 줄서는 김밥집', en: "Jeju's most-queued gimbap shop" },
         tags: ['서귀포 명물'],
