@@ -42,7 +42,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeonju-kongnamul',
     region: 'jeonju',
-    name: { ko: '전주 콩나물국밥', ja: '全州もやしクッパ', en: 'Jeonju Bean Sprout Rice Soup' },
+    name: { ko: '콩나물국밥', ja: 'もやしクッパ', en: 'Bean Sprout Rice Soup' },
     healthTags: ['diet', 'digestion', 'immunity'],
     healthRadar: { skin: 55, antiAging: 60, immunity: 70, digestion: 80, diet: 75 },
     healthDescription: {
@@ -55,7 +55,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeonju-cheonggukjang',
     region: 'jeonju',
-    name: { ko: '전주 청국장', ja: '全州チョングクジャン', en: 'Jeonju Fermented Soybean Paste' },
+    name: { ko: '청국장', ja: 'チョングクジャン', en: 'Fermented Soybean Paste' },
     healthTags: ['immunity', 'digestion', 'antiAging'],
     healthRadar: { skin: 55, antiAging: 85, immunity: 90, digestion: 90, diet: 70 },
     healthDescription: {
@@ -68,7 +68,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeonju-japchae',
     region: 'jeonju',
-    name: { ko: '전주 잡채', ja: '全州チャプチェ', en: 'Jeonju Japchae' },
+    name: { ko: '잡채', ja: 'チャプチェ', en: 'Japchae' },
     healthTags: ['diet'],
     healthRadar: { skin: 45, antiAging: 50, immunity: 55, digestion: 60, diet: 65 },
     healthDescription: {
@@ -81,7 +81,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeonju-yukgaejang',
     region: 'jeonju',
-    name: { ko: '전주 육개장', ja: '全州ユッケジャン', en: 'Jeonju Spicy Beef Soup' },
+    name: { ko: '육개장', ja: 'ユッケジャン', en: 'Spicy Beef Soup' },
     healthTags: ['immunity'],
     healthRadar: { skin: 50, antiAging: 60, immunity: 70, digestion: 55, diet: 60 },
     healthDescription: {
@@ -94,7 +94,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeonju-doenjang-jjigae',
     region: 'jeonju',
-    name: { ko: '전주 된장찌개', ja: '全州テンジャンチゲ', en: 'Jeonju Soybean Paste Stew' },
+    name: { ko: '된장찌개', ja: 'テンジャンチゲ', en: 'Soybean Paste Stew' },
     healthTags: ['immunity', 'digestion', 'antiAging'],
     healthRadar: { skin: 60, antiAging: 80, immunity: 85, digestion: 80, diet: 65 },
     healthDescription: {
@@ -107,7 +107,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeonju-bori-guksu',
     region: 'jeonju',
-    name: { ko: '전주 보리국수', ja: '全州大麦麺', en: 'Jeonju Barley Noodles' },
+    name: { ko: '보리국수', ja: '大麦麺', en: 'Barley Noodles' },
     healthTags: ['diet', 'digestion'],
     healthRadar: { skin: 40, antiAging: 50, immunity: 55, digestion: 85, diet: 80 },
     healthDescription: {
@@ -122,7 +122,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'seoul-samgyeopsal',
     region: 'seoul',
-    name: { ko: '서울 삼겹살', ja: 'ソウルサムギョプサル', en: 'Seoul Samgyeopsal' },
+    name: { ko: '삼겹살', ja: 'サムギョプサル', en: 'Samgyeopsal' },
     healthTags: ['skin'],
     healthRadar: { skin: 65, antiAging: 50, immunity: 50, digestion: 40, diet: 45 },
     healthDescription: {
@@ -135,7 +135,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'seoul-seolleongtang',
     region: 'seoul',
-    name: { ko: '서울 설렁탕', ja: 'ソウル・ソルロンタン', en: 'Seoul Seolleongtang' },
+    name: { ko: '설렁탕', ja: 'ソルロンタン', en: 'Seolleongtang' },
     healthTags: ['skin', 'bone'],
     healthRadar: { skin: 85, antiAging: 70, immunity: 60, digestion: 65, diet: 55 },
     healthDescription: {
@@ -148,7 +148,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'seoul-kimchi-jjigae',
     region: 'seoul',
-    name: { ko: '서울 김치찌개', ja: 'ソウル・キムチチゲ', en: 'Seoul Kimchi Jjigae' },
+    name: { ko: '김치찌개', ja: 'キムチチゲ', en: 'Kimchi Jjigae' },
     healthTags: ['immunity', 'digestion', 'antiAging'],
     healthRadar: { skin: 55, antiAging: 80, immunity: 90, digestion: 85, diet: 60 },
     healthDescription: {
@@ -161,7 +161,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'seoul-jokbal',
     region: 'seoul',
-    name: { ko: '서울 족발', ja: 'ソウル・チョクパル', en: 'Seoul Braised Pork Feet' },
+    name: { ko: '족발', ja: 'チョクパル', en: 'Braised Pork Feet' },
     healthTags: ['skin', 'antiAging', 'bone'],
     healthRadar: { skin: 90, antiAging: 75, immunity: 45, digestion: 45, diet: 35 },
     healthDescription: {
@@ -174,7 +174,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'seoul-bossam',
     region: 'seoul',
-    name: { ko: '서울 보쌈', ja: 'ソウル・ポッサム', en: 'Seoul Bossam' },
+    name: { ko: '보쌈', ja: 'ポッサム', en: 'Bossam' },
     healthTags: ['skin'],
     healthRadar: { skin: 70, antiAging: 60, immunity: 55, digestion: 65, diet: 50 },
     healthDescription: {
@@ -187,7 +187,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'seoul-dakhanmari',
     region: 'seoul',
-    name: { ko: '서울 닭한마리', ja: 'ソウル・タッハンマリ', en: 'Seoul Whole Chicken Soup' },
+    name: { ko: '닭한마리', ja: 'タッハンマリ', en: 'Whole Chicken Soup' },
     healthTags: ['immunity', 'bone'],
     healthRadar: { skin: 60, antiAging: 60, immunity: 80, digestion: 60, diet: 65 },
     healthDescription: {
@@ -200,7 +200,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'seoul-gamjatang',
     region: 'seoul',
-    name: { ko: '서울 감자탕', ja: 'ソウル・カムジャタン', en: 'Seoul Gamjatang' },
+    name: { ko: '감자탕', ja: 'カムジャタン', en: 'Gamjatang' },
     healthTags: ['bone'],
     healthRadar: { skin: 55, antiAging: 55, immunity: 65, digestion: 55, diet: 50 },
     healthDescription: {
@@ -308,7 +308,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeju-black-pork',
     region: 'jeju',
-    name: { ko: '제주 흑돼지', ja: '済州黒豚', en: 'Jeju Black Pork' },
+    name: { ko: '흑돼지', ja: '黒豚', en: 'Black Pork' },
     healthTags: ['skin'],
     healthRadar: { skin: 70, antiAging: 60, immunity: 55, digestion: 45, diet: 45 },
     healthDescription: {
@@ -321,7 +321,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeju-jeonbok-juk',
     region: 'jeju',
-    name: { ko: '제주 전복죽', ja: '済州アワビ粥', en: 'Jeju Abalone Porridge' },
+    name: { ko: '전복죽', ja: 'アワビ粥', en: 'Abalone Porridge' },
     healthTags: ['immunity', 'antiAging'],
     healthRadar: { skin: 65, antiAging: 70, immunity: 80, digestion: 80, diet: 70 },
     healthDescription: {
@@ -334,7 +334,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeju-momguk',
     region: 'jeju',
-    name: { ko: '제주 몸국', ja: '済州モムグク', en: 'Jeju Seaweed Pork Soup' },
+    name: { ko: '몸국', ja: 'モムグク', en: 'Seaweed Pork Soup' },
     healthTags: ['immunity', 'digestion', 'diet'],
     healthRadar: { skin: 50, antiAging: 65, immunity: 75, digestion: 85, diet: 80 },
     healthDescription: {
@@ -347,7 +347,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeju-galchi-jorim',
     region: 'jeju',
-    name: { ko: '제주 갈치조림', ja: '済州太刀魚煮付け', en: 'Jeju Braised Hairtail' },
+    name: { ko: '갈치조림', ja: '太刀魚煮付け', en: 'Braised Hairtail' },
     healthTags: ['skin'],
     healthRadar: { skin: 75, antiAging: 70, immunity: 60, digestion: 55, diet: 65 },
     healthDescription: {
@@ -360,7 +360,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeju-mulhoe',
     region: 'jeju',
-    name: { ko: '제주 물회', ja: '済州ムルフェ', en: 'Jeju Cold Raw Fish Soup' },
+    name: { ko: '물회', ja: 'ムルフェ', en: 'Cold Raw Fish Soup' },
     healthTags: ['diet', 'skin'],
     healthRadar: { skin: 70, antiAging: 65, immunity: 65, digestion: 65, diet: 80 },
     healthDescription: {
@@ -373,7 +373,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeju-seonggae-miyeokguk',
     region: 'jeju',
-    name: { ko: '제주 성게미역국', ja: '済州ウニわかめスープ', en: 'Jeju Sea Urchin Seaweed Soup' },
+    name: { ko: '성게미역국', ja: 'ウニわかめスープ', en: 'Sea Urchin Seaweed Soup' },
     healthTags: ['immunity', 'skin', 'bone'],
     healthRadar: { skin: 75, antiAging: 70, immunity: 85, digestion: 70, diet: 65 },
     healthDescription: {
@@ -386,7 +386,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'jeju-omegi-tteok',
     region: 'jeju',
-    name: { ko: '제주 오메기떡', ja: '済州オメギ餅', en: 'Jeju Omegi Rice Cake' },
+    name: { ko: '오메기떡', ja: 'オメギ餅', en: 'Omegi Rice Cake' },
     healthTags: ['digestion'],
     healthRadar: { skin: 40, antiAging: 55, immunity: 50, digestion: 65, diet: 55 },
     healthDescription: {
@@ -401,7 +401,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'busan-pork-soup',
     region: 'busan',
-    name: { ko: '부산 돼지국밥', ja: '釜山豚クッパ', en: 'Busan Pork Rice Soup' },
+    name: { ko: '돼지국밥', ja: '豚クッパ', en: 'Pork Rice Soup' },
     healthTags: ['skin', 'bone'],
     healthRadar: { skin: 80, antiAging: 65, immunity: 60, digestion: 60, diet: 50 },
     healthDescription: {
@@ -414,7 +414,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'busan-milmyeon',
     region: 'busan',
-    name: { ko: '부산 밀면', ja: '釜山ミルミョン', en: 'Busan Milmyeon Noodles' },
+    name: { ko: '밀면', ja: 'ミルミョン', en: 'Milmyeon Noodles' },
     healthTags: ['diet', 'digestion'],
     healthRadar: { skin: 40, antiAging: 50, immunity: 50, digestion: 75, diet: 80 },
     healthDescription: {
@@ -427,7 +427,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'busan-grilled-clams',
     region: 'busan',
-    name: { ko: '부산 조개구이', ja: '釜山貝焼き', en: 'Busan Grilled Clams' },
+    name: { ko: '조개구이', ja: '貝焼き', en: 'Grilled Clams' },
     healthTags: ['immunity', 'skin'],
     healthRadar: { skin: 70, antiAging: 65, immunity: 80, digestion: 60, diet: 60 },
     healthDescription: {
@@ -440,7 +440,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'busan-eomuk',
     region: 'busan',
-    name: { ko: '부산 어묵', ja: '釜山おでん', en: 'Busan Fish Cake' },
+    name: { ko: '어묵', ja: 'おでん', en: 'Fish Cake' },
     healthTags: ['diet'],
     healthRadar: { skin: 40, antiAging: 45, immunity: 50, digestion: 65, diet: 65 },
     healthDescription: {
@@ -453,7 +453,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'busan-nakgopsae',
     region: 'busan',
-    name: { ko: '부산 낙곱새', ja: '釜山ナクコプセ', en: 'Busan Nakgopsae (Octopus & Tripe)' },
+    name: { ko: '낙곱새', ja: 'ナクコプセ', en: 'Nakgopsae (Octopus & Tripe)' },
     healthTags: ['immunity'],
     healthRadar: { skin: 55, antiAging: 55, immunity: 65, digestion: 50, diet: 55 },
     healthDescription: {
@@ -466,7 +466,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'busan-hwae',
     region: 'busan',
-    name: { ko: '부산 회', ja: '釜山刺身', en: 'Busan Raw Fish (Hoe)' },
+    name: { ko: '회', ja: '刺身', en: 'Raw Fish (Hoe)' },
     healthTags: ['skin'],
     healthRadar: { skin: 80, antiAging: 70, immunity: 65, digestion: 60, diet: 75 },
     healthDescription: {
@@ -479,7 +479,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'busan-agujjim',
     region: 'busan',
-    name: { ko: '부산 아귀찜', ja: '釜山アンコウ蒸し', en: 'Busan Spicy Monkfish' },
+    name: { ko: '아귀찜', ja: 'アンコウ蒸し', en: 'Spicy Monkfish' },
     healthTags: ['immunity', 'skin', 'bone'],
     healthRadar: { skin: 65, antiAging: 60, immunity: 70, digestion: 65, diet: 65 },
     healthDescription: {
@@ -494,7 +494,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'gyeongju-tteokgalbi',
     region: 'gyeongju',
-    name: { ko: '경주 떡갈비', ja: '慶州トックカルビ', en: 'Gyeongju Tteokgalbi' },
+    name: { ko: '떡갈비', ja: 'トックカルビ', en: 'Tteokgalbi' },
     healthTags: ['bone'],
     healthRadar: { skin: 55, antiAging: 55, immunity: 55, digestion: 50, diet: 50 },
     healthDescription: {
@@ -507,7 +507,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'gyeongju-sundubu',
     region: 'gyeongju',
-    name: { ko: '경주 순두부찌개', ja: '慶州スンドゥブチゲ', en: 'Gyeongju Soft Tofu Stew' },
+    name: { ko: '순두부찌개', ja: 'スンドゥブチゲ', en: 'Soft Tofu Stew' },
     healthTags: ['skin', 'diet', 'bone'],
     healthRadar: { skin: 70, antiAging: 65, immunity: 60, digestion: 70, diet: 75 },
     healthDescription: {
@@ -520,7 +520,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'gyeongju-samgyetang',
     region: 'gyeongju',
-    name: { ko: '경주 삼계탕', ja: '慶州サムゲタン', en: 'Gyeongju Samgyetang' },
+    name: { ko: '삼계탕', ja: 'サムゲタン', en: 'Samgyetang' },
     healthTags: ['immunity', 'antiAging'],
     healthRadar: { skin: 60, antiAging: 75, immunity: 90, digestion: 65, diet: 60 },
     healthDescription: {
@@ -533,7 +533,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'gyeongju-hanwoo-bulgogi',
     region: 'gyeongju',
-    name: { ko: '경주 한우불고기', ja: '慶州韓牛プルコギ', en: 'Gyeongju Hanwoo Bulgogi' },
+    name: { ko: '한우불고기', ja: '韓牛プルコギ', en: 'Hanwoo Bulgogi' },
     healthTags: ['skin'],
     healthRadar: { skin: 60, antiAging: 55, immunity: 55, digestion: 50, diet: 45 },
     healthDescription: {
@@ -546,7 +546,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'gyeongju-ssambap',
     region: 'gyeongju',
-    name: { ko: '경주 쌈밥', ja: '慶州サムパプ', en: 'Gyeongju Ssambap (Wrapped Rice)' },
+    name: { ko: '쌈밥', ja: 'サムパプ', en: 'Ssambap (Wrapped Rice)' },
     healthTags: ['diet', 'digestion', 'skin'],
     healthRadar: { skin: 65, antiAging: 65, immunity: 65, digestion: 75, diet: 80 },
     healthDescription: {
@@ -559,7 +559,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'gyeongju-yakgwa',
     region: 'gyeongju',
-    name: { ko: '경주 약과', ja: '慶州ヤックァ', en: 'Gyeongju Yakgwa (Honey Pastry)' },
+    name: { ko: '약과', ja: 'ヤックァ', en: 'Yakgwa (Honey Pastry)' },
     healthTags: ['antiAging'],
     healthRadar: { skin: 40, antiAging: 65, immunity: 50, digestion: 50, diet: 35 },
     healthDescription: {
@@ -574,7 +574,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'cheonan-walnut-cookie',
     region: 'cheonan',
-    name: { ko: '천안 호두과자', ja: '天安クルミ菓子', en: 'Cheonan Walnut Cookie' },
+    name: { ko: '호두과자', ja: 'クルミ菓子', en: 'Walnut Cookie' },
     healthTags: ['antiAging'],
     healthRadar: { skin: 50, antiAging: 75, immunity: 60, digestion: 50, diet: 40 },
     healthDescription: {
@@ -587,7 +587,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'cheonan-sundae-soup',
     region: 'cheonan',
-    name: { ko: '천안 순대국밥', ja: '天安スンデクッパ', en: 'Cheonan Sundae Soup' },
+    name: { ko: '순대국밥', ja: 'スンデクッパ', en: 'Sundae Soup' },
     healthTags: ['bone'],
     healthRadar: { skin: 55, antiAging: 50, immunity: 55, digestion: 65, diet: 50 },
     healthDescription: {
@@ -600,7 +600,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'cheonan-charcoal-dakgalbi',
     region: 'cheonan',
-    name: { ko: '천안 숯불닭갈비', ja: '天安炭火チキンカルビ', en: 'Cheonan Charcoal Chicken Ribs' },
+    name: { ko: '숯불닭갈비', ja: '炭火チキンカルビ', en: 'Charcoal Chicken Ribs' },
     healthTags: ['immunity'],
     healthRadar: { skin: 55, antiAging: 55, immunity: 65, digestion: 55, diet: 60 },
     healthDescription: {
@@ -613,7 +613,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'cheonan-hanwoo-yukhoe',
     region: 'cheonan',
-    name: { ko: '천안 한우육회', ja: '天安韓牛ユッケ', en: 'Cheonan Hanwoo Yukhoe (Raw Beef)' },
+    name: { ko: '한우육회', ja: '韓牛ユッケ', en: 'Hanwoo Yukhoe (Raw Beef)' },
     healthTags: ['skin', 'antiAging'],
     healthRadar: { skin: 65, antiAging: 60, immunity: 55, digestion: 45, diet: 55 },
     healthDescription: {
@@ -626,7 +626,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'cheonan-cheonggukjang',
     region: 'cheonan',
-    name: { ko: '천안 청국장', ja: '天安チョングクジャン', en: 'Cheonan Cheonggukjang' },
+    name: { ko: '청국장', ja: 'チョングクジャン', en: 'Cheonggukjang' },
     healthTags: ['immunity', 'digestion', 'antiAging'],
     healthRadar: { skin: 55, antiAging: 85, immunity: 90, digestion: 90, diet: 70 },
     healthDescription: {
@@ -639,7 +639,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'cheonan-bossam',
     region: 'cheonan',
-    name: { ko: '천안 보쌈', ja: '天安ポッサム', en: 'Cheonan Bossam' },
+    name: { ko: '보쌈', ja: 'ポッサム', en: 'Bossam' },
     healthTags: ['skin'],
     healthRadar: { skin: 70, antiAging: 60, immunity: 55, digestion: 60, diet: 50 },
     healthDescription: {
@@ -652,7 +652,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'cheonan-lotus-rice',
     region: 'cheonan',
-    name: { ko: '천안 연잎밥', ja: '天安ハスの葉ご飯', en: 'Cheonan Lotus Leaf Rice' },
+    name: { ko: '연잎밥', ja: 'ハスの葉ご飯', en: 'Lotus Leaf Rice' },
     healthTags: ['digestion', 'antiAging'],
     healthRadar: { skin: 55, antiAging: 75, immunity: 70, digestion: 80, diet: 70 },
     healthDescription: {
@@ -667,7 +667,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yongin-baegam-sundae',
     region: 'yongin',
-    name: { ko: '용인 백암순대', ja: '龍仁ペガムスンデ', en: 'Yongin Baegam Sundae' },
+    name: { ko: '백암순대', ja: 'ペガムスンデ', en: 'Baegam Sundae' },
     healthTags: ['digestion'],
     healthRadar: { skin: 50, antiAging: 55, immunity: 60, digestion: 70, diet: 50 },
     healthDescription: {
@@ -680,7 +680,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yongin-nurungji-baeksuk',
     region: 'yongin',
-    name: { ko: '용인 누룽지백숙', ja: '龍仁ヌルンジペクスク', en: 'Yongin Nurungji Baeksuk' },
+    name: { ko: '누룽지백숙', ja: 'ヌルンジペクスク', en: 'Nurungji Baeksuk' },
     healthTags: ['immunity', 'digestion'],
     healthRadar: { skin: 55, antiAging: 65, immunity: 80, digestion: 85, diet: 65 },
     healthDescription: {
@@ -693,7 +693,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yongin-sanchae-bibimbap',
     region: 'yongin',
-    name: { ko: '용인 산채비빔밥', ja: '龍仁山菜ビビンバ', en: 'Yongin Wild Herb Bibimbap' },
+    name: { ko: '산채비빔밥', ja: '山菜ビビンバ', en: 'Wild Herb Bibimbap' },
     healthTags: ['diet', 'digestion', 'antiAging', 'skin'],
     healthRadar: { skin: 70, antiAging: 75, immunity: 70, digestion: 85, diet: 85 },
     healthDescription: {
@@ -706,7 +706,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yongin-hanwoo',
     region: 'yongin',
-    name: { ko: '용인 한우구이', ja: '龍仁韓牛焼き', en: 'Yongin Hanwoo Grilled Beef' },
+    name: { ko: '한우구이', ja: '韓牛焼き', en: 'Hanwoo Grilled Beef' },
     healthTags: ['skin'],
     healthRadar: { skin: 60, antiAging: 55, immunity: 55, digestion: 50, diet: 45 },
     healthDescription: {
@@ -719,7 +719,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yongin-hanbang-samgyetang',
     region: 'yongin',
-    name: { ko: '용인 한방삼계탕', ja: '龍仁韓方サムゲタン', en: 'Yongin Herbal Samgyetang' },
+    name: { ko: '한방삼계탕', ja: '韓方サムゲタン', en: 'Herbal Samgyetang' },
     healthTags: ['immunity', 'antiAging'],
     healthRadar: { skin: 65, antiAging: 80, immunity: 95, digestion: 70, diet: 60 },
     healthDescription: {
@@ -732,7 +732,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yongin-dolsot-bibimbap',
     region: 'yongin',
-    name: { ko: '용인 돌솥비빔밥', ja: '龍仁石鍋ビビンバ', en: 'Yongin Dolsot Bibimbap' },
+    name: { ko: '돌솥비빔밥', ja: '石鍋ビビンバ', en: 'Dolsot Bibimbap' },
     healthTags: ['skin', 'diet', 'digestion'],
     healthRadar: { skin: 70, antiAging: 65, immunity: 60, digestion: 80, diet: 80 },
     healthDescription: {
@@ -745,7 +745,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yongin-beoseot-jeongol',
     region: 'yongin',
-    name: { ko: '용인 버섯전골', ja: '龍仁キノコチョンゴル', en: 'Yongin Mushroom Hot Pot' },
+    name: { ko: '버섯전골', ja: 'キノコチョンゴル', en: 'Mushroom Hot Pot' },
     healthTags: ['immunity', 'antiAging', 'diet'],
     healthRadar: { skin: 60, antiAging: 80, immunity: 85, digestion: 70, diet: 75 },
     healthDescription: {
@@ -758,7 +758,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yongin-makgeolli',
     region: 'yongin',
-    name: { ko: '용인 막걸리', ja: '龍仁マッコリ', en: 'Yongin Makgeolli' },
+    name: { ko: '막걸리', ja: 'マッコリ', en: 'Makgeolli' },
     healthTags: ['digestion', 'immunity'],
     healthRadar: { skin: 50, antiAging: 60, immunity: 65, digestion: 70, diet: 40 },
     healthDescription: {
@@ -773,7 +773,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'icheon-rice-table',
     region: 'icheon',
-    name: { ko: '이천 쌀밥상', ja: '利川米膳', en: 'Icheon Rice Table' },
+    name: { ko: '쌀밥상', ja: '米膳', en: 'Rice Table' },
     healthTags: ['digestion'],
     healthRadar: { skin: 50, antiAging: 60, immunity: 65, digestion: 80, diet: 65 },
     healthDescription: {
@@ -786,7 +786,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'icheon-ganjang-gejang',
     region: 'icheon',
-    name: { ko: '이천 간장게장', ja: '利川醤油カニ漬け', en: 'Icheon Soy-Marinated Crab' },
+    name: { ko: '간장게장', ja: '醤油カニ漬け', en: 'Soy-Marinated Crab' },
     healthTags: ['immunity', 'skin', 'digestion'],
     healthRadar: { skin: 65, antiAging: 70, immunity: 80, digestion: 75, diet: 60 },
     healthDescription: {
@@ -799,7 +799,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'icheon-hanwoo-gui',
     region: 'icheon',
-    name: { ko: '이천 한우구이', ja: '利川韓牛焼き', en: 'Icheon Hanwoo Grilled Beef' },
+    name: { ko: '한우구이', ja: '韓牛焼き', en: 'Hanwoo Grilled Beef' },
     healthTags: ['skin'],
     healthRadar: { skin: 60, antiAging: 55, immunity: 55, digestion: 50, diet: 45 },
     healthDescription: {
@@ -812,7 +812,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'icheon-sotbap',
     region: 'icheon',
-    name: { ko: '이천 솥밥', ja: '利川釜ご飯', en: 'Icheon Sotbap (Pot Rice)' },
+    name: { ko: '솥밥', ja: '釜ご飯', en: 'Sotbap (Pot Rice)' },
     healthTags: ['digestion'],
     healthRadar: { skin: 45, antiAging: 55, immunity: 60, digestion: 80, diet: 65 },
     healthDescription: {
@@ -825,7 +825,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'icheon-cheonggukjang-jeongsik',
     region: 'icheon',
-    name: { ko: '이천 청국장 정식', ja: '利川チョングクジャン定食', en: 'Icheon Cheonggukjang Set Meal' },
+    name: { ko: '청국장 정식', ja: 'チョングクジャン定食', en: 'Cheonggukjang Set Meal' },
     healthTags: ['immunity', 'digestion', 'antiAging', 'skin'],
     healthRadar: { skin: 60, antiAging: 85, immunity: 90, digestion: 90, diet: 70 },
     healthDescription: {
@@ -838,7 +838,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'icheon-kongguksu',
     region: 'icheon',
-    name: { ko: '이천 콩국수', ja: '利川コングクス', en: 'Icheon Cold Soy Milk Noodles' },
+    name: { ko: '콩국수', ja: 'コングクス', en: 'Cold Soy Milk Noodles' },
     healthTags: ['skin', 'diet', 'bone'],
     healthRadar: { skin: 70, antiAging: 65, immunity: 60, digestion: 70, diet: 80 },
     healthDescription: {
@@ -853,7 +853,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'sokcho-abai-sundae',
     region: 'sokcho',
-    name: { ko: '속초 아바이순대', ja: '束草アバイスンデ', en: 'Sokcho Abai Sundae' },
+    name: { ko: '아바이순대', ja: 'アバイスンデ', en: 'Abai Sundae' },
     healthTags: ['digestion'],
     healthRadar: { skin: 50, antiAging: 50, immunity: 55, digestion: 65, diet: 50 },
     healthDescription: {
@@ -866,7 +866,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'sokcho-ojingeo-sundae',
     region: 'sokcho',
-    name: { ko: '속초 오징어순대', ja: '束草イカスンデ', en: 'Sokcho Squid Sundae' },
+    name: { ko: '오징어순대', ja: 'イカスンデ', en: 'Squid Sundae' },
     healthTags: ['digestion'],
     healthRadar: { skin: 55, antiAging: 55, immunity: 55, digestion: 65, diet: 60 },
     healthDescription: {
@@ -879,7 +879,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'sokcho-mulhoe',
     region: 'sokcho',
-    name: { ko: '속초 물회', ja: '束草ムルフェ', en: 'Sokcho Cold Raw Fish Soup' },
+    name: { ko: '물회', ja: 'ムルフェ', en: 'Cold Raw Fish Soup' },
     healthTags: ['diet', 'skin'],
     healthRadar: { skin: 70, antiAging: 65, immunity: 65, digestion: 65, diet: 80 },
     healthDescription: {
@@ -892,7 +892,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'sokcho-gamja-ongsimi',
     region: 'sokcho',
-    name: { ko: '속초 감자옹심이', ja: '束草ジャガイモ団子汁', en: 'Sokcho Potato Dumpling Soup' },
+    name: { ko: '감자옹심이', ja: 'ジャガイモ団子汁', en: 'Potato Dumpling Soup' },
     healthTags: ['digestion'],
     healthRadar: { skin: 40, antiAging: 50, immunity: 50, digestion: 70, diet: 55 },
     healthDescription: {
@@ -907,7 +907,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yeosu-gat-kimchi',
     region: 'yeosu',
-    name: { ko: '여수 갓김치', ja: '麗水カットキムチ', en: 'Yeosu Leaf Mustard Kimchi' },
+    name: { ko: '갓김치', ja: 'カットキムチ', en: 'Leaf Mustard Kimchi' },
     healthTags: ['immunity', 'digestion', 'antiAging'],
     healthRadar: { skin: 55, antiAging: 80, immunity: 90, digestion: 85, diet: 65 },
     healthDescription: {
@@ -920,7 +920,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yeosu-seodae-hoemuchim',
     region: 'yeosu',
-    name: { ko: '여수 서대회무침', ja: '麗水ソデ刺身和え', en: 'Yeosu Seodae Raw Fish Salad' },
+    name: { ko: '서대회무침', ja: 'ソデ刺身和え', en: 'Seodae Raw Fish Salad' },
     healthTags: ['skin'],
     healthRadar: { skin: 75, antiAging: 65, immunity: 60, digestion: 65, diet: 70 },
     healthDescription: {
@@ -933,7 +933,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yeosu-jangeo-tang',
     region: 'yeosu',
-    name: { ko: '여수 장어탕', ja: '麗水アナゴスープ', en: 'Yeosu Conger Eel Soup' },
+    name: { ko: '장어탕', ja: 'アナゴスープ', en: 'Conger Eel Soup' },
     healthTags: ['skin', 'antiAging'],
     healthRadar: { skin: 80, antiAging: 75, immunity: 65, digestion: 60, diet: 55 },
     healthDescription: {
@@ -946,7 +946,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yeosu-gejang-baekban',
     region: 'yeosu',
-    name: { ko: '여수 게장백반', ja: '麗水ケジャンバクバン', en: 'Yeosu Gejang Baekban' },
+    name: { ko: '게장백반', ja: 'ケジャンバクバン', en: 'Gejang Baekban' },
     healthTags: ['immunity', 'skin', 'digestion'],
     healthRadar: { skin: 65, antiAging: 65, immunity: 80, digestion: 70, diet: 60 },
     healthDescription: {
@@ -959,7 +959,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'yeosu-gul-yori',
     region: 'yeosu',
-    name: { ko: '여수 굴요리', ja: '麗水牡蠣料理', en: 'Yeosu Oyster Dishes' },
+    name: { ko: '굴요리', ja: '牡蠣料理', en: 'Oyster Dishes' },
     healthTags: ['immunity', 'skin'],
     healthRadar: { skin: 70, antiAging: 65, immunity: 85, digestion: 60, diet: 60 },
     healthDescription: {
@@ -974,7 +974,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'andong-jjimdak',
     region: 'andong',
-    name: { ko: '안동 찜닭', ja: '安東チムタク', en: 'Andong Jjimdak (Braised Chicken)' },
+    name: { ko: '찜닭', ja: 'チムタク', en: 'Jjimdak (Braised Chicken)' },
     healthTags: ['immunity'],
     healthRadar: { skin: 55, antiAging: 60, immunity: 65, digestion: 60, diet: 60 },
     healthDescription: {
@@ -987,7 +987,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'andong-heot-jesabap',
     region: 'andong',
-    name: { ko: '안동 헛제사밥', ja: '安東ホッチェサパプ', en: 'Andong Heot-jesabap' },
+    name: { ko: '헛제사밥', ja: 'ホッチェサパプ', en: 'Heot-jesabap' },
     healthTags: ['digestion'],
     healthRadar: { skin: 50, antiAging: 55, immunity: 60, digestion: 75, diet: 65 },
     healthDescription: {
@@ -1000,7 +1000,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'andong-gan-godeungeo',
     region: 'andong',
-    name: { ko: '안동 간고등어', ja: '安東塩漬けサバ', en: 'Andong Salted Mackerel' },
+    name: { ko: '간고등어', ja: '塩漬けサバ', en: 'Salted Mackerel' },
     healthTags: ['skin'],
     healthRadar: { skin: 75, antiAging: 70, immunity: 60, digestion: 55, diet: 65 },
     healthDescription: {
@@ -1013,7 +1013,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'andong-guksi',
     region: 'andong',
-    name: { ko: '안동 국시', ja: '安東グクシ', en: 'Andong Guksi Noodles' },
+    name: { ko: '국시', ja: 'グクシ', en: 'Guksi Noodles' },
     healthTags: ['digestion'],
     healthRadar: { skin: 40, antiAging: 45, immunity: 55, digestion: 75, diet: 65 },
     healthDescription: {
@@ -1026,7 +1026,7 @@ export const foodHealthData: FoodHealthData[] = [
   {
     foodId: 'andong-sikhye',
     region: 'andong',
-    name: { ko: '안동 식혜', ja: '安東シッケ', en: 'Andong Sikhye (Sweet Rice Punch)' },
+    name: { ko: '식혜', ja: 'シッケ', en: 'Sikhye (Sweet Rice Punch)' },
     healthTags: ['digestion'],
     healthRadar: { skin: 40, antiAging: 55, immunity: 60, digestion: 80, diet: 55 },
     healthDescription: {
