@@ -31,6 +31,15 @@ const PROVINCE_AREA_CODE = {
   gyeonggi: 31, gangwon: 32, chungbuk: 33, chungnam: 34, gyeongbuk: 35, gyeongnam: 36, jeonbuk: 37, jeonnam: 38, jeju: 39,
 }
 
+// 광역 한국어 — 4 차 시도 ("성심당 대전") 용. chungnam 은 대표 도시 천안 으로 매칭률 ↑.
+const CITY_KOREAN_NAME = {
+  seoul: '서울', incheon: '인천', daejeon: '대전', daegu: '대구',
+  gwangju: '광주', busan: '부산', ulsan: '울산', sejong: '세종',
+  gyeonggi: '경기', gangwon: '강원', chungbuk: '충북', chungnam: '천안',
+  jeonbuk: '전북', jeonnam: '전남', gyeongbuk: '경북', gyeongnam: '경남',
+  jeju: '제주',
+}
+
 if (!existsSync('data')) mkdirSync('data', { recursive: true })
 
 // ─────────────────────────────────────────────────────────────
@@ -133,6 +142,68 @@ async function searchKeyword(keyword, areaCode) {
 }
 
 // ─────────────────────────────────────────────────────────────
+// 다단계 검색 헬퍼
+// ─────────────────────────────────────────────────────────────
+
+/**
+ * 지점 표시 제거 — "성심당 본점" → "성심당", "이재모피자 서면점" → "이재모피자"
+ * 마지막 토큰이 "...점" / "본점" / "본관" / "{N}관" 등이면 제거.
+ */
+function cleanBranchName(name) {
+  let out = name
+  // "본점.+점" — 예: "성심당 본점" 안에 X. 단순화: 공백 + 마지막 토큰이 점/관/N관
+  out = out.replace(/\s*본점$/, '')
+  out = out.replace(/\s*본관$/, '')
+  out = out.replace(/\s*\d+관$/, '')
+  out = out.replace(/\s*1관$/, '')
+  // 마지막 공백 분리 토큰이 "...점" 으로 끝나면 제거 (e.g. "DCC점", "롯데백화점대전점", "양평동점", "서면점")
+  out = out.replace(/\s+\S+점$/, '')
+  return out.trim()
+}
+
+function firstWord(name) {
+  return name.split(/\s+/)[0]
+}
+
+/**
+ * 4 단계 검색 — 원본 → 지점제거 → 첫단어 → 첫단어+도시명.
+ * 먼저 매칭되는 단계에서 결과 반환. 단계 사이 250ms rate limit.
+ */
+async function matchPick(searchName, areaCode, provinceKey) {
+  const cityName = CITY_KOREAN_NAME[provinceKey]
+  const cleaned = cleanBranchName(searchName)
+  const fw = firstWord(searchName)
+  const fwCity = cityName ? `${fw} ${cityName}` : null
+
+  // 후보 — 중복/짧은 문자열 제거
+  const seen = new Set()
+  const candidates = []
+  for (const [stage, kw] of [
+    ['원본', searchName],
+    ['정제', cleaned],
+    ['첫단어', fw],
+    ['도시', fwCity],
+  ]) {
+    if (!kw) continue
+    if (kw.length <= 1) continue
+    if (seen.has(kw)) continue
+    seen.add(kw)
+    candidates.push({ stage, keyword: kw })
+  }
+
+  for (let i = 0; i < candidates.length; i++) {
+    const c = candidates[i]
+    const results = await searchKeyword(c.keyword, areaCode)
+    if (results.length > 0) {
+      return { ...results[0], stage: c.stage, matchedKeyword: c.keyword }
+    }
+    // 다음 단계 시도 전 rate limit
+    if (i < candidates.length - 1) await new Promise((r) => setTimeout(r, 250))
+  }
+  return null
+}
+
+// ─────────────────────────────────────────────────────────────
 // 메인 — 전체 매칭
 // ─────────────────────────────────────────────────────────────
 
@@ -145,21 +216,23 @@ for (const [province, picks] of Object.entries(parsed)) {
   for (const pick of picks) {
     idx++
     const tag = `[${idx}/${totalPicks}]`
-    const results = await searchKeyword(pick.searchName, areaCode)
-    if (results.length > 0) {
-      const first = results[0]
-      console.log(`  ${tag} ✓ ${pick.searchName} → ${first.contentid} (${first.title})`)
+    const result = await matchPick(pick.searchName, areaCode, province)
+    if (result) {
+      const note = result.stage === '원본' ? '' : ` (검색어: "${result.matchedKeyword}")`
+      console.log(`  ${tag} ✓ [${result.stage}] ${pick.searchName} → ${result.contentid} (${result.title})${note}`)
       matches.push({
         province,
         id: pick.id,
         searchName: pick.searchName,
         rank: pick.rank,
-        contentid: first.contentid,
-        contenttypeid: first.contenttypeid,
-        matchedTitle: first.title,
+        contentid: result.contentid,
+        contenttypeid: result.contenttypeid,
+        matchedTitle: result.title,
+        matchStage: result.stage,
+        matchedKeyword: result.matchedKeyword,
       })
     } else {
-      console.log(`  ${tag} ✗ ${pick.searchName} — NO MATCH`)
+      console.log(`  ${tag} ✗          ${pick.searchName} — NO MATCH (4 단계 모두 실패)`)
       matches.push({
         province,
         id: pick.id,
@@ -170,15 +243,44 @@ for (const [province, picks] of Object.entries(parsed)) {
         matchedTitle: null,
       })
     }
-    // rate limit 방지 (250ms 간격)
+    // 각 픽 사이 rate limit (matchPick 내부 단계 사이 250ms 와 별개)
     await new Promise((r) => setTimeout(r, 250))
   }
 }
+
+// ─────────────────────────────────────────────────────────────
+// 중복 contentid 후처리 — 같은 도시 내 동일 contentid 면 rank 낮은 픽만 유지
+// ─────────────────────────────────────────────────────────────
+
+const seenByCity = new Map() // province → Map(contentid → keepingPickId)
+const sortedByRank = [...matches].sort((a, b) => a.rank - b.rank)
+
+let dedupedCount = 0
+for (const m of sortedByRank) {
+  if (!m.contentid) continue
+  if (!seenByCity.has(m.province)) seenByCity.set(m.province, new Map())
+  const cityMap = seenByCity.get(m.province)
+  if (cityMap.has(m.contentid)) {
+    // 이미 더 낮은 rank 픽이 차지함 — 무효
+    m.contentid = null
+    m.contenttypeid = null
+    m.duplicateOf = cityMap.get(m.contentid)
+    dedupedCount++
+  } else {
+    cityMap.set(m.contentid, m.id)
+  }
+}
+if (dedupedCount > 0) console.log(`\n[dedupe] 중복 contentid 무효화: ${dedupedCount}건`)
 
 writeFileSync(OUTPUT_PATH, JSON.stringify(matches, null, 2) + '\n')
 
 const matched = matches.filter((m) => m.contentid).length
 const total = matches.length
+const stageStats = matches
+  .filter((m) => m.contentid)
+  .reduce((acc, m) => ((acc[m.matchStage] = (acc[m.matchStage] || 0) + 1), acc), {})
+
 console.log(`\n=== 매칭 결과: ${matched}/${total} (${((matched / total) * 100).toFixed(1)}%) ===`)
+console.log(`단계별: ${JSON.stringify(stageStats)}`)
 console.log(`Output: ${OUTPUT_PATH}`)
 console.log(`다음: node scripts/apply-local-picks-matches.mjs`)
