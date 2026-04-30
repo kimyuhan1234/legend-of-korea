@@ -16,31 +16,27 @@ interface HealthSectionProps {
 
 const TAG_COLORS: Record<HealthTag, { bg: string; text: string }> = {
   skin:      { bg: 'bg-pink-100',    text: 'text-pink-700' },
-  diet:      { bg: 'bg-emerald-100', text: 'text-emerald-700' },
-  immunity:  { bg: 'bg-blue-100',    text: 'text-blue-700' },
-  energy:    { bg: 'bg-orange-100',  text: 'text-orange-700' },
-  digestion: { bg: 'bg-purple-100',  text: 'text-purple-700' },
   antiAging: { bg: 'bg-indigo-100',  text: 'text-indigo-700' },
-  hair:      { bg: 'bg-teal-100',    text: 'text-teal-700' },
+  immunity:  { bg: 'bg-blue-100',    text: 'text-blue-700' },
+  digestion: { bg: 'bg-purple-100',  text: 'text-purple-700' },
+  diet:      { bg: 'bg-emerald-100', text: 'text-emerald-700' },
   bone:      { bg: 'bg-slate-100',   text: 'text-slate-700' },
-  eye:       { bg: 'bg-violet-100',  text: 'text-violet-700' },
-  heart:     { bg: 'bg-red-100',     text: 'text-red-700' },
 }
 
 const TAG_LABELS: Record<string, Record<HealthTag, string>> = {
-  ko: { skin: '🧴 피부 미용', diet: '🏋️ 다이어트', immunity: '🛡️ 면역력', energy: '⚡ 활력', digestion: '🫄 소화', antiAging: '✨ 항산화', hair: '💇 모발', bone: '🦴 뼈/관절', eye: '👁️ 눈 건강', heart: '❤️ 심혈관' },
-  ja: { skin: '🧴 美肌', diet: '🏋️ ダイエット', immunity: '🛡️ 免疫力', energy: '⚡ 活力', digestion: '🫄 消化', antiAging: '✨ 抗酸化', hair: '💇 髪の毛', bone: '🦴 骨・関節', eye: '👁️ 目の健康', heart: '❤️ 心血管' },
-  en: { skin: '🧴 Skin Care', diet: '🏋️ Diet', immunity: '🛡️ Immunity', energy: '⚡ Energy', digestion: '🫄 Digestion', antiAging: '✨ Anti-aging', hair: '💇 Hair', bone: '🦴 Bone & Joint', eye: '👁️ Eye Health', heart: '❤️ Heart' },
-  'zh-CN': { skin: '🧴 护肤', diet: '🏋️ 减脂', immunity: '🛡️ 免疫力', energy: '⚡ 活力', digestion: '🫄 消化', antiAging: '✨ 抗氧化', hair: '💇 发质', bone: '🦴 骨骼', eye: '👁️ 眼健康', heart: '❤️ 心血管' },
-  'zh-TW': { skin: '🧴 護膚', diet: '🏋️ 減脂', immunity: '🛡️ 免疫力', energy: '⚡ 活力', digestion: '🫄 消化', antiAging: '✨ 抗氧化', hair: '💇 髮質', bone: '🦴 骨骼', eye: '👁️ 眼健康', heart: '❤️ 心血管' },
+  ko: { skin: '🧴 피부 미용', antiAging: '✨ 항산화', immunity: '🛡️ 면역력', digestion: '🫄 소화', diet: '🏋️ 다이어트', bone: '🦴 뼈/관절' },
+  ja: { skin: '🧴 美肌', antiAging: '✨ 抗酸化', immunity: '🛡️ 免疫力', digestion: '🫄 消化', diet: '🏋️ ダイエット', bone: '🦴 骨・関節' },
+  en: { skin: '🧴 Skin Care', antiAging: '✨ Anti-aging', immunity: '🛡️ Immunity', digestion: '🫄 Digestion', diet: '🏋️ Diet', bone: '🦴 Bone & Joint' },
+  'zh-CN': { skin: '🧴 护肤', antiAging: '✨ 抗氧化', immunity: '🛡️ 免疫力', digestion: '🫄 消化', diet: '🏋️ 减脂', bone: '🦴 骨骼' },
+  'zh-TW': { skin: '🧴 護膚', antiAging: '✨ 抗氧化', immunity: '🛡️ 免疫力', digestion: '🫄 消化', diet: '🏋️ 減脂', bone: '🦴 骨骼' },
 }
 
 const RADAR_LABELS: Record<string, Record<string, string>> = {
-  ko:      { skin: '피부', diet: '다이어트', immunity: '면역', energy: '활력', digestion: '소화', antiAging: '항산화' },
-  ja:      { skin: '肌', diet: 'ダイエット', immunity: '免疫', energy: '活力', digestion: '消化', antiAging: '抗酸化' },
-  en:      { skin: 'Skin', diet: 'Diet', immunity: 'Immunity', energy: 'Energy', digestion: 'Digestion', antiAging: 'Anti-aging' },
-  'zh-CN': { skin: '护肤', diet: '减脂', immunity: '免疫', energy: '活力', digestion: '消化', antiAging: '抗氧化' },
-  'zh-TW': { skin: '護膚', diet: '減脂', immunity: '免疫', energy: '活力', digestion: '消化', antiAging: '抗氧化' },
+  ko:      { skin: '피부', antiAging: '항산화', immunity: '면역', digestion: '소화', diet: '다이어트', bone: '뼈/관절' },
+  ja:      { skin: '肌', antiAging: '抗酸化', immunity: '免疫', digestion: '消化', diet: 'ダイエット', bone: '骨・関節' },
+  en:      { skin: 'Skin', antiAging: 'Anti-aging', immunity: 'Immunity', digestion: 'Digestion', diet: 'Diet', bone: 'Bone' },
+  'zh-CN': { skin: '护肤', antiAging: '抗氧化', immunity: '免疫', digestion: '消化', diet: '减脂', bone: '骨骼' },
+  'zh-TW': { skin: '護膚', antiAging: '抗氧化', immunity: '免疫', digestion: '消化', diet: '減脂', bone: '骨骼' },
 }
 
 const SECTION_LABELS: Record<string, { title: string; nutrients: string; desc: string }> = {
@@ -63,11 +59,11 @@ export function HealthSection({ health, locale }: HealthSectionProps) {
 
   const radarData = [
     { subject: radarLabels.skin,      value: health.healthRadar.skin },
-    { subject: radarLabels.diet,      value: health.healthRadar.diet },
-    { subject: radarLabels.immunity,  value: health.healthRadar.immunity },
-    { subject: radarLabels.energy,    value: health.healthRadar.energy },
-    { subject: radarLabels.digestion, value: health.healthRadar.digestion },
     { subject: radarLabels.antiAging, value: health.healthRadar.antiAging },
+    { subject: radarLabels.immunity,  value: health.healthRadar.immunity },
+    { subject: radarLabels.digestion, value: health.healthRadar.digestion },
+    { subject: radarLabels.diet,      value: health.healthRadar.diet },
+    { subject: radarLabels.bone,      value: health.healthRadar.bone },
   ]
 
   return (

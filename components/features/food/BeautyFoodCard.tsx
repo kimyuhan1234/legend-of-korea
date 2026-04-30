@@ -15,32 +15,28 @@ interface BeautyFoodCardProps {
 }
 
 const TAG_COLORS: Record<HealthTag, { bg: string; text: string; gradient: string }> = {
-  skin:      { bg: 'bg-pink-100',   text: 'text-pink-700',   gradient: 'from-pink-50 to-rose-100' },
+  skin:      { bg: 'bg-pink-100',    text: 'text-pink-700',    gradient: 'from-pink-50 to-rose-100' },
+  antiAging: { bg: 'bg-indigo-100',  text: 'text-indigo-700',  gradient: 'from-indigo-50 to-purple-100' },
+  immunity:  { bg: 'bg-blue-100',    text: 'text-blue-700',    gradient: 'from-blue-50 to-cyan-100' },
+  digestion: { bg: 'bg-purple-100',  text: 'text-purple-700',  gradient: 'from-purple-50 to-violet-100' },
   diet:      { bg: 'bg-emerald-100', text: 'text-emerald-700', gradient: 'from-emerald-50 to-green-100' },
-  immunity:  { bg: 'bg-blue-100',   text: 'text-blue-700',   gradient: 'from-blue-50 to-cyan-100' },
-  energy:    { bg: 'bg-orange-100', text: 'text-orange-700', gradient: 'from-orange-50 to-amber-100' },
-  digestion: { bg: 'bg-purple-100', text: 'text-purple-700', gradient: 'from-purple-50 to-violet-100' },
-  antiAging: { bg: 'bg-indigo-100', text: 'text-indigo-700', gradient: 'from-indigo-50 to-purple-100' },
-  hair:      { bg: 'bg-teal-100',   text: 'text-teal-700',   gradient: 'from-teal-50 to-cyan-100' },
-  bone:      { bg: 'bg-slate-100',  text: 'text-slate-700',  gradient: 'from-slate-50 to-gray-100' },
-  eye:       { bg: 'bg-violet-100', text: 'text-violet-700', gradient: 'from-violet-50 to-purple-100' },
-  heart:     { bg: 'bg-red-100',    text: 'text-red-700',    gradient: 'from-red-50 to-rose-100' },
+  bone:      { bg: 'bg-slate-100',   text: 'text-slate-700',   gradient: 'from-slate-50 to-gray-100' },
 }
 
 const TAG_LABELS: Record<string, Record<HealthTag, string>> = {
-  ko: { skin: '🧴 피부 미용', diet: '🏋️ 다이어트', immunity: '🛡️ 면역력', energy: '⚡ 활력', digestion: '🫄 소화', antiAging: '✨ 항산화', hair: '💇 모발', bone: '🦴 뼈/관절', eye: '👁️ 눈 건강', heart: '❤️ 심혈관' },
-  ja: { skin: '🧴 美肌', diet: '🏋️ ダイエット', immunity: '🛡️ 免疫力', energy: '⚡ 活力', digestion: '🫄 消化', antiAging: '✨ 抗酸化', hair: '💇 髪の毛', bone: '🦴 骨・関節', eye: '👁️ 目の健康', heart: '❤️ 心血管' },
-  en: { skin: '🧴 Skin Care', diet: '🏋️ Diet', immunity: '🛡️ Immunity', energy: '⚡ Energy', digestion: '🫄 Digestion', antiAging: '✨ Anti-aging', hair: '💇 Hair', bone: '🦴 Bone & Joint', eye: '👁️ Eye Health', heart: '❤️ Heart' },
-  'zh-CN': { skin: '🧴 护肤', diet: '🏋️ 减脂', immunity: '🛡️ 免疫力', energy: '⚡ 活力', digestion: '🫄 消化', antiAging: '✨ 抗氧化', hair: '💇 发质', bone: '🦴 骨骼', eye: '👁️ 眼健康', heart: '❤️ 心血管' },
-  'zh-TW': { skin: '🧴 護膚', diet: '🏋️ 減脂', immunity: '🛡️ 免疫力', energy: '⚡ 活力', digestion: '🫄 消化', antiAging: '✨ 抗氧化', hair: '💇 髮質', bone: '🦴 骨骼', eye: '👁️ 眼健康', heart: '❤️ 心血管' },
+  ko: { skin: '🧴 피부 미용', antiAging: '✨ 항산화', immunity: '🛡️ 면역력', digestion: '🫄 소화', diet: '🏋️ 다이어트', bone: '🦴 뼈/관절' },
+  ja: { skin: '🧴 美肌', antiAging: '✨ 抗酸化', immunity: '🛡️ 免疫力', digestion: '🫄 消化', diet: '🏋️ ダイエット', bone: '🦴 骨・関節' },
+  en: { skin: '🧴 Skin Care', antiAging: '✨ Anti-aging', immunity: '🛡️ Immunity', digestion: '🫄 Digestion', diet: '🏋️ Diet', bone: '🦴 Bone & Joint' },
+  'zh-CN': { skin: '🧴 护肤', antiAging: '✨ 抗氧化', immunity: '🛡️ 免疫力', digestion: '🫄 消化', diet: '🏋️ 减脂', bone: '🦴 骨骼' },
+  'zh-TW': { skin: '🧴 護膚', antiAging: '✨ 抗氧化', immunity: '🛡️ 免疫力', digestion: '🫄 消化', diet: '🏋️ 減脂', bone: '🦴 骨骼' },
 }
 
 const RADAR_LABELS: Record<string, Record<string, string>> = {
-  ko:     { skin: '피부', diet: '다이어트', immunity: '면역', energy: '활력', digestion: '소화', antiAging: '항산화' },
-  ja:     { skin: '肌', diet: 'ダイエット', immunity: '免疫', energy: '活力', digestion: '消化', antiAging: '抗酸化' },
-  en:     { skin: 'Skin', diet: 'Diet', immunity: 'Immunity', energy: 'Energy', digestion: 'Digestion', antiAging: 'Anti-aging' },
-  'zh-CN': { skin: '护肤', diet: '减脂', immunity: '免疫', energy: '活力', digestion: '消化', antiAging: '抗氧化' },
-  'zh-TW': { skin: '護膚', diet: '減脂', immunity: '免疫', energy: '活力', digestion: '消化', antiAging: '抗氧化' },
+  ko:     { skin: '피부', antiAging: '항산화', immunity: '면역', digestion: '소화', diet: '다이어트', bone: '뼈/관절' },
+  ja:     { skin: '肌', antiAging: '抗酸化', immunity: '免疫', digestion: '消化', diet: 'ダイエット', bone: '骨・関節' },
+  en:     { skin: 'Skin', antiAging: 'Anti-aging', immunity: 'Immunity', digestion: 'Digestion', diet: 'Diet', bone: 'Bone' },
+  'zh-CN': { skin: '护肤', antiAging: '抗氧化', immunity: '免疫', digestion: '消化', diet: '减脂', bone: '骨骼' },
+  'zh-TW': { skin: '護膚', antiAging: '抗氧化', immunity: '免疫', digestion: '消化', diet: '減脂', bone: '骨骼' },
 }
 
 function getTagLabels(locale: string): Record<HealthTag, string> {
@@ -70,11 +66,11 @@ export function BeautyFoodCard({ food, locale }: BeautyFoodCardProps) {
 
   const radarData = [
     { subject: radarLabels.skin,      value: food.healthRadar.skin },
-    { subject: radarLabels.diet,      value: food.healthRadar.diet },
-    { subject: radarLabels.immunity,  value: food.healthRadar.immunity },
-    { subject: radarLabels.energy,    value: food.healthRadar.energy },
-    { subject: radarLabels.digestion, value: food.healthRadar.digestion },
     { subject: radarLabels.antiAging, value: food.healthRadar.antiAging },
+    { subject: radarLabels.immunity,  value: food.healthRadar.immunity },
+    { subject: radarLabels.digestion, value: food.healthRadar.digestion },
+    { subject: radarLabels.diet,      value: food.healthRadar.diet },
+    { subject: radarLabels.bone,      value: food.healthRadar.bone },
   ]
 
   return (

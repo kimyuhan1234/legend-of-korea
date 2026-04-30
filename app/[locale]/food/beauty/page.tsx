@@ -17,11 +17,11 @@ const META = {
 }
 
 const HERO = {
-  ko:     { badge: '뷰티 푸드', title: '먹으면 예뻐지는 K-Food', subtitle: '81가지 한국 음식의 건강 효능을 레이더 그래프로 한눈에 확인하세요.' },
-  ja:     { badge: 'ビューティーフード', title: '食べて美しくなるK-Food', subtitle: '81品の韓国料理の健康効果をレーダーチャートで一目で確認できます。' },
-  en:     { badge: 'Beauty Food', title: 'K-Food That Makes You Glow', subtitle: 'Discover health benefits of 81 Korean dishes visualized with radar charts.' },
-  'zh-CN': { badge: '美容美食', title: '吃出美丽的K-Food', subtitle: '通过雷达图一目了然地查看81种韩国美食的健康功效。' },
-  'zh-TW': { badge: '美容美食', title: '吃出美麗的K-Food', subtitle: '透過雷達圖一目瞭然地查看81種韓國美食的健康功效。' },
+  ko:     { badge: '뷰티 푸드', title: '먹으면 예뻐지는 K-Food', subtitle: '76가지 한국 음식의 건강 효능을 레이더 그래프로 한눈에 확인하세요.' },
+  ja:     { badge: 'ビューティーフード', title: '食べて美しくなるK-Food', subtitle: '76品の韓国料理の健康効果をレーダーチャートで一目で確認できます。' },
+  en:     { badge: 'Beauty Food', title: 'K-Food That Makes You Glow', subtitle: 'Discover health benefits of 76 Korean dishes visualized with radar charts.' },
+  'zh-CN': { badge: '美容美食', title: '吃出美丽的K-Food', subtitle: '通过雷达图一目了然地查看76种韩国美食的健康功效。' },
+  'zh-TW': { badge: '美容美食', title: '吃出美麗的K-Food', subtitle: '透過雷達圖一目瞭然地查看76種韓國美食的健康功效。' },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
