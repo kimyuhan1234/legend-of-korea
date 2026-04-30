@@ -1,5 +1,7 @@
 "use client"
 
+import { formatPriceParts } from '@/lib/currency'
+
 interface Kit {
   id: string
   option_type: "solo" | "couple"
@@ -40,14 +42,31 @@ const DIGITAL_FEATURES = [
 ]
 
 const PLAN_LABEL = {
-  ko: { title: '구독 플랜 확인', plan: '디지털 퀘스트 패스', price: '₩6,900/월', desc: '모든 미션 해금 + 디지털 혜택' },
-  en: { title: 'Confirm Plan', plan: 'Digital Quest Pass', price: '$5/month', desc: 'Unlock all missions + digital perks' },
-  ja: { title: 'プラン確認', plan: 'デジタルクエストパス', price: '¥750/月', desc: '全ミッション解除＋デジタル特典' },
+  ko: { title: '구독 플랜 확인', plan: '디지털 퀘스트 패스', desc: '모든 미션 해금 + 디지털 혜택' },
+  en: { title: 'Confirm Plan', plan: 'Digital Quest Pass', desc: 'Unlock all missions + digital perks' },
+  ja: { title: 'プラン確認', plan: 'デジタルクエストパス', desc: '全ミッション解除＋デジタル特典' },
+  'zh-CN': { title: '确认订阅', plan: '数字任务通行证', desc: '解锁所有任务 + 数字特权' },
+  'zh-TW': { title: '確認訂閱', plan: '數位任務通行證', desc: '解鎖所有任務 + 數位特權' },
+}
+
+const PRICE_KRW = 6900
+const MONTH_SUFFIX: Record<string, string> = {
+  ko: '/월',
+  ja: '/月',
+  en: '/month',
+  'zh-CN': '/月',
+  'zh-TW': '/月',
 }
 
 export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t, locale }: Step1Props) {
   const lk = (locale || 'ko') as string
   const plan = PLAN_LABEL[lk as keyof typeof PLAN_LABEL] || PLAN_LABEL.en || PLAN_LABEL.ko
+
+  const { primary, secondary } = formatPriceParts(PRICE_KRW, lk)
+  const monthSuffix = MONTH_SUFFIX[lk] || MONTH_SUFFIX.en
+  const priceDisplay = secondary
+    ? `${primary}${monthSuffix} (${secondary}${monthSuffix})`
+    : `${primary}${monthSuffix}`
 
   // 첫 kit을 자동 선택 (상위 호환)
   const firstKit = kits[0]
@@ -56,7 +75,7 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t, local
   }
 
   const selectedCoupon = coupons.find((c) => c.id === data.couponId)
-  const basePrice = 6900
+  const basePrice = PRICE_KRW
   const discount = selectedCoupon ? Math.floor(basePrice * (selectedCoupon.discount_rate / 100)) : 0
   const total = basePrice - discount
 
@@ -68,7 +87,7 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t, local
       <div className="border-2 border-mint-deep rounded-2xl p-6 bg-gradient-to-br from-mint-light/30 to-white">
         <div className="text-center mb-5">
           <p className="text-sm font-bold text-mint-deep uppercase tracking-widest mb-1">DIGITAL QUEST PASS</p>
-          <p className="text-4xl font-black text-[#111]">{plan.price}</p>
+          <p className="text-4xl font-black text-[#111]">{priceDisplay}</p>
           <p className="text-sm text-stone mt-1">{plan.desc}</p>
         </div>
 

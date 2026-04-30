@@ -4,6 +4,25 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { PassRequiredModal } from '@/components/shared/PassRequiredModal'
+import { formatPriceParts } from '@/lib/currency'
+
+const SUBSCRIBE_LABEL: Record<string, string> = {
+  ko: '구독 시작',
+  ja: 'サブスク開始',
+  en: 'Subscribe',
+  'zh-CN': '开始订阅',
+  'zh-TW': '開始訂閱',
+}
+
+const MONTH_SUFFIX: Record<string, string> = {
+  ko: '/월',
+  ja: '/月',
+  en: '/mo',
+  'zh-CN': '/月',
+  'zh-TW': '/月',
+}
+
+const QUEST_PRICE_KRW = 6900
 
 interface QuestStickyBarProps {
   courseId: string
@@ -100,8 +119,11 @@ export function QuestStickyBar({ courseId, title, price, locale, isLoggedIn, kit
 
   if (!visible) return passModal
 
-  const subscribeLabel = locale === 'ko' ? '구독 시작' : locale === 'ja' ? 'サブスク開始' : 'Subscribe'
-  const priceLabel = locale === 'ko' ? '₩6,900/월' : locale === 'ja' ? '¥750/月' : '$5/mo'
+  const subscribeLabel = SUBSCRIBE_LABEL[locale] || SUBSCRIBE_LABEL.en
+  const { primary } = formatPriceParts(QUEST_PRICE_KRW, locale)
+  const monthSuffix = MONTH_SUFFIX[locale] || MONTH_SUFFIX.en
+  // sticky bar 좁아 secondary 환산값 생략, KRW 만 표시
+  const priceLabel = `${primary}${monthSuffix}`
 
   // 플래너 버튼 상태별 스타일
   const plannerBtn = {
