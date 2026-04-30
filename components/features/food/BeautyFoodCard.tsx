@@ -117,11 +117,13 @@ export function BeautyFoodCard({ food, locale }: BeautyFoodCardProps) {
       {/* Nutrients + Description */}
       <div className="px-4 pb-4 pt-1 space-y-2">
         <div className="flex flex-wrap gap-1">
-          {food.keyNutrients.slice(0, 3).map((n) => (
-            <span key={n} className="text-[10px] bg-white/70 text-slate-600 rounded-full px-2 py-0.5 font-medium">
-              {n}
-            </span>
-          ))}
+          {(food.keyNutrients[locale as keyof typeof food.keyNutrients] ?? food.keyNutrients.en ?? food.keyNutrients.ko)
+            .slice(0, 3)
+            .map((n) => (
+              <span key={n} className="text-[10px] bg-white/70 text-slate-600 rounded-full px-2 py-0.5 font-medium">
+                {n}
+              </span>
+            ))}
         </div>
         <p className="text-[11px] text-slate-600 leading-relaxed line-clamp-2">
           {getDesc(food, locale)}

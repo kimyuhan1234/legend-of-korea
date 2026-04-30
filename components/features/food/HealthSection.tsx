@@ -127,7 +127,7 @@ export function HealthSection({ health, locale }: HealthSectionProps) {
       <div className="mt-5">
         <p className="text-xs font-bold text-[#111] mb-2">🔑 {ui.nutrients}</p>
         <div className="flex flex-wrap gap-2">
-          {health.keyNutrients.map((n) => (
+          {(health.keyNutrients[locale as keyof typeof health.keyNutrients] ?? health.keyNutrients.en ?? health.keyNutrients.ko).map((n) => (
             <span key={n} className="px-3 py-1.5 rounded-full bg-mint-light text-xs text-mint-deep font-medium">
               {n}
             </span>
