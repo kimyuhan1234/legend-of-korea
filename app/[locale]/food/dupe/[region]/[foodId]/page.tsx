@@ -189,7 +189,7 @@ export default async function FoodDetailPage({ params }: Props) {
               {relatedSpots.map((spot) => (
                 <Link
                   key={spot.contentid}
-                  href={`/${locale}/food/kfood-spot/${food.region}/${spot.contentid}`}
+                  href={`/${locale}/food/kfood-spot/${food.region}/korean/${spot.contentid}`}
                   className="bg-white rounded-2xl border border-mist p-4 hover:border-blossom-deep/50 hover:shadow-sm transition-all"
                 >
                   <p className="font-bold text-[#111] text-sm mb-1 line-clamp-1">

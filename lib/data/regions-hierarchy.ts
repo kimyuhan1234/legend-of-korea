@@ -37,6 +37,62 @@ export const PROVINCES: ProvinceItem[] = [
     ],
   },
   {
+    id: 'incheon',
+    name: { ko: '인천광역시', ja: '仁川広域市', en: 'Incheon', 'zh-CN': '仁川广域市', 'zh-TW': '仁川廣域市' },
+    emoji: '⚓',
+    cities: [
+      { id: 'incheon', name: { ko: '인천', ja: '仁川', en: 'Incheon', 'zh-CN': '仁川', 'zh-TW': '仁川' } },
+    ],
+  },
+  {
+    id: 'daejeon',
+    name: { ko: '대전광역시', ja: '大田広域市', en: 'Daejeon', 'zh-CN': '大田广域市', 'zh-TW': '大田廣域市' },
+    emoji: '🛤️',
+    cities: [
+      { id: 'daejeon', name: { ko: '대전', ja: '大田', en: 'Daejeon', 'zh-CN': '大田', 'zh-TW': '大田' } },
+    ],
+  },
+  {
+    id: 'daegu',
+    name: { ko: '대구광역시', ja: '大邱広域市', en: 'Daegu', 'zh-CN': '大邱广域市', 'zh-TW': '大邱廣域市' },
+    emoji: '🌆',
+    cities: [
+      { id: 'daegu', name: { ko: '대구', ja: '大邱', en: 'Daegu', 'zh-CN': '大邱', 'zh-TW': '大邱' } },
+    ],
+  },
+  {
+    id: 'gwangju',
+    name: { ko: '광주광역시', ja: '光州広域市', en: 'Gwangju', 'zh-CN': '光州广域市', 'zh-TW': '光州廣域市' },
+    emoji: '🌃',
+    cities: [
+      { id: 'gwangju', name: { ko: '광주', ja: '光州', en: 'Gwangju', 'zh-CN': '光州', 'zh-TW': '光州' } },
+    ],
+  },
+  {
+    id: 'ulsan',
+    name: { ko: '울산광역시', ja: '蔚山広域市', en: 'Ulsan', 'zh-CN': '蔚山广域市', 'zh-TW': '蔚山廣域市' },
+    emoji: '🏭',
+    cities: [
+      { id: 'ulsan', name: { ko: '울산', ja: '蔚山', en: 'Ulsan', 'zh-CN': '蔚山', 'zh-TW': '蔚山' } },
+    ],
+  },
+  {
+    id: 'sejong',
+    name: { ko: '세종특별자치시', ja: '世宗特別自治市', en: 'Sejong', 'zh-CN': '世宗特别自治市', 'zh-TW': '世宗特別自治市' },
+    emoji: '🏛️',
+    cities: [
+      { id: 'sejong', name: { ko: '세종', ja: '世宗', en: 'Sejong', 'zh-CN': '世宗', 'zh-TW': '世宗' } },
+    ],
+  },
+  {
+    id: 'chungbuk',
+    name: { ko: '충청북도', ja: '忠清北道', en: 'Chungcheongbuk-do', 'zh-CN': '忠清北道', 'zh-TW': '忠清北道' },
+    emoji: '⛰️',
+    cities: [
+      { id: 'chungbuk', name: { ko: '충북', ja: '忠清北道', en: 'Chungcheongbuk-do', 'zh-CN': '忠清北道', 'zh-TW': '忠清北道' } },
+    ],
+  },
+  {
     id: 'gyeonggi',
     name: { ko: '경기도', ja: '京畿道', en: 'Gyeonggi-do', 'zh-CN': '京畿道', 'zh-TW': '京畿道' },
     emoji: '🏞️',

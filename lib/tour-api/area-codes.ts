@@ -5,19 +5,36 @@
  * sigunguCode는 지역 하위 시군구 — 반드시 TourAPI의 areaCode2 엔드포인트로 확인 후 조정 필요.
  */
 export const CITY_AREA_CODES: Record<string, { areaCode: number; sigunguCode?: number }> = {
+  // 7 광역시
   seoul:     { areaCode: 1 },
+  incheon:   { areaCode: 2 },
+  daejeon:   { areaCode: 3 },
+  daegu:     { areaCode: 4 },
+  gwangju:   { areaCode: 5 },
   busan:     { areaCode: 6 },
-  jeju:      { areaCode: 39 },
+  ulsan:     { areaCode: 7 },
+  sejong:    { areaCode: 8 },
+  // 광역도 (광역시 외 — Phase 8 Step 4 로컬 픽 17 도시 매핑용)
+  gyeonggi:  { areaCode: 31 },
+  gangwon:   { areaCode: 32 },
+  chungbuk:  { areaCode: 33 },
+  chungnam:  { areaCode: 34 },
+  gyeongbuk: { areaCode: 35 },
+  gyeongnam: { areaCode: 36 },
+  jeonbuk:   { areaCode: 37 },
+  jeonnam:   { areaCode: 38 },
+  // 시군구 단위 (food-dupes 음식 region 과 매칭)
   gyeongju:  { areaCode: 35, sigunguCode: 2 },
   jeonju:    { areaCode: 37, sigunguCode: 12 },
   tongyeong: { areaCode: 36, sigunguCode: 10 },
   cheonan:   { areaCode: 34, sigunguCode: 4 },
   yongin:    { areaCode: 31, sigunguCode: 13 },
   icheon:    { areaCode: 31, sigunguCode: 4 },
-  // Phase 7 신규 도시 + 포토코리아 매칭으로 활성화된 도시
-  sokcho:    { areaCode: 32, sigunguCode: 7 },   // 강원도 속초시
-  yeosu:     { areaCode: 38, sigunguCode: 12 },  // 전라남도 여수시
-  andong:    { areaCode: 35, sigunguCode: 7 },   // 경상북도 안동시
+  sokcho:    { areaCode: 32, sigunguCode: 7 },
+  yeosu:     { areaCode: 38, sigunguCode: 12 },
+  andong:    { areaCode: 35, sigunguCode: 7 },
+  // jeju 광역도 = 시군구 단위 (제주특별자치도 = 39, sigungu 분리 X)
+  jeju:      { areaCode: 39 },
   // national — 전국 fallback (서울 areaCode 사용)
   national:  { areaCode: 1 },
 }
