@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { MapPin, ChevronRight } from 'lucide-react'
 import type { TourRestaurant } from '@/lib/tour-api/restaurants'
+import { FOOD_CATEGORY_LABELS } from '@/lib/tour-api/categories'
 
 type Locale = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
 
@@ -70,7 +71,14 @@ export function KFoodSpotCityList({ restaurants, cityId, cityName, locale }: Pro
                 )}
               </div>
               <div className="p-4">
-                <p className="font-bold text-ink text-sm mb-1 line-clamp-1">{r.title}</p>
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <p className="font-bold text-ink text-sm line-clamp-1 min-w-0">{r.title}</p>
+                  {r.cat3 && FOOD_CATEGORY_LABELS[r.cat3] && (
+                    <span className="shrink-0 px-2 py-0.5 rounded-full bg-mint-light/40 text-mint-deep text-[10px] font-bold">
+                      {FOOD_CATEGORY_LABELS[r.cat3][lk]}
+                    </span>
+                  )}
+                </div>
                 {r.addr1 && (
                   <p className="flex items-start gap-1.5 text-xs text-stone line-clamp-2">
                     <MapPin className="w-3 h-3 mt-0.5 shrink-0" />

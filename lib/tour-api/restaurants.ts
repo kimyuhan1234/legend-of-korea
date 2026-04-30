@@ -53,6 +53,8 @@ const FOOD_CONTENT_TYPE_ID = '39'
 
 /**
  * 도시별 식당 리스트 — areaBasedList2.
+ * cat3 입력 시 cat1=A05, cat2=A0502 자동 포함 (단일 cat3 만 가능 — 다중은 호출 측 병렬).
+ * arrange: 'Q' 권장 (수정일순 + 대표이미지 보유), 기본 'P' (대표이미지 보유 정렬).
  * 빈 배열 반환 시 (네트워크 / API 키 없음) silent fail.
  */
 export async function fetchRestaurantsByArea(
@@ -62,16 +64,23 @@ export async function fetchRestaurantsByArea(
     numOfRows?: number
     pageNo?: number
     locale?: Locale
+    cat3?: string
+    arrange?: string
   } = {},
 ): Promise<TourRestaurant[]> {
   const sp: Record<string, string> = {
     numOfRows: String(options.numOfRows ?? 30),
     pageNo: String(options.pageNo ?? 1),
-    arrange: 'P',
+    arrange: options.arrange ?? 'P',
     areaCode: String(areaCode),
     contentTypeId: FOOD_CONTENT_TYPE_ID,
   }
   if (options.sigunguCode !== undefined) sp.sigunguCode = String(options.sigunguCode)
+  if (options.cat3) {
+    sp.cat1 = 'A05'
+    sp.cat2 = 'A0502'
+    sp.cat3 = options.cat3
+  }
 
   return callTourApi<TourRestaurant>(options.locale ?? 'ko', 'areaBasedList2', sp)
 }
