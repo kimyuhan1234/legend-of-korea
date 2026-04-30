@@ -1,97 +1,67 @@
 import { Metadata } from "next"
+import { Sparkles } from "lucide-react"
 import { FoodTabNav } from "@/components/features/food/FoodTabNav"
-import { DupeModeTabs } from "@/components/features/food/DupeModeTabs"
-import { regions } from "@/lib/data/food-dupes"
-import { getAllCountryCounts, getCountryDupes, COUNTRIES } from "@/lib/utils/country-dupe-aggregator"
-import type { RegionSummary } from "@/components/features/food/KoreaMapCitySelector"
-import type { CountrySummary } from "@/components/features/food/WorldDupeMap"
 
 interface Props {
   params: { locale: string }
 }
 
 const META = {
-  ko: { title: "지역별 맛 듀프 | Cloud with you", desc: "지역을 선택하고 한국 음식의 맛 유사성을 발견하세요" },
-  ja: { title: "地域別味デュープ | Cloud with you", desc: "地域を選んで韓国料理の味の類似性を発見しよう" },
-  en: { title: "Regional Taste Dupe | Cloud with you", desc: "Pick a region and discover Korean food flavor connections" },
+  ko: { title: '듀프 — 준비 중 | Cloud with you', desc: '더 정확하고 깊이 있는 한식 큐레이션을 준비하고 있어요.' },
+  ja: { title: 'デュープ — 準備中 | Cloud with you', desc: 'より正確で深みのある韓食キュレーションを準備中です。' },
+  en: { title: 'Dupe — Coming soon | Cloud with you', desc: 'Preparing a more accurate, in-depth Korean food curation.' },
+  'zh-CN': { title: '美食对比 — 准备中 | Cloud with you', desc: '正在准备更准确、更深度的韩食精选。' },
+  'zh-TW': { title: '美食對比 — 準備中 | Cloud with you', desc: '正在準備更準確、更深度的韓食精選。' },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const m = META[params.locale as keyof typeof META] || META.en || META.ko
+  const m = META[params.locale as keyof typeof META] ?? META.ko
   return { title: m.title, description: m.desc }
 }
 
 const HERO = {
   ko: {
-    badge: "🔗 맛의 유사성 발견",
-    title: "엄선된 각 지역의\n스페셜 요리를",
-    subtitle: "당신이 알고 있는 맛 으로\n연결해 드려요",
+    badge: '🔗 듀프',
+    title: '준비 중',
+    body: '더 정확하고 깊이 있는 한식 큐레이션을 준비하고 있어요.\n곧 다시 만나요!',
   },
   ja: {
-    badge: "🔗 味の類似性を発見",
-    title: "どの地域の味が\n気になりますか？",
-    subtitle: "好きな味はもう知っている\nあとは私たちがつなぎます",
+    badge: '🔗 デュープ',
+    title: '準備中',
+    body: 'より正確で深みのある韓食キュレーションを準備中です。\nまもなくお会いしましょう。',
   },
   en: {
-    badge: "🔗 Discover Flavor Similarities",
-    title: "Which region's flavors\ncall to you?",
-    subtitle: "You already know your favorite taste.\nWe'll connect the rest.",
+    badge: '🔗 Dupe',
+    title: 'Coming soon',
+    body: "We're preparing a more accurate and in-depth Korean food curation.\nSee you soon!",
+  },
+  'zh-CN': {
+    badge: '🔗 美食对比',
+    title: '准备中',
+    body: '正在准备更准确、更深度的韩食精选。\n敬请期待！',
+  },
+  'zh-TW': {
+    badge: '🔗 美食對比',
+    title: '準備中',
+    body: '正在準備更準確、更深度的韓食精選。\n敬請期待！',
   },
 }
 
-export default function DupePage({ params }: Props) {
+export default function DupeStubPage({ params }: Props) {
   const { locale } = params
-  const h = HERO[locale as keyof typeof HERO] || HERO.en || HERO.ko
-
-  const regionSummaries: RegionSummary[] = regions.map((r) => ({
-    code: r.code,
-    name: r.name,
-    icon: r.icon,
-    description: r.description,
-    foodCount: r.foods.length,
-    topFoods: r.foods.slice(0, 5).map((f) => ({ id: f.id, name: f.name })),
-  }))
-
-  const countryCounts = getAllCountryCounts(regions)
-
-  const allCountryDupes: Record<string, CountrySummary> = {}
-  for (const code of Object.keys(COUNTRIES)) {
-    const result = getCountryDupes(code, regions)
-    allCountryDupes[code] = {
-      totalMatches: result.totalMatches,
-      dupes: result.dupes.map((d) => ({
-        foreignFoodName: d.foreignFood.name,
-        koreanFoodName: d.koreanFood.name,
-        koreanFoodId: d.koreanFood.id,
-        regionCode: d.regionCode,
-        regionName: d.regionName,
-        similarityPercent: d.foreignFood.similarityPercent,
-      })),
-    }
-  }
+  const h = HERO[locale as keyof typeof HERO] ?? HERO.ko
 
   return (
-    <div>
+    <div className="min-h-screen bg-snow">
       <FoodTabNav locale={locale} activeTab="dupe" />
-
-      {/* 히어로 */}
-      <section className="bg-gradient-to-br from-mint to-blossom text-ink py-14">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F0B8B8]/20 border border-blossom-deep/30 mb-5">
-            <span className="text-blossom-deep text-sm font-medium">{h.badge}</span>
-          </div>
-          <h1 className="text-3xl md:text-4xl font-black mb-4 whitespace-pre-line">{h.title}</h1>
-          <p className="text-slate text-lg whitespace-pre-line max-w-xl mx-auto">{h.subtitle}</p>
+      <section className="bg-gradient-to-br from-mint to-blossom text-ink py-20 md:py-28 px-8 text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-blossom-deep/30 mb-6">
+          <Sparkles className="w-3.5 h-3.5 text-blossom-deep" strokeWidth={2} aria-hidden />
+          <span className="text-blossom-deep text-sm font-bold">{h.badge}</span>
         </div>
+        <h1 className="text-4xl md:text-5xl font-black mb-4">{h.title}</h1>
+        <p className="text-base md:text-lg text-slate whitespace-pre-line max-w-md mx-auto leading-relaxed">{h.body}</p>
       </section>
-
-      {/* 4모드 스와이프 탭 (도시별 / AI 매칭 / 취향 / 세계지도) */}
-      <DupeModeTabs
-        locale={locale}
-        regionSummaries={regionSummaries}
-        countryCounts={countryCounts}
-        allCountryDupes={allCountryDupes}
-      />
     </div>
   )
 }
