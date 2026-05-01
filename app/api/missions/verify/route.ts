@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createServiceClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 
 const COURSE_COMPLETE_BONUS = 500;
@@ -6,6 +6,8 @@ const COURSE_COMPLETE_BONUS = 500;
 export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient();
+    // increment_user_lp RPC 는 service_role 만 호출 가능 (Phase 2D 보안 정리)
+    const service = await createServiceClient();
     const body = await req.json();
     const { missionId, type, answer, photoUrls } = body;
     // 미션 완료 시 커뮤니티 자동 공유 — 명시적으로 false일 때만 스킵
@@ -120,7 +122,8 @@ export async function POST(req: NextRequest) {
     }
 
     // ── 원자적 LP 지급 (Read-Modify-Write 금지) ───────────────
-    const { error: rpcError } = await supabase.rpc('increment_user_lp', {
+    // service_role 호출 (Phase 2D — RPC anon/authenticated REVOKE 후)
+    const { error: rpcError } = await service.rpc('increment_user_lp', {
       uid:   user.id,
       delta: mission.lp_reward,
     });
@@ -201,7 +204,7 @@ export async function POST(req: NextRequest) {
 
       if (!existingBonus) {
         bonusLp = COURSE_COMPLETE_BONUS;
-        const { error: bonusErr } = await supabase.rpc('increment_user_lp', {
+        const { error: bonusErr } = await service.rpc('increment_user_lp', {
           uid: user.id, delta: bonusLp,
         });
         if (!bonusErr) {

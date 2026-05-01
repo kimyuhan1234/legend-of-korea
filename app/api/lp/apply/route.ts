@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createServiceClient } from '@/lib/supabase/server';
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,6 +10,8 @@ export async function POST(request: NextRequest) {
     }
 
     const supabase = await createClient();
+    // increment_user_lp RPC 는 service_role 만 호출 가능 (Phase 2D 보안 정리)
+    const service = await createServiceClient();
 
     // 1. 사용자 인증 확인
     const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -44,7 +46,8 @@ export async function POST(request: NextRequest) {
 
     // 4. 원자적 LP 증가: RPC 사용 (Read-Modify-Write 방식 폐기)
     //    DB 함수: UPDATE users SET total_lp = total_lp + delta WHERE id = uid
-    const { error: rpcError } = await supabase.rpc('increment_user_lp', {
+    //    service_role 호출 (RLS 우회) — uid 는 위에서 검증된 본인 user.id
+    const { error: rpcError } = await service.rpc('increment_user_lp', {
       uid: user.id,
       delta: transaction.amount,
     });
