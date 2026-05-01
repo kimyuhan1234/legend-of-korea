@@ -36,6 +36,7 @@
 @media (min-width: 1024px) {
   .lg\:flex { display: flex !important; }
   .lg\:hidden { display: none !important; }
+  .lg\:block { display: block !important; }
 }
 
 /* ── 폰트 유틸리티 ──────────────────────────────── */
