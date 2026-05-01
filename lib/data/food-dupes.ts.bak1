@@ -62,7 +62,7 @@ export const regions: Region[] = [
         id: "jeonju-bibimbap",
         name: { ko: "전주비빔밥", ja: "全州ビビンバ", en: "Jeonju Bibimbap" },
         region: "jeonju",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-bibimbap.webp",
         tasteProfile: { sweet: 20, salty: 45, spicy: 60, umami: 65, sour: 15 },
         storyDescription: {
           ko: "하얀 밥 위에 알록달록한 나물과 고기가 미술 시간의 물감처럼 예쁘게 올려져 있어요. 쓱쓱 비벼 먹으면 입안에서 여러 가지 재료가 멋진 합창을 하는 것 같아요.",
@@ -122,7 +122,7 @@ export const regions: Region[] = [
         id: "jeonju-kongnamul",
         name: { ko: "콩나물국밥", ja: "コンナムルクッパ", en: "Bean Sprout Rice Soup" },
         region: "jeonju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-kongnamul.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-kongnamul.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
         tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 75, sour: 10 },
         storyDescription: {
@@ -188,7 +188,7 @@ export const regions: Region[] = [
         id: "jeonju-tteokgalbi",
         name: { ko: "전주 떡갈비", ja: "全州トッカルビ", en: "Jeonju Tteokgalbi" },
         region: "jeonju",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-tteokgalbi.webp",
         tasteProfile: { sweet: 50, salty: 55, spicy: 10, umami: 75, sour: 5 },
         storyDescription: {
           ko: "고기를 아주 잘게 다져서 도톰하게 뭉친 다음 불에 구워낸 요리예요. 질기지 않아 씹을 필요도 없이 부드럽고, 달콤 짭짤해서 밥도둑이 따로 없어요.",
@@ -220,7 +220,7 @@ export const regions: Region[] = [
         id: "jeonju-kalguksu",
         name: { ko: "전주식 칼국수", ja: "全州式カルグクス", en: "Jeonju Kalguksu" },
         region: "jeonju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-kalguksu.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-kalguksu.webp",
         tasteProfile: { sweet: 15, salty: 45, spicy: 5, umami: 85, sour: 5 },
         storyDescription: {
           ko: "들깨가루라는 고소한 가루가 눈보라처럼 듬뿍 뿌려져 있어요. 일반 국수와 달리, 국물이 수프처럼 아주 진하고 고소한 것이 특징이에요.",
@@ -301,7 +301,7 @@ export const regions: Region[] = [
         id: "jeonju-pisundae",
         name: { ko: "피순대와 순대국밥", ja: "ピスンデとスンデクッパ", en: "Blood Sausage Soup" },
         region: "jeonju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-pisundae.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-pisundae.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-김지영",
         tasteProfile: { sweet: 10, salty: 60, spicy: 35, umami: 85, sour: 5 },
         storyDescription: {
@@ -326,7 +326,7 @@ export const regions: Region[] = [
         id: "jeonju-omogaritang",
         name: { ko: "오모가리탕", ja: "オモガリタン", en: "Omogaritang" },
         region: "jeonju",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-omogaritang.webp",
         tasteProfile: { sweet: 15, salty: 55, spicy: 65, umami: 80, sour: 10 },
         storyDescription: {
           ko: "'오모가리'는 뚝배기라는 숨 쉬는 흙그릇을 부르는 전주의 옛날 말이에요. 이 그릇에 쫄깃한 물고기와 시래기를 넣고 얼큰하게 끓여내서 아주 깊은 맛이 나요.",
@@ -350,7 +350,7 @@ export const regions: Region[] = [
         id: "jeonju-chocopie",
         name: { ko: "수제 초코파이", ja: "手作りチョコパイ", en: "Handmade Choco Pie" },
         region: "jeonju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-chocopie.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-chocopie.webp",
         tasteProfile: { sweet: 90, salty: 10, spicy: 0, umami: 15, sour: 5 },
         storyDescription: {
           ko: "전주의 유명한 빵집에서 직접 구워내는 거대한 초콜릿 과자예요. 부드러운 빵 사이에 달콤한 크림과 딸기잼이 가득 들어 있어서 최고로 인기 있는 디저트랍니다.",
@@ -372,7 +372,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-yukgaejang",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-yukgaejang.webp",
         name: { ko: "육개장", ja: "ユッケジャン", en: "Yukgaejang" },
         region: "jeonju",
         tasteProfile: { sweet: 15, salty: 55, spicy: 75, umami: 80, sour: 10 },
@@ -400,7 +400,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-bindaetteok",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-bindaetteok.webp",
         name: { ko: "녹두전", ja: "ノクトゥジョン", en: "Bindaetteok (Mung Bean Pancake)" },
         region: "jeonju",
         tasteProfile: { sweet: 10, salty: 50, spicy: 25, umami: 65, sour: 5 },
@@ -428,7 +428,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-cheonggukjang",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-cheonggukjang.webp",
         name: { ko: "청국장", ja: "チョングクジャン", en: "Cheonggukjang" },
         region: "jeonju",
         tasteProfile: { sweet: 10, salty: 60, spicy: 35, umami: 90, sour: 10 },
@@ -485,7 +485,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-bori-guksu",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-bori-guksu.webp",
         name: { ko: "보리국수", ja: "ボリグクス", en: "Bori Guksu" },
         region: "jeonju",
         tasteProfile: { sweet: 10, salty: 45, spicy: 30, umami: 65, sour: 10 },
@@ -513,7 +513,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeonju-gondrebap",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-gondrebap.webp",
         name: { ko: "곤드레밥", ja: "コンドゥレご飯", en: "Gondre Rice" },
         region: "jeonju",
         tasteProfile: { sweet: 10, salty: 40, spicy: 5, umami: 60, sour: 5 },
@@ -639,7 +639,7 @@ export const regions: Region[] = [
         id: "seoul-samgyeopsal",
         name: { ko: "삼겹살", ja: "サムギョプサル", en: "Samgyeopsal" },
         region: "seoul",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-samgyeopsal.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-samgyeopsal.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
         tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 80, sour: 10 },
         storyDescription: {
@@ -753,7 +753,7 @@ export const regions: Region[] = [
         id: "seoul-seolleongtang",
         name: { ko: "설렁탕", ja: "ソルロンタン", en: "Seolleongtang" },
         region: "seoul",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-seolleongtang.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-seolleongtang.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
         tasteProfile: { sweet: 10, salty: 40, spicy: 10, umami: 90, sour: 0 },
         storyDescription: {
@@ -806,7 +806,7 @@ export const regions: Region[] = [
         id: "seoul-street-toast",
         name: { ko: "길거리 토스트", ja: "屋台トースト", en: "Street Toast" },
         region: "seoul",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-street-toast.webp",
         tasteProfile: { sweet: 35, salty: 45, spicy: 15, umami: 50, sour: 10 },
         storyDescription: {
           ko: "이른 아침 버터 향이 솔솔 나는 길거리 토스트 한 봉지는 서울 직장인들의 든든한 아침이에요. 달걀, 양배추, 설탕 한 꼬집의 조합이 왜 이렇게 맛있는지 먹어봐야만 알 수 있답니다.",
@@ -850,7 +850,7 @@ export const regions: Region[] = [
         id: "seoul-bindaetteok",
         name: { ko: "광장시장 빈대떡", ja: "広蔵市場のビンデトク", en: "Gwangjang Market Bindaetteok" },
         region: "seoul",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-bindaetteok.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-bindaetteok.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
         tasteProfile: { sweet: 10, salty: 50, spicy: 25, umami: 75, sour: 15 },
         storyDescription: {
@@ -956,7 +956,7 @@ export const regions: Region[] = [
         id: "seoul-hangang-ramen",
         name: { ko: "한강 라면", ja: "漢江ラーメン", en: "Hangang Ramen" },
         region: "seoul",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-hangang-ramen.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-hangang-ramen.webp",
         tasteProfile: { sweet: 15, salty: 65, spicy: 50, umami: 60, sour: 5 },
         storyDescription: {
           ko: "컵라면에 뜨거운 물을 붓고 한강 변에 앉아 먹는 그 행복감은 미슐랭 식당도 따라올 수 없어요. 바람에 흔들리는 강물을 바라보며 호호 불어 먹는 라면 한 젓가락은 서울 낭만 그 자체예요.",
@@ -1027,7 +1027,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-sundaekook",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-sundaekook.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-sundaekook.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
         name: { ko: "순대국", ja: "スンデクッ", en: "Sundaekook (Blood Sausage Soup)" },
         region: "seoul",
@@ -1056,7 +1056,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-kalguksu",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-kalguksu.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-kalguksu.webp",
         name: { ko: "서울 칼국수", ja: "ソウル・カルグクス", en: "Seoul Kalguksu" },
         region: "seoul",
         tasteProfile: { sweet: 10, salty: 50, spicy: 10, umami: 80, sour: 5 },
@@ -1084,7 +1084,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-mayak-gimbap",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-mayak-gimbap.webp",
         name: { ko: "광장시장 마약김밥", ja: "広蔵市場マヤッキンパ", en: "Mayak Gimbap (Gwangjang Market Mini Rolls)" },
         region: "seoul",
         tasteProfile: { sweet: 15, salty: 55, spicy: 15, umami: 65, sour: 10 },
@@ -1112,7 +1112,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-gopchang",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-gopchang.webp",
         name: { ko: "곱창구이", ja: "コプチャン焼き", en: "Gopchang Gui (Grilled Tripe)" },
         region: "seoul",
         tasteProfile: { sweet: 10, salty: 55, spicy: 50, umami: 85, sour: 5 },
@@ -1169,7 +1169,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-yang-kkochi",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-yang-kkochi.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-yang-kkochi.webp",
         name: { ko: "양꼬치", ja: "ヤンコチ（羊串焼き）", en: "Yang Kkochi (Lamb Skewers)" },
         region: "seoul",
         tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 80, sour: 5 },
@@ -1197,7 +1197,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-chimaek",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-chimaek.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-chimaek.webp",
         name: { ko: "치맥", ja: "チメク（チキン＋ビール）", en: "Chimaek (Fried Chicken & Beer)" },
         region: "seoul",
         tasteProfile: { sweet: 20, salty: 55, spicy: 45, umami: 70, sour: 5 },
@@ -1283,7 +1283,7 @@ export const regions: Region[] = [
       },
       {
         id: "seoul-galbi",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-galbi.webp",
         name: { ko: "서울 소갈비", ja: "ソウル牛カルビ", en: "Seoul Beef Galbi" },
         region: "seoul",
         tasteProfile: { sweet: 45, salty: 55, spicy: 10, umami: 80, sour: 5 },
@@ -1412,7 +1412,7 @@ export const regions: Region[] = [
         id: "tongyeong-meongge-bibimbap",
         name: { ko: "멍게비빔밥", ja: "ホヤビビンバ", en: "Meongge Bibimbap" },
         region: "tongyeong",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-meongge-bibimbap.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-meongge-bibimbap.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 송재근",
         tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 90, sour: 25 },
         storyDescription: {
@@ -1450,7 +1450,7 @@ export const regions: Region[] = [
         id: "tongyeong-oyster-soup",
         name: { ko: "통영 굴국밥", ja: "統営牡蛎クッパ", en: "Tongyeong Oyster Soup" },
         region: "tongyeong",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-oyster-soup.webp",
         tasteProfile: { sweet: 15, salty: 50, spicy: 20, umami: 95, sour: 10 },
         storyDescription: {
           ko: "통영 바다에서 건져 올린 탱글탱글한 굴이 뜨끈한 국물 속에서 더욱 빛을 발해요. 굴의 진한 바다 향이 국물 전체에 녹아들어 한 국자씩 떠 먹을 때마다 바닷가에 있는 것처럼 편안해져요.",
@@ -1540,7 +1540,7 @@ export const regions: Region[] = [
         id: "tongyeong-sirakguk",
         name: { ko: "시락국", ja: "シラクグク", en: "Sirakguk" },
         region: "tongyeong",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-sirakguk.webp",
         tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 80, sour: 5 },
         storyDescription: {
           ko: "무말랭이를 삶은 뽀얀 국물에 된장을 풀어 만든 통영 어민들의 새벽 밥상이에요. 생선 배 곯으러 바다에 나가기 전, 뜨끈한 시락국 한 사발이 몸과 마음을 함께 데워주었답니다.",
@@ -1592,7 +1592,7 @@ export const regions: Region[] = [
         id: "tongyeong-haemul-ttukbaegi",
         name: { ko: "해물뚝배기", ja: "海鮮トゥッペギ", en: "Haemul Ttukbaegi" },
         region: "tongyeong",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-haemul-ttukbaegi.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-haemul-ttukbaegi.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
         tasteProfile: { sweet: 10, salty: 55, spicy: 55, umami: 90, sour: 10 },
         storyDescription: {
@@ -1661,7 +1661,7 @@ export const regions: Region[] = [
         id: "tongyeong-ppaettaegi-juk",
         name: { ko: "빼때기죽", ja: "ッペッテギジュク", en: "Ppaettaegi-juk" },
         region: "tongyeong",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-ppaettaegi-juk.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-ppaettaegi-juk.webp",
         tasteProfile: { sweet: 45, salty: 20, spicy: 0, umami: 40, sour: 5 },
         storyDescription: {
           ko: "고구마를 썰어 말린 빼때기로 끓인 죽은 통영 할머니들의 가난하던 시절 이야기를 담고 있어요. 달콤하고 구수한 맛이 그 시절의 따뜻한 기억처럼 마음을 포근하게 감싸줍니다.",
@@ -1698,7 +1698,7 @@ export const regions: Region[] = [
         id: "tongyeong-dacci",
         name: { ko: "다찌 해산물", ja: "ダッチ海鮮", en: "Dacci Seafood" },
         region: "tongyeong",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-dacci.webp",
         tasteProfile: { sweet: 15, salty: 50, spicy: 20, umami: 95, sour: 15 },
         storyDescription: {
           ko: "다찌는 통영의 어시장 선술집에서 술 한 잔과 함께 내오는 신선한 해산물 한상이에요. 오늘 바다에서 건져 올린 것들만 나오는, 메뉴가 없는 즉흥의 미식 경험이랍니다.",
@@ -1742,7 +1742,7 @@ export const regions: Region[] = [
         id: "tongyeong-dodari-ssuk",
         name: { ko: "도다리쑥국", ja: "ヒラメヨモギスープ", en: "Dodari-ssuk Soup" },
         region: "tongyeong",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-dodari-ssuk.webp",
         tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 85, sour: 5 },
         storyDescription: {
           ko: "봄이 오면 통영 사람들이 가장 먼저 찾는 것이 도다리쑥국이에요. 봄 쑥의 진한 향과 도다리의 담백하고 깨끗한 국물이 만나 봄의 설렘을 그대로 담아낸 계절의 선물이랍니다.",
@@ -1784,7 +1784,7 @@ export const regions: Region[] = [
       },
       {
         id: "tongyeong-gulbap",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-gulbap.webp",
         name: { ko: "통영 굴밥", ja: "統営・牡蠣ご飯", en: "Tongyeong Gulbap (Oyster Rice)" },
         region: "tongyeong",
         tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 85, sour: 5 },
@@ -1870,7 +1870,7 @@ export const regions: Region[] = [
       },
       {
         id: "tongyeong-jeonbok-gui",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-jeonbok-gui.webp",
         name: { ko: "통영 전복구이", ja: "統営・アワビ焼き", en: "Tongyeong Jeonbok Gui (Grilled Abalone)" },
         region: "tongyeong",
         tasteProfile: { sweet: 15, salty: 50, spicy: 10, umami: 90, sour: 5 },
@@ -1898,7 +1898,7 @@ export const regions: Region[] = [
       },
       {
         id: "tongyeong-mulmegi-tang",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-mulmegi-tang.webp",
         name: { ko: "통영 물메기탕", ja: "統営・ムルメギ鍋", en: "Tongyeong Mulmegi Tang (Snailfish Soup)" },
         region: "tongyeong",
         tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 85, sour: 5 },
@@ -1955,7 +1955,7 @@ export const regions: Region[] = [
       },
       {
         id: "tongyeong-bajirak-kalguksu",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-bajirak-kalguksu.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-bajirak-kalguksu.webp",
         name: { ko: "통영 바지락칼국수", ja: "統営・アサリカルグクス", en: "Tongyeong Bajirak Kalguksu" },
         region: "tongyeong",
         tasteProfile: { sweet: 10, salty: 50, spicy: 10, umami: 85, sour: 5 },
@@ -1983,7 +1983,7 @@ export const regions: Region[] = [
       },
       {
         id: "tongyeong-saengseon-hoe-jeongsik",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-saengseon-hoe-jeongsik.webp",
         name: { ko: "통영 생선회 정식", ja: "統営・刺身定食", en: "Tongyeong Saengseon Hoe Jeongsik" },
         region: "tongyeong",
         tasteProfile: { sweet: 10, salty: 50, spicy: 20, umami: 80, sour: 15 },
@@ -2040,7 +2040,7 @@ export const regions: Region[] = [
       },
       {
         id: "tongyeong-honghap-tang",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-honghap-tang.webp",
         name: { ko: "통영 홍합탕", ja: "統営・ムール貝スープ", en: "Tongyeong Honghap Tang (Mussel Soup)" },
         region: "tongyeong",
         tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 85, sour: 5 },
@@ -2097,7 +2097,7 @@ export const regions: Region[] = [
       },
       {
         id: "tongyeong-mideodeok-jjim",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-mideodeok-jjim.webp",
         name: { ko: "미더덕찜", ja: "ミドドッチム", en: "Mideodeok Jjim (Sea Squirt Stew)" },
         region: "tongyeong",
         tasteProfile: { sweet: 10, salty: 55, spicy: 60, umami: 85, sour: 5 },
@@ -2223,7 +2223,7 @@ export const regions: Region[] = [
         id: "jeju-black-pork",
         name: { ko: "흑돼지 구이", ja: "黒豚焼き", en: "Black Pork BBQ" },
         region: "jeju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeju-black-pork.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-black-pork.webp",
         tasteProfile: { sweet: 10, salty: 50, spicy: 20, umami: 90, sour: 5 },
         storyDescription: {
           ko: "제주 흑돼지는 현무암 화산섬의 바람과 풀밭에서 자란 덕분에 육질이 특별해요. 두툼하게 썬 살코기를 불판에 올리면 고소하고 진한 향이 피어오르며 누구도 자리를 뜨지 못하게 만들어요.",
@@ -2336,7 +2336,7 @@ export const regions: Region[] = [
         id: "jeju-galchi-jorim",
         name: { ko: "갈치조림", ja: "太刀魚の煮付け", en: "Galchi Jorim" },
         region: "jeju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeju-galchi-jorim.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-galchi-jorim.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
         tasteProfile: { sweet: 20, salty: 55, spicy: 65, umami: 80, sour: 15 },
         storyDescription: {
@@ -2443,7 +2443,7 @@ export const regions: Region[] = [
         id: "jeju-momguk",
         name: { ko: "몸국", ja: "モムグク", en: "Momguk" },
         region: "jeju",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-momguk.webp",
         tasteProfile: { sweet: 5, salty: 55, spicy: 10, umami: 85, sour: 5 },
         storyDescription: {
           ko: "모자반이라는 검은 해조류와 돼지고기를 함께 끓인 몸국은 제주의 잔칫상에 빠지지 않는 음식이에요. 검고 진한 국물이 처음엔 낯설지만, 한 모금 마시면 바다와 땅의 정수를 맛보는 듯한 깊은 감동이 와요.",
@@ -2594,7 +2594,7 @@ export const regions: Region[] = [
         id: "jeju-bomal-kalguksu",
         name: { ko: "보말칼국수", ja: "カサガイカルグクス", en: "Bomal Kalguksu" },
         region: "jeju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeju-bomal-kalguksu.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-bomal-kalguksu.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
         tasteProfile: { sweet: 10, salty: 50, spicy: 10, umami: 90, sour: 5 },
         storyDescription: {
@@ -2743,7 +2743,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeju-bingtteok",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-bingtteok.webp",
         name: { ko: "빙떡", ja: "ビンドッ", en: "Bingtteok (Rolled Buckwheat Crepe)" },
         region: "jeju",
         tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 55, sour: 5 },
@@ -2771,7 +2771,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeju-kkwong-memil-guksu",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-kkwong-memil-guksu.webp",
         name: { ko: "꿩메밀국수", ja: "キジそば", en: "Kkwong Memil Guksu (Pheasant Buckwheat Noodles)" },
         region: "jeju",
         tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 85, sour: 5 },
@@ -2886,7 +2886,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeju-gamgyul-juice",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-gamgyul-juice.webp",
         name: { ko: "감귤주스", ja: "みかんジュース", en: "Jeju Tangerine Juice" },
         region: "jeju",
         tasteProfile: { sweet: 75, salty: 2, spicy: 0, umami: 5, sour: 30 },
@@ -2943,7 +2943,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeju-okdom-gui",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-okdom-gui.webp",
         name: { ko: "제주 옥돔구이", ja: "済州・アマダイ焼き", en: "Jeju Okdom Gui (Grilled Tilefish)" },
         region: "jeju",
         tasteProfile: { sweet: 5, salty: 60, spicy: 10, umami: 85, sour: 5 },
@@ -3000,7 +3000,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeju-jeonbok-ttukbaegi",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-jeonbok-ttukbaegi.webp",
         name: { ko: "제주 전복뚝배기", ja: "済州・アワビトゥッペギ", en: "Jeju Jeonbok Ttukbaegi (Abalone Pot)" },
         region: "jeju",
         tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 90, sour: 5 },
@@ -3086,7 +3086,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeju-jeopjjak-bbyeoguk",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-jeopjjak-bbyeoguk.webp",
         name: { ko: "제주 접짝뼈국", ja: "済州・ジョプチャク骨スープ", en: "Jeju Jeopjjak Bbyeoguk (Pork Cartilage Soup)" },
         region: "jeju",
         tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 90, sour: 5 },
@@ -3114,7 +3114,7 @@ export const regions: Region[] = [
       },
       {
         id: "jeju-dwaeji-kimchi-bokkeum",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-dwaeji-kimchi-bokkeum.webp",
         name: { ko: "제주 흑돼지 김치볶음", ja: "済州・黒豚キムチ炒め", en: "Jeju Heuk Dwaeji Kimchi Bokkeum" },
         region: "jeju",
         tasteProfile: { sweet: 15, salty: 55, spicy: 60, umami: 85, sour: 25 },
@@ -3235,7 +3235,7 @@ export const regions: Region[] = [
         id: "busan-milmyeon",
         name: { ko: "밀면", ja: "ミルミョン", en: "Milmyeon" },
         region: "busan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-milmyeon.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-milmyeon.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
         tasteProfile: { sweet: 20, salty: 50, spicy: 40, umami: 70, sour: 45 },
         storyDescription: {
@@ -3296,7 +3296,7 @@ export const regions: Region[] = [
         id: "busan-hotteok",
         name: { ko: "씨앗호떡", ja: "シアッホットク", en: "Ssiat Hotteok" },
         region: "busan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-hotteok.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-hotteok.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
         tasteProfile: { sweet: 65, salty: 15, spicy: 0, umami: 25, sour: 5 },
         storyDescription: {
@@ -3349,7 +3349,7 @@ export const regions: Region[] = [
         id: "busan-mul-tteok",
         name: { ko: "물떡", ja: "ムルトク", en: "Mul-tteok" },
         region: "busan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-mul-tteok.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-mul-tteok.webp",
         tasteProfile: { sweet: 15, salty: 55, spicy: 30, umami: 70, sour: 10 },
         storyDescription: {
           ko: "부산 포장마차에서 뜨거운 어묵 국물 속에 동동 떠다니는 물떡은 추운 날 최고의 위로예요. 국물 한 국자 마시고 말랑한 떡을 오물거리면 부산 사람들의 정이 온몸에 퍼지는 것 같아요.",
@@ -3394,7 +3394,7 @@ export const regions: Region[] = [
         id: "busan-naengchae-jokbal",
         name: { ko: "냉채족발", ja: "冷菜チョクパル", en: "Naengchae Jokbal" },
         region: "busan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-naengchae-jokbal.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-naengchae-jokbal.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-김효서",
         tasteProfile: { sweet: 20, salty: 50, spicy: 30, umami: 75, sour: 45 },
         storyDescription: {
@@ -3439,7 +3439,7 @@ export const regions: Region[] = [
         id: "busan-grilled-clams",
         name: { ko: "조개구이", ja: "貝の焼き物", en: "Grilled Clams" },
         region: "busan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-grilled-clams.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-grilled-clams.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-천준교",
         tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 90, sour: 10 },
         storyDescription: {
@@ -3545,7 +3545,7 @@ export const regions: Region[] = [
         id: "busan-bibim-dangmyeon",
         name: { ko: "비빔당면", ja: "ビビムタンミョン", en: "Bibim Dangmyeon" },
         region: "busan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-bibim-dangmyeon.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-bibim-dangmyeon.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-부산관광공사",
         tasteProfile: { sweet: 30, salty: 50, spicy: 55, umami: 65, sour: 30 },
         storyDescription: {
@@ -3590,7 +3590,7 @@ export const regions: Region[] = [
         id: "busan-gopchang",
         name: { ko: "양곱창", ja: "ヤンコプチャン", en: "Yang Gopchang" },
         region: "busan",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-gopchang.webp",
         tasteProfile: { sweet: 15, salty: 55, spicy: 35, umami: 90, sour: 10 },
         storyDescription: {
           ko: "불판 위에서 기름이 튀며 구워지는 양곱창의 고소하고 진한 향은 저항할 수 없는 유혹이에요. 처음엔 낯설어도 한 점 먹기 시작하면 멈출 수가 없는, 부산 야식 문화의 진수랍니다.",
@@ -3642,7 +3642,7 @@ export const regions: Region[] = [
         id: "busan-nakgopsae",
         name: { ko: "낙곱새", ja: "ナクコプセ", en: "Nakgopsae" },
         region: "busan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-nakgopsae.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-nakgopsae.webp",
         tasteProfile: { sweet: 15, salty: 55, spicy: 70, umami: 90, sour: 10 },
         storyDescription: {
           ko: "낙지, 곱창, 새우 세 가지를 한 냄비에 넣고 매콤하게 볶아낸 낙곱새는 부산 야식의 트리플 크라운이에요. 세 가지 바다 재료가 뿜어내는 시너지는 한 가지만 먹을 때보다 배로 맛있어요.",
@@ -3684,7 +3684,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-ssiat-hotteok",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-ssiat-hotteok.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-ssiat-hotteok.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
         name: { ko: "씨앗호떡", ja: "シアッホットック", en: "Seed Hotteok" },
         region: "busan",
@@ -3713,7 +3713,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-hwae",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-hwae.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-hwae.webp",
         name: { ko: "활어회", ja: "活魚刺身", en: "Live Fish Sashimi" },
         region: "busan",
         tasteProfile: { sweet: 10, salty: 40, spicy: 20, umami: 75, sour: 20 },
@@ -3741,7 +3741,7 @@ export const regions: Region[] = [
       },
       {
         id: "busan-agujjim",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-agujjim.webp",
         name: { ko: "아구찜", ja: "アグチム", en: "Agujjim (Spicy Braised Monkfish)" },
         region: "busan",
         tasteProfile: { sweet: 15, salty: 55, spicy: 85, umami: 75, sour: 5 },
@@ -4070,7 +4070,7 @@ export const regions: Region[] = [
         id: "gyeongju-hwangnam-ppang",
         name: { ko: "황남빵", ja: "ファンナムパン", en: "Hwangnam Bread" },
         region: "gyeongju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/gyeongju-hwangnam-ppang.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hwangnam-ppang.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-알렉스 분도",
         tasteProfile: { sweet: 70, salty: 15, spicy: 0, umami: 20, sour: 5 },
         storyDescription: {
@@ -4160,7 +4160,7 @@ export const regions: Region[] = [
         id: "gyeongju-tteokgalbi",
         name: { ko: "경주 떡갈비", ja: "慶州トッカルビ", en: "Gyeongju Tteokgalbi" },
         region: "gyeongju",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-tteokgalbi.webp",
         tasteProfile: { sweet: 50, salty: 55, spicy: 10, umami: 75, sour: 5 },
         storyDescription: {
           ko: "갈비살을 곱게 다져 달콤짭짤한 양념을 입혀 구워낸 요리예요. 겉은 살짝 카라멜화되어 반짝이고, 안은 촉촉하게 촉촉해서 입에서 사르르 녹는 황금빛 패티랍니다.",
@@ -4249,7 +4249,7 @@ export const regions: Region[] = [
         id: "gyeongju-ssambap",
         name: { ko: "쌈밥 정식", ja: "サムバプ定食", en: "Ssambap Set" },
         region: "gyeongju",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-ssambap.webp",
         tasteProfile: { sweet: 20, salty: 45, spicy: 40, umami: 65, sour: 15 },
         storyDescription: {
           ko: "신선한 채소잎에 밥 한 숟갈과 고기, 쌈장을 올려 손 안에 꼭 쥐고 한 입에 먹는 즐거움이 있어요. 입 안에서 채소의 신선함과 고기의 풍미, 쌈장의 깊은 맛이 한꺼번에 어우러지는 게 이 맛의 묘미랍니다.",
@@ -4305,7 +4305,7 @@ export const regions: Region[] = [
         id: "gyeongju-haejangguk",
         name: { ko: "경주 해장국", ja: "慶州ヘジャングク", en: "Gyeongju Haejangguk" },
         region: "gyeongju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/gyeongju-haejangguk.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-haejangguk.webp",
         tasteProfile: { sweet: 10, salty: 55, spicy: 50, umami: 80, sour: 10 },
         storyDescription: {
           ko: "진한 사골 국물에 우거지와 선지, 콩나물이 어우러진 경주식 해장국이에요. 묵직하고 깊은 국물 한 모금이면 전날의 피로가 씻겨나가는 것 같아서, 경주 사람들의 아침을 든든히 책임진답니다.",
@@ -4410,7 +4410,7 @@ export const regions: Region[] = [
         id: "gyeongju-chalborippang",
         name: { ko: "찰보리빵", ja: "チャルボリパン", en: "Chalborippang" },
         region: "gyeongju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/gyeongju-chalborippang.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-chalborippang.webp",
         tasteProfile: { sweet: 60, salty: 15, spicy: 0, umami: 25, sour: 5 },
         storyDescription: {
           ko: "경주의 찰보리를 넣어 만든 촉촉하고 쫄깃한 빵이에요. 일반 빵과 달리 보리 특유의 구수한 향이 은은하게 올라오고, 팥 크림이나 단팥소와 어우러지면 소박하지만 깊은 맛이 나요.",
@@ -4663,7 +4663,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-bamyeot",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-bamyeot.webp",
         name: { ko: "밤엿", ja: "栗飴", en: "Bamyeot (Chestnut Toffee)" },
         region: "gyeongju",
         tasteProfile: { sweet: 85, salty: 5, spicy: 0, umami: 20, sour: 0 },
@@ -4691,7 +4691,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-sujae-maekju",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-sujae-maekju.webp",
         name: { ko: "수제맥주", ja: "クラフトビール", en: "Sujae Maekju (Craft Beer)" },
         region: "gyeongju",
         tasteProfile: { sweet: 15, salty: 5, spicy: 10, umami: 25, sour: 20 },
@@ -4719,7 +4719,7 @@ export const regions: Region[] = [
       },
       {
         id: "gyeongju-solsongju",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-solsongju.webp",
         name: { ko: "솔송주", ja: "松酒", en: "Solsongju (Pine Bud Liquor)" },
         region: "gyeongju",
         tasteProfile: { sweet: 20, salty: 5, spicy: 10, umami: 40, sour: 10 },
@@ -4811,7 +4811,7 @@ export const regions: Region[] = [
         id: "cheonan-byeongcheon-sundae",
         name: { ko: "병천순대", ja: "ビョンチョンスンデ", en: "Byeongcheon Sundae" },
         region: "cheonan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-byeongcheon-sundae.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-byeongcheon-sundae.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
         tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 75, sour: 5 },
         storyDescription: {
@@ -4852,7 +4852,7 @@ export const regions: Region[] = [
         id: "cheonan-sundae-soup",
         name: { ko: "순대국밥", ja: "スンデクッパ", en: "Sundae Soup" },
         region: "cheonan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-sundae-soup.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-sundae-soup.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-김지영",
         tasteProfile: { sweet: 10, salty: 55, spicy: 35, umami: 80, sour: 5 },
         storyDescription: {
@@ -4893,7 +4893,7 @@ export const regions: Region[] = [
         id: "cheonan-charcoal-dakgalbi",
         name: { ko: "천안 숯불 닭갈비", ja: "天安炭火ダッカルビ", en: "Cheonan Charcoal Dakgalbi" },
         region: "cheonan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-charcoal-dakgalbi.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-charcoal-dakgalbi.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
         tasteProfile: { sweet: 35, salty: 50, spicy: 65, umami: 70, sour: 10 },
         storyDescription: {
@@ -4950,7 +4950,7 @@ export const regions: Region[] = [
         id: "cheonan-fruit-mochi",
         name: { ko: "생과일 모찌", ja: "生フルーツ大福", en: "Fresh Fruit Mochi" },
         region: "cheonan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-fruit-mochi.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-fruit-mochi.webp",
         tasteProfile: { sweet: 75, salty: 5, spicy: 0, umami: 10, sour: 20 },
         storyDescription: {
           ko: "촉촉한 찹쌀 떡 피 속에 생딸기나 망고 같은 신선한 과일이 통째로 들어있어요. 한 입 베어 물면 달콤한 찹쌀 향과 함께 과즙이 터지면서 어느 디저트 카페도 부럽지 않은 행복감이 밀려온답니다.",
@@ -4990,7 +4990,7 @@ export const regions: Region[] = [
         id: "cheonan-lotus-rice",
         name: { ko: "연잎밥 정식", ja: "蓮の葉ご飯定食", en: "Lotus Leaf Rice Set" },
         region: "cheonan",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-lotus-rice.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-lotus-rice.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한가람_한국관광공사 프레임스튜디오",
         tasteProfile: { sweet: 25, salty: 45, spicy: 20, umami: 65, sour: 10 },
         storyDescription: {
@@ -5080,7 +5080,7 @@ export const regions: Region[] = [
         id: "cheonan-local-bakery",
         name: { ko: "뚜쥬루 앙버터빵", ja: "トゥジュル餡バターパン", en: "Ttujuru Anpan Butter Bread" },
         region: "cheonan",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-local-bakery.webp",
         tasteProfile: { sweet: 65, salty: 20, spicy: 0, umami: 15, sour: 5 },
         storyDescription: {
           ko: "천안의 인기 로컬 베이커리 '뚜쥬루'의 시그니처 앙버터 빵이에요. 고소한 발효 버터와 달콤한 팥소가 부드러운 브리오슈 빵 사이에 끼워져 있어, 한 입 먹으면 고소함과 달콤함이 파도처럼 밀려오는 행복한 빵이에요.",
@@ -5118,7 +5118,7 @@ export const regions: Region[] = [
       },
       {
         id: "cheonan-heuk-dwaeji-gui",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-heuk-dwaeji-gui.webp",
         name: { ko: "천안 흑돼지구이", ja: "天安・黒豚焼き", en: "Cheonan Black Pork Grill" },
         region: "cheonan",
         tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 85, sour: 5 },
@@ -5146,7 +5146,7 @@ export const regions: Region[] = [
       },
       {
         id: "cheonan-jokbal",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-jokbal.webp",
         name: { ko: "천안 족발", ja: "天安・チョッパル", en: "Cheonan Jokbal (Braised Pork Trotters)" },
         region: "cheonan",
         tasteProfile: { sweet: 25, salty: 60, spicy: 10, umami: 85, sour: 5 },
@@ -5203,7 +5203,7 @@ export const regions: Region[] = [
       },
       {
         id: "cheonan-cheonggukjang",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-cheonggukjang.webp",
         name: { ko: "천안 청국장찌개", ja: "天安・チョングクジャンチゲ", en: "Cheonan Cheonggukjang Jjigae" },
         region: "cheonan",
         tasteProfile: { sweet: 10, salty: 60, spicy: 35, umami: 90, sour: 10 },
@@ -5289,7 +5289,7 @@ export const regions: Region[] = [
       },
       {
         id: "cheonan-boribap-jeongsik",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-boribap-jeongsik.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-boribap-jeongsik.webp",
         name: { ko: "천안 보리밥정식", ja: "天安・麦ご飯定食", en: "Cheonan Boribap Jeongsik" },
         region: "cheonan",
         tasteProfile: { sweet: 10, salty: 50, spicy: 25, umami: 60, sour: 10 },
@@ -5403,7 +5403,7 @@ export const regions: Region[] = [
       },
       {
         id: "cheonan-bossam",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-bossam.webp",
         name: { ko: "천안 보쌈", ja: "天安・ポッサム", en: "Cheonan Bossam" },
         region: "cheonan",
         tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 80, sour: 10 },
@@ -5431,7 +5431,7 @@ export const regions: Region[] = [
       },
       {
         id: "cheonan-makgeolli-ppang",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-makgeolli-ppang.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-makgeolli-ppang.webp",
         name: { ko: "천안 막걸리빵", ja: "天安・マッコリパン", en: "Cheonan Makgeolli Bread" },
         region: "cheonan",
         tasteProfile: { sweet: 50, salty: 10, spicy: 0, umami: 20, sour: 20 },
@@ -5459,7 +5459,7 @@ export const regions: Region[] = [
       },
       {
         id: "cheonan-kalguksu",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-kalguksu.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-kalguksu.webp",
         name: { ko: "천안 칼국수", ja: "天安・カルグクス", en: "Cheonan Kalguksu" },
         region: "cheonan",
         tasteProfile: { sweet: 10, salty: 50, spicy: 10, umami: 80, sour: 5 },
@@ -5530,7 +5530,7 @@ export const regions: Region[] = [
         id: "yongin-baegam-sundae",
         name: { ko: "백암순대", ja: "ペガムスンデ", en: "Baegam Sundae" },
         region: "yongin",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-baegam-sundae.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-baegam-sundae.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
         tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 80, sour: 5 },
         storyDescription: {
@@ -5571,7 +5571,7 @@ export const regions: Region[] = [
         id: "yongin-jangter-gukbap",
         name: { ko: "민속촌 장터국밥", ja: "民俗村チャンターグッパ", en: "Folk Village Market Soup Rice" },
         region: "yongin",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-jangter-gukbap.webp",
         tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 80, sour: 5 },
         storyDescription: {
           ko: "한국 민속촌 장터에서 팔던 소박한 시골 국밥이에요. 뚝배기에 담긴 진한 사골 국물과 밥, 우거지, 수육이 어우러진 푸짐한 한 그릇이 옛날 장날의 분위기를 그대로 살려낸답니다.",
@@ -5611,7 +5611,7 @@ export const regions: Region[] = [
         id: "yongin-nurungji-baeksuk",
         name: { ko: "누룽지 백숙", ja: "おこげ白熟鶏", en: "Nurungji Baeksuk" },
         region: "yongin",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-nurungji-baeksuk.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-nurungji-baeksuk.webp",
         tasteProfile: { sweet: 15, salty: 40, spicy: 5, umami: 85, sour: 5 },
         storyDescription: {
           ko: "닭을 통째로 푹 끓인 백숙에 누룽지를 더해 구수함을 배로 끌어올린 용인의 별미예요. 닭 국물이 누룽지 속으로 스며들면서 걸쭉하고 고소해지는 국물의 변신이 마법 같고, 마지막 한 방울까지 아까운 맛이에요.",
@@ -5651,7 +5651,7 @@ export const regions: Region[] = [
         id: "yongin-pajeon",
         name: { ko: "민속촌 파전", ja: "民俗村パジョン", en: "Folk Village Pajeon" },
         region: "yongin",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-pajeon.webp",
         tasteProfile: { sweet: 15, salty: 50, spicy: 20, umami: 65, sour: 15 },
         storyDescription: {
           ko: "한국 민속촌에서 굽는 커다란 파전이에요. 바깥은 바삭하고 안은 촉촉하게 구워진 두툼한 파전에, 새콤달콤한 간장 양념을 찍어 먹으면 막걸리 한 잔이 절로 생각난답니다.",
@@ -5699,7 +5699,7 @@ export const regions: Region[] = [
         id: "yongin-makguksu",
         name: { ko: "수지 막국수", ja: "水枝マックッス", en: "Suji Makguksu" },
         region: "yongin",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-makguksu.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-makguksu.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-천준교",
         tasteProfile: { sweet: 20, salty: 45, spicy: 55, umami: 60, sour: 35 },
         storyDescription: {
@@ -5740,7 +5740,7 @@ export const regions: Region[] = [
         id: "yongin-acorn-jelly",
         name: { ko: "도토리묵 무침", ja: "どんぐりゼリーサラダ", en: "Acorn Jelly Salad" },
         region: "yongin",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-acorn-jelly.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-acorn-jelly.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
         tasteProfile: { sweet: 10, salty: 50, spicy: 40, umami: 55, sour: 25 },
         storyDescription: {
@@ -5774,7 +5774,7 @@ export const regions: Region[] = [
         id: "yongin-hanwoo",
         name: { ko: "용인 한우 구이", ja: "龍仁韓牛焼肉", en: "Yongin Hanwoo Grilled Beef" },
         region: "yongin",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-hanwoo.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-hanwoo.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
         tasteProfile: { sweet: 20, salty: 45, spicy: 10, umami: 90, sour: 5 },
         storyDescription: {
@@ -5815,7 +5815,7 @@ export const regions: Region[] = [
         id: "yongin-cafe-dessert",
         name: { ko: "보정동 카페거리 디저트", ja: "保亭洞カフェ通りデザート", en: "Bojeongdong Cafe Street Dessert" },
         region: "yongin",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-cafe-dessert.webp",
         tasteProfile: { sweet: 75, salty: 10, spicy: 0, umami: 15, sour: 20 },
         storyDescription: {
           ko: "용인 보정동 카페거리는 경기도 최대의 카페 밀집 지역이에요. 이 거리에서 즐기는 개성 넘치는 케이크, 크리스피 크로넛, 달콤한 음료들은 SNS 감성을 자극하면서도, 한 입 먹으면 그 맛이 진짜임을 증명해낸답니다.",
@@ -5855,7 +5855,7 @@ export const regions: Region[] = [
         id: "yongin-makgeolli",
         name: { ko: "용인 막걸리", ja: "龍仁マッコリ", en: "Yongin Makgeolli" },
         region: "yongin",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-makgeolli.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-makgeolli.webp",
         tasteProfile: { sweet: 40, salty: 10, spicy: 5, umami: 30, sour: 45 },
         storyDescription: {
           ko: "용인 지역의 전통 양조장에서 빚어낸 생막걸리예요. 탁하고 뽀얀 빛깔 속에 은은한 단맛과 알싸한 신맛이 균형을 이루고 있어, 파전이나 두부김치 한 접시와 함께하면 민속촌 마당에서 마시는 것 같은 낭만이 있답니다.",
@@ -6046,7 +6046,7 @@ export const regions: Region[] = [
       },
       {
         id: "yongin-sanchae-jeongsik",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-sanchae-jeongsik.webp",
         name: { ko: "용인 산채정식", ja: "龍仁・山菜定食", en: "Yongin Sanchae Jeongsik" },
         region: "yongin",
         tasteProfile: { sweet: 10, salty: 45, spicy: 25, umami: 65, sour: 10 },
@@ -6132,7 +6132,7 @@ export const regions: Region[] = [
       },
       {
         id: "yongin-heuk-dwaeji",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-heuk-dwaeji.webp",
         name: { ko: "용인 흑돼지구이", ja: "龍仁・黒豚焼き", en: "Yongin Heuk Dwaeji Gui" },
         region: "yongin",
         tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 85, sour: 5 },
@@ -6349,7 +6349,7 @@ export const regions: Region[] = [
         id: "icheon-rice-table",
         name: { ko: "이천 쌀밥 정식", ja: "利川ご飯定食", en: "Icheon Rice Table" },
         region: "icheon",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-rice-table.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-rice-table.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
         tasteProfile: { sweet: 25, salty: 45, spicy: 25, umami: 75, sour: 10 },
         storyDescription: {
@@ -6390,7 +6390,7 @@ export const regions: Region[] = [
         id: "icheon-bori-gulbi",
         name: { ko: "보리굴비", ja: "麦塩干しグルビ", en: "Bori Gulbi" },
         region: "icheon",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-bori-gulbi.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-bori-gulbi.webp",
         tasteProfile: { sweet: 10, salty: 70, spicy: 10, umami: 85, sour: 5 },
         storyDescription: {
           ko: "참조기를 소금에 절여 보리 속에서 서서히 숙성시킨 전통 건생선이에요. 수분이 빠지면서 응축된 감칠맛이 놀랍도록 진해지고, 따뜻한 밥 위에 한 점 올려 먹으면 다른 반찬이 필요 없는 밥도둑이 된답니다.",
@@ -6430,7 +6430,7 @@ export const regions: Region[] = [
         id: "icheon-ganjang-gejang",
         name: { ko: "간장게장", ja: "醤油ワタリガニ漬け", en: "Soy Sauce Marinated Crab" },
         region: "icheon",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-ganjang-gejang.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-ganjang-gejang.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-천준교",
         tasteProfile: { sweet: 20, salty: 65, spicy: 10, umami: 95, sour: 10 },
         storyDescription: {
@@ -6464,7 +6464,7 @@ export const regions: Region[] = [
         id: "icheon-hanwoo-gui",
         name: { ko: "이천 한우 구이", ja: "利川韓牛焼肉", en: "Icheon Hanwoo Grilled Beef" },
         region: "icheon",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-hanwoo-gui.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-hanwoo-gui.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
         tasteProfile: { sweet: 15, salty: 45, spicy: 5, umami: 92, sour: 5 },
         storyDescription: {
@@ -6546,7 +6546,7 @@ export const regions: Region[] = [
         id: "icheon-royal-table",
         name: { ko: "임금님 수라상", ja: "王の御膳", en: "Royal Table" },
         region: "icheon",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-royal-table.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-royal-table.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
         tasteProfile: { sweet: 30, salty: 45, spicy: 25, umami: 85, sour: 20 },
         storyDescription: {
@@ -6595,7 +6595,7 @@ export const regions: Region[] = [
         id: "icheon-makguksu",
         name: { ko: "이천 막국수", ja: "利川マックッス", en: "Icheon Makguksu" },
         region: "icheon",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-makguksu.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-makguksu.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-천준교",
         tasteProfile: { sweet: 20, salty: 45, spicy: 50, umami: 60, sour: 40 },
         storyDescription: {
@@ -6636,7 +6636,7 @@ export const regions: Region[] = [
         id: "icheon-hangwa",
         name: { ko: "이천 한과", ja: "利川韓菓", en: "Icheon Hangwa" },
         region: "icheon",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-hangwa.webp",
         tasteProfile: { sweet: 70, salty: 10, spicy: 0, umami: 20, sour: 5 },
         storyDescription: {
           ko: "이천의 도자기 마을에서 전해 내려오는 전통 한과예요. 깨, 잣, 꿀을 넣어 정성스럽게 만들어진 강정, 약과, 다식들은 단순한 간식이 아니라 조선 시대 선비들이 즐기던 품격 있는 문화의 일부랍니다.",
@@ -6933,7 +6933,7 @@ export const regions: Region[] = [
       },
       {
         id: "icheon-sansuyu-makgeolli",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-sansuyu-makgeolli.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-sansuyu-makgeolli.webp",
         name: { ko: "산수유 막걸리", ja: "サンシュユマッコリ", en: "Sansuyu Makgeolli" },
         region: "icheon",
         tasteProfile: { sweet: 35, salty: 5, spicy: 0, umami: 45, sour: 50 },
@@ -7150,7 +7150,7 @@ export const regions: Region[] = [
       },
       {
         id: "icheon-cheonggukjang-jeongsik",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-cheonggukjang-jeongsik.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-cheonggukjang-jeongsik.webp",
         name: { ko: "청국장정식", ja: "チョングッチャン定食", en: "Cheonggukjang Jeongsik" },
         region: "icheon",
         tasteProfile: { sweet: 5, salty: 65, spicy: 15, umami: 90, sour: 5 },
@@ -7258,7 +7258,7 @@ export const regions: Region[] = [
       },
       {
         id: "icheon-neungi-shabu",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-neungi-shabu.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-neungi-shabu.webp",
         name: { ko: "능이버섯샤브샤브", ja: "ヌンイ茸しゃぶしゃぶ", en: "Neungi Mushroom Shabu-shabu" },
         region: "icheon",
         tasteProfile: { sweet: 10, salty: 40, spicy: 5, umami: 90, sour: 5 },
@@ -7366,7 +7366,7 @@ export const regions: Region[] = [
       },
       {
         id: "icheon-bokjung-ppang",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-bokjung-ppang.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-bokjung-ppang.webp",
         name: { ko: "복숭아빵", ja: "桃パン", en: "Bokjung-ppang (Peach Bread)" },
         region: "icheon",
         tasteProfile: { sweet: 65, salty: 10, spicy: 0, umami: 25, sour: 10 },
@@ -8019,7 +8019,7 @@ export const regions: Region[] = [
       },
       {
         id: "icheon-gamja-ongsimi",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-gamja-ongsimi.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-gamja-ongsimi.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
         name: { ko: "감자옹심이", ja: "じゃがいも団子スープ", en: "Gamja Ongsimi" },
         region: "icheon",
@@ -8226,7 +8226,7 @@ export const regions: Region[] = [
       },
       {
         id: "sokcho-abai-sundae",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/sokcho-abai-sundae.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-abai-sundae.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-테마상품팀 IR 스튜디오",
         name: { ko: "아바이순대", ja: "アバイスンデ", en: "Abai Sundae" },
         region: "sokcho",
@@ -8303,7 +8303,7 @@ export const regions: Region[] = [
       },
       {
         id: "sokcho-ojingeo-sundae",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/sokcho-ojingeo-sundae.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-ojingeo-sundae.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-테마상품팀 IR 스튜디오",
         name: { ko: "오징어순대", ja: "イカスンデ", en: "Ojingeo Sundae (Stuffed Squid)" },
         region: "sokcho",
@@ -8449,7 +8449,7 @@ export const regions: Region[] = [
       },
       {
         id: "sokcho-gamja-ongsimi",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/sokcho-gamja-ongsimi.jpeg",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-gamja-ongsimi.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
         name: { ko: "감자옹심이", ja: "ジャガイモ団子スープ（カムジャオンシミ）", en: "Gamja Ongsimi (Potato Dumpling Soup)" },
         region: "sokcho",
@@ -8632,7 +8632,7 @@ export const regions: Region[] = [
       },
       {
         id: "yeosu-seodae-hoemuchim",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yeosu-seodae-hoemuchim.webp",
         name: { ko: "서대회무침", ja: "ソデフェムチム（舌平目の酢和え）", en: "Seodae Hoemuchim (Sole Sashimi Salad)" },
         region: "yeosu",
         tasteProfile: { sweet: 35, salty: 45, spicy: 60, umami: 65, sour: 75 },
@@ -8785,7 +8785,7 @@ export const regions: Region[] = [
       },
       {
         id: "yeosu-gejang-baekban",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yeosu-gejang-baekban.webp",
         name: { ko: "여수 게장백반", ja: "麗水カンジャンケジャン定食", en: "Yeosu Gejang Baekban (Soy-Marinated Crab Set)" },
         region: "yeosu",
         tasteProfile: { sweet: 20, salty: 65, spicy: 50, umami: 80, sour: 20 },
@@ -9036,7 +9036,7 @@ export const regions: Region[] = [
       },
       {
         id: "andong-heot-jesabap",
-        image: "",
+        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/andong-heot-jesabap.webp",
         name: { ko: "헛제사밥", ja: "ホッチェサパプ（もどき祭祀膳）", en: "Heot Jesabap (Mock Ancestral Rite Meal)" },
         region: "andong",
         tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 65, sour: 10 },
@@ -9413,7 +9413,7 @@ export const regions: Region[] = [
             },
           {
               id: "national-sundubu",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sundubu.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sundubu.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
               name: { ko: "순두부찌개", ja: "スンドゥブチゲ", en: "Sundubu Jjigae" },
               region: "national",
@@ -9442,7 +9442,7 @@ export const regions: Region[] = [
             },
           {
               id: "national-pajeon",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-pajeon.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-pajeon.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-부산관광공사",
               name: { ko: "파전", ja: "パジョン", en: "Pajeon (Green Onion Pancake)" },
               region: "national",
@@ -9502,7 +9502,7 @@ export const regions: Region[] = [
               id: "national-tteokbokki",
               name: { ko: "떡볶이", ja: "トッポッキ", en: "Tteokbokki" },
               region: "national",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-tteokbokki.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-tteokbokki.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-부산관광공사",
               tasteProfile: { sweet: 40, salty: 50, spicy: 75, umami: 55, sour: 10 },
               storyDescription: {
@@ -9571,7 +9571,7 @@ export const regions: Region[] = [
               id: "national-jokbal",
               name: { ko: "족발", ja: "チョクパル", en: "Jokbal" },
               region: "national",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-jokbal.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-jokbal.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-김효서",
               tasteProfile: { sweet: 35, salty: 55, spicy: 15, umami: 85, sour: 5 },
               storyDescription: {
@@ -9632,7 +9632,7 @@ export const regions: Region[] = [
               id: "national-kimchi-jjigae",
               name: { ko: "김치찌개", ja: "キムチチゲ", en: "Kimchi Jjigae" },
               region: "national",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-kimchi-jjigae.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/national-kimchi-jjigae.webp",
               tasteProfile: { sweet: 15, salty: 60, spicy: 70, umami: 85, sour: 40 },
               storyDescription: {
                 ko: "묵은지와 돼지고기가 어우러져 얼큰하고 깊은 맛을 내는 한국 가정의 영원한 국민 찌개예요. 뚝배기째 보글보글 끓여 흰 밥에 얹어 먹으면 온 세상이 그 자리에서 멈추는 것 같아요.",
@@ -9690,7 +9690,7 @@ export const regions: Region[] = [
             },
           {
               id: "national-bossam",
-              image: "",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/national-bossam.webp",
               name: { ko: "보쌈", ja: "ポッサム", en: "Bossam (Pork Belly Wraps)" },
               region: "national",
               tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 80, sour: 10 },
@@ -9749,7 +9749,7 @@ export const regions: Region[] = [
               id: "national-sundubu-gyeongju",
               name: { ko: "순두부찌개", ja: "スンドゥブチゲ", en: "Sundubu Jjigae" },
               region: "national",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sundubu-gyeongju.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sundubu-gyeongju.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
               tasteProfile: { sweet: 10, salty: 50, spicy: 65, umami: 75, sour: 10 },
               storyDescription: {
@@ -9804,7 +9804,7 @@ export const regions: Region[] = [
             },
           {
               id: "national-samgyetang",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-samgyetang.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-samgyetang.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-알렉스 분도",
               name: { ko: "삼계탕", ja: "サムゲタン", en: "Samgyetang" },
               region: "national",
@@ -9891,7 +9891,7 @@ export const regions: Region[] = [
             },
           {
               id: "national-hangwa",
-              image: "",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/national-hangwa.webp",
               name: { ko: "한과", ja: "ハングァ（韓菓）", en: "Hangwa (Traditional Rice Confection)" },
               region: "national",
               tasteProfile: { sweet: 75, salty: 5, spicy: 0, umami: 15, sour: 3 },
@@ -9950,7 +9950,7 @@ export const regions: Region[] = [
               id: "national-spicy-catfish",
               name: { ko: "빠가사리 매운탕", ja: "ナマズ辛鍋", en: "Spicy Catfish Stew" },
               region: "national",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-spicy-catfish.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-spicy-catfish.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-IR 스튜디오",
               tasteProfile: { sweet: 10, salty: 50, spicy: 75, umami: 75, sour: 15 },
               storyDescription: {
@@ -9999,7 +9999,7 @@ export const regions: Region[] = [
               id: "national-jeyuk-bokkeum",
               name: { ko: "제육볶음", ja: "豚肉炒め", en: "Spicy Stir-Fried Pork" },
               region: "national",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-jeyuk-bokkeum.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-jeyuk-bokkeum.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
               tasteProfile: { sweet: 30, salty: 55, spicy: 70, umami: 70, sour: 10 },
               storyDescription: {
@@ -10162,7 +10162,7 @@ export const regions: Region[] = [
             },
           {
               id: "national-kkomak-bibimbap",
-              image: "",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/national-kkomak-bibimbap.webp",
               name: { ko: "꼬막비빔밥", ja: "赤貝ビビンバ", en: "Kkomak Bibimbap" },
               region: "national",
               tasteProfile: { sweet: 15, salty: 55, spicy: 40, umami: 80, sour: 10 },
@@ -10190,7 +10190,7 @@ export const regions: Region[] = [
             },
           {
               id: "national-sanchae-bibimbap",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sanchae-bibimbap.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sanchae-bibimbap.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-IR 스튜디오",
               name: { ko: "산채비빔밥", ja: "山菜ビビンバ", en: "Sanchae Bibimbap (Mountain Herb Bibimbap)" },
               region: "national",
@@ -10221,7 +10221,7 @@ export const regions: Region[] = [
               id: "national-hanwoo-yukhoe",
               name: { ko: "한우 육회비빔밥", ja: "韓牛ユッケビビンバ", en: "Hanwoo Raw Beef Bibimbap" },
               region: "national",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-hanwoo-yukhoe.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-hanwoo-yukhoe.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
               tasteProfile: { sweet: 30, salty: 50, spicy: 55, umami: 80, sour: 20 },
               storyDescription: {
@@ -10291,7 +10291,7 @@ export const regions: Region[] = [
               id: "national-sanchae-bibimbap-yongin",
               name: { ko: "산채비빔밥", ja: "山菜ビビンバ", en: "Sanchae Bibimbap" },
               region: "national",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sanchae-bibimbap-yongin.jpeg",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sanchae-bibimbap-yongin.jpg",
               imageCredit: "ⓒ한국관광공사 포토코리아-IR 스튜디오",
               tasteProfile: { sweet: 20, salty: 45, spicy: 50, umami: 65, sour: 20 },
               storyDescription: {
@@ -10447,7 +10447,7 @@ export const regions: Region[] = [
             },
           {
               id: "national-chapssal-tteok",
-              image: "",
+              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/national-chapssal-tteok.webp",
               name: { ko: "찹쌀떡", ja: "チャプサルトック", en: "Chapssal-tteok" },
               region: "national",
               tasteProfile: { sweet: 60, salty: 5, spicy: 0, umami: 25, sour: 0 },

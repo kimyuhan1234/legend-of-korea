@@ -1,0 +1,1028 @@
+[
+  {
+    "filename": "간장게장.jpeg",
+    "normalized": "간장게장",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "icheon-ganjang-gejang",
+        "nameKo": "간장게장",
+        "region": "icheon"
+      }
+    ],
+    "selected": [
+      "icheon-ganjang-gejang"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "갈치조림.jpeg",
+    "normalized": "갈치조림",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "jeju-galchi-jorim",
+        "nameKo": "갈치조림",
+        "region": "jeju"
+      }
+    ],
+    "selected": [
+      "jeju-galchi-jorim"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "감자옹심이.jpeg",
+    "normalized": "감자옹심이",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "icheon-gamja-ongsimi",
+        "nameKo": "감자옹심이",
+        "region": "icheon"
+      },
+      {
+        "foodId": "sokcho-gamja-ongsimi",
+        "nameKo": "감자옹심이",
+        "region": "sokcho"
+      }
+    ],
+    "selected": [
+      "icheon-gamja-ongsimi",
+      "sokcho-gamja-ongsimi"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "과일모찌.jpeg",
+    "normalized": "과일모찌",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "cheonan-fruit-mochi",
+        "nameKo": "생과일 모찌",
+        "region": "cheonan"
+      }
+    ],
+    "selected": [
+      "cheonan-fruit-mochi"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "김치찌개.jpeg",
+    "normalized": "김치찌개",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "national-kimchi-jjigae",
+        "nameKo": "김치찌개",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "national-kimchi-jjigae"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "낙곱새.jpeg",
+    "normalized": "낙곱새",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "busan-nakgopsae",
+        "nameKo": "낙곱새",
+        "region": "busan"
+      }
+    ],
+    "selected": [
+      "busan-nakgopsae"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "냉채족발.jpeg",
+    "normalized": "냉채족발",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "busan-naengchae-jokbal",
+        "nameKo": "냉채족발",
+        "region": "busan"
+      }
+    ],
+    "selected": [
+      "busan-naengchae-jokbal"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "누룽지_삼계탕.jpeg",
+    "normalized": "누룽지 삼계탕",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "national-samgyetang",
+        "nameKo": "삼계탕",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "yongin-nurungji-baeksuk"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "능이버섯샤브샤브.jpeg",
+    "normalized": "능이버섯샤브샤브",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "icheon-neungi-shabu",
+        "nameKo": "능이버섯샤브샤브",
+        "region": "icheon"
+      }
+    ],
+    "selected": [
+      "icheon-neungi-shabu"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "도토리묵_무침_202605011703.jpeg",
+    "normalized": "도토리묵 무침",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "yongin-acorn-jelly",
+        "nameKo": "도토리묵 무침",
+        "region": "yongin"
+      }
+    ],
+    "selected": [
+      "yongin-acorn-jelly"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "떡볶이_202605011733.jpeg",
+    "normalized": "떡볶이",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "national-tteokbokki",
+        "nameKo": "떡볶이",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "national-tteokbokki"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "막걸리_202605011702.jpeg",
+    "normalized": "막걸리",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "cheonan-makgeolli-ppang",
+        "nameKo": "천안 막걸리빵",
+        "region": "cheonan"
+      },
+      {
+        "foodId": "yongin-makgeolli",
+        "nameKo": "용인 막걸리",
+        "region": "yongin"
+      },
+      {
+        "foodId": "icheon-sansuyu-makgeolli",
+        "nameKo": "산수유 막걸리",
+        "region": "icheon"
+      }
+    ],
+    "selected": [
+      "yongin-makgeolli",
+      "icheon-sansuyu-makgeolli"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "막걸리빵.jpeg",
+    "normalized": "막걸리빵",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "cheonan-makgeolli-ppang",
+        "nameKo": "천안 막걸리빵",
+        "region": "cheonan"
+      }
+    ],
+    "selected": [
+      "cheonan-makgeolli-ppang"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "막국수.jpeg",
+    "normalized": "막국수",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "yongin-makguksu",
+        "nameKo": "수지 막국수",
+        "region": "yongin"
+      },
+      {
+        "foodId": "icheon-makguksu",
+        "nameKo": "이천 막국수",
+        "region": "icheon"
+      }
+    ],
+    "selected": [
+      "yongin-makguksu",
+      "icheon-makguksu"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "멍게비빔밥_202605011706.jpeg",
+    "normalized": "멍게비빔밥",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "tongyeong-meongge-bibimbap",
+        "nameKo": "멍게비빔밥",
+        "region": "tongyeong"
+      }
+    ],
+    "selected": [
+      "tongyeong-meongge-bibimbap"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "물떡_202605011707.jpeg",
+    "normalized": "물떡",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "busan-mul-tteok",
+        "nameKo": "물떡",
+        "region": "busan"
+      }
+    ],
+    "selected": [
+      "busan-mul-tteok"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "밀면.jpeg",
+    "normalized": "밀면",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "busan-milmyeon",
+        "nameKo": "밀면",
+        "region": "busan"
+      }
+    ],
+    "selected": [
+      "busan-milmyeon"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "백암순대.jpeg",
+    "normalized": "백암순대",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "yongin-baegam-sundae",
+        "nameKo": "백암순대",
+        "region": "yongin"
+      }
+    ],
+    "selected": [
+      "yongin-baegam-sundae"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "볏집_삼겹살구이_202605011702.jpeg",
+    "normalized": "볏집 삼겹살구이",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "seoul-samgyeopsal",
+        "nameKo": "삼겹살",
+        "region": "seoul"
+      }
+    ],
+    "selected": [
+      "seoul-samgyeopsal"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "보리굴비_202605011702.jpeg",
+    "normalized": "보리굴비",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "icheon-bori-gulbi",
+        "nameKo": "보리굴비",
+        "region": "icheon"
+      }
+    ],
+    "selected": [
+      "icheon-bori-gulbi"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "보리밥정식.jpeg",
+    "normalized": "보리밥정식",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "cheonan-boribap-jeongsik",
+        "nameKo": "천안 보리밥정식",
+        "region": "cheonan"
+      }
+    ],
+    "selected": [
+      "cheonan-boribap-jeongsik"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "복숭아빵.jpeg",
+    "normalized": "복숭아빵",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "icheon-bokjung-ppang",
+        "nameKo": "복숭아빵",
+        "region": "icheon"
+      }
+    ],
+    "selected": [
+      "icheon-bokjung-ppang"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "비빔당면_202605011707.jpeg",
+    "normalized": "비빔당면",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "busan-bibim-dangmyeon",
+        "nameKo": "비빔당면",
+        "region": "busan"
+      }
+    ],
+    "selected": [
+      "busan-bibim-dangmyeon"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "빈대떡_202605011707.jpeg",
+    "normalized": "빈대떡",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "seoul-bindaetteok",
+        "nameKo": "광장시장 빈대떡",
+        "region": "seoul"
+      }
+    ],
+    "selected": [
+      "seoul-bindaetteok"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "빠가사리.jpeg",
+    "normalized": "빠가사리",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "national-spicy-catfish",
+        "nameKo": "빠가사리 매운탕",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "national-spicy-catfish"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "빼때기죽.jpeg",
+    "normalized": "빼때기죽",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "tongyeong-ppaettaegi-juk",
+        "nameKo": "빼때기죽",
+        "region": "tongyeong"
+      }
+    ],
+    "selected": [
+      "tongyeong-ppaettaegi-juk"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "사시미_202605011809.jpeg",
+    "normalized": "사시미",
+    "matchPriority": null,
+    "candidates": [],
+    "selected": [
+      "busan-hwae"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "사진_선명하게_배경은_한국적이고_세련되게_202605011704 (1).jpeg",
+    "normalized": null,
+    "matchPriority": null,
+    "candidates": [],
+    "selected": null,
+    "status": "noise"
+  },
+  {
+    "filename": "사진_선명하게_배경한국적이고_세련되게_202605011705.jpeg",
+    "normalized": null,
+    "matchPriority": null,
+    "candidates": [],
+    "selected": null,
+    "status": "noise"
+  },
+  {
+    "filename": "산채비빔밥_202605011703.jpeg",
+    "normalized": "산채비빔밥",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "national-sanchae-bibimbap",
+        "nameKo": "산채비빔밥",
+        "region": "national"
+      },
+      {
+        "foodId": "national-sanchae-bibimbap-yongin",
+        "nameKo": "산채비빔밥",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "national-sanchae-bibimbap",
+      "national-sanchae-bibimbap-yongin"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "삼계탕_202605011708.jpeg",
+    "normalized": "삼계탕",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "national-samgyetang",
+        "nameKo": "삼계탕",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "national-samgyetang"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "설렁탕_202605011708.jpeg",
+    "normalized": "설렁탕",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "seoul-seolleongtang",
+        "nameKo": "설렁탕",
+        "region": "seoul"
+      }
+    ],
+    "selected": [
+      "seoul-seolleongtang"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "수제초코파이.jpeg",
+    "normalized": "수제초코파이",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "jeonju-chocopie",
+        "nameKo": "수제 초코파이",
+        "region": "jeonju"
+      }
+    ],
+    "selected": [
+      "jeonju-chocopie"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "순대.jpeg",
+    "normalized": "순대",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "jeonju-pisundae",
+        "nameKo": "피순대와 순대국밥",
+        "region": "jeonju"
+      },
+      {
+        "foodId": "seoul-sundaekook",
+        "nameKo": "순대국",
+        "region": "seoul"
+      },
+      {
+        "foodId": "cheonan-byeongcheon-sundae",
+        "nameKo": "병천순대",
+        "region": "cheonan"
+      },
+      {
+        "foodId": "cheonan-sundae-soup",
+        "nameKo": "순대국밥",
+        "region": "cheonan"
+      },
+      {
+        "foodId": "yongin-baegam-sundae",
+        "nameKo": "백암순대",
+        "region": "yongin"
+      },
+      {
+        "foodId": "sokcho-abai-sundae",
+        "nameKo": "아바이순대",
+        "region": "sokcho"
+      },
+      {
+        "foodId": "sokcho-ojingeo-sundae",
+        "nameKo": "오징어순대",
+        "region": "sokcho"
+      }
+    ],
+    "selected": [
+      "jeonju-pisundae",
+      "seoul-sundaekook",
+      "cheonan-byeongcheon-sundae",
+      "yongin-baegam-sundae",
+      "sokcho-abai-sundae",
+      "sokcho-ojingeo-sundae"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "순대국밥.jpeg",
+    "normalized": "순대국밥",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "cheonan-sundae-soup",
+        "nameKo": "순대국밥",
+        "region": "cheonan"
+      }
+    ],
+    "selected": [
+      "cheonan-sundae-soup"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "순두부찌개_202605011705.jpeg",
+    "normalized": "순두부찌개",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "national-sundubu",
+        "nameKo": "순두부찌개",
+        "region": "national"
+      },
+      {
+        "foodId": "national-sundubu-gyeongju",
+        "nameKo": "순두부찌개",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "national-sundubu",
+      "national-sundubu-gyeongju"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "숯불닭갈비.jpeg",
+    "normalized": "숯불닭갈비",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "cheonan-charcoal-dakgalbi",
+        "nameKo": "천안 숯불 닭갈비",
+        "region": "cheonan"
+      }
+    ],
+    "selected": [
+      "cheonan-charcoal-dakgalbi"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "식빵토스트_202605011808.jpeg",
+    "normalized": "식빵토스트",
+    "matchPriority": null,
+    "candidates": [],
+    "selected": null,
+    "status": "discarded"
+  },
+  {
+    "filename": "씨앗호떡_202605011707.jpeg",
+    "normalized": "씨앗호떡",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "busan-hotteok",
+        "nameKo": "씨앗호떡",
+        "region": "busan"
+      },
+      {
+        "foodId": "busan-ssiat-hotteok",
+        "nameKo": "씨앗호떡",
+        "region": "busan"
+      }
+    ],
+    "selected": [
+      "busan-hotteok",
+      "busan-ssiat-hotteok"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "양꼬치_202605011808.jpeg",
+    "normalized": "양꼬치",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "seoul-yang-kkochi",
+        "nameKo": "양꼬치",
+        "region": "seoul"
+      }
+    ],
+    "selected": [
+      "seoul-yang-kkochi"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "연잎정식.jpeg",
+    "normalized": "연잎정식",
+    "matchPriority": null,
+    "candidates": [],
+    "selected": [
+      "cheonan-lotus-rice"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "이천_쌀밥정식_202605011702.jpeg",
+    "normalized": "이천 쌀밥정식",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "icheon-rice-table",
+        "nameKo": "이천 쌀밥 정식",
+        "region": "icheon"
+      }
+    ],
+    "selected": [
+      "icheon-rice-table"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "전주식_들깨_칼국수_202605011701.jpeg",
+    "normalized": "전주식 들깨 칼국수",
+    "matchPriority": null,
+    "candidates": [],
+    "selected": [
+      "jeonju-kalguksu"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "제육볶음_202605011702.jpeg",
+    "normalized": "제육볶음",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "national-jeyuk-bokkeum",
+        "nameKo": "제육볶음",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "national-jeyuk-bokkeum"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "제주흑돼지구이_202605011707.jpeg",
+    "normalized": "제주흑돼지구이",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "jeju-black-pork",
+        "nameKo": "흑돼지 구이",
+        "region": "jeju"
+      }
+    ],
+    "selected": [
+      "jeju-black-pork"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "조개구이_202605011707.jpeg",
+    "normalized": "조개구이",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "busan-grilled-clams",
+        "nameKo": "조개구이",
+        "region": "busan"
+      }
+    ],
+    "selected": [
+      "busan-grilled-clams"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "조선시대_임금님_수라상_202605011701.jpeg",
+    "normalized": "조선시대 임금님 수라상",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "icheon-royal-table",
+        "nameKo": "임금님 수라상",
+        "region": "icheon"
+      }
+    ],
+    "selected": [
+      "icheon-royal-table"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "족발_202605011707.jpeg",
+    "normalized": "족발",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "national-jokbal",
+        "nameKo": "족발",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "national-jokbal"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "찰보리빵.jpeg",
+    "normalized": "찰보리빵",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "gyeongju-chalborippang",
+        "nameKo": "찰보리빵",
+        "region": "gyeongju"
+      }
+    ],
+    "selected": [
+      "gyeongju-chalborippang"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "청국장정식.jpg_202605011821.jpeg",
+    "normalized": "청국장정식",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "icheon-cheonggukjang-jeongsik",
+        "nameKo": "청국장정식",
+        "region": "icheon"
+      }
+    ],
+    "selected": [
+      "icheon-cheonggukjang-jeongsik"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "치킨맥주_202605011807.jpeg",
+    "normalized": "치킨맥주",
+    "matchPriority": null,
+    "candidates": [],
+    "selected": [
+      "seoul-chimaek"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "카페_디저트_202605011702.jpeg",
+    "normalized": "카페 디저트",
+    "matchPriority": null,
+    "candidates": [],
+    "selected": null,
+    "status": "discarded"
+  },
+  {
+    "filename": "칼국수_202605011808.jpeg",
+    "normalized": "칼국수",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "jeonju-kalguksu",
+        "nameKo": "전주식 칼국수",
+        "region": "jeonju"
+      },
+      {
+        "foodId": "seoul-kalguksu",
+        "nameKo": "서울 칼국수",
+        "region": "seoul"
+      },
+      {
+        "foodId": "tongyeong-bajirak-kalguksu",
+        "nameKo": "통영 바지락칼국수",
+        "region": "tongyeong"
+      },
+      {
+        "foodId": "jeju-bomal-kalguksu",
+        "nameKo": "보말칼국수",
+        "region": "jeju"
+      },
+      {
+        "foodId": "cheonan-kalguksu",
+        "nameKo": "천안 칼국수",
+        "region": "cheonan"
+      }
+    ],
+    "selected": [
+      "jeonju-kalguksu",
+      "seoul-kalguksu",
+      "tongyeong-bajirak-kalguksu",
+      "jeju-bomal-kalguksu",
+      "cheonan-kalguksu"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "콩나물국밥_202605011701.jpeg",
+    "normalized": "콩나물국밥",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "jeonju-kongnamul",
+        "nameKo": "콩나물국밥",
+        "region": "jeonju"
+      }
+    ],
+    "selected": [
+      "jeonju-kongnamul"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "파전_202605011703.jpeg",
+    "normalized": "파전",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "national-pajeon",
+        "nameKo": "파전",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "national-pajeon"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "한강라면_202605011707.jpeg",
+    "normalized": "한강라면",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "seoul-hangang-ramen",
+        "nameKo": "한강 라면",
+        "region": "seoul"
+      }
+    ],
+    "selected": [
+      "seoul-hangang-ramen"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "한우_육회비빔밥_202605011704.jpeg",
+    "normalized": "한우 육회비빔밥",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "national-hanwoo-yukhoe",
+        "nameKo": "한우 육회비빔밥",
+        "region": "national"
+      }
+    ],
+    "selected": [
+      "national-hanwoo-yukhoe"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "한우구이_202605011702.jpeg",
+    "normalized": "한우구이",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "yongin-hanwoo",
+        "nameKo": "용인 한우 구이",
+        "region": "yongin"
+      },
+      {
+        "foodId": "icheon-hanwoo-gui",
+        "nameKo": "이천 한우 구이",
+        "region": "icheon"
+      }
+    ],
+    "selected": [
+      "yongin-hanwoo",
+      "icheon-hanwoo-gui"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "해물뚝배기.jpeg",
+    "normalized": "해물뚝배기",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "tongyeong-haemul-ttukbaegi",
+        "nameKo": "해물뚝배기",
+        "region": "tongyeong"
+      }
+    ],
+    "selected": [
+      "tongyeong-haemul-ttukbaegi"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "해장국_202605011705.jpeg",
+    "normalized": "해장국",
+    "matchPriority": 3,
+    "candidates": [
+      {
+        "foodId": "gyeongju-haejangguk",
+        "nameKo": "경주 해장국",
+        "region": "gyeongju"
+      }
+    ],
+    "selected": [
+      "gyeongju-haejangguk"
+    ],
+    "status": "matched"
+  },
+  {
+    "filename": "황남빵_202605011706.jpeg",
+    "normalized": "황남빵",
+    "matchPriority": 1,
+    "candidates": [
+      {
+        "foodId": "gyeongju-hwangnam-ppang",
+        "nameKo": "황남빵",
+        "region": "gyeongju"
+      }
+    ],
+    "selected": [
+      "gyeongju-hwangnam-ppang"
+    ],
+    "status": "matched"
+  }
+]

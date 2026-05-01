@@ -1,0 +1,758 @@
+[
+  {
+    "foodId": "jeonju-bibimbap",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-bibimbap.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeonju-kongnamul",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-kongnamul.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-kongnamul.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "jeonju-tteokgalbi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-tteokgalbi.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeonju-kalguksu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-kalguksu.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-kalguksu.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "jeonju-pisundae",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-pisundae.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-pisundae.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "jeonju-omogaritang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-omogaritang.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeonju-chocopie",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-chocopie.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-chocopie.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "jeonju-yukgaejang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-yukgaejang.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeonju-bindaetteok",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-bindaetteok.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeonju-cheonggukjang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-cheonggukjang.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeonju-bori-guksu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-bori-guksu.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeonju-gondrebap",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeonju-gondrebap.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "seoul-samgyeopsal",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-samgyeopsal.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-samgyeopsal.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "seoul-seolleongtang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-seolleongtang.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-seolleongtang.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "seoul-street-toast",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-street-toast.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "seoul-bindaetteok",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-bindaetteok.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-bindaetteok.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "seoul-hangang-ramen",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-hangang-ramen.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-hangang-ramen.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "seoul-sundaekook",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-sundaekook.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-sundaekook.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "seoul-kalguksu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-kalguksu.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-kalguksu.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "seoul-mayak-gimbap",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-mayak-gimbap.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "seoul-gopchang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-gopchang.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "seoul-yang-kkochi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-yang-kkochi.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-yang-kkochi.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "seoul-chimaek",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-chimaek.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-chimaek.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "seoul-galbi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/seoul-galbi.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-meongge-bibimbap",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-meongge-bibimbap.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-meongge-bibimbap.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "tongyeong-oyster-soup",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-oyster-soup.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-sirakguk",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-sirakguk.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-haemul-ttukbaegi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-haemul-ttukbaegi.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-haemul-ttukbaegi.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "tongyeong-ppaettaegi-juk",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-ppaettaegi-juk.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-ppaettaegi-juk.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-dacci",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-dacci.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-dodari-ssuk",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-dodari-ssuk.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-gulbap",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-gulbap.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-jeonbok-gui",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-jeonbok-gui.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-mulmegi-tang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-mulmegi-tang.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-bajirak-kalguksu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-bajirak-kalguksu.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-bajirak-kalguksu.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-saengseon-hoe-jeongsik",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-saengseon-hoe-jeongsik.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-honghap-tang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-honghap-tang.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "tongyeong-mideodeok-jjim",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/tongyeong-mideodeok-jjim.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeju-black-pork",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-black-pork.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeju-black-pork.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "jeju-galchi-jorim",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-galchi-jorim.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeju-galchi-jorim.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "jeju-momguk",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-momguk.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeju-bomal-kalguksu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-bomal-kalguksu.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeju-bomal-kalguksu.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "jeju-bingtteok",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-bingtteok.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeju-kkwong-memil-guksu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-kkwong-memil-guksu.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeju-gamgyul-juice",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-gamgyul-juice.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeju-okdom-gui",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-okdom-gui.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeju-jeonbok-ttukbaegi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-jeonbok-ttukbaegi.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeju-jeopjjak-bbyeoguk",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-jeopjjak-bbyeoguk.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "jeju-dwaeji-kimchi-bokkeum",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/jeju-dwaeji-kimchi-bokkeum.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "busan-milmyeon",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-milmyeon.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-milmyeon.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "busan-hotteok",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-hotteok.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-hotteok.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "busan-mul-tteok",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-mul-tteok.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-mul-tteok.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "busan-naengchae-jokbal",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-naengchae-jokbal.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-naengchae-jokbal.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "busan-grilled-clams",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-grilled-clams.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-grilled-clams.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "busan-bibim-dangmyeon",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-bibim-dangmyeon.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-bibim-dangmyeon.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "busan-gopchang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-gopchang.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "busan-nakgopsae",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-nakgopsae.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-nakgopsae.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "busan-ssiat-hotteok",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/busan-ssiat-hotteok.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-ssiat-hotteok.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "busan-hwae",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-hwae.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-hwae.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "busan-agujjim",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/busan-agujjim.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "gyeongju-hwangnam-ppang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hwangnam-ppang.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/gyeongju-hwangnam-ppang.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "gyeongju-tteokgalbi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-tteokgalbi.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "gyeongju-ssambap",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-ssambap.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "gyeongju-haejangguk",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-haejangguk.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/gyeongju-haejangguk.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "gyeongju-chalborippang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-chalborippang.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/gyeongju-chalborippang.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "gyeongju-bamyeot",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-bamyeot.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "gyeongju-sujae-maekju",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-sujae-maekju.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "gyeongju-solsongju",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/gyeongju-solsongju.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "cheonan-byeongcheon-sundae",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-byeongcheon-sundae.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-byeongcheon-sundae.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "cheonan-sundae-soup",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-sundae-soup.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-sundae-soup.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "cheonan-charcoal-dakgalbi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-charcoal-dakgalbi.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-charcoal-dakgalbi.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "cheonan-fruit-mochi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-fruit-mochi.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-fruit-mochi.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "cheonan-lotus-rice",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-lotus-rice.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-lotus-rice.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "cheonan-local-bakery",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-local-bakery.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "cheonan-heuk-dwaeji-gui",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-heuk-dwaeji-gui.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "cheonan-jokbal",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-jokbal.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "cheonan-cheonggukjang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-cheonggukjang.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "cheonan-boribap-jeongsik",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-boribap-jeongsik.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-boribap-jeongsik.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "cheonan-bossam",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-bossam.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "cheonan-makgeolli-ppang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-makgeolli-ppang.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-makgeolli-ppang.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "cheonan-kalguksu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/cheonan-kalguksu.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-kalguksu.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "yongin-baegam-sundae",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-baegam-sundae.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-baegam-sundae.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "yongin-jangter-gukbap",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-jangter-gukbap.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "yongin-nurungji-baeksuk",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-nurungji-baeksuk.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-nurungji-baeksuk.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "yongin-pajeon",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-pajeon.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "yongin-makguksu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-makguksu.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-makguksu.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "yongin-acorn-jelly",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-acorn-jelly.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-acorn-jelly.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "yongin-hanwoo",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-hanwoo.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-hanwoo.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "yongin-cafe-dessert",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-cafe-dessert.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "yongin-makgeolli",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-makgeolli.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-makgeolli.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "yongin-sanchae-jeongsik",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-sanchae-jeongsik.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "yongin-heuk-dwaeji",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yongin-heuk-dwaeji.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "icheon-rice-table",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-rice-table.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-rice-table.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "icheon-bori-gulbi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-bori-gulbi.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-bori-gulbi.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "icheon-ganjang-gejang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-ganjang-gejang.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-ganjang-gejang.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "icheon-hanwoo-gui",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-hanwoo-gui.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-hanwoo-gui.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "icheon-royal-table",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-royal-table.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-royal-table.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "icheon-makguksu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-makguksu.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-makguksu.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "icheon-hangwa",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-hangwa.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "icheon-sansuyu-makgeolli",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-sansuyu-makgeolli.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-sansuyu-makgeolli.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "icheon-cheonggukjang-jeongsik",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-cheonggukjang-jeongsik.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-cheonggukjang-jeongsik.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "icheon-neungi-shabu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-neungi-shabu.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-neungi-shabu.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "icheon-bokjung-ppang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/icheon-bokjung-ppang.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-bokjung-ppang.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "icheon-gamja-ongsimi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-gamja-ongsimi.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-gamja-ongsimi.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "sokcho-abai-sundae",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-abai-sundae.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/sokcho-abai-sundae.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "sokcho-ojingeo-sundae",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-ojingeo-sundae.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/sokcho-ojingeo-sundae.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "sokcho-gamja-ongsimi",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-gamja-ongsimi.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/sokcho-gamja-ongsimi.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "yeosu-seodae-hoemuchim",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yeosu-seodae-hoemuchim.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "yeosu-gejang-baekban",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/yeosu-gejang-baekban.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "andong-heot-jesabap",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/andong-heot-jesabap.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "national-sundubu",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sundubu.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sundubu.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-pajeon",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-pajeon.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-pajeon.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-tteokbokki",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-tteokbokki.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-tteokbokki.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-jokbal",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-jokbal.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-jokbal.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-kimchi-jjigae",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/national-kimchi-jjigae.webp",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-kimchi-jjigae.jpeg",
+    "reason": "to_dupe_from_hansik"
+  },
+  {
+    "foodId": "national-bossam",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/national-bossam.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "national-sundubu-gyeongju",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sundubu-gyeongju.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sundubu-gyeongju.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-samgyetang",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-samgyetang.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-samgyetang.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-hangwa",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/national-hangwa.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "national-spicy-catfish",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-spicy-catfish.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-spicy-catfish.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-jeyuk-bokkeum",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-jeyuk-bokkeum.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-jeyuk-bokkeum.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-kkomak-bibimbap",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/national-kkomak-bibimbap.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  },
+  {
+    "foodId": "national-sanchae-bibimbap",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sanchae-bibimbap.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sanchae-bibimbap.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-hanwoo-yukhoe",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-hanwoo-yukhoe.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-hanwoo-yukhoe.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-sanchae-bibimbap-yongin",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-sanchae-bibimbap-yongin.jpg",
+    "after": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sanchae-bibimbap-yongin.jpeg",
+    "reason": "to_dupe_from_phoko"
+  },
+  {
+    "foodId": "national-chapssal-tteok",
+    "before": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/hansik/national-chapssal-tteok.webp",
+    "after": "",
+    "reason": "to_empty_from_hansik"
+  }
+]

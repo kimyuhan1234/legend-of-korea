@@ -1,0 +1,523 @@
+[
+  {
+    "filename": "간장게장.jpeg",
+    "foodId": "icheon-ganjang-gejang",
+    "targetPath": "dupe/icheon-ganjang-gejang.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-ganjang-gejang.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "갈치조림.jpeg",
+    "foodId": "jeju-galchi-jorim",
+    "targetPath": "dupe/jeju-galchi-jorim.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeju-galchi-jorim.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "감자옹심이.jpeg",
+    "foodId": "icheon-gamja-ongsimi",
+    "targetPath": "dupe/icheon-gamja-ongsimi.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-gamja-ongsimi.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "감자옹심이.jpeg",
+    "foodId": "sokcho-gamja-ongsimi",
+    "targetPath": "dupe/sokcho-gamja-ongsimi.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/sokcho-gamja-ongsimi.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "과일모찌.jpeg",
+    "foodId": "cheonan-fruit-mochi",
+    "targetPath": "dupe/cheonan-fruit-mochi.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-fruit-mochi.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "김치찌개.jpeg",
+    "foodId": "national-kimchi-jjigae",
+    "targetPath": "dupe/national-kimchi-jjigae.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-kimchi-jjigae.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "낙곱새.jpeg",
+    "foodId": "busan-nakgopsae",
+    "targetPath": "dupe/busan-nakgopsae.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-nakgopsae.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "냉채족발.jpeg",
+    "foodId": "busan-naengchae-jokbal",
+    "targetPath": "dupe/busan-naengchae-jokbal.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-naengchae-jokbal.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "누룽지_삼계탕.jpeg",
+    "foodId": "yongin-nurungji-baeksuk",
+    "targetPath": "dupe/yongin-nurungji-baeksuk.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-nurungji-baeksuk.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "능이버섯샤브샤브.jpeg",
+    "foodId": "icheon-neungi-shabu",
+    "targetPath": "dupe/icheon-neungi-shabu.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-neungi-shabu.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "도토리묵_무침_202605011703.jpeg",
+    "foodId": "yongin-acorn-jelly",
+    "targetPath": "dupe/yongin-acorn-jelly.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-acorn-jelly.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "떡볶이_202605011733.jpeg",
+    "foodId": "national-tteokbokki",
+    "targetPath": "dupe/national-tteokbokki.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-tteokbokki.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "막걸리_202605011702.jpeg",
+    "foodId": "cheonan-makgeolli-ppang",
+    "targetPath": "dupe/cheonan-makgeolli-ppang.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-makgeolli-ppang.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "막걸리_202605011702.jpeg",
+    "foodId": "yongin-makgeolli",
+    "targetPath": "dupe/yongin-makgeolli.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-makgeolli.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "막걸리_202605011702.jpeg",
+    "foodId": "icheon-sansuyu-makgeolli",
+    "targetPath": "dupe/icheon-sansuyu-makgeolli.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-sansuyu-makgeolli.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "막걸리빵.jpeg",
+    "foodId": "cheonan-makgeolli-ppang",
+    "targetPath": "dupe/cheonan-makgeolli-ppang.jpeg",
+    "status": "skipped"
+  },
+  {
+    "filename": "막국수.jpeg",
+    "foodId": "yongin-makguksu",
+    "targetPath": "dupe/yongin-makguksu.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-makguksu.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "막국수.jpeg",
+    "foodId": "icheon-makguksu",
+    "targetPath": "dupe/icheon-makguksu.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-makguksu.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "멍게비빔밥_202605011706.jpeg",
+    "foodId": "tongyeong-meongge-bibimbap",
+    "targetPath": "dupe/tongyeong-meongge-bibimbap.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-meongge-bibimbap.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "물떡_202605011707.jpeg",
+    "foodId": "busan-mul-tteok",
+    "targetPath": "dupe/busan-mul-tteok.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-mul-tteok.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "밀면.jpeg",
+    "foodId": "busan-milmyeon",
+    "targetPath": "dupe/busan-milmyeon.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-milmyeon.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "백암순대.jpeg",
+    "foodId": "yongin-baegam-sundae",
+    "targetPath": "dupe/yongin-baegam-sundae.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-baegam-sundae.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "볏집_삼겹살구이_202605011702.jpeg",
+    "foodId": "seoul-samgyeopsal",
+    "targetPath": "dupe/seoul-samgyeopsal.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-samgyeopsal.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "보리굴비_202605011702.jpeg",
+    "foodId": "icheon-bori-gulbi",
+    "targetPath": "dupe/icheon-bori-gulbi.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-bori-gulbi.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "보리밥정식.jpeg",
+    "foodId": "cheonan-boribap-jeongsik",
+    "targetPath": "dupe/cheonan-boribap-jeongsik.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-boribap-jeongsik.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "복숭아빵.jpeg",
+    "foodId": "icheon-bokjung-ppang",
+    "targetPath": "dupe/icheon-bokjung-ppang.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-bokjung-ppang.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "비빔당면_202605011707.jpeg",
+    "foodId": "busan-bibim-dangmyeon",
+    "targetPath": "dupe/busan-bibim-dangmyeon.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-bibim-dangmyeon.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "빈대떡_202605011707.jpeg",
+    "foodId": "seoul-bindaetteok",
+    "targetPath": "dupe/seoul-bindaetteok.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-bindaetteok.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "빠가사리.jpeg",
+    "foodId": "national-spicy-catfish",
+    "targetPath": "dupe/national-spicy-catfish.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-spicy-catfish.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "빼때기죽.jpeg",
+    "foodId": "tongyeong-ppaettaegi-juk",
+    "targetPath": "dupe/tongyeong-ppaettaegi-juk.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-ppaettaegi-juk.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "사시미_202605011809.jpeg",
+    "foodId": "busan-hwae",
+    "targetPath": "dupe/busan-hwae.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-hwae.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "산채비빔밥_202605011703.jpeg",
+    "foodId": "national-sanchae-bibimbap",
+    "targetPath": "dupe/national-sanchae-bibimbap.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sanchae-bibimbap.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "산채비빔밥_202605011703.jpeg",
+    "foodId": "national-sanchae-bibimbap-yongin",
+    "targetPath": "dupe/national-sanchae-bibimbap-yongin.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sanchae-bibimbap-yongin.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "삼계탕_202605011708.jpeg",
+    "foodId": "national-samgyetang",
+    "targetPath": "dupe/national-samgyetang.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-samgyetang.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "설렁탕_202605011708.jpeg",
+    "foodId": "seoul-seolleongtang",
+    "targetPath": "dupe/seoul-seolleongtang.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-seolleongtang.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "수제초코파이.jpeg",
+    "foodId": "jeonju-chocopie",
+    "targetPath": "dupe/jeonju-chocopie.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-chocopie.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "순대.jpeg",
+    "foodId": "jeonju-pisundae",
+    "targetPath": "dupe/jeonju-pisundae.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-pisundae.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "순대.jpeg",
+    "foodId": "seoul-sundaekook",
+    "targetPath": "dupe/seoul-sundaekook.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-sundaekook.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "순대.jpeg",
+    "foodId": "cheonan-byeongcheon-sundae",
+    "targetPath": "dupe/cheonan-byeongcheon-sundae.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-byeongcheon-sundae.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "순대.jpeg",
+    "foodId": "cheonan-sundae-soup",
+    "targetPath": "dupe/cheonan-sundae-soup.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-sundae-soup.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "순대.jpeg",
+    "foodId": "yongin-baegam-sundae",
+    "targetPath": "dupe/yongin-baegam-sundae.jpeg",
+    "status": "skipped"
+  },
+  {
+    "filename": "순대.jpeg",
+    "foodId": "sokcho-abai-sundae",
+    "targetPath": "dupe/sokcho-abai-sundae.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/sokcho-abai-sundae.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "순대.jpeg",
+    "foodId": "sokcho-ojingeo-sundae",
+    "targetPath": "dupe/sokcho-ojingeo-sundae.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/sokcho-ojingeo-sundae.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "순대국밥.jpeg",
+    "foodId": "cheonan-sundae-soup",
+    "targetPath": "dupe/cheonan-sundae-soup.jpeg",
+    "status": "skipped"
+  },
+  {
+    "filename": "순두부찌개_202605011705.jpeg",
+    "foodId": "national-sundubu",
+    "targetPath": "dupe/national-sundubu.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sundubu.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "순두부찌개_202605011705.jpeg",
+    "foodId": "national-sundubu-gyeongju",
+    "targetPath": "dupe/national-sundubu-gyeongju.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sundubu-gyeongju.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "숯불닭갈비.jpeg",
+    "foodId": "cheonan-charcoal-dakgalbi",
+    "targetPath": "dupe/cheonan-charcoal-dakgalbi.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-charcoal-dakgalbi.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "씨앗호떡_202605011707.jpeg",
+    "foodId": "busan-hotteok",
+    "targetPath": "dupe/busan-hotteok.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-hotteok.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "씨앗호떡_202605011707.jpeg",
+    "foodId": "busan-ssiat-hotteok",
+    "targetPath": "dupe/busan-ssiat-hotteok.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-ssiat-hotteok.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "양꼬치_202605011808.jpeg",
+    "foodId": "seoul-yang-kkochi",
+    "targetPath": "dupe/seoul-yang-kkochi.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-yang-kkochi.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "연잎정식.jpeg",
+    "foodId": "cheonan-lotus-rice",
+    "targetPath": "dupe/cheonan-lotus-rice.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-lotus-rice.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "이천_쌀밥정식_202605011702.jpeg",
+    "foodId": "icheon-rice-table",
+    "targetPath": "dupe/icheon-rice-table.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-rice-table.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "전주식_들깨_칼국수_202605011701.jpeg",
+    "foodId": "jeonju-kalguksu",
+    "targetPath": "dupe/jeonju-kalguksu.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-kalguksu.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "제육볶음_202605011702.jpeg",
+    "foodId": "national-jeyuk-bokkeum",
+    "targetPath": "dupe/national-jeyuk-bokkeum.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-jeyuk-bokkeum.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "제주흑돼지구이_202605011707.jpeg",
+    "foodId": "jeju-black-pork",
+    "targetPath": "dupe/jeju-black-pork.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeju-black-pork.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "조개구이_202605011707.jpeg",
+    "foodId": "busan-grilled-clams",
+    "targetPath": "dupe/busan-grilled-clams.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-grilled-clams.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "조선시대_임금님_수라상_202605011701.jpeg",
+    "foodId": "icheon-royal-table",
+    "targetPath": "dupe/icheon-royal-table.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-royal-table.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "족발_202605011707.jpeg",
+    "foodId": "national-jokbal",
+    "targetPath": "dupe/national-jokbal.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-jokbal.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "찰보리빵.jpeg",
+    "foodId": "gyeongju-chalborippang",
+    "targetPath": "dupe/gyeongju-chalborippang.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/gyeongju-chalborippang.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "청국장정식.jpg_202605011821.jpeg",
+    "foodId": "icheon-cheonggukjang-jeongsik",
+    "targetPath": "dupe/icheon-cheonggukjang-jeongsik.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-cheonggukjang-jeongsik.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "치킨맥주_202605011807.jpeg",
+    "foodId": "seoul-chimaek",
+    "targetPath": "dupe/seoul-chimaek.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-chimaek.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "칼국수_202605011808.jpeg",
+    "foodId": "jeonju-kalguksu",
+    "targetPath": "dupe/jeonju-kalguksu.jpeg",
+    "status": "skipped"
+  },
+  {
+    "filename": "칼국수_202605011808.jpeg",
+    "foodId": "seoul-kalguksu",
+    "targetPath": "dupe/seoul-kalguksu.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-kalguksu.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "칼국수_202605011808.jpeg",
+    "foodId": "tongyeong-bajirak-kalguksu",
+    "targetPath": "dupe/tongyeong-bajirak-kalguksu.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-bajirak-kalguksu.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "칼국수_202605011808.jpeg",
+    "foodId": "jeju-bomal-kalguksu",
+    "targetPath": "dupe/jeju-bomal-kalguksu.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeju-bomal-kalguksu.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "칼국수_202605011808.jpeg",
+    "foodId": "cheonan-kalguksu",
+    "targetPath": "dupe/cheonan-kalguksu.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/cheonan-kalguksu.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "콩나물국밥_202605011701.jpeg",
+    "foodId": "jeonju-kongnamul",
+    "targetPath": "dupe/jeonju-kongnamul.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/jeonju-kongnamul.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "파전_202605011703.jpeg",
+    "foodId": "national-pajeon",
+    "targetPath": "dupe/national-pajeon.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-pajeon.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "한강라면_202605011707.jpeg",
+    "foodId": "seoul-hangang-ramen",
+    "targetPath": "dupe/seoul-hangang-ramen.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-hangang-ramen.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "한우_육회비빔밥_202605011704.jpeg",
+    "foodId": "national-hanwoo-yukhoe",
+    "targetPath": "dupe/national-hanwoo-yukhoe.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-hanwoo-yukhoe.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "한우구이_202605011702.jpeg",
+    "foodId": "yongin-hanwoo",
+    "targetPath": "dupe/yongin-hanwoo.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-hanwoo.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "한우구이_202605011702.jpeg",
+    "foodId": "icheon-hanwoo-gui",
+    "targetPath": "dupe/icheon-hanwoo-gui.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/icheon-hanwoo-gui.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "해물뚝배기.jpeg",
+    "foodId": "tongyeong-haemul-ttukbaegi",
+    "targetPath": "dupe/tongyeong-haemul-ttukbaegi.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/tongyeong-haemul-ttukbaegi.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "해장국_202605011705.jpeg",
+    "foodId": "gyeongju-haejangguk",
+    "targetPath": "dupe/gyeongju-haejangguk.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/gyeongju-haejangguk.jpeg",
+    "status": "uploaded"
+  },
+  {
+    "filename": "황남빵_202605011706.jpeg",
+    "foodId": "gyeongju-hwangnam-ppang",
+    "targetPath": "dupe/gyeongju-hwangnam-ppang.jpeg",
+    "publicUrl": "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/gyeongju-hwangnam-ppang.jpeg",
+    "status": "uploaded"
+  }
+]
