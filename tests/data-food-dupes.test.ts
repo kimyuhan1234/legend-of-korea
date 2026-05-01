@@ -12,14 +12,15 @@ const REQUIRED_REGION_CODES = [
   "jeonju", "seoul", "tongyeong", "jeju",
   "busan", "gyeongju", "cheonan", "yongin", "icheon",
   "sokcho", "yeosu", "andong",
+  "national",  // 전국 한국 전통 — 권역 무관 28건
 ]
 describe("food-dupes: 지역(Region) 구조", () => {
-  it("12개 도시가 모두 존재해야 한다", () => {
+  it("12개 도시 + national 이 모두 존재해야 한다", () => {
     const codes = regions.map((r) => r.code)
     for (const code of REQUIRED_REGION_CODES) {
       expect(codes, `${code} 지역이 없습니다`).toContain(code)
     }
-    expect(regions).toHaveLength(12)
+    expect(regions).toHaveLength(13)
   })
 
   it("모든 지역에 필수 필드가 있어야 한다", () => {
@@ -83,14 +84,16 @@ describe("food-dupes: 음식(RegionalFood) 구조", () => {
     }
   })
 
-  it("음식 이미지 경로가 있다면 /images/food/ 로 시작해야 한다", () => {
+  it("음식 이미지 경로는 /images/food/ 또는 Supabase Storage URL 이어야 한다", () => {
+    // Phase F 이후 이미지는 Supabase Storage 로 이전 (food-images 버킷).
+    // 레거시 /images/food/ 로컬 경로도 일부 잔존 — 둘 다 허용.
+    const SUPABASE_STORAGE = /^https:\/\/[a-z0-9]+\.supabase\.co\/storage\/v1\/object\/public\/food-images\//
+    const LEGACY_LOCAL = /^\/images\/food\//
     for (const region of regions) {
       for (const food of region.foods) {
         if (!food.image) continue
-        expect(
-          food.image,
-          `${food.id}: 이미지 경로 형식 오류 (${food.image})`
-        ).toMatch(/^\/images\/food\//)
+        const ok = SUPABASE_STORAGE.test(food.image) || LEGACY_LOCAL.test(food.image)
+        expect(ok, `${food.id}: 이미지 경로 형식 오류 (${food.image})`).toBe(true)
       }
     }
   })

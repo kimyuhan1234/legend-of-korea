@@ -1830,7 +1830,7 @@
   },
   "dupe": {
     "mode": {
-      "city": "🗺️ By City",
+      "city": "🗺️ By Region",
       "ai": "🤖 AI Match",
       "taste": "🎯 My Taste",
       "world": "🌍 World Map"
@@ -1838,7 +1838,7 @@
     "map": {
       "korea": {
         "title": "Discover Korean Flavors",
-        "subtitle": "Tap a city to explore its flavors"
+        "subtitle": "Tap a region to explore its flavors"
       },
       "foods": "{count} dishes",
       "explore": "Explore this city →"
@@ -2000,18 +2000,31 @@
     "passes": {
       "duration": "{days} days",
       "daily": "₩{daily}/day",
-      "short": { "name": "Short", "target": "Weekend traveler" },
-      "standard": { "name": "Standard", "target": "1–2 week traveler" },
-      "long": { "name": "Long", "target": "Month-long stay / workation" }
+      "short": {
+        "name": "Short",
+        "target": "Weekend traveler"
+      },
+      "standard": {
+        "name": "Standard",
+        "target": "1–2 week traveler"
+      },
+      "long": {
+        "name": "Long",
+        "target": "Month-long stay / workation"
+      }
     },
     "features": {
-      "quest": { "unlimited": "Unlimited access to 70 quests in 9 cities" },
+      "quest": {
+        "unlimited": "Unlimited access to 70 quests in 9 cities"
+      },
       "kfood": {
         "dupe_match": "AI Food Match (110 matches)",
         "beauty": "Beauty Food (31 benefits)",
         "fusion": "Fusion Recipes (69 across 8 countries)"
       },
-      "spot": { "full": "SPOT Full Access (30 photo filters)" }
+      "spot": {
+        "full": "SPOT Full Access (30 photo filters)"
+      }
     },
     "lockScreen": {
       "cta": "See passes →",
@@ -2044,9 +2057,15 @@
       "title": "Checkout",
       "duration": "Valid for {days} days",
       "passes": {
-        "short": { "name": "Short Pass" },
-        "standard": { "name": "Standard Pass" },
-        "long": { "name": "Long Pass" }
+        "short": {
+          "name": "Short Pass"
+        },
+        "standard": {
+          "name": "Standard Pass"
+        },
+        "long": {
+          "name": "Long Pass"
+        }
       },
       "cta": "Pay now",
       "test_mode_cta": "Activate (test)",

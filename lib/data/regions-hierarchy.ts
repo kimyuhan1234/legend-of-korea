@@ -1,9 +1,8 @@
 /**
  * 도/시 2 단계 hierarchy — 한국 행정구역 광역 (province) → 우리 코스/음식 등록 도시 (city).
  *
- * 사용처: components/features/food/ProvinceAccordion.tsx
- *   - /food/dupe 메인의 도시별 모드 그리드 → 도 Accordion 으로 전환 (단일 도시 즉시 link)
  * city.id 는 food-dupes.ts 의 region.code 와 1:1 매칭 (yongin / jeju 등).
+ * 6 권역 그룹은 하단 REGION_GROUPS / RegionGroupGrid 컴포넌트 참조.
  */
 
 export interface CityItem {
@@ -167,3 +166,76 @@ export const PROVINCES: ProvinceItem[] = [
     ],
   },
 ]
+
+/**
+ * 6 권역 그룹 — /food/dupe 등 권역 단위 UI 에서 사용.
+ *
+ * - regions 배열은 food-dupes.ts 의 region.code (도시 단위) 와 1:1 매칭.
+ * - 'national' 은 권역과 별개로 모든 권역에 합쳐 노출 (하단 헬퍼 참조).
+ * - 권역별 음식 불균형은 의도된 상태 (현재 등록된 도시 데이터 그대로).
+ *
+ * sokcho 는 강원도 (gangwon), gyeongsang 아님.
+ */
+export interface RegionGroup {
+  id: RegionGroupId
+  name: { ko: string; ja: string; en: string; 'zh-CN': string; 'zh-TW': string }
+  emoji: string
+  /** food-dupes.ts 의 region.code list */
+  regions: string[]
+}
+
+export type RegionGroupId =
+  | 'seoul-gyeonggi'
+  | 'chungcheong'
+  | 'gangwon'
+  | 'jeolla'
+  | 'gyeongsang'
+  | 'jeju'
+
+export const REGION_GROUPS: RegionGroup[] = [
+  {
+    id: 'seoul-gyeonggi',
+    name: { ko: '서울경기', ja: 'ソウル・京畿', en: 'Seoul/Gyeonggi', 'zh-CN': '首尔京畿', 'zh-TW': '首爾京畿' },
+    emoji: '🏙️',
+    regions: ['seoul', 'yongin', 'icheon'],
+  },
+  {
+    id: 'chungcheong',
+    name: { ko: '충청도', ja: '忠清道', en: 'Chungcheong', 'zh-CN': '忠清道', 'zh-TW': '忠清道' },
+    emoji: '🌾',
+    regions: ['cheonan'],
+  },
+  {
+    id: 'gangwon',
+    name: { ko: '강원도', ja: '江原道', en: 'Gangwon', 'zh-CN': '江原道', 'zh-TW': '江原道' },
+    emoji: '🏔️',
+    regions: ['sokcho'],
+  },
+  {
+    id: 'jeolla',
+    name: { ko: '전라도', ja: '全羅道', en: 'Jeolla', 'zh-CN': '全罗道', 'zh-TW': '全羅道' },
+    emoji: '🍚',
+    regions: ['jeonju', 'yeosu'],
+  },
+  {
+    id: 'gyeongsang',
+    name: { ko: '경상도', ja: '慶尚道', en: 'Gyeongsang', 'zh-CN': '庆尚道', 'zh-TW': '慶尚道' },
+    emoji: '🌊',
+    regions: ['busan', 'gyeongju', 'andong', 'tongyeong'],
+  },
+  {
+    id: 'jeju',
+    name: { ko: '제주도', ja: '済州道', en: 'Jeju', 'zh-CN': '济州岛', 'zh-TW': '濟州島' },
+    emoji: '🏝️',
+    regions: ['jeju'],
+  },
+]
+
+/** 도시 region 코드 → 권역 id 역방향 룩업 (legacy URL redirect 용). */
+export const REGION_TO_GROUP: Record<string, RegionGroupId> = REGION_GROUPS.reduce(
+  (acc, g) => {
+    for (const r of g.regions) acc[r] = g.id
+    return acc
+  },
+  {} as Record<string, RegionGroupId>,
+)

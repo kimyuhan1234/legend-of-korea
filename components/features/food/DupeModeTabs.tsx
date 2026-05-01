@@ -6,7 +6,7 @@ import { AiDupeSearch } from './AiDupeSearch'
 import { TastePreferenceFilter } from './TastePreferenceFilter'
 import { TasteMatchResults } from './TasteMatchResults'
 import { WorldDupeMap } from './WorldDupeMap'
-import { ProvinceAccordion } from './ProvinceAccordion'
+import { RegionGroupGrid } from './RegionGroupGrid'
 import { DupeSwipeContainer } from './DupeSwipeContainer'
 import type { RegionSummary } from './KoreaMapCitySelector'
 import type { CountrySummary } from './WorldDupeMap'
@@ -78,10 +78,9 @@ export function DupeModeTabs({ locale, regionSummaries: _regionSummaries, countr
     {
       key: 'city',
       label: t('mode.city'),
-      // PRD/UX: 12 평면 그리드 → 10 도/시 2 단계 Accordion (단일 도시 즉시 link).
-      // regionSummaries prop 은 page.tsx 의 정적 데이터 — 현재는 ProvinceAccordion
-      // 자체 PROVINCES 사용. 향후 음식 카운트 표시 등 동적 데이터 필요 시 prop 추가.
-      content: <ProvinceAccordion />,
+      // 6 권역 그리드 (서울경기/충청도/강원도/전라도/경상도/제주도).
+      // 권역 진입 시 해당 권역 도시 음식 + national 음식 합쳐 노출.
+      content: <RegionGroupGrid />,
     },
     {
       key: 'ai',

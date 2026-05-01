@@ -856,13 +856,17 @@
       }
     },
     "features": {
-      "quest": { "unlimited": "9개 도시 × 70개 미션 무제한" },
+      "quest": {
+        "unlimited": "9개 도시 × 70개 미션 무제한"
+      },
       "kfood": {
         "dupe_match": "AI 듀프매칭 (110개)",
         "beauty": "뷰티푸드 (31가지 효능)",
         "fusion": "퓨전 레시피 (8개국 69종)"
       },
-      "spot": { "full": "SPOT 풀버전 (30종 사진 필터)" }
+      "spot": {
+        "full": "SPOT 풀버전 (30종 사진 필터)"
+      }
     },
     "lockScreen": {
       "cta": "패스 보러 가기 →",
@@ -895,9 +899,15 @@
       "title": "결제 진행",
       "duration": "{days}일 유효",
       "passes": {
-        "short": { "name": "Short Pass" },
-        "standard": { "name": "Standard Pass" },
-        "long": { "name": "Long Pass" }
+        "short": {
+          "name": "Short Pass"
+        },
+        "standard": {
+          "name": "Standard Pass"
+        },
+        "long": {
+          "name": "Long Pass"
+        }
       },
       "cta": "결제하기",
       "test_mode_cta": "테스트 발급",
@@ -1949,7 +1959,7 @@
   },
   "dupe": {
     "mode": {
-      "city": "🗺️ 도시별 탐색",
+      "city": "🗺️ 권역별 탐색",
       "ai": "🤖 AI 매칭",
       "taste": "🎯 내 취향",
       "world": "🌍 세계지도"
@@ -1957,7 +1967,7 @@
     "map": {
       "korea": {
         "title": "한국의 맛을 찾아서",
-        "subtitle": "도시를 터치하면 그 도시의 맛이 펼쳐져요"
+        "subtitle": "권역을 터치하면 그 권역의 맛이 펼쳐져요"
       },
       "foods": "음식 {count}개",
       "explore": "이 도시 음식 보러가기 →"

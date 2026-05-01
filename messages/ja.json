@@ -1830,7 +1830,7 @@
   },
   "dupe": {
     "mode": {
-      "city": "🗺️ 都市別",
+      "city": "🗺️ エリア別",
       "ai": "🤖 AI マッチ",
       "taste": "🎯 好みで探す",
       "world": "🌍 世界地図"
@@ -1838,7 +1838,7 @@
     "map": {
       "korea": {
         "title": "韓国の味を探して",
-        "subtitle": "都市をタップして味を探索"
+        "subtitle": "エリアをタップして味を探索"
       },
       "foods": "料理 {count}個",
       "explore": "この都市を探索 →"
@@ -2000,18 +2000,31 @@
     "passes": {
       "duration": "{days}日",
       "daily": "1 日あたり ₩{daily}",
-      "short": { "name": "Short", "target": "週末の短期旅行者" },
-      "standard": { "name": "Standard", "target": "1〜2 週間の旅行者" },
-      "long": { "name": "Long", "target": "1 ヶ月滞在 / ワーケーション" }
+      "short": {
+        "name": "Short",
+        "target": "週末の短期旅行者"
+      },
+      "standard": {
+        "name": "Standard",
+        "target": "1〜2 週間の旅行者"
+      },
+      "long": {
+        "name": "Long",
+        "target": "1 ヶ月滞在 / ワーケーション"
+      }
     },
     "features": {
-      "quest": { "unlimited": "9 都市 70 ミッション無制限" },
+      "quest": {
+        "unlimited": "9 都市 70 ミッション無制限"
+      },
       "kfood": {
         "dupe_match": "AI フードマッチ (110 マッチング)",
         "beauty": "ビューティーフード (31 効能)",
         "fusion": "フュージョンレシピ (8 カ国 69 種)"
       },
-      "spot": { "full": "SPOT フル (30 種フィルター)" }
+      "spot": {
+        "full": "SPOT フル (30 種フィルター)"
+      }
     },
     "lockScreen": {
       "cta": "パスを見る →",
@@ -2044,9 +2057,15 @@
       "title": "お支払い",
       "duration": "{days}日間有効",
       "passes": {
-        "short": { "name": "Short Pass" },
-        "standard": { "name": "Standard Pass" },
-        "long": { "name": "Long Pass" }
+        "short": {
+          "name": "Short Pass"
+        },
+        "standard": {
+          "name": "Standard Pass"
+        },
+        "long": {
+          "name": "Long Pass"
+        }
       },
       "cta": "お支払いへ",
       "test_mode_cta": "テスト発行",

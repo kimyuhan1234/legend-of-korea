@@ -1830,7 +1830,7 @@
   },
   "dupe": {
     "mode": {
-      "city": "🗺️ 依城市",
+      "city": "🗺️ 依區域",
       "ai": "🤖 AI 配對",
       "taste": "🎯 我的口味",
       "world": "🌍 世界地圖"
@@ -1838,7 +1838,7 @@
     "map": {
       "korea": {
         "title": "探索韓國美食",
-        "subtitle": "點擊城市探索在地風味"
+        "subtitle": "點擊區域探索在地風味"
       },
       "foods": "{count} 道菜",
       "explore": "探索這座城市 →"
@@ -2000,18 +2000,31 @@
     "passes": {
       "duration": "{days} 天",
       "daily": "日均 ₩{daily}",
-      "short": { "name": "Short", "target": "週末短期旅客" },
-      "standard": { "name": "Standard", "target": "1-2 週旅客" },
-      "long": { "name": "Long", "target": "一個月居住 / 遠端辦公" }
+      "short": {
+        "name": "Short",
+        "target": "週末短期旅客"
+      },
+      "standard": {
+        "name": "Standard",
+        "target": "1-2 週旅客"
+      },
+      "long": {
+        "name": "Long",
+        "target": "一個月居住 / 遠端辦公"
+      }
     },
     "features": {
-      "quest": { "unlimited": "9 城市 70 任務無限制" },
+      "quest": {
+        "unlimited": "9 城市 70 任務無限制"
+      },
       "kfood": {
         "dupe_match": "AI 料理配對 (110 組)",
         "beauty": "美容食品 (31 功效)",
         "fusion": "融合食譜 (8 國 69 種)"
       },
-      "spot": { "full": "SPOT 完整版 (30 款濾鏡)" }
+      "spot": {
+        "full": "SPOT 完整版 (30 款濾鏡)"
+      }
     },
     "lockScreen": {
       "cta": "查看通行證 →",
@@ -2044,9 +2057,15 @@
       "title": "結帳",
       "duration": "有效期 {days} 天",
       "passes": {
-        "short": { "name": "Short Pass" },
-        "standard": { "name": "Standard Pass" },
-        "long": { "name": "Long Pass" }
+        "short": {
+          "name": "Short Pass"
+        },
+        "standard": {
+          "name": "Standard Pass"
+        },
+        "long": {
+          "name": "Long Pass"
+        }
       },
       "cta": "立即支付",
       "test_mode_cta": "測試發放",
