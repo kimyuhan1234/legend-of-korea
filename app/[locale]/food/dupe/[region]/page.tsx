@@ -165,7 +165,7 @@ export default function RegionGroupFoodsPage({ params }: Props) {
                   <p className="text-xs text-blossom-deep font-semibold mb-3">{topFlavors(food.tasteProfile, locale)}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-stone">
-                      {Object.keys(food.dupes).length} {t.dupeCount}
+                      {Object.values(food.dupes).reduce((sum, arr) => sum + arr.length, 0)} {t.dupeCount}
                     </span>
                     <span className="text-xs text-blossom-deep group-hover:translate-x-0.5 transition-transform">
                       {t.viewDetail}

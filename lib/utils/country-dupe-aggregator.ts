@@ -1,4 +1,4 @@
-import type { Region, RegionalFood, DupeForeignFood } from '@/lib/data/food-dupes'
+import type { Region, RegionalFood, DupeCandidate, CountryCode } from '@/lib/data/food-dupes'
 
 export interface CountryMeta {
   name: { ko: string; en: string; ja: string }
@@ -26,7 +26,8 @@ export interface DupeItem {
   koreanFood: RegionalFood
   regionCode: string
   regionName: { ko: string; en: string; ja: string }
-  foreignFood: DupeForeignFood
+  /** Phase H — 단수 → 복수. 한 한국 음식이 한 국가에 여러 후보를 가질 수 있음. */
+  foreignFood: DupeCandidate
 }
 
 export interface CountryDupeResult {
@@ -45,17 +46,20 @@ export function getCountryDupes(
   }
 
   const dupes: DupeItem[] = []
+  const cc = countryCode as CountryCode
 
   for (const region of regions) {
     for (const food of region.foods) {
-      const entry = food.dupes[countryCode]
-      if (!entry || 'challenge' in entry) continue
-      dupes.push({
-        koreanFood: food,
-        regionCode: region.code,
-        regionName: region.name,
-        foreignFood: entry as DupeForeignFood,
-      })
+      const entries = food.dupes[cc]
+      if (!entries || entries.length === 0) continue
+      for (const entry of entries) {
+        dupes.push({
+          koreanFood: food,
+          regionCode: region.code,
+          regionName: region.name,
+          foreignFood: entry,
+        })
+      }
     }
   }
 
@@ -68,10 +72,11 @@ export function getAllCountryCounts(regions: Region[]): Record<string, number> {
   const counts: Record<string, number> = {}
   for (const code of Object.keys(COUNTRIES)) {
     let count = 0
+    const cc = code as CountryCode
     for (const region of regions) {
       for (const food of region.foods) {
-        const entry = food.dupes[code]
-        if (entry && !('challenge' in entry)) count++
+        const entries = food.dupes[cc]
+        if (entries) count += entries.length
       }
     }
     counts[code] = count

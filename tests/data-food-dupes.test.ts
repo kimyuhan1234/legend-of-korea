@@ -100,30 +100,35 @@ describe("food-dupes: 음식(RegionalFood) 구조", () => {
     }
   })
 
-  it("모든 음식에 듀프(dupe)가 1개 이상 있어야 한다", () => {
+  // Phase H — dupes 단수 → 복수 후보 (0~3 개). 각 country 는 빈 배열 가능.
+  it("모든 음식에 12개국 dupes 키가 모두 존재해야 한다", () => {
+    const expected = ['JP', 'CN', 'TH', 'VN', 'MY', 'ID', 'US', 'IT', 'FR', 'IN', 'ES', 'MX']
     for (const region of regions) {
       for (const food of region.foods) {
-        expect(
-          Object.keys(food.dupes).length,
-          `${food.id}: dupes가 비어있음`
-        ).toBeGreaterThan(0)
+        for (const cc of expected) {
+          expect(
+            Array.isArray(food.dupes[cc as keyof typeof food.dupes]),
+            `${food.id}: dupes.${cc} 가 배열이 아님`
+          ).toBe(true)
+        }
       }
     }
   })
 
-  it("듀프 similarityPercent 는 50~100 사이여야 한다", () => {
+  it("듀프 후보의 similarityPercent 는 50~90 사이여야 한다 (Phase H 정직 범위)", () => {
     for (const region of regions) {
       for (const food of region.foods) {
-        for (const dupe of Object.values(food.dupes)) {
-          if ('challenge' in dupe) continue
-          expect(
-            dupe.similarityPercent,
-            `${food.id} > ${dupe.name.ko}: similarityPercent = ${dupe.similarityPercent}`
-          ).toBeGreaterThanOrEqual(50)
-          expect(
-            dupe.similarityPercent,
-            `${food.id} > ${dupe.name.ko}: similarityPercent = ${dupe.similarityPercent}`
-          ).toBeLessThanOrEqual(100)
+        for (const arr of Object.values(food.dupes)) {
+          for (const dupe of arr) {
+            expect(
+              dupe.similarityPercent,
+              `${food.id} > ${dupe.name.ko}: similarityPercent = ${dupe.similarityPercent}`
+            ).toBeGreaterThanOrEqual(50)
+            expect(
+              dupe.similarityPercent,
+              `${food.id} > ${dupe.name.ko}: similarityPercent = ${dupe.similarityPercent}`
+            ).toBeLessThanOrEqual(90)
+          }
         }
       }
     }
