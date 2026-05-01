@@ -7,35 +7,35 @@ interface FoodTabNavProps {
 
 const TABS = {
   ko: [
-    { key: "dupe" as const,         label: "🔗 듀프 (준비 중)",          href: "/food/dupe" },
+    { key: "dupe" as const,         label: "🔗 듀프",          href: "/food/dupe" },
     { key: "flag-cooking" as const, label: "🚩 플래그 쿠킹",   href: "/food/flag-cooking" },
     { key: "kfood-spot" as const,   label: "📍 K-Food Spot",   href: "/food/kfood-spot" },
     { key: "beauty" as const,       label: "🌿 뷰티 푸드",     href: "/food/beauty" },
     { key: "seasonal" as const,     label: "🌸 제철 한식",     href: "/food/seasonal" },
   ],
   ja: [
-    { key: "dupe" as const,         label: "🔗 デュープ (準備中)",      href: "/food/dupe" },
+    { key: "dupe" as const,         label: "🔗 デュープ",      href: "/food/dupe" },
     { key: "flag-cooking" as const, label: "🚩 フラッグ料理",  href: "/food/flag-cooking" },
     { key: "kfood-spot" as const,   label: "📍 K-Food Spot",   href: "/food/kfood-spot" },
     { key: "beauty" as const,       label: "🌿 ビューティーフード", href: "/food/beauty" },
     { key: "seasonal" as const,     label: "🌸 旬の韓食",      href: "/food/seasonal" },
   ],
   en: [
-    { key: "dupe" as const,         label: "🔗 Dupe (Coming soon)",          href: "/food/dupe" },
+    { key: "dupe" as const,         label: "🔗 Dupe",          href: "/food/dupe" },
     { key: "flag-cooking" as const, label: "🚩 Flag Cooking",  href: "/food/flag-cooking" },
     { key: "kfood-spot" as const,   label: "📍 K-Food Spot",   href: "/food/kfood-spot" },
     { key: "beauty" as const,       label: "🌿 Beauty Food",   href: "/food/beauty" },
     { key: "seasonal" as const,     label: "🌸 Seasonal",      href: "/food/seasonal" },
   ],
   "zh-CN": [
-    { key: "dupe" as const,         label: "🔗 美食对比 (准备中)",      href: "/food/dupe" },
+    { key: "dupe" as const,         label: "🔗 美食对比",      href: "/food/dupe" },
     { key: "flag-cooking" as const, label: "🚩 国旗料理",      href: "/food/flag-cooking" },
     { key: "kfood-spot" as const,   label: "📍 K-Food Spot",   href: "/food/kfood-spot" },
     { key: "beauty" as const,       label: "🌿 美容美食",      href: "/food/beauty" },
     { key: "seasonal" as const,     label: "🌸 时令韩食",      href: "/food/seasonal" },
   ],
   "zh-TW": [
-    { key: "dupe" as const,         label: "🔗 美食對比 (準備中)",      href: "/food/dupe" },
+    { key: "dupe" as const,         label: "🔗 美食對比",      href: "/food/dupe" },
     { key: "flag-cooking" as const, label: "🚩 國旗料理",      href: "/food/flag-cooking" },
     { key: "kfood-spot" as const,   label: "📍 K-Food Spot",   href: "/food/kfood-spot" },
     { key: "beauty" as const,       label: "🌿 美容美食",      href: "/food/beauty" },
