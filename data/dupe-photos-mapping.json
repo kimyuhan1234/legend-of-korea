@@ -48,8 +48,7 @@
       }
     ],
     "selected": [
-      "icheon-gamja-ongsimi",
-      "sokcho-gamja-ongsimi"
+      "icheon-gamja-ongsimi"
     ],
     "status": "matched"
   },
@@ -481,8 +480,7 @@
       }
     ],
     "selected": [
-      "national-sanchae-bibimbap",
-      "national-sanchae-bibimbap-yongin"
+      "national-sanchae-bibimbap"
     ],
     "status": "matched"
   },
@@ -618,8 +616,7 @@
       }
     ],
     "selected": [
-      "national-sundubu",
-      "national-sundubu-gyeongju"
+      "national-sundubu"
     ],
     "status": "matched"
   },
@@ -664,8 +661,7 @@
       }
     ],
     "selected": [
-      "busan-hotteok",
-      "busan-ssiat-hotteok"
+      "busan-hotteok"
     ],
     "status": "matched"
   },
@@ -884,7 +880,6 @@
     ],
     "selected": [
       "jeonju-kalguksu",
-      "seoul-kalguksu",
       "tongyeong-bajirak-kalguksu",
       "jeju-bomal-kalguksu",
       "cheonan-kalguksu"
@@ -972,7 +967,6 @@
       }
     ],
     "selected": [
-      "yongin-hanwoo",
       "icheon-hanwoo-gui"
     ],
     "status": "matched"

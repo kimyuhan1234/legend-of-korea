@@ -47,12 +47,14 @@ describe("food-dupes: 지역(Region) 구조", () => {
 })
 
 describe("food-dupes: 음식(RegionalFood) 구조", () => {
-  it("각 지역이 최소 5개 음식을 가져야 한다", () => {
+  it("각 지역이 최소 3개 음식을 가져야 한다", () => {
+    // Phase G-fix 중복 통합 후 sokcho 가 3개로 감소 — 권역별 음식 불균형은 의도.
+    // national 25건이 6 권역 모두에 합쳐 노출되어 전체 최소는 보장됨.
     for (const region of regions) {
       expect(
         region.foods.length,
-        `${region.code}: 음식이 최소 5개여야 하는데 ${region.foods.length}개`
-      ).toBeGreaterThanOrEqual(5)
+        `${region.code}: 음식이 최소 3개여야 하는데 ${region.foods.length}개`
+      ).toBeGreaterThanOrEqual(3)
     }
   })
 

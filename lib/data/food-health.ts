@@ -451,7 +451,7 @@ export const foodHealthData: FoodHealthData[] = [
     },
   },
   {
-    foodId: 'tongyeong-galchi-gui',
+    foodId: 'jeju-galchi-gui',
     region: 'tongyeong',
     name: { ko: '갈치구이', ja: '太刀魚の塩焼き', en: 'Grilled Hairtail Fish', 'zh-CN': '烤带鱼', 'zh-TW': '烤帶魚' },
     healthTags: ['skin'],
@@ -495,7 +495,7 @@ export const foodHealthData: FoodHealthData[] = [
     },
   },
   {
-    foodId: 'jeju-jeonbok-juk',
+    foodId: 'busan-jeonbok-juk',
     region: 'jeju',
     name: { ko: '전복죽', ja: 'アワビ粥', en: 'Abalone Porridge', 'zh-CN': '鲍鱼粥', 'zh-TW': '鮑魚粥' },
     healthTags: ['immunity', 'antiAging'],
@@ -1005,7 +1005,7 @@ export const foodHealthData: FoodHealthData[] = [
     },
   },
   {
-    foodId: 'cheonan-bossam',
+    foodId: 'national-bossam',
     region: 'cheonan',
     name: { ko: '보쌈', ja: 'ポッサム', en: 'Bossam', 'zh-CN': '菜包肉', 'zh-TW': '菜包肉' },
     healthTags: ['skin'],
@@ -1112,7 +1112,7 @@ export const foodHealthData: FoodHealthData[] = [
     },
   },
   {
-    foodId: 'yongin-hanwoo',
+    foodId: 'icheon-hanwoo-gui',
     region: 'yongin',
     name: { ko: '한우구이', ja: '韓牛焼き', en: 'Hanwoo Grilled Beef', 'zh-CN': '韩牛烤肉', 'zh-TW': '韓牛烤肉' },
     healthTags: ['skin'],
@@ -1175,7 +1175,7 @@ export const foodHealthData: FoodHealthData[] = [
     },
   },
   {
-    foodId: 'yongin-beoseot-jeongol',
+    foodId: 'cheonan-mushroom-stew',
     region: 'yongin',
     name: { ko: '버섯전골', ja: 'キノコチョンゴル', en: 'Mushroom Hot Pot', 'zh-CN': '蘑菇火锅', 'zh-TW': '蘑菇火鍋' },
     healthTags: ['immunity', 'antiAging', 'diet'],
@@ -1258,27 +1258,6 @@ export const foodHealthData: FoodHealthData[] = [
       en: ['Crab Chitin', 'Taurine', 'Zinc', 'Vitamin B12', 'Fermented Soy Sauce (Antioxidant)'],
       'zh-CN': ['螃蟹甲壳素', '牛磺酸', '锌', '维生素B12', '发酵酱油(抗氧化)'],
       'zh-TW': ['螃蟹甲殼素', '牛磺酸', '鋅', '維生素B12', '發酵醬油(抗氧化)'],
-    },
-  },
-  {
-    foodId: 'icheon-hanwoo-gui',
-    region: 'icheon',
-    name: { ko: '한우구이', ja: '韓牛焼き', en: 'Hanwoo Grilled Beef', 'zh-CN': '韩牛烤肉', 'zh-TW': '韓牛烤肉' },
-    healthTags: ['skin'],
-    healthRadar: { skin: 60, antiAging: 55, immunity: 55, digestion: 50, diet: 45 },
-    healthDescription: {
-      ko: '이천 한우의 헴철과 비타민B12가 혈액 건강과 에너지 대사를 활성화합니다.',
-      ja: '利川韓牛のヘム鉄とビタミンB12が血液の健康とエネルギー代謝を活性化します。',
-      en: '',
-      'zh-CN': '利川韩牛中的血红素铁和维生素B12激活血液健康和能量代谢。',
-      'zh-TW': '利川韓牛中的血紅素鐵和維生素B12激活血液健康和能量代謝。',
-    },
-    keyNutrients: {
-      ko: ['단백질', '철분', '아연', '비타민B12', '필수 아미노산'],
-      ja: ['たんぱく質', '鉄分', '亜鉛', 'ビタミンB12', '必須アミノ酸'],
-      en: ['Protein', 'Iron', 'Zinc', 'Vitamin B12', 'Essential Amino Acids'],
-      'zh-CN': ['蛋白质', '铁', '锌', '维生素B12', '必需氨基酸'],
-      'zh-TW': ['蛋白質', '鐵', '鋅', '維生素B12', '必需氨基酸'],
     },
   },
   {
@@ -1389,28 +1368,7 @@ export const foodHealthData: FoodHealthData[] = [
     },
   },
   {
-    foodId: 'sokcho-mulhoe',
-    region: 'sokcho',
-    name: { ko: '물회', ja: 'ムルフェ', en: 'Cold Raw Fish Soup', 'zh-CN': '凉拌生鱼汤', 'zh-TW': '涼拌生魚湯' },
-    healthTags: ['diet', 'skin'],
-    healthRadar: { skin: 70, antiAging: 65, immunity: 65, digestion: 65, diet: 80 },
-    healthDescription: {
-      ko: '동해의 신선한 해산물과 채소의 조합이 저칼로리로 피부 영양을 공급합니다.',
-      ja: '東海の新鮮な海産物と野菜の組み合わせが低カロリーで肌の栄養を供給します。',
-      en: '',
-      'zh-CN': '东海新鲜海鲜和蔬菜的组合以低卡路里供应肌肤营养。',
-      'zh-TW': '東海新鮮海鮮和蔬菜的組合以低卡路里供應肌膚營養。',
-    },
-    keyNutrients: {
-      ko: ['오메가3', '비타민C(채소)', '고단백 저칼로리', '미네랄', '타우린'],
-      ja: ['オメガ3', 'ビタミンC(野菜)', '高たんぱく低カロリー', 'ミネラル', 'タウリン'],
-      en: ['Omega-3', 'Vitamin C (Vegetables)', 'High Protein Low Calorie', 'Minerals', 'Taurine'],
-      'zh-CN': ['Omega-3', '维生素C(蔬菜)', '高蛋白低卡路里', '矿物质', '牛磺酸'],
-      'zh-TW': ['Omega-3', '維生素C(蔬菜)', '高蛋白低卡路里', '礦物質', '牛磺酸'],
-    },
-  },
-  {
-    foodId: 'sokcho-gamja-ongsimi',
+    foodId: 'icheon-gamja-ongsimi',
     region: 'sokcho',
     name: { ko: '감자옹심이', ja: 'ジャガイモ団子汁', en: 'Potato Dumpling Soup', 'zh-CN': '土豆面疙瘩汤', 'zh-TW': '馬鈴薯麵疙瘩湯' },
     healthTags: ['digestion'],
@@ -1540,7 +1498,7 @@ export const foodHealthData: FoodHealthData[] = [
 
   // ── 안동 (5) ─────────────────────────────────────────
   {
-    foodId: 'andong-jjimdak',
+    foodId: 'andong-andong-jjimdak',
     region: 'andong',
     name: { ko: '찜닭', ja: 'チムタク', en: 'Jjimdak (Braised Chicken)', 'zh-CN': '炖鸡', 'zh-TW': '燉雞' },
     healthTags: ['immunity'],

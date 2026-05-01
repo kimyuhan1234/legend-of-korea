@@ -164,65 +164,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "jeonju-hanjeongsik",
-        name: { ko: "한정식", ja: "韓定食", en: "Hanjeongsik" },
-        region: "jeonju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-hanjeongsik.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
-        tasteProfile: { sweet: 30, salty: 50, spicy: 35, umami: 80, sour: 20 },
-        storyDescription: {
-          ko: "마치 옛날 임금님이 드시던 수라상 같아요! 상다리가 부러질 정도로 수십 가지의 맛있는 반찬들이 커다란 상을 빈틈없이 가득 채우는 멋진 밥상이에요.",
-          ja: "まるで昔の王様が召し上がった御膳のよう！テーブルの脚が折れそうなほど、何十種類もの美味しいおかずが大きなテーブルを隙間なく埋め尽くす素晴らしい食卓です。",
-          en: "Like a royal feast from ancient Korea! Dozens of delicious side dishes fill a grand table so completely that the legs might just break under all that deliciousness."
-        },
-        ingredients: { ko: ["밥", "불고기", "전", "나물", "김치", "찌개", "구이", "회", "떡"], ja: ["ご飯", "プルコギ", "チヂミ", "ナムル", "キムチ", "チゲ", "焼き物", "刺身", "餅"], en: ["Rice", "Bulgogi", "Jeon", "Namul", "Kimchi", "Jjigae", "Grilled dishes", "Sashimi", "Rice cake"] },
-        tags: ["정찬", "궁중", "반찬"],
-        dupes: {
-          JP: {
-            name: { ko: "가이세키 요리", ja: "懐石料理", en: "Kaiseki" },
-            tasteProfile: { sweet: 25, salty: 40, spicy: 5, umami: 85, sour: 15 },
-            description: { ko: "일본의 전통 코스 요리, 계절 식재료로 만든 예술적인 요리", ja: "日本の伝統コース料理、旬の食材で作る芸術的な料理", en: "Traditional Japanese multi-course cuisine with seasonal ingredients" },
-            ingredients: { ko: ["제철 생선", "두부", "채소", "다시마", "미소"], ja: ["旬の魚", "豆腐", "野菜", "昆布", "味噌"], en: ["Seasonal fish", "Tofu", "Vegetables", "Kelp", "Miso"] },
-            similarityPercent: 81,
-            matchReason: { ko: "다양한 소반찬 구성 + 제철 재료 + 눈으로 먹는 아름다움", ja: "多様な小皿構成 + 旬の食材 + 目で食べる美しさ", en: "Multiple small dishes + seasonal ingredients + visual beauty" }
-          }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "jeonju-tteokgalbi",
-        name: { ko: "떡갈비", ja: "トッカルビ", en: "Tteokgalbi" },
-        region: "jeonju",
-        image: "",
-        tasteProfile: { sweet: 50, salty: 55, spicy: 10, umami: 75, sour: 5 },
-        storyDescription: {
-          ko: "고기를 아주 잘게 다져서 도톰하게 뭉친 다음 불에 구워낸 요리예요. 질기지 않아 씹을 필요도 없이 부드럽고, 달콤 짭짤해서 밥도둑이 따로 없어요.",
-          ja: "お肉をとても細かく刻んで厚く丸めてから火で焼いた料理です。硬くないので噛む必要もないほど柔らかく、甘じょっぱくてご飯が止まらなくなります。",
-          en: "Finely minced meat shaped into thick patties and grilled. So tender you barely need to chew, and the sweet-salty flavor makes it the ultimate rice companion."
-        },
-        ingredients: { ko: ["소갈비살", "간장", "배", "마늘", "참기름", "꿀"], ja: ["牛カルビ肉", "醤油", "梨", "ニンニク", "ごま油", "蜂蜜"], en: ["Beef rib meat", "Soy sauce", "Pear", "Garlic", "Sesame oil", "Honey"] },
-        tags: ["고기", "달콤", "부드러움"],
-        dupes: {
-          JP: {
-            name: { ko: "츠쿠네", ja: "つくね", en: "Tsukune" },
-            tasteProfile: { sweet: 45, salty: 50, spicy: 5, umami: 70, sour: 5 },
-            description: { ko: "다진 닭고기를 뭉쳐서 달콤한 타레 소스를 발라 구운 꼬치", ja: "鶏ひき肉を丸めて甘いタレを塗って焼いた串", en: "Minced chicken shaped and grilled with sweet tare sauce" },
-            ingredients: { ko: ["닭고기", "간장", "미림", "설탕", "계란"], ja: ["鶏肉", "醤油", "みりん", "砂糖", "卵"], en: ["Chicken", "Soy sauce", "Mirin", "Sugar", "Egg"] },
-            similarityPercent: 77,
-            matchReason: { ko: "다진 고기를 뭉쳐 구운 스타일 + 달콤짭짤한 간장 양념", ja: "ひき肉を丸めて焼くスタイル + 甘じょっぱい醤油ダレ", en: "Minced meat shaped & grilled + sweet-salty soy glaze" }
-          },
-          VN: {
-            name: { ko: "넴 느엉", ja: "ネム・ヌン", en: "Nem Nuong" },
-            tasteProfile: { sweet: 45, salty: 55, spicy: 15, umami: 70, sour: 15 },
-            description: { ko: "다진 돼지고기를 뭉쳐 숯불에 구운 베트남식 미트볼 꼬치", ja: "豚ひき肉を丸めて炭火で焼いたベトナム式ミートボール串", en: "Vietnamese minced pork meatballs shaped and grilled over charcoal" },
-            ingredients: { ko: ["돼지고기", "마늘", "레몬그라스", "피시소스", "설탕"], ja: ["豚肉", "ニンニク", "レモングラス", "魚醤", "砂糖"], en: ["Pork", "Garlic", "Lemongrass", "Fish sauce", "Sugar"] },
-            similarityPercent: 75,
-            matchReason: { ko: "다진 고기를 뭉쳐 숯불에 굽는 방식 + 달짭한 양념 + 부드러운 식감", ja: "ひき肉を丸めて炭火で焼く手法 + 甘じょっぱい味付け + 柔らかな食感", en: "Minced meat grilled over charcoal + sweet-salty glaze + tender texture" }
-          }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "jeonju-kalguksu",
         name: { ko: "전주식 칼국수", ja: "全州式カルグクス", en: "Kalguksu" },
         region: "jeonju",
@@ -553,36 +494,6 @@ export const regions: Region[] = [
           IN: { name: { ko: "팔라크 라이스", ja: "パラク・ライス", en: "Palak Rice" }, tasteProfile: { sweet: 10, salty: 45, spicy: 25, umami: 55, sour: 5 }, description: { ko: "시금치 퓨레와 향신료를 쌀과 함께 지은 인도식 시금치 밥", ja: "ほうれん草ピュレとスパイスをお米と一緒に炊いたインド式ほうれん草ご飯", en: "Indian rice cooked with spinach puree and spices" }, ingredients: { ko: ["쌀", "시금치", "커민", "강황", "마늘", "기"], ja: ["米", "ほうれん草", "クミン", "ウコン", "ニンニク", "ギー"], en: ["Rice", "Spinach", "Cumin", "Turmeric", "Garlic", "Ghee"] }, similarityPercent: 63, matchReason: { ko: "푸른 잎채소를 쌀에 섞어 향과 영양을 더한 전통", ja: "青菜をお米に混ぜて香りと栄養を加える伝統", en: "Greens-infused rice — South Asian counterpart" } },
           ES: { name: { ko: "아로스 베르데", ja: "アロス・ベルデ", en: "Arroz Verde" }, tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 55, sour: 5 }, description: { ko: "시금치·파슬리·고수 퓨레로 푸르게 지은 스페인·멕시코식 녹색 쌀 요리", ja: "ほうれん草・パセリ・パクチーピュレで緑に炊いたスペイン・メキシコ式グリーンライス", en: "Spanish/Mexican green rice cooked with pureed spinach, parsley and cilantro" }, ingredients: { ko: ["쌀", "시금치", "파슬리", "고수", "양파", "마늘"], ja: ["米", "ほうれん草", "パセリ", "パクチー", "玉ねぎ", "ニンニク"], en: ["Rice", "Spinach", "Parsley", "Cilantro", "Onion", "Garlic"] }, similarityPercent: 63, matchReason: { ko: "푸른 잎채소를 쌀에 섞어 지은 한 솥의 녹색 밥", ja: "青菜をお米に混ぜて炊いた一鍋の緑のご飯", en: "Green-leafy rice pot — Iberian counterpart" } },
           MX: { name: { ko: "아로스 콘 에파소테", ja: "アロス・コン・エパソテ", en: "Arroz con Epazote" }, tasteProfile: { sweet: 10, salty: 45, spicy: 15, umami: 60, sour: 5 }, description: { ko: "멕시코 허브 에파소테와 쌀을 함께 지은 향긋한 멕시코식 밥", ja: "メキシコのハーブ「エパソテ」とお米を一緒に炊いた香ばしいメキシコ式ご飯", en: "Mexican rice cooked with aromatic epazote herb" }, ingredients: { ko: ["쌀", "에파소테", "양파", "마늘", "토마토", "치킨 스톡"], ja: ["米", "エパソテ", "玉ねぎ", "ニンニク", "トマト", "チキンストック"], en: ["Rice", "Epazote", "Onion", "Garlic", "Tomato", "Chicken stock"] }, similarityPercent: 65, matchReason: { ko: "향긋한 허브의 향을 쌀에 입혀 지어내는 방식", ja: "香ばしいハーブの香りをお米に移して炊く方式", en: "Herb-scented rice pot — Latin American counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "jeonju-haemul-pajeon",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeonju-haemul-pajeon.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
-        name: { ko: "해물파전", ja: "海鮮パジョン", en: "Haemul Pajeon (Seafood Scallion Pancake)" },
-        region: "jeonju",
-        tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 70, sour: 10 },
-        storyDescription: {
-          ko: "굵직한 쪽파 위에 새우, 오징어, 조개 같은 신선한 해물을 수북이 올려 바삭하게 부쳐낸 전주의 별미예요. 막걸리 한 잔과 함께라면 빗소리가 반가운 친구가 되어준답니다.",
-          ja: "太い小ネギの上にエビ、イカ、貝などの新鮮な海鮮をたっぷりのせてカリカリに焼き上げた全州の逸品です。マッコリ一杯と合わせれば、雨音さえも懐かしい友になります。",
-          en: "Thick scallions piled with fresh shrimp, squid and clams, pan-fried crisp — a Jeonju treat. With a glass of makgeolli, even the patter of rain becomes a welcome friend."
-        },
-        ingredients: { ko: ["쪽파", "새우", "오징어", "바지락", "밀가루", "달걀", "식용유", "간장"], ja: ["小ネギ", "エビ", "イカ", "アサリ", "小麦粉", "卵", "食用油", "醤油"], en: ["Green onion", "Shrimp", "Squid", "Clam", "Flour", "Egg", "Cooking oil", "Soy sauce"] },
-        tags: ["해물", "전", "막걸리"],
-        dupes: {
-          JP: { name: { ko: "이카야키", ja: "イカ焼き", en: "Ikayaki" }, tasteProfile: { sweet: 15, salty: 55, spicy: 5, umami: 70, sour: 5 }, description: { ko: "오징어를 반죽에 넣어 구운 오사카식 해물 오코노미야키", ja: "イカを生地に入れて焼いた大阪式海鮮お好み焼き", en: "Osaka-style seafood pancake with squid in savory batter" }, ingredients: { ko: ["밀가루", "오징어", "달걀", "양배추", "가쓰오부시", "오타후쿠 소스"], ja: ["小麦粉", "イカ", "卵", "キャベツ", "かつお節", "オタフクソース"], en: ["Flour", "Squid", "Egg", "Cabbage", "Bonito", "Okonomi sauce"] }, similarityPercent: 67, matchReason: { ko: "해물과 반죽을 함께 부쳐내는 동일 구조", ja: "海鮮と生地を一緒に焼く同じ構造", en: "Seafood-and-batter pancake — Japanese counterpart" } },
-          CN: { name: { ko: "해선 총유빙", ja: "海鮮葱油餅", en: "Seafood Scallion Pancake" }, tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 70, sour: 5 }, description: { ko: "파와 해산물을 넣어 구운 중국 연안식 해물 파전", ja: "ネギと海鮮を入れて焼いた中国沿岸式の海鮮ネギパン", en: "Chinese coastal scallion pancake with seafood" }, ingredients: { ko: ["밀가루", "대파", "새우", "오징어", "참기름", "소금"], ja: ["小麦粉", "長ネギ", "エビ", "イカ", "ごま油", "塩"], en: ["Flour", "Green onion", "Shrimp", "Squid", "Sesame oil", "Salt"] }, similarityPercent: 75, matchReason: { ko: "파·해물 반죽을 기름에 바삭하게 부치는 거의 동일한 기법", ja: "ネギ・海鮮生地を油でカリカリに焼くほぼ同じ技法", en: "Scallion-and-seafood batter pan-fried crisp — very close sibling" } },
-          TH: { name: { ko: "호이 톳", ja: "ホイトート", en: "Hoi Thod" }, tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 70, sour: 10 }, description: { ko: "홍합이나 굴을 넣어 쌀가루 반죽으로 바삭하게 부친 태국식 해물 팬케이크", ja: "ムール貝や牡蠣を入れて米粉生地でカリカリに焼いたタイ式海鮮パンケーキ", en: "Thai crispy seafood pancake with mussels or oysters in rice-flour batter" }, ingredients: { ko: ["홍합", "굴", "쌀가루", "숙주", "달걀", "스리라차"], ja: ["ムール貝", "牡蠣", "米粉", "もやし", "卵", "スリラチャ"], en: ["Mussels", "Oyster", "Rice flour", "Bean sprouts", "Egg", "Sriracha"] }, similarityPercent: 77, matchReason: { ko: "해산물을 반죽에 넣어 바삭하게 부쳐내는 동일 구조", ja: "海鮮を生地に入れてカリカリに焼く同じ構造", en: "Seafood crisp-fried in batter — closest Thai sibling" } },
-          VN: { name: { ko: "반 쌔오 하이 산", ja: "バインセオ・ハイサン", en: "Bánh Xèo Hải Sản" }, tasteProfile: { sweet: 15, salty: 55, spicy: 10, umami: 70, sour: 15 }, description: { ko: "쌀가루 반죽에 새우·돼지고기·숙주를 넣어 바삭하게 부친 베트남식 해물 크레이프", ja: "米粉生地にエビ・豚肉・もやしを入れてカリカリに焼いたベトナム式海鮮クレープ", en: "Vietnamese crispy rice-flour crepe with shrimp, pork and bean sprouts" }, ingredients: { ko: ["쌀가루", "강황", "새우", "돼지고기", "숙주", "코코넛밀크"], ja: ["米粉", "ウコン", "エビ", "豚肉", "もやし", "ココナッツミルク"], en: ["Rice flour", "Turmeric", "Shrimp", "Pork", "Bean sprouts", "Coconut milk"] }, similarityPercent: 80, matchReason: { ko: "반죽에 해산물·채소를 넣고 기름에 바삭하게 부쳐내는 거의 동일한 방식", ja: "生地に海鮮・野菜を入れて油でカリカリに焼くほぼ同じ方式", en: "Batter with seafood and veg pan-fried crispy — very close twin" } },
-          MY: { name: { ko: "마르타박 말레이시아", ja: "マルタバク・マレーシア", en: "Martabak Malaysia" }, tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 65, sour: 5 }, description: { ko: "얇은 반죽에 해산물과 달걀, 향신료를 넣어 접어 구운 말레이식 팬케이크", ja: "薄い生地に海鮮と卵、スパイスを入れて折り畳んで焼いたマレー式パンケーキ", en: "Malaysian stuffed pancake with seafood, egg and spices" }, ingredients: { ko: ["밀가루", "달걀", "새우", "양파", "카레 가루", "식용유"], ja: ["小麦粉", "卵", "エビ", "玉ねぎ", "カレー粉", "食用油"], en: ["Flour", "Egg", "Shrimp", "Onion", "Curry powder", "Oil"] }, similarityPercent: 70, matchReason: { ko: "반죽에 해산물을 넣어 기름에 부쳐내는 공통 구조", ja: "生地に海鮮を入れて油で焼く共通構造", en: "Seafood-filled pan-fried pancake — Malaysian counterpart" } },
-          ID: { name: { ko: "마르타박 타후 해산물", ja: "マルタバク・タフ海鮮", en: "Martabak Tahu Seafood" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 70, sour: 10 }, description: { ko: "두부와 해산물, 파를 넣어 부친 인도네시아식 해물 마르타박", ja: "豆腐と海鮮、ネギを入れて焼いたインドネシア式海鮮マルタバク", en: "Indonesian martabak with tofu, seafood and scallions" }, ingredients: { ko: ["밀가루", "두부", "새우", "쪽파", "삼발", "달걀"], ja: ["小麦粉", "豆腐", "エビ", "青ネギ", "サンバル", "卵"], en: ["Flour", "Tofu", "Shrimp", "Green onion", "Sambal", "Egg"] }, similarityPercent: 68, matchReason: { ko: "해산물과 파를 반죽에 더해 부쳐내는 포맷이 유사", ja: "海鮮とネギを生地に加えて焼くフォーマットが類似", en: "Seafood-and-scallion pan-fried pancake — Indonesian cousin" } },
-          US: { name: { ko: "씨푸드 크레이프", ja: "シーフードクレープ", en: "Seafood Crepe" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 70, sour: 5 }, description: { ko: "얇은 크레이프에 새우와 가리비, 크림 소스를 넣어 돌돌 말아낸 미국식 해산물 요리", ja: "薄いクレープにエビとホタテ、クリームソースを入れて巻いたアメリカ式海鮮料理", en: "American seafood crepe rolled with shrimp, scallop and cream sauce" }, ingredients: { ko: ["크레이프 반죽", "새우", "가리비", "생크림", "버터", "파슬리"], ja: ["クレープ生地", "エビ", "ホタテ", "生クリーム", "バター", "パセリ"], en: ["Crepe batter", "Shrimp", "Scallop", "Cream", "Butter", "Parsley"] }, similarityPercent: 63, matchReason: { ko: "반죽에 해산물을 넣어 부쳐내는 공통점", ja: "生地に海鮮を入れて焼く共通点", en: "Seafood-stuffed crepe — Western counterpart" } },
-          IT: { name: { ko: "프리타타 디 마레", ja: "フリッタータ・ディ・マーレ", en: "Frittata di Mare" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 70, sour: 10 }, description: { ko: "달걀에 새우·오징어·허브를 섞어 두툼하게 부친 이탈리아식 해물 오믈렛", ja: "卵にエビ・イカ・ハーブを混ぜて厚く焼いたイタリア式海鮮オムレツ", en: "Italian thick seafood omelette with shrimp, squid and herbs" }, ingredients: { ko: ["달걀", "새우", "오징어", "파슬리", "올리브오일", "마늘"], ja: ["卵", "エビ", "イカ", "パセリ", "オリーブオイル", "ニンニク"], en: ["Egg", "Shrimp", "Squid", "Parsley", "Olive oil", "Garlic"] }, similarityPercent: 65, matchReason: { ko: "해산물을 달걀·반죽과 함께 두툼하게 부쳐내는 구조", ja: "海鮮を卵・生地と一緒に厚く焼く構造", en: "Seafood-and-egg thick disc — Italian counterpart" } },
-          FR: { name: { ko: "크레이프 프뤼 드 메르", ja: "クレープ・フリュイ・ド・メール", en: "Crêpe Fruits de Mer" }, tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 70, sour: 10 }, description: { ko: "메밀 크레이프에 해산물과 크림 소스를 채운 브르타뉴식 크레이프", ja: "そば粉クレープに海鮮とクリームソースを詰めたブルターニュ式クレープ", en: "Brittany buckwheat crepe filled with seafood and cream sauce" }, ingredients: { ko: ["메밀가루", "홍합", "가리비", "크림", "레몬", "차이브"], ja: ["そば粉", "ムール貝", "ホタテ", "クリーム", "レモン", "チャイブ"], en: ["Buckwheat flour", "Mussels", "Scallop", "Cream", "Lemon", "Chive"] }, similarityPercent: 65, matchReason: { ko: "해산물과 반죽이 어우러진 팬 요리 전통", ja: "海鮮と生地が調和したフライパン料理の伝統", en: "Seafood-and-batter pan-cooked crepe — Breton cousin" } },
-          IN: { name: { ko: "프론 도사", ja: "プラウン・ドーサ", en: "Prawn Dosa" }, tasteProfile: { sweet: 10, salty: 55, spicy: 35, umami: 70, sour: 10 }, description: { ko: "쌀·렌틸 반죽에 새우 마살라를 올려 바삭하게 구운 인도 남부식 팬케이크", ja: "米・レンズ豆生地にエビマサラをのせてカリカリに焼いた南インド式パンケーキ", en: "South Indian dosa topped with spicy prawn masala" }, ingredients: { ko: ["도사 반죽", "새우", "커민", "강황", "커리잎", "마늘"], ja: ["ドーサ生地", "エビ", "クミン", "ウコン", "カレーリーフ", "ニンニク"], en: ["Dosa batter", "Prawn", "Cumin", "Turmeric", "Curry leaves", "Garlic"] }, similarityPercent: 70, matchReason: { ko: "반죽에 해산물을 올려 바삭하게 부쳐내는 구조가 비슷", ja: "生地に海鮮をのせてカリカリに焼く構造が類似", en: "Seafood-topped thin crisp batter — South Indian counterpart" } },
-          ES: { name: { ko: "토르티야 데 감바스", ja: "トルティージャ・デ・ガンバス", en: "Tortilla de Gambas" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 70, sour: 5 }, description: { ko: "새우와 양파를 달걀에 섞어 두툼하게 부친 스페인식 해물 오믈렛", ja: "エビと玉ねぎを卵に混ぜて厚く焼いたスペイン式海鮮オムレツ", en: "Spanish thick shrimp-and-onion omelette" }, ingredients: { ko: ["달걀", "새우", "양파", "올리브오일", "파슬리", "소금"], ja: ["卵", "エビ", "玉ねぎ", "オリーブオイル", "パセリ", "塩"], en: ["Egg", "Shrimp", "Onion", "Olive oil", "Parsley", "Salt"] }, similarityPercent: 68, matchReason: { ko: "새우를 달걀 반죽에 섞어 두툼하게 부쳐 잘라 먹는 방식", ja: "エビを卵生地に混ぜて厚く焼いて切って食べる方式", en: "Shrimp-and-egg disc sliced for sharing — Iberian counterpart" } },
-          MX: { name: { ko: "토르티타 데 카마론", ja: "トルティータ・デ・カマロン", en: "Tortita de Camarón" }, tasteProfile: { sweet: 10, salty: 60, spicy: 20, umami: 70, sour: 10 }, description: { ko: "말린 새우를 달걀 반죽에 넣어 부친 뒤 고추 소스를 끼얹은 멕시코 전통 새우 전", ja: "干しエビを卵生地に入れて焼き唐辛子ソースをかけたメキシコ伝統のエビチヂミ", en: "Mexican traditional dried-shrimp fritter topped with chili sauce" }, ingredients: { ko: ["말린 새우", "달걀", "과히요 고추 소스", "양파", "마늘", "식용유"], ja: ["干しエビ", "卵", "グアヒージョソース", "玉ねぎ", "ニンニク", "食用油"], en: ["Dried shrimp", "Egg", "Guajillo sauce", "Onion", "Garlic", "Oil"] }, similarityPercent: 60, matchReason: { ko: "해산물을 반죽에 넣어 부쳐내는 포맷과 고추 소스 소화의 공통점", ja: "海鮮を生地に入れて焼くフォーマットと唐辛子ソースの共通点", en: "Seafood fritter with chili sauce — Latin American counterpart" } }
         },
         isLocalSpecialty: false,
       },
@@ -925,60 +836,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "seoul-yukhoe",
-        name: { ko: "육회", ja: "ユッケ", en: "Yukhoe" },
-        region: "seoul",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-yukhoe.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
-        tasteProfile: { sweet: 30, salty: 50, spicy: 20, umami: 80, sour: 20 },
-        storyDescription: {
-          ko: "신선한 소고기를 가늘게 채 썰어 배와 함께 달콤 고소하게 무친 날것의 아름다움이에요. 노른자가 터지는 순간 모든 재료가 하나로 어우러지는 그 황홀한 맛을 잊을 수가 없어요.",
-          ja: "新鮮な牛肉を細かく千切りにして梨と一緒に甘く香ばしく和えた生の美しさです。卵黄が割れる瞬間、すべての食材がひとつになるあの陶酔的な味が忘れられません。",
-          en: "Fresh beef finely julienned and tossed with pear in a sweet, nutty dressing — raw beauty on a plate. The moment the egg yolk breaks and binds everything together is a taste you cannot forget."
-        },
-        ingredients: {
-          ko: ["소고기 우둔", "배", "계란 노른자", "간장", "참기름", "설탕", "마늘", "잣"],
-          ja: ["牛もも肉", "梨", "卵黄", "醤油", "ごま油", "砂糖", "ニンニク", "松の実"],
-          en: ["Beef round", "Asian pear", "Egg yolk", "Soy sauce", "Sesame oil", "Sugar", "Garlic", "Pine nut"]
-        },
-        tags: ["날것", "소고기", "신선"],
-                dupes: {
-          FR: {
-            name: { ko: "비프 타르타르", ja: "ビーフタルタル", en: "Beef Tartare" },
-            tasteProfile: { sweet: 5, salty: 45, spicy: 15, umami: 80, sour: 15 },
-            description: { ko: "생 소고기를 잘게 다져 머스타드, 케이퍼, 달걀노른자와 버무린 프랑스 요리예요.", ja: "生牛肉を細かく刻んでマスタード、ケーパー、卵黄と和えたフランス料理です。", en: "French dish of finely chopped raw beef seasoned with mustard, capers, and egg yolk." },
-            ingredients: { ko: ["소고기 안심", "달걀노른자", "케이퍼", "머스타드", "샬롯", "소금"], ja: ["牛ヒレ肉", "卵黄", "ケーパー", "マスタード", "シャロット", "塩"], en: ["Beef tenderloin", "Egg yolk", "Capers", "Mustard", "Shallot", "Salt"] },
-            similarityPercent: 90,
-            matchReason: { ko: "생 소고기에 날달걀 노른자를 올려 먹는 구조가 육회와 거의 동일해요.", ja: "生牛肉に生卵黄をのせて食べる構造が육회とほぼ同じです。", en: "Raw beef with egg yolk — structurally almost identical to yukhoe, just with French seasoning." }
-          },
-          IT: {
-            name: { ko: "비프 카르파초", ja: "ビーフカルパッチョ", en: "Beef Carpaccio" },
-            tasteProfile: { sweet: 5, salty: 40, spicy: 10, umami: 75, sour: 20 },
-            description: { ko: "생 소고기를 얇게 슬라이스해 올리브오일과 레몬, 루꼴라를 얹은 이탈리아 전채 요리예요.", ja: "生牛肉を薄くスライスしてオリーブオイルとレモン、ルッコラを添えたイタリアの前菜です。", en: "Italian appetizer of thinly sliced raw beef dressed with olive oil, lemon, and arugula." },
-            ingredients: { ko: ["소고기 안심", "올리브오일", "레몬", "루꼴라", "파마산", "소금"], ja: ["牛ヒレ肉", "オリーブオイル", "レモン", "ルッコラ", "パルメザン", "塩"], en: ["Beef tenderloin", "Olive oil", "Lemon", "Arugula", "Parmesan", "Salt"] },
-            similarityPercent: 82,
-            matchReason: { ko: "생 소고기를 얇게 썰어 소스와 곁들여 먹는 방식이 육회와 같아요.", ja: "生牛肉を薄くスライスしてソースと合わせて食べる方式が육회と同じです。", en: "Thinly sliced raw beef with dressing — the same elegant raw beef concept as yukhoe." }
-          },
-          JP: {
-            name: { ko: "소고기 타타키", ja: "牛タタキ", en: "Beef Tataki" },
-            tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 82, sour: 25 },
-            description: { ko: "소고기 표면만 살짝 구운 후 얼음물에 식혀 얇게 썬 일본 요리예요.", ja: "牛肉の表面だけさっと焼いて氷水で冷やし薄切りにした日本料理です。", en: "Japanese seared beef cooled quickly and sliced thin, served with ponzu and ginger." },
-            ingredients: { ko: ["소고기", "폰즈소스", "생강", "파", "마늘", "참기름"], ja: ["牛肉", "ポン酢", "生姜", "ネギ", "にんにく", "ごま油"], en: ["Beef", "Ponzu sauce", "Ginger", "Green onion", "Garlic", "Sesame oil"] },
-            similarityPercent: 85,
-            matchReason: { ko: "생에 가까운 소고기를 얇게 썰어 소스와 함께 먹는 방식이 육회와 흡사해요.", ja: "生に近い牛肉を薄くスライスしてソースと一緒に食べる方式が육회に似ています。", en: "Barely-cooked thin-sliced beef with sauce — the closest Japanese cousin to yukhoe." }
-          },
-          VN: {
-            name: { ko: "보 따이 짜잉", ja: "ボー・タイ・チャン", en: "Bo Tai Chanh" },
-            tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 80, sour: 35 },
-            description: { ko: "얇게 썬 생소고기를 라임즙과 피시소스에 살짝 절여 허브와 함께 먹는 베트남 요리", ja: "薄切りの生牛肉をライムと魚醤でさっと締め、ハーブと一緒に食べるベトナム料理", en: "Vietnamese thinly sliced raw beef lightly cured in lime juice and fish sauce with fresh herbs" },
-            ingredients: { ko: ["소고기 안심", "라임즙", "피시소스", "양파", "고수", "땅콩"], ja: ["牛ヒレ肉", "ライム汁", "魚醤", "玉ねぎ", "パクチー", "ピーナッツ"], en: ["Beef tenderloin", "Lime juice", "Fish sauce", "Onion", "Cilantro", "Peanuts"] },
-            similarityPercent: 75,
-            matchReason: { ko: "생 소고기를 얇게 썰어 상큼한 양념과 허브로 먹는 방식이 육회 응용과 비슷함", ja: "生牛肉を薄くスライスし、さっぱりとした味付けとハーブで食べる方式が육회に近い", en: "Thin-sliced raw beef dressed with bright citrus and herbs — a tropical cousin of yukhoe" }
-          }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "seoul-hangang-ramen",
         name: { ko: "한강 라면", ja: "漢江ラーメン", en: "Hangang Ramen" },
         region: "seoul",
@@ -1084,35 +941,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "seoul-kalguksu",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/seoul-kalguksu.jpeg",
-        name: { ko: "칼국수", ja: "カルグクス", en: "Kalguksu" },
-        region: "seoul",
-        tasteProfile: { sweet: 10, salty: 50, spicy: 10, umami: 80, sour: 5 },
-        storyDescription: {
-          ko: "직접 손으로 밀어 썬 굵은 칼국수 면을 닭이나 멸치 육수에 끓여내는 서울의 든든한 면 요리예요. 쫄깃한 면발이 뜨거운 국물에 풀어져 몸을 따뜻하게 데워줘요.",
-          ja: "手で打って切った太いカルグクス麺を鶏や煮干しだしで煮込んだソウルの心強い麺料理です。もちもちの麺が熱いスープに溶け込んで体を温めてくれます。",
-          en: "Hand-cut thick knife-noodles simmered in chicken or anchovy broth — Seoul's hearty noodle meal. The chewy strands soften in the scalding broth and warm the whole body."
-        },
-        ingredients: { ko: ["칼국수 면", "닭고기", "애호박", "감자", "대파", "마늘", "간장", "고춧가루"], ja: ["カルグクス麺", "鶏肉", "ズッキーニ", "ジャガイモ", "長ネギ", "ニンニク", "醤油", "唐辛子粉"], en: ["Knife noodles", "Chicken", "Zucchini", "Potato", "Green onion", "Garlic", "Soy sauce", "Chili powder"] },
-        tags: ["면", "칼국수", "따뜻함"],
-        dupes: {
-          JP: { name: { ko: "히모카와 우동", ja: "ひもかわうどん", en: "Himokawa Udon" }, tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 80, sour: 5 }, description: { ko: "넓적하고 쫄깃한 일본식 수타면 우동", ja: "幅広でもちもちの日本式手打ちうどん", en: "Wide flat Japanese hand-cut udon noodle" }, ingredients: { ko: ["히모카와 우동", "가쓰오 다시", "간장", "파", "튀김"], ja: ["ひもかわうどん", "かつおだし", "醤油", "ネギ", "天ぷら"], en: ["Wide udon", "Dashi", "Soy sauce", "Green onion", "Tempura"] }, similarityPercent: 80, matchReason: { ko: "손으로 만든 굵은 면을 따뜻한 국물에 말아 먹는 공통점", ja: "手打ちの太麺を温かいスープで食べる共通点", en: "Hand-cut wide noodle in hot broth — close Japanese twin" } },
-          CN: { name: { ko: "다오샤오미엔", ja: "刀削麺", en: "Dao Xiao Mian" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 80, sour: 5 }, description: { ko: "반죽을 칼로 깎아 넣어 만든 산서식 수타 칼면", ja: "生地を刀で削って作る山西式手打ち麺", en: "Shanxi hand-sliced knife-cut noodles" }, ingredients: { ko: ["밀가루 반죽", "소고기 육수", "두반장", "식초", "대파", "고추"], ja: ["小麦生地", "牛肉スープ", "豆板醤", "酢", "長ネギ", "唐辛子"], en: ["Wheat dough", "Beef broth", "Doubanjiang", "Vinegar", "Green onion", "Chili"] }, similarityPercent: 83, matchReason: { ko: "칼로 썰어 만든 면을 뜨거운 국물에 먹는 거의 동일한 요리", ja: "刀で削って作る麺を熱いスープで食べるほぼ同じ料理", en: "Knife-cut noodles in hot broth — Chinese twin" } },
-          TH: { name: { ko: "꾸어이 띠어우 남", ja: "クイッティアオ・ナム", en: "Kuai Tiao Nam" }, tasteProfile: { sweet: 15, salty: 50, spicy: 15, umami: 75, sour: 10 }, description: { ko: "넓적한 쌀국수를 맑은 국물에 넣어 먹는 태국식 면 요리", ja: "幅広米麺を澄んだスープで食べるタイ式麺料理", en: "Thai flat rice noodle soup in clear broth" }, ingredients: { ko: ["쌀국수", "돼지고기", "마늘튀김", "피시소스", "고추", "숙주"], ja: ["米麺", "豚肉", "フライドガーリック", "魚醤", "唐辛子", "もやし"], en: ["Rice noodles", "Pork", "Fried garlic", "Fish sauce", "Chili", "Bean sprouts"] }, similarityPercent: 70, matchReason: { ko: "넓적한 면을 따뜻한 국물에 먹는 공통점", ja: "幅広麺を温かいスープで食べる共通点", en: "Wide noodle hot soup — Thai counterpart" } },
-          VN: { name: { ko: "반 까인", ja: "バインカン", en: "Bánh Canh" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 80, sour: 10 }, description: { ko: "쫄깃한 타피오카 면을 뼈 육수에 끓여낸 베트남 중부식 면 요리", ja: "もちもちタピオカ麺を骨スープで煮込んだベトナム中部の麺料理", en: "Central Vietnamese chewy tapioca noodle soup in bone broth" }, ingredients: { ko: ["타피오카 면", "돼지뼈 육수", "새우", "게살", "피시소스", "라임"], ja: ["タピオカ麺", "豚骨スープ", "エビ", "カニ肉", "魚醤", "ライム"], en: ["Tapioca noodles", "Pork bone broth", "Shrimp", "Crab meat", "Fish sauce", "Lime"] }, similarityPercent: 75, matchReason: { ko: "쫄깃한 굵은 면을 진한 국물에 먹는 공통점", ja: "もちもちの太麺を濃厚スープで食べる共通点", en: "Chewy thick noodle soup — Vietnamese counterpart" } },
-          MY: { name: { ko: "판 미", ja: "パンミー", en: "Pan Mee" }, tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 80, sour: 10 }, description: { ko: "손으로 뗀 면을 멸치 육수에 넣어 먹는 말레이식 수제 면", ja: "手でちぎった麺を煮干しだしに入れて食べるマレー式手作り麺", en: "Malaysian hand-torn noodles in anchovy broth" }, ingredients: { ko: ["면 반죽", "건멸치 육수", "삼발", "달걀", "채소", "튀긴 마늘"], ja: ["麺生地", "煮干しだし", "サンバル", "卵", "野菜", "フライドガーリック"], en: ["Noodle dough", "Anchovy broth", "Sambal", "Egg", "Vegetables", "Fried garlic"] }, similarityPercent: 75, matchReason: { ko: "손으로 만든 굵은 면을 육수에 먹는 공통 구조", ja: "手作りの太麺をスープで食べる共通構造", en: "Hand-torn noodle in broth — Malaysian counterpart" } },
-          ID: { name: { ko: "미 아얌", ja: "ミー・アヤム", en: "Mi Ayam" }, tasteProfile: { sweet: 15, salty: 55, spicy: 15, umami: 75, sour: 10 }, description: { ko: "닭고기 국물에 에그 누들과 간장 양념 닭을 얹은 인도네시아식 닭 국수", ja: "鶏スープに卵麺と醤油味付けの鶏肉をのせたインドネシア式鶏麺", en: "Indonesian chicken noodle soup with egg noodles and soy-seasoned chicken" }, ingredients: { ko: ["에그 누들", "닭고기", "닭 육수", "간장", "청경채", "튀긴 샬롯"], ja: ["卵麺", "鶏肉", "鶏スープ", "醤油", "チンゲン菜", "フライドシャロット"], en: ["Egg noodles", "Chicken", "Chicken broth", "Soy sauce", "Bok choy", "Fried shallot"] }, similarityPercent: 70, matchReason: { ko: "닭 육수 기반 면 요리의 공통점", ja: "鶏スープベースの麺料理の共通点", en: "Chicken broth noodle — Indonesian counterpart" } },
-          US: { name: { ko: "치킨 누들 수프", ja: "チキン・ヌードル・スープ", en: "Chicken Noodle Soup" }, tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 75, sour: 5 }, description: { ko: "닭고기와 에그 누들을 맑은 육수에 끓여낸 미국식 감기약 수프", ja: "鶏肉と卵麺を澄んだスープで煮込んだアメリカ式の風邪薬スープ", en: "American chicken noodle soup — the classic cold-fighter" }, ingredients: { ko: ["에그 누들", "닭고기", "당근", "셀러리", "양파", "파슬리"], ja: ["卵麺", "鶏肉", "人参", "セロリ", "玉ねぎ", "パセリ"], en: ["Egg noodles", "Chicken", "Carrot", "Celery", "Onion", "Parsley"] }, similarityPercent: 72, matchReason: { ko: "따뜻한 국물에 면과 닭을 함께 먹는 위안 음식", ja: "温かいスープに麺と鶏を入れる慰めの料理", en: "Chicken noodle comfort soup — American counterpart" } },
-          IT: { name: { ko: "파스타 인 브로도", ja: "パスタ・イン・ブロード", en: "Pasta in Brodo" }, tasteProfile: { sweet: 5, salty: 50, spicy: 5, umami: 80, sour: 5 }, description: { ko: "작은 파스타를 맑은 고기 육수에 넣어 먹는 이탈리아 가정식 수프", ja: "小さなパスタを澄んだ肉スープに入れるイタリア家庭料理のスープ", en: "Italian home-style small pasta in clear meat broth" }, ingredients: { ko: ["작은 파스타", "닭 육수", "파마산", "파슬리", "당근", "셀러리"], ja: ["小さなパスタ", "鶏スープ", "パルメザン", "パセリ", "人参", "セロリ"], en: ["Small pasta", "Chicken broth", "Parmesan", "Parsley", "Carrot", "Celery"] }, similarityPercent: 70, matchReason: { ko: "파스타를 육수에 말아 집밥 수프로 먹는 유럽 전통", ja: "パスタをスープに入れて家庭料理として食べるヨーロッパ伝統", en: "Pasta in broth — Italian counterpart" } },
-          FR: { name: { ko: "부이옹 오 뷰르미셀", ja: "ブイヨン・オ・ヴェルミセル", en: "Bouillon au Vermicelle" }, tasteProfile: { sweet: 5, salty: 50, spicy: 5, umami: 75, sour: 5 }, description: { ko: "얇은 버미셀리 면을 맑은 닭육수에 넣어 먹는 프랑스식 가정 수프", ja: "細いビーフン麺を澄んだ鶏スープに入れるフランス家庭スープ", en: "French home-style vermicelli in clear chicken broth" }, ingredients: { ko: ["버미셀리", "닭 육수", "당근", "리크", "파슬리", "타임"], ja: ["ビーフン", "鶏スープ", "人参", "リーキ", "パセリ", "タイム"], en: ["Vermicelli", "Chicken broth", "Carrot", "Leek", "Parsley", "Thyme"] }, similarityPercent: 67, matchReason: { ko: "얇은 면과 맑은 국물의 섬세한 조화", ja: "細麺と澄んだスープの繊細な調和", en: "Delicate noodle broth — French counterpart" } },
-          IN: { name: { ko: "치킨 셰바", ja: "チキン・シェバ", en: "Chicken Shorba Noodle" }, tasteProfile: { sweet: 5, salty: 55, spicy: 40, umami: 75, sour: 10 }, description: { ko: "닭 국물에 향신료와 얇은 면을 넣은 인도식 매운 국수", ja: "鶏スープにスパイスと細麺を入れたインド式の辛口麺", en: "Indian spicy chicken broth noodles with spices" }, ingredients: { ko: ["면", "닭고기", "커민", "강황", "고추", "고수"], ja: ["麺", "鶏肉", "クミン", "ウコン", "唐辛子", "パクチー"], en: ["Noodles", "Chicken", "Cumin", "Turmeric", "Chili", "Cilantro"] }, similarityPercent: 65, matchReason: { ko: "닭 국물 기반 국수에 향신료를 더한 해석", ja: "鶏スープベース麺にスパイスを加えた解釈", en: "Spiced chicken noodle — Indian counterpart" } },
-          ES: { name: { ko: "소파 데 피도스", ja: "ソパ・デ・フィデオス", en: "Sopa de Fideos" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 75, sour: 5 }, description: { ko: "얇은 피데오 면을 닭 육수와 토마토에 끓여낸 스페인식 가정 수프", ja: "細いフィデオ麺を鶏スープとトマトで煮込んだスペイン家庭スープ", en: "Spanish home-style fideo noodle soup in chicken-tomato broth" }, ingredients: { ko: ["피데오 면", "닭 육수", "토마토", "양파", "마늘", "파슬리"], ja: ["フィデオ麺", "鶏スープ", "トマト", "玉ねぎ", "ニンニク", "パセリ"], en: ["Fideo noodles", "Chicken broth", "Tomato", "Onion", "Garlic", "Parsley"] }, similarityPercent: 68, matchReason: { ko: "얇은 면을 집밥 국물에 넣어 먹는 유럽 전통", ja: "細麺を家庭のスープに入れて食べるヨーロッパ伝統", en: "Home-style noodle soup — Spanish counterpart" } },
-          MX: { name: { ko: "소파 데 피도스 멕시카나", ja: "ソパ・デ・フィデオス・メヒカーナ", en: "Sopa de Fideos Mexicana" }, tasteProfile: { sweet: 5, salty: 55, spicy: 25, umami: 75, sour: 10 }, description: { ko: "가는 피데오 면을 토마토·치포틀레 국물에 끓여낸 멕시코식 가정 국수", ja: "細いフィデオ麺をトマト・チポトレスープで煮込んだメキシコ家庭の麺", en: "Mexican home-style fideo noodle soup in tomato-chipotle broth" }, ingredients: { ko: ["피데오 면", "토마토", "치포틀레", "양파", "닭 육수", "고수"], ja: ["フィデオ麺", "トマト", "チポトレ", "玉ねぎ", "鶏スープ", "パクチー"], en: ["Fideo noodles", "Tomato", "Chipotle", "Onion", "Chicken broth", "Cilantro"] }, similarityPercent: 65, matchReason: { ko: "얇은 면을 매운 국물에 먹는 라틴식 해석", ja: "細麺を辛いスープで食べるラテン式解釈", en: "Spicy noodle broth — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "seoul-mayak-gimbap",
         image: "",
         name: { ko: "광장시장 마약김밥", ja: "広蔵市場マヤッキンパ", en: "Mayak Gimbap (Gwangjang Market Mini Rolls)" },
@@ -1167,36 +995,6 @@ export const regions: Region[] = [
           IN: { name: { ko: "부나 고쉬트 칼레지", ja: "ブーナ・カレジ", en: "Bhuna Kaleji" }, tasteProfile: { sweet: 5, salty: 55, spicy: 55, umami: 80, sour: 10 }, description: { ko: "염소 간과 내장을 향신료에 볶아 구워낸 북인도식 내장 요리", ja: "ヤギの肝と内臓をスパイスで炒めて焼いた北インド式モツ料理", en: "North Indian bhuna kaleji of spiced goat liver and offal" }, ingredients: { ko: ["염소 간", "가람마살라", "고춧가루", "양파", "생강", "마늘"], ja: ["ヤギの肝", "ガラムマサラ", "唐辛子粉", "玉ねぎ", "生姜", "ニンニク"], en: ["Goat liver", "Garam masala", "Chili powder", "Onion", "Ginger", "Garlic"] }, similarityPercent: 65, matchReason: { ko: "내장을 매운 향신 양념에 직화로 구워 먹는 전통", ja: "モツを辛いスパイスタレで直火焼きにする伝統", en: "Spiced grilled offal — Indian counterpart" } },
           ES: { name: { ko: "카예호스 아 라 플란차", ja: "カジェホス・ア・ラ・プランチャ", en: "Callos a la Plancha" }, tasteProfile: { sweet: 5, salty: 60, spicy: 20, umami: 80, sour: 10 }, description: { ko: "소 양을 파프리카·마늘·올리브오일에 철판에 구워낸 스페인식 내장구이", ja: "牛モツをパプリカ・ニンニク・オリーブオイルで鉄板焼きにしたスペイン式モツ焼き", en: "Spanish griddled tripe with paprika, garlic and olive oil" }, ingredients: { ko: ["소 양", "스모크드 파프리카", "마늘", "올리브오일", "파슬리", "레몬"], ja: ["牛モツ", "スモークパプリカ", "ニンニク", "オリーブオイル", "パセリ", "レモン"], en: ["Beef tripe", "Smoked paprika", "Garlic", "Olive oil", "Parsley", "Lemon"] }, similarityPercent: 70, matchReason: { ko: "내장을 철판에 구워 단순 양념으로 먹는 공통점", ja: "モツを鉄板で焼いてシンプルに味わう共通点", en: "Grilled tripe plancha — Spanish counterpart" } },
           MX: { name: { ko: "트리파 알 카본", ja: "トリパ・アル・カルボン", en: "Tripa al Carbón" }, tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 80, sour: 15 }, description: { ko: "소 양을 라임·칠리에 재워 숯불에 구워 타코 속에 넣는 멕시코식 내장구이", ja: "牛モツをライム・唐辛子に漬けて炭火で焼いてタコに入れるメキシコ式モツ焼き", en: "Mexican charcoal-grilled beef tripe with lime and chili for tacos" }, ingredients: { ko: ["소 양", "라임", "세라노 고추", "양파", "고수", "마늘"], ja: ["牛モツ", "ライム", "セラーノ", "玉ねぎ", "パクチー", "ニンニク"], en: ["Beef tripe", "Lime", "Serrano", "Onion", "Cilantro", "Garlic"] }, similarityPercent: 75, matchReason: { ko: "내장을 매운 양념에 재워 숯불에 구워 먹는 거의 동일한 방식", ja: "モツを辛いタレに漬けて炭火で焼くほぼ同じ方式", en: "Charcoal-grilled tripe — close Mexican twin" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "seoul-doenjang-jjigae",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/seoul-doenjang-jjigae.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
-        name: { ko: "된장찌개", ja: "テンジャンチゲ", en: "Doenjang Jjigae" },
-        region: "seoul",
-        tasteProfile: { sweet: 10, salty: 65, spicy: 15, umami: 90, sour: 5 },
-        storyDescription: {
-          ko: "구수한 된장을 풀고 두부·호박·멸치 육수를 끓여 뚝배기에서 보글보글 끓여내는 서울 직장인의 점심 식탁이에요. 한 숟갈에 '오늘도 수고했어'라는 위로가 담겨 있어요.",
-          ja: "香ばしい味噌を溶かし、豆腐・ズッキーニ・煮干しだしで煮込んで土鍋でぐつぐつ仕上げるソウル会社員の昼食の食卓です。一さじに「今日もお疲れ様」という慰めが込められています。",
-          en: "Nutty soybean paste dissolved into a broth of tofu, zucchini and anchovy stock, bubbling in an earthenware pot — Seoul office workers' midday solace. Each spoonful whispers 'good job today.'"
-        },
-        ingredients: { ko: ["된장", "두부", "애호박", "감자", "양파", "멸치 육수", "다진 마늘", "청양고추"], ja: ["味噌", "豆腐", "ズッキーニ", "ジャガイモ", "玉ねぎ", "煮干しだし", "刻みニンニク", "青唐辛子"], en: ["Doenjang", "Tofu", "Zucchini", "Potato", "Onion", "Anchovy broth", "Minced garlic", "Green chili"] },
-        tags: ["된장", "찌개", "점심"],
-        dupes: {
-          JP: { name: { ko: "미소시루", ja: "味噌汁", en: "Miso Shiru" }, tasteProfile: { sweet: 10, salty: 65, spicy: 0, umami: 85, sour: 5 }, description: { ko: "미소에 두부와 미역을 넣고 다시로 끓이는 일본 국민 국", ja: "味噌に豆腐とワカメを入れだしで煮込む日本の国民汁物", en: "Japan's classic miso soup with tofu, wakame and dashi" }, ingredients: { ko: ["미소", "두부", "미역", "파", "가쓰오 다시", "다시마"], ja: ["味噌", "豆腐", "ワカメ", "ネギ", "かつおだし", "昆布"], en: ["Miso", "Tofu", "Wakame", "Green onion", "Dashi", "Kelp"] }, similarityPercent: 85, matchReason: { ko: "발효 콩장 + 두부 + 감칠맛 다시의 동일 기본 구조", ja: "発酵豆味噌 + 豆腐 + 旨味だしの同じ基本構造", en: "Fermented bean paste + tofu + umami stock — Japanese twin" } },
-          CN: { name: { ko: "더우장 두부탕", ja: "豆醤豆腐湯", en: "Doujiang Tofu Soup" }, tasteProfile: { sweet: 10, salty: 60, spicy: 30, umami: 80, sour: 5 }, description: { ko: "발효 콩장과 두부·채소를 끓인 중국식 가정 콩장 국", ja: "発酵豆醤と豆腐・野菜を煮込んだ中国家庭の豆醤スープ", en: "Chinese home-style fermented bean paste and tofu soup" }, ingredients: { ko: ["발효 콩장", "두부", "청경채", "대파", "마늘", "돼지고기"], ja: ["発酵豆醤", "豆腐", "チンゲン菜", "長ネギ", "ニンニク", "豚肉"], en: ["Fermented bean paste", "Tofu", "Bok choy", "Green onion", "Garlic", "Pork"] }, similarityPercent: 75, matchReason: { ko: "발효 콩장 베이스의 국물 전통", ja: "発酵豆醤ベースの汁物伝統", en: "Fermented bean paste soup — Chinese counterpart" } },
-          TH: { name: { ko: "탐 카 가이", ja: "トムカーガイ", en: "Tom Kha Gai" }, tasteProfile: { sweet: 15, salty: 50, spicy: 25, umami: 75, sour: 20 }, description: { ko: "닭고기와 버섯을 코코넛 국물에 갈랑갈·레몬그라스로 끓인 태국 수프", ja: "鶏肉ときのこをココナッツスープにガランガル・レモングラスで煮込んだタイスープ", en: "Thai coconut chicken soup with galangal and lemongrass" }, ingredients: { ko: ["닭고기", "코코넛밀크", "갈랑갈", "레몬그라스", "버섯", "피시소스"], ja: ["鶏肉", "ココナッツミルク", "ガランガル", "レモングラス", "きのこ", "魚醤"], en: ["Chicken", "Coconut milk", "Galangal", "Lemongrass", "Mushroom", "Fish sauce"] }, similarityPercent: 63, matchReason: { ko: "버섯과 두부·닭을 향긋한 국물에 끓이는 가정식", ja: "きのこと豆腐・鶏を香ばしいスープで煮込む家庭料理", en: "Aromatic comfort soup — Thai counterpart" } },
-          VN: { name: { ko: "까인 모 숀", ja: "カイン・モソン", en: "Canh Mỡ Son" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 80, sour: 10 }, description: { ko: "두부와 채소를 진한 간장 국물에 끓여낸 베트남 가정식 수프", ja: "豆腐と野菜を濃厚な醤油スープで煮込んだベトナム家庭料理スープ", en: "Vietnamese home soup with tofu and vegetables in rich soy broth" }, ingredients: { ko: ["두부", "토마토", "피시소스", "쪽파", "생강", "공심채"], ja: ["豆腐", "トマト", "魚醤", "青ネギ", "生姜", "空心菜"], en: ["Tofu", "Tomato", "Fish sauce", "Green onion", "Ginger", "Water spinach"] }, similarityPercent: 63, matchReason: { ko: "두부 중심의 집밥 국물 전통", ja: "豆腐中心の家庭スープ伝統", en: "Tofu home soup — Vietnamese counterpart" } },
-          MY: { name: { ko: "타우쩌우 수프", ja: "タウチャオ・スープ", en: "Tauchu Soup" }, tasteProfile: { sweet: 10, salty: 60, spicy: 20, umami: 80, sour: 10 }, description: { ko: "발효 콩장 타우쩌우와 두부·닭을 끓여낸 말레이·중화식 수프", ja: "発酵豆醤タウチャオと豆腐・鶏を煮込んだマレー・中華式スープ", en: "Malaysian/Chinese-fusion soup with tauchu fermented bean paste, tofu and chicken" }, ingredients: { ko: ["타우쩌우", "두부", "닭고기", "생강", "마늘", "파"], ja: ["タウチャオ", "豆腐", "鶏肉", "生姜", "ニンニク", "ネギ"], en: ["Tauchu", "Tofu", "Chicken", "Ginger", "Garlic", "Green onion"] }, similarityPercent: 70, matchReason: { ko: "발효 콩장과 두부로 끓이는 가정 전통", ja: "発酵豆醤と豆腐で煮込む家庭伝統", en: "Fermented bean tofu soup — Malaysian counterpart" } },
-          ID: { name: { ko: "사유르 로데", ja: "サユール・ロデ", en: "Sayur Lodeh" }, tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 75, sour: 5 }, description: { ko: "두부·채소를 코코넛밀크에 끓인 자바식 가정 국", ja: "豆腐・野菜をココナッツミルクで煮込んだジャワ家庭のスープ", en: "Javanese home-style vegetable soup with tofu in coconut milk" }, ingredients: { ko: ["두부", "공심채", "호박", "코코넛밀크", "템페", "강황"], ja: ["豆腐", "空心菜", "カボチャ", "ココナッツミルク", "テンペ", "ウコン"], en: ["Tofu", "Water spinach", "Squash", "Coconut milk", "Tempeh", "Turmeric"] }, similarityPercent: 62, matchReason: { ko: "두부와 채소를 집밥 국물로 끓여 먹는 포맷", ja: "豆腐と野菜を家庭スープで煮込むフォーマット", en: "Tofu veg home soup — Indonesian counterpart" } },
-          US: { name: { ko: "크림 오브 머쉬룸 수프", ja: "クリーム・オブ・マッシュルーム", en: "Cream of Mushroom Soup" }, tasteProfile: { sweet: 10, salty: 55, spicy: 0, umami: 80, sour: 5 }, description: { ko: "버섯과 양파를 크림과 함께 끓인 미국식 위안 수프", ja: "きのこと玉ねぎをクリームで煮込んだアメリカ式の慰めスープ", en: "American comfort cream of mushroom soup" }, ingredients: { ko: ["양송이", "양파", "생크림", "버터", "닭 육수", "타임"], ja: ["マッシュルーム", "玉ねぎ", "生クリーム", "バター", "鶏スープ", "タイム"], en: ["Mushroom", "Onion", "Cream", "Butter", "Chicken stock", "Thyme"] }, similarityPercent: 58, matchReason: { ko: "가정에서 자주 끓이는 진한 국물의 공통점", ja: "家庭でよく作る濃厚スープの共通点", en: "Everyday thick soup — American counterpart" } },
-          IT: { name: { ko: "주파 디 파지올리", ja: "ズッパ・ディ・ファジョーリ", en: "Zuppa di Fagioli" }, tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 75, sour: 10 }, description: { ko: "콩과 채소·판체타를 끓여낸 토스카나 가정식 콩 수프", ja: "豆と野菜・パンチェッタを煮込んだトスカーナ家庭の豆スープ", en: "Tuscan home-style bean soup with vegetables and pancetta" }, ingredients: { ko: ["카넬리니 콩", "판체타", "당근", "셀러리", "토마토", "로즈마리"], ja: ["カンネッリーニ豆", "パンチェッタ", "人参", "セロリ", "トマト", "ローズマリー"], en: ["Cannellini beans", "Pancetta", "Carrot", "Celery", "Tomato", "Rosemary"] }, similarityPercent: 63, matchReason: { ko: "콩 발효물과 채소를 끓인 가정식 수프", ja: "豆発酵物と野菜を煮込む家庭スープ", en: "Bean-veg home soup — Italian counterpart" } },
-          FR: { name: { ko: "수프 아 로뇽", ja: "スープ・ア・ロニョン", en: "Soupe à l'Oignon" }, tasteProfile: { sweet: 20, salty: 55, spicy: 5, umami: 75, sour: 5 }, description: { ko: "양파를 갈색이 될 때까지 볶아 소고기 육수에 끓인 프랑스 양파 수프", ja: "玉ねぎを茶色になるまで炒めて牛肉スープで煮込んだフランスのオニオンスープ", en: "French onion soup with deeply caramelized onions in beef broth" }, ingredients: { ko: ["양파", "소고기 육수", "그뤼예르", "바게트", "버터", "와인"], ja: ["玉ねぎ", "牛肉スープ", "グリュイエール", "バゲット", "バター", "ワイン"], en: ["Onion", "Beef broth", "Gruyère", "Baguette", "Butter", "Wine"] }, similarityPercent: 63, matchReason: { ko: "진한 감칠맛 수프의 공통점", ja: "濃厚旨味スープの共通点", en: "Deep umami home soup — French counterpart" } },
-          IN: { name: { ko: "달 타드카", ja: "ダール・タドカ", en: "Dal Tadka" }, tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 80, sour: 10 }, description: { ko: "렌틸콩을 향신료와 함께 끓여 기에 볶은 향신료를 끼얹은 인도 가정식 수프", ja: "レンズ豆をスパイスと煮込みギーで炒めたスパイスをかけるインド家庭料理のスープ", en: "Indian home comfort lentil stew tempered with spiced ghee" }, ingredients: { ko: ["렌틸콩", "기", "커민", "강황", "마늘", "토마토"], ja: ["レンズ豆", "ギー", "クミン", "ウコン", "ニンニク", "トマト"], en: ["Lentils", "Ghee", "Cumin", "Turmeric", "Garlic", "Tomato"] }, similarityPercent: 72, matchReason: { ko: "콩과 향신료의 집밥 수프 전통", ja: "豆とスパイスの家庭スープ伝統", en: "Everyday legume soup — Indian counterpart" } },
-          ES: { name: { ko: "소프리토 콩 스튜", ja: "ソフリート豆シチュー", en: "Sofrito Bean Stew" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 75, sour: 10 }, description: { ko: "흰콩을 양파·마늘·토마토 소프리토에 끓여낸 스페인 가정식 수프", ja: "白豆を玉ねぎ・ニンニク・トマトソフリートで煮込んだスペイン家庭スープ", en: "Spanish home-style bean soup on sofrito base" }, ingredients: { ko: ["흰콩", "양파", "마늘", "토마토", "파프리카", "올리브오일"], ja: ["白豆", "玉ねぎ", "ニンニク", "トマト", "パプリカ", "オリーブオイル"], en: ["White beans", "Onion", "Garlic", "Tomato", "Paprika", "Olive oil"] }, similarityPercent: 60, matchReason: { ko: "매일 먹는 콩 수프의 가정식 전통", ja: "毎日食べる豆スープの家庭伝統", en: "Everyday bean soup — Spanish counterpart" } },
-          MX: { name: { ko: "프리홀레스 차로스", ja: "フリホーレス・チャロス", en: "Frijoles Charros" }, tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 75, sour: 5 }, description: { ko: "핀토콩에 베이컨·토마토·고추를 끓여낸 북멕시코식 가정 콩 국", ja: "ピント豆にベーコン・トマト・唐辛子を煮込んだ北メキシコ家庭の豆スープ", en: "Northern Mexican home-style bean soup with bacon and chili" }, ingredients: { ko: ["핀토콩", "베이컨", "양파", "할라페뇨", "토마토", "고수"], ja: ["ピント豆", "ベーコン", "玉ねぎ", "ハラペーニョ", "トマト", "パクチー"], en: ["Pinto beans", "Bacon", "Onion", "Jalapeño", "Tomato", "Cilantro"] }, similarityPercent: 60, matchReason: { ko: "콩을 중심으로 한 가정식 수프 전통", ja: "豆を中心とした家庭スープ伝統", en: "Home-style bean soup — Mexican counterpart" } }
         },
         isLocalSpecialty: false,
       },
@@ -2125,36 +1923,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "tongyeong-galchi-gui",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-galchi-gui.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
-        name: { ko: "갈치구이", ja: "タチウオ焼き", en: "Galchi Gui (Grilled Hairtail)" },
-        region: "tongyeong",
-        tasteProfile: { sweet: 5, salty: 65, spicy: 10, umami: 85, sour: 5 },
-        storyDescription: {
-          ko: "남해에서 갓 잡은 은빛 갈치에 굵은 소금을 뿌려 숯불에 노릇하게 구워낸 통영의 국민 반찬이에요. 바삭한 껍질과 촉촉한 살이 밥 한 그릇을 순식간에 비우게 해요.",
-          ja: "南海で獲れたばかりの銀色タチウオに粗塩をふって炭火できつね色に焼いた統営の国民おかずです。サクサクの皮としっとりの身がご飯一杯をあっという間に空にします。",
-          en: "Silver hairtail fresh from the southern sea, salted and charcoal-grilled golden — Tongyeong's national side dish. Crispy skin and moist flesh empty a rice bowl in no time."
-        },
-        ingredients: { ko: ["갈치", "굵은 소금", "들기름", "레몬", "무", "간장", "대파", "후추"], ja: ["タチウオ", "粗塩", "エゴマ油", "レモン", "大根", "醤油", "長ネギ", "胡椒"], en: ["Hairtail", "Coarse salt", "Perilla oil", "Lemon", "Radish", "Soy sauce", "Green onion", "Pepper"] },
-        tags: ["구이", "갈치", "밥반찬"],
-        dupes: {
-          JP: { name: { ko: "타치우오 시오야키", ja: "太刀魚の塩焼き", en: "Tachiuo Shioyaki" }, tasteProfile: { sweet: 5, salty: 65, spicy: 5, umami: 85, sour: 5 }, description: { ko: "갈치에 소금을 뿌려 그릴에 구운 일본 가정식 생선구이", ja: "太刀魚に塩をふってグリルで焼いた日本の家庭料理", en: "Japanese home-style salt-grilled hairtail" }, ingredients: { ko: ["갈치", "소금", "무간 것", "간장", "레몬"], ja: ["太刀魚", "塩", "大根おろし", "醤油", "レモン"], en: ["Hairtail", "Salt", "Grated daikon", "Soy sauce", "Lemon"] }, similarityPercent: 88, matchReason: { ko: "갈치를 소금 양념으로 구워 먹는 거의 동일한 요리", ja: "太刀魚を塩で焼いて食べるほぼ同じ料理", en: "Salt-grilled hairtail — close Japanese twin" } },
-          CN: { name: { ko: "샤오 다이위", ja: "烤帯魚", en: "Kao Dai Yu" }, tasteProfile: { sweet: 5, salty: 55, spicy: 25, umami: 85, sour: 5 }, description: { ko: "갈치에 쯔란·고춧가루를 뿌려 숯불에 구운 중국식 갈치구이", ja: "太刀魚にクミン・唐辛子粉をふって炭火で焼いた中国式タチウオ焼き", en: "Chinese grilled hairtail with cumin and chili powder" }, ingredients: { ko: ["갈치", "쯔란", "고춧가루", "간장", "마늘", "참기름"], ja: ["太刀魚", "クミン", "唐辛子粉", "醤油", "ニンニク", "ごま油"], en: ["Hairtail", "Cumin", "Chili powder", "Soy sauce", "Garlic", "Sesame oil"] }, similarityPercent: 75, matchReason: { ko: "갈치에 향신료를 뿌려 숯불에 굽는 공통점", ja: "太刀魚にスパイスをふって炭火で焼く共通点", en: "Spiced grilled hairtail — Chinese counterpart" } },
-          TH: { name: { ko: "플라 다압 양", ja: "プラー・ダーブ・ヤーン", en: "Pla Dab Yang" }, tasteProfile: { sweet: 5, salty: 60, spicy: 30, umami: 85, sour: 10 }, description: { ko: "갈치를 소금·레몬그라스에 재워 숯불에 구운 태국식 생선구이", ja: "太刀魚を塩・レモングラスに漬けて炭火で焼いたタイ式焼き魚", en: "Thai salt-and-lemongrass grilled hairtail" }, ingredients: { ko: ["갈치", "굵은 소금", "레몬그라스", "라임", "피시소스", "칠리"], ja: ["太刀魚", "粗塩", "レモングラス", "ライム", "魚醤", "唐辛子"], en: ["Hairtail", "Coarse salt", "Lemongrass", "Lime", "Fish sauce", "Chili"] }, similarityPercent: 78, matchReason: { ko: "갈치에 소금을 뿌려 향긋하게 숯불에 굽는 공통점", ja: "太刀魚に塩をふって香ばしく炭火で焼く共通点", en: "Salt-grilled hairtail — Thai counterpart" } },
-          VN: { name: { ko: "까 호이 느엉 무오이 어트", ja: "カー・ホーイ・ヌン・ムオイ・オット", en: "Cá Hố Nướng Muối Ớt" }, tasteProfile: { sweet: 5, salty: 65, spicy: 25, umami: 85, sour: 10 }, description: { ko: "갈치에 굵은 소금과 고추를 발라 숯불에 구운 베트남식 생선구이", ja: "太刀魚に粗塩と唐辛子を塗って炭火で焼いたベトナム式焼き魚", en: "Vietnamese charcoal-grilled hairtail with salt-chili rub" }, ingredients: { ko: ["갈치", "굵은 소금", "고추", "레몬그라스", "마늘", "라임"], ja: ["太刀魚", "粗塩", "唐辛子", "レモングラス", "ニンニク", "ライム"], en: ["Hairtail", "Coarse salt", "Chili", "Lemongrass", "Garlic", "Lime"] }, similarityPercent: 80, matchReason: { ko: "갈치에 소금을 뿌려 숯불에 구워내는 거의 동일한 요리", ja: "太刀魚に塩をふって炭火で焼くほぼ同じ料理", en: "Salt-grilled hairtail — close Vietnamese twin" } },
-          MY: { name: { ko: "이칸 셀라르 바카르", ja: "イカン・セラル・バカール", en: "Ikan Selar Bakar" }, tasteProfile: { sweet: 10, salty: 60, spicy: 40, umami: 85, sour: 10 }, description: { ko: "생선을 삼발과 터머릭에 재워 바나나 잎에 싸 숯불에 구운 말레이식 구이", ja: "魚をサンバルとウコンに漬けてバナナの葉で包み炭火で焼いたマレー式焼き魚", en: "Malaysian banana-leaf grilled fish with sambal and turmeric" }, ingredients: { ko: ["갈치", "삼발", "터머릭", "레몬그라스", "라임", "바나나 잎"], ja: ["太刀魚", "サンバル", "ウコン", "レモングラス", "ライム", "バナナの葉"], en: ["Hairtail", "Sambal", "Turmeric", "Lemongrass", "Lime", "Banana leaf"] }, similarityPercent: 72, matchReason: { ko: "생선을 숯불에 싸서 구워내는 해안식 해석", ja: "魚を炭火で包み焼きにする海岸式解釈", en: "Banana leaf grilled fish — Malaysian counterpart" } },
-          ID: { name: { ko: "이칸 바카르 케캅", ja: "イカン・バカール・ケチャップ", en: "Ikan Bakar Kecap" }, tasteProfile: { sweet: 20, salty: 55, spicy: 30, umami: 85, sour: 10 }, description: { ko: "갈치에 케캅 마니스와 삼발을 발라 숯불에 구운 인도네시아식 생선구이", ja: "太刀魚にケチャップマニスとサンバルを塗って炭火で焼いたインドネシア式焼き魚", en: "Indonesian grilled hairtail glazed with kecap manis and sambal" }, ingredients: { ko: ["갈치", "케캅 마니스", "삼발", "마늘", "라임", "터머릭"], ja: ["太刀魚", "ケチャップマニス", "サンバル", "ニンニク", "ライム", "ウコン"], en: ["Hairtail", "Kecap manis", "Sambal", "Garlic", "Lime", "Turmeric"] }, similarityPercent: 72, matchReason: { ko: "갈치에 단짭 매운 양념을 바르고 숯불에 굽는 해석", ja: "太刀魚に甘辛いタレを塗って炭火で焼く解釈", en: "Glazed grilled hairtail — Indonesian counterpart" } },
-          US: { name: { ko: "그릴드 킹피쉬", ja: "グリルド・キングフィッシュ", en: "Grilled Kingfish" }, tasteProfile: { sweet: 5, salty: 55, spicy: 10, umami: 80, sour: 10 }, description: { ko: "갈치를 버터·레몬·후추에 구워낸 미국식 생선 구이", ja: "太刀魚をバター・レモン・胡椒で焼いたアメリカ式焼き魚", en: "American grilled hairtail with butter, lemon and pepper" }, ingredients: { ko: ["갈치", "버터", "레몬", "후추", "파슬리", "마늘"], ja: ["太刀魚", "バター", "レモン", "胡椒", "パセリ", "ニンニク"], en: ["Hairtail", "Butter", "Lemon", "Pepper", "Parsley", "Garlic"] }, similarityPercent: 72, matchReason: { ko: "갈치를 단순한 양념으로 구워내는 서구식 해석", ja: "太刀魚をシンプルな味付けで焼く西洋式解釈", en: "Buttered grilled hairtail — American counterpart" } },
-          IT: { name: { ko: "페셰 스파다 알라 그릴리아", ja: "ペッシェ・スパダ・アッラ・グリッリア", en: "Pesce Spada alla Griglia" }, tasteProfile: { sweet: 5, salty: 55, spicy: 10, umami: 80, sour: 15 }, description: { ko: "갈치를 올리브오일·레몬·허브에 구운 이탈리아식 생선구이", ja: "太刀魚をオリーブオイル・レモン・ハーブで焼くイタリア式焼き魚", en: "Italian grilled hairtail with olive oil, lemon and herbs" }, ingredients: { ko: ["갈치", "올리브오일", "레몬", "로즈마리", "마늘", "페퍼"], ja: ["太刀魚", "オリーブオイル", "レモン", "ローズマリー", "ニンニク", "胡椒"], en: ["Hairtail", "Olive oil", "Lemon", "Rosemary", "Garlic", "Pepper"] }, similarityPercent: 72, matchReason: { ko: "생선을 소박한 양념으로 구워내는 지중해 전통", ja: "魚を素朴な味付けで焼く地中海伝統", en: "Herb-grilled fish — Italian counterpart" } },
-          FR: { name: { ko: "푸아송 그리예 보르 드 메르", ja: "ポワソン・グリエ・ボール・ド・メール", en: "Poisson Grillé Bord de Mer" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 85, sour: 10 }, description: { ko: "갈치를 버터·허브·레몬에 구운 프랑스식 해안 생선구이", ja: "太刀魚をバター・ハーブ・レモンで焼くフランス式海岸焼き魚", en: "French coastal grilled hairtail with butter, herbs and lemon" }, ingredients: { ko: ["갈치", "버터", "타임", "레몬", "샬롯", "화이트와인"], ja: ["太刀魚", "バター", "タイム", "レモン", "エシャロット", "白ワイン"], en: ["Hairtail", "Butter", "Thyme", "Lemon", "Shallot", "White wine"] }, similarityPercent: 73, matchReason: { ko: "생선을 허브와 버터로 구워내는 유럽 해석", ja: "魚をハーブとバターで焼くヨーロッパ解釈", en: "Herb-butter grilled fish — French counterpart" } },
-          IN: { name: { ko: "갈치 탄두리", ja: "太刀魚タンドリー", en: "Tandoori Hairtail" }, tasteProfile: { sweet: 5, salty: 55, spicy: 55, umami: 85, sour: 15 }, description: { ko: "갈치를 요거트·가람마살라에 재워 탄두르에 구운 인도식 갈치구이", ja: "太刀魚をヨーグルト・ガラムマサラに漬けてタンドールで焼いたインド式タチウオ焼き", en: "Indian tandoor-grilled hairtail with yogurt and garam masala" }, ingredients: { ko: ["갈치", "요거트", "가람마살라", "생강", "마늘", "고춧가루"], ja: ["太刀魚", "ヨーグルト", "ガラムマサラ", "生姜", "ニンニク", "唐辛子粉"], en: ["Hairtail", "Yogurt", "Garam masala", "Ginger", "Garlic", "Chili powder"] }, similarityPercent: 67, matchReason: { ko: "갈치를 향신료에 재워 직화에 굽는 해석", ja: "太刀魚をスパイスに漬けて直火で焼く解釈", en: "Tandoori hairtail — Indian counterpart" } },
-          ES: { name: { ko: "페스카도 데 사바나", ja: "ペスカード・デ・サバナ", en: "Pescado a la Sal" }, tasteProfile: { sweet: 5, salty: 70, spicy: 5, umami: 85, sour: 5 }, description: { ko: "생선을 굵은 소금으로 완전히 덮어 구운 스페인식 소금 구이", ja: "魚を粗塩で完全に覆って焼くスペイン式塩焼き", en: "Spanish salt-crust baked fish" }, ingredients: { ko: ["갈치", "굵은 소금", "올리브오일", "레몬", "마늘", "허브"], ja: ["太刀魚", "粗塩", "オリーブオイル", "レモン", "ニンニク", "ハーブ"], en: ["Hairtail", "Coarse salt", "Olive oil", "Lemon", "Garlic", "Herbs"] }, similarityPercent: 83, matchReason: { ko: "생선에 굵은 소금을 듬뿍 뿌려 구워내는 거의 동일한 요리", ja: "魚に粗塩をたっぷりふって焼くほぼ同じ料理", en: "Salt-crust grilled fish — close Spanish sibling" } },
-          MX: { name: { ko: "페스카도 사란데아도", ja: "ペスカード・サランデアード", en: "Pescado Zarandeado" }, tasteProfile: { sweet: 5, salty: 60, spicy: 40, umami: 85, sour: 15 }, description: { ko: "생선을 마늘·라임·고추에 재워 숯불에 구운 멕시코 나야릿식 생선구이", ja: "魚をニンニク・ライム・唐辛子に漬けて炭火で焼くメキシコ・ナヤリット式焼き魚", en: "Mexican Nayarit-style butterflied grilled fish with lime and chili" }, ingredients: { ko: ["갈치", "라임", "마늘", "치포틀레", "오레가노", "소금"], ja: ["太刀魚", "ライム", "ニンニク", "チポトレ", "オレガノ", "塩"], en: ["Hairtail", "Lime", "Garlic", "Chipotle", "Oregano", "Salt"] }, similarityPercent: 73, matchReason: { ko: "생선을 숯불에 양념과 함께 구워내는 라틴식 해석", ja: "魚を炭火で味付けと共に焼くラテン式解釈", en: "Charcoal-grilled whole fish — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "tongyeong-mideodeok-jjim",
         image: "",
         name: { ko: "미더덕찜", ja: "ミドドッチム", en: "Mideodeok Jjim (Sea Squirt Stew)" },
@@ -2180,36 +1948,6 @@ export const regions: Region[] = [
           IN: { name: { ko: "케랄라 시푸드 마살라", ja: "ケララ・シーフード・マサラ", en: "Kerala Seafood Masala" }, tasteProfile: { sweet: 10, salty: 55, spicy: 65, umami: 85, sour: 15 }, description: { ko: "해산물을 코코넛·마살라에 쪄낸 남인도식 매운 해산물 찜", ja: "海鮮をココナッツ・マサラで蒸した南インド式辛口海鮮蒸し", en: "South Indian steamed seafood in coconut masala" }, ingredients: { ko: ["해산물", "코코넛", "가람마살라", "커리잎", "칠리", "머스타드 시드"], ja: ["海鮮", "ココナッツ", "ガラムマサラ", "カレーリーフ", "唐辛子", "マスタードシード"], en: ["Seafood", "Coconut", "Garam masala", "Curry leaves", "Chili", "Mustard seed"] }, similarityPercent: 67, matchReason: { ko: "해산물을 매운 향신 양념에 조리하는 남아시아 해석", ja: "海鮮を辛いスパイスタレで調理する南アジア解釈", en: "Spiced sea masala — Indian counterpart" } },
           ES: { name: { ko: "마리스코 알 아히요", ja: "マリスコ・アル・アヒージョ", en: "Marisco al Ajillo" }, tasteProfile: { sweet: 5, salty: 55, spicy: 30, umami: 85, sour: 10 }, description: { ko: "해산물을 마늘과 고추에 올리브오일로 찐 스페인식 해산물 찜", ja: "海鮮をニンニクと唐辛子でオリーブオイル煮にしたスペイン式海鮮蒸し", en: "Spanish seafood cooked with garlic and chili in olive oil" }, ingredients: { ko: ["해산물", "마늘", "스모크드 파프리카", "올리브오일", "파슬리", "레몬"], ja: ["海鮮", "ニンニク", "スモークパプリカ", "オリーブオイル", "パセリ", "レモン"], en: ["Seafood", "Garlic", "Smoked paprika", "Olive oil", "Parsley", "Lemon"] }, similarityPercent: 75, matchReason: { ko: "해산물을 매운 마늘 양념에 빠르게 조리하는 해안식", ja: "海鮮を辛いニンニクタレで手早く調理する海岸式", en: "Garlic-chili seafood — Spanish counterpart" } },
           MX: { name: { ko: "마리스코스 엔 살사 디아블라", ja: "マリスコス・エン・サルサ・ディアブラ", en: "Mariscos en Salsa Diabla" }, tasteProfile: { sweet: 10, salty: 55, spicy: 70, umami: 85, sour: 15 }, description: { ko: "해산물을 디아블라 매운 살사에 조리한 멕시코식 매운 해산물 찜", ja: "海鮮をディアブラの辛いサルサで調理したメキシコ式辛口海鮮蒸し", en: "Mexican seafood in fiery diabla sauce" }, ingredients: { ko: ["해산물", "과히요 고추", "치포틀레", "토마토", "마늘", "라임"], ja: ["海鮮", "グアヒージョ", "チポトレ", "トマト", "ニンニク", "ライム"], en: ["Seafood", "Guajillo chili", "Chipotle", "Tomato", "Garlic", "Lime"] }, similarityPercent: 72, matchReason: { ko: "해산물을 매운 살사에 빠르게 조리하는 라틴식 해석", ja: "海鮮を辛いサルサで手早く調理するラテン式解釈", en: "Diabla seafood — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "tongyeong-daegu-tang",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/tongyeong-daegu-tang.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
-        name: { ko: "대구탕", ja: "タラ鍋", en: "Daegu Tang (Cod Soup)" },
-        region: "tongyeong",
-        tasteProfile: { sweet: 10, salty: 50, spicy: 30, umami: 85, sour: 5 },
-        storyDescription: {
-          ko: "겨울 남해의 싱싱한 생대구를 무·콩나물·미나리와 함께 맑고 시원하게 끓여낸 통영식 생선탕이에요. 국물 한 모금이면 차가운 바닷바람이 시원하게 씻겨나가요.",
-          ja: "冬の南海の新鮮な生ダラを大根・もやし・セリと共に澄んだスープで煮込む統営式の魚鍋です。スープ一口で冷たい海風が爽やかに洗い流されます。",
-          en: "Fresh winter cod from the southern sea simmered clean with radish, bean sprouts and dropwort — Tongyeong's fish soup. One sip washes away the chill of sea winds."
-        },
-        ingredients: { ko: ["생대구", "무", "콩나물", "미나리", "고춧가루", "마늘", "멸치 육수", "청양고추"], ja: ["生ダラ", "大根", "もやし", "セリ", "唐辛子粉", "ニンニク", "煮干しだし", "青唐辛子"], en: ["Fresh cod", "Radish", "Bean sprouts", "Dropwort", "Chili powder", "Garlic", "Anchovy broth", "Green chili"] },
-        tags: ["대구탕", "겨울", "생선탕"],
-        dupes: {
-          JP: { name: { ko: "타라 치리 나베", ja: "たらちり鍋", en: "Tara Chiri Nabe" }, tasteProfile: { sweet: 5, salty: 50, spicy: 5, umami: 85, sour: 5 }, description: { ko: "대구와 채소를 다시마 육수에 맑게 끓인 일본식 대구 전골", ja: "タラと野菜を昆布だしで澄んだスープに仕上げる日本式タラ鍋", en: "Japanese cod hot pot in clear kombu broth" }, ingredients: { ko: ["대구", "두부", "배추", "다시마", "간장", "폰즈"], ja: ["タラ", "豆腐", "白菜", "昆布", "醤油", "ポン酢"], en: ["Cod", "Tofu", "Napa cabbage", "Kelp", "Soy sauce", "Ponzu"] }, similarityPercent: 85, matchReason: { ko: "대구를 맑은 국물에 채소와 함께 끓여내는 거의 동일한 요리", ja: "タラを澄んだスープで野菜と煮込むほぼ同じ料理", en: "Cod clear hot pot — close Japanese twin" } },
-          CN: { name: { ko: "쉐차이 다이위", ja: "雪菜タラ", en: "Xue Cai Dai Yu" }, tasteProfile: { sweet: 5, salty: 60, spicy: 10, umami: 80, sour: 15 }, description: { ko: "대구를 발효 겨자잎·맑은 국물에 끓여낸 상하이식 생선탕", ja: "タラを発酵カラシ菜・澄んだスープで煮込む上海式の魚スープ", en: "Shanghai cod soup with pickled mustard greens" }, ingredients: { ko: ["대구", "쉐차이", "두부", "대파", "생강", "백후추"], ja: ["タラ", "雪菜", "豆腐", "長ネギ", "生姜", "白胡椒"], en: ["Cod", "Pickled greens", "Tofu", "Green onion", "Ginger", "White pepper"] }, similarityPercent: 77, matchReason: { ko: "대구를 맑은 국물에 새콤하게 끓이는 유사 전통", ja: "タラを澄んだスープで酸味をつけて煮込む類似伝統", en: "Clear cod soup — Chinese counterpart" } },
-          TH: { name: { ko: "톰 솜 플라 닷", ja: "トムソム・プラー・ダット", en: "Tom Som Cod" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 80, sour: 25 }, description: { ko: "대구를 타마린드와 향신료에 새콤 매콤하게 끓인 태국식 생선 수프", ja: "タラをタマリンドとスパイスで酸っぱ辛く煮込むタイ式魚スープ", en: "Thai sour-spicy cod soup with tamarind and herbs" }, ingredients: { ko: ["대구", "타마린드", "레몬그라스", "갈랑갈", "칠리", "피시소스"], ja: ["タラ", "タマリンド", "レモングラス", "ガランガル", "唐辛子", "魚醤"], en: ["Cod", "Tamarind", "Lemongrass", "Galangal", "Chili", "Fish sauce"] }, similarityPercent: 72, matchReason: { ko: "대구를 새콤 매콤한 국물에 끓이는 해석", ja: "タラを酸っぱ辛いスープで煮込む解釈", en: "Sour-spicy cod soup — Thai counterpart" } },
-          VN: { name: { ko: "까인 까 뚜이엣", ja: "カイン・カー・トゥエット", en: "Canh Cá Tuyết" }, tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 80, sour: 15 }, description: { ko: "대구를 딜·토마토·생강에 맑게 끓인 베트남 북부식 생선 수프", ja: "タラをディル・トマト・生姜で澄んだスープに煮込むベトナム北部式魚スープ", en: "Northern Vietnamese cod soup with dill, tomato and ginger" }, ingredients: { ko: ["대구", "딜", "토마토", "생강", "양파", "피시소스"], ja: ["タラ", "ディル", "トマト", "生姜", "玉ねぎ", "魚醤"], en: ["Cod", "Dill", "Tomato", "Ginger", "Onion", "Fish sauce"] }, similarityPercent: 73, matchReason: { ko: "대구를 허브 맑은 국물에 끓이는 공통점", ja: "タラをハーブの澄んだスープで煮込む共通点", en: "Herbed cod soup — Vietnamese counterpart" } },
-          MY: { name: { ko: "숩 이칸 코드 레마", ja: "スプ・イカン・コッド・レマ", en: "Sup Ikan Cod Lemak" }, tasteProfile: { sweet: 10, salty: 55, spicy: 35, umami: 85, sour: 10 }, description: { ko: "대구를 코코넛·레몬그라스·칠리 국물에 끓인 말레이시아식 대구 수프", ja: "タラをココナッツ・レモングラス・唐辛子スープで煮込むマレーシア式タラスープ", en: "Malaysian cod soup in coconut-lemongrass-chili broth" }, ingredients: { ko: ["대구", "코코넛밀크", "레몬그라스", "칠리", "갈랑갈", "라임"], ja: ["タラ", "ココナッツミルク", "レモングラス", "唐辛子", "ガランガル", "ライム"], en: ["Cod", "Coconut milk", "Lemongrass", "Chili", "Galangal", "Lime"] }, similarityPercent: 70, matchReason: { ko: "대구를 향긋한 매콤 국물에 끓이는 해석", ja: "タラを香ばしい辛いスープで煮込む解釈", en: "Coconut cod soup — Malaysian counterpart" } },
-          ID: { name: { ko: "핀당 코드", ja: "ピンダン・コッド", en: "Pindang Cod" }, tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 80, sour: 25 }, description: { ko: "대구를 타마린드·칠리·샬롯에 새콤 매콤하게 끓인 인도네시아 팔렘방식 대구 수프", ja: "タラをタマリンド・唐辛子・エシャロットで酸っぱ辛く煮込むインドネシア・パレンバン式タラスープ", en: "Indonesian Palembang-style sour-spicy cod stew" }, ingredients: { ko: ["대구", "타마린드", "칠리", "레몬그라스", "샬롯", "토마토"], ja: ["タラ", "タマリンド", "唐辛子", "レモングラス", "エシャロット", "トマト"], en: ["Cod", "Tamarind", "Chili", "Lemongrass", "Shallot", "Tomato"] }, similarityPercent: 70, matchReason: { ko: "대구를 새콤 매콤한 국물에 끓이는 동남아 해석", ja: "タラを酸っぱ辛いスープで煮込む東南アジア解釈", en: "Sour-spicy cod — Indonesian counterpart" } },
-          US: { name: { ko: "뉴잉글랜드 대구 차우더", ja: "ニューイングランド・タラチャウダー", en: "New England Cod Chowder" }, tasteProfile: { sweet: 10, salty: 60, spicy: 5, umami: 80, sour: 5 }, description: { ko: "대구와 감자·양파를 우유·베이컨 국물에 끓인 뉴잉글랜드식 차우더", ja: "タラとジャガイモ・玉ねぎを牛乳・ベーコンスープで煮込むニューイングランド式チャウダー", en: "New England cod chowder with potato, onion, milk and bacon" }, ingredients: { ko: ["대구", "감자", "양파", "베이컨", "크림", "타임"], ja: ["タラ", "ジャガイモ", "玉ねぎ", "ベーコン", "クリーム", "タイム"], en: ["Cod", "Potato", "Onion", "Bacon", "Cream", "Thyme"] }, similarityPercent: 67, matchReason: { ko: "대구를 진한 크림 수프로 즐기는 서구식 해석", ja: "タラを濃厚なクリームスープで楽しむ西洋式解釈", en: "Cod chowder — American counterpart" } },
-          IT: { name: { ko: "바콸라 알라 리보르네제", ja: "バッカラ・アッラ・リボルネーゼ", en: "Baccalà alla Livornese" }, tasteProfile: { sweet: 10, salty: 60, spicy: 15, umami: 80, sour: 15 }, description: { ko: "염대구를 토마토·케이퍼·올리브에 끓인 리보르노식 대구 요리", ja: "塩ダラをトマト・ケッパー・オリーブで煮込むリボルノ式タラ料理", en: "Livornese salt cod in tomato-caper-olive sauce" }, ingredients: { ko: ["염대구", "토마토", "케이퍼", "올리브", "마늘", "파슬리"], ja: ["塩ダラ", "トマト", "ケッパー", "オリーブ", "ニンニク", "パセリ"], en: ["Salt cod", "Tomato", "Caper", "Olive", "Garlic", "Parsley"] }, similarityPercent: 70, matchReason: { ko: "대구를 진한 국물에 뭉근히 조리는 지중해 전통", ja: "タラを濃厚なスープでじっくり煮込む地中海伝統", en: "Cod in savory sauce — Italian counterpart" } },
-          FR: { name: { ko: "브랑다드 드 모뤼", ja: "ブランダード・ド・モリュ", en: "Brandade de Morue" }, tasteProfile: { sweet: 5, salty: 65, spicy: 5, umami: 80, sour: 5 }, description: { ko: "염대구와 감자·마늘·올리브오일을 퓨레로 만든 프로방스식 대구 요리", ja: "塩ダラとジャガイモ・ニンニク・オリーブオイルをピュレにしたプロヴァンス式タラ料理", en: "Provençal purée of salt cod, potato, garlic and olive oil" }, ingredients: { ko: ["염대구", "감자", "마늘", "올리브오일", "우유", "레몬"], ja: ["塩ダラ", "ジャガイモ", "ニンニク", "オリーブオイル", "牛乳", "レモン"], en: ["Salt cod", "Potato", "Garlic", "Olive oil", "Milk", "Lemon"] }, similarityPercent: 65, matchReason: { ko: "대구를 부드럽게 풀어 따뜻하게 먹는 공통점", ja: "タラを柔らかくほぐして温かく食べる共通点", en: "Cod brandade — French counterpart" } },
-          IN: { name: { ko: "케랄라 대구 커리", ja: "ケララ・タラカレー", en: "Kerala Cod Curry" }, tasteProfile: { sweet: 10, salty: 55, spicy: 60, umami: 80, sour: 20 }, description: { ko: "대구를 코코넛·타마린드·칠리에 끓인 케랄라식 매운 대구 커리", ja: "タラをココナッツ・タマリンド・唐辛子で煮込むケララ式辛口タラカレー", en: "Kerala spicy cod curry with coconut and tamarind" }, ingredients: { ko: ["대구", "코코넛밀크", "타마린드", "커리잎", "칠리", "머스타드 시드"], ja: ["タラ", "ココナッツミルク", "タマリンド", "カレーリーフ", "唐辛子", "マスタードシード"], en: ["Cod", "Coconut milk", "Tamarind", "Curry leaves", "Chili", "Mustard seed"] }, similarityPercent: 67, matchReason: { ko: "대구를 매운 향신 국물에 끓이는 남인도 해석", ja: "タラを辛いスパイススープで煮込む南インド解釈", en: "Cod curry — Indian counterpart" } },
-          ES: { name: { ko: "바칼라오 아 라 비스카이나", ja: "バカラオ・ア・ラ・ビスカイナ", en: "Bacalao a la Vizcaína" }, tasteProfile: { sweet: 10, salty: 60, spicy: 20, umami: 80, sour: 10 }, description: { ko: "염대구를 붉은 고추·토마토·피멘토 소스에 끓인 바스크식 대구 요리", ja: "塩ダラを赤唐辛子・トマト・ピメントソースで煮込むバスク式タラ料理", en: "Basque salt cod in red pepper-tomato-pimento sauce" }, ingredients: { ko: ["염대구", "초리세로 고추", "토마토", "피멘토", "양파", "올리브오일"], ja: ["塩ダラ", "チョリセロ", "トマト", "ピメント", "玉ねぎ", "オリーブオイル"], en: ["Salt cod", "Choricero", "Tomato", "Pimento", "Onion", "Olive oil"] }, similarityPercent: 70, matchReason: { ko: "대구를 매운 붉은 양념에 끓이는 지중해 전통", ja: "タラを辛い赤いタレで煮込む地中海伝統", en: "Cod in red pepper — Spanish counterpart" } },
-          MX: { name: { ko: "바칼라오 메히카노", ja: "バカラオ・メヒカーノ", en: "Bacalao Mexicano" }, tasteProfile: { sweet: 10, salty: 60, spicy: 40, umami: 80, sour: 15 }, description: { ko: "염대구를 토마토·올리브·할라페뇨와 함께 끓인 멕시코식 크리스마스 대구 요리", ja: "塩ダラをトマト・オリーブ・ハラペーニョで煮込むメキシコ式クリスマスタラ料理", en: "Mexican Christmas salt cod in tomato-olive-jalapeño sauce" }, ingredients: { ko: ["염대구", "토마토", "그린 올리브", "할라페뇨", "감자", "파슬리"], ja: ["塩ダラ", "トマト", "グリーンオリーブ", "ハラペーニョ", "ジャガイモ", "パセリ"], en: ["Salt cod", "Tomato", "Green olive", "Jalapeño", "Potato", "Parsley"] }, similarityPercent: 67, matchReason: { ko: "대구를 매콤한 토마토 양념에 끓이는 서반구 전통", ja: "タラを辛いトマトタレで煮込む西半球の伝統", en: "Spicy cod stew — Mexican counterpart" } }
         },
         isLocalSpecialty: false,
       },
@@ -2448,60 +2186,6 @@ export const regions: Region[] = [
             ingredients: { ko: ["생선", "무", "타마린드", "고추", "커리잎", "코코넛"], ja: ["魚", "大根", "タマリンド", "唐辛子", "カレーリーフ", "ココナッツ"], en: ["Fish", "Radish", "Tamarind", "Chili", "Curry leaf", "Coconut"] },
             similarityPercent: 75,
             matchReason: { ko: "생선을 무와 함께 매콤한 양념 국물에 졸여 밥과 함께 먹는 구조", ja: "魚を大根と一緒に辛い調味料で煮込み、ご飯と食べる構造", en: "Fish simmered with radish in spicy sauce, served over rice — the same structure as galchi jorim" }
-          }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "jeju-jeonbok-juk",
-        name: { ko: "전복죽", ja: "アワビ粥", en: "Jeonbok Juk" },
-        region: "jeju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-jeonbok-juk.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
-        tasteProfile: { sweet: 15, salty: 45, spicy: 5, umami: 95, sour: 5 },
-        storyDescription: {
-          ko: "제주 해녀가 물 속 깊은 곳에서 건져 올린 전복으로 끓인 죽은 바다 향이 그대로 살아 있어요. 초록빛으로 물든 부드러운 죽 한 숟가락은 몸이 아프거나 지쳤을 때 최고의 보약이 되어줘요.",
-          ja: "済州の海女が深海から引き上げたアワビで炊いたお粥は、海の香りがそのまま生きています。緑色に染まった柔らかいお粥の一杓子は、体が弱ったり疲れたりした時に最高の良薬になります。",
-          en: "Porridge made from abalone harvested by Jeju's haenyeo divers from the depths carries the sea alive within it. One spoonful of the softly green-tinted porridge is the finest medicine when your body aches or your spirit droops."
-        },
-        ingredients: {
-          ko: ["전복", "쌀", "전복 내장", "참기름", "소금", "대파", "물"],
-          ja: ["アワビ", "米", "アワビの内臓", "ごま油", "塩", "長ネギ", "水"],
-          en: ["Abalone", "Rice", "Abalone viscera", "Sesame oil", "Salt", "Green onion", "Water"]
-        },
-        tags: ["전복", "죽", "해녀"],
-                dupes: {
-          CN: {
-            name: { ko: "전복 콘지", ja: "アワビコンジー", en: "Abalone Congee" },
-            tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 85, sour: 5 },
-            description: { ko: "신선한 전복을 넣고 끓인 중국식 쌀죽으로, 광동 요리의 고급 메뉴예요.", ja: "新鮮なアワビを入れて煮た中国式お粥で、広東料理の高級メニューです。", en: "Cantonese premium rice porridge with fresh abalone — the Chinese cousin of jeonbok juk." },
-            ingredients: { ko: ["전복", "쌀", "닭육수", "생강", "참기름", "파"], ja: ["アワビ", "米", "鶏スープ", "生姜", "ごま油", "ネギ"], en: ["Abalone", "Rice", "Chicken broth", "Ginger", "Sesame oil", "Green onion"] },
-            similarityPercent: 88,
-            matchReason: { ko: "전복을 넣고 끓인 쌀죽이라는 기본 구성이 전복죽과 완전히 같아요.", ja: "アワビを入れて煮たお粥という基本構成が전복죽と全く同じです。", en: "Abalone rice porridge — the same dish with slightly different aromatics." }
-          },
-          IT: {
-            name: { ko: "전복 리조또", ja: "アワビリゾット", en: "Abalone Risotto" },
-            tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 82, sour: 10 },
-            description: { ko: "신선한 전복과 파마산 치즈, 버터로 만든 이탈리아 프리미엄 리조또예요.", ja: "新鮮なアワビとパルメザンチーズ、バターで作ったイタリアのプレミアムリゾットです。", en: "Italian creamy risotto with fresh abalone, parmesan, and butter." },
-            ingredients: { ko: ["전복", "아르보리오 쌀", "버터", "파마산", "화이트와인", "육수"], ja: ["アワビ", "アルボリオ米", "バター", "パルメザン", "白ワイン", "ブロード"], en: ["Abalone", "Arborio rice", "Butter", "Parmesan", "White wine", "Broth"] },
-            similarityPercent: 80,
-            matchReason: { ko: "전복을 쌀 요리에 넣어 감칠맛을 내는 방식이 전복죽과 같아요.", ja: "アワビを米料理に入れて旨味を出す方式が전복죽と同じです。", en: "Abalone in a slow-cooked rice dish — the same luxury seafood grain bowl concept as jeonbok juk." }
-          },
-          JP: {
-            name: { ko: "아와비 조스이", ja: "鮑雑炊", en: "Awabi Zosui" },
-            tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 85, sour: 5 },
-            description: { ko: "전복을 다시마 육수에 넣고 밥과 함께 끓인 일본식 전복 죽이에요.", ja: "アワビを昆布だしに入れてご飯と一緒に煮た日本式アワビ粥です。", en: "Japanese rice porridge with abalone in kombu dashi broth." },
-            ingredients: { ko: ["전복", "밥", "다시마육수", "간장", "미림", "파"], ja: ["アワビ", "ご飯", "昆布だし", "醤油", "みりん", "ネギ"], en: ["Abalone", "Rice", "Kombu dashi", "Soy sauce", "Mirin", "Green onion"] },
-            similarityPercent: 87,
-            matchReason: { ko: "전복을 다시 육수와 밥으로 끓인 죽 요리라는 점이 전복죽과 거의 동일해요.", ja: "アワビをだしとご飯で煮たお粥料理という点が전복죽とほぼ同じです。", en: "Abalone rice porridge in dashi — the Japanese equivalent of Jeju's signature abalone dish." }
-          },
-          IN: {
-            name: { ko: "키츠디", ja: "キチュリ", en: "Khichdi" },
-            tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 70, sour: 5 },
-            description: { ko: "쌀과 렌틸콩을 기와 터메릭에 함께 푹 끓인 인도의 전통 보양 죽, 아플 때 먹는 위로식", ja: "米とレンズ豆をギーとターメリックでじっくり煮込んだインドの伝統的な滋養粥、病気の時に食べる慰めの食べ物", en: "Indian comfort porridge of rice and lentils slow-cooked with ghee and turmeric" },
-            ingredients: { ko: ["쌀", "녹두", "기", "터메릭", "커민", "생강"], ja: ["米", "緑豆", "ギー", "ターメリック", "クミン", "生姜"], en: ["Rice", "Mung bean", "Ghee", "Turmeric", "Cumin", "Ginger"] },
-            similarityPercent: 70,
-            matchReason: { ko: "소화가 잘 되는 쌀죽 + 건강 회복용 보양식이라는 공통점", ja: "消化に優しいお粥 + 回復食という共通点", en: "Easy-to-digest rice porridge + restorative 'sick day' role — same spirit as jeonbok juk" }
           }
         },
         isLocalSpecialty: false,
@@ -2869,36 +2553,6 @@ export const regions: Region[] = [
           IN: { name: { ko: "페전트 요크니", ja: "ペザント・ヨクニ", en: "Pheasant Yakhni" }, tasteProfile: { sweet: 5, salty: 50, spicy: 25, umami: 85, sour: 5 }, description: { ko: "꿩을 회향·카다멈·정향으로 우린 카슈미르식 맑은 육수 면 요리", ja: "キジをフェンネル・カルダモン・クローブで煮出したカシミール式澄んだスープ麺", en: "Kashmiri pheasant yakhni with fennel, cardamom and clove clear broth" }, ingredients: { ko: ["꿩고기", "면", "회향", "카다멈", "정향", "요거트"], ja: ["キジ肉", "麺", "フェンネル", "カルダモン", "クローブ", "ヨーグルト"], en: ["Pheasant", "Noodles", "Fennel", "Cardamom", "Clove", "Yogurt"] }, similarityPercent: 72, matchReason: { ko: "꿩을 향신료에 우려내는 보양 육수 전통", ja: "キジをスパイスで煮出す滋養スープ伝統", en: "Pheasant herbal broth — Indian counterpart" } },
           ES: { name: { ko: "칼도 데 파이산", ja: "カルド・デ・ファイサン", en: "Caldo de Faisán" }, tasteProfile: { sweet: 5, salty: 50, spicy: 10, umami: 85, sour: 5 }, description: { ko: "꿩을 당근·리크·양파와 오래 우려낸 스페인식 꿩 육수 면", ja: "キジを人参・リーキ・玉ねぎで長時間煮出したスペイン式キジスープ麺", en: "Spanish long-simmered pheasant broth with noodles" }, ingredients: { ko: ["꿩고기", "피데오 면", "당근", "리크", "양파", "파프리카"], ja: ["キジ肉", "フィデオ麺", "人参", "リーキ", "玉ねぎ", "パプリカ"], en: ["Pheasant", "Fideo noodles", "Carrot", "Leek", "Onion", "Paprika"] }, similarityPercent: 72, matchReason: { ko: "꿩 육수에 면을 말아 먹는 유럽식 해석", ja: "キジのスープに麺を入れるヨーロッパ式解釈", en: "Pheasant broth noodle — Spanish counterpart" } },
           MX: { name: { ko: "칼도 데 파이산 메히카노", ja: "カルド・デ・ファイサン・メヒカーノ", en: "Caldo de Faisán Mexicano" }, tasteProfile: { sweet: 5, salty: 55, spicy: 25, umami: 85, sour: 10 }, description: { ko: "꿩을 토마토·고추·라임 국물에 끓여 면과 먹는 멕시코식 꿩 수프", ja: "キジをトマト・唐辛子・ライムスープで煮込んで麺と食べるメキシコ式キジスープ", en: "Mexican pheasant soup in tomato-chili-lime broth with noodles" }, ingredients: { ko: ["꿩고기", "피데오 면", "토마토", "치포틀레", "라임", "고수"], ja: ["キジ肉", "フィデオ麺", "トマト", "チポトレ", "ライム", "パクチー"], en: ["Pheasant", "Fideo noodles", "Tomato", "Chipotle", "Lime", "Cilantro"] }, similarityPercent: 68, matchReason: { ko: "꿩 육수에 면과 매운 양념을 더하는 라틴식 해석", ja: "キジのスープに麺と辛いタレを加えるラテン式解釈", en: "Spiced pheasant noodle — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "jeju-haemul-ttukbaegi",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/jeju-haemul-ttukbaegi.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
-        name: { ko: "해물뚝배기", ja: "海鮮トゥッペギ", en: "Haemul Ttukbaegi (Seafood Pot)" },
-        region: "jeju",
-        tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 85, sour: 5 },
-        storyDescription: {
-          ko: "제주 앞바다의 오분자기·전복·성게·꽃게를 뚝배기에 넣어 된장 국물에 보글보글 끓여낸 제주의 바다 모둠이에요. 한 뚝배기에 섬 전체의 해산이 담겨 있어요.",
-          ja: "済州沖のオブンジャギ（小鮑）・アワビ・ウニ・ワタリガニを土鍋に入れて味噌スープでぐつぐつ煮込む済州の海の盛り合わせです。一つの土鍋に島全体の海産が入っています。",
-          en: "Small abalone, abalone, sea urchin and crab from Jeju's coast piled into an earthenware pot with doenjang broth — the island's entire harvest in one bubbling vessel."
-        },
-        ingredients: { ko: ["전복", "성게", "꽃게", "새우", "두부", "된장", "애호박", "대파"], ja: ["アワビ", "ウニ", "ワタリガニ", "エビ", "豆腐", "味噌", "ズッキーニ", "長ネギ"], en: ["Abalone", "Sea urchin", "Blue crab", "Shrimp", "Tofu", "Doenjang", "Zucchini", "Green onion"] },
-        tags: ["해물", "뚝배기", "제주바다"],
-        dupes: {
-          JP: { name: { ko: "카이센 도비나베", ja: "海鮮土鍋", en: "Kaisen Donabe" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 85, sour: 5 }, description: { ko: "여러 해산물을 토기에 미소 국물로 끓여내는 일본식 해산물 뚝배기", ja: "様々な海鮮を土鍋で味噌スープで煮込む日本式海鮮土鍋", en: "Japanese earthenware hot pot with mixed seafood in miso broth" }, ingredients: { ko: ["전복", "새우", "게", "배추", "미소", "다시"], ja: ["アワビ", "エビ", "カニ", "白菜", "味噌", "だし"], en: ["Abalone", "Shrimp", "Crab", "Napa cabbage", "Miso", "Dashi"] }, similarityPercent: 82, matchReason: { ko: "해산물을 된장 국물의 토기에 끓여내는 거의 동일한 요리", ja: "海鮮を味噌スープの土鍋で煮込むほぼ同じ料理", en: "Seafood earthenware miso pot — close Japanese twin" } },
-          CN: { name: { ko: "하이셴 샤보궈", ja: "海鮮砂鍋", en: "Haixian Sha Bao Guo" }, tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 85, sour: 5 }, description: { ko: "여러 해산물을 토기에 매운 국물로 끓이는 중국식 해물 샤보궈", ja: "様々な海鮮を土鍋で辛いスープで煮込む中国式海鮮土鍋", en: "Chinese earthenware hot pot with mixed seafood in spicy broth" }, ingredients: { ko: ["전복", "새우", "게", "두부", "두반장", "대파"], ja: ["アワビ", "エビ", "カニ", "豆腐", "豆板醤", "長ネギ"], en: ["Abalone", "Shrimp", "Crab", "Tofu", "Doubanjiang", "Green onion"] }, similarityPercent: 80, matchReason: { ko: "해산물을 토기에 끓여 먹는 거의 동일한 요리", ja: "海鮮を土鍋で煮込むほぼ同じ料理", en: "Seafood clay pot — close Chinese sibling" } },
-          TH: { name: { ko: "똠 얌 탈레 뚝배기", ja: "トムヤム・タレ・土鍋", en: "Clay Pot Tom Yum Talay" }, tasteProfile: { sweet: 10, salty: 55, spicy: 60, umami: 80, sour: 25 }, description: { ko: "태국식 해산물 톰얌을 토기에 담아 끓여 먹는 매콤 새콤한 해물탕", ja: "タイ式海鮮トムヤムを土鍋で煮込む辛酸っぱい海鮮鍋", en: "Thai tom yum talay served in clay pot" }, ingredients: { ko: ["새우", "조개", "오징어", "레몬그라스", "라임", "갈랑갈"], ja: ["エビ", "貝", "イカ", "レモングラス", "ライム", "ガランガル"], en: ["Shrimp", "Clam", "Squid", "Lemongrass", "Lime", "Galangal"] }, similarityPercent: 75, matchReason: { ko: "해산물을 토기에 매콤 새콤하게 끓여내는 공통점", ja: "海鮮を土鍋で辛酸っぱく煮込む共通点", en: "Clay pot tom yum — Thai counterpart" } },
-          VN: { name: { ko: "러우 하이산 노이 닷", ja: "ラウ・ハイサン・ノイ・ダット", en: "Lẩu Hải Sản Nồi Đất" }, tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 85, sour: 15 }, description: { ko: "여러 해산물을 토기에 매운 국물로 끓이는 베트남식 해산물 전골", ja: "様々な海鮮を土鍋で辛いスープで煮込むベトナム式海鮮鍋", en: "Vietnamese clay pot seafood hot pot in spicy broth" }, ingredients: { ko: ["새우", "오징어", "게", "타마린드", "토마토", "피시소스"], ja: ["エビ", "イカ", "カニ", "タマリンド", "トマト", "魚醤"], en: ["Shrimp", "Squid", "Crab", "Tamarind", "Tomato", "Fish sauce"] }, similarityPercent: 75, matchReason: { ko: "해산물을 토기에 끓여내는 공통 전통", ja: "海鮮を土鍋で煮込む共通伝統", en: "Clay pot seafood — Vietnamese counterpart" } },
-          MY: { name: { ko: "클레이 팟 하이셴", ja: "クレイポット海鮮", en: "Clay Pot Seafood" }, tasteProfile: { sweet: 10, salty: 55, spicy: 45, umami: 85, sour: 10 }, description: { ko: "여러 해산물을 토기에 삼발 국물로 끓이는 말레이식 해산물 뚝배기", ja: "様々な海鮮を土鍋でサンバルスープで煮込むマレー式海鮮土鍋", en: "Malaysian clay pot seafood in sambal broth" }, ingredients: { ko: ["새우", "조개", "오징어", "삼발", "코코넛밀크", "레몬그라스"], ja: ["エビ", "貝", "イカ", "サンバル", "ココナッツミルク", "レモングラス"], en: ["Shrimp", "Clam", "Squid", "Sambal", "Coconut milk", "Lemongrass"] }, similarityPercent: 77, matchReason: { ko: "해산물을 토기에 매운 양념으로 끓이는 해안식", ja: "海鮮を土鍋で辛いタレで煮込む海岸式", en: "Clay pot sambal seafood — Malaysian counterpart" } },
-          ID: { name: { ko: "파페 이칸 타나", ja: "ペペ・イカン・タナ", en: "Pepes Ikan Tanah" }, tasteProfile: { sweet: 10, salty: 55, spicy: 55, umami: 85, sour: 10 }, description: { ko: "여러 해산물을 토기에 강황·칠리·레몬그라스와 끓여내는 인도네시아식 해산물 뚝배기", ja: "様々な海鮮を土鍋でウコン・唐辛子・レモングラスと煮込むインドネシア式海鮮土鍋", en: "Indonesian clay pot seafood with turmeric, chili and lemongrass" }, ingredients: { ko: ["새우", "오징어", "조개", "강황", "칠리", "레몬그라스"], ja: ["エビ", "イカ", "貝", "ウコン", "唐辛子", "レモングラス"], en: ["Shrimp", "Squid", "Clam", "Turmeric", "Chili", "Lemongrass"] }, similarityPercent: 72, matchReason: { ko: "해산물을 토기에 향신 양념과 끓이는 동남아 해석", ja: "海鮮を土鍋でスパイスタレと煮込む東南アジア解釈", en: "Clay pot spiced seafood — Indonesian counterpart" } },
-          US: { name: { ko: "클램 베이크", ja: "クラムベイク", en: "Clam Bake" }, tasteProfile: { sweet: 5, salty: 60, spicy: 15, umami: 85, sour: 10 }, description: { ko: "여러 해산물과 옥수수·감자를 냄비에 쪄내는 미국 동부식 해산물 모듬", ja: "様々な海鮮とトウモロコシ・ジャガイモを鍋で蒸すアメリカ東部式海鮮盛り合わせ", en: "American East Coast clambake with seafood, corn and potato" }, ingredients: { ko: ["조개", "새우", "게", "옥수수", "감자", "버터"], ja: ["貝", "エビ", "カニ", "トウモロコシ", "ジャガイモ", "バター"], en: ["Clam", "Shrimp", "Crab", "Corn", "Potato", "Butter"] }, similarityPercent: 70, matchReason: { ko: "여러 해산물을 한 그릇에 모아 먹는 공통점", ja: "様々な海鮮を一つにまとめて食べる共通点", en: "Clam bake — American counterpart" } },
-          IT: { name: { ko: "주파 디 페체 인 코치오", ja: "ズッパ・ディ・ペッシェ・イン・コッチョ", en: "Zuppa di Pesce in Coccio" }, tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 85, sour: 15 }, description: { ko: "여러 해산물을 토기에 토마토·와인과 끓여낸 이탈리아식 해물 스튜", ja: "様々な海鮮を土鍋でトマト・ワインで煮込むイタリア式海鮮シチュー", en: "Italian clay pot seafood stew in tomato-wine broth" }, ingredients: { ko: ["흰살 생선", "새우", "홍합", "토마토", "화이트와인", "페페론치노"], ja: ["白身魚", "エビ", "ムール貝", "トマト", "白ワイン", "ペペロンチーノ"], en: ["White fish", "Shrimp", "Mussel", "Tomato", "White wine", "Peperoncino"] }, similarityPercent: 75, matchReason: { ko: "해산물을 토기에 모아 끓이는 지중해 전통", ja: "海鮮を土鍋で煮込む地中海伝統", en: "Clay pot seafood stew — Italian counterpart" } },
-          FR: { name: { ko: "부이야베스 테르 퀴트", ja: "ブイヤベース・テール・キュイット", en: "Bouillabaisse Terre Cuite" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 85, sour: 15 }, description: { ko: "여러 해산물을 토기에 사프란·토마토와 끓여낸 프로방스식 해산물 스튜", ja: "様々な海鮮を土鍋でサフラン・トマトで煮込むプロヴァンス式海鮮シチュー", en: "Provençal clay pot bouillabaisse with saffron and tomato" }, ingredients: { ko: ["생선", "새우", "홍합", "토마토", "사프란", "마늘"], ja: ["魚", "エビ", "ムール貝", "トマト", "サフラン", "ニンニク"], en: ["Fish", "Shrimp", "Mussel", "Tomato", "Saffron", "Garlic"] }, similarityPercent: 75, matchReason: { ko: "해산물을 토기에 모아 끓이는 유럽 해안 전통", ja: "海鮮を土鍋で煮込むヨーロッパ海岸伝統", en: "Clay pot bouillabaisse — French counterpart" } },
-          IN: { name: { ko: "고아 시푸드 카디야", ja: "ゴア・シーフード・カディヤ", en: "Goan Seafood Cazdia" }, tasteProfile: { sweet: 10, salty: 55, spicy: 60, umami: 85, sour: 20 }, description: { ko: "여러 해산물을 토기에 코코넛·타마린드와 끓여낸 고아식 매운 해산물 커리", ja: "様々な海鮮を土鍋でココナッツ・タマリンドで煮込むゴア式辛口海鮮カレー", en: "Goan clay pot seafood curry with coconut and tamarind" }, ingredients: { ko: ["새우", "생선", "조개", "코코넛밀크", "타마린드", "커리잎"], ja: ["エビ", "魚", "貝", "ココナッツミルク", "タマリンド", "カレーリーフ"], en: ["Shrimp", "Fish", "Clam", "Coconut milk", "Tamarind", "Curry leaves"] }, similarityPercent: 72, matchReason: { ko: "해산물을 토기에 향신 국물로 끓이는 남인도 해석", ja: "海鮮を土鍋でスパイススープで煮込む南インド解釈", en: "Clay pot seafood curry — Indian counterpart" } },
-          ES: { name: { ko: "카수엘라 데 마리스코스", ja: "カスエラ・デ・マリスコス", en: "Cazuela de Mariscos" }, tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 85, sour: 15 }, description: { ko: "여러 해산물을 토기에 사프란·파프리카와 끓여낸 스페인 갈리시아식 해산물 뚝배기", ja: "様々な海鮮を土鍋でサフラン・パプリカで煮込むスペイン・ガリシア式海鮮土鍋", en: "Galician clay pot seafood with saffron and paprika" }, ingredients: { ko: ["생선", "새우", "홍합", "사프란", "파프리카", "양파"], ja: ["魚", "エビ", "ムール貝", "サフラン", "パプリカ", "玉ねぎ"], en: ["Fish", "Shrimp", "Mussel", "Saffron", "Paprika", "Onion"] }, similarityPercent: 78, matchReason: { ko: "해산물을 토기에 한 번에 모아 끓이는 지중해 전통", ja: "海鮮を土鍋で一度にまとめて煮込む地中海伝統", en: "Cazuela de mariscos — Spanish counterpart" } },
-          MX: { name: { ko: "몰카헤테 데 마리스코스", ja: "モルカヘテ・デ・マリスコス", en: "Molcajete de Mariscos" }, tasteProfile: { sweet: 10, salty: 55, spicy: 45, umami: 85, sour: 15 }, description: { ko: "여러 해산물을 돌절구에 매운 살사와 끓여낸 멕시코식 해산물 뚝배기", ja: "様々な海鮮を石臼で辛いサルサと煮込むメキシコ式海鮮土鍋", en: "Mexican molcajete seafood with spicy salsa" }, ingredients: { ko: ["새우", "오징어", "게", "살사", "치포틀레", "라임"], ja: ["エビ", "イカ", "カニ", "サルサ", "チポトレ", "ライム"], en: ["Shrimp", "Squid", "Crab", "Salsa", "Chipotle", "Lime"] }, similarityPercent: 72, matchReason: { ko: "해산물을 토기·돌절구에 모아 끓이는 공통점", ja: "海鮮を土鍋・石臼でまとめて煮込む共通点", en: "Molcajete seafood — Mexican counterpart" } }
         },
         isLocalSpecialty: false,
       },
@@ -3781,36 +3435,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "busan-ssiat-hotteok",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-ssiat-hotteok.jpeg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
-        name: { ko: "씨앗호떡", ja: "シアッホットック", en: "Seed Hotteok" },
-        region: "busan",
-        tasteProfile: { sweet: 55, salty: 15, spicy: 5, umami: 20, sour: 5 },
-        storyDescription: {
-          ko: "부산 남포동을 대표하는 길거리 간식! 반죽을 기름에 노릇하게 부쳐 가위로 잘라 해바라기·호박씨·땅콩을 가득 채워 넣어요. 한 입 베어 물면 흑설탕이 꿀처럼 흐르고 씨앗들이 바삭거려요.",
-          ja: "釜山・南浦洞の代表的な路上おやつ！生地を油できつね色に焼き、ハサミで切って、ひまわり・かぼちゃの種・ピーナッツをたっぷり詰め込みます。一口かじれば黒糖が蜜のように流れ、種がカリカリと鳴ります。",
-          en: "The iconic street snack of Busan's Nampo-dong! Fried dough is snipped open with scissors and stuffed with sunflower seeds, pumpkin seeds and peanuts. One bite — and molten brown sugar flows like honey while the seeds crunch."
-        },
-        ingredients: { ko: ["밀가루", "이스트", "흑설탕", "해바라기씨", "호박씨", "땅콩", "계피"], ja: ["小麦粉", "イースト", "黒糖", "ひまわりの種", "かぼちゃの種", "ピーナッツ", "シナモン"], en: ["Flour", "Yeast", "Brown sugar", "Sunflower seeds", "Pumpkin seeds", "Peanuts", "Cinnamon"] },
-        tags: ["길거리", "남포동", "달콤"],
-        dupes: {
-          JP: { name: { ko: "이마가와야키", ja: "今川焼き", en: "Imagawayaki" }, tasteProfile: { sweet: 60, salty: 10, spicy: 0, umami: 15, sour: 0 }, description: { ko: "팥소나 커스터드를 넣어 원반 모양으로 구운 일본식 과자", ja: "あんやカスタードを入れて丸く焼いた和菓子", en: "Japanese round pastry filled with sweet bean paste or custard" }, ingredients: { ko: ["밀가루", "달걀", "팥소", "설탕", "우유"], ja: ["小麦粉", "卵", "あん", "砂糖", "牛乳"], en: ["Flour", "Egg", "Red bean paste", "Sugar", "Milk"] }, similarityPercent: 70, matchReason: { ko: "달콤한 속을 넣어 팬에 구워낸 길거리 간식의 공통점", ja: "甘い餡を入れてフライパンで焼いた屋台おやつの共通点", en: "Sweet-filled griddle snack — Japanese counterpart" } },
-          CN: { name: { ko: "간 빙", ja: "甘餅", en: "Gan Bing (Sweet Stuffed Pancake)" }, tasteProfile: { sweet: 55, salty: 15, spicy: 0, umami: 20, sour: 5 }, description: { ko: "속에 깨와 흑설탕을 넣고 구운 중국식 길거리 간식", ja: "中にゴマと黒糖を入れて焼いた中国式屋台おやつ", en: "Chinese street pancake stuffed with sesame and brown sugar" }, ingredients: { ko: ["밀가루", "흑깨", "흑설탕", "땅콩", "이스트"], ja: ["小麦粉", "黒ゴマ", "黒糖", "ピーナッツ", "イースト"], en: ["Flour", "Black sesame", "Brown sugar", "Peanut", "Yeast"] }, similarityPercent: 78, matchReason: { ko: "반죽 속에 달콤한 깨·설탕·땅콩을 넣어 구운 포맷이 매우 유사", ja: "生地の中に甘いゴマ・砂糖・ピーナッツを入れて焼くフォーマットが非常に類似", en: "Dough stuffed with sweet sesame and nuts — closest Chinese sibling" } },
-          TH: { name: { ko: "카놈 빠앙", ja: "カノム・パン", en: "Kanom Bua Loy" }, tasteProfile: { sweet: 60, salty: 10, spicy: 0, umami: 15, sour: 5 }, description: { ko: "쌀가루 반죽에 팜슈가와 코코넛을 넣어 구운 태국 간식", ja: "米粉生地にパームシュガーとココナッツを入れて焼いたタイのおやつ", en: "Thai snack of rice-flour dough filled with palm sugar and coconut" }, ingredients: { ko: ["쌀가루", "팜슈가", "코코넛", "참깨", "판단"], ja: ["米粉", "パームシュガー", "ココナッツ", "ゴマ", "パンダン"], en: ["Rice flour", "Palm sugar", "Coconut", "Sesame", "Pandan"] }, similarityPercent: 63, matchReason: { ko: "반죽에 달콤한 속을 넣어 구워내는 동남아 간식 전통", ja: "生地に甘い具を入れて焼く東南アジアのおやつ伝統", en: "Dough with sweet filling — Thai counterpart" } },
-          VN: { name: { ko: "반 란", ja: "バイン・ラン", en: "Bánh Rán" }, tasteProfile: { sweet: 50, salty: 10, spicy: 0, umami: 15, sour: 5 }, description: { ko: "찹쌀 반죽에 녹두소를 넣어 참깨를 입혀 튀긴 베트남식 간식", ja: "もち米生地に緑豆あんを入れてゴマをまぶして揚げたベトナムのおやつ", en: "Vietnamese deep-fried sticky-rice ball with mung bean paste and sesame coating" }, ingredients: { ko: ["찹쌀가루", "녹두소", "참깨", "설탕", "식용유"], ja: ["もち米粉", "緑豆あん", "ゴマ", "砂糖", "食用油"], en: ["Glutinous rice flour", "Mung bean paste", "Sesame", "Sugar", "Oil"] }, similarityPercent: 62, matchReason: { ko: "반죽 속에 달콤한 속을 넣어 기름에 튀긴 간식", ja: "生地の中に甘い具を入れて油で揚げたおやつ", en: "Dough with sweet filling deep-fried — Vietnamese counterpart" } },
-          MY: { name: { ko: "아팜 발릭", ja: "アパム・バリック", en: "Apam Balik" }, tasteProfile: { sweet: 55, salty: 10, spicy: 0, umami: 20, sour: 5 }, description: { ko: "땅콩과 설탕, 옥수수를 넣고 반으로 접어 구운 말레이식 팬케이크", ja: "ピーナッツと砂糖、コーンを入れて半分に折って焼いたマレー式パンケーキ", en: "Malaysian folded pancake stuffed with peanuts, sugar and corn" }, ingredients: { ko: ["밀가루", "땅콩", "설탕", "옥수수", "버터"], ja: ["小麦粉", "ピーナッツ", "砂糖", "コーン", "バター"], en: ["Flour", "Peanut", "Sugar", "Corn", "Butter"] }, similarityPercent: 77, matchReason: { ko: "반죽에 땅콩과 설탕을 넣어 팬에 노릇하게 구워낸 간식의 거의 동일한 스타일", ja: "生地にピーナッツと砂糖を入れてフライパンで焼くおやつのほぼ同じスタイル", en: "Pancake stuffed with peanuts and sugar — very close Malaysian sibling" } },
-          ID: { name: { ko: "세라비 마니스", ja: "セラビ・マニス", en: "Serabi Manis" }, tasteProfile: { sweet: 55, salty: 10, spicy: 0, umami: 15, sour: 5 }, description: { ko: "쌀가루 반죽에 팜슈가 시럽을 더해 구운 인도네시아 전통 간식", ja: "米粉生地にパームシュガーシロップを加えて焼いたインドネシア伝統のおやつ", en: "Indonesian traditional pan-cooked rice-flour pancake with palm sugar syrup" }, ingredients: { ko: ["쌀가루", "코코넛밀크", "팜슈가", "판단", "설탕"], ja: ["米粉", "ココナッツミルク", "パームシュガー", "パンダン", "砂糖"], en: ["Rice flour", "Coconut milk", "Palm sugar", "Pandan", "Sugar"] }, similarityPercent: 67, matchReason: { ko: "반죽에 달콤한 시럽이 스며든 팬 간식의 공통점", ja: "生地に甘いシロップが染み込んだパンおやつの共通点", en: "Pan-cooked pancake with sweet syrup — Indonesian cousin" } },
-          US: { name: { ko: "스터프드 팬케이크", ja: "スタッフド・パンケーキ", en: "Stuffed Pancake" }, tasteProfile: { sweet: 60, salty: 15, spicy: 0, umami: 20, sour: 5 }, description: { ko: "반죽에 견과와 초콜릿을 채워 구운 미국식 디저트 팬케이크", ja: "生地にナッツとチョコレートを詰めて焼いたアメリカ式デザートパンケーキ", en: "American dessert pancake stuffed with nuts and chocolate" }, ingredients: { ko: ["밀가루", "호두", "피칸", "초콜릿", "버터", "메이플 시럽"], ja: ["小麦粉", "クルミ", "ピーカン", "チョコレート", "バター", "メープルシロップ"], en: ["Flour", "Walnut", "Pecan", "Chocolate", "Butter", "Maple syrup"] }, similarityPercent: 65, matchReason: { ko: "반죽 속에 달콤한 견과류를 가득 채운 디저트 간식", ja: "生地の中に甘いナッツをたっぷり詰めたデザートおやつ", en: "Nut-stuffed dessert pancake — Western counterpart" } },
-          IT: { name: { ko: "판제로티 돌체", ja: "パンゼロッティ・ドルチェ", en: "Panzerotto Dolce" }, tasteProfile: { sweet: 55, salty: 10, spicy: 0, umami: 15, sour: 5 }, description: { ko: "달콤한 리코타와 초콜릿을 반죽에 넣어 튀긴 이탈리아 남부식 달콤한 간식", ja: "甘いリコッタとチョコレートを生地に詰めて揚げた南イタリア風甘いおやつ", en: "Southern Italian sweet fried turnover stuffed with ricotta and chocolate" }, ingredients: { ko: ["밀가루", "리코타", "초콜릿", "설탕", "오렌지 껍질"], ja: ["小麦粉", "リコッタ", "チョコレート", "砂糖", "オレンジの皮"], en: ["Flour", "Ricotta", "Chocolate", "Sugar", "Orange peel"] }, similarityPercent: 62, matchReason: { ko: "반죽 속에 달콤한 속을 넣어 튀기거나 구운 길거리 간식", ja: "生地の中に甘い具を入れて揚げるか焼く屋台おやつ", en: "Sweet-stuffed fried dough — Italian cousin" } },
-          FR: { name: { ko: "크레이프 아 라 노와", ja: "クレープ・ア・ラ・ノワ", en: "Crêpe aux Noix" }, tasteProfile: { sweet: 55, salty: 10, spicy: 0, umami: 15, sour: 5 }, description: { ko: "얇은 크레이프에 호두·꿀·흑설탕을 넣어 말아낸 프랑스식 달콤한 크레이프", ja: "薄いクレープにクルミ・ハチミツ・黒糖を入れて巻いたフランス式甘いクレープ", en: "French sweet crepe rolled with walnuts, honey and brown sugar" }, ingredients: { ko: ["크레이프 반죽", "호두", "꿀", "흑설탕", "버터"], ja: ["クレープ生地", "クルミ", "ハチミツ", "黒糖", "バター"], en: ["Crepe batter", "Walnut", "Honey", "Brown sugar", "Butter"] }, similarityPercent: 63, matchReason: { ko: "반죽에 견과와 꿀을 넣어 부드럽게 말아내는 달콤 간식", ja: "生地にナッツとハチミツを入れて柔らかく巻く甘いおやつ", en: "Crepe with nuts and honey — French counterpart" } },
-          IN: { name: { ko: "틸 폴리", ja: "ティル・ポリ", en: "Til Poli" }, tasteProfile: { sweet: 55, salty: 10, spicy: 0, umami: 20, sour: 5 }, description: { ko: "참깨와 재거리(자연 설탕)를 반죽에 넣어 구운 인도 마하라슈트라식 간식", ja: "ゴマとジャグリー（天然糖）を生地に入れて焼いたインド・マハラシュトラ式のおやつ", en: "Indian Maharashtrian snack of flatbread stuffed with sesame seeds and jaggery" }, ingredients: { ko: ["밀가루", "흑깨", "재거리", "기", "카다멈"], ja: ["小麦粉", "黒ゴマ", "ジャグリー", "ギー", "カルダモン"], en: ["Flour", "Black sesame", "Jaggery", "Ghee", "Cardamom"] }, similarityPercent: 67, matchReason: { ko: "반죽에 참깨·설탕을 듬뿍 넣어 팬에 구워낸 간식", ja: "生地にゴマ・砂糖をたっぷり入れてフライパンで焼くおやつ", en: "Sesame-and-sugar-stuffed flatbread — Indian cousin" } },
-          ES: { name: { ko: "엠파나다 돌체", ja: "エンパナダ・ドゥルセ", en: "Empanada Dulce" }, tasteProfile: { sweet: 55, salty: 10, spicy: 0, umami: 15, sour: 5 }, description: { ko: "반죽에 둘세 데 레체·견과를 넣어 구운 스페인식 달콤한 엠파나다", ja: "生地にドゥルセ・デ・レチェ・ナッツを入れて焼いたスペイン式の甘いエンパナダ", en: "Spanish sweet empanada stuffed with dulce de leche and nuts" }, ingredients: { ko: ["밀가루", "둘세 데 레체", "호두", "설탕", "버터"], ja: ["小麦粉", "ドゥルセ・デ・レチェ", "クルミ", "砂糖", "バター"], en: ["Flour", "Dulce de leche", "Walnut", "Sugar", "Butter"] }, similarityPercent: 60, matchReason: { ko: "반죽에 달콤한 캐러멜과 견과를 넣어 구운 간식", ja: "生地に甘いキャラメルとナッツを入れて焼くおやつ", en: "Sweet caramel-and-nut-stuffed pastry — Iberian counterpart" } },
-          MX: { name: { ko: "고르디타 돌체", ja: "ゴルディタ・ドゥルセ", en: "Gordita Dulce" }, tasteProfile: { sweet: 55, salty: 10, spicy: 5, umami: 15, sour: 5 }, description: { ko: "옥수수 반죽에 피고 설탕과 견과를 채워 구운 멕시코식 달콤한 고르디타", ja: "トウモロコシ生地にパン設計糖とナッツを詰めて焼いたメキシコ式甘いゴルディータ", en: "Mexican sweet corn-masa gordita stuffed with piloncillo sugar and nuts" }, ingredients: { ko: ["마사 반죽", "피고 설탕", "호두", "계피", "땅콩"], ja: ["マサ生地", "ピロンシージョ", "クルミ", "シナモン", "ピーナッツ"], en: ["Masa dough", "Piloncillo", "Walnut", "Cinnamon", "Peanut"] }, similarityPercent: 62, matchReason: { ko: "반죽에 달콤한 설탕과 견과를 넣어 구운 따뜻한 간식", ja: "生地に甘い砂糖とナッツを入れて焼いた温かいおやつ", en: "Sweet-sugar-and-nut-stuffed masa pocket — Mexican cousin" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "busan-hwae",
         image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/busan-hwae.jpeg",
         name: { ko: "활어회", ja: "活魚刺身", en: "Live Fish Sashimi" },
@@ -4566,48 +4190,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "gyeongju-milmyeon",
-        name: { ko: "밀면", ja: "ミルミョン", en: "Milmyeon" },
-        region: "gyeongju",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-milmyeon.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
-        tasteProfile: { sweet: 20, salty: 45, spicy: 50, umami: 60, sour: 35 },
-        storyDescription: {
-          ko: "밀가루 면을 차갑게 먹는 경주식 냉면이에요. 한방 재료가 들어간 시원한 국물에 쫄깃한 면을 담고, 고소하게 볶은 고기와 채소를 올려서 먹으면 여름 더위를 단번에 날려버려요.",
-          ja: "小麦粉麺を冷やして食べる慶州式冷麺です。漢方食材が入った冷たいスープにコシのある麺を浸し、香ばしく炒めた肉と野菜を乗せて食べると、夏の暑さを一気に吹き飛ばしてくれます。",
-          en: "Gyeongju-style cold noodles made from wheat flour. Chewy noodles bathed in an herbal cold broth, topped with savory stir-fried meat and fresh vegetables — one bowl and the summer heat simply vanishes."
-        },
-        ingredients: { ko: ["밀가루 면", "한방 육수", "오이", "계란", "돼지고기", "겨자", "식초"], ja: ["小麦粉麺", "漢方だし", "きゅうり", "卵", "豚肉", "からし", "酢"], en: ["Wheat noodles", "Herbal broth", "Cucumber", "Egg", "Pork", "Mustard", "Vinegar"] },
-        tags: ["냉면", "여름", "쫄깃"],
-                dupes: {
-          JP: {
-            name: { ko: "한방 라멘", ja: "薬膳ラーメン", en: "Herbal Ramen" },
-            tasteProfile: { sweet: 8, salty: 45, spicy: 15, umami: 68, sour: 5 },
-            description: { ko: "당귀·황기 등 약재를 넣어 끓인 일본식 한방 라멘", ja: "当帰・黄耆などの生薬を入れて煮込んだ薬膳ラーメン", en: "Japanese ramen with medicinal herbs like angelica and astragalus" },
-            ingredients: { ko: ["밀면", "당귀", "황기", "닭육수", "간장", "파"], ja: ["中華麺", "当帰", "黄耆", "鶏スープ", "醤油", "ねぎ"], en: ["wheat noodles", "angelica root", "astragalus", "chicken broth", "soy sauce", "scallion"] },
-            similarityPercent: 82,
-            matchReason: { ko: "약재를 넣어 풍미를 낸 밀면 국수라는 점에서 경주 밀면과 유사합니다.", ja: "薬材で風味をつけた小麦麺スープという点で경주 밀면に似ています。", en: "Both are wheat noodle soups enhanced with herbal/medicinal ingredients for a distinctive deep flavor." }
-          },
-          CN: {
-            name: { ko: "한약재 육수 면", ja: "薬膳スープ麺", en: "Herbal Medicine Noodle Soup" },
-            tasteProfile: { sweet: 10, salty: 42, spicy: 8, umami: 65, sour: 3 },
-            description: { ko: "인삼·대추 등 한약재를 우린 육수로 만든 중국식 국수", ja: "人参・なつめなどの薬材を煮出したスープで作る中国式麺料理", en: "Chinese noodle soup made with broth steeped in ginseng and jujube" },
-            ingredients: { ko: ["국수", "인삼", "대추", "구기자", "닭고기", "소금"], ja: ["麺", "人参", "なつめ", "クコの実", "鶏肉", "塩"], en: ["noodles", "ginseng", "jujube", "wolfberry", "chicken", "salt"] },
-            similarityPercent: 85,
-            matchReason: { ko: "한약재를 우린 육수에 밀면을 끓여 먹는 방식이 경주 밀면과 동일한 개념입니다.", ja: "薬材を煮出したスープで麺を食べる方式が경주 밀면と同じコンセプトです。", en: "Both steep medicinal/herbal ingredients in broth and serve over wheat noodles — the same culinary concept." }
-          },
-          VN: {
-            name: { ko: "퍼 까 임", ja: "フォーカイム", en: "Phở Gà Im" },
-            tasteProfile: { sweet: 12, salty: 38, spicy: 5, umami: 62, sour: 8 },
-            description: { ko: "향신료로 오래 끓인 닭 육수에 쌀국수를 넣은 베트남 국수", ja: "香辛料で長時間煮込んだ鶏スープの米麺ベトナム料理", en: "Vietnamese rice noodle soup with long-simmered aromatic chicken broth" },
-            ingredients: { ko: ["쌀국수", "닭고기", "팔각", "생강", "계피", "피시소스"], ja: ["米麺", "鶏肉", "八角", "生姜", "シナモン", "ナンプラー"], en: ["rice noodles", "chicken", "star anise", "ginger", "cinnamon", "fish sauce"] },
-            similarityPercent: 75,
-            matchReason: { ko: "향신료와 약재로 깊이를 낸 육수에 면을 담아 먹는 방식이 경주 밀면과 유사합니다.", ja: "香辛料と薬材で深みを出したスープに麺を入れて食べる方式が경주 밀면に似ています。", en: "Both serve noodles in a deep, aromatic broth built from herbs and spices — phở uses rice noodles while milmyeon uses wheat." }
-          }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "gyeongju-hanwoo-bulgogi",
         image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-hanwoo-bulgogi.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-알렉스 분도",
@@ -4664,36 +4246,6 @@ export const regions: Region[] = [
           IN: { name: { ko: "탈리 플래터", ja: "ターリー・プレート", en: "Thali Platter" }, tasteProfile: { sweet: 15, salty: 50, spicy: 40, umami: 70, sour: 15 }, description: { ko: "둥근 쟁반에 여러 반찬과 밥·빵을 담아내는 인도식 완전한 한 끼", ja: "丸いトレイに様々なおかずとご飯・パンを盛るインド式の完全な一食", en: "Indian round thali with assorted curries, rice and bread in compartments" }, ingredients: { ko: ["밥", "달", "커리", "요거트", "피클", "차파티"], ja: ["ご飯", "ダール", "カレー", "ヨーグルト", "ピクルス", "チャパティ"], en: ["Rice", "Dal", "Curry", "Yogurt", "Pickle", "Chapati"] }, similarityPercent: 73, matchReason: { ko: "구획에 여러 음식을 담아 한 상으로 내는 전통", ja: "区画に様々な料理を盛り一膳として出す伝統", en: "Compartmentalized platter tradition — Indian counterpart" } },
           ES: { name: { ko: "타블라 데 타파스", ja: "タブラ・デ・タパス", en: "Tabla de Tapas" }, tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 70, sour: 15 }, description: { ko: "하몽·치즈·올리브·빵 등 여러 타파스를 한 보드에 담아내는 스페인식 모듬", ja: "ハモン・チーズ・オリーブ・パンなど様々なタパスを一つのボードに盛るスペイン式モリ", en: "Spanish tapas board with jamón, cheese, olives and bread" }, ingredients: { ko: ["하몽", "만체고", "올리브", "초리소", "빵", "피멘토"], ja: ["ハモン", "マンチェゴ", "オリーブ", "チョリソ", "パン", "ピメント"], en: ["Jamón", "Manchego", "Olives", "Chorizo", "Bread", "Pimento"] }, similarityPercent: 68, matchReason: { ko: "여러 소스와 재료를 한 상에 담아 나누는 유럽식 공동 식사", ja: "様々なソースと食材を一膳に盛り分け合うヨーロッパ式共同食事", en: "Tapas-sharing platter — Spanish counterpart" } },
           MX: { name: { ko: "보타나 플래터", ja: "ボタナ・プラッター", en: "Botana Platter" }, tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 65, sour: 15 }, description: { ko: "과카몰리·살사·치차론·토스타다를 한 접시에 담는 멕시코식 간식 모듬", ja: "ワカモレ・サルサ・チチャロン・トスターダを一皿に盛るメキシコ式おやつモリ", en: "Mexican shared botana platter with guacamole, salsa, chicharrón and tostadas" }, ingredients: { ko: ["과카몰리", "살사", "치차론", "토스타다", "할라페뇨", "치즈"], ja: ["ワカモレ", "サルサ", "チチャロン", "トスターダ", "ハラペーニョ", "チーズ"], en: ["Guacamole", "Salsa", "Chicharrón", "Tostada", "Jalapeño", "Cheese"] }, similarityPercent: 63, matchReason: { ko: "여러 음식을 한 접시에 담아 함께 먹는 공동 식사의 공통점", ja: "様々な料理を一皿に盛って共に食べる共同食事の共通点", en: "Shared multi-ingredient platter — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "gyeongju-doenjang-jjigae",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/gyeongju-doenjang-jjigae.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
-        name: { ko: "된장찌개", ja: "テンジャンチゲ", en: "Doenjang Jjigae" },
-        region: "gyeongju",
-        tasteProfile: { sweet: 10, salty: 65, spicy: 20, umami: 90, sour: 5 },
-        storyDescription: {
-          ko: "경주에서 3년 이상 묵힌 된장을 풀어 두부와 호박·버섯을 듬뿍 넣고 뚝배기에서 끓여낸 구수한 찌개예요. 한 숟갈만 떠도 천년 역사의 깊이가 입 안에 펼쳐져요.",
-          ja: "慶州で3年以上熟成させたテンジャンを溶かし、豆腐とズッキーニ・きのこをたっぷり入れて土鍋で煮込んだ香ばしいチゲです。一さじ口に入れるだけで、千年の歴史の深さが広がります。",
-          en: "Made with doenjang aged at least three years in Gyeongju, brimming with tofu, zucchini and mushrooms in a bubbling earthenware pot. One spoonful unfolds a millennium of history in your mouth."
-        },
-        ingredients: { ko: ["경주 묵은 된장", "두부", "애호박", "버섯", "양파", "대파", "멸치 육수", "청양고추"], ja: ["慶州熟成テンジャン", "豆腐", "ズッキーニ", "きのこ", "玉ねぎ", "長ネギ", "煮干しだし", "青唐辛子"], en: ["Aged Gyeongju doenjang", "Tofu", "Zucchini", "Mushroom", "Onion", "Green onion", "Anchovy broth", "Green chili"] },
-        tags: ["된장", "전통", "뚝배기"],
-        dupes: {
-          JP: { name: { ko: "아카다시 미소시루", ja: "赤だし味噌汁", en: "Akadashi Miso Shiru" }, tasteProfile: { sweet: 10, salty: 65, spicy: 5, umami: 90, sour: 5 }, description: { ko: "오랜 숙성 적미소를 기반으로 한 일본식 진한 미소시루", ja: "長期熟成した赤味噌をベースにした日本式の濃厚味噌汁", en: "Japanese dark miso soup based on long-aged red miso" }, ingredients: { ko: ["적미소", "두부", "미역", "파", "가쓰오 다시", "생선"], ja: ["赤味噌", "豆腐", "ワカメ", "ネギ", "かつおだし", "魚"], en: ["Red miso", "Tofu", "Wakame", "Green onion", "Dashi", "Fish"] }, similarityPercent: 82, matchReason: { ko: "오래 숙성된 발효 콩장을 푼 진한 한 그릇의 공통점", ja: "長期熟成の発酵豆味噌を使った濃厚な一杯の共通点", en: "Long-aged bean paste soup — Japanese counterpart" } },
-          CN: { name: { ko: "두반 두부 스튜 숙성", ja: "熟成豆板豆腐シチュー", en: "Aged Doubanjiang Tofu Stew" }, tasteProfile: { sweet: 10, salty: 60, spicy: 45, umami: 85, sour: 5 }, description: { ko: "숙성 두반장으로 두부·채소를 끓여낸 사천식 진한 찌개", ja: "熟成豆板醤で豆腐・野菜を煮込んだ四川式濃厚鍋", en: "Sichuan stew of tofu and vegetables in aged doubanjiang" }, ingredients: { ko: ["숙성 두반장", "두부", "청경채", "대파", "마늘", "돼지고기"], ja: ["熟成豆板醤", "豆腐", "チンゲン菜", "長ネギ", "ニンニク", "豚肉"], en: ["Aged doubanjiang", "Tofu", "Bok choy", "Green onion", "Garlic", "Pork"] }, similarityPercent: 73, matchReason: { ko: "숙성 발효 콩장의 깊은 감칠맛을 살린 찌개", ja: "熟成発酵豆味噌の深い旨味を生かした鍋", en: "Aged bean-paste stew — Chinese counterpart" } },
-          TH: { name: { ko: "탐 카 허브 수프", ja: "トムカー・ハーブスープ", en: "Tom Kha Herb Soup" }, tasteProfile: { sweet: 15, salty: 55, spicy: 30, umami: 80, sour: 20 }, description: { ko: "코코넛과 허브로 깊이를 낸 태국 전통 보양 수프", ja: "ココナッツとハーブで深みを出したタイ伝統の滋養スープ", en: "Thai traditional coconut-herb restorative soup" }, ingredients: { ko: ["코코넛밀크", "갈랑갈", "레몬그라스", "닭고기", "버섯", "라임"], ja: ["ココナッツミルク", "ガランガル", "レモングラス", "鶏肉", "きのこ", "ライム"], en: ["Coconut milk", "Galangal", "Lemongrass", "Chicken", "Mushroom", "Lime"] }, similarityPercent: 63, matchReason: { ko: "깊은 발효 및 향신 감칠맛의 전통 국물", ja: "深い発酵と香辛の旨味の伝統スープ", en: "Deep herbal broth tradition — Thai counterpart" } },
-          VN: { name: { ko: "까인 쭈아 보 미소", ja: "カイン・チュア・ボー・ミソ", en: "Canh Chua with Miso" }, tasteProfile: { sweet: 15, salty: 55, spicy: 15, umami: 80, sour: 30 }, description: { ko: "발효 콩장과 타마린드로 새콤하게 만든 베트남식 발효 국물", ja: "発酵豆味噌とタマリンドで酸味を出したベトナム式発酵スープ", en: "Vietnamese sour fermented soybean broth with tamarind" }, ingredients: { ko: ["발효 콩장", "타마린드", "메기", "토마토", "오크라", "파인애플"], ja: ["発酵豆味噌", "タマリンド", "ナマズ", "トマト", "オクラ", "パイナップル"], en: ["Fermented bean paste", "Tamarind", "Catfish", "Tomato", "Okra", "Pineapple"] }, similarityPercent: 62, matchReason: { ko: "발효 콩장과 신맛이 어우러진 전통 국물 요리", ja: "発酵豆味噌と酸味が調和した伝統スープ料理", en: "Fermented bean paste with sour tradition — Vietnamese counterpart" } },
-          MY: { name: { ko: "말레이 된장 수프", ja: "マレー味噌スープ", en: "Malaysian Soybean Soup" }, tasteProfile: { sweet: 10, salty: 65, spicy: 25, umami: 85, sour: 10 }, description: { ko: "타우쩌우 콩장으로 두부·채소를 오래 끓인 말레이식 된장 수프", ja: "タウチャオ豆味噌で豆腐・野菜を長時間煮込んだマレー式味噌スープ", en: "Malaysian soybean stew with tofu and vegetables in tauchu paste" }, ingredients: { ko: ["타우쩌우", "두부", "샬롯", "생강", "닭고기", "고추"], ja: ["タウチャオ", "豆腐", "エシャロット", "生姜", "鶏肉", "唐辛子"], en: ["Tauchu", "Tofu", "Shallot", "Ginger", "Chicken", "Chili"] }, similarityPercent: 67, matchReason: { ko: "발효 콩장과 두부를 기반으로 한 전통 찌개", ja: "発酵豆味噌と豆腐を基盤にした伝統鍋", en: "Fermented bean paste stew — Malaysian counterpart" } },
-          ID: { name: { ko: "사유르 로데 숙성", ja: "熟成サユール・ロデ", en: "Aged Sayur Lodeh" }, tasteProfile: { sweet: 15, salty: 60, spicy: 25, umami: 80, sour: 5 }, description: { ko: "숙성 발효 콩장을 넣은 인도네시아식 채소 된장 스튜", ja: "熟成発酵豆味噌を入れたインドネシア式野菜味噌シチュー", en: "Indonesian aged soybean-paste vegetable stew" }, ingredients: { ko: ["두부", "공심채", "호박", "코코넛밀크", "템페", "발효 콩장"], ja: ["豆腐", "空心菜", "カボチャ", "ココナッツミルク", "テンペ", "発酵豆味噌"], en: ["Tofu", "Water spinach", "Squash", "Coconut milk", "Tempeh", "Fermented bean paste"] }, similarityPercent: 65, matchReason: { ko: "발효 콩장과 두부로 끓인 전통 채소 수프", ja: "発酵豆味噌と豆腐で煮込む伝統野菜スープ", en: "Fermented bean-paste veg stew — Indonesian counterpart" } },
-          US: { name: { ko: "크림 오브 머쉬룸 진한 버전", ja: "濃厚クリーム・オブ・マッシュルーム", en: "Rich Cream of Mushroom" }, tasteProfile: { sweet: 10, salty: 60, spicy: 0, umami: 85, sour: 5 }, description: { ko: "여러 버섯을 오래 끓여 진한 감칠맛을 낸 미국식 크림 수프", ja: "様々なきのこを長時間煮込んで濃厚な旨味を出したアメリカ式クリームスープ", en: "American deeply flavored cream of mushroom soup with aged mushrooms" }, ingredients: { ko: ["포르치니", "양송이", "양파", "생크림", "버터", "타임"], ja: ["ポルチーニ", "マッシュルーム", "玉ねぎ", "生クリーム", "バター", "タイム"], en: ["Porcini", "Mushroom", "Onion", "Cream", "Butter", "Thyme"] }, similarityPercent: 58, matchReason: { ko: "감칠맛 강한 발효 식품의 깊이를 버섯으로 재현한 수프", ja: "旨味の強い発酵食品の深みをきのこで再現したスープ", en: "Deep umami mushroom soup — Western counterpart" } },
-          IT: { name: { ko: "주파 디 파지올리 스타조나토", ja: "ズッパ・ディ・ファジョーリ・スタジョナート", en: "Aged Zuppa di Fagioli" }, tasteProfile: { sweet: 10, salty: 60, spicy: 5, umami: 80, sour: 10 }, description: { ko: "오래 숙성한 콩과 판체타·로즈마리로 깊이를 낸 이탈리아식 콩 수프", ja: "長期熟成した豆とパンチェッタ・ローズマリーで深みを出したイタリア式豆スープ", en: "Italian aged bean and pancetta soup with rosemary" }, ingredients: { ko: ["카넬리니 콩", "판체타", "로즈마리", "마늘", "토마토", "파마산"], ja: ["カンネッリーニ豆", "パンチェッタ", "ローズマリー", "ニンニク", "トマト", "パルメザン"], en: ["Cannellini beans", "Pancetta", "Rosemary", "Garlic", "Tomato", "Parmesan"] }, similarityPercent: 63, matchReason: { ko: "숙성 재료로 감칠맛을 살린 전통 수프의 공통점", ja: "熟成食材で旨味を生かした伝統スープの共通点", en: "Aged-ingredient deep soup — Italian counterpart" } },
-          FR: { name: { ko: "수프 오 미소 프랑세즈", ja: "スープ・オ・ミソ・フランセーズ", en: "French Miso Soup" }, tasteProfile: { sweet: 10, salty: 60, spicy: 5, umami: 85, sour: 5 }, description: { ko: "프랑스 퓨전으로 미소와 채소·버섯을 끓여낸 된장 수프", ja: "フランス融合で味噌と野菜・きのこを煮込んだ味噌スープ", en: "French-fusion miso soup with vegetables and mushrooms" }, ingredients: { ko: ["미소", "두부", "버섯", "리크", "양파", "허브"], ja: ["味噌", "豆腐", "きのこ", "リーキ", "玉ねぎ", "ハーブ"], en: ["Miso", "Tofu", "Mushroom", "Leek", "Onion", "Herbs"] }, similarityPercent: 65, matchReason: { ko: "발효 콩장으로 깊은 맛을 낸 퓨전 수프", ja: "発酵豆味噌で深い味わいを出した融合スープ", en: "Fermented bean-paste fusion — French counterpart" } },
-          IN: { name: { ko: "달 타드카 숙성", ja: "ダール・タドカ・熟成", en: "Aged Dal Tadka" }, tasteProfile: { sweet: 10, salty: 60, spicy: 40, umami: 80, sour: 10 }, description: { ko: "숙성 발효 콩과 기에 볶은 향신료로 만든 인도식 진한 렌틸 스튜", ja: "熟成発酵豆とギーで炒めたスパイスで作るインド式濃厚レンズ豆シチュー", en: "Indian deep lentil stew with fermented legumes and ghee-tempered spices" }, ingredients: { ko: ["렌틸콩", "기", "커민", "강황", "마늘", "아사페티다"], ja: ["レンズ豆", "ギー", "クミン", "ウコン", "ニンニク", "アサフェティダ"], en: ["Lentils", "Ghee", "Cumin", "Turmeric", "Garlic", "Asafetida"] }, similarityPercent: 72, matchReason: { ko: "발효 콩 기반 진한 국물의 공통점", ja: "発酵豆ベースの濃厚スープの共通点", en: "Deep legume stew — Indian counterpart" } },
-          ES: { name: { ko: "포타헤 데 레기모브레스 에라도", ja: "ポタヘ・デ・レグンブレス・エラード", en: "Aged Potaje de Legumbres" }, tasteProfile: { sweet: 10, salty: 60, spicy: 10, umami: 80, sour: 10 }, description: { ko: "숙성 콩과 초리소·시금치를 끓인 스페인 전통 콩 스튜", ja: "熟成豆とチョリソ・ほうれん草を煮込んだスペイン伝統豆シチュー", en: "Spanish traditional aged legume stew with chorizo and spinach" }, ingredients: { ko: ["흰콩", "초리소", "시금치", "마늘", "양파", "파프리카"], ja: ["白豆", "チョリソ", "ほうれん草", "ニンニク", "玉ねぎ", "パプリカ"], en: ["White beans", "Chorizo", "Spinach", "Garlic", "Onion", "Paprika"] }, similarityPercent: 62, matchReason: { ko: "발효·숙성 재료로 깊은 맛을 내는 전통 콩 요리", ja: "発酵・熟成食材で深い味を出す伝統豆料理", en: "Aged legume stew — Spanish counterpart" } },
-          MX: { name: { ko: "프리홀레스 데 오야 에라도", ja: "熟成フリホーレス・デ・オジャ", en: "Aged Frijoles de Olla" }, tasteProfile: { sweet: 5, salty: 60, spicy: 15, umami: 75, sour: 5 }, description: { ko: "오래 숙성한 검은콩을 에파소테와 라드로 끓여낸 멕시코식 전통 콩 스튜", ja: "長期熟成した黒豆をエパソテとラードで煮込んだメキシコ伝統の豆シチュー", en: "Mexican aged black bean stew with epazote and lard" }, ingredients: { ko: ["검은콩", "에파소테", "라드", "양파", "마늘", "소금"], ja: ["黒豆", "エパソテ", "ラード", "玉ねぎ", "ニンニク", "塩"], en: ["Black beans", "Epazote", "Lard", "Onion", "Garlic", "Salt"] }, similarityPercent: 62, matchReason: { ko: "오래 끓여 깊은 감칠맛을 낸 전통 콩 요리", ja: "長時間煮込んで深い旨味を出した伝統豆料理", en: "Slow-cooked aged bean stew — Mexican counterpart" } }
         },
         isLocalSpecialty: false,
       },
@@ -5283,65 +4835,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "cheonan-jokbal",
-        image: "",
-        name: { ko: "족발", ja: "チョッパル", en: "Jokbal (Braised Pork Trotters)" },
-        region: "cheonan",
-        tasteProfile: { sweet: 25, salty: 60, spicy: 10, umami: 85, sour: 5 },
-        storyDescription: {
-          ko: "돼지 족을 간장·계피·팔각에 오래 조려 얇게 썰어 새우젓과 함께 먹는 한밤의 천안 별미예요. 쫀득한 껍질과 부드러운 살점이 맥주나 소주 한잔에 안성맞춤이에요.",
-          ja: "豚足を醤油・シナモン・八角で長時間煮込み薄切りにしてアミの塩辛と食べる深夜の天安の逸品です。もちもちの皮と柔らかな身がビールや焼酎にぴったりです。",
-          en: "Pork trotters slow-braised in soy sauce, cinnamon and star anise, then sliced thin and served with salted shrimp — Cheonan's late-night treat. Sticky skin and tender flesh pair perfectly with beer or soju."
-        },
-        ingredients: { ko: ["돼지 족", "간장", "계피", "팔각", "마늘", "생강", "설탕", "새우젓"], ja: ["豚足", "醤油", "シナモン", "八角", "ニンニク", "生姜", "砂糖", "アミの塩辛"], en: ["Pork trotter", "Soy sauce", "Cinnamon", "Star anise", "Garlic", "Ginger", "Sugar", "Salted shrimp"] },
-        tags: ["족발", "술안주", "야식"],
-        dupes: {
-          JP: { name: { ko: "톤소쿠 니", ja: "豚足煮", en: "Tonsoku Ni" }, tasteProfile: { sweet: 25, salty: 60, spicy: 5, umami: 85, sour: 5 }, description: { ko: "돼지 족을 간장·미림·미소에 오래 조린 일본 오키나와식 족발 요리", ja: "豚足を醤油・みりん・味噌で長時間煮込んだ日本沖縄式の豚足料理", en: "Okinawan slow-braised pork trotters in soy-mirin-miso" }, ingredients: { ko: ["돼지 족", "간장", "미림", "흑설탕", "생강", "미소"], ja: ["豚足", "醤油", "みりん", "黒糖", "生姜", "味噌"], en: ["Pork trotter", "Soy sauce", "Mirin", "Brown sugar", "Ginger", "Miso"] }, similarityPercent: 87, matchReason: { ko: "돼지 족을 간장 양념에 오래 조리는 거의 동일한 요리", ja: "豚足を醤油ダレで長時間煮込むほぼ同じ料理", en: "Braised pork trotter — Japanese twin" } },
-          CN: { name: { ko: "루 주티", ja: "滷猪蹄", en: "Lu Zhu Ti" }, tasteProfile: { sweet: 20, salty: 60, spicy: 10, umami: 85, sour: 5 }, description: { ko: "돼지 족을 간장·팔각·오향에 조린 중국 전통 돼지 족 요리", ja: "豚足を醤油・八角・五香粉で煮込む中国伝統の豚足料理", en: "Chinese traditional braised pork trotter with soy, star anise and five-spice" }, ingredients: { ko: ["돼지 족", "간장", "팔각", "계피", "흑설탕", "생강"], ja: ["豚足", "醤油", "八角", "シナモン", "黒糖", "生姜"], en: ["Pork trotter", "Soy sauce", "Star anise", "Cinnamon", "Brown sugar", "Ginger"] }, similarityPercent: 90, matchReason: { ko: "돼지 족을 간장·팔각에 조리는 거의 동일한 요리", ja: "豚足を醤油・八角で煮込むほぼ同じ料理", en: "Braised pork trotter lu — Chinese twin" } },
-          TH: { name: { ko: "카오 카 무", ja: "カオ・カー・ムー", en: "Khao Kha Moo" }, tasteProfile: { sweet: 20, salty: 55, spicy: 15, umami: 85, sour: 10 }, description: { ko: "돼지 족을 팔각·간장에 오래 조려 밥에 올린 태국식 돼지 족 요리", ja: "豚足を八角・醤油で長時間煮込みご飯にのせたタイ式豚足料理", en: "Thai slow-braised pork leg over rice with star anise and soy" }, ingredients: { ko: ["돼지 족", "팔각", "간장", "계피", "마늘", "고추"], ja: ["豚足", "八角", "醤油", "シナモン", "ニンニク", "唐辛子"], en: ["Pork leg", "Star anise", "Soy sauce", "Cinnamon", "Garlic", "Chili"] }, similarityPercent: 83, matchReason: { ko: "돼지 족을 팔각 간장에 조리는 거의 동일한 요리", ja: "豚足を八角醤油で煮込むほぼ同じ料理", en: "Khao kha moo — close Thai twin" } },
-          VN: { name: { ko: "지오 헤오", ja: "ジオ・ヘオ", en: "Giò Heo" }, tasteProfile: { sweet: 20, salty: 55, spicy: 5, umami: 85, sour: 5 }, description: { ko: "돼지 족을 피시소스·팔각에 오래 조린 베트남식 돼지 족 조림", ja: "豚足を魚醤・八角で長時間煮込むベトナム式豚足煮", en: "Vietnamese slow-braised pork trotter with fish sauce and star anise" }, ingredients: { ko: ["돼지 족", "피시소스", "팔각", "설탕", "마늘", "코코넛 워터"], ja: ["豚足", "魚醤", "八角", "砂糖", "ニンニク", "ココナッツウォーター"], en: ["Pork trotter", "Fish sauce", "Star anise", "Sugar", "Garlic", "Coconut water"] }, similarityPercent: 82, matchReason: { ko: "돼지 족을 달콤한 간장 양념에 조리는 공통점", ja: "豚足を甘い醤油タレで煮込む共通点", en: "Braised pork trotter — Vietnamese counterpart" } },
-          MY: { name: { ko: "박꾸테 저", ja: "バクテー・豚足", en: "Bak Kut Teh Trotter" }, tasteProfile: { sweet: 15, salty: 55, spicy: 10, umami: 85, sour: 5 }, description: { ko: "돼지 족을 한약재와 함께 끓인 말레이·싱가포르식 약재 돼지 족", ja: "豚足を漢方と共に煮込むマレー・シンガポール式漢方豚足", en: "Malaysian/Singaporean pork trotter with medicinal herbs" }, ingredients: { ko: ["돼지 족", "당귀", "황기", "팔각", "마늘", "후추"], ja: ["豚足", "当帰", "黄耆", "八角", "ニンニク", "胡椒"], en: ["Pork trotter", "Angelica", "Astragalus", "Star anise", "Garlic", "Pepper"] }, similarityPercent: 73, matchReason: { ko: "돼지 족을 향신료·약재에 오래 끓이는 공통점", ja: "豚足をスパイス・漢方で長時間煮込む共通点", en: "Herbal pork trotter — Malaysian counterpart" } },
-          ID: { name: { ko: "카키 바비 케캅", ja: "カキ・バビ・ケチャップ", en: "Kaki Babi Kecap" }, tasteProfile: { sweet: 30, salty: 55, spicy: 20, umami: 85, sour: 5 }, description: { ko: "돼지 족을 케캅 마니스·팔각·샬롯에 조린 인도네시아식 돼지 족 조림", ja: "豚足をケチャップマニス・八角・エシャロットで煮込むインドネシア式豚足煮", en: "Indonesian pork trotter braised in kecap manis with star anise" }, ingredients: { ko: ["돼지 족", "케캅 마니스", "팔각", "샬롯", "마늘", "칠리"], ja: ["豚足", "ケチャップマニス", "八角", "エシャロット", "ニンニク", "唐辛子"], en: ["Pork trotter", "Kecap manis", "Star anise", "Shallot", "Garlic", "Chili"] }, similarityPercent: 80, matchReason: { ko: "돼지 족을 달콤한 간장 양념에 조리는 아시아 해석", ja: "豚足を甘い醤油タレで煮込むアジア解釈", en: "Kecap pork trotter — Indonesian counterpart" } },
-          US: { name: { ko: "브레이즈드 포크 터지어스", ja: "ブレイズド・ポーク・トロッター", en: "Braised Pork Trotters" }, tasteProfile: { sweet: 15, salty: 60, spicy: 10, umami: 85, sour: 10 }, description: { ko: "돼지 족을 간장·꿀·맥주에 조린 미국 남부식 돼지 족 요리", ja: "豚足を醤油・ハチミツ・ビールで煮込んだアメリカ南部式豚足料理", en: "American Southern braised pork trotters in soy-honey-beer" }, ingredients: { ko: ["돼지 족", "간장", "꿀", "맥주", "마늘", "양파"], ja: ["豚足", "醤油", "ハチミツ", "ビール", "ニンニク", "玉ねぎ"], en: ["Pork trotter", "Soy sauce", "Honey", "Beer", "Garlic", "Onion"] }, similarityPercent: 72, matchReason: { ko: "돼지 족을 오래 조려 부드럽게 먹는 공통점", ja: "豚足を長時間煮込んで柔らかく食べる共通点", en: "Braised pork trotter — American counterpart" } },
-          IT: { name: { ko: "잠포네", ja: "ザンポーネ", en: "Zampone" }, tasteProfile: { sweet: 5, salty: 60, spicy: 5, umami: 85, sour: 5 }, description: { ko: "돼지 족을 소시지 속과 함께 천천히 끓여낸 이탈리아 모데나식 전통 요리", ja: "豚足をソーセージの中身と共にじっくり煮込んだイタリア・モデナ式伝統料理", en: "Italian Modena-style zampone — pork trotter stuffed and slow-cooked" }, ingredients: { ko: ["돼지 족", "소시지 속", "와인", "마늘", "넛맥", "월계수잎"], ja: ["豚足", "ソーセージ具", "ワイン", "ニンニク", "ナツメグ", "ローリエ"], en: ["Pork trotter", "Sausage filling", "Wine", "Garlic", "Nutmeg", "Bay leaf"] }, similarityPercent: 72, matchReason: { ko: "돼지 족을 오래 조려 슬라이스해 먹는 유럽 전통", ja: "豚足を長時間煮込んでスライスして食べるヨーロッパ伝統", en: "Slow-cooked pork trotter — Italian counterpart" } },
-          FR: { name: { ko: "피에 드 포르크", ja: "ピエ・ド・ポルク", en: "Pieds de Porc" }, tasteProfile: { sweet: 5, salty: 60, spicy: 5, umami: 85, sour: 10 }, description: { ko: "돼지 족을 와인·허브에 오래 끓여낸 프랑스 리옹식 돼지 족 요리", ja: "豚足をワイン・ハーブで長時間煮込むフランス・リヨン式豚足料理", en: "French Lyon-style slow-braised pork trotters in wine and herbs" }, ingredients: { ko: ["돼지 족", "레드와인", "당근", "리크", "타임", "월계수잎"], ja: ["豚足", "赤ワイン", "人参", "リーキ", "タイム", "ローリエ"], en: ["Pork trotter", "Red wine", "Carrot", "Leek", "Thyme", "Bay leaf"] }, similarityPercent: 75, matchReason: { ko: "돼지 족을 와인·허브에 섬세하게 조리는 유럽 전통", ja: "豚足をワイン・ハーブで繊細に煮込むヨーロッパ伝統", en: "Wine-braised pork trotter — French counterpart" } },
-          IN: { name: { ko: "파야", ja: "パーヤ", en: "Paya" }, tasteProfile: { sweet: 5, salty: 55, spicy: 45, umami: 85, sour: 10 }, description: { ko: "양·염소 다리를 향신료에 오래 끓여낸 인도·파키스탄 전통 다리 요리", ja: "羊・ヤギの脚をスパイスで長時間煮込んだインド・パキスタン伝統の脚料理", en: "Indian/Pakistani slow-cooked trotter stew with spices" }, ingredients: { ko: ["양 다리", "가람마살라", "생강", "마늘", "고춧가루", "요거트"], ja: ["羊の脚", "ガラムマサラ", "生姜", "ニンニク", "唐辛子粉", "ヨーグルト"], en: ["Lamb leg", "Garam masala", "Ginger", "Garlic", "Chili powder", "Yogurt"] }, similarityPercent: 70, matchReason: { ko: "가축 다리를 향신 양념에 오래 조리는 공통점", ja: "動物の脚をスパイスタレで長時間煮込む共通点", en: "Trotter stew — Indian counterpart" } },
-          ES: { name: { ko: "마노 데 세르도", ja: "マノ・デ・セルド", en: "Manos de Cerdo" }, tasteProfile: { sweet: 10, salty: 60, spicy: 15, umami: 85, sour: 5 }, description: { ko: "돼지 족을 토마토·파프리카에 조린 스페인 전통 돼지 족 요리", ja: "豚足をトマト・パプリカで煮込むスペイン伝統の豚足料理", en: "Spanish traditional pork trotters braised in tomato and paprika" }, ingredients: { ko: ["돼지 족", "토마토", "스모크드 파프리카", "마늘", "양파", "월계수잎"], ja: ["豚足", "トマト", "スモークパプリカ", "ニンニク", "玉ねぎ", "ローリエ"], en: ["Pork trotter", "Tomato", "Smoked paprika", "Garlic", "Onion", "Bay leaf"] }, similarityPercent: 72, matchReason: { ko: "돼지 족을 토마토 양념에 조리는 지중해 해석", ja: "豚足をトマトタレで煮込む地中海解釈", en: "Manos de cerdo — Spanish counterpart" } },
-          MX: { name: { ko: "파타스 데 세르도", ja: "パタス・デ・セルド", en: "Patas de Cerdo" }, tasteProfile: { sweet: 10, salty: 60, spicy: 40, umami: 85, sour: 15 }, description: { ko: "돼지 족을 토마토·치포틀레·라임에 조린 멕시코식 돼지 족 요리", ja: "豚足をトマト・チポトレ・ライムで煮込むメキシコ式豚足料理", en: "Mexican pork trotters in tomato, chipotle and lime" }, ingredients: { ko: ["돼지 족", "토마토", "치포틀레", "라임", "양파", "고수"], ja: ["豚足", "トマト", "チポトレ", "ライム", "玉ねぎ", "パクチー"], en: ["Pork trotter", "Tomato", "Chipotle", "Lime", "Onion", "Cilantro"] }, similarityPercent: 70, matchReason: { ko: "돼지 족을 매운 토마토 양념에 조리는 라틴 해석", ja: "豚足を辛いトマトタレで煮込むラテン解釈", en: "Patas de cerdo — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "cheonan-kongnamul-gukbap",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-kongnamul-gukbap.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
-        name: { ko: "콩나물국밥", ja: "豆もやしクッパ", en: "Kongnamul Gukbap" },
-        region: "cheonan",
-        tasteProfile: { sweet: 5, salty: 55, spicy: 35, umami: 75, sour: 10 },
-        storyDescription: {
-          ko: "아삭한 콩나물과 밥을 뚝배기에 함께 끓여내 새우젓과 청양고추로 간을 맞추는 천안의 해장 국밥이에요. 시원한 국물 한 술에 숙취가 봄눈 녹듯 사라져요.",
-          ja: "シャキシャキの豆もやしとご飯を土鍋で一緒に煮込み、アミの塩辛と青唐辛子で味を調える天安の解酔クッパです。澄んだスープ一さじで二日酔いが雪のように溶けます。",
-          en: "Crunchy soybean sprouts and rice simmered together in an earthenware pot, seasoned with salted shrimp and green chili — Cheonan's hangover rice soup. One sip and last night's fog melts like spring snow."
-        },
-        ingredients: { ko: ["콩나물", "밥", "새우젓", "청양고추", "달걀", "김", "마늘", "멸치 육수"], ja: ["豆もやし", "ご飯", "アミの塩辛", "青唐辛子", "卵", "海苔", "ニンニク", "煮干しだし"], en: ["Soybean sprouts", "Rice", "Salted shrimp", "Green chili", "Egg", "Seaweed", "Garlic", "Anchovy broth"] },
-        tags: ["해장국밥", "콩나물", "뚝배기"],
-        dupes: {
-          JP: { name: { ko: "모야시 조스이", ja: "もやし雑炊", en: "Moyashi Zosui" }, tasteProfile: { sweet: 5, salty: 55, spicy: 10, umami: 75, sour: 5 }, description: { ko: "콩나물과 밥을 다시 국물에 끓여낸 일본 가정식 죽", ja: "もやしとご飯をだしで煮込んだ日本の家庭料理雑炊", en: "Japanese home-style rice porridge with bean sprouts" }, ingredients: { ko: ["콩나물", "밥", "가쓰오 다시", "간장", "파", "달걀"], ja: ["もやし", "ご飯", "かつおだし", "醤油", "ネギ", "卵"], en: ["Bean sprouts", "Rice", "Dashi", "Soy sauce", "Green onion", "Egg"] }, similarityPercent: 77, matchReason: { ko: "콩나물과 밥을 국물에 끓이는 공통 구조", ja: "もやしとご飯をスープで煮込む共通構造", en: "Bean sprout rice porridge — Japanese counterpart" } },
-          CN: { name: { ko: "또우야 저우", ja: "豆芽粥", en: "Dou Ya Zhou" }, tasteProfile: { sweet: 5, salty: 55, spicy: 15, umami: 75, sour: 5 }, description: { ko: "콩나물과 쌀을 생강·파·참기름에 끓인 중국식 콩나물 죽", ja: "もやしと米を生姜・ネギ・ごま油で煮込む中国式もやし粥", en: "Chinese bean sprout rice congee with ginger and sesame oil" }, ingredients: { ko: ["콩나물", "쌀", "생강", "대파", "참기름", "간장"], ja: ["もやし", "米", "生姜", "長ネギ", "ごま油", "醤油"], en: ["Bean sprouts", "Rice", "Ginger", "Green onion", "Sesame oil", "Soy sauce"] }, similarityPercent: 75, matchReason: { ko: "콩나물과 쌀을 끓여 해장용으로 먹는 동아시아 해석", ja: "もやしと米を煮込んで解酔用にする東アジア解釈", en: "Bean sprout congee — Chinese counterpart" } },
-          TH: { name: { ko: "카오 톰 투아", ja: "カオトム・トゥア", en: "Khao Tom Tua" }, tasteProfile: { sweet: 5, salty: 55, spicy: 25, umami: 75, sour: 10 }, description: { ko: "콩나물과 쌀을 다시 국물에 끓이고 라임·칠리로 마무리한 태국식 콩나물 죽", ja: "もやしと米をだしで煮込みライム・唐辛子で仕上げるタイ式もやし粥", en: "Thai bean sprout rice porridge with lime and chili" }, ingredients: { ko: ["콩나물", "쌀", "닭 육수", "피시소스", "라임", "칠리"], ja: ["もやし", "米", "鶏スープ", "魚醤", "ライム", "唐辛子"], en: ["Bean sprouts", "Rice", "Chicken broth", "Fish sauce", "Lime", "Chili"] }, similarityPercent: 68, matchReason: { ko: "콩나물·쌀을 국물에 끓여 해장용으로 먹는 공통점", ja: "もやし・米をスープで煮込んで解酔用にする共通点", en: "Bean sprout rice porridge — Thai counterpart" } },
-          VN: { name: { ko: "짜오 지아 도우", ja: "チャオ・ジア・ドウ", en: "Cháo Giá Đỗ" }, tasteProfile: { sweet: 5, salty: 55, spicy: 10, umami: 75, sour: 5 }, description: { ko: "콩나물과 쌀을 돼지뼈 육수에 오래 끓인 베트남식 콩나물 죽", ja: "もやしと米を豚骨スープで長時間煮込むベトナム式もやし粥", en: "Vietnamese pork-bone bean sprout rice porridge" }, ingredients: { ko: ["콩나물", "쌀", "돼지뼈 육수", "피시소스", "파", "고수"], ja: ["もやし", "米", "豚骨スープ", "魚醤", "ネギ", "パクチー"], en: ["Bean sprouts", "Rice", "Pork bone broth", "Fish sauce", "Green onion", "Cilantro"] }, similarityPercent: 78, matchReason: { ko: "콩나물과 쌀을 국물에 오래 끓여 해장용으로 먹는 거의 동일한 요리", ja: "もやしと米をスープで長時間煮込んで解酔用にするほぼ同じ料理", en: "Bean sprout rice porridge — close Vietnamese sibling" } },
-          MY: { name: { ko: "콩지 타우게", ja: "コンジー・タウゲ", en: "Congee Tauge" }, tasteProfile: { sweet: 5, salty: 55, spicy: 15, umami: 75, sour: 5 }, description: { ko: "콩나물을 쌀과 함께 부드럽게 끓인 말레이시아식 콩나물 콘지", ja: "もやしを米と柔らかく煮込んだマレーシア式もやしコンジー", en: "Malaysian bean sprout rice congee" }, ingredients: { ko: ["콩나물", "쌀", "생강", "파", "간장", "참기름"], ja: ["もやし", "米", "生姜", "ネギ", "醤油", "ごま油"], en: ["Bean sprouts", "Rice", "Ginger", "Green onion", "Soy sauce", "Sesame oil"] }, similarityPercent: 73, matchReason: { ko: "콩나물을 쌀 죽과 함께 해장용으로 먹는 공통점", ja: "もやしを米粥と共に解酔用にする共通点", en: "Bean sprout congee — Malaysian counterpart" } },
-          ID: { name: { ko: "부부르 타우게", ja: "ブブル・タウゲ", en: "Bubur Tauge" }, tasteProfile: { sweet: 5, salty: 55, spicy: 20, umami: 75, sour: 10 }, description: { ko: "콩나물과 쌀을 강황·레몬그라스 국물에 끓인 인도네시아식 콩나물 죽", ja: "もやしと米をウコン・レモングラススープで煮込むインドネシア式もやし粥", en: "Indonesian bean sprout rice porridge in turmeric-lemongrass broth" }, ingredients: { ko: ["콩나물", "쌀", "강황", "레몬그라스", "샬롯", "삼발"], ja: ["もやし", "米", "ウコン", "レモングラス", "エシャロット", "サンバル"], en: ["Bean sprouts", "Rice", "Turmeric", "Lemongrass", "Shallot", "Sambal"] }, similarityPercent: 68, matchReason: { ko: "콩나물을 쌀 죽에 넣어 해장용으로 먹는 공통점", ja: "もやしを米粥に入れて解酔用にする共通点", en: "Bean sprout rice soup — Indonesian counterpart" } },
-          US: { name: { ko: "해장 브렉퍼스트 수프", ja: "ハングオーバー・ブレックファスト・スープ", en: "Hangover Breakfast Soup" }, tasteProfile: { sweet: 5, salty: 55, spicy: 15, umami: 75, sour: 5 }, description: { ko: "콩나물과 밥을 닭 육수에 끓인 미국식 현대 해장 수프", ja: "もやしとご飯を鶏スープで煮込むアメリカ式現代の解酔スープ", en: "American modern hangover soup with bean sprouts and rice" }, ingredients: { ko: ["콩나물", "밥", "닭 육수", "달걀", "타임", "후추"], ja: ["もやし", "ご飯", "鶏スープ", "卵", "タイム", "胡椒"], en: ["Bean sprouts", "Rice", "Chicken broth", "Egg", "Thyme", "Pepper"] }, similarityPercent: 62, matchReason: { ko: "해장용 콩나물·쌀 수프의 현대적 해석", ja: "解酔用のもやし・米スープの現代的解釈", en: "Hangover rice soup — American counterpart" } },
-          IT: { name: { ko: "스트라치아텔라", ja: "ストラッチャテッラ", en: "Stracciatella" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 75, sour: 5 }, description: { ko: "달걀을 닭 육수에 풀어 만든 이탈리아식 해장 수프", ja: "卵を鶏スープに溶いて作るイタリア式解酔スープ", en: "Italian egg drop chicken broth soup" }, ingredients: { ko: ["달걀", "닭 육수", "파마산", "세몰리나", "레몬", "파슬리"], ja: ["卵", "鶏スープ", "パルメザン", "セモリナ", "レモン", "パセリ"], en: ["Egg", "Chicken broth", "Parmesan", "Semolina", "Lemon", "Parsley"] }, similarityPercent: 68, matchReason: { ko: "달걀을 풀어낸 뜨거운 수프의 공통점", ja: "卵を溶いた熱いスープの共通点", en: "Egg drop soup — Italian counterpart" } },
-          FR: { name: { ko: "수프 아 로뇽 오 외프", ja: "スープ・ア・ロニョン・オ・ウフ", en: "Soupe à l'Oignon aux Œufs" }, tasteProfile: { sweet: 20, salty: 55, spicy: 5, umami: 75, sour: 5 }, description: { ko: "양파 수프에 달걀을 풀어낸 프랑스식 해장 수프", ja: "オニオンスープに卵を溶いたフランス式の解酔スープ", en: "French onion soup with egg drop" }, ingredients: { ko: ["양파", "달걀", "소고기 육수", "그뤼예르", "바게트", "버터"], ja: ["玉ねぎ", "卵", "牛肉スープ", "グリュイエール", "バゲット", "バター"], en: ["Onion", "Egg", "Beef broth", "Gruyère", "Baguette", "Butter"] }, similarityPercent: 63, matchReason: { ko: "뜨거운 국물에 달걀을 풀어 먹는 유럽 해석", ja: "熱いスープに卵を溶くヨーロッパ解釈", en: "Onion egg soup — French counterpart" } },
-          IN: { name: { ko: "칸지", ja: "カンジー", en: "Kanji" }, tasteProfile: { sweet: 5, salty: 55, spicy: 30, umami: 75, sour: 10 }, description: { ko: "쌀과 콩나물·향신료를 끓여낸 남인도식 해장 쌀죽", ja: "米ともやし・スパイスを煮込んだ南インド式解酔米粥", en: "South Indian rice-and-bean-sprout restorative porridge" }, ingredients: { ko: ["쌀", "콩나물", "머스타드 시드", "커민", "커리잎", "생강"], ja: ["米", "もやし", "マスタードシード", "クミン", "カレーリーフ", "生姜"], en: ["Rice", "Bean sprouts", "Mustard seed", "Cumin", "Curry leaves", "Ginger"] }, similarityPercent: 68, matchReason: { ko: "쌀·콩나물을 함께 끓여 몸을 회복하는 아시아 공통 전통", ja: "米・もやしを一緒に煮込んで体を回復するアジア共通伝統", en: "Restorative rice porridge — Indian counterpart" } },
-          ES: { name: { ko: "소파 데 아호", ja: "ソパ・デ・アホ", en: "Sopa de Ajo" }, tasteProfile: { sweet: 5, salty: 55, spicy: 20, umami: 75, sour: 5 }, description: { ko: "마늘과 빵·파프리카를 뜨거운 육수에 끓이고 달걀을 풀어낸 카스티야식 해장 수프", ja: "ニンニクとパン・パプリカを熱いスープで煮込み卵を溶いたカスティーリャ式解酔スープ", en: "Castilian hangover soup of garlic, bread, paprika and egg" }, ingredients: { ko: ["마늘", "빵", "파프리카", "올리브오일", "달걀", "닭 육수"], ja: ["ニンニク", "パン", "パプリカ", "オリーブオイル", "卵", "鶏スープ"], en: ["Garlic", "Bread", "Paprika", "Olive oil", "Egg", "Chicken broth"] }, similarityPercent: 70, matchReason: { ko: "뜨거운 매콤한 국물에 달걀을 풀어 해장용으로 먹는 공통점", ja: "熱々の辛いスープに卵を溶いて解酔用にする共通点", en: "Spicy egg-drop hangover soup — Spanish counterpart" } },
-          MX: { name: { ko: "메누도", ja: "メヌード", en: "Menudo" }, tasteProfile: { sweet: 10, salty: 60, spicy: 50, umami: 85, sour: 15 }, description: { ko: "소 양과 옥수수·고추를 끓여낸 멕시코 전통 해장용 내장 수프", ja: "牛モツとトウモロコシ・唐辛子を煮込むメキシコ伝統の解酔モツスープ", en: "Mexican traditional hangover tripe soup with hominy and chili" }, ingredients: { ko: ["소 양", "옥수수", "과히요 고추", "라임", "오레가노", "고수"], ja: ["牛モツ", "トウモロコシ", "グアヒージョ", "ライム", "オレガノ", "パクチー"], en: ["Tripe", "Hominy", "Guajillo chili", "Lime", "Oregano", "Cilantro"] }, similarityPercent: 68, matchReason: { ko: "속을 풀어주는 매콤 새콤한 해장 수프의 라틴 해석", ja: "体を癒す辛酸っぱい解酔スープのラテン解釈", en: "Hangover soup menudo — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "cheonan-cheonggukjang",
         image: "",
         name: { ko: "청국장찌개", ja: "チョングクジャンチゲ", en: "Cheonggukjang Jjigae" },
@@ -5397,36 +4890,6 @@ export const regions: Region[] = [
           IN: { name: { ko: "크리카트 피시 플래터", ja: "クリカット・フィッシュ・プラッター", en: "Kolhapuri Fermented Fish" }, tasteProfile: { sweet: 5, salty: 65, spicy: 60, umami: 90, sour: 15 }, description: { ko: "발효된 생선을 돼지고기·절임과 함께 매운 양념에 먹는 남인도식 발효 생선 조합", ja: "発酵した魚を豚肉・漬物と共に辛いタレで食べる南インド式発酵魚の組み合わせ", en: "South Indian fermented fish with pork and spicy pickle" }, ingredients: { ko: ["발효 생선", "돼지고기", "아차르", "카슈미리 고추", "커리잎", "타마린드"], ja: ["発酵魚", "豚肉", "アチャール", "カシミーリ唐辛子", "カレーリーフ", "タマリンド"], en: ["Fermented fish", "Pork", "Achar", "Kashmiri chili", "Curry leaves", "Tamarind"] }, similarityPercent: 63, matchReason: { ko: "발효 생선·고기·매운 절임의 남아시아 해석", ja: "発酵魚・肉・辛い漬物の南アジア解釈", en: "Fermented fish trio — Indian counterpart" } },
           ES: { name: { ko: "사르디나스 안초아도", ja: "サルディナス・アンチョアド", en: "Sardinas Anchoado" }, tasteProfile: { sweet: 5, salty: 70, spicy: 15, umami: 90, sour: 25 }, description: { ko: "소금에 절인 정어리와 하몽·피클을 함께 먹는 스페인식 발효 생선 타파스", ja: "塩漬けイワシとハモン・ピクルスを共に食べるスペイン式発酵魚タパス", en: "Spanish salt-cured sardines with jamón and pickles tapas" }, ingredients: { ko: ["소금에 절인 정어리", "하몽", "올리브", "적양파", "레몬", "올리브오일"], ja: ["塩漬けイワシ", "ハモン", "オリーブ", "紫玉ねぎ", "レモン", "オリーブオイル"], en: ["Salt-cured sardine", "Jamón", "Olive", "Red onion", "Lemon", "Olive oil"] }, similarityPercent: 70, matchReason: { ko: "염장·발효 생선과 고기·피클을 함께 먹는 해석", ja: "塩漬け・発酵魚と肉・ピクルスを共に食べる解釈", en: "Cured sardine trio — Spanish counterpart" } },
           MX: { name: { ko: "페스카도 샐츠 에 콘 카르네", ja: "ペスカード・サルト・コン・カルネ", en: "Salted Fish & Pork Plate" }, tasteProfile: { sweet: 5, salty: 70, spicy: 50, umami: 90, sour: 20 }, description: { ko: "염장·발효된 생선과 돼지고기·절임 고추를 함께 먹는 멕시코식 해안 플래터", ja: "塩漬け・発酵魚と豚肉・漬け唐辛子を共に食べるメキシコ式海岸プラッター", en: "Mexican coastal plate with salted fermented fish, pork and pickled chilies" }, ingredients: { ko: ["염장 생선", "돼지고기", "할라페뇨 절임", "라임", "양파", "고수"], ja: ["塩漬け魚", "豚肉", "ハラペーニョ漬け", "ライム", "玉ねぎ", "パクチー"], en: ["Salted fish", "Pork", "Pickled jalapeño", "Lime", "Onion", "Cilantro"] }, similarityPercent: 65, matchReason: { ko: "염장 생선·고기·절임의 라틴 해석", ja: "塩漬け魚・肉・漬物のラテン解釈", en: "Cured fish pork plate — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "cheonan-galbitang",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-galbitang.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
-        name: { ko: "갈비탕", ja: "カルビタン", en: "Galbitang (Short Rib Soup)" },
-        region: "cheonan",
-        tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 90, sour: 5 },
-        storyDescription: {
-          ko: "한우 갈비를 무와 함께 오래 고아 뽀얗게 우려낸 천안식 갈비탕이에요. 갈빗살을 당면에 감아 한 입 먹으면 진한 감칠맛이 온몸을 따뜻하게 데워요.",
-          ja: "韓牛カルビと大根を長時間煮込んで白濁にした天安式カルビタンです。カルビの身を春雨に絡めて一口食べれば、深い旨味が全身を温めてくれます。",
-          en: "Hanwoo short ribs and radish slow-simmered into a milky broth — Cheonan's galbitang. Rib meat twirled with glass noodles warms the whole body with deep umami."
-        },
-        ingredients: { ko: ["한우 갈비", "무", "당면", "마늘", "대파", "후추", "소금", "달걀 지단"], ja: ["韓牛カルビ", "大根", "春雨", "ニンニク", "長ネギ", "胡椒", "塩", "錦糸卵"], en: ["Short ribs", "Radish", "Glass noodles", "Garlic", "Green onion", "Pepper", "Salt", "Egg garnish"] },
-        tags: ["갈비탕", "정찬", "국물"],
-        dupes: {
-          JP: { name: { ko: "규탄 시추", ja: "牛タンシチュー", en: "Gyūtan Stew" }, tasteProfile: { sweet: 10, salty: 50, spicy: 0, umami: 85, sour: 5 }, description: { ko: "소 혀나 갈비를 오래 끓여 낸 일본식 소고기 뼈 스튜", ja: "牛タンやカルビを長時間煮込んで作る日本式牛スープ", en: "Japanese slow-simmered beef tongue/rib stew" }, ingredients: { ko: ["소 혀", "대파", "마늘", "간장", "양파", "미림"], ja: ["牛タン", "長ネギ", "ニンニク", "醤油", "玉ねぎ", "みりん"], en: ["Ox tongue", "Green onion", "Garlic", "Soy sauce", "Onion", "Mirin"] }, similarityPercent: 78, matchReason: { ko: "소고기를 오래 고아 깊은 국물을 내는 공통 전통", ja: "牛肉を長時間煮込んで深いスープを作る共通伝統", en: "Slow-simmered beef soup — Japanese counterpart" } },
-          CN: { name: { ko: "파이구 탕", ja: "排骨湯", en: "Paigu Tang" }, tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 90, sour: 5 }, description: { ko: "돼지·소 갈비와 무를 오래 우린 중국식 갈비탕", ja: "豚・牛カルビと大根を長時間煮込んだ中国式カルビスープ", en: "Chinese slow-simmered rib soup with radish" }, ingredients: { ko: ["갈비", "무", "생강", "대파", "구기자", "소금"], ja: ["カルビ", "大根", "生姜", "長ネギ", "クコの実", "塩"], en: ["Ribs", "Radish", "Ginger", "Green onion", "Wolfberry", "Salt"] }, similarityPercent: 82, matchReason: { ko: "갈비를 무와 함께 오래 끓이는 거의 동일한 요리", ja: "カルビを大根と共に長時間煮込むほぼ同じ料理", en: "Rib-radish soup — close Chinese twin" } },
-          TH: { name: { ko: "느아 뚠", ja: "ヌア・トゥーン", en: "Neua Toon" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 80, sour: 5 }, description: { ko: "소갈비를 팔각·계피·간장에 오래 끓인 태국식 소고기 스튜", ja: "牛カルビを八角・シナモン・醤油で長時間煮込むタイ式牛肉シチュー", en: "Thai slow-braised beef rib stew with star anise and cinnamon" }, ingredients: { ko: ["소갈비", "간장", "팔각", "계피", "갈랑갈", "고수"], ja: ["牛カルビ", "醤油", "八角", "シナモン", "ガランガル", "パクチー"], en: ["Beef ribs", "Soy sauce", "Star anise", "Cinnamon", "Galangal", "Cilantro"] }, similarityPercent: 73, matchReason: { ko: "갈비를 향신료 국물에 오래 끓이는 공통점", ja: "カルビをスパイススープで長時間煮込む共通点", en: "Slow-braised rib soup — Thai counterpart" } },
-          VN: { name: { ko: "까인 쓰언 보", ja: "カイン・スオン・ボー", en: "Canh Sườn Bò" }, tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 85, sour: 5 }, description: { ko: "소갈비를 연자·대추와 오래 끓인 베트남식 갈비 수프", ja: "牛カルビを蓮の実・なつめと長時間煮込むベトナム式カルビスープ", en: "Vietnamese beef rib soup with lotus seeds and jujube" }, ingredients: { ko: ["소갈비", "연자", "대추", "감초", "양파", "피시소스"], ja: ["牛カルビ", "蓮の実", "なつめ", "甘草", "玉ねぎ", "魚醤"], en: ["Beef ribs", "Lotus seeds", "Jujube", "Licorice", "Onion", "Fish sauce"] }, similarityPercent: 75, matchReason: { ko: "갈비를 한약재와 함께 끓여내는 보양 수프 전통", ja: "カルビを漢方と共に煮込む滋養スープ伝統", en: "Beef rib herbal tonic — Vietnamese counterpart" } },
-          MY: { name: { ko: "수프 툴랑", ja: "スープ・トゥラン", en: "Sup Tulang" }, tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 85, sour: 10 }, description: { ko: "소뼈와 갈비를 향신료와 오래 고아낸 말레이시아식 소갈비 스튜", ja: "牛骨とカルビをスパイスで長時間煮込むマレーシア式牛カルビシチュー", en: "Malaysian slow-simmered beef bone and rib stew with spices" }, ingredients: { ko: ["소갈비", "생강", "마늘", "팔각", "카다멈", "고추"], ja: ["牛カルビ", "生姜", "ニンニク", "八角", "カルダモン", "唐辛子"], en: ["Beef ribs", "Ginger", "Garlic", "Star anise", "Cardamom", "Chili"] }, similarityPercent: 78, matchReason: { ko: "소 갈비를 오래 끓여 진한 국물을 내는 공통 해석", ja: "牛カルビを長時間煮込んで濃厚なスープを作る共通解釈", en: "Beef bone soup — Malaysian counterpart" } },
-          ID: { name: { ko: "솝 분툿", ja: "ソプ・ブントゥ", en: "Sop Buntut" }, tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 85, sour: 5 }, description: { ko: "소꼬리를 향신료 국물에 오래 끓인 인도네시아식 소꼬리 수프", ja: "牛テールをスパイススープで長時間煮込んだインドネシア式テールスープ", en: "Indonesian oxtail soup in spiced broth" }, ingredients: { ko: ["소꼬리", "당근", "감자", "토마토", "넛맥", "파"], ja: ["牛テール", "人参", "ジャガイモ", "トマト", "ナツメグ", "ネギ"], en: ["Oxtail", "Carrot", "Potato", "Tomato", "Nutmeg", "Green onion"] }, similarityPercent: 78, matchReason: { ko: "소 부위를 오래 끓여 깊은 국물을 내는 공통 전통", ja: "牛の部位を長時間煮込んで深いスープを作る共通伝統", en: "Oxtail soup — Indonesian counterpart" } },
-          US: { name: { ko: "비프 쇼트 립 수프", ja: "ビーフ・ショートリブ・スープ", en: "Beef Short Rib Soup" }, tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 85, sour: 5 }, description: { ko: "소갈비를 감자·당근·양파와 끓여낸 미국식 갈비 수프", ja: "牛カルビをジャガイモ・人参・玉ねぎと煮込むアメリカ式カルビスープ", en: "American short rib soup with potato, carrot and onion" }, ingredients: { ko: ["소갈비", "감자", "당근", "양파", "타임", "파슬리"], ja: ["牛カルビ", "ジャガイモ", "人参", "玉ねぎ", "タイム", "パセリ"], en: ["Short ribs", "Potato", "Carrot", "Onion", "Thyme", "Parsley"] }, similarityPercent: 77, matchReason: { ko: "갈비를 채소와 함께 오래 끓이는 현대 해석", ja: "カルビを野菜と共に長時間煮込む現代解釈", en: "Short ribs stew — American counterpart" } },
-          IT: { name: { ko: "볼리토 미스토", ja: "ボッリート・ミスト", en: "Bollito Misto" }, tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 80, sour: 10 }, description: { ko: "소갈비·혀·채소를 오래 끓여낸 이탈리아 북부식 삶은 고기 모듬", ja: "牛カルビ・タン・野菜を長時間煮込んだ北イタリア式の茹で肉盛り合わせ", en: "Northern Italian slow-boiled mixed meats with vegetables" }, ingredients: { ko: ["소갈비", "소혀", "당근", "리크", "셀러리", "살사 베르데"], ja: ["牛カルビ", "牛タン", "人参", "リーキ", "セロリ", "サルサヴェルデ"], en: ["Short rib", "Tongue", "Carrot", "Leek", "Celery", "Salsa verde"] }, similarityPercent: 72, matchReason: { ko: "여러 부위의 소고기를 오래 끓여 내는 공통 전통", ja: "様々な部位の牛肉を長時間煮込む共通伝統", en: "Mixed boiled beef — Italian counterpart" } },
-          FR: { name: { ko: "포토푀 코스틴", ja: "ポトフ・コスティーヌ", en: "Pot-au-Feu Costine" }, tasteProfile: { sweet: 10, salty: 45, spicy: 0, umami: 85, sour: 5 }, description: { ko: "소갈비와 채소를 맑은 국물에 오래 끓여낸 프랑스 전통 스튜", ja: "牛カルビと野菜を澄んだスープで長時間煮込むフランス伝統シチュー", en: "French pot-au-feu with beef ribs and vegetables slow-simmered" }, ingredients: { ko: ["소갈비", "당근", "순무", "리크", "부케 가르니", "후추"], ja: ["牛カルビ", "人参", "カブ", "リーキ", "ブーケガルニ", "胡椒"], en: ["Beef ribs", "Carrot", "Turnip", "Leek", "Bouquet garni", "Pepper"] }, similarityPercent: 75, matchReason: { ko: "소갈비를 맑은 국물에 오래 끓여내는 유럽 전통", ja: "牛カルビを澄んだスープで長時間煮込むヨーロッパ伝統", en: "Beef rib clear broth — French counterpart" } },
-          IN: { name: { ko: "램 쇼르바", ja: "ラム・ショーバ", en: "Lamb Shorba" }, tasteProfile: { sweet: 5, salty: 50, spicy: 30, umami: 80, sour: 10 }, description: { ko: "양갈비를 향신료 국물에 오래 끓여낸 북인도식 갈비 수프", ja: "ラムカルビをスパイススープで長時間煮込む北インド式カルビスープ", en: "North Indian slow-simmered lamb rib soup in spiced broth" }, ingredients: { ko: ["양갈비", "생강", "마늘", "가람마살라", "요거트", "민트"], ja: ["ラムカルビ", "生姜", "ニンニク", "ガラムマサラ", "ヨーグルト", "ミント"], en: ["Lamb ribs", "Ginger", "Garlic", "Garam masala", "Yogurt", "Mint"] }, similarityPercent: 68, matchReason: { ko: "갈비를 향신료 국물에 오래 끓이는 공통 해석", ja: "カルビをスパイススープで長時間煮込む共通解釈", en: "Lamb rib soup — Indian counterpart" } },
-          ES: { name: { ko: "라보 데 부에이 알 칼도", ja: "ラボ・デ・ブエイ・アル・カルド", en: "Rabo de Buey al Caldo" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 85, sour: 10 }, description: { ko: "소꼬리를 와인·채소와 오래 끓여낸 스페인 전통 소꼬리 스튜", ja: "牛テールをワイン・野菜と長時間煮込むスペイン伝統テールシチュー", en: "Spanish traditional oxtail stew in wine and vegetables" }, ingredients: { ko: ["소꼬리", "레드와인", "당근", "양파", "토마토", "월계수잎"], ja: ["牛テール", "赤ワイン", "人参", "玉ねぎ", "トマト", "ローリエ"], en: ["Oxtail", "Red wine", "Carrot", "Onion", "Tomato", "Bay leaf"] }, similarityPercent: 73, matchReason: { ko: "소 부위를 와인·채소와 오래 끓이는 유럽 전통", ja: "牛の部位をワイン・野菜と長時間煮込むヨーロッパ伝統", en: "Oxtail slow-stew — Spanish counterpart" } },
-          MX: { name: { ko: "소파 데 코스티야", ja: "ソパ・デ・コスティージャ", en: "Sopa de Costilla" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 80, sour: 10 }, description: { ko: "소갈비를 치포틀레·토마토·옥수수와 함께 끓여낸 멕시코식 갈비 수프", ja: "牛カルビをチポトレ・トマト・トウモロコシと共に煮込むメキシコ式カルビスープ", en: "Mexican short rib soup with chipotle, tomato and corn" }, ingredients: { ko: ["소갈비", "치포틀레", "토마토", "옥수수", "감자", "고수"], ja: ["牛カルビ", "チポトレ", "トマト", "トウモロコシ", "ジャガイモ", "パクチー"], en: ["Short ribs", "Chipotle", "Tomato", "Corn", "Potato", "Cilantro"] }, similarityPercent: 75, matchReason: { ko: "소갈비를 매콤한 국물에 오래 끓이는 라틴 해석", ja: "牛カルビを辛いスープで長時間煮込むラテン解釈", en: "Spicy rib soup — Mexican counterpart" } }
         },
         isLocalSpecialty: false,
       },
@@ -5490,36 +4953,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "cheonan-haemul-pajeon",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-haemul-pajeon.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
-        name: { ko: "해물파전", ja: "海鮮パジョン", en: "Haemul Pajeon" },
-        region: "cheonan",
-        tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 70, sour: 10 },
-        storyDescription: {
-          ko: "굵직한 쪽파 위에 오징어·새우·조개를 듬뿍 올려 바삭하게 부쳐낸 천안의 막걸리 안주예요. 비 오는 날 한 장의 파전과 막걸리 한 사발이면 시골 저녁이 완성돼요.",
-          ja: "太い小ネギの上にイカ・エビ・貝をたっぷりのせてカリッと焼いた天安のマッコリおつまみです。雨の日の一枚のパジョンとマッコリ一杯があれば田舎の夕方が完成します。",
-          en: "Plump scallions piled with squid, shrimp and clams, pan-fried crisp — Cheonan's makgeolli snack. On rainy days, one pancake and a bowl of makgeolli make for a perfect countryside evening."
-        },
-        ingredients: { ko: ["쪽파", "오징어", "새우", "바지락", "밀가루", "달걀", "간장", "식초"], ja: ["小ネギ", "イカ", "エビ", "アサリ", "小麦粉", "卵", "醤油", "酢"], en: ["Green onion", "Squid", "Shrimp", "Clam", "Flour", "Egg", "Soy sauce", "Vinegar"] },
-        tags: ["해물", "전", "막걸리"],
-        dupes: {
-          JP: { name: { ko: "가이센 오코노미야키", ja: "海鮮お好み焼き", en: "Kaisen Okonomiyaki" }, tasteProfile: { sweet: 15, salty: 55, spicy: 5, umami: 75, sour: 5 }, description: { ko: "해산물과 양배추를 넣어 두툼하게 부친 오사카식 해물 오코노미야키", ja: "海鮮とキャベツを入れて厚く焼いた大阪風海鮮お好み焼き", en: "Osaka-style thick seafood okonomiyaki" }, ingredients: { ko: ["밀가루", "양배추", "새우", "오징어", "가쓰오부시", "오타후쿠"], ja: ["小麦粉", "キャベツ", "エビ", "イカ", "かつお節", "オタフク"], en: ["Flour", "Cabbage", "Shrimp", "Squid", "Bonito", "Okonomi sauce"] }, similarityPercent: 78, matchReason: { ko: "해산물과 반죽을 함께 두툼하게 부쳐내는 공통점", ja: "海鮮と生地を一緒に厚く焼く共通点", en: "Seafood pancake — Japanese counterpart" } },
-          CN: { name: { ko: "하이셴 총유빙", ja: "海鮮葱油餅", en: "Seafood Cong You Bing" }, tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 75, sour: 5 }, description: { ko: "파와 새우·조개를 넣어 구운 중국 연안식 해물 파전", ja: "ネギとエビ・貝を入れて焼く中国沿岸式海鮮ネギパン", en: "Chinese coastal scallion pancake with shrimp and clams" }, ingredients: { ko: ["밀가루", "대파", "새우", "조개", "참기름", "간장"], ja: ["小麦粉", "長ネギ", "エビ", "貝", "ごま油", "醤油"], en: ["Flour", "Green onion", "Shrimp", "Clam", "Sesame oil", "Soy sauce"] }, similarityPercent: 80, matchReason: { ko: "파와 해물을 반죽에 넣어 팬에 부치는 거의 동일한 구조", ja: "ネギと海鮮を生地に入れてフライパンで焼くほぼ同じ構造", en: "Scallion-seafood pancake — close Chinese twin" } },
-          TH: { name: { ko: "호이 톳", ja: "ホイトート", en: "Hoi Thod" }, tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 75, sour: 10 }, description: { ko: "홍합·굴을 쌀가루 반죽에 넣어 숙주와 바삭하게 부친 태국식 해물 팬케이크", ja: "ムール貝・牡蠣を米粉生地にもやしと共にカリッと焼くタイ式海鮮パンケーキ", en: "Thai crispy seafood pancake with rice flour and bean sprouts" }, ingredients: { ko: ["홍합", "굴", "쌀가루", "숙주", "달걀", "스리라차"], ja: ["ムール貝", "牡蠣", "米粉", "もやし", "卵", "スリラチャ"], en: ["Mussel", "Oyster", "Rice flour", "Bean sprouts", "Egg", "Sriracha"] }, similarityPercent: 77, matchReason: { ko: "해산물과 반죽을 함께 바삭하게 부치는 공통점", ja: "海鮮と生地を一緒にカリッと焼く共通点", en: "Crispy seafood pancake — Thai counterpart" } },
-          VN: { name: { ko: "반 쌔오 하이산", ja: "バインセオ・ハイサン", en: "Bánh Xèo Hải Sản" }, tasteProfile: { sweet: 15, salty: 55, spicy: 10, umami: 75, sour: 15 }, description: { ko: "쌀가루 반죽에 새우·돼지고기·숙주를 넣어 크게 부친 베트남식 해물 크레이프", ja: "米粉生地にエビ・豚肉・もやしを入れて大きく焼くベトナム式海鮮クレープ", en: "Vietnamese large rice-flour crepe with shrimp, pork and bean sprouts" }, ingredients: { ko: ["쌀가루", "강황", "새우", "돼지고기", "숙주", "코코넛밀크"], ja: ["米粉", "ウコン", "エビ", "豚肉", "もやし", "ココナッツミルク"], en: ["Rice flour", "Turmeric", "Shrimp", "Pork", "Bean sprouts", "Coconut milk"] }, similarityPercent: 78, matchReason: { ko: "쌀가루 반죽에 해물과 채소를 넣어 크게 부치는 방식", ja: "米粉生地に海鮮と野菜を入れて大きく焼く方式", en: "Rice-flour seafood crepe — Vietnamese counterpart" } },
-          MY: { name: { ko: "마르타박 할랄 해산물", ja: "マルタバク・ハラル海鮮", en: "Martabak Halal Seafood" }, tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 70, sour: 10 }, description: { ko: "얇은 반죽에 해산물·달걀·향신료를 넣어 접어 구운 말레이식 해물 팬케이크", ja: "薄い生地に海鮮・卵・スパイスを入れて折り畳んで焼くマレー式海鮮パンケーキ", en: "Malaysian folded seafood pancake with egg and spices" }, ingredients: { ko: ["밀가루", "새우", "달걀", "양파", "카레 가루", "식용유"], ja: ["小麦粉", "エビ", "卵", "玉ねぎ", "カレー粉", "食用油"], en: ["Flour", "Shrimp", "Egg", "Onion", "Curry powder", "Oil"] }, similarityPercent: 70, matchReason: { ko: "해물과 반죽을 접어 구워내는 길거리 간식 형태", ja: "海鮮と生地を折り畳んで焼く屋台のおやつ形", en: "Seafood martabak — Malaysian counterpart" } },
-          ID: { name: { ko: "마르타박 아신 해산물", ja: "マルタバク・アシン海鮮", en: "Martabak Asin Seafood" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 75, sour: 10 }, description: { ko: "두부와 새우·오징어·파를 넣어 부친 인도네시아식 해물 마르타박", ja: "豆腐とエビ・イカ・ネギを入れて焼くインドネシア式海鮮マルタバク", en: "Indonesian martabak with tofu, shrimp, squid and scallions" }, ingredients: { ko: ["밀가루", "두부", "새우", "오징어", "삼발", "달걀"], ja: ["小麦粉", "豆腐", "エビ", "イカ", "サンバル", "卵"], en: ["Flour", "Tofu", "Shrimp", "Squid", "Sambal", "Egg"] }, similarityPercent: 67, matchReason: { ko: "해산물과 파를 반죽에 더해 팬에 부쳐내는 포맷", ja: "海鮮とネギを生地に加えてフライパンで焼くフォーマット", en: "Seafood martabak — Indonesian cousin" } },
-          US: { name: { ko: "씨푸드 크레이프", ja: "シーフードクレープ", en: "Seafood Crepe" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 70, sour: 5 }, description: { ko: "얇은 크레이프에 새우·게살·크림 소스를 넣어 만든 미국식 해물 크레이프", ja: "薄いクレープにエビ・カニ肉・クリームソースを入れたアメリカ式海鮮クレープ", en: "American seafood crepe with shrimp, crab and cream sauce" }, ingredients: { ko: ["크레이프 반죽", "새우", "게살", "생크림", "버터", "파슬리"], ja: ["クレープ生地", "エビ", "カニ肉", "生クリーム", "バター", "パセリ"], en: ["Crepe batter", "Shrimp", "Crab", "Cream", "Butter", "Parsley"] }, similarityPercent: 63, matchReason: { ko: "반죽에 해산물을 넣어 부쳐내는 공통점", ja: "生地に海鮮を入れて焼く共通点", en: "Seafood crepe — American counterpart" } },
-          IT: { name: { ko: "프리타타 디 마레", ja: "フリッタータ・ディ・マーレ", en: "Frittata di Mare" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 70, sour: 10 }, description: { ko: "달걀에 새우·오징어·허브를 섞어 두툼하게 부친 이탈리아식 해물 오믈렛", ja: "卵にエビ・イカ・ハーブを混ぜて厚く焼くイタリア式海鮮オムレツ", en: "Italian thick seafood omelette with shrimp, squid and herbs" }, ingredients: { ko: ["달걀", "새우", "오징어", "파슬리", "올리브오일", "마늘"], ja: ["卵", "エビ", "イカ", "パセリ", "オリーブオイル", "ニンニク"], en: ["Egg", "Shrimp", "Squid", "Parsley", "Olive oil", "Garlic"] }, similarityPercent: 65, matchReason: { ko: "해산물과 달걀 반죽을 두툼하게 부쳐내는 구조", ja: "海鮮と卵生地を厚く焼く構造", en: "Seafood frittata — Italian counterpart" } },
-          FR: { name: { ko: "크레이프 프뤼 드 메르", ja: "クレープ・フリュイ・ド・メール", en: "Crêpe Fruits de Mer" }, tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 70, sour: 10 }, description: { ko: "메밀 크레이프에 해산물과 크림 소스를 채운 브르타뉴식 크레이프", ja: "そば粉クレープに海鮮とクリームソースを詰めたブルターニュ式クレープ", en: "Brittany buckwheat crepe filled with seafood and cream" }, ingredients: { ko: ["메밀가루", "홍합", "가리비", "크림", "레몬", "차이브"], ja: ["そば粉", "ムール貝", "ホタテ", "クリーム", "レモン", "チャイブ"], en: ["Buckwheat flour", "Mussel", "Scallop", "Cream", "Lemon", "Chive"] }, similarityPercent: 67, matchReason: { ko: "해산물과 반죽을 함께 즐기는 팬 요리 전통", ja: "海鮮と生地を一緒に楽しむフライパン料理の伝統", en: "Seafood crepe — French cousin" } },
-          IN: { name: { ko: "프론 촬라", ja: "プラウン・チラ", en: "Prawn Chilla" }, tasteProfile: { sweet: 5, salty: 55, spicy: 35, umami: 70, sour: 10 }, description: { ko: "병아리콩 가루 반죽에 새우를 섞어 향신료와 함께 부쳐낸 인도식 해물 전", ja: "ひよこ豆の粉生地にエビを混ぜてスパイスと焼くインド式海鮮チヂミ", en: "Indian chickpea-flour pancake with prawns and spices" }, ingredients: { ko: ["병아리콩 가루", "새우", "청고추", "고수", "강황", "커민"], ja: ["ひよこ豆の粉", "エビ", "青唐辛子", "パクチー", "ウコン", "クミン"], en: ["Chickpea flour", "Prawn", "Green chili", "Cilantro", "Turmeric", "Cumin"] }, similarityPercent: 70, matchReason: { ko: "콩가루 반죽에 해산물을 섞어 부쳐내는 기법", ja: "豆粉生地に海鮮を混ぜて焼く技法", en: "Prawn chickpea chilla — Indian counterpart" } },
-          ES: { name: { ko: "토르티야 데 마리스코스", ja: "トルティージャ・デ・マリスコス", en: "Tortilla de Mariscos" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 75, sour: 5 }, description: { ko: "새우와 감자를 달걀에 섞어 두툼하게 부친 스페인식 해물 오믈렛", ja: "エビとジャガイモを卵に混ぜて厚く焼くスペイン式海鮮オムレツ", en: "Spanish thick shrimp-potato omelette" }, ingredients: { ko: ["달걀", "새우", "감자", "양파", "올리브오일", "파슬리"], ja: ["卵", "エビ", "ジャガイモ", "玉ねぎ", "オリーブオイル", "パセリ"], en: ["Egg", "Shrimp", "Potato", "Onion", "Olive oil", "Parsley"] }, similarityPercent: 68, matchReason: { ko: "해산물을 두툼한 달걀 반죽에 섞어 부쳐내는 방식", ja: "海鮮を厚い卵生地に混ぜて焼く方式", en: "Seafood tortilla — Spanish cousin" } },
-          MX: { name: { ko: "케사디야 데 마리스코스", ja: "ケサディーヤ・デ・マリスコス", en: "Quesadilla de Mariscos" }, tasteProfile: { sweet: 5, salty: 55, spicy: 20, umami: 70, sour: 10 }, description: { ko: "또르띠야에 해산물과 치즈를 넣어 구운 멕시코식 해물 케사디야", ja: "トルティーヤに海鮮とチーズを入れて焼くメキシコ式海鮮ケサディーヤ", en: "Mexican quesadilla with seafood and cheese" }, ingredients: { ko: ["또르띠야", "새우", "오징어", "오아하카 치즈", "세라노", "고수"], ja: ["トルティーヤ", "エビ", "イカ", "オアハカチーズ", "セラーノ", "パクチー"], en: ["Tortilla", "Shrimp", "Squid", "Oaxaca cheese", "Serrano", "Cilantro"] }, similarityPercent: 63, matchReason: { ko: "해산물을 반죽류에 넣어 팬에 구워내는 공통점", ja: "海鮮を生地類に入れてフライパンで焼く共通点", en: "Seafood quesadilla — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "cheonan-dubu-kimchi",
         image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/cheonan-dubu-kimchi.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
@@ -5545,35 +4978,6 @@ export const regions: Region[] = [
           IN: { name: { ko: "파니르 아차르", ja: "パニール・アチャール", en: "Paneer Achar" }, tasteProfile: { sweet: 5, salty: 55, spicy: 55, umami: 75, sour: 25 }, description: { ko: "파니르에 매운 아차르 절임과 향신료를 올린 북인도식 매운 파니르 요리", ja: "パニールに辛いアチャール漬けとスパイスをのせる北インド式辛口パニール料理", en: "North Indian paneer with spicy pickle and masala" }, ingredients: { ko: ["파니르", "매운 아차르", "가람마살라", "생강", "마늘", "고추"], ja: ["パニール", "辛いアチャール", "ガラムマサラ", "生姜", "ニンニク", "唐辛子"], en: ["Paneer", "Spicy pickle", "Garam masala", "Ginger", "Garlic", "Chili"] }, similarityPercent: 63, matchReason: { ko: "발효 절임과 부드러운 단백질을 함께 먹는 해석", ja: "発酵漬物と柔らかいたんぱく質を共に食べる解釈", en: "Paneer achar — Indian counterpart" } },
           ES: { name: { ko: "토푸 콘 초리소", ja: "トーフ・コン・チョリソ", en: "Tofu con Chorizo" }, tasteProfile: { sweet: 5, salty: 60, spicy: 30, umami: 80, sour: 15 }, description: { ko: "두부에 초리소와 파프리카를 볶아 올린 스페인식 퓨전 요리", ja: "豆腐にチョリソとパプリカを炒めてのせるスペイン式フュージョン料理", en: "Spanish fusion tofu topped with chorizo and paprika" }, ingredients: { ko: ["두부", "초리소", "스모크드 파프리카", "마늘", "양파", "파슬리"], ja: ["豆腐", "チョリソ", "スモークパプリカ", "ニンニク", "玉ねぎ", "パセリ"], en: ["Tofu", "Chorizo", "Smoked paprika", "Garlic", "Onion", "Parsley"] }, similarityPercent: 63, matchReason: { ko: "두부에 매운 발효 고기를 올리는 유럽식 해석", ja: "豆腐に辛い発酵肉をのせるヨーロッパ式解釈", en: "Tofu chorizo — Spanish fusion" } },
           MX: { name: { ko: "토푸 콘 티나가", ja: "トーフ・コン・ティンガ", en: "Tofu con Tinga" }, tasteProfile: { sweet: 10, salty: 55, spicy: 55, umami: 75, sour: 20 }, description: { ko: "두부에 치포틀레·돼지고기 틴가를 올린 멕시코식 퓨전 두부 요리", ja: "豆腐にチポトレ・豚肉ティンガをのせるメキシコ式フュージョン豆腐料理", en: "Mexican fusion tofu with chipotle-pork tinga" }, ingredients: { ko: ["두부", "돼지고기", "치포틀레", "토마토", "양파", "고수"], ja: ["豆腐", "豚肉", "チポトレ", "トマト", "玉ねぎ", "パクチー"], en: ["Tofu", "Pork", "Chipotle", "Tomato", "Onion", "Cilantro"] }, similarityPercent: 68, matchReason: { ko: "두부에 매운 돼지고기 살사를 올리는 라틴 해석", ja: "豆腐に辛い豚肉サルサをのせるラテン解釈", en: "Tofu tinga fusion — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "cheonan-bossam",
-        image: "",
-        name: { ko: "보쌈", ja: "ポッサム", en: "Bossam" },
-        region: "cheonan",
-        tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 80, sour: 10 },
-        storyDescription: {
-          ko: "돼지고기를 된장과 향신료에 삶아 얇게 썰어 김치·절임 무·마늘·쌈장과 함께 배춧잎에 싸 먹는 천안식 보쌈이에요. 한 쌈에 삶은 고기의 부드러움과 김치의 매콤함이 폭발해요.",
-          ja: "豚肉を味噌とスパイスで茹でて薄切りにし、キムチ・大根漬け・ニンニク・サムジャンと共に白菜の葉で包んで食べる天安式ポッサムです。一包みに茹で肉の柔らかさとキムチの辛さが弾けます。",
-          en: "Pork boiled in doenjang and spices, sliced thin and wrapped in cabbage with kimchi, pickled radish, garlic and ssamjang — Cheonan's bossam. Tender boiled pork meets kimchi's fire in one perfect wrap."
-        },
-        ingredients: { ko: ["삼겹살", "배추", "보쌈김치", "절임 무", "쌈장", "마늘", "된장", "생강"], ja: ["豚バラ肉", "白菜", "ポッサムキムチ", "大根漬け", "サムジャン", "ニンニク", "味噌", "生姜"], en: ["Pork belly", "Napa cabbage", "Bossam kimchi", "Pickled radish", "Ssamjang", "Garlic", "Doenjang", "Ginger"] },
-        tags: ["쌈", "보쌈", "잔치"],
-        dupes: {
-          JP: { name: { ko: "샤부샤부", ja: "しゃぶしゃぶ", en: "Shabu Shabu" }, tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 80, sour: 10 }, description: { ko: "얇게 썬 고기를 다시 국물에 살짝 데쳐 폰즈에 찍어 먹는 일본식 전골", ja: "薄切り肉をだしで軽くしゃぶしゃぶしポン酢で食べる日本式鍋", en: "Japanese hot pot with thin meat swished in dashi and ponzu" }, ingredients: { ko: ["돼지고기", "다시마", "배추", "두부", "폰즈", "참깨 소스"], ja: ["豚肉", "昆布", "白菜", "豆腐", "ポン酢", "ゴマソース"], en: ["Pork", "Kelp", "Napa cabbage", "Tofu", "Ponzu", "Sesame sauce"] }, similarityPercent: 73, matchReason: { ko: "삶은 고기를 얇게 썰어 소스와 함께 배추에 싸 먹는 유사한 방식", ja: "茹で肉を薄切りにしてソースと共に白菜に包む類似方式", en: "Boiled thin pork with dipping — Japanese counterpart" } },
-          CN: { name: { ko: "후이궈러우", ja: "回鍋肉", en: "Hui Guo Rou" }, tasteProfile: { sweet: 15, salty: 55, spicy: 40, umami: 80, sour: 5 }, description: { ko: "삶은 돼지고기를 채소와 두반장에 다시 볶아낸 사천식 요리", ja: "茹でた豚肉を野菜と豆板醤で再度炒めた四川料理", en: "Sichuan twice-cooked pork with vegetables and doubanjiang" }, ingredients: { ko: ["삼겹살", "양배추", "두반장", "대파", "마늘", "고추"], ja: ["豚バラ肉", "キャベツ", "豆板醤", "長ネギ", "ニンニク", "唐辛子"], en: ["Pork belly", "Cabbage", "Doubanjiang", "Green onion", "Garlic", "Chili"] }, similarityPercent: 75, matchReason: { ko: "삶은 돼지고기와 배추류를 함께 먹는 공통점", ja: "茹でた豚肉とキャベツ類を一緒に食べる共通点", en: "Boiled pork cabbage — Chinese counterpart" } },
-          TH: { name: { ko: "미앙 무", ja: "ミアン・ムー", en: "Miang Moo" }, tasteProfile: { sweet: 15, salty: 50, spicy: 30, umami: 75, sour: 15 }, description: { ko: "돼지고기 편육을 허브·라임·고추와 함께 잎에 싸 먹는 태국식 한입 쌈", ja: "豚肉の煮物をハーブ・ライム・唐辛子と共に葉で包むタイ式一口サム", en: "Thai one-bite wrap with boiled pork, herbs, lime and chili" }, ingredients: { ko: ["돼지고기", "베틀잎", "라임", "땅콩", "칠리", "샬롯"], ja: ["豚肉", "ベテルの葉", "ライム", "ピーナッツ", "唐辛子", "エシャロット"], en: ["Pork", "Betel leaf", "Lime", "Peanut", "Chili", "Shallot"] }, similarityPercent: 77, matchReason: { ko: "삶은 고기를 잎에 싸 여러 양념과 먹는 포맷이 동일", ja: "茹で肉を葉で包んで様々な薬味と食べるフォーマットが同じ", en: "Boiled pork leaf wrap — close Thai sibling" } },
-          VN: { name: { ko: "반 짱 꾸온 틷 루옥", ja: "バインチャン・クオン・ティット・ルオック", en: "Bánh Tráng Cuốn Thịt Luộc" }, tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 75, sour: 15 }, description: { ko: "삶은 돼지고기를 라이스 페이퍼에 허브·버미셀리와 함께 싸 먹는 베트남식 쌈", ja: "茹で豚肉をライスペーパーにハーブ・ビーフンと共に包むベトナム式サム", en: "Vietnamese rice-paper wrap with boiled pork, herbs and vermicelli" }, ingredients: { ko: ["돼지고기", "라이스 페이퍼", "버미셀리", "민트", "고수", "피시소스"], ja: ["豚肉", "ライスペーパー", "ビーフン", "ミント", "パクチー", "魚醤"], en: ["Pork", "Rice paper", "Vermicelli", "Mint", "Cilantro", "Fish sauce"] }, similarityPercent: 82, matchReason: { ko: "삶은 돼지고기를 얇은 피에 싸 소스와 먹는 거의 동일한 요리", ja: "茹でた豚肉を薄い皮に包んでソースと食べるほぼ同じ料理", en: "Boiled pork wrap — Vietnamese twin" } },
-          MY: { name: { ko: "바비 쿠아 람", ja: "バビ・クア・ラム", en: "Babi Kua Lam" }, tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 80, sour: 5 }, description: { ko: "삶은 돼지고기를 허브·삼발과 함께 잎에 싸 먹는 말레이식 돼지고기 쌈", ja: "茹で豚肉をハーブ・サンバルと共に葉で包むマレー式豚肉サム", en: "Malaysian boiled pork wrap with herbs and sambal" }, ingredients: { ko: ["돼지고기", "베틀잎", "삼발", "샬롯", "갈랑갈", "라임"], ja: ["豚肉", "ベテルの葉", "サンバル", "エシャロット", "ガランガル", "ライム"], en: ["Pork", "Betel leaf", "Sambal", "Shallot", "Galangal", "Lime"] }, similarityPercent: 72, matchReason: { ko: "삶은 돼지고기를 잎에 싸 매운 양념과 먹는 공통 포맷", ja: "茹でた豚肉を葉で包んで辛いタレと食べる共通フォーマット", en: "Boiled pork with chili wrap — Malaysian counterpart" } },
-          ID: { name: { ko: "바비 리윅", ja: "バビ・ルウィック", en: "Babi Lawar" }, tasteProfile: { sweet: 15, salty: 55, spicy: 35, umami: 80, sour: 10 }, description: { ko: "삶은 돼지고기를 코코넛·허브·칠리와 함께 버무린 발리식 돼지고기 샐러드", ja: "茹で豚肉をココナッツ・ハーブ・唐辛子で和えたバリ式豚肉サラダ", en: "Balinese boiled pork salad with coconut, herbs and chili" }, ingredients: { ko: ["돼지고기", "코코넛 가루", "레몬그라스", "라임잎", "샬롯", "칠리"], ja: ["豚肉", "ココナッツパウダー", "レモングラス", "ライムの葉", "エシャロット", "唐辛子"], en: ["Pork", "Coconut flakes", "Lemongrass", "Lime leaf", "Shallot", "Chili"] }, similarityPercent: 68, matchReason: { ko: "삶은 돼지고기에 향긋한 양념을 더해 즐기는 공통점", ja: "茹でた豚肉に香ばしいタレを加えて楽しむ共通点", en: "Boiled pork lawar — Indonesian counterpart" } },
-          US: { name: { ko: "풀드 포크 랩", ja: "プルドポーク・ラップ", en: "Pulled Pork Wrap" }, tasteProfile: { sweet: 15, salty: 55, spicy: 15, umami: 75, sour: 10 }, description: { ko: "천천히 익힌 돼지고기를 토르티야에 채소·양념과 함께 말아 먹는 미국식 쌈", ja: "じっくり煮た豚肉をトルティーヤに野菜・タレと共に巻いたアメリカ式ラップ", en: "American slow-cooked pulled pork wrapped in tortilla" }, ingredients: { ko: ["돼지 어깨살", "토르티야", "BBQ 소스", "코울슬로", "양파", "마늘 파우더"], ja: ["豚肩肉", "トルティーヤ", "BBQソース", "コールスロー", "玉ねぎ", "ガーリックパウダー"], en: ["Pork shoulder", "Tortilla", "BBQ sauce", "Coleslaw", "Onion", "Garlic powder"] }, similarityPercent: 65, matchReason: { ko: "천천히 익힌 돼지고기를 얇은 피에 싸 먹는 현대 해석", ja: "じっくり煮た豚肉を薄い皮に包む現代的解釈", en: "Pulled pork wrap — American counterpart" } },
-          IT: { name: { ko: "포르케타 파니니", ja: "ポルケッタ・パニーニ", en: "Porchetta Panini" }, tasteProfile: { sweet: 5, salty: 60, spicy: 10, umami: 80, sour: 5 }, description: { ko: "돼지고기를 허브·마늘로 삶고 구운 뒤 얇게 썰어 빵에 싸 먹는 이탈리아 중부식 요리", ja: "豚肉をハーブ・ニンニクで調理し薄切りにしてパンに挟むイタリア中部料理", en: "Central Italian slow-roasted pork sliced thin in bread" }, ingredients: { ko: ["돼지 등심", "로즈마리", "마늘", "펜넬", "시아바타", "소금"], ja: ["豚ロース", "ローズマリー", "ニンニク", "フェンネル", "チャバタ", "塩"], en: ["Pork loin", "Rosemary", "Garlic", "Fennel", "Ciabatta", "Salt"] }, similarityPercent: 68, matchReason: { ko: "허브와 함께 익힌 돼지고기를 얇게 썰어 싸 먹는 전통", ja: "ハーブと共に調理した豚肉を薄切りにして包む伝統", en: "Porchetta panini — Italian counterpart" } },
-          FR: { name: { ko: "포르크 아 라 피셀", ja: "ポルク・ア・ラ・フィセル", en: "Porc à la Ficelle" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 80, sour: 10 }, description: { ko: "돼지고기를 야채 육수에 부드럽게 삶아 소스와 함께 내는 프랑스 전통 요리", ja: "豚肉を野菜スープで柔らかく茹でてソースと共に出すフランス伝統料理", en: "French traditional pork poached in vegetable broth with sauce" }, ingredients: { ko: ["돼지고기", "당근", "리크", "머스타드 소스", "크레스", "타임"], ja: ["豚肉", "人参", "リーキ", "マスタードソース", "クレス", "タイム"], en: ["Pork", "Carrot", "Leek", "Mustard sauce", "Watercress", "Thyme"] }, similarityPercent: 72, matchReason: { ko: "돼지고기를 부드럽게 삶아 소스와 먹는 유럽 전통", ja: "豚肉を柔らかく茹でてソースと食べるヨーロッパ伝統", en: "Poached pork — French counterpart" } },
-          IN: { name: { ko: "소랴에 랩", ja: "ソーラエ・ラップ", en: "Sorpotel Wrap" }, tasteProfile: { sweet: 10, salty: 55, spicy: 55, umami: 80, sour: 15 }, description: { ko: "돼지고기와 내장을 향신료에 끓여 빵·쌈잎에 싸 먹는 고아식 요리", ja: "豚肉と内臓をスパイスで煮込みパン・サム葉で包むゴア式料理", en: "Goan pork and offal curry wrapped in bread or leaves" }, ingredients: { ko: ["돼지고기", "카슈미리 고추", "식초", "생강", "마늘", "카다멈"], ja: ["豚肉", "カシミーリ唐辛子", "酢", "生姜", "ニンニク", "カルダモン"], en: ["Pork", "Kashmiri chili", "Vinegar", "Ginger", "Garlic", "Cardamom"] }, similarityPercent: 65, matchReason: { ko: "매운 양념 돼지고기를 쌈과 함께 먹는 공통점", ja: "辛いタレの豚肉をサムと食べる共通点", en: "Spiced pork wrap — Indian counterpart" } },
-          ES: { name: { ko: "라콘 콘 그렐로스", ja: "ラコン・コン・グレロス", en: "Lacón con Grelos" }, tasteProfile: { sweet: 5, salty: 65, spicy: 10, umami: 80, sour: 5 }, description: { ko: "돼지 어깨살을 삶아 순무 잎과 함께 내는 스페인 갈리시아식 전통 요리", ja: "豚肩肉を茹でてカブの葉と共に出すスペイン・ガリシア式伝統料理", en: "Galician traditional boiled pork shoulder with turnip greens" }, ingredients: { ko: ["돼지 어깨살", "순무 잎", "감자", "파프리카", "마늘", "월계수잎"], ja: ["豚肩肉", "カブの葉", "ジャガイモ", "パプリカ", "ニンニク", "ローリエ"], en: ["Pork shoulder", "Turnip greens", "Potato", "Paprika", "Garlic", "Bay leaf"] }, similarityPercent: 73, matchReason: { ko: "삶은 돼지고기를 잎채소와 함께 먹는 거의 동일한 구조", ja: "茹でた豚肉を葉野菜と食べるほぼ同じ構造", en: "Boiled pork with greens — close Spanish twin" } },
-          MX: { name: { ko: "카르니타스 타코", ja: "カルニータス・タコ", en: "Carnitas Tacos" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 80, sour: 15 }, description: { ko: "돼지고기를 오래 익혀 또르띠야에 채소와 살사와 함께 싸 먹는 멕시코식 쌈", ja: "豚肉をじっくり煮てトルティーヤに野菜とサルサと共に包むメキシコ式ラップ", en: "Mexican slow-cooked pork wrapped in tortilla with veg and salsa" }, ingredients: { ko: ["돼지 어깨살", "옥수수 또르띠야", "살사", "라임", "고수", "양파"], ja: ["豚肩肉", "トウモロコシトルティーヤ", "サルサ", "ライム", "パクチー", "玉ねぎ"], en: ["Pork shoulder", "Corn tortilla", "Salsa", "Lime", "Cilantro", "Onion"] }, similarityPercent: 77, matchReason: { ko: "익힌 돼지고기를 얇은 피에 싸 먹는 거의 동일한 방식", ja: "煮た豚肉を薄い皮に包むほぼ同じ方式", en: "Carnitas wrap — close Mexican sibling" } }
         },
         isLocalSpecialty: false,
       },
@@ -5928,48 +5332,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "yongin-hanwoo",
-        name: { ko: "한우 구이", ja: "韓牛焼肉", en: "Hanwoo Grilled Beef" },
-        region: "yongin",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/yongin-hanwoo.jpeg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
-        tasteProfile: { sweet: 20, salty: 45, spicy: 10, umami: 90, sour: 5 },
-        storyDescription: {
-          ko: "경기도 한우 고장 용인에서 만나는 프리미엄 한우 구이예요. 결이 고운 마블링이 불에 닿는 순간 지글지글 녹아내리면서 올라오는 고기 향이 식욕을 자극하고, 한 점만 먹어도 입 안 가득 풍미가 가득 차오른답니다.",
-          ja: "京畿道の韓牛の里・龍仁で出会えるプレミアム韓牛焼肉です。細かいサシが火に触れた瞬間にジュージュー溶け出して立ち上る肉の香りが食欲をそそり、一切れ食べるだけで口いっぱいに旨味が広がります。",
-          en: "Premium Hanwoo beef grilled in Yongin, Gyeonggi's prime beef country. The fine marbling sizzles and melts the instant it touches heat, sending up an aroma that ignites the appetite — just one piece and your mouth is flooded with flavor."
-        },
-        ingredients: { ko: ["한우 등심", "소금", "참기름", "마늘", "상추", "깻잎", "쌈장"], ja: ["韓牛サーロイン", "塩", "ごま油", "ニンニク", "サンチュ", "エゴマの葉", "サムジャン"], en: ["Hanwoo sirloin", "Salt", "Sesame oil", "Garlic", "Lettuce", "Perilla", "Ssamjang"] },
-        tags: ["한우", "구이", "프리미엄"],
-                dupes: {
-          US: {
-            name: { ko: "프라임 립아이", ja: "プライムリブアイ", en: "Prime Ribeye" },
-            tasteProfile: { sweet: 5, salty: 38, spicy: 3, umami: 80, sour: 3 },
-            description: { ko: "최고급 등급 소고기 립아이를 그릴이나 팬에 구운 미국식 스테이크", ja: "最高級グレードのリブアイを焼いたアメリカ風ステーキ", en: "American steak cut from prime grade ribeye, grilled or pan-seared" },
-            ingredients: { ko: ["프라임 립아이", "버터", "마늘", "타임", "소금", "후추"], ja: ["プライムリブアイ", "バター", "にんにく", "タイム", "塩", "胡椒"], en: ["prime ribeye", "butter", "garlic", "thyme", "salt", "pepper"] },
-            similarityPercent: 88,
-            matchReason: { ko: "최고 등급 한우를 구운 요리로 용인 한우와 프라임 등급 구이 스테이크는 최상급 소고기 구이라는 공통점이 있습니다.", ja: "最高グレードの牛肉を焼く料理として、共通点があります。", en: "Both are top-grade beef grilled to highlight the natural marbling and flavor of premium cattle." }
-          },
-          FR: {
-            name: { ko: "앙트르코트", ja: "アントルコート", en: "Entrecôte" },
-            tasteProfile: { sweet: 5, salty: 35, spicy: 5, umami: 78, sour: 8 },
-            description: { ko: "프랑스식 버터·허브 소스와 함께 낸 고급 소고기 등심 스테이크", ja: "バターハーブソースと共に供するフランス風高級牛肉ステーキ", en: "French premium beef steak served with herb butter sauce" },
-            ingredients: { ko: ["소 등심", "버터", "에샬롯", "파슬리", "레드와인", "머스타드"], ja: ["牛サーロイン", "バター", "エシャロット", "パセリ", "赤ワイン", "マスタード"], en: ["beef sirloin", "butter", "shallot", "parsley", "red wine", "mustard"] },
-            similarityPercent: 85,
-            matchReason: { ko: "고품질 소고기를 구워 허브 소스와 함께 내는 방식이 용인 한우 구이와 유사합니다.", ja: "高品質牛肉を焼いてハーブソースと共に提供する方式が용인 한우 구이と似ています。", en: "Both are premium beef steaks where quality of the meat is the centerpiece, accompanied by complementary sauces." }
-          },
-          JP: {
-            name: { ko: "와규 야키니쿠", ja: "和牛焼肉", en: "Wagyu Yakiniku" },
-            tasteProfile: { sweet: 12, salty: 40, spicy: 5, umami: 85, sour: 5 },
-            description: { ko: "최고급 와규를 숯불에 구워 특제 타레 소스에 찍어 먹는 일본 야키니쿠", ja: "最高級和牛を炭火で焼いて特製たれで食べる日本の焼肉", en: "Japanese premium wagyu grilled on charcoal and dipped in special tare sauce" },
-            ingredients: { ko: ["와규", "숯", "간장 타레", "참기름", "마늘", "파"], ja: ["和牛", "炭", "醤油たれ", "ごま油", "にんにく", "ねぎ"], en: ["wagyu beef", "charcoal", "soy tare", "sesame oil", "garlic", "scallion"] },
-            similarityPercent: 92,
-            matchReason: { ko: "최고급 소고기를 직화로 구워 양념 소스에 찍어 먹는 방식이 용인 한우 구이와 동일합니다.", ja: "最高級牛肉を直火で焼いてたれソースで食べる方式が용인 한우 구이と同じです。", en: "Both are premium beef grilled over direct heat and dipped in soy-based sauce — same dining style." }
-          }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "yongin-cafe-dessert",
         name: { ko: "보정동 카페거리 디저트", ja: "保亭洞カフェ通りデザート", en: "Bojeongdong Cafe Street Dessert" },
         region: "yongin",
@@ -6060,36 +5422,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "yongin-sundubu",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-sundubu.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
-        name: { ko: "순두부찌개", ja: "スンドゥブチゲ", en: "Sundubu Jjigae" },
-        region: "yongin",
-        tasteProfile: { sweet: 10, salty: 55, spicy: 65, umami: 75, sour: 5 },
-        storyDescription: {
-          ko: "용인 전통 장인이 매일 만들어내는 부드러운 순두부에 해물과 달걀을 풀어 매콤한 뚝배기에 끓여낸 향토 찌개예요. 뽀얀 두부와 빨간 국물이 아침 해처럼 몸을 따뜻하게 데워요.",
-          ja: "龍仁の伝統職人が毎日作る柔らかい絹ごし豆腐に海鮮と卵を溶き入れてピリ辛土鍋で煮込む郷土チゲです。白い豆腐と赤いスープが朝日のように体を温めます。",
-          en: "Silken tofu crafted daily by Yongin artisans, simmered with seafood and egg in a fiery earthenware pot. Milky tofu and red broth warm the body like a rising sun."
-        },
-        ingredients: { ko: ["순두부", "조개", "달걀", "돼지고기", "고춧가루", "대파", "마늘", "참기름"], ja: ["絹ごし豆腐", "アサリ", "卵", "豚肉", "唐辛子粉", "長ネギ", "ニンニク", "ごま油"], en: ["Silken tofu", "Clams", "Egg", "Pork", "Chili powder", "Green onion", "Garlic", "Sesame oil"] },
-        tags: ["순두부", "찌개", "뚝배기"],
-        dupes: {
-          JP: { name: { ko: "아게다시 도후 수프", ja: "揚げ出し豆腐スープ", en: "Agedashi Tofu Soup" }, tasteProfile: { sweet: 15, salty: 55, spicy: 10, umami: 80, sour: 5 }, description: { ko: "튀긴 순두부에 가츠오 다시 국물을 부어 먹는 일본식 두부 요리", ja: "揚げた絹ごし豆腐にかつおだしを注いだ日本の豆腐料理", en: "Japanese tofu in hot dashi broth" }, ingredients: { ko: ["순두부", "가츠오 다시", "가쓰오부시", "간장", "미림", "파"], ja: ["絹ごし豆腐", "かつおだし", "かつお節", "醤油", "みりん", "ネギ"], en: ["Silken tofu", "Dashi", "Bonito", "Soy sauce", "Mirin", "Green onion"] }, similarityPercent: 65, matchReason: { ko: "부드러운 두부 + 따뜻한 국물 베이스의 동일 구조", ja: "柔らかい豆腐 + 温かいスープベースの同じ構造", en: "Silken tofu in hot savory broth — Japanese counterpart" } },
-          CN: { name: { ko: "마라 두부", ja: "麻婆豆腐", en: "Mapo Tofu" }, tasteProfile: { sweet: 10, salty: 60, spicy: 70, umami: 80, sour: 5 }, description: { ko: "다진 돼지고기와 두반장·화자오로 얼얼 매콤하게 볶은 사천식 두부", ja: "豚ひき肉と豆板醤・花椒でしびれ辛く炒めた四川式豆腐", en: "Sichuan tofu braised with minced pork in spicy chili-bean sauce" }, ingredients: { ko: ["두부", "다진 돼지고기", "두반장", "화자오", "고추기름", "대파"], ja: ["豆腐", "豚ひき肉", "豆板醤", "花椒", "ラー油", "長ネギ"], en: ["Tofu", "Minced pork", "Doubanjiang", "Sichuan pepper", "Chili oil", "Green onion"] }, similarityPercent: 75, matchReason: { ko: "두부 + 돼지고기 + 매콤한 발효 양념의 뜨끈한 한 냄비", ja: "豆腐 + 豚肉 + 辛い発酵調味料の熱々鍋", en: "Tofu + pork + fermented chili — close Sichuan sibling" } },
-          TH: { name: { ko: "태국식 그린 커리 두부", ja: "タイ式グリーンカレー豆腐", en: "Thai Green Curry Tofu" }, tasteProfile: { sweet: 15, salty: 50, spicy: 55, umami: 70, sour: 10 }, description: { ko: "코코넛 밀크와 그린커리 페이스트에 두부를 끓인 태국식 커리", ja: "ココナッツミルクとグリーンカレーペーストで豆腐を煮込んだタイ式カレー", en: "Thai green curry of tofu in coconut milk and green curry paste" }, ingredients: { ko: ["두부", "그린커리 페이스트", "코코넛밀크", "바질", "가지", "피시소스"], ja: ["豆腐", "グリーンカレーペースト", "ココナッツミルク", "バジル", "ナス", "魚醤"], en: ["Tofu", "Green curry paste", "Coconut milk", "Basil", "Eggplant", "Fish sauce"] }, similarityPercent: 65, matchReason: { ko: "부드러운 두부를 매콤한 국물에 끓여낸 한 그릇", ja: "柔らかい豆腐を辛いスープで煮込んだ一杯", en: "Soft tofu spicy curry — Thai counterpart" } },
-          VN: { name: { ko: "다우후 솟 까이", ja: "ダウフー・ソット・カイ", en: "Đậu Hũ Xốt Cay" }, tasteProfile: { sweet: 15, salty: 55, spicy: 40, umami: 70, sour: 10 }, description: { ko: "두부를 매콤한 토마토 새우장 소스에 끓여낸 베트남식 매콤 두부", ja: "豆腐を辛いトマトエビみそソースで煮込んだベトナム式辛口豆腐", en: "Vietnamese spicy tofu braised in tomato-shrimp-paste sauce" }, ingredients: { ko: ["두부", "토마토", "새우장", "고추", "파", "마늘"], ja: ["豆腐", "トマト", "エビみそ", "唐辛子", "ネギ", "ニンニク"], en: ["Tofu", "Tomato", "Shrimp paste", "Chili", "Green onion", "Garlic"] }, similarityPercent: 62, matchReason: { ko: "두부를 매콤한 감칠맛 국물에 끓여낸 동일 구조", ja: "豆腐を辛い旨味スープで煮込む同じ構造", en: "Tofu in spicy umami sauce — Vietnamese counterpart" } },
-          MY: { name: { ko: "타후 텔로르", ja: "タフ・テロール", en: "Tahu Telor" }, tasteProfile: { sweet: 15, salty: 50, spicy: 30, umami: 70, sour: 15 }, description: { ko: "두부와 달걀을 함께 튀겨 달콤 매콤한 땅콩 소스를 끼얹은 말레이식 두부 요리", ja: "豆腐と卵を一緒に揚げ甘辛いピーナッツソースをかけたマレー式豆腐料理", en: "Malaysian tofu-and-egg patty topped with sweet-spicy peanut sauce" }, ingredients: { ko: ["두부", "달걀", "땅콩소스", "새싹", "삼발", "케캅 마니스"], ja: ["豆腐", "卵", "ピーナッツソース", "もやし", "サンバル", "ケチャップマニス"], en: ["Tofu", "Egg", "Peanut sauce", "Bean sprouts", "Sambal", "Sweet soy"] }, similarityPercent: 63, matchReason: { ko: "두부와 달걀이 함께 어우러진 매콤달콤한 한 접시", ja: "豆腐と卵が合わさる甘辛い一皿", en: "Tofu-and-egg plate — Malaysian counterpart" } },
-          ID: { name: { ko: "타후 시무르", ja: "タフ・シムル", en: "Tahu Semur" }, tasteProfile: { sweet: 25, salty: 55, spicy: 25, umami: 75, sour: 5 }, description: { ko: "두부를 케캅 마니스와 향신료에 조려낸 인도네시아식 매콤한 두부 조림", ja: "豆腐をケチャップマニスとスパイスで煮込んだインドネシア式豆腐煮込み", en: "Indonesian tofu braised in sweet soy and spices" }, ingredients: { ko: ["두부", "케캅 마니스", "샬롯", "마늘", "고추", "토마토"], ja: ["豆腐", "ケチャップマニス", "エシャロット", "ニンニク", "唐辛子", "トマト"], en: ["Tofu", "Kecap manis", "Shallot", "Garlic", "Chili", "Tomato"] }, similarityPercent: 67, matchReason: { ko: "두부를 단짠 매콤한 국물에 뭉근하게 조려내는 한 냄비", ja: "豆腐を甘辛くピリ辛い煮汁でじっくり煮込む一鍋", en: "Braised tofu — Indonesian counterpart" } },
-          US: { name: { ko: "스파이시 씨푸드 차우더", ja: "スパイシーシーフードチャウダー", en: "Spicy Seafood Chowder" }, tasteProfile: { sweet: 10, salty: 55, spicy: 35, umami: 70, sour: 10 }, description: { ko: "조개와 해산물을 매운 토마토 크림 수프에 끓인 미국식 차우더", ja: "アサリと海鮮を辛いトマトクリームスープで煮込んだアメリカ式チャウダー", en: "American-style spicy tomato-cream chowder with clams" }, ingredients: { ko: ["조개", "새우", "토마토", "우유", "칠리파우더", "셀러리"], ja: ["アサリ", "エビ", "トマト", "牛乳", "チリパウダー", "セロリ"], en: ["Clams", "Shrimp", "Tomato", "Milk", "Chili powder", "Celery"] }, similarityPercent: 58, matchReason: { ko: "조개를 매콤한 국물에 끓여 따뜻하게 먹는 한 그릇", ja: "アサリを辛いスープで煮込んで温かく食べる一杯", en: "Spicy chowder — American counterpart" } },
-          IT: { name: { ko: "주파 디 바콸라", ja: "ズッパ・ディ・バッカラ", en: "Zuppa di Baccalà" }, tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 75, sour: 10 }, description: { ko: "소금에 절인 대구와 토마토를 향신료와 함께 끓인 이탈리아 남부식 수프", ja: "塩漬けタラとトマトをスパイスで煮込んだ南イタリア式スープ", en: "Southern Italian soup of salt cod in tomato-and-spice broth" }, ingredients: { ko: ["염대구", "토마토", "마늘", "페페론치노", "감자", "파슬리"], ja: ["塩タラ", "トマト", "ニンニク", "ペペロンチーノ", "じゃがいも", "パセリ"], en: ["Salt cod", "Tomato", "Garlic", "Peperoncino", "Potato", "Parsley"] }, similarityPercent: 60, matchReason: { ko: "해산물을 매콤한 토마토 국물에 끓여 먹는 유사 구조", ja: "海鮮を辛いトマトスープで煮込む類似構造", en: "Spicy seafood stew — Italian counterpart" } },
-          FR: { name: { ko: "수프 드 푸아송 에피세", ja: "スープ・ド・ポワソン・エピセ", en: "Spicy Soupe de Poisson" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 75, sour: 10 }, description: { ko: "생선과 조개를 마늘·사프란·칠리로 끓인 프로방스식 매운 수프", ja: "魚と貝をニンニク・サフラン・チリで煮込んだプロヴァンス式辛口スープ", en: "Provençal spicy fish-and-shellfish soup with garlic, saffron and chili" }, ingredients: { ko: ["흰살생선", "조개", "마늘", "사프란", "칠리", "토마토"], ja: ["白身魚", "貝", "ニンニク", "サフラン", "チリ", "トマト"], en: ["White fish", "Shellfish", "Garlic", "Saffron", "Chili", "Tomato"] }, similarityPercent: 58, matchReason: { ko: "조개 등 해산물을 매운 국물에 끓여내는 한 그릇", ja: "貝などの海鮮を辛いスープで煮込む一杯", en: "Spicy shellfish broth — French counterpart" } },
-          IN: { name: { ko: "팔라크 파니르", ja: "パラクパニール", en: "Palak Paneer" }, tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 70, sour: 10 }, description: { ko: "시금치 퓨레와 향신료에 부드러운 파니르 치즈를 끓인 북인도식 커리", ja: "ほうれん草ピュレとスパイスに柔らかいパニールチーズを煮込んだ北インドカレー", en: "North Indian curry of soft paneer cheese in spiced spinach sauce" }, ingredients: { ko: ["파니르", "시금치", "생강", "가람마살라", "크림", "마늘"], ja: ["パニール", "ほうれん草", "生姜", "ガラムマサラ", "クリーム", "ニンニク"], en: ["Paneer", "Spinach", "Ginger", "Garam masala", "Cream", "Garlic"] }, similarityPercent: 67, matchReason: { ko: "부드러운 흰색 단백질 블록을 진한 국물에 끓이는 동일 구조", ja: "柔らかい白いたんぱく質ブロックを濃厚なスープで煮込む同じ構造", en: "Soft protein in rich sauce — Indian counterpart" } },
-          ES: { name: { ko: "소파 데 아호", ja: "ソパ・デ・アホ", en: "Sopa de Ajo" }, tasteProfile: { sweet: 5, salty: 55, spicy: 20, umami: 70, sour: 5 }, description: { ko: "마늘과 빵 조각, 파프리카를 뜨거운 육수에 끓여 달걀을 풀어낸 카스티야식 수프", ja: "ニンニクとパン・パプリカを熱いスープで煮込み卵を溶いたカスティーリャ式スープ", en: "Castilian soup of garlic, bread and paprika with egg" }, ingredients: { ko: ["마늘", "빵 조각", "파프리카", "올리브오일", "달걀", "닭육수"], ja: ["ニンニク", "パン", "パプリカ", "オリーブオイル", "卵", "鶏スープ"], en: ["Garlic", "Bread", "Paprika", "Olive oil", "Egg", "Chicken broth"] }, similarityPercent: 58, matchReason: { ko: "달걀을 풀어낸 뜨거운 매콤한 국물 한 그릇이라는 공통점", ja: "卵を溶いた熱々のピリ辛スープという共通点", en: "Spicy egg-drop soup — Spanish counterpart" } },
-          MX: { name: { ko: "칼도 틀랄페뇨", ja: "カルド・トラルペニョ", en: "Caldo Tlalpeño" }, tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 75, sour: 10 }, description: { ko: "닭고기와 병아리콩, 치포틀레를 끓인 멕시코시티식 매콤한 수프", ja: "鶏肉とひよこ豆、チポトレを煮込んだメキシコシティ式辛口スープ", en: "Mexico City soup of chicken, chickpeas and chipotle chili" }, ingredients: { ko: ["닭고기", "병아리콩", "치포틀레", "당근", "호박", "아보카도"], ja: ["鶏肉", "ひよこ豆", "チポトレ", "人参", "カボチャ", "アボカド"], en: ["Chicken", "Chickpeas", "Chipotle", "Carrot", "Squash", "Avocado"] }, similarityPercent: 62, matchReason: { ko: "매운 고추로 향을 낸 뜨거운 국물 한 그릇", ja: "辛い唐辛子で香りづけした熱々のスープ一杯", en: "Chili-aromatic soup — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "yongin-cheoin-dakgalbi",
         image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-cheoin-dakgalbi.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
@@ -6146,36 +5478,6 @@ export const regions: Region[] = [
           IN: { name: { ko: "야크니 육수", ja: "ヤクニ・スープ", en: "Yakhni Broth" }, tasteProfile: { sweet: 10, salty: 50, spicy: 25, umami: 80, sour: 5 }, description: { ko: "양뼈를 향신료와 함께 우려낸 카슈미르식 맑은 육수", ja: "羊骨をスパイスと共に煮込んだカシミール式澄んだスープ", en: "Kashmiri clear broth from lamb bones simmered with spices" }, ingredients: { ko: ["양뼈", "회향", "정향", "카다멈", "생강", "소금"], ja: ["羊骨", "フェンネル", "クローブ", "カルダモン", "生姜", "塩"], en: ["Lamb bones", "Fennel", "Clove", "Cardamom", "Ginger", "Salt"] }, similarityPercent: 72, matchReason: { ko: "뼈를 오래 우려 몸을 보하는 용도로 먹는 전통 국물", ja: "骨を長時間煮込んで体を補う伝統スープ", en: "Yakhni bone broth — Indian counterpart" } },
           ES: { name: { ko: "칼도 데 카르네", ja: "カルド・デ・カルネ", en: "Caldo de Carne" }, tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 80, sour: 5 }, description: { ko: "소고기와 뼈, 채소를 함께 끓인 스페인 전통 맑은 국물", ja: "牛肉と骨、野菜を一緒に煮込んだスペイン伝統の澄んだスープ", en: "Spanish traditional clear broth of beef, bones and vegetables" }, ingredients: { ko: ["소고기", "소뼈", "당근", "리크", "양파", "병아리콩"], ja: ["牛肉", "牛骨", "人参", "リーキ", "玉ねぎ", "ひよこ豆"], en: ["Beef", "Beef bones", "Carrot", "Leek", "Onion", "Chickpeas"] }, similarityPercent: 75, matchReason: { ko: "소뼈·고기를 오래 끓여 밥상의 기본이 되는 국물 전통", ja: "牛骨・肉を長時間煮込んで食卓の基本となる伝統スープ", en: "Caldo de carne — Spanish counterpart" } },
           MX: { name: { ko: "콘소메 멕시카노", ja: "コンソメ・メヒカーノ", en: "Consomé Mexicano" }, tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 80, sour: 10 }, description: { ko: "소뼈와 고기를 고수·라임과 함께 끓인 멕시코식 맑은 육수", ja: "牛骨と肉をパクチー・ライムと一緒に煮込んだメキシコ式澄んだスープ", en: "Mexican clear beef-bone broth finished with cilantro and lime" }, ingredients: { ko: ["소고기", "소뼈", "양파", "마늘", "고수", "라임"], ja: ["牛肉", "牛骨", "玉ねぎ", "ニンニク", "パクチー", "ライム"], en: ["Beef", "Beef bones", "Onion", "Garlic", "Cilantro", "Lime"] }, similarityPercent: 72, matchReason: { ko: "소뼈와 고기를 오래 끓여 몸을 데워주는 식사의 중심", ja: "牛骨と肉を長時間煮込んで体を温める食事の中心", en: "Consomé mexicano — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "yongin-haemul-tang",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-haemul-tang.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
-        name: { ko: "해물탕", ja: "海鮮タン", en: "Haemul Tang" },
-        region: "yongin",
-        tasteProfile: { sweet: 10, salty: 55, spicy: 55, umami: 85, sour: 5 },
-        storyDescription: {
-          ko: "민속촌 주변 해산물 식당에서 즐기는 용인의 해물탕은 꽃게·새우·낙지를 가득 넣고 얼큰하게 끓인 바다의 한상이에요. 국물에 녹아든 해물 감칠맛이 한 숟갈에 폭발해요.",
-          ja: "民俗村周辺の海鮮食堂で楽しむ龍仁の海鮮タンはワタリガニ・エビ・テナガダコをたっぷり入れてピリ辛に煮込んだ海の一膳です。スープに溶け込んだ海鮮の旨味が一さじで弾けます。",
-          en: "Yongin's seafood hot pot, found at restaurants near the Folk Village — blue crab, shrimp and octopus simmered in fiery broth. The sea's umami detonates in every spoonful."
-        },
-        ingredients: { ko: ["꽃게", "새우", "낙지", "홍합", "콩나물", "미나리", "고춧가루", "다진 마늘"], ja: ["ワタリガニ", "エビ", "テナガダコ", "ムール貝", "もやし", "セリ", "唐辛子粉", "刻みニンニク"], en: ["Blue crab", "Shrimp", "Octopus", "Mussel", "Bean sprouts", "Dropwort", "Chili powder", "Minced garlic"] },
-        tags: ["해물", "매운탕", "민속촌"],
-        dupes: {
-          JP: { name: { ko: "요세나베", ja: "寄せ鍋", en: "Yosenabe" }, tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 85, sour: 5 }, description: { ko: "여러 해산물과 고기·채소를 한 냄비에 끓여 먹는 일본식 모듬 전골", ja: "様々な海鮮と肉・野菜を一鍋で煮込む日本式寄せ鍋", en: "Japanese hot pot combining various seafood, meat and vegetables" }, ingredients: { ko: ["게", "조개", "오징어", "배추", "두부", "간장"], ja: ["カニ", "貝", "イカ", "白菜", "豆腐", "醤油"], en: ["Crab", "Clam", "Squid", "Napa cabbage", "Tofu", "Soy sauce"] }, similarityPercent: 78, matchReason: { ko: "여러 해산물을 한 냄비에 모아 끓여내는 거의 동일한 요리", ja: "様々な海鮮を一鍋で煮込むほぼ同じ料理", en: "Yosenabe — Japanese twin" } },
-          CN: { name: { ko: "하이셴 훠궈", ja: "海鮮火鍋", en: "Haixian Huo Guo" }, tasteProfile: { sweet: 10, salty: 55, spicy: 65, umami: 85, sour: 5 }, description: { ko: "여러 해산물을 마라 또는 맑은 국물에 한 냄비에 끓여 먹는 중국식 훠궈", ja: "様々な海鮮を麻辣または澄んだスープで一鍋で煮込む中国式火鍋", en: "Chinese seafood hot pot in mala or clear broth" }, ingredients: { ko: ["새우", "오징어", "게", "두반장", "화자오", "배추"], ja: ["エビ", "イカ", "カニ", "豆板醤", "花椒", "白菜"], en: ["Shrimp", "Squid", "Crab", "Doubanjiang", "Sichuan pepper", "Napa cabbage"] }, similarityPercent: 82, matchReason: { ko: "여러 해산물을 매운 국물에 끓이는 거의 동일한 요리", ja: "様々な海鮮を辛いスープで煮込むほぼ同じ料理", en: "Seafood huo guo — Chinese sibling" } },
-          TH: { name: { ko: "톰 얌 탈레", ja: "トムヤム・タレ", en: "Tom Yam Talay" }, tasteProfile: { sweet: 10, salty: 50, spicy: 65, umami: 80, sour: 30 }, description: { ko: "새우·오징어·조개를 레몬그라스와 칠리로 새콤 매콤하게 끓인 태국식 해산물 수프", ja: "エビ・イカ・貝をレモングラスと唐辛子で酸っぱ辛く煮込むタイ式海鮮スープ", en: "Thai hot-and-sour seafood soup with lemongrass and chili" }, ingredients: { ko: ["새우", "오징어", "홍합", "레몬그라스", "갈랑갈", "라임"], ja: ["エビ", "イカ", "ムール貝", "レモングラス", "ガランガル", "ライム"], en: ["Shrimp", "Squid", "Mussel", "Lemongrass", "Galangal", "Lime"] }, similarityPercent: 80, matchReason: { ko: "해산물을 매콤 새콤한 국물에 끓이는 공통점", ja: "海鮮を辛酸っぱいスープで煮込む共通点", en: "Tom yam talay — Thai counterpart" } },
-          VN: { name: { ko: "러우 하이산", ja: "ラウ・ハイサン", en: "Lẩu Hải Sản" }, tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 85, sour: 15 }, description: { ko: "여러 해산물과 채소를 토마토·타마린드 국물에 끓인 베트남식 해산물 전골", ja: "様々な海鮮と野菜をトマト・タマリンドスープで煮込むベトナム式海鮮鍋", en: "Vietnamese seafood hot pot in tomato-tamarind broth" }, ingredients: { ko: ["새우", "오징어", "조개", "토마토", "타마린드", "고수"], ja: ["エビ", "イカ", "貝", "トマト", "タマリンド", "パクチー"], en: ["Shrimp", "Squid", "Clam", "Tomato", "Tamarind", "Cilantro"] }, similarityPercent: 77, matchReason: { ko: "여러 해산물을 매콤한 국물에 끓이는 공통점", ja: "様々な海鮮を辛いスープで煮込む共通点", en: "Lẩu hải sản — Vietnamese counterpart" } },
-          MY: { name: { ko: "스팀보트 해산물", ja: "スチームボート海鮮", en: "Seafood Steamboat" }, tasteProfile: { sweet: 10, salty: 55, spicy: 45, umami: 85, sour: 10 }, description: { ko: "다양한 해산물과 어묵을 매운 국물에 끓여 먹는 말레이식 스팀보트", ja: "様々な海鮮とおでんを辛いスープで煮込むマレー式スチームボート", en: "Malaysian steamboat with seafood and fishcakes in spicy broth" }, ingredients: { ko: ["새우", "오징어", "게", "피시볼", "삼발", "배추"], ja: ["エビ", "イカ", "カニ", "フィッシュボール", "サンバル", "白菜"], en: ["Shrimp", "Squid", "Crab", "Fish balls", "Sambal", "Napa cabbage"] }, similarityPercent: 77, matchReason: { ko: "여러 해산물을 매운 국물에 한 냄비에 끓이는 포맷", ja: "様々な海鮮を辛いスープで一鍋で煮込むフォーマット", en: "Spicy seafood steamboat — Malaysian counterpart" } },
-          ID: { name: { ko: "수프 해산물 페다스", ja: "スプ・海鮮・ペダス", en: "Sup Seafood Pedas" }, tasteProfile: { sweet: 10, salty: 55, spicy: 55, umami: 80, sour: 15 }, description: { ko: "여러 해산물을 삼발·레몬그라스 국물에 끓인 인도네시아식 매운 해산물 수프", ja: "様々な海鮮をサンバル・レモングラススープで煮込んだインドネシア式辛口海鮮スープ", en: "Indonesian spicy seafood soup with sambal and lemongrass" }, ingredients: { ko: ["새우", "오징어", "조개", "삼발", "레몬그라스", "갈랑갈"], ja: ["エビ", "イカ", "貝", "サンバル", "レモングラス", "ガランガル"], en: ["Shrimp", "Squid", "Clam", "Sambal", "Lemongrass", "Galangal"] }, similarityPercent: 70, matchReason: { ko: "해산물을 매운 양념 국물에 끓이는 동남아식", ja: "海鮮を辛いタレスープで煮込む東南アジア式", en: "Spicy seafood soup — Indonesian counterpart" } },
-          US: { name: { ko: "시오피노", ja: "チオッピーノ", en: "Cioppino" }, tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 85, sour: 15 }, description: { ko: "다양한 해산물을 토마토·와인·고추에 끓인 미국 샌프란시스코식 해물 스튜", ja: "様々な海鮮をトマト・ワイン・唐辛子で煮込むアメリカ・サンフランシスコ式海鮮シチュー", en: "American San Francisco cioppino with mixed seafood in tomato-wine broth" }, ingredients: { ko: ["게", "새우", "조개", "토마토", "레드와인", "마늘"], ja: ["カニ", "エビ", "貝", "トマト", "赤ワイン", "ニンニク"], en: ["Crab", "Shrimp", "Clam", "Tomato", "Red wine", "Garlic"] }, similarityPercent: 78, matchReason: { ko: "다양한 해산물을 한 냄비에 매콤한 국물로 끓이는 유사 전통", ja: "様々な海鮮を一鍋で辛いスープに煮込む類似伝統", en: "Cioppino — American counterpart" } },
-          IT: { name: { ko: "주파 디 페체", ja: "ズッパ・ディ・ペッシェ", en: "Zuppa di Pesce" }, tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 85, sour: 15 }, description: { ko: "흰살 생선과 해산물을 토마토·와인·페페론치노에 끓인 이탈리아식 해물 수프", ja: "白身魚と海鮮をトマト・ワイン・ペペロンチーノで煮込むイタリア式海鮮スープ", en: "Italian fish and seafood soup in tomato-wine-peperoncino broth" }, ingredients: { ko: ["흰살 생선", "새우", "조개", "토마토", "화이트와인", "페페론치노"], ja: ["白身魚", "エビ", "貝", "トマト", "白ワイン", "ペペロンチーノ"], en: ["White fish", "Shrimp", "Clam", "Tomato", "White wine", "Peperoncino"] }, similarityPercent: 75, matchReason: { ko: "해산물을 와인·토마토 국물에 끓이는 지중해 전통", ja: "海鮮をワイン・トマトスープで煮込む地中海伝統", en: "Zuppa di pesce — Italian counterpart" } },
-          FR: { name: { ko: "부이야베스", ja: "ブイヤベース", en: "Bouillabaisse" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 85, sour: 15 }, description: { ko: "여러 생선과 해산물을 사프란·토마토에 오래 끓인 프로방스 해물 스튜", ja: "様々な魚と海鮮をサフラン・トマトで長時間煮込むプロヴァンスの海鮮シチュー", en: "Provençal seafood stew slow-simmered with saffron and tomato" }, ingredients: { ko: ["생선", "새우", "홍합", "토마토", "사프란", "마늘"], ja: ["魚", "エビ", "ムール貝", "トマト", "サフラン", "ニンニク"], en: ["Fish", "Shrimp", "Mussel", "Tomato", "Saffron", "Garlic"] }, similarityPercent: 77, matchReason: { ko: "여러 해산물을 매콤한 국물에 한 냄비에 끓이는 유럽 전통", ja: "様々な海鮮を辛いスープで一鍋で煮込むヨーロッパ伝統", en: "Bouillabaisse — French counterpart" } },
-          IN: { name: { ko: "고안 시푸드 커리", ja: "ゴア・シーフードカレー", en: "Goan Seafood Curry" }, tasteProfile: { sweet: 10, salty: 55, spicy: 60, umami: 80, sour: 20 }, description: { ko: "다양한 해산물을 코코넛·타마린드·커리잎에 끓인 고아식 매운 해산물 커리", ja: "様々な海鮮をココナッツ・タマリンド・カレーリーフで煮込むゴア式辛口海鮮カレー", en: "Goan spicy seafood curry with coconut, tamarind and curry leaves" }, ingredients: { ko: ["새우", "생선", "게", "코코넛밀크", "타마린드", "커리잎"], ja: ["エビ", "魚", "カニ", "ココナッツミルク", "タマリンド", "カレーリーフ"], en: ["Shrimp", "Fish", "Crab", "Coconut milk", "Tamarind", "Curry leaves"] }, similarityPercent: 70, matchReason: { ko: "해산물을 매운 코코넛 커리에 끓이는 남인도 전통", ja: "海鮮を辛いココナッツカレーで煮込む南インド伝統", en: "Goan seafood curry — Indian counterpart" } },
-          ES: { name: { ko: "사르수엘라 데 마리스코스", ja: "サルスエラ・デ・マリスコス", en: "Zarzuela de Mariscos" }, tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 85, sour: 15 }, description: { ko: "여러 해산물을 사프란·파프리카·화이트와인 국물에 끓인 카탈루냐식 해산물 스튜", ja: "様々な海鮮をサフラン・パプリカ・白ワインスープで煮込むカタルーニャ式海鮮シチュー", en: "Catalan zarzuela stew with mixed seafood, saffron, paprika and white wine" }, ingredients: { ko: ["새우", "홍합", "오징어", "사프란", "토마토", "파프리카"], ja: ["エビ", "ムール貝", "イカ", "サフラン", "トマト", "パプリカ"], en: ["Shrimp", "Mussel", "Squid", "Saffron", "Tomato", "Paprika"] }, similarityPercent: 75, matchReason: { ko: "다양한 해산물을 한 냄비에 매콤하게 끓이는 지중해 전통", ja: "様々な海鮮を一鍋で辛く煮込む地中海伝統", en: "Zarzuela — Spanish counterpart" } },
-          MX: { name: { ko: "칼도 시에테 마레스", ja: "カルド・シエテ・マレス", en: "Caldo Siete Mares" }, tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 85, sour: 15 }, description: { ko: "일곱 가지 해산물을 토마토·칠리·라임에 끓인 멕시코식 해물 수프", ja: "七種の海鮮をトマト・唐辛子・ライムで煮込むメキシコ式海鮮スープ", en: "Mexican 'seven seas' seafood broth with tomato, chili and lime" }, ingredients: { ko: ["새우", "게", "문어", "조개", "토마토", "치포틀레"], ja: ["エビ", "カニ", "タコ", "貝", "トマト", "チポトレ"], en: ["Shrimp", "Crab", "Octopus", "Clam", "Tomato", "Chipotle"] }, similarityPercent: 73, matchReason: { ko: "일곱 가지 해산물을 매운 국물에 한 냄비에 끓이는 공통점", ja: "七種の海鮮を辛いスープで一鍋で煮込む共通点", en: "Siete mares — Mexican counterpart" } }
         },
         isLocalSpecialty: false,
       },
@@ -6269,95 +5571,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "yongin-seolleongtang",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-seolleongtang.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
-        name: { ko: "설렁탕", ja: "ソルロンタン", en: "Seolleongtang" },
-        region: "yongin",
-        tasteProfile: { sweet: 5, salty: 50, spicy: 5, umami: 90, sour: 5 },
-        storyDescription: {
-          ko: "소 사골·양지·머리고기를 24시간 이상 고아 뽀얗게 우려낸 용인식 설렁탕이에요. 밥과 당면을 말아 후춧가루와 소금으로만 간을 해 진한 감칠맛을 끌어올려요.",
-          ja: "牛の骨・胸肉・頭肉を24時間以上煮込んで白濁に仕上げた龍仁式ソルロンタンです。ご飯と春雨を入れて胡椒と塩だけで味を整え、深い旨味を引き出します。",
-          en: "Ox bones, brisket and head meat simmered over 24 hours into milky perfection — Yongin's seolleongtang. Rice and glass noodles added, seasoned only with pepper and salt, let the deep umami shine."
-        },
-        ingredients: { ko: ["사골", "양지", "머리고기", "대파", "무", "마늘", "소금", "후추"], ja: ["牛骨", "胸肉", "頭肉", "長ネギ", "大根", "ニンニク", "塩", "胡椒"], en: ["Ox bones", "Brisket", "Head meat", "Green onion", "Radish", "Garlic", "Salt", "Pepper"] },
-        tags: ["설렁탕", "사골", "해장"],
-        dupes: {
-          JP: { name: { ko: "토리 파이탄", ja: "鶏白湯", en: "Tori Paitan" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 85, sour: 5 }, description: { ko: "닭 뼈를 오래 끓여 만든 뽀얗고 진한 일본식 라멘 국물", ja: "鶏骨を長時間煮込んで作る白く濃厚な日本式ラーメンスープ", en: "Japanese milky chicken-bone ramen broth" }, ingredients: { ko: ["닭뼈", "닭발", "생강", "파", "소금", "라멘 면"], ja: ["鶏骨", "鶏足", "生姜", "ネギ", "塩", "ラーメン"], en: ["Chicken bones", "Chicken feet", "Ginger", "Green onion", "Salt", "Ramen"] }, similarityPercent: 78, matchReason: { ko: "뼈를 장시간 끓여 뽀얀 국물을 얻는 동일 기법", ja: "骨を長時間煮込んで白濁スープを得る同じ技法", en: "Milky bone broth — Japanese counterpart" } },
-          CN: { name: { ko: "뉴 구 파이구 탕", ja: "牛骨排骨湯", en: "Niu Gu Tang" }, tasteProfile: { sweet: 5, salty: 50, spicy: 5, umami: 90, sour: 5 }, description: { ko: "소뼈와 양지를 오래 우려낸 중국식 소 뼈 국물 요리", ja: "牛骨と胸肉を長時間煮込む中国式牛骨スープ", en: "Chinese slow-simmered beef bone and brisket broth" }, ingredients: { ko: ["소뼈", "양지", "무", "생강", "대파", "소금"], ja: ["牛骨", "胸肉", "大根", "生姜", "長ネギ", "塩"], en: ["Beef bones", "Brisket", "Radish", "Ginger", "Green onion", "Salt"] }, similarityPercent: 85, matchReason: { ko: "소뼈·양지를 오래 끓이는 거의 동일한 요리", ja: "牛骨・胸肉を長時間煮込むほぼ同じ料理", en: "Niu gu tang — close Chinese twin" } },
-          TH: { name: { ko: "느아 뚠 피르", ja: "ヌア・トゥーン・フエ", en: "Neua Toon Puer" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 80, sour: 5 }, description: { ko: "소뼈·양지·허브를 오래 끓인 태국식 소고기 뼈 수프", ja: "牛骨・胸肉・ハーブを長時間煮込むタイ式の牛骨スープ", en: "Thai slow-simmered beef bone and brisket soup with herbs" }, ingredients: { ko: ["소뼈", "양지", "팔각", "계피", "갈랑갈", "고수"], ja: ["牛骨", "胸肉", "八角", "シナモン", "ガランガル", "パクチー"], en: ["Beef bones", "Brisket", "Star anise", "Cinnamon", "Galangal", "Cilantro"] }, similarityPercent: 72, matchReason: { ko: "소뼈를 오래 끓이는 공통 전통", ja: "牛骨を長時間煮込む共通伝統", en: "Beef bone soup — Thai counterpart" } },
-          VN: { name: { ko: "퍼 보", ja: "フォー・ボー", en: "Phở Bò" }, tasteProfile: { sweet: 10, salty: 50, spicy: 10, umami: 85, sour: 10 }, description: { ko: "소뼈를 오래 우려낸 맑고 진한 국물에 쌀국수를 낸 베트남 대표 요리", ja: "牛骨を長時間煮込んだ澄んだスープに米麺を入れたベトナムの代表料理", en: "Vietnamese signature rice-noodle soup in long-simmered beef bone broth" }, ingredients: { ko: ["쌀국수", "소뼈", "양지머리", "팔각", "계피", "양파"], ja: ["米麺", "牛骨", "牛胸肉", "八角", "シナモン", "玉ねぎ"], en: ["Rice noodles", "Beef bones", "Brisket", "Star anise", "Cinnamon", "Onion"] }, similarityPercent: 82, matchReason: { ko: "소뼈 기반 깊은 국물을 메인으로 즐기는 거의 동일한 철학", ja: "牛骨ベースの深いスープをメインに楽しむほぼ同じ哲学", en: "Phở bò — close Vietnamese twin" } },
-          MY: { name: { ko: "박꾸테 소고기", ja: "バクテー・牛肉", en: "Beef Bak Kut Teh" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 85, sour: 5 }, description: { ko: "소고기와 뼈를 한약재와 함께 우린 말레이·싱가포르식 소고기 허브 국물", ja: "牛肉と骨を漢方と共に煮込んだマレー・シンガポール式牛肉ハーブスープ", en: "Malaysian/Singaporean beef bone soup with medicinal herbs" }, ingredients: { ko: ["소갈비", "소뼈", "당귀", "황기", "팔각", "후추"], ja: ["牛カルビ", "牛骨", "当帰", "黄耆", "八角", "胡椒"], en: ["Beef ribs", "Beef bones", "Angelica", "Astragalus", "Star anise", "Pepper"] }, similarityPercent: 75, matchReason: { ko: "소뼈를 약재와 함께 오래 끓이는 공통 전통", ja: "牛骨を漢方と共に長時間煮込む共通伝統", en: "Herbal beef broth — Malaysian counterpart" } },
-          ID: { name: { ko: "소토 베타위", ja: "ソト・ベタウィ", en: "Soto Betawi" }, tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 80, sour: 5 }, description: { ko: "소고기와 내장을 코코넛밀크 국물에 끓여낸 자카르타식 수프", ja: "牛肉と内臓をココナッツミルクスープで煮込んだジャカルタ式スープ", en: "Jakarta beef soup with tripe in coconut-milk broth" }, ingredients: { ko: ["소고기", "소 내장", "코코넛밀크", "레몬그라스", "샬롯", "라임"], ja: ["牛肉", "牛ホルモン", "ココナッツミルク", "レモングラス", "エシャロット", "ライム"], en: ["Beef", "Tripe", "Coconut milk", "Lemongrass", "Shallot", "Lime"] }, similarityPercent: 70, matchReason: { ko: "소고기와 뼈에서 우린 진한 국물을 밥과 함께 먹는 포맷", ja: "牛肉と骨から煮出した濃厚スープをご飯と食べるフォーマット", en: "Soto betawi — Indonesian counterpart" } },
-          US: { name: { ko: "비프 콘소메", ja: "ビーフ・コンソメ", en: "Beef Consommé" }, tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 85, sour: 5 }, description: { ko: "소고기와 뼈를 오래 우려내 정제한 맑은 국물 요리", ja: "牛肉と骨を長時間煮込んで清澄した澄んだスープ料理", en: "Clarified clear broth from long-simmered beef and bones" }, ingredients: { ko: ["소고기", "소뼈", "당근", "셀러리", "양파", "달걀흰자"], ja: ["牛肉", "牛骨", "人参", "セロリ", "玉ねぎ", "卵白"], en: ["Beef", "Beef bones", "Carrot", "Celery", "Onion", "Egg white"] }, similarityPercent: 75, matchReason: { ko: "맑고 깊은 소고기 뼈 국물을 만드는 정통 기법", ja: "澄んだ深い牛骨スープを作る正統技法", en: "Beef consommé — American counterpart" } },
-          IT: { name: { ko: "브로도 디 카르네", ja: "ブロード・ディ・カルネ", en: "Brodo di Carne" }, tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 85, sour: 5 }, description: { ko: "소고기와 뼈를 천천히 끓여 낸 이탈리아 전통 맑은 고기 국물", ja: "牛肉と骨をじっくり煮込んだイタリア伝統の澄んだ肉スープ", en: "Italian traditional clear meat broth slow-simmered from beef and bones" }, ingredients: { ko: ["소고기 양지", "소뼈", "당근", "셀러리", "양파", "파슬리"], ja: ["牛胸肉", "牛骨", "人参", "セロリ", "玉ねぎ", "パセリ"], en: ["Brisket", "Beef bones", "Carrot", "Celery", "Onion", "Parsley"] }, similarityPercent: 80, matchReason: { ko: "소뼈·고기를 오래 끓여 맑고 진한 국물을 만드는 거의 동일한 기법", ja: "牛骨・肉を長時間煮込んで澄んだ濃厚スープを作るほぼ同じ技法", en: "Brodo di carne — Italian twin" } },
-          FR: { name: { ko: "콩소메", ja: "コンソメ", en: "Consommé" }, tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 85, sour: 5 }, description: { ko: "소고기·뼈와 채소를 오래 끓여 정제한 프랑스식 맑은 고기 수프", ja: "牛肉・骨と野菜を長時間煮込んで清澄したフランス式澄んだ肉スープ", en: "French clarified meat broth slow-simmered from beef, bones and vegetables" }, ingredients: { ko: ["소고기", "소뼈", "당근", "리크", "셀러리", "달걀흰자"], ja: ["牛肉", "牛骨", "人参", "リーキ", "セロリ", "卵白"], en: ["Beef", "Beef bones", "Carrot", "Leek", "Celery", "Egg white"] }, similarityPercent: 82, matchReason: { ko: "소뼈를 오랜 시간 고아 고급스럽게 정제한 한 그릇", ja: "牛骨を長時間煮込んで上品に仕上げた一杯", en: "Consommé — French counterpart" } },
-          IN: { name: { ko: "야크니 육수", ja: "ヤクニ・スープ", en: "Yakhni Broth" }, tasteProfile: { sweet: 10, salty: 50, spicy: 25, umami: 80, sour: 5 }, description: { ko: "양뼈를 향신료와 함께 우려낸 카슈미르식 맑은 육수", ja: "羊骨をスパイスと共に煮込んだカシミール式澄んだスープ", en: "Kashmiri clear broth from lamb bones simmered with spices" }, ingredients: { ko: ["양뼈", "회향", "정향", "카다멈", "생강", "소금"], ja: ["羊骨", "フェンネル", "クローブ", "カルダモン", "生姜", "塩"], en: ["Lamb bones", "Fennel", "Clove", "Cardamom", "Ginger", "Salt"] }, similarityPercent: 72, matchReason: { ko: "뼈를 오래 우려 몸을 보하는 용도로 먹는 전통 국물", ja: "骨を長時間煮込んで体を補う伝統スープ", en: "Yakhni — Indian counterpart" } },
-          ES: { name: { ko: "칼도 데 카르네", ja: "カルド・デ・カルネ", en: "Caldo de Carne" }, tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 80, sour: 5 }, description: { ko: "소고기와 뼈, 채소를 함께 끓인 스페인 전통 맑은 국물", ja: "牛肉と骨、野菜を一緒に煮込んだスペイン伝統の澄んだスープ", en: "Spanish traditional clear broth of beef, bones and vegetables" }, ingredients: { ko: ["소고기", "소뼈", "당근", "리크", "양파", "병아리콩"], ja: ["牛肉", "牛骨", "人参", "リーキ", "玉ねぎ", "ひよこ豆"], en: ["Beef", "Beef bones", "Carrot", "Leek", "Onion", "Chickpeas"] }, similarityPercent: 75, matchReason: { ko: "소뼈·고기를 오래 끓여 밥상의 기본이 되는 국물 전통", ja: "牛骨・肉を長時間煮込んで食卓の基本となる伝統スープ", en: "Caldo de carne — Spanish counterpart" } },
-          MX: { name: { ko: "콘소메 멕시카노", ja: "コンソメ・メヒカーノ", en: "Consomé Mexicano" }, tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 80, sour: 10 }, description: { ko: "소뼈와 고기를 고수·라임과 함께 끓인 멕시코식 맑은 육수", ja: "牛骨と肉をパクチー・ライムと一緒に煮込んだメキシコ式澄んだスープ", en: "Mexican clear beef-bone broth finished with cilantro and lime" }, ingredients: { ko: ["소고기", "소뼈", "양파", "마늘", "고수", "라임"], ja: ["牛肉", "牛骨", "玉ねぎ", "ニンニク", "パクチー", "ライム"], en: ["Beef", "Beef bones", "Onion", "Garlic", "Cilantro", "Lime"] }, similarityPercent: 72, matchReason: { ko: "소뼈와 고기를 오래 끓여 몸을 데워주는 식사의 중심", ja: "牛骨と肉を長時間煮込んで体を温める食事の中心", en: "Consomé mexicano — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "yongin-heuk-dwaeji",
-        image: "",
-        name: { ko: "흑돼지구이", ja: "黒豚焼き", en: "Heuk Dwaeji Gui" },
-        region: "yongin",
-        tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 85, sour: 5 },
-        storyDescription: {
-          ko: "용인 농장에서 직접 기른 흑돼지 삼겹살을 쌈장과 함께 굽는 프리미엄 구이예요. 풍부한 기름기와 쫄깃한 살결이 한 점에 용인의 자연을 담고 있어요.",
-          ja: "龍仁の農場で育った黒豚のバラ肉をサムジャンと共に焼くプレミアム焼き物です。豊かな脂と歯ごたえのある身が一口に龍仁の自然を込めています。",
-          en: "Black pork belly raised at Yongin farms, grilled with ssamjang — a premium grill. Rich fat and springy flesh carry Yongin's countryside in each bite."
-        },
-        ingredients: { ko: ["흑돼지 삼겹살", "상추", "깻잎", "마늘", "쌈장", "파절이", "소금", "참기름"], ja: ["黒豚バラ肉", "サンチュ", "エゴマの葉", "ニンニク", "サムジャン", "ネギ和え", "塩", "ごま油"], en: ["Black pork belly", "Lettuce", "Perilla leaf", "Garlic", "Ssamjang", "Scallion salad", "Salt", "Sesame oil"] },
-        tags: ["흑돼지", "구이", "프리미엄"],
-        dupes: {
-          JP: { name: { ko: "부타 야키", ja: "豚焼き", en: "Buta Yaki" }, tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 85, sour: 5 }, description: { ko: "두꺼운 돼지 삼겹살을 간장·미림 양념에 구운 일본식 돼지고기 구이", ja: "厚切り豚バラ肉を醤油・みりんで焼いた日本式豚肉焼き", en: "Japanese pork belly grilled with soy-mirin glaze" }, ingredients: { ko: ["돼지 삼겹살", "간장", "미림", "생강", "마늘", "파"], ja: ["豚バラ肉", "醤油", "みりん", "生姜", "ニンニク", "ネギ"], en: ["Pork belly", "Soy sauce", "Mirin", "Ginger", "Garlic", "Green onion"] }, similarityPercent: 85, matchReason: { ko: "두꺼운 삼겹살을 직화에 구워 간장 양념과 먹는 거의 동일한 요리", ja: "厚切りバラ肉を直火で焼いて醤油ダレで食べるほぼ同じ料理", en: "Grilled pork belly — Japanese twin" } },
-          CN: { name: { ko: "회궈러우", ja: "回鍋肉", en: "Hui Guo Rou" }, tasteProfile: { sweet: 15, salty: 55, spicy: 40, umami: 80, sour: 5 }, description: { ko: "삶은 삼겹살을 양배추와 두반장에 볶은 사천식 돼지고기 볶음", ja: "茹でたバラ肉をキャベツと豆板醤で炒めた四川式豚肉炒め", en: "Sichuan twice-cooked pork belly with cabbage and doubanjiang" }, ingredients: { ko: ["삼겹살", "양배추", "두반장", "대파", "마늘", "고추"], ja: ["バラ肉", "キャベツ", "豆板醤", "長ネギ", "ニンニク", "唐辛子"], en: ["Pork belly", "Cabbage", "Doubanjiang", "Green onion", "Garlic", "Chili"] }, similarityPercent: 73, matchReason: { ko: "삼겹살을 양념과 함께 조리하는 동아시아 공통 요리", ja: "バラ肉をタレと共に調理する東アジア共通料理", en: "Hui guo rou — Chinese counterpart" } },
-          TH: { name: { ko: "무 양", ja: "ムー・ヤーン", en: "Moo Yang" }, tasteProfile: { sweet: 20, salty: 55, spicy: 25, umami: 80, sour: 10 }, description: { ko: "돼지고기를 피시소스·코코넛밀크에 재워 숯불에 구운 태국식 돼지 구이", ja: "豚肉を魚醤・ココナッツミルクに漬けて炭火で焼いたタイ式豚焼き", en: "Thai charcoal-grilled pork marinated in fish sauce and coconut milk" }, ingredients: { ko: ["돼지고기", "피시소스", "코코넛밀크", "레몬그라스", "마늘", "설탕"], ja: ["豚肉", "魚醤", "ココナッツミルク", "レモングラス", "ニンニク", "砂糖"], en: ["Pork", "Fish sauce", "Coconut milk", "Lemongrass", "Garlic", "Sugar"] }, similarityPercent: 72, matchReason: { ko: "돼지를 양념에 재워 숯불에 굽는 공통 전통", ja: "豚肉をタレに漬けて炭火で焼く共通伝統", en: "Moo yang — Thai counterpart" } },
-          VN: { name: { ko: "틿 헤오 느엉 사", ja: "ティット・ヘオ・ヌン・サ", en: "Thịt Heo Nướng Sả" }, tasteProfile: { sweet: 20, salty: 55, spicy: 15, umami: 80, sour: 10 }, description: { ko: "돼지고기를 레몬그라스·피시소스에 재워 숯불에 구운 베트남식 돼지 구이", ja: "豚肉をレモングラス・魚醤に漬けて炭火で焼いたベトナム式豚焼き", en: "Vietnamese charcoal-grilled pork with lemongrass-fish sauce marinade" }, ingredients: { ko: ["돼지고기", "레몬그라스", "피시소스", "설탕", "마늘", "고추"], ja: ["豚肉", "レモングラス", "魚醤", "砂糖", "ニンニク", "唐辛子"], en: ["Pork", "Lemongrass", "Fish sauce", "Sugar", "Garlic", "Chili"] }, similarityPercent: 78, matchReason: { ko: "돼지를 숯불에 굽는 향긋한 아시아 해석", ja: "豚を炭火で焼く香ばしいアジア解釈", en: "Thịt heo nướng — Vietnamese counterpart" } },
-          MY: { name: { ko: "바비 팡강", ja: "バビ・パンガン", en: "Babi Panggang" }, tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 85, sour: 5 }, description: { ko: "돼지 삼겹살을 향신료에 재워 바삭하게 구운 말레이시아식 흑돼지 요리", ja: "豚バラ肉をスパイスに漬けてカリッと焼いたマレーシア式黒豚料理", en: "Malaysian crispy roasted pork belly with spice marinade" }, ingredients: { ko: ["돼지 삼겹살", "오향 가루", "간장", "꿀", "마늘", "생강"], ja: ["豚バラ肉", "五香粉", "醤油", "ハチミツ", "ニンニク", "生姜"], en: ["Pork belly", "Five-spice", "Soy sauce", "Honey", "Garlic", "Ginger"] }, similarityPercent: 77, matchReason: { ko: "삼겹살을 향신료와 함께 바삭하게 굽는 해안식 해석", ja: "バラ肉をスパイスと共にカリッと焼く海岸式解釈", en: "Babi panggang — Malaysian counterpart" } },
-          ID: { name: { ko: "바비 굴링", ja: "バビ・グリン", en: "Babi Guling" }, tasteProfile: { sweet: 15, salty: 55, spicy: 45, umami: 85, sour: 10 }, description: { ko: "통돼지를 향신료에 재워 숯불에 통째로 구운 발리 전통 통돼지 구이", ja: "丸豚をスパイスに漬けて炭火で丸ごと焼いたバリ伝統の丸豚焼き", en: "Balinese spit-roasted whole pig with spice paste" }, ingredients: { ko: ["통돼지", "터머릭", "레몬그라스", "갈랑갈", "샬롯", "칠리"], ja: ["丸豚", "ウコン", "レモングラス", "ガランガル", "エシャロット", "唐辛子"], en: ["Whole pig", "Turmeric", "Lemongrass", "Galangal", "Shallot", "Chili"] }, similarityPercent: 70, matchReason: { ko: "돼지고기를 향신 양념에 숯불에 구워내는 전통", ja: "豚肉をスパイスタレに炭火で焼く伝統", en: "Babi guling — Indonesian counterpart" } },
-          US: { name: { ko: "그릴드 포크 벨리", ja: "グリルド・ポークベリー", en: "Grilled Pork Belly" }, tasteProfile: { sweet: 15, salty: 55, spicy: 15, umami: 85, sour: 5 }, description: { ko: "돼지 삼겹살을 BBQ 소스에 재워 숯불에 구운 미국 남부식 포크 벨리", ja: "豚バラ肉をBBQソースに漬けて炭火で焼いたアメリカ南部式ポークベリー", en: "American Southern grilled pork belly with BBQ glaze" }, ingredients: { ko: ["돼지 삼겹살", "BBQ 소스", "흑설탕", "파프리카", "마늘", "머스타드"], ja: ["豚バラ肉", "BBQソース", "黒糖", "パプリカ", "ニンニク", "マスタード"], en: ["Pork belly", "BBQ sauce", "Brown sugar", "Paprika", "Garlic", "Mustard"] }, similarityPercent: 73, matchReason: { ko: "삼겹살을 양념에 재워 숯불에 굽는 서구식 해석", ja: "バラ肉をタレに漬けて炭火で焼く西洋式解釈", en: "BBQ pork belly — American counterpart" } },
-          IT: { name: { ko: "포르케타 토스카나", ja: "ポルケッタ・トスカーナ", en: "Porchetta Toscana" }, tasteProfile: { sweet: 5, salty: 60, spicy: 10, umami: 85, sour: 5 }, description: { ko: "돼지고기를 허브·마늘로 속을 채워 구운 이탈리아 토스카나식 통돼지 구이", ja: "豚肉をハーブ・ニンニクで詰めて焼くイタリア・トスカーナ式丸豚焼き", en: "Tuscan porchetta stuffed with herbs and garlic" }, ingredients: { ko: ["돼지 등심", "로즈마리", "마늘", "펜넬", "소금", "올리브오일"], ja: ["豚ロース", "ローズマリー", "ニンニク", "フェンネル", "塩", "オリーブオイル"], en: ["Pork loin", "Rosemary", "Garlic", "Fennel", "Salt", "Olive oil"] }, similarityPercent: 70, matchReason: { ko: "허브와 함께 익힌 돼지고기의 유럽식 해석", ja: "ハーブと共に調理する豚肉のヨーロッパ式解釈", en: "Porchetta — Italian counterpart" } },
-          FR: { name: { ko: "포르크 그리예", ja: "ポルク・グリエ", en: "Porc Grillé" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 85, sour: 10 }, description: { ko: "돼지고기를 허브·와인에 재워 숯불에 구운 프랑스식 돼지 구이", ja: "豚肉をハーブ・ワインに漬けて炭火で焼くフランス式豚焼き", en: "French charcoal-grilled pork with herb-wine marinade" }, ingredients: { ko: ["돼지고기", "화이트와인", "타임", "마늘", "샬롯", "버터"], ja: ["豚肉", "白ワイン", "タイム", "ニンニク", "エシャロット", "バター"], en: ["Pork", "White wine", "Thyme", "Garlic", "Shallot", "Butter"] }, similarityPercent: 68, matchReason: { ko: "돼지를 섬세한 양념에 구워내는 유럽식 해석", ja: "豚を繊細なタレで焼くヨーロッパ式解釈", en: "Porc grillé — French counterpart" } },
-          IN: { name: { ko: "포크 소르포텔", ja: "ポーク・ソルポテル", en: "Pork Sorpotel" }, tasteProfile: { sweet: 10, salty: 55, spicy: 60, umami: 85, sour: 15 }, description: { ko: "돼지고기를 식초·카슈미리 고추·향신료에 조린 인도 고아식 매운 돼지 요리", ja: "豚肉を酢・カシミーリ唐辛子・スパイスで煮込むインド・ゴア式辛口豚料理", en: "Goan pork sorpotel in vinegar and Kashmiri chili" }, ingredients: { ko: ["돼지고기", "카슈미리 고추", "식초", "생강", "마늘", "가람마살라"], ja: ["豚肉", "カシミーリ唐辛子", "酢", "生姜", "ニンニク", "ガラムマサラ"], en: ["Pork", "Kashmiri chili", "Vinegar", "Ginger", "Garlic", "Garam masala"] }, similarityPercent: 65, matchReason: { ko: "돼지고기를 매운 향신 양념에 조리는 해석", ja: "豚肉を辛いスパイスタレで煮込む解釈", en: "Pork sorpotel — Indian counterpart" } },
-          ES: { name: { ko: "코치니요 아사도", ja: "コチニージョ・アサード", en: "Cochinillo Asado" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 85, sour: 5 }, description: { ko: "새끼돼지를 허브·마늘로 재워 오븐에 구운 스페인 세고비아식 통돼지 요리", ja: "子豚をハーブ・ニンニクに漬けてオーブンで焼いたスペイン・セゴビア式子豚料理", en: "Segovian roasted suckling pig with herbs and garlic" }, ingredients: { ko: ["새끼돼지", "마늘", "월계수잎", "와인", "올리브오일", "소금"], ja: ["子豚", "ニンニク", "ローリエ", "ワイン", "オリーブオイル", "塩"], en: ["Suckling pig", "Garlic", "Bay leaf", "Wine", "Olive oil", "Salt"] }, similarityPercent: 72, matchReason: { ko: "돼지고기를 오래 구워 바삭하게 만드는 전통", ja: "豚肉を長時間焼いてカリッと仕上げる伝統", en: "Cochinillo asado — Spanish counterpart" } },
-          MX: { name: { ko: "코치니타 피빌", ja: "コチニータ・ピビル", en: "Cochinita Pibil" }, tasteProfile: { sweet: 10, salty: 55, spicy: 45, umami: 85, sour: 25 }, description: { ko: "돼지고기를 아초테·오렌지·라임에 재워 바나나 잎에 싸 구운 유카탄식 돼지 요리", ja: "豚肉をアチョーテ・オレンジ・ライムに漬けてバナナの葉で包んで焼くユカタン式豚料理", en: "Yucatan-style pork slow-cooked in banana leaves with achiote, orange and lime" }, ingredients: { ko: ["돼지고기", "아초테", "오렌지", "라임", "마늘", "바나나 잎"], ja: ["豚肉", "アチョーテ", "オレンジ", "ライム", "ニンニク", "バナナの葉"], en: ["Pork", "Achiote", "Orange", "Lime", "Garlic", "Banana leaf"] }, similarityPercent: 70, matchReason: { ko: "돼지고기를 향신 양념에 오래 익히는 라틴 해석", ja: "豚肉をスパイスタレで長時間調理するラテン解釈", en: "Cochinita pibil — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "yongin-memil-jeonbyeong",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-memil-jeonbyeong.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-IR 스튜디오",
-        name: { ko: "메밀전병", ja: "そば粉チヂミ", en: "Memil Jeonbyeong" },
-        region: "yongin",
-        tasteProfile: { sweet: 10, salty: 50, spicy: 20, umami: 60, sour: 5 },
-        storyDescription: {
-          ko: "메밀가루 반죽을 얇게 부쳐 다진 김치와 당면·고기를 넣고 돌돌 말아낸 용인의 향토 전병이에요. 고소한 메밀 향과 매콤한 속이 막걸리 안주로 딱이에요.",
-          ja: "そば粉生地を薄く焼いて刻みキムチと春雨・肉を入れて巻いた龍仁の郷土チヂミです。香ばしいそばの香りと辛い具材がマッコリのおつまみにピッタリです。",
-          en: "Thin buckwheat crepes rolled around chopped kimchi, glass noodles and meat — Yongin's rural treat. Nutty buckwheat meets spicy filling, perfect with makgeolli."
-        },
-        ingredients: { ko: ["메밀가루", "김치", "당면", "돼지고기", "쪽파", "간장", "참기름", "고춧가루"], ja: ["そば粉", "キムチ", "春雨", "豚肉", "青ネギ", "醤油", "ごま油", "唐辛子粉"], en: ["Buckwheat flour", "Kimchi", "Glass noodles", "Pork", "Green onion", "Soy sauce", "Sesame oil", "Chili powder"] },
-        tags: ["메밀", "전병", "향토"],
-        dupes: {
-          JP: { name: { ko: "소바가키 마키", ja: "そばがき巻き", en: "Sobagaki Maki" }, tasteProfile: { sweet: 5, salty: 45, spicy: 5, umami: 60, sour: 5 }, description: { ko: "메밀가루로 만든 얇은 부침에 채소를 말아낸 일본 시골식 메밀 롤", ja: "そば粉で作った薄いクレープに野菜を巻いた日本の田舎式そばロール", en: "Japanese rural buckwheat crepe rolled with vegetables" }, ingredients: { ko: ["메밀가루", "무즙", "간장", "파", "와사비", "김"], ja: ["そば粉", "大根おろし", "醤油", "ネギ", "わさび", "海苔"], en: ["Buckwheat flour", "Grated daikon", "Soy sauce", "Green onion", "Wasabi", "Nori"] }, similarityPercent: 77, matchReason: { ko: "메밀 반죽에 채소를 싸 먹는 거의 동일한 전통", ja: "そば生地に野菜を包んで食べるほぼ同じ伝統", en: "Buckwheat crepe roll — Japanese twin" } },
-          CN: { name: { ko: "챠오 멘 빙", ja: "蕎麦餅", en: "Qiao Mian Bing" }, tasteProfile: { sweet: 5, salty: 50, spicy: 10, umami: 60, sour: 5 }, description: { ko: "메밀가루 반죽에 파·채소를 넣어 부친 중국 북부식 메밀 팬케이크", ja: "そば粉生地にネギ・野菜を入れて焼いた中国北部式そばパンケーキ", en: "Northern Chinese buckwheat pancake with scallions and vegetables" }, ingredients: { ko: ["메밀가루", "대파", "양배추", "간장", "참기름", "계란"], ja: ["そば粉", "長ネギ", "キャベツ", "醤油", "ごま油", "卵"], en: ["Buckwheat flour", "Green onion", "Cabbage", "Soy sauce", "Sesame oil", "Egg"] }, similarityPercent: 73, matchReason: { ko: "메밀 반죽을 팬에 부쳐 채소와 함께 먹는 전통", ja: "そば生地をフライパンで焼いて野菜と食べる伝統", en: "Buckwheat pancake — Chinese counterpart" } },
-          TH: { name: { ko: "카놈 부앙 쩐 메밀", ja: "カノム・ブアン・そば", en: "Buckwheat Khanom Buang" }, tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 55, sour: 5 }, description: { ko: "메밀가루로 만든 얇은 태국식 크레이프에 채소와 양념을 넣은 퓨전 요리", ja: "そば粉で作った薄いタイ式クレープに野菜と薬味を入れた融合料理", en: "Thai fusion buckwheat crepe with vegetables and seasoning" }, ingredients: { ko: ["메밀가루", "코코넛밀크", "파", "고추", "피시소스", "라임"], ja: ["そば粉", "ココナッツミルク", "ネギ", "唐辛子", "魚醤", "ライム"], en: ["Buckwheat flour", "Coconut milk", "Green onion", "Chili", "Fish sauce", "Lime"] }, similarityPercent: 62, matchReason: { ko: "얇은 반죽에 채소·양념을 말아 먹는 간식 전통", ja: "薄い生地に野菜・薬味を巻いて食べるおやつ伝統", en: "Thin crepe roll — Thai counterpart" } },
-          VN: { name: { ko: "반 쭝 짜이 메밀", ja: "バイン・チュン・チャイ・そば", en: "Buckwheat Bánh Cuốn" }, tasteProfile: { sweet: 10, salty: 50, spicy: 10, umami: 60, sour: 15 }, description: { ko: "메밀가루 반죽을 얇게 찌고 채소·버섯을 넣어 말아낸 베트남식 메밀 롤", ja: "そば粉生地を薄く蒸しキノコ・野菜を入れて巻いたベトナム式そばロール", en: "Vietnamese steamed buckwheat crepe rolled with mushrooms and vegetables" }, ingredients: { ko: ["메밀가루", "목이버섯", "쪽파", "피시소스", "샬롯", "라임"], ja: ["そば粉", "キクラゲ", "青ネギ", "魚醤", "エシャロット", "ライム"], en: ["Buckwheat flour", "Wood ear", "Green onion", "Fish sauce", "Shallot", "Lime"] }, similarityPercent: 65, matchReason: { ko: "메밀 반죽에 채소를 넣어 말아 먹는 공통 구조", ja: "そば生地に野菜を入れて巻いて食べる共通構造", en: "Buckwheat rolled crepe — Vietnamese counterpart" } },
-          MY: { name: { ko: "로티 차나이 메밀", ja: "ロティ・チャナイ・そば", en: "Buckwheat Roti Canai" }, tasteProfile: { sweet: 5, salty: 50, spicy: 10, umami: 55, sour: 5 }, description: { ko: "메밀가루로 만든 얇은 말레이식 플랫브레드에 채소를 싸 먹는 퓨전 요리", ja: "そば粉で作った薄いマレー式フラットブレッドに野菜を包む融合料理", en: "Malaysian buckwheat flatbread wrapped with vegetables" }, ingredients: { ko: ["메밀가루", "버터", "양파", "고추", "소금", "식용유"], ja: ["そば粉", "バター", "玉ねぎ", "唐辛子", "塩", "食用油"], en: ["Buckwheat flour", "Butter", "Onion", "Chili", "Salt", "Oil"] }, similarityPercent: 60, matchReason: { ko: "얇은 반죽에 채소를 싸 먹는 간식 전통", ja: "薄い生地に野菜を包んで食べるおやつ伝統", en: "Buckwheat flatbread — Malaysian counterpart" } },
-          ID: { name: { ko: "마르타박 메밀", ja: "マルタバク・そば", en: "Buckwheat Martabak" }, tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 60, sour: 5 }, description: { ko: "메밀가루 반죽에 양파·달걀·고기를 넣어 부친 인도네시아식 메밀 간식", ja: "そば粉生地に玉ねぎ・卵・肉を入れて焼いたインドネシア式そばおやつ", en: "Indonesian buckwheat stuffed pancake with onion, egg and meat" }, ingredients: { ko: ["메밀가루", "양파", "달걀", "다진 고기", "카레 가루", "고추"], ja: ["そば粉", "玉ねぎ", "卵", "ひき肉", "カレー粉", "唐辛子"], en: ["Buckwheat flour", "Onion", "Egg", "Minced meat", "Curry powder", "Chili"] }, similarityPercent: 63, matchReason: { ko: "메밀 반죽에 속을 채워 부쳐낸 간식 해석", ja: "そば生地に具を詰めて焼いたおやつ解釈", en: "Stuffed buckwheat pancake — Indonesian counterpart" } },
-          US: { name: { ko: "메밀 크레이프", ja: "バックウィート・クレープ", en: "Buckwheat Crepe" }, tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 60, sour: 10 }, description: { ko: "메밀가루 반죽을 얇게 부쳐 햄·치즈·채소를 말아낸 미국식 메밀 크레이프", ja: "そば粉生地を薄く焼いてハム・チーズ・野菜を巻いたアメリカ式そばクレープ", en: "American savory buckwheat crepe rolled with ham, cheese and vegetables" }, ingredients: { ko: ["메밀가루", "햄", "치즈", "시금치", "버터", "달걀"], ja: ["そば粉", "ハム", "チーズ", "ほうれん草", "バター", "卵"], en: ["Buckwheat flour", "Ham", "Cheese", "Spinach", "Butter", "Egg"] }, similarityPercent: 70, matchReason: { ko: "메밀 크레이프에 속재료를 말아 먹는 서구식 해석", ja: "そばクレープに具材を巻いて食べる西洋式解釈", en: "Buckwheat crepe roll — American counterpart" } },
-          IT: { name: { ko: "크레스펠레 디 그라노 사라체노", ja: "クレスペッレ・ディ・グラノ・サラチェーノ", en: "Crespelle di Grano Saraceno" }, tasteProfile: { sweet: 5, salty: 50, spicy: 5, umami: 65, sour: 5 }, description: { ko: "메밀 크레이프에 시금치와 리코타를 넣고 베샤멜 소스를 얹은 이탈리아 북부식 요리", ja: "そばクレープにほうれん草とリコッタを詰めベシャメルソースをかけた北イタリア式料理", en: "Northern Italian buckwheat crepe stuffed with spinach and ricotta, topped with béchamel" }, ingredients: { ko: ["메밀가루", "시금치", "리코타", "베샤멜", "파마산", "버터"], ja: ["そば粉", "ほうれん草", "リコッタ", "ベシャメル", "パルメザン", "バター"], en: ["Buckwheat flour", "Spinach", "Ricotta", "Béchamel", "Parmesan", "Butter"] }, similarityPercent: 73, matchReason: { ko: "메밀 반죽으로 채소를 말아 굽는 유럽식 전통", ja: "そば生地で野菜を巻いて焼くヨーロッパ式伝統", en: "Crespelle — Italian counterpart" } },
-          FR: { name: { ko: "갈레트 드 사라신 가르니", ja: "ガレット・ド・サラザン・ガルニ", en: "Galette de Sarrasin Garnie" }, tasteProfile: { sweet: 5, salty: 50, spicy: 5, umami: 60, sour: 10 }, description: { ko: "메밀가루로 만든 얇은 크레이프에 햄·치즈·채소·달걀을 올려 접은 브르타뉴식 갈레트", ja: "そば粉で作った薄いクレープにハム・チーズ・野菜・卵を詰めて折ったブルターニュ式ガレット", en: "Brittany buckwheat galette folded with ham, cheese, vegetables and egg" }, ingredients: { ko: ["메밀가루", "햄", "그뤼예르", "달걀", "시금치", "버터"], ja: ["そば粉", "ハム", "グリュイエール", "卵", "ほうれん草", "バター"], en: ["Buckwheat flour", "Ham", "Gruyère", "Egg", "Spinach", "Butter"] }, similarityPercent: 78, matchReason: { ko: "메밀 크레이프에 여러 재료를 말아 먹는 전통이 매우 유사", ja: "そばクレープに様々な具材を巻いて食べる伝統が非常に類似", en: "Galette de sarrasin — close French twin" } },
-          IN: { name: { ko: "쿳투 아타 파라타", ja: "クットゥ・アタ・パラタ", en: "Kuttu Atta Paratha" }, tasteProfile: { sweet: 5, salty: 50, spicy: 30, umami: 60, sour: 10 }, description: { ko: "메밀가루 반죽에 감자·향신료를 넣어 부친 인도 북부식 메밀 파라타", ja: "そば粉生地にジャガイモ・スパイスを入れて焼いた北インド式そばパラタ", en: "North Indian buckwheat flatbread stuffed with spiced potato" }, ingredients: { ko: ["메밀가루", "감자", "청고추", "커민", "마늘", "기"], ja: ["そば粉", "ジャガイモ", "青唐辛子", "クミン", "ニンニク", "ギー"], en: ["Buckwheat flour", "Potato", "Green chili", "Cumin", "Garlic", "Ghee"] }, similarityPercent: 67, matchReason: { ko: "메밀 반죽에 속재료를 채워 팬에 구워내는 구조", ja: "そば生地に具材を詰めてフライパンで焼く構造", en: "Kuttu paratha — Indian counterpart" } },
-          ES: { name: { ko: "크레페 데 알포르폰 레예노", ja: "クレペ・デ・アルフォロン・レジェノ", en: "Crepe de Alforfón Relleno" }, tasteProfile: { sweet: 5, salty: 50, spicy: 5, umami: 60, sour: 10 }, description: { ko: "메밀 크레이프에 치즈·햄·채소를 말아낸 스페인 북부식 메밀 크레이프", ja: "そばクレープにチーズ・ハム・野菜を巻いたスペイン北部式そばクレープ", en: "Northern Spanish buckwheat crepe rolled with cheese, ham and vegetables" }, ingredients: { ko: ["메밀가루", "하몽", "만체고", "시금치", "버터", "달걀"], ja: ["そば粉", "ハモン", "マンチェゴ", "ほうれん草", "バター", "卵"], en: ["Buckwheat flour", "Jamón", "Manchego", "Spinach", "Butter", "Egg"] }, similarityPercent: 68, matchReason: { ko: "얇은 메밀 반죽으로 속을 말아 먹는 유럽식 해석", ja: "薄いそば生地で具を巻く西洋式解釈", en: "Crepe de alforfón — Spanish counterpart" } },
-          MX: { name: { ko: "엔칠라다 데 트리고 사라세노", ja: "エンチラーダ・デ・トリゴ・サラセノ", en: "Buckwheat Enchilada" }, tasteProfile: { sweet: 5, salty: 55, spicy: 40, umami: 60, sour: 10 }, description: { ko: "메밀가루 또르띠야에 채소·콩·치즈를 말아낸 멕시코식 퓨전 엔칠라다", ja: "そば粉トルティーヤに野菜・豆・チーズを巻いたメキシコ式フュージョンエンチラーダ", en: "Mexican fusion enchilada with buckwheat tortilla and veg-bean-cheese filling" }, ingredients: { ko: ["메밀가루", "검은콩", "치즈", "살사", "크레마", "고수"], ja: ["そば粉", "黒豆", "チーズ", "サルサ", "クレマ", "パクチー"], en: ["Buckwheat flour", "Black beans", "Cheese", "Salsa", "Crema", "Cilantro"] }, similarityPercent: 62, matchReason: { ko: "얇은 반죽에 속을 말아 소스로 마무리하는 공통점", ja: "薄い生地に具を巻いてソースで仕上げる共通点", en: "Rolled thin flatbread — Mexican fusion" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "yongin-mukbap",
         image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-mukbap.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
@@ -6388,36 +5601,6 @@ export const regions: Region[] = [
         isLocalSpecialty: false,
       },
       {
-        id: "yongin-beoseot-jeongol",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-beoseot-jeongol.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
-        name: { ko: "버섯전골", ja: "きのこ鍋", en: "Beoseot Jeongol (Mushroom Hot Pot)" },
-        region: "yongin",
-        tasteProfile: { sweet: 10, salty: 50, spicy: 25, umami: 90, sour: 5 },
-        storyDescription: {
-          ko: "표고·팽이·송이·느타리 등 용인 근교 산에서 채취한 일곱 가지 버섯을 매운 육수에 끓여낸 향긋한 전골이에요. 한 숟갈에 숲의 깊이와 흙의 향이 담겨 있어요.",
-          ja: "椎茸・エノキ・マツタケ・ヒラタケなど龍仁近郊の山で採った七種のきのこを辛いスープで煮込む香ばしい鍋です。一さじに森の深みと土の香りが込められています。",
-          en: "Seven kinds of mushrooms — shiitake, enoki, pine and oyster — foraged from hills near Yongin, simmered in spicy broth. Each spoonful carries forest depth and earthy scent."
-        },
-        ingredients: { ko: ["표고버섯", "팽이버섯", "송이버섯", "느타리버섯", "소고기", "고추장", "마늘", "대파"], ja: ["椎茸", "エノキ", "マツタケ", "ヒラタケ", "牛肉", "コチュジャン", "ニンニク", "長ネギ"], en: ["Shiitake", "Enoki", "Pine mushroom", "Oyster mushroom", "Beef", "Gochujang", "Garlic", "Green onion"] },
-        tags: ["버섯", "전골", "산채"],
-        dupes: {
-          JP: { name: { ko: "키노코 나베", ja: "きのこ鍋", en: "Kinoko Nabe" }, tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 90, sour: 5 }, description: { ko: "여러 가지 버섯과 채소를 다시 국물에 끓인 일본식 버섯 전골", ja: "様々なきのこと野菜をだしで煮込む日本式きのこ鍋", en: "Japanese hot pot of mixed mushrooms and vegetables in dashi" }, ingredients: { ko: ["송이버섯", "팽이", "표고", "배추", "두부", "간장"], ja: ["マツタケ", "エノキ", "椎茸", "白菜", "豆腐", "醤油"], en: ["Matsutake", "Enoki", "Shiitake", "Napa cabbage", "Tofu", "Soy sauce"] }, similarityPercent: 88, matchReason: { ko: "여러 버섯을 한 냄비에 끓여 먹는 거의 동일한 요리", ja: "様々なきのこを一鍋で煮込むほぼ同じ料理", en: "Mushroom hot pot — Japanese twin" } },
-          CN: { name: { ko: "지쥔 훠궈", ja: "菌火鍋", en: "Jun Huo Guo" }, tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 90, sour: 5 }, description: { ko: "여러 야생 버섯을 한약재 국물에 끓인 중국 윈난식 버섯 훠궈", ja: "様々な野生きのこを漢方スープで煮込む中国雲南式きのこ火鍋", en: "Chinese Yunnan mushroom hot pot with wild mushrooms in medicinal broth" }, ingredients: { ko: ["여러 버섯", "닭 육수", "당귀", "생강", "대파", "구기자"], ja: ["様々なきのこ", "鶏スープ", "当帰", "生姜", "長ネギ", "クコの実"], en: ["Mixed mushroom", "Chicken broth", "Angelica", "Ginger", "Green onion", "Wolfberry"] }, similarityPercent: 85, matchReason: { ko: "여러 버섯을 향신 국물에 끓이는 거의 동일한 요리", ja: "様々なきのこをスパイススープで煮込むほぼ同じ料理", en: "Jun huo guo — close Chinese twin" } },
-          TH: { name: { ko: "톰 얌 헤트", ja: "トムヤム・ヘット", en: "Tom Yam Het" }, tasteProfile: { sweet: 10, salty: 50, spicy: 55, umami: 85, sour: 25 }, description: { ko: "여러 버섯을 레몬그라스·칠리 국물에 매콤 새콤하게 끓인 태국식 버섯 수프", ja: "様々なきのこをレモングラス・唐辛子スープで酸っぱ辛く煮込むタイ式きのこスープ", en: "Thai hot-and-sour mushroom soup with lemongrass and chili" }, ingredients: { ko: ["여러 버섯", "레몬그라스", "갈랑갈", "라임", "칠리", "피시소스"], ja: ["様々なきのこ", "レモングラス", "ガランガル", "ライム", "唐辛子", "魚醤"], en: ["Mixed mushroom", "Lemongrass", "Galangal", "Lime", "Chili", "Fish sauce"] }, similarityPercent: 75, matchReason: { ko: "여러 버섯을 매운 국물에 끓이는 공통점", ja: "様々なきのこを辛いスープで煮込む共通点", en: "Mushroom tom yam — Thai counterpart" } },
-          VN: { name: { ko: "러우 남", ja: "ラウ・ナム", en: "Lẩu Nấm" }, tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 90, sour: 10 }, description: { ko: "여러 버섯을 향긋한 육수에 끓인 베트남식 버섯 전골", ja: "様々なきのこを香ばしいスープで煮込むベトナム式きのこ鍋", en: "Vietnamese mushroom hot pot in aromatic broth" }, ingredients: { ko: ["여러 버섯", "닭 육수", "생강", "레몬그라스", "샬롯", "라임"], ja: ["様々なきのこ", "鶏スープ", "生姜", "レモングラス", "エシャロット", "ライム"], en: ["Mixed mushroom", "Chicken broth", "Ginger", "Lemongrass", "Shallot", "Lime"] }, similarityPercent: 78, matchReason: { ko: "여러 버섯을 향신 국물에 끓이는 해안식 해석", ja: "様々なきのこをスパイススープで煮込む海岸式解釈", en: "Lẩu nấm — Vietnamese counterpart" } },
-          MY: { name: { ko: "스팀보트 모듬 버섯", ja: "スチームボート・きのこ", en: "Mushroom Steamboat" }, tasteProfile: { sweet: 10, salty: 55, spicy: 30, umami: 90, sour: 5 }, description: { ko: "여러 버섯을 향신 국물에 끓여 먹는 말레이시아식 스팀보트", ja: "様々なきのこをスパイススープで煮込むマレーシア式スチームボート", en: "Malaysian mushroom steamboat in spiced broth" }, ingredients: { ko: ["여러 버섯", "닭 육수", "생강", "마늘", "대파", "삼발"], ja: ["様々なきのこ", "鶏スープ", "生姜", "ニンニク", "長ネギ", "サンバル"], en: ["Mixed mushroom", "Chicken broth", "Ginger", "Garlic", "Green onion", "Sambal"] }, similarityPercent: 73, matchReason: { ko: "여러 버섯을 한 냄비에 끓여 먹는 해안 전통", ja: "様々なきのこを一鍋で煮込む海岸伝統", en: "Mushroom steamboat — Malaysian counterpart" } },
-          ID: { name: { ko: "소프 자무르", ja: "ソプ・ジャムル", en: "Sop Jamur" }, tasteProfile: { sweet: 10, salty: 55, spicy: 20, umami: 90, sour: 10 }, description: { ko: "여러 버섯을 강황·레몬그라스에 끓여낸 인도네시아식 버섯 수프", ja: "様々なきのこをウコン・レモングラスで煮込むインドネシア式きのこスープ", en: "Indonesian mushroom soup in turmeric-lemongrass broth" }, ingredients: { ko: ["여러 버섯", "강황", "레몬그라스", "샬롯", "마늘", "라임"], ja: ["様々なきのこ", "ウコン", "レモングラス", "エシャロット", "ニンニク", "ライム"], en: ["Mixed mushroom", "Turmeric", "Lemongrass", "Shallot", "Garlic", "Lime"] }, similarityPercent: 70, matchReason: { ko: "여러 버섯을 향긋한 국물에 끓이는 동남아식", ja: "様々なきのこを香ばしいスープで煮込む東南アジア式", en: "Sop jamur — Indonesian counterpart" } },
-          US: { name: { ko: "크림 오브 머쉬룸 스튜", ja: "クリーム・オブ・マッシュルーム・シチュー", en: "Cream of Mushroom Stew" }, tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 90, sour: 5 }, description: { ko: "여러 버섯을 크림 소스에 끓여낸 미국식 크림 버섯 스튜", ja: "様々なきのこをクリームソースで煮込むアメリカ式クリームきのこシチュー", en: "American creamy mushroom stew with mixed mushrooms" }, ingredients: { ko: ["여러 버섯", "양파", "생크림", "버터", "닭육수", "타임"], ja: ["様々なきのこ", "玉ねぎ", "生クリーム", "バター", "鶏スープ", "タイム"], en: ["Mixed mushroom", "Onion", "Cream", "Butter", "Chicken stock", "Thyme"] }, similarityPercent: 72, matchReason: { ko: "여러 버섯의 감칠맛을 살린 진한 스튜", ja: "様々なきのこの旨味を生かした濃厚シチュー", en: "Cream mushroom — American counterpart" } },
-          IT: { name: { ko: "리조또 알 풍기", ja: "リゾット・アル・フンギ", en: "Risotto ai Funghi" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 90, sour: 10 }, description: { ko: "여러 버섯과 쌀을 파마산·와인에 크리미하게 익힌 이탈리아식 버섯 리조또", ja: "様々なきのこと米をパルメザン・ワインでクリーミーに仕上げるイタリア式きのこリゾット", en: "Italian creamy mushroom risotto with Parmesan and wine" }, ingredients: { ko: ["아르보리오 쌀", "포르치니", "양파", "화이트와인", "파마산", "버터"], ja: ["アルボリオ米", "ポルチーニ", "玉ねぎ", "白ワイン", "パルメザン", "バター"], en: ["Arborio rice", "Porcini", "Onion", "White wine", "Parmesan", "Butter"] }, similarityPercent: 72, matchReason: { ko: "버섯의 감칠맛을 깊게 즐기는 유럽 해석", ja: "きのこの旨味を深く楽しむヨーロッパ解釈", en: "Mushroom risotto — Italian counterpart" } },
-          FR: { name: { ko: "프리카세 드 샹피뇽", ja: "フリカッセ・ド・シャンピニオン", en: "Fricassée de Champignons" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 90, sour: 10 }, description: { ko: "여러 버섯을 화이트와인·크림·허브에 조린 프랑스식 버섯 프리카세", ja: "様々なきのこを白ワイン・クリーム・ハーブで煮込むフランス式きのこフリカッセ", en: "French mushroom fricassée in white wine, cream and herbs" }, ingredients: { ko: ["여러 버섯", "화이트와인", "생크림", "샬롯", "타임", "버터"], ja: ["様々なきのこ", "白ワイン", "生クリーム", "エシャロット", "タイム", "バター"], en: ["Mixed mushroom", "White wine", "Cream", "Shallot", "Thyme", "Butter"] }, similarityPercent: 70, matchReason: { ko: "버섯을 크림·와인에 조리는 유럽식 해석", ja: "きのこをクリーム・ワインで煮込むヨーロッパ式解釈", en: "Mushroom fricassée — French counterpart" } },
-          IN: { name: { ko: "쿠크룸 카리", ja: "キノコカリ", en: "Kukurmutta Masala" }, tasteProfile: { sweet: 10, salty: 55, spicy: 50, umami: 85, sour: 10 }, description: { ko: "여러 버섯을 향신 마살라 국물에 매콤하게 끓여낸 인도식 버섯 커리", ja: "様々なきのこをスパイスマサラで辛く煮込むインド式きのこカレー", en: "Indian spicy mushroom curry in masala gravy" }, ingredients: { ko: ["여러 버섯", "양파", "토마토", "가람마살라", "생강", "마늘"], ja: ["様々なきのこ", "玉ねぎ", "トマト", "ガラムマサラ", "生姜", "ニンニク"], en: ["Mixed mushroom", "Onion", "Tomato", "Garam masala", "Ginger", "Garlic"] }, similarityPercent: 65, matchReason: { ko: "버섯을 매운 향신 국물에 끓이는 남아시아 해석", ja: "きのこを辛いスパイススープで煮込む南アジア解釈", en: "Mushroom masala — Indian counterpart" } },
-          ES: { name: { ko: "세타스 알 아히요", ja: "セタス・アル・アヒージョ", en: "Setas al Ajillo" }, tasteProfile: { sweet: 5, salty: 55, spicy: 15, umami: 90, sour: 5 }, description: { ko: "여러 버섯을 마늘과 고추, 올리브오일에 볶은 스페인식 버섯 아히요", ja: "様々なきのこをニンニクと唐辛子、オリーブオイルで炒めるスペイン式きのこアヒージョ", en: "Spanish garlic-chili mushroom ajillo" }, ingredients: { ko: ["여러 버섯", "마늘", "고추", "올리브오일", "파슬리", "셰리"], ja: ["様々なきのこ", "ニンニク", "唐辛子", "オリーブオイル", "パセリ", "シェリー"], en: ["Mixed mushroom", "Garlic", "Chili", "Olive oil", "Parsley", "Sherry"] }, similarityPercent: 68, matchReason: { ko: "여러 버섯을 매운 마늘 양념에 빠르게 조리는 공통점", ja: "様々なきのこを辛いニンニクタレで手早く調理する共通点", en: "Setas al ajillo — Spanish counterpart" } },
-          MX: { name: { ko: "세타스 엔 살사 베르데", ja: "セタス・エン・サルサ・ベルデ", en: "Setas en Salsa Verde" }, tasteProfile: { sweet: 10, salty: 55, spicy: 35, umami: 85, sour: 15 }, description: { ko: "여러 버섯을 토마티요·할라페뇨·고수 살사에 조린 멕시코식 버섯 요리", ja: "様々なきのこをトマティージョ・ハラペーニョ・パクチーサルサで煮込むメキシコ式きのこ料理", en: "Mexican mushrooms in tomatillo-jalapeño-cilantro green salsa" }, ingredients: { ko: ["여러 버섯", "토마티요", "할라페뇨", "고수", "양파", "마늘"], ja: ["様々なきのこ", "トマティージョ", "ハラペーニョ", "パクチー", "玉ねぎ", "ニンニク"], en: ["Mixed mushroom", "Tomatillo", "Jalapeño", "Cilantro", "Onion", "Garlic"] }, similarityPercent: 67, matchReason: { ko: "버섯을 매운 녹색 살사에 조리는 라틴 해석", ja: "きのこを辛い緑のサルサで煮込むラテン解釈", en: "Setas salsa verde — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
         id: "yongin-dolsot-bibimbap",
         image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-dolsot-bibimbap.jpg",
         imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 김지호",
@@ -6444,36 +5627,6 @@ export const regions: Region[] = [
           IN: { name: { ko: "비리야니", ja: "ビリヤニ", en: "Biryani" }, tasteProfile: { sweet: 15, salty: 50, spicy: 50, umami: 75, sour: 10 }, description: { ko: "쌀을 향신료·고기·채소와 함께 솥에 층층이 쌓아 찐 인도 전통 비리야니", ja: "米をスパイス・肉・野菜と共に釜に層に重ねて蒸すインド伝統のビリヤニ", en: "Indian traditional biryani layered with spices, meat and vegetables" }, ingredients: { ko: ["바스마티 쌀", "양고기", "요거트", "사프란", "가람마살라", "양파"], ja: ["バスマティ米", "羊肉", "ヨーグルト", "サフラン", "ガラムマサラ", "玉ねぎ"], en: ["Basmati rice", "Lamb", "Yogurt", "Saffron", "Garam masala", "Onion"] }, similarityPercent: 70, matchReason: { ko: "뜨거운 솥에 향신 양념과 토핑을 얹어 먹는 남아시아 해석", ja: "熱い釜にスパイスとトッピングをのせる南アジア解釈", en: "Biryani — Indian counterpart" } },
           ES: { name: { ko: "파에야", ja: "パエリア", en: "Paella" }, tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 80, sour: 10 }, description: { ko: "넓은 팬에 쌀과 해산물·고기를 사프란 육수로 익힌 스페인 발렌시아식 쌀 요리", ja: "広いパンに米と海鮮・肉をサフランスープで炊くスペイン・バレンシア式米料理", en: "Spanish Valencian paella with rice, seafood and meat in saffron broth" }, ingredients: { ko: ["쌀", "새우", "홍합", "닭고기", "사프란", "파프리카"], ja: ["米", "エビ", "ムール貝", "鶏肉", "サフラン", "パプリカ"], en: ["Rice", "Shrimp", "Mussel", "Chicken", "Saffron", "Paprika"] }, similarityPercent: 67, matchReason: { ko: "넓은 팬에 쌀과 토핑을 한 번에 익히는 유럽 전통", ja: "広いパンに米とトッピングを一度に炊くヨーロッパ伝統", en: "Paella — Spanish counterpart" } },
           MX: { name: { ko: "아로스 콘 카르네", ja: "アロス・コン・カルネ", en: "Arroz con Carne" }, tasteProfile: { sweet: 10, salty: 55, spicy: 35, umami: 70, sour: 10 }, description: { ko: "쌀에 고기·토마토·고추를 함께 지어낸 멕시코식 혼합 밥", ja: "米に肉・トマト・唐辛子を一緒に炊くメキシコ式混ぜご飯", en: "Mexican rice cooked with meat, tomato and chili" }, ingredients: { ko: ["쌀", "소고기", "토마토", "치포틀레", "양파", "고수"], ja: ["米", "牛肉", "トマト", "チポトレ", "玉ねぎ", "パクチー"], en: ["Rice", "Beef", "Tomato", "Chipotle", "Onion", "Cilantro"] }, similarityPercent: 68, matchReason: { ko: "쌀과 매콤한 고기를 함께 즐기는 라틴 해석", ja: "米と辛い肉を共に楽しむラテン解釈", en: "Arroz con carne — Mexican counterpart" } }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "yongin-dubu-jeongol",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/yongin-dubu-jeongol.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
-        name: { ko: "두부전골", ja: "豆腐鍋", en: "Dubu Jeongol (Tofu Hot Pot)" },
-        region: "yongin",
-        tasteProfile: { sweet: 10, salty: 55, spicy: 35, umami: 80, sour: 5 },
-        storyDescription: {
-          ko: "용인 두부장인이 매일 만드는 부드러운 두부를 버섯·배추·소고기와 함께 얼큰한 국물에 끓여낸 전골이에요. 두부의 담백함과 진한 국물이 한 냄비에서 춤을 추듯 어우러져요.",
-          ja: "龍仁の豆腐職人が毎日作る柔らかい豆腐をきのこ・白菜・牛肉と共にピリ辛スープで煮込む鍋です。豆腐の淡白さと濃厚なスープが一鍋で踊るように調和します。",
-          en: "Silken tofu crafted daily by Yongin's artisans, simmered with mushrooms, cabbage and beef in spicy broth. Tofu's mildness and the rich broth dance together in one pot."
-        },
-        ingredients: { ko: ["두부", "표고버섯", "배추", "소고기", "고추장", "된장", "대파", "마늘"], ja: ["豆腐", "椎茸", "白菜", "牛肉", "コチュジャン", "味噌", "長ネギ", "ニンニク"], en: ["Tofu", "Shiitake", "Napa cabbage", "Beef", "Gochujang", "Doenjang", "Green onion", "Garlic"] },
-        tags: ["두부", "전골", "깊은맛"],
-        dupes: {
-          JP: { name: { ko: "유도후 나베", ja: "湯豆腐鍋", en: "Yudofu Nabe" }, tasteProfile: { sweet: 5, salty: 45, spicy: 5, umami: 75, sour: 5 }, description: { ko: "다시마 국물에 두부를 넣고 끓여 폰즈에 찍어 먹는 교토식 두부 전골", ja: "昆布だしに豆腐を入れてポン酢で食べる京都式豆腐鍋", en: "Kyoto-style tofu hot pot with kelp broth and ponzu" }, ingredients: { ko: ["두부", "다시마", "폰즈", "파", "생강", "가쓰오부시"], ja: ["豆腐", "昆布", "ポン酢", "ネギ", "生姜", "かつお節"], en: ["Tofu", "Kelp", "Ponzu", "Green onion", "Ginger", "Bonito"] }, similarityPercent: 78, matchReason: { ko: "두부를 맑은 국물에 데쳐 먹는 선한 사찰식 전통", ja: "豆腐を澄んだスープで食べる精進料理の伝統", en: "Yudofu nabe — Japanese counterpart" } },
-          CN: { name: { ko: "도우푸 누안궈", ja: "豆腐暖鍋", en: "Tofu Hot Pot" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 80, sour: 5 }, description: { ko: "두부와 채소·버섯을 한 냄비에 끓여 먹는 중국식 훠궈", ja: "豆腐と野菜・きのこを一鍋で煮込む中国式火鍋", en: "Chinese-style hot pot with tofu, vegetables and mushrooms" }, ingredients: { ko: ["두부", "버섯", "배추", "두반장", "생강", "대파"], ja: ["豆腐", "きのこ", "白菜", "豆板醤", "生姜", "長ネギ"], en: ["Tofu", "Mushroom", "Napa cabbage", "Doubanjiang", "Ginger", "Green onion"] }, similarityPercent: 85, matchReason: { ko: "두부와 채소를 한 냄비에 끓이는 거의 동일한 요리", ja: "豆腐と野菜を一鍋で煮込むほぼ同じ料理", en: "Tofu hot pot — close Chinese twin" } },
-          TH: { name: { ko: "수끼 두부", ja: "スキー豆腐", en: "Suki Tofu" }, tasteProfile: { sweet: 15, salty: 55, spicy: 25, umami: 75, sour: 15 }, description: { ko: "두부와 채소를 태국식 수끼 소스에 찍어 먹는 태국식 두부 전골", ja: "豆腐と野菜をタイ式スキーソースで食べるタイ式豆腐鍋", en: "Thai-style hot pot with tofu and suki sauce" }, ingredients: { ko: ["두부", "배추", "수끼 소스", "마늘", "고추", "참깨"], ja: ["豆腐", "白菜", "スキーソース", "ニンニク", "唐辛子", "ゴマ"], en: ["Tofu", "Napa cabbage", "Suki sauce", "Garlic", "Chili", "Sesame"] }, similarityPercent: 68, matchReason: { ko: "두부를 뜨거운 국물에 채소와 함께 끓여 먹는 공통점", ja: "豆腐を熱いスープで野菜と共に煮込む共通点", en: "Suki tofu — Thai counterpart" } },
-          VN: { name: { ko: "러우 다우후", ja: "ラウ・ダウフー", en: "Lẩu Đậu Hũ" }, tasteProfile: { sweet: 10, salty: 55, spicy: 25, umami: 75, sour: 10 }, description: { ko: "두부와 여러 채소를 매콤한 국물에 끓이는 베트남식 두부 전골", ja: "豆腐と様々な野菜を辛いスープで煮込むベトナム式豆腐鍋", en: "Vietnamese tofu hot pot with vegetables in spicy broth" }, ingredients: { ko: ["두부", "토마토", "타마린드", "버섯", "피시소스", "고수"], ja: ["豆腐", "トマト", "タマリンド", "きのこ", "魚醤", "パクチー"], en: ["Tofu", "Tomato", "Tamarind", "Mushroom", "Fish sauce", "Cilantro"] }, similarityPercent: 72, matchReason: { ko: "두부를 매운 국물에 끓여내는 동일 구조", ja: "豆腐を辛いスープで煮込む同じ構造", en: "Tofu hot pot — Vietnamese counterpart" } },
-          MY: { name: { ko: "타후 삼발 스튜", ja: "タフ・サンバル・スチュー", en: "Tofu Sambal Stew" }, tasteProfile: { sweet: 15, salty: 55, spicy: 45, umami: 80, sour: 10 }, description: { ko: "두부와 채소를 코코넛·삼발 국물에 끓여낸 말레이식 두부 전골", ja: "豆腐と野菜をココナッツ・サンバルスープで煮込むマレー式豆腐鍋", en: "Malaysian tofu hot pot in coconut-sambal broth" }, ingredients: { ko: ["두부", "코코넛밀크", "삼발", "배추", "레몬그라스", "샬롯"], ja: ["豆腐", "ココナッツミルク", "サンバル", "白菜", "レモングラス", "エシャロット"], en: ["Tofu", "Coconut milk", "Sambal", "Napa cabbage", "Lemongrass", "Shallot"] }, similarityPercent: 72, matchReason: { ko: "두부를 향긋하고 매콤한 국물에 끓이는 공통 구조", ja: "豆腐を香ばしく辛いスープで煮込む共通構造", en: "Sambal tofu stew — Malaysian counterpart" } },
-          ID: { name: { ko: "사유르 타후 로데", ja: "サユール・タフ・ロデ", en: "Sayur Tahu Lodeh" }, tasteProfile: { sweet: 15, salty: 55, spicy: 25, umami: 80, sour: 5 }, description: { ko: "두부와 채소·템페를 코코넛밀크 국물에 끓인 인도네시아식 두부 스튜", ja: "豆腐と野菜・テンペをココナッツミルクスープで煮込むインドネシア式豆腐シチュー", en: "Indonesian tofu stew with vegetables and tempeh in coconut milk" }, ingredients: { ko: ["두부", "템페", "공심채", "코코넛밀크", "강황", "갈랑갈"], ja: ["豆腐", "テンペ", "空心菜", "ココナッツミルク", "ウコン", "ガランガル"], en: ["Tofu", "Tempeh", "Water spinach", "Coconut milk", "Turmeric", "Galangal"] }, similarityPercent: 72, matchReason: { ko: "두부와 채소가 어우러진 향긋한 전통 수프", ja: "豆腐と野菜が調和する香ばしい伝統スープ", en: "Sayur tahu lodeh — Indonesian counterpart" } },
-          US: { name: { ko: "토푸 베지 스튜", ja: "トーフ・ベジ・シチュー", en: "Tofu Veg Stew" }, tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 75, sour: 5 }, description: { ko: "두부와 채소를 간장 국물에 끓여낸 미국식 현대 비건 스튜", ja: "豆腐と野菜を醤油スープで煮込むアメリカ式現代ビーガンシチュー", en: "American modern vegan stew with tofu and vegetables" }, ingredients: { ko: ["두부", "브로콜리", "당근", "버섯", "간장", "생강"], ja: ["豆腐", "ブロッコリー", "人参", "きのこ", "醤油", "生姜"], en: ["Tofu", "Broccoli", "Carrot", "Mushroom", "Soy sauce", "Ginger"] }, similarityPercent: 62, matchReason: { ko: "두부와 채소를 소이 국물에 끓여내는 현대적 해석", ja: "豆腐と野菜を醤油スープで煮込む現代的解釈", en: "Tofu veg stew — American counterpart" } },
-          IT: { name: { ko: "주파 디 토푸", ja: "ズッパ・ディ・トーフ", en: "Zuppa di Tofu" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 75, sour: 10 }, description: { ko: "두부를 채소와 허브 수프에 넣어 끓인 이탈리아식 퓨전 두부 수프", ja: "豆腐を野菜とハーブのスープで煮込んだイタリア式融合豆腐スープ", en: "Italian fusion tofu soup with vegetables and herbs" }, ingredients: { ko: ["두부", "셀러리", "당근", "토마토", "허브", "올리브오일"], ja: ["豆腐", "セロリ", "人参", "トマト", "ハーブ", "オリーブオイル"], en: ["Tofu", "Celery", "Carrot", "Tomato", "Herbs", "Olive oil"] }, similarityPercent: 58, matchReason: { ko: "두부를 채소와 허브 국물에 끓여내는 퓨전 해석", ja: "豆腐を野菜とハーブスープで煮込む融合解釈", en: "Tofu herb soup — Italian counterpart" } },
-          FR: { name: { ko: "부이옹 드 토푸", ja: "ブイヨン・ド・トーフ", en: "Bouillon de Tofu" }, tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 75, sour: 5 }, description: { ko: "두부를 맑은 닭육수에 채소와 함께 끓여낸 프랑스식 퓨전 두부 수프", ja: "豆腐を澄んだ鶏スープで野菜と共に煮込んだフランス式融合豆腐スープ", en: "French fusion tofu soup in clear chicken broth with vegetables" }, ingredients: { ko: ["두부", "닭육수", "리크", "당근", "허브", "미소"], ja: ["豆腐", "鶏スープ", "リーキ", "人参", "ハーブ", "味噌"], en: ["Tofu", "Chicken stock", "Leek", "Carrot", "Herbs", "Miso"] }, similarityPercent: 60, matchReason: { ko: "두부의 섬세한 맛을 맑은 국물로 살린 퓨전 요리", ja: "豆腐の繊細な味を澄んだスープで生かす融合料理", en: "Tofu clear broth — French counterpart" } },
-          IN: { name: { ko: "팔라크 토푸", ja: "パラク・トーフ", en: "Palak Tofu" }, tasteProfile: { sweet: 10, salty: 55, spicy: 35, umami: 75, sour: 10 }, description: { ko: "시금치 퓨레 커리에 두부를 넣은 북인도식 파니르 대용 두부 요리", ja: "ほうれん草ピュレカレーに豆腐を入れた北インド式パニール代用豆腐料理", en: "North Indian spinach curry with tofu substituting for paneer" }, ingredients: { ko: ["두부", "시금치", "가람마살라", "크림", "생강", "마늘"], ja: ["豆腐", "ほうれん草", "ガラムマサラ", "クリーム", "生姜", "ニンニク"], en: ["Tofu", "Spinach", "Garam masala", "Cream", "Ginger", "Garlic"] }, similarityPercent: 62, matchReason: { ko: "부드러운 두부를 진한 국물에 끓여내는 공통점", ja: "柔らかい豆腐を濃厚なスープで煮込む共通点", en: "Palak tofu — Indian counterpart" } },
-          ES: { name: { ko: "포타헤 데 토푸", ja: "ポタヘ・デ・トーフ", en: "Potaje de Tofu" }, tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 75, sour: 5 }, description: { ko: "두부와 병아리콩·시금치를 파프리카 국물에 끓여낸 스페인식 퓨전 두부 스튜", ja: "豆腐とひよこ豆・ほうれん草をパプリカスープで煮込むスペイン式融合豆腐シチュー", en: "Spanish fusion tofu stew with chickpeas, spinach and paprika" }, ingredients: { ko: ["두부", "병아리콩", "시금치", "파프리카", "마늘", "토마토"], ja: ["豆腐", "ひよこ豆", "ほうれん草", "パプリカ", "ニンニク", "トマト"], en: ["Tofu", "Chickpeas", "Spinach", "Paprika", "Garlic", "Tomato"] }, similarityPercent: 60, matchReason: { ko: "두부와 채소의 깊은 맛을 유럽식으로 재해석", ja: "豆腐と野菜の深い味をヨーロッパ式に再解釈", en: "Potaje de tofu — Spanish fusion" } },
-          MX: { name: { ko: "칼도 틀랄페뇨 콘 토푸", ja: "カルド・トラルペニョ・コン・トーフ", en: "Caldo Tlalpeño con Tofu" }, tasteProfile: { sweet: 10, salty: 55, spicy: 40, umami: 75, sour: 10 }, description: { ko: "두부를 치포틀레·병아리콩 국물에 넣어 끓인 멕시코식 현대 두부 수프", ja: "豆腐をチポトレ・ひよこ豆スープで煮込むメキシコ式現代豆腐スープ", en: "Mexican modern tofu soup in chipotle-chickpea broth" }, ingredients: { ko: ["두부", "치포틀레", "병아리콩", "당근", "옥수수", "아보카도"], ja: ["豆腐", "チポトレ", "ひよこ豆", "人参", "トウモロコシ", "アボカド"], en: ["Tofu", "Chipotle", "Chickpeas", "Carrot", "Corn", "Avocado"] }, similarityPercent: 60, matchReason: { ko: "두부를 매콤한 국물에 끓여낸 퓨전 해석", ja: "豆腐を辛いスープで煮込む融合解釈", en: "Caldo tlalpeño tofu — Mexican fusion" } }
         },
         isLocalSpecialty: false,
       },
@@ -6810,47 +5963,6 @@ export const regions: Region[] = [
             ingredients: { ko: ["메밀면", "다시", "간장", "미림", "와사비", "파"], ja: ["そば", "だし", "醤油", "みりん", "わさび", "ねぎ"], en: ["soba noodles", "dashi", "soy sauce", "mirin", "wasabi", "scallion"] },
             similarityPercent: 88,
             matchReason: { ko: "차갑게 먹는 메밀면이라는 점에서 이천 막국수와 가장 가까운 외국 음식입니다.", ja: "冷たく食べるそばという点で이천 막국수に最も近い外国料理です。", en: "Both are cold buckwheat noodle dishes — the closest foreign equivalent to makguksu." }
-          }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "icheon-hangwa",
-        name: { ko: "한과", ja: "韓菓", en: "Hangwa" },
-        region: "icheon",
-        image: "",
-        tasteProfile: { sweet: 70, salty: 10, spicy: 0, umami: 20, sour: 5 },
-        storyDescription: {
-          ko: "이천의 도자기 마을에서 전해 내려오는 전통 한과예요. 깨, 잣, 꿀을 넣어 정성스럽게 만들어진 강정, 약과, 다식들은 단순한 간식이 아니라 조선 시대 선비들이 즐기던 품격 있는 문화의 일부랍니다.",
-          ja: "利川の陶芸村から受け継がれてきた伝統的な韓菓です。ごまと松の実、蜂蜜を入れて丁寧に作られた強飯菓子、薬菓、茶食は単なるおやつではなく、朝鮮時代の両班たちが楽しんでいた品格ある文化の一部です。",
-          en: "Traditional Korean confections handed down from Icheon's pottery village. Gangjung, yakgwa, and dasik made with sesame, pine nuts, and honey are not mere snacks — they are part of the refined culture enjoyed by Joseon dynasty scholars."
-        },
-        ingredients: { ko: ["찹쌀가루", "꿀", "참기름", "잣", "깨", "조청", "계피"], ja: ["もち米粉", "蜂蜜", "ごま油", "松の実", "ごま", "水あめ", "シナモン"], en: ["Glutinous rice flour", "Honey", "Sesame oil", "Pine nuts", "Sesame", "Jocheong syrup", "Cinnamon"] },
-        tags: ["한과", "전통", "도자기마을"],
-                dupes: {
-          FR: {
-            name: { ko: "누가", ja: "ヌガー", en: "Nougat" },
-            tasteProfile: { sweet: 80, salty: 3, spicy: 0, umami: 8, sour: 3 },
-            description: { ko: "꿀·달걀흰자·견과류로 만든 프랑스 몽텔리마르 전통 사탕", ja: "蜂蜜・卵白・ナッツで作るフランス・モンテリマール伝統のキャンディー", en: "French traditional candy from Montélimar made with honey, egg whites, and nuts" },
-            ingredients: { ko: ["꿀", "달걀흰자", "아몬드", "피스타치오", "설탕"], ja: ["蜂蜜", "卵白", "アーモンド", "ピスタチオ", "砂糖"], en: ["honey", "egg white", "almond", "pistachio", "sugar"] },
-            similarityPercent: 85,
-            matchReason: { ko: "꿀과 견과류를 이용해 전통 방식으로 만든 고급 과자라는 점에서 이천 한과와 유사합니다.", ja: "蜂蜜とナッツを使って伝統的な方法で作る高級菓子という点で이천 한과と似ています。", en: "Both are traditional confections made with honey and nuts, representing artisan candy-making heritage." }
-          },
-          ES: {
-            name: { ko: "투론", ja: "トゥロン", en: "Turrón" },
-            tasteProfile: { sweet: 78, salty: 3, spicy: 0, umami: 10, sour: 2 },
-            description: { ko: "꿀·달걀흰자·아몬드로 만든 스페인 크리스마스 전통 과자", ja: "蜂蜜・卵白・アーモンドで作るスペインのクリスマス伝統菓子", en: "Traditional Spanish Christmas confection made with honey, egg whites, and almonds" },
-            ingredients: { ko: ["아몬드", "꿀", "달걀흰자", "설탕", "레몬 껍질"], ja: ["アーモンド", "蜂蜜", "卵白", "砂糖", "レモン皮"], en: ["almond", "honey", "egg white", "sugar", "lemon zest"] },
-            similarityPercent: 82,
-            matchReason: { ko: "견과류와 꿀을 전통 방식으로 굳혀 만든 과자라는 점에서 이천 한과와 유사합니다.", ja: "ナッツと蜂蜜を伝統的な方法で固めた菓子という点で이천 한과と似ています。", en: "Both are nut-and-honey confections made by traditional methods — similar texture and sweetness profile." }
-          },
-          JP: {
-            name: { ko: "전통 와가시", ja: "伝統的な和菓子", en: "Traditional Wagashi" },
-            tasteProfile: { sweet: 70, salty: 3, spicy: 0, umami: 8, sour: 3 },
-            description: { ko: "쌀가루·팥앙금·설탕으로 만든 일본 전통 과자", ja: "米粉・小豆あん・砂糖で作る日本の伝統和菓子", en: "Japanese traditional confection made with rice flour, red bean paste, and sugar" },
-            ingredients: { ko: ["쌀가루", "팥앙금", "설탕", "한천", "말차"], ja: ["米粉", "小豆あん", "砂糖", "寒天", "抹茶"], en: ["rice flour", "red bean paste", "sugar", "agar", "matcha"] },
-            similarityPercent: 88,
-            matchReason: { ko: "쌀과 전통 재료로 만든 장인급 전통 과자라는 점에서 이천 한과와 동일한 철학을 가집니다.", ja: "米と伝統食材で作る職人レベルの伝統菓子という点で이천 한과と同じ哲学を持ちます。", en: "Both are artisan traditional confections made from rice and natural sweeteners — the same craft confectionery tradition." }
           }
         },
         isLocalSpecialty: false,
@@ -7222,116 +6334,6 @@ export const regions: Region[] = [
             ingredients: { ko: ["구아바", "사탕수수", "시나몬", "귤", "피리윈클", "누룩"], ja: ["グアバ", "サトウキビ", "シナモン", "みかん", "ペリウィンクル", "麹"], en: ["guava", "sugarcane", "cinnamon", "tangerine", "periwinkle", "koji"] },
             similarityPercent: 62,
             matchReason: { ko: "계피와 과일로 향을 낸 발효주라는 점이 공통됩니다.", ja: "シナモンと果物で香りを付けた発酵酒という点が共通します。", en: "Spiced-fruit fermented wine — similar flavor base." }
-          }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "icheon-galbitang",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/icheon-galbitang.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-토라이 리퍼블릭",
-        name: { ko: "갈비탕", ja: "カルビタン", en: "Galbitang" },
-        region: "icheon",
-        tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 88, sour: 0 },
-        storyDescription: { ko: "한우 갈비를 푹 고아 맑은 국물을 내고 이천쌀밥과 함께 내는 정갈한 한정식 한 상", ja: "韓牛カルビをじっくり煮込んで澄んだスープを取り、利川米と共に出す清楚な韓定食", en: "Clear beef rib soup from slow-simmered Korean beef ribs, served with Icheon rice" },
-        ingredients: { ko: ["한우 갈비", "무", "대파", "마늘", "당면", "이천쌀밥"], ja: ["韓牛カルビ", "大根", "長ネギ", "ニンニク", "春雨", "利川米"], en: ["Korean beef ribs", "radish", "scallion", "garlic", "glass noodle", "Icheon rice"] },
-        tags: ["이천", "한우", "맑은국", "보양"],
-        dupes: {
-          JP: {
-            name: { ko: "규코츠 스프", ja: "牛骨スープ", en: "Gyukotsu Soup" },
-            tasteProfile: { sweet: 8, salty: 50, spicy: 3, umami: 88, sour: 3 },
-            description: { ko: "소뼈와 고기를 장시간 우린 맑은 일본 국물 요리", ja: "牛骨と肉を長時間煮出した澄んだ日本スープ料理", en: "Japanese clear broth from long-simmered beef bones and meat" },
-            ingredients: { ko: ["소뼈", "소고기", "파", "생강", "간장", "미림"], ja: ["牛骨", "牛肉", "ネギ", "生姜", "醤油", "みりん"], en: ["beef bone", "beef", "scallion", "ginger", "soy sauce", "mirin"] },
-            similarityPercent: 80,
-            matchReason: { ko: "소뼈를 장시간 우려 맑은 국물을 내는 방식이 공통됩니다.", ja: "牛骨を長時間煮込んで澄んだスープを作る方式が共通します。", en: "Long-simmered beef bone clear broth — shared technique." }
-          },
-          CN: {
-            name: { ko: "뉴러우 탕판", ja: "牛肉湯飯", en: "Niurou Tangfan" },
-            tasteProfile: { sweet: 8, salty: 55, spicy: 10, umami: 85, sour: 5 },
-            description: { ko: "소뼈 국물에 밥을 말아 먹는 중국 전통 탕반 요리", ja: "牛骨スープにご飯を入れて食べる中国伝統の湯飯料理", en: "Chinese traditional tangfan with rice in beef bone broth" },
-            ingredients: { ko: ["소뼈", "소고기", "무", "파", "간장", "쌀밥"], ja: ["牛骨", "牛肉", "大根", "ネギ", "醤油", "ご飯"], en: ["beef bone", "beef", "radish", "scallion", "soy sauce", "rice"] },
-            similarityPercent: 82,
-            matchReason: { ko: "소뼈 국물에 밥을 곁들이는 방식이 갈비탕과 거의 동일합니다.", ja: "牛骨スープにご飯を添える方式がカルビタンにほぼ同じです。", en: "Beef bone broth with rice — nearly identical format." }
-          },
-          TH: {
-            name: { ko: "까오 만 느아", ja: "カオマンヌア", en: "Khao Man Nuea" },
-            tasteProfile: { sweet: 10, salty: 50, spicy: 35, umami: 80, sour: 10 },
-            description: { ko: "소고기와 향신료로 우린 국물을 밥에 곁들이는 태국 가정식", ja: "牛肉と香辛料で煮込んだスープをご飯に添えるタイ家庭料理", en: "Thai home-style beef broth served with rice" },
-            ingredients: { ko: ["소고기", "팔각", "시나몬", "계피", "밥", "고수"], ja: ["牛肉", "八角", "シナモン", "桂皮", "米", "パクチー"], en: ["beef", "star anise", "cinnamon", "cassia", "rice", "cilantro"] },
-            similarityPercent: 68,
-            matchReason: { ko: "소고기 국물+밥의 구성이 공통됩니다.", ja: "牛肉スープとご飯の構成が共通します。", en: "Beef broth with rice — shared composition." }
-          },
-          VN: {
-            name: { ko: "퍼 보", ja: "フォー・ボー", en: "Pho Bo" },
-            tasteProfile: { sweet: 10, salty: 50, spicy: 15, umami: 88, sour: 15 },
-            description: { ko: "소뼈를 장시간 우린 국물에 쌀국수와 고기를 올린 베트남 요리", ja: "牛骨を長時間煮込んだスープにライスヌードルと肉を乗せたベトナム料理", en: "Vietnamese rice noodle soup in long-simmered beef bone broth" },
-            ingredients: { ko: ["소뼈", "소고기", "쌀국수", "팔각", "시나몬", "양파"], ja: ["牛骨", "牛肉", "ライスヌードル", "八角", "シナモン", "玉ねぎ"], en: ["beef bone", "beef", "rice noodle", "star anise", "cinnamon", "onion"] },
-            similarityPercent: 78,
-            matchReason: { ko: "소뼈를 오래 우려 맑은 국물을 내는 방식이 공통됩니다.", ja: "牛骨を長時間煮込んで澄んだスープを作る方式が共通します。", en: "Long-simmered clear beef bone broth — shared technique." }
-          },
-          MY: {
-            name: { ko: "숩 뚤랑", ja: "スプ・トゥラン", en: "Sup Tulang" },
-            tasteProfile: { sweet: 12, salty: 55, spicy: 35, umami: 85, sour: 10 },
-            description: { ko: "소뼈를 허브와 함께 끓인 말레이시아 갈비 국물", ja: "牛骨をハーブと共に煮込んだマレーシアの骨付きスープ", en: "Malaysian beef rib soup simmered with herbs" },
-            ingredients: { ko: ["소갈비뼈", "토마토", "양파", "칠리", "계피", "정향"], ja: ["牛リブ骨", "トマト", "玉ねぎ", "唐辛子", "シナモン", "クローブ"], en: ["beef rib bone", "tomato", "onion", "chili", "cinnamon", "clove"] },
-            similarityPercent: 72,
-            matchReason: { ko: "소갈비뼈를 오래 끓인 국물이라는 점이 공통됩니다.", ja: "牛リブ骨を長時間煮込んだスープという点が共通します。", en: "Slow-simmered beef rib broth — shared." }
-          },
-          ID: {
-            name: { ko: "숩 이가 사피", ja: "スプ・イガ・サピ", en: "Sup Iga Sapi" },
-            tasteProfile: { sweet: 12, salty: 55, spicy: 20, umami: 85, sour: 10 },
-            description: { ko: "소갈비를 향신료와 함께 푹 끓인 인도네시아 맑은 국물", ja: "牛カルビを香辛料と共にじっくり煮込んだインドネシアの澄んだスープ", en: "Indonesian clear beef rib soup with spices" },
-            ingredients: { ko: ["소갈비", "감자", "당근", "정향", "레몬그라스", "실파"], ja: ["牛カルビ", "じゃがいも", "人参", "クローブ", "レモングラス", "細ネギ"], en: ["beef rib", "potato", "carrot", "clove", "lemongrass", "scallion"] },
-            similarityPercent: 80,
-            matchReason: { ko: "소갈비를 오래 끓여 맑은 국물을 내는 방식이 거의 동일합니다.", ja: "牛カルビを長時間煮込んで澄んだスープを作る方式がほぼ同じです。", en: "Long-simmered clear beef rib broth — very close match." }
-          },
-          US: {
-            name: { ko: "비프 숏 립 스튜", ja: "ビーフショートリブシチュー", en: "Beef Short Rib Stew" },
-            tasteProfile: { sweet: 15, salty: 55, spicy: 5, umami: 85, sour: 8 },
-            description: { ko: "소 갈비를 푹 끓여 만든 미국식 풍부한 스튜", ja: "牛カルビをじっくり煮込んだ米式リッチなシチュー", en: "American rich stew from slow-braised beef short ribs" },
-            ingredients: { ko: ["소갈비", "당근", "감자", "양파", "토마토", "허브"], ja: ["牛カルビ", "人参", "じゃがいも", "玉ねぎ", "トマト", "ハーブ"], en: ["beef short rib", "carrot", "potato", "onion", "tomato", "herbs"] },
-            similarityPercent: 70,
-            matchReason: { ko: "소갈비를 장시간 끓여 풍미를 내는 점이 공통됩니다.", ja: "牛カルビを長時間煮込んで風味を出す点が共通します。", en: "Slow-braised beef ribs for deep flavor — shared." }
-          },
-          IT: {
-            name: { ko: "브로도 디 만조", ja: "ブロード・ディ・マンツォ", en: "Brodo di Manzo" },
-            tasteProfile: { sweet: 8, salty: 55, spicy: 3, umami: 85, sour: 5 },
-            description: { ko: "소뼈와 고기를 오래 우린 이탈리아 전통 맑은 국물", ja: "牛骨と肉を長時間煮込んだイタリア伝統の澄んだスープ", en: "Italian traditional clear broth from slow-simmered beef bones and meat" },
-            ingredients: { ko: ["소뼈", "소고기", "당근", "셀러리", "양파", "파슬리"], ja: ["牛骨", "牛肉", "人参", "セロリ", "玉ねぎ", "パセリ"], en: ["beef bone", "beef", "carrot", "celery", "onion", "parsley"] },
-            similarityPercent: 78,
-            matchReason: { ko: "소뼈·고기를 오래 우려 맑은 국물을 얻는 방식이 공통됩니다.", ja: "牛骨と肉を長時間煮込んで澄んだスープを得る方式が共通します。", en: "Slow-simmered clear beef stock — shared technique." }
-          },
-          FR: {
-            name: { ko: "포토푀", ja: "ポトフ", en: "Pot-au-feu" },
-            tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 85, sour: 5 },
-            description: { ko: "소고기와 뼈를 야채와 함께 푹 끓인 프랑스 전통 요리", ja: "牛肉と骨を野菜と共にじっくり煮込んだフランス伝統料理", en: "French traditional slow-cooked beef and bone with vegetables" },
-            ingredients: { ko: ["소고기", "소뼈", "당근", "무", "리크", "정향"], ja: ["牛肉", "牛骨", "人参", "大根", "ポロネギ", "クローブ"], en: ["beef", "beef bone", "carrot", "turnip", "leek", "clove"] },
-            similarityPercent: 82,
-            matchReason: { ko: "소고기·뼈를 오래 끓여 맑은 국물과 고기를 함께 내는 방식이 거의 동일합니다.", ja: "牛肉・骨を長時間煮込んで澄んだスープと肉を共に出す方式がほぼ同じです。", en: "Slow-cooked beef and bone with clear broth — very similar." }
-          },
-          IN: {
-            name: { ko: "비프 시카 쇼르바", ja: "ビーフ・ショルバ", en: "Beef Shorba" },
-            tasteProfile: { sweet: 10, salty: 55, spicy: 45, umami: 75, sour: 10 },
-            description: { ko: "소고기를 향신료와 함께 끓인 인도식 맑은 수프", ja: "牛肉を香辛料と共に煮込んだインド式澄んだスープ", en: "Indian clear soup with beef and spices" },
-            ingredients: { ko: ["소고기", "고수씨", "카르다몸", "시나몬", "생강", "마늘"], ja: ["牛肉", "コリアンダー", "カルダモン", "シナモン", "生姜", "ニンニク"], en: ["beef", "coriander", "cardamom", "cinnamon", "ginger", "garlic"] },
-            similarityPercent: 68,
-            matchReason: { ko: "소고기 국물을 우리는 방식이 공통됩니다.", ja: "牛肉スープを取る方式が共通します。", en: "Beef broth extraction — shared concept." }
-          },
-          ES: {
-            name: { ko: "코시도 마드릴레뇨", ja: "コシード・マドリレーニョ", en: "Cocido Madrileño" },
-            tasteProfile: { sweet: 10, salty: 55, spicy: 5, umami: 85, sour: 5 },
-            description: { ko: "소고기·뼈·이집트콩을 오래 끓인 마드리드 전통 수프 요리", ja: "牛肉・骨・ひよこ豆を長時間煮込んだマドリッド伝統料理", en: "Madrid traditional stew with beef, bones, and chickpeas" },
-            ingredients: { ko: ["소뼈", "소고기", "이집트콩", "감자", "양배추", "소시지"], ja: ["牛骨", "牛肉", "ひよこ豆", "じゃがいも", "キャベツ", "ソーセージ"], en: ["beef bone", "beef", "chickpea", "potato", "cabbage", "sausage"] },
-            similarityPercent: 72,
-            matchReason: { ko: "소뼈·고기를 오래 끓여 맑은 국물을 내는 방식이 유사합니다.", ja: "牛骨と肉を長時間煮込んで澄んだスープを作る方式が類似します。", en: "Slow-simmered beef and bone stew — similar." }
-          },
-          MX: {
-            name: { ko: "카르도 데 레스", ja: "カルド・デ・レス", en: "Caldo de Res" },
-            tasteProfile: { sweet: 10, salty: 55, spicy: 15, umami: 85, sour: 15 },
-            description: { ko: "소고기와 뼈를 야채와 함께 푹 끓인 멕시코 맑은 수프", ja: "牛肉と骨を野菜と共にじっくり煮込んだメキシコの澄んだスープ", en: "Mexican clear soup with beef and bones simmered with vegetables" },
-            ingredients: { ko: ["소뼈", "소고기", "옥수수", "배추", "당근", "고수"], ja: ["牛骨", "牛肉", "トウモロコシ", "白菜", "人参", "パクチー"], en: ["beef bone", "beef", "corn", "cabbage", "carrot", "cilantro"] },
-            similarityPercent: 78,
-            matchReason: { ko: "소뼈와 소고기를 야채와 함께 오래 끓이는 방식이 갈비탕과 유사합니다.", ja: "牛骨と牛肉を野菜と共に長時間煮込む方式がカルビタンに類似します。", en: "Beef bone and meat simmered with vegetables — similar to galbitang." }
           }
         },
         isLocalSpecialty: false,
@@ -8578,162 +7580,6 @@ export const regions: Region[] = [
         },
         isLocalSpecialty: false,
       },
-      {
-        id: "sokcho-mulhoe",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/sokcho-mulhoe.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-스튜디오 4cats",
-        name: { ko: "물회", ja: "ムルフェ", en: "Mulhoe (Cold Sashimi Soup)" },
-        region: "sokcho",
-        tasteProfile: { sweet: 25, salty: 50, spicy: 55, umami: 60, sour: 60 },
-        storyDescription: {
-          ko: "동해에서 바로 잡은 광어·가자미·오징어를 얼음 육수에 말아 내는 여름 별미. 새콤달콤한 초고추장 국물에 말아 후루룩 들이키면 더위가 순식간에 가셔요.",
-          ja: "東海で獲れたばかりのヒラメ・カレイ・イカを氷出汁に浸して食べる夏の名物。甘酸っぱい酢コチュジャンの汁にさらさらと流し込むと、暑さが一気に吹き飛びます。",
-          en: "A summertime Sokcho icon: freshly caught flounder, flatfish, and squid plunged into an icy broth of sweet-sour chili paste. Slurp it down and the heat vanishes in an instant."
-        },
-        ingredients: {
-          ko: ["광어", "오징어", "오이", "배", "초고추장", "얼음물", "소면"],
-          ja: ["ヒラメ", "イカ", "きゅうり", "梨", "酢コチュジャン", "氷水", "素麺"],
-          en: ["Flounder", "Squid", "Cucumber", "Asian pear", "Vinegar-gochujang", "Iced broth", "Somen"]
-        },
-        tags: ["회", "시원한", "여름"],
-        dupes: {
-          JP: {
-            name: { ko: "히야지루 소멘", ja: "冷や汁素麺", en: "Hiyajiru Somen" },
-            tasteProfile: { sweet: 15, salty: 55, spicy: 10, umami: 70, sour: 20 },
-            description: { ko: "차가운 미소·참깨 육수에 오이·차조기를 넣고 소면을 말아 먹는 규슈 미야자키의 여름 별미.", ja: "冷たい味噌と練りごまの汁にきゅうりと大葉を加え、素麺を冷やしていただく宮崎・九州の夏名物。", en: "A Miyazaki/Kyushu summer classic: somen noodles dunked in a chilled miso-and-sesame broth brightened with cucumber and shiso." },
-            ingredients: { ko: ["소면", "미소", "참깨", "오이", "차조기", "얼음물"], ja: ["素麺", "味噌", "ごま", "きゅうり", "大葉", "氷水"], en: ["Somen", "Miso", "Sesame", "Cucumber", "Shiso", "Iced water"] },
-            similarityPercent: 76,
-            matchReason: { ko: "'차가운 발효 육수+얼음+면'이라는 한여름 시원함을 노리는 발상이 완벽히 일치해요. 매운 초고추장 대 구수한 미소라는 맛의 결만 다를 뿐.", ja: "『冷たい発酵系スープ+氷+麺』という真夏の涼を狙う発想が完全一致。辛い酢コチュジャンか、香ばしい味噌かという味の方向性だけが異なります。", en: "Perfect alignment on the 'chilled fermented broth + ice + noodles' concept for beating summer heat. Only the base diverges — spicy vinegar-gochujang vs. savory miso." }
-          },
-          VN: {
-            name: { ko: "분 맘 똠 (새우장 비빔쌀국수)", ja: "ブン・マム・トム", en: "Bún Mắm Tôm" },
-            tasteProfile: { sweet: 15, salty: 65, spicy: 35, umami: 75, sour: 35 },
-            description: { ko: "삭힌 새우장에 라임·고추·마늘을 섞어 신맛을 올린 소스를 찬 쌀국수에 끼얹어 해산물·허브를 얹어 먹는 북부 베트남 여름 음식.", ja: "発酵エビ醤に、ライム・唐辛子・にんにくを混ぜて酸味を引き出したソースを、冷たいブン(ビーフン)にかけて海鮮やハーブと共に食べる北部ベトナムの夏料理。", en: "Northern Vietnamese summer dish: a tart sauce of fermented shrimp paste, lime, chili, and garlic poured over chilled rice noodles, served with seafood and fresh herbs." },
-            ingredients: { ko: ["쌀국수", "새우장", "라임", "고추", "허브", "해산물"], ja: ["ブン", "発酵エビ醤", "ライム", "唐辛子", "ハーブ", "海産物"], en: ["Rice noodles", "Fermented shrimp paste", "Lime", "Chili", "Herbs", "Seafood"] },
-            similarityPercent: 70,
-            matchReason: { ko: "시큼한 발효 소스+해산물+찬 면이라는 조합이 여름 한 그릇 음식으로 통해요. 초고추장과 새우장은 서로 발효 유산을 공유하는 '신맛 폭탄' 역할이에요.", ja: "酸味のある発酵ソース+海鮮+冷たい麺という組み合わせが『夏のワンボウル』として響き合います。酢コチュジャンと発酵エビ醤はともに『酸味の爆弾』として機能する発酵仲間です。", en: "The trio of tangy fermented sauce + seafood + cold noodles reads as a summer one-bowl in both cultures. Vinegar-gochujang and shrimp paste both act as 'acid bombs' born of fermentation." }
-          },
-          MX: {
-            name: { ko: "아구아칠레", ja: "アグアチレ", en: "Aguachile" },
-            tasteProfile: { sweet: 10, salty: 55, spicy: 70, umami: 65, sour: 80 },
-            description: { ko: "생새우를 라임즙·풋고추·고수·오이와 함께 즉석에서 '익혀' 먹는 멕시코 시날로아 해안의 세비체. 얼음처럼 차갑게 내요.", ja: "生のエビをライム汁・青唐辛子・パクチー・きゅうりと混ぜて即席で『火入れ』するメキシコ・シナロアのセビーチェ。氷のようにキンキンに冷やして出す。", en: "Sinaloa-style Mexican ceviche where raw shrimp is 'cooked' in real time with lime juice, green chili, cilantro, and cucumber — served ice-cold." },
-            ingredients: { ko: ["생새우", "라임즙", "풋고추", "고수", "오이", "양파"], ja: ["生エビ", "ライム汁", "青唐辛子", "パクチー", "きゅうり", "玉ねぎ"], en: ["Raw shrimp", "Lime juice", "Green chili", "Cilantro", "Cucumber", "Onion"] },
-            similarityPercent: 82,
-            matchReason: { ko: "생 해산물+얼음같이 차가운 매콤 시큼한 국물이라는 구조가 놀랄 만큼 비슷해요. 둘 다 '신맛+매운맛'으로 해산물의 비린내를 잡는 해안 문화의 정점.", ja: "生の海産物+キンキンに冷えた辛酸っぱい汁という構造が驚くほど似ています。どちらも『酸味+辛味』で海産物の臭みを抑える、海岸文化の到達点。", en: "Remarkably similar structure — raw seafood in an icy, sour-spicy bath. Both represent coastal cuisines using the acid-plus-heat combo to tame seafood." }
-          },
-          TH: {
-            name: { ko: "얌 탈레 (태국식 시푸드 샐러드)", ja: "ヤム・タレー", en: "Yam Talay" },
-            tasteProfile: { sweet: 15, salty: 55, spicy: 60, umami: 70, sour: 60 },
-            description: { ko: "새우·오징어·홍합을 라임즙, 피쉬소스, 고추, 허브와 즉석에서 버무려 차갑게 내는 태국 해안 샐러드.", ja: "エビ・イカ・ムール貝をライム汁、ナンプラー、唐辛子、ハーブで和えて冷製で出すタイの海岸サラダ。", en: "Thai coastal salad tossing shrimp, squid, and mussels with lime, fish sauce, chili, and herbs, served cold." },
-            ingredients: { ko: ["새우", "오징어", "홍합", "라임즙", "고추", "고수"], ja: ["エビ", "イカ", "ムール貝", "ライム汁", "唐辛子", "パクチー"], en: ["Shrimp", "Squid", "Mussels", "Lime juice", "Chili", "Cilantro"] },
-            similarityPercent: 74,
-            matchReason: { ko: "해산물에 신맛+매운맛을 입혀 차가운 상태로 내는 공식이 같아요. 국물의 두께 (묽은 육수 vs 드레싱)만 다를 뿐.", ja: "海産物に酸味+辛味を重ねて冷たく出す公式が同じで、汁の厚み(薄い出汁か、ドレッシングか)だけが違います。", en: "Same formula of 'seafood layered with acid and heat, served cold.' They split only on broth density — thin iced soup vs. a tight dressing." }
-          },
-          ES: {
-            name: { ko: "가스파초 데 마리스코스", ja: "海鮮ガスパチョ", en: "Gazpacho de Mariscos" },
-            tasteProfile: { sweet: 15, salty: 55, spicy: 20, umami: 70, sour: 50 },
-            description: { ko: "토마토·오이·마늘·식초를 갈아 차갑게 내린 스페인식 가스파초에 새우나 문어를 더한 안달루시아 해안 버전.", ja: "トマト・きゅうり・にんにく・酢をペーストにして冷やすスペインのガスパチョに、エビやタコを加えたアンダルシア海岸風。", en: "Andalusian coastal spin on Spanish gazpacho — a chilled puree of tomato, cucumber, garlic, and vinegar topped with shrimp or octopus." },
-            ingredients: { ko: ["토마토", "오이", "마늘", "식초", "새우", "올리브오일"], ja: ["トマト", "きゅうり", "にんにく", "酢", "エビ", "オリーブオイル"], en: ["Tomato", "Cucumber", "Garlic", "Vinegar", "Shrimp", "Olive oil"] },
-            similarityPercent: 72,
-            matchReason: { ko: "'차가운 시큼한 국물+해산물 토핑+오이로 청량감'이라는 3박자가 닮았어요. 지중해 태양을 피하려는 방식이 한국 동해의 여름 별미와 교차해요.", ja: "『冷たい酸っぱい汁+海産物トッピング+きゅうりの清涼感』という三拍子が似ています。地中海の強い日差しを避ける作戦が、東海の夏名物と交差します。", en: "The trio of 'chilled acidic broth + seafood topping + cucumber freshness' lines up. Escaping the Mediterranean sun converges with beating the East Sea summer heat." }
-          },
-          IT: {
-            name: { ko: "스파게티 알 마레 프레도", ja: "冷製シーフードパスタ", en: "Spaghetti al Mare Freddo" },
-            tasteProfile: { sweet: 15, salty: 55, spicy: 15, umami: 70, sour: 45 },
-            description: { ko: "삶은 파스타를 얼음물에 식힌 뒤 새우·오징어·조개와 레몬·올리브오일·체리 토마토를 버무린 남부 이탈리아 여름 해산물 파스타.", ja: "茹でたパスタを氷水でしめ、エビ・イカ・貝類とレモン・オリーブオイル・チェリートマトで和える南イタリアの夏の冷製シーフードパスタ。", en: "Southern Italian summer pasta: noodles shocked in ice water, then tossed with shrimp, squid, clams, lemon, olive oil, and cherry tomato." },
-            ingredients: { ko: ["스파게티", "새우", "오징어", "레몬", "올리브오일", "체리토마토"], ja: ["スパゲッティ", "エビ", "イカ", "レモン", "オリーブオイル", "チェリートマト"], en: ["Spaghetti", "Shrimp", "Squid", "Lemon", "Olive oil", "Cherry tomato"] },
-            similarityPercent: 66,
-            matchReason: { ko: "'얼음물로 면을 식히고 해산물을 얹어 여름에 차갑게 내는' 공식이 같아요. 산미를 고추장 대신 레몬으로 가져온다는 점만 달라요.", ja: "『氷水で麺をしめ、海産物を合わせて夏に冷たく出す』公式が一致します。酸味をコチュジャンの代わりにレモンから取るだけが違いです。", en: "Same formula — shock the noodles in ice water, pile on seafood, serve chilled for summer. Only the acid source differs: lemon instead of gochujang." }
-          }
-        },
-        isLocalSpecialty: false,
-      },
-      {
-        id: "sokcho-gamja-ongsimi",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/sokcho-gamja-ongsimi.jpeg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-디엔에이스튜디오",
-        name: { ko: "감자옹심이", ja: "ジャガイモ団子スープ（カムジャオンシミ）", en: "Gamja Ongsimi (Potato Dumpling Soup)" },
-        region: "sokcho",
-        tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 55, sour: 5 },
-        storyDescription: {
-          ko: "강원도 감자를 곱게 갈아 전분을 가라앉힌 뒤 동글동글 빚어 멸치 육수에 풀어 끓이는 향토 수제비. 쫀득한 식감과 구수한 국물이 설악산 바람처럼 슴슴하게 마음까지 녹여요.",
-          ja: "江原道のジャガイモをすりおろして澱粉を沈め、丸く団子に成形して煮干し出汁で煮込む郷土料理。もちもちの食感と香ばしい汁が、雪嶽山の風のように優しく体を温めます。",
-          en: "A Gangwon-province comfort soup: freshly grated potatoes pressed to extract starch, shaped into tiny dumplings, and simmered in an anchovy broth. The chewy bite and gentle savor warm you like a Seoraksan mountain breeze."
-        },
-        ingredients: {
-          ko: ["햇감자", "감자 전분", "멸치·다시마 육수", "애호박", "대파", "김", "달걀"],
-          ja: ["新ジャガイモ", "ジャガイモ澱粉", "煮干し・昆布出汁", "ズッキーニ", "長ねぎ", "海苔", "卵"],
-          en: ["New potatoes", "Potato starch", "Anchovy-kelp broth", "Zucchini", "Scallion", "Seaweed", "Egg"]
-        },
-        tags: ["감자", "수제비", "향토"],
-        dupes: {
-          IT: {
-            name: { ko: "뇨키", ja: "ニョッキ", en: "Gnocchi" },
-            tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 60, sour: 10 },
-            description: { ko: "삶은 감자를 으깨고 밀가루와 달걀을 섞어 엄지손가락 크기의 덩이로 빚어 삶아 먹는 북부 이탈리아의 국민 감자 경단. 버터·세이지·토마토 소스 등 육수나 소스에 말아 내요.", ja: "茹でて潰したジャガイモに小麦粉と卵を混ぜ、親指サイズの団子に成形して茹で上げる北イタリアの国民食。バター＆セージや出汁、トマトソースなどで提供されます。", en: "Northern Italian potato dumplings: boiled and mashed potato combined with flour and egg, rolled into thumb-sized pillows, boiled, then finished in broth or a sauce like butter-sage or tomato." },
-            ingredients: { ko: ["감자", "밀가루", "달걀", "소금", "버터", "세이지"], ja: ["ジャガイモ", "小麦粉", "卵", "塩", "バター", "セージ"], en: ["Potato", "Flour", "Egg", "Salt", "Butter", "Sage"] },
-            similarityPercent: 85,
-            matchReason: { ko: "'감자를 반죽해 작은 덩이로 빚어 국물·소스에 익힌다'는 핵심 기법이 거의 동일해요. 옹심이는 전분만 사용해 더 쫀득하고, 뇨키는 밀가루를 섞어 포근한 식감이라는 차이가 전부.", ja: "『ジャガイモを練って小さな団子に成形し、汁やソースで火を通す』という核心技法がほぼ一致。オンシミは澱粉のみでよりもっちり、ニョッキは小麦粉を加えてふんわり、その違いだけ。", en: "Near-identical core technique: shape potato dough into small dumplings, cook in broth or sauce. Ongsimi leans on pure starch for extra chew, gnocchi adds flour for a pillowy bite — that's the only split." }
-          },
-          ES: {
-            name: { ko: "뇨키스 (스페인·아르헨티나식 감자 뇨키)", ja: "ニョキス", en: "Ñoquis" },
-            tasteProfile: { sweet: 10, salty: 50, spicy: 5, umami: 60, sour: 10 },
-            description: { ko: "이탈리아 이민자가 전한 감자 뇨키가 아르헨티나·스페인에서 토착화된 버전. 매달 29일에 먹는 풍습이 있어 'Ñoquis del 29'로 불려요.", ja: "イタリア移民が伝えたジャガイモのニョッキがアルゼンチン・スペインで土着化した料理。毎月29日に食べる習慣があり『29日のニョキス』と呼ばれます。", en: "The Italian potato gnocchi reinvented by Argentine and Spanish immigrants. A monthly tradition on the 29th, known as 'Ñoquis del 29.'" },
-            ingredients: { ko: ["감자", "밀가루", "달걀", "소금", "파르메산", "토마토 소스"], ja: ["ジャガイモ", "小麦粉", "卵", "塩", "パルメザン", "トマトソース"], en: ["Potato", "Flour", "Egg", "Salt", "Parmesan", "Tomato sauce"] },
-            similarityPercent: 78,
-            matchReason: { ko: "감자 반죽으로 빚는 덩이 요리라는 정체성은 같고, 가난한 시절 한 끼를 책임진 서민 음식이라는 출신도 닮았어요. 옹심이가 맑은 멸치 국물이라면, 뇨키스는 진한 토마토·크림 소스로 갈리는 차이.", ja: "ジャガイモ生地の団子料理というアイデンティティが共通し、貧しい時代の庶民の一食という出自も似通っています。オンシミが澄んだ煮干し汁なら、ニョキスは濃厚なトマトやクリームソースという分岐。", en: "Same DNA — potato-dough dumplings — and both emerged as humble food that fed lean households. Ongsimi keeps a clear anchovy broth; ñoquis veer into a rich tomato or cream sauce." }
-          },
-          FR: {
-            name: { ko: "크넬 드 폼므 드 테르", ja: "クネル・ド・ポム・ド・テール", en: "Quenelle de Pomme de Terre" },
-            tasteProfile: { sweet: 10, salty: 55, spicy: 10, umami: 70, sour: 10 },
-            description: { ko: "감자와 밀가루·달걀을 섞어 럭비공 모양으로 빚은 뒤 육수에 삶아 크림 소스를 끼얹어 내는 리옹 지역의 전통 덩이 요리.", ja: "ジャガイモと小麦粉・卵を練ってラグビーボール型に成形し、出汁で茹でてクリームソースで提供するリヨン地方の伝統料理。", en: "A Lyonnais specialty: potato dough mixed with flour and egg, shaped into rugby-ball ovals, poached in broth, and finished with cream sauce." },
-            ingredients: { ko: ["감자", "밀가루", "달걀", "버터", "육수", "크림"], ja: ["ジャガイモ", "小麦粉", "卵", "バター", "出汁", "クリーム"], en: ["Potato", "Flour", "Egg", "Butter", "Broth", "Cream"] },
-            similarityPercent: 74,
-            matchReason: { ko: "감자 반죽을 육수에 삶아 부드럽게 익혀 낸다는 조리 원리가 동일해요. 옹심이는 소박한 경단 모양, 크넬은 두 숟가락으로 빚는 타원형이라는 생김새만 다를 뿐.", ja: "ジャガイモ生地を出汁で茹で上げてしっとり仕上げる調理原理が同じ。オンシミは素朴な団子、クネルはスプーン二本で整える楕円形という見た目の違いだけ。", en: "Same cooking principle: poach potato dough in broth until tender. Ongsimi stays as a rustic round, quenelles are shaped into ovals between two spoons — that's the visible split." }
-          },
-          JP: {
-            name: { ko: "스이톤 (밀가루 수제비)", ja: "すいとん", en: "Suiton" },
-            tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 65, sour: 5 },
-            description: { ko: "밀가루 반죽을 손으로 떼어 가쓰오·다시마 육수에 넣어 끓이는 일본의 소박한 수제비. 전후 배급 시절 허기를 달래던 향수 음식으로도 유명해요.", ja: "小麦粉の生地を手でちぎって、かつお・昆布出汁に落として煮込む日本の素朴な汁物。戦後の配給時代に飢えをしのいだ郷愁の一杯としても知られます。", en: "A simple Japanese soup where hand-torn wheat dough drops into bonito-kelp broth. Also remembered as postwar ration food that filled hungry bellies." },
-            ingredients: { ko: ["밀가루", "가쓰오 육수", "당근", "우엉", "대파", "간장"], ja: ["小麦粉", "かつお出汁", "人参", "ごぼう", "長ねぎ", "醤油"], en: ["Flour", "Bonito dashi", "Carrot", "Burdock", "Scallion", "Soy sauce"] },
-            similarityPercent: 80,
-            matchReason: { ko: "손으로 빚은 덩이 반죽을 맑은 육수에 끓여 한 그릇에 담는 구조가 쌍둥이처럼 닮았어요. 한국은 감자 전분, 일본은 밀가루라는 곡물 선택만 달라요. 둘 다 전쟁·가난을 버티게 한 향토 음식.", ja: "手で形作った生地を澄んだ出汁で煮てワンボウルに仕立てる構造が双子のように似ています。韓国はジャガイモ澱粉、日本は小麦粉と、選ぶ素材だけが違う。どちらも戦争と貧困を乗り越えてきた郷土料理。", en: "Twin structure: hand-shaped dough cooked in a clear broth and served as a one-bowl. Only the grain differs — potato starch in Korea, wheat in Japan. Both are comfort soups born of wartime scarcity." }
-          },
-          CN: {
-            name: { ko: "거다탕 (疙瘩汤, 밀가루 뜯어국)", ja: "グダタン", en: "Gēda Tāng" },
-            tasteProfile: { sweet: 5, salty: 55, spicy: 5, umami: 60, sour: 10 },
-            description: { ko: "밀가루에 물을 뿌려가며 손으로 뜯은 오돌토돌한 덩이를 채소 육수에 끓이는 중국 북방의 가정식 국물 요리. 토마토·계란을 넣기도 해요.", ja: "小麦粉に水を吹き付け、手でつまんで作る不揃いな生地を野菜出汁で煮込む中国北方の家庭料理。トマトや卵を加えることもある。", en: "A Northern Chinese home soup: flour sprinkled with water and pinched by hand into irregular lumps, simmered in vegetable broth, sometimes with tomato and egg." },
-            ingredients: { ko: ["밀가루", "달걀", "토마토", "대파", "간장", "채소 육수"], ja: ["小麦粉", "卵", "トマト", "長ねぎ", "醤油", "野菜出汁"], en: ["Flour", "Egg", "Tomato", "Scallion", "Soy sauce", "Vegetable broth"] },
-            similarityPercent: 72,
-            matchReason: { ko: "손으로 뜯거나 빚은 덩이 반죽을 국물에 풀어 끓이는 가정식이라는 지점에서 만나요. 옹심이가 둥글게 빚는다면 거다탕은 불규칙한 덩이 그대로라는 모양 차이 정도.", ja: "手でちぎって成形した生地を汁に落として煮る家庭料理という点で交差。オンシミは丸く成形、グダタンは不揃いのまま落とす、その形の違いだけ。", en: "They meet at the 'hand-torn dough simmered in a home broth' point. Ongsimi is carefully rolled round; geda tang keeps the rough pinched shape — only the form diverges." }
-          },
-          MX: {
-            name: { ko: "초초요테스 (마사 경단)", ja: "チョチョヨテス", en: "Chochoyotes" },
-            tasteProfile: { sweet: 5, salty: 55, spicy: 20, umami: 60, sour: 10 },
-            description: { ko: "니슈타말화한 옥수수 반죽(마사)에 가운데 홈을 내어 콩·모레·수프에 넣어 끓이는 오악사카의 전통 덩이 요리. 반죽이 국물을 머금어 쫀득해져요.", ja: "ニシュタマル処理したトウモロコシ生地(マサ)に指で凹みを作って豆や『モレ』やスープで煮込むオアハカの伝統料理。生地が出汁を吸ってもちもちになります。", en: "Oaxacan masa dumplings: nixtamalized corn dough thumbprinted with a dimple and simmered in bean soup or mole. The dough drinks the broth and turns chewy." },
-            ingredients: { ko: ["마사 (닉스타말 옥수수)", "물", "소금", "검은콩 수프", "에파소테", "치즈"], ja: ["マサ", "水", "塩", "黒豆スープ", "エパソーテ", "チーズ"], en: ["Masa (nixtamal corn)", "Water", "Salt", "Black bean soup", "Epazote", "Cheese"] },
-            similarityPercent: 70,
-            matchReason: { ko: "주곡을 반죽해 경단으로 빚고 국물에 익혀 한 그릇으로 내는 가난한 살림의 지혜가 같아요. 곡물이 감자냐 옥수수냐로 갈릴 뿐, 구조는 자매 요리.", ja: "主食を練って団子に成形し、汁で煮込んでワンボウルで出す貧しい暮らしの知恵が共通。穀物がジャガイモかトウモロコシかで分かれるだけの姉妹料理。", en: "Same thrift wisdom — knead your staple grain, roll it into dumplings, cook in broth, serve as one bowl. The only divide is the base: potato vs. corn masa. Sisters across cuisines." }
-          },
-          VN: {
-            name: { ko: "반 깐 (쫀득한 타피오카 국수)", ja: "バインカン", en: "Bánh Canh" },
-            tasteProfile: { sweet: 10, salty: 60, spicy: 15, umami: 75, sour: 10 },
-            description: { ko: "쌀·타피오카 전분을 뭉쳐 굵은 국수나 뭉툭한 덩이로 썰어 돼지·해산물 육수에 끓이는 베트남 남부의 쫀득 국물요리.", ja: "米粉とタピオカ澱粉を練って太いうどんや団子状に切り分け、豚や魚介の出汁で煮込む南部ベトナムのもちもち汁料理。", en: "A chewy Southern Vietnamese soup: rice and tapioca starch dough cut into thick noodles or stubby lumps, simmered in pork or seafood broth." },
-            ingredients: { ko: ["타피오카 전분", "쌀가루", "돼지 육수", "새우", "쪽파", "고수"], ja: ["タピオカ澱粉", "米粉", "豚出汁", "エビ", "小ねぎ", "パクチー"], en: ["Tapioca starch", "Rice flour", "Pork broth", "Shrimp", "Chive", "Cilantro"] },
-            similarityPercent: 65,
-            matchReason: { ko: "전분 기반 반죽의 쫀득한 식감을 국물과 함께 즐긴다는 식감의 결이 같아요. 옹심이는 감자 전분 동그란 덩이, 반 깐은 타피오카 굵은 국수라는 모양 차이가 있을 뿐.", ja: "澱粉生地のもちもち食感を汁と一緒に楽しむ食感の方向性が一致。オンシミはジャガイモ澱粉の団子、バインカンはタピオカの太い麺という形の違いのみ。", en: "Both center on the bouncy chew of starch dough suspended in broth. Ongsimi is a potato-starch round, bánh canh is a thick tapioca strand — the shape is the split." }
-          },
-          ID: {
-            name: { ko: "찔록 (타피오카 미트볼 수프)", ja: "チロック", en: "Cilok" },
-            tasteProfile: { sweet: 5, salty: 55, spicy: 30, umami: 65, sour: 10 },
-            description: { ko: "타피오카 전분에 다진 고기와 마늘을 섞어 구슬 크기로 빚은 뒤 삶거나 육수에 내는 서자바 지역의 길거리 간식. 땅콩 소스나 매운 삼발 소스를 곁들여요.", ja: "タピオカ澱粉にひき肉とにんにくを混ぜてビー玉サイズに成形し、茹でるか出汁で食べる西ジャワの屋台おやつ。ピーナッツソースやサンバルを添えます。", en: "A West Javanese street snack: tapioca starch mixed with minced meat and garlic, rolled into marble-sized balls, boiled or served in broth with peanut or sambal sauce." },
-            ingredients: { ko: ["타피오카 전분", "다진 고기", "마늘", "삼발 소스", "대파", "육수"], ja: ["タピオカ澱粉", "ひき肉", "にんにく", "サンバル", "長ねぎ", "出汁"], en: ["Tapioca starch", "Minced meat", "Garlic", "Sambal", "Scallion", "Broth"] },
-            similarityPercent: 62,
-            matchReason: { ko: "전분 반죽을 동그랗게 빚어 탱글탱글한 식감으로 즐긴다는 구조가 닮았어요. 옹심이가 맑은 육수에 담백하게 풀린다면, 찔록은 매운 소스로 노점 간식 감성을 살린다는 결 차이.", ja: "澱粉生地を丸く成形してぷりぷり食感を楽しむ構造が共通。オンシミは澄んだ出汁であっさり、チロックは辛いソースで屋台感を出す方向性の違い。", en: "Same structural hook: starch dough shaped into bouncy rounds. Ongsimi stays clean in an anchovy broth; cilok leans into spicy sauces for street-food swagger — that's the mood split." }
-          }
-        },
-        isLocalSpecialty: false,
-      }
     ]
   },
   {
@@ -9164,84 +8010,6 @@ export const regions: Region[] = [
       en: "양반 문화와 제사 음식의 고장 안동"
     },
     foods: [
-      {
-        id: "andong-jjimdak",
-        image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/andong-jjimdak.jpg",
-        imageCredit: "ⓒ한국관광공사 포토코리아-IR 스튜디오",
-        name: { ko: "찜닭", ja: "チムタク（醤油煮込みチキン）", en: "Jjimdak (Braised Soy Chicken)" },
-        region: "andong",
-        tasteProfile: { sweet: 50, salty: 60, spicy: 45, umami: 75, sour: 10 },
-        storyDescription: {
-          ko: "안동 구시장 닭골목에서 시작된 국민 외식 메뉴. 간장·설탕·청양고추로 졸인 닭과 당면, 감자가 한 접시에 푸짐하게 담겨 나눠 먹기에 딱 좋아요.",
-          ja: "安東・旧市場の『鶏路地』から全国に広がった国民的外食メニュー。醤油・砂糖・青唐辛子でじっくり煮込んだ鶏肉にタンミョン(春雨)とじゃがいもを合わせ、一皿に山盛り。みんなで囲むのに最適です。",
-          en: "Born on Andong's old-market 'Chicken Alley' and now a national favorite: chicken braised in soy sauce, sugar, and Cheongyang chilies, piled high with glass noodles and potatoes on a single sharing platter."
-        },
-        ingredients: {
-          ko: ["닭고기", "당면", "감자", "당근", "양파", "청양고추", "간장", "설탕"],
-          ja: ["鶏肉", "春雨(タンミョン)", "じゃがいも", "人参", "玉ねぎ", "青唐辛子", "醤油", "砂糖"],
-          en: ["Chicken", "Glass noodles", "Potato", "Carrot", "Onion", "Cheongyang chili", "Soy sauce", "Sugar"]
-        },
-        tags: ["닭고기", "간장", "당면"],
-        dupes: {
-          CN: {
-            name: { ko: "따판지 (大盘鸡, 신장 큰 접시 닭볶음)", ja: "ダーパンジー", en: "Dà Pán Jī (Big Plate Chicken)" },
-            tasteProfile: { sweet: 20, salty: 55, spicy: 70, umami: 75, sour: 10 },
-            description: { ko: "신장 위구르 지역에서 닭을 토막 내 감자·양파·고추와 함께 진간장·고추기름에 졸인 뒤 납작한 밀국수를 얹어 나눠 먹는 큰 접시 요리.", ja: "新疆ウイグル地方で、鶏をぶつ切りにしてじゃがいも・玉ねぎ・唐辛子と醤油・辣油でじっくり煮込み、最後に幅広の手打ち麺(ピェンピェン麺)を乗せる大皿料理。", en: "A Xinjiang Uyghur dish: chunked chicken slow-braised with potato, onion, and chili in dark soy and chili oil, then crowned with wide hand-pulled noodles on a single big plate." },
-            ingredients: { ko: ["닭고기", "감자", "양파", "건고추", "진간장", "밀 납작면"], ja: ["鶏肉", "じゃがいも", "玉ねぎ", "乾燥唐辛子", "醤油", "幅広麺"], en: ["Chicken", "Potato", "Onion", "Dried chili", "Dark soy sauce", "Wide wheat noodles"] },
-            similarityPercent: 88,
-            matchReason: { ko: "'닭+감자+고추+간장을 큰 접시에 담고 면을 얹어 여럿이 나눠 먹는다'는 구성이 찜닭과 거의 동일. 두 요리 모두 시장·노동자 중심의 '큰 접시 공유 문화' 유산을 공유해요.", ja: "『鶏+じゃがいも+唐辛子+醤油を大皿に盛り、麺を合わせて大人数でシェアする』構成がチムタクとほぼ同じ。両者とも市場・労働者文化の『大皿共有』遺産を共有しています。", en: "Near-identical build: chicken + potato + chili + soy on a big plate, noodles tossed in for sharing. Both inherit a market and laborer tradition of communal, generous-plate eating." }
-          },
-          JP: {
-            name: { ko: "치킨 니코미 (일본식 닭조림)", ja: "鶏の煮込み", en: "Chicken Nikomi" },
-            tasteProfile: { sweet: 40, salty: 60, spicy: 5, umami: 75, sour: 5 },
-            description: { ko: "닭을 잘라 간장·미림·설탕·생강에 감자·당근과 함께 뭉근히 끓여 내는 일본 가정의 대표 닭조림. 국물이 진득해지도록 졸여요.", ja: "鶏肉をぶつ切りにし、醤油・みりん・砂糖・生姜でじゃがいも・人参と共にじっくり煮込む、日本家庭料理の定番。煮汁がとろりとするまで煮詰めます。", en: "A Japanese home-cooking staple: chunked chicken simmered with potato and carrot in soy, mirin, sugar, and ginger until the braising liquid turns glossy." },
-            ingredients: { ko: ["닭고기", "감자", "당근", "간장", "미림", "설탕", "생강"], ja: ["鶏肉", "じゃがいも", "人参", "醤油", "みりん", "砂糖", "生姜"], en: ["Chicken", "Potato", "Carrot", "Soy sauce", "Mirin", "Sugar", "Ginger"] },
-            similarityPercent: 82,
-            matchReason: { ko: "간장·설탕으로 단짠 국물을 졸여 닭과 뿌리채소에 배게 만드는 동아시아 닭조림의 기본 레시피가 같아요. 매운맛의 유무만 큰 차이.", ja: "醤油と砂糖で甘辛い煮汁を煮詰め、鶏と根菜に染み込ませる東アジア鶏煮込みの基本レシピが共通。辛味の有無だけが大きな違い。", en: "Same backbone of East Asian chicken braises: soy-sugar sauce reduced until it glazes the chicken and roots. The main split is whether chili enters the pot." }
-          },
-          TH: {
-            name: { ko: "가이 팔로 (태국식 간장 닭조림)", ja: "ガイ・パロー", en: "Gai Palo" },
-            tasteProfile: { sweet: 30, salty: 60, spicy: 15, umami: 75, sour: 10 },
-            description: { ko: "닭을 삶은 달걀·두부와 함께 계피·팔각·정향을 넣은 간장 육수에 뭉근히 졸이는 태국 화교 요리. 진한 갈색 국물이 특징이에요.", ja: "鶏肉をゆで卵や豆腐と一緒に、シナモン・八角・丁子を入れた醤油出汁でじっくり煮込むタイ華僑料理。濃い褐色のタレが特徴。", en: "A Thai-Chinese braise: chicken stewed with boiled eggs and tofu in a five-spice-scented soy broth, simmered until a deep brown glaze forms." },
-            ingredients: { ko: ["닭고기", "삶은 달걀", "두부", "간장", "팔각", "계피", "설탕"], ja: ["鶏肉", "ゆで卵", "豆腐", "醤油", "八角", "シナモン", "砂糖"], en: ["Chicken", "Boiled egg", "Tofu", "Soy sauce", "Star anise", "Cinnamon", "Sugar"] },
-            similarityPercent: 74,
-            matchReason: { ko: "간장 베이스로 닭을 단짠하게 졸여 한 그릇에 담는 공식이 같아요. 한국은 청양고추로 매운맛을 얹고, 태국은 팔각·계피로 향신 방향을 풉니다.", ja: "醤油ベースで鶏を甘辛く煮込み、ワンプレートで出す公式が同じ。韓国は青唐辛子で辛味を、タイは八角・シナモンで香りを足します。", en: "Shared formula: soy-braised chicken served as a one-dish meal. Korea layers heat with Cheongyang chilies; Thailand warms it with five-spice aromatics." }
-          },
-          VN: {
-            name: { ko: "가 꼬 공 (베트남식 닭조림)", ja: "ガー・コー・グン", en: "Gà Kho Gừng" },
-            tasteProfile: { sweet: 25, salty: 65, spicy: 25, umami: 75, sour: 10 },
-            description: { ko: "닭을 느억맘·설탕·카라멜·생강에 뚝배기째 졸여 진한 갈색 양념이 배도록 만드는 베트남 가정식 닭조림.", ja: "鶏肉をヌクマム・砂糖・カラメル・生姜で土鍋ごと煮込み、濃い褐色のタレを染み込ませるベトナム家庭料理。", en: "A Vietnamese home braise: chicken simmered in fish sauce, sugar, caramel, and ginger inside a clay pot until a dark, lacquered sauce coats every piece." },
-            ingredients: { ko: ["닭고기", "느억맘", "카라멜", "설탕", "생강", "고추"], ja: ["鶏肉", "ヌクマム", "カラメル", "砂糖", "生姜", "唐辛子"], en: ["Chicken", "Fish sauce", "Caramel", "Sugar", "Ginger", "Chili"] },
-            similarityPercent: 72,
-            matchReason: { ko: "'닭을 단짠 간장·생선 소스에 졸여 뚝배기 한 그릇에 내는' 구조가 쌍둥이예요. 느억맘·카라멜로 감칠맛을 극대화한다는 베트남식 변주.", ja: "『鶏を甘辛い醤油・魚醤で煮込んで土鍋ワンプレートで出す』構造が双子。ヌクマム・カラメルで旨味を最大化するのがベトナム流。", en: "Twin structure — chicken braised in a sweet-salty sauce and served in a single clay pot. Vietnam uses fish sauce and caramel to push the umami further." }
-          },
-          ID: {
-            name: { ko: "아얌 크찹 (Ayam Kecap, 케찹 마니스 닭조림)", ja: "アヤム・クチャップ", en: "Ayam Kecap" },
-            tasteProfile: { sweet: 45, salty: 60, spicy: 20, umami: 70, sour: 10 },
-            description: { ko: "인도네시아 가정식 닭조림으로, 달콤한 케찹 마니스(달콤 간장)에 닭을 마늘·양파·칠리와 함께 졸여 밥과 곁들여 먹어요.", ja: "インドネシア家庭料理の鶏煮込み。甘口醤油『ケチャップ・マニス』でにんにく・玉ねぎ・唐辛子と一緒に煮込み、ご飯に添えます。", en: "An Indonesian home braise: chicken simmered in sweet kecap manis (sweet soy) with garlic, onion, and chilies, served over rice." },
-            ingredients: { ko: ["닭고기", "케찹 마니스", "마늘", "샬롯", "칠리", "토마토"], ja: ["鶏肉", "ケチャップ・マニス", "にんにく", "エシャロット", "唐辛子", "トマト"], en: ["Chicken", "Kecap manis", "Garlic", "Shallot", "Chili", "Tomato"] },
-            similarityPercent: 76,
-            matchReason: { ko: "달짝지근한 발효 간장으로 닭을 졸여 밥과 함께 먹는 공식이 찜닭과 같은 자리에 있어요. 케찹 마니스가 한국 진간장+설탕의 역할을 단일 재료로 해결.", ja: "甘口の発酵醤油で鶏を煮込みご飯と一緒に食べる公式がチムタクと同じ席にあります。ケチャップ・マニスが『濃口醤油+砂糖』の役割を1つの調味料で担います。", en: "Same niche — chicken braised in a sweet fermented soy and served with rice. Kecap manis does the job of Korea's dark soy plus sugar in a single pour." }
-          },
-          FR: {
-            name: { ko: "코코뱅 (Coq au Vin)", ja: "コック・オ・ヴァン", en: "Coq au Vin" },
-            tasteProfile: { sweet: 15, salty: 60, spicy: 5, umami: 80, sour: 30 },
-            description: { ko: "부르고뉴 지방의 수탉을 버건디 레드와인·버섯·베이컨·펄 양파와 함께 뭉근히 끓여 졸인 프랑스 시골 요리의 정점.", ja: "ブルゴーニュ地方の雄鶏をブルゴーニュの赤ワイン・マッシュルーム・ベーコン・パールオニオンと共に長時間煮込んだフランス田舎料理の名作。", en: "A Burgundy country classic: rooster slow-braised with Pinot Noir, mushrooms, bacon, and pearl onions until the sauce turns rich and velvety." },
-            ingredients: { ko: ["수탉", "레드와인", "베이컨", "버섯", "펄 양파", "당근", "허브"], ja: ["雄鶏", "赤ワイン", "ベーコン", "マッシュルーム", "パールオニオン", "人参", "ハーブ"], en: ["Rooster", "Red wine", "Bacon", "Mushroom", "Pearl onion", "Carrot", "Herbs"] },
-            similarityPercent: 68,
-            matchReason: { ko: "닭을 통째로 뭉근히 오래 졸여 진한 국물에 뿌리채소를 함께 익히는 서양 대표 조림 요리. 간장 대신 와인, 청양고추 대신 베이컨의 짠맛이 자리를 지켜요.", ja: "鶏を丸ごと長時間煮込んで濃厚なソースと根菜を同時に仕上げる西洋の代表煮込み料理。醤油の代わりにワイン、青唐辛子の代わりにベーコンの塩気が役割を担います。", en: "The Western counterpart to Jjimdak's low-and-slow chicken braise. Wine stands in for soy, and bacon's salt takes the seat of Cheongyang chili heat." }
-          },
-          MX: {
-            name: { ko: "포요 엔 몰레 네그로 (멕시코 몰레 치킨)", ja: "ポヨ・エン・モーレ・ネグロ", en: "Pollo en Mole Negro" },
-            tasteProfile: { sweet: 20, salty: 55, spicy: 45, umami: 80, sour: 15 },
-            description: { ko: "오악사카 지방의 블랙 몰레 소스(다양한 말린 고추·초콜릿·견과류)에 삶은 닭을 푹 졸여 한 접시에 흰쌀밥·또르띠야와 함께 내는 멕시코 잔칫상 요리.", ja: "オアハカ地方の黒モレソース(多種の乾燥唐辛子・チョコレート・ナッツ)に茹でた鶏肉をじっくり煮込み、白ご飯やトルティーヤと共に大皿で出すメキシコの祝祭料理。", en: "An Oaxacan celebration plate: poached chicken simmered in 'black mole' — a sauce of dried chilies, chocolate, and nuts — served with rice and tortillas." },
-            ingredients: { ko: ["닭고기", "말린 고추 믹스", "다크 초콜릿", "견과류", "참깨", "토마토"], ja: ["鶏肉", "乾燥唐辛子ミックス", "ダークチョコレート", "ナッツ", "ごま", "トマト"], en: ["Chicken", "Dried chili mix", "Dark chocolate", "Nuts", "Sesame", "Tomato"] },
-            similarityPercent: 62,
-            matchReason: { ko: "여러 사람이 나눠 먹는 '잔칫상 한 접시 닭 요리'라는 위치가 겹쳐요. 간장 기반의 단짠매 소스가 아닌, 고추·초콜릿 기반의 복잡한 몰레 소스가 한국과의 가장 큰 차이.", ja: "大人数で囲む『祝祭の鶏料理』という位置付けが重なります。醤油ベースの甘辛ソースではなく、唐辛子とチョコのモーレソースという複雑系が韓国との最大の違い。", en: "Both hold the 'festive chicken platter for a crowd' role. The split is the sauce universe — not a soy-sweet-heat glaze but a complex chili-and-chocolate mole." }
-          }
-        },
-        isLocalSpecialty: false,
-      },
       {
         id: "andong-heot-jesabap",
         image: "",
@@ -9968,64 +8736,6 @@ export const regions: Region[] = [
               isLocalSpecialty: false,
             },
           {
-              id: "national-sundubu-gyeongju",
-              name: { ko: "순두부찌개", ja: "スンドゥブチゲ", en: "Sundubu Jjigae" },
-              region: "national",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sundubu-gyeongju.jpeg",
-              imageCredit: "ⓒ한국관광공사 포토코리아-한국관광공사 이범수",
-              tasteProfile: { sweet: 10, salty: 50, spicy: 65, umami: 75, sour: 10 },
-              storyDescription: {
-                ko: "보글보글 끓는 뚝배기 속에서 하얀 순두부가 매콤한 국물을 흠뻑 머금고 있어요. 부드럽고 연한 두부 한 숟갈이 입 안에 들어오는 순간, 따뜻한 포근함이 온몸으로 퍼져나간답니다.",
-                ja: "ぐつぐつ煮えているトゥクベギの中で、白い純豆腐が辛いスープをたっぷり含んでいます。柔らかくなめらかな豆腐を一さじ口に運んだ瞬間、温かいぬくもりが体中に広がります。",
-                en: "Silky soft tofu bubbles in a fiery red broth inside a sizzling stone pot. The moment that one tender spoonful of tofu hits your mouth, warmth radiates through your entire body."
-              },
-              ingredients: { ko: ["순두부", "고춧가루", "바지락", "돼지고기", "계란", "파", "참기름"], ja: ["純豆腐", "唐辛子粉", "アサリ", "豚肉", "卵", "ネギ", "ごま油"], en: ["Soft tofu", "Red pepper powder", "Clams", "Pork", "Egg", "Green onion", "Sesame oil"] },
-              tags: ["두부", "매콤", "뚝배기"],
-                      dupes: {
-                CN: {
-                  name: { ko: "마파두부탕", ja: "麻婆豆腐スープ", en: "Mapo Tofu Soup" },
-                  tasteProfile: { sweet: 5, salty: 45, spicy: 65, umami: 70, sour: 5 },
-                  description: { ko: "두반장과 화자오로 만든 매콤한 중국식 두부 수프", ja: "豆板醤と花椒で作る辛い中国風豆腐スープ", en: "Spicy Chinese tofu soup made with doubanjiang and Sichuan pepper" },
-                  ingredients: { ko: ["두부", "두반장", "화자오", "돼지고기", "마늘", "파"], ja: ["豆腐", "豆板醤", "花椒", "豚ひき肉", "にんにく", "ねぎ"], en: ["tofu", "doubanjiang", "Sichuan pepper", "ground pork", "garlic", "scallion"] },
-                  similarityPercent: 85,
-                  matchReason: { ko: "부드러운 두부를 매운 육수에 끓인 국물 요리로 순두부찌개와 매우 유사합니다.", ja: "柔らかい豆腐を辛いスープで煮た鍋料理で、순두부찌개に非常に似ています。", en: "Both are spicy tofu stew dishes — soft tofu simmered in a fiery broth with aromatics." }
-                },
-                TH: {
-                  name: { ko: "똠얌 무사부", ja: "トムヤムムーサブ", en: "Tom Yum Moo Saap" },
-                  tasteProfile: { sweet: 8, salty: 42, spicy: 60, umami: 62, sour: 35 },
-                  description: { ko: "타마린드와 고추로 만든 매새콤한 태국 두부 수프", ja: "タマリンドと唐辛子で作る酸辛タイ豆腐スープ", en: "Thai spicy-sour tofu soup with tamarind and chili" },
-                  ingredients: { ko: ["두부", "레몬그라스", "카피르라임잎", "고추", "타마린드", "코코넛밀크"], ja: ["豆腐", "レモングラス", "コブミカンの葉", "唐辛子", "タマリンド", "ココナッツミルク"], en: ["tofu", "lemongrass", "kaffir lime leaf", "chili", "tamarind", "coconut milk"] },
-                  similarityPercent: 78,
-                  matchReason: { ko: "두부와 향신료를 넣어 끓인 매운 국물 요리로 순두부찌개와 맛 계열이 유사합니다.", ja: "豆腐と香辛料を煮込んだ辛いスープ料理で、風味の系統が似ています。", en: "Both are spicy tofu-based soups with bold aromatics, though tom yum adds a sour dimension." }
-                },
-                JP: {
-                  name: { ko: "두부나베", ja: "豆腐鍋", en: "Tofu Nabe" },
-                  tasteProfile: { sweet: 10, salty: 40, spicy: 15, umami: 60, sour: 5 },
-                  description: { ko: "부드러운 두부를 다시마 육수에 끓인 일본식 전골", ja: "柔らかい豆腐を昆布だしで煮た日本風鍋", en: "Japanese hot pot with silken tofu simmered in kombu dashi" },
-                  ingredients: { ko: ["두부", "다시마", "가다랑어포", "미소", "파", "버섯"], ja: ["豆腐", "昆布", "かつお節", "味噌", "ねぎ", "きのこ"], en: ["tofu", "kombu", "bonito flakes", "miso", "scallion", "mushroom"] },
-                  similarityPercent: 80,
-                  matchReason: { ko: "부드러운 두부를 뜨거운 육수에 담가 먹는 방식이 순두부찌개와 유사합니다.", ja: "柔らかい豆腐を熱いだし汁で食べる方式が순두부찌개と似ています。", en: "Both simmer silken tofu in a savory broth — the key difference is miso/kombu vs spicy gochujang base." }
-                },
-                ID: {
-                  name: { ko: "타후 캄풀", ja: "タフ・チャンプル", en: "Tahu Campur" },
-                  tasteProfile: { sweet: 20, salty: 55, spicy: 50, umami: 75, sour: 25 },
-                  description: { ko: "튀긴 두부와 채소를 달콤매콤한 땅콩-페트시 소스로 끓여내는 동자바 전통 두부 국물", ja: "揚げ豆腐と野菜を甘辛いピーナッツ・ペトロソースで煮込む東ジャワ伝統の豆腐スープ", en: "East Javan tofu stew with fried tofu, vegetables, and spicy-sweet peanut petro sauce" },
-                  ingredients: { ko: ["두부", "숙주", "삼발", "땅콩소스", "페트시", "라임"], ja: ["豆腐", "もやし", "サンバル", "ピーナッツソース", "ペトロ", "ライム"], en: ["Tofu", "Bean sprouts", "Sambal", "Peanut sauce", "Petro", "Lime"] },
-                  similarityPercent: 68,
-                  matchReason: { ko: "부드러운 두부가 매콤한 국물을 흠뻑 머금는 한 그릇 뚝배기 스타일", ja: "柔らかい豆腐が辛いスープをたっぷり吸い込むワンボウル料理", en: "Soft tofu soaking in spicy broth — Indonesian cousin of sundubu jjigae" }
-                },
-                IN: {
-                  name: { ko: "파니르 부터 마살라", ja: "パニール・バター・マサラ", en: "Paneer Butter Masala" },
-                  tasteProfile: { sweet: 20, salty: 50, spicy: 50, umami: 78, sour: 15 },
-                  description: { ko: "부드러운 파니르 치즈를 매콤 크리미한 토마토-버터 소스에 끓이는 북인도 대표 채식 커리", ja: "柔らかいパニールチーズを辛くクリーミーなトマト・バターソースで煮込む北インド代表のベジタリアンカレー", en: "North Indian signature vegetarian curry with soft paneer cheese in spicy creamy tomato-butter sauce" },
-                  ingredients: { ko: ["파니르", "토마토", "버터", "가람마살라", "고수", "크림"], ja: ["パニール", "トマト", "バター", "ガラムマサラ", "パクチー", "クリーム"], en: ["Paneer", "Tomato", "Butter", "Garam masala", "Cilantro", "Cream"] },
-                  similarityPercent: 70,
-                  matchReason: { ko: "부드럽고 연한 단백질 덩어리가 매운 양념 국물에 푹 잠기는 방식", ja: "柔らかいタンパク質が辛い調味液にたっぷり浸かる方式", en: "Soft protein chunks soaking in spicy sauce — same tender comfort as sundubu jjigae" }
-                }
-              },
-              isLocalSpecialty: false,
-            },
-          {
               id: "national-samgyetang",
               image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-samgyetang.jpeg",
               imageCredit: "ⓒ한국관광공사 포토코리아-알렉스 분도",
@@ -10491,86 +9201,6 @@ export const regions: Region[] = [
                   ingredients: { ko: ["소고기", "밥", "폰즈", "무순", "깨", "파"], ja: ["牛肉", "ご飯", "ポン酢", "かいわれ", "ごま", "ねぎ"], en: ["beef", "rice", "ponzu", "radish sprouts", "sesame", "scallion"] },
                   similarityPercent: 78,
                   matchReason: { ko: "신선한 소고기를 간장 기반 소스와 함께 내는 점이 육회와 유사합니다.", ja: "新鮮な牛肉を醤油ベースソースと共に出す点が육회と似ています。", en: "Both feature barely-cooked or raw beef with soy-based sauce — tataki is just barely seared." }
-                }
-              },
-              isLocalSpecialty: false,
-            },
-          {
-              id: "national-gwangdeok-sanchae",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/phoko/national-gwangdeok-sanchae.jpg",
-              imageCredit: "ⓒ한국관광공사 포토코리아-IR 스튜디오",
-              name: { ko: "광덕산 산채비빔밥", ja: "光徳山・山菜ビビンバ", en: "Gwangdeoksan Sanchae Bibimbap" },
-              region: "national",
-              tasteProfile: { sweet: 10, salty: 45, spicy: 30, umami: 70, sour: 10 },
-              storyDescription: {
-                ko: "천안 광덕산 기슭에서 직접 캔 산나물 일곱 가지를 밥 위에 둘러놓고 고추장과 참기름에 비벼 먹는 사찰식 비빔밥이에요. 한 숟갈에 광덕산의 맑은 공기와 흙 내음이 담겨 있어요.",
-                ja: "天安・光徳山の麓で採った山菜七種をご飯に並べ、コチュジャンとごま油で混ぜる精進式ビビンバです。一さじに光徳山の澄んだ空気と土の香りが込められています。",
-                en: "Seven wild greens foraged from Gwangdeoksan's slopes arranged over rice and mixed with gochujang and sesame oil — a temple-style bibimbap. Each spoonful carries the mountain's clean air and earthy scent."
-              },
-              ingredients: { ko: ["밥", "취나물", "곤드레", "고사리", "도라지", "쑥", "고추장", "참기름"], ja: ["ご飯", "チュイナムル", "コンドゥレ", "ワラビ", "桔梗", "ヨモギ", "コチュジャン", "ごま油"], en: ["Rice", "Chwinamul", "Gondre", "Bracken", "Bellflower", "Mugwort", "Gochujang", "Sesame oil"] },
-              tags: ["산채", "비빔밥", "사찰식"],
-              dupes: {
-                JP: { name: { ko: "산사이 돈부리", ja: "山菜丼", en: "Sansai Donburi" }, tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 65, sour: 5 }, description: { ko: "산에서 뜯은 여러 산나물을 밥 위에 올린 일본식 산채 덮밥", ja: "山で摘んだ様々な山菜をご飯にのせる日本式山菜丼", en: "Japanese rice bowl topped with mountain wild vegetables" }, ingredients: { ko: ["밥", "고비", "고사리", "팽이버섯", "간장", "와사비"], ja: ["ご飯", "ゼンマイ", "ワラビ", "エノキ", "醤油", "わさび"], en: ["Rice", "Royal fern", "Bracken", "Enoki", "Soy sauce", "Wasabi"] }, similarityPercent: 82, matchReason: { ko: "산에서 캔 나물을 밥에 올려 먹는 거의 동일한 전통", ja: "山で摘んだ山菜をご飯にのせるほぼ同じ伝統", en: "Mountain herb bowl — close Japanese twin" } },
-                CN: { name: { ko: "예 차이 판 파일", ja: "野菜飯", en: "Ye Cai Fan" }, tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 65, sour: 5 }, description: { ko: "여러 야생 잎채소와 쌀을 함께 지은 중국 사찰식 나물밥", ja: "様々な野生の葉野菜と米を炊いた中国の精進野菜ご飯", en: "Chinese temple-style rice with wild leafy greens" }, ingredients: { ko: ["쌀", "고사리", "부추", "청경채", "간장", "참기름"], ja: ["米", "ワラビ", "ニラ", "チンゲン菜", "醤油", "ごま油"], en: ["Rice", "Bracken", "Chive", "Bok choy", "Soy sauce", "Sesame oil"] }, similarityPercent: 75, matchReason: { ko: "산나물을 쌀과 비벼 먹는 사찰 전통의 공통점", ja: "山菜を米と混ぜて食べる精進料理の共通点", en: "Temple veg rice — Chinese counterpart" } },
-                TH: { name: { ko: "나시 우람", ja: "ナシ・ウラム", en: "Nasi Ulam (Thai Herb Rice)" }, tasteProfile: { sweet: 10, salty: 45, spicy: 25, umami: 65, sour: 10 }, description: { ko: "여러 허브와 잎채소를 쌀에 섞어 먹는 태국 남부식 허브 비빔밥", ja: "様々なハーブと葉野菜を米に混ぜるタイ南部式ハーブ混ぜご飯", en: "Southern Thai rice mixed with multiple herbs and leafy greens" }, ingredients: { ko: ["쌀", "민트", "바질", "레몬그라스", "라임잎", "칠리"], ja: ["米", "ミント", "バジル", "レモングラス", "ライムの葉", "唐辛子"], en: ["Rice", "Mint", "Basil", "Lemongrass", "Lime leaf", "Chili"] }, similarityPercent: 73, matchReason: { ko: "여러 야생 잎채소를 쌀에 섞어 먹는 공통 구조", ja: "様々な野生の葉野菜を米に混ぜる共通構造", en: "Herb mixed rice — Thai counterpart" } },
-                VN: { name: { ko: "껌 짜이 자", ja: "コム・チャイ・ザ", en: "Cơm Chay Đa" }, tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 65, sour: 5 }, description: { ko: "밥에 여러 나물과 두부를 올리고 참기름으로 비벼 먹는 베트남식 사찰 비빔밥", ja: "ご飯に様々なナムルと豆腐をのせてごま油で混ぜるベトナム式の精進ビビンバ", en: "Vietnamese Buddhist temple rice bowl with multiple namuls and tofu" }, ingredients: { ko: ["쌀", "두부", "공심채", "버섯", "생강", "참기름"], ja: ["米", "豆腐", "空心菜", "きのこ", "生姜", "ごま油"], en: ["Rice", "Tofu", "Water spinach", "Mushroom", "Ginger", "Sesame oil"] }, similarityPercent: 70, matchReason: { ko: "나물·두부를 밥에 올려 비벼 먹는 사찰 해석", ja: "ナムル・豆腐をご飯にのせて混ぜる精進解釈", en: "Temple veg bowl — Vietnamese counterpart" } },
-                MY: { name: { ko: "나시 케라부", ja: "ナシ・ケラブ", en: "Nasi Kerabu" }, tasteProfile: { sweet: 10, salty: 50, spicy: 25, umami: 65, sour: 10 }, description: { ko: "쌀에 여러 잎채소·허브와 삼발을 섞은 말레이시아식 허브 비빔밥", ja: "米に様々な葉野菜・ハーブとサンバルを混ぜるマレーシア式ハーブ混ぜご飯", en: "Malaysian blue-tinted rice with herbs, greens and sambal" }, ingredients: { ko: ["쌀", "부탄꽃", "민트", "바질", "코코넛 가루", "삼발"], ja: ["米", "バタフライピー", "ミント", "バジル", "ココナッツパウダー", "サンバル"], en: ["Rice", "Butterfly pea", "Mint", "Basil", "Coconut flakes", "Sambal"] }, similarityPercent: 73, matchReason: { ko: "여러 허브·잎채소를 쌀에 섞는 거의 동일한 전통", ja: "様々なハーブ・葉野菜を米に混ぜるほぼ同じ伝統", en: "Nasi kerabu — close Malaysian twin" } },
-                ID: { name: { ko: "가도 가도", ja: "ガドガド", en: "Gado Gado" }, tasteProfile: { sweet: 20, salty: 50, spicy: 25, umami: 65, sour: 10 }, description: { ko: "여러 삶은 채소·두부·달걀을 땅콩 소스에 비벼 먹는 인도네시아식 채소 비빔", ja: "様々な茹で野菜・豆腐・卵をピーナッツソースで和えるインドネシア式野菜和え", en: "Indonesian salad of mixed boiled vegetables, tofu and egg in peanut sauce" }, ingredients: { ko: ["공심채", "콩나물", "감자", "두부", "달걀", "땅콩 소스"], ja: ["空心菜", "もやし", "ジャガイモ", "豆腐", "卵", "ピーナッツソース"], en: ["Water spinach", "Bean sprouts", "Potato", "Tofu", "Egg", "Peanut sauce"] }, similarityPercent: 70, matchReason: { ko: "여러 채소를 한 그릇에 비벼 먹는 거의 동일한 포맷", ja: "様々な野菜を一杯で和えるほぼ同じフォーマット", en: "Mixed veg bowl — Indonesian sibling" } },
-                US: { name: { ko: "그레인 볼", ja: "グレインボウル", en: "Grain Bowl" }, tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 65, sour: 10 }, description: { ko: "곡물 위에 여러 채소와 단백질을 올려 드레싱에 비벼 먹는 미국식 건강 볼", ja: "穀物の上に様々な野菜とタンパク質をのせてドレッシングで和えるアメリカ式健康ボウル", en: "American grain bowl with multiple vegetables, proteins and dressing" }, ingredients: { ko: ["현미", "케일", "아보카도", "병아리콩", "타히니", "레몬"], ja: ["玄米", "ケール", "アボカド", "ひよこ豆", "タヒニ", "レモン"], en: ["Brown rice", "Kale", "Avocado", "Chickpea", "Tahini", "Lemon"] }, similarityPercent: 65, matchReason: { ko: "곡물 위에 여러 채소를 올려 비벼 먹는 현대적 해석", ja: "穀物の上に様々な野菜をのせて混ぜる現代的解釈", en: "Grain bowl — modern American counterpart" } },
-                IT: { name: { ko: "인살라타 디 파로", ja: "インサラータ・ディ・ファロ", en: "Insalata di Farro" }, tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 65, sour: 15 }, description: { ko: "고대 밀 파로에 여러 채소와 허브·올리브오일을 섞은 이탈리아식 곡물 샐러드", ja: "古代小麦ファッロに様々な野菜とハーブ・オリーブオイルを混ぜるイタリア式穀物サラダ", en: "Italian ancient-grain salad with vegetables, herbs and olive oil" }, ingredients: { ko: ["파로", "체리토마토", "오이", "루콜라", "파마산", "레몬"], ja: ["ファッロ", "プチトマト", "きゅうり", "ルッコラ", "パルメザン", "レモン"], en: ["Farro", "Cherry tomato", "Cucumber", "Arugula", "Parmesan", "Lemon"] }, similarityPercent: 63, matchReason: { ko: "고대 곡물에 잎채소·허브를 비벼 먹는 전통", ja: "古代穀物に葉野菜・ハーブを混ぜる伝統", en: "Farro herb salad — Italian counterpart" } },
-                FR: { name: { ko: "살라드 드 레피노아", ja: "サラード・ド・レピノア", en: "Salade d'Épinards" }, tasteProfile: { sweet: 10, salty: 45, spicy: 5, umami: 60, sour: 15 }, description: { ko: "시금치와 여러 허브를 비네그레트에 버무려 쌀과 함께 낸 프랑스식 허브 샐러드", ja: "ほうれん草と様々なハーブをビネグレットで和えて米と共に出すフランス式ハーブサラダ", en: "French herb salad with spinach and vinaigrette served with rice" }, ingredients: { ko: ["시금치", "루콜라", "케일", "비네그레트", "레몬", "허브"], ja: ["ほうれん草", "ルッコラ", "ケール", "ビネグレット", "レモン", "ハーブ"], en: ["Spinach", "Arugula", "Kale", "Vinaigrette", "Lemon", "Herbs"] }, similarityPercent: 60, matchReason: { ko: "여러 잎채소를 비벼 먹는 샐러드 전통의 공통점", ja: "様々な葉野菜を混ぜて食べるサラダ伝統の共通点", en: "Leafy-green salad — French counterpart" } },
-                IN: { name: { ko: "치트라안나", ja: "チトランナ", en: "Chitranna" }, tasteProfile: { sweet: 10, salty: 45, spicy: 35, umami: 65, sour: 15 }, description: { ko: "쌀에 여러 잎채소와 커리잎·타마린드·코코넛을 섞어 먹는 남인도식 비빔밥", ja: "米に様々な葉野菜とカレーリーフ・タマリンド・ココナッツを混ぜる南インド式ビビンバ", en: "South Indian tempered rice with greens, curry leaves, tamarind and coconut" }, ingredients: { ko: ["쌀", "커리잎", "강황", "타마린드", "땅콩", "시금치"], ja: ["米", "カレーリーフ", "ウコン", "タマリンド", "ピーナッツ", "ほうれん草"], en: ["Rice", "Curry leaves", "Turmeric", "Tamarind", "Peanut", "Spinach"] }, similarityPercent: 70, matchReason: { ko: "쌀에 여러 향신 채소를 비벼 먹는 남아시아 해석", ja: "米に様々な香辛野菜を混ぜて食べる南アジア解釈", en: "Chitranna — Indian counterpart" } },
-                ES: { name: { ko: "아로스 콘 베르두라스 델 캄포", ja: "アロス・コン・ベルドゥラス・デル・カンポ", en: "Arroz con Verduras del Campo" }, tasteProfile: { sweet: 10, salty: 45, spicy: 10, umami: 65, sour: 10 }, description: { ko: "밥에 여러 들판 채소와 마늘·올리브오일을 곁들인 스페인식 채소 비빔밥", ja: "米に様々な野草とニンニク・オリーブオイルを添えたスペイン式野菜混ぜご飯", en: "Spanish rice with wild-field vegetables, garlic and olive oil" }, ingredients: { ko: ["쌀", "시금치", "아티초크", "고사리", "마늘", "파프리카"], ja: ["米", "ほうれん草", "アーティチョーク", "ワラビ", "ニンニク", "パプリカ"], en: ["Rice", "Spinach", "Artichoke", "Bracken", "Garlic", "Paprika"] }, similarityPercent: 67, matchReason: { ko: "밥과 여러 야생 채소가 어우러진 유럽 해석", ja: "ご飯と様々な野生野菜が調和するヨーロッパ解釈", en: "Wild-field rice bowl — Spanish counterpart" } },
-                MX: { name: { ko: "아로스 콘 키엘리테스", ja: "アロス・コン・キエリテス", en: "Arroz con Quelites" }, tasteProfile: { sweet: 10, salty: 45, spicy: 25, umami: 65, sour: 10 }, description: { ko: "쌀에 키엘리테(야생 잎채소)와 옥수수·고추를 비벼 먹는 멕시코 시골식 채소 비빔밥", ja: "米にキエリテ（野生の葉野菜）とトウモロコシ・唐辛子を混ぜるメキシコ田舎式の野菜混ぜご飯", en: "Rural Mexican rice mixed with quelites wild greens, corn and chili" }, ingredients: { ko: ["쌀", "키엘리테", "옥수수", "포블라노 고추", "양파", "고수"], ja: ["米", "キエリテ", "トウモロコシ", "ポブラーノ", "玉ねぎ", "パクチー"], en: ["Rice", "Quelites", "Corn", "Poblano", "Onion", "Cilantro"] }, similarityPercent: 67, matchReason: { ko: "야생 잎채소를 쌀에 섞어 먹는 라틴 전통", ja: "野生の葉野菜を米に混ぜて食べるラテン伝統", en: "Wild-green rice — Mexican counterpart" } }
-              },
-              isLocalSpecialty: false,
-            },
-          {
-              id: "national-sanchae-bibimbap-yongin",
-              name: { ko: "산채비빔밥", ja: "山菜ビビンバ", en: "Sanchae Bibimbap" },
-              region: "national",
-              image: "https://isixbzxophgxrfgjesaa.supabase.co/storage/v1/object/public/food-images/dupe/national-sanchae-bibimbap-yongin.jpeg",
-              imageCredit: "ⓒ한국관광공사 포토코리아-IR 스튜디오",
-              tasteProfile: { sweet: 20, salty: 45, spicy: 50, umami: 65, sour: 20 },
-              storyDescription: {
-                ko: "경기도 산에서 채취한 고사리, 취나물, 참나물 등의 신선한 산나물을 밥 위에 소복이 올려 비벼 먹는 건강 비빔밥이에요. 나물마다 각기 다른 향과 식감이 어우러져 자연의 풍성함을 한 그릇에서 느낄 수 있어요.",
-                ja: "京畿道の山で採れたわらび、シドケ、野芹などの新鮮な山菜をご飯の上にたっぷり乗せて混ぜて食べる健康ビビンバです。山菜それぞれの異なる香りと食感が調和して、自然の豊かさを一椀で感じることができます。",
-                en: "A wholesome bibimbap loaded with freshly foraged mountain greens — bracken, wild sesame leaves, shepherd's purse — from the Gyeonggi mountains. Each vegetable offers its own distinct aroma and texture, delivering the full richness of nature in a single bowl."
-              },
-              ingredients: { ko: ["밥", "고사리", "취나물", "참나물", "도라지", "고추장", "참기름", "계란"], ja: ["ご飯", "わらび", "シドケ", "野芹", "桔梗", "コチュジャン", "ごま油", "卵"], en: ["Rice", "Bracken", "Aster scaber", "Wild parsley", "Bellflower root", "Gochujang", "Sesame oil", "Egg"] },
-              tags: ["산나물", "비빔밥", "건강"],
-                      dupes: {
-                US: {
-                  name: { ko: "퀴노아 샐러드 볼", ja: "キヌアサラダボウル", en: "Quinoa Salad Bowl" },
-                  tasteProfile: { sweet: 12, salty: 30, spicy: 5, umami: 40, sour: 20 },
-                  description: { ko: "퀴노아와 야채를 드레싱에 버무린 미국식 건강 샐러드 볼", ja: "キヌアと野菜をドレッシングで和えたアメリカ風ヘルシーサラダボウル", en: "American healthy grain bowl with quinoa, vegetables, and dressing" },
-                  ingredients: { ko: ["퀴노아", "케일", "아보카도", "토마토", "레몬 드레싱", "씨앗류"], ja: ["キヌア", "ケール", "アボカド", "トマト", "レモンドレッシング", "シード類"], en: ["quinoa", "kale", "avocado", "tomato", "lemon dressing", "seeds"] },
-                  similarityPercent: 82,
-                  matchReason: { ko: "곡물과 다양한 야채를 소스로 비벼 먹는 건강 한 그릇 요리라는 점에서 산채비빔밥과 개념이 동일합니다.", ja: "穀物と多様な野菜をソースで混ぜる健康的な一皿料理という点でサンチェビビンバとコンセプトが同じです。", en: "Both are grain bowls where grains and vegetables are mixed together with a sauce — same healthy bowl concept." }
-                },
-                ID: {
-                  name: { ko: "나시 짬뿌르", ja: "ナシチャンプル", en: "Nasi Campur" },
-                  tasteProfile: { sweet: 10, salty: 40, spicy: 25, umami: 60, sour: 8 },
-                  description: { ko: "밥에 다양한 반찬을 올려 비벼 먹는 인도네시아 혼합밥", ja: "ご飯に多彩なおかずを乗せて混ぜて食べるインドネシアの混ぜご飯", en: "Indonesian mixed rice dish topped with an assortment of side dishes" },
-                  ingredients: { ko: ["쌀", "삼발", "두부", "야채 볶음", "달걀", "새우 페이스트"], ja: ["米", "サンバル", "豆腐", "野菜炒め", "卵", "エビペースト"], en: ["rice", "sambal", "tofu", "stir-fried vegetables", "egg", "shrimp paste"] },
-                  similarityPercent: 88,
-                  matchReason: { ko: "밥 위에 다양한 재료를 올려 비벼 먹는 방식이 비빔밥과 동일합니다.", ja: "ご飯の上に多彩な具材を乗せて混ぜて食べる方式がビビンバと同じです。", en: "Both are mixed rice dishes where multiple toppings are combined with rice and sauce — identical concept." }
-                },
-                JP: {
-                  name: { ko: "산사이 덮밥", ja: "山菜丼", en: "Sansai Donburi" },
-                  tasteProfile: { sweet: 10, salty: 38, spicy: 5, umami: 62, sour: 5 },
-                  description: { ko: "산나물을 간장 소스에 볶아 밥 위에 올린 일본식 산채 덮밥", ja: "山菜を醤油ソースで炒めてご飯の上に乗せた日本風山菜丼", en: "Japanese rice bowl topped with mountain vegetables sautéed in soy sauce" },
-                  ingredients: { ko: ["쌀", "고사리", "두릅", "냉이", "간장", "미림"], ja: ["米", "わらび", "たらの芽", "なずな", "醤油", "みりん"], en: ["rice", "fern", "fatsia sprouts", "shepherd's purse", "soy sauce", "mirin"] },
-                  similarityPercent: 90,
-                  matchReason: { ko: "산나물을 올린 밥 요리로 용인 산채비빔밥과 거의 동일한 개념입니다.", ja: "山菜を乗せたご飯料理で용인 산채비빔밥にほぼ同じコンセプトです。", en: "Mountain vegetables over rice — nearly identical to sanchae bibimbap, the only difference being mixing vs. topping style." }
-                },
-                IN: {
-                  name: { ko: "베지터블 비리야니", ja: "ベジタブル・ビリヤニ", en: "Vegetable Biryani" },
-                  tasteProfile: { sweet: 15, salty: 50, spicy: 45, umami: 70, sour: 15 },
-                  description: { ko: "바스마티 쌀과 여러 가지 채소를 향신료와 함께 층층이 쪄내는 인도식 향신료 밥", ja: "バスマティ米と多様な野菜をスパイスと一緒に層状に蒸すインドの香り高いご飯料理", en: "Indian fragrant rice layered with multiple vegetables and aromatic spices" },
-                  ingredients: { ko: ["바스마티 쌀", "여러 채소", "사프란", "가람마살라", "요거트", "튀긴 양파"], ja: ["バスマティ米", "多様な野菜", "サフラン", "ガラムマサラ", "ヨーグルト", "フライドオニオン"], en: ["Basmati rice", "Mixed vegetables", "Saffron", "Garam masala", "Yogurt", "Fried onion"] },
-                  similarityPercent: 72,
-                  matchReason: { ko: "다양한 채소와 밥을 향신료와 함께 한 그릇에 담아 골고루 섞어 먹는 요리", ja: "多彩な野菜とご飯をスパイスと一緒に一皿に盛り、混ぜて食べる料理", en: "Varied vegetables with rice and spices mixed together — Indian cousin of sanchae bibimbap" }
                 }
               },
               isLocalSpecialty: false,

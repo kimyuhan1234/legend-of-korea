@@ -491,7 +491,7 @@ export const seasonalFoods: SeasonalFood[] = [
   },
   {
     id: 'summer-jeonbok-juk',
-    foodId: 'jeju-jeonbok-juk',
+    foodId: 'busan-jeonbok-juk',
     name: { ko: '전복죽', ja: 'アワビ粥', en: 'Abalone Porridge' },
     season: 'summer',
     months: [6, 7, 8],
@@ -712,7 +712,7 @@ export const seasonalFoods: SeasonalFood[] = [
   },
   {
     id: 'autumn-songi-jeongol',
-    foodId: 'yongin-beoseot-jeongol',
+    foodId: 'cheonan-mushroom-stew',
     name: { ko: '송이버섯전골', ja: '松茸チョンゴル', en: 'Pine Mushroom Hot Pot' },
     season: 'autumn',
     months: [9, 10],
