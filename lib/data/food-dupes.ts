@@ -3891,8 +3891,630 @@ export const regions: Region[] = [
               ingredients: { ko: ["당면", "소고기", "시금치", "당근", "표고버섯", "양파", "간장", "참기름"], ja: ["春雨", "牛肉", "ほうれん草", "人参", "椎茸", "玉ねぎ", "醤油", "ごま油"], en: ["Glass noodles", "Beef", "Spinach", "Carrot", "Shiitake", "Onion", "Soy sauce", "Sesame oil"] },
               tags: ["당면", "잔치", "볶음"],
               dupes: {
-                JP: [], CN: [], TH: [], VN: [], MY: [], ID: [],
-                US: [], IT: [], FR: [], IN: [], ES: [], MX: [],
+                JP: [
+                  {
+                    name: {
+                      ko: "야키비훈",
+                      ja: "焼きビーフン",
+                      en: "Yaki Bifun"
+                    },
+                    tasteProfile: {
+                      sweet: 25,
+                      salty: 55,
+                      spicy: 5,
+                      umami: 75,
+                      sour: 5
+                    },
+                    ingredients: {
+                      ko: [
+                        "쌀국수(비훈)",
+                        "돼지고기",
+                        "양배추",
+                        "당근",
+                        "양파",
+                        "표고버섯",
+                        "간장",
+                        "참기름"
+                      ],
+                      ja: [
+                        "ビーフン",
+                        "豚肉",
+                        "キャベツ",
+                        "人参",
+                        "玉ねぎ",
+                        "椎茸",
+                        "醤油",
+                        "ごま油"
+                      ],
+                      en: [
+                        "Rice vermicelli",
+                        "Pork",
+                        "Cabbage",
+                        "Carrot",
+                        "Onion",
+                        "Shiitake",
+                        "Soy sauce",
+                        "Sesame oil"
+                      ]
+                    },
+                    similarityPercent: 72,
+                    strengths: {
+                      ko: [
+                        "면+채소+고기를 함께 볶아 간장 양념으로 마무리",
+                        "참기름·간장 베이스 동일",
+                        "한 접시 균형 잡힌 구성"
+                      ],
+                      ja: [
+                        "麺+野菜+肉を一緒に炒めて醤油で仕上げる",
+                        "ごま油・醤油ベースが同じ",
+                        "一皿で栄養バランス良し"
+                      ],
+                      en: [
+                        "Noodles + vegetables + meat stir-fried together with soy seasoning",
+                        "Same sesame-oil and soy base",
+                        "Balanced one-plate composition"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "쌀 면 vs 당면 — 식감 차이 (찰진 vs 매끈)",
+                        "단맛이 약함"
+                      ],
+                      ja: [
+                        "米麺 vs 春雨 — 食感の違い (もちもち vs つるつる)",
+                        "甘みが弱い"
+                      ],
+                      en: [
+                        "Rice vermicelli vs sweet potato glass noodle — chewy vs slippery",
+                        "Less sweetness"
+                      ]
+                    },
+                    tip: {
+                      ko: "당면을 찾을 수 없을 때 야키비훈을 만들고 마지막에 설탕 한 꼬집 추가하면 잡채 느낌",
+                      ja: "春雨が手に入らない時は焼きビーフンに最後に砂糖少々を加えるとチャプチェ風",
+                      en: "If you can't find Korean glass noodles, finish yaki bifun with a pinch of sugar to mimic japchae"
+                    },
+                    description: {
+                      ko: "쌀국수와 채소·고기를 간장으로 볶은 일본식 볶음국수",
+                      ja: "ビーフンと野菜・肉を醤油で炒める日本式焼き麺",
+                      en: "Japanese stir-fried rice vermicelli with vegetables and meat in soy seasoning"
+                    },
+                    matchReason: {
+                      ko: "면+채소+고기 볶음에 간장·참기름 베이스가 거의 동일",
+                      ja: "麺+野菜+肉炒めに醤油・ごま油ベースがほぼ同じ",
+                      en: "Stir-fried noodles + veg + meat with soy and sesame oil — close cousin"
+                    }
+                  }
+                ],
+                CN: [
+                  {
+                    name: {
+                      ko: "차오미펀",
+                      ja: "炒米粉",
+                      en: "Chao Mi Fen"
+                    },
+                    tasteProfile: {
+                      sweet: 15,
+                      salty: 60,
+                      spicy: 10,
+                      umami: 75,
+                      sour: 5
+                    },
+                    ingredients: {
+                      ko: [
+                        "쌀국수",
+                        "돼지고기 채",
+                        "부추",
+                        "숙주",
+                        "당근",
+                        "간장",
+                        "굴소스"
+                      ],
+                      ja: [
+                        "米粉",
+                        "豚肉細切り",
+                        "ニラ",
+                        "もやし",
+                        "人参",
+                        "醤油",
+                        "オイスターソース"
+                      ],
+                      en: [
+                        "Rice noodles",
+                        "Pork strips",
+                        "Garlic chives",
+                        "Bean sprouts",
+                        "Carrot",
+                        "Soy sauce",
+                        "Oyster sauce"
+                      ]
+                    },
+                    similarityPercent: 70,
+                    strengths: {
+                      ko: [
+                        "면을 채소·고기와 함께 볶는 동일 기법",
+                        "간장 베이스 양념"
+                      ],
+                      ja: [
+                        "麺を野菜・肉と一緒に炒める同じ技法",
+                        "醤油ベースの味付け"
+                      ],
+                      en: [
+                        "Stir-frying noodles with vegetables and meat — same technique",
+                        "Soy-based seasoning"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "굴소스 풍미가 더 진함",
+                        "참기름 향이 적음"
+                      ],
+                      ja: [
+                        "オイスターソースの風味がより濃い",
+                        "ごま油の香りが少ない"
+                      ],
+                      en: [
+                        "Oyster sauce gives a deeper flavor",
+                        "Less sesame aroma"
+                      ]
+                    },
+                    description: {
+                      ko: "쌀국수를 채소·고기와 굴소스로 볶은 중국 볶음면",
+                      ja: "米粉を野菜・肉とオイスターソースで炒める中国炒め麺",
+                      en: "Chinese stir-fried rice noodles with vegetables, meat, and oyster sauce"
+                    },
+                    matchReason: {
+                      ko: "면+채소+고기 볶음의 가장 직접적인 중국 친척",
+                      ja: "麺+野菜+肉炒めの最も直接的な中国の親戚",
+                      en: "Most direct Chinese cousin to noodle-veg-meat stir-fry"
+                    }
+                  }
+                ],
+                TH: [
+                  {
+                    name: {
+                      ko: "팟 운센",
+                      ja: "パッ・ウンセン",
+                      en: "Pad Woon Sen"
+                    },
+                    tasteProfile: {
+                      sweet: 25,
+                      salty: 55,
+                      spicy: 25,
+                      umami: 70,
+                      sour: 15
+                    },
+                    ingredients: {
+                      ko: [
+                        "당면(녹두)",
+                        "닭고기",
+                        "달걀",
+                        "양배추",
+                        "당근",
+                        "쪽파",
+                        "피시소스",
+                        "간장"
+                      ],
+                      ja: [
+                        "春雨(緑豆)",
+                        "鶏肉",
+                        "卵",
+                        "キャベツ",
+                        "人参",
+                        "ねぎ",
+                        "ナンプラー",
+                        "醤油"
+                      ],
+                      en: [
+                        "Glass noodles (mung bean)",
+                        "Chicken",
+                        "Egg",
+                        "Cabbage",
+                        "Carrot",
+                        "Scallion",
+                        "Fish sauce",
+                        "Soy sauce"
+                      ]
+                    },
+                    similarityPercent: 80,
+                    strengths: {
+                      ko: [
+                        "당면 베이스 — 잡채와 거의 같은 면",
+                        "채소·고기 동시 볶음",
+                        "간장 양념 공통"
+                      ],
+                      ja: [
+                        "春雨ベース — チャプチェとほぼ同じ麺",
+                        "野菜・肉同時炒め",
+                        "醤油の味付けが共通"
+                      ],
+                      en: [
+                        "Glass noodle base — virtually the same noodle as japchae",
+                        "Stir-fried with veg and meat together",
+                        "Shared soy seasoning"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "피시소스로 인한 짠맛 + 미묘한 쓴맛",
+                        "라임·고추가 들어가 신맛·매운맛 추가"
+                      ],
+                      ja: [
+                        "ナンプラー由来の塩味+微かな苦味",
+                        "ライム・唐辛子で酸味・辛味追加"
+                      ],
+                      en: [
+                        "Fish sauce adds saltiness and subtle bitter notes",
+                        "Lime and chili add sourness and heat"
+                      ]
+                    },
+                    tip: {
+                      ko: "피시소스를 간장+설탕으로 살짝 줄이면 잡채 인상에 더 가까워짐",
+                      ja: "ナンプラーを醤油+砂糖で少し抑えるとチャプチェの印象に近づく",
+                      en: "Tame the fish sauce with extra soy + sugar to nudge it closer to japchae"
+                    },
+                    description: {
+                      ko: "녹두 당면을 채소·고기·달걀과 함께 볶은 태국식 볶음 당면",
+                      ja: "緑豆春雨を野菜・肉・卵と一緒に炒めるタイ式焼き春雨",
+                      en: "Thai stir-fried mung-bean glass noodles with vegetables, meat, and egg"
+                    },
+                    matchReason: {
+                      ko: "당면 + 채소 + 고기 동시 볶음 — 잡채의 동남아 쌍둥이",
+                      ja: "春雨+野菜+肉の同時炒め — チャプチェの東南アジアの双子",
+                      en: "Glass noodles + veg + meat stir-fry — Southeast Asian twin to japchae"
+                    }
+                  }
+                ],
+                VN: [
+                  {
+                    name: {
+                      ko: "미엔 싸오",
+                      ja: "ミエン・サオ",
+                      en: "Miến Xào"
+                    },
+                    tasteProfile: {
+                      sweet: 15,
+                      salty: 55,
+                      spicy: 10,
+                      umami: 70,
+                      sour: 10
+                    },
+                    ingredients: {
+                      ko: [
+                        "당면(녹두)",
+                        "돼지고기 또는 게살",
+                        "표고버섯",
+                        "당근",
+                        "양파",
+                        "피시소스",
+                        "후추"
+                      ],
+                      ja: [
+                        "春雨(緑豆)",
+                        "豚肉または蟹身",
+                        "椎茸",
+                        "人参",
+                        "玉ねぎ",
+                        "ナンプラー",
+                        "胡椒"
+                      ],
+                      en: [
+                        "Glass noodles (mung bean)",
+                        "Pork or crab meat",
+                        "Shiitake",
+                        "Carrot",
+                        "Onion",
+                        "Fish sauce",
+                        "Pepper"
+                      ]
+                    },
+                    similarityPercent: 78,
+                    strengths: {
+                      ko: [
+                        "녹두 당면 — 잡채 면과 식감 매우 흡사",
+                        "채소·고기와 단순 볶음 구성"
+                      ],
+                      ja: [
+                        "緑豆春雨 — チャプチェの麺と食感が非常に似ている",
+                        "野菜・肉と素朴な炒め構成"
+                      ],
+                      en: [
+                        "Mung-bean glass noodles — very close texture to japchae",
+                        "Simple stir-fry with veg and meat"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "피시소스 베이스 — 짠맛 결이 다름",
+                        "참기름 미사용"
+                      ],
+                      ja: [
+                        "ナンプラーベース — 塩味の質が違う",
+                        "ごま油を使わない"
+                      ],
+                      en: [
+                        "Fish-sauce base — different salt character",
+                        "No sesame oil"
+                      ]
+                    },
+                    description: {
+                      ko: "녹두 당면을 채소·고기와 함께 볶는 베트남 가정식",
+                      ja: "緑豆春雨を野菜・肉と一緒に炒めるベトナム家庭料理",
+                      en: "Vietnamese home-style stir-fried mung-bean glass noodles with veg and meat"
+                    },
+                    matchReason: {
+                      ko: "거의 같은 당면을 비슷한 방식으로 볶음 — 베트남 쌍둥이",
+                      ja: "ほぼ同じ春雨を同じ要領で炒める — ベトナムの双子",
+                      en: "Same glass noodles, same wok technique — Vietnamese twin"
+                    }
+                  }
+                ],
+                MY: [
+                  {
+                    name: {
+                      ko: "미 고렝",
+                      ja: "ミーゴレン",
+                      en: "Mee Goreng"
+                    },
+                    tasteProfile: {
+                      sweet: 25,
+                      salty: 55,
+                      spicy: 35,
+                      umami: 70,
+                      sour: 15
+                    },
+                    ingredients: {
+                      ko: [
+                        "계란면",
+                        "닭고기 또는 새우",
+                        "숙주",
+                        "양배추",
+                        "토마토",
+                        "케첩 마니스",
+                        "삼발",
+                        "라임"
+                      ],
+                      ja: [
+                        "卵麺",
+                        "鶏肉またはエビ",
+                        "もやし",
+                        "キャベツ",
+                        "トマト",
+                        "ケチャップ・マニス",
+                        "サンバル",
+                        "ライム"
+                      ],
+                      en: [
+                        "Egg noodles",
+                        "Chicken or shrimp",
+                        "Bean sprouts",
+                        "Cabbage",
+                        "Tomato",
+                        "Kecap manis",
+                        "Sambal",
+                        "Lime"
+                      ]
+                    },
+                    similarityPercent: 65,
+                    strengths: {
+                      ko: [
+                        "면+채소+단백질 동시 볶음의 한 접시 음식",
+                        "단짠 베이스의 양념"
+                      ],
+                      ja: [
+                        "麺+野菜+タンパク源を同時に炒める一皿料理",
+                        "甘辛ベースの味付け"
+                      ],
+                      en: [
+                        "One-plate stir-fry of noodles + veg + protein",
+                        "Sweet-savory seasoning base"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "삼발의 매운맛이 강함",
+                        "케첩 마니스의 진한 단맛 — 잡채보다 더 단편적"
+                      ],
+                      ja: [
+                        "サンバルの辛さが強い",
+                        "ケチャップ・マニスの濃厚な甘味 — チャプチェより一面的"
+                      ],
+                      en: [
+                        "Sambal brings strong heat",
+                        "Kecap manis is sweeter and more pronounced than japchae's balance"
+                      ]
+                    },
+                    description: {
+                      ko: "계란면을 채소·고기·새우와 단짠 양념으로 볶은 말레이시아 볶음국수",
+                      ja: "卵麺を野菜・肉・エビと甘辛の味付けで炒めるマレーシア焼きそば",
+                      en: "Malaysian stir-fried egg noodles with veg, meat, and shrimp in sweet-savory sauce"
+                    },
+                    matchReason: {
+                      ko: "한 접시 면+채소+고기 볶음 구조 공유 — 동남아 해석",
+                      ja: "一皿の麺+野菜+肉炒めの構造を共有 — 東南アジア解釈",
+                      en: "Shared one-plate noodle-veg-meat structure — Southeast Asian interpretation"
+                    }
+                  }
+                ],
+                ID: [
+                  {
+                    name: {
+                      ko: "비훈 고렝",
+                      ja: "ビフン・ゴレン",
+                      en: "Bihun Goreng"
+                    },
+                    tasteProfile: {
+                      sweet: 25,
+                      salty: 55,
+                      spicy: 25,
+                      umami: 70,
+                      sour: 10
+                    },
+                    ingredients: {
+                      ko: [
+                        "쌀국수(비훈)",
+                        "닭고기",
+                        "양배추",
+                        "당근",
+                        "달걀",
+                        "케첩 마니스",
+                        "샬롯",
+                        "마늘"
+                      ],
+                      ja: [
+                        "ビーフン",
+                        "鶏肉",
+                        "キャベツ",
+                        "人参",
+                        "卵",
+                        "ケチャップ・マニス",
+                        "エシャロット",
+                        "ニンニク"
+                      ],
+                      en: [
+                        "Rice vermicelli",
+                        "Chicken",
+                        "Cabbage",
+                        "Carrot",
+                        "Egg",
+                        "Kecap manis",
+                        "Shallot",
+                        "Garlic"
+                      ]
+                    },
+                    similarityPercent: 68,
+                    strengths: {
+                      ko: [
+                        "가는 면+채소+고기를 함께 볶는 동일 기법",
+                        "달짝지근한 베이스"
+                      ],
+                      ja: [
+                        "細い麺+野菜+肉を一緒に炒める同じ技法",
+                        "ほのかな甘いベース"
+                      ],
+                      en: [
+                        "Same technique of stir-frying thin noodles with veg and meat",
+                        "Mildly sweet base"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "케첩 마니스의 단맛이 더 진함",
+                        "참기름 향 부재"
+                      ],
+                      ja: [
+                        "ケチャップ・マニスの甘味が濃い",
+                        "ごま油の香りなし"
+                      ],
+                      en: [
+                        "Stronger sweetness from kecap manis",
+                        "No sesame oil aroma"
+                      ]
+                    },
+                    description: {
+                      ko: "쌀국수를 채소·달걀·고기와 케첩 마니스로 볶은 인도네시아 볶음국수",
+                      ja: "ビーフンを野菜・卵・肉とケチャップ・マニスで炒めるインドネシア焼き麺",
+                      en: "Indonesian stir-fried rice vermicelli with veg, egg, meat, and kecap manis"
+                    },
+                    matchReason: {
+                      ko: "면+채소+고기 한 접시 볶음 — 인니식 사촌",
+                      ja: "麺+野菜+肉の一皿炒め — インドネシア式の親戚",
+                      en: "One-plate noodle-veg-meat stir-fry — Indonesian counterpart"
+                    }
+                  }
+                ],
+                US: [],
+                IT: [],
+                FR: [],
+                IN: [
+                  {
+                    name: {
+                      ko: "하카 누들",
+                      ja: "ハッカ・ヌードル",
+                      en: "Hakka Noodles"
+                    },
+                    tasteProfile: {
+                      sweet: 15,
+                      salty: 60,
+                      spicy: 30,
+                      umami: 70,
+                      sour: 10
+                    },
+                    ingredients: {
+                      ko: [
+                        "계란면",
+                        "양배추",
+                        "당근",
+                        "피망",
+                        "쪽파",
+                        "간장",
+                        "식초",
+                        "고추"
+                      ],
+                      ja: [
+                        "卵麺",
+                        "キャベツ",
+                        "人参",
+                        "ピーマン",
+                        "ねぎ",
+                        "醤油",
+                        "酢",
+                        "唐辛子"
+                      ],
+                      en: [
+                        "Egg noodles",
+                        "Cabbage",
+                        "Carrot",
+                        "Bell pepper",
+                        "Scallion",
+                        "Soy sauce",
+                        "Vinegar",
+                        "Chili"
+                      ]
+                    },
+                    similarityPercent: 65,
+                    strengths: {
+                      ko: [
+                        "면+다채로운 채소를 간장으로 볶음",
+                        "한 접시 비빔 구조"
+                      ],
+                      ja: [
+                        "麺+多彩な野菜を醤油で炒める",
+                        "一皿の混ぜ構造"
+                      ],
+                      en: [
+                        "Noodles + colorful vegetables stir-fried in soy sauce",
+                        "One-plate mix structure"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "식초·고추 향이 강함 — 인도-중국 퓨전 색",
+                        "참기름 미사용"
+                      ],
+                      ja: [
+                        "酢・唐辛子の香りが強い — インド中華フュージョン色",
+                        "ごま油未使用"
+                      ],
+                      en: [
+                        "Vinegar and chili are pronounced — Indo-Chinese fusion accent",
+                        "No sesame oil"
+                      ]
+                    },
+                    description: {
+                      ko: "인도-중국 스타일의 면+채소 볶음 — 쪽파·고추·간장 베이스",
+                      ja: "インド中華スタイルの麺+野菜炒め — ねぎ・唐辛子・醤油ベース",
+                      en: "Indo-Chinese style noodle-veg stir-fry with scallion, chili, and soy"
+                    },
+                    matchReason: {
+                      ko: "면+채소+간장 볶음의 인도 동네 해석",
+                      ja: "麺+野菜+醤油炒めのインドのご近所解釈",
+                      en: "India's neighborhood interpretation of noodle-veg-soy stir-fry"
+                    }
+                  }
+                ],
+                ES: [],
+                MX: []
               },
               isLocalSpecialty: false,
             },
@@ -3911,8 +4533,189 @@ export const regions: Region[] = [
               ingredients: { ko: ["순두부", "조개", "달걀", "돼지고기", "고춧가루", "대파", "마늘", "참기름"], ja: ["絹ごし豆腐", "アサリ", "卵", "豚肉", "唐辛子粉", "長ネギ", "ニンニク", "ごま油"], en: ["Silken tofu", "Clams", "Egg", "Pork", "Chili powder", "Green onion", "Garlic", "Sesame oil"] },
               tags: ["찌개", "두부", "뚝배기"],
               dupes: {
-                JP: [], CN: [], TH: [], VN: [], MY: [], ID: [],
-                US: [], IT: [], FR: [], IN: [], ES: [], MX: [],
+                JP: [
+                  {
+                    name: {
+                      ko: "마보 도후",
+                      ja: "麻婆豆腐",
+                      en: "Mabo Dofu"
+                    },
+                    tasteProfile: {
+                      sweet: 10,
+                      salty: 60,
+                      spicy: 55,
+                      umami: 80,
+                      sour: 5
+                    },
+                    ingredients: {
+                      ko: [
+                        "연두부",
+                        "다진 돼지고기",
+                        "두반장",
+                        "고추",
+                        "산초",
+                        "쪽파",
+                        "마늘",
+                        "생강"
+                      ],
+                      ja: [
+                        "絹豆腐",
+                        "豚ひき肉",
+                        "豆板醤",
+                        "唐辛子",
+                        "山椒",
+                        "ねぎ",
+                        "ニンニク",
+                        "生姜"
+                      ],
+                      en: [
+                        "Silken tofu",
+                        "Ground pork",
+                        "Doubanjiang",
+                        "Chili",
+                        "Sichuan pepper",
+                        "Scallion",
+                        "Garlic",
+                        "Ginger"
+                      ]
+                    },
+                    similarityPercent: 70,
+                    strengths: {
+                      ko: [
+                        "연두부+다진 고기+매운 양념의 동일 구조",
+                        "걸쭉하고 뜨거운 한 그릇"
+                      ],
+                      ja: [
+                        "絹豆腐+ひき肉+辛い味付けの同じ構造",
+                        "とろみのある熱々の一品"
+                      ],
+                      en: [
+                        "Same structure: silken tofu + ground meat + spicy sauce",
+                        "Thick, piping-hot bowl"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "산초의 마라 풍미 — 한국식 매운맛과 결이 다름",
+                        "발효 두반장 vs 고춧가루+된장"
+                      ],
+                      ja: [
+                        "山椒の麻辣風味 — 韓国の辛さとは質が違う",
+                        "発酵豆板醤 vs 唐辛子粉+味噌"
+                      ],
+                      en: [
+                        "Sichuan pepper's mala flavor differs from Korean spicy character",
+                        "Fermented doubanjiang vs Korean chili powder + doenjang"
+                      ]
+                    },
+                    tip: {
+                      ko: "산초 대신 고춧가루를 더 넣으면 순두부찌개에 가까운 인상",
+                      ja: "山椒の代わりに唐辛子粉を増やすとスンドゥブチゲに近い印象",
+                      en: "Skip the Sichuan pepper and add more chili flakes to lean closer to sundubu"
+                    },
+                    description: {
+                      ko: "연두부와 다진 고기를 매운 두반장 소스로 끓인 사천 요리",
+                      ja: "絹豆腐とひき肉を辛い豆板醤ソースで煮込む四川料理",
+                      en: "Sichuan dish of silken tofu and ground meat braised in spicy doubanjiang"
+                    },
+                    matchReason: {
+                      ko: "연두부+다진 고기+매운 양념의 거의 동일한 한 그릇",
+                      ja: "絹豆腐+ひき肉+辛い味付けのほぼ同じ一品",
+                      en: "Silken tofu + ground meat + spicy seasoning — same fundamental bowl"
+                    }
+                  }
+                ],
+                CN: [
+                  {
+                    name: {
+                      ko: "마라더우푸",
+                      ja: "麻辣豆腐",
+                      en: "Mala Doufu"
+                    },
+                    tasteProfile: {
+                      sweet: 5,
+                      salty: 60,
+                      spicy: 70,
+                      umami: 80,
+                      sour: 5
+                    },
+                    ingredients: {
+                      ko: [
+                        "연두부",
+                        "다진 돼지고기",
+                        "두반장",
+                        "건고추",
+                        "산초",
+                        "쪽파"
+                      ],
+                      ja: [
+                        "絹豆腐",
+                        "豚ひき肉",
+                        "豆板醤",
+                        "干し唐辛子",
+                        "山椒",
+                        "ねぎ"
+                      ],
+                      en: [
+                        "Silken tofu",
+                        "Ground pork",
+                        "Doubanjiang",
+                        "Dried chili",
+                        "Sichuan pepper",
+                        "Scallion"
+                      ]
+                    },
+                    similarityPercent: 72,
+                    strengths: {
+                      ko: [
+                        "연두부에 매운 양념이 스미는 구조",
+                        "뜨겁게 끓이며 마무리"
+                      ],
+                      ja: [
+                        "絹豆腐に辛い味付けが染み込む構造",
+                        "熱々で仕上げる"
+                      ],
+                      en: [
+                        "Spicy seasoning seeps into silken tofu",
+                        "Finished bubbling hot"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "마라 (얼얼한 매운맛) vs 한국식 칼칼한 매운맛",
+                        "국물보다 소스가 진함"
+                      ],
+                      ja: [
+                        "麻辣 (痺れる辛さ) vs 韓国式の刺激的な辛さ",
+                        "スープより濃いソース"
+                      ],
+                      en: [
+                        "Mala numbing heat vs Korean sharp chili heat",
+                        "Thicker sauce, less broth"
+                      ]
+                    },
+                    description: {
+                      ko: "연두부와 다진 고기를 마라 양념으로 진하게 끓인 사천 요리",
+                      ja: "絹豆腐とひき肉を麻辣の味付けで濃く煮込む四川料理",
+                      en: "Sichuan silken tofu and ground meat in rich mala sauce"
+                    },
+                    matchReason: {
+                      ko: "연두부+매운 양념+다진 고기의 사천 해석",
+                      ja: "絹豆腐+辛い味付け+ひき肉の四川解釈",
+                      en: "Sichuan interpretation of silken tofu, spicy seasoning, and ground meat"
+                    }
+                  }
+                ],
+                TH: [],
+                VN: [],
+                MY: [],
+                ID: [],
+                US: [],
+                IT: [],
+                FR: [],
+                IN: [],
+                ES: [],
+                MX: []
               },
               isLocalSpecialty: false,
             },
@@ -3931,8 +4734,515 @@ export const regions: Region[] = [
               ingredients: { ko: ["쪽파", "밀가루", "달걀", "홍고추", "간장", "식초", "식용유"], ja: ["小ネギ", "小麦粉", "卵", "赤唐辛子", "醤油", "酢", "食用油"], en: ["Green onion", "Flour", "Egg", "Red chili", "Soy sauce", "Vinegar", "Cooking oil"] },
               tags: ["전", "쪽파", "비오는날"],
               dupes: {
-                JP: [], CN: [], TH: [], VN: [], MY: [], ID: [],
-                US: [], IT: [], FR: [], IN: [], ES: [], MX: [],
+                JP: [
+                  {
+                    name: {
+                      ko: "오코노미야키",
+                      ja: "お好み焼き",
+                      en: "Okonomiyaki"
+                    },
+                    tasteProfile: {
+                      sweet: 25,
+                      salty: 55,
+                      spicy: 5,
+                      umami: 80,
+                      sour: 10
+                    },
+                    ingredients: {
+                      ko: [
+                        "밀가루 반죽",
+                        "양배추",
+                        "돼지고기",
+                        "달걀",
+                        "오코노미 소스",
+                        "마요네즈",
+                        "가다랑어포",
+                        "파래"
+                      ],
+                      ja: [
+                        "小麦粉生地",
+                        "キャベツ",
+                        "豚肉",
+                        "卵",
+                        "お好みソース",
+                        "マヨネーズ",
+                        "鰹節",
+                        "青のり"
+                      ],
+                      en: [
+                        "Wheat batter",
+                        "Cabbage",
+                        "Pork",
+                        "Egg",
+                        "Okonomi sauce",
+                        "Mayonnaise",
+                        "Bonito flakes",
+                        "Aonori"
+                      ]
+                    },
+                    similarityPercent: 75,
+                    strengths: {
+                      ko: [
+                        "밀가루 반죽에 채소·해산물·고기를 부쳐내는 거의 동일한 기법",
+                        "한 판에 푸짐한 한 끼",
+                        "같은 부침개 카테고리"
+                      ],
+                      ja: [
+                        "小麦粉生地に野菜・魚介・肉を焼き上げるほぼ同じ技法",
+                        "一枚で満足する一食",
+                        "同じお好み焼きカテゴリ"
+                      ],
+                      en: [
+                        "Wheat batter pan-fried with vegetables, seafood, or meat — same technique",
+                        "One pan, one full meal",
+                        "Shared griddle-pancake category"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "오코노미 소스+마요네즈 토핑 — 단짠+감칠맛",
+                        "양배추 위주 vs 쪽파 위주"
+                      ],
+                      ja: [
+                        "お好みソース+マヨネーズトッピング — 甘辛+旨味",
+                        "キャベツ中心 vs ネギ中心"
+                      ],
+                      en: [
+                        "Okonomi sauce + mayo topping — sweet-savory umami",
+                        "Cabbage-forward vs scallion-forward"
+                      ]
+                    },
+                    tip: {
+                      ko: "쪽파를 듬뿍 넣고 소스를 빼면 파전 인상에 가까워짐",
+                      ja: "ネギをたっぷり入れてソースを抜くとパジョンの印象に近づく",
+                      en: "Pile on scallions and skip the sauce to lean closer to pajeon"
+                    },
+                    description: {
+                      ko: "밀가루 반죽에 양배추와 돼지고기를 섞어 부친 일본식 부침개",
+                      ja: "小麦粉生地にキャベツと豚肉を混ぜて焼く日本式お好み焼き",
+                      en: "Japanese savory pancake with wheat batter, cabbage, and pork"
+                    },
+                    matchReason: {
+                      ko: "밀가루 반죽 부침개 카테고리의 일본 사촌",
+                      ja: "小麦粉生地お好み焼きカテゴリの日本の親戚",
+                      en: "Japanese cousin in the wheat-batter savory pancake family"
+                    }
+                  }
+                ],
+                CN: [
+                  {
+                    name: {
+                      ko: "총요빙",
+                      ja: "葱油餅",
+                      en: "Cong You Bing"
+                    },
+                    tasteProfile: {
+                      sweet: 5,
+                      salty: 55,
+                      spicy: 5,
+                      umami: 65,
+                      sour: 5
+                    },
+                    ingredients: {
+                      ko: [
+                        "밀가루 반죽",
+                        "쪽파",
+                        "참기름",
+                        "소금",
+                        "식용유"
+                      ],
+                      ja: [
+                        "小麦粉生地",
+                        "ねぎ",
+                        "ごま油",
+                        "塩",
+                        "サラダ油"
+                      ],
+                      en: [
+                        "Wheat dough",
+                        "Scallion",
+                        "Sesame oil",
+                        "Salt",
+                        "Cooking oil"
+                      ]
+                    },
+                    similarityPercent: 78,
+                    strengths: {
+                      ko: [
+                        "쪽파를 듬뿍 — 파전 핵심 재료 동일",
+                        "기름에 부쳐내는 동일 기법",
+                        "참기름 향"
+                      ],
+                      ja: [
+                        "ねぎたっぷり — パジョンの核心素材が同じ",
+                        "油で焼き上げる同じ技法",
+                        "ごま油の香り"
+                      ],
+                      en: [
+                        "Generous scallion — same hero ingredient as pajeon",
+                        "Pan-fried in oil — same technique",
+                        "Sesame oil aroma"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "반죽이 더 단단함 (페이스트리 결)",
+                        "달걀·해산물 미포함"
+                      ],
+                      ja: [
+                        "生地が硬め (パイ生地のような層)",
+                        "卵・魚介を含まない"
+                      ],
+                      en: [
+                        "Firmer flaky dough (pastry-like layers)",
+                        "No egg or seafood"
+                      ]
+                    },
+                    description: {
+                      ko: "쪽파를 넣은 밀가루 반죽을 기름에 바삭하게 부쳐낸 중국 빵",
+                      ja: "ねぎ入りの小麦粉生地を油でカリッと焼く中国のお焼き",
+                      en: "Chinese flaky pan-fried bread with scallions in wheat dough"
+                    },
+                    matchReason: {
+                      ko: "쪽파+밀가루+기름 부침의 중국식 친척",
+                      ja: "ねぎ+小麦粉+油焼きの中国式親戚",
+                      en: "Chinese counterpart of scallion-wheat-pan-fried"
+                    }
+                  }
+                ],
+                TH: [],
+                VN: [
+                  {
+                    name: {
+                      ko: "반쎄오",
+                      ja: "バインセオ",
+                      en: "Bánh Xèo"
+                    },
+                    tasteProfile: {
+                      sweet: 10,
+                      salty: 50,
+                      spicy: 10,
+                      umami: 70,
+                      sour: 15
+                    },
+                    ingredients: {
+                      ko: [
+                        "쌀가루 반죽",
+                        "코코넛 밀크",
+                        "강황",
+                        "새우",
+                        "돼지고기",
+                        "숙주",
+                        "허브"
+                      ],
+                      ja: [
+                        "米粉生地",
+                        "ココナッツミルク",
+                        "ウコン",
+                        "エビ",
+                        "豚肉",
+                        "もやし",
+                        "ハーブ"
+                      ],
+                      en: [
+                        "Rice flour batter",
+                        "Coconut milk",
+                        "Turmeric",
+                        "Shrimp",
+                        "Pork",
+                        "Bean sprouts",
+                        "Herbs"
+                      ]
+                    },
+                    similarityPercent: 65,
+                    strengths: {
+                      ko: [
+                        "반죽에 해산물+고기 부쳐낸 한 장 부침개 구조",
+                        "팬에 부친 바삭한 가장자리"
+                      ],
+                      ja: [
+                        "生地に魚介+肉を焼き上げる一枚お好み焼き構造",
+                        "パンの香ばしい縁"
+                      ],
+                      en: [
+                        "Single batter sheet pan-fried with seafood and meat",
+                        "Crispy crust from the pan"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "쌀가루 반죽 (밀가루 X) — 식감 더 바삭",
+                        "코코넛·강황 향 — 동남아 색"
+                      ],
+                      ja: [
+                        "米粉生地 (小麦粉なし) — よりサクサク",
+                        "ココナッツ・ウコンの香り — 東南アジア色"
+                      ],
+                      en: [
+                        "Rice-flour batter (no wheat) — crispier texture",
+                        "Coconut and turmeric give Southeast Asian aroma"
+                      ]
+                    },
+                    description: {
+                      ko: "강황 노란 쌀가루 반죽을 새우·돼지고기·숙주와 부쳐 라이스페이퍼에 싸 먹는 베트남 부침개",
+                      ja: "ウコンで黄色い米粉生地をエビ・豚肉・もやしと焼き、ライスペーパーで包んで食べるベトナムお好み焼き",
+                      en: "Vietnamese turmeric rice-flour pancake with shrimp, pork, and sprouts, wrapped in rice paper"
+                    },
+                    matchReason: {
+                      ko: "반죽+해산물 부침의 베트남 해석",
+                      ja: "生地+魚介焼きのベトナム解釈",
+                      en: "Vietnamese take on batter-and-seafood pancake"
+                    }
+                  }
+                ],
+                MY: [],
+                ID: [],
+                US: [],
+                IT: [
+                  {
+                    name: {
+                      ko: "프리타타 디 베르두레",
+                      ja: "フリッタータ・ディ・ヴェルドゥーレ",
+                      en: "Frittata di Verdure"
+                    },
+                    tasteProfile: {
+                      sweet: 10,
+                      salty: 50,
+                      spicy: 5,
+                      umami: 70,
+                      sour: 5
+                    },
+                    ingredients: {
+                      ko: [
+                        "달걀",
+                        "주키니",
+                        "양파",
+                        "파마산",
+                        "파슬리",
+                        "올리브오일",
+                        "소금"
+                      ],
+                      ja: [
+                        "卵",
+                        "ズッキーニ",
+                        "玉ねぎ",
+                        "パルミジャーノ",
+                        "パセリ",
+                        "オリーブオイル",
+                        "塩"
+                      ],
+                      en: [
+                        "Eggs",
+                        "Zucchini",
+                        "Onion",
+                        "Parmesan",
+                        "Parsley",
+                        "Olive oil",
+                        "Salt"
+                      ]
+                    },
+                    similarityPercent: 60,
+                    strengths: {
+                      ko: [
+                        "채소를 한 판에 부쳐 잘라 먹는 형태",
+                        "한 끼 균형 잡힌 구성"
+                      ],
+                      ja: [
+                        "野菜を一枚に焼いて切って食べる形",
+                        "一食バランスのとれた構成"
+                      ],
+                      en: [
+                        "Vegetables baked into one round, sliced and shared",
+                        "Balanced one-meal composition"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "달걀이 베이스 (반죽 X) — 식감 푹신",
+                        "오븐 또는 약불 슬로우 — 바삭함 부족"
+                      ],
+                      ja: [
+                        "卵がベース (生地なし) — ふんわり食感",
+                        "オーブンか弱火スロー — カリッと感弱め"
+                      ],
+                      en: [
+                        "Egg-based (no batter) — soft, custardy texture",
+                        "Oven/low-heat slow cook — less crispy"
+                      ]
+                    },
+                    description: {
+                      ko: "달걀에 채소를 섞어 한 판에 익혀낸 이탈리아 가정식",
+                      ja: "卵に野菜を混ぜて一枚に焼くイタリアの家庭料理",
+                      en: "Italian home-style egg-and-vegetable pan-cake"
+                    },
+                    matchReason: {
+                      ko: "한 판에 부쳐 잘라 먹는 부침개 정신의 유럽 친척",
+                      ja: "一枚で焼いて切って食べるお好み焼きの精神のヨーロッパの親戚",
+                      en: "Family in spirit — single-pan, sliced-and-shared comfort"
+                    }
+                  }
+                ],
+                FR: [],
+                IN: [
+                  {
+                    name: {
+                      ko: "치라",
+                      ja: "チラ",
+                      en: "Cheela"
+                    },
+                    tasteProfile: {
+                      sweet: 5,
+                      salty: 50,
+                      spicy: 25,
+                      umami: 60,
+                      sour: 10
+                    },
+                    ingredients: {
+                      ko: [
+                        "베산(병아리콩 가루)",
+                        "양파",
+                        "고수",
+                        "고추",
+                        "강황",
+                        "쪽파"
+                      ],
+                      ja: [
+                        "ベサン(ひよこ豆粉)",
+                        "玉ねぎ",
+                        "パクチー",
+                        "唐辛子",
+                        "ウコン",
+                        "ねぎ"
+                      ],
+                      en: [
+                        "Besan (chickpea flour)",
+                        "Onion",
+                        "Cilantro",
+                        "Chili",
+                        "Turmeric",
+                        "Scallion"
+                      ]
+                    },
+                    similarityPercent: 62,
+                    strengths: {
+                      ko: [
+                        "반죽을 얇게 부쳐 채소·향신료를 섞는 구조",
+                        "한 장 평면 부침개"
+                      ],
+                      ja: [
+                        "生地を薄く焼いて野菜・スパイスを混ぜる構造",
+                        "一枚平らなお焼き"
+                      ],
+                      en: [
+                        "Thin pan-fried batter with mixed-in veg and spices",
+                        "Flat single-sheet pancake"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "병아리콩 가루 — 풍미가 더 견과류적",
+                        "강황·커민 향이 강함"
+                      ],
+                      ja: [
+                        "ひよこ豆粉 — 風味がよりナッツ的",
+                        "ウコン・クミンの香りが強い"
+                      ],
+                      en: [
+                        "Chickpea flour gives a nuttier flavor",
+                        "Stronger turmeric and cumin notes"
+                      ]
+                    },
+                    description: {
+                      ko: "병아리콩 가루로 부친 인도식 채소 부침개",
+                      ja: "ひよこ豆粉で焼くインド式野菜お焼き",
+                      en: "Indian savory chickpea-flour pancake with vegetables"
+                    },
+                    matchReason: {
+                      ko: "한 장 부침개 카테고리의 인도 사촌",
+                      ja: "一枚お焼きカテゴリのインドの親戚",
+                      en: "Indian relative in the flat-pancake family"
+                    }
+                  }
+                ],
+                ES: [
+                  {
+                    name: {
+                      ko: "토르티야 에스파뇰라",
+                      ja: "トルティーリャ・エスパニョーラ",
+                      en: "Tortilla Española"
+                    },
+                    tasteProfile: {
+                      sweet: 5,
+                      salty: 50,
+                      spicy: 0,
+                      umami: 65,
+                      sour: 5
+                    },
+                    ingredients: {
+                      ko: [
+                        "달걀",
+                        "감자",
+                        "양파",
+                        "올리브오일",
+                        "소금"
+                      ],
+                      ja: [
+                        "卵",
+                        "ジャガイモ",
+                        "玉ねぎ",
+                        "オリーブオイル",
+                        "塩"
+                      ],
+                      en: [
+                        "Eggs",
+                        "Potato",
+                        "Onion",
+                        "Olive oil",
+                        "Salt"
+                      ]
+                    },
+                    similarityPercent: 58,
+                    strengths: {
+                      ko: [
+                        "한 판에 부쳐 잘라 나눠 먹는 형태",
+                        "달걀 베이스의 푸짐한 한 끼"
+                      ],
+                      ja: [
+                        "一枚に焼いて切ってシェアする形",
+                        "卵ベースの満足の一食"
+                      ],
+                      en: [
+                        "Single-pan format, sliced and shared",
+                        "Egg-based, satisfying meal"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "감자가 메인 재료 — 쪽파·해산물 부재",
+                        "맵지 않음"
+                      ],
+                      ja: [
+                        "ジャガイモが主役 — ねぎ・魚介なし",
+                        "辛くない"
+                      ],
+                      en: [
+                        "Potato-forward — no scallion or seafood",
+                        "Not spicy"
+                      ]
+                    },
+                    description: {
+                      ko: "달걀과 감자·양파를 한 판에 부친 스페인 가정식",
+                      ja: "卵とジャガイモ・玉ねぎを一枚に焼くスペインの家庭料理",
+                      en: "Spanish home-style egg-and-potato pan omelette"
+                    },
+                    matchReason: {
+                      ko: "한 판에 부쳐 나눠 먹는 부침개 정신의 유럽 친척",
+                      ja: "一枚に焼いて分けて食べるお好み焼きの精神のヨーロッパの親戚",
+                      en: "European cousin in spirit — share-and-slice pan cake"
+                    }
+                  }
+                ],
+                MX: []
               },
               isLocalSpecialty: false,
             },
@@ -3951,8 +5261,272 @@ export const regions: Region[] = [
               ingredients: { ko: ["된장", "두부", "애호박", "감자", "양파", "표고버섯", "멸치육수", "고추"], ja: ["テンジャン", "豆腐", "ズッキーニ", "ジャガイモ", "玉ねぎ", "椎茸", "煮干しだし", "唐辛子"], en: ["Doenjang", "Tofu", "Zucchini", "Potato", "Onion", "Shiitake", "Anchovy broth", "Chili"] },
               tags: ["된장", "찌개", "집밥"],
               dupes: {
-                JP: [], CN: [], TH: [], VN: [], MY: [], ID: [],
-                US: [], IT: [], FR: [], IN: [], ES: [], MX: [],
+                JP: [
+                  {
+                    name: {
+                      ko: "미소시루",
+                      ja: "味噌汁",
+                      en: "Miso Soup"
+                    },
+                    tasteProfile: {
+                      sweet: 5,
+                      salty: 55,
+                      spicy: 0,
+                      umami: 80,
+                      sour: 5
+                    },
+                    ingredients: {
+                      ko: [
+                        "미소",
+                        "다시",
+                        "두부",
+                        "미역",
+                        "쪽파"
+                      ],
+                      ja: [
+                        "味噌",
+                        "だし",
+                        "豆腐",
+                        "わかめ",
+                        "ねぎ"
+                      ],
+                      en: [
+                        "Miso",
+                        "Dashi",
+                        "Tofu",
+                        "Wakame",
+                        "Scallion"
+                      ]
+                    },
+                    similarityPercent: 65,
+                    strengths: {
+                      ko: [
+                        "발효 콩 페이스트가 베이스인 동일 카테고리",
+                        "두부 사용 공통",
+                        "맑은 국물 위주"
+                      ],
+                      ja: [
+                        "発酵大豆ペーストがベースの同じカテゴリ",
+                        "豆腐の使用が共通",
+                        "澄んだスープ中心"
+                      ],
+                      en: [
+                        "Fermented soybean paste base — same category",
+                        "Both use tofu",
+                        "Clear broth focus"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "미소가 더 부드럽고 단맛 — 된장의 깊은 구수함과 다름",
+                        "고추가 들어가지 않아 매운맛 부재",
+                        "건더기가 적음"
+                      ],
+                      ja: [
+                        "味噌がより柔らかく甘め — 味噌(韓)の深い香ばしさと違う",
+                        "唐辛子が入らず辛味なし",
+                        "具が少ない"
+                      ],
+                      en: [
+                        "Miso is softer and sweeter than Korean doenjang's deep funk",
+                        "No chili — none of the heat",
+                        "Thinner with fewer toppings"
+                      ]
+                    },
+                    tip: {
+                      ko: "미소시루에 두반장 한 술 넣으면 된장찌개 인상에 가까워짐",
+                      ja: "味噌汁に豆板醤を一さじ加えるとテンジャンチゲに近い印象",
+                      en: "Stir a spoon of doubanjiang into miso soup to nudge it toward doenjang jjigae"
+                    },
+                    description: {
+                      ko: "미소를 다시에 풀어 두부·미역을 곁들이는 일본 일상식 국",
+                      ja: "味噌をだしに溶いて豆腐・わかめを添える日本の日常スープ",
+                      en: "Japanese daily soup of miso dissolved in dashi with tofu and wakame"
+                    },
+                    matchReason: {
+                      ko: "발효 콩 페이스트 국의 일본 형제 — 풍미는 더 부드러움",
+                      ja: "発酵大豆ペーストスープの日本の兄弟 — 風味はより穏やか",
+                      en: "Japanese sibling in the fermented-soybean soup family — gentler in flavor"
+                    }
+                  }
+                ],
+                CN: [
+                  {
+                    name: {
+                      ko: "황두장 탕",
+                      ja: "黄豆醤湯",
+                      en: "Huang Dou Jiang Tang"
+                    },
+                    tasteProfile: {
+                      sweet: 5,
+                      salty: 60,
+                      spicy: 5,
+                      umami: 75,
+                      sour: 5
+                    },
+                    ingredients: {
+                      ko: [
+                        "황두장(노란콩 장)",
+                        "두부",
+                        "배추",
+                        "쪽파",
+                        "마늘",
+                        "물"
+                      ],
+                      ja: [
+                        "黄豆醤",
+                        "豆腐",
+                        "白菜",
+                        "ねぎ",
+                        "ニンニク",
+                        "水"
+                      ],
+                      en: [
+                        "Yellow soybean paste",
+                        "Tofu",
+                        "Napa cabbage",
+                        "Scallion",
+                        "Garlic",
+                        "Water"
+                      ]
+                    },
+                    similarityPercent: 60,
+                    strengths: {
+                      ko: [
+                        "발효 콩장 베이스의 국",
+                        "두부+채소+쪽파 구성"
+                      ],
+                      ja: [
+                        "発酵大豆ペーストベースのスープ",
+                        "豆腐+野菜+ねぎ構成"
+                      ],
+                      en: [
+                        "Fermented soybean paste base soup",
+                        "Tofu + vegetable + scallion composition"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "맵지 않음 — 한국식 칼칼한 매운맛 부재",
+                        "묵직한 발효 깊이 부족"
+                      ],
+                      ja: [
+                        "辛くない — 韓国式の刺激的な辛さなし",
+                        "重厚な発酵の深みが不足"
+                      ],
+                      en: [
+                        "Not spicy — lacks Korean sharp chili kick",
+                        "Less of the deep fermented body"
+                      ]
+                    },
+                    description: {
+                      ko: "황두장으로 끓인 중국 가정식 두부 콩장 국",
+                      ja: "黄豆醤で煮込む中国家庭の豆腐と豆ジャンスープ",
+                      en: "Chinese home-style yellow-bean-paste tofu soup"
+                    },
+                    matchReason: {
+                      ko: "발효 콩 페이스트 국의 중국식 친척",
+                      ja: "発酵大豆ペーストスープの中国式親戚",
+                      en: "Chinese kin in the fermented-soybean soup tradition"
+                    }
+                  }
+                ],
+                TH: [],
+                VN: [],
+                MY: [],
+                ID: [
+                  {
+                    name: {
+                      ko: "사유르 아셈",
+                      ja: "サユール・アサム",
+                      en: "Sayur Asem"
+                    },
+                    tasteProfile: {
+                      sweet: 10,
+                      salty: 50,
+                      spicy: 15,
+                      umami: 70,
+                      sour: 30
+                    },
+                    ingredients: {
+                      ko: [
+                        "타마린드",
+                        "옥수수",
+                        "땅콩",
+                        "잭푸르트",
+                        "콩",
+                        "테라시(새우장)",
+                        "고추",
+                        "갈랑갈"
+                      ],
+                      ja: [
+                        "タマリンド",
+                        "トウモロコシ",
+                        "落花生",
+                        "ジャックフルーツ",
+                        "豆",
+                        "テラシ(エビ醤)",
+                        "唐辛子",
+                        "ガランガル"
+                      ],
+                      en: [
+                        "Tamarind",
+                        "Corn",
+                        "Peanuts",
+                        "Jackfruit",
+                        "Beans",
+                        "Terasi (shrimp paste)",
+                        "Chili",
+                        "Galangal"
+                      ]
+                    },
+                    similarityPercent: 55,
+                    strengths: {
+                      ko: [
+                        "채소가 듬뿍 들어가는 끓인 국 형식",
+                        "발효 페이스트(테라시) 베이스의 깊은 감칠맛"
+                      ],
+                      ja: [
+                        "野菜たっぷりの煮込みスープ形式",
+                        "発酵ペースト(テラシ)ベースの深い旨味"
+                      ],
+                      en: [
+                        "Vegetable-loaded simmered soup format",
+                        "Deep umami from fermented shrimp paste"
+                      ]
+                    },
+                    limitations: {
+                      ko: [
+                        "타마린드의 신맛이 강함 — 된장찌개의 구수함과 결이 다름",
+                        "콩 발효 페이스트 부재"
+                      ],
+                      ja: [
+                        "タマリンドの酸味が強い — テンジャンチゲの香ばしさとは違う",
+                        "大豆発酵ペーストなし"
+                      ],
+                      en: [
+                        "Strong tamarind sourness — different from doenjang's earthy depth",
+                        "No soybean fermentation base"
+                      ]
+                    },
+                    description: {
+                      ko: "타마린드와 채소·견과류를 함께 끓인 인도네시아의 새콤한 채소 수프",
+                      ja: "タマリンドと野菜・ナッツを一緒に煮込むインドネシアの酸っぱい野菜スープ",
+                      en: "Indonesian tamarind-and-vegetable tangy soup with nuts"
+                    },
+                    matchReason: {
+                      ko: "발효 페이스트 채소 수프의 동남아 해석 (단 산미 강함)",
+                      ja: "発酵ペースト野菜スープの東南アジア解釈 (酸味強め)",
+                      en: "Southeast Asian take on fermented-paste vegetable soup (with sour twist)"
+                    }
+                  }
+                ],
+                US: [],
+                IT: [],
+                FR: [],
+                IN: [],
+                ES: [],
+                MX: []
               },
               isLocalSpecialty: false,
             },
@@ -3975,8 +5549,269 @@ export const regions: Region[] = [
               },
               tags: ["분식", "매콤", "길거리"],
                       dupes: {
-                        JP: [], CN: [], TH: [], VN: [], MY: [], ID: [],
-                        US: [], IT: [], FR: [], IN: [], ES: [], MX: [],
+                        JP: [
+                          {
+                            name: {
+                              ko: "모찌 매운 단짠 조림",
+                              ja: "甘辛餅煮",
+                              en: "Sweet-Spicy Mochi Stew"
+                            },
+                            tasteProfile: {
+                              sweet: 35,
+                              salty: 45,
+                              spicy: 50,
+                              umami: 65,
+                              sour: 5
+                            },
+                            ingredients: {
+                              ko: [
+                                "모찌",
+                                "어묵",
+                                "쪽파",
+                                "간장",
+                                "미림",
+                                "고춧가루"
+                              ],
+                              ja: [
+                                "餅",
+                                "おでん種",
+                                "ねぎ",
+                                "醤油",
+                                "みりん",
+                                "唐辛子粉"
+                              ],
+                              en: [
+                                "Mochi",
+                                "Fish cake",
+                                "Scallion",
+                                "Soy sauce",
+                                "Mirin",
+                                "Chili powder"
+                              ]
+                            },
+                            similarityPercent: 55,
+                            strengths: {
+                              ko: [
+                                "쫄깃한 떡(모찌) 식감 공통",
+                                "단짠 베이스 — 떡볶이의 단맛 결과 일부 일치"
+                              ],
+                              ja: [
+                                "もちもちの餅食感が共通",
+                                "甘辛ベース — トッポッキの甘みと一部一致"
+                              ],
+                              en: [
+                                "Same chewy mochi texture",
+                                "Sweet-savory base partially echoes tteokbokki's sweetness"
+                              ]
+                            },
+                            limitations: {
+                              ko: [
+                                "일본에 정확히 동일한 요리는 거의 없음 — 위 레시피는 떡볶이 영감 가정 요리",
+                                "고추장 깊이 부재"
+                              ],
+                              ja: [
+                                "日本には正確に同じ料理はほぼない — 上記はトッポッキ風の家庭アレンジ",
+                                "コチュジャンの深みなし"
+                              ],
+                              en: [
+                                "No truly equivalent Japanese dish exists — above is a tteokbokki-inspired home riff",
+                                "Lacks gochujang depth"
+                              ]
+                            },
+                            tip: {
+                              ko: "고추장을 한 큰술 넣으면 떡볶이 맛에 훨씬 가까워짐",
+                              ja: "コチュジャン大さじ1を加えるとトッポッキの味にずっと近づく",
+                              en: "A heaping spoon of gochujang nudges it much closer to tteokbokki"
+                            },
+                            description: {
+                              ko: "모찌를 단짠 양념과 어묵으로 조린 일본식 떡볶이 해석",
+                              ja: "餅を甘辛のタレとおでん種で煮込む日本式トッポッキ解釈",
+                              en: "Japanese-style tteokbokki riff: mochi simmered with sweet-savory sauce and fish cake"
+                            },
+                            matchReason: {
+                              ko: "쫄깃한 떡 식감 + 단짠 양념의 일본식 응용",
+                              ja: "もちもちの餅食感+甘辛タレの日本式応用",
+                              en: "Chewy rice cake + sweet-savory sauce in Japanese style"
+                            }
+                          }
+                        ],
+                        CN: [
+                          {
+                            name: {
+                              ko: "찰떡 매운 볶음",
+                              ja: "辛炒年糕",
+                              en: "Spicy Stir-fried Nian Gao"
+                            },
+                            tasteProfile: {
+                              sweet: 25,
+                              salty: 55,
+                              spicy: 50,
+                              umami: 70,
+                              sour: 10
+                            },
+                            ingredients: {
+                              ko: [
+                                "연고(쌀떡)",
+                                "배추",
+                                "돼지고기 채",
+                                "두반장",
+                                "간장",
+                                "쪽파",
+                                "마늘"
+                              ],
+                              ja: [
+                                "年糕(米餅)",
+                                "白菜",
+                                "豚肉細切り",
+                                "豆板醤",
+                                "醤油",
+                                "ねぎ",
+                                "ニンニク"
+                              ],
+                              en: [
+                                "Nian gao (rice cake)",
+                                "Cabbage",
+                                "Pork strips",
+                                "Doubanjiang",
+                                "Soy sauce",
+                                "Scallion",
+                                "Garlic"
+                              ]
+                            },
+                            similarityPercent: 70,
+                            strengths: {
+                              ko: [
+                                "쌀떡(쪽 흡사) + 매운 양념 + 돼지고기 + 채소 볶음 구조",
+                                "쫄깃한 식감 공통"
+                              ],
+                              ja: [
+                                "米餅(似た食感) + 辛い味付け + 豚肉 + 野菜炒めの構造",
+                                "もちもち食感が共通"
+                              ],
+                              en: [
+                                "Rice cake (similar texture) + spicy sauce + pork + vegetables stir-fried",
+                                "Shared chewy bite"
+                              ]
+                            },
+                            limitations: {
+                              ko: [
+                                "두반장 vs 고추장 — 발효 결이 다름",
+                                "달지 않음 — 떡볶이의 단맛 부재"
+                              ],
+                              ja: [
+                                "豆板醤 vs コチュジャン — 発酵の質が違う",
+                                "甘くない — トッポッキの甘みなし"
+                              ],
+                              en: [
+                                "Doubanjiang vs gochujang — different ferment character",
+                                "Less sweet than tteokbokki"
+                              ]
+                            },
+                            description: {
+                              ko: "원형/막대형 쌀떡을 매운 양념과 채소·고기와 볶은 중국식 떡볶이 친척",
+                              ja: "円型/棒型の米餅を辛い味付けと野菜・肉で炒める中国式トッポッキの親戚",
+                              en: "Chinese stir-fried rice cake with spicy sauce, vegetables, and pork"
+                            },
+                            matchReason: {
+                              ko: "쫄깃한 쌀떡 + 매운 양념 + 채소·고기 — 떡볶이의 가장 직접적인 중국 친척",
+                              ja: "もちもち米餅+辛い味付け+野菜・肉 — トッポッキの最も直接的な中国の親戚",
+                              en: "Chewy rice cake + spicy sauce + veg/meat — most direct Chinese cousin"
+                            }
+                          }
+                        ],
+                        TH: [
+                          {
+                            name: {
+                              ko: "꾸어이짭",
+                              ja: "クイチャップ",
+                              en: "Kuay Chap"
+                            },
+                            tasteProfile: {
+                              sweet: 15,
+                              salty: 55,
+                              spicy: 25,
+                              umami: 75,
+                              sour: 10
+                            },
+                            ingredients: {
+                              ko: [
+                                "둥근 쌀떡 시트",
+                                "삼겹살",
+                                "내장",
+                                "오향분",
+                                "간장",
+                                "고수",
+                                "마늘"
+                              ],
+                              ja: [
+                                "丸い米生地シート",
+                                "豚バラ",
+                                "もつ",
+                                "五香粉",
+                                "醤油",
+                                "パクチー",
+                                "ニンニク"
+                              ],
+                              en: [
+                                "Rolled rice sheets",
+                                "Pork belly",
+                                "Offal",
+                                "Five-spice",
+                                "Soy sauce",
+                                "Cilantro",
+                                "Garlic"
+                              ]
+                            },
+                            similarityPercent: 55,
+                            strengths: {
+                              ko: [
+                                "쫄깃한 쌀 베이스 면(시트)",
+                                "한 그릇에 단백질+탄수화물 푸짐한 구성"
+                              ],
+                              ja: [
+                                "もちもちの米ベースの麺(シート)",
+                                "一杯にタンパク質+炭水化物の豊かな構成"
+                              ],
+                              en: [
+                                "Chewy rice-based sheet noodles",
+                                "One-bowl substantial protein-and-carb spread"
+                              ]
+                            },
+                            limitations: {
+                              ko: [
+                                "국물 베이스 (소스 X) — 떡볶이와 형식 차이",
+                                "오향분 향이 강함"
+                              ],
+                              ja: [
+                                "スープベース (ソースなし) — トッポッキと形式が違う",
+                                "五香粉の香りが強い"
+                              ],
+                              en: [
+                                "Broth-based (not saucy) — different format from tteokbokki",
+                                "Strong five-spice aroma"
+                              ]
+                            },
+                            description: {
+                              ko: "둥글게 만 쌀떡 시트를 오향 국물에 끓여내는 태국 화교 음식",
+                              ja: "丸めた米生地シートを五香スープで煮込むタイ華僑料理",
+                              en: "Thai-Chinese rolled rice sheets simmered in five-spice broth"
+                            },
+                            matchReason: {
+                              ko: "쌀 베이스 쫄깃한 한 그릇 — 형식은 다르나 식감 공통",
+                              ja: "米ベースのもちもち一杯 — 形式は違うが食感が共通",
+                              en: "Rice-based chewy bowl — different format, shared bite"
+                            }
+                          }
+                        ],
+                        VN: [],
+                        MY: [],
+                        ID: [],
+                        US: [],
+                        IT: [],
+                        FR: [],
+                        IN: [],
+                        ES: [],
+                        MX: []
                       },
               isLocalSpecialty: false,
             },
