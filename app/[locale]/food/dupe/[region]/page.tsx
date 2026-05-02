@@ -69,8 +69,9 @@ export default function RegionGroupFoodsPage({ params }: Props) {
   const { locale, region: regionParam } = params
 
   // Legacy 도시 코드 (jeonju, busan, ...) 진입 시 → 권역으로 영구 리다이렉트
+  // 단, 제주(jeju city = jeju group)처럼 도시 코드와 권역 id가 동일한 경우 리다이렉트 생략
   const legacyGroupId = REGION_TO_GROUP[regionParam]
-  if (legacyGroupId) {
+  if (legacyGroupId && legacyGroupId !== regionParam) {
     permanentRedirect(`/${locale}/food/dupe/${legacyGroupId}`)
   }
 
