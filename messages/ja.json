@@ -816,13 +816,13 @@
     },
     "food": {
       "label": "K-FOOD",
-      "title": "地域グルメと食べ物デュープ",
+      "title": "韓国の味を知る",
       "description": "都市別K-Foodスポットと、自宅でも作れるデュープレシピ。"
     },
     "ootd": {
       "label": "OOTD",
-      "title": "今日の韓国ルック",
-      "description": "旅行者が投稿するウィークリーOOTDと韓国スタイルのインサイト。"
+      "title": "デイリーコーデおすすめ",
+      "description": "旅行地の天気と気候に合わせたデイリーコーデおすすめ。"
     },
     "traffic": {
       "label": "TRAFFIC",
@@ -836,8 +836,8 @@
     },
     "gallery": {
       "label": "GALLERY",
-      "title": "フォトギャラリー",
-      "description": "サイト制作の過程で生まれた写真集。PASSサブスクライバーに無料提供。"
+      "title": "ギャラリー",
+      "description": "旅の気分を高める韓国感性写真コレクション。"
     }
   },
   "communityHub": {
@@ -2141,8 +2141,8 @@
     }
   },
   "gallery": {
-    "title": "フォトギャラリー",
-    "subtitle": "サイト制作の裏側で生まれた写真集",
+    "title": "ギャラリー",
+    "subtitle": "旅の気分を高める韓国感性写真コレクション",
     "passRequired": "🔒 PASSサブスクでダウンロード無料",
     "subscribeCta": "PASSを購入する",
     "download": "ダウンロード",

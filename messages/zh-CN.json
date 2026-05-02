@@ -816,13 +816,13 @@
     },
     "food": {
       "label": "K-FOOD",
-      "title": "地道美食与平替菜谱",
+      "title": "探索韩国美味",
       "description": "按城市精选的K-Food热门餐厅,以及在家也能复刻的平替食谱。"
     },
     "ootd": {
       "label": "OOTD",
-      "title": "今日韩式穿搭",
-      "description": "旅行者上传的每周OOTD与韩国风格灵感。"
+      "title": "每日穿搭推荐",
+      "description": "根据旅行地天气和气候推荐的每日穿搭。"
     },
     "traffic": {
       "label": "TRAFFIC",
@@ -836,8 +836,8 @@
     },
     "gallery": {
       "label": "GALLERY",
-      "title": "照片图库",
-      "description": "网站制作过程中诞生的照片合集。PASS订阅者免费提供。"
+      "title": "图库",
+      "description": "提升旅行氛围的韩国感性照片合集。"
     }
   },
   "communityHub": {
@@ -2141,8 +2141,8 @@
     }
   },
   "gallery": {
-    "title": "照片图库",
-    "subtitle": "网站制作背后诞生的照片合集",
+    "title": "图库",
+    "subtitle": "提升旅行氛围的韩国感性照片合集",
     "passRequired": "🔒 PASS订阅即可免费下载",
     "subscribeCta": "订阅PASS",
     "download": "下载",
