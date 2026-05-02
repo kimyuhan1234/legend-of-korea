@@ -40,9 +40,6 @@ const UI = {
     tasteProfile: "맛 프로필",
     spotsTitle: "이 음식을 맛볼 수 있는 곳",
     spotsLink: "맛집 전체 보기 →",
-    tryCta: (city: string) => `${city}에서 직접 맛보기 →`,
-    tryDesc: (city: string) => `${city}에서 한국 음식의 진짜 맛을 경험해보세요`,
-    courseLink: (city: string) => `${city} 코스 보러가기 →`,
   },
   ja: {
     backRegion: "← 一覧に戻る",
@@ -51,9 +48,6 @@ const UI = {
     tasteProfile: "味プロフィール",
     spotsTitle: "この料理が食べられる場所",
     spotsLink: "グルメスポット一覧 →",
-    tryCta: (city: string) => `${city}で実際に味わう →`,
-    tryDesc: (city: string) => `${city}で韓国料理の本当の味を体験してください`,
-    courseLink: (city: string) => `${city}コースを見る →`,
   },
   en: {
     backRegion: "← Back to list",
@@ -62,9 +56,6 @@ const UI = {
     tasteProfile: "Taste Profile",
     spotsTitle: "Where to taste this dish",
     spotsLink: "See all food spots →",
-    tryCta: (city: string) => `Taste it in ${city} →`,
-    tryDesc: (city: string) => `Experience authentic Korean flavors in ${city}`,
-    courseLink: (city: string) => `See ${city} Course →`,
   },
 }
 
@@ -206,17 +197,6 @@ export default async function FoodDetailPage({ params }: Props) {
           </div>
         )}
 
-        {/* CTA */}
-        <div className="bg-gradient-to-br from-mint to-blossom rounded-3xl p-8 text-center">
-          <p className="text-xl font-black text-ink mb-2">{t.tryCta(getL(region.name, locale))}</p>
-          <p className="text-slate text-sm mb-6">{t.tryDesc(getL(region.name, locale))}</p>
-          <Link
-            href={`/${locale}/courses`}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-mint-deep text-white font-bold hover:bg-[#7BC8BC] transition-colors"
-          >
-            {t.courseLink(getL(region.name, locale))}
-          </Link>
-        </div>
       </div>
     </div>
   )

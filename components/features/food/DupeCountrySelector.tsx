@@ -1,18 +1,30 @@
 ﻿'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { TasteRadarChart } from './TasteRadarChart'
 import type { RegionalFood, DupeCandidate, CountryCode } from '@/lib/data/food-dupes'
 
-/** Phase H — 한중일 한정. 9개국 폐기 후 JP/CN 만 노출. */
+/**
+ * Phase H — 한중일 한정. 9개국 폐기 후 JP/CN 만 노출.
+ * Phase H-UI — 텍스트 버튼 → 이미지 버튼 (artique 인물 사진).
+ */
 const COUNTRIES_2 = [
-  { code: 'JP', flag: '🇯🇵', name: { ko: '일본', ja: '日本', en: 'Japan' } },
-  { code: 'CN', flag: '🇨🇳', name: { ko: '중국', ja: '中国', en: 'China' } },
+  {
+    code: 'JP',
+    image: '/images/dupe-country/jp.png',
+    name: { ko: '일본', ja: '日本', en: 'Japan', 'zh-CN': '日本', 'zh-TW': '日本' },
+  },
+  {
+    code: 'CN',
+    image: '/images/dupe-country/cn.png',
+    name: { ko: '중국', ja: '中国', en: 'China', 'zh-CN': '中国', 'zh-TW': '中國' },
+  },
 ]
 
 const UI = {
   ko: {
-    title: '비슷한 외국 음식',
+    title: '듀프하기',
     myTaste: '내 맛 프로필',
     similarity: '유사도',
     why: '왜 닮았나요?',
@@ -26,7 +38,7 @@ const UI = {
     challenge: '도전해 보세요 🔥',
   },
   ja: {
-    title: '似ている外国料理',
+    title: 'デュープする',
     myTaste: '味プロフィール',
     similarity: '類似度',
     why: 'なぜ似ているの？',
@@ -40,7 +52,7 @@ const UI = {
     challenge: '挑戦してみよう 🔥',
   },
   en: {
-    title: 'Similar Foreign Foods',
+    title: 'Find Dupes',
     myTaste: 'Taste Profile',
     similarity: 'Similarity',
     why: 'Why are they alike?',
@@ -53,6 +65,34 @@ const UI = {
     noDataSub: "No data yet for this country — go explore and discover it yourself!",
     challenge: 'Take the Challenge 🔥',
   },
+  'zh-CN': {
+    title: '对比',
+    myTaste: '我的口味档案',
+    similarity: '相似度',
+    why: '为什么相似？',
+    ingredients: '食材',
+    strengths: '✅ 相似点',
+    limitations: '⚠️ 不同点',
+    tip: '💡 小贴士',
+    candidate: '候选',
+    noDataTitle: '初次品尝的味道',
+    noDataSub: '尚无此国家的数据 — 亲自体验并发现新味道吧！',
+    challenge: '来挑战看看 🔥',
+  },
+  'zh-TW': {
+    title: '對比',
+    myTaste: '我的口味檔案',
+    similarity: '相似度',
+    why: '為什麼相似？',
+    ingredients: '食材',
+    strengths: '✅ 相似點',
+    limitations: '⚠️ 不同點',
+    tip: '💡 小撇步',
+    candidate: '候選',
+    noDataTitle: '初次品嘗的味道',
+    noDataSub: '尚無此國家的數據 — 親自體驗並發現新風味吧！',
+    challenge: '來挑戰看看 🔥',
+  },
 }
 
 function similarityColor(pct: number): string {
@@ -61,9 +101,9 @@ function similarityColor(pct: number): string {
   return 'bg-[#9CA3AF]'
 }
 
-function getL(field: { ko: string; ja: string; en: string } | null | undefined, locale: string): string {
+function getL(field: Record<string, string> | null | undefined, locale: string): string {
   if (!field) return ''
-  return (field as Record<string, string>)[locale] || field.en || field.ko || ''
+  return field[locale] || field.en || field.ko || ''
 }
 
 function getLA(field: { ko: string[]; ja: string[]; en: string[] } | null | undefined, locale: string): string[] {
@@ -88,39 +128,54 @@ export function DupeCountrySelector({ food, locale }: Props) {
       <h2 className="text-xl font-black text-[#111] mb-5">{t.title}</h2>
 
       <div>
-          {/* 가로 스크롤 국가 탭 */}
-          <div className="overflow-x-auto pb-2 mb-5 -mx-1 px-1">
-            <div className="flex gap-2 w-max">
-              {COUNTRIES_2.map((c) => {
-                const cc = c.code as CountryCode
-                const count = food.dupes[cc]?.length ?? 0
-                const isSelected = selected === cc
-                return (
-                  <button
-                    key={c.code}
-                    onClick={() => setSelected(cc)}
-                    className={`flex flex-col items-center gap-1 px-3 py-2.5 rounded-2xl border transition-all flex-shrink-0 ${
+          {/* 국가 이미지 버튼 — 큰 정사각 카드 */}
+          <div className="flex gap-3 mb-6 justify-center sm:justify-start flex-wrap">
+            {COUNTRIES_2.map((c) => {
+              const cc = c.code as CountryCode
+              const count = food.dupes[cc]?.length ?? 0
+              const isSelected = selected === cc
+              return (
+                <button
+                  key={c.code}
+                  type="button"
+                  onClick={() => setSelected(cc)}
+                  aria-pressed={isSelected}
+                  className={`group relative flex flex-col items-center gap-2 transition-transform duration-200 ${
+                    isSelected ? 'scale-105' : 'opacity-60 hover:opacity-100 hover:scale-105'
+                  }`}
+                >
+                  <div
+                    className={`relative w-[120px] h-[120px] rounded-2xl overflow-hidden transition-all ${
                       isSelected
-                        ? 'bg-[#1F2937] border-ink text-white shadow-md'
-                        : 'bg-white border-mist text-stone hover:border-blossom-deep/60 hover:bg-[#FFFBF5]'
+                        ? 'ring-4 ring-amber-400 shadow-xl'
+                        : 'ring-1 ring-mist'
                     }`}
                   >
-                    <span className="text-xl leading-none">{c.flag}</span>
-                    <span className="text-[10px] font-medium whitespace-nowrap">{getL(c.name, locale)}</span>
-                    {/* 후보 개수 — 0 이면 흐림 */}
+                    <Image
+                      src={c.image}
+                      alt={getL(c.name, locale)}
+                      width={240}
+                      height={240}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
+                    {/* 후보 개수 뱃지 */}
                     <span
-                      className={`text-[9px] font-bold rounded-full px-1.5 min-w-[16px] text-center ${
+                      className={`absolute top-1.5 right-1.5 text-[11px] font-black rounded-full px-2 py-0.5 ${
                         count > 0
-                          ? isSelected ? 'bg-[#F0B8B8] text-[#111]' : 'bg-blossom-light text-blossom-deep'
-                          : isSelected ? 'bg-white/20 text-white/60' : 'bg-mist text-stone'
+                          ? 'bg-amber-400 text-[#111]'
+                          : 'bg-black/60 text-white/80'
                       }`}
                     >
                       {count}
                     </span>
-                  </button>
-                )
-              })}
-            </div>
+                  </div>
+                  <span className={`text-sm font-bold ${isSelected ? 'text-[#111]' : 'text-stone'}`}>
+                    {getL(c.name, locale)}
+                  </span>
+                </button>
+              )
+            })}
           </div>
 
           {/* 조건 A: 후보 1개 이상 */}
@@ -130,7 +185,15 @@ export function DupeCountrySelector({ food, locale }: Props) {
                 <div key={idx} className="bg-white rounded-3xl border border-mist overflow-hidden">
                   {/* 헤더 */}
                   <div className="flex items-center gap-4 px-6 py-5 border-b border-[#F0F2F5]">
-                    <span className="text-4xl">{country.flag}</span>
+                    <div className="w-14 h-14 rounded-xl overflow-hidden ring-1 ring-mist flex-shrink-0">
+                      <Image
+                        src={country.image}
+                        alt={getL(country.name, locale)}
+                        width={112}
+                        height={112}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <div className="flex-1 min-w-0">
                       {candidates.length > 1 && (
                         <p className="text-[10px] font-bold text-blossom-deep mb-0.5">
@@ -206,7 +269,15 @@ export function DupeCountrySelector({ food, locale }: Props) {
           ) : (
             /* 조건 B: 후보 0건 */
             <div className="bg-gradient-to-br from-[#1F2937] to-slate rounded-3xl p-10 text-center">
-              <div className="text-6xl mb-5">{country.flag}</div>
+              <div className="w-24 h-24 rounded-2xl overflow-hidden mx-auto mb-5 ring-2 ring-white/30">
+                <Image
+                  src={country.image}
+                  alt={getL(country.name, locale)}
+                  width={192}
+                  height={192}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <p className="text-2xl font-black text-white mb-2">{t.noDataTitle}</p>
               <p className="text-slate text-sm mb-7 max-w-xs mx-auto leading-relaxed">{t.noDataSub}</p>
               <span className="inline-flex items-center gap-2 px-7 py-3 rounded-2xl bg-[#F0B8B8] text-[#111] font-black text-sm">
