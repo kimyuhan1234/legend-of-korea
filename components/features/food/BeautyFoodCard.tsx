@@ -96,7 +96,7 @@ export function BeautyFoodCard({ food, locale }: BeautyFoodCardProps) {
 
       {/* Radar Chart */}
       <div className="px-2 h-[160px]">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height={160} minHeight={160}>
           <RadarChart data={radarData} margin={{ top: 4, right: 16, bottom: 4, left: 16 }}>
             <PolarGrid stroke="#d1d5db" />
             <PolarAngleAxis

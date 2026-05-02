@@ -88,7 +88,7 @@ export function HealthSection({ health, locale }: HealthSectionProps) {
       <div className="flex flex-col md:flex-row gap-6 items-center">
         {/* Radar Chart */}
         <div className="w-full md:w-[280px] h-[220px] shrink-0">
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height={220} minHeight={220}>
             <RadarChart data={radarData} margin={{ top: 8, right: 20, bottom: 8, left: 20 }}>
               <PolarGrid stroke="#e2e8f0" />
               <PolarAngleAxis
