@@ -106,11 +106,11 @@ export function TastePreferenceFilter({ onSearch, isLoading }: TastePreferenceFi
       </div>
 
       {/* CTA */}
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center justify-center gap-3">
         <button
           type="button"
           onClick={handleReset}
-          className="text-xs font-bold text-stone hover:text-slate transition-colors"
+          className="px-6 py-3 rounded-full bg-mist text-stone font-bold text-sm hover:opacity-80 transition-opacity"
         >
           {t('dupe.taste.reset')}
         </button>
@@ -118,7 +118,7 @@ export function TastePreferenceFilter({ onSearch, isLoading }: TastePreferenceFi
           type="button"
           onClick={() => onSearch(pref)}
           disabled={isLoading}
-          className="px-6 py-3 rounded-xl bg-mint-deep text-white font-bold text-sm hover:bg-[#7BC8BC] transition-colors disabled:opacity-50 disabled:cursor-wait"
+          className="px-6 py-3 rounded-full bg-mint-deep text-white font-bold text-sm hover:bg-[#7BC8BC] transition-colors disabled:opacity-50 disabled:cursor-wait"
         >
           {isLoading ? '...' : t('dupe.taste.search')}
         </button>
