@@ -816,13 +816,13 @@
     },
     "food": {
       "label": "K-FOOD",
-      "title": "Local spots & food dupes",
+      "title": "Discover Korean Flavors",
       "description": "Curated K-Food spots by city and dupe recipes you can recreate at home."
     },
     "ootd": {
       "label": "OOTD",
-      "title": "Today's Korea look",
-      "description": "Weekly OOTDs from real travelers and Korean style inspiration."
+      "title": "Daily Outfit Recommendations",
+      "description": "Daily outfit recommendations tailored to travel destination weather."
     },
     "traffic": {
       "label": "TRAFFIC",
@@ -836,8 +836,8 @@
     },
     "gallery": {
       "label": "GALLERY",
-      "title": "Photo Gallery",
-      "description": "Photos from behind the scenes of this site. Free for PASS subscribers."
+      "title": "Gallery",
+      "description": "Korean mood photo collection to elevate your travel inspiration."
     }
   },
   "communityHub": {
@@ -2141,8 +2141,8 @@
     }
   },
   "gallery": {
-    "title": "Photo Gallery",
-    "subtitle": "Photos from behind the scenes of this site",
+    "title": "Gallery",
+    "subtitle": "Korean mood photo collection to elevate your travel inspiration",
     "passRequired": "🔒 Free download with PASS subscription",
     "subscribeCta": "Get a PASS",
     "download": "Download",

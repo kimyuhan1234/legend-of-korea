@@ -945,13 +945,13 @@
     },
     "food": {
       "label": "K-FOOD",
-      "title": "지역 맛집과 음식 듀프",
+      "title": "한국의 맛을 알다",
       "description": "도시별 K-Food 스팟과 우리 동네에서도 만들어볼 수 있는 듀프 레시피."
     },
     "ootd": {
       "label": "OOTD",
-      "title": "오늘의 한국 룩",
-      "description": "여행자들이 직접 올린 위클리 OOTD와 한국 스타일 인사이트."
+      "title": "데일리 코디 추천",
+      "description": "여행지 날씨와 기후에 맞춘 데일리 코디 추천."
     },
     "traffic": {
       "label": "TRAFFIC",
@@ -965,8 +965,8 @@
     },
     "gallery": {
       "label": "GALLERY",
-      "title": "포토 갤러리",
-      "description": "사이트 제작 과정에서 탄생한 사진 모음. PASS 구독자에게 무료 제공."
+      "title": "갤러리",
+      "description": "여행 무드를 살리는 한국 감성 사진 컬렉션."
     }
   },
   "communityHub": {
@@ -2166,8 +2166,8 @@
     }
   },
   "gallery": {
-    "title": "포토 갤러리",
-    "subtitle": "사이트 제작 과정에서 탄생한 사진 모음",
+    "title": "갤러리",
+    "subtitle": "여행 무드를 살리는 한국 감성 사진 컬렉션",
     "passRequired": "🔒 PASS 구독 시 무료 다운로드",
     "subscribeCta": "PASS 구독하기",
     "download": "다운로드",
