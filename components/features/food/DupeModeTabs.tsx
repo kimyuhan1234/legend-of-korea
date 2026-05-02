@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { AiDupeSearch } from './AiDupeSearch'
 import { TastePreferenceFilter } from './TastePreferenceFilter'
 import { TasteMatchResults } from './TasteMatchResults'
-import { WorldDupeMap } from './WorldDupeMap'
+// import { WorldDupeMap } from './WorldDupeMap'  // 세계지도 탭 비활성화 중 (코드 보존)
 import { RegionGroupGrid } from './RegionGroupGrid'
 import { DupeSwipeContainer } from './DupeSwipeContainer'
 import type { RegionSummary } from './KoreaMapCitySelector'
@@ -38,7 +38,7 @@ interface DupeModeTabsProps {
   allCountryDupes: Record<string, CountrySummary>
 }
 
-export function DupeModeTabs({ locale, regionSummaries: _regionSummaries, countryCounts, allCountryDupes }: DupeModeTabsProps) {
+export function DupeModeTabs({ locale, regionSummaries: _regionSummaries, countryCounts: _countryCounts, allCountryDupes: _allCountryDupes }: DupeModeTabsProps) {
   const t = useTranslations('dupe')
 
   // 취향 매칭 상태
@@ -49,8 +49,7 @@ export function DupeModeTabs({ locale, regionSummaries: _regionSummaries, countr
   } | null>(null)
   const [tasteError, setTasteError] = useState<string | null>(null)
 
-  // 세계지도 상태
-  const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
+  // const [selectedCountry, setSelectedCountry] = useState<string | null>(null)  // 세계지도 탭 비활성화 중
 
   const handleTasteSearch = async (pref: { sweet: number; salty: number; spicy: number; umami: number; sour: number }) => {
     setTasteLoading(true)
@@ -114,19 +113,20 @@ export function DupeModeTabs({ locale, regionSummaries: _regionSummaries, countr
         </>
       ),
     },
-    {
-      key: 'world',
-      label: t('mode.world'),
-      content: (
-        <WorldDupeMap
-          onCountrySelect={setSelectedCountry}
-          selectedCountry={selectedCountry}
-          countryCounts={countryCounts}
-          allCountryDupes={allCountryDupes}
-          locale={locale}
-        />
-      ),
-    },
+    // 세계지도 탭 비활성화 중 (향후 복구 위해 코드 보존)
+    // {
+    //   key: 'world',
+    //   label: t('mode.world'),
+    //   content: (
+    //     <WorldDupeMap
+    //       onCountrySelect={setSelectedCountry}
+    //       selectedCountry={selectedCountry}
+    //       countryCounts={_countryCounts}
+    //       allCountryDupes={_allCountryDupes}
+    //       locale={locale}
+    //     />
+    //   ),
+    // },
   ]
 
   return <DupeSwipeContainer tabs={tabs} />
