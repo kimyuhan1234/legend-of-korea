@@ -21,7 +21,10 @@ export function StoryTabNav({ locale, activeTab, tabs }: StoryTabNavProps) {
         {tabs.map(tab => (
           <button
             key={tab.id}
-            onClick={() => router.push(`/${locale}/story?tab=${tab.id}`)}
+            onClick={() => {
+              if (tab.id === activeTab) return
+              router.replace(`/${locale}/story?tab=${tab.id}`)
+            }}
             className={`flex-1 py-4 text-sm font-bold transition-colors border-b-2 ${
               activeTab === tab.id
                 ? 'border-ink text-[#111]'
