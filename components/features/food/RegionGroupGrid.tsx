@@ -29,6 +29,7 @@ export function RegionGroupGrid() {
         <Link
           key={group.id}
           href={`/${locale}/food/dupe/${group.id}`}
+          prefetch={false}
           className="flex items-center justify-between rounded-2xl border border-mist bg-white px-5 py-5 transition hover:border-sky hover:bg-sky/5 active:scale-[0.98]"
         >
           <div className="flex items-center gap-3">
