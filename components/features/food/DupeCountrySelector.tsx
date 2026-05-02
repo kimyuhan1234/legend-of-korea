@@ -128,8 +128,8 @@ export function DupeCountrySelector({ food, locale }: Props) {
       <h2 className="text-xl font-black text-[#111] mb-5">{t.title}</h2>
 
       <div>
-          {/* 국가 이미지 버튼 — 큰 정사각 카드 */}
-          <div className="flex gap-3 mb-6 justify-center sm:justify-start flex-wrap">
+          {/* 국가 이미지 버튼 — 가로 폭 균등 (grid 2 columns, aspect-square) */}
+          <div className="grid grid-cols-2 gap-4 mb-6">
             {COUNTRIES_2.map((c) => {
               const cc = c.code as CountryCode
               const count = food.dupes[cc]?.length ?? 0
@@ -141,11 +141,11 @@ export function DupeCountrySelector({ food, locale }: Props) {
                   onClick={() => setSelected(cc)}
                   aria-pressed={isSelected}
                   className={`group relative flex flex-col items-center gap-2 transition-transform duration-200 ${
-                    isSelected ? 'scale-105' : 'opacity-60 hover:opacity-100 hover:scale-105'
+                    isSelected ? 'scale-[1.02]' : 'opacity-60 hover:opacity-100 hover:scale-[1.02]'
                   }`}
                 >
                   <div
-                    className={`relative w-[120px] h-[120px] rounded-2xl overflow-hidden transition-all ${
+                    className={`relative w-full aspect-square rounded-2xl overflow-hidden transition-all ${
                       isSelected
                         ? 'ring-4 ring-amber-400 shadow-xl'
                         : 'ring-1 ring-mist'
@@ -154,14 +154,14 @@ export function DupeCountrySelector({ food, locale }: Props) {
                     <Image
                       src={c.image}
                       alt={getL(c.name, locale)}
-                      width={240}
-                      height={240}
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 768px) 50vw, 384px"
+                      className="object-cover"
                       priority
                     />
                     {/* 후보 개수 뱃지 */}
                     <span
-                      className={`absolute top-1.5 right-1.5 text-[11px] font-black rounded-full px-2 py-0.5 ${
+                      className={`absolute top-2 right-2 text-xs font-black rounded-full px-2.5 py-1 ${
                         count > 0
                           ? 'bg-amber-400 text-[#111]'
                           : 'bg-black/60 text-white/80'
