@@ -230,6 +230,7 @@ export function WorldDupeMap({ onCountrySelect, selectedCountry, countryCounts, 
                 <div className="flex items-center gap-2">
                   <Link
                     href={`/${locale}/food/dupe/${dupe.regionCode}/${dupe.koreanFoodId}`}
+                    prefetch={false}
                     className="text-[10px] font-bold text-mint-deep hover:underline"
                   >
                     {t('world.detail')}
