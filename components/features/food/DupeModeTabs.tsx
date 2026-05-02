@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { AiDupeSearch } from './AiDupeSearch'
+// import { AiDupeSearch } from './AiDupeSearch'  // AI 매칭 탭 비활성화 중 (코드 보존)
 import { TastePreferenceFilter } from './TastePreferenceFilter'
 import { TasteMatchResults } from './TasteMatchResults'
 // import { WorldDupeMap } from './WorldDupeMap'  // 세계지도 탭 비활성화 중 (코드 보존)
@@ -81,11 +81,12 @@ export function DupeModeTabs({ locale, regionSummaries: _regionSummaries, countr
       // 권역 진입 시 해당 권역 도시 음식 + national 음식 합쳐 노출.
       content: <RegionGroupGrid />,
     },
-    {
-      key: 'ai',
-      label: t('mode.ai'),
-      content: <AiDupeSearch locale={locale} />,
-    },
+    // AI 매칭 탭 비활성화 중 (향후 복구 위해 코드 보존)
+    // {
+    //   key: 'ai',
+    //   label: t('mode.ai'),
+    //   content: <AiDupeSearch locale={locale} />,
+    // },
     {
       key: 'taste',
       label: t('mode.taste'),
