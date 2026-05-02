@@ -38,21 +38,30 @@ export function DigitalPassport({ userId, locale }: Props) {
   const [nickname, setNickname] = useState('')
   const [tierLevel, setTierLevel] = useState(1)
   const [createdAt, setCreatedAt] = useState('')
+  const [dbTierNames, setDbTierNames] = useState<Record<string, string> | null>(null)
+  const [dbTierEmoji, setDbTierEmoji] = useState<string | null>(null)
 
   useEffect(() => {
     const supabase = createClient()
 
     async function load() {
-      const [userRes, missionsRes, progressRes] = await Promise.all([
+      const [userRes, missionsRes, progressRes, rankRes] = await Promise.all([
         supabase.from('users').select('nickname, current_level, created_at').eq('id', userId).single(),
         supabase.from('missions').select('id, course_id, is_hidden'),
         supabase.from('mission_progress').select('mission_id, status, completed_at').eq('user_id', userId).eq('status', 'completed'),
+        fetch(`/api/user/rank?userId=${userId}`).then(r => r.ok ? r.json() : null).catch(() => null),
       ])
 
       if (userRes.data) {
         setNickname(userRes.data.nickname || '')
         setTierLevel(userRes.data.current_level || 1)
         setCreatedAt(userRes.data.created_at || '')
+      }
+
+      // /api/user/rank 와 동일 source — 헤더/대시보드와 랭크 일치
+      if (rankRes?.names) {
+        setDbTierNames(rankRes.names as Record<string, string>)
+        setDbTierEmoji(rankRes.emoji ?? null)
       }
 
       const allMissions = missionsRes.data || []
@@ -93,9 +102,13 @@ export function DigitalPassport({ userId, locale }: Props) {
     'zh-CN': { 1: '初级探险家', 2: '熟练冒险家', 3: '传说旅行者', 4: '神话守护者', 5: '传奇大师' },
     'zh-TW': { 1: '初級探險家', 2: '熟練冒險家', 3: '傳說旅行者', 4: '神話守護者', 5: '傳奇大師' },
   }
-  const tierName = (TIER_NAMES[locale] ?? TIER_NAMES.ko)[tierLevel] ?? (TIER_NAMES.ko)[1]
+  const tierNameFallback = (TIER_NAMES[locale] ?? TIER_NAMES.ko)[tierLevel] ?? (TIER_NAMES.ko)[1]
   const TIER_EMOJIS: Record<number, string> = { 1: '🌿', 2: '⚔️', 3: '🏅', 4: '🔱', 5: '👑' }
-  const tierEmoji = TIER_EMOJIS[tierLevel] ?? '🌿'
+  const tierEmojiDefault = TIER_EMOJIS[tierLevel] ?? '🌿'
+  // DB tier_titles 우선 (헤더/대시보드와 동일 source), 없으면 하드코딩 fallback
+  const dbTierTitle = dbTierNames ? (dbTierNames[locale] || dbTierNames.ko || dbTierNames.en || null) : null
+  const tierName = dbTierTitle ?? tierNameFallback
+  const tierEmoji = dbTierEmoji ?? tierEmojiDefault
 
   const issuedDate = createdAt
     ? new Date(createdAt).toLocaleDateString(locale === 'ko' ? 'ko-KR' : locale === 'ja' ? 'ja-JP' : locale, {

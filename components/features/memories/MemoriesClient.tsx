@@ -360,7 +360,7 @@ export function MemoriesClient({ locale }: Props) {
             }`}
           >
             <span className="text-base">{tb.icon}</span>
-            <span className="hidden md:inline">{t(tb.labelKey)}</span>
+            <span>{t(tb.labelKey)}</span>
           </button>
         ))}
       </div>
