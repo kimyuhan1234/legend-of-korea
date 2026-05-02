@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \":*)",
+      "Bash(npx tsx:*)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(rm scripts/extract-batches.ts data/batch-report.txt)",
+      "Bash(rmdir scripts:*)",
+      "Bash(ls:*)",
+      "Bash(cd:*)",
+      "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''./data/dupes-batch-national.json''\\)\\); console.log\\(''JSON valid''\\)\")",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); total=len\\(d\\); matched=sum\\(1 for v in d.values\\(\\) if v[''''JP''''] or v[''''CN'''']\\); jp=sum\\(len\\(v[''''JP'''']\\) for v in d.values\\(\\)\\); cn=sum\\(len\\(v[''''CN'''']\\) for v in d.values\\(\\)\\); print\\(f''''Total foods: {total}, With matches: {matched}, Empty: {total-matched}, JP dupes: {jp}, CN dupes: {cn}, Total dupes: {jp+cn}''''\\)\")",
+      "Bash(node *)",
+      "Bash(npx tsc *)",
+      "Bash(pnpm build *)"
+    ]
+  }
+}

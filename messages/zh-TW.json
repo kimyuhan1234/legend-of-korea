@@ -833,6 +833,11 @@
       "label": "SPOT",
       "title": "即時城市配對",
       "description": "為你配對此刻最熱門的城市景點。"
+    },
+    "gallery": {
+      "label": "GALLERY",
+      "title": "照片圖庫",
+      "description": "網站製作過程中誕生的照片集。PASS訂閱者免費提供。"
     }
   },
   "communityHub": {
@@ -2134,5 +2139,17 @@
       "description": "9個城市70個任務的永久使用權。按需選擇，無負擔。",
       "keywords": "韓國旅行套餐, 外國人韓國任務通行證"
     }
+  },
+  "gallery": {
+    "title": "照片圖庫",
+    "subtitle": "網站製作背後誕生的照片集",
+    "passRequired": "🔒 訂閱PASS即可免費下載",
+    "subscribeCta": "訂閱PASS",
+    "download": "下載",
+    "downloading": "下載中...",
+    "photoCount": "{n}張照片",
+    "empty": "目前尚無照片。",
+    "lockTitle": "僅限PASS",
+    "lockBody": "訂閱PASS即可下載高畫質原圖"
   }
 }

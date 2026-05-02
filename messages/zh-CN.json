@@ -833,6 +833,11 @@
       "label": "SPOT",
       "title": "实时城市匹配",
       "description": "为你匹配此刻最火的城市热门地点。"
+    },
+    "gallery": {
+      "label": "GALLERY",
+      "title": "照片图库",
+      "description": "网站制作过程中诞生的照片合集。PASS订阅者免费提供。"
     }
   },
   "communityHub": {
@@ -2134,5 +2139,17 @@
       "description": "9个城市70个任务的永久使用权。按需选择，无负担。",
       "keywords": "韩国旅行套餐, 外国人韩国任务通行证"
     }
+  },
+  "gallery": {
+    "title": "照片图库",
+    "subtitle": "网站制作背后诞生的照片合集",
+    "passRequired": "🔒 PASS订阅即可免费下载",
+    "subscribeCta": "订阅PASS",
+    "download": "下载",
+    "downloading": "下载中...",
+    "photoCount": "{n}张照片",
+    "empty": "暂无照片。",
+    "lockTitle": "仅限PASS",
+    "lockBody": "订阅PASS即可下载高清原图"
   }
 }

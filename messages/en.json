@@ -833,6 +833,11 @@
       "label": "SPOT",
       "title": "Real-time city match",
       "description": "We match you with the hottest spots in town, right now."
+    },
+    "gallery": {
+      "label": "GALLERY",
+      "title": "Photo Gallery",
+      "description": "Photos from behind the scenes of this site. Free for PASS subscribers."
     }
   },
   "communityHub": {
@@ -2134,5 +2139,17 @@
       "description": "Lifetime access to 70 GPS missions across 9 cities. Pick only what you need.",
       "keywords": "Korea travel package, foreigner Korea mission pass"
     }
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "subtitle": "Photos from behind the scenes of this site",
+    "passRequired": "🔒 Free download with PASS subscription",
+    "subscribeCta": "Get a PASS",
+    "download": "Download",
+    "downloading": "Downloading...",
+    "photoCount": "{n} photos",
+    "empty": "No photos uploaded yet.",
+    "lockTitle": "PASS Only",
+    "lockBody": "Subscribe to PASS to download high-quality originals"
   }
 }

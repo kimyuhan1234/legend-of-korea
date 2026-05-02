@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
-import { UtensilsCrossed, Shirt, Train, MapPin } from 'lucide-react'
+import { UtensilsCrossed, Shirt, Train, MapPin, Images } from 'lucide-react'
 import { getOgLocale, ALL_OG_LOCALES } from '@/lib/seo/og-locale'
 import { buildOgUrl } from '@/lib/seo/og-url'
 import { BreadcrumbSchema } from '@/components/seo'
@@ -180,6 +180,23 @@ export default async function DiscoverPage({ params }: Props) {
             </h4>
             <p className="text-stone text-xs md:text-sm">
               {t('sights.description')}
+            </p>
+          </Link>
+
+          <Link
+            href={`/${locale}/gallery`}
+            className="group block bg-white rounded-2xl p-6 border border-mist
+                       shadow-sm hover:shadow-md hover:border-blossom transition-all duration-300 hover:-translate-y-1"
+          >
+            <Images className="w-8 h-8 mb-3 text-blossom-deep" strokeWidth={1.6} />
+            <span className="block text-[10px] font-bold uppercase tracking-widest text-stone mb-1.5">
+              {t('gallery.label')}
+            </span>
+            <h4 className="font-bold text-lg text-[#111] mb-2 leading-tight">
+              {t('gallery.title')}
+            </h4>
+            <p className="text-stone text-xs md:text-sm">
+              {t('gallery.description')}
             </p>
           </Link>
         </div>

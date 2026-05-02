@@ -962,6 +962,11 @@
       "label": "SPOT",
       "title": "실시간 도시 매칭",
       "description": "지금 이 순간 가장 뜨거운 도시 스팟을 매칭해 드려요."
+    },
+    "gallery": {
+      "label": "GALLERY",
+      "title": "포토 갤러리",
+      "description": "사이트 제작 과정에서 탄생한 사진 모음. PASS 구독자에게 무료 제공."
     }
   },
   "communityHub": {
@@ -2159,5 +2164,17 @@
       "description": "9개 도시 70개 미션 평생 이용권. 필요한 기능만 골라서 부담 없이.",
       "keywords": "한국 여행 패키지, 외국인 한국 미션 패스"
     }
+  },
+  "gallery": {
+    "title": "포토 갤러리",
+    "subtitle": "사이트 제작 과정에서 탄생한 사진 모음",
+    "passRequired": "🔒 PASS 구독 시 무료 다운로드",
+    "subscribeCta": "PASS 구독하기",
+    "download": "다운로드",
+    "downloading": "다운로드 중...",
+    "photoCount": "{n}장의 사진",
+    "empty": "아직 업로드된 사진이 없습니다.",
+    "lockTitle": "PASS 전용",
+    "lockBody": "PASS 구독 시 고화질 원본 다운로드 가능"
   }
 }

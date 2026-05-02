@@ -833,6 +833,11 @@
       "label": "SPOT",
       "title": "リアルタイム都市マッチング",
       "description": "今この瞬間いちばんホットな都市スポットをマッチング。"
+    },
+    "gallery": {
+      "label": "GALLERY",
+      "title": "フォトギャラリー",
+      "description": "サイト制作の過程で生まれた写真集。PASSサブスクライバーに無料提供。"
     }
   },
   "communityHub": {
@@ -2134,5 +2139,17 @@
       "description": "9都市70ミッションの永久アクセス。必要な機能だけ選んで気軽に。",
       "keywords": "韓国旅行パッケージ, 外国人韓国ミッションパス"
     }
+  },
+  "gallery": {
+    "title": "フォトギャラリー",
+    "subtitle": "サイト制作の裏側で生まれた写真集",
+    "passRequired": "🔒 PASSサブスクでダウンロード無料",
+    "subscribeCta": "PASSを購入する",
+    "download": "ダウンロード",
+    "downloading": "ダウンロード中...",
+    "photoCount": "{n}枚の写真",
+    "empty": "まだ写真がありません。",
+    "lockTitle": "PASS限定",
+    "lockBody": "PASSに登録すると高画質オリジナルをダウンロード可能"
   }
 }
