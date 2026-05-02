@@ -6,6 +6,7 @@ import { foodHealthData } from '@/lib/data/food-health'
 
 interface Props {
   params: { locale: string }
+  searchParams: { category?: string }
 }
 
 const META = {
@@ -29,9 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: m.title, description: m.desc }
 }
 
-export default function BeautyFoodPage({ params }: Props) {
+export default function BeautyFoodPage({ params, searchParams }: Props) {
   const { locale } = params
   const h = HERO[locale as keyof typeof HERO] ?? HERO.ko
+  const category = searchParams.category
 
   return (
     <div className="min-h-screen bg-snow">
@@ -53,7 +55,7 @@ export default function BeautyFoodPage({ params }: Props) {
       <FoodTabNav locale={locale} activeTab="beauty" />
 
       {/* Beauty food filter + grid */}
-      <BeautyFoodTab locale={locale} data={foodHealthData} />
+      <BeautyFoodTab locale={locale} data={foodHealthData} category={category} />
     </div>
   )
 }
