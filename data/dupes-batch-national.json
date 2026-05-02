@@ -1,0 +1,1172 @@
+{
+  "national-japchae": {
+    "JP": [
+      {
+        "name": { "ko": "야키비훈", "ja": "焼きビーフン", "en": "Yaki Bifun" },
+        "tasteProfile": { "sweet": 25, "salty": 55, "spicy": 5, "umami": 75, "sour": 5 },
+        "description": { "ko": "쌀국수와 채소·고기를 간장으로 볶은 일본식 볶음국수", "ja": "ビーフンと野菜・肉を醤油で炒める日本式焼き麺", "en": "Japanese stir-fried rice vermicelli with vegetables and meat in soy seasoning" },
+        "ingredients": {
+          "ko": ["쌀국수(비훈)", "돼지고기", "양배추", "당근", "양파", "표고버섯", "간장", "참기름"],
+          "ja": ["ビーフン", "豚肉", "キャベツ", "人参", "玉ねぎ", "椎茸", "醤油", "ごま油"],
+          "en": ["Rice vermicelli", "Pork", "Cabbage", "Carrot", "Onion", "Shiitake", "Soy sauce", "Sesame oil"]
+        },
+        "similarityPercent": 72,
+        "strengths": {
+          "ko": ["면+채소+고기를 함께 볶아 간장 양념으로 마무리하는 동일 조리법", "참기름·간장 베이스의 감칠맛 동일", "한 접시에 균형 잡힌 영양 구성"],
+          "ja": ["麺+野菜+肉を一緒に炒めて醤油で仕上げる同じ調理法", "ごま油・醤油ベースの旨味が同じ", "一皿で栄養バランスの良い構成"],
+          "en": ["Same stir-fry technique with noodles, vegetables, and meat finished in soy", "Identical sesame oil and soy sauce umami base", "Balanced one-plate nutrition"]
+        },
+        "limitations": {
+          "ko": ["쌀 면 vs 당면 — 식감 차이 (찰진 vs 매끈)", "잡채 특유의 단맛이 약함"],
+          "ja": ["米麺 vs 春雨 — 食感の違い (もちもち vs つるつる)", "チャプチェ特有の甘みが弱い"],
+          "en": ["Rice vermicelli vs sweet potato glass noodle — chewy vs slippery texture", "Lacks japchae's characteristic sweetness"]
+        },
+        "tip": {
+          "ko": "당면을 찾을 수 없을 때 야키비훈을 만들고 마지막에 설탕 한 꼬집 추가하면 잡채 느낌",
+          "ja": "春雨が手に入らない時は焼きビーフンに最後に砂糖少々を加えるとチャプチェ風",
+          "en": "If you can't find Korean glass noodles, finish yaki bifun with a pinch of sugar to mimic japchae"
+        },
+        "matchReason": { "ko": "면+채소+고기 볶음에 간장·참기름 베이스가 거의 동일", "ja": "麺+野菜+肉炒めに醤油・ごま油ベースがほぼ同じ", "en": "Stir-fried noodles + veg + meat with soy and sesame oil — close cousin" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "차오펀스", "ja": "炒粉絲", "en": "Chao Fensi" },
+        "tasteProfile": { "sweet": 20, "salty": 55, "spicy": 10, "umami": 70, "sour": 5 },
+        "description": { "ko": "녹두 당면을 채소·고기와 간장으로 볶은 중국식 당면 볶음", "ja": "緑豆春雨を野菜・肉と醤油で炒める中国式春雨炒め", "en": "Chinese stir-fried glass noodles with vegetables and meat in soy sauce" },
+        "ingredients": {
+          "ko": ["녹두 당면", "돼지고기 채", "부추", "숙주", "당근", "간장", "굴소스", "참기름"],
+          "ja": ["緑豆春雨", "豚肉細切り", "ニラ", "もやし", "人参", "醤油", "オイスターソース", "ごま油"],
+          "en": ["Mung bean glass noodles", "Pork strips", "Garlic chives", "Bean sprouts", "Carrot", "Soy sauce", "Oyster sauce", "Sesame oil"]
+        },
+        "similarityPercent": 78,
+        "strengths": {
+          "ko": ["같은 당면(유리 면)을 사용하여 식감이 매우 유사", "면을 채소·고기와 함께 볶는 동일 기법", "간장 베이스 양념으로 감칠맛 구성이 비슷"],
+          "ja": ["同じ春雨（ガラス麺）を使うので食感が非常に似ている", "麺を野菜・肉と一緒に炒める同じ技法", "醤油ベースの味付けで旨味構成が似ている"],
+          "en": ["Uses the same glass noodles so texture is very similar", "Same technique of stir-frying noodles with vegetables and meat", "Soy-based seasoning creates comparable umami profile"]
+        },
+        "limitations": {
+          "ko": ["굴소스 풍미가 더 진하고 참기름 향이 적음", "잡채처럼 각 재료를 따로 볶아 섞는 정교함이 덜함"],
+          "ja": ["オイスターソースの風味がより濃くごま油の香りが少ない", "チャプチェのように各材料を別々に炒めて混ぜる精巧さが少ない"],
+          "en": ["Heavier oyster sauce flavor with less sesame aroma", "Less refined than japchae's technique of separately cooking each ingredient"]
+        },
+        "tip": {
+          "ko": "굴소스를 줄이고 참기름과 설탕을 추가하면 잡채에 더 가까운 맛",
+          "ja": "オイスターソースを減らしてごま油と砂糖を加えるとチャプチェにより近い味",
+          "en": "Reduce oyster sauce and add more sesame oil and sugar to get closer to japchae flavor"
+        },
+        "matchReason": { "ko": "같은 당면+채소+고기 볶음의 가장 직접적인 중국 친척", "ja": "同じ春雨+野菜+肉炒めの最も直接的な中国の親戚", "en": "Most direct Chinese cousin using the same glass noodles" }
+      }
+    ]
+  },
+  "national-sundubu": {
+    "JP": [],
+    "CN": [
+      {
+        "name": { "ko": "마파두부", "ja": "麻婆豆腐", "en": "Mapo Tofu" },
+        "tasteProfile": { "sweet": 10, "salty": 55, "spicy": 75, "umami": 80, "sour": 5 },
+        "description": { "ko": "부드러운 두부를 두반장·화자오 양념에 끓여낸 사천식 매운 두부 요리", "ja": "柔らかい豆腐を豆板醤・花椒の調味料で煮込んだ四川式の辛い豆腐料理", "en": "Soft tofu simmered in spicy doubanjiang and Sichuan pepper sauce" },
+        "ingredients": {
+          "ko": ["순두부", "돼지고기 다짐", "두반장", "화자오", "마늘", "대파", "고춧가루", "전분"],
+          "ja": ["絹ごし豆腐", "豚ひき肉", "豆板醤", "花椒", "ニンニク", "長ネギ", "唐辛子粉", "片栗粉"],
+          "en": ["Silken tofu", "Ground pork", "Doubanjiang", "Sichuan pepper", "Garlic", "Green onion", "Chili powder", "Starch"]
+        },
+        "similarityPercent": 75,
+        "strengths": {
+          "ko": ["부드러운 두부를 매운 양념에 끓여 먹는 동일 구조", "고추 기반 매운맛과 깊은 감칠맛의 조합", "뜨거운 상태로 밥과 함께 먹는 동일한 식사 방식"],
+          "ja": ["柔らかい豆腐を辛い調味料で煮る同じ構造", "唐辛子ベースの辛さと深い旨味の組み合わせ", "熱々の状態でご飯と一緒に食べる同じ食べ方"],
+          "en": ["Same structure of soft tofu cooked in spicy sauce", "Combination of chili-based heat and deep umami", "Same serving style — piping hot with rice"]
+        },
+        "limitations": {
+          "ko": ["화자오의 얼얼한 맛이 순두부찌개에는 없음", "순두부찌개의 해산물(조개) 감칠맛이 부재", "국물의 양이 다름 — 마파두부는 걸쭉, 순두부찌개는 국물 넉넉"],
+          "ja": ["花椒のしびれ感がスンドゥブにはない", "スンドゥブの海鮮（あさり）の旨味がない", "汁の量が違う — 麻婆は濃厚、スンドゥブはスープたっぷり"],
+          "en": ["Sichuan pepper's numbing sensation absent in sundubu", "Lacks sundubu's seafood (clam) umami", "Different broth volume — mapo is thick, sundubu is soupy"]
+        },
+        "tip": {
+          "ko": "화자오를 줄이고 조개 육수를 베이스로 쓰면 순두부찌개에 가까운 맛",
+          "ja": "花椒を減らしてアサリ出汁をベースにするとスンドゥブに近い味",
+          "en": "Reduce Sichuan pepper and use clam broth as base for a flavor closer to sundubu"
+        },
+        "matchReason": { "ko": "부드러운 두부를 매운 양념에 끓이는 동아시아 대표 매운 두부 요리", "ja": "柔らかい豆腐を辛い調味料で煮る東アジア代表の辛い豆腐料理", "en": "East Asia's iconic spicy soft tofu dish — Chinese sibling" }
+      }
+    ]
+  },
+  "national-pajeon": {
+    "JP": [
+      {
+        "name": { "ko": "네기야키", "ja": "ねぎ焼き", "en": "Negiyaki" },
+        "tasteProfile": { "sweet": 10, "salty": 50, "spicy": 5, "umami": 65, "sour": 10 },
+        "description": { "ko": "잘게 썬 파를 밀가루 반죽에 넣어 철판에 부쳐낸 오사카식 파전", "ja": "刻んだネギを小麦粉生地に入れて鉄板で焼いた大阪式のネギ焼き", "en": "Osaka-style pan-fried pancake loaded with chopped green onions" },
+        "ingredients": {
+          "ko": ["대파", "밀가루", "달걀", "다시 국물", "소금", "간장", "가쓰오부시"],
+          "ja": ["長ネギ", "小麦粉", "卵", "だし汁", "塩", "醤油", "かつお節"],
+          "en": ["Green onion", "Flour", "Egg", "Dashi broth", "Salt", "Soy sauce", "Bonito flakes"]
+        },
+        "similarityPercent": 82,
+        "strengths": {
+          "ko": ["파를 반죽에 넣어 기름에 부치는 거의 동일한 조리법", "밀가루+달걀 반죽 구성이 같음", "간장에 찍어 먹는 동일한 식사 방식"],
+          "ja": ["ネギを生地に入れて油で焼くほぼ同じ調理法", "小麦粉+卵の生地構成が同じ", "醤油につけて食べる同じ食べ方"],
+          "en": ["Nearly identical method of pan-frying green onion in batter", "Same flour + egg batter composition", "Same dipping-in-soy-sauce eating style"]
+        },
+        "limitations": {
+          "ko": ["파를 잘게 썰어 넣어 파전처럼 긴 파가 시각적으로 보이지 않음", "다시 국물 베이스라 한국 파전의 바삭한 식감보다 부드러움"],
+          "ja": ["ネギを刻んで入れるためパジョンのように長いネギが視覚的に見えない", "だしベースで韓国パジョンのカリカリ食感よりも柔らかい"],
+          "en": ["Green onions are chopped rather than laid whole like in pajeon", "Dashi base makes it softer than pajeon's crispy texture"]
+        },
+        "tip": {
+          "ko": "반죽을 얇게 펴서 바삭하게 굽고 간장 양념장에 찍어 먹으면 파전과 매우 비슷",
+          "ja": "生地を薄く伸ばしてカリカリに焼き、醤油タレにつけて食べるとパジョンと非常に似た味",
+          "en": "Spread the batter thin and crisp it up, then dip in soy sauce for a pajeon-like experience"
+        },
+        "matchReason": { "ko": "파를 반죽에 넣어 부치는 거의 동일한 오사카 전통 요리", "ja": "ネギを生地に入れて焼くほぼ同じ大阪伝統料理", "en": "Green onion pancake — Osaka's near-identical twin" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "총유빙", "ja": "葱油餅", "en": "Cong You Bing" },
+        "tasteProfile": { "sweet": 5, "salty": 50, "spicy": 5, "umami": 55, "sour": 5 },
+        "description": { "ko": "밀가루 반죽에 파기름을 켜켜이 발라 겹겹이 바삭하게 구운 중국식 파전", "ja": "小麦粉生地にネギ油を何層にも塗って重ねてカリカリに焼いた中国式のネギ焼き", "en": "Chinese layered green onion flatbread with scallion oil folded into crispy flaky layers" },
+        "ingredients": {
+          "ko": ["밀가루", "대파", "소금", "참기름", "식용유", "후추"],
+          "ja": ["小麦粉", "長ネギ", "塩", "ごま油", "食用油", "胡椒"],
+          "en": ["Flour", "Green onion", "Salt", "Sesame oil", "Oil", "Pepper"]
+        },
+        "similarityPercent": 75,
+        "strengths": {
+          "ko": ["파+밀가루를 기름에 구워내는 동일한 핵심 구조", "바삭한 겉면과 고소한 파 향의 조합", "간식 또는 반찬으로 먹는 동일한 포지션"],
+          "ja": ["ネギ+小麦粉を油で焼く同じ核心構造", "カリカリの表面と香ばしいネギの香りの組み合わせ", "おやつまたはおかずとして食べる同じポジション"],
+          "en": ["Same core structure of green onion + flour fried in oil", "Combination of crispy surface and fragrant scallion aroma", "Same role as snack or side dish"]
+        },
+        "limitations": {
+          "ko": ["달걀 없이 반죽만 사용하여 파전보다 빵에 가까운 식감", "해물이나 다른 토핑 없이 파와 반죽만으로 구성", "겹겹이 접는 제빵 기법 vs 파전의 부침 기법"],
+          "ja": ["卵なしで生地のみ使用するためパジョンよりパンに近い食感", "海鮮やトッピングなしでネギと生地だけの構成", "何層にも折る製パン技法 vs パジョンの焼き技法"],
+          "en": ["No egg, dough-only texture closer to bread than pancake", "Just scallion and dough without seafood or other toppings", "Folding-layering technique vs pajeon's pan-frying technique"]
+        },
+        "tip": {
+          "ko": "총유빙 반죽에 달걀을 풀고 얇게 펴서 부치면 파전에 훨씬 가까워짐",
+          "ja": "葱油餅の生地に卵を溶いて薄く伸ばして焼くとパジョンにずっと近くなる",
+          "en": "Add egg to the dough and pan-fry it thin for a much closer pajeon experience"
+        },
+        "matchReason": { "ko": "파+밀가루를 기름에 구운 중국의 가장 직접적인 파전 친척", "ja": "ネギ+小麦粉を油で焼く中国の最も直接的なパジョンの親戚", "en": "Green onion flatbread — China's most direct pajeon relative" }
+      }
+    ]
+  },
+  "national-doenjang-jjigae": {
+    "JP": [
+      {
+        "name": { "ko": "도지루", "ja": "豚汁", "en": "Tonjiru" },
+        "tasteProfile": { "sweet": 10, "salty": 60, "spicy": 5, "umami": 85, "sour": 5 },
+        "description": { "ko": "돼지고기와 채소를 미소(된장)에 풀어 끓인 일본식 된장국의 진화형", "ja": "豚肉と野菜を味噌で煮込んだ日本式味噌汁の進化形", "en": "Japanese evolved miso soup with pork and vegetables" },
+        "ingredients": {
+          "ko": ["돼지고기", "무", "당근", "감자", "곤약", "미소", "대파", "다시"],
+          "ja": ["豚肉", "大根", "人参", "ジャガイモ", "こんにゃく", "味噌", "長ネギ", "だし"],
+          "en": ["Pork", "Radish", "Carrot", "Potato", "Konjac", "Miso", "Green onion", "Dashi"]
+        },
+        "similarityPercent": 80,
+        "strengths": {
+          "ko": ["발효 콩 장(미소=된장)을 풀어 끓이는 동일한 핵심 조리법", "돼지고기+채소+두부 구성이 된장찌개와 매우 유사", "감칠맛 중심의 깊고 구수한 국물 맛 동일"],
+          "ja": ["発酵大豆ペースト（味噌＝テンジャン）で煮込む同じ核心調理法", "豚肉+野菜+豆腐の構成がテンジャンチゲと非常に似ている", "旨味中心の深くて香ばしいスープの味が同じ"],
+          "en": ["Same core technique of dissolving fermented soybean paste into broth", "Pork + vegetable + tofu composition very similar to doenjang jjigae", "Identical deep, savory umami-centered broth flavor"]
+        },
+        "limitations": {
+          "ko": ["미소가 된장보다 발효 기간이 짧아 맛이 부드럽고 깊이가 덜함", "된장찌개 특유의 고춧가루 매운 기운이 없음", "뚝배기가 아닌 일반 냄비에 끓여 보글보글 연출이 없음"],
+          "ja": ["味噌がテンジャンより発酵期間が短く味が柔らかく深みが少ない", "テンジャンチゲ特有の唐辛子の辛味がない", "土鍋ではなく普通の鍋で煮るためぐつぐつ感がない"],
+          "en": ["Miso has shorter fermentation so taste is milder and less deep than doenjang", "Lacks doenjang jjigae's chili pepper kick", "Served in regular bowl, not bubbling earthen pot"]
+        },
+        "tip": {
+          "ko": "미소 대신 한국 된장을 쓰고 고춧가루를 한 스푼 넣으면 된장찌개에 가까운 맛",
+          "ja": "味噌の代わりに韓国テンジャンを使い唐辛子粉を一さじ入れるとテンジャンチゲに近い味",
+          "en": "Use Korean doenjang instead of miso and add a spoonful of chili powder for closer flavor"
+        },
+        "matchReason": { "ko": "발효 콩 장+돼지고기+채소 국물의 일본 쌍둥이", "ja": "発酵大豆ペースト+豚肉+野菜スープの日本の双子", "en": "Fermented soybean paste + pork + vegetable stew — Japanese twin" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "황더우장탕", "ja": "黄豆醤湯", "en": "Huangdou Jiang Tang" },
+        "tasteProfile": { "sweet": 10, "salty": 60, "spicy": 15, "umami": 85, "sour": 5 },
+        "description": { "ko": "중국식 발효 대두장에 두부·채소를 넣어 끓인 가정식 된장 수프", "ja": "中国式発酵大豆ペーストに豆腐・野菜を入れて煮込んだ家庭式味噌スープ", "en": "Chinese home-style soup with fermented soybean paste, tofu and vegetables" },
+        "ingredients": {
+          "ko": ["황두장", "두부", "호박", "감자", "돼지고기", "대파", "마늘", "고추"],
+          "ja": ["黄豆醤", "豆腐", "カボチャ", "ジャガイモ", "豚肉", "長ネギ", "ニンニク", "唐辛子"],
+          "en": ["Soybean paste", "Tofu", "Zucchini", "Potato", "Pork", "Green onion", "Garlic", "Chili"]
+        },
+        "similarityPercent": 77,
+        "strengths": {
+          "ko": ["같은 대두 발효장을 국물 베이스로 사용하는 동일 계보", "두부·채소·고기를 된장 국물에 끓이는 구성이 거의 같음", "가정에서 매일 먹는 소울 푸드라는 문화적 위치 동일"],
+          "ja": ["同じ大豆発酵ペーストをスープベースにする同じ系譜", "豆腐・野菜・肉を味噌スープで煮込む構成がほぼ同じ", "家庭で毎日食べるソウルフードという文化的位置が同じ"],
+          "en": ["Same lineage of using fermented soybean paste as soup base", "Nearly identical composition of tofu, vegetables, and meat in paste broth", "Same cultural position as everyday home-cooked soul food"]
+        },
+        "limitations": {
+          "ko": ["중국 황두장은 한국 된장보다 짠맛이 강하고 구수함이 덜함", "들깨·된장의 고소한 풍미가 부재"],
+          "ja": ["中国の黄豆醤は韓国テンジャンより塩味が強く香ばしさが少ない", "エゴマ・テンジャンの香ばしい風味が不在"],
+          "en": ["Chinese soybean paste is saltier and less nutty than Korean doenjang", "Lacks the rich nuttiness of perilla and doenjang"]
+        },
+        "tip": {
+          "ko": "황두장에 참기름과 들깨가루를 넣으면 된장찌개의 구수한 풍미에 가까워짐",
+          "ja": "黄豆醤にごま油とエゴマ粉を加えるとテンジャンチゲの香ばしい風味に近づく",
+          "en": "Add sesame oil and perilla powder to the paste for a nuttier flavor closer to doenjang jjigae"
+        },
+        "matchReason": { "ko": "대두 발효장+두부+채소 국물의 중국판 된장찌개", "ja": "大豆発酵ペースト+豆腐+野菜スープの中国版テンジャンチゲ", "en": "Chinese fermented soybean paste stew — doenjang jjigae's ancestral cousin" }
+      }
+    ]
+  },
+  "national-tteokbokki": {
+    "JP": [],
+    "CN": [
+      {
+        "name": { "ko": "차오녠가오", "ja": "炒年糕", "en": "Chao Nian Gao" },
+        "tasteProfile": { "sweet": 35, "salty": 55, "spicy": 40, "umami": 60, "sour": 5 },
+        "description": { "ko": "쌀떡을 채소와 간장·굴소스에 볶아낸 상하이식 볶음 떡", "ja": "餅を野菜と醤油・オイスターソースで炒めた上海式炒め餅", "en": "Shanghai-style stir-fried rice cake with vegetables in soy and oyster sauce" },
+        "ingredients": {
+          "ko": ["쌀떡(녠가오)", "청경채", "배추", "돼지고기", "간장", "굴소스", "설탕"],
+          "ja": ["餅（年糕）", "チンゲン菜", "白菜", "豚肉", "醤油", "オイスターソース", "砂糖"],
+          "en": ["Rice cake", "Bok choy", "Napa cabbage", "Pork", "Soy sauce", "Oyster sauce", "Sugar"]
+        },
+        "similarityPercent": 72,
+        "strengths": {
+          "ko": ["쌀떡을 양념에 볶아 먹는 동일한 핵심 구조", "쫄깃한 떡의 식감이 거의 동일", "달짠한 양념이 떡에 코팅되는 조리법 공유"],
+          "ja": ["餅を調味料で炒めて食べる同じ核心構造", "もちもちした餅の食感がほぼ同じ", "甘辛い調味料が餅にコーティングされる調理法を共有"],
+          "en": ["Same core structure of stir-frying rice cake in sauce", "Nearly identical chewy rice cake texture", "Shared technique of sauce coating the rice cake"]
+        },
+        "limitations": {
+          "ko": ["고추장 베이스의 빨간 매운맛이 없음 — 간장 베이스라 색도 다름", "떡볶이의 달콤-매운 중독성 맛 vs 차오녠가오의 짠-달 맛", "어묵 등 한국 떡볶이의 부재료가 없음"],
+          "ja": ["コチュジャンベースの赤い辛さがない — 醤油ベースで色も違う", "トッポッキの甘辛い中毒性 vs 炒年糕の塩甘い味", "おでんなど韓国トッポッキの副材料がない"],
+          "en": ["No red gochujang-based spice — soy-based with different color", "Tteokbokki's addictive sweet-spicy vs chao nian gao's savory-sweet", "Missing Korean tteokbokki's fish cake and other add-ins"]
+        },
+        "tip": {
+          "ko": "고추장과 고춧가루를 추가하고 어묵을 넣으면 떡볶이와 매우 비슷해짐",
+          "ja": "コチュジャンと唐辛子粉を加えてかまぼこを入れるとトッポッキに非常に似てくる",
+          "en": "Add gochujang and chili powder with fish cake for a much closer tteokbokki experience"
+        },
+        "matchReason": { "ko": "쌀떡을 양념에 볶는 중국의 가장 직접적인 떡볶이 친척", "ja": "餅を調味料で炒める中国の最も直接的なトッポッキの親戚", "en": "Stir-fried rice cake — China's closest tteokbokki relative" }
+      }
+    ]
+  },
+  "national-jokbal": {
+    "JP": [
+      {
+        "name": { "ko": "부타노 카쿠니", "ja": "豚の角煮", "en": "Buta no Kakuni" },
+        "tasteProfile": { "sweet": 40, "salty": 50, "spicy": 5, "umami": 85, "sour": 5 },
+        "description": { "ko": "돼지고기를 간장·미림·설탕에 오래 조려 부드럽게 만든 일본식 돼지고기 장조림", "ja": "豚肉を醤油・みりん・砂糖で長時間煮込んで柔らかく仕上げた日本式豚の角煮", "en": "Japanese braised pork belly slow-simmered in soy sauce, mirin and sugar until meltingly tender" },
+        "ingredients": {
+          "ko": ["삼겹살", "간장", "미림", "설탕", "생강", "대파", "청주", "겨자"],
+          "ja": ["豚バラ肉", "醤油", "みりん", "砂糖", "生姜", "長ネギ", "清酒", "からし"],
+          "en": ["Pork belly", "Soy sauce", "Mirin", "Sugar", "Ginger", "Green onion", "Sake", "Mustard"]
+        },
+        "similarityPercent": 75,
+        "strengths": {
+          "ko": ["돼지고기를 간장 양념에 오래 조려 부드럽게 만드는 동일 기법", "단짠한 양념에 생강·대파를 함께 넣는 향신료 구성 유사", "차게 또는 따뜻하게 먹을 수 있는 동일한 서빙 방식"],
+          "ja": ["豚肉を醤油ダレで長時間煮込んで柔らかくする同じ技法", "甘辛いタレに生姜・長ネギを入れる香辛料構成が似ている", "冷たくても温かくても食べられる同じサーブ方法"],
+          "en": ["Same technique of slow-braising pork in soy-based sauce until tender", "Similar aromatics with ginger and green onion in sweet-savory sauce", "Same versatile serving — hot or cold"]
+        },
+        "limitations": {
+          "ko": ["삼겹살 vs 족발 — 부위가 달라 쫄깃한 식감이 부족", "족발 특유의 콜라겐 쫄깃함과 껍데기 식감이 없음", "새우젓·쌈장 등 한국식 곁들임이 없음"],
+          "ja": ["豚バラ肉 vs 豚足 — 部位が違うためプリプリ食感が不足", "チョクパル特有のコラーゲンの弾力と皮の食感がない", "アミエビの塩辛・サムジャンなど韓国式の付け合わせがない"],
+          "en": ["Pork belly vs trotters — different cut lacks the chewy collagen texture", "Missing jokbal's unique gelatinous skin and bouncy bite", "No Korean-style accompaniments like saeujeot and ssamjang"]
+        },
+        "tip": {
+          "ko": "겨자 소스에 찍어 먹으면 족발의 새우젓 딥과 비슷한 상쾌함",
+          "ja": "からしソースにつけて食べるとチョクパルのアミエビの塩辛ディップに似た爽やかさ",
+          "en": "Dip in Japanese mustard for a refreshing contrast similar to jokbal's saeujeot dip"
+        },
+        "matchReason": { "ko": "돼지고기를 간장에 오래 조린 일본식 족발의 사촌", "ja": "豚肉を醤油で長時間煮込んだ日本式チョクパルのいとこ", "en": "Soy-braised pork — Japanese cousin to jokbal" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "홍샤오주티", "ja": "紅焼猪蹄", "en": "Hongshao Zhuti" },
+        "tasteProfile": { "sweet": 30, "salty": 55, "spicy": 10, "umami": 85, "sour": 5 },
+        "description": { "ko": "돼지 족발을 간장·팔각·설탕에 오래 조려 윤기 나게 만든 중국식 브레이즈드 족발", "ja": "豚足を醤油・八角・砂糖で長時間煮込んで艶やかに仕上げた中国式ブレーズド豚足", "en": "Chinese braised pork trotters slow-cooked in soy sauce, star anise and sugar until glossy" },
+        "ingredients": {
+          "ko": ["돼지 족발", "간장", "팔각", "설탕", "생강", "대파", "계피", "청주"],
+          "ja": ["豚足", "醤油", "八角", "砂糖", "生姜", "長ネギ", "シナモン", "紹興酒"],
+          "en": ["Pork trotters", "Soy sauce", "Star anise", "Sugar", "Ginger", "Green onion", "Cinnamon", "Shaoxing wine"]
+        },
+        "similarityPercent": 85,
+        "strengths": {
+          "ko": ["같은 족발 부위를 간장 양념에 오래 조리는 거의 동일한 요리", "생강·계피·대파 등 향신료 구성이 매우 유사", "쫄깃한 껍데기와 부드러운 살의 식감 대비가 동일"],
+          "ja": ["同じ豚足部位を醤油ダレで長時間煮込むほぼ同じ料理", "生姜・シナモン・長ネギなど香辛料構成が非常に似ている", "プリプリの皮と柔らかい肉の食感コントラストが同じ"],
+          "en": ["Nearly identical dish — same trotters braised in soy sauce", "Very similar aromatics with ginger, cinnamon, and green onion", "Same textural contrast of chewy skin and tender meat"]
+        },
+        "limitations": {
+          "ko": ["팔각 향이 한국 족발에는 없거나 약함", "한국 족발처럼 얇게 슬라이스하지 않고 통째로 서빙하는 경우가 많음"],
+          "ja": ["八角の香りが韓国のチョクパルにはないか弱い", "韓国のチョクパルのように薄くスライスせず丸ごとサーブすることが多い"],
+          "en": ["Star anise aroma absent or weak in Korean jokbal", "Often served whole rather than thinly sliced like Korean jokbal"]
+        },
+        "tip": {
+          "ko": "팔각을 빼고 된장을 조금 넣으면 한국 족발에 더 가까운 맛",
+          "ja": "八角を抜いてテンジャンを少し加えると韓国のチョクパルにより近い味",
+          "en": "Remove star anise and add a bit of doenjang for flavor closer to Korean jokbal"
+        },
+        "matchReason": { "ko": "같은 족발을 간장에 조린 가장 가까운 중국 쌍둥이", "ja": "同じ豚足を醤油で煮込んだ最も近い中国の双子", "en": "Soy-braised pork trotters — closest Chinese twin" }
+      }
+    ]
+  },
+  "national-kimchi-jjigae": {
+    "JP": [],
+    "CN": [
+      {
+        "name": { "ko": "쏸차이 주러우 궈", "ja": "酸菜猪肉鍋", "en": "Suancai Zhurou Guo" },
+        "tasteProfile": { "sweet": 10, "salty": 55, "spicy": 45, "umami": 80, "sour": 35 },
+        "description": { "ko": "중국식 발효 배추(쏸차이)와 돼지고기를 함께 끓인 동북 지방의 신맛 찌개", "ja": "中国式発酵白菜（酸菜）と豚肉を一緒に煮込んだ東北地方の酸味チゲ", "en": "Northeastern Chinese stew of fermented napa cabbage (suancai) and pork" },
+        "ingredients": {
+          "ko": ["쏸차이(발효배추)", "돼지고기", "두부", "당면", "대파", "고추", "생강", "마늘"],
+          "ja": ["酸菜（発酵白菜）", "豚肉", "豆腐", "春雨", "長ネギ", "唐辛子", "生姜", "ニンニク"],
+          "en": ["Suancai (fermented cabbage)", "Pork", "Tofu", "Glass noodles", "Green onion", "Chili", "Ginger", "Garlic"]
+        },
+        "similarityPercent": 75,
+        "strengths": {
+          "ko": ["발효 배추+돼지고기+두부를 끓이는 거의 동일한 구성", "발효에서 오는 신맛과 감칠맛의 조합이 김치찌개와 유사", "겨울철 뜨거운 국물 요리라는 문화적 맥락 동일"],
+          "ja": ["発酵白菜+豚肉+豆腐を煮込むほぼ同じ構成", "発酵から来る酸味と旨味の組み合わせがキムチチゲと似ている", "冬場の熱いスープ料理という文化的文脈が同じ"],
+          "en": ["Nearly identical composition of fermented cabbage + pork + tofu simmered together", "Similar combination of fermentation-derived sourness and umami", "Same cultural context as a warming winter stew"]
+        },
+        "limitations": {
+          "ko": ["고춧가루 기반의 빨간 매운맛이 없음 — 맑은 국물 스타일", "김치 특유의 젓갈 감칠맛이 부재", "쏸차이는 김치보다 신맛이 더 강하고 매운맛은 약함"],
+          "ja": ["唐辛子粉ベースの赤い辛さがない — 澄んだスープスタイル", "キムチ特有の塩辛の旨味が不在", "酸菜はキムチより酸味が強く辛味は弱い"],
+          "en": ["No red chili-based spiciness — clear broth style", "Lacks kimchi's unique jeotgal (fermented seafood) umami", "Suancai is more sour and less spicy than kimchi"]
+        },
+        "tip": {
+          "ko": "고춧가루와 새우젓을 한 스푼씩 넣으면 김치찌개에 훨씬 가까운 맛",
+          "ja": "唐辛子粉とアミエビの塩辛を一さじずつ入れるとキムチチゲにずっと近い味",
+          "en": "Add a spoon each of chili powder and fermented shrimp paste for a closer kimchi jjigae flavor"
+        },
+        "matchReason": { "ko": "발효 배추+돼지고기 찌개의 중국 동북 버전", "ja": "発酵白菜+豚肉チゲの中国東北バージョン", "en": "Fermented cabbage and pork stew — Chinese northeastern version" }
+      }
+    ]
+  },
+  "national-bossam": {
+    "JP": [
+      {
+        "name": { "ko": "부타샤부", "ja": "豚しゃぶ", "en": "Buta-shabu" },
+        "tasteProfile": { "sweet": 10, "salty": 50, "spicy": 5, "umami": 75, "sour": 15 },
+        "description": { "ko": "얇게 썬 돼지고기를 뜨거운 물에 살짝 데쳐 폰즈·참깨 소스에 찍어 채소에 싸 먹는 일본식 요리", "ja": "薄切り豚肉を熱い湯にさっとくぐらせてポン酢・ゴマソースにつけて野菜に包んで食べる日本式料理", "en": "Japanese boiled thin pork slices dipped in ponzu or sesame sauce and wrapped in greens" },
+        "ingredients": {
+          "ko": ["돼지고기", "폰즈", "참깨 소스", "상추", "대파", "무", "다시마"],
+          "ja": ["豚肉", "ポン酢", "ゴマソース", "レタス", "ネギ", "大根おろし", "昆布"],
+          "en": ["Pork", "Ponzu", "Sesame sauce", "Lettuce", "Green onion", "Grated radish", "Kelp"]
+        },
+        "similarityPercent": 73,
+        "strengths": {
+          "ko": ["삶은 돼지고기를 채소에 싸 소스와 함께 먹는 동일 구조", "고기를 물에 데쳐 기름기를 빼는 건강한 조리법 공유", "채소+고기+소스의 한 입 조합이 보쌈과 동일"],
+          "ja": ["茹でた豚肉を野菜に包んでソースと一緒に食べる同じ構造", "肉を湯に通して脂を落とすヘルシーな調理法を共有", "野菜+肉+ソースの一口の組み合わせがポッサムと同じ"],
+          "en": ["Same structure of boiled pork wrapped in greens with dipping sauce", "Shared healthy technique of blanching to remove excess fat", "Same one-bite combination of vegetable + meat + sauce"]
+        },
+        "limitations": {
+          "ko": ["보쌈처럼 통째로 삶아 얇게 써는 것이 아닌 얇은 고기를 데치는 방식", "김치·쌈장 등 보쌈의 강렬한 곁들임이 없음", "된장으로 삶는 보쌈의 구수한 향이 부재"],
+          "ja": ["ポッサムのように丸ごと茹でて薄切りにするのではなく薄い肉をしゃぶしゃぶする方式", "キムチ・サムジャンなどポッサムの強烈な付け合わせがない", "テンジャンで茹でるポッサムの香ばしい香りが不在"],
+          "en": ["Quick-blanch thin slices vs bossam's long-boiled whole piece then sliced", "Lacks bossam's bold accompaniments like kimchi and ssamjang", "Missing the nutty doenjang aroma from bossam's boiling broth"]
+        },
+        "matchReason": { "ko": "삶은 돼지고기+채소 쌈+소스의 일본 버전", "ja": "茹で豚肉+野菜包み+ソースの日本バージョン", "en": "Boiled pork wrapped in greens with dipping sauce — Japanese version" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "바이체러우", "ja": "白切肉", "en": "Bai Qie Rou" },
+        "tasteProfile": { "sweet": 10, "salty": 55, "spicy": 20, "umami": 80, "sour": 10 },
+        "description": { "ko": "돼지고기를 향신료와 함께 삶아 얇게 썰어 마늘 간장 소스에 찍어 먹는 상하이식 요리", "ja": "豚肉を香辛料と一緒に茹でて薄切りにしてニンニク醤油ソースにつけて食べる上海式料理", "en": "Shanghai-style boiled pork sliced thin and served with garlic-soy dipping sauce" },
+        "ingredients": {
+          "ko": ["삼겹살", "생강", "대파", "팔각", "간장", "마늘", "고추기름", "식초"],
+          "ja": ["豚バラ肉", "生姜", "長ネギ", "八角", "醤油", "ニンニク", "ラー油", "酢"],
+          "en": ["Pork belly", "Ginger", "Green onion", "Star anise", "Soy sauce", "Garlic", "Chili oil", "Vinegar"]
+        },
+        "similarityPercent": 78,
+        "strengths": {
+          "ko": ["삼겹살을 향신료에 삶아 얇게 썰어내는 동일 조리법", "마늘 간장 소스에 찍어 먹는 방식이 쌈장 디핑과 유사", "기름기를 뺀 깔끔한 돼지고기 맛의 공통점"],
+          "ja": ["豚バラ肉を香辛料で茹でて薄切りにする同じ調理法", "ニンニク醤油ソースにつける方式がサムジャンディップと類似", "脂を落としたさっぱりした豚肉の味の共通点"],
+          "en": ["Same technique of boiling pork belly with aromatics and slicing thin", "Garlic-soy dip parallels ssamjang dipping style", "Shared clean pork flavor with fat rendered out"]
+        },
+        "limitations": {
+          "ko": ["배추 쌈 문화가 없어 고기만 단독으로 먹음", "김치·절임무 등 보쌈의 발효 곁들임이 부재"],
+          "ja": ["白菜包み文化がなく肉だけ単独で食べる", "キムチ・大根漬けなどポッサムの発酵付け合わせが不在"],
+          "en": ["No wrapping culture — meat eaten on its own", "Lacks bossam's fermented accompaniments like kimchi and pickled radish"]
+        },
+        "tip": {
+          "ko": "상추에 싸서 고추기름을 곁들이면 보쌈과 매우 비슷한 경험",
+          "ja": "レタスに包んでラー油を添えるとポッサムに非常に似た体験",
+          "en": "Wrap in lettuce with chili oil for a very bossam-like experience"
+        },
+        "matchReason": { "ko": "삶은 삼겹살을 얇게 썰어 소스에 찍는 중국 사촌", "ja": "茹でた豚バラを薄切りにしてソースにつける中国のいとこ", "en": "Boiled pork belly sliced thin with dipping sauce — Chinese cousin" }
+      }
+    ]
+  },
+  "national-ojingeo-bokkeum": {
+    "JP": [
+      {
+        "name": { "ko": "이카노 쇼가야키", "ja": "イカの生姜焼き", "en": "Ika no Shogayaki" },
+        "tasteProfile": { "sweet": 30, "salty": 55, "spicy": 15, "umami": 75, "sour": 5 },
+        "description": { "ko": "오징어를 생강 간장 양념에 달달짭짤하게 볶아낸 일본식 가정 요리", "ja": "イカを生姜醤油ダレで甘辛く炒めた日本式家庭料理", "en": "Japanese home-style squid stir-fried in ginger-soy sauce" },
+        "ingredients": {
+          "ko": ["오징어", "생강", "간장", "미림", "설탕", "대파", "참기름"],
+          "ja": ["イカ", "生姜", "醤油", "みりん", "砂糖", "長ネギ", "ごま油"],
+          "en": ["Squid", "Ginger", "Soy sauce", "Mirin", "Sugar", "Green onion", "Sesame oil"]
+        },
+        "similarityPercent": 70,
+        "strengths": {
+          "ko": ["오징어를 센 불에 단짠 양념으로 볶는 동일 기법", "간장·설탕 베이스의 달짭한 코팅이 유사", "쫄깃한 오징어 식감을 살리는 조리법 공유"],
+          "ja": ["イカを強火で甘辛ダレで炒める同じ技法", "醤油・砂糖ベースの甘辛コーティングが類似", "プリプリしたイカの食感を活かす調理法を共有"],
+          "en": ["Same technique of wok-frying squid in sweet-savory sauce", "Similar soy-sugar glaze coating", "Shared approach of preserving squid's chewy texture"]
+        },
+        "limitations": {
+          "ko": ["고추장·고춧가루의 강렬한 매운맛이 전혀 없음", "오징어볶음의 빨간 양념 vs 갈색 간장 양념으로 외관 차이 큼"],
+          "ja": ["コチュジャン・唐辛子粉の強烈な辛さが全くない", "イカ炒めの赤い調味料 vs 茶色の醤油ダレで外観の差が大きい"],
+          "en": ["Completely lacks gochujang and chili powder's intense heat", "Red sauce vs brown soy glaze — very different appearance"]
+        },
+        "tip": {
+          "ko": "고추장 1큰술과 고춧가루를 추가하면 오징어볶음에 가까운 맛",
+          "ja": "コチュジャン大さじ1と唐辛子粉を加えるとイカ炒めに近い味",
+          "en": "Add a tablespoon of gochujang and chili flakes for a closer ojingeo bokkeum flavor"
+        },
+        "matchReason": { "ko": "오징어를 단짠 양념에 볶는 일본 가정식 버전", "ja": "イカを甘辛ダレで炒める日本家庭版", "en": "Squid stir-fried in sweet-savory sauce — Japanese home-cooking version" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "마라 차오 요우위", "ja": "麻辣炒魷魚", "en": "Mala Chao Youyu" },
+        "tasteProfile": { "sweet": 15, "salty": 55, "spicy": 80, "umami": 70, "sour": 5 },
+        "description": { "ko": "오징어를 두반장·화자오·건고추에 센 불로 볶아낸 사천식 매운 오징어 볶음", "ja": "イカを豆板醤・花椒・唐辛子で強火で炒めた四川式辛口イカ炒め", "en": "Sichuan-style wok-fried squid with doubanjiang, Sichuan pepper and dried chili" },
+        "ingredients": {
+          "ko": ["오징어", "두반장", "화자오", "건고추", "마늘", "대파", "생강", "간장"],
+          "ja": ["イカ", "豆板醤", "花椒", "唐辛子", "ニンニク", "長ネギ", "生姜", "醤油"],
+          "en": ["Squid", "Doubanjiang", "Sichuan pepper", "Dried chili", "Garlic", "Green onion", "Ginger", "Soy sauce"]
+        },
+        "similarityPercent": 78,
+        "strengths": {
+          "ko": ["오징어를 매운 양념에 센 불로 볶는 거의 동일한 조리법", "매운맛 강도가 오징어볶음과 비슷한 수준", "마늘·대파·생강 등 향신채 구성 유사"],
+          "ja": ["イカを辛い調味料で強火で炒めるほぼ同じ調理法", "辛さの強度がイカ炒めと似たレベル", "ニンニク・長ネギ・生姜など香味野菜の構成が類似"],
+          "en": ["Nearly identical method of wok-frying squid in fiery spices", "Comparable heat intensity to ojingeo bokkeum", "Similar aromatic base of garlic, green onion, and ginger"]
+        },
+        "limitations": {
+          "ko": ["화자오의 얼얼한 마비감이 고추장 매운맛과 다른 종류", "고추장 특유의 달짝지근한 매운맛이 없음"],
+          "ja": ["花椒のしびれ感がコチュジャンの辛さと違う種類", "コチュジャン特有の甘辛い辛味がない"],
+          "en": ["Sichuan pepper's numbing tingle is a different type of heat than gochujang's sweet-spicy", "Lacks gochujang's characteristic sweet-spicy taste"]
+        },
+        "tip": {
+          "ko": "화자오를 빼고 고추장을 넣으면 한국 오징어볶음과 거의 동일",
+          "ja": "花椒を抜いてコチュジャンを入れると韓国のイカ炒めとほぼ同じ",
+          "en": "Replace Sichuan pepper with gochujang for a near-identical ojingeo bokkeum"
+        },
+        "matchReason": { "ko": "오징어를 매운 불에 볶는 사천식 쌍둥이", "ja": "イカを辛い火で炒める四川式の双子", "en": "Spicy wok-fried squid — Sichuan twin" }
+      }
+    ]
+  },
+  "national-samgyetang": {
+    "JP": [
+      {
+        "name": { "ko": "토리 미즈타키", "ja": "鶏水炊き", "en": "Tori Mizutaki" },
+        "tasteProfile": { "sweet": 10, "salty": 45, "spicy": 5, "umami": 80, "sour": 5 },
+        "description": { "ko": "통닭을 물에 오래 끓여 뽀얀 국물을 낸 규슈식 닭 전골", "ja": "鶏肉を水で長時間煮込んで白濁スープを作る九州式鶏鍋", "en": "Kyushu-style chicken hot pot simmered in water until milky" },
+        "ingredients": {
+          "ko": ["통닭", "배추", "버섯", "두부", "대파", "폰즈", "다시마"],
+          "ja": ["鶏肉", "白菜", "きのこ", "豆腐", "ネギ", "ポン酢", "昆布"],
+          "en": ["Chicken", "Napa cabbage", "Mushroom", "Tofu", "Green onion", "Ponzu", "Kelp"]
+        },
+        "similarityPercent": 75,
+        "strengths": {
+          "ko": ["통닭을 오래 고아 뽀얀 국물을 만드는 동일 기법", "닭 콜라겐이 녹아든 보양 국물의 영양 개념 공유", "최소한의 양념으로 닭 본연의 맛을 살리는 철학 동일"],
+          "ja": ["鶏肉を長時間煮込んで白濁スープを作る同じ技法", "鶏コラーゲンが溶け込んだ滋養スープの栄養概念を共有", "最小限の調味料で鶏本来の味を活かす哲学が同じ"],
+          "en": ["Same technique of long-simmering chicken into milky broth", "Shared concept of collagen-rich restorative chicken soup", "Same philosophy of minimal seasoning to highlight chicken's natural flavor"]
+        },
+        "limitations": {
+          "ko": ["인삼·대추·찹쌀 등 약재 충전물이 없음 — 보양 개념이 약함", "폰즈에 찍어 먹는 방식 vs 삼계탕의 국물을 직접 마시는 방식", "전골 스타일 vs 개인 뚝배기 서빙"],
+          "ja": ["高麗人参・なつめ・もち米など薬材の詰め物がない — 滋養概念が弱い", "ポン酢につける方式 vs サムゲタンのスープを直接飲む方式", "鍋スタイル vs 個人用土鍋サーブ"],
+          "en": ["No ginseng, jujube, or glutinous rice stuffing — weaker tonic concept", "Dipped in ponzu vs samgyetang's direct broth drinking", "Shared hot pot vs individual stone pot serving"]
+        },
+        "tip": {
+          "ko": "닭 안에 찹쌀과 마늘을 넣고 소금으로만 간하면 삼계탕에 가까운 맛",
+          "ja": "鶏の中にもち米とニンニクを入れて塩だけで味付けするとサムゲタンに近い味",
+          "en": "Stuff the chicken with glutinous rice and garlic, season with salt only for a samgyetang-like flavor"
+        },
+        "matchReason": { "ko": "통닭을 오래 고아 뽀얀 보양 국물을 만드는 규슈 쌍둥이", "ja": "鶏を長時間煮込んで白濁滋養スープを作る九州の双子", "en": "Chicken simmered into milky broth — Kyushu twin" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "칭둔지", "ja": "清炖鶏", "en": "Qing Dun Ji" },
+        "tasteProfile": { "sweet": 10, "salty": 45, "spicy": 5, "umami": 85, "sour": 5 },
+        "description": { "ko": "통닭에 대추·구기자·황기를 넣어 맑게 오래 끓여낸 중국식 보양 닭 수프", "ja": "鶏肉になつめ・クコの実・黄耆を入れて澄んだスープで長時間煮込んだ中国式滋養鶏スープ", "en": "Chinese slow-simmered clear chicken soup with jujube, wolfberry and astragalus" },
+        "ingredients": {
+          "ko": ["통닭", "대추", "구기자", "황기", "생강", "마늘", "소금", "당귀"],
+          "ja": ["鶏肉", "なつめ", "クコの実", "黄耆", "生姜", "ニンニク", "塩", "当帰"],
+          "en": ["Chicken", "Jujube", "Wolfberry", "Astragalus", "Ginger", "Garlic", "Salt", "Angelica"]
+        },
+        "similarityPercent": 82,
+        "strengths": {
+          "ko": ["닭과 약재를 오래 고아 보양식으로 먹는 동일한 의식동원 철학", "대추·구기자 등 약재 구성이 삼계탕과 매우 유사", "최소한의 양념으로 닭의 진한 감칠맛을 우려내는 동일 기법"],
+          "ja": ["鶏と薬材を長時間煮込んで滋養食として食べる同じ医食同源哲学", "なつめ・クコの実など薬材構成がサムゲタンと非常に似ている", "最小限の調味料で鶏の濃い旨味を引き出す同じ技法"],
+          "en": ["Same 'medicine and food share a source' philosophy of herbal chicken tonic", "Very similar medicinal ingredients like jujube and wolfberry", "Same technique of extracting deep chicken umami with minimal seasoning"]
+        },
+        "limitations": {
+          "ko": ["인삼이 빠져 삼계탕의 핵심 쓴맛-감칠맛 축이 약함", "찹쌀 충전이 없어 국물만의 구성"],
+          "ja": ["高麗人参が入らないためサムゲタンの核心の苦味-旨味軸が弱い", "もち米の詰め物がなくスープだけの構成"],
+          "en": ["No ginseng, so the key bitter-umami axis of samgyetang is weaker", "No glutinous rice stuffing — broth-only composition"]
+        },
+        "tip": {
+          "ko": "인삼과 찹쌀을 닭 속에 넣으면 삼계탕과 거의 동일한 보양식",
+          "ja": "高麗人参ともち米を鶏の中に入れるとサムゲタンとほぼ同じ滋養食",
+          "en": "Add ginseng and stuff with glutinous rice for a near-identical samgyetang"
+        },
+        "matchReason": { "ko": "닭+약재 보양 수프의 가장 가까운 중국 쌍둥이", "ja": "鶏+薬材滋養スープの最も近い中国の双子", "en": "Herbal chicken tonic — closest Chinese twin" }
+      }
+    ]
+  },
+  "national-galbi-tang": {
+    "JP": [
+      {
+        "name": { "ko": "규스지 니코미", "ja": "牛すじ煮込み", "en": "Gyusuji Nikomi" },
+        "tasteProfile": { "sweet": 15, "salty": 50, "spicy": 5, "umami": 85, "sour": 5 },
+        "description": { "ko": "소 힘줄과 고기를 간장·미소에 오래 푹 고아낸 일본식 소고기 장조림 국물", "ja": "牛すじ肉を醤油・味噌で長時間じっくり煮込んだ日本式の牛煮込み", "en": "Japanese slow-simmered beef tendon and meat in soy-miso broth" },
+        "ingredients": {
+          "ko": ["소 힘줄", "무", "곤약", "간장", "미림", "미소", "대파", "생강"],
+          "ja": ["牛すじ", "大根", "こんにゃく", "醤油", "みりん", "味噌", "長ネギ", "生姜"],
+          "en": ["Beef tendon", "Radish", "Konjac", "Soy sauce", "Mirin", "Miso", "Green onion", "Ginger"]
+        },
+        "similarityPercent": 75,
+        "strengths": {
+          "ko": ["소고기를 무와 함께 오래 고아 진한 감칠맛 국물을 내는 동일 기법", "콜라겐이 녹아든 진한 국물의 보양 개념 공유", "무가 국물을 맑게 하면서 단맛을 더하는 역할 동일"],
+          "ja": ["牛肉を大根と共に長時間煮込んで濃い旨味スープを作る同じ技法", "コラーゲンが溶け込んだ濃厚スープの滋養概念を共有", "大根がスープを澄ませながら甘みを加える役割が同じ"],
+          "en": ["Same technique of long-simmering beef with radish for rich umami broth", "Shared concept of collagen-enriched nourishing broth", "Same role of radish clarifying and sweetening the broth"]
+        },
+        "limitations": {
+          "ko": ["갈비 vs 힘줄 — 부위 차이로 고기의 식감이 다름", "미소 베이스라 갈비탕의 맑은 국물과 색감 차이", "갈비탕의 뽀얀 국물 vs 갈색 간장 국물"],
+          "ja": ["カルビ vs すじ — 部位の違いで肉の食感が異なる", "味噌ベースのためカルビタンの澄んだスープと色の差", "カルビタンの白濁スープ vs 茶色い醤油スープ"],
+          "en": ["Ribs vs tendon — different texture due to different cuts", "Miso base gives different color than galbi tang's clear broth", "Galbi tang's milky broth vs brown soy-miso broth"]
+        },
+        "matchReason": { "ko": "소고기를 무와 함께 오래 고은 일본식 보양 국물", "ja": "牛肉を大根と長時間煮込んだ日本式滋養スープ", "en": "Beef slow-simmered with radish — Japanese nourishing broth" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "파이구탕", "ja": "排骨湯", "en": "Paigu Tang" },
+        "tasteProfile": { "sweet": 10, "salty": 50, "spicy": 5, "umami": 90, "sour": 5 },
+        "description": { "ko": "갈비와 무를 맑게 오래 끓여 뽀얀 국물을 우려낸 중국식 갈비탕", "ja": "カルビと大根を澄んだスープで長時間煮込んで白濁に仕上げた中国式カルビスープ", "en": "Chinese slow-simmered rib and radish soup with milky-white broth" },
+        "ingredients": {
+          "ko": ["돼지갈비", "무", "생강", "대파", "구기자", "소금", "후추", "대추"],
+          "ja": ["豚カルビ", "大根", "生姜", "長ネギ", "クコの実", "塩", "胡椒", "なつめ"],
+          "en": ["Pork ribs", "Radish", "Ginger", "Green onion", "Wolfberry", "Salt", "Pepper", "Jujube"]
+        },
+        "similarityPercent": 82,
+        "strengths": {
+          "ko": ["갈비+무를 오래 끓여 뽀얀 국물을 내는 거의 동일한 조리법", "소금으로만 간하는 담백한 양념 방식 공유", "맑고 깊은 감칠맛 국물의 방향성이 완전히 일치"],
+          "ja": ["カルビ+大根を長時間煮込んで白濁スープを作るほぼ同じ調理法", "塩だけで味付けする淡白な味付け方式を共有", "澄んで深い旨味スープの方向性が完全に一致"],
+          "en": ["Nearly identical technique of simmering ribs and radish into milky broth", "Shared minimal-salt seasoning approach", "Broth direction perfectly aligned — clear and deeply umami"]
+        },
+        "limitations": {
+          "ko": ["돼지갈비 vs 소갈비 — 고기의 풍미와 기름기가 다름", "당면·달걀지단 등 한국 갈비탕의 고명이 없음"],
+          "ja": ["豚カルビ vs 牛カルビ — 肉の風味と脂が異なる", "春雨・錦糸卵など韓国カルビタンの飾りがない"],
+          "en": ["Pork ribs vs beef short ribs — different meat flavor and fat content", "Missing Korean galbi tang's glass noodle and egg garnish toppings"]
+        },
+        "tip": {
+          "ko": "소갈비를 사용하고 당면과 달걀지단을 올리면 한국 갈비탕과 거의 동일",
+          "ja": "牛カルビを使って春雨と錦糸卵をのせると韓国のカルビタンとほぼ同じ",
+          "en": "Use beef short ribs and add glass noodles and egg garnish for a near-identical galbi tang"
+        },
+        "matchReason": { "ko": "갈비+무를 끓여 뽀얀 국물을 낸 가장 가까운 중국 쌍둥이", "ja": "カルビ+大根で白濁スープを作った最も近い中国の双子", "en": "Rib and radish simmered into milky broth — closest Chinese twin" }
+      }
+    ]
+  },
+  "national-yakgwa": {
+    "JP": [
+      {
+        "name": { "ko": "카린토", "ja": "かりんとう", "en": "Karinto" },
+        "tasteProfile": { "sweet": 75, "salty": 10, "spicy": 0, "umami": 10, "sour": 0 },
+        "description": { "ko": "밀가루 반죽을 기름에 튀긴 후 흑설탕 시럽을 입힌 일본 전통 과자", "ja": "小麦粉生地を油で揚げた後に黒糖シロップをまとわせた日本伝統菓子", "en": "Japanese traditional fried dough sticks coated in brown sugar syrup" },
+        "ingredients": {
+          "ko": ["밀가루", "흑설탕", "식용유", "달걀", "이스트", "참깨"],
+          "ja": ["小麦粉", "黒糖", "食用油", "卵", "イースト", "ゴマ"],
+          "en": ["Flour", "Brown sugar", "Oil", "Egg", "Yeast", "Sesame"]
+        },
+        "similarityPercent": 72,
+        "strengths": {
+          "ko": ["밀가루 반죽을 기름에 튀긴 후 당분을 입히는 동일 기법", "촉촉하게 설탕이 스며든 식감이 약과와 유사", "전통 명절 과자로서의 문화적 위치 공유"],
+          "ja": ["小麦粉生地を油で揚げた後に糖分をまとわせる同じ技法", "しっとりと砂糖が染み込んだ食感がヤッカと類似", "伝統的な節句菓子としての文化的位置を共有"],
+          "en": ["Same technique of deep-frying flour dough then coating in sugar", "Similar moist sugar-soaked texture to yakgwa", "Shared cultural position as traditional festive confection"]
+        },
+        "limitations": {
+          "ko": ["꿀·참기름·생강의 향긋한 풍미가 없음", "약과의 꽃 모양 틀 성형 vs 막대 형태", "조청 시럽에 담가두는 침지 과정이 없어 촉촉함이 덜함"],
+          "ja": ["ハチミツ・ごま油・生姜の香りの風味がない", "ヤッカの花型 vs 棒状", "水飴シロップに浸す浸漬過程がなく、しっとり感が少ない"],
+          "en": ["Lacks honey, sesame oil, and ginger's aromatic notes", "Stick shape vs yakgwa's flower-mold form", "Not soaked in syrup so less moist than yakgwa"]
+        },
+        "matchReason": { "ko": "밀가루 튀김+당분 코팅의 일본 전통 과자", "ja": "小麦粉揚げ+糖分コーティングの日本伝統菓子", "en": "Fried flour dough with sugar coating — Japanese traditional sweet" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "미싼다오", "ja": "蜜三刀", "en": "Mi San Dao" },
+        "tasteProfile": { "sweet": 80, "salty": 5, "spicy": 0, "umami": 10, "sour": 0 },
+        "description": { "ko": "밀가루 반죽에 칼집을 넣어 기름에 튀긴 후 꿀 시럽에 담가낸 중국 전통 과자", "ja": "小麦粉生地に切れ目を入れて油で揚げた後にハチミツシロップに浸した中国伝統菓子", "en": "Chinese traditional fried dough with slits, soaked in honey syrup" },
+        "ingredients": {
+          "ko": ["밀가루", "꿀", "참깨", "설탕", "식용유", "맥아당"],
+          "ja": ["小麦粉", "ハチミツ", "ゴマ", "砂糖", "食用油", "麦芽糖"],
+          "en": ["Flour", "Honey", "Sesame", "Sugar", "Oil", "Maltose"]
+        },
+        "similarityPercent": 82,
+        "strengths": {
+          "ko": ["밀가루 반죽을 튀긴 후 꿀 시럽에 담가내는 거의 동일한 조리법", "촉촉한 꿀 시럽이 스며든 식감이 약과와 매우 유사", "참깨를 뿌려 마무리하는 장식도 비슷"],
+          "ja": ["小麦粉生地を揚げた後にハチミツシロップに浸すほぼ同じ調理法", "しっとりしたハチミツシロップが染み込んだ食感がヤッカと非常に似ている", "ゴマを振って仕上げる装飾も類似"],
+          "en": ["Nearly identical technique of frying dough then soaking in honey syrup", "Very similar moist honey-soaked texture to yakgwa", "Same sesame garnish finish"]
+        },
+        "limitations": {
+          "ko": ["참기름과 생강의 향이 없음", "약과의 정교한 꽃 모양 vs 단순한 칼집 형태"],
+          "ja": ["ごま油と生姜の香りがない", "ヤッカの精巧な花型 vs シンプルな切れ目形状"],
+          "en": ["Lacks sesame oil and ginger aromas", "Simple slit shape vs yakgwa's elaborate flower mold"]
+        },
+        "tip": {
+          "ko": "시럽에 참기름과 생강즙을 넣으면 약과에 매우 가까운 맛",
+          "ja": "シロップにごま油と生姜汁を加えるとヤッカに非常に近い味",
+          "en": "Add sesame oil and ginger juice to the syrup for a very yakgwa-like flavor"
+        },
+        "matchReason": { "ko": "튀김 반죽을 꿀 시럽에 담가내는 중국의 약과 쌍둥이", "ja": "揚げ生地をハチミツシロップに浸す中国のヤッカの双子", "en": "Fried dough soaked in honey — China's yakgwa twin" }
+      }
+    ]
+  },
+  "national-hangwa": {
+    "JP": [
+      {
+        "name": { "ko": "오코시", "ja": "おこし", "en": "Okoshi" },
+        "tasteProfile": { "sweet": 70, "salty": 5, "spicy": 0, "umami": 15, "sour": 0 },
+        "description": { "ko": "튀긴 쌀을 물엿·설탕으로 굳혀 만든 일본 전통 쌀과자 (한국 강정과 유사)", "ja": "揚げた米を水飴・砂糖で固めて作った日本伝統の米菓子（韓国カンジョンと類似）", "en": "Japanese traditional puffed rice confection bound with syrup — similar to Korean gangjeong" },
+        "ingredients": {
+          "ko": ["찹쌀 튀밥", "물엿", "설탕", "참깨", "땅콩", "소금"],
+          "ja": ["もち米のポン菓子", "水飴", "砂糖", "ゴマ", "ピーナッツ", "塩"],
+          "en": ["Puffed glutinous rice", "Syrup", "Sugar", "Sesame", "Peanut", "Salt"]
+        },
+        "similarityPercent": 80,
+        "strengths": {
+          "ko": ["찹쌀 튀밥을 조청으로 굳히는 강정과 거의 동일한 제법", "깨·견과류를 곁들이는 구성 동일", "명절·의례용 다과라는 문화적 역할 공유"],
+          "ja": ["もち米のポン菓子を水飴で固めるカンジョンとほぼ同じ製法", "ゴマ・ナッツを添える構成が同じ", "節句・儀礼用の茶菓子という文化的役割を共有"],
+          "en": ["Nearly identical to gangjeong's technique of binding puffed rice in syrup", "Same composition with sesame and nuts", "Shared cultural role as festive ceremonial confection"]
+        },
+        "limitations": {
+          "ko": ["한과의 다양한 종류(유과·약과·다식·정과)를 아우르지 못함", "꿀 대신 물엿 위주로 풍미가 단순함"],
+          "ja": ["韓菓の多様な種類（油菓・薬菓・茶食・正果）を網羅できない", "ハチミツの代わりに水飴中心で風味が単純"],
+          "en": ["Cannot cover hangwa's variety (yugwa, yakgwa, dasik, jeonggwa)", "Simpler flavor profile with syrup instead of honey"]
+        },
+        "matchReason": { "ko": "찹쌀 튀밥+조청 과자의 일본판 강정", "ja": "もち米ポン菓子+水飴菓子の日本版カンジョン", "en": "Puffed rice syrup confection — Japanese gangjeong counterpart" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "사치마", "ja": "沙琪瑪", "en": "Sachima" },
+        "tasteProfile": { "sweet": 75, "salty": 5, "spicy": 0, "umami": 10, "sour": 0 },
+        "description": { "ko": "밀가루 면을 튀겨 물엿·설탕으로 뭉쳐낸 만주족 전통 과자", "ja": "小麦粉の麺を揚げて水飴・砂糖で固めた満州族の伝統菓子", "en": "Manchu traditional confection of fried flour strands bound with syrup" },
+        "ingredients": {
+          "ko": ["밀가루", "달걀", "물엿", "설탕", "참깨", "건포도", "식용유"],
+          "ja": ["小麦粉", "卵", "水飴", "砂糖", "ゴマ", "レーズン", "食用油"],
+          "en": ["Flour", "Egg", "Syrup", "Sugar", "Sesame", "Raisin", "Oil"]
+        },
+        "similarityPercent": 75,
+        "strengths": {
+          "ko": ["튀긴 곡물을 조청·물엿으로 굳히는 한과(유과·강정)와 동일한 핵심 기법", "바삭하면서 달콤한 식감이 한과와 유사", "명절 선물용 과자라는 동일한 문화적 위치"],
+          "ja": ["揚げた穀物を水飴で固める韓菓（油菓・カンジョン）と同じ核心技法", "サクサクしながら甘い食感が韓菓と類似", "節句の贈答用菓子という同じ文化的位置"],
+          "en": ["Same core technique as hangwa's yugwa and gangjeong — fried grain bound in syrup", "Similar crispy-sweet texture to hangwa", "Same cultural position as festive gift confection"]
+        },
+        "limitations": {
+          "ko": ["면 형태를 튀기는 방식이라 한과의 다양한 형태(동그란 강정, 꽃 모양 약과)와 외관이 다름", "꿀·참기름의 깊은 향이 부족"],
+          "ja": ["麺形を揚げる方式で韓菓の多様な形（丸いカンジョン、花型ヤッカ）と外観が異なる", "ハチミツ・ごま油の深い香りが不足"],
+          "en": ["Noodle-strand form differs from hangwa's varied shapes (round gangjeong, flower yakgwa)", "Lacks the deep aroma of honey and sesame oil"]
+        },
+        "matchReason": { "ko": "튀긴 곡물+시럽 과자의 중국 만주족 친척", "ja": "揚げた穀物+シロップ菓子の中国満州族の親戚", "en": "Fried grain syrup confection — Manchu Chinese relative" }
+      }
+    ]
+  },
+  "national-tteokguk": {
+    "JP": [
+      {
+        "name": { "ko": "오조니", "ja": "お雑煮", "en": "Ozoni" },
+        "tasteProfile": { "sweet": 10, "salty": 50, "spicy": 0, "umami": 85, "sour": 5 },
+        "description": { "ko": "떡을 맑은 다시 국물에 넣고 채소·닭고기를 곁들인 일본 정초 국", "ja": "餅を澄んだだしに入れて野菜・鶏肉を添えた日本のお正月汁", "en": "Japanese New Year soup of mochi in clear dashi with vegetables and chicken" },
+        "ingredients": {
+          "ko": ["찹쌀 떡", "다시", "닭고기", "미쓰바", "간장", "어묵", "시금치"],
+          "ja": ["餅", "だし", "鶏肉", "三つ葉", "醤油", "蒲鉾", "ほうれん草"],
+          "en": ["Mochi", "Dashi", "Chicken", "Mitsuba", "Soy sauce", "Kamaboko", "Spinach"]
+        },
+        "similarityPercent": 85,
+        "strengths": {
+          "ko": ["떡을 맑은 국물에 넣어 정초에 먹는 거의 동일한 문화 전통", "떡+맑은 육수+고명의 3중 구조가 동일", "새해에 나이를 먹는다는 문화적 의미까지 공유"],
+          "ja": ["餅を澄んだスープに入れてお正月に食べるほぼ同じ文化伝統", "餅+澄んだだし+具材の三重構造が同じ", "新年に歳を取るという文化的意味まで共有"],
+          "en": ["Nearly identical tradition of eating rice cake in clear broth for New Year", "Same triple structure of rice cake + clear broth + toppings", "Even shares the cultural meaning of growing a year older"]
+        },
+        "limitations": {
+          "ko": ["찹쌀떡(늘어남) vs 멥쌀 가래떡(쫄깃) — 떡 식감 차이", "소고기 육수 vs 다시(가쓰오·다시마) — 국물 베이스 차이", "둥근/네모 떡 vs 얇게 썬 가래떡 — 떡 형태 차이"],
+          "ja": ["もち米餅（伸びる） vs うるち米餅（もちもち） — 餅の食感差", "牛骨スープ vs だし（かつお・昆布） — スープベースの差", "丸・四角の餅 vs 薄切り餅 — 餅の形状差"],
+          "en": ["Glutinous mochi (stretchy) vs non-glutinous garaetteok (chewy) — different texture", "Beef broth vs dashi (bonito + kelp) — different broth base", "Round/square mochi vs thin-sliced rice cake — different shape"]
+        },
+        "tip": {
+          "ko": "오조니에 소고기 육수를 사용하고 달걀지단·김가루를 올리면 떡국과 매우 유사",
+          "ja": "お雑煮に牛肉スープを使って錦糸卵・海苔粉をのせるとトッククと非常に似る",
+          "en": "Use beef broth in ozoni and top with egg garnish and seaweed for a very tteokguk-like experience"
+        },
+        "matchReason": { "ko": "떡+맑은 국물의 정초 음식 — 동아시아 최고의 쌍둥이", "ja": "餅+澄んだスープのお正月料理 — 東アジア最高の双子", "en": "Rice cake in clear New Year broth — East Asia's closest twins" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "녠가오탕", "ja": "年糕湯", "en": "Nian Gao Tang" },
+        "tasteProfile": { "sweet": 10, "salty": 50, "spicy": 5, "umami": 80, "sour": 5 },
+        "description": { "ko": "쌀떡(녠가오)을 채소·고기와 함께 맑은 국물에 넣어 끓인 중국식 떡 수프", "ja": "餅（年糕）を野菜・肉と一緒に澄んだスープで煮込んだ中国式餅スープ", "en": "Chinese rice cake soup with vegetables and meat in clear broth" },
+        "ingredients": {
+          "ko": ["쌀떡(녠가오)", "돼지고기", "청경채", "버섯", "대파", "간장", "소금"],
+          "ja": ["餅（年糕）", "豚肉", "チンゲン菜", "きのこ", "長ネギ", "醤油", "塩"],
+          "en": ["Rice cake", "Pork", "Bok choy", "Mushroom", "Green onion", "Soy sauce", "Salt"]
+        },
+        "similarityPercent": 78,
+        "strengths": {
+          "ko": ["쌀떡을 국물에 넣어 끓이는 동일한 핵심 구조", "설날·명절에 떡 음식을 먹는 동일한 문화 전통", "맑은 국물+떡+고기+채소 구성이 유사"],
+          "ja": ["餅をスープに入れて煮込む同じ核心構造", "お正月・節句に餅料理を食べる同じ文化伝統", "澄んだスープ+餅+肉+野菜の構成が類似"],
+          "en": ["Same core structure of cooking rice cake in broth", "Same cultural tradition of eating rice cake dishes for New Year", "Similar composition of clear broth + rice cake + meat + vegetables"]
+        },
+        "limitations": {
+          "ko": ["녠가오 형태(네모난 판)가 얇게 썬 가래떡과 다름", "달걀지단·김가루 등 떡국 특유의 고명이 없음"],
+          "ja": ["年糕の形（四角い板）が薄切り餅と異なる", "錦糸卵・海苔粉などトッククの特有の飾りがない"],
+          "en": ["Nian gao shape (rectangular slab) differs from thin-sliced garaetteok", "Missing tteokguk's distinctive egg and seaweed garnish"]
+        },
+        "matchReason": { "ko": "쌀떡+맑은 국물의 중국판 명절 떡국", "ja": "餅+澄んだスープの中国版お正月餅スープ", "en": "Rice cake in clear broth — Chinese New Year counterpart" }
+      }
+    ]
+  },
+  "national-spicy-catfish": {
+    "JP": [],
+    "CN": [
+      {
+        "name": { "ko": "수이주위", "ja": "水煮魚", "en": "Shui Zhu Yu" },
+        "tasteProfile": { "sweet": 5, "salty": 55, "spicy": 85, "umami": 80, "sour": 10 },
+        "description": { "ko": "민물 생선을 고추기름·건고추·화자오에 끓여낸 사천식 매운 생선탕", "ja": "淡水魚を唐辛子油・乾燥唐辛子・花椒で煮込んだ四川式辛口魚鍋", "en": "Sichuan-style boiled fish in fiery chili oil with dried peppers and Sichuan peppercorn" },
+        "ingredients": {
+          "ko": ["민물 생선", "고추기름", "건고추", "화자오", "두반장", "숙주", "대파", "마늘"],
+          "ja": ["淡水魚", "唐辛子油", "乾燥唐辛子", "花椒", "豆板醤", "もやし", "長ネギ", "ニンニク"],
+          "en": ["Freshwater fish", "Chili oil", "Dried chili", "Sichuan pepper", "Doubanjiang", "Bean sprouts", "Green onion", "Garlic"]
+        },
+        "similarityPercent": 73,
+        "strengths": {
+          "ko": ["민물 생선을 매운 국물에 끓이는 동일 구조", "강렬한 매운맛 베이스의 국물 요리라는 공통점", "담백한 흰살 생선이 매운 양념과 대비되는 맛 구성"],
+          "ja": ["淡水魚を辛いスープで煮込む同じ構造", "強烈な辛さベースのスープ料理という共通点", "淡白な白身魚が辛い調味料と対比する味構成"],
+          "en": ["Same structure of freshwater fish cooked in spicy broth", "Both are intensely spicy soup-based fish dishes", "Same contrast of delicate white fish meat against fiery seasoning"]
+        },
+        "limitations": {
+          "ko": ["화자오의 얼얼한 마비감 vs 고추장의 깊은 매운맛 — 매운맛 종류가 다름", "된장·들깨를 넣는 매운탕의 구수함이 없음", "기름 양이 훨씬 많아 느끼할 수 있음"],
+          "ja": ["花椒のしびれ vs コチュジャンの深い辛さ — 辛さの種類が異なる", "テンジャン・エゴマを入れるメウンタンの香ばしさがない", "油の量がずっと多くくどくなり得る"],
+          "en": ["Sichuan pepper numbing vs gochujang's deep heat — different spice types", "Lacks maeuntang's nutty depth from doenjang and perilla", "Much more oil-heavy which can feel greasy"]
+        },
+        "tip": {
+          "ko": "화자오를 줄이고 된장·들깨가루를 추가하면 매운탕에 가까운 구수한 맛",
+          "ja": "花椒を減らしてテンジャン・エゴマ粉を加えるとメウンタンに近い香ばしい味",
+          "en": "Reduce Sichuan pepper and add doenjang and perilla for a nuttier maeuntang-like flavor"
+        },
+        "matchReason": { "ko": "민물 생선+매운 국물의 사천식 매운탕", "ja": "淡水魚+辛いスープの四川式メウンタン", "en": "Freshwater fish in spicy broth — Sichuan counterpart to maeuntang" }
+      }
+    ]
+  },
+  "national-jeyuk-bokkeum": {
+    "JP": [
+      {
+        "name": { "ko": "호이코로", "ja": "回鍋肉", "en": "Hoikoro" },
+        "tasteProfile": { "sweet": 25, "salty": 55, "spicy": 55, "umami": 75, "sour": 5 },
+        "description": { "ko": "돼지고기를 양배추와 함께 미소·두반장에 달짝지근하게 볶아낸 일본식 중화 요리", "ja": "豚肉をキャベツと一緒に味噌・豆板醤で甘辛く炒めた日本式中華料理", "en": "Japanese-Chinese twice-cooked pork stir-fried with cabbage in miso-doubanjiang sauce" },
+        "ingredients": {
+          "ko": ["돼지고기", "양배추", "미소", "두반장", "간장", "설탕", "마늘", "대파"],
+          "ja": ["豚肉", "キャベツ", "味噌", "豆板醤", "醤油", "砂糖", "ニンニク", "長ネギ"],
+          "en": ["Pork", "Cabbage", "Miso", "Doubanjiang", "Soy sauce", "Sugar", "Garlic", "Green onion"]
+        },
+        "similarityPercent": 73,
+        "strengths": {
+          "ko": ["돼지고기를 매콤 달짝한 된장 양념에 볶는 동일 기법", "밥 반찬으로 먹는 '밥도둑' 포지션 공유", "마늘·대파 등 향신채 구성이 유사"],
+          "ja": ["豚肉を甘辛い味噌ダレで炒める同じ技法", "ご飯のおかずとして食べる「ご飯泥棒」ポジションを共有", "ニンニク・長ネギなど香味野菜の構成が類似"],
+          "en": ["Same technique of stir-frying pork in sweet-spicy fermented paste", "Shared 'rice thief' position as the ultimate rice accompaniment", "Similar aromatic base with garlic and green onion"]
+        },
+        "limitations": {
+          "ko": ["고추장 기반의 빨간 매운맛 vs 미소·두반장의 짠맛 중심", "제육볶음만큼 매운맛이 강렬하지 않음"],
+          "ja": ["コチュジャンベースの赤い辛さ vs 味噌・豆板醤の塩味中心", "ジェユクポックムほど辛さが強烈ではない"],
+          "en": ["Gochujang's red spice vs miso-doubanjiang's saltier profile", "Not as intensely spicy as jeyuk bokkeum"]
+        },
+        "tip": {
+          "ko": "미소 대신 고추장을 넣고 고춧가루를 추가하면 제육볶음에 가까운 맛",
+          "ja": "味噌の代わりにコチュジャンを入れて唐辛子粉を加えるとジェユクポックムに近い味",
+          "en": "Replace miso with gochujang and add chili flakes for a closer jeyuk bokkeum flavor"
+        },
+        "matchReason": { "ko": "돼지고기를 매콤한 장류에 볶은 일본 가정식 버전", "ja": "豚肉を辛い味噌で炒めた日本家庭版", "en": "Pork stir-fried in spicy fermented paste — Japanese home-cooking counterpart" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "라자오 차오러우", "ja": "辣椒炒肉", "en": "Lajiao Chao Rou" },
+        "tasteProfile": { "sweet": 20, "salty": 55, "spicy": 75, "umami": 70, "sour": 5 },
+        "description": { "ko": "돼지고기를 고추·두반장에 센 불로 볶아낸 후난성 대표 매운 볶음 요리", "ja": "豚肉を唐辛子・豆板醤で強火で炒めた湖南省の代表的な辛口炒め料理", "en": "Hunan-style pork stir-fried with fresh chili and doubanjiang over high heat" },
+        "ingredients": {
+          "ko": ["돼지고기", "청양고추", "두반장", "간장", "마늘", "생강", "대파", "식용유"],
+          "ja": ["豚肉", "青唐辛子", "豆板醤", "醤油", "ニンニク", "生姜", "長ネギ", "食用油"],
+          "en": ["Pork", "Fresh chili", "Doubanjiang", "Soy sauce", "Garlic", "Ginger", "Green onion", "Oil"]
+        },
+        "similarityPercent": 78,
+        "strengths": {
+          "ko": ["돼지고기를 매운 고추 양념에 센 불로 볶는 거의 동일한 조리법", "매운맛 강도가 제육볶음과 비슷한 수준", "밥 위에 올려 먹는 밥도둑 포지션 동일"],
+          "ja": ["豚肉を辛い唐辛子ダレで強火で炒めるほぼ同じ調理法", "辛さの強度がジェユクポックムと似たレベル", "ご飯の上にのせて食べるご飯泥棒ポジションが同じ"],
+          "en": ["Nearly identical method of wok-frying pork in spicy chili sauce", "Similar heat intensity to jeyuk bokkeum", "Same rice-topping 'rice thief' eating style"]
+        },
+        "limitations": {
+          "ko": ["고추장의 달짝지근한 매운맛이 없고 날것 고추의 직접적인 매운맛", "참기름 향이 부재 — 식용유 위주"],
+          "ja": ["コチュジャンの甘辛い辛さがなく生唐辛子の直接的な辛さ", "ごま油の香りが不在 — 食用油中心"],
+          "en": ["Raw chili's direct heat vs gochujang's sweet-spicy warmth", "No sesame oil aroma — cooking oil only"]
+        },
+        "tip": {
+          "ko": "고추장과 참기름을 마지막에 넣으면 제육볶음에 매우 가까운 맛",
+          "ja": "コチュジャンとごま油を最後に加えるとジェユクポックムに非常に近い味",
+          "en": "Finish with gochujang and sesame oil for a very close jeyuk bokkeum flavor"
+        },
+        "matchReason": { "ko": "돼지고기+고추 볶음의 후난식 제육볶음 사촌", "ja": "豚肉+唐辛子炒めの湖南式ジェユクポックムのいとこ", "en": "Spicy pork stir-fry — Hunan-style jeyuk bokkeum cousin" }
+      }
+    ]
+  },
+  "national-nakji-bokkeum": {
+    "JP": [],
+    "CN": [
+      {
+        "name": { "ko": "마라 차오장위", "ja": "麻辣炒章魚", "en": "Mala Chao Zhangyu" },
+        "tasteProfile": { "sweet": 10, "salty": 55, "spicy": 85, "umami": 70, "sour": 5 },
+        "description": { "ko": "낙지/문어를 화자오·건고추·두반장에 센 불로 볶아낸 사천식 매운 해물 볶음", "ja": "タコを花椒・唐辛子・豆板醤で強火で炒めた四川式辛口海鮮炒め", "en": "Sichuan-style wok-fried octopus with numbing Sichuan pepper and fiery chili" },
+        "ingredients": {
+          "ko": ["낙지/문어", "화자오", "건고추", "두반장", "마늘", "대파", "생강", "간장"],
+          "ja": ["タコ", "花椒", "唐辛子", "豆板醤", "ニンニク", "長ネギ", "生姜", "醤油"],
+          "en": ["Octopus", "Sichuan pepper", "Dried chili", "Doubanjiang", "Garlic", "Green onion", "Ginger", "Soy sauce"]
+        },
+        "similarityPercent": 73,
+        "strengths": {
+          "ko": ["쫄깃한 해산물을 매운 양념에 센 불로 볶는 동일한 핵심 기법", "강렬한 매운맛 강도가 낙지볶음과 비슷", "마늘·대파·생강 향신채 구성 유사"],
+          "ja": ["コリコリした海産物を辛い調味料で強火で炒める同じ核心技法", "強烈な辛さの強度がナクチポックムと類似", "ニンニク・長ネギ・生姜の香味野菜構成が類似"],
+          "en": ["Same core technique of wok-frying chewy seafood in fiery spices", "Comparable heat intensity to nakji bokkeum", "Similar aromatic base of garlic, green onion, and ginger"]
+        },
+        "limitations": {
+          "ko": ["화자오의 얼얼한 마비감 vs 고추장의 달큰한 매운맛 — 매운맛 질이 다름", "고추장 특유의 달짝지근함이 없음", "불맛(웍향)이 강해 한국식과 향이 다를 수 있음"],
+          "ja": ["花椒のしびれ vs コチュジャンの甘辛さ — 辛さの質が異なる", "コチュジャン特有の甘辛さがない", "鍋振り（ウォク香）が強く韓国式と香りが異なり得る"],
+          "en": ["Sichuan pepper numbing vs gochujang's sweet-spicy — different heat quality", "Lacks gochujang's characteristic sweet undertone", "Stronger wok hei may differ from Korean-style aroma"]
+        },
+        "matchReason": { "ko": "해산물을 매운 불에 볶는 사천식 낙지볶음 친척", "ja": "海産物を辛い火で炒める四川式ナクチポックムの親戚", "en": "Spicy wok-fried octopus — Sichuan relative of nakji bokkeum" }
+      }
+    ]
+  },
+  "national-gomtang": {
+    "JP": [
+      {
+        "name": { "ko": "규코츠 라멘", "ja": "牛骨ラーメン", "en": "Gyukotsu Ramen" },
+        "tasteProfile": { "sweet": 10, "salty": 55, "spicy": 5, "umami": 85, "sour": 5 },
+        "description": { "ko": "소 뼈를 장시간 고아 뽀얀 국물을 낸 일본식 소뼈 라멘", "ja": "牛骨を長時間煮込んで白濁スープを作る日本式牛骨ラーメン", "en": "Japanese ramen with milky beef bone broth simmered for hours" },
+        "ingredients": {
+          "ko": ["소뼈", "라멘 면", "대파", "마늘", "소금", "차슈", "간장"],
+          "ja": ["牛骨", "ラーメン麺", "長ネギ", "ニンニク", "塩", "チャーシュー", "醤油"],
+          "en": ["Beef bones", "Ramen noodles", "Green onion", "Garlic", "Salt", "Chashu", "Soy sauce"]
+        },
+        "similarityPercent": 77,
+        "strengths": {
+          "ko": ["소뼈를 장시간 끓여 뽀얀 국물을 만드는 동일 기법", "깊은 감칠맛과 콜라겐이 녹아든 진한 국물", "소금 위주의 담백한 간으로 뼈 국물 맛을 살리는 철학 공유"],
+          "ja": ["牛骨を長時間煮込んで白濁スープを作る同じ技法", "深い旨味とコラーゲンが溶け込んだ濃厚スープ", "塩中心のシンプルな味付けで骨スープの味を活かす哲学を共有"],
+          "en": ["Same technique of long-simmering beef bones into milky broth", "Deep umami with dissolved collagen in rich soup", "Shared philosophy of simple salt seasoning to let bone broth shine"]
+        },
+        "limitations": {
+          "ko": ["면이 주인공 vs 곰탕은 밥을 말아 먹는 구성", "라멘 특유의 타레(양념장) 간이 곰탕보다 강함"],
+          "ja": ["麺が主役 vs コムタンはご飯を入れて食べる構成", "ラーメン特有のタレの味付けがコムタンより強い"],
+          "en": ["Noodle-centric vs gomtang's rice-in-broth composition", "Ramen's tare seasoning is stronger than gomtang's minimal salt"]
+        },
+        "tip": {
+          "ko": "면 대신 밥을 넣고 간을 소금만으로 하면 곰탕과 매우 유사",
+          "ja": "麺の代わりにご飯を入れて塩だけで味付けするとコムタンと非常に似る",
+          "en": "Replace noodles with rice and season only with salt for a very gomtang-like experience"
+        },
+        "matchReason": { "ko": "소뼈 장시간 우린 뽀얀 국물의 일본 라멘 버전", "ja": "牛骨長時間煮込み白濁スープの日本ラーメン版", "en": "Long-simmered beef bone milky broth — Japanese ramen version" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "뉴구탕", "ja": "牛骨湯", "en": "Niugu Tang" },
+        "tasteProfile": { "sweet": 10, "salty": 50, "spicy": 5, "umami": 90, "sour": 5 },
+        "description": { "ko": "소뼈와 고기를 맑게 오래 끓여 뽀얀 국물을 우려낸 중국식 소뼈 탕", "ja": "牛骨と肉を澄んだスープで長時間煮込んで白濁に仕上げた中国式牛骨スープ", "en": "Chinese slow-simmered beef bone soup with milky-white rich broth" },
+        "ingredients": {
+          "ko": ["소뼈", "양지머리", "생강", "대파", "소금", "후추", "대추"],
+          "ja": ["牛骨", "牛胸肉", "生姜", "長ネギ", "塩", "胡椒", "なつめ"],
+          "en": ["Beef bones", "Brisket", "Ginger", "Green onion", "Salt", "Pepper", "Jujube"]
+        },
+        "similarityPercent": 85,
+        "strengths": {
+          "ko": ["소뼈+양지를 오래 고아 뽀얀 국물을 만드는 거의 동일한 요리", "소금으로만 간하는 담백한 양념 방식 완전 일치", "밥을 말아 먹는 식사 방식도 동일"],
+          "ja": ["牛骨+胸肉を長時間煮込んで白濁スープを作るほぼ同じ料理", "塩だけで味付けする淡白な味付け方式が完全一致", "ご飯を入れて食べる食べ方も同じ"],
+          "en": ["Nearly identical dish — beef bones and brisket simmered into milky broth", "Perfectly matched minimal-salt seasoning approach", "Same eating style of adding rice to the broth"]
+        },
+        "limitations": {
+          "ko": ["대추·생강 등 중국식 약재 향이 곰탕보다 강할 수 있음"],
+          "ja": ["なつめ・生姜など中国式薬材の香りがコムタンより強い場合がある"],
+          "en": ["Chinese medicinal ingredients like jujube and ginger may add stronger herbal notes"]
+        },
+        "matchReason": { "ko": "소뼈 장시간 우린 뽀얀 국물 — 곰탕의 가장 가까운 중국 쌍둥이", "ja": "牛骨長時間煮込み白濁スープ — コムタンの最も近い中国の双子", "en": "Beef bone milky broth — closest Chinese twin to gomtang" }
+      }
+    ]
+  },
+  "national-budae-jjigae": {
+    "JP": [],
+    "CN": []
+  },
+  "national-kimchi-jeon": {
+    "JP": [
+      {
+        "name": { "ko": "킴치 오코노미야키", "ja": "キムチお好み焼き", "en": "Kimchi Okonomiyaki" },
+        "tasteProfile": { "sweet": 15, "salty": 55, "spicy": 45, "umami": 75, "sour": 20 },
+        "description": { "ko": "김치를 밀가루 반죽에 섞어 철판에 구운 오사카식 퓨전 오코노미야키", "ja": "キムチを小麦粉生地に混ぜて鉄板で焼いた大阪式フュージョンお好み焼き", "en": "Osaka-style fusion okonomiyaki with kimchi mixed into the batter" },
+        "ingredients": {
+          "ko": ["밀가루", "양배추", "김치", "돼지고기", "달걀", "오타후쿠 소스", "마요네즈"],
+          "ja": ["小麦粉", "キャベツ", "キムチ", "豚肉", "卵", "オタフクソース", "マヨネーズ"],
+          "en": ["Flour", "Cabbage", "Kimchi", "Pork", "Egg", "Okonomi sauce", "Mayonnaise"]
+        },
+        "similarityPercent": 80,
+        "strengths": {
+          "ko": ["김치를 반죽에 섞어 팬에 부치는 거의 동일한 조리법", "발효 김치의 새콤 매콤한 풍미가 반죽에 스며드는 동일 구조", "밀가루+달걀 반죽에 구운 전 형태의 공통점"],
+          "ja": ["キムチを生地に混ぜて焼くほぼ同じ調理法", "発酵キムチの酸っぱ辛い風味が生地に染み込む同じ構造", "小麦粉+卵生地で焼くチヂミ形態の共通点"],
+          "en": ["Nearly identical method of mixing kimchi into batter and pan-frying", "Same structure of fermented kimchi's tangy-spicy flavor infusing the batter", "Shared format of flour + egg batter pancake"]
+        },
+        "limitations": {
+          "ko": ["오타후쿠 소스·마요네즈가 더해져 김치전보다 달고 느끼함", "양배추가 주재료라 김치의 비중이 상대적으로 적음", "김치전의 바삭한 가장자리 식감 vs 오코노미야키의 두껍고 푹신한 식감"],
+          "ja": ["オタフクソース・マヨネーズが加わりキムチチヂミより甘くてこってり", "キャベツが主材料でキムチの比重が相対的に少ない", "キムチチヂミのカリカリした端 vs お好み焼きの厚くてふわふわの食感"],
+          "en": ["Okonomi sauce and mayo make it sweeter and richer than kimchi jeon", "Cabbage dominates so kimchi ratio is lower", "Kimchi jeon's crispy edges vs okonomiyaki's thick fluffy texture"]
+        },
+        "tip": {
+          "ko": "오타후쿠 소스 없이 간장에 찍어 먹고 반죽을 얇게 펴면 김치전에 가까움",
+          "ja": "オタフクソースなしで醤油につけて食べ、生地を薄く伸ばすとキムチチヂミに近い",
+          "en": "Skip the okonomi sauce, dip in soy instead, and spread batter thin for a closer kimchi jeon"
+        },
+        "matchReason": { "ko": "김치+밀가루 반죽을 팬에 구운 오사카 퓨전 쌍둥이", "ja": "キムチ+小麦粉生地をパンで焼く大阪フュージョンの双子", "en": "Kimchi pancake — Osaka fusion twin" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "쏸차이 지엔빙", "ja": "酸菜煎餅", "en": "Suancai Jianbing" },
+        "tasteProfile": { "sweet": 5, "salty": 55, "spicy": 30, "umami": 65, "sour": 25 },
+        "description": { "ko": "중국식 발효 절임 채소(쏸차이)를 밀가루 반죽에 넣어 부친 동북식 전", "ja": "中国式発酵漬け野菜（酸菜）を小麦粉生地に入れて焼いた東北式チヂミ", "en": "Northeastern Chinese pancake with fermented pickled vegetables (suancai)" },
+        "ingredients": {
+          "ko": ["밀가루", "쏸차이", "달걀", "대파", "간장", "참기름", "소금"],
+          "ja": ["小麦粉", "酸菜", "卵", "長ネギ", "醤油", "ごま油", "塩"],
+          "en": ["Flour", "Suancai", "Egg", "Green onion", "Soy sauce", "Sesame oil", "Salt"]
+        },
+        "similarityPercent": 77,
+        "strengths": {
+          "ko": ["발효 채소를 반죽에 넣어 기름에 부치는 거의 동일한 구조", "발효에서 오는 신맛이 반죽에 스며드는 공통점", "간장에 찍어 먹는 동일한 식사 방식"],
+          "ja": ["発酵野菜を生地に入れて油で焼くほぼ同じ構造", "発酵からくる酸味が生地に染み込む共通点", "醤油につけて食べる同じ食べ方"],
+          "en": ["Nearly identical structure of fermented vegetable in batter pan-fried in oil", "Shared fermentation-derived tanginess infusing the batter", "Same eating style dipped in soy sauce"]
+        },
+        "limitations": {
+          "ko": ["쏸차이는 김치보다 신맛이 강하고 매운맛은 거의 없음", "김치전 특유의 빨간 색감이 없음"],
+          "ja": ["酸菜はキムチより酸味が強く辛味がほとんどない", "キムチチヂミ特有の赤い色合いがない"],
+          "en": ["Suancai is more sour and barely spicy compared to kimchi", "Lacks the distinctive red color of kimchi jeon"]
+        },
+        "matchReason": { "ko": "발효 채소+밀가루 전의 중국 동북 버전", "ja": "発酵野菜+小麦粉チヂミの中国東北バージョン", "en": "Fermented vegetable pancake — Chinese northeastern version" }
+      }
+    ]
+  },
+  "national-kkomak-bibimbap": {
+    "JP": [
+      {
+        "name": { "ko": "아카가이 돈부리", "ja": "赤貝丼", "en": "Akagai Donburi" },
+        "tasteProfile": { "sweet": 10, "salty": 55, "spicy": 5, "umami": 80, "sour": 10 },
+        "description": { "ko": "신선한 아카가이(꼬막류)를 밥 위에 올려 간장 양념으로 먹는 일본식 해물 덮밥", "ja": "新鮮なアカガイをご飯の上にのせて醤油ダレで食べる日本式海鮮丼", "en": "Japanese seafood rice bowl with fresh ark clam on rice with soy-based sauce" },
+        "ingredients": {
+          "ko": ["아카가이", "밥", "간장", "와사비", "김", "참기름", "쪽파"],
+          "ja": ["赤貝", "ご飯", "醤油", "わさび", "海苔", "ごま油", "小ネギ"],
+          "en": ["Ark clam", "Rice", "Soy sauce", "Wasabi", "Nori", "Sesame oil", "Green onion"]
+        },
+        "similarityPercent": 78,
+        "strengths": {
+          "ko": ["같은 꼬막류(아카가이)를 밥 위에 올려 먹는 동일 구성", "간장 양념+참기름의 감칠맛 베이스 공유", "바다 감칠맛과 밥의 조합이라는 핵심 구조 동일"],
+          "ja": ["同じ赤貝類をご飯の上にのせて食べる同じ構成", "醤油ダレ+ごま油の旨味ベースを共有", "海の旨味とご飯の組み合わせという核心構造が同じ"],
+          "en": ["Same composition of ark clam on rice", "Shared soy and sesame oil umami base", "Identical core structure of briny umami with rice"]
+        },
+        "limitations": {
+          "ko": ["고추장·고춧가루의 매운 양념이 없음", "꼬막비빔밥처럼 비비는 문화가 없어 덮밥 스타일", "와사비 vs 고추장 — 매운맛 유형이 완전히 다름"],
+          "ja": ["コチュジャン・唐辛子粉の辛いタレがない", "コマクビビンバのように混ぜる文化がなく丼スタイル", "わさび vs コチュジャン — 辛味のタイプが全く異なる"],
+          "en": ["No gochujang or chili spice", "Served as topping-style donburi rather than mixing bibimbap-style", "Wasabi vs gochujang — completely different heat types"]
+        },
+        "tip": {
+          "ko": "와사비 대신 고추장을 넣고 참기름을 뿌려 비비면 꼬막비빔밥에 가까움",
+          "ja": "わさびの代わりにコチュジャンを入れてごま油をかけて混ぜるとコマクビビンバに近い",
+          "en": "Replace wasabi with gochujang, add sesame oil and mix for a kkomak bibimbap-like experience"
+        },
+        "matchReason": { "ko": "꼬막+밥+간장 양념의 일본 해물 덮밥 친척", "ja": "赤貝+ご飯+醤油ダレの日本海鮮丼の親戚", "en": "Ark clam on rice with soy sauce — Japanese seafood bowl relative" }
+      }
+    ],
+    "CN": []
+  },
+  "national-sanchae-bibimbap": {
+    "JP": [
+      {
+        "name": { "ko": "산사이 고항", "ja": "山菜ご飯", "en": "Sansai Gohan" },
+        "tasteProfile": { "sweet": 10, "salty": 45, "spicy": 0, "umami": 65, "sour": 5 },
+        "description": { "ko": "산에서 채집한 고비·고사리 등 산나물을 쌀과 함께 솥에서 지은 일본 전통 산채밥", "ja": "山で摘んだゼンマイ・ワラビなど山菜を米と一緒に釜で炊いた日本伝統の山菜ご飯", "en": "Japanese traditional rice cooked with foraged mountain vegetables like royal fern and bracken" },
+        "ingredients": {
+          "ko": ["쌀", "고비", "고사리", "팽이버섯", "유부", "간장", "다시", "미림"],
+          "ja": ["米", "ゼンマイ", "ワラビ", "エノキ", "油揚げ", "醤油", "だし", "みりん"],
+          "en": ["Rice", "Royal fern", "Bracken", "Enoki", "Fried tofu", "Soy sauce", "Dashi", "Mirin"]
+        },
+        "similarityPercent": 78,
+        "strengths": {
+          "ko": ["산에서 캔 나물(고비·고사리)을 밥과 함께 먹는 동일 전통", "산의 향기를 살린 소박하고 건강한 한 끼라는 공통 철학", "고사리가 공통 재료로 사용됨"],
+          "ja": ["山で摘んだ山菜（ゼンマイ・ワラビ）をご飯と共に食べる同じ伝統", "山の香りを活かした素朴で健康的な一食という共通哲学", "ワラビが共通食材として使われる"],
+          "en": ["Same tradition of eating foraged mountain greens (bracken) with rice", "Shared philosophy of a simple, healthy meal capturing mountain aromas", "Bracken as a common ingredient"]
+        },
+        "limitations": {
+          "ko": ["산채를 밥과 함께 짓는 방식 vs 비빔밥처럼 각각 무쳐서 올리는 방식", "고추장·참기름에 비비는 매콤 고소한 맛이 없음", "간장·다시 베이스라 비빔밥보다 담백한 맛"],
+          "ja": ["山菜を米と一緒に炊く方式 vs ビビンバのように別々に和えてのせる方式", "コチュジャン・ごま油で混ぜるスパイシーで香ばしい味がない", "醤油・だしベースでビビンバより淡白な味"],
+          "en": ["Rice cooked together with herbs vs bibimbap's separately seasoned toppings", "No spicy-savory gochujang and sesame oil mixing", "Soy-dashi base is milder than bibimbap's bold flavors"]
+        },
+        "tip": {
+          "ko": "지은 밥 위에 고추장과 참기름을 넣고 비비면 산채비빔밥과 유사",
+          "ja": "炊いたご飯の上にコチュジャンとごま油を入れて混ぜると山菜ビビンバと類似",
+          "en": "Add gochujang and sesame oil on top and mix for a sanchae bibimbap-like experience"
+        },
+        "matchReason": { "ko": "산나물+쌀의 일본 전통 산채밥 쌍둥이", "ja": "山菜+米の日本伝統山菜ご飯の双子", "en": "Mountain herb rice — Japanese traditional twin" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "수차이 차오판", "ja": "蔬菜炒飯", "en": "Shucai Chao Fan" },
+        "tasteProfile": { "sweet": 10, "salty": 50, "spicy": 10, "umami": 65, "sour": 5 },
+        "description": { "ko": "산나물·들깨잎 등 야생 채소를 밥과 함께 볶아낸 중국 시골식 나물밥", "ja": "山菜・エゴマの葉など野生野菜をご飯と一緒に炒めた中国田舎風の野菜ご飯", "en": "Chinese rural-style fried rice with wild mountain vegetables and herbs" },
+        "ingredients": {
+          "ko": ["밥", "고사리", "부추", "청경채", "달걀", "간장", "참기름", "소금"],
+          "ja": ["ご飯", "ワラビ", "ニラ", "チンゲン菜", "卵", "醤油", "ごま油", "塩"],
+          "en": ["Rice", "Bracken", "Chive", "Bok choy", "Egg", "Soy sauce", "Sesame oil", "Salt"]
+        },
+        "similarityPercent": 70,
+        "strengths": {
+          "ko": ["산나물과 밥을 함께 먹는 소박한 전통 공유", "고사리·부추 등 공통 재료 사용", "채식 위주의 건강한 한 끼라는 포지션"],
+          "ja": ["山菜とご飯を一緒に食べる素朴な伝統を共有", "ワラビ・ニラなど共通食材を使用", "野菜中心の健康的な一食というポジション"],
+          "en": ["Shared tradition of simple mountain greens with rice", "Common ingredients like bracken and chives", "Same positioning as a healthy vegetable-centric meal"]
+        },
+        "limitations": {
+          "ko": ["볶음밥 형태라 산채비빔밥의 비비는 과정과 다름", "고추장의 매콤함이 없음", "산나물 종류가 제한적"],
+          "ja": ["チャーハン形態で山菜ビビンバの混ぜる過程と異なる", "コチュジャンの辛味がない", "山菜の種類が限定的"],
+          "en": ["Fried rice format vs bibimbap's mixing process", "No gochujang spiciness", "More limited variety of mountain herbs"]
+        },
+        "matchReason": { "ko": "산나물+밥의 중국 시골 전통 버전", "ja": "山菜+ご飯の中国田舎伝統バージョン", "en": "Mountain greens with rice — Chinese rural counterpart" }
+      }
+    ]
+  },
+  "national-hanwoo-yukhoe": {
+    "JP": [
+      {
+        "name": { "ko": "유케동", "ja": "ユッケ丼", "en": "Yukke Don" },
+        "tasteProfile": { "sweet": 20, "salty": 50, "spicy": 20, "umami": 85, "sour": 12 },
+        "description": { "ko": "밥 위에 신선한 생 소고기 타르타르를 올려 간장·참기름 양념으로 먹는 일본식 덮밥", "ja": "ご飯の上に新鮮な生牛肉タルタルを乗せて醤油・ごま油ダレで食べる日本式丼", "en": "Japanese rice bowl topped with fresh raw beef tartare in soy-sesame sauce" },
+        "ingredients": {
+          "ko": ["쌀밥", "소고기 생육", "달걀 노른자", "대파", "간장", "참기름", "깨"],
+          "ja": ["ご飯", "牛生肉", "卵黄", "ネギ", "醤油", "ごま油", "ゴマ"],
+          "en": ["Rice", "Raw beef", "Egg yolk", "Green onion", "Soy sauce", "Sesame oil", "Sesame"]
+        },
+        "similarityPercent": 82,
+        "strengths": {
+          "ko": ["밥 위에 생소고기+달걀 노른자를 올리는 거의 동일한 구성", "간장·참기름 양념 베이스 공유", "신선한 소고기의 부드러운 식감과 감칠맛 강조"],
+          "ja": ["ご飯の上に生牛肉+卵黄をのせるほぼ同じ構成", "醤油・ごま油ダレベースを共有", "新鮮な牛肉の柔らかい食感と旨味を強調"],
+          "en": ["Nearly identical composition of raw beef + egg yolk over rice", "Shared soy-sesame sauce base", "Same emphasis on tender texture and umami of fresh beef"]
+        },
+        "limitations": {
+          "ko": ["고추장으로 비비는 매콤한 맛이 없음", "배의 아삭한 단맛이 빠져 있음", "덮밥 스타일로 비비지 않고 그대로 먹음"],
+          "ja": ["コチュジャンで混ぜるスパイシーな味がない", "梨のシャキシャキした甘みがない", "丼スタイルで混ぜずにそのまま食べる"],
+          "en": ["No gochujang mixing for spicy flavor", "Missing Korean pear's crisp sweetness", "Donburi style without mixing"]
+        },
+        "tip": {
+          "ko": "고추장을 넣고 배채를 올려 비비면 한우 육회비빔밥과 거의 동일",
+          "ja": "コチュジャンを入れて梨の千切りをのせて混ぜると韓牛ユッケビビンバとほぼ同じ",
+          "en": "Add gochujang and julienned pear, then mix for a near-identical hanwoo yukhoe bibimbap"
+        },
+        "matchReason": { "ko": "밥 위 생소고기+노른자 구성의 일본 쌍둥이", "ja": "ご飯の上の生牛肉+卵黄構成の日本の双子", "en": "Raw beef and egg yolk over rice — Japanese twin" }
+      }
+    ],
+    "CN": []
+  },
+  "national-yukhoe-bibimbap": {
+    "JP": [
+      {
+        "name": { "ko": "유케동", "ja": "ユッケ丼", "en": "Yukke Don" },
+        "tasteProfile": { "sweet": 15, "salty": 50, "spicy": 5, "umami": 85, "sour": 8 },
+        "description": { "ko": "밥 위에 생 소고기 타르타르와 달걀 노른자를 올려 간장 양념으로 먹는 일본식 육회 덮밥", "ja": "ご飯の上に生牛肉タルタルと卵黄を乗せて醤油ダレで食べる日本式ユッケ丼", "en": "Japanese raw beef tartare rice bowl with egg yolk and soy-sesame dressing" },
+        "ingredients": {
+          "ko": ["쌀밥", "소고기 생육", "달걀 노른자", "대파", "간장", "참기름", "깨"],
+          "ja": ["ご飯", "牛生肉", "卵黄", "ネギ", "醤油", "ごま油", "ゴマ"],
+          "en": ["Rice", "Raw beef", "Egg yolk", "Green onion", "Soy sauce", "Sesame oil", "Sesame"]
+        },
+        "similarityPercent": 83,
+        "strengths": {
+          "ko": ["밥+생소고기+노른자 구성이 육회비빔밥과 거의 동일", "간장·참기름 양념의 감칠맛 베이스 공유", "신선한 소고기 본연의 맛을 살리는 동일 철학"],
+          "ja": ["ご飯+生牛肉+卵黄の構成がユッケビビンバとほぼ同じ", "醤油・ごま油ダレの旨味ベースを共有", "新鮮な牛肉本来の味を活かす同じ哲学"],
+          "en": ["Nearly identical rice + raw beef + egg yolk composition", "Shared soy-sesame umami base", "Same philosophy of showcasing fresh beef's natural flavor"]
+        },
+        "limitations": {
+          "ko": ["고추장의 매콤함과 나물의 다채로운 식감이 없음", "비비는 문화 없이 덮밥으로 먹음"],
+          "ja": ["コチュジャンの辛味とナムルの多彩な食感がない", "混ぜる文化なしに丼として食べる"],
+          "en": ["No gochujang heat or varied namul textures", "Eaten as a donburi without mixing"]
+        },
+        "tip": {
+          "ko": "고추장·참기름을 넣고 시금치 나물을 곁들여 비비면 육회비빔밥",
+          "ja": "コチュジャン・ごま油を入れてほうれん草ナムルを添えて混ぜるとユッケビビンバ",
+          "en": "Add gochujang, sesame oil, spinach namul and mix for a proper yukhoe bibimbap"
+        },
+        "matchReason": { "ko": "쌀밥 위 생소고기+노른자 — 거의 동일한 일본 구조", "ja": "ご飯の上の生牛肉+卵黄 — ほぼ同じ日本の構成", "en": "Raw beef over rice — nearly identical Japanese format" }
+      }
+    ],
+    "CN": []
+  },
+  "national-chapssal-tteok": {
+    "JP": [
+      {
+        "name": { "ko": "다이후쿠", "ja": "大福", "en": "Daifuku" },
+        "tasteProfile": { "sweet": 60, "salty": 3, "spicy": 0, "umami": 25, "sour": 0 },
+        "description": { "ko": "찹쌀떡 속에 팥소를 넣은 일본 대표 전통 떡 과자", "ja": "もち餅に餡を包んだ日本を代表する伝統餅菓子", "en": "Japan's iconic traditional mochi filled with sweet red bean paste" },
+        "ingredients": {
+          "ko": ["찹쌀가루", "팥소", "설탕", "녹말", "소금"],
+          "ja": ["もち米粉", "小豆餡", "砂糖", "片栗粉", "塩"],
+          "en": ["Glutinous rice flour", "Red bean paste", "Sugar", "Starch", "Salt"]
+        },
+        "similarityPercent": 90,
+        "strengths": {
+          "ko": ["찹쌀떡 안에 팥소를 넣는 구성이 거의 완전히 동일", "말랑하고 쫄깃한 떡 식감이 같음", "명절·다과 간식으로 먹는 문화적 위치 동일"],
+          "ja": ["もち餅に小豆餡を包む構成がほぼ完全に同じ", "柔らかくてもちもちした餅の食感が同じ", "節句・茶菓子として食べる文化的位置が同じ"],
+          "en": ["Nearly identical composition of mochi wrapped around red bean paste", "Same soft, chewy rice cake texture", "Same cultural role as festive tea-time snack"]
+        },
+        "limitations": {
+          "ko": ["콩가루를 묻히는 한국식 vs 녹말가루를 묻히는 일본식", "찹쌀떡이 더 도톰하고 쫄깃한 반면 다이후쿠는 피가 얇고 부드러움"],
+          "ja": ["きな粉をまぶす韓国式 vs 片栗粉をまぶす日本式", "チャプサルトクがより厚くてもちもちなのに対し大福は皮が薄くて柔らかい"],
+          "en": ["Korean soybean powder coating vs Japanese starch coating", "Chapssal-tteok has thicker chewy skin while daifuku has thinner softer skin"]
+        },
+        "tip": {
+          "ko": "다이후쿠에 콩가루를 묻히면 한국 찹쌀떡과 거의 구분 불가",
+          "ja": "大福にきな粉をまぶすと韓国のチャプサルトクとほぼ見分けがつかない",
+          "en": "Dust daifuku with soybean powder and it's virtually indistinguishable from chapssal-tteok"
+        },
+        "matchReason": { "ko": "찹쌀+팥소 구성이 거의 완전히 동일한 쌍둥이 과자", "ja": "もち米+小豆餡構成がほぼ完全に同じ双子菓子", "en": "Mochi + red bean paste — virtually identical twin confection" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "마퇀", "ja": "麻糰", "en": "Matuan" },
+        "tasteProfile": { "sweet": 55, "salty": 5, "spicy": 0, "umami": 20, "sour": 0 },
+        "description": { "ko": "찹쌀 반죽에 팥소를 넣고 참깨를 묻혀 기름에 튀긴 중국식 참깨 찹쌀떡", "ja": "もち米生地に小豆餡を入れてごまをつけて油で揚げる中国式ゴマもち菓子", "en": "Chinese fried sesame-coated glutinous rice ball filled with red bean paste" },
+        "ingredients": {
+          "ko": ["찹쌀가루", "팥소", "참깨", "설탕", "식용유"],
+          "ja": ["もち米粉", "小豆餡", "ゴマ", "砂糖", "食用油"],
+          "en": ["Glutinous rice flour", "Red bean paste", "Sesame", "Sugar", "Oil"]
+        },
+        "similarityPercent": 82,
+        "strengths": {
+          "ko": ["찹쌀 반죽+팥소 구성이 찹쌀떡과 거의 동일", "쫄깃한 떡과 달콤한 팥의 맛 대비 공유", "동아시아 공통의 찹쌀+팥 전통 과자 계보"],
+          "ja": ["もち米生地+小豆餡の構成がチャプサルトクとほぼ同じ", "もちもちした餅と甘い小豆の味のコントラストを共有", "東アジア共通のもち米+小豆伝統菓子の系譜"],
+          "en": ["Nearly identical glutinous rice + red bean composition", "Same contrast of chewy rice cake and sweet red bean", "Shared East Asian lineage of sticky rice and red bean confections"]
+        },
+        "limitations": {
+          "ko": ["기름에 튀기는 방식이라 바삭한 겉면 + 기름 풍미 추가", "찹쌀떡의 부드럽고 말랑한 식감과 다름"],
+          "ja": ["油で揚げる方式でサクサクの表面+油の風味が追加", "チャプサルトクの柔らかくてもちもちした食感と異なる"],
+          "en": ["Deep-fried so has crispy exterior and oily flavor", "Different from chapssal-tteok's soft, pillowy texture"]
+        },
+        "tip": {
+          "ko": "튀기지 않고 찜기에 쪄서 콩가루를 묻히면 찹쌀떡과 거의 동일",
+          "ja": "揚げずに蒸し器で蒸してきな粉をまぶすとチャプサルトクとほぼ同じ",
+          "en": "Steam instead of frying and coat with soybean powder for a near-identical chapssal-tteok"
+        },
+        "matchReason": { "ko": "찹쌀+팥소의 중국식 쌍둥이 — 튀기는 변주", "ja": "もち米+小豆餡の中国式双子 — 揚げるバリエーション", "en": "Glutinous rice + red bean — Chinese twin with fried variation" }
+      }
+    ]
+  }
+}
