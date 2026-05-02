@@ -1,0 +1,1041 @@
+{
+  "national": [
+    {
+      "id": "national-japchae",
+      "name": "잡채",
+      "region": "national"
+    },
+    {
+      "id": "national-sundubu",
+      "name": "순두부찌개",
+      "region": "national"
+    },
+    {
+      "id": "national-pajeon",
+      "name": "파전",
+      "region": "national"
+    },
+    {
+      "id": "national-doenjang-jjigae",
+      "name": "된장찌개",
+      "region": "national"
+    },
+    {
+      "id": "national-tteokbokki",
+      "name": "떡볶이",
+      "region": "national"
+    },
+    {
+      "id": "national-jokbal",
+      "name": "족발",
+      "region": "national"
+    },
+    {
+      "id": "national-kimchi-jjigae",
+      "name": "김치찌개",
+      "region": "national"
+    },
+    {
+      "id": "national-bossam",
+      "name": "보쌈",
+      "region": "national"
+    },
+    {
+      "id": "national-ojingeo-bokkeum",
+      "name": "오징어볶음",
+      "region": "national"
+    },
+    {
+      "id": "national-samgyetang",
+      "name": "삼계탕",
+      "region": "national"
+    },
+    {
+      "id": "national-galbi-tang",
+      "name": "갈비탕",
+      "region": "national"
+    },
+    {
+      "id": "national-yakgwa",
+      "name": "약과",
+      "region": "national"
+    },
+    {
+      "id": "national-hangwa",
+      "name": "한과",
+      "region": "national"
+    },
+    {
+      "id": "national-tteokguk",
+      "name": "떡국",
+      "region": "national"
+    },
+    {
+      "id": "national-spicy-catfish",
+      "name": "빠가사리 매운탕",
+      "region": "national"
+    },
+    {
+      "id": "national-jeyuk-bokkeum",
+      "name": "제육볶음",
+      "region": "national"
+    },
+    {
+      "id": "national-nakji-bokkeum",
+      "name": "낙지볶음",
+      "region": "national"
+    },
+    {
+      "id": "national-gomtang",
+      "name": "곰탕",
+      "region": "national"
+    },
+    {
+      "id": "national-budae-jjigae",
+      "name": "부대찌개",
+      "region": "national"
+    },
+    {
+      "id": "national-kimchi-jeon",
+      "name": "김치전",
+      "region": "national"
+    },
+    {
+      "id": "national-kkomak-bibimbap",
+      "name": "꼬막비빔밥",
+      "region": "national"
+    },
+    {
+      "id": "national-sanchae-bibimbap",
+      "name": "산채비빔밥",
+      "region": "national"
+    },
+    {
+      "id": "national-hanwoo-yukhoe",
+      "name": "한우 육회비빔밥",
+      "region": "national"
+    },
+    {
+      "id": "national-yukhoe-bibimbap",
+      "name": "육회비빔밥",
+      "region": "national"
+    },
+    {
+      "id": "national-chapssal-tteok",
+      "name": "찹쌀떡",
+      "region": "national"
+    }
+  ],
+  "seoul-gyeonggi": [
+    {
+      "id": "seoul-samgyeopsal",
+      "name": "삼겹살",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-dakhanmari",
+      "name": "닭한마리",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-seolleongtang",
+      "name": "설렁탕",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-street-toast",
+      "name": "길거리 토스트",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-bindaetteok",
+      "name": "광장시장 빈대떡",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-hangang-ramen",
+      "name": "한강 라면",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-gamjatang",
+      "name": "감자탕",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-sundaekook",
+      "name": "순대국",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-mayak-gimbap",
+      "name": "광장시장 마약김밥",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-gopchang",
+      "name": "곱창구이",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-yang-kkochi",
+      "name": "양꼬치",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-chimaek",
+      "name": "치맥",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-hotteok",
+      "name": "호떡",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-rabokki",
+      "name": "라볶이",
+      "region": "seoul"
+    },
+    {
+      "id": "seoul-galbi",
+      "name": "소갈비",
+      "region": "seoul"
+    },
+    {
+      "id": "yongin-baegam-sundae",
+      "name": "백암순대",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-jangter-gukbap",
+      "name": "민속촌 장터국밥",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-nurungji-baeksuk",
+      "name": "누룽지 백숙",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-pajeon",
+      "name": "민속촌 파전",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-makguksu",
+      "name": "수지 막국수",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-acorn-jelly",
+      "name": "도토리묵 무침",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-cafe-dessert",
+      "name": "보정동 카페거리 디저트",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-makgeolli",
+      "name": "막걸리",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-cheoin-dakgalbi",
+      "name": "처인닭갈비",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-yangji-gomtang",
+      "name": "양지곰탕",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-bori-gulbi",
+      "name": "보리굴비정식",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-sanchae-jeongsik",
+      "name": "산채정식",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-hanbang-samgyetang",
+      "name": "한방삼계탕",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-mukbap",
+      "name": "묵밥",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-dolsot-bibimbap",
+      "name": "돌솥비빔밥",
+      "region": "yongin"
+    },
+    {
+      "id": "yongin-maeun-galbijjim",
+      "name": "매운갈비찜",
+      "region": "yongin"
+    },
+    {
+      "id": "icheon-rice-table",
+      "name": "쌀밥 정식",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-bori-gulbi",
+      "name": "보리굴비",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-ganjang-gejang",
+      "name": "간장게장",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-hanwoo-gui",
+      "name": "한우 구이",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-straw-pork",
+      "name": "볏짚 삼겹살",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-royal-table",
+      "name": "임금님 수라상",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-makguksu",
+      "name": "막국수",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-sotbap",
+      "name": "솥밥",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-kongguksu",
+      "name": "콩국수",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-dojagi-bulgogi",
+      "name": "도자기불고기",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-sansuyu-makgeolli",
+      "name": "산수유 막걸리",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-cheonggukjang-jeongsik",
+      "name": "청국장정식",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-neungi-shabu",
+      "name": "능이버섯샤브샤브",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-bokjung-ppang",
+      "name": "복숭아빵",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-maeun-dwaeji-galbi",
+      "name": "매운돼지갈비",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-somori-gukbap",
+      "name": "소머리국밥",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-onggi-mandu",
+      "name": "옹기만두",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-jangeo-jeongsik",
+      "name": "장어구이정식",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-doenjang-jjigae-hansang",
+      "name": "된장찌개 한상",
+      "region": "icheon"
+    },
+    {
+      "id": "icheon-gamja-ongsimi",
+      "name": "감자옹심이",
+      "region": "icheon"
+    }
+  ],
+  "chungcheong-gangwon": [
+    {
+      "id": "cheonan-walnut-cookie",
+      "name": "호두과자",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-byeongcheon-sundae",
+      "name": "병천순대",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-sundae-soup",
+      "name": "순대국밥",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-charcoal-dakgalbi",
+      "name": "숯불 닭갈비",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-fruit-mochi",
+      "name": "생과일 모찌",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-lotus-rice",
+      "name": "연잎밥 정식",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-mushroom-stew",
+      "name": "버섯전골",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-local-bakery",
+      "name": "뚜쥬루 앙버터빵",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-heuk-dwaeji-gui",
+      "name": "흑돼지구이",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-cheonggukjang",
+      "name": "청국장찌개",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-hongeo-samhap",
+      "name": "홍어삼합",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-boribap-jeongsik",
+      "name": "보리밥정식",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-ureong-doenjang",
+      "name": "우렁된장",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-dubu-kimchi",
+      "name": "두부김치",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-makgeolli-ppang",
+      "name": "막걸리빵",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-kalguksu",
+      "name": "칼국수",
+      "region": "cheonan"
+    },
+    {
+      "id": "cheonan-sujebi",
+      "name": "수제비",
+      "region": "cheonan"
+    },
+    {
+      "id": "sokcho-dakgangjeong",
+      "name": "닭강정",
+      "region": "sokcho"
+    },
+    {
+      "id": "sokcho-abai-sundae",
+      "name": "아바이순대",
+      "region": "sokcho"
+    },
+    {
+      "id": "sokcho-ojingeo-sundae",
+      "name": "오징어순대",
+      "region": "sokcho"
+    }
+  ],
+  "jeolla": [
+    {
+      "id": "jeonju-bibimbap",
+      "name": "비빔밥",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-kongnamul",
+      "name": "콩나물국밥",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-kalguksu",
+      "name": "전주식 칼국수",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-muljjajang",
+      "name": "물짜장",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-pisundae",
+      "name": "피순대와 순대국밥",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-omogaritang",
+      "name": "오모가리탕",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-chocopie",
+      "name": "수제 초코파이",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-yukgaejang",
+      "name": "육개장",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-bindaetteok",
+      "name": "녹두전",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-cheonggukjang",
+      "name": "청국장",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-yukoe",
+      "name": "육회",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-bori-guksu",
+      "name": "보리국수",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-gondrebap",
+      "name": "곤드레밥",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-sikhye",
+      "name": "식혜",
+      "region": "jeonju"
+    },
+    {
+      "id": "jeonju-ogokbap",
+      "name": "오곡밥",
+      "region": "jeonju"
+    },
+    {
+      "id": "yeosu-gat-kimchi",
+      "name": "돌산 갓김치",
+      "region": "yeosu"
+    },
+    {
+      "id": "yeosu-seodae-hoemuchim",
+      "name": "서대회무침",
+      "region": "yeosu"
+    },
+    {
+      "id": "yeosu-jangeo-tang",
+      "name": "장어탕",
+      "region": "yeosu"
+    },
+    {
+      "id": "yeosu-gejang-baekban",
+      "name": "게장백반",
+      "region": "yeosu"
+    },
+    {
+      "id": "yeosu-gul-yori",
+      "name": "굴요리",
+      "region": "yeosu"
+    }
+  ],
+  "gyeongsang-1": [
+    {
+      "id": "busan-pork-soup",
+      "name": "돼지국밥",
+      "region": "busan"
+    },
+    {
+      "id": "busan-milmyeon",
+      "name": "밀면",
+      "region": "busan"
+    },
+    {
+      "id": "busan-hotteok",
+      "name": "씨앗호떡",
+      "region": "busan"
+    },
+    {
+      "id": "busan-mul-tteok",
+      "name": "물떡",
+      "region": "busan"
+    },
+    {
+      "id": "busan-naengchae-jokbal",
+      "name": "냉채족발",
+      "region": "busan"
+    },
+    {
+      "id": "busan-grilled-clams",
+      "name": "조개구이",
+      "region": "busan"
+    },
+    {
+      "id": "busan-eomuk",
+      "name": "어묵",
+      "region": "busan"
+    },
+    {
+      "id": "busan-bibim-dangmyeon",
+      "name": "비빔당면",
+      "region": "busan"
+    },
+    {
+      "id": "busan-gopchang",
+      "name": "양곱창",
+      "region": "busan"
+    },
+    {
+      "id": "busan-nakgopsae",
+      "name": "낙곱새",
+      "region": "busan"
+    },
+    {
+      "id": "busan-hwae",
+      "name": "활어회",
+      "region": "busan"
+    },
+    {
+      "id": "busan-agujjim",
+      "name": "아구찜",
+      "region": "busan"
+    },
+    {
+      "id": "busan-saengseon-gui",
+      "name": "생선구이",
+      "region": "busan"
+    },
+    {
+      "id": "busan-haemul-jjamppong",
+      "name": "해물짬뽕",
+      "region": "busan"
+    },
+    {
+      "id": "busan-eomuk-tang",
+      "name": "어묵탕",
+      "region": "busan"
+    },
+    {
+      "id": "busan-gomjangeo-gui",
+      "name": "곰장어구이",
+      "region": "busan"
+    },
+    {
+      "id": "busan-gul-jeon",
+      "name": "굴전",
+      "region": "busan"
+    },
+    {
+      "id": "busan-haemul-pajeon",
+      "name": "해물파전",
+      "region": "busan"
+    },
+    {
+      "id": "busan-daegu-tang",
+      "name": "대구탕",
+      "region": "busan"
+    },
+    {
+      "id": "busan-jeonbok-juk",
+      "name": "전복죽",
+      "region": "busan"
+    },
+    {
+      "id": "busan-bokeo-tang",
+      "name": "복어탕",
+      "region": "busan"
+    },
+    {
+      "id": "busan-yubu-jeongol",
+      "name": "유부전골",
+      "region": "busan"
+    },
+    {
+      "id": "gyeongju-hwangnam-ppang",
+      "name": "황남빵",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-gyori-gimbap",
+      "name": "교리김밥",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-tteokgalbi",
+      "name": "떡갈비",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-hanwoo-mulhoe",
+      "name": "한우 물회",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-ssambap",
+      "name": "쌈밥 정식",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-haejangguk",
+      "name": "해장국",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-hanjeongsik",
+      "name": "한정식",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-chalborippang",
+      "name": "찰보리빵",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-hanwoo-bulgogi",
+      "name": "한우불고기",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-gujeolpan",
+      "name": "구절판",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-dubu-jeongol",
+      "name": "두부전골",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-meomil-jeonbyeong",
+      "name": "메밀전병",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-gyodongbeopju",
+      "name": "교동법주",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-bamyeot",
+      "name": "밤엿",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-sujae-maekju",
+      "name": "수제맥주",
+      "region": "gyeongju"
+    },
+    {
+      "id": "gyeongju-solsongju",
+      "name": "솔송주",
+      "region": "gyeongju"
+    }
+  ],
+  "gyeongsang-2": [
+    {
+      "id": "tongyeong-chungmu-gimbap",
+      "name": "충무김밥",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-kkul-ppang",
+      "name": "꿀빵",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-meongge-bibimbap",
+      "name": "멍게비빔밥",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-oyster-soup",
+      "name": "굴국밥",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-ujja",
+      "name": "우짜",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-sirakguk",
+      "name": "시락국",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-haemul-ttukbaegi",
+      "name": "해물뚝배기",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-ppaettaegi-juk",
+      "name": "빼때기죽",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-dacci",
+      "name": "다찌 해산물",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-dodari-ssuk",
+      "name": "도다리쑥국",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-gulbap",
+      "name": "굴밥",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-haemul-tang",
+      "name": "해물탕",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-jangeo-gui",
+      "name": "장어구이",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-jeonbok-gui",
+      "name": "전복구이",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-mulmegi-tang",
+      "name": "물메기탕",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-pi-kkomak",
+      "name": "피꼬막",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-bajirak-kalguksu",
+      "name": "바지락칼국수",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-saengseon-hoe-jeongsik",
+      "name": "생선회 정식",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-haemul-japtang",
+      "name": "해물잡탕",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-honghap-tang",
+      "name": "홍합탕",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-mideodeok-jjim",
+      "name": "미더덕찜",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-myeolchi-hoemuchim",
+      "name": "멸치회무침",
+      "region": "tongyeong"
+    },
+    {
+      "id": "tongyeong-hakggongchi-hoe",
+      "name": "학꽁치 회",
+      "region": "tongyeong"
+    },
+    {
+      "id": "andong-heot-jesabap",
+      "name": "헛제사밥",
+      "region": "andong"
+    },
+    {
+      "id": "andong-gan-godeungeo",
+      "name": "간고등어",
+      "region": "andong"
+    },
+    {
+      "id": "andong-guksi",
+      "name": "국시",
+      "region": "andong"
+    },
+    {
+      "id": "andong-sikhye",
+      "name": "안동식혜",
+      "region": "andong"
+    },
+    {
+      "id": "andong-andong-jjimdak",
+      "name": "찜닭",
+      "region": "andong"
+    }
+  ],
+  "jeju": [
+    {
+      "id": "jeju-black-pork",
+      "name": "흑돼지 구이",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-gogi-guksu",
+      "name": "고기국수",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-galchi-jorim",
+      "name": "갈치조림",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-momguk",
+      "name": "몸국",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-dombe",
+      "name": "돔베고기",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-mulhoe",
+      "name": "물회",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-bomal-kalguksu",
+      "name": "보말칼국수",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-omegi-tteok",
+      "name": "오메기떡",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-hallabong",
+      "name": "한라봉 디저트",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-bingtteok",
+      "name": "빙떡",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-kkwong-memil-guksu",
+      "name": "꿩메밀국수",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-hanchi-mulhoe",
+      "name": "한치물회",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-bomal-juk",
+      "name": "보말죽",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-gamgyul-juice",
+      "name": "감귤주스",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-seonggae-miyeokguk",
+      "name": "성게미역국",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-okdom-gui",
+      "name": "옥돔구이",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-gosari-yukgaejang",
+      "name": "고사리 육개장",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-jeonbok-ttukbaegi",
+      "name": "전복뚝배기",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-jari-mulhoe",
+      "name": "자리물회",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-gosari-bokkeum",
+      "name": "고사리볶음",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-jeopjjak-bbyeoguk",
+      "name": "접짝뼈국",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-dwaeji-kimchi-bokkeum",
+      "name": "흑돼지 김치볶음",
+      "region": "jeju"
+    },
+    {
+      "id": "jeju-galchi-gui",
+      "name": "갈치구이",
+      "region": "jeju"
+    }
+  ]
+}
