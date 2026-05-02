@@ -358,7 +358,7 @@ function OutfitWithDropdown({ outfit, isToday, weather, cityId, cityName }: Outf
               </div>
 
               {isOpen && (
-                <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-lg border border-mist z-30 max-h-60 overflow-y-auto">
+                <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-lg border border-mist z-30 max-h-60 overflow-y-auto text-ink">
                   {/* 추천 섹션 */}
                   {recommended.length > 0 && (
                     <>
