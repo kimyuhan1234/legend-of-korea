@@ -1,6 +1,3 @@
-'use client'
-
-import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Ticket, MapPin, Clock } from 'lucide-react'
@@ -40,37 +37,11 @@ const PASS_INCLUDED: Record<string, string> = {
 }
 
 export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
-  const scrollRef = useRef<HTMLDivElement>(null)
-
-  const scroll = (dir: 'left' | 'right') => {
-    if (!scrollRef.current) return
-    const amount = scrollRef.current.offsetWidth * 0.85
-    scrollRef.current.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' })
-  }
-
   const diffLabel = DIFF_LABEL[locale] || DIFF_LABEL.en || DIFF_LABEL.ko
 
   return (
-    <div className="relative group/slider">
-      {/* 좌우 화살표 */}
-      <button
-        onClick={() => scroll('left')}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/90 shadow-lg text-[#111] text-xl font-bold opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-white -ml-4"
-      >
-        ‹
-      </button>
-      <button
-        onClick={() => scroll('right')}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/90 shadow-lg text-[#111] text-xl font-bold opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-white -mr-4"
-      >
-        ›
-      </button>
-
-      {/* 슬라이드 컨테이너 */}
-      <div
-        ref={scrollRef}
-        className="flex gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory"
-      >
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {courses.map((course) => {
           const inner = (
             <div className="flex h-full">
@@ -145,7 +116,7 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
           return (
             <div
               key={course.id}
-              className={`shrink-0 w-[85vw] md:w-[600px] lg:w-[680px] snap-start ${!course.isActive ? 'opacity-70' : ''}`}
+              className={!course.isActive ? 'opacity-70' : ''}
             >
               {course.isActive ? (
                 <Link
