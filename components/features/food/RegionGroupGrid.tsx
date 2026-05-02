@@ -1,8 +1,8 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
-import { ChevronRight } from 'lucide-react'
 import { REGION_GROUPS } from '@/lib/data/regions-hierarchy'
 
 type Locale = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
@@ -14,31 +14,31 @@ function resolveLocale(raw: string): Locale {
 }
 
 /**
- * 6 권역 그리드 — /food/dupe 의 도시 탭 진입점.
- *
- * - 권역 클릭 → /[locale]/food/dupe/{groupId} (해당 권역 음식 + national)
- * - 권역별 음식 불균형은 의도된 상태 (현재 등록된 도시 데이터 기준).
- *   national 28건 이 모든 권역에 합쳐 노출되어 최소 보장.
+ * 6 권역 이미지 카드 그리드 — /food/dupe 의 도시 탭 진입점.
+ * 스타일: DupeCountrySelector(JP/CN) 버튼과 통일 (aspect-square, rounded-2xl, opacity)
  */
 export function RegionGroupGrid() {
   const locale = resolveLocale(useLocale())
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
       {REGION_GROUPS.map((group) => (
         <Link
           key={group.id}
           href={`/${locale}/food/dupe/${group.id}`}
           prefetch={false}
-          className="flex items-center justify-between rounded-2xl border border-mist bg-white px-5 py-5 transition hover:border-sky hover:bg-sky/5 active:scale-[0.98]"
+          className="group flex flex-col items-center gap-2 transition-opacity duration-200 opacity-70 hover:opacity-100"
         >
-          <div className="flex items-center gap-3">
-            <span className="text-3xl" aria-hidden>{group.emoji}</span>
-            <span className="text-base md:text-lg font-bold text-ink">
-              {group.name[locale]}
-            </span>
+          <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
+            <Image
+              src={`/images/region-card/${group.id}.png`}
+              alt={group.name[locale]}
+              fill
+              sizes="(max-width: 768px) 50vw, 33vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+            />
           </div>
-          <ChevronRight className="h-5 w-5 text-stone shrink-0" aria-hidden />
+          <span className="text-sm font-bold text-ink">{group.name[locale]}</span>
         </Link>
       ))}
     </div>
