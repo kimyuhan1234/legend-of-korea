@@ -57,7 +57,7 @@ export function Footer({ locale }: FooterProps) {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#1F2937] text-white/70">
+    <footer className="bg-mist border-t border-stone/20 text-stone">
       <div className="max-w-6xl mx-auto px-4 py-14 text-center">
         {/* 브랜드 로고 */}
         <p
@@ -67,40 +67,40 @@ export function Footer({ locale }: FooterProps) {
             fontSize: '28px',
             fontWeight: 400,
             letterSpacing: '3px',
-            color: 'white',
+            color: '#1F2937',
           }}
           className="mb-2"
         >
           Cloud with you
         </p>
-        <p className="text-xs text-white/40 uppercase tracking-[4px] mb-6">
+        <p className="text-xs text-stone uppercase tracking-[4px] mb-6">
           YOUR TRAVEL COMPANION
         </p>
 
         {/* 서비스명 */}
-        <p className="text-sm text-white/50 mb-8">{t.service}</p>
+        <p className="text-sm text-stone mb-8">{t.service}</p>
 
         {/* 링크 */}
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm mb-8">
-          <Link href={`/${locale}/about`} className="hover:text-white transition-colors">
+          <Link href={`/${locale}/about`} className="text-stone hover:text-ink transition-colors">
             {t.company}
           </Link>
-          <Link href={`/${locale}/quest/guide`} className="hover:text-white transition-colors">
+          <Link href={`/${locale}/quest/guide`} className="text-stone hover:text-ink transition-colors">
             📖 {t.guide}
           </Link>
-          <Link href={`/${locale}/terms`} className="hover:text-white transition-colors">
+          <Link href={`/${locale}/terms`} className="text-stone hover:text-ink transition-colors">
             {t.terms}
           </Link>
-          <Link href={`/${locale}/privacy`} className="hover:text-white transition-colors">
+          <Link href={`/${locale}/privacy`} className="text-stone hover:text-ink transition-colors">
             {t.privacy}
           </Link>
-          <Link href={`/${locale}/partner`} className="hover:text-white transition-colors">
+          <Link href={`/${locale}/partner`} className="text-stone hover:text-ink transition-colors">
             {t.partner}
           </Link>
         </div>
 
         {/* 카피라이트 — 동적 연도 + 베타 라벨 */}
-        <p className="text-xs text-white/30">
+        <p className="text-xs text-stone/70">
           © {year} Cloud with you ({t.betaLabel}). All rights reserved.
         </p>
       </div>
