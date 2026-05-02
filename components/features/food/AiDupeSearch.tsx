@@ -156,6 +156,7 @@ export function AiDupeSearch({ locale }: AiDupeSearchProps) {
                   {match.foodImage && (
                     <Link
                       href={`/${locale}/food/dupe/${match.regionCode}/${match.foodId}`}
+                      prefetch={false}
                       className="shrink-0"
                     >
                       <div className="relative w-20 h-20 rounded-xl overflow-hidden">
@@ -213,6 +214,7 @@ export function AiDupeSearch({ locale }: AiDupeSearchProps) {
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/${locale}/food/dupe/${match.regionCode}/${match.foodId}`}
+                        prefetch={false}
                         className="text-xs font-bold text-mint-deep hover:text-[#7BC8BC] transition-colors"
                       >
                         {t('ai.detail')}

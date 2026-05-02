@@ -61,7 +61,7 @@ export function TasteMatchResults({ topFoods, surprises, locale, isVisible }: Ta
       <div className="bg-white rounded-2xl shadow-md border-2 border-mint p-5">
         <div className="flex gap-4">
           {first.foodImage && (
-            <Link href={`/${locale}/food/dupe/${first.regionCode}/${first.foodId}`} className="shrink-0">
+            <Link href={`/${locale}/food/dupe/${first.regionCode}/${first.foodId}`} prefetch={false} className="shrink-0">
               <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden">
                 <Image src={first.foodImage} alt={getL(first.foodName, locale)} fill sizes="128px" className="object-cover" />
               </div>
@@ -81,7 +81,7 @@ export function TasteMatchResults({ topFoods, surprises, locale, isVisible }: Ta
             </div>
             <p className="text-xs text-slate mb-3">{getL(first.matchReason, locale)}</p>
             <div className="flex items-center gap-2">
-              <Link href={`/${locale}/food/dupe/${first.regionCode}/${first.foodId}`} className="text-xs font-bold text-mint-deep hover:text-[#7BC8BC]">
+              <Link href={`/${locale}/food/dupe/${first.regionCode}/${first.foodId}`} prefetch={false} className="text-xs font-bold text-mint-deep hover:text-[#7BC8BC]">
                 {t('results.detail')}
               </Link>
               <AddToPlannerButton
@@ -121,7 +121,7 @@ export function TasteMatchResults({ topFoods, surprises, locale, isVisible }: Ta
               </div>
               <p className="text-[11px] text-slate mb-3">{getL(food.matchReason, locale)}</p>
               <div className="flex items-center gap-2">
-                <Link href={`/${locale}/food/dupe/${food.regionCode}/${food.foodId}`} className="text-[11px] font-bold text-mint-deep">
+                <Link href={`/${locale}/food/dupe/${food.regionCode}/${food.foodId}`} prefetch={false} className="text-[11px] font-bold text-mint-deep">
                   {t('results.detail')}
                 </Link>
                 <AddToPlannerButton

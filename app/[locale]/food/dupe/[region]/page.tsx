@@ -124,6 +124,7 @@ export default function RegionGroupFoodsPage({ params }: Props) {
               >
                 <Link
                   href={`/${locale}/food/dupe/${food.region}/${food.id}`}
+                  prefetch={false}
                   className="absolute inset-0 z-[1]"
                   aria-label={getL(food.name, locale)}
                 />
