@@ -100,14 +100,14 @@ describe("food-dupes: 음식(RegionalFood) 구조", () => {
     }
   })
 
-  // Phase H — dupes 단수 → 복수 후보 (0~3 개). 각 country 는 빈 배열 가능.
-  it("모든 음식에 12개국 dupes 키가 모두 존재해야 한다", () => {
-    const expected = ['JP', 'CN', 'TH', 'VN', 'MY', 'ID', 'US', 'IT', 'FR', 'IN', 'ES', 'MX']
+  // Phase H — 한중일 한정 (JP/CN). 9개국 폐기. 각 country 는 빈 배열 가능.
+  it("모든 음식에 JP/CN dupes 키가 존재해야 한다", () => {
+    const expected = ['JP', 'CN'] as const
     for (const region of regions) {
       for (const food of region.foods) {
         for (const cc of expected) {
           expect(
-            Array.isArray(food.dupes[cc as keyof typeof food.dupes]),
+            Array.isArray(food.dupes[cc]),
             `${food.id}: dupes.${cc} 가 배열이 아님`
           ).toBe(true)
         }

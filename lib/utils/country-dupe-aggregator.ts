@@ -7,19 +7,10 @@ export interface CountryMeta {
   lng: number
 }
 
+/** Phase H — 한중일 한정. 9개국 (TH/VN/MY/ID/US/IT/FR/IN/ES/MX) 폐기. */
 export const COUNTRIES: Record<string, CountryMeta> = {
   JP: { name: { ko: '일본', en: 'Japan', ja: '日本' }, flag: '🇯🇵', lat: 36.2, lng: 138.2 },
   CN: { name: { ko: '중국', en: 'China', ja: '中国' }, flag: '🇨🇳', lat: 35.8, lng: 104.1 },
-  TH: { name: { ko: '태국', en: 'Thailand', ja: 'タイ' }, flag: '🇹🇭', lat: 15.8, lng: 100.9 },
-  VN: { name: { ko: '베트남', en: 'Vietnam', ja: 'ベトナム' }, flag: '🇻🇳', lat: 14.0, lng: 108.2 },
-  MY: { name: { ko: '말레이시아', en: 'Malaysia', ja: 'マレーシア' }, flag: '🇲🇾', lat: 4.2, lng: 101.9 },
-  ID: { name: { ko: '인도네시아', en: 'Indonesia', ja: 'インドネシア' }, flag: '🇮🇩', lat: -0.7, lng: 113.9 },
-  US: { name: { ko: '미국', en: 'USA', ja: 'アメリカ' }, flag: '🇺🇸', lat: 37.0, lng: -95.7 },
-  IT: { name: { ko: '이탈리아', en: 'Italy', ja: 'イタリア' }, flag: '🇮🇹', lat: 41.8, lng: 12.5 },
-  FR: { name: { ko: '프랑스', en: 'France', ja: 'フランス' }, flag: '🇫🇷', lat: 46.2, lng: 2.2 },
-  IN: { name: { ko: '인도', en: 'India', ja: 'インド' }, flag: '🇮🇳', lat: 20.5, lng: 78.9 },
-  ES: { name: { ko: '스페인', en: 'Spain', ja: 'スペイン' }, flag: '🇪🇸', lat: 40.4, lng: -3.7 },
-  MX: { name: { ko: '멕시코', en: 'Mexico', ja: 'メキシコ' }, flag: '🇲🇽', lat: 23.6, lng: -102.5 },
 }
 
 export interface DupeItem {

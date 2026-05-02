@@ -34,20 +34,10 @@ function getL(field: { ko: string; en: string; ja: string } | null | undefined, 
   return (field as Record<string, string>)[locale] || field.en || field.ko || ''
 }
 
-// 확정 좌표 (드래그 도구로 실측 — 2차)
+/** Phase H — 한중일 한정. 9개국 좌표 폐기 후 JP/CN 만 유지. */
 const MAP_POS: Record<string, { x: number; y: number }> = {
   JP: { x: 44.8, y: 31.4 },
   CN: { x: 37.1, y: 30.6 },
-  TH: { x: 34.6, y: 41.1 },
-  VN: { x: 36.2, y: 46.3 },
-  MY: { x: 34, y: 50.4 },
-  ID: { x: 41.9, y: 51.4 },
-  IN: { x: 28.7, y: 39.5 },
-  IT: { x: 16.7, y: 27.1 },
-  FR: { x: 14.1, y: 23.6 },
-  ES: { x: 11.6, y: 27.1 },
-  US: { x: 76.4, y: 25 },
-  MX: { x: 73.1, y: 36.5 },
 }
 const KOREA_POS = { x: 41.6, y: 28.8 }
 

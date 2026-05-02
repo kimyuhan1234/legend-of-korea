@@ -4,19 +4,10 @@ import { useState } from 'react'
 import { TasteRadarChart } from './TasteRadarChart'
 import type { RegionalFood, DupeCandidate, CountryCode } from '@/lib/data/food-dupes'
 
-const COUNTRIES_12 = [
+/** Phase H — 한중일 한정. 9개국 폐기 후 JP/CN 만 노출. */
+const COUNTRIES_2 = [
   { code: 'JP', flag: '🇯🇵', name: { ko: '일본', ja: '日本', en: 'Japan' } },
   { code: 'CN', flag: '🇨🇳', name: { ko: '중국', ja: '中国', en: 'China' } },
-  { code: 'TH', flag: '🇹🇭', name: { ko: '태국', ja: 'タイ', en: 'Thailand' } },
-  { code: 'VN', flag: '🇻🇳', name: { ko: '베트남', ja: 'ベトナム', en: 'Vietnam' } },
-  { code: 'MY', flag: '🇲🇾', name: { ko: '말레이시아', ja: 'マレーシア', en: 'Malaysia' } },
-  { code: 'ID', flag: '🇮🇩', name: { ko: '인도네시아', ja: 'インドネシア', en: 'Indonesia' } },
-  { code: 'US', flag: '🇺🇸', name: { ko: '미국', ja: 'アメリカ', en: 'USA' } },
-  { code: 'IT', flag: '🇮🇹', name: { ko: '이탈리아', ja: 'イタリア', en: 'Italy' } },
-  { code: 'FR', flag: '🇫🇷', name: { ko: '프랑스', ja: 'フランス', en: 'France' } },
-  { code: 'IN', flag: '🇮🇳', name: { ko: '인도', ja: 'インド', en: 'India' } },
-  { code: 'ES', flag: '🇪🇸', name: { ko: '스페인', ja: 'スペイン', en: 'Spain' } },
-  { code: 'MX', flag: '🇲🇽', name: { ko: '멕시코', ja: 'メキシコ', en: 'Mexico' } },
 ]
 
 const UI = {
@@ -89,7 +80,7 @@ export function DupeCountrySelector({ food, locale }: Props) {
   const [selected, setSelected] = useState<CountryCode>('JP')
   const t = UI[locale as keyof typeof UI] || UI.en || UI.ko
 
-  const country = COUNTRIES_12.find((c) => c.code === selected)!
+  const country = COUNTRIES_2.find((c) => c.code === selected)!
   const candidates: DupeCandidate[] = food.dupes[selected] ?? []
 
   return (
@@ -100,7 +91,7 @@ export function DupeCountrySelector({ food, locale }: Props) {
           {/* 가로 스크롤 국가 탭 */}
           <div className="overflow-x-auto pb-2 mb-5 -mx-1 px-1">
             <div className="flex gap-2 w-max">
-              {COUNTRIES_12.map((c) => {
+              {COUNTRIES_2.map((c) => {
                 const cc = c.code as CountryCode
                 const count = food.dupes[cc]?.length ?? 0
                 const isSelected = selected === cc
