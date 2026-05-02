@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback, type ReactNode } from 'react'
+import { useState, useRef, useCallback, useEffect, type ReactNode } from 'react'
 
 interface Tab {
   key: string
@@ -13,69 +13,96 @@ interface DupeSwipeContainerProps {
   defaultIndex?: number
 }
 
+/**
+ * Ref-based drag — zero re-renders during swipe gesture.
+ * Only `setActive` (on drag end / tab click) triggers a React render.
+ * This prevents 60+/sec state updates that were propagating through
+ * WorldDupeMap / useTranslations and potentially triggering Next.js
+ * internal router history state updates.
+ */
 export function DupeSwipeContainer({ tabs, defaultIndex = 0 }: DupeSwipeContainerProps) {
   const [active, setActive] = useState(defaultIndex)
-  const [dragOffset, setDragOffset] = useState(0)
-  const [dragging, setDragging] = useState(false)
-  const startX = useRef(0)
-  const currentX = useRef(0)
-  const containerRef = useRef<HTMLDivElement>(null)
-
   const count = tabs.length
 
-  const goTo = useCallback((idx: number) => {
-    setActive(Math.max(0, Math.min(count - 1, idx)))
-    setDragOffset(0)
-  }, [count])
+  const draggingRef = useRef(false)
+  const startXRef = useRef(0)
+  const offsetRef = useRef(0)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const sliderRef = useRef<HTMLDivElement>(null)
+  const indicatorRef = useRef<HTMLDivElement>(null)
 
-  // Touch handlers
+  // Direct DOM update — no setState → no re-render during drag
+  const applyTransform = useCallback(
+    (activeIdx: number, offset: number, animate: boolean) => {
+      const cw = containerRef.current?.offsetWidth ?? 0
+      const dragPct = cw > 0 ? (offset / cw) * 100 : 0
+      if (sliderRef.current) {
+        sliderRef.current.style.transition = animate ? 'transform 0.35s ease' : 'none'
+        sliderRef.current.style.transform = `translateX(${-(activeIdx * 100) + dragPct}%)`
+      }
+      if (indicatorRef.current) {
+        indicatorRef.current.style.transition = animate ? 'left 0.3s ease' : 'none'
+        indicatorRef.current.style.left = `${(activeIdx * 100) / count + dragPct / count}%`
+      }
+    },
+    [count],
+  )
+
+  // Keep DOM in sync whenever active changes (e.g., tab button click)
+  useEffect(() => {
+    applyTransform(active, 0, true)
+  }, [active, applyTransform])
+
+  const goTo = useCallback(
+    (idx: number) => {
+      offsetRef.current = 0
+      setActive(Math.max(0, Math.min(count - 1, idx)))
+    },
+    [count],
+  )
+
+  const endDrag = useCallback(
+    (activeIdx: number) => {
+      if (!draggingRef.current) return
+      draggingRef.current = false
+      const dx = offsetRef.current
+      if (dx < -50 && activeIdx < count - 1) {
+        goTo(activeIdx + 1)
+      } else if (dx > 50 && activeIdx > 0) {
+        goTo(activeIdx - 1)
+      } else {
+        offsetRef.current = 0
+        applyTransform(activeIdx, 0, true)
+      }
+    },
+    [count, goTo, applyTransform],
+  )
+
+  // Touch
   const handleTouchStart = (e: React.TouchEvent) => {
-    startX.current = e.touches[0].clientX
-    currentX.current = startX.current
-    setDragging(true)
+    startXRef.current = e.touches[0].clientX
+    draggingRef.current = true
   }
-
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!dragging) return
-    currentX.current = e.touches[0].clientX
-    const dx = currentX.current - startX.current
-    setDragOffset(dx)
+    if (!draggingRef.current) return
+    const dx = e.touches[0].clientX - startXRef.current
+    offsetRef.current = dx
+    applyTransform(active, dx, false)
   }
+  const handleTouchEnd = () => endDrag(active)
 
-  const handleTouchEnd = () => {
-    if (!dragging) return
-    setDragging(false)
-    const dx = currentX.current - startX.current
-    if (dx < -50 && active < count - 1) goTo(active + 1)
-    else if (dx > 50 && active > 0) goTo(active - 1)
-    else setDragOffset(0)
-  }
-
-  // Mouse handlers (desktop drag)
+  // Mouse
   const handleMouseDown = (e: React.MouseEvent) => {
-    startX.current = e.clientX
-    currentX.current = e.clientX
-    setDragging(true)
+    startXRef.current = e.clientX
+    draggingRef.current = true
   }
-
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!dragging) return
-    currentX.current = e.clientX
-    setDragOffset(currentX.current - startX.current)
+    if (!draggingRef.current) return
+    const dx = e.clientX - startXRef.current
+    offsetRef.current = dx
+    applyTransform(active, dx, false)
   }
-
-  const handleMouseUp = () => {
-    if (!dragging) return
-    setDragging(false)
-    const dx = currentX.current - startX.current
-    if (dx < -50 && active < count - 1) goTo(active + 1)
-    else if (dx > 50 && active > 0) goTo(active - 1)
-    else setDragOffset(0)
-  }
-
-  const containerWidth = containerRef.current?.offsetWidth ?? 0
-  const dragPercent = containerWidth > 0 ? (dragOffset / containerWidth) * 100 : 0
-  const translateX = -(active * 100) + (dragging ? dragPercent : 0)
+  const handleMouseUp = () => endDrag(active)
 
   return (
     <div>
@@ -99,11 +126,12 @@ export function DupeSwipeContainer({ tabs, defaultIndex = 0 }: DupeSwipeContaine
           {/* 슬라이딩 바 */}
           <div className="relative h-0.5 bg-mist rounded-full">
             <div
-              className="absolute top-0 h-full bg-mint-deep rounded-full transition-all duration-300"
+              ref={indicatorRef}
+              className="absolute top-0 h-full bg-mint-deep rounded-full"
               style={{
                 width: `${100 / count}%`,
-                left: `${(active * 100) / count + (dragging ? dragPercent / count : 0)}%`,
-                transitionProperty: dragging ? 'none' : 'left',
+                left: `${(active * 100) / count}%`,
+                transition: 'left 0.3s ease',
               }}
             />
           </div>
@@ -123,10 +151,11 @@ export function DupeSwipeContainer({ tabs, defaultIndex = 0 }: DupeSwipeContaine
         onMouseLeave={handleMouseUp}
       >
         <div
+          ref={sliderRef}
           className="flex"
           style={{
-            transform: `translateX(${translateX}%)`,
-            transition: dragging ? 'none' : 'transform 0.35s ease',
+            transform: `translateX(${-(active * 100)}%)`,
+            transition: 'transform 0.35s ease',
           }}
         >
           {tabs.map((tab) => (

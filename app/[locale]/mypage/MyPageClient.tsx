@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -37,7 +37,7 @@ interface MyPageClientProps {
 export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) {
   const t = useTranslations('mypage');
   const router = useRouter();
-  const supabase = createClient();
+  const supabase = useRef(createClient()).current;
 
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
@@ -136,7 +136,8 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
     };
 
     fetchData();
-  }, [supabase, locale, router]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // 탭 복귀·창 포커스 시 빗방울 동기화 — 타 페이지(상점/미션)에서 LP 변동 후 돌아올 때 stale 방지
   useEffect(() => {
