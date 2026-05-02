@@ -1,0 +1,441 @@
+{
+  "jeju-black-pork": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-gogi-guksu": {
+    "JP": [
+      {
+        "name": { "ko": "돈코츠 라멘", "ja": "豚骨ラーメン", "en": "Tonkotsu Ramen" },
+        "tasteProfile": { "sweet": 5, "salty": 55, "spicy": 10, "umami": 80, "sour": 5 },
+        "description": { "ko": "돼지뼈를 장시간 끓여 만든 유백색 농후 돈골 육수에 면을 말아낸 후쿠오카 발상 라멘", "ja": "豚骨を長時間煮込んだ乳白色の濃厚スープに麺を合わせた福岡発祥のラーメン", "en": "Fukuoka-born ramen with milky, rich pork bone broth simmered for hours" },
+        "ingredients": {
+          "ko": ["돼지 뼈 육수", "중화면", "차슈(돼지고기)", "대파", "간장", "마늘", "숙주나물"],
+          "ja": ["豚骨スープ", "中華麺", "チャーシュー", "長ネギ", "醤油", "ニンニク", "もやし"],
+          "en": ["Pork bone broth", "Alkaline noodles", "Chashu pork", "Green onion", "Soy sauce", "Garlic", "Bean sprouts"]
+        },
+        "similarityPercent": 75,
+        "strengths": {
+          "ko": ["돼지뼈를 장시간 우려낸 진한 육수 베이스가 동일", "면 위에 삶은 돼지고기를 올려 먹는 구성이 같음", "대파를 고명으로 사용하는 동일한 마무리"],
+          "ja": ["豚骨を長時間煮出した濃厚スープベースが同じ", "麺の上にゆで豚肉をのせて食べる構成が同じ", "長ネギを薬味として使う同じ仕上げ"],
+          "en": ["Same long-simmered pork bone broth base", "Same composition of noodles topped with boiled pork slices", "Same green onion garnish finish"]
+        },
+        "limitations": {
+          "ko": ["면 종류 차이 — 알칼리 중화면 vs 밀가루 수타면", "돈코츠의 유백색 농후함 vs 고기국수의 맑은 육수", "고기국수에는 없는 마늘·숙주 토핑"],
+          "ja": ["麺の種類の違い — アルカリ中華麺 vs 小麦粉手打ち麺", "豚骨の乳白色の濃厚さ vs コギグクスの澄んだスープ", "コギグクスにはないニンニク・もやしのトッピング"],
+          "en": ["Noodle type differs — alkaline ramen noodle vs hand-pulled wheat noodle", "Tonkotsu's milky richness vs gogi-guksu's clearer broth", "Garlic and bean sprout toppings absent in gogi-guksu"]
+        },
+        "tip": {
+          "ko": "육수를 덜 끓여 맑게 만들고 면을 우동면으로 대체하면 고기국수 느낌에 더 가까워짐",
+          "ja": "スープをあっさり仕上げて麺をうどん系に替えるとコギグクスの雰囲気に近づく",
+          "en": "Simmer the broth lighter and swap noodles for udon-style to get closer to gogi-guksu"
+        },
+        "matchReason": { "ko": "돼지뼈 육수+면+삶은 돼지고기의 3요소가 동일한 일본 대표 돈골 면", "ja": "豚骨スープ+麺+ゆで豚肉の三要素が同じ日本代表の豚骨麺", "en": "Japan's pork bone broth noodle sharing the same three pillars: bone broth, noodles, boiled pork" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "러우쓰몐", "ja": "肉絲麺", "en": "Rou Si Mian" },
+        "tasteProfile": { "sweet": 5, "salty": 50, "spicy": 5, "umami": 65, "sour": 5 },
+        "description": { "ko": "돼지고기 채를 올린 맑은 육수 밀면 — 중국 전역에서 먹는 일상 국수", "ja": "豚肉の細切りをのせた澄んだスープの小麦麺 — 中国全土で食べる日常の麺", "en": "Everyday Chinese wheat noodle soup topped with shredded pork in clear broth" },
+        "ingredients": {
+          "ko": ["밀면", "돼지고기 채", "돼지 육수", "대파", "간장", "생강", "소금"],
+          "ja": ["小麦麺", "豚肉細切り", "豚スープ", "長ネギ", "醤油", "生姜", "塩"],
+          "en": ["Wheat noodles", "Shredded pork", "Pork broth", "Green onion", "Soy sauce", "Ginger", "Salt"]
+        },
+        "similarityPercent": 68,
+        "strengths": {
+          "ko": ["돼지고기 육수에 밀면을 담고 고기를 올리는 동일 구성", "간장·파 기반의 담백한 양념 공통", "일상 서민 국수라는 포지션이 동일"],
+          "ja": ["豚スープに小麦麺を入れて肉をのせる同じ構成", "醤油・ネギベースのあっさりした味付けが共通", "日常の庶民的な麺というポジションが同じ"],
+          "en": ["Same composition of pork broth, wheat noodles, and pork topping", "Shared soy sauce and scallion-based light seasoning", "Same everyday comfort noodle positioning"]
+        },
+        "limitations": {
+          "ko": ["육수 농도가 옅음 — 고기국수의 진한 돈골 깊이가 부족", "고기를 채 썰어 올리는 방식 vs 고기국수의 두툼한 수육 슬라이스", "제주 특유의 돼지뼈 장시간 우림 방식이 부재"],
+          "ja": ["スープの濃度が薄い — コギグクスの濃厚な豚骨の深みが不足", "肉を細切りにしてのせる方式 vs コギグクスの厚切りゆで豚スライス", "済州特有の豚骨長時間煮出し方式がない"],
+          "en": ["Broth is lighter — lacks gogi-guksu's deep long-simmered pork bone richness", "Shredded pork topping vs gogi-guksu's thick boiled pork slices", "Missing Jeju's distinctive long-boiled pork bone method"]
+        },
+        "matchReason": { "ko": "돼지 육수+밀면+돼지고기 토핑의 기본 구성이 공통된 중국 일상 국수", "ja": "豚スープ+小麦麺+豚肉トッピングの基本構成が共通する中国の日常麺", "en": "Chinese everyday noodle sharing pork broth + wheat noodle + pork topping basics" }
+      }
+    ]
+  },
+  "jeju-galchi-jorim": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-momguk": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-dombe": {
+    "JP": [],
+    "CN": [
+      {
+        "name": { "ko": "바이체러우", "ja": "白切肉", "en": "Bai Qie Rou" },
+        "tasteProfile": { "sweet": 5, "salty": 40, "spicy": 5, "umami": 70, "sour": 5 },
+        "description": { "ko": "돼지고기를 통째로 삶아 얇게 썰어 간장 소스에 찍어 먹는 중국 전통 냉·온채 요리", "ja": "豚肉を丸ごとゆでて薄切りにし、醤油ダレにつけて食べる中国伝統の冷温菜", "en": "Chinese tradition of boiling a whole pork cut, slicing it thin, and serving with soy dipping sauce" },
+        "ingredients": {
+          "ko": ["돼지 삼겹살/앞다리", "생강", "대파", "화자오(소량)", "소금", "간장 소스"],
+          "ja": ["豚バラ肉/前脚", "生姜", "長ネギ", "花椒（少量）", "塩", "醤油ダレ"],
+          "en": ["Pork belly/shoulder", "Ginger", "Green onion", "Sichuan pepper (small amount)", "Salt", "Soy dipping sauce"]
+        },
+        "similarityPercent": 80,
+        "strengths": {
+          "ko": ["돼지고기를 통째로 삶아 썰어내는 완전 동일한 조리법", "고기 본연의 맛을 살리는 담백한 양념 철학이 동일", "얇게 썰어 접시에 담아내는 플레이팅이 거의 같음"],
+          "ja": ["豚肉を丸ごとゆでて切り出す完全に同じ調理法", "肉本来の味を活かすあっさりした味付けの哲学が同じ", "薄切りにして皿に盛り付けるプレートが ほぼ同じ"],
+          "en": ["Completely identical cooking method — boil whole, slice thin", "Same flavor philosophy of letting the pork's natural taste shine", "Nearly identical plating of thin slices arranged on a plate"]
+        },
+        "limitations": {
+          "ko": ["돔베고기는 나무 도마(돔베) 위에 써는 제주 특유 의례적 제시", "중국식은 간장+마늘 소스가 기본이나 제주는 된장이나 소금 단순 디핑", "제주 흑돼지 특유의 고소한 지방 풍미가 다름"],
+          "ja": ["ドンベゴギは木のまな板（ドンベ）の上で切る済州特有の儀式的提示", "中国式は醤油+ニンニクソースが基本だが済州は味噌や塩のシンプルなディッピング", "済州黒豚特有の香ばしい脂肪の風味が異なる"],
+          "en": ["Dombe-gogi is ceremonially sliced on a wooden board (dombe) — Jeju-specific presentation", "Chinese version uses soy-garlic dipping sauce vs Jeju's simpler doenjang or salt dip", "Jeju black pork's distinctive nutty fat flavor differs"]
+        },
+        "tip": {
+          "ko": "삶은 고기를 두툼하게 썰고 된장에 찍어 먹으면 돔베고기 느낌에 가까워짐",
+          "ja": "ゆで肉を厚めに切って味噌につけて食べるとドンベゴギの雰囲気に近づく",
+          "en": "Slice the boiled pork thicker and dip in doenjang (Korean soybean paste) for a dombe-gogi feel"
+        },
+        "matchReason": { "ko": "돼지고기를 삶아 썰어 소스에 찍는 동아시아 공통 '백숙육' 전통의 중국판", "ja": "豚肉をゆでて切ってタレにつける東アジア共通の「白茹で肉」伝統の中国版", "en": "China's version of the shared East Asian 'boiled-and-sliced pork' tradition" }
+      }
+    ]
+  },
+  "jeju-mulhoe": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-bomal-kalguksu": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-omegi-tteok": {
+    "JP": [
+      {
+        "name": { "ko": "아와모치", "ja": "粟餅", "en": "Awa Mochi" },
+        "tasteProfile": { "sweet": 60, "salty": 5, "spicy": 0, "umami": 10, "sour": 0 },
+        "description": { "ko": "조(아와)를 쪄서 찧어 만든 일본 전통 잡곡 떡으로, 팥소를 곁들이거나 콩고물을 묻혀 먹음", "ja": "粟を蒸してついた日本伝統の雑穀餅で、あんこを添えたりきな粉をまぶして食べる", "en": "Traditional Japanese millet mochi made by steaming and pounding foxtail millet, served with red bean paste or soybean powder" },
+        "ingredients": {
+          "ko": ["조(아와)", "찹쌀", "팥소", "콩고물", "소금(소량)"],
+          "ja": ["粟", "もち米", "あんこ", "きな粉", "塩（少量）"],
+          "en": ["Foxtail millet", "Glutinous rice", "Red bean paste", "Soybean powder", "Salt (small amount)"]
+        },
+        "similarityPercent": 72,
+        "strengths": {
+          "ko": ["잡곡(조)을 쪄서 찧어 떡으로 만드는 동일한 제조 원리", "팥소를 사용하는 단맛 구성이 같음", "지역 토산 잡곡을 활용한 향토 간식이라는 포지션 동일"],
+          "ja": ["雑穀（粟）を蒸してついて餅にする同じ製造原理", "あんこを使う甘味構成が同じ", "地域の土産雑穀を活用した郷土おやつというポジションが同じ"],
+          "en": ["Same principle of steaming and pounding grain into rice cake", "Same sweet structure using red bean paste", "Same positioning as a regional grain-based traditional snack"]
+        },
+        "limitations": {
+          "ko": ["오메기떡은 차조 + 찹쌀가루 반죽을 빚어 팥소를 넣는 방식 vs 아와모치는 찧는 방식", "오메기떡 특유의 쫄깃한 밀도감이 아와모치보다 단단함", "제주 감귤·흑임자 등 현대 변형이 아와모치에는 없음"],
+          "ja": ["オメギトックはもち粟+もち米粉の生地を成形してあんこを入れる方式 vs 粟餅はつく方式", "オメギトック特有のもちもちとした密度感が粟餅より硬い", "済州みかん・黒ゴマなどの現代バリエーションが粟餅にはない"],
+          "en": ["Omegi-tteok shapes dough and stuffs red bean vs awa mochi is pounded", "Omegi-tteok's dense chewy texture is firmer than awa mochi", "Modern Jeju variations (citrus, black sesame) don't exist in awa mochi"]
+        },
+        "matchReason": { "ko": "잡곡(조)으로 만든 떡+팥소 — 오메기떡의 가장 가까운 일본 친척", "ja": "雑穀（粟）で作った餅+あんこ — オメギトックの最も近い日本の親戚", "en": "Millet grain mochi with red bean — awa mochi is omegi-tteok's closest Japanese relative" }
+      }
+    ],
+    "CN": []
+  },
+  "jeju-hallabong": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-bingtteok": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-kkwong-memil-guksu": {
+    "JP": [
+      {
+        "name": { "ko": "카모난반 소바", "ja": "鴨南蛮そば", "en": "Kamo Nanban Soba" },
+        "tasteProfile": { "sweet": 15, "salty": 50, "spicy": 5, "umami": 75, "sour": 5 },
+        "description": { "ko": "오리고기와 대파를 넣은 따뜻한 간장 다시 육수에 메밀면을 담은 일본 전통 소바", "ja": "鴨肉と長ネギを入れた温かい醤油だしのつゆにそばを合わせた日本伝統のそば", "en": "Traditional Japanese soba in warm soy-dashi broth with sliced duck and green onion" },
+        "ingredients": {
+          "ko": ["메밀면(소바)", "오리고기", "대파", "간장", "다시(가쓰오)", "미림", "유자 껍질(옵션)"],
+          "ja": ["蕎麦", "鴨肉", "長ネギ", "醤油", "だし（かつお）", "みりん", "柚子皮（お好みで）"],
+          "en": ["Buckwheat soba noodles", "Duck meat", "Green onion", "Soy sauce", "Dashi (bonito)", "Mirin", "Yuzu peel (optional)"]
+        },
+        "similarityPercent": 70,
+        "strengths": {
+          "ko": ["메밀면+가금류 육수의 핵심 조합이 동일", "따뜻한 국물에 면을 담아 먹는 동일한 식사 방식", "가금류 지방이 메밀면의 담백함을 보완하는 맛 원리가 같음"],
+          "ja": ["蕎麦麺+家禽のスープの核心的な組み合わせが同じ", "温かいつゆに麺を入れて食べる同じ食事方式", "家禽の脂肪がそばのあっさりさを補う味の原理が同じ"],
+          "en": ["Same core combination of buckwheat noodles + poultry broth", "Same serving style of noodles in warm broth", "Same flavor principle — poultry fat complementing buckwheat's plainness"]
+        },
+        "limitations": {
+          "ko": ["오리 vs 꿩 — 고기의 야생 풍미 강도가 다름 (꿩이 더 진함)", "다시 베이스 vs 제주식 맑은 꿩 육수 — 감칠맛 원천이 다름", "제주 꿩메밀국수 특유의 투박한 수타 면 식감이 소바와 다름"],
+          "ja": ["鴨 vs キジ — 肉の野生の風味の強さが異なる（キジがより濃い）", "だしベース vs 済州式の澄んだキジのスープ — 旨味の源が異なる", "済州キジそば特有の素朴な手打ち麺の食感がそばと異なる"],
+          "en": ["Duck vs pheasant — pheasant has a stronger wild game flavor", "Dashi base vs Jeju's clear pheasant-only broth — different umami source", "Jeju's rustic hand-pulled buckwheat noodle texture differs from refined soba"]
+        },
+        "tip": {
+          "ko": "오리 대신 꿩을 구할 수 있다면 다시를 빼고 꿩 육수만으로 끓이면 제주 원본에 가까워짐",
+          "ja": "鴨の代わりにキジが手に入ればだしを省いてキジのスープだけで煮ると済州の原型に近づく",
+          "en": "If pheasant is available, skip dashi and use pheasant-only broth to get closer to the Jeju original"
+        },
+        "matchReason": { "ko": "메밀면+가금류 육수라는 핵심 공식이 동일한 일본 대표 소바", "ja": "蕎麦麺+家禽のスープという核心的な公式が同じ日本代表のそば", "en": "Japan's representative soba sharing the buckwheat noodle + poultry broth formula" }
+      }
+    ],
+    "CN": []
+  },
+  "jeju-hanchi-mulhoe": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-bomal-juk": {
+    "JP": [],
+    "CN": [
+      {
+        "name": { "ko": "거리저우", "ja": "蛤蜊粥", "en": "Geli Zhou" },
+        "tasteProfile": { "sweet": 5, "salty": 40, "spicy": 0, "umami": 65, "sour": 5 },
+        "description": { "ko": "조개살을 넣고 오래 끓여 쌀알이 풀어진 광동식 해산물 죽", "ja": "貝の身を入れて長時間煮込み、米粒がとろけた広東式の海鮮粥", "en": "Cantonese-style seafood congee with clam meat simmered until rice grains dissolve" },
+        "ingredients": {
+          "ko": ["쌀", "바지락/대합", "생강", "대파", "소금", "참기름", "백후추"],
+          "ja": ["米", "アサリ/ハマグリ", "生姜", "長ネギ", "塩", "ごま油", "白胡椒"],
+          "en": ["Rice", "Clams", "Ginger", "Green onion", "Salt", "Sesame oil", "White pepper"]
+        },
+        "similarityPercent": 65,
+        "strengths": {
+          "ko": ["쌀을 오래 끓여 풀어낸 죽 베이스가 동일", "해산물(조개류)에서 감칠맛을 추출하는 원리가 같음", "참기름과 파로 마무리하는 담백한 양념 구조 동일"],
+          "ja": ["米を長時間煮て崩したお粥のベースが同じ", "海産物（貝類）から旨味を抽出する原理が同じ", "ごま油とネギで仕上げるあっさりした味付け構造が同じ"],
+          "en": ["Same long-simmered rice porridge base", "Same principle of extracting umami from shellfish", "Same light finishing with sesame oil and green onion"]
+        },
+        "limitations": {
+          "ko": ["보말(소라류) vs 바지락/대합 — 조개 종류와 식감이 다름", "보말의 씹히는 쫄깃한 식감이 바지락의 부드러움과 차이", "제주 보말죽 특유의 해조류 향이 광동식 죽에는 부재"],
+          "ja": ["ボマル（サザエ類） vs アサリ/ハマグリ — 貝の種類と食感が異なる", "ボマルの噛みごたえのある食感がアサリの柔らかさと違う", "済州ボマル粥特有の海藻の香りが広東式粥にはない"],
+          "en": ["Top shell vs clams — different shellfish species and texture", "Top shell's chewy bite differs from clam's tenderness", "Jeju bomal-juk's seaweed aroma absent in Cantonese congee"]
+        },
+        "matchReason": { "ko": "조개류+쌀죽의 기본 구성이 동일한 광동 해산물 죽", "ja": "貝類+お粥の基本構成が同じ広東の海鮮粥", "en": "Cantonese seafood congee sharing the same shellfish + rice porridge foundation" }
+      }
+    ]
+  },
+  "jeju-gamgyul-juice": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-seonggae-miyeokguk": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-okdom-gui": {
+    "JP": [
+      {
+        "name": { "ko": "아마다이 시오야키", "ja": "甘鯛の塩焼き", "en": "Amadai no Shioyaki" },
+        "tasteProfile": { "sweet": 10, "salty": 55, "spicy": 0, "umami": 75, "sour": 5 },
+        "description": { "ko": "아마다이(옥돔과 동일 어종)에 소금을 뿌려 직화로 구워낸 일본 전통 고급 생선구이", "ja": "甘鯛に塩を振って直火で焼き上げた日本伝統の高級魚の塩焼き", "en": "Premium Japanese salt-grilled tilefish (amadai), the same species as Jeju's okdom" },
+        "ingredients": {
+          "ko": ["아마다이(옥돔)", "천일염", "레몬(옵션)"],
+          "ja": ["甘鯛", "天然塩", "レモン（お好みで）"],
+          "en": ["Tilefish (amadai)", "Sea salt", "Lemon (optional)"]
+        },
+        "similarityPercent": 88,
+        "strengths": {
+          "ko": ["동일 어종(아마다이/옥돔)을 동일 조리법(소금구이)으로 조리", "생선 본연의 단맛과 감칠맛을 살리는 동일한 미학", "최소한의 양념으로 소재 품질에 집중하는 고급 요리 철학 동일"],
+          "ja": ["同じ魚種（甘鯛/玉鯛）を同じ調理法（塩焼き）で調理", "魚本来の甘みと旨味を活かす同じ美学", "最小限の味付けで素材の品質に集中する高級料理の哲学が同じ"],
+          "en": ["Same fish species cooked with the same salt-grilling method", "Same aesthetic of highlighting the fish's natural sweetness and umami", "Same premium cuisine philosophy of minimal seasoning, maximum ingredient quality"]
+        },
+        "limitations": {
+          "ko": ["일본식은 레몬·무즙을 곁들이나 제주식은 단독으로 먹는 경우가 많음", "일본 아마다이는 와카사야키(비늘째 구이) 변형도 있어 식감이 다를 수 있음", "제주 옥돔은 반건조(굴비처럼) 후 굽는 방식이 흔하나 일본은 생물 구이"],
+          "ja": ["日本式はレモン・大根おろしを添えるが済州式は単独で食べることが多い", "日本の甘鯛は若狭焼き（鱗付き焼き）の変形もあり食感が異なる場合がある", "済州の玉鯛は半干し（クルビのように）後に焼く方式が多いが日本は生のまま焼く"],
+          "en": ["Japanese version pairs with lemon/daikon radish; Jeju version often served solo", "Japanese amadai has wakasa-yaki variant (grilled with scales) for different texture", "Jeju okdom is often semi-dried before grilling, while Japanese grills it fresh"]
+        },
+        "matchReason": { "ko": "동일 어종+동일 소금구이 — 한일 양국에서 고급 생선구이의 정점", "ja": "同じ魚種+同じ塩焼き — 日韓両国で高級魚の塩焼きの頂点", "en": "Same species, same salt-grilling method — the pinnacle of grilled premium fish in both Korea and Japan" }
+      }
+    ],
+    "CN": []
+  },
+  "jeju-gosari-yukgaejang": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-jeonbok-ttukbaegi": {
+    "JP": [],
+    "CN": [
+      {
+        "name": { "ko": "바오위바오", "ja": "鮑魚煲", "en": "Baoyu Bao" },
+        "tasteProfile": { "sweet": 10, "salty": 50, "spicy": 10, "umami": 80, "sour": 5 },
+        "description": { "ko": "전복을 채소·버섯과 함께 토기 냄비에서 천천히 졸여낸 광동식 전복 보양 요리", "ja": "アワビを野菜・キノコと一緒に土鍋でじっくり煮込んだ広東式のアワビ滋養料理", "en": "Cantonese clay pot-simmered abalone with vegetables and mushrooms — a nourishing specialty" },
+        "ingredients": {
+          "ko": ["전복", "표고버섯", "배추", "닭 육수", "굴소스", "생강", "대파", "간장"],
+          "ja": ["アワビ", "椎茸", "白菜", "鶏スープ", "オイスターソース", "生姜", "長ネギ", "醤油"],
+          "en": ["Abalone", "Shiitake mushroom", "Chinese cabbage", "Chicken stock", "Oyster sauce", "Ginger", "Green onion", "Soy sauce"]
+        },
+        "similarityPercent": 72,
+        "strengths": {
+          "ko": ["전복을 토기/뚝배기에서 졸이는 동일한 용기+조리법", "전복+버섯+채소의 감칠맛 삼각 구성이 동일", "보양식·영양식이라는 포지션이 동일"],
+          "ja": ["アワビを土鍋/トゥッペギで煮込む同じ器+調理法", "アワビ+キノコ+野菜の旨味トライアングル構成が同じ", "滋養食・栄養食というポジションが同じ"],
+          "en": ["Same clay pot vessel and slow-simmering method for abalone", "Same umami triangle of abalone + mushroom + vegetables", "Same positioning as a nourishing, health-boosting dish"]
+        },
+        "limitations": {
+          "ko": ["광동식은 굴소스·닭 육수 베이스 vs 제주식은 참기름·들기름 베이스", "제주 뚝배기는 보글보글 끓여 내는 데 반해 광동식은 천천히 졸임", "제주 전복뚝배기의 단순 소박한 양념 vs 광동식의 복합 소스"],
+          "ja": ["広東式はオイスターソース・鶏スープベース vs 済州式はごま油・えごま油ベース", "済州のトゥッペギはグツグツ煮立てるのに対し広東式はゆっくり煮込む", "済州の素朴なシンプルな味付け vs 広東式の複合ソース"],
+          "en": ["Cantonese uses oyster sauce and chicken stock vs Jeju uses sesame/perilla oil", "Jeju ttukbaegi is brought to a rolling boil vs Cantonese style slow-simmers", "Jeju's simple rustic seasoning vs Cantonese complex sauce layers"]
+        },
+        "matchReason": { "ko": "전복을 토기 냄비에 채소와 졸이는 동아시아 공통 전복 보양 요리의 중국판", "ja": "アワビを土鍋で野菜と煮込む東アジア共通のアワビ滋養料理の中国版", "en": "China's take on the East Asian tradition of clay pot-simmered abalone with vegetables" }
+      }
+    ]
+  },
+  "jeju-jari-mulhoe": {
+    "JP": [],
+    "CN": []
+  },
+  "jeju-gosari-bokkeum": {
+    "JP": [
+      {
+        "name": { "ko": "와라비 킨피라", "ja": "蕨のきんぴら", "en": "Warabi no Kinpira" },
+        "tasteProfile": { "sweet": 20, "salty": 50, "spicy": 5, "umami": 55, "sour": 5 },
+        "description": { "ko": "고사리(와라비)를 간장·설탕·참기름으로 볶아낸 일본 가정식 산채 반찬", "ja": "蕨を醤油・砂糖・ごま油で炒めた日本の家庭料理の山菜おかず", "en": "Japanese home-style stir-fried bracken fern seasoned with soy sauce, sugar, and sesame oil" },
+        "ingredients": {
+          "ko": ["고사리(와라비)", "간장", "설탕", "참기름", "미림", "깨"],
+          "ja": ["蕨", "醤油", "砂糖", "ごま油", "みりん", "ごま"],
+          "en": ["Bracken fern (warabi)", "Soy sauce", "Sugar", "Sesame oil", "Mirin", "Sesame seeds"]
+        },
+        "similarityPercent": 72,
+        "strengths": {
+          "ko": ["동일 산채(고사리)를 간장+참기름으로 볶는 거의 같은 조리법", "밥반찬으로서의 포지션이 완전 동일", "간장·참기름·깨 양념 삼박자가 공통"],
+          "ja": ["同じ山菜（蕨）を醤油+ごま油で炒めるほぼ同じ調理法", "ご飯のおかずとしてのポジションが完全に同じ", "醤油・ごま油・ごまの三拍子の味付けが共通"],
+          "en": ["Nearly identical method of stir-frying the same fern in soy and sesame oil", "Same positioning as a rice side dish", "Shared soy sauce, sesame oil, and sesame seed trio"]
+        },
+        "limitations": {
+          "ko": ["킨피라는 설탕·미림이 많아 단맛이 더 강함", "한국식은 들기름을 많이 쓰고 마늘을 강하게 넣음", "킨피라의 부드러운 마무리 vs 한국식의 볶음 강도 차이"],
+          "ja": ["きんぴらは砂糖・みりんが多く甘みが強い", "韓国式はえごま油を多用しニンニクを強く効かせる", "きんぴらの柔らかな仕上がり vs 韓国式の炒めの強さの違い"],
+          "en": ["Kinpira uses more sugar and mirin — sweeter overall", "Korean version uses more perilla oil and heavier garlic", "Kinpira's gentle finish vs Korean-style's more assertive stir-fry"]
+        },
+        "matchReason": { "ko": "같은 고사리를 간장+참기름으로 볶는 일본 가정 반찬", "ja": "同じ蕨を醤油+ごま油で炒める日本の家庭おかず", "en": "Same bracken fern stir-fried with soy and sesame — Japan's home-style counterpart" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "차오쥐에차이", "ja": "炒蕨菜", "en": "Chao Juecai" },
+        "tasteProfile": { "sweet": 10, "salty": 50, "spicy": 15, "umami": 55, "sour": 5 },
+        "description": { "ko": "고사리를 마늘·간장·고추로 센 불에 빠르게 볶아낸 중국 산채 반찬", "ja": "蕨をニンニク・醤油・唐辛子で強火でさっと炒めた中国の山菜おかず", "en": "Chinese stir-fried bracken fern with garlic, soy sauce, and chili over high heat" },
+        "ingredients": {
+          "ko": ["고사리(쥐에차이)", "마늘", "간장", "고추", "식용유", "소금", "참기름"],
+          "ja": ["蕨", "ニンニク", "醤油", "唐辛子", "食用油", "塩", "ごま油"],
+          "en": ["Bracken fern", "Garlic", "Soy sauce", "Chili", "Cooking oil", "Salt", "Sesame oil"]
+        },
+        "similarityPercent": 78,
+        "strengths": {
+          "ko": ["동일 산채(고사리)를 간장+마늘로 볶는 거의 동일한 조리법", "마늘을 강하게 넣는 한국식과 같은 양념 강도", "센 불 볶음으로 고사리의 아삭한 식감을 살리는 동일 기법"],
+          "ja": ["同じ山菜（蕨）を醤油+ニンニクで炒めるほぼ同じ調理法", "ニンニクを強く効かせる韓国式と同じ味付けの強さ", "強火炒めで蕨のシャキシャキ食感を活かす同じ技法"],
+          "en": ["Nearly identical method of stir-frying the same fern in soy and garlic", "Same assertive garlic intensity as the Korean version", "Same high-heat technique preserving bracken's crisp texture"]
+        },
+        "limitations": {
+          "ko": ["중국식은 건고추를 사용하나 한국식은 들기름·깨를 더 강조", "중국 산동/운남 지방의 센 불 웍 볶음 vs 한국식 중불 천천히 볶음", "한국 고사리볶음의 나물 특유 고소한 들기름 향이 부재"],
+          "ja": ["中国式は干し唐辛子を使うが韓国式はえごま油・ごまをより強調", "中国山東/雲南地方の強火ウォク炒め vs 韓国式の中火でゆっくり炒め", "韓国コサリボックムのナムル特有の香ばしいえごま油の香りがない"],
+          "en": ["Chinese version uses dried chili while Korean emphasizes perilla oil and sesame", "Chinese wok's high-heat blast vs Korean-style's medium-heat gradual stir-fry", "Lacks Korean gosari-bokkeum's signature fragrant perilla oil aroma"]
+        },
+        "tip": {
+          "ko": "들기름을 마무리에 두르고 깨를 뿌리면 한국식 고사리볶음 맛에 가까워짐",
+          "ja": "仕上げにえごま油をかけてごまを振ると韓国式コサリボックムの味に近づく",
+          "en": "Drizzle perilla oil and sprinkle sesame at the end for a Korean gosari-bokkeum finish"
+        },
+        "matchReason": { "ko": "같은 고사리를 마늘+간장으로 볶는 가장 직접적인 중국 대응 요리", "ja": "同じ蕨をニンニク+醤油で炒める最も直接的な中国の対応料理", "en": "China's most direct counterpart — same bracken fern stir-fried with garlic and soy" }
+      }
+    ]
+  },
+  "jeju-jeopjjak-bbyeoguk": {
+    "JP": [],
+    "CN": [
+      {
+        "name": { "ko": "파이구탕", "ja": "排骨湯", "en": "Paigu Tang" },
+        "tasteProfile": { "sweet": 5, "salty": 40, "spicy": 5, "umami": 70, "sour": 5 },
+        "description": { "ko": "돼지 갈비뼈를 무·생강과 함께 맑게 끓여낸 중국 전통 보양 뼈국", "ja": "豚のスペアリブを大根・生姜と一緒に澄んだスープに煮込んだ中国伝統の滋養骨スープ", "en": "Chinese traditional nourishing clear soup of pork spare ribs simmered with daikon and ginger" },
+        "ingredients": {
+          "ko": ["돼지 갈비뼈", "무", "생강", "대파", "소금", "후추", "대추(옵션)"],
+          "ja": ["豚スペアリブ", "大根", "生姜", "長ネギ", "塩", "胡椒", "ナツメ（お好みで）"],
+          "en": ["Pork spare ribs", "Daikon radish", "Ginger", "Green onion", "Salt", "Pepper", "Jujube (optional)"]
+        },
+        "similarityPercent": 76,
+        "strengths": {
+          "ko": ["돼지뼈를 맑게 오래 끓여내는 완전 동일한 조리법", "뼈에서 우러나는 콜라겐 감칠맛 중심의 동일한 맛 설계", "보양식·해장용이라는 포지션 동일"],
+          "ja": ["豚骨を澄んだスープで長時間煮込む完全に同じ調理法", "骨から出るコラーゲンの旨味中心の同じ味設計", "滋養食・二日酔い解消用というポジションが同じ"],
+          "en": ["Completely identical method of long-simmering pork bones in clear broth", "Same flavor design centered on bone collagen umami", "Same positioning as nourishing/hangover-cure soup"]
+        },
+        "limitations": {
+          "ko": ["접짝뼈국은 접짝(등뼈 부분) 특정 부위 vs 파이구탕은 갈비뼈 사용", "제주식은 메밀가루를 넣어 걸쭉하게 마무리하는 경우가 있음", "파이구탕에 넣는 무의 양이 더 많아 단맛이 강함"],
+          "ja": ["ジョプチャクビョグクは背骨部位の使用 vs 排骨湯はスペアリブ使用", "済州式はそば粉を入れてとろみをつける場合がある", "排骨湯に入れる大根の量が多く甘みが強い"],
+          "en": ["Jeopjjak uses spine bones specifically vs paigu tang uses spare ribs", "Jeju version sometimes thickened with buckwheat flour", "Paigu tang's larger amount of daikon adds more sweetness"]
+        },
+        "matchReason": { "ko": "돼지뼈를 맑게 끓인 보양 뼈국 — 제주 접짝뼈국의 대륙 친척", "ja": "豚骨を澄んだスープに煮込んだ滋養骨スープ — 済州ジョプチャクビョグクの大陸の親戚", "en": "Clear pork bone nourishing soup — the Chinese continental cousin of Jeju's jeopjjak-bbyeoguk" }
+      }
+    ]
+  },
+  "jeju-dwaeji-kimchi-bokkeum": {
+    "JP": [
+      {
+        "name": { "ko": "부타 김치", "ja": "豚キムチ", "en": "Buta Kimchi" },
+        "tasteProfile": { "sweet": 20, "salty": 50, "spicy": 55, "umami": 65, "sour": 15 },
+        "description": { "ko": "돼지고기와 김치를 간장·참기름으로 함께 볶아낸 일본식 가정 반찬", "ja": "豚肉とキムチを醤油・ごま油で一緒に炒めた日本式の家庭おかず", "en": "Japanese home-style stir-fried pork belly and kimchi with soy sauce and sesame oil" },
+        "ingredients": {
+          "ko": ["돼지 삼겹살", "배추김치", "간장", "참기름", "설탕", "마요네즈(옵션)", "대파"],
+          "ja": ["豚バラ肉", "白菜キムチ", "醤油", "ごま油", "砂糖", "マヨネーズ（お好みで）", "長ネギ"],
+          "en": ["Pork belly", "Napa kimchi", "Soy sauce", "Sesame oil", "Sugar", "Mayonnaise (optional)", "Green onion"]
+        },
+        "similarityPercent": 82,
+        "strengths": {
+          "ko": ["돼지고기+김치를 볶는 완전 동일한 핵심 구성", "간장·참기름 베이스의 양념이 동일", "밥반찬 또는 안주로 먹는 동일한 포지션"],
+          "ja": ["豚肉+キムチを炒める完全に同じ核心構成", "醤油・ごま油ベースの味付けが同じ", "ご飯のおかずまたはおつまみとして食べる同じポジション"],
+          "en": ["Completely identical core composition of pork + kimchi stir-fry", "Same soy sauce and sesame oil seasoning base", "Same positioning as rice side dish or drinking snack"]
+        },
+        "limitations": {
+          "ko": ["일본식은 설탕·마요네즈를 넣어 단맛이 더 강함", "제주 흑돼지의 진한 육향이 일반 삼겹살과 다름", "제주식은 고춧가루를 추가해 매운맛이 더 강렬"],
+          "ja": ["日本式は砂糖・マヨネーズを入れて甘みが強い", "済州黒豚の濃い肉の風味が普通の豚バラと異なる", "済州式は唐辛子粉を追加して辛さがより強烈"],
+          "en": ["Japanese version adds sugar and mayo for more sweetness", "Jeju black pork's deeper meat flavor differs from regular pork belly", "Jeju version adds extra gochugaru for more intense heat"]
+        },
+        "tip": {
+          "ko": "마요네즈를 빼고 고춧가루를 한 스푼 추가하면 제주식 김치볶음에 가까워짐",
+          "ja": "マヨネーズを省いて唐辛子粉をスプーン一杯追加すると済州式キムチ炒めに近づく",
+          "en": "Skip the mayo and add a spoonful of gochugaru for a more Jeju-style kick"
+        },
+        "matchReason": { "ko": "돼지고기+김치 볶음이라는 완전 동일한 조합의 일본 가정 버전", "ja": "豚肉+キムチ炒めという完全に同じ組み合わせの日本家庭版", "en": "Japan's home-cooking version of the exact same pork + kimchi stir-fry combination" }
+      }
+    ],
+    "CN": []
+  },
+  "jeju-galchi-gui": {
+    "JP": [
+      {
+        "name": { "ko": "타치우오 시오야키", "ja": "太刀魚の塩焼き", "en": "Tachiuo no Shioyaki" },
+        "tasteProfile": { "sweet": 5, "salty": 55, "spicy": 0, "umami": 70, "sour": 5 },
+        "description": { "ko": "갈치(타치우오)에 소금을 뿌려 직화 또는 그릴에 구워낸 일본 전통 생선구이", "ja": "太刀魚に塩を振って直火またはグリルで焼き上げた日本伝統の魚の塩焼き", "en": "Traditional Japanese salt-grilled cutlassfish (tachiuo) — same species as Korean galchi" },
+        "ingredients": {
+          "ko": ["갈치(타치우오)", "천일염", "레몬(옵션)", "무즙(옵션)"],
+          "ja": ["太刀魚", "天然塩", "レモン（お好みで）", "大根おろし（お好みで）"],
+          "en": ["Cutlassfish (tachiuo)", "Sea salt", "Lemon (optional)", "Grated daikon (optional)"]
+        },
+        "similarityPercent": 85,
+        "strengths": {
+          "ko": ["동일 어종(갈치/타치우오)을 소금구이하는 완전 동일한 요리", "생선 껍질을 바삭하게 구워 살을 발라 먹는 동일한 식사 방식", "지방이 풍부한 갈치 특유의 고소한 맛을 살리는 동일 철학"],
+          "ja": ["同じ魚種（太刀魚）を塩焼きにする完全に同じ料理", "魚の皮をパリッと焼いて身をほぐして食べる同じ食べ方", "脂の豊富な太刀魚特有の香ばしい味を活かす同じ哲学"],
+          "en": ["Completely identical dish — same fish species salt-grilled", "Same eating style of crispy skin and flaking the flesh", "Same philosophy of showcasing cutlassfish's rich fatty flavor"]
+        },
+        "limitations": {
+          "ko": ["일본식은 무즙·레몬을 곁들이나 한국식은 쌈장 또는 단독", "한국 갈치구이는 양념장(고추장 베이스)을 바르는 변형도 흔함", "한국식이 소금을 더 강하게 뿌려 짠맛이 약간 더 강한 경향"],
+          "ja": ["日本式は大根おろし・レモンを添えるが韓国式はサムジャンまたは単独", "韓国のカルチグイはヤンニョムジャン（コチュジャンベース）を塗る変形も多い", "韓国式は塩をより強く振って塩味がやや強い傾向"],
+          "en": ["Japanese version pairs with daikon and lemon; Korean served with ssamjang or plain", "Korean galchi-gui has a popular gochujang-glazed variant", "Korean tends to salt more heavily for a slightly saltier profile"]
+        },
+        "matchReason": { "ko": "동일 생선+동일 소금구이 — 한일 양국이 공유하는 갈치 요리의 정석", "ja": "同じ魚+同じ塩焼き — 日韓両国が共有する太刀魚料理の定石", "en": "Same fish, same salt-grill — the shared Korean-Japanese standard for cutlassfish" }
+      }
+    ],
+    "CN": [
+      {
+        "name": { "ko": "샹젠다이위", "ja": "香煎帯魚", "en": "Xiang Jian Daiyu" },
+        "tasteProfile": { "sweet": 10, "salty": 50, "spicy": 10, "umami": 65, "sour": 10 },
+        "description": { "ko": "갈치(다이위)에 소금·후추로 밑간해 기름에 노릇하게 팬프라이한 중국식 생선구이", "ja": "太刀魚（帯魚）に塩・胡椒で下味をつけて油でこんがりパンフライした中国式の魚焼き", "en": "Chinese pan-fried cutlassfish seasoned with salt and pepper, fried golden in oil" },
+        "ingredients": {
+          "ko": ["갈치(다이위)", "소금", "후추", "생강", "대파", "간장", "식용유", "식초(소량)"],
+          "ja": ["太刀魚（帯魚）", "塩", "胡椒", "生姜", "長ネギ", "醤油", "食用油", "酢（少量）"],
+          "en": ["Cutlassfish (daiyu)", "Salt", "Pepper", "Ginger", "Green onion", "Soy sauce", "Cooking oil", "Vinegar (small amount)"]
+        },
+        "similarityPercent": 68,
+        "strengths": {
+          "ko": ["동일 어종(갈치/다이위)을 사용하는 점이 동일", "소금 간으로 생선 본연의 맛을 살리는 양념 철학 공유", "바삭한 겉면+촉촉한 속살의 식감 대비가 비슷"],
+          "ja": ["同じ魚種（太刀魚/帯魚）を使う点が同じ", "塩味で魚本来の味を活かす味付けの哲学を共有", "カリカリの表面+しっとりした身の食感コントラストが似ている"],
+          "en": ["Uses the same cutlassfish species", "Shares the seasoning philosophy of salt-based enhancement of natural fish flavor", "Similar texture contrast of crispy exterior and moist interior"]
+        },
+        "limitations": {
+          "ko": ["팬프라이(기름 지짐) vs 직화 소금구이 — 조리법 차이가 있음", "중국식은 식초·간장 소스를 끼얹어 새콤한 맛이 추가됨", "기름에 지져내어 고소한 맛이 강하지만 담백함은 덜함"],
+          "ja": ["パンフライ（油焼き） vs 直火塩焼き — 調理法の違いがある", "中国式は酢・醤油ソースをかけて酸味が加わる", "油で焼くので香ばしさが強いがあっさり感は少ない"],
+          "en": ["Pan-frying in oil vs direct-heat salt grilling — different cooking method", "Chinese version adds vinegar-soy sauce for a tangy note", "Oil-fried version is richer but less clean-flavored"]
+        },
+        "matchReason": { "ko": "같은 갈치를 구워 먹는 중국 대응 요리 — 조리법만 팬프라이로 다름", "ja": "同じ太刀魚を焼いて食べる中国の対応料理 — 調理法のみパンフライで異なる", "en": "China's cutlassfish counterpart — same fish, just pan-fried instead of charcoal-grilled" }
+      }
+    ]
+  }
+}
