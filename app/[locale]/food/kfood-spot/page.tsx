@@ -20,11 +20,11 @@ interface Props {
 }
 
 const META = {
-  ko: { title: "K-Food Spot | Cloud with you", desc: "한국 현지 맛집 가이드 (한국관광공사 공식 데이터)" },
-  ja: { title: "K-Food Spot | Cloud with you", desc: "韓国現地のグルメガイド (韓国観光公社 公式)" },
-  en: { title: "K-Food Spot | Cloud with you", desc: "Korea local food guide (KTO official data)" },
-  'zh-CN': { title: "K-Food Spot | Cloud with you", desc: "韩国当地美食指南（韩国观光公社官方）" },
-  'zh-TW': { title: "K-Food Spot | Cloud with you", desc: "韓國在地美食指南（韓國觀光公社官方）" },
+  ko: { title: "K-Food Spot | Clouds with you", desc: "한국 현지 맛집 가이드 (한국관광공사 공식 데이터)" },
+  ja: { title: "K-Food Spot | Clouds with you", desc: "韓国現地のグルメガイド (韓国観光公社 公式)" },
+  en: { title: "K-Food Spot | Clouds with you", desc: "Korea local food guide (KTO official data)" },
+  'zh-CN': { title: "K-Food Spot | Clouds with you", desc: "韩国当地美食指南（韩国观光公社官方）" },
+  'zh-TW': { title: "K-Food Spot | Clouds with you", desc: "韓國在地美食指南（韓國觀光公社官方）" },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

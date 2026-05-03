@@ -71,7 +71,7 @@ export function Footer({ locale }: FooterProps) {
           }}
           className="mb-2"
         >
-          Cloud with you
+          Clouds with you
         </p>
         <p className="text-xs text-stone uppercase tracking-[4px] mb-6">
           YOUR TRAVEL COMPANION
@@ -101,7 +101,7 @@ export function Footer({ locale }: FooterProps) {
 
         {/* 카피라이트 — 동적 연도 + 베타 라벨 */}
         <p className="text-xs text-stone/70">
-          © {year} Cloud with you ({t.betaLabel}). All rights reserved.
+          © {year} Clouds with you ({t.betaLabel}). All rights reserved.
         </p>
       </div>
     </footer>

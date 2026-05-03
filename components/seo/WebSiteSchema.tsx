@@ -15,7 +15,7 @@ export function WebSiteSchema({ locale }: Props) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Cloud with you',
+    name: 'Clouds with you',
     url: `${baseUrl}/${locale}`,
     inLanguage: locale,
     potentialAction: {

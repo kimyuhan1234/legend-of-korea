@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Cloud with you',
+    name: 'Clouds with you',
     short_name: 'LegendKR',
     description: '한국 전설을 따라가는 미션 어드벤처',
     theme_color: '#FF6B35',

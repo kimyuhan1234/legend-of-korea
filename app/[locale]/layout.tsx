@@ -38,11 +38,11 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   // P3A-1: 5 로케일 fallback 메타. 페이지별 generateMetadata 에서 namespace
   // 'metadata.*' 로 덮어씀 (P3A-2). 본 default 는 미정의 페이지의 안전망.
   const titles: Record<string, string> = {
-    ko: "Cloud with you - 한국 전설을 따라가는 미션 어드벤처",
-    en: "Cloud with you - Mission Adventure following Korean Legends",
-    ja: "Cloud with you - 韓国の伝説を辿るミッションアドベンチャー",
-    "zh-CN": "Cloud with you - 跟随韩国传说的任务冒险",
-    "zh-TW": "Cloud with you - 跟隨韓國傳說的任務冒險",
+    ko: "Clouds with you - 한국 전설을 따라가는 미션 어드벤처",
+    en: "Clouds with you - Mission Adventure following Korean Legends",
+    ja: "Clouds with you - 韓国の伝説を辿るミッションアドベンチャー",
+    "zh-CN": "Clouds with you - 跟随韩国传说的任务冒险",
+    "zh-TW": "Clouds with you - 跟隨韓國傳說的任務冒險",
   }
 
   const descriptions: Record<string, string> = {
@@ -61,13 +61,13 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     metadataBase: new URL(siteUrl),
     title: {
       default: titles[locale] || titles.en || titles.ko,
-      template: "%s | Cloud with you",
+      template: "%s | Clouds with you",
     },
     description: descriptions[locale] || descriptions.en || descriptions.ko,
     formatDetection: { telephone: false },
     openGraph: {
       type: "website",
-      siteName: "Cloud with you",
+      siteName: "Clouds with you",
       title: titles[locale] || titles.en || titles.ko,
       description: descriptions[locale] || descriptions.en || descriptions.ko,
       url: `${siteUrl}/${locale}`,

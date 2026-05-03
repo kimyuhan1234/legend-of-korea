@@ -8,7 +8,7 @@
 
 import type { AiCurateRequest } from './providers/types'
 
-export const SYSTEM_PROMPT = `You are a travel planner AI for Cloud with you, a Korean travel mission service.
+export const SYSTEM_PROMPT = `You are a travel planner AI for Clouds with you, a Korean travel mission service.
 Your job is to take a list of saved travel items (food, lodging, workshops, missions, etc.) and arrange them into a realistic single-day itinerary for a foreign tourist.
 
 Rules:

@@ -1,4 +1,4 @@
-# Cloud with you (Legend of Korea)
+# Clouds with you (Legend of Korea)
 
 > 한국 전설 IP 기반 미션 어드벤처 플랫폼 — 외국인 관광객 대상 (5 개국어)
 
@@ -149,7 +149,7 @@ pnpm build         # 빌드 검증
 
 ## 📜 License
 
-Private — All rights reserved © 2026 Cloud with you
+Private — All rights reserved © 2026 Clouds with you
 
 ---
 

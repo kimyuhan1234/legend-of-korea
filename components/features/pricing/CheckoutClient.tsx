@@ -106,7 +106,7 @@ export function CheckoutClient({ pass, userId, userEmail, userName, locale }: Pr
       const orderId = `pass_${pass.type}_${userId}_${Date.now()}`
       await widgets.requestPayment({
         orderId,
-        orderName: `Cloud with you ${pass.type.toUpperCase()} Pass (${pass.durationDays} days)`,
+        orderName: `Clouds with you ${pass.type.toUpperCase()} Pass (${pass.durationDays} days)`,
         customerName: userName,
         customerEmail: userEmail ?? undefined,
         successUrl: `${window.location.origin}/${locale}/pass/success?type=${pass.type}`,

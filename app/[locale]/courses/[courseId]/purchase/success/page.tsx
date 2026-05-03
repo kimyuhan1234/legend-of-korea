@@ -17,7 +17,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "purchase" })
-  return { title: `${t("orderComplete")} | Cloud with you` }
+  return { title: `${t("orderComplete")} | Clouds with you` }
 }
 
 export default async function PurchaseSuccessPage({ params, searchParams }: Props) {

@@ -25,7 +25,7 @@
     "feature_retro_camera": "레트로 카메라"
   },
   "seo": {
-    "title": "Cloud with you - 한국 전설을 따라가는 미션 어드벤처",
+    "title": "Clouds with you - 한국 전설을 따라가는 미션 어드벤처",
     "description": "한국의 전설 속 장소를 직접 탐험하며 미션을 해결하는 프리미엄 어드벤처 서비스입니다."
   },
   "error": {
@@ -37,7 +37,7 @@
     "retry": "다시 시도"
   },
   "common": {
-    "siteName": "Cloud with you",
+    "siteName": "Clouds with you",
     "siteDescription": "한국 전설을 따라가는 미션 어드벤처",
     "login": "로그인",
     "signup": "회원가입",
@@ -192,7 +192,7 @@
     "footerTerms": "이용약관",
     "footerPrivacy": "개인정보처리방침",
     "footerPartner": "파트너 문의",
-    "footerCopyright": "© 2026 Cloud with you",
+    "footerCopyright": "© 2026 Clouds with you",
     "signup": "회원가입"
   },
   "course": {
@@ -213,7 +213,7 @@
     "noReviews": "첫 전설의 주인공이 되세요",
     "outOfStock": "품절",
     "restockAlert": "재입고 알림 받기",
-    "disclaimer": "숙소·교통 예약은 외부 사이트에서 직접 진행되며, Cloud with you는 해당 예약에 대한 책임을 지지 않습니다.",
+    "disclaimer": "숙소·교통 예약은 외부 사이트에서 직접 진행되며, Clouds with you는 해당 예약에 대한 책임을 지지 않습니다.",
     "exploreCourses": "코스 탐색",
     "allCourses": "전체 코스",
     "filterDifficulty": "난이도 선택",
@@ -660,7 +660,7 @@
     "terms": "이용약관",
     "privacy": "개인정보처리방침",
     "contact": "고객센터",
-    "copyright": "Cloud with you ({beta}). All rights reserved."
+    "copyright": "Clouds with you ({beta}). All rights reserved."
   },
   "purchase": {
     "stepKit": "플랜 확인",
@@ -2081,7 +2081,7 @@
   },
   "memories": {
     "meta": {
-      "title": "메모리즈 | Cloud with you",
+      "title": "메모리즈 | Clouds with you",
       "description": "나의 전설 여행 기록"
     },
     "title": "MEMORIES",

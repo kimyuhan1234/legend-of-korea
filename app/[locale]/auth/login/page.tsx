@@ -26,11 +26,11 @@ interface Props {
 }
 
 const META = {
-  ko:      { title: "로그인 | Cloud with you",    description: "전설의 세계로 입장하세요" },
-  ja:      { title: "ログイン | Cloud with you",  description: "伝説の世界へようこそ" },
-  en:      { title: "Sign In | Cloud with you",    description: "Enter the world of legends" },
-  'zh-CN': { title: "登录 | Cloud with you",       description: "进入传说的世界" },
-  'zh-TW': { title: "登入 | Cloud with you",       description: "進入傳說的世界" },
+  ko:      { title: "로그인 | Clouds with you",    description: "전설의 세계로 입장하세요" },
+  ja:      { title: "ログイン | Clouds with you",  description: "伝説の世界へようこそ" },
+  en:      { title: "Sign In | Clouds with you",    description: "Enter the world of legends" },
+  'zh-CN': { title: "登录 | Clouds with you",       description: "进入传说的世界" },
+  'zh-TW': { title: "登入 | Clouds with you",       description: "進入傳說的世界" },
 }
 
 const TEXT = {
@@ -67,7 +67,7 @@ export default function LoginPage({ params, searchParams }: Props) {
               <div className="w-10 h-10 rounded-xl bg-[#F0B8B8] flex items-center justify-center">
                 <span className="text-[#111] font-black text-lg">伝</span>
               </div>
-              <span className="text-white font-bold text-xl tracking-wide">Cloud with you</span>
+              <span className="text-white font-bold text-xl tracking-wide">Clouds with you</span>
             </div>
 
             <h1 className="text-white font-bold text-2xl leading-tight whitespace-pre-line">

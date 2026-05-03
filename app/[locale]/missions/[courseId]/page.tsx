@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: CourseMapProps): Promise<Meta
     ? ((course.title as unknown as I18nText)[locale as keyof I18nText] || (course.title as unknown as I18nText).ko || 'Mission')
     : 'Mission'
 
-  const siteName = locale === 'ja' ? 'Cloud with you' : locale === 'en' ? 'Cloud with you' : 'Cloud with you'
+  const siteName = locale === 'ja' ? 'Clouds with you' : locale === 'en' ? 'Clouds with you' : 'Clouds with you'
   const label = locale === 'ja' ? 'ミッション' : locale === 'en' ? 'Missions' : '미션'
 
   return {

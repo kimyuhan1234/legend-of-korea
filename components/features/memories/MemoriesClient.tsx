@@ -304,7 +304,7 @@ export function MemoriesClient({ locale }: Props) {
     const text = `${getI18n(item.courseTitle, locale)} - ${getI18n(item.missionTitle, locale)}`
     try {
       if (navigator.share) {
-        await navigator.share({ title: 'Cloud with you', text })
+        await navigator.share({ title: 'Clouds with you', text })
       } else {
         await navigator.clipboard.writeText(text)
       }

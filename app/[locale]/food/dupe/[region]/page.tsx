@@ -42,7 +42,7 @@ function collectGroupFoods(group: RegionGroup): RegionalFood[] {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const group = getRegionGroup(params.region)
   if (group) {
-    return { title: `${getL(group.name, params.locale)} ${params.locale === "ko" ? "음식" : params.locale === "ja" ? "料理" : "Food"} | Cloud with you` }
+    return { title: `${getL(group.name, params.locale)} ${params.locale === "ko" ? "음식" : params.locale === "ja" ? "料理" : "Food"} | Clouds with you` }
   }
   return { title: "Not Found" }
 }

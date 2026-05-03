@@ -25,7 +25,7 @@
     "feature_retro_camera": "レトロカメラ"
   },
   "seo": {
-    "title": "Cloud with you - 韓国の伝説を辿るミッションアドベンチャー",
+    "title": "Clouds with you - 韓国の伝説を辿るミッションアドベンチャー",
     "description": "韓国의伝説的な場所を探索し、ミッションを解決するプレミアムアドベンチャーサービスです。"
   },
   "error": {
@@ -37,7 +37,7 @@
     "retry": "再試行"
   },
   "common": {
-    "siteName": "Cloud with you",
+    "siteName": "Clouds with you",
     "siteDescription": "韓国の伝説をたどるミッションアドベンチャー",
     "login": "ログイン",
     "signup": "新規登録",
@@ -192,7 +192,7 @@
     "footerTerms": "利用規約",
     "footerPrivacy": "プライバシーポリシー",
     "footerPartner": "パートナー問い合わせ",
-    "footerCopyright": "© 2026 Cloud with you",
+    "footerCopyright": "© 2026 Clouds with you",
     "signup": "会員登録"
   },
   "course": {
@@ -213,7 +213,7 @@
     "noReviews": "最初の伝説の主人公になりましょう",
     "outOfStock": "品切れ",
     "restockAlert": "入荷通知を受け取る",
-    "disclaimer": "宿泊・交通の予約は外部サイトで直接行われ、Cloud with youは当該予約に対する責任を負いません。",
+    "disclaimer": "宿泊・交通の予約は外部サイトで直接行われ、Clouds with youは当該予約に対する責任を負いません。",
     "exploreCourses": "コース探索",
     "allCourses": "全コース",
     "filterDifficulty": "難易度を選択",
@@ -656,11 +656,11 @@
     "legendaryAdventurer": "伝説の冒険者 — 全都市制覇！"
   },
   "footer": {
-    "company": "Cloud with you株式会社",
+    "company": "Clouds with you株式会社",
     "terms": "利用規約",
     "privacy": "プライバシーポリシー",
     "contact": "お問い合わせ",
-    "copyright": "Cloud with you ({beta}). All rights reserved."
+    "copyright": "Clouds with you ({beta}). All rights reserved."
   },
   "purchase": {
     "stepKit": "プラン確認",
@@ -1952,7 +1952,7 @@
   },
   "memories": {
     "meta": {
-      "title": "メモリーズ | Cloud with you",
+      "title": "メモリーズ | Clouds with you",
       "description": "伝説の旅の記録"
     },
     "title": "MEMORIES",

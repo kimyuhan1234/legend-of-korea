@@ -11,7 +11,7 @@ import { Resend } from "resend"
  */
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY
-const FROM = process.env.RESEND_FROM ?? "Cloud with you <onboarding@resend.dev>"
+const FROM = process.env.RESEND_FROM ?? "Clouds with you <onboarding@resend.dev>"
 
 interface SendReauthInput {
   to: string
@@ -31,44 +31,44 @@ interface I18nContent {
 
 const I18N: Record<string, (daysLeft: number, nickname: string) => I18nContent> = {
   ko: (d, n) => ({
-    subject: `[Cloud with you] 생년월일 인증 ${d}일 남음`,
+    subject: `[Clouds with you] 생년월일 인증 ${d}일 남음`,
     greeting: `안녕하세요, ${n}님`,
     body: "한국 개인정보보호법 제22조의2 (만 14세 미만 보호) 에 따라 생년월일 인증이 필요합니다.",
     warning: `<strong>${d}일 후 자동 로그아웃</strong>됩니다. 인증 후에는 다시 묻지 않습니다.`,
     cta: "지금 인증하기",
-    signature: "감사합니다.<br/>Cloud with you",
+    signature: "감사합니다.<br/>Clouds with you",
   }),
   ja: (d, n) => ({
-    subject: `[Cloud with you] 生年月日認証: あと${d}日`,
+    subject: `[Clouds with you] 生年月日認証: あと${d}日`,
     greeting: `${n}様`,
     body: "韓国個人情報保護法第22条の2 (14歳未満の保護) に基づき、生年月日の認証が必要です。",
     warning: `<strong>${d}日後に自動ログアウト</strong>されます。認証後は再度お聞きしません。`,
     cta: "今すぐ認証する",
-    signature: "ありがとうございます。<br/>Cloud with you",
+    signature: "ありがとうございます。<br/>Clouds with you",
   }),
   en: (d, n) => ({
-    subject: `[Cloud with you] Birth date verification: ${d} days left`,
+    subject: `[Clouds with you] Birth date verification: ${d} days left`,
     greeting: `Hello ${n}`,
     body: "Under Korea's Personal Information Protection Act §22-2 (protection of users under 14), please verify your birth date.",
     warning: `You will be <strong>automatically signed out in ${d} days</strong>. After verification we won't ask again.`,
     cta: "Verify now",
-    signature: "Thank you,<br/>Cloud with you",
+    signature: "Thank you,<br/>Clouds with you",
   }),
   "zh-CN": (d, n) => ({
-    subject: `[Cloud with you] 出生日期认证：剩余${d}天`,
+    subject: `[Clouds with you] 出生日期认证：剩余${d}天`,
     greeting: `${n}您好`,
     body: "依据韩国《个人信息保护法》第22条之2（保护未满14岁儿童），需要验证出生日期。",
     warning: `<strong>${d}天后将自动退出登录</strong>。验证后将不再询问。`,
     cta: "立即验证",
-    signature: "谢谢。<br/>Cloud with you",
+    signature: "谢谢。<br/>Clouds with you",
   }),
   "zh-TW": (d, n) => ({
-    subject: `[Cloud with you] 出生日期驗證：剩餘${d}天`,
+    subject: `[Clouds with you] 出生日期驗證：剩餘${d}天`,
     greeting: `${n}您好`,
     body: "依據韓國《個人資料保護法》第22條之2（保護未滿14歲兒童），需要驗證出生日期。",
     warning: `<strong>${d}天後將自動登出</strong>。驗證後將不再詢問。`,
     cta: "立即驗證",
-    signature: "謝謝。<br/>Cloud with you",
+    signature: "謝謝。<br/>Clouds with you",
   }),
 }
 

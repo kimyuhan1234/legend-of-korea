@@ -16,35 +16,35 @@ const TEXT: Record<Lang, {
   contactLabel: string
 }> = {
   ko: {
-    title: '테스트 중 | Cloud with you',
+    title: '테스트 중 | Clouds with you',
     heading: '현재 테스트 기간입니다',
     line1: '서비스 품질 향상을 위해 제한된 인원만 이용 가능합니다.',
     line2: '정식 오픈 시 다시 찾아주세요!',
     contactLabel: '문의',
   },
   ja: {
-    title: 'テスト中 | Cloud with you',
+    title: 'テスト中 | Clouds with you',
     heading: '現在テスト期間中です',
     line1: 'サービス品質向上のため、限られた人数のみご利用いただけます。',
     line2: '正式オープンの際はまたお越しください！',
     contactLabel: 'お問い合わせ',
   },
   en: {
-    title: 'Testing | Cloud with you',
+    title: 'Testing | Clouds with you',
     heading: 'We are in a testing period',
     line1: 'Access is limited to a small group so we can improve the service.',
     line2: 'Please come back when we officially launch!',
     contactLabel: 'Contact',
   },
   'zh-CN': {
-    title: '测试中 | Cloud with you',
+    title: '测试中 | Clouds with you',
     heading: '目前处于测试期间',
     line1: '为提升服务质量，仅限有限人数访问。',
     line2: '正式上线时请再次光临！',
     contactLabel: '咨询',
   },
   'zh-TW': {
-    title: '測試中 | Cloud with you',
+    title: '測試中 | Clouds with you',
     heading: '目前處於測試期間',
     line1: '為提升服務品質，僅限有限人數存取。',
     line2: '正式上線時請再次光臨！',
@@ -100,7 +100,7 @@ export default function MaintenancePage({ params }: Props) {
             marginBottom: 28,
           }}
         >
-          Cloud with you
+          Clouds with you
         </div>
         <h1
           style={{

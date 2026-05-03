@@ -22,7 +22,7 @@ function asLocale(raw: string): Locale {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const pick = findLocalPick(params.city, params.pickId)
   if (!pick) return { title: 'Not Found' }
-  return { title: `${pick.searchName} | Cloud with you` }
+  return { title: `${pick.searchName} | Clouds with you` }
 }
 
 export default async function LocalPickDetailPage({ params }: Props) {

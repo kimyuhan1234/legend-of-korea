@@ -18,7 +18,7 @@ interface Props {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Pass Activated | Cloud with you',
+    title: 'Pass Activated | Clouds with you',
     robots: { index: false, follow: false },
   }
 }

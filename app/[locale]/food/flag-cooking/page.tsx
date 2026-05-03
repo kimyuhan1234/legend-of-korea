@@ -9,9 +9,9 @@ interface Props {
 }
 
 const META = {
-  ko: { title: "플래그 쿠킹 | Cloud with you", desc: "12개국 × 한국 식재료로 만든 창작 퓨전 레시피 69가지" },
-  ja: { title: "フラッグ料理 | Cloud with you", desc: "12カ国×韓国食材で作った創作フュージョンレシピ69種" },
-  en: { title: "Flag Cooking | Cloud with you", desc: "69 original fusion recipes across 12 countries × Korean ingredients" },
+  ko: { title: "플래그 쿠킹 | Clouds with you", desc: "12개국 × 한국 식재료로 만든 창작 퓨전 레시피 69가지" },
+  ja: { title: "フラッグ料理 | Clouds with you", desc: "12カ国×韓国食材で作った創作フュージョンレシピ69種" },
+  en: { title: "Flag Cooking | Clouds with you", desc: "69 original fusion recipes across 12 countries × Korean ingredients" },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

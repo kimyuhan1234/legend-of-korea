@@ -121,7 +121,7 @@ export async function Navbar({ locale }: NavbarProps) {
               textDecoration: 'none',
             }}
           >
-            Cloud with you
+            Clouds with you
           </Link>
         </div>
 

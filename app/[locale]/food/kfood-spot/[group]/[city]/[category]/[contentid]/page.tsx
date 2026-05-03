@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const lk = asLocale(params.locale)
   const detail = await fetchRestaurantDetail(params.contentid, lk)
   if (!detail) return { title: 'Not Found' }
-  return { title: `${detail.title} | Cloud with you` }
+  return { title: `${detail.title} | Clouds with you` }
 }
 
 export default async function KFoodSpotDetailPage({ params }: Props) {

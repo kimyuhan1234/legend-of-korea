@@ -25,7 +25,7 @@
     "feature_retro_camera": "复古相机"
   },
   "seo": {
-    "title": "Cloud with you - 追寻韩国传说的任务冒险",
+    "title": "Clouds with you - 追寻韩国传说的任务冒险",
     "description": "探索韩国传说中的名胜古迹，完成各种任务的高端冒险体验服务。"
   },
   "error": {
@@ -37,7 +37,7 @@
     "retry": "重试"
   },
   "common": {
-    "siteName": "Cloud with you",
+    "siteName": "Clouds with you",
     "siteDescription": "穿越韩国传说的任务冒险",
     "login": "登录",
     "signup": "注册",
@@ -192,7 +192,7 @@
     "footerTerms": "服务条款",
     "footerPrivacy": "隐私政策",
     "footerPartner": "合作咨询",
-    "footerCopyright": "© 2026 Cloud with you",
+    "footerCopyright": "© 2026 Clouds with you",
     "signup": "注册"
   },
   "course": {
@@ -213,7 +213,7 @@
     "noReviews": "成为第一位传奇英雄",
     "outOfStock": "已售罄",
     "restockAlert": "到货通知",
-    "disclaimer": "住宿和交通预订通过外部网站完成。Cloud with you不对这些预订负责。",
+    "disclaimer": "住宿和交通预订通过外部网站完成。Clouds with you不对这些预订负责。",
     "exploreCourses": "探索路线",
     "allCourses": "全部路线",
     "filterDifficulty": "选择难度",
@@ -656,11 +656,11 @@
     "legendaryAdventurer": "传说中的冒险家 — 征服了所有城市！"
   },
   "footer": {
-    "company": "Cloud with you Co., Ltd.",
+    "company": "Clouds with you Co., Ltd.",
     "terms": "服务条款",
     "privacy": "隐私政策",
     "contact": "联系我们",
-    "copyright": "Cloud with you ({beta}). All rights reserved."
+    "copyright": "Clouds with you ({beta}). All rights reserved."
   },
   "purchase": {
     "stepKit": "确认方案",
@@ -1952,7 +1952,7 @@
   },
   "memories": {
     "meta": {
-      "title": "回忆录 | Cloud with you",
+      "title": "回忆录 | Clouds with you",
       "description": "我的传说旅行记录"
     },
     "title": "MEMORIES",

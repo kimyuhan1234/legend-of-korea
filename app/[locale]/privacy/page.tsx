@@ -3,11 +3,11 @@ import { Metadata } from 'next'
 interface Props { params: { locale: string } }
 
 const META: Record<string, { title: string; desc: string }> = {
-  ko: { title: '개인정보처리방침 | Cloud with you', desc: '개인정보 보호 정책' },
-  en: { title: 'Privacy Policy | Cloud with you', desc: 'Privacy Policy' },
-  ja: { title: 'プライバシーポリシー | Cloud with you', desc: 'プライバシーポリシー' },
-  'zh-CN': { title: '隐私政策 | Cloud with you', desc: '隐私保护政策' },
-  'zh-TW': { title: '隱私權政策 | Cloud with you', desc: '隱私保護政策' },
+  ko: { title: '개인정보처리방침 | Clouds with you', desc: '개인정보 보호 정책' },
+  en: { title: 'Privacy Policy | Clouds with you', desc: 'Privacy Policy' },
+  ja: { title: 'プライバシーポリシー | Clouds with you', desc: 'プライバシーポリシー' },
+  'zh-CN': { title: '隐私政策 | Clouds with you', desc: '隐私保护政策' },
+  'zh-TW': { title: '隱私權政策 | Clouds with you', desc: '隱私保護政策' },
 }
 
 type Section = { heading: string; body: string }
@@ -19,7 +19,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '1. 개인정보의 처리 목적',
-        body: 'Cloud with you(이하 "회사")는 다음 목적을 위해 개인정보를 처리합니다.\n• 회원 가입 및 관리: 서비스 이용계약 체결, 본인 확인, 회원 식별, 탈퇴 처리\n• 서비스 제공: 여행 패스 구독, 빗방울 적립, 여행 플래너, 커뮤니티 기능\n• 고객 지원: 불만 처리 및 공지사항 전달\n• 법적 의무 이행: 전자상거래법상 거래 기록 보관',
+        body: 'Clouds with you(이하 "회사")는 다음 목적을 위해 개인정보를 처리합니다.\n• 회원 가입 및 관리: 서비스 이용계약 체결, 본인 확인, 회원 식별, 탈퇴 처리\n• 서비스 제공: 여행 패스 구독, 빗방울 적립, 여행 플래너, 커뮤니티 기능\n• 고객 지원: 불만 처리 및 공지사항 전달\n• 법적 의무 이행: 전자상거래법상 거래 기록 보관',
       },
       {
         heading: '2. 처리하는 개인정보의 항목',
@@ -65,7 +65,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '1. Purposes of Processing Personal Data',
-        body: 'Cloud with you ("Company") processes personal data for the following purposes:\n• Account registration and management: contract formation, identity verification, member identification, account deletion\n• Service delivery: travel pass subscriptions, Raindrop (빗방울) accrual, travel planner, community features\n• Customer support: complaint handling and notifications\n• Legal obligations: retention of transaction records under applicable e-commerce law',
+        body: 'Clouds with you ("Company") processes personal data for the following purposes:\n• Account registration and management: contract formation, identity verification, member identification, account deletion\n• Service delivery: travel pass subscriptions, Raindrop (빗방울) accrual, travel planner, community features\n• Customer support: complaint handling and notifications\n• Legal obligations: retention of transaction records under applicable e-commerce law',
       },
       {
         heading: '2. Categories of Personal Data Collected',
@@ -111,7 +111,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '1. 個人情報の処理目的',
-        body: 'Cloud with you（以下「当社」）は以下の目的で個人情報を処理します。\n• 会員登録・管理: 利用契約締結、本人確認、会員識別、退会処理\n• サービス提供: 旅行パスの購読、雨粒（빗방울）の付与、旅行プランナー、コミュニティ機能\n• カスタマーサポート: 問い合わせ対応・お知らせ配信\n• 法的義務: 電子商取引法に基づく取引記録の保管',
+        body: 'Clouds with you（以下「当社」）は以下の目的で個人情報を処理します。\n• 会員登録・管理: 利用契約締結、本人確認、会員識別、退会処理\n• サービス提供: 旅行パスの購読、雨粒（빗방울）の付与、旅行プランナー、コミュニティ機能\n• カスタマーサポート: 問い合わせ対応・お知らせ配信\n• 法的義務: 電子商取引法に基づく取引記録の保管',
       },
       {
         heading: '2. 収集する個人情報の項目',
@@ -157,7 +157,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '1. 个人信息处理目的',
-        body: 'Cloud with you（以下简称"本公司"）出于以下目的处理个人信息。\n• 会员注册与管理：签订服务协议、身份验证、会员识别、注销处理\n• 服务提供：旅行通行证订阅、雨滴（빗방울）积分累积、旅行规划器、社区功能\n• 客户支持：投诉处理及通知发送\n• 法律义务：依据电子商务法保存交易记录',
+        body: 'Clouds with you（以下简称"本公司"）出于以下目的处理个人信息。\n• 会员注册与管理：签订服务协议、身份验证、会员识别、注销处理\n• 服务提供：旅行通行证订阅、雨滴（빗방울）积分累积、旅行规划器、社区功能\n• 客户支持：投诉处理及通知发送\n• 法律义务：依据电子商务法保存交易记录',
       },
       {
         heading: '2. 收集的个人信息项目',
@@ -203,7 +203,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '1. 個人資料處理目的',
-        body: 'Cloud with you（以下簡稱「本公司」）基於以下目的處理個人資料。\n• 會員註冊與管理：簽訂服務合約、身分驗證、會員識別、帳號刪除\n• 服務提供：旅行通行證訂閱、雨滴（빗방울）積分累積、旅行規劃器、社群功能\n• 客服支援：申訴處理及通知傳送\n• 法律義務：依電子商務法保存交易紀錄',
+        body: 'Clouds with you（以下簡稱「本公司」）基於以下目的處理個人資料。\n• 會員註冊與管理：簽訂服務合約、身分驗證、會員識別、帳號刪除\n• 服務提供：旅行通行證訂閱、雨滴（빗방울）積分累積、旅行規劃器、社群功能\n• 客服支援：申訴處理及通知傳送\n• 法律義務：依電子商務法保存交易紀錄',
       },
       {
         heading: '2. 收集的個人資料項目',

@@ -21,11 +21,11 @@ const SELECT_PROMPT: Record<string, string> = {
 }
 
 const META = {
-  ko:      { title: 'K-FOOD 제철 한식 | Cloud with you', desc: '계절마다 가장 맛있는 한국 제철 음식 32가지를 월별 달력과 함께 소개합니다' },
-  ja:      { title: 'K-FOOD 旬の韓食 | Cloud with you', desc: '季節ごとに最も美味しい韓国の旬料理32品を月別カレンダーと共に紹介' },
-  en:      { title: 'K-FOOD Seasonal | Cloud with you', desc: 'Discover 32 Korean seasonal dishes with a 12-month ingredient calendar' },
-  'zh-CN': { title: 'K-FOOD 时令韩食 | Cloud with you', desc: '介绍32道时令韩国料理及12个月食材日历' },
-  'zh-TW': { title: 'K-FOOD 時令韓食 | Cloud with you', desc: '介紹32道時令韓國料理及12個月食材日曆' },
+  ko:      { title: 'K-FOOD 제철 한식 | Clouds with you', desc: '계절마다 가장 맛있는 한국 제철 음식 32가지를 월별 달력과 함께 소개합니다' },
+  ja:      { title: 'K-FOOD 旬の韓食 | Clouds with you', desc: '季節ごとに最も美味しい韓国の旬料理32品を月別カレンダーと共に紹介' },
+  en:      { title: 'K-FOOD Seasonal | Clouds with you', desc: 'Discover 32 Korean seasonal dishes with a 12-month ingredient calendar' },
+  'zh-CN': { title: 'K-FOOD 时令韩食 | Clouds with you', desc: '介绍32道时令韩国料理及12个月食材日历' },
+  'zh-TW': { title: 'K-FOOD 時令韓食 | Clouds with you', desc: '介紹32道時令韓國料理及12個月食材日曆' },
 }
 
 const HERO = {

@@ -28,9 +28,9 @@ export const zepSpace: ZepSpace = {
       courseId: "",
       name: { ko: "로비", en: "Lobby", ja: "ロビー", 'zh-CN': "大厅", 'zh-TW': "大廳" },
       description: {
-        ko: "Cloud with you에 오신 것을 환영합니다!",
-        en: "Welcome to Cloud with you!",
-        ja: "Cloud with youへようこそ！",
+        ko: "Clouds with you에 오신 것을 환영합니다!",
+        en: "Welcome to Clouds with you!",
+        ja: "Clouds with youへようこそ！",
         'zh-CN': "欢迎来到韩国传说！",
         'zh-TW': "歡迎來到韓國傳說！",
       },

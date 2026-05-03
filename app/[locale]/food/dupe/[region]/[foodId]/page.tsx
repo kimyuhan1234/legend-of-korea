@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const region = regions.find((r) => r.code === params.region)
   const food = region?.foods.find((f) => f.id === params.foodId)
   if (!food) return { title: "Not Found" }
-  return { title: `${getL(food.name, params.locale)} | Cloud with you` }
+  return { title: `${getL(food.name, params.locale)} | Clouds with you` }
 }
 
 const UI = {

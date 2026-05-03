@@ -90,7 +90,7 @@ export function MobileHeader({ locale, links, user, t }: MobileHeaderProps) {
               textDecoration: "none",
             }}
           >
-            Cloud with you
+            Clouds with you
           </Link>
 
           {/* 우측: 언어 선택 + 햄버거 */}

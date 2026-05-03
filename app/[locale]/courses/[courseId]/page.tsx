@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = getI18n(course.description as I18nText, locale)
   const region = (course as { region?: string }).region ?? ""
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://legend-of-korea.vercel.app'
-  const fullTitle = `${title} | Cloud with you`
+  const fullTitle = `${title} | Clouds with you`
 
   // 동적 OG — 코스 제목 + 지역 (subtitle).
   // P3B-1 buildOgUrl: tier 'strong-stay' 로 STAY 톤 (코스는 보통 한 도시 깊이 탐험).

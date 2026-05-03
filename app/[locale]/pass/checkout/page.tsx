@@ -11,7 +11,7 @@ interface Props {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Checkout | Cloud with you',
+    title: 'Checkout | Clouds with you',
     robots: { index: false, follow: false },
   }
 }

@@ -8,9 +8,9 @@ interface DisclaimerProps {
 }
 
 const TEXT = {
-  ko: "숙소·교통 예약은 외부 사이트에서 직접 진행되며, Cloud with you는 해당 예약에 대한 책임을 지지 않습니다.",
-  ja: "宿泊・交通の予約は外部サイトで直接行われ、Cloud with youは当該予約に関する責任を負いません。",
-  en: "Accommodation and transport bookings are handled directly by external sites. Cloud with you is not responsible for those reservations.",
+  ko: "숙소·교통 예약은 외부 사이트에서 직접 진행되며, Clouds with you는 해당 예약에 대한 책임을 지지 않습니다.",
+  ja: "宿泊・交通の予約は外部サイトで直接行われ、Clouds with youは当該予約に関する責任を負いません。",
+  en: "Accommodation and transport bookings are handled directly by external sites. Clouds with you is not responsible for those reservations.",
 }
 
 export function Disclaimer({ locale, className = "" }: DisclaimerProps) {

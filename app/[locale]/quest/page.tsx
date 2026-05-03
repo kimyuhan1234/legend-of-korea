@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'quest.hub' })
   return {
-    title: `${t('meta_title')} | Cloud with you`,
+    title: `${t('meta_title')} | Clouds with you`,
     description: t('meta_description'),
   }
 }

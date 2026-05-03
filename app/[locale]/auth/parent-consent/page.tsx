@@ -26,7 +26,7 @@ const TEXT: Record<Lang, {
   backCta: string
 }> = {
   ko: {
-    title: '법정대리인 동의 요청 | Cloud with you',
+    title: '법정대리인 동의 요청 | Clouds with you',
     headline: '법정대리인 동의 요청',
     body: '만 14세 미만 가입을 위해서는 법정대리인의 동의가 필요합니다. 부모님 이메일을 입력해주세요.',
     parentEmailLabel: '부모님 이메일',
@@ -41,7 +41,7 @@ const TEXT: Record<Lang, {
     backCta: '돌아가기',
   },
   ja: {
-    title: '保護者同意のリクエスト | Cloud with you',
+    title: '保護者同意のリクエスト | Clouds with you',
     headline: '保護者同意のリクエスト',
     body: '14歳未満の登録には保護者の同意が必要です。保護者のメールアドレスを入力してください。',
     parentEmailLabel: '保護者のメールアドレス',
@@ -56,7 +56,7 @@ const TEXT: Record<Lang, {
     backCta: '戻る',
   },
   en: {
-    title: 'Parental Consent Request | Cloud with you',
+    title: 'Parental Consent Request | Clouds with you',
     headline: 'Parental Consent Request',
     body: 'Sign-up for users under 14 requires parental consent. Please enter a parent or guardian email address.',
     parentEmailLabel: "Parent's email address",
@@ -71,7 +71,7 @@ const TEXT: Record<Lang, {
     backCta: 'Back',
   },
   'zh-CN': {
-    title: '家长同意申请 | Cloud with you',
+    title: '家长同意申请 | Clouds with you',
     headline: '家长同意申请',
     body: '未满14岁的用户注册需要家长同意。请输入家长的电子邮件地址。',
     parentEmailLabel: '家长电子邮件',
@@ -86,7 +86,7 @@ const TEXT: Record<Lang, {
     backCta: '返回',
   },
   'zh-TW': {
-    title: '家長同意申請 | Cloud with you',
+    title: '家長同意申請 | Clouds with you',
     headline: '家長同意申請',
     body: '未滿14歲的使用者註冊需要家長同意。請輸入家長的電子郵件地址。',
     parentEmailLabel: '家長電子郵件',

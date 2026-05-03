@@ -10,11 +10,11 @@ interface Props {
 }
 
 const META = {
-  ko: { title: 'K-FOOD 뷰티 푸드 | Cloud with you', desc: '한국 음식의 건강·미용 효능을 레이더 그래프로 확인하세요' },
-  ja: { title: 'K-FOOD ビューティーフード | Cloud with you', desc: '韓国料理の健康・美容効果をレーダーチャートで確認' },
-  en: { title: 'K-FOOD Beauty Food | Cloud with you', desc: 'Discover the health & beauty benefits of Korean food' },
-  'zh-CN': { title: 'K-FOOD 美容美食 | Cloud with you', desc: '通过雷达图了解韩国美食的健康与美容功效' },
-  'zh-TW': { title: 'K-FOOD 美容美食 | Cloud with you', desc: '透過雷達圖了解韓國美食的健康與美容功效' },
+  ko: { title: 'K-FOOD 뷰티 푸드 | Clouds with you', desc: '한국 음식의 건강·미용 효능을 레이더 그래프로 확인하세요' },
+  ja: { title: 'K-FOOD ビューティーフード | Clouds with you', desc: '韓国料理の健康・美容効果をレーダーチャートで確認' },
+  en: { title: 'K-FOOD Beauty Food | Clouds with you', desc: 'Discover the health & beauty benefits of Korean food' },
+  'zh-CN': { title: 'K-FOOD 美容美食 | Clouds with you', desc: '通过雷达图了解韩国美食的健康与美容功效' },
+  'zh-TW': { title: 'K-FOOD 美容美食 | Clouds with you', desc: '透過雷達圖了解韓國美食的健康與美容功效' },
 }
 
 const HERO = {

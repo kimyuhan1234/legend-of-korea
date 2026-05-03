@@ -87,10 +87,10 @@ export interface GuideContent {
 
 export const QUEST_GUIDE: Record<Lang, GuideContent> = {
   ko: {
-    title: '🗺️ Cloud with you 미션 가이드',
+    title: '🗺️ Clouds with you 미션 가이드',
     subtitle: '한국의 숨겨진 명소를 찾아 떠나는 보물찾기 여행, 처음이어도 괜찮아요!',
     s1Title: '미션이 뭔가요?',
-    s1Body: 'Cloud with you 미션은 한국의 숨겨진 명소를 직접 방문하며 즐기는 보물찾기 여행입니다.\n\n미션 장소에 도착하면 스마트폰이 자동으로 위치를 확인하고, 퀴즈를 풀거나 사진을 찍으면 미션 완료! 보상으로 💧 빗방울(포인트)을 받을 수 있어요.',
+    s1Body: 'Clouds with you 미션은 한국의 숨겨진 명소를 직접 방문하며 즐기는 보물찾기 여행입니다.\n\n미션 장소에 도착하면 스마트폰이 자동으로 위치를 확인하고, 퀴즈를 풀거나 사진을 찍으면 미션 완료! 보상으로 💧 빗방울(포인트)을 받을 수 있어요.',
 
     s2Title: '시작하는 법',
     s2Step1Title: '코스 선택',
@@ -190,10 +190,10 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
   },
 
   ja: {
-    title: '🗺️ Cloud with you ミッションガイド',
+    title: '🗺️ Clouds with you ミッションガイド',
     subtitle: '韓国の隠れた名所を巡る宝探しの旅。初めてでも大丈夫!',
     s1Title: 'ミッションとは?',
-    s1Body: 'Cloud with you のミッションは、韓国の隠れた名所を実際に訪れながら楽しむ宝探し旅行です。\n\nミッション場所に到着するとスマホが自動で位置を確認し、クイズを解いたり写真を撮ったりすればミッション完了! ご褒美に 💧 雨粒(ポイント)がもらえます。',
+    s1Body: 'Clouds with you のミッションは、韓国の隠れた名所を実際に訪れながら楽しむ宝探し旅行です。\n\nミッション場所に到着するとスマホが自動で位置を確認し、クイズを解いたり写真を撮ったりすればミッション完了! ご褒美に 💧 雨粒(ポイント)がもらえます。',
 
     s2Title: '始め方',
     s2Step1Title: 'コース選択',
@@ -293,10 +293,10 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
   },
 
   en: {
-    title: '🗺️ Cloud with you Mission Guide',
+    title: '🗺️ Clouds with you Mission Guide',
     subtitle: 'A treasure hunt across hidden Korean gems — first-timer friendly!',
     s1Title: 'What is a Mission?',
-    s1Body: 'Cloud with you missions are treasure-hunt trips where you visit hidden spots across Korea in person.\n\nWhen you arrive at a mission spot, your phone automatically confirms your location. Solve a quiz or snap a photo and the mission is complete! You earn 💧 Raindrops (points) as a reward.',
+    s1Body: 'Clouds with you missions are treasure-hunt trips where you visit hidden spots across Korea in person.\n\nWhen you arrive at a mission spot, your phone automatically confirms your location. Solve a quiz or snap a photo and the mission is complete! You earn 💧 Raindrops (points) as a reward.',
 
     s2Title: 'Getting Started',
     s2Step1Title: 'Pick a Course',
@@ -396,10 +396,10 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
   },
 
   'zh-CN': {
-    title: '🗺️ Cloud with you 任务指南',
+    title: '🗺️ Clouds with you 任务指南',
     subtitle: '探访韩国隐藏名胜的寻宝之旅 — 新手也能轻松上手!',
     s1Title: '什么是任务?',
-    s1Body: 'Cloud with you 任务是亲自走访韩国隐藏景点的寻宝旅行。\n\n到达任务地点时,手机会自动确认位置,解答问题或拍照即可完成任务! 奖励为 💧 雨滴(积分)。',
+    s1Body: 'Clouds with you 任务是亲自走访韩国隐藏景点的寻宝旅行。\n\n到达任务地点时,手机会自动确认位置,解答问题或拍照即可完成任务! 奖励为 💧 雨滴(积分)。',
 
     s2Title: '如何开始',
     s2Step1Title: '选择课程',
@@ -499,10 +499,10 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
   },
 
   'zh-TW': {
-    title: '🗺️ Cloud with you 任務指南',
+    title: '🗺️ Clouds with you 任務指南',
     subtitle: '探訪韓國隱藏名勝的尋寶之旅 — 新手也能輕鬆上手!',
     s1Title: '什麼是任務?',
-    s1Body: 'Cloud with you 任務是親自走訪韓國隱藏景點的尋寶旅行。\n\n到達任務地點時,手機會自動確認位置,解答問題或拍照即可完成任務! 獎勵為 💧 雨滴(積分)。',
+    s1Body: 'Clouds with you 任務是親自走訪韓國隱藏景點的尋寶旅行。\n\n到達任務地點時,手機會自動確認位置,解答問題或拍照即可完成任務! 獎勵為 💧 雨滴(積分)。',
 
     s2Title: '如何開始',
     s2Step1Title: '選擇課程',

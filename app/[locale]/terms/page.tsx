@@ -6,11 +6,11 @@ export const dynamic = 'force-dynamic'
 interface Props { params: { locale: string } }
 
 const META: Record<string, { title: string; desc: string }> = {
-  ko: { title: '이용약관 | Cloud with you', desc: '서비스 이용약관' },
-  en: { title: 'Terms of Service | Cloud with you', desc: 'Terms of Service' },
-  ja: { title: '利用規約 | Cloud with you', desc: 'サービス利用規約' },
-  'zh-CN': { title: '服务条款 | Cloud with you', desc: '服务使用条款' },
-  'zh-TW': { title: '服務條款 | Cloud with you', desc: '服務使用條款' },
+  ko: { title: '이용약관 | Clouds with you', desc: '서비스 이용약관' },
+  en: { title: 'Terms of Service | Clouds with you', desc: 'Terms of Service' },
+  ja: { title: '利用規約 | Clouds with you', desc: 'サービス利用規約' },
+  'zh-CN': { title: '服务条款 | Clouds with you', desc: '服务使用条款' },
+  'zh-TW': { title: '服務條款 | Clouds with you', desc: '服務使用條款' },
 }
 
 type Section = { heading: string; body: string }
@@ -22,7 +22,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '제1조 (목적)',
-        body: '본 약관은 Cloud with you(이하 "회사")가 운영하는 Legend of Korea 서비스(이하 "서비스")의 이용 조건 및 절차에 관한 사항과 회사와 이용자의 권리·의무 및 책임 사항을 규정함을 목적으로 합니다.',
+        body: '본 약관은 Clouds with you(이하 "회사")가 운영하는 Legend of Korea 서비스(이하 "서비스")의 이용 조건 및 절차에 관한 사항과 회사와 이용자의 권리·의무 및 책임 사항을 규정함을 목적으로 합니다.',
       },
       {
         heading: '제2조 (정의)',
@@ -64,7 +64,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: 'Article 1 — Purpose',
-        body: 'These Terms of Service govern the use of the Legend of Korea service ("Service") operated by Cloud with you ("Company"), and define the rights, obligations, and responsibilities of the Company and users.',
+        body: 'These Terms of Service govern the use of the Legend of Korea service ("Service") operated by Clouds with you ("Company"), and define the rights, obligations, and responsibilities of the Company and users.',
       },
       {
         heading: 'Article 2 — Definitions',
@@ -106,7 +106,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '第1条（目的）',
-        body: '本規約は、Cloud with you（以下「当社」）が運営するLegend of Koreaサービス（以下「サービス」）の利用条件および手続きに関する事項と、当社と利用者の権利・義務・責任を規定することを目的とします。',
+        body: '本規約は、Clouds with you（以下「当社」）が運営するLegend of Koreaサービス（以下「サービス」）の利用条件および手続きに関する事項と、当社と利用者の権利・義務・責任を規定することを目的とします。',
       },
       {
         heading: '第2条（定義）',
@@ -148,7 +148,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '第一条（目的）',
-        body: '本条款旨在规定Cloud with you（以下简称"本公司"）运营的Legend of Korea服务（以下简称"服务"）的使用条件与程序，以及本公司与用户之间的权利、义务与责任事项。',
+        body: '本条款旨在规定Clouds with you（以下简称"本公司"）运营的Legend of Korea服务（以下简称"服务"）的使用条件与程序，以及本公司与用户之间的权利、义务与责任事项。',
       },
       {
         heading: '第二条（定义）',
@@ -190,7 +190,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '第一條（目的）',
-        body: '本條款旨在規定Cloud with you（以下簡稱「本公司」）營運的Legend of Korea服務（以下簡稱「服務」）之使用條件與程序，以及本公司與使用者之間的權利、義務與責任事項。',
+        body: '本條款旨在規定Clouds with you（以下簡稱「本公司」）營運的Legend of Korea服務（以下簡稱「服務」）之使用條件與程序，以及本公司與使用者之間的權利、義務與責任事項。',
       },
       {
         heading: '第二條（定義）',

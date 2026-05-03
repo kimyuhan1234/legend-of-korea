@@ -9,9 +9,9 @@ interface Props {
 }
 
 const META = {
-  ko: { title: "회원가입 | Cloud with you" },
-  ja: { title: "新規登録 | Cloud with you" },
-  en: { title: "Sign Up | Cloud with you" },
+  ko: { title: "회원가입 | Clouds with you" },
+  ja: { title: "新規登録 | Clouds with you" },
+  en: { title: "Sign Up | Clouds with you" },
 }
 
 const TEXT = {
@@ -42,7 +42,7 @@ export default function SignupPage({ params }: Props) {
               <div className="w-10 h-10 rounded-xl bg-[#F0B8B8] flex items-center justify-center">
                 <span className="text-[#111] font-black text-lg">伝</span>
               </div>
-              <span className="text-white font-bold text-xl tracking-wide">Cloud with you</span>
+              <span className="text-white font-bold text-xl tracking-wide">Clouds with you</span>
             </div>
 
             <h1 className="text-white font-bold text-2xl leading-tight whitespace-pre-line">

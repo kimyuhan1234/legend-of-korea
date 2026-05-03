@@ -17,35 +17,35 @@ const TEXT: Record<Lang, {
   cta: string
 }> = {
   ko: {
-    title: '동의 절차 안내 | Cloud with you',
+    title: '동의 절차 안내 | Clouds with you',
     headline: '동의 절차 안내',
     body: '법정대리인 동의 절차는 정식 출시 시점에 활성화됩니다. 베타 기간 중에는 만 14세 이상 사용자만 가입 가능합니다.',
     betaNotice: '정식 출시 알림을 원하시면 hello@cloudwithyou.com 으로 문의해주세요.',
     cta: '홈으로 돌아가기',
   },
   ja: {
-    title: '同意手続きのご案内 | Cloud with you',
+    title: '同意手続きのご案内 | Clouds with you',
     headline: '同意手続きのご案内',
     body: '保護者同意の手続きは正式リリース時に有効化されます。ベータ期間中は14歳以上のユーザーのみ登録可能です。',
     betaNotice: '正式リリースのお知らせをご希望の方は hello@cloudwithyou.com までお問い合わせください。',
     cta: 'ホームに戻る',
   },
   en: {
-    title: 'Consent Procedure Notice | Cloud with you',
+    title: 'Consent Procedure Notice | Clouds with you',
     headline: 'Consent Procedure Notice',
     body: 'The parental consent procedure will be activated at official launch. During the beta period, only users aged 14 and over can register.',
     betaNotice: 'For launch notifications, please contact hello@cloudwithyou.com.',
     cta: 'Back to home',
   },
   'zh-CN': {
-    title: '同意流程说明 | Cloud with you',
+    title: '同意流程说明 | Clouds with you',
     headline: '同意流程说明',
     body: '家长同意流程将于正式发布时启用。测试期间仅限14岁及以上用户注册。',
     betaNotice: '如需正式发布通知，请联系 hello@cloudwithyou.com。',
     cta: '返回首页',
   },
   'zh-TW': {
-    title: '同意流程說明 | Cloud with you',
+    title: '同意流程說明 | Clouds with you',
     headline: '同意流程說明',
     body: '家長同意流程將於正式發布時啟用。測試期間僅限14歲以上使用者註冊。',
     betaNotice: '如需正式發布通知，請聯絡 hello@cloudwithyou.com。',

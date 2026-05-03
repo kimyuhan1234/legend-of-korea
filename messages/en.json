@@ -25,7 +25,7 @@
     "feature_retro_camera": "Retro Camera"
   },
   "seo": {
-    "title": "Cloud with you - Mission Adventure following Korean Legends",
+    "title": "Clouds with you - Mission Adventure following Korean Legends",
     "description": "A premium adventure service where you explore legendary places in Korea and solve missions."
   },
   "error": {
@@ -37,7 +37,7 @@
     "retry": "Try again"
   },
   "common": {
-    "siteName": "Cloud with you",
+    "siteName": "Clouds with you",
     "siteDescription": "A mission adventure through Korean legends",
     "login": "Sign In",
     "signup": "Sign Up",
@@ -192,7 +192,7 @@
     "footerTerms": "Terms of Service",
     "footerPrivacy": "Privacy Policy",
     "footerPartner": "Partner Inquiry",
-    "footerCopyright": "© 2026 Cloud with you",
+    "footerCopyright": "© 2026 Clouds with you",
     "signup": "Sign Up"
   },
   "course": {
@@ -213,7 +213,7 @@
     "noReviews": "Be the first legendary hero",
     "outOfStock": "Out of Stock",
     "restockAlert": "Notify me when restocked",
-    "disclaimer": "Accommodation and transport bookings are made through external sites. Cloud with you is not responsible for those bookings.",
+    "disclaimer": "Accommodation and transport bookings are made through external sites. Clouds with you is not responsible for those bookings.",
     "exploreCourses": "Explore Courses",
     "allCourses": "All Courses",
     "filterDifficulty": "Select Difficulty",
@@ -656,11 +656,11 @@
     "legendaryAdventurer": "Legendary Adventurer — All cities conquered!"
   },
   "footer": {
-    "company": "Cloud with you Co., Ltd.",
+    "company": "Clouds with you Co., Ltd.",
     "terms": "Terms of Service",
     "privacy": "Privacy Policy",
     "contact": "Contact Us",
-    "copyright": "Cloud with you ({beta}). All rights reserved."
+    "copyright": "Clouds with you ({beta}). All rights reserved."
   },
   "purchase": {
     "stepKit": "Plan",
@@ -1952,7 +1952,7 @@
   },
   "memories": {
     "meta": {
-      "title": "Memories | Cloud with you",
+      "title": "Memories | Clouds with you",
       "description": "My legendary travel memories"
     },
     "title": "MEMORIES",

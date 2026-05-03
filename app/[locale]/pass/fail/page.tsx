@@ -10,7 +10,7 @@ interface Props {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Payment Failed | Cloud with you',
+    title: 'Payment Failed | Clouds with you',
     robots: { index: false, follow: false },
   }
 }

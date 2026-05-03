@@ -8,11 +8,11 @@ interface Props {
 }
 
 const META: Record<string, { title: string; desc: string }> = {
-  ko:      { title: 'Cloud with you 미션 가이드 | Cloud with you',       desc: '한국의 숨겨진 명소를 찾는 보물찾기 여행 — 처음이어도 괜찮아요!' },
-  ja:      { title: 'Cloud with you ミッションガイド | Cloud with you',  desc: '韓国の隠れた名所を巡る宝探しの旅 — 初めてでも大丈夫!' },
-  en:      { title: 'Cloud with you Mission Guide | Cloud with you',     desc: 'Treasure hunt across hidden Korean gems — first-timer friendly!' },
-  'zh-CN': { title: 'Cloud with you 任务指南 | Cloud with you',           desc: '探访韩国隐藏名胜的寻宝之旅 — 新手也能轻松上手!' },
-  'zh-TW': { title: 'Cloud with you 任務指南 | Cloud with you',           desc: '探訪韓國隱藏名勝的尋寶之旅 — 新手也能輕鬆上手!' },
+  ko:      { title: 'Clouds with you 미션 가이드 | Clouds with you',       desc: '한국의 숨겨진 명소를 찾는 보물찾기 여행 — 처음이어도 괜찮아요!' },
+  ja:      { title: 'Clouds with you ミッションガイド | Clouds with you',  desc: '韓国の隠れた名所を巡る宝探しの旅 — 初めてでも大丈夫!' },
+  en:      { title: 'Clouds with you Mission Guide | Clouds with you',     desc: 'Treasure hunt across hidden Korean gems — first-timer friendly!' },
+  'zh-CN': { title: 'Clouds with you 任务指南 | Clouds with you',           desc: '探访韩国隐藏名胜的寻宝之旅 — 新手也能轻松上手!' },
+  'zh-TW': { title: 'Clouds with you 任務指南 | Clouds with you',           desc: '探訪韓國隱藏名勝的尋寶之旅 — 新手也能輕鬆上手!' },
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

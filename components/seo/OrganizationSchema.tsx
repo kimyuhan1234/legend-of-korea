@@ -13,7 +13,7 @@ export function OrganizationSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Cloud with you',
+    name: 'Clouds with you',
     alternateName: 'Legend of Korea',
     url: baseUrl,
     logo: `${baseUrl}/images/dokkaebi-hero.jpg`,

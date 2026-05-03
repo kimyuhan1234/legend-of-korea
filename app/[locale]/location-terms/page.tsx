@@ -6,11 +6,11 @@ export const dynamic = 'force-dynamic'
 interface Props { params: { locale: string } }
 
 const META: Record<string, { title: string; desc: string }> = {
-  ko: { title: '위치기반 서비스 이용약관 | Cloud with you', desc: '위치기반 서비스 이용약관' },
-  en: { title: 'Location-Based Service Terms | Cloud with you', desc: 'Terms of Use for Location-Based Services' },
-  ja: { title: '位置情報サービス利用規約 | Cloud with you', desc: '位置情報サービスの利用規約' },
-  'zh-CN': { title: '位置服务使用条款 | Cloud with you', desc: '基于位置服务的使用条款' },
-  'zh-TW': { title: '位置服務使用條款 | Cloud with you', desc: '基於位置服務的使用條款' },
+  ko: { title: '위치기반 서비스 이용약관 | Clouds with you', desc: '위치기반 서비스 이용약관' },
+  en: { title: 'Location-Based Service Terms | Clouds with you', desc: 'Terms of Use for Location-Based Services' },
+  ja: { title: '位置情報サービス利用規約 | Clouds with you', desc: '位置情報サービスの利用規約' },
+  'zh-CN': { title: '位置服务使用条款 | Clouds with you', desc: '基于位置服务的使用条款' },
+  'zh-TW': { title: '位置服務使用條款 | Clouds with you', desc: '基於位置服務的使用條款' },
 }
 
 type Section = { heading: string; body: string }
@@ -22,7 +22,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '제1조 (목적)',
-        body: '본 약관은 Cloud with you(이하 "회사")가 운영하는 Legend of Korea 서비스에서 「위치정보의 보호 및 이용 등에 관한 법률」에 따라 이용자(이하 "위치정보주체")의 개인위치정보를 처리하는 데 필요한 사항을 규정함을 목적으로 합니다.',
+        body: '본 약관은 Clouds with you(이하 "회사")가 운영하는 Legend of Korea 서비스에서 「위치정보의 보호 및 이용 등에 관한 법률」에 따라 이용자(이하 "위치정보주체")의 개인위치정보를 처리하는 데 필요한 사항을 규정함을 목적으로 합니다.',
       },
       {
         heading: '제2조 (약관의 효력 및 변경)',
@@ -66,7 +66,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '제12조 (회사의 연락처)',
-        body: '• 상호: Cloud with you\n• 이메일: kimyuhan1989@gmail.com\n• 사업자 등록번호: 정식 출시 시 추가 예정 (베타 운영 기간 중)',
+        body: '• 상호: Clouds with you\n• 이메일: kimyuhan1989@gmail.com\n• 사업자 등록번호: 정식 출시 시 추가 예정 (베타 운영 기간 중)',
       },
       {
         heading: '부칙',
@@ -81,7 +81,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: 'Article 1 (Purpose)',
-        body: 'These Terms set forth the matters required to process personal location information of users (hereinafter "Location Information Subject") of the Legend of Korea service operated by Cloud with you (hereinafter "Company"), in accordance with the Republic of Korea\'s Act on the Protection and Use of Location Information (hereinafter "Location Information Act").',
+        body: 'These Terms set forth the matters required to process personal location information of users (hereinafter "Location Information Subject") of the Legend of Korea service operated by Clouds with you (hereinafter "Company"), in accordance with the Republic of Korea\'s Act on the Protection and Use of Location Information (hereinafter "Location Information Act").',
       },
       {
         heading: 'Article 2 (Effect and Modification of Terms)',
@@ -125,7 +125,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: 'Article 12 (Company Contact)',
-        body: '• Trade name: Cloud with you\n• Email: kimyuhan1989@gmail.com\n• Business registration number: To be added at official launch (currently in beta operation)',
+        body: '• Trade name: Clouds with you\n• Email: kimyuhan1989@gmail.com\n• Business registration number: To be added at official launch (currently in beta operation)',
       },
       {
         heading: 'Addendum',
@@ -140,7 +140,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '第1条（目的）',
-        body: '本規約は、Cloud with you（以下「当社」）が運営するLegend of Koreaサービスにおいて、「位置情報の保護及び利用等に関する法律」（以下「位置情報法」）に基づき利用者（以下「位置情報主体」）の個人位置情報を処理するために必要な事項を定めることを目的とします。',
+        body: '本規約は、Clouds with you（以下「当社」）が運営するLegend of Koreaサービスにおいて、「位置情報の保護及び利用等に関する法律」（以下「位置情報法」）に基づき利用者（以下「位置情報主体」）の個人位置情報を処理するために必要な事項を定めることを目的とします。',
       },
       {
         heading: '第2条（規約の効力及び変更）',
@@ -184,7 +184,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第12条（会社の連絡先）',
-        body: '• 商号: Cloud with you\n• メール: kimyuhan1989@gmail.com\n• 事業者登録番号: 正式リリース時に追加予定（現在ベータ運営中）',
+        body: '• 商号: Clouds with you\n• メール: kimyuhan1989@gmail.com\n• 事業者登録番号: 正式リリース時に追加予定（現在ベータ運営中）',
       },
       {
         heading: '附則',
@@ -199,7 +199,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '第1条（目的）',
-        body: '本条款规定了Cloud with you（以下简称"公司"）运营的Legend of Korea服务中，依据韩国《位置信息保护与利用法》（以下简称"位置信息法"）处理用户（以下简称"位置信息主体"）个人位置信息所需的事项。',
+        body: '本条款规定了Clouds with you（以下简称"公司"）运营的Legend of Korea服务中，依据韩国《位置信息保护与利用法》（以下简称"位置信息法"）处理用户（以下简称"位置信息主体"）个人位置信息所需的事项。',
       },
       {
         heading: '第2条（条款效力及变更）',
@@ -243,7 +243,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第12条（公司联系方式）',
-        body: '• 商号：Cloud with you\n• 邮箱：kimyuhan1989@gmail.com\n• 营业执照号：正式发布时添加（目前为测试运营期）',
+        body: '• 商号：Clouds with you\n• 邮箱：kimyuhan1989@gmail.com\n• 营业执照号：正式发布时添加（目前为测试运营期）',
       },
       {
         heading: '附则',
@@ -258,7 +258,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
     sections: [
       {
         heading: '第1條（目的）',
-        body: '本條款規定了Cloud with you（以下簡稱「本公司」）營運的Legend of Korea服務中，依據韓國《位置資訊保護與利用法》（以下簡稱「位置資訊法」）處理使用者（以下簡稱「位置資訊主體」）個人位置資訊所需的事項。',
+        body: '本條款規定了Clouds with you（以下簡稱「本公司」）營運的Legend of Korea服務中，依據韓國《位置資訊保護與利用法》（以下簡稱「位置資訊法」）處理使用者（以下簡稱「位置資訊主體」）個人位置資訊所需的事項。',
       },
       {
         heading: '第2條（條款效力及變更）',
@@ -302,7 +302,7 @@ const CONTENT: Record<string, { title: string; updated: string; sections: Sectio
       },
       {
         heading: '第12條（本公司聯絡方式）',
-        body: '• 商號：Cloud with you\n• 信箱：kimyuhan1989@gmail.com\n• 營業執照號：正式發布時新增（目前為測試營運期）',
+        body: '• 商號：Clouds with you\n• 信箱：kimyuhan1989@gmail.com\n• 營業執照號：正式發布時新增（目前為測試營運期）',
       },
       {
         heading: '附則',

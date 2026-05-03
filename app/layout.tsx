@@ -48,7 +48,7 @@ const notoJP = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  title: "Cloud with you | 한국의 전설을 따라서",
+  title: "Clouds with you | 한국의 전설을 따라서",
   description: "한국 전래동화 IP를 활용한 QR 기반 셀프 미션 여행 서비스",
   manifest: "/manifest.webmanifest",
 }
