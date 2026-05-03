@@ -19,12 +19,12 @@ export async function SpecialEventTab({ locale }: Props) {
   return (
     <div className="space-y-8">
       {/* 히어로 */}
-      <div className="bg-gradient-to-r from-[#1a4fd6] via-[#7c3aed] to-[#dc2626] text-white py-10 px-6 text-center rounded-3xl">
-        <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-black uppercase tracking-widest mb-3">
+      <div className="bg-gradient-to-br from-mint to-blossom text-ink py-10 px-6 text-center rounded-3xl border border-white/60">
+        <span className="inline-block px-3 py-1 rounded-full bg-white/70 text-xs font-black uppercase tracking-widest mb-3 text-mint-deep">
           🚔 {t('badge')}
         </span>
         <h2 className="text-2xl md:text-3xl font-black">{t('title')}</h2>
-        <p className="text-sm opacity-90 mt-2">{t('subtitle')}</p>
+        <p className="text-sm text-stone mt-2">{t('subtitle')}</p>
       </div>
 
       {/* 공유 정보 (경도란?, 활용 팁 등) */}

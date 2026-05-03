@@ -1459,7 +1459,7 @@
       "buy": "Buy Now"
     },
     "gyeongdo": {
-      "title": "Cops & Robbers Special Kit",
+      "title": "Cops & Robbers Special Event",
       "subtitle": "Seoul's hottest outdoor game!",
       "badge": "SPECIAL EVENT",
       "eventInfo": "Event Info",
@@ -1485,12 +1485,12 @@
       "completed": "Event Completed",
       "noEvents": "No upcoming events",
       "comingSoon": "New events coming soon!",
-      "notice1": "This kit is valid only for the event date",
+      "notice1": "This event is only available on the scheduled date",
       "notice2": "Wear comfortable shoes and clothes",
       "notice3": "Event may be cancelled due to rain",
       "source": "Original Community",
       "banner": {
-        "cta": "Buy kit & join"
+        "cta": "Join the event"
       },
       "price": "₩15,000",
       "remaining": "{n} spots left",
