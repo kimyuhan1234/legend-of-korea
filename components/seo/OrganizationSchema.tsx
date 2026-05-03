@@ -16,7 +16,7 @@ export function OrganizationSchema() {
     name: 'Clouds with you',
     alternateName: 'Legend of Korea',
     url: baseUrl,
-    logo: `${baseUrl}/images/dokkaebi-hero.jpg`,
+    logo: `${baseUrl}/images/category-story.png`,
     description:
       'Korea travel platform for foreigners — GPS mission-based exploration through Korean legends.',
     contactPoint: {

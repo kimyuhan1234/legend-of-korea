@@ -48,7 +48,7 @@ export function CourseSlider({ courses, locale, label }: CourseSliderProps) {
               {/* 왼쪽: 이미지 */}
               <div className="relative w-[45%] shrink-0 bg-cloud overflow-hidden">
                 <Image
-                  src={course.thumbnail_url || '/images/dokkaebi-hero.png'}
+                  src={course.thumbnail_url || '/images/category-story.png'}
                   alt={course.title}
                   fill
                   sizes="(max-width: 768px) 40vw, 300px"

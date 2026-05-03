@@ -124,7 +124,7 @@ export default async function CourseDetailPage({ params }: Props) {
   const durationText = getI18n(course.duration_text as I18nText, locale)
 
   const courseTitle = getI18n(course.title as I18nText, locale)
-  const thumbnailUrl = course.thumbnail_url || '/images/dokkaebi-hero.png'
+  const thumbnailUrl = course.thumbnail_url || '/images/category-story.png'
 
   const storyCards = [
     { image: thumbnailUrl, textKey: 'story.card1' },

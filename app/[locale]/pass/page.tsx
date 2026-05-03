@@ -67,7 +67,7 @@ export default async function PassPage({ params }: Props) {
         name={m('title')}
         description={m('description')}
         url={`${siteUrl}/${locale}/pass`}
-        image={`${siteUrl}/images/dokkaebi-hero.png`}
+        image={`${siteUrl}/images/category-story.png`}
         price={{ amount: PASSES.standard.priceKrw, currency: 'KRW' }}
       />
 

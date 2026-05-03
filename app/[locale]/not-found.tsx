@@ -12,12 +12,12 @@ export default function NotFound() {
       textAlign: 'center',
       fontFamily: 'sans-serif',
     }}>
-      <div style={{ fontSize: '5rem', marginBottom: '1.5rem' }}>👹</div>
+      <div style={{ fontSize: '5rem', marginBottom: '1.5rem' }}>☁️</div>
       <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '0.75rem', color: '#111' }}>
         404
       </h1>
       <p style={{ color: '#666', marginBottom: '2rem' }}>
-        도깨비가 이 페이지를 숨겼나 봅니다.
+        이 페이지를 찾을 수 없습니다.
       </p>
       <a
         href="/"

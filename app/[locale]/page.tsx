@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t('title'),
     subtitle: t('description'),
     tier: 'strong',
-    imagePath: '/images/dokkaebi-hero.png',
+    imagePath: '/images/category-story.png',
   })
 
   return {

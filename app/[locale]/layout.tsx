@@ -71,13 +71,13 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       title: titles[locale] || titles.en || titles.ko,
       description: descriptions[locale] || descriptions.en || descriptions.ko,
       url: `${siteUrl}/${locale}`,
-      images: [{ url: "/images/dokkaebi-hero.jpg", width: 1200, height: 630 }],
+      images: [{ url: "/images/category-story.png", width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: titles[locale] || titles.en || titles.ko,
       description: descriptions[locale] || descriptions.en || descriptions.ko,
-      images: ["/images/dokkaebi-hero.jpg"],
+      images: ["/images/category-story.png"],
     },
     alternates: {
       canonical: `${siteUrl}/${locale}`,

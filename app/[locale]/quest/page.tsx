@@ -52,7 +52,7 @@ export default async function QuestHubPage({ params }: Props) {
           {(courses ?? []).map((course) => {
             const c = course as { id: string; region: string | null; title: I18nText; thumbnail_url: string | null; difficulty: string | null }
             const title = getI18n(c.title, locale)
-            const thumb = c.thumbnail_url || '/images/dokkaebi-hero.png'
+            const thumb = c.thumbnail_url || '/images/category-story.png'
             return (
               <Link
                 key={c.id}

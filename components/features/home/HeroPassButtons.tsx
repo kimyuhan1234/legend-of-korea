@@ -56,7 +56,6 @@ export function HeroPassButtons({ locale }: Props) {
         loop
         playsInline
         preload="auto"
-        poster="/images/dokkaebi-hero.png"
         className="absolute inset-0 w-full h-full object-cover"
       />
 

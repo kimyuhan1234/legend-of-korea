@@ -21,7 +21,7 @@
  * 반환: 절대 URL (SNS 미리보기 호환)
  *   - 1순위: imagePath 명시되면 그대로 사용
  *   - 2순위: category 가 매핑에 있으면 카테고리별 이미지
- *   - 3순위: dokkaebi-hero.png (기본 fallback)
+ *   - 3순위: category-story.png (기본 fallback — 사이트 브랜드 일반 OG)
  */
 
 export type OgTier = 'strong' | 'strong-stay' | 'soft' | 'plain'
@@ -48,10 +48,10 @@ const STATIC_OG_BY_CATEGORY: Record<string, string> = {
   SPOT: '/images/category-sights.png',
   QUEST: '/images/category-story.png',
   DIY: '/images/category-create.png',
-  // DISCOVER / COMMUNITY / PASS / COURSE 는 매핑 미등록 → dokkaebi-hero fallback
+  // DISCOVER / COMMUNITY / PASS / COURSE 는 매핑 미등록 → category-story fallback
 }
 
-const FALLBACK_IMAGE = '/images/dokkaebi-hero.png'
+const FALLBACK_IMAGE = '/images/category-story.png'
 
 export function buildOgUrl(input: OgUrlInput): string {
   const path =
