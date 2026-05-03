@@ -6,11 +6,9 @@
  * 체인점/프랜차이즈는 로컬 특화 본점만 유지 (스타벅스/맥도날드 등 일반 체인 제외).
  * contentid 는 scripts/match-local-picks.mjs 가 TourAPI searchKeyword2 로 자동 매칭.
  *
- * 키 = 광역 단위 (seoul/busan/jeonbuk/...). city.id 단위 조회는 getLocalPicks 가
- * regions-hierarchy 의 province lookup 으로 자동 fallback.
+ * 키 = 광역 단위 (seoul/busan/jeonbuk/...) + 시 단위 (andong/cheonan/...).
+ * 시 단위 키는 광역 fallback 보다 우선 적용.
  */
-
-import { PROVINCES } from './regions-hierarchy'
 
 export interface LocalPickItem {
   /** URL 슬러그 (영문 소문자, 하이픈) */
@@ -375,27 +373,177 @@ export const LOCAL_PICKS: Record<string, LocalPickItem[]> = {
     { id: 'haejigae', searchName: '해지개', rank: 8 },
     { id: 'cafe-lucia', searchName: '카페루시아 본점', rank: 9 },
   ],
+
+  // ── 시 단위 (광역 fallback 대체) — 한국관광 데이터랩 외지인 랭킹 TOP 10 ──
+
+  andong: [
+    { id: 'mammoth-bakery-namu', searchName: '맘모스베이커리 남부본점', rank: 1, contentid: '1802913', contenttypeid: '39',
+      curation: { tags: ['안동 베이커리'] } },
+    { id: 'iljik-sikdang', searchName: '일직식당', rank: 2, contentid: '2738012', contenttypeid: '39',
+      curation: { tags: ['안동 한식'] } },
+    { id: 'mcd-andong-dt', searchName: '맥도날드 안동DT점', rank: 3,
+      curation: { tags: ['안동'] } },
+    { id: 'starbucks-andong-gangbyeon', searchName: '스타벅스 안동강변DT점', rank: 4,
+      curation: { tags: ['안동 카페'] } },
+    { id: 'gureume-396-coffee', searchName: '구름에396커피', rank: 5,
+      curation: { tags: ['안동 카페'] } },
+    { id: 'mammoth-songhyeon-andong', searchName: '맘모스제과 송현분점', rank: 6,
+      curation: { tags: ['안동 베이커리'] } },
+    { id: 'okdong-sonkguksu', searchName: '옥동손국수', rank: 7,
+      curation: { tags: ['안동 한식'] } },
+    { id: 'mokseokwon', searchName: '목석원', rank: 8,
+      curation: { tags: ['안동 한식'] } },
+    { id: 'wolyeongdang', searchName: '월영당', rank: 9, contentid: '2831873', contenttypeid: '39',
+      curation: { tags: ['안동 카페'] } },
+    { id: 'sancheong-sikdang-andong', searchName: '산청식당', rank: 10,
+      curation: { tags: ['안동 한식'] } },
+  ],
+
+  cheonan: [
+    { id: 'tujourou-bbangdolgama-cheonan', searchName: '뚜쥬루 빵돌가마점', rank: 1,
+      curation: { tags: ['천안 베이커리', '거북이빵'] } },
+    { id: 'landmark-195-cheonan', searchName: '랜드마크195', rank: 2,
+      curation: { tags: ['천안 카페'] } },
+    { id: 'chungnamjip-sundae-cheonan', searchName: '충남집순대', rank: 3, contentid: '1014021', contenttypeid: '39',
+      curation: { tags: ['천안'] } },
+    { id: 'halmeoni-hakhwa-cheonan', searchName: '할머니학화호도과자 본점', rank: 4,
+      curation: { tags: ['천안 호두과자'] } },
+    { id: 'tujourou-geobugi', searchName: '뚜쥬루 거북이점', rank: 5,
+      curation: { tags: ['천안 베이커리'] } },
+    { id: 'baksunja-aunae-sundae', searchName: '박순자아우내순대', rank: 6,
+      curation: { tags: ['천안 한식'] } },
+    { id: 'eomgane-bonga-sigoljip', searchName: '엄가네본가시골집', rank: 7,
+      curation: { tags: ['천안 한식'] } },
+    { id: 'sigol-sondubu-cheonan', searchName: '시골손두부', rank: 8,
+      curation: { tags: ['천안 한식'] } },
+    { id: 'cheonghwajip-cheonan', searchName: '청화집', rank: 9, contentid: '699586', contenttypeid: '39',
+      curation: { tags: ['천안 한식'] } },
+    { id: 'inju-cafe-pungkyeong', searchName: '인주카페 풍경점', rank: 10, contentid: '2767559', contenttypeid: '39',
+      curation: { tags: ['천안 카페'] } },
+  ],
+
+  tongyeong: [
+    { id: 'arse-tongyeong', searchName: '아르세', rank: 1,
+      curation: { tags: ['통영 카페'] } },
+    { id: 'ttungbo-halmae-gimbap', searchName: '뚱보할매김밥집', rank: 2,
+      curation: { tags: ['통영 충무김밥'] } },
+    { id: 'simgane-haemul-jjamppong', searchName: '심가네해물짬뽕', rank: 3, contentid: '2756580', contenttypeid: '39',
+      curation: { tags: ['통영 중식'] } },
+    { id: 'badadam-tongyeong', searchName: '바다담', rank: 4,
+      curation: { tags: ['통영 카페'] } },
+    { id: 'dongpirang-jeonbok', searchName: '동피랑전복마을', rank: 5,
+      curation: { tags: ['통영 전복'] } },
+    { id: 'jjekjjek-coffee-tongyeong', searchName: '짹짹커피 통영점', rank: 6,
+      curation: { tags: ['통영 카페'] } },
+    { id: 'saengsaeng-gulmaeul-daepunggwan', searchName: '생생굴마을대풍관', rank: 7,
+      curation: { tags: ['통영 굴'] } },
+    { id: 'starbucks-tongyeong-buksin', searchName: '스타벅스 통영북신DT점', rank: 8,
+      curation: { tags: ['통영 카페'] } },
+    { id: 'hansanseom-sikdang', searchName: '한산섬식당', rank: 9, contentid: '2929336', contenttypeid: '39',
+      curation: { tags: ['통영 한식'] } },
+    { id: 'omisa-kkulppang', searchName: '오미사꿀빵', rank: 10,
+      curation: { tags: ['통영 꿀빵'] } },
+  ],
+
+  yongin: [
+    { id: 'sanyiro-godeungeo-yongin', searchName: '산으로간고등어', rank: 1, contentid: '2756816', contenttypeid: '39',
+      curation: { tags: ['용인 한식'] } },
+    { id: 'forest-outings-yongin-direct', searchName: '포레스트아웃팅스 용인점', rank: 2,
+      curation: { tags: ['용인 카페'] } },
+    { id: 'gogiri-makguksu', searchName: '고기리막국수', rank: 3, contentid: '2781892', contenttypeid: '39',
+      curation: { tags: ['용인 막국수'] } },
+    { id: 'miga-hwogwo-yanggogi', searchName: '미가훠궈양고기', rank: 4, contentid: '2742176', contenttypeid: '39',
+      curation: { tags: ['용인 중식'] } },
+    { id: 'mansujeong-yongin', searchName: '만수정', rank: 5, contentid: '2742174', contenttypeid: '39',
+      curation: { tags: ['용인'] } },
+    { id: 'gapado-cheongbori-yongin', searchName: '가파도청보리밥', rank: 6,
+      curation: { tags: ['용인 한식'] } },
+    { id: 'mcd-yongin-suji-dt', searchName: '맥도날드 용인수지DT점', rank: 7,
+      curation: { tags: ['용인'] } },
+    { id: 'starbucks-yongin-gogi', searchName: '스타벅스 용인고기동유원지점', rank: 8,
+      curation: { tags: ['용인 카페'] } },
+    { id: 'yudam-deulbap-yongin', searchName: '유담들밥 용인본점', rank: 9,
+      curation: { tags: ['용인 한식'] } },
+    { id: 'time-to-be-yongin', searchName: '타임투비', rank: 10,
+      curation: { tags: ['용인 카페'] } },
+  ],
+
+  icheon: [
+    { id: 'gangminju-deulbap-icheon', searchName: '강민주의들밥 본점', rank: 1, contentid: '135454', contenttypeid: '39',
+      curation: { tags: ['이천 쌀밥'] } },
+    { id: 'ijinsanghoe', searchName: '이진상회', rank: 2, contentid: '2875287', contenttypeid: '39',
+      curation: { tags: ['이천 카페'] } },
+    { id: 'cheongmok-icheon', searchName: '청목', rank: 3,
+      curation: { tags: ['이천 한식'] } },
+    { id: 'gyeongchundang-icheon', searchName: '경춘당', rank: 4,
+      curation: { tags: ['이천'] } },
+    { id: 'naratnim-icheon-ssalbap', searchName: '나랏님이천쌀밥', rank: 5,
+      curation: { tags: ['이천 쌀밥'] } },
+    { id: 'unjung-yangpyeong-haejangguk', searchName: '운중양평해장국설렁탕', rank: 6,
+      curation: { tags: ['이천 해장국'] } },
+    { id: 'gangminju-icheon-direct', searchName: '강민주의들밥 이천직영점', rank: 7,
+      curation: { tags: ['이천 쌀밥'] } },
+    { id: 'seorak-makguksu-icheon', searchName: '설악막국수춘천닭갈비 이천점', rank: 8,
+      curation: { tags: ['이천 닭갈비'] } },
+    { id: 'uju-myeonok-icheon', searchName: '우주면옥 본점', rank: 9,
+      curation: { tags: ['이천 면요리'] } },
+    { id: 'woni-ssalbap', searchName: '원이쌀밥', rank: 10, contentid: '2773706', contenttypeid: '39',
+      curation: { tags: ['이천 쌀밥'] } },
+  ],
+
+  sokcho: [
+    { id: 'cheongchosu-sokcho-direct', searchName: '청초수물회 속초본점', rank: 1,
+      curation: { tags: ['속초 물회'] } },
+    { id: 'manseok-sokcho-direct', searchName: '만석닭강정 본점', rank: 2,
+      curation: { tags: ['속초 닭강정'] } },
+    { id: 'bongpomeoguri-sokcho', searchName: '봉포머구리집 속초본점', rank: 3,
+      curation: { tags: ['속초 해산물'] } },
+    { id: 'sokcho-hangari-mulhoe', searchName: '속초항아리물회', rank: 4,
+      curation: { tags: ['속초 물회'] } },
+    { id: 'eighty-eight-saengseon', searchName: '88생선구이', rank: 5, contentid: '134033', contenttypeid: '39',
+      curation: { tags: ['속초 생선구이'] } },
+    { id: 'kim-yeongae-sundubu', searchName: '김영애할머니순두부 본점', rank: 6, contentid: '2839793', contenttypeid: '39',
+      curation: { tags: ['속초 순두부'] } },
+    { id: 'shelter-sokcho', searchName: '셜터', rank: 7,
+      curation: { tags: ['속초 카페'] } },
+    { id: 'cafe-git-sokcho', searchName: '카페긷', rank: 8,
+      curation: { tags: ['속초 카페'] } },
+    { id: 'starbucks-sokcho-yeongnangho', searchName: '스타벅스 영랑호리조트점', rank: 9,
+      curation: { tags: ['속초 카페'] } },
+    { id: 'starbucks-sokcho-dt', searchName: '스타벅스 속초DT점', rank: 10,
+      curation: { tags: ['속초 카페'] } },
+  ],
+
+  yeosu: [
+    { id: 'kkotdolgejang-1-yeosu', searchName: '꽃돌게장1번가', rank: 1, contentid: '2858408', contenttypeid: '39',
+      curation: { tags: ['여수 게장'] } },
+    { id: 'moiphin-ocean', searchName: '모이핀 오션점', rank: 2, contentid: '2931286', contenttypeid: '39',
+      curation: { tags: ['여수 카페'] } },
+    { id: 'starbucks-yeosu-dolsan', searchName: '스타벅스 더여수돌산DT점', rank: 3,
+      curation: { tags: ['여수 카페'] } },
+    { id: 'yeosu-myeongdong-gejang', searchName: '여수명동게장', rank: 4,
+      curation: { tags: ['여수 게장'] } },
+    { id: 'cheongjeong-gejangchon', searchName: '청정게장촌', rank: 5, contentid: '2866501', contenttypeid: '39',
+      curation: { tags: ['여수 게장'] } },
+    { id: 'sunine-bapsang', searchName: '순이네밥상', rank: 6,
+      curation: { tags: ['여수 한식'] } },
+    { id: 'bada-gimbap', searchName: '바다김밥', rank: 7,
+      curation: { tags: ['여수 김밥'] } },
+    { id: 'wonjo-dukkeobi-gejang', searchName: '원조두꺼비게장', rank: 8,
+      curation: { tags: ['여수 게장'] } },
+    { id: 'pulppuri-heukdubu', searchName: '풀뿌리흑두부', rank: 9,
+      curation: { tags: ['여수 두부'] } },
+    { id: 'bada-gimbap-dolsan', searchName: '바다김밥 돌산직영점', rank: 10,
+      curation: { tags: ['여수 김밥'] } },
+  ],
 }
 
 /**
- * city.id 의 상위 광역 id 찾기 (regions-hierarchy 의 PROVINCES 기반).
- */
-function getProvinceForCity(cityId: string): string | null {
-  for (const p of PROVINCES) {
-    if (p.cities.some((c) => c.id === cityId)) return p.id
-  }
-  return null
-}
-
-/**
- * 도시별 로컬 픽 — city.id 직접 매칭 우선, 없으면 상위 광역 fallback.
- * 예: 'jeonju' (city) → 'jeonbuk' (province) 의 LOCAL_PICKS 사용.
+ * 도시별 로컬 픽 — city.id 직접 매칭만 (광역 fallback 제거 — 도시별 큐레이션 데이터로 분리됨).
+ * 키 없는 도시는 빈 배열 반환 → UI 에서 "준비 중" 표시.
  */
 export function getLocalPicks(city: string): LocalPickItem[] {
-  if (LOCAL_PICKS[city]) return LOCAL_PICKS[city]
-  const province = getProvinceForCity(city)
-  if (province && LOCAL_PICKS[province]) return LOCAL_PICKS[province]
-  return []
+  return LOCAL_PICKS[city] ?? []
 }
 
 /**

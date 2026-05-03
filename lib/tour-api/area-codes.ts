@@ -24,15 +24,16 @@ export const CITY_AREA_CODES: Record<string, { areaCode: number; sigunguCode?: n
   jeonbuk:   { areaCode: 37 },
   jeonnam:   { areaCode: 38 },
   // 시군구 단위 (food-dupes 음식 region 과 매칭)
-  gyeongju:  { areaCode: 35, sigunguCode: 2 },
-  jeonju:    { areaCode: 37, sigunguCode: 12 },
-  tongyeong: { areaCode: 36, sigunguCode: 10 },
-  cheonan:   { areaCode: 34, sigunguCode: 4 },
-  yongin:    { areaCode: 31, sigunguCode: 13 },
-  icheon:    { areaCode: 31, sigunguCode: 4 },
-  sokcho:    { areaCode: 32, sigunguCode: 7 },
-  yeosu:     { areaCode: 38, sigunguCode: 12 },
-  andong:    { areaCode: 35, sigunguCode: 7 },
+  // sigunguCode 는 TourAPI 4.0 areaCode2 표준 매핑 (검증 완료 — 진단 보고 2026-05-03)
+  gyeongju:  { areaCode: 35, sigunguCode: 2 },   // 경주시
+  jeonju:    { areaCode: 37, sigunguCode: 12 },  // 전주시
+  tongyeong: { areaCode: 36, sigunguCode: 17 },  // 통영시 (구 10=양산시 오류 수정)
+  cheonan:   { areaCode: 34, sigunguCode: 12 },  // 천안시 (구 4=당진시 오류 수정)
+  yongin:    { areaCode: 31, sigunguCode: 23 },  // 용인시 (구 13=수원시 오류 수정)
+  icheon:    { areaCode: 31, sigunguCode: 26 },  // 이천시 (구 4=광명시 오류 수정)
+  sokcho:    { areaCode: 32, sigunguCode: 5 },   // 속초시 (구 7=양양군 오류 수정)
+  yeosu:     { areaCode: 38, sigunguCode: 13 },  // 여수시 (구 12=신안군 오류 수정)
+  andong:    { areaCode: 35, sigunguCode: 11 },  // 안동시 (구 7=문경시 오류 수정)
   // jeju 광역도 = 시군구 단위 (제주특별자치도 = 39, sigungu 분리 X)
   jeju:      { areaCode: 39 },
   // national — 전국 fallback (서울 areaCode 사용)
