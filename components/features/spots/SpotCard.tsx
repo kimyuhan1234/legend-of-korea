@@ -44,7 +44,7 @@ export function SpotCard({ spot, locale, matchPercent }: Props) {
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover group-hover:scale-105 transition-transform duration-300"
-            unoptimized={spot.source === 'tourapi'}
+            unoptimized={spot.source !== 'static'}
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-mint/25 to-blossom/25">
@@ -108,6 +108,9 @@ export function SpotCard({ spot, locale, matchPercent }: Props) {
         />
         {spot.source === 'tourapi' && (
           <p className="text-[9px] text-stone/60 text-right">{t('source')}</p>
+        )}
+        {spot.source === 'welchon' && (
+          <p className="text-[9px] text-stone/60 text-right">© 한국농어촌공사 welchon.com</p>
         )}
       </div>
     </div>

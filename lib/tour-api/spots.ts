@@ -1,7 +1,53 @@
 import { SIGHTS, type Sight } from '@/lib/data/sights'
+import welchonData from '@/lib/data/welchon-spots.json'
 import { PROVINCE_AREA_CODES, CONTENT_TYPES } from './area-codes'
 import { fetchTourSpots, fetchCurrentFestivals } from './client'
 import { NormalizedSpot, SpotCategory, TourAPIItem, I18nString } from './types'
+
+interface WelchonSpot {
+  id: string
+  name: string
+  image: string
+  lat: number
+  lng: number
+  address: string
+  province: string
+  description: string | null
+}
+
+/**
+ * 한국농어촌공사 시도 표기 → 사이트 광역 region 코드 매핑.
+ * CSV 분석(2026-05-03) 기준 13 종 — 서울/부산/광주/세종은 데이터 0 건.
+ */
+const WELCHON_PROVINCE_TO_REGION: Record<string, string> = {
+  강원특별자치도: 'gangwon',
+  강원: 'gangwon',
+  전라남도: 'jeonnam',
+  전남: 'jeonnam',
+  경기도: 'gyeonggi',
+  경기: 'gyeonggi',
+  경상남도: 'gyeongnam',
+  경남: 'gyeongnam',
+  전라북도: 'jeonbuk',
+  전북특별자치도: 'jeonbuk',
+  전북: 'jeonbuk',
+  경상북도: 'gyeongbuk',
+  경북: 'gyeongbuk',
+  충청남도: 'chungnam',
+  충남: 'chungnam',
+  충청북도: 'chungbuk',
+  충북: 'chungbuk',
+  제주특별자치도: 'jeju',
+  제주: 'jeju',
+  대전광역시: 'daejeon',
+  대전: 'daejeon',
+  울산광역시: 'ulsan',
+  울산: 'ulsan',
+  대구광역시: 'daegu',
+  대구: 'daegu',
+  인천광역시: 'incheon',
+  인천: 'incheon',
+}
 
 type Locale = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
 
@@ -132,6 +178,27 @@ function toI18nFromUnion(v: string | { ko: string; en: string; ja: string; 'zh-C
   }
 }
 
+function normalizeWelchonSpot(w: WelchonSpot, locale: Locale): NormalizedSpot {
+  const text = `${w.name} ${w.address} ${w.description ?? ''}`
+  const tags: string[] = ['landmark', 'historic', 'scenic']
+  for (const { tag, re } of TAG_PATTERNS) {
+    if (re.test(text)) tags.push(tag)
+  }
+  return {
+    id: w.id,
+    source: 'welchon',
+    name: toI18nFromLocale(w.name, locale),
+    region: WELCHON_PROVINCE_TO_REGION[w.province] ?? 'unknown',
+    category: 'landmark',
+    description: toI18nFromLocale(w.description ?? w.address, locale),
+    image: w.image || '/images/placeholder-spot.jpg',
+    address: w.address,
+    lat: w.lat,
+    lng: w.lng,
+    tags: Array.from(new Set(tags)),
+  }
+}
+
 function normalizeStaticSight(s: Sight): NormalizedSpot {
   return {
     id: `static-${s.id}`,
@@ -182,6 +249,20 @@ export async function getAllSpots(locale: Locale = 'ko'): Promise<NormalizedSpot
 
   const results = await Promise.all(tourFetches)
   for (const arr of results) all.push(...arr)
+
+  // welchon 1,040 spot 병합 — TourAPI 와 위경도 0.001(약 100m) 이내면 dedup 으로 제외.
+  const welchonSpots = (welchonData as WelchonSpot[]).map((w) => normalizeWelchonSpot(w, locale))
+  for (const w of welchonSpots) {
+    if (w.lat == null || w.lng == null) {
+      all.push(w)
+      continue
+    }
+    const isDup = all.some((t) => {
+      if (t.lat == null || t.lng == null) return false
+      return Math.abs(w.lat! - t.lat) < 0.001 && Math.abs(w.lng! - t.lng) < 0.001
+    })
+    if (!isDup) all.push(w)
+  }
 
   // 중복 제거 (이름 + 지역 기준)
   const seen = new Set<string>()

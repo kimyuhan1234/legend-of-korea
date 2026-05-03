@@ -34,6 +34,8 @@ const nextConfig = {
       { protocol: "https", hostname: "tong.visitkorea.or.kr" },
       { protocol: "http", hostname: "cdn.visitkorea.or.kr" },
       { protocol: "https", hostname: "cdn.visitkorea.or.kr" },
+      { protocol: "https", hostname: "www.welchon.com" },
+      { protocol: "https", hostname: "welchon.com" },
     ],
     deviceSizes: [640, 750, 828, 1080, 1200, 1440, 1920, 2560],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
