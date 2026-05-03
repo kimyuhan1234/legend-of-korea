@@ -23,18 +23,65 @@ function toI18nFromLocale(text: string, locale: Locale): I18nString {
   }
 }
 
+/**
+ * 키워드 → 한글 태그 매핑 (사용자 노출용 chip).
+ * 본 sample 분석 (2026-05-03, n=138) 기반: 자연 21% / 바다 10% / 역사 1% / 야간 0%.
+ * 야간은 TourAPI 12=관광지 응답에 거의 없으나 향후 야경 명소 추가/별도 검색 시 매칭되도록 패턴 정의.
+ */
+const TAG_PATTERNS: Array<{ tag: string; re: RegExp }> = [
+  { tag: '야간', re: /야경|야간|일루미네이션|illumination|night/i },
+  { tag: '꽃',   re: /꽃|벚|장미|튤립|국화|단풍|매화|코스모스|연꽃/ },
+  { tag: '온천', re: /온천|스파|찜질/ },
+  { tag: '시장', re: /시장|먹자골목|마켓/ },
+  { tag: '바다', re: /해변|해수욕|바다|해안|등대|포구|어촌|바닷가|항\s|항$|섬\s|섬$|돈대/ },
+  { tag: '자연', re: /산$|산\s|등산|봉우리|봉$|숲|계곡|폭포|호수|강$|강\s|국립공원|도립공원|군립공원|수목원|식물원|정원|동굴|들판/ },
+  { tag: '역사', re: /궁$|궁\s|왕릉|능$|능\s|성$|성곽|사찰|사$|절$|문화재|유적|민속|전통|박물관|기념관|역사관|성문|향교|서원/ },
+  { tag: '체험', re: /체험|테마파크|놀이공원|동물원|수족관|아쿠아|미술관|전시관/ },
+  { tag: '가족', re: /가족|키즈|어린이|아이/ },
+]
+
+/**
+ * TourAPI cat3 코드 → 한글 태그 매핑 (분류 코드 기반 정확 매칭).
+ * 키워드 매칭이 실패한 경우 보조로 적용 — 무태그 비율 감소.
+ * 표준: cat1=A01 자연 / A02 인문(역사·체험·문화) / A03 레포츠.
+ */
+const CAT3_PREFIX_TAG: Array<{ prefix: string; tag: string }> = [
+  { prefix: 'A0101', tag: '자연' }, // 자연관광지 (국립/도립/군립공원, 산, 숲)
+  { prefix: 'A0102', tag: '자연' }, // 관광자원
+  { prefix: 'A0201', tag: '역사' }, // 역사관광지 (궁/왕릉/사찰/유적)
+  { prefix: 'A0203', tag: '체험' }, // 체험관광지
+  { prefix: 'A0204', tag: '체험' }, // 산업관광지
+  { prefix: 'A0205', tag: '역사' }, // 건축/조형물 (전통건축물 다수)
+  { prefix: 'A0206', tag: '체험' }, // 문화시설 (박물관/미술관)
+  { prefix: 'A0301', tag: '체험' }, // 레포츠소개
+  { prefix: 'A0302', tag: '자연' }, // 육상 레포츠
+  { prefix: 'A0303', tag: '바다' }, // 수상 레포츠
+]
+
 function inferTourTags(item: TourAPIItem, category: SpotCategory): string[] {
   const tags: string[] = []
+
+  // category 기반 기본 태그 (영문 — scoring 시스템에서 사용 중, 보존)
   if (category === 'festival') tags.push('festival', 'group', 'experience')
   if (category === 'landmark') tags.push('landmark', 'historic', 'scenic')
   if (category === 'hotspot') tags.push('active', 'instagram', 'trendy')
 
-  const addr = (item.addr1 || '').toLowerCase()
-  if (addr.includes('해수욕') || addr.includes('바다') || addr.includes('해변')) tags.push('ocean')
-  if (addr.includes('산') || addr.includes('공원')) tags.push('nature', 'hiking')
-  if (addr.includes('시장')) tags.push('food', 'market')
-  if (addr.includes('사') || addr.includes('절') || addr.includes('궁')) tags.push('temple', 'traditional')
-  if (addr.includes('카페') || addr.includes('거리')) tags.push('cafe', 'trendy')
+  // 키워드 자동 태깅 — title + addr1 + cat3 통합 검색
+  const text = `${item.title || ''} ${item.addr1 || ''} ${item.cat3 || ''}`
+  for (const { tag, re } of TAG_PATTERNS) {
+    if (re.test(text)) tags.push(tag)
+  }
+
+  // cat3 코드 fallback — 키워드 매칭 실패 spot 보강
+  if (item.cat3) {
+    for (const { prefix, tag } of CAT3_PREFIX_TAG) {
+      if (item.cat3.startsWith(prefix) && !tags.includes(tag)) {
+        tags.push(tag)
+        break
+      }
+    }
+  }
+
   return Array.from(new Set(tags))
 }
 

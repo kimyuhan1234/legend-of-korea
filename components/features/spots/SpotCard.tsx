@@ -75,6 +75,24 @@ export function SpotCard({ spot, locale, matchPercent }: Props) {
         {!spot.address && description && (
           <p className="text-sm text-stone line-clamp-2">{description}</p>
         )}
+        {/* 자동 태그 chip — 한글 태그만 노출 (영문 scoring tag 는 비표시) */}
+        {(() => {
+          const KO_TAGS = ['야간', '꽃', '온천', '시장', '바다', '자연', '역사', '체험', '가족']
+          const visibleTags = spot.tags.filter((t) => KO_TAGS.includes(t))
+          if (visibleTags.length === 0) return null
+          return (
+            <div className="flex flex-wrap gap-1">
+              {visibleTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2 py-0.5 rounded-full bg-mint-light/40 text-mint-deep text-[10px] font-bold"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )
+        })()}
         <AddToPlannerButton
           itemType="food"
           cityId={spot.region}
