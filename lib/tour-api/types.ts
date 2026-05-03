@@ -31,7 +31,7 @@ export interface I18nString {
 
 export interface NormalizedSpot {
   id: string
-  source: 'tourapi' | 'static' | 'welchon'
+  source: 'tourapi' | 'static'
   name: I18nString
   region: string
   category: SpotCategory
