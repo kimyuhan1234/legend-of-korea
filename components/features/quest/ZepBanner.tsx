@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 interface ZepBannerProps {
@@ -131,15 +132,13 @@ export function ZepBanner({ locale }: ZepBannerProps) {
       <div className="px-5 pb-5 text-center">
         <h3 className="text-white font-black text-base mb-1.5">🎮 {l.title}</h3>
         <p className="text-white/65 text-xs leading-relaxed mb-4">{l.desc}</p>
-        <button
-          onClick={() =>
-            document.getElementById('kit-purchase')?.scrollIntoView({ behavior: 'smooth' })
-          }
-          className="w-full bg-gradient-to-r from-mint to-mint-deep text-ink font-black rounded-xl px-6 py-3.5 text-sm hover:opacity-90 active:scale-95 transition-all"
+        <Link
+          href={`/${locale}/pass`}
+          className="block w-full bg-gradient-to-r from-mint to-mint-deep text-ink font-black rounded-xl px-6 py-3.5 text-sm hover:opacity-90 active:scale-95 transition-all text-center"
           style={{ boxShadow: '0 4px 20px rgba(157,216,206,0.4)' }}
         >
           🔒 {l.buyFirst}
-        </button>
+        </Link>
       </div>
 
       {/* ── 컴포넌트 스코프 keyframes ── */}
