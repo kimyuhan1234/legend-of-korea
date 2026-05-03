@@ -63,6 +63,7 @@ export const CONTENT_TYPES = {
   tourist: 12,
   culture: 14,
   festival: 15,
+  course: 25,
   leisure: 28,
   stay: 32,
 } as const
