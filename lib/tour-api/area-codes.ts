@@ -34,6 +34,25 @@ export const CITY_AREA_CODES: Record<string, { areaCode: number; sigunguCode?: n
   sokcho:    { areaCode: 32, sigunguCode: 5 },   // 속초시 (구 7=양양군 오류 수정)
   yeosu:     { areaCode: 38, sigunguCode: 13 },  // 여수시 (구 12=신안군 오류 수정)
   andong:    { areaCode: 35, sigunguCode: 11 },  // 안동시 (구 7=문경시 오류 수정)
+  // 신규 18 도시 (1단계 등록 — sigunguCode TourAPI 표준 검증 완료)
+  suwon:        { areaCode: 31, sigunguCode: 13 },  // 수원시
+  hwaseong:     { areaCode: 31, sigunguCode: 31 },  // 화성시
+  gapyeong:     { areaCode: 31, sigunguCode: 1 },   // 가평군
+  yangpyeong:   { areaCode: 31, sigunguCode: 19 },  // 양평군
+  gangneung:    { areaCode: 32, sigunguCode: 1 },   // 강릉시
+  pyeongchang:  { areaCode: 32, sigunguCode: 15 },  // 평창군
+  yangyang:     { areaCode: 32, sigunguCode: 7 },   // 양양군
+  yeongwol:     { areaCode: 32, sigunguCode: 8 },   // 영월군
+  gongju:       { areaCode: 34, sigunguCode: 1 },   // 공주시
+  buyeo:        { areaCode: 34, sigunguCode: 6 },   // 부여군
+  taean:        { areaCode: 34, sigunguCode: 14 },  // 태안군
+  pohang:       { areaCode: 35, sigunguCode: 23 },  // 포항시
+  ulleung:      { areaCode: 35, sigunguCode: 17 },  // 울릉군
+  geoje:        { areaCode: 36, sigunguCode: 1 },   // 거제시
+  namhae:       { areaCode: 36, sigunguCode: 5 },   // 남해군
+  gunsan:       { areaCode: 37, sigunguCode: 2 },   // 군산시
+  damyang:      { areaCode: 38, sigunguCode: 7 },   // 담양군
+  boseong:      { areaCode: 38, sigunguCode: 10 },  // 보성군
   // jeju 광역도 = 시군구 단위 (제주특별자치도 = 39, sigungu 분리 X)
   jeju:      { areaCode: 39 },
   // national — 전국 fallback (서울 areaCode 사용)

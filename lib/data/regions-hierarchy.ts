@@ -96,8 +96,12 @@ export const PROVINCES: ProvinceItem[] = [
     name: { ko: '경기도', ja: '京畿道', en: 'Gyeonggi-do', 'zh-CN': '京畿道', 'zh-TW': '京畿道' },
     emoji: '🏞️',
     cities: [
-      { id: 'yongin', name: { ko: '용인', ja: '龍仁', en: 'Yongin', 'zh-CN': '龙仁', 'zh-TW': '龍仁' } },
-      { id: 'icheon', name: { ko: '이천', ja: '利川', en: 'Icheon', 'zh-CN': '利川', 'zh-TW': '利川' } },
+      { id: 'suwon',      name: { ko: '수원', ja: '水原', en: 'Suwon',      'zh-CN': '水原', 'zh-TW': '水原' } },
+      { id: 'hwaseong',   name: { ko: '화성', ja: '華城', en: 'Hwaseong',   'zh-CN': '华城', 'zh-TW': '華城' } },
+      { id: 'gapyeong',   name: { ko: '가평', ja: '加平', en: 'Gapyeong',   'zh-CN': '加平', 'zh-TW': '加平' } },
+      { id: 'yangpyeong', name: { ko: '양평', ja: '楊平', en: 'Yangpyeong', 'zh-CN': '杨平', 'zh-TW': '楊平' } },
+      { id: 'yongin',     name: { ko: '용인', ja: '龍仁', en: 'Yongin',     'zh-CN': '龙仁', 'zh-TW': '龍仁' } },
+      { id: 'icheon',     name: { ko: '이천', ja: '利川', en: 'Icheon',     'zh-CN': '利川', 'zh-TW': '利川' } },
     ],
   },
   {
@@ -105,7 +109,11 @@ export const PROVINCES: ProvinceItem[] = [
     name: { ko: '강원도', ja: '江原道', en: 'Gangwon-do', 'zh-CN': '江原道', 'zh-TW': '江原道' },
     emoji: '🏔️',
     cities: [
-      { id: 'sokcho', name: { ko: '속초', ja: '束草', en: 'Sokcho', 'zh-CN': '束草', 'zh-TW': '束草' } },
+      { id: 'gangneung',   name: { ko: '강릉', ja: '江陵', en: 'Gangneung',   'zh-CN': '江陵', 'zh-TW': '江陵' } },
+      { id: 'pyeongchang', name: { ko: '평창', ja: '平昌', en: 'Pyeongchang', 'zh-CN': '平昌', 'zh-TW': '平昌' } },
+      { id: 'yangyang',    name: { ko: '양양', ja: '襄陽', en: 'Yangyang',    'zh-CN': '襄阳', 'zh-TW': '襄陽' } },
+      { id: 'yeongwol',    name: { ko: '영월', ja: '寧越', en: 'Yeongwol',    'zh-CN': '宁越', 'zh-TW': '寧越' } },
+      { id: 'sokcho',      name: { ko: '속초', ja: '束草', en: 'Sokcho',      'zh-CN': '束草', 'zh-TW': '束草' } },
     ],
   },
   {
@@ -113,6 +121,9 @@ export const PROVINCES: ProvinceItem[] = [
     name: { ko: '충청남도', ja: '忠清南道', en: 'Chungcheongnam-do', 'zh-CN': '忠清南道', 'zh-TW': '忠清南道' },
     emoji: '🌾',
     cities: [
+      { id: 'gongju',  name: { ko: '공주', ja: '公州', en: 'Gongju',  'zh-CN': '公州', 'zh-TW': '公州' } },
+      { id: 'buyeo',   name: { ko: '부여', ja: '扶余', en: 'Buyeo',   'zh-CN': '扶余', 'zh-TW': '扶餘' } },
+      { id: 'taean',   name: { ko: '태안', ja: '泰安', en: 'Taean',   'zh-CN': '泰安', 'zh-TW': '泰安' } },
       { id: 'cheonan', name: { ko: '천안', ja: '天安', en: 'Cheonan', 'zh-CN': '天安', 'zh-TW': '天安' } },
     ],
   },
@@ -121,6 +132,7 @@ export const PROVINCES: ProvinceItem[] = [
     name: { ko: '전라북도', ja: '全羅北道', en: 'Jeollabuk-do', 'zh-CN': '全罗北道', 'zh-TW': '全羅北道' },
     emoji: '🍚',
     cities: [
+      { id: 'gunsan', name: { ko: '군산', ja: '群山', en: 'Gunsan', 'zh-CN': '群山', 'zh-TW': '群山' } },
       { id: 'jeonju', name: { ko: '전주', ja: '全州', en: 'Jeonju', 'zh-CN': '全州', 'zh-TW': '全州' } },
     ],
   },
@@ -129,7 +141,9 @@ export const PROVINCES: ProvinceItem[] = [
     name: { ko: '전라남도', ja: '全羅南道', en: 'Jeollanam-do', 'zh-CN': '全罗南道', 'zh-TW': '全羅南道' },
     emoji: '🌅',
     cities: [
-      { id: 'yeosu', name: { ko: '여수', ja: '麗水', en: 'Yeosu', 'zh-CN': '丽水', 'zh-TW': '麗水' } },
+      { id: 'damyang', name: { ko: '담양', ja: '潭陽', en: 'Damyang', 'zh-CN': '潭阳', 'zh-TW': '潭陽' } },
+      { id: 'boseong', name: { ko: '보성', ja: '寶城', en: 'Boseong', 'zh-CN': '宝城', 'zh-TW': '寶城' } },
+      { id: 'yeosu',   name: { ko: '여수', ja: '麗水', en: 'Yeosu',   'zh-CN': '丽水', 'zh-TW': '麗水' } },
     ],
   },
   {
@@ -137,8 +151,10 @@ export const PROVINCES: ProvinceItem[] = [
     name: { ko: '경상북도', ja: '慶尚北道', en: 'Gyeongsangbuk-do', 'zh-CN': '庆尚北道', 'zh-TW': '慶尚北道' },
     emoji: '🏛️',
     cities: [
+      { id: 'pohang',   name: { ko: '포항', ja: '浦項', en: 'Pohang',   'zh-CN': '浦项', 'zh-TW': '浦項' } },
       { id: 'gyeongju', name: { ko: '경주', ja: '慶州', en: 'Gyeongju', 'zh-CN': '庆州', 'zh-TW': '慶州' } },
-      { id: 'andong', name: { ko: '안동', ja: '安東', en: 'Andong', 'zh-CN': '安东', 'zh-TW': '安東' } },
+      { id: 'andong',   name: { ko: '안동', ja: '安東', en: 'Andong',   'zh-CN': '安东', 'zh-TW': '安東' } },
+      { id: 'ulleung',  name: { ko: '울릉', ja: '鬱陵', en: 'Ulleung',  'zh-CN': '郁陵', 'zh-TW': '鬱陵' } },
     ],
   },
   {
@@ -146,6 +162,8 @@ export const PROVINCES: ProvinceItem[] = [
     name: { ko: '경상남도', ja: '慶尚南道', en: 'Gyeongsangnam-do', 'zh-CN': '庆尚南道', 'zh-TW': '慶尚南道' },
     emoji: '🌊',
     cities: [
+      { id: 'geoje',     name: { ko: '거제', ja: '巨済', en: 'Geoje',     'zh-CN': '巨济', 'zh-TW': '巨濟' } },
+      { id: 'namhae',    name: { ko: '남해', ja: '南海', en: 'Namhae',    'zh-CN': '南海', 'zh-TW': '南海' } },
       { id: 'tongyeong', name: { ko: '통영', ja: '統営', en: 'Tongyeong', 'zh-CN': '统营', 'zh-TW': '統營' } },
     ],
   },
@@ -197,31 +215,31 @@ export const REGION_GROUPS: RegionGroup[] = [
     id: 'seoul-gyeonggi',
     name: { ko: '서울경기', ja: 'ソウル・京畿', en: 'Seoul/Gyeonggi', 'zh-CN': '首尔京畿', 'zh-TW': '首爾京畿' },
     emoji: '🏙️',
-    regions: ['seoul', 'yongin', 'icheon'],
+    regions: ['seoul', 'suwon', 'hwaseong', 'gapyeong', 'yangpyeong', 'yongin', 'icheon'],
   },
   {
     id: 'chungcheong',
     name: { ko: '충청도', ja: '忠清道', en: 'Chungcheong', 'zh-CN': '忠清道', 'zh-TW': '忠清道' },
     emoji: '🌾',
-    regions: ['cheonan'],
+    regions: ['gongju', 'buyeo', 'taean', 'cheonan'],
   },
   {
     id: 'gangwon',
     name: { ko: '강원도', ja: '江原道', en: 'Gangwon', 'zh-CN': '江原道', 'zh-TW': '江原道' },
     emoji: '🏔️',
-    regions: ['sokcho'],
+    regions: ['gangneung', 'pyeongchang', 'yangyang', 'yeongwol', 'sokcho'],
   },
   {
     id: 'jeolla',
     name: { ko: '전라도', ja: '全羅道', en: 'Jeolla', 'zh-CN': '全罗道', 'zh-TW': '全羅道' },
     emoji: '🍚',
-    regions: ['jeonju', 'yeosu'],
+    regions: ['gunsan', 'jeonju', 'damyang', 'boseong', 'yeosu'],
   },
   {
     id: 'gyeongsang',
     name: { ko: '경상도', ja: '慶尚道', en: 'Gyeongsang', 'zh-CN': '庆尚道', 'zh-TW': '慶尚道' },
     emoji: '🌊',
-    regions: ['busan', 'gyeongju', 'andong', 'tongyeong'],
+    regions: ['pohang', 'gyeongju', 'andong', 'ulleung', 'busan', 'geoje', 'namhae', 'tongyeong'],
   },
   {
     id: 'jeju',
@@ -248,25 +266,43 @@ export const KFOOD_CITY_TO_GROUP: Record<string, RegionGroupId> = {
   // 서울/경기
   seoul: 'seoul-gyeonggi',
   incheon: 'seoul-gyeonggi',
+  suwon: 'seoul-gyeonggi',
+  hwaseong: 'seoul-gyeonggi',
+  gapyeong: 'seoul-gyeonggi',
+  yangpyeong: 'seoul-gyeonggi',
   yongin: 'seoul-gyeonggi',
   icheon: 'seoul-gyeonggi',
   // 충청
   daejeon: 'chungcheong',
   sejong: 'chungcheong',
   chungbuk: 'chungcheong',
+  gongju: 'chungcheong',
+  buyeo: 'chungcheong',
+  taean: 'chungcheong',
   cheonan: 'chungcheong',
   // 강원
+  gangneung: 'gangwon',
+  pyeongchang: 'gangwon',
+  yangyang: 'gangwon',
+  yeongwol: 'gangwon',
   sokcho: 'gangwon',
   // 전라
   gwangju: 'jeolla',
+  gunsan: 'jeolla',
   jeonju: 'jeolla',
+  damyang: 'jeolla',
+  boseong: 'jeolla',
   yeosu: 'jeolla',
   // 경상
   busan: 'gyeongsang',
   daegu: 'gyeongsang',
   ulsan: 'gyeongsang',
+  pohang: 'gyeongsang',
   gyeongju: 'gyeongsang',
   andong: 'gyeongsang',
+  ulleung: 'gyeongsang',
+  geoje: 'gyeongsang',
+  namhae: 'gyeongsang',
   tongyeong: 'gyeongsang',
   // 제주
   jeju: 'jeju',
