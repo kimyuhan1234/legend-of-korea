@@ -10,7 +10,7 @@ import {
 import { findLocalPick } from '@/lib/data/local-picks'
 
 interface Props {
-  params: { locale: string; city: string; pickId: string }
+  params: { locale: string; group: string; city: string; pickId: string }
 }
 
 function asLocale(raw: string): Locale {

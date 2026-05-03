@@ -6,10 +6,10 @@ import { LocalPickCard } from '@/components/features/food/LocalPickCard'
 import { CITY_AREA_CODES } from '@/lib/tour-api/area-codes'
 import { fetchRestaurantDetail, type Locale } from '@/lib/tour-api/restaurants'
 import { getLocalPicks } from '@/lib/data/local-picks'
-import { PROVINCES } from '@/lib/data/regions-hierarchy'
+import { PROVINCES, KFOOD_CITY_TO_GROUP } from '@/lib/data/regions-hierarchy'
 
 interface Props {
-  params: { locale: string; city: string }
+  params: { locale: string; group: string; city: string }
 }
 
 const COPY: Record<Locale, { back: string; title: string; subtitle: string; empty: string }> = {
@@ -60,8 +60,9 @@ function findCityName(cityId: string, lk: Locale): string {
 }
 
 export default async function LocalPickPage({ params }: Props) {
-  const { locale, city } = params
+  const { locale, group, city } = params
   if (!CITY_AREA_CODES[city]) notFound()
+  if (KFOOD_CITY_TO_GROUP[city] !== group) notFound()
 
   const lk = asLocale(locale)
   const t = COPY[lk]
@@ -85,7 +86,7 @@ export default async function LocalPickPage({ params }: Props) {
       <FoodTabNav locale={locale} activeTab="kfood-spot" />
       <div className="max-w-6xl mx-auto px-4 py-8">
         <Link
-          href={`/${locale}/food/kfood-spot`}
+          href={`/${locale}/food/kfood-spot/${group}`}
           className="inline-flex items-center text-sm text-stone hover:text-ink transition-colors mb-4"
         >
           {t.back}

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { MapPin, ChevronRight } from 'lucide-react'
 import type { TourRestaurant } from '@/lib/tour-api/restaurants'
 import { FOOD_CATEGORY_LABELS } from '@/lib/tour-api/categories'
+import { KFOOD_CITY_TO_GROUP } from '@/lib/data/regions-hierarchy'
 
 type Locale = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
 type CategorySlug = 'korean' | 'exotic' | 'cafe'
@@ -38,6 +39,7 @@ export function KFoodSpotCityList({
     ? (locale as Locale)
     : 'ko'
   const t = LOCALE_TEXT[lk]
+  const group = KFOOD_CITY_TO_GROUP[cityId]
 
   const grid = restaurants.length === 0 ? (
     <div className="rounded-2xl border border-mist bg-white p-10 text-center text-stone">
@@ -48,7 +50,7 @@ export function KFoodSpotCityList({
       {restaurants.map((r) => (
         <Link
           key={r.contentid}
-          href={`/${locale}/food/kfood-spot/${cityId}/${category}/${r.contentid}`}
+          href={`/${locale}/food/kfood-spot/${group}/${cityId}/${category}/${r.contentid}`}
           className="group bg-white rounded-2xl border border-mist overflow-hidden hover:border-mint-deep hover:shadow-md transition-all"
         >
           <div className="relative aspect-[4/3] bg-cloud">
@@ -96,7 +98,7 @@ export function KFoodSpotCityList({
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <Link
-        href={`/${locale}/food/kfood-spot`}
+        href={`/${locale}/food/kfood-spot/${group}`}
         className="inline-flex items-center text-sm text-stone hover:text-ink transition-colors mb-6"
       >
         {t.back}

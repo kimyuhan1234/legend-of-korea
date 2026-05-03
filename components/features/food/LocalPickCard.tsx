@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { LocalPickItem } from '@/lib/data/local-picks'
 import type { TourRestaurantDetail } from '@/lib/tour-api/restaurants'
+import { KFOOD_CITY_TO_GROUP } from '@/lib/data/regions-hierarchy'
 
 type Locale = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
 
@@ -17,10 +18,11 @@ export function LocalPickCard({ pick, detail, city, locale }: Props) {
     ? (locale as Locale)
     : 'ko'
   const tagline = pick.curation?.tagline?.[lk as 'ko' | 'ja' | 'en'] || pick.curation?.tagline?.ko
+  const group = KFOOD_CITY_TO_GROUP[city]
 
   return (
     <Link
-      href={`/${locale}/food/kfood-spot/${city}/local-pick/${pick.id}`}
+      href={`/${locale}/food/kfood-spot/${group}/${city}/local-pick/${pick.id}`}
       className="group block bg-white rounded-2xl overflow-hidden border border-mist hover:border-mint-deep hover:shadow-md transition-all"
     >
       {detail.firstimage && (

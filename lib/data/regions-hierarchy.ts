@@ -239,3 +239,48 @@ export const REGION_TO_GROUP: Record<string, RegionGroupId> = REGION_GROUPS.redu
   },
   {} as Record<string, RegionGroupId>,
 )
+
+/**
+ * /food/kfood-spot 페이지 전용 — 한국관광공사 데이터 노출 18 개 도시 → 6 권역 매핑.
+ * (REGION_GROUPS 는 음식 듀프 9 도시만 다루므로 별도 매핑 필요.)
+ */
+export const KFOOD_CITY_TO_GROUP: Record<string, RegionGroupId> = {
+  // 서울/경기
+  seoul: 'seoul-gyeonggi',
+  incheon: 'seoul-gyeonggi',
+  yongin: 'seoul-gyeonggi',
+  icheon: 'seoul-gyeonggi',
+  // 충청
+  daejeon: 'chungcheong',
+  sejong: 'chungcheong',
+  chungbuk: 'chungcheong',
+  cheonan: 'chungcheong',
+  // 강원
+  sokcho: 'gangwon',
+  // 전라
+  gwangju: 'jeolla',
+  jeonju: 'jeolla',
+  yeosu: 'jeolla',
+  // 경상
+  busan: 'gyeongsang',
+  daegu: 'gyeongsang',
+  ulsan: 'gyeongsang',
+  gyeongju: 'gyeongsang',
+  andong: 'gyeongsang',
+  tongyeong: 'gyeongsang',
+  // 제주
+  jeju: 'jeju',
+}
+
+export const KFOOD_GROUP_TO_CITIES: Record<RegionGroupId, string[]> = (() => {
+  const acc: Record<RegionGroupId, string[]> = {
+    'seoul-gyeonggi': [],
+    chungcheong: [],
+    gangwon: [],
+    jeolla: [],
+    gyeongsang: [],
+    jeju: [],
+  }
+  for (const [city, group] of Object.entries(KFOOD_CITY_TO_GROUP)) acc[group].push(city)
+  return acc
+})()

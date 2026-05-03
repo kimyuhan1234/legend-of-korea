@@ -6,7 +6,7 @@ import { KFoodCategoryTabs } from '@/components/features/food/KFoodCategoryTabs'
 import { fetchRestaurantsByArea, type Locale } from '@/lib/tour-api/restaurants'
 import { CITY_AREA_CODES } from '@/lib/tour-api/area-codes'
 import { FOOD_CATEGORIES } from '@/lib/tour-api/categories'
-import { PROVINCES } from '@/lib/data/regions-hierarchy'
+import { PROVINCES, KFOOD_CITY_TO_GROUP } from '@/lib/data/regions-hierarchy'
 
 type CategoryTab = 'korean' | 'exotic' | 'cafe'
 
@@ -17,7 +17,7 @@ const CATEGORY_TO_CAT3: Record<CategoryTab, string> = {
 }
 
 interface Props {
-  params: { locale: string; city: string; category: string }
+  params: { locale: string; group: string; city: string; category: string }
 }
 
 function asLocale(raw: string): Locale {
@@ -43,9 +43,10 @@ const COPY: Record<Locale, { back: string }> = {
 }
 
 export default async function CategoryPage({ params }: Props) {
-  const { locale, city, category } = params
+  const { locale, group, city, category } = params
   const config = CITY_AREA_CODES[city]
   if (!config) notFound()
+  if (KFOOD_CITY_TO_GROUP[city] !== group) notFound()
   if (!(category in CATEGORY_TO_CAT3)) notFound()
 
   const cat3 = CATEGORY_TO_CAT3[category as CategoryTab]
@@ -71,7 +72,7 @@ export default async function CategoryPage({ params }: Props) {
       <FoodTabNav locale={locale} activeTab="kfood-spot" />
       <div className="max-w-6xl mx-auto px-4 py-8">
         <Link
-          href={`/${locale}/food/kfood-spot`}
+          href={`/${locale}/food/kfood-spot/${group}`}
           className="inline-flex items-center text-sm text-stone hover:text-ink transition-colors mb-4"
         >
           {t.back}

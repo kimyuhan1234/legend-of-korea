@@ -10,6 +10,7 @@ import { regions } from "@/lib/data/food-dupes"
 import { fetchRestaurantsByArea, type Locale as TourLocale } from "@/lib/tour-api/restaurants"
 import { CITY_AREA_CODES } from "@/lib/tour-api/area-codes"
 import { foodHealthData } from "@/lib/data/food-health"
+import { KFOOD_CITY_TO_GROUP } from "@/lib/data/regions-hierarchy"
 
 interface Props {
   params: { locale: string; region: string; foodId: string }
@@ -170,7 +171,7 @@ export default async function FoodDetailPage({ params }: Props) {
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-black text-[#111]">🍽️ {t.spotsTitle}</h2>
               <Link
-                href={`/${locale}/food/kfood-spot/${food.region}`}
+                href={`/${locale}/food/kfood-spot/${KFOOD_CITY_TO_GROUP[food.region] ?? ''}/${food.region}/local-pick`}
                 className="text-sm text-blossom-deep font-bold hover:underline"
               >
                 {t.spotsLink}
@@ -180,7 +181,7 @@ export default async function FoodDetailPage({ params }: Props) {
               {relatedSpots.map((spot) => (
                 <Link
                   key={spot.contentid}
-                  href={`/${locale}/food/kfood-spot/${food.region}/korean/${spot.contentid}`}
+                  href={`/${locale}/food/kfood-spot/${KFOOD_CITY_TO_GROUP[food.region] ?? ''}/${food.region}/korean/${spot.contentid}`}
                   className="bg-white rounded-2xl border border-mist p-4 hover:border-blossom-deep/50 hover:shadow-sm transition-all"
                 >
                   <p className="font-bold text-[#111] text-sm mb-1 line-clamp-1">

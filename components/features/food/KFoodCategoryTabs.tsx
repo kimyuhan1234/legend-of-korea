@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { KFOOD_CITY_TO_GROUP } from '@/lib/data/regions-hierarchy'
 
 type Locale = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
 type TabId = 'local-pick' | 'korean' | 'exotic' | 'cafe'
@@ -24,6 +25,7 @@ export function KFoodCategoryTabs({ city, currentTab, locale }: Props) {
   const lk: Locale = (['ko', 'ja', 'en', 'zh-CN', 'zh-TW'] as Locale[]).includes(locale as Locale)
     ? (locale as Locale)
     : 'ko'
+  const group = KFOOD_CITY_TO_GROUP[city]
 
   return (
     <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
@@ -32,7 +34,7 @@ export function KFoodCategoryTabs({ city, currentTab, locale }: Props) {
         return (
           <Link
             key={tab.id}
-            href={`/${locale}/food/kfood-spot/${city}/${tab.id}`}
+            href={`/${locale}/food/kfood-spot/${group}/${city}/${tab.id}`}
             className={`shrink-0 px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors ${
               isActive
                 ? 'bg-mint-deep text-white'

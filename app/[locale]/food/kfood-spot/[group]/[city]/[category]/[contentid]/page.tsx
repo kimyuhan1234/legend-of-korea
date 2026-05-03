@@ -10,7 +10,7 @@ import {
 import { kfoodCuration } from '@/lib/data/kfood-curation'
 
 interface Props {
-  params: { locale: string; city: string; category: string; contentid: string }
+  params: { locale: string; group: string; city: string; category: string; contentid: string }
 }
 
 function asLocale(raw: string): Locale {

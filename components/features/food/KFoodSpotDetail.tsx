@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { MapPin, Phone, Clock, CalendarOff, Car, Globe, Utensils } from 'lucide-react'
 import type { TourRestaurantDetail, TourRestaurantImage } from '@/lib/tour-api/restaurants'
 import type { KFoodCurationEntry } from '@/lib/data/kfood-curation'
+import { KFOOD_CITY_TO_GROUP } from '@/lib/data/regions-hierarchy'
 
 type Locale = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
 
@@ -137,7 +138,7 @@ export function KFoodSpotDetail({ detail, images, curation, cityId, locale }: Pr
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <Link
-        href={`/${locale}/food/kfood-spot/${cityId}`}
+        href={`/${locale}/food/kfood-spot/${KFOOD_CITY_TO_GROUP[cityId] ?? ''}/${cityId}/local-pick`}
         className="inline-flex items-center text-sm text-stone hover:text-ink transition-colors mb-6"
       >
         {t.back}
