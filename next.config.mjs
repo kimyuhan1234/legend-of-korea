@@ -8,6 +8,11 @@ const securityHeaders = [
   { key: "X-XSS-Protection", value: "1; mode=block" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(self)" },
+  // Mixed Content fix: third-party SDK(특히 Kakao Map tiles)가 http:// 리소스 요청 시
+  // 브라우저가 이미 자동 업그레이드 중이지만 콘솔에 경고 14건+ 출력됨.
+  // CSP upgrade-insecure-requests 로 동작을 명시 → 경고 제거.
+  // 서버 사이드 Next.js Image 프록시(/_next/image)는 영향 없음.
+  { key: "Content-Security-Policy", value: "upgrade-insecure-requests" },
 ]
 
 /** @type {import('next').NextConfig} */
