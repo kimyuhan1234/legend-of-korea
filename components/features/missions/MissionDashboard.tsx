@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { Loader2, Flame, Map, Clock, Camera, CheckCircle2, Sparkles, Trophy } from 'lucide-react'
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon'
 import Image from 'next/image'
 import { MissionProgressRing } from './MissionProgressRing'
 import { ProfileBadges } from '@/components/features/mypage/ProfileBadges'
@@ -141,7 +142,7 @@ export function MissionDashboard({ userId, locale }: Props) {
           <p className="text-2xl font-black text-mint-deep">{stats.completed}</p>
         </div>
         <div className="bg-gradient-to-br from-mint-deep to-sky rounded-2xl p-4 text-center text-white">
-          <div className="text-2xl mb-1">⚡</div>
+          <RaindropIcon size={24} className="mx-auto mb-1" />
           <p className="text-[10px] font-bold uppercase opacity-80">{t('dashboard.labelLp')}</p>
           <p className="text-2xl font-black">{stats.totalLp.toLocaleString()}</p>
         </div>

@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { RaindropIcon } from "@/components/shared/icons/RaindropIcon"
 import { createClient } from "@/lib/supabase/server"
 import { LogoutButton } from "@/components/features/auth/LogoutButton"
 import { MobileHeader } from "@/components/shared/MobileHeader"
@@ -150,7 +151,7 @@ export async function Navbar({ locale }: NavbarProps) {
 
               {/* LP 뱃지 */}
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1F2937]/5 border border-ink/10">
-                <span className="text-xs text-blossom-deep">⚡</span>
+                <RaindropIcon size={14} className="text-mint-deep" />
                 <span className="text-xs font-bold text-ink">
                   {profile.total_lp.toLocaleString()} {t.lp}
                 </span>

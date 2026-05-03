@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { ArrowLeft, Trophy, Zap } from 'lucide-react';
+import { ArrowLeft, Trophy } from 'lucide-react';
 import { RaindropIcon } from '@/components/shared/icons/RaindropIcon';
 import MissionProgress from './MissionProgress';
 import MissionCard, {
@@ -228,7 +228,7 @@ export default function MissionRegisterClient({
       <div className="max-w-3xl mx-auto px-4 pb-12">
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 p-5 space-y-3">
           <h3 className="text-sm font-bold text-[#111] flex items-center gap-2">
-            <Zap size={16} className="text-mint-deep" />
+            <RaindropIcon size={16} className="text-mint-deep" />
             {t('photoGuide')}
           </h3>
           <ul className="text-xs text-stone space-y-2 pl-1">

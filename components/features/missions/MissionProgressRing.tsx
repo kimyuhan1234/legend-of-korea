@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { RaindropIcon } from '@/components/shared/icons/RaindropIcon'
 
 interface Props {
   completed: number
@@ -46,8 +47,9 @@ export function MissionProgressRing({ completed, total, lpEarned, nextMissionNam
         <p className="text-sm font-bold text-ink">
           🏆 {t('dashboard.completed', { n: completed, total })}
         </p>
-        <p className="text-sm font-bold text-ink">
-          ⚡ {t('dashboard.lpEarned', { n: lpEarned })}
+        <p className="text-sm font-bold text-ink inline-flex items-center gap-1.5">
+          <RaindropIcon size={14} className="text-mint-deep" />
+          {t('dashboard.lpEarned', { n: lpEarned })}
         </p>
         {nextMissionName && !isAllClear && (
           <p className="text-sm text-slate">
