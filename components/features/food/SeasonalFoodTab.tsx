@@ -1,14 +1,16 @@
 'use client'
 
+import Link from 'next/link'
 import { useMemo, useRef, useState } from 'react'
 import type { Season, SeasonalFood } from '@/lib/data/food-seasonal'
-import { SEASON_META, getCurrentSeason } from '@/lib/data/food-seasonal'
+import { SEASON_META } from '@/lib/data/food-seasonal'
 import { SeasonalFoodCard } from './SeasonalFoodCard'
 import { SeasonalCalendar } from './SeasonalCalendar'
 
 interface SeasonalFoodTabProps {
   locale: string
   foods: SeasonalFood[]
+  season: Season
 }
 
 const UI: Record<string, {
@@ -16,43 +18,47 @@ const UI: Record<string, {
   calendarOpen: string
   calendarClose: string
   empty: string
+  back: string
 }> = {
   ko: {
     count: (n) => `총 ${n}개 제철 음식`,
     calendarOpen: '📅 12개월 달력 보기',
     calendarClose: '📅 달력 접기',
     empty: '이 계절에 준비된 음식이 아직 없습니다.',
+    back: '← 다른 계절',
   },
   ja: {
     count: (n) => `全${n}品の旬料理`,
     calendarOpen: '📅 12ヶ月カレンダーを見る',
     calendarClose: '📅 カレンダーを閉じる',
     empty: 'この季節の料理はまだ準備中です。',
+    back: '← 他の季節',
   },
   en: {
     count: (n) => `${n} seasonal dishes`,
     calendarOpen: '📅 Open 12-month calendar',
     calendarClose: '📅 Close calendar',
     empty: 'No dishes available for this season yet.',
+    back: '← Other seasons',
   },
   'zh-CN': {
     count: (n) => `共${n}道时令料理`,
     calendarOpen: '📅 查看12个月日历',
     calendarClose: '📅 收起日历',
     empty: '此季节暂无料理。',
+    back: '← 其他季节',
   },
   'zh-TW': {
     count: (n) => `共${n}道時令料理`,
     calendarOpen: '📅 查看12個月日曆',
     calendarClose: '📅 收起日曆',
     empty: '此季節暫無料理。',
+    back: '← 其他季節',
   },
 }
 
-const SEASONS: Season[] = ['spring', 'summer', 'autumn', 'winter']
-
-export function SeasonalFoodTab({ locale, foods }: SeasonalFoodTabProps) {
-  const [activeSeason, setActiveSeason] = useState<Season>(() => getCurrentSeason())
+export function SeasonalFoodTab({ locale, foods, season }: SeasonalFoodTabProps) {
+  const [activeSeason, setActiveSeason] = useState<Season>(season)
   const [calendarOpen, setCalendarOpen] = useState(false)
   const gridRef = useRef<HTMLDivElement | null>(null)
   const ui = UI[locale] ?? UI.en
@@ -65,8 +71,8 @@ export function SeasonalFoodTab({ locale, foods }: SeasonalFoodTabProps) {
 
   const activeMeta = SEASON_META[activeSeason]
 
-  function handleMonthSelect(season: Season) {
-    setActiveSeason(season)
+  function handleMonthSelect(s: Season) {
+    setActiveSeason(s)
     setCalendarOpen(false)
     requestAnimationFrame(() => {
       gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -75,26 +81,14 @@ export function SeasonalFoodTab({ locale, foods }: SeasonalFoodTabProps) {
 
   return (
     <div className="max-w-6xl mx-auto px-6 md:px-10 py-12 md:py-16 space-y-6">
-      {/* 계절 선택 탭 */}
-      <div className="flex flex-wrap gap-2 bg-white rounded-2xl p-2 border border-mist">
-        {SEASONS.map((s) => {
-          const meta = SEASON_META[s]
-          const active = s === activeSeason
-          return (
-            <button
-              key={s}
-              type="button"
-              onClick={() => setActiveSeason(s)}
-              className={`flex-1 min-w-[80px] px-3 py-2.5 rounded-xl text-sm font-bold transition-all ${
-                active
-                  ? `bg-gradient-to-br ${meta.gradientFrom} ${meta.gradientTo} ${meta.color} shadow-sm`
-                  : 'text-stone hover:text-[#111] hover:bg-cloud'
-              }`}
-            >
-              {meta.label[locale as keyof typeof meta.label] ?? meta.label.en}
-            </button>
-          )
-        })}
+      {/* 다른 계절로 돌아가기 */}
+      <div className="flex justify-between items-center">
+        <Link
+          href={`/${locale}/food/seasonal`}
+          className="inline-flex items-center text-sm font-bold text-stone hover:text-ink transition-colors"
+        >
+          {ui.back}
+        </Link>
       </div>
 
       {/* 계절 헤드라인 */}

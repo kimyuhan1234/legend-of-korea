@@ -1,10 +1,23 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
+import Image from 'next/image'
 import { FoodTabNav } from '@/components/features/food/FoodTabNav'
 import { SeasonalFoodTab } from '@/components/features/food/SeasonalFoodTab'
-import { seasonalFoods } from '@/lib/data/food-seasonal'
+import { seasonalFoods, SEASON_META, type Season } from '@/lib/data/food-seasonal'
 
 interface Props {
   params: { locale: string }
+  searchParams: { season?: string }
+}
+
+const SEASONS: Season[] = ['spring', 'summer', 'autumn', 'winter']
+
+const SELECT_PROMPT: Record<string, string> = {
+  ko: '계절을 선택하세요',
+  ja: '季節を選択してください',
+  en: 'Choose a season',
+  'zh-CN': '请选择季节',
+  'zh-TW': '請選擇季節',
 }
 
 const META = {
@@ -28,9 +41,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: m.title, description: m.desc }
 }
 
-export default function SeasonalFoodPage({ params }: Props) {
+export default function SeasonalFoodPage({ params, searchParams }: Props) {
   const { locale } = params
   const h = HERO[locale as keyof typeof HERO] ?? HERO.ko
+  const seasonParam = searchParams.season
+  const validSeason = (SEASONS as string[]).includes(seasonParam ?? '') ? (seasonParam as Season) : null
+  const prompt = SELECT_PROMPT[locale] ?? SELECT_PROMPT.en
 
   return (
     <div className="min-h-screen bg-snow">
@@ -50,8 +66,42 @@ export default function SeasonalFoodPage({ params }: Props) {
       {/* Tab Nav */}
       <FoodTabNav locale={locale} activeTab="seasonal" />
 
-      {/* Seasonal filter + grid + calendar */}
-      <SeasonalFoodTab locale={locale} foods={seasonalFoods} />
+      {validSeason ? (
+        /* 2단계: 음식 list + 12개월 달력 */
+        <SeasonalFoodTab locale={locale} foods={seasonalFoods} season={validSeason} />
+      ) : (
+        /* 1단계: 4 계절 이미지 카드만 */
+        <div className="max-w-5xl mx-auto px-6 md:px-10 py-10 md:py-14">
+          <p className="text-center text-stone text-sm font-medium mb-8">{prompt}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {SEASONS.map((s) => {
+              const meta = SEASON_META[s]
+              const label = meta.label[locale as keyof typeof meta.label] ?? meta.label.en
+              return (
+                <Link
+                  key={s}
+                  href={`/${locale}/food/seasonal?season=${s}`}
+                  className="group block relative overflow-hidden rounded-2xl bg-white border border-mist shadow-sm hover:shadow-lg hover:border-mint transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="relative aspect-square">
+                    <Image
+                      src={`/images/season-card/${s}.png`}
+                      alt={label}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pt-12 pb-4 px-4">
+                      <span className="block text-white text-base md:text-lg font-bold">{label}</span>
+                      <span className="block text-white/80 text-xs mt-0.5">{meta.months}</span>
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
