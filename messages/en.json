@@ -146,7 +146,7 @@
     "categoryFashion": "OOTD",
     "categoryFood": "K-Food",
     "categoryStay": "STAY",
-    "categoryStory": "QUEST",
+    "categoryStory": "Legend of Korea",
     "categorySights": "SPOT",
     "categoryStyle": "GOODS",
     "categoryCreate": "DIY",
@@ -192,7 +192,7 @@
       "label": "Legend of Korea",
       "title": "Follow Korean legends",
       "subtitle": "9 folktale courses with GPS missions to discover Korea",
-      "cta": "Start your quest",
+      "cta": "Start now",
       "alt": "Collage of a person in Hanbok and traditional Korean alley"
     },
     "footerCompany": "About Us",
@@ -862,9 +862,9 @@
     }
   },
   "story": {
-    "title": "QUEST",
+    "title": "Legend of Korea",
     "subtitle": "Course Explore · Story · Quest",
-    "tabMissionKit": "QUEST",
+    "tabMissionKit": "Legend of Korea",
     "tabMemories": "Memories",
     "tabPoints": "Legend Shop",
     "tabSpecial": "Special Event",
@@ -1386,7 +1386,7 @@
       "title": "Quests across 9 Korean cities",
       "subtitle": "Follow the legends and travel through Korea",
       "guide_link": "Read the mission guide →",
-      "meta_title": "QUEST",
+      "meta_title": "Legend of Korea",
       "meta_description": "70 missions across 9 cities — Become the hero of a Korean legend"
     },
     "hero": {

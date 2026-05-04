@@ -9,7 +9,7 @@ const TABS = [
   { emoji: '👗', label: 'OOTD' },
   { emoji: '🍜', label: 'K-Food' },
   { emoji: '🏯', label: 'STAY' },
-  { emoji: '⚔️', label: 'QUEST' },
+  { emoji: '⚔️', label: 'Legend of Korea' },
   { emoji: '📍', label: 'SPOT' },
   { emoji: '🛍️', label: 'GOODS' },
   { emoji: '🏺', label: 'DIY' },

@@ -21,31 +21,31 @@ interface NavbarProps {
 const NAV_LINKS = {
   ko: [
     { href: "/discover",  label: "DISCOVER" },
-    { href: "/story",     label: "QUEST" },
+    { href: "/story",     label: "Legend of Korea" },
     { href: "/pass",      label: "PASS" },
     { href: "/community", label: "COMMUNITY" },
   ],
   ja: [
     { href: "/discover",  label: "DISCOVER" },
-    { href: "/story",     label: "QUEST" },
+    { href: "/story",     label: "Legend of Korea" },
     { href: "/pass",      label: "PASS" },
     { href: "/community", label: "COMMUNITY" },
   ],
   en: [
     { href: "/discover",  label: "DISCOVER" },
-    { href: "/story",     label: "QUEST" },
+    { href: "/story",     label: "Legend of Korea" },
     { href: "/pass",      label: "PASS" },
     { href: "/community", label: "COMMUNITY" },
   ],
   'zh-CN': [
     { href: "/discover",  label: "DISCOVER" },
-    { href: "/story",     label: "QUEST" },
+    { href: "/story",     label: "Legend of Korea" },
     { href: "/pass",      label: "PASS" },
     { href: "/community", label: "COMMUNITY" },
   ],
   'zh-TW': [
     { href: "/discover",  label: "DISCOVER" },
-    { href: "/story",     label: "QUEST" },
+    { href: "/story",     label: "Legend of Korea" },
     { href: "/pass",      label: "PASS" },
     { href: "/community", label: "COMMUNITY" },
   ],

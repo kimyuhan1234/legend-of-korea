@@ -42,11 +42,11 @@ const DIGITAL_FEATURES = [
 ]
 
 const PLAN_LABEL = {
-  ko: { title: '구독 플랜 확인', plan: '디지털 퀘스트 패스', desc: '모든 미션 해금 + 디지털 혜택' },
-  en: { title: 'Confirm Plan', plan: 'Digital Quest Pass', desc: 'Unlock all missions + digital perks' },
-  ja: { title: 'プラン確認', plan: 'デジタルクエストパス', desc: '全ミッション解除＋デジタル特典' },
-  'zh-CN': { title: '确认订阅', plan: '数字任务通行证', desc: '解锁所有任务 + 数字特权' },
-  'zh-TW': { title: '確認訂閱', plan: '數位任務通行證', desc: '解鎖所有任務 + 數位特權' },
+  ko: { title: '구독 플랜 확인', plan: 'Legend of Korea 패스', desc: '모든 미션 해금 + 디지털 혜택' },
+  en: { title: 'Confirm Plan', plan: 'Legend of Korea Pass', desc: 'Unlock all missions + digital perks' },
+  ja: { title: 'プラン確認', plan: 'Legend of Korea パス', desc: '全ミッション解除＋デジタル特典' },
+  'zh-CN': { title: '确认订阅', plan: 'Legend of Korea 通行证', desc: '解锁所有任务 + 数字特权' },
+  'zh-TW': { title: '確認訂閱', plan: 'Legend of Korea 通行證', desc: '解鎖所有任務 + 數位特權' },
 }
 
 const PRICE_KRW = 6900
@@ -86,7 +86,7 @@ export function Step1KitSelect({ kits, coupons, data, onChange, onNext, t, local
       {/* 구독 플랜 카드 */}
       <div className="border-2 border-mint-deep rounded-2xl p-6 bg-gradient-to-br from-mint-light/30 to-white">
         <div className="text-center mb-5">
-          <p className="text-sm font-bold text-mint-deep uppercase tracking-widest mb-1">DIGITAL QUEST PASS</p>
+          <p className="text-sm font-bold text-mint-deep uppercase tracking-widest mb-1">LEGEND OF KOREA PASS</p>
           <p className="text-4xl font-black text-[#111]">{priceDisplay}</p>
           <p className="text-sm text-stone mt-1">{plan.desc}</p>
         </div>

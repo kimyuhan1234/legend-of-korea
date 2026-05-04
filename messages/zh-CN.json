@@ -146,7 +146,7 @@
     "categoryFashion": "OOTD",
     "categoryFood": "K-Food",
     "categoryStay": "STAY",
-    "categoryStory": "QUEST",
+    "categoryStory": "Legend of Korea",
     "categorySights": "SPOT",
     "categoryStyle": "GOODS",
     "categoryCreate": "DIY",
@@ -192,7 +192,7 @@
       "label": "Legend of Korea",
       "title": "跟随韩国传说去旅行",
       "subtitle": "9条民间故事路线 + GPS任务，深度探索韩国",
-      "cta": "开始任务",
+      "cta": "开始",
       "alt": "身着韩服的人物与韩屋街道拼贴"
     },
     "footerCompany": "关于我们",
@@ -862,9 +862,9 @@
     }
   },
   "story": {
-    "title": "QUEST",
+    "title": "Legend of Korea",
     "subtitle": "路线探索 · 故事 · 任务",
-    "tabMissionKit": "QUEST",
+    "tabMissionKit": "Legend of Korea",
     "tabMemories": "回忆",
     "tabPoints": "传说商店",
     "tabSpecial": "特别活动",
@@ -1386,7 +1386,7 @@
       "title": "韩国 9 城市任务",
       "subtitle": "跟随传说，畅游韩国",
       "guide_link": "查看任务指南 →",
-      "meta_title": "QUEST",
+      "meta_title": "Legend of Korea",
       "meta_description": "9 城市 70 个任务 — 成为韩国传说的主角"
     },
     "hero": {
