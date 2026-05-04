@@ -940,7 +940,6 @@
   "spots": {
     "tab": {
       "curation": "AI Curation",
-      "map": "Map",
       "festival": "Festivals",
       "category": "Category",
       "city": "By City"
@@ -954,7 +953,9 @@
       "title": "Browse by City",
       "missionCta": "Start {city} Mission",
       "spotCount": "{n} spots",
-      "backToProvinces": "Other regions"
+      "backToProvinces": "Other regions",
+      "viewCard": "Cards",
+      "viewMap": "Map"
     },
     "festival": {
       "title": "Festival Calendar",

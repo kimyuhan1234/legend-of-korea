@@ -940,7 +940,6 @@
   "spots": {
     "tab": {
       "curation": "AIキュレーション",
-      "map": "マップ",
       "festival": "フェスティバル",
       "category": "カテゴリ",
       "city": "都市別"
@@ -954,7 +953,9 @@
       "title": "都市別で見る",
       "missionCta": "{city}ミッションに挑戦",
       "spotCount": "{n}件のスポット",
-      "backToProvinces": "他のエリア"
+      "backToProvinces": "他のエリア",
+      "viewCard": "カード",
+      "viewMap": "地図"
     },
     "festival": {
       "title": "フェスティバルカレンダー",

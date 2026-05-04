@@ -4,12 +4,14 @@ import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Sparkles, ArrowLeft } from 'lucide-react'
+import { Sparkles, ArrowLeft, LayoutGrid, Map as MapIcon } from 'lucide-react'
 import { SpotCard } from './SpotCard'
+import { KakaoMap, type KakaoMapMarker } from '@/components/shared/KakaoMap'
 import { getCityName } from '@/lib/curation/cities'
 import { CITY_STORIES } from '@/lib/curation/city-stories'
 import { courses } from '@/lib/data/courses'
 import { PROVINCES } from '@/lib/data/regions-hierarchy'
+import { REGION_COORDINATES, KOREA_CENTER, KOREA_ZOOM_LEVEL } from '@/lib/data/region-coordinates'
 import type { NormalizedSpot } from '@/lib/tour-api/types'
 
 interface Props {
@@ -17,7 +19,7 @@ interface Props {
   locale: string
 }
 
-/** 17 광역시도 — TourAPI PROVINCE_AREA_CODES 와 1:1 매칭. 카드 표시 순서. */
+/** 17 광역시도 — TourAPI PROVINCE_AREA_CODES 와 1:1 매칭. */
 const PROVINCE_CODES = [
   'seoul', 'incheon', 'daejeon', 'daegu', 'gwangju', 'busan', 'ulsan', 'sejong',
   'gyeonggi', 'gangwon', 'chungbuk', 'chungnam', 'gyeongbuk', 'gyeongnam',
@@ -26,8 +28,7 @@ const PROVINCE_CODES = [
 
 /**
  * 시 → 광역 reverse 매핑 (PROVINCES 기반).
- * SIGHTS 정적 데이터에 시 단위 region(jeonju/gyeongju/tongyeong/cheonan/yongin/icheon...)이
- * 있을 때 부모 광역에 자동 합산해 17 광역 카드 spot 수를 정확하게 표시.
+ * SIGHTS 시 단위 region(jeonju/gyeongju/...) 부모 광역에 합산.
  */
 const CITY_TO_PROVINCE: Record<string, string> = (() => {
   const map: Record<string, string> = {}
@@ -52,11 +53,14 @@ function cityCourseId(code: string): string | null {
   return c?.id ?? null
 }
 
+type ViewMode = 'card' | 'map'
+
 export function SpotCityView({ spots, locale }: Props) {
   const t = useTranslations('spots')
   const [selectedCity, setSelectedCity] = useState<string | null>(null)
+  const [viewMode, setViewMode] = useState<ViewMode>('card')
 
-  // 17 광역별 spot 수 (시 단위 region 도 부모 광역에 합산)
+  // 17 광역별 spot 수 (시 단위 합산 포함)
   const provinceCounts = useMemo(() => {
     const counts: Record<string, number> = {}
     for (const code of PROVINCE_CODES) counts[code] = 0
@@ -78,47 +82,110 @@ export function SpotCityView({ spots, locale }: Props) {
     }
   }, [spots, selectedCity])
 
-  // ── 1 단계: 17 광역 카드 그리드 ──
+  // KakaoMap 마커 — 17 광역
+  const mapMarkers = useMemo<KakaoMapMarker[]>(() => {
+    const markers: KakaoMapMarker[] = []
+    for (const code of PROVINCE_CODES) {
+      const coord = REGION_COORDINATES[code]
+      if (!coord) continue
+      const name = getCityName(code, locale)
+      const count = provinceCounts[code] ?? 0
+      markers.push({
+        lat: coord.lat,
+        lng: coord.lng,
+        title: `${name} · ${t('city.spotCount', { n: count })}`,
+        color: 'red',
+        onClick: () => setSelectedCity(code),
+      })
+    }
+    return markers
+  }, [locale, provinceCounts, t])
+
+  // ── 1 단계: 카드/지도 토글 ──
   if (!selectedCity) {
     return (
       <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <h2 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tight mb-2">
             🏙️ {t('city.title')}
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-          {PROVINCE_CODES.map((code) => {
-            const name = getCityName(code, locale)
-            const count = provinceCounts[code] ?? 0
-            return (
-              <button
-                key={code}
-                onClick={() => setSelectedCity(code)}
-                className="group block relative overflow-hidden rounded-2xl bg-white border border-mist shadow-sm hover:shadow-lg hover:border-mint transition-all duration-300 hover:-translate-y-1 text-left"
-              >
-                <div className="relative aspect-square">
-                  <Image
-                    src={`/images/region-card-sights/${code}.jpg`}
-                    alt={name}
-                    fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent pt-12 pb-3 px-3">
-                    <span className="block text-white text-sm md:text-base font-bold leading-tight">
-                      {name}
-                    </span>
-                    <span className="block text-white/80 text-[11px] md:text-xs mt-0.5">
-                      {t('city.spotCount', { n: count })}
-                    </span>
-                  </div>
-                </div>
-              </button>
-            )
-          })}
+        {/* 카드/지도 토글 */}
+        <div className="flex justify-center mb-6">
+          <div className="inline-flex bg-cloud rounded-full p-1 border border-mist">
+            <button
+              type="button"
+              onClick={() => setViewMode('card')}
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold transition-all ${
+                viewMode === 'card'
+                  ? 'bg-white text-mint-deep shadow-sm'
+                  : 'text-stone hover:text-slate-700'
+              }`}
+              aria-pressed={viewMode === 'card'}
+            >
+              <LayoutGrid className="w-4 h-4" />
+              {t('city.viewCard')}
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode('map')}
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold transition-all ${
+                viewMode === 'map'
+                  ? 'bg-white text-mint-deep shadow-sm'
+                  : 'text-stone hover:text-slate-700'
+              }`}
+              aria-pressed={viewMode === 'map'}
+            >
+              <MapIcon className="w-4 h-4" />
+              {t('city.viewMap')}
+            </button>
+          </div>
         </div>
+
+        {viewMode === 'card' ? (
+          // ── 카드 보기: 17 광역 이미지 카드 ──
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+            {PROVINCE_CODES.map((code) => {
+              const name = getCityName(code, locale)
+              const count = provinceCounts[code] ?? 0
+              return (
+                <button
+                  key={code}
+                  onClick={() => setSelectedCity(code)}
+                  className="group block relative overflow-hidden rounded-2xl bg-white border border-mist shadow-sm hover:shadow-lg hover:border-mint transition-all duration-300 hover:-translate-y-1 text-left"
+                >
+                  <div className="relative aspect-square">
+                    <Image
+                      src={`/images/region-card-sights/${code}.jpg`}
+                      alt={name}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent pt-12 pb-3 px-3">
+                      <span className="block text-white text-sm md:text-base font-bold leading-tight">
+                        {name}
+                      </span>
+                      <span className="block text-white/80 text-[11px] md:text-xs mt-0.5">
+                        {t('city.spotCount', { n: count })}
+                      </span>
+                    </div>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+        ) : (
+          // ── 지도 보기: KakaoMap + 17 핀 ──
+          <KakaoMap
+            centerLat={KOREA_CENTER.lat}
+            centerLng={KOREA_CENTER.lng}
+            level={KOREA_ZOOM_LEVEL}
+            markers={mapMarkers}
+            className="w-full h-[500px] md:h-[600px] rounded-2xl border border-mist overflow-hidden"
+          />
+        )}
       </div>
     )
   }
@@ -131,7 +198,6 @@ export function SpotCityView({ spots, locale }: Props) {
 
   return (
     <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
-      {/* 다른 광역으로 돌아가기 */}
       <button
         type="button"
         onClick={() => setSelectedCity(null)}
@@ -140,7 +206,6 @@ export function SpotCityView({ spots, locale }: Props) {
         <ArrowLeft className="w-4 h-4" /> {t('city.backToProvinces')}
       </button>
 
-      {/* 광역 헤더 — 이미지 + 이름 + vibe */}
       <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden mb-6 border border-mist">
         <Image
           src={`/images/region-card-sights/${selectedCity}.jpg`}
@@ -157,7 +222,6 @@ export function SpotCityView({ spots, locale }: Props) {
         </div>
       </div>
 
-      {/* 카테고리별 spot list (기존 디자인 유지) */}
       <div className="space-y-7">
         {citySpots.hotspots.length > 0 && (
           <div>
@@ -199,7 +263,6 @@ export function SpotCityView({ spots, locale }: Props) {
         )}
       </div>
 
-      {/* 미션 CTA */}
       <div className="text-center mt-10">
         <Link
           href={courseId ? `/${locale}/courses/${courseId}` : `/${locale}/story`}

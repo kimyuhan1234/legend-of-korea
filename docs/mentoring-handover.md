@@ -1,6 +1,16 @@
 # Clouds with you — 멘토링 핸드오버 (전수조사)
 
-작성: 2026-05-04 / 코드 기반 / commit `265a850` 기준
+작성: 2026-05-04 / 코드 기반 / commit `265a850` 기준 (이후 부분 갱신)
+
+**관련 보고서 (별도 파일)**:
+- [docs/zep-integration-audit.md](docs/zep-integration-audit.md) — ZEP 연동 95% UI / 50% 데이터 / 0% 백엔드 (commit `613634b`)
+- [docs/sights-tabs-audit.md](docs/sights-tabs-audit.md) — /sights 5탭 차이점 진단, 지도 탭 제거 권장 (commit `5815feb`)
+
+**핸드오버 작성 후 변경 사항** (요약):
+- 헤더 메뉴 라벨: `QUEST` → `Legend of Korea` 통일 (commit `492bb58`)
+- 홈 도깨비 hero 영구 제거 (commit `3f0d141`)
+- 홈 캐러셀 5번째 슬라이드 (Legend of Korea, commit `4e6fec3`)
+- /sights 5탭 → 4탭 (지도 탭 제거, 도시별에 카드/지도 토글)
 
 ---
 
@@ -120,7 +130,7 @@ AI_CURATION_ENABLED / ANTHROPIC_API_KEY / OPENAI_API_KEY / AI_MODEL (현재 STUB
 | `/food/flag-cooking` | `app/[locale]/food/flag-cooking/page.tsx` | ✓ | static | 12개국 fusion 레시피 (flag-cooking.ts 68 entries) | inline |
 | `/ootd` | `app/[locale]/ootd/page.tsx` | ✓ | static | 주간 OOTD 보드 (날씨 기반 데일리 코디) | inline |
 | `/traffic` | `app/[locale]/traffic/page.tsx` | ✓ | static | 공항→도시 이동 가이드 (애니메이션 경로 시각화) | inline |
-| `/sights` | `app/[locale]/sights/page.tsx` | ✗ | dyn | 5 탭 (큐레이션/지도/축제/카테고리/도시), TourAPI ~2,040 spot + 자동 태그 9종 | `sights`, `spots`, `common` |
+| `/sights` | `app/[locale]/sights/page.tsx` | ✗ | dyn | 4 탭 (큐레이션/축제/카테고리/도시별 — 도시별에 카드/지도 토글), TourAPI ~2,040 spot + 자동 태그 9종 | `sights`, `spots`, `common` |
 | `/gallery` | `app/[locale]/gallery/page.tsx` | ✗ | server | PASS 전용 사진 gallery (Supabase Storage `gallery` 버킷) | `gallery` |
 | `/story` | `app/[locale]/story/page.tsx` | ✗ | dyn | 2 탭 (디지털 퀘스트 카드 그리드 / 스페셜 이벤트) | `story`, `quest` |
 | `/courses/[courseId]` | `app/[locale]/courses/[courseId]/page.tsx` | ✗ | dyn | 코스 상세 (히어로/3단계/미션지도/스토리/패스/Quest Party/ZEP/제휴/리뷰/FAQ) | `course`, `quest` |
@@ -206,7 +216,7 @@ AI_CURATION_ENABLED / ANTHROPIC_API_KEY / OPENAI_API_KEY / AI_MODEL (현재 STUB
 - **한국적 무드**: 카드 배경은 미니멀 흰색 — 중립. STAY 그라데이션이 유일한 액센트. 한복/도깨비 이미지 X.
 - **BreadcrumbSchema** 포함 (SEO).
 
-### 3-3. `/sights` — 5 탭 정보 집약 페이지
+### 3-3. `/sights` — 4 탭 정보 집약 페이지 (구 5탭에서 '지도' 탭 제거 — 도시별 토글로 흡수)
 
 - **파일**: [app/[locale]/sights/page.tsx](app/[locale]/sights/page.tsx) + [SpotsClient.tsx](components/features/spots/SpotsClient.tsx)
 - **컴포넌트 트리**:
@@ -214,15 +224,17 @@ AI_CURATION_ENABLED / ANTHROPIC_API_KEY / OPENAI_API_KEY / AI_MODEL (현재 STUB
   SightsPage (server, force-dynamic)
    └ SpotsClient (client)
        ├ Hero  (bg-tier-soft text-ink py-12 md:py-16)
-       ├ TabNav (sticky top-0 z-20 backdrop-blur, 5 tabs)
+       ├ TabNav (sticky top-0 z-20 backdrop-blur, 4 tabs)
        └ TabContent
            ├ curation: StyleSlider(swipe) → CurationResult
-           ├ map: SpotMapView (KakaoMap + 선호도 점수)
-           ├ festival: FestivalCalendar (월별 그리드)
-           ├ category: SpotCategoryView (3 카테고리 필터)
-           └ city: SpotCityView (17 광역 그리드)
+           ├ festival: FestivalCalendar (월별 그리드, region 17 광역)
+           ├ category: SpotCategoryView (3 카테고리 필터, region 17 광역)
+           └ city: SpotCityView — [카드 보기 ↔ 지도 보기] 토글
+                ├ 카드 보기: 17 광역 이미지 카드 (한복 일러스트)
+                └ 지도 보기: KakaoMap + 17 핀 (region-coordinates.ts)
   ```
-- **5 탭**: curation(Sparkles) / map(Map) / festival(Calendar) / category(Folder) / city(Building2) — 가로 스크롤 가능
+- **4 탭**: curation(Sparkles) / festival(Calendar) / category(Folder) / city(Building2)
+- **구 'map' 탭 제거**: SpotMapView (23 이모지 카드, KakaoMap 미사용 더미) → 도시별 탭의 '지도 보기' 토글로 통합 (진짜 KakaoMap + 17 핀 사용)
 - **데이터**: TourAPI 17 광역 × 4 contentTypeId(12/14/25/28) × numOfRows 30 + 축제(15) ≈ **2,040 spot**. 정적 SIGHTS 추가.
 - **자동 태그 9종**: `#야간 #꽃 #온천 #시장 #바다 #자연 #역사 #체험 #가족` (키워드 + cat3 fallback)
 - **SpotCard 디자인**: `aspect-[4/3]` 이미지 + `rounded-2xl` + 카테고리 emoji chip(`🔥/🏛️/🎊`) + 한글 태그 chip + AddToPlannerButton + TourAPI 출처
@@ -809,7 +821,7 @@ md: 487 / sm: 83 / lg: 39 / xl: 1 — **사실상 2-breakpoint** 시스템
 3. **`/food/seasonal`** — 4계절 카드 → 12개월 달력 토글 → 음식 그리드 2단계 네비. 한복 일러스트 + 그라데이션이 한국적 무드 살림.
 
 ### 15-2. 디자인 관점 개선 시급한 페이지 3
-1. **`/sights`** — 5탭/2,040 spot/SSR 3-5초/페이지네이션 X. 가장 무거운 정보 페이지인데 정보 위계 약하고 사용자 인지 부담 큼.
+1. **`/sights`** — 4탭/2,040 spot/SSR 3-5초/페이지네이션 X. 가장 무거운 정보 페이지. 도시별 카드/지도 토글로 진입은 정리됐으나 spot 양이 많아 가상 스크롤 검토 필요.
 2. **`/memories`** — 226 kB First Load JS, 4 영역(사진/패스포트/상점/랭킹) 한 페이지에 압축. 분리 또는 lazy 권장.
 3. **홈 ↔ /discover 무드 갭** — 홈 도깨비 hero(★★★★★) 후 discover 흰 카드(★)로 떨어짐. 외국인 첫 인상 일관성 부족.
 

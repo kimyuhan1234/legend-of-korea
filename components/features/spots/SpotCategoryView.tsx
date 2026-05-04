@@ -4,7 +4,30 @@ import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { SpotCard } from './SpotCard'
 import { CITIES, getCityName } from '@/lib/curation/cities'
+import { PROVINCES } from '@/lib/data/regions-hierarchy'
 import type { NormalizedSpot, SpotCategory } from '@/lib/tour-api/types'
+
+/** 17 광역만 chip 노출 (시군구는 부모 광역에 자동 합산) — 2026-05-04 */
+const PROVINCE_CODES = [
+  'seoul', 'incheon', 'daejeon', 'daegu', 'gwangju', 'busan', 'ulsan', 'sejong',
+  'gyeonggi', 'gangwon', 'chungbuk', 'chungnam', 'gyeongbuk', 'gyeongnam',
+  'jeonbuk', 'jeonnam', 'jeju',
+] as const
+
+const CITY_TO_PROVINCE: Record<string, string> = (() => {
+  const map: Record<string, string> = {}
+  for (const p of PROVINCES) {
+    for (const c of p.cities) map[c.id] = p.id
+  }
+  return map
+})()
+
+function getProvinceFor(region: string): string {
+  if ((PROVINCE_CODES as readonly string[]).includes(region)) return region
+  return CITY_TO_PROVINCE[region] ?? region
+}
+
+const PROVINCE_CITIES = CITIES.filter((c) => (PROVINCE_CODES as readonly string[]).includes(c.code))
 
 interface Props {
   spots: NormalizedSpot[]
@@ -25,7 +48,7 @@ export function SpotCategoryView({ spots, locale }: Props) {
   const filtered = useMemo(() => {
     return spots.filter(s => {
       if (s.category !== category) return false
-      if (region && s.region !== region) return false
+      if (region && getProvinceFor(s.region) !== region) return false
       return true
     })
   }, [spots, category, region])
@@ -69,7 +92,7 @@ export function SpotCategoryView({ spots, locale }: Props) {
         >
           {t('category.all')}
         </button>
-        {CITIES.map(c => {
+        {PROVINCE_CITIES.map(c => {
           const isActive = region === c.code
           return (
             <button

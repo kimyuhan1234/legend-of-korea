@@ -2,10 +2,9 @@
 
 import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
-import { Sparkles, Map, Calendar, Folder, Building2 } from 'lucide-react'
+import { Sparkles, Calendar, Folder, Building2 } from 'lucide-react'
 import { StyleSlider } from './StyleSlider'
 import { CurationResult } from './CurationResult'
-import { SpotMapView } from './SpotMapView'
 import { SpotCategoryView } from './SpotCategoryView'
 import { SpotCityView } from './SpotCityView'
 import { FestivalCalendar } from './FestivalCalendar'
@@ -18,12 +17,12 @@ interface Props {
   locale: string
 }
 
-type TabId = 'curation' | 'map' | 'festival' | 'category' | 'city'
+type TabId = 'curation' | 'festival' | 'category' | 'city'
 type CurationPhase = 'swipe' | 'result'
 
+// '지도' 탭은 KakaoMap 미사용 더미였음 — 도시별 탭의 카드/지도 토글로 흡수 (2026-05-04 sights-tabs-audit)
 const TABS: { id: TabId; Icon: React.ComponentType<{ className?: string }>; labelKey: string }[] = [
   { id: 'curation', Icon: Sparkles, labelKey: 'tab.curation' },
-  { id: 'map', Icon: Map, labelKey: 'tab.map' },
   { id: 'festival', Icon: Calendar, labelKey: 'tab.festival' },
   { id: 'category', Icon: Folder, labelKey: 'tab.category' },
   { id: 'city', Icon: Building2, labelKey: 'tab.city' },
@@ -94,7 +93,7 @@ export function SpotsClient({ initialSpots, locale }: Props) {
             <StyleSlider
               locale={locale}
               onComplete={handleComplete}
-              onSkip={() => setActiveTab('map')}
+              onSkip={() => setActiveTab('city')}
             />
           )}
           {phase === 'result' && preference && (
@@ -109,7 +108,6 @@ export function SpotsClient({ initialSpots, locale }: Props) {
         </>
       )}
 
-      {activeTab === 'map' && <SpotMapView spots={initialSpots} locale={locale} />}
       {activeTab === 'festival' && <FestivalCalendar spots={initialSpots} locale={locale} />}
       {activeTab === 'category' && <SpotCategoryView spots={initialSpots} locale={locale} />}
       {activeTab === 'city' && <SpotCityView spots={initialSpots} locale={locale} />}

@@ -940,7 +940,6 @@
   "spots": {
     "tab": {
       "curation": "AI策展",
-      "map": "地图",
       "festival": "节日",
       "category": "分类",
       "city": "按城市"
@@ -954,7 +953,9 @@
       "title": "按城市浏览",
       "missionCta": "挑战{city}任务",
       "spotCount": "{n}个景点",
-      "backToProvinces": "其他区域"
+      "backToProvinces": "其他区域",
+      "viewCard": "卡片",
+      "viewMap": "地图"
     },
     "festival": {
       "title": "节日日历",
