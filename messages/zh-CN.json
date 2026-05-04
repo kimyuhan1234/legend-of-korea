@@ -146,7 +146,7 @@
     "categoryFashion": "OOTD",
     "categoryFood": "K-Food",
     "categoryStay": "STAY",
-    "categoryStory": "QUEST",
+    "categoryStory": "Legend of Korea",
     "categorySights": "SPOT",
     "categoryStyle": "GOODS",
     "categoryCreate": "DIY",
@@ -192,7 +192,7 @@
       "label": "Legend of Korea",
       "title": "한국 전설을 따라 떠나는 여행",
       "subtitle": "전래동화 9개 코스, GPS 미션으로 한국을 깊이 만나세요",
-      "cta": "퀘스트 시작하기",
+      "cta": "시작하기",
       "alt": "한복 입은 인물과 한옥 거리 콜라주"
     },
     "footerCompany": "회사 정보",
@@ -991,9 +991,9 @@
     }
   },
   "story": {
-    "title": "QUEST",
+    "title": "Legend of Korea",
     "subtitle": "코스 탐색 · 스토리 · 미션",
-    "tabMissionKit": "QUEST",
+    "tabMissionKit": "Legend of Korea",
     "tabMemories": "추억 남기기",
     "tabPoints": "전설 상점",
     "tabSpecial": "스페셜 이벤트",
@@ -1515,7 +1515,7 @@
       "title": "한국 9개 도시 미션",
       "subtitle": "전설을 따라 한국을 여행하세요",
       "guide_link": "미션 가이드 보기 →",
-      "meta_title": "QUEST",
+      "meta_title": "Legend of Korea",
       "meta_description": "9개 도시 70개 미션 — 한국 전설의 주인공이 되세요"
     },
     "hero": {
