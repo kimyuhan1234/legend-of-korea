@@ -8,6 +8,8 @@ interface Props {
   cta: string
   href: string
   image: string
+  /** 명시적 alt — 미지정 시 title 사용 (기존 동작 보존) */
+  alt?: string
 }
 
 /**
@@ -16,7 +18,7 @@ interface Props {
  * 기존 SlideFeatureDupe / SlideFeaturePlanner 와 같은 호출 패턴
  * (props 로 title/subtitle/cta 받음) — HomeFeatureCarousel children 으로 균질 사용.
  */
-export function SlideHomeImage({ title, subtitle, cta, href, image }: Props) {
+export function SlideHomeImage({ title, subtitle, cta, href, image, alt }: Props) {
   return (
     <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
       {/* 좌: 텍스트 */}
@@ -40,7 +42,7 @@ export function SlideHomeImage({ title, subtitle, cta, href, image }: Props) {
       <div className="flex-1 relative aspect-[4/3] overflow-hidden rounded-2xl group order-1 md:order-2 w-full">
         <Image
           src={image}
-          alt={title}
+          alt={alt ?? title}
           fill
           sizes="(max-width: 768px) 100vw, 60vw"
           quality={90}

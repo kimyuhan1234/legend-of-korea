@@ -58,6 +58,7 @@ export default async function HomePage({ params }: Props) {
   const { locale } = params
   const t = await getTranslations({ locale, namespace: 'home' })
   const tm = await getTranslations({ locale, namespace: 'home.memories' })
+  const tl = await getTranslations({ locale, namespace: 'home.legendOfKorea' })
 
   return (
     <div className="bg-snow has-sticky-cta">
@@ -67,9 +68,17 @@ export default async function HomePage({ params }: Props) {
       {/* 섹션 2: 패스 버튼 + 비디오 (구 HeroSection — 결제 동선) */}
       <HeroPassButtons cta={t('signup')} locale={locale} />
 
-      {/* 섹션 3: 자동 슬라이드 캐러셀 — 4 슬라이드 통합 (Dupe / Planner / Memorise / Discover).
-          이전 별도 HomeCommunityPreview 캐러셀을 흡수. */}
+      {/* 섹션 3: 자동 슬라이드 캐러셀 — 5 슬라이드 (Legend of Korea / Dupe / Planner / Memorise / Discover).
+          1번 자리: Legend of Korea (사이트 정체성, 한국 IP 강조 — 도깨비 hero 제거 후 무드 갭 보완). */}
       <HomeFeatureCarousel>
+        <SlideHomeImage
+          title={tl('title')}
+          subtitle={tl('subtitle')}
+          cta={tl('cta')}
+          href={`/${locale}/story`}
+          image="/images/home/legend-of-korea-slide.png"
+          alt={tl('alt')}
+        />
         <SlideFeatureDupe
           locale={locale}
           title={t('foodMatchingTitle')}
