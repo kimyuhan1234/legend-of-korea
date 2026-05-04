@@ -188,6 +188,13 @@
       "slide2Subtitle": "당신의 취향에 맞는 한국 도시를 추천해 드려요.",
       "slide2Cta": "여행 스타일 테스트"
     },
+    "legendOfKorea": {
+      "label": "Legend of Korea",
+      "title": "한국 전설을 따라 떠나는 여행",
+      "subtitle": "전래동화 9개 코스, GPS 미션으로 한국을 깊이 만나세요",
+      "cta": "퀘스트 시작하기",
+      "alt": "한복 입은 인물과 한옥 거리 콜라주"
+    },
     "footerCompany": "회사 정보",
     "footerTerms": "이용약관",
     "footerPrivacy": "개인정보처리방침",
