@@ -1091,7 +1091,9 @@
     },
     "city": {
       "title": "도시별 보기",
-      "missionCta": "{city} 미션 도전하기"
+      "missionCta": "{city} 미션 도전하기",
+      "spotCount": "{n}개 스팟",
+      "backToProvinces": "다른 광역"
     },
     "festival": {
       "title": "축제 캘린더",
