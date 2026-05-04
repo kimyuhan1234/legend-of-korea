@@ -1079,7 +1079,6 @@
   "spots": {
     "tab": {
       "curation": "AI 큐레이션",
-      "map": "지도",
       "festival": "축제",
       "category": "카테고리",
       "city": "도시별"
@@ -1093,7 +1092,9 @@
       "title": "도시별 보기",
       "missionCta": "{city} 미션 도전하기",
       "spotCount": "{n}개 스팟",
-      "backToProvinces": "다른 광역"
+      "backToProvinces": "다른 광역",
+      "viewCard": "카드",
+      "viewMap": "지도"
     },
     "festival": {
       "title": "축제 캘린더",
