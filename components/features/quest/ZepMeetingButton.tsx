@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
 import { Lock } from 'lucide-react'
 import { getZepZoneByCourseId } from '@/lib/data/zep-spaces'
@@ -140,14 +141,12 @@ export function ZepMeetingButton({ courseId, hasPurchased, locale }: ZepMeetingB
           <p className="text-xs text-stone mt-1 leading-relaxed">{l.locked}</p>
         </div>
       </div>
-      <button
-        onClick={() =>
-          document.getElementById('kit-purchase')?.scrollIntoView({ behavior: 'smooth' })
-        }
-        className="w-full py-2.5 rounded-xl bg-mist hover:bg-blossom-light text-stone hover:text-blossom-deep font-semibold text-sm transition-colors"
+      <Link
+        href={`/${locale}/pass`}
+        className="block w-full py-2.5 rounded-xl bg-mist hover:bg-blossom-light text-stone hover:text-blossom-deep font-semibold text-sm transition-colors text-center"
       >
         {l.buyFirst} →
-      </button>
+      </Link>
     </div>
   )
 }

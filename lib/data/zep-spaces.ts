@@ -19,7 +19,7 @@ export interface ZepSpace {
 }
 
 export const zepSpace: ZepSpace = {
-  spaceUrl: "https://zep.us/play/YOUR_SPACE_ID_HERE",
+  spaceUrl: "https://zep.us/play/Bjg9lo",
   password: "legendofkorea2026",
   isActive: true,
   zones: [
