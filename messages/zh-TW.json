@@ -952,7 +952,9 @@
     },
     "city": {
       "title": "按城市瀏覽",
-      "missionCta": "挑戰{city}任務"
+      "missionCta": "挑戰{city}任務",
+      "spotCount": "{n}個景點",
+      "backToProvinces": "其他區域"
     },
     "festival": {
       "title": "節日日曆",

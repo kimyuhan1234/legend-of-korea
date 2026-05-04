@@ -2,17 +2,44 @@
 
 import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import Link from 'next/link'
-import { Sparkles } from 'lucide-react'
+import { Sparkles, ArrowLeft } from 'lucide-react'
 import { SpotCard } from './SpotCard'
-import { CITIES, getCityName } from '@/lib/curation/cities'
+import { getCityName } from '@/lib/curation/cities'
 import { CITY_STORIES } from '@/lib/curation/city-stories'
 import { courses } from '@/lib/data/courses'
+import { PROVINCES } from '@/lib/data/regions-hierarchy'
 import type { NormalizedSpot } from '@/lib/tour-api/types'
 
 interface Props {
   spots: NormalizedSpot[]
   locale: string
+}
+
+/** 17 광역시도 — TourAPI PROVINCE_AREA_CODES 와 1:1 매칭. 카드 표시 순서. */
+const PROVINCE_CODES = [
+  'seoul', 'incheon', 'daejeon', 'daegu', 'gwangju', 'busan', 'ulsan', 'sejong',
+  'gyeonggi', 'gangwon', 'chungbuk', 'chungnam', 'gyeongbuk', 'gyeongnam',
+  'jeonbuk', 'jeonnam', 'jeju',
+] as const
+
+/**
+ * 시 → 광역 reverse 매핑 (PROVINCES 기반).
+ * SIGHTS 정적 데이터에 시 단위 region(jeonju/gyeongju/tongyeong/cheonan/yongin/icheon...)이
+ * 있을 때 부모 광역에 자동 합산해 17 광역 카드 spot 수를 정확하게 표시.
+ */
+const CITY_TO_PROVINCE: Record<string, string> = (() => {
+  const map: Record<string, string> = {}
+  for (const p of PROVINCES) {
+    for (const c of p.cities) map[c.id] = p.id
+  }
+  return map
+})()
+
+function getProvinceFor(region: string): string {
+  if ((PROVINCE_CODES as readonly string[]).includes(region)) return region
+  return CITY_TO_PROVINCE[region] ?? region
 }
 
 function getI18n(field: { [k: string]: string } | undefined, locale: string): string {
@@ -21,68 +48,116 @@ function getI18n(field: { [k: string]: string } | undefined, locale: string): st
 }
 
 function cityCourseId(code: string): string | null {
-  const c = courses.find(x => x.region === code)
+  const c = courses.find((x) => x.region === code)
   return c?.id ?? null
 }
 
 export function SpotCityView({ spots, locale }: Props) {
   const t = useTranslations('spots')
-  const [selectedCity, setSelectedCity] = useState<string>(CITIES[0].code)
+  const [selectedCity, setSelectedCity] = useState<string | null>(null)
 
+  // 17 광역별 spot 수 (시 단위 region 도 부모 광역에 합산)
+  const provinceCounts = useMemo(() => {
+    const counts: Record<string, number> = {}
+    for (const code of PROVINCE_CODES) counts[code] = 0
+    for (const s of spots) {
+      const province = getProvinceFor(s.region)
+      if (counts[province] !== undefined) counts[province]++
+    }
+    return counts
+  }, [spots])
+
+  // 선택된 광역의 카테고리별 spot
   const citySpots = useMemo(() => {
-    const filtered = spots.filter(s => s.region === selectedCity)
+    if (!selectedCity) return { hotspots: [], landmarks: [], festivals: [] }
+    const filtered = spots.filter((s) => getProvinceFor(s.region) === selectedCity)
     return {
-      hotspots: filtered.filter(s => s.category === 'hotspot'),
-      landmarks: filtered.filter(s => s.category === 'landmark'),
-      festivals: filtered.filter(s => s.category === 'festival'),
+      hotspots: filtered.filter((s) => s.category === 'hotspot'),
+      landmarks: filtered.filter((s) => s.category === 'landmark'),
+      festivals: filtered.filter((s) => s.category === 'festival'),
     }
   }, [spots, selectedCity])
 
+  // ── 1 단계: 17 광역 카드 그리드 ──
+  if (!selectedCity) {
+    return (
+      <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tight mb-2">
+            🏙️ {t('city.title')}
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+          {PROVINCE_CODES.map((code) => {
+            const name = getCityName(code, locale)
+            const count = provinceCounts[code] ?? 0
+            return (
+              <button
+                key={code}
+                onClick={() => setSelectedCity(code)}
+                className="group block relative overflow-hidden rounded-2xl bg-white border border-mist shadow-sm hover:shadow-lg hover:border-mint transition-all duration-300 hover:-translate-y-1 text-left"
+              >
+                <div className="relative aspect-square">
+                  <Image
+                    src={`/images/region-card-sights/${code}.jpg`}
+                    alt={name}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent pt-12 pb-3 px-3">
+                    <span className="block text-white text-sm md:text-base font-bold leading-tight">
+                      {name}
+                    </span>
+                    <span className="block text-white/80 text-[11px] md:text-xs mt-0.5">
+                      {t('city.spotCount', { n: count })}
+                    </span>
+                  </div>
+                </div>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+    )
+  }
+
+  // ── 2 단계: 선택된 광역 spot list ──
   const name = getCityName(selectedCity, locale)
-  const story = CITY_STORIES.find(s => s.region === selectedCity)
+  const story = CITY_STORIES.find((s) => s.region === selectedCity)
   const vibe = story ? getI18n(story.vibe, locale) : ''
-  const emoji = CITIES.find(c => c.code === selectedCity)?.emoji || '📍'
   const courseId = cityCourseId(selectedCity)
 
   return (
     <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
-      <div className="text-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tight mb-2">
-          🏙️ {t('city.title')}
-        </h2>
-      </div>
+      {/* 다른 광역으로 돌아가기 */}
+      <button
+        type="button"
+        onClick={() => setSelectedCity(null)}
+        className="inline-flex items-center gap-1.5 text-sm font-bold text-stone hover:text-ink transition-colors mb-6"
+      >
+        <ArrowLeft className="w-4 h-4" /> {t('city.backToProvinces')}
+      </button>
 
-      {/* 도시 칩 */}
-      <div className="flex gap-2 mb-8 overflow-x-auto scrollbar-hide pb-2">
-        {CITIES.map(c => {
-          const isActive = selectedCity === c.code
-          return (
-            <button
-              key={c.code}
-              onClick={() => setSelectedCity(c.code)}
-              className={`shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full border-2 font-bold text-sm transition-all ${
-                isActive
-                  ? 'bg-mint-deep text-white border-mint-deep scale-105 shadow-sm'
-                  : 'bg-white text-slate-500 border-slate-200 hover:border-mint-deep/40'
-              }`}
-            >
-              <span className="text-base">{c.emoji}</span>
-              {getCityName(c.code, locale)}
-            </button>
-          )
-        })}
-      </div>
-
-      {/* 도시 헤더 */}
-      <div className="bg-gradient-to-br from-mint-deep/5 to-sky/5 rounded-2xl border border-mint-deep/15 p-5 mb-6">
-        <div className="flex items-center gap-3 mb-2">
-          <span className="text-3xl">{emoji}</span>
-          <h3 className="text-2xl font-black text-slate-800">{name}</h3>
+      {/* 광역 헤더 — 이미지 + 이름 + vibe */}
+      <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden mb-6 border border-mist">
+        <Image
+          src={`/images/region-card-sights/${selectedCity}.jpg`}
+          alt={name}
+          fill
+          sizes="(max-width: 768px) 100vw, 1024px"
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
+          <h3 className="text-2xl md:text-3xl font-black text-white drop-shadow mb-1">{name}</h3>
+          {vibe && <p className="text-sm md:text-base font-medium italic text-white/90 drop-shadow">&ldquo;{vibe}&rdquo;</p>}
         </div>
-        {vibe && <p className="text-sm font-bold italic text-slate-600">&ldquo;{vibe}&rdquo;</p>}
       </div>
 
-      {/* 카테고리별 */}
+      {/* 카테고리별 spot list (기존 디자인 유지) */}
       <div className="space-y-7">
         {citySpots.hotspots.length > 0 && (
           <div>
@@ -90,7 +165,7 @@ export function SpotCityView({ spots, locale }: Props) {
               🔥 {t('category.hotspot')} <span className="text-xs text-slate-500 font-bold">({citySpots.hotspots.length})</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {citySpots.hotspots.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
+              {citySpots.hotspots.map((s) => <SpotCard key={s.id} spot={s} locale={locale} />)}
             </div>
           </div>
         )}
@@ -101,7 +176,7 @@ export function SpotCityView({ spots, locale }: Props) {
               🏛️ {t('category.landmark')} <span className="text-xs text-slate-500 font-bold">({citySpots.landmarks.length})</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {citySpots.landmarks.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
+              {citySpots.landmarks.map((s) => <SpotCard key={s.id} spot={s} locale={locale} />)}
             </div>
           </div>
         )}
@@ -112,7 +187,7 @@ export function SpotCityView({ spots, locale }: Props) {
               🎊 {t('category.festival')} <span className="text-xs text-slate-500 font-bold">({citySpots.festivals.length})</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {citySpots.festivals.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
+              {citySpots.festivals.map((s) => <SpotCard key={s.id} spot={s} locale={locale} />)}
             </div>
           </div>
         )}

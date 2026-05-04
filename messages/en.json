@@ -952,7 +952,9 @@
     },
     "city": {
       "title": "Browse by City",
-      "missionCta": "Start {city} Mission"
+      "missionCta": "Start {city} Mission",
+      "spotCount": "{n} spots",
+      "backToProvinces": "Other regions"
     },
     "festival": {
       "title": "Festival Calendar",
