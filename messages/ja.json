@@ -531,6 +531,7 @@
   },
   "mypage": {
     "title": "마이페이지",
+    "changeProfilePhoto": "프로필 사진 변경",
     "cancel": "취소",
     "cancelButton": "취소",
     "save": "저장",
@@ -2203,7 +2204,14 @@
     "locked": "잠김",
     "unlocked": "해금됨",
     "selectImage": "아바타 선택",
+    "changeRank": "랭크 사진 변경",
     "unlockHint": "레벨 {n} 도달 시 해금",
+    "levelUp": {
+      "title": "🎉 레벨 {n} 달성!",
+      "body": "새 카테고리 \"{category}\" 가 해금되었습니다",
+      "cta": "아바타 변경하기",
+      "later": "나중에"
+    },
     "category": {
       "americano": "아이스 아메리카노",
       "mugunghwa": "무궁화",
