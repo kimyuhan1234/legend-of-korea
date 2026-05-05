@@ -112,6 +112,9 @@ export function MemoriesClient({ locale }: Props) {
   const [photos, setPhotos] = useState<PhotoItem[]>([])
   const [photosLoading, setPhotosLoading] = useState(false)
   const [lightbox, setLightbox] = useState<PhotoItem | null>(null)
+  // [E] 카드 댓글 아이콘 클릭 시 lightbox 열린 후 입력란 자동 포커스 트리거
+  const [pendingFocusComment, setPendingFocusComment] = useState(false)
+  const commentInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     const supabase = createClient()
@@ -172,12 +175,31 @@ export function MemoriesClient({ locale }: Props) {
     let cancelled = false
     setCommentsLoading(true)
     fetch(`/api/community/posts/${lightbox.postId}/comments`)
-      .then((r) => r.ok ? r.json() : [])
-      .then((data) => { if (!cancelled) setComments(Array.isArray(data) ? data : []) })
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => {
+        if (cancelled) return
+        // [A] API 응답이 { success, comments: [...] } 객체 — data.comments 추출 (직전 버그 fix)
+        const list = Array.isArray(data?.comments) ? data.comments : Array.isArray(data) ? data : []
+        setComments(list)
+      })
       .catch(() => { if (!cancelled) setComments([]) })
       .finally(() => { if (!cancelled) setCommentsLoading(false) })
     return () => { cancelled = true }
-  }, [lightbox])
+    // [B] 의존성을 postId 만 — lightbox.commentsCount / liked 등 변경 시 refetch 안 함
+    //     (방금 추가한 댓글이 빈 list 로 덮어써지는 현상 차단)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lightbox?.postId])
+
+  // [E] lightbox 열린 후 댓글 입력란 자동 포커스 (카드 댓글 아이콘 클릭 시 트리거)
+  useEffect(() => {
+    if (!pendingFocusComment || !lightbox) return
+    // setTimeout 0 — DOM 렌더 완료 후 focus
+    const id = setTimeout(() => {
+      commentInputRef.current?.focus()
+      setPendingFocusComment(false)
+    }, 50)
+    return () => clearTimeout(id)
+  }, [pendingFocusComment, lightbox])
 
   // 업로드 버튼 클릭 → 파일 선택 → 필터 단계
   const handleUploadClick = () => uploadInputRef.current?.click()
@@ -436,17 +458,34 @@ export function MemoriesClient({ locale }: Props) {
                     className="object-cover group-hover:scale-105 transition-transform"
                     unoptimized
                   />
-                  {/* 하단 좋아요/댓글 카운트 오버레이 (항상 표시) */}
+                  {/* 하단 좋아요/댓글 카운트 오버레이 — [D]/[E] 인스타 패턴: 각 아이콘이 독립 button.
+                      e.stopPropagation() 으로 부모 button (lightbox 열기) 차단. */}
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pt-10 p-2 flex items-end justify-between text-white">
                     <div className="flex gap-3 text-xs font-black drop-shadow">
-                      <span className="inline-flex items-center gap-1">
+                      {/* [D] 카드 안 좋아요 직접 토글 */}
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); handleLike(item) }}
+                        aria-label={photoUi.likes}
+                        className="inline-flex items-center gap-1 hover:scale-110 transition-transform"
+                      >
                         <Heart className={`w-3.5 h-3.5 ${item.liked ? 'fill-red-500 text-red-500' : ''}`} />
                         {item.likesCount}
-                      </span>
-                      <span className="inline-flex items-center gap-1">
+                      </button>
+                      {/* [E] 카드 안 댓글 → lightbox 열고 입력란 포커스 */}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setLightbox(item)
+                          setPendingFocusComment(true)
+                        }}
+                        aria-label={photoUi.comments}
+                        className="inline-flex items-center gap-1 hover:scale-110 transition-transform"
+                      >
                         <MessageCircle className="w-3.5 h-3.5" />
                         {item.commentsCount}
-                      </span>
+                      </button>
                     </div>
                     <span className="text-[10px] opacity-70">
                       {new Date(item.createdAt).toLocaleDateString()}
@@ -611,6 +650,7 @@ export function MemoriesClient({ locale }: Props) {
             {/* 댓글 입력 */}
             <div className="flex items-center gap-2">
               <input
+                ref={commentInputRef}
                 type="text"
                 value={newCommentText}
                 onChange={(e) => setNewCommentText(e.target.value.slice(0, 300))}
