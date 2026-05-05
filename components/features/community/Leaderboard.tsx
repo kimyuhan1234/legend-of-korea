@@ -17,6 +17,8 @@ interface LeaderboardEntry {
   userId: string
   nickname: string
   avatarUrl: string | null
+  selectedAvatarFilename: string | null
+  selectedAvatarSlug: string | null
   level: number
   language: string
   monthlyLp: number
@@ -155,8 +157,8 @@ export function Leaderboard({ locale }: Props) {
             >
               <span className="text-2xl w-8 text-center flex-shrink-0">{MEDAL[entry.rank]}</span>
               <div className="w-10 h-10 rounded-full overflow-hidden bg-slate-200 flex-shrink-0">
-                {hasAvatarSource({ avatar_url: entry.avatarUrl }) ? (
-                  <Image src={resolveAvatarSrc({ avatar_url: entry.avatarUrl })} alt="" width={40} height={40} className="object-cover w-full h-full" />
+                {hasAvatarSource({ avatar_url: entry.avatarUrl, selected_avatar_filename: entry.selectedAvatarFilename, selected_avatar_slug: entry.selectedAvatarSlug }) ? (
+                  <Image src={resolveAvatarSrc({ avatar_url: entry.avatarUrl, selected_avatar_filename: entry.selectedAvatarFilename, selected_avatar_slug: entry.selectedAvatarSlug })} alt="" width={40} height={40} className="object-cover w-full h-full" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-sm font-black text-slate-500">
                     {entry.nickname[0]}
@@ -199,8 +201,8 @@ export function Leaderboard({ locale }: Props) {
                 >
                   <span className="w-6 text-center font-black text-slate-500">{entry.rank}</span>
                   <div className="w-7 h-7 rounded-full overflow-hidden bg-slate-200 flex-shrink-0">
-                    {hasAvatarSource({ avatar_url: entry.avatarUrl }) ? (
-                      <Image src={resolveAvatarSrc({ avatar_url: entry.avatarUrl })} alt="" width={28} height={28} className="object-cover w-full h-full" />
+                    {hasAvatarSource({ avatar_url: entry.avatarUrl, selected_avatar_filename: entry.selectedAvatarFilename, selected_avatar_slug: entry.selectedAvatarSlug }) ? (
+                      <Image src={resolveAvatarSrc({ avatar_url: entry.avatarUrl, selected_avatar_filename: entry.selectedAvatarFilename, selected_avatar_slug: entry.selectedAvatarSlug })} alt="" width={28} height={28} className="object-cover w-full h-full" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-xs font-black text-slate-500">
                         {entry.nickname[0]}

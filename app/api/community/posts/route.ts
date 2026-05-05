@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 import { VALID_THEME_IDS } from '@/lib/data/post-themes';
+import { loadAvatarMap } from '@/lib/avatar/data';
 
 export async function GET(req: NextRequest) {
   try {
@@ -20,7 +21,7 @@ export async function GET(req: NextRequest) {
       .from('community_posts')
       .select(`
         *,
-        user:users (nickname, avatar_url, current_level)
+        user:users (nickname, avatar_url, current_level, selected_avatar_image_id)
       `);
 
     // Popular sort
@@ -29,7 +30,7 @@ export async function GET(req: NextRequest) {
     } else {
       query = query.order('created_at', { ascending: false });
     }
-    
+
     query = query.limit(limit);
 
     if (cursor && !isPopular) {
@@ -48,12 +49,30 @@ export async function GET(req: NextRequest) {
 
     if (error) throw error;
 
-    const nextCursor = !isPopular && posts.length === limit ? posts[posts.length - 1].created_at : null;
+    // 아바타 batch enrich — 각 post.user 에 selected_avatar_filename + selected_avatar_slug 합성
+    const avatarMap = await loadAvatarMap(
+      (posts as Array<{ user?: { selected_avatar_image_id?: string | null } | null }>)
+        .map((p) => p.user?.selected_avatar_image_id)
+    );
+    const enrichedPosts = (posts as Array<{ user?: { selected_avatar_image_id?: string | null } | null; [k: string]: unknown }>).map((p) => {
+      if (!p.user) return p;
+      const av = p.user.selected_avatar_image_id ? avatarMap.get(p.user.selected_avatar_image_id) : null;
+      return {
+        ...p,
+        user: {
+          ...p.user,
+          selected_avatar_filename: av?.filename ?? null,
+          selected_avatar_slug: av?.slug ?? null,
+        },
+      };
+    });
 
-    return NextResponse.json({ 
-      success: true, 
-      posts, 
-      nextCursor 
+    const nextCursor = !isPopular && enrichedPosts.length === limit ? (enrichedPosts[enrichedPosts.length - 1] as { created_at: string }).created_at : null;
+
+    return NextResponse.json({
+      success: true,
+      posts: enrichedPosts,
+      nextCursor
     });
   } catch (error) {
     console.error('Community GET Error:', error);

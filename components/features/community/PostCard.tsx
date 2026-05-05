@@ -35,6 +35,8 @@ export interface PostType {
     nickname: string;
     avatar_url?: string;
     current_level?: number;
+    selected_avatar_filename?: string | null;
+    selected_avatar_slug?: string | null;
   };
 }
 
@@ -42,7 +44,12 @@ interface CommentType {
   id: string;
   text: string;
   created_at: string;
-  user?: { nickname: string; avatar_url?: string };
+  user?: {
+    nickname: string;
+    avatar_url?: string;
+    selected_avatar_filename?: string | null;
+    selected_avatar_slug?: string | null;
+  };
 }
 
 interface PostCardProps {

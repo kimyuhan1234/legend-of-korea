@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/server'
+import { loadAvatarMap } from '@/lib/avatar/data'
 
 export const dynamic = 'force-dynamic'
 
@@ -46,18 +47,22 @@ export async function GET(request: NextRequest) {
     const userIds = topUsers.map(u => u.userId)
     const { data: profiles } = await supabase
       .from('users')
-      .select('id, nickname, avatar_url, current_level, language')
+      .select('id, nickname, avatar_url, current_level, language, selected_avatar_image_id')
       .in('id', userIds)
 
     const profileMap = new Map((profiles || []).map(p => [p.id, p]))
+    const avatarMap = await loadAvatarMap((profiles || []).map(p => p.selected_avatar_image_id))
 
     const leaderboard = topUsers.map(u => {
       const profile = profileMap.get(u.userId)
+      const av = profile?.selected_avatar_image_id ? avatarMap.get(profile.selected_avatar_image_id) : null
       return {
         rank: u.rank,
         userId: u.userId,
         nickname: profile?.nickname || 'Anonymous',
         avatarUrl: profile?.avatar_url || null,
+        selectedAvatarFilename: av?.filename ?? null,
+        selectedAvatarSlug: av?.slug ?? null,
         level: profile?.current_level || 1,
         language: profile?.language || 'en',
         monthlyLp: u.lp,

@@ -126,6 +126,34 @@ export async function getAvatarUserState(): Promise<AvatarUserState | null> {
 }
 
 /**
+ * 여러 image_id 의 filename + slug 한 번에 조회 (N+1 회피).
+ * 057 미적용 / 빈 배열 → 빈 Map.
+ */
+export async function loadAvatarMap(
+  imageIds: Array<string | null | undefined>,
+): Promise<Map<string, { filename: string; slug: string }>> {
+  const ids = Array.from(new Set(imageIds.filter((id): id is string => !!id)))
+  if (ids.length === 0) return new Map()
+
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('avatar_images')
+    .select('id, filename, avatar_categories(slug)')
+    .in('id', ids)
+    .returns<Array<{ id: string; filename: string; avatar_categories: { slug: string } | null }>>()
+
+  if (error || !data) return new Map()
+
+  const map = new Map<string, { filename: string; slug: string }>()
+  for (const row of data) {
+    if (row.avatar_categories?.slug) {
+      map.set(row.id, { filename: row.filename, slug: row.avatar_categories.slug })
+    }
+  }
+  return map
+}
+
+/**
  * 임의 userId 의 아바타 정보 조회 (커뮤니티 댓글 / 리더보드 / 헤더 등에서 사용).
  * 057 미적용 / 사진 미선택 → null filename/slug 반환 → resolveAvatarSrc 가 avatar_url fallback.
  */
