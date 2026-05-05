@@ -46,7 +46,7 @@ const STATIC_OG_BY_CATEGORY: Record<string, string> = {
   OOTD: '/images/category-fashion.png',
   'K-FOOD': '/images/category-food.png',
   SPOT: '/images/category-sights.png',
-  QUEST: '/images/category-story.png',
+  LEGEND: '/images/category-story.png',
   DIY: '/images/category-create.png',
   // DISCOVER / COMMUNITY / PASS / COURSE 는 매핑 미등록 → category-story fallback
 }

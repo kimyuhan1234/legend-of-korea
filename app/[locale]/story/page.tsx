@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t('title'),
     subtitle: t('subtitle'),
     tier: 'soft',
-    category: 'QUEST',
+    category: 'LEGEND',
     imagePath: '/images/category-story.png',
   })
   return {
