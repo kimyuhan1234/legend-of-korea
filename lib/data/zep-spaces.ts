@@ -10,17 +10,20 @@ export interface ZepZone {
   areaGuide: ZepI18n // 스페이스 내 위치 안내
 }
 
-/** 통합 ZEP 스페이스 (1개) */
+/**
+ * 통합 ZEP 스페이스 (1개).
+ *
+ * 비밀번호는 서버 전용 환경변수 `ZEP_SPACE_PASSWORD` 로 분리 (보안 격상 2026-05).
+ * 클라이언트 번들 노출 차단 — 활성 패스 보유자만 `/api/zep/access` 통해 발급.
+ */
 export interface ZepSpace {
   spaceUrl: string            // ZEP 스페이스 URL (관리자가 실제 URL로 교체)
-  password: string            // 통합 비밀번호 (구매자에게만 노출)
   isActive: boolean
   zones: ZepZone[]
 }
 
 export const zepSpace: ZepSpace = {
   spaceUrl: "https://zep.us/play/Bjg9lo",
-  password: "legendofkorea2026",
   isActive: true,
   zones: [
     {
