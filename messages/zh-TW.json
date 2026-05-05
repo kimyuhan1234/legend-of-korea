@@ -297,7 +297,7 @@
     "error": "錯誤",
     "submitting": "提交中...",
     "addPhoto": "新增照片",
-    "photoCount": "",
+    "photoCount": "張",
     "maxSize": "最大 {mb}MB",
     "photoLimitTitle": "照片太多了",
     "photoLimitDesc": "最多可上傳 {max} 張照片。",

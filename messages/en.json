@@ -297,7 +297,7 @@
     "error": "Error",
     "submitting": "Submitting...",
     "addPhoto": "Add Photo",
-    "photoCount": "",
+    "photoCount": "photos",
     "maxSize": "Max {mb}MB",
     "photoLimitTitle": "Too many photos",
     "photoLimitDesc": "You can upload up to {max} photos.",
