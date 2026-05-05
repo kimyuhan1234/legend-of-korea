@@ -2195,5 +2195,26 @@
     "empty": "아직 업로드된 사진이 없습니다.",
     "lockTitle": "PASS 전용",
     "lockBody": "PASS 구독 시 고화질 원본 다운로드 가능"
+  },
+  "avatar": {
+    "title": "성장 지도",
+    "subtitle": "한국 문화를 따라 레벨업하세요",
+    "level": "레벨",
+    "locked": "잠김",
+    "unlocked": "해금됨",
+    "selectImage": "아바타 선택",
+    "unlockHint": "레벨 {n} 도달 시 해금",
+    "category": {
+      "americano": "아이스 아메리카노",
+      "mugunghwa": "무궁화",
+      "tiger": "호랑이",
+      "kbeauty": "화장품",
+      "hanbok": "한복",
+      "hansik": "한식",
+      "hanok": "한옥",
+      "drama": "드라마",
+      "music": "뮤직",
+      "movie": "영화"
+    }
   }
 }
