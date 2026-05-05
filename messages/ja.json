@@ -2170,5 +2170,26 @@
     "empty": "まだ写真がありません。",
     "lockTitle": "PASS限定",
     "lockBody": "PASSに登録すると高画質オリジナルをダウンロード可能"
+  },
+  "avatar": {
+    "title": "成長マップ",
+    "subtitle": "韓国文化を辿ってレベルアップしよう",
+    "level": "レベル",
+    "locked": "ロック中",
+    "unlocked": "解放済み",
+    "selectImage": "アバター選択",
+    "unlockHint": "レベル{n}到達で解放",
+    "category": {
+      "americano": "アイスアメリカーノ",
+      "mugunghwa": "ムクゲ",
+      "tiger": "虎",
+      "kbeauty": "コスメ",
+      "hanbok": "韓服",
+      "hansik": "韓国料理",
+      "hanok": "韓屋",
+      "drama": "ドラマ",
+      "music": "音楽",
+      "movie": "映画"
+    }
   }
 }

@@ -2170,5 +2170,26 @@
     "empty": "暂无照片。",
     "lockTitle": "仅限PASS",
     "lockBody": "订阅PASS即可下载高清原图"
+  },
+  "avatar": {
+    "title": "成长地图",
+    "subtitle": "跟随韩国文化升级",
+    "level": "等级",
+    "locked": "已锁定",
+    "unlocked": "已解锁",
+    "selectImage": "选择头像",
+    "unlockHint": "达到等级{n}时解锁",
+    "category": {
+      "americano": "冰美式咖啡",
+      "mugunghwa": "木槿花",
+      "tiger": "老虎",
+      "kbeauty": "化妆品",
+      "hanbok": "韩服",
+      "hansik": "韩餐",
+      "hanok": "韩屋",
+      "drama": "电视剧",
+      "music": "音乐",
+      "movie": "电影"
+    }
   }
 }

@@ -2170,5 +2170,26 @@
     "empty": "No photos uploaded yet.",
     "lockTitle": "PASS Only",
     "lockBody": "Subscribe to PASS to download high-quality originals"
+  },
+  "avatar": {
+    "title": "Growth Map",
+    "subtitle": "Level up by exploring Korean culture",
+    "level": "Level",
+    "locked": "Locked",
+    "unlocked": "Unlocked",
+    "selectImage": "Select Avatar",
+    "unlockHint": "Unlocks at Level {n}",
+    "category": {
+      "americano": "Iced Americano",
+      "mugunghwa": "Mugunghwa",
+      "tiger": "Tiger",
+      "kbeauty": "K-Beauty",
+      "hanbok": "Hanbok",
+      "hansik": "Hansik",
+      "hanok": "Hanok",
+      "drama": "K-Drama",
+      "music": "K-Music",
+      "movie": "K-Movie"
+    }
   }
 }

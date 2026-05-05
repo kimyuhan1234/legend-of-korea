@@ -2170,5 +2170,26 @@
     "empty": "目前尚無照片。",
     "lockTitle": "僅限PASS",
     "lockBody": "訂閱PASS即可下載高畫質原圖"
+  },
+  "avatar": {
+    "title": "成長地圖",
+    "subtitle": "跟隨韓國文化升級",
+    "level": "等級",
+    "locked": "已鎖定",
+    "unlocked": "已解鎖",
+    "selectImage": "選擇頭像",
+    "unlockHint": "達到等級{n}時解鎖",
+    "category": {
+      "americano": "冰美式咖啡",
+      "mugunghwa": "木槿花",
+      "tiger": "老虎",
+      "kbeauty": "化妝品",
+      "hanbok": "韓服",
+      "hansik": "韓餐",
+      "hanok": "韓屋",
+      "drama": "電視劇",
+      "music": "音樂",
+      "movie": "電影"
+    }
   }
 }
