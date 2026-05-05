@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/server'
-import { loadAvatarMap } from '@/lib/avatar/data'
 
 export const dynamic = 'force-dynamic'
 
@@ -47,22 +46,22 @@ export async function GET(request: NextRequest) {
     const userIds = topUsers.map(u => u.userId)
     const { data: profiles } = await supabase
       .from('users')
-      .select('id, nickname, avatar_url, current_level, language, selected_avatar_image_id')
+      .select('id, nickname, avatar_url, current_level, language')
       .in('id', userIds)
 
     const profileMap = new Map((profiles || []).map(p => [p.id, p]))
-    const avatarMap = await loadAvatarMap((profiles || []).map(p => p.selected_avatar_image_id))
 
+    // 2026-05 — 057 적용 상태 무관 동작 위해 avatar enrich 제거.
+    // 클라이언트가 avatar_url fallback 으로 처리.
     const leaderboard = topUsers.map(u => {
       const profile = profileMap.get(u.userId)
-      const av = profile?.selected_avatar_image_id ? avatarMap.get(profile.selected_avatar_image_id) : null
       return {
         rank: u.rank,
         userId: u.userId,
         nickname: profile?.nickname || 'Anonymous',
         avatarUrl: profile?.avatar_url || null,
-        selectedAvatarFilename: av?.filename ?? null,
-        selectedAvatarSlug: av?.slug ?? null,
+        selectedAvatarFilename: null as string | null,
+        selectedAvatarSlug: null as string | null,
         level: profile?.current_level || 1,
         language: profile?.language || 'en',
         monthlyLp: u.lp,
