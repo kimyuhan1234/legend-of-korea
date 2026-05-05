@@ -56,9 +56,13 @@ export async function GET(
 
     return NextResponse.json({ success: true, comments: enriched });
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'unknown';
-    console.error('Comments GET Error:', message, err);
-    return NextResponse.json({ error: '서버 오류', detail: message }, { status: 500 });
+    console.error('Comments GET Error:', err);
+    return NextResponse.json({
+      success: false,
+      error: 'INTERNAL_ERROR',
+      detail: err instanceof Error ? err.message : String(err),
+      stack: err instanceof Error ? err.stack : undefined,
+    }, { status: 500 });
   }
 }
 
@@ -119,8 +123,12 @@ export async function POST(
 
     return NextResponse.json({ success: true, comment: enriched });
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'unknown';
-    console.error('Comments POST Error:', message, err);
-    return NextResponse.json({ error: '서버 오류', detail: message }, { status: 500 });
+    console.error('Comments POST Error:', err);
+    return NextResponse.json({
+      success: false,
+      error: 'INTERNAL_ERROR',
+      detail: err instanceof Error ? err.message : String(err),
+      stack: err instanceof Error ? err.stack : undefined,
+    }, { status: 500 });
   }
 }

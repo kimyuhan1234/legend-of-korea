@@ -54,8 +54,12 @@ export async function POST(
     });
   } catch (err) {
     console.error('Like toggle error:', err);
-    const message = err instanceof Error ? err.message : '서버 오류';
-    return NextResponse.json({ error: message }, { status: 500 });
+    return NextResponse.json({
+      success: false,
+      error: 'INTERNAL_ERROR',
+      detail: err instanceof Error ? err.message : String(err),
+      stack: err instanceof Error ? err.stack : undefined,
+    }, { status: 500 });
   }
 }
 
