@@ -78,10 +78,19 @@ export async function POST() {
     description: `Lv ${currentLevel} → Lv ${targetLevel} 랭크업`,
   })
 
+  // 5) 신규 해금 카테고리 slug — 레벨업 알림 모달 트리거용
+  const { data: unlockedCat } = await supabase
+    .from('avatar_categories')
+    .select('slug')
+    .eq('level_required', targetLevel)
+    .maybeSingle<{ slug: string }>()
+
   return NextResponse.json({
     success: true,
     newLevel: targetLevel,
     newBalance,
     deducted: required,
+    leveledUp: true,
+    unlockedCategorySlug: unlockedCat?.slug ?? null,
   })
 }

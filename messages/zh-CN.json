@@ -2179,6 +2179,12 @@
     "unlocked": "已解锁",
     "selectImage": "选择头像",
     "unlockHint": "达到等级{n}时解锁",
+    "levelUp": {
+      "title": "🎉 等级{n}达成！",
+      "body": "新类别\"{category}\"已解锁",
+      "cta": "更换头像",
+      "later": "稍后"
+    },
     "category": {
       "americano": "冰美式咖啡",
       "mugunghwa": "木槿花",

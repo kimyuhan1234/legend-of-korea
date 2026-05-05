@@ -2179,6 +2179,12 @@
     "unlocked": "Unlocked",
     "selectImage": "Select Avatar",
     "unlockHint": "Unlocks at Level {n}",
+    "levelUp": {
+      "title": "🎉 Level {n} reached!",
+      "body": "New category \"{category}\" unlocked",
+      "cta": "Change Avatar",
+      "later": "Later"
+    },
     "category": {
       "americano": "Iced Americano",
       "mugunghwa": "Mugunghwa",

@@ -30,6 +30,7 @@ import { AccountDanger } from '@/components/features/mypage/AccountDanger';
 import { LevelCard } from '@/components/features/dashboard/LevelCard';
 import { MyPlannerCard } from '@/components/features/mypage/MyPlannerCard';
 import { AvatarSelectModal } from '@/components/features/mypage/AvatarSelectModal';
+import { LevelUpModal } from '@/components/features/mypage/LevelUpModal';
 import { usePassStatus } from '@/hooks/usePassStatus';
 import { resolveAvatarSrc, hasAvatarSource } from '@/lib/avatar/resolve';
 import type { UserRankResult } from '@/lib/tiers/levels';
@@ -72,6 +73,22 @@ export function MyPageClient({
   // 패스 검증 — /api/passes/status (TEST_MODE / passes 테이블 / 만료 일관 처리)
   const { hasPass } = usePassStatus();
   const [avatarModalOpen, setAvatarModalOpen] = useState(false);
+  const [levelUpInfo, setLevelUpInfo] = useState<{ newLevel: number; slug: string } | null>(null);
+
+  // 레벨업 알림 — sessionStorage 플래그 (LegendShop 이 set, 본 마운트에서 read + clear)
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem('lok_avatar_level_up_pending');
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as { newLevel: number; slug: string };
+      if (parsed?.newLevel && parsed?.slug) {
+        setLevelUpInfo(parsed);
+      }
+      sessionStorage.removeItem('lok_avatar_level_up_pending');
+    } catch {
+      // ignore
+    }
+  }, []);
 
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
@@ -507,6 +524,23 @@ export function MyPageClient({
           categories={avatarCategories}
           images={avatarImages}
           onClose={() => setAvatarModalOpen(false)}
+        />
+      )}
+
+      {/* 레벨업 알림 모달 — sessionStorage 플래그가 있을 때 1회 노출 */}
+      {levelUpInfo && (
+        <LevelUpModal
+          newLevel={levelUpInfo.newLevel}
+          unlockedCategorySlug={levelUpInfo.slug}
+          categoryDefaultFilename={(() => {
+            const cat = avatarCategories.find((c) => c.slug === levelUpInfo.slug);
+            return cat?.default_filename ?? null;
+          })()}
+          onClose={() => setLevelUpInfo(null)}
+          onChangeAvatar={() => {
+            setLevelUpInfo(null);
+            setAvatarModalOpen(true);
+          }}
         />
       )}
     </div>

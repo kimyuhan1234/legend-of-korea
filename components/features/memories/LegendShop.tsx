@@ -226,6 +226,19 @@ export function LegendShop({ locale }: Props) {
       // RankBadge 캐시 무효화 → refreshKey 증가로 useEffect 재실행 강제
       invalidateRankCache(user.id)
       setRankRefresh((k) => k + 1)
+
+      // 레벨업 알림 — 다음 마이페이지 진입에서 1회 노출. sessionStorage 키 set.
+      if (json.leveledUp && json.unlockedCategorySlug) {
+        try {
+          sessionStorage.setItem(
+            'lok_avatar_level_up_pending',
+            JSON.stringify({ newLevel: json.newLevel, slug: json.unlockedCategorySlug }),
+          )
+        } catch {
+          // sessionStorage 차단 환경 — 조용히 무시
+        }
+      }
+
       await load()
     } finally {
       setBusy(null)

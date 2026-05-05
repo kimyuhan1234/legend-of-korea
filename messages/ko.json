@@ -2204,6 +2204,12 @@
     "unlocked": "해금됨",
     "selectImage": "아바타 선택",
     "unlockHint": "레벨 {n} 도달 시 해금",
+    "levelUp": {
+      "title": "🎉 레벨 {n} 달성!",
+      "body": "새 카테고리 \"{category}\" 가 해금되었습니다",
+      "cta": "아바타 변경하기",
+      "later": "나중에"
+    },
     "category": {
       "americano": "아이스 아메리카노",
       "mugunghwa": "무궁화",
