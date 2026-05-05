@@ -2,8 +2,10 @@ import Link from "next/link"
 import { getTranslations } from "next-intl/server"
 import { Metadata } from "next"
 import { createClient } from "@/lib/supabase/server"
+import { hasActivePass } from "@/lib/auth/pass"
 import { Disclaimer } from "@/components/shared/Disclaimer"
 import { ZepMeetingButton } from "@/components/features/quest/ZepMeetingButton"
+import { ZepBanner } from "@/components/features/quest/ZepBanner"
 
 interface Props {
   params: { locale: string; courseId: string }
@@ -30,6 +32,8 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
 
   // 코스 region 조회 (ZEP 스페이스 매칭용)
   const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
   let courseRegion = ""
   try {
     const { data: courseRow } = await supabase
@@ -63,6 +67,22 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
     }
   }
 
+  // orderId 위조 방지 — confirmedOrderId 가 실제 본인 user_id 의 주문인지 검증.
+  // paymentKey 흐름은 Toss confirm API 가 이미 서버 검증을 마쳤지만,
+  // ?orderId=XYZ 만으로 직접 진입하는 위조 케이스는 별도 차단 필요.
+  let orderOwnedByUser = false
+  if (confirmedOrderId && user) {
+    const { data: orderRow } = await supabase
+      .from("orders")
+      .select("id")
+      .eq("id", confirmedOrderId)
+      .eq("user_id", user.id)
+      .maybeSingle()
+    orderOwnedByUser = !!orderRow
+  }
+  // 활성 패스 검증 — ZEP 입장 권한 일관 처리 (TEST_MODE / passes 테이블 / 만료)
+  const hasPass = await hasActivePass(user?.id ?? null)
+
   if (paymentError) {
     return (
       <div className="min-h-screen bg-cloud flex items-center justify-center px-8 md:px-10">
@@ -93,7 +113,8 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
           {t("orderComplete")}
         </h1>
 
-        {confirmedOrderId && (
+        {/* 본인 소유 주문만 주문번호 노출 — 위조 orderId 정보 노출 차단 */}
+        {confirmedOrderId && orderOwnedByUser && (
           <div className="bg-white rounded-2xl border border-mist px-5 py-4 mb-6 inline-block">
             <p className="text-xs text-stone mb-1">{t("orderNumber")}</p>
             <p className="font-mono font-bold text-[#111] text-sm break-all">
@@ -110,21 +131,27 @@ export default async function PurchaseSuccessPage({ params, searchParams }: Prop
             : "Your subscription is active! Start your missions now."}
         </p>
 
-        {/* ZEP 가상 모임 공간 안내 */}
+        {/* ZEP 가상 모임 공간 — 활성 패스 보유자만 입장 (orderId 위조 차단 + 만료 검증) */}
         {courseRegion && (
           <div className="mb-8 text-left">
-            <p className="text-sm font-bold text-[#111] mb-3 text-center">
-              {locale === "ko"
-                ? "🎮 가상 모임 공간이 열렸습니다! 여행 전에 파티원을 만나보세요"
-                : locale === "ja"
-                ? "🎮 バーチャル集合場所が開きました！旅行前にパーティーメンバーに会おう"
-                : "🎮 Your virtual meeting room is unlocked! Meet your party before the trip"}
-            </p>
-            <ZepMeetingButton
-              courseId={courseRegion}
-              hasPurchased={true}
-              locale={locale}
-            />
+            {hasPass ? (
+              <>
+                <p className="text-sm font-bold text-[#111] mb-3 text-center">
+                  {locale === "ko"
+                    ? "🎮 가상 모임 공간이 열렸습니다! 여행 전에 파티원을 만나보세요"
+                    : locale === "ja"
+                    ? "🎮 バーチャル集合場所が開きました！旅行前にパーティーメンバーに会おう"
+                    : "🎮 Your virtual meeting room is unlocked! Meet your party before the trip"}
+                </p>
+                <ZepMeetingButton
+                  courseId={courseRegion}
+                  hasPurchased={true}
+                  locale={locale}
+                />
+              </>
+            ) : (
+              <ZepBanner locale={locale} />
+            )}
           </div>
         )}
 

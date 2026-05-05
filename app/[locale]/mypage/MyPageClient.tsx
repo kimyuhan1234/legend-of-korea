@@ -22,11 +22,13 @@ import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton';
+import { ZepBanner } from '@/components/features/quest/ZepBanner';
 import { SettingsSection, SettingsRow } from '@/components/features/mypage/SettingsSection';
 import { ProfileSettings } from '@/components/features/mypage/ProfileSettings';
 import { AccountDanger } from '@/components/features/mypage/AccountDanger';
 import { RankCard } from '@/components/features/dashboard/RankCard';
 import { MyPlannerCard } from '@/components/features/mypage/MyPlannerCard';
+import { usePassStatus } from '@/hooks/usePassStatus';
 import type { UserRankResult } from '@/lib/tiers/levels';
 
 interface MyPageClientProps {
@@ -38,6 +40,8 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
   const t = useTranslations('mypage');
   const router = useRouter();
   const supabase = useRef(createClient()).current;
+  // 패스 검증 — /api/passes/status (TEST_MODE / passes 테이블 / 만료 일관 처리)
+  const { hasPass } = usePassStatus();
 
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
@@ -313,11 +317,15 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
                         </p>
                       </div>
                       {orderRegionMap[order.id] && (
-                        <ZepMeetingButton
-                          courseId={orderRegionMap[order.id]}
-                          hasPurchased={true}
-                          locale={locale}
-                        />
+                        hasPass ? (
+                          <ZepMeetingButton
+                            courseId={orderRegionMap[order.id]}
+                            hasPurchased={true}
+                            locale={locale}
+                          />
+                        ) : (
+                          <ZepBanner locale={locale} />
+                        )
                       )}
                     </div>
                   ))

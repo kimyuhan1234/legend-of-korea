@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
+import { hasActivePass } from '@/lib/auth/pass'
 import { GYEONGDO_EVENTS, resolveEventStatus } from '@/lib/data/gyeongdo-events'
 import { GyeongdoEventDetail } from '@/components/features/quest/GyeongdoEventDetail'
 import { GyeongdoSharedInfo } from '@/components/features/quest/GyeongdoSharedInfo'
@@ -26,6 +27,9 @@ export default async function GyeongdoPage({ params }: Props) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   const isLoggedIn = !!user
+  // 경도 이벤트는 일반 Pass 모델 공유 (GyeongdoEventDetail.tsx PASS_INCLUDED)
+  // → ZEP 입장 권한도 hasActivePass 로 일관 검증
+  const hasPass = await hasActivePass(user?.id ?? null)
 
   const today = new Date().toISOString().split('T')[0]
   const activeEvents = GYEONGDO_EVENTS.filter(
@@ -88,8 +92,8 @@ export default async function GyeongdoPage({ params }: Props) {
               </div>
             </div>
 
-            {/* ZEP 가상 사전 작전 모임 */}
-            {isLoggedIn ? (
+            {/* ZEP 가상 사전 작전 모임 — 활성 패스 보유자만 입장. 비보유 / 비로그인은 ZepBanner. */}
+            {isLoggedIn && hasPass ? (
               <ZepMeetingButton
                 courseId="gyeongdo-seoul"
                 hasPurchased={true}
