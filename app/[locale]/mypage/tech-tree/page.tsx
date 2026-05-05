@@ -4,6 +4,9 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { getUserRank } from '@/lib/tiers/get-user-rank'
 import { TechTreeView, type TechTreeNode } from '@/components/features/dashboard/TechTreeView'
+import { AvatarUnlockMap } from '@/components/features/dashboard/AvatarUnlockMap'
+import { isAvatarSystemV2 } from '@/lib/avatar/feature-flag'
+import { loadAvatarCatalog, getAvatarUserState } from '@/lib/avatar/data'
 
 interface Props {
   params: { locale: string }
@@ -50,6 +53,23 @@ async function loadAllNodes(locale: string): Promise<TechTreeNode[]> {
 }
 
 export default async function TechTreePage({ params }: Props) {
+  // v2 flag — 신규 K-콘텐츠 카테고리 해금 시스템
+  if (isAvatarSystemV2()) {
+    const userState = await getAvatarUserState()
+    if (!userState) redirect(`/${params.locale}/auth/login?next=/${params.locale}/mypage/tech-tree`)
+    const { categories, images } = await loadAvatarCatalog()
+    return (
+      <AvatarUnlockMap
+        locale={params.locale}
+        currentLevel={userState.current_level}
+        selectedImageId={userState.selected_avatar_image_id}
+        categories={categories}
+        images={images}
+      />
+    )
+  }
+
+  // v1 — 기존 무관/문관 분기 시스템 (058 적용 + commit 5 cleanup 전까지 fallback)
   const rank = await getUserRank(params.locale)
   if (!rank) redirect(`/${params.locale}/auth/login?next=/${params.locale}/mypage/tech-tree`)
 
