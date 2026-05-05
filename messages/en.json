@@ -532,6 +532,8 @@
   "mypage": {
     "title": "My Page",
     "changeProfilePhoto": "Change Profile Photo",
+    "profilePhotoUploaded": "Profile photo updated",
+    "profilePhotoUploadFailed": "Photo upload failed",
     "cancel": "Cancel",
     "cancelButton": "Cancel",
     "save": "Save",

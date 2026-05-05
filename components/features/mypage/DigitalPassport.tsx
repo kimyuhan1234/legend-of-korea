@@ -164,25 +164,30 @@ export function DigitalPassport({ userId, locale }: Props) {
               {t('passportSubtitle')}
             </h2>
             <div className="w-16 h-0.5 bg-amber-400/30 mx-auto" />
+
+            {/* 랭크 사진 — 좌측 큰 정사각 (passport-style 인물 사진 영역). 미보유 시 영역 자체 비노출. */}
+            {hasRankImage({ selected_avatar_filename: rankImageFilename, selected_avatar_slug: rankImageSlug }) && (
+              <div className="flex justify-center pt-2">
+                <div className="w-24 h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden ring-2 ring-amber-400/40 shadow-lg bg-slate-700/50">
+                  <Image
+                    src={resolveRankImageSrc({ selected_avatar_filename: rankImageFilename, selected_avatar_slug: rankImageSlug })}
+                    alt={tierLabel}
+                    width={112}
+                    height={112}
+                    className="object-cover w-full h-full"
+                    unoptimized
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="pt-3 space-y-1.5 text-sm">
               <p className="text-slate-300">
                 <span className="text-amber-400/60 text-xs mr-2">NAME</span>
                 <span className="font-bold text-white">{nickname || 'Traveler'}</span>
               </p>
-              <p className="text-slate-300 flex items-center gap-2">
-                <span className="text-amber-400/60 text-xs">RANK</span>
-                {hasRankImage({ selected_avatar_filename: rankImageFilename, selected_avatar_slug: rankImageSlug }) && (
-                  <span className="inline-block w-7 h-7 rounded-md overflow-hidden bg-slate-700/50 shrink-0">
-                    <Image
-                      src={resolveRankImageSrc({ selected_avatar_filename: rankImageFilename, selected_avatar_slug: rankImageSlug })}
-                      alt={tierLabel}
-                      width={28}
-                      height={28}
-                      className="object-cover w-full h-full"
-                      unoptimized
-                    />
-                  </span>
-                )}
+              <p className="text-slate-300">
+                <span className="text-amber-400/60 text-xs mr-2">RANK</span>
                 <span className="font-bold text-white">{tierLabel}</span>
               </p>
               <p className="text-slate-300">

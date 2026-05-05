@@ -532,6 +532,8 @@
   "mypage": {
     "title": "マイページ",
     "changeProfilePhoto": "プロフィール写真変更",
+    "profilePhotoUploaded": "プロフィール写真を更新しました",
+    "profilePhotoUploadFailed": "写真のアップロードに失敗しました",
     "cancel": "キャンセル",
     "cancelButton": "キャンセル",
     "save": "保存",

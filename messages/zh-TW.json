@@ -532,6 +532,8 @@
   "mypage": {
     "title": "我的頁面",
     "changeProfilePhoto": "更換大頭照",
+    "profilePhotoUploaded": "大頭照已更新",
+    "profilePhotoUploadFailed": "照片上傳失敗",
     "cancel": "取消",
     "cancelButton": "取消",
     "save": "儲存",

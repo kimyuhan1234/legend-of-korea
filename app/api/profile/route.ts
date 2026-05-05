@@ -21,8 +21,11 @@ export async function PATCH(req: NextRequest) {
   }
 
   let avatarUrl: string | undefined;
+  let avatarUploadFailed = false;
+  let avatarUploadDetail: string | undefined;
 
   // 배포 전: Supabase Dashboard > Storage > 'avatars' 버킷 생성 필요 (public)
+  // RLS: 사용자가 자기 user.id 경로에 INSERT/UPDATE 가능하도록 정책 설정 필요.
   if (avatarFile && avatarFile.size > 0) {
     const ALLOWED = ['image/jpeg', 'image/png', 'image/webp'];
     if (!ALLOWED.includes(avatarFile.type)) {
@@ -47,14 +50,18 @@ export async function PATCH(req: NextRequest) {
 
       if (uploadError) {
         console.error('Avatar upload error:', uploadError);
-        // 버킷이 없어도 닉네임만 저장하고 계속 진행
+        avatarUploadFailed = true;
+        avatarUploadDetail = uploadError.message;
+        // 닉네임만 저장하고 계속 진행 — 클라이언트가 avatarUploadFailed 로 toast 노출
       } else {
         const { data: { publicUrl } } = supabase.storage.from('avatars').getPublicUrl(path);
-        avatarUrl = publicUrl;
+        // 캐시 버스팅 — 같은 경로에 upsert 하므로 브라우저가 옛 이미지 캐싱 가능
+        avatarUrl = `${publicUrl}?v=${Date.now()}`;
       }
     } catch (err) {
       console.error('Avatar upload failed (bucket may not exist):', err);
-      // 아바타 업로드 실패해도 닉네임은 저장
+      avatarUploadFailed = true;
+      avatarUploadDetail = err instanceof Error ? err.message : 'storage upload threw';
     }
   }
 
@@ -76,5 +83,10 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: '프로필 저장에 실패했습니다.' }, { status: 500 });
   }
 
-  return NextResponse.json({ success: true, user: updated });
+  return NextResponse.json({
+    success: true,
+    user: updated,
+    avatarUploadFailed,
+    avatarUploadDetail,
+  });
 }

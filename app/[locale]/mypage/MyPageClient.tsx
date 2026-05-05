@@ -32,6 +32,7 @@ import { LevelCard } from '@/components/features/dashboard/LevelCard';
 import { MyPlannerCard } from '@/components/features/mypage/MyPlannerCard';
 import { AvatarSelectModal } from '@/components/features/mypage/AvatarSelectModal';
 import { LevelUpModal } from '@/components/features/mypage/LevelUpModal';
+import { toast } from '@/components/ui/use-toast';
 import { usePassStatus } from '@/hooks/usePassStatus';
 import { resolveProfileAvatarSrc, hasProfileAvatar } from '@/lib/avatar/resolve';
 import type { UserRankResult } from '@/lib/tiers/levels';
@@ -97,11 +98,30 @@ export function MyPageClient({
       formData.append('nickname', user?.nickname ?? '');
       formData.append('avatar', cropped);
       const res = await fetch('/api/profile', { method: 'PATCH', body: formData });
-      const data = await res.json();
-      if (data.success) {
-        setUser((prev: any) => ({ ...prev, avatar_url: data.user?.avatar_url ?? prev?.avatar_url }));
-        router.refresh();
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data.success) {
+        toast({ variant: 'destructive', title: t('profilePhotoUploadFailed'), description: data.error });
+        return;
       }
+      // 200 success 인데 Storage 업로드 silent 실패한 경우 — bucket 미존재 / RLS 거부 등
+      if (data.avatarUploadFailed) {
+        toast({
+          variant: 'destructive',
+          title: t('profilePhotoUploadFailed'),
+          description: data.avatarUploadDetail,
+        });
+        return;
+      }
+      setUser((prev: any) => ({ ...prev, avatar_url: data.user?.avatar_url ?? prev?.avatar_url }));
+      router.refresh();
+      toast({ title: t('profilePhotoUploaded') });
+    } catch (err) {
+      toast({
+        variant: 'destructive',
+        title: t('profilePhotoUploadFailed'),
+        description: err instanceof Error ? err.message : undefined,
+      });
     } finally {
       setProfileUploading(false);
     }

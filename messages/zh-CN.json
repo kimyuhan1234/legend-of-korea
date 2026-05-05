@@ -532,6 +532,8 @@
   "mypage": {
     "title": "我的页面",
     "changeProfilePhoto": "更换头像",
+    "profilePhotoUploaded": "头像已更新",
+    "profilePhotoUploadFailed": "照片上传失败",
     "cancel": "取消",
     "cancelButton": "取消",
     "save": "保存",
