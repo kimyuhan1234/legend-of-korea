@@ -7,6 +7,7 @@ import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { LocaleSwitcher } from "@/components/shared/LocaleSwitcher"
 import { LogoutButton } from "@/components/features/auth/LogoutButton"
+import { resolveAvatarSrc, hasAvatarSource } from "@/lib/avatar/resolve"
 
 interface NavLink {
   href: string
@@ -132,9 +133,9 @@ export function MobileHeader({ locale, links, user, t }: MobileHeaderProps) {
         <div className="flex items-center justify-between px-4 h-14 border-b border-mist">
           {user ? (
             <div className="flex items-center gap-2 min-w-0 flex-1">
-              {user.avatar_url ? (
+              {hasAvatarSource(user) ? (
                 <Image
-                  src={user.avatar_url}
+                  src={resolveAvatarSrc(user)}
                   alt={user.nickname ?? ""}
                   width={28}
                   height={28}

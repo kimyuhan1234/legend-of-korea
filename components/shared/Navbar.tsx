@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { RaindropIcon } from "@/components/shared/icons/RaindropIcon"
 import { createClient } from "@/lib/supabase/server"
+import { resolveAvatarSrc, hasAvatarSource } from "@/lib/avatar/resolve"
 import { LogoutButton } from "@/components/features/auth/LogoutButton"
 import { MobileHeader } from "@/components/shared/MobileHeader"
 import { LocaleSwitcher } from "@/components/shared/LocaleSwitcher"
@@ -162,9 +163,9 @@ export async function Navbar({ locale }: NavbarProps) {
                 <button className="flex items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-cloud transition-colors">
                   {/* 아바타 */}
                   <div className="w-7 h-7 rounded-full bg-[#1F2937] flex items-center justify-center text-white text-xs font-bold overflow-hidden">
-                    {profile.avatar_url ? (
+                    {hasAvatarSource(profile) ? (
                       <Image
-                        src={profile.avatar_url}
+                        src={resolveAvatarSrc(profile)}
                         alt={profile.nickname}
                         width={28}
                         height={28}

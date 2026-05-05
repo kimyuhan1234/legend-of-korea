@@ -29,6 +29,7 @@ import { AccountDanger } from '@/components/features/mypage/AccountDanger';
 import { RankCard } from '@/components/features/dashboard/RankCard';
 import { MyPlannerCard } from '@/components/features/mypage/MyPlannerCard';
 import { usePassStatus } from '@/hooks/usePassStatus';
+import { resolveAvatarSrc, hasAvatarSource } from '@/lib/avatar/resolve';
 import type { UserRankResult } from '@/lib/tiers/levels';
 
 interface MyPageClientProps {
@@ -209,8 +210,8 @@ export function MyPageClient({ locale, initialRank = null }: MyPageClientProps) 
             <CardContent className="px-6 pb-8 -mt-12 text-center">
               <div className="relative inline-block mb-4">
                 <div className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white mx-auto">
-                  {user?.avatar_url ? (
-                    <Image src={user.avatar_url} alt="Profile" fill className="object-cover" sizes="128px" />
+                  {hasAvatarSource(user) ? (
+                    <Image src={resolveAvatarSrc(user)} alt="Profile" fill className="object-cover" sizes="128px" />
                   ) : (
                     <div className="w-full h-full bg-slate-100 flex items-center justify-center text-5xl font-black text-slate-300">
                       {user?.nickname?.[0]}
