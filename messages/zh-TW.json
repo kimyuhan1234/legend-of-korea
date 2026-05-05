@@ -87,6 +87,7 @@
     "nicknameMax": "닉네임은 20자 이하여야 합니다",
     "duplicateEmail": "이미 사용 중인 이메일입니다",
     "loginFailed": "로그인에 실패했습니다",
+    "emailVerifiedNotice": "이메일 인증이 완료되었습니다. 로그인해주세요.",
     "signupSuccess": "회원가입이 완료되었습니다",
     "loginSubmit": "로그인",
     "loginSubmitting": "로그인 중...",
@@ -530,6 +531,10 @@
   },
   "mypage": {
     "title": "마이페이지",
+    "cancel": "취소",
+    "cancelButton": "취소",
+    "save": "저장",
+    "linkCopied": "링크가 복사되었습니다",
     "profile": "프로필",
     "orders": "주문 내역",
     "missionProgress": "미션 진행률",
