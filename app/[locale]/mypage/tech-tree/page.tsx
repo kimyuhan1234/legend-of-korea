@@ -8,7 +8,7 @@ interface Props {
   params: { locale: string }
 }
 
-export default async function TechTreePage({ params }: Props) {
+export default async function GrowthMapPage({ params }: Props) {
   const userState = await getAvatarUserState()
   if (!userState) redirect(`/${params.locale}/auth/login?next=/${params.locale}/mypage/tech-tree`)
 

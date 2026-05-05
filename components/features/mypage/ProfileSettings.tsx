@@ -10,7 +10,13 @@ import { AvatarCropModal } from './AvatarCropModal'
 import { resolveAvatarSrc, hasAvatarSource } from '@/lib/avatar/resolve'
 
 interface Props {
-  user: { nickname?: string; avatar_url?: string | null; email?: string }
+  user: {
+    nickname?: string
+    avatar_url?: string | null
+    email?: string
+    selected_avatar_filename?: string | null
+    selected_avatar_slug?: string | null
+  }
   locale: string
   onUpdate: (updated: { nickname?: string; avatar_url?: string | null }) => void
 }

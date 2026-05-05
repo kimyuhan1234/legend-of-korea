@@ -35,11 +35,21 @@ import type { UserRankResult } from '@/lib/tiers/levels';
 interface MyPageClientProps {
   locale: string;
   initialRank?: UserRankResult | null;
+  /** server 에서 fetch 한 사용자 선택 아바타 파일명 — 사진 선택 모달 후 router.refresh() 로 갱신 */
+  initialAvatarFilename?: string | null;
+  /** server 에서 fetch 한 사용자 선택 아바타 카테고리 slug */
+  initialAvatarSlug?: string | null;
   /** 다음 레벨 카테고리 slug (avatar.category.{slug}) — LevelCard 미리보기용 */
   nextCategorySlug?: string | null;
 }
 
-export function MyPageClient({ locale, initialRank = null, nextCategorySlug = null }: MyPageClientProps) {
+export function MyPageClient({
+  locale,
+  initialRank = null,
+  initialAvatarFilename = null,
+  initialAvatarSlug = null,
+  nextCategorySlug = null,
+}: MyPageClientProps) {
   const t = useTranslations('mypage');
   const router = useRouter();
   const supabase = useRef(createClient()).current;
@@ -218,13 +228,20 @@ export function MyPageClient({ locale, initialRank = null, nextCategorySlug = nu
             <CardContent className="px-6 pb-8 -mt-12 text-center">
               <div className="relative inline-block mb-4">
                 <div className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white mx-auto">
-                  {hasAvatarSource(user) ? (
-                    <Image src={resolveAvatarSrc(user)} alt="Profile" fill className="object-cover" sizes="128px" />
-                  ) : (
-                    <div className="w-full h-full bg-slate-100 flex items-center justify-center text-5xl font-black text-slate-300">
-                      {user?.nickname?.[0]}
-                    </div>
-                  )}
+                  {(() => {
+                    const avatarSrc = {
+                      avatar_url: user?.avatar_url,
+                      selected_avatar_filename: initialAvatarFilename,
+                      selected_avatar_slug: initialAvatarSlug,
+                    };
+                    return hasAvatarSource(avatarSrc) ? (
+                      <Image src={resolveAvatarSrc(avatarSrc)} alt="Profile" fill className="object-cover" sizes="128px" />
+                    ) : (
+                      <div className="w-full h-full bg-slate-100 flex items-center justify-center text-5xl font-black text-slate-300">
+                        {user?.nickname?.[0]}
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
 
@@ -277,7 +294,11 @@ export function MyPageClient({ locale, initialRank = null, nextCategorySlug = nu
           {/* 섹션 1: 내 정보 */}
           <SettingsSection icon="👤" title={t('settings.profile')}>
             <ProfileSettings
-              user={user}
+              user={{
+                ...user,
+                selected_avatar_filename: initialAvatarFilename,
+                selected_avatar_slug: initialAvatarSlug,
+              }}
               locale={locale}
               onUpdate={(updated) => setUser((prev: any) => ({ ...prev, ...updated }))}
             />

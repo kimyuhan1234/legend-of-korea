@@ -18,6 +18,8 @@ interface UserInfo {
   nickname?: string | null
   avatar_url?: string | null
   total_lp?: number | null
+  selected_avatar_filename?: string | null
+  selected_avatar_slug?: string | null
 }
 
 interface MobileHeaderProps {

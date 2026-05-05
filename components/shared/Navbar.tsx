@@ -3,6 +3,7 @@ import Image from "next/image"
 import { RaindropIcon } from "@/components/shared/icons/RaindropIcon"
 import { createClient } from "@/lib/supabase/server"
 import { resolveAvatarSrc, hasAvatarSource } from "@/lib/avatar/resolve"
+import { loadAvatarForUserId } from "@/lib/avatar/data"
 import { LogoutButton } from "@/components/features/auth/LogoutButton"
 import { MobileHeader } from "@/components/shared/MobileHeader"
 import { LocaleSwitcher } from "@/components/shared/LocaleSwitcher"
@@ -76,25 +77,42 @@ export async function Navbar({ locale }: NavbarProps) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  let profile = null
+  let profile: {
+    nickname?: string
+    avatar_url?: string | null
+    total_lp?: number | null
+    selected_avatar_filename: string | null
+    selected_avatar_slug: string | null
+  } | null = null
   if (user) {
-    const { data } = await supabase
-      .from("users")
-      .select("nickname, avatar_url, total_lp")
-      .eq("id", user.id)
-      .single()
-    profile = data
+    const [{ data }, avatar] = await Promise.all([
+      supabase
+        .from("users")
+        .select("nickname, avatar_url, total_lp")
+        .eq("id", user.id)
+        .single(),
+      loadAvatarForUserId(user.id),
+    ])
+    profile = {
+      nickname: data?.nickname,
+      avatar_url: data?.avatar_url,
+      total_lp: data?.total_lp,
+      selected_avatar_filename: avatar.selected_avatar_filename,
+      selected_avatar_slug: avatar.selected_avatar_slug,
+    }
   }
 
   const links = NAV_LINKS[locale as keyof typeof NAV_LINKS] || NAV_LINKS.en || NAV_LINKS.ko
   const t = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
 
-  // 모바일에 전달할 사용자 정보 (avatar 포함)
-  const mobileUser = user
+  // 모바일에 전달할 사용자 정보 (선택 아바타 정보 포함 — AvatarSelectModal router.refresh() 후 즉시 반영)
+  const mobileUser = user && profile
     ? {
-        nickname: profile?.nickname,
-        avatar_url: profile?.avatar_url,
-        total_lp: profile?.total_lp,
+        nickname: profile.nickname,
+        avatar_url: profile.avatar_url,
+        total_lp: profile.total_lp,
+        selected_avatar_filename: profile.selected_avatar_filename,
+        selected_avatar_slug: profile.selected_avatar_slug,
       }
     : null
 
@@ -154,7 +172,7 @@ export async function Navbar({ locale }: NavbarProps) {
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1F2937]/5 border border-ink/10">
                 <RaindropIcon size={14} className="text-mint-deep" />
                 <span className="text-xs font-bold text-ink">
-                  {profile.total_lp.toLocaleString()} {t.lp}
+                  {(profile.total_lp ?? 0).toLocaleString()} {t.lp}
                 </span>
               </div>
 
@@ -166,7 +184,7 @@ export async function Navbar({ locale }: NavbarProps) {
                     {hasAvatarSource(profile) ? (
                       <Image
                         src={resolveAvatarSrc(profile)}
-                        alt={profile.nickname}
+                        alt={profile.nickname ?? ""}
                         width={28}
                         height={28}
                         className="w-full h-full object-cover"

@@ -124,3 +124,34 @@ export async function getAvatarUserState(): Promise<AvatarUserState | null> {
     selected_avatar_slug: slug,
   }
 }
+
+/**
+ * 임의 userId 의 아바타 정보 조회 (커뮤니티 댓글 / 리더보드 / 헤더 등에서 사용).
+ * 057 미적용 / 사진 미선택 → null filename/slug 반환 → resolveAvatarSrc 가 avatar_url fallback.
+ */
+export async function loadAvatarForUserId(userId: string): Promise<{
+  selected_avatar_filename: string | null
+  selected_avatar_slug: string | null
+}> {
+  const supabase = await createClient()
+  const { data: userRow } = await supabase
+    .from('users')
+    .select('selected_avatar_image_id')
+    .eq('id', userId)
+    .maybeSingle<{ selected_avatar_image_id: string | null }>()
+
+  if (!userRow?.selected_avatar_image_id) {
+    return { selected_avatar_filename: null, selected_avatar_slug: null }
+  }
+
+  const { data: imgRow } = await supabase
+    .from('avatar_images')
+    .select('filename, avatar_categories(slug)')
+    .eq('id', userRow.selected_avatar_image_id)
+    .maybeSingle<{ filename: string; avatar_categories: { slug: string } | null }>()
+
+  return {
+    selected_avatar_filename: imgRow?.filename ?? null,
+    selected_avatar_slug: imgRow?.avatar_categories?.slug ?? null,
+  }
+}
