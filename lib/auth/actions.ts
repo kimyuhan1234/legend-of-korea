@@ -4,6 +4,7 @@ import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { isPasswordValid } from "@/lib/auth/password-rules"
 import { isAtLeastMinimumAge } from "@/lib/validation/age"
+import { verifyTurnstileToken } from "@/lib/auth/turnstile"
 
 // ──────────────────────────────────────────
 // 이메일 로그인
@@ -13,6 +14,13 @@ export async function loginWithEmail(formData: FormData) {
   const password = formData.get("password") as string
   const locale = (formData.get("locale") as string) || "ko"
   const next = (formData.get("next") as string) || ""
+  const turnstileToken = (formData.get("turnstile_token") as string) || ""
+
+  // 봇 방지 — Turnstile 토큰 검증 (dev 더미 키도 동일 경로 통과)
+  const captchaOk = await verifyTurnstileToken(turnstileToken)
+  if (!captchaOk) {
+    return { error: "TURNSTILE_FAILED" as const }
+  }
 
   const supabase = await createClient()
 
@@ -37,6 +45,7 @@ export async function signupWithEmail(formData: FormData) {
   const birthDate = formData.get("birth_date") as string
   const language = (formData.get("language") as string) || "ko"
   const locale = (formData.get("locale") as string) || "ko"
+  const turnstileToken = (formData.get("turnstile_token") as string) || ""
 
   if (!email || !password || !nickname || !birthDate) {
     return { error: "MISSING_FIELDS" as const }
@@ -51,6 +60,12 @@ export async function signupWithEmail(formData: FormData) {
   // auth.users 자체가 생성되지 않게 한다.
   if (!isAtLeastMinimumAge(birthDate)) {
     return { error: "UNDER_14" as const }
+  }
+
+  // 봇 방지 — Turnstile 토큰 검증 (dev 더미 키도 동일 경로 통과)
+  const captchaOk = await verifyTurnstileToken(turnstileToken)
+  if (!captchaOk) {
+    return { error: "TURNSTILE_FAILED" as const }
   }
 
   const supabase = await createClient()

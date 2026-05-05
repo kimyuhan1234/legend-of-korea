@@ -630,6 +630,10 @@
       "deleteWarning3": "コミュニティ投稿非公開",
       "deleteWarning4": "サブスクリプション解約",
       "deleteSuccess": "退会が完了しました",
+      "exportData": "マイデータをダウンロード",
+      "exporting": "ダウンロード中...",
+      "exportSuccess": "データをダウンロードしました",
+      "exportFailed": "データのダウンロードに失敗しました",
       "sub": {
         "active": "有効",
         "inactive": "未加入",

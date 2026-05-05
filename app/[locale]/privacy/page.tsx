@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { GdprPlaceholderSections } from '@/components/shared/GdprPlaceholderSections'
 
 interface Props { params: { locale: string } }
 
@@ -265,6 +266,8 @@ export default function PrivacyPage({ params }: Props) {
             <p className="text-slate text-sm leading-relaxed whitespace-pre-line">{s.body}</p>
           </section>
         ))}
+        {/* GDPR / EU 사용자 권리 placeholder — 변호사 자문 후 본문 갱신 예정 */}
+        <GdprPlaceholderSections locale={params.locale} />
       </div>
     </div>
   )

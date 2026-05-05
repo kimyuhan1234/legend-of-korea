@@ -8,6 +8,7 @@ import { checkPasswordRules, type PasswordRuleKey } from "@/lib/auth/password-ru
 import { isAtLeastMinimumAge } from "@/lib/validation/age"
 import { toast } from "@/components/ui/use-toast"
 import { BirthDatePicker } from "./BirthDatePicker"
+import { TurnstileWidget } from "./TurnstileWidget"
 
 interface SignupFormProps {
   locale: string
@@ -41,17 +42,21 @@ const TEXT: Record<Lang, {
   emailConfirmDesc: string
   testBannerTitle: string
   testBannerDesc: string
+  betaNoticeTitle: string
+  betaNoticeBody: string
   birthDateLabel: string
   birthDateHint: string
   birthDateYear: string
   birthDateMonth: string
   birthDateDay: string
+  captchaRequired: string
   errors: {
     MISSING_FIELDS: string
     NICKNAME_TOO_LONG: string
     PASSWORD_RULES: string
     EMAIL_TAKEN: string
     UNDER_14: string
+    TURNSTILE_FAILED: string
     GENERIC: string
   }
 }> = {
@@ -81,17 +86,21 @@ const TEXT: Record<Lang, {
     emailConfirmDesc: "받은편지함에서 인증 메일을 확인해주세요.",
     testBannerTitle: "현재 테스트 기간 — 모든 기능 무료!",
     testBannerDesc: "테스트 기간이 종료되면 일부 기능은 유료 패스가 필요합니다. 지금 가입하고 모든 기능을 체험해보세요!",
+    betaNoticeTitle: "베타 단계 안내",
+    betaNoticeBody: "현재 베타 단계로, 약관 및 개인정보 처리방침은 정식 오픈 시 갱신될 수 있습니다.",
     birthDateLabel: "생년월일",
     birthDateHint: "만 14세 이상부터 가입할 수 있어요",
     birthDateYear: "년",
     birthDateMonth: "월",
     birthDateDay: "일",
+    captchaRequired: "사람 확인을 완료해주세요",
     errors: {
       MISSING_FIELDS: "모든 필드를 입력해주세요.",
       NICKNAME_TOO_LONG: "닉네임은 20자 이하로 입력해주세요.",
       PASSWORD_RULES: "비밀번호 규칙을 확인해주세요.",
       EMAIL_TAKEN: "이미 사용 중인 이메일입니다.",
       UNDER_14: "만 14세 이상부터 가입할 수 있어요",
+      TURNSTILE_FAILED: "사람 확인 검증에 실패했습니다. 다시 시도해주세요.",
       GENERIC: "회원가입 중 오류가 발생했습니다.",
     },
   },
@@ -121,17 +130,21 @@ const TEXT: Record<Lang, {
     emailConfirmDesc: "受信トレイで認証メールをご確認ください。",
     testBannerTitle: "ベータ期間 — 全機能無料！",
     testBannerDesc: "ベータ期間終了後、一部の機能は有料パスが必要になります。今すぐ登録して全機能をお試しください！",
+    betaNoticeTitle: "ベータ期間のお知らせ",
+    betaNoticeBody: "現在ベータ段階のため、利用規約および個人情報処理方針は正式オープン時に更新される場合があります。",
     birthDateLabel: "生年月日",
     birthDateHint: "14歳以上の方からご登録いただけます",
     birthDateYear: "年",
     birthDateMonth: "月",
     birthDateDay: "日",
+    captchaRequired: "人間確認を完了してください",
     errors: {
       MISSING_FIELDS: "すべての項目を入力してください。",
       NICKNAME_TOO_LONG: "ニックネームは20文字以内で入力してください。",
       PASSWORD_RULES: "パスワード規則をご確認ください。",
       EMAIL_TAKEN: "すでに使用中のメールアドレスです。",
       UNDER_14: "14歳以上の方からご登録いただけます",
+      TURNSTILE_FAILED: "人間確認に失敗しました。もう一度お試しください。",
       GENERIC: "登録中にエラーが発生しました。",
     },
   },
@@ -161,17 +174,21 @@ const TEXT: Record<Lang, {
     emailConfirmDesc: "Please check your inbox for the verification email.",
     testBannerTitle: "Beta Period — All features free!",
     testBannerDesc: "Some features will require a paid pass after the beta period. Sign up now and try everything for free!",
+    betaNoticeTitle: "Beta Notice",
+    betaNoticeBody: "This is a beta release. Terms of Service and Privacy Policy may be updated at official launch.",
     birthDateLabel: "Date of birth",
     birthDateHint: "Sign-up is available for ages 14 and older",
     birthDateYear: "Year",
     birthDateMonth: "Month",
     birthDateDay: "Day",
+    captchaRequired: "Please complete the human verification",
     errors: {
       MISSING_FIELDS: "Please fill in all fields.",
       NICKNAME_TOO_LONG: "Nickname must be 20 characters or fewer.",
       PASSWORD_RULES: "Please check the password rules.",
       EMAIL_TAKEN: "This email is already in use.",
       UNDER_14: "Sign-up is available for ages 14 and older",
+      TURNSTILE_FAILED: "Human verification failed. Please try again.",
       GENERIC: "An error occurred during signup.",
     },
   },
@@ -201,17 +218,21 @@ const TEXT: Record<Lang, {
     emailConfirmDesc: "请在收件箱查看验证邮件。",
     testBannerTitle: "测试期间 — 所有功能免费！",
     testBannerDesc: "测试期结束后，部分功能需要付费通行证。现在注册，免费体验所有功能！",
+    betaNoticeTitle: "测试版说明",
+    betaNoticeBody: "当前为测试版，服务条款和隐私政策将在正式上线时更新。",
     birthDateLabel: "出生日期",
     birthDateHint: "年满14岁可注册",
     birthDateYear: "年",
     birthDateMonth: "月",
     birthDateDay: "日",
+    captchaRequired: "请完成人机验证",
     errors: {
       MISSING_FIELDS: "请填写所有字段。",
       NICKNAME_TOO_LONG: "昵称不能超过20个字符。",
       PASSWORD_RULES: "请检查密码规则。",
       EMAIL_TAKEN: "该邮箱已被使用。",
       UNDER_14: "年满14岁可注册",
+      TURNSTILE_FAILED: "人机验证失败，请重试。",
       GENERIC: "注册过程中发生错误。",
     },
   },
@@ -241,17 +262,21 @@ const TEXT: Record<Lang, {
     emailConfirmDesc: "請在收件匣查看驗證信件。",
     testBannerTitle: "測試期間 — 所有功能免費！",
     testBannerDesc: "測試期結束後，部分功能需要付費通行證。現在註冊，免費體驗所有功能！",
+    betaNoticeTitle: "測試版說明",
+    betaNoticeBody: "目前為測試版，服務條款和隱私政策將在正式上線時更新。",
     birthDateLabel: "出生日期",
     birthDateHint: "年滿14歲可註冊",
     birthDateYear: "年",
     birthDateMonth: "月",
     birthDateDay: "日",
+    captchaRequired: "請完成人機驗證",
     errors: {
       MISSING_FIELDS: "請填寫所有欄位。",
       NICKNAME_TOO_LONG: "暱稱不能超過20個字元。",
       PASSWORD_RULES: "請檢查密碼規則。",
       EMAIL_TAKEN: "此信箱已被使用。",
       UNDER_14: "年滿14歲可註冊",
+      TURNSTILE_FAILED: "人機驗證失敗，請重試。",
       GENERIC: "註冊過程中發生錯誤。",
     },
   },
@@ -285,6 +310,7 @@ export function SignupForm({ locale }: SignupFormProps) {
   const [loading, setLoading] = useState(false)
   const [agreedPrivacy, setAgreedPrivacy] = useState(false)
   const [agreedTerms, setAgreedTerms] = useState(false)
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
 
   const ruleStatus = useMemo(() => checkPasswordRules(password), [password])
   const allRulesMet = RULE_KEYS.every((k) => ruleStatus[k])
@@ -303,11 +329,16 @@ export function SignupForm({ locale }: SignupFormProps) {
     allRulesMet &&
     passwordsMatch &&
     agreedPrivacy &&
-    agreedTerms
+    agreedTerms &&
+    !!turnstileToken
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!canSubmit) return
+    if (!turnstileToken) {
+      setError(t.captchaRequired)
+      return
+    }
     setError(null)
     setLoading(true)
 
@@ -315,6 +346,7 @@ export function SignupForm({ locale }: SignupFormProps) {
     formData.set("locale", locale)
     // BirthDatePicker 는 native input 이 아니므로 formData 에 별도 set
     formData.set("birth_date", birthDate)
+    formData.set("turnstile_token", turnstileToken)
 
     const result = await signupWithEmail(formData)
 
@@ -326,6 +358,8 @@ export function SignupForm({ locale }: SignupFormProps) {
       }
       const code = result.error as keyof typeof t.errors
       setError(t.errors[code] ?? t.errors.GENERIC)
+      // 캡차 실패 시 토큰 초기화 — 사용자가 widget 다시 풀어야 재시도 가능
+      if (code === "TURNSTILE_FAILED") setTurnstileToken(null)
       setLoading(false)
       return
     }
@@ -361,6 +395,16 @@ export function SignupForm({ locale }: SignupFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+      {/* 베타 단계 안내 — 약관/처리방침 변경 가능성 사전 고지 */}
+      <div className="bg-blossom-light border border-blossom rounded-xl p-4">
+        <p className="text-sm font-bold text-blossom-deep">
+          ⓘ {t.betaNoticeTitle}
+        </p>
+        <p className="text-xs text-blossom-deep/80 mt-1 leading-relaxed">
+          {t.betaNoticeBody}
+        </p>
+      </div>
+
       {isTestMode && (
         <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
           <p className="text-sm font-medium text-sky-800">
@@ -535,6 +579,8 @@ export function SignupForm({ locale }: SignupFormProps) {
           <Link href={`/${locale}/terms`} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-blossom-deep underline ml-1 shrink-0">{t.view}</Link>
         </label>
       </div>
+
+      <TurnstileWidget locale={locale} onTokenChange={setTurnstileToken} />
 
       <button
         type="submit"

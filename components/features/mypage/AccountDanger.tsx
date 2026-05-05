@@ -26,6 +26,7 @@ export function AccountDanger({ locale }: Props) {
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [confirmInput, setConfirmInput] = useState('')
   const [deleting, setDeleting] = useState(false)
+  const [exporting, setExporting] = useState(false)
 
   const requiredPhrase = CONFIRM_PHRASES[locale] ?? CONFIRM_PHRASES.en
   const isConfirmValid = confirmInput.trim() === requiredPhrase
@@ -35,6 +36,34 @@ export function AccountDanger({ locale }: Props) {
     await supabase.auth.signOut()
     router.push(`/${locale}`)
     router.refresh()
+  }
+
+  const handleExport = async () => {
+    if (exporting) return
+    setExporting(true)
+    try {
+      const res = await fetch('/api/account/export')
+      if (!res.ok) {
+        toast({ variant: 'destructive', title: t('settings.exportFailed') })
+        return
+      }
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      const cd = res.headers.get('Content-Disposition') || ''
+      const match = cd.match(/filename="([^"]+)"/)
+      a.download = match?.[1] ?? `clouds-with-you-data-${new Date().toISOString().slice(0, 10)}.json`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+      toast({ title: t('settings.exportSuccess') })
+    } catch {
+      toast({ variant: 'destructive', title: t('settings.exportFailed') })
+    } finally {
+      setExporting(false)
+    }
   }
 
   const handleDelete = async () => {
@@ -68,6 +97,11 @@ export function AccountDanger({ locale }: Props) {
           icon="🚪"
           label={t('settings.logout')}
           onClick={handleLogout}
+        />
+        <SettingsRow
+          icon="📥"
+          label={exporting ? t('settings.exporting') : t('settings.exportData')}
+          onClick={handleExport}
         />
         <SettingsRow
           icon="🗑️"

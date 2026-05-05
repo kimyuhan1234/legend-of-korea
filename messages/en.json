@@ -630,6 +630,10 @@
       "deleteWarning3": "Community posts hidden",
       "deleteWarning4": "Subscription cancelled",
       "deleteSuccess": "Account deleted",
+      "exportData": "Download My Data",
+      "exporting": "Downloading...",
+      "exportSuccess": "Your data has been downloaded",
+      "exportFailed": "Failed to download your data",
       "sub": {
         "active": "Active",
         "inactive": "Inactive",

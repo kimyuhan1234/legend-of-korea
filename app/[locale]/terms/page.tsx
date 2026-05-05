@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { GdprPlaceholderSections } from '@/components/shared/GdprPlaceholderSections'
 
 // hotfix v8: 빌드 타임 timeout 우회 (큰 i18n 약관 본문 정적 generation 지연).
 export const dynamic = 'force-dynamic'
@@ -248,6 +249,8 @@ export default function TermsPage({ params }: Props) {
             <p className="text-slate text-sm leading-relaxed whitespace-pre-line">{s.body}</p>
           </section>
         ))}
+        {/* GDPR / EU 사용자 권리 placeholder — 변호사 자문 후 본문 갱신 예정 */}
+        <GdprPlaceholderSections locale={params.locale} />
       </div>
     </div>
   )

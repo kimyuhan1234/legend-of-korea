@@ -630,6 +630,10 @@
       "deleteWarning3": "社区帖子将被隐藏",
       "deleteWarning4": "订阅将被取消",
       "deleteSuccess": "账号已注销",
+      "exportData": "下载我的数据",
+      "exporting": "下载中...",
+      "exportSuccess": "数据已下载",
+      "exportFailed": "数据下载失败",
       "sub": {
         "active": "活跃",
         "inactive": "未订阅",

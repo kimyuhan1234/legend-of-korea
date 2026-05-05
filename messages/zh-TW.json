@@ -630,6 +630,10 @@
       "deleteWarning3": "社區帖子將被隱藏",
       "deleteWarning4": "訂閱將被取消",
       "deleteSuccess": "帳號已註銷",
+      "exportData": "下載我的資料",
+      "exporting": "下載中...",
+      "exportSuccess": "資料已下載",
+      "exportFailed": "資料下載失敗",
       "sub": {
         "active": "活躍",
         "inactive": "未訂閱",
