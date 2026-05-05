@@ -106,14 +106,23 @@ export function FestivalCalendar({ spots, locale }: Props) {
     ended: t('festival.ended'),
   }
 
+  // 진행 상태 배지 — 이미지 우상단 absolute 배치용 컬러 스타일 (도시별 탭 톤과 호환)
   const STATUS_STYLE: Record<FestivalStatus, string> = {
     ongoing: 'bg-mint-deep text-white',
-    upcoming: 'bg-sky-light text-sky',
+    upcoming: 'bg-blossom-light text-blossom-deep',
     ended: 'bg-slate-200 text-slate-500',
   }
 
+  // 이미지 fallback emoji — spot.id 해시로 안정적 분포 (3종 cycle)
+  const FALLBACK_EMOJIS = ['🎆', '🎵', '🏮']
+  const fallbackEmoji = (id: string) => {
+    let h = 0
+    for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) | 0
+    return FALLBACK_EMOJIS[Math.abs(h) % FALLBACK_EMOJIS.length]
+  }
+
   return (
-    <div className="max-w-3xl mx-auto px-4 md:px-6 py-8 md:py-12">
+    <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
       <div className="text-center mb-8">
         <h2 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tight mb-2">
           📅 {t('festival.title')}
@@ -159,7 +168,7 @@ export function FestivalCalendar({ spots, locale }: Props) {
         })}
       </div>
 
-      {/* 축제 목록 */}
+      {/* 축제 그리드 — 정사각형 카드 (모바일 2-col / 데스크톱 3-col, 도시별 탭과 시각적 일관성) */}
       {festivals.length === 0 ? (
         <div className="text-center py-16 space-y-2">
           <div className="text-5xl mb-2">📭</div>
@@ -167,38 +176,58 @@ export function FestivalCalendar({ spots, locale }: Props) {
           <p className="text-xs text-slate-500">{t('festival.tourApiHint')}</p>
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {festivals.map(({ spot, start, end }) => {
             const status = getStatus(start, end, now)
             const startLabel = start.toLocaleDateString(locale === 'ko' ? 'ko-KR' : locale, { month: 'short', day: 'numeric' })
             const endLabel = end.toLocaleDateString(locale === 'ko' ? 'ko-KR' : locale, { month: 'short', day: 'numeric' })
             const dateRange = startLabel === endLabel ? startLabel : `${startLabel} ~ ${endLabel}`
-
-            const hasImage = spot.image && !spot.image.includes('placeholder') && spot.image !== ''
+            const festivalName = getI18n(spot.name, locale)
+            const hasImage = !!spot.image && !spot.image.includes('placeholder') && spot.image !== ''
 
             return (
-              <div key={spot.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex gap-4">
-                <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-gradient-to-br from-mint/25 to-blossom/25">
+              <div
+                key={spot.id}
+                className="group block relative overflow-hidden rounded-2xl bg-white border border-mist shadow-sm hover:shadow-lg hover:border-mint transition-all duration-300 hover:-translate-y-1 text-left"
+              >
+                {/* 상단: 정사각형 이미지 */}
+                <div className="relative aspect-square bg-gradient-to-br from-mint-light to-blossom-light">
                   {hasImage ? (
-                    <Image src={spot.image} alt="" fill sizes="80px" className="object-cover" unoptimized={spot.source === 'tourapi'} />
+                    <Image
+                      src={spot.image}
+                      alt={festivalName}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 320px"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      unoptimized={spot.source === 'tourapi'}
+                    />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-3xl">🎊</div>
+                    <div className="w-full h-full flex items-center justify-center text-5xl md:text-6xl" aria-hidden>
+                      {fallbackEmoji(spot.id)}
+                    </div>
                   )}
+
+                  {/* 진행 상태 배지 — 우상단 absolute */}
+                  <span
+                    className={`absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-black shadow-sm ${STATUS_STYLE[status]}`}
+                  >
+                    {STATUS_LABEL[status]}
+                  </span>
                 </div>
-                <div className="flex-1 min-w-0 space-y-1.5">
-                  <div className="flex items-start justify-between gap-2">
-                    <h3 className="text-sm font-black text-slate-800 truncate">
-                      🎊 {getI18n(spot.name, locale)}
-                    </h3>
-                    <span className={`shrink-0 px-2 py-0.5 rounded-full text-[10px] font-black ${STATUS_STYLE[status]}`}>
-                      {STATUS_LABEL[status]}
-                    </span>
+
+                {/* 하단: 정보 영역 */}
+                <div className="p-3 md:p-3.5 space-y-1.5">
+                  <h3 className="text-sm md:text-base font-bold text-slate-800 leading-snug line-clamp-2">
+                    {festivalName}
+                  </h3>
+                  <div className="flex items-center gap-1 text-[11px] md:text-xs text-stone font-bold">
+                    <MapPin className="w-3 h-3 shrink-0" aria-hidden />
+                    <span className="truncate">{getCityName(spot.region, locale)}</span>
                   </div>
-                  <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-slate-500 font-bold">
-                    <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {getCityName(spot.region, locale)}</span>
-                    <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {dateRange}</span>
+                  <div className="flex items-center gap-1 text-[11px] md:text-xs text-stone font-bold">
+                    <Calendar className="w-3 h-3 shrink-0" aria-hidden />
+                    <span className="truncate">{dateRange}</span>
                   </div>
-                  <p className="text-xs text-slate-500 line-clamp-2">{getI18n(spot.description, locale)}</p>
                 </div>
               </div>
             )
