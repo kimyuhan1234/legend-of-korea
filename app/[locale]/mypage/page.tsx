@@ -7,12 +7,10 @@ export const dynamic = 'force-dynamic';
 export default async function MyPage({ params: { locale } }: { params: { locale: string } }) {
   const rank = await getUserRank(locale);
 
-  // 아바타 정보 + 다음 레벨 카테고리 slug 미리 fetch.
-  // server runtime fetch → prop drilling → AvatarSelectModal 의 router.refresh()
-  // 가 server 재실행하면 새 props 가 내려와 즉시 반영.
+  // 아바타 정보 + catalog 미리 fetch — 마이페이지에서 직접 AvatarSelectModal 열기 위함.
   const [avatarState, catalog] = await Promise.all([
     getAvatarUserState(),
-    rank && !rank.isMaxLevel ? loadAvatarCatalog() : Promise.resolve({ categories: [], images: [] }),
+    loadAvatarCatalog(),
   ]);
 
   let nextCategorySlug: string | null = null;
@@ -27,6 +25,10 @@ export default async function MyPage({ params: { locale } }: { params: { locale:
       initialRank={rank}
       initialAvatarFilename={avatarState?.selected_avatar_filename ?? null}
       initialAvatarSlug={avatarState?.selected_avatar_slug ?? null}
+      currentLevel={avatarState?.current_level ?? rank?.level ?? 1}
+      selectedImageId={avatarState?.selected_avatar_image_id ?? null}
+      avatarCategories={catalog.categories}
+      avatarImages={catalog.images}
       nextCategorySlug={nextCategorySlug}
     />
   );

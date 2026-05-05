@@ -17,6 +17,7 @@ import {
   Calendar,
   Loader2,
   CheckCircle2,
+  Camera,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
@@ -28,9 +29,11 @@ import { ProfileSettings } from '@/components/features/mypage/ProfileSettings';
 import { AccountDanger } from '@/components/features/mypage/AccountDanger';
 import { LevelCard } from '@/components/features/dashboard/LevelCard';
 import { MyPlannerCard } from '@/components/features/mypage/MyPlannerCard';
+import { AvatarSelectModal } from '@/components/features/mypage/AvatarSelectModal';
 import { usePassStatus } from '@/hooks/usePassStatus';
 import { resolveAvatarSrc, hasAvatarSource } from '@/lib/avatar/resolve';
 import type { UserRankResult } from '@/lib/tiers/levels';
+import type { AvatarCategory, AvatarImage } from '@/lib/avatar/data';
 
 interface MyPageClientProps {
   locale: string;
@@ -39,6 +42,14 @@ interface MyPageClientProps {
   initialAvatarFilename?: string | null;
   /** server 에서 fetch 한 사용자 선택 아바타 카테고리 slug */
   initialAvatarSlug?: string | null;
+  /** 사용자 현재 레벨 — AvatarSelectModal 의 카테고리 잠금 판단용 */
+  currentLevel?: number;
+  /** 사용자가 선택한 image_id (avatar_images.id) — 모달에서 mint-deep ring 강조용 */
+  selectedImageId?: string | null;
+  /** 모든 카테고리 메타 — AvatarSelectModal 카테고리 섹션 */
+  avatarCategories?: AvatarCategory[];
+  /** 모든 사진 메타 — AvatarSelectModal 사진 그리드 */
+  avatarImages?: AvatarImage[];
   /** 다음 레벨 카테고리 slug (avatar.category.{slug}) — LevelCard 미리보기용 */
   nextCategorySlug?: string | null;
 }
@@ -48,13 +59,19 @@ export function MyPageClient({
   initialRank = null,
   initialAvatarFilename = null,
   initialAvatarSlug = null,
+  currentLevel = 1,
+  selectedImageId = null,
+  avatarCategories = [],
+  avatarImages = [],
   nextCategorySlug = null,
 }: MyPageClientProps) {
   const t = useTranslations('mypage');
+  const tAvatar = useTranslations('avatar');
   const router = useRouter();
   const supabase = useRef(createClient()).current;
   // 패스 검증 — /api/passes/status (TEST_MODE / passes 테이블 / 만료 일관 처리)
   const { hasPass } = usePassStatus();
+  const [avatarModalOpen, setAvatarModalOpen] = useState(false);
 
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
@@ -243,6 +260,17 @@ export function MyPageClient({
                     );
                   })()}
                 </div>
+                {/* 아바타 변경 트리거 — 우측 하단 카메라 아이콘 (avatar.changeAvatar i18n) */}
+                {avatarCategories.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setAvatarModalOpen(true)}
+                    aria-label={tAvatar('selectImage')}
+                    className="absolute bottom-1 right-1 w-10 h-10 rounded-full bg-mint-deep text-white shadow-lg hover:bg-mint hover:scale-110 active:scale-95 transition-all flex items-center justify-center ring-4 ring-white"
+                  >
+                    <Camera className="w-4 h-4" aria-hidden />
+                  </button>
+                )}
               </div>
 
               <h2 className="text-2xl font-black text-slate-800">{user?.nickname}</h2>
@@ -469,6 +497,18 @@ export function MyPageClient({
         </section>
 
       </div>
+
+      {/* 아바타 사진 선택 모달 — 카메라 아이콘 클릭 시 직접 열림 */}
+      {avatarModalOpen && avatarCategories.length > 0 && (
+        <AvatarSelectModal
+          locale={locale}
+          currentLevel={currentLevel}
+          selectedImageId={selectedImageId}
+          categories={avatarCategories}
+          images={avatarImages}
+          onClose={() => setAvatarModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
