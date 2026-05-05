@@ -31,23 +31,23 @@ import { LevelCard } from '@/components/features/dashboard/LevelCard';
 import { MyPlannerCard } from '@/components/features/mypage/MyPlannerCard';
 import { usePassStatus } from '@/hooks/usePassStatus';
 import { resolveAvatarSrc, hasAvatarSource } from '@/lib/avatar/resolve';
-import { isAvatarSystemV2 } from '@/lib/avatar/feature-flag';
 import type { UserRankResult } from '@/lib/tiers/levels';
 
 interface MyPageClientProps {
   locale: string;
   initialRank?: UserRankResult | null;
+  /** server runtime 에서 평가한 NEXT_PUBLIC_AVATAR_SYSTEM === 'v2'. 빌드 타임 inline 의존 X. */
+  isV2?: boolean;
   /** v2 flag 활성 시 server 에서 주입 — 다음 레벨 카테고리 slug (avatar.category.{slug}) */
   nextCategorySlug?: string | null;
 }
 
-export function MyPageClient({ locale, initialRank = null, nextCategorySlug = null }: MyPageClientProps) {
+export function MyPageClient({ locale, initialRank = null, isV2 = false, nextCategorySlug = null }: MyPageClientProps) {
   const t = useTranslations('mypage');
   const router = useRouter();
   const supabase = useRef(createClient()).current;
   // 패스 검증 — /api/passes/status (TEST_MODE / passes 테이블 / 만료 일관 처리)
   const { hasPass } = usePassStatus();
-  const isV2 = isAvatarSystemV2();
 
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
