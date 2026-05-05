@@ -32,36 +32,28 @@ interface CourseProgress {
 }
 
 export function DigitalPassport({ userId, locale }: Props) {
+  const tAvatar = useTranslations('avatar')
   const t = useTranslations('mypage')
   const [progress, setProgress] = useState<CourseProgress[]>([])
   const [loading, setLoading] = useState(true)
   const [nickname, setNickname] = useState('')
   const [tierLevel, setTierLevel] = useState(1)
   const [createdAt, setCreatedAt] = useState('')
-  const [dbTierNames, setDbTierNames] = useState<Record<string, string> | null>(null)
-  const [dbTierEmoji, setDbTierEmoji] = useState<string | null>(null)
 
   useEffect(() => {
     const supabase = createClient()
 
     async function load() {
-      const [userRes, missionsRes, progressRes, rankRes] = await Promise.all([
+      const [userRes, missionsRes, progressRes] = await Promise.all([
         supabase.from('users').select('nickname, current_level, created_at').eq('id', userId).single(),
         supabase.from('missions').select('id, course_id, is_hidden'),
         supabase.from('mission_progress').select('mission_id, status, completed_at').eq('user_id', userId).eq('status', 'completed'),
-        fetch(`/api/user/rank?userId=${userId}`).then(r => r.ok ? r.json() : null).catch(() => null),
       ])
 
       if (userRes.data) {
         setNickname(userRes.data.nickname || '')
         setTierLevel(userRes.data.current_level || 1)
         setCreatedAt(userRes.data.created_at || '')
-      }
-
-      // /api/user/rank 와 동일 source — 헤더/대시보드와 랭크 일치
-      if (rankRes?.names) {
-        setDbTierNames(rankRes.names as Record<string, string>)
-        setDbTierEmoji(rankRes.emoji ?? null)
       }
 
       const allMissions = missionsRes.data || []
@@ -95,20 +87,8 @@ export function DigitalPassport({ userId, locale }: Props) {
   const clearedCount = progress.filter(p => p.total > 0 && p.completed === p.total).length
   const isAllCleared = clearedCount === COURSES.length
 
-  const TIER_NAMES: Record<string, Record<number, string>> = {
-    ko: { 1: '초보 탐험가', 2: '숙련 모험가', 3: '전설의 여행자', 4: '신화의 수호자', 5: '레전드 마스터' },
-    en: { 1: 'Novice Explorer', 2: 'Skilled Adventurer', 3: 'Legendary Traveler', 4: 'Mythic Guardian', 5: 'Legend Master' },
-    ja: { 1: '初心者探検家', 2: '熟練冒険家', 3: '伝説の旅人', 4: '神話の守護者', 5: 'レジェンドマスター' },
-    'zh-CN': { 1: '初级探险家', 2: '熟练冒险家', 3: '传说旅行者', 4: '神话守护者', 5: '传奇大师' },
-    'zh-TW': { 1: '初級探險家', 2: '熟練冒險家', 3: '傳說旅行者', 4: '神話守護者', 5: '傳奇大師' },
-  }
-  const tierNameFallback = (TIER_NAMES[locale] ?? TIER_NAMES.ko)[tierLevel] ?? (TIER_NAMES.ko)[1]
-  const TIER_EMOJIS: Record<number, string> = { 1: '🌿', 2: '⚔️', 3: '🏅', 4: '🔱', 5: '👑' }
-  const tierEmojiDefault = TIER_EMOJIS[tierLevel] ?? '🌿'
-  // DB tier_titles 우선 (헤더/대시보드와 동일 source), 없으면 하드코딩 fallback
-  const dbTierTitle = dbTierNames ? (dbTierNames[locale] || dbTierNames.ko || dbTierNames.en || null) : null
-  const tierName = dbTierTitle ?? tierNameFallback
-  const tierEmoji = dbTierEmoji ?? tierEmojiDefault
+  // 랭크 표기 — 'Lv N' 단순 통일 (RankBadge / LevelCard 와 일관, scholar/warrior 시스템 폐기 후).
+  const tierLabel = `${tAvatar('level')} ${tierLevel}`
 
   const issuedDate = createdAt
     ? new Date(createdAt).toLocaleDateString(locale === 'ko' ? 'ko-KR' : locale === 'ja' ? 'ja-JP' : locale, {
@@ -173,7 +153,7 @@ export function DigitalPassport({ userId, locale }: Props) {
               </p>
               <p className="text-slate-300">
                 <span className="text-amber-400/60 text-xs mr-2">RANK</span>
-                <span className="font-bold text-white">{tierEmoji} {tierName}</span>
+                <span className="font-bold text-white">{tierLabel}</span>
               </p>
               <p className="text-slate-300">
                 <span className="text-amber-400/60 text-xs mr-2">STAMPS</span>
