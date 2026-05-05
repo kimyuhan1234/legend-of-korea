@@ -10,6 +10,31 @@ import { NextRequest, NextResponse } from 'next/server';
  *   GET 의 nested user SELECT 도 RLS 영향 줄이기 위해 user_id batch fetch 패턴.
  */
 
+// Supabase 에러는 Error 클래스 아닌 { message, code, details, hint } 일반 객체.
+// String(err) → "[object Object]" 되는 직렬화 버그 방지.
+function buildErrorResponse(err: unknown, label: string) {
+  console.error(label, err);
+  let detail = 'Unknown error';
+  let code: string | undefined;
+  if (err instanceof Error) {
+    detail = err.message;
+  } else if (err && typeof err === 'object') {
+    const e = err as Record<string, unknown>;
+    detail = typeof e.message === 'string' ? e.message : JSON.stringify(err);
+    code = typeof e.code === 'string' ? e.code : undefined;
+  } else {
+    detail = String(err);
+  }
+  return NextResponse.json({
+    success: false,
+    error: 'INTERNAL_ERROR',
+    detail,
+    code,
+    stack: err instanceof Error ? err.stack : undefined,
+    raw: err, // 디버깅 임시 — fix 후 제거
+  }, { status: 500 });
+}
+
 export async function GET(
   _request: NextRequest,
   { params }: { params: { postId: string } }
@@ -56,13 +81,7 @@ export async function GET(
 
     return NextResponse.json({ success: true, comments: enriched });
   } catch (err) {
-    console.error('Comments GET Error:', err);
-    return NextResponse.json({
-      success: false,
-      error: 'INTERNAL_ERROR',
-      detail: err instanceof Error ? err.message : String(err),
-      stack: err instanceof Error ? err.stack : undefined,
-    }, { status: 500 });
+    return buildErrorResponse(err, 'Comments GET Error:');
   }
 }
 
@@ -123,12 +142,6 @@ export async function POST(
 
     return NextResponse.json({ success: true, comment: enriched });
   } catch (err) {
-    console.error('Comments POST Error:', err);
-    return NextResponse.json({
-      success: false,
-      error: 'INTERNAL_ERROR',
-      detail: err instanceof Error ? err.message : String(err),
-      stack: err instanceof Error ? err.stack : undefined,
-    }, { status: 500 });
+    return buildErrorResponse(err, 'Comments POST Error:');
   }
 }

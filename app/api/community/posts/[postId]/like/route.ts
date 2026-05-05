@@ -9,6 +9,30 @@ import { NextRequest, NextResponse } from 'next/server';
  *   기존 코드의 manual UPDATE 가 트리거와 중복되어 본인 글 토글 시 +2/-2 double-increment.
  *   manual UPDATE 제거 + 트리거가 동기화한 likes_count 를 SELECT 로 fetch 하여 server-truth 응답.
  */
+
+// Supabase 에러는 Error 클래스 아닌 일반 객체 — String(err)="[object Object]" 직렬화 버그 회피.
+function buildErrorResponse(err: unknown, label: string) {
+  console.error(label, err);
+  let detail = 'Unknown error';
+  let code: string | undefined;
+  if (err instanceof Error) {
+    detail = err.message;
+  } else if (err && typeof err === 'object') {
+    const e = err as Record<string, unknown>;
+    detail = typeof e.message === 'string' ? e.message : JSON.stringify(err);
+    code = typeof e.code === 'string' ? e.code : undefined;
+  } else {
+    detail = String(err);
+  }
+  return NextResponse.json({
+    success: false,
+    error: 'INTERNAL_ERROR',
+    detail,
+    code,
+    stack: err instanceof Error ? err.stack : undefined,
+    raw: err, // 디버깅 임시 — fix 후 제거
+  }, { status: 500 });
+}
 export async function POST(
   _request: NextRequest,
   { params }: { params: { postId: string } }
@@ -53,13 +77,7 @@ export async function POST(
       likes_count: post?.likes_count ?? 0,
     });
   } catch (err) {
-    console.error('Like toggle error:', err);
-    return NextResponse.json({
-      success: false,
-      error: 'INTERNAL_ERROR',
-      detail: err instanceof Error ? err.message : String(err),
-      stack: err instanceof Error ? err.stack : undefined,
-    }, { status: 500 });
+    return buildErrorResponse(err, 'Like toggle error:');
   }
 }
 
