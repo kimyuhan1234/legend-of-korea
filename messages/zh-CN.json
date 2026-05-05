@@ -531,6 +531,7 @@
   },
   "mypage": {
     "title": "我的页面",
+    "changeProfilePhoto": "更换头像",
     "cancel": "取消",
     "cancelButton": "取消",
     "save": "保存",
@@ -2178,6 +2179,7 @@
     "locked": "已锁定",
     "unlocked": "已解锁",
     "selectImage": "选择头像",
+    "changeRank": "更换等级图片",
     "unlockHint": "达到等级{n}时解锁",
     "levelUp": {
       "title": "🎉 等级{n}达成！",

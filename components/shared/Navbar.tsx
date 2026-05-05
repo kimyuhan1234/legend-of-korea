@@ -2,8 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { RaindropIcon } from "@/components/shared/icons/RaindropIcon"
 import { createClient } from "@/lib/supabase/server"
-import { resolveAvatarSrc, hasAvatarSource } from "@/lib/avatar/resolve"
-import { loadAvatarForUserId } from "@/lib/avatar/data"
+import { resolveProfileAvatarSrc, hasProfileAvatar } from "@/lib/avatar/resolve"
 import { LogoutButton } from "@/components/features/auth/LogoutButton"
 import { MobileHeader } from "@/components/shared/MobileHeader"
 import { LocaleSwitcher } from "@/components/shared/LocaleSwitcher"
@@ -77,42 +76,29 @@ export async function Navbar({ locale }: NavbarProps) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
+  // 헤더 = 프로필 사진 (avatar_url) 만 사용. 랭크 사진 (selected_avatar_image_id) 시스템과 분리.
   let profile: {
     nickname?: string
     avatar_url?: string | null
     total_lp?: number | null
-    selected_avatar_filename: string | null
-    selected_avatar_slug: string | null
   } | null = null
   if (user) {
-    const [{ data }, avatar] = await Promise.all([
-      supabase
-        .from("users")
-        .select("nickname, avatar_url, total_lp")
-        .eq("id", user.id)
-        .single(),
-      loadAvatarForUserId(user.id),
-    ])
-    profile = {
-      nickname: data?.nickname,
-      avatar_url: data?.avatar_url,
-      total_lp: data?.total_lp,
-      selected_avatar_filename: avatar.selected_avatar_filename,
-      selected_avatar_slug: avatar.selected_avatar_slug,
-    }
+    const { data } = await supabase
+      .from("users")
+      .select("nickname, avatar_url, total_lp")
+      .eq("id", user.id)
+      .single()
+    profile = data
   }
 
   const links = NAV_LINKS[locale as keyof typeof NAV_LINKS] || NAV_LINKS.en || NAV_LINKS.ko
   const t = TEXT[locale as keyof typeof TEXT] || TEXT.en || TEXT.ko
 
-  // 모바일에 전달할 사용자 정보 (선택 아바타 정보 포함 — AvatarSelectModal router.refresh() 후 즉시 반영)
   const mobileUser = user && profile
     ? {
         nickname: profile.nickname,
         avatar_url: profile.avatar_url,
         total_lp: profile.total_lp,
-        selected_avatar_filename: profile.selected_avatar_filename,
-        selected_avatar_slug: profile.selected_avatar_slug,
       }
     : null
 
@@ -181,9 +167,9 @@ export async function Navbar({ locale }: NavbarProps) {
                 <button className="flex items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-cloud transition-colors">
                   {/* 아바타 */}
                   <div className="w-7 h-7 rounded-full bg-[#1F2937] flex items-center justify-center text-white text-xs font-bold overflow-hidden">
-                    {hasAvatarSource(profile) ? (
+                    {hasProfileAvatar(profile) ? (
                       <Image
-                        src={resolveAvatarSrc(profile)}
+                        src={resolveProfileAvatarSrc(profile)}
                         alt={profile.nickname ?? ""}
                         width={28}
                         height={28}

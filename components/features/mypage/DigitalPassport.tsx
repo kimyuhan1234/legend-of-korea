@@ -1,11 +1,13 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Camera, Share2, Loader2, Trophy } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { PassportStamp } from './PassportStamp'
 import { toast } from '@/components/ui/use-toast'
+import { resolveRankImageSrc, hasRankImage } from '@/lib/avatar/resolve'
 
 interface Props {
   userId: string
@@ -39,13 +41,15 @@ export function DigitalPassport({ userId, locale }: Props) {
   const [nickname, setNickname] = useState('')
   const [tierLevel, setTierLevel] = useState(1)
   const [createdAt, setCreatedAt] = useState('')
+  const [rankImageFilename, setRankImageFilename] = useState<string | null>(null)
+  const [rankImageSlug, setRankImageSlug] = useState<string | null>(null)
 
   useEffect(() => {
     const supabase = createClient()
 
     async function load() {
       const [userRes, missionsRes, progressRes] = await Promise.all([
-        supabase.from('users').select('nickname, current_level, created_at').eq('id', userId).single(),
+        supabase.from('users').select('nickname, current_level, created_at, selected_avatar_image_id').eq('id', userId).single(),
         supabase.from('missions').select('id, course_id, is_hidden'),
         supabase.from('mission_progress').select('mission_id, status, completed_at').eq('user_id', userId).eq('status', 'completed'),
       ])
@@ -54,6 +58,20 @@ export function DigitalPassport({ userId, locale }: Props) {
         setNickname(userRes.data.nickname || '')
         setTierLevel(userRes.data.current_level || 1)
         setCreatedAt(userRes.data.created_at || '')
+
+        // 랭크 사진 — selected_avatar_image_id 있으면 join 으로 filename + slug 조회
+        const selImageId = (userRes.data as { selected_avatar_image_id?: string | null }).selected_avatar_image_id
+        if (selImageId) {
+          const { data: imgRow } = await supabase
+            .from('avatar_images')
+            .select('filename, avatar_categories(slug)')
+            .eq('id', selImageId)
+            .maybeSingle<{ filename: string; avatar_categories: { slug: string } | null }>()
+          if (imgRow) {
+            setRankImageFilename(imgRow.filename)
+            setRankImageSlug(imgRow.avatar_categories?.slug ?? null)
+          }
+        }
       }
 
       const allMissions = missionsRes.data || []
@@ -151,8 +169,20 @@ export function DigitalPassport({ userId, locale }: Props) {
                 <span className="text-amber-400/60 text-xs mr-2">NAME</span>
                 <span className="font-bold text-white">{nickname || 'Traveler'}</span>
               </p>
-              <p className="text-slate-300">
-                <span className="text-amber-400/60 text-xs mr-2">RANK</span>
+              <p className="text-slate-300 flex items-center gap-2">
+                <span className="text-amber-400/60 text-xs">RANK</span>
+                {hasRankImage({ selected_avatar_filename: rankImageFilename, selected_avatar_slug: rankImageSlug }) && (
+                  <span className="inline-block w-7 h-7 rounded-md overflow-hidden bg-slate-700/50 shrink-0">
+                    <Image
+                      src={resolveRankImageSrc({ selected_avatar_filename: rankImageFilename, selected_avatar_slug: rankImageSlug })}
+                      alt={tierLabel}
+                      width={28}
+                      height={28}
+                      className="object-cover w-full h-full"
+                      unoptimized
+                    />
+                  </span>
+                )}
                 <span className="font-bold text-white">{tierLabel}</span>
               </p>
               <p className="text-slate-300">

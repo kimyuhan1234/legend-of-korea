@@ -26,13 +26,14 @@ import { ZepMeetingButton } from '@/components/features/quest/ZepMeetingButton';
 import { ZepBanner } from '@/components/features/quest/ZepBanner';
 import { SettingsSection, SettingsRow } from '@/components/features/mypage/SettingsSection';
 import { ProfileSettings } from '@/components/features/mypage/ProfileSettings';
+import { AvatarCropModal } from '@/components/features/mypage/AvatarCropModal';
 import { AccountDanger } from '@/components/features/mypage/AccountDanger';
 import { LevelCard } from '@/components/features/dashboard/LevelCard';
 import { MyPlannerCard } from '@/components/features/mypage/MyPlannerCard';
 import { AvatarSelectModal } from '@/components/features/mypage/AvatarSelectModal';
 import { LevelUpModal } from '@/components/features/mypage/LevelUpModal';
 import { usePassStatus } from '@/hooks/usePassStatus';
-import { resolveAvatarSrc, hasAvatarSource } from '@/lib/avatar/resolve';
+import { resolveProfileAvatarSrc, hasProfileAvatar } from '@/lib/avatar/resolve';
 import type { UserRankResult } from '@/lib/tiers/levels';
 import type { AvatarCategory, AvatarImage } from '@/lib/avatar/data';
 
@@ -67,13 +68,44 @@ export function MyPageClient({
   nextCategorySlug = null,
 }: MyPageClientProps) {
   const t = useTranslations('mypage');
-  const tAvatar = useTranslations('avatar');
   const router = useRouter();
   const supabase = useRef(createClient()).current;
   // 패스 검증 — /api/passes/status (TEST_MODE / passes 테이블 / 만료 일관 처리)
   const { hasPass } = usePassStatus();
   const [avatarModalOpen, setAvatarModalOpen] = useState(false);
   const [levelUpInfo, setLevelUpInfo] = useState<{ newLevel: number; slug: string } | null>(null);
+
+  // 프로필 사진 업로드 (avatar_url) — ProfileSettings 와 동일 흐름. 큰 아바타 카메라 트리거.
+  const profileFileRef = useRef<HTMLInputElement>(null);
+  const [profileCropSrc, setProfileCropSrc] = useState<string | null>(null);
+  const [profileUploading, setProfileUploading] = useState(false);
+
+  const handleProfilePhotoPick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setProfileCropSrc(URL.createObjectURL(file));
+    e.target.value = '';
+  };
+
+  const handleProfileCropConfirm = async (croppedBlob: Blob) => {
+    setProfileCropSrc(null);
+    setProfileUploading(true);
+    try {
+      const cropped = new File([croppedBlob], 'avatar.jpg', { type: 'image/jpeg' });
+      const formData = new FormData();
+      // 닉네임은 변경 없음 — 기존 값 유지 (백엔드 필수 검증 회피)
+      formData.append('nickname', user?.nickname ?? '');
+      formData.append('avatar', cropped);
+      const res = await fetch('/api/profile', { method: 'PATCH', body: formData });
+      const data = await res.json();
+      if (data.success) {
+        setUser((prev: any) => ({ ...prev, avatar_url: data.user?.avatar_url ?? prev?.avatar_url }));
+        router.refresh();
+      }
+    } finally {
+      setProfileUploading(false);
+    }
+  };
 
   // 레벨업 알림 — sessionStorage 플래그 (LegendShop 이 set, 본 마운트에서 read + clear)
   useEffect(() => {
@@ -250,6 +282,9 @@ export function MyPageClient({
             raindrops={initialRank.raindrops}
             isMaxLevel={initialRank.isMaxLevel}
             nextCategorySlug={nextCategorySlug}
+            rankImageFilename={initialAvatarFilename}
+            rankImageSlug={initialAvatarSlug}
+            onChangeRank={avatarCategories.length > 0 ? () => setAvatarModalOpen(true) : undefined}
           />
         </div>
       )}
@@ -262,32 +297,31 @@ export function MyPageClient({
             <CardContent className="px-6 pb-8 -mt-12 text-center">
               <div className="relative inline-block mb-4">
                 <div className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white mx-auto">
-                  {(() => {
-                    const avatarSrc = {
-                      avatar_url: user?.avatar_url,
-                      selected_avatar_filename: initialAvatarFilename,
-                      selected_avatar_slug: initialAvatarSlug,
-                    };
-                    return hasAvatarSource(avatarSrc) ? (
-                      <Image src={resolveAvatarSrc(avatarSrc)} alt="Profile" fill className="object-cover" sizes="128px" />
-                    ) : (
-                      <div className="w-full h-full bg-slate-100 flex items-center justify-center text-5xl font-black text-slate-300">
-                        {user?.nickname?.[0]}
-                      </div>
-                    );
-                  })()}
+                  {hasProfileAvatar(user) ? (
+                    <Image src={resolveProfileAvatarSrc(user)} alt="Profile" fill className="object-cover" sizes="128px" />
+                  ) : (
+                    <div className="w-full h-full bg-slate-100 flex items-center justify-center text-5xl font-black text-slate-300">
+                      {user?.nickname?.[0]}
+                    </div>
+                  )}
                 </div>
-                {/* 아바타 변경 트리거 — 우측 하단 카메라 아이콘 (avatar.changeAvatar i18n) */}
-                {avatarCategories.length > 0 && (
-                  <button
-                    type="button"
-                    onClick={() => setAvatarModalOpen(true)}
-                    aria-label={tAvatar('selectImage')}
-                    className="absolute bottom-1 right-1 w-10 h-10 rounded-full bg-mint-deep text-white shadow-lg hover:bg-mint hover:scale-110 active:scale-95 transition-all flex items-center justify-center ring-4 ring-white"
-                  >
-                    <Camera className="w-4 h-4" aria-hidden />
-                  </button>
-                )}
+                {/* 프로필 사진 변경 — avatar_url 시스템 (Supabase Storage 업로드) */}
+                <button
+                  type="button"
+                  onClick={() => profileFileRef.current?.click()}
+                  disabled={profileUploading}
+                  aria-label={t('changeProfilePhoto')}
+                  className="absolute bottom-1 right-1 w-10 h-10 rounded-full bg-slate-700 text-white shadow-lg hover:bg-slate-800 hover:scale-110 active:scale-95 disabled:opacity-50 transition-all flex items-center justify-center ring-4 ring-white"
+                >
+                  {profileUploading ? <Loader2 className="w-4 h-4 animate-spin" aria-hidden /> : <Camera className="w-4 h-4" aria-hidden />}
+                </button>
+                <input
+                  ref={profileFileRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleProfilePhotoPick}
+                />
               </div>
 
               <h2 className="text-2xl font-black text-slate-800">{user?.nickname}</h2>
@@ -339,11 +373,7 @@ export function MyPageClient({
           {/* 섹션 1: 내 정보 */}
           <SettingsSection icon="👤" title={t('settings.profile')}>
             <ProfileSettings
-              user={{
-                ...user,
-                selected_avatar_filename: initialAvatarFilename,
-                selected_avatar_slug: initialAvatarSlug,
-              }}
+              user={user}
               locale={locale}
               onUpdate={(updated) => setUser((prev: any) => ({ ...prev, ...updated }))}
             />
@@ -515,7 +545,17 @@ export function MyPageClient({
 
       </div>
 
-      {/* 아바타 사진 선택 모달 — 카메라 아이콘 클릭 시 직접 열림 */}
+      {/* 프로필 사진 크롭 모달 — 큰 아바타 카메라 트리거 */}
+      {profileCropSrc && (
+        <AvatarCropModal
+          imageSrc={profileCropSrc}
+          locale={locale}
+          onCancel={() => setProfileCropSrc(null)}
+          onConfirm={handleProfileCropConfirm}
+        />
+      )}
+
+      {/* 랭크 사진 선택 모달 — LEVEL 영역 카메라 트리거 (selected_avatar_image_id) */}
       {avatarModalOpen && avatarCategories.length > 0 && (
         <AvatarSelectModal
           locale={locale}

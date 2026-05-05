@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Camera, Loader2, Pencil, Check, X } from 'lucide-react'
 import { toast } from '@/components/ui/use-toast'
 import { AvatarCropModal } from './AvatarCropModal'
-import { resolveAvatarSrc, hasAvatarSource } from '@/lib/avatar/resolve'
+import { resolveProfileAvatarSrc, hasProfileAvatar } from '@/lib/avatar/resolve'
 
 interface Props {
   user: {
@@ -118,8 +118,8 @@ export function ProfileSettings({ user, locale, onUpdate }: Props) {
         {!editing ? (
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl overflow-hidden bg-slate-100 shrink-0">
-              {hasAvatarSource(user) ? (
-                <Image src={resolveAvatarSrc(user)} alt="" width={56} height={56} className="object-cover w-full h-full" unoptimized />
+              {hasProfileAvatar(user) ? (
+                <Image src={resolveProfileAvatarSrc(user)} alt="" width={56} height={56} className="object-cover w-full h-full" unoptimized />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-xl font-black text-slate-300">
                   {user?.nickname?.[0] || '?'}

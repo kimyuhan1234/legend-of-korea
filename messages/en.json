@@ -531,6 +531,7 @@
   },
   "mypage": {
     "title": "My Page",
+    "changeProfilePhoto": "Change Profile Photo",
     "cancel": "Cancel",
     "cancelButton": "Cancel",
     "save": "Save",
@@ -2178,6 +2179,7 @@
     "locked": "Locked",
     "unlocked": "Unlocked",
     "selectImage": "Select Avatar",
+    "changeRank": "Change Rank Image",
     "unlockHint": "Unlocks at Level {n}",
     "levelUp": {
       "title": "🎉 Level {n} reached!",

@@ -11,7 +11,7 @@ import { getRegionName } from '@/lib/constants/regions';
 import { getThemeLabel, getThemeEmoji } from '@/lib/data/post-themes';
 import { toast } from '@/components/ui/use-toast';
 import { RankBadge } from '@/components/features/rank/RankBadge';
-import { resolveAvatarSrc, hasAvatarSource } from '@/lib/avatar/resolve';
+import { resolveProfileAvatarSrc, hasProfileAvatar } from '@/lib/avatar/resolve';
 import { useModalA11y } from '@/hooks/useModalA11y';
 
 export interface PostType {
@@ -271,8 +271,8 @@ export function PostCard({ post, locale, currentUserId, onDelete, onEdit }: Post
         <div className="flex justify-between items-start mb-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-slate-100 overflow-hidden relative shrink-0  border-0 border-slate-200">
-              {hasAvatarSource(post.user) ? (
-                <Image src={resolveAvatarSrc(post.user)} alt="avatar" fill className="object-cover" unoptimized />
+              {hasProfileAvatar(post.user) ? (
+                <Image src={resolveProfileAvatarSrc(post.user)} alt="avatar" fill className="object-cover" unoptimized />
               ) : (
                 <div className="w-full h-full flex items-center justify-center font-bold text-slate-500 text-sm">
                   {post.user?.nickname?.[0] || 'A'}
