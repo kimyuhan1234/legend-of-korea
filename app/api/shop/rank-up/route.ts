@@ -6,13 +6,9 @@ export const dynamic = 'force-dynamic'
 /**
  * POST /api/shop/rank-up
  *
- * 디자인 B — 빗방울을 차감하고 users.current_level 을 1단계 올린다.
- * 자동 승급 없음. 레벨업은 사용자가 상점에서 수동으로만 구매.
- *
- * 전제:
- *  - Lv 10 까지
- *  - Lv 3 → 4 이동 시 users.tech_tree_route 설정 필수 (scholar/warrior)
- *  - rank_up_costs 테이블에서 비용 조회
+ * 빗방울을 차감하고 users.current_level 을 1단계 올린다.
+ * scholar/warrior 분기 폐기 (2026-05) — 단일 경로 1~10.
+ * 자동 승급 없음. 사용자가 상점에서 수동 구매로만 상승.
  */
 export async function POST() {
   const supabase = await createClient()
@@ -24,9 +20,9 @@ export async function POST() {
   // 1) 현재 사용자 상태
   const { data: userRow, error: readErr } = await supabase
     .from('users')
-    .select('current_level, total_lp, tech_tree_route')
+    .select('current_level, total_lp')
     .eq('id', user.id)
-    .maybeSingle<{ current_level: number | null; total_lp: number | null; tech_tree_route: string | null }>()
+    .maybeSingle<{ current_level: number | null; total_lp: number | null }>()
 
   if (readErr || !userRow) {
     return NextResponse.json({ error: 'User not found' }, { status: 404 })
@@ -34,7 +30,6 @@ export async function POST() {
 
   const currentLevel = userRow.current_level ?? 1
   const currentBalance = userRow.total_lp ?? 0
-  const route = userRow.tech_tree_route
 
   if (currentLevel >= 10) {
     return NextResponse.json({ error: 'Already at max level' }, { status: 400 })
@@ -42,15 +37,7 @@ export async function POST() {
 
   const targetLevel = currentLevel + 1
 
-  // 2) Lv 3 → 4 전환 시 route 필요
-  if (targetLevel >= 4 && route === null) {
-    return NextResponse.json(
-      { error: 'Branch selection required', needsBranchSelection: true },
-      { status: 400 }
-    )
-  }
-
-  // 3) 비용 조회
+  // 2) 비용 조회
   const { data: costRow, error: costErr } = await supabase
     .from('rank_up_costs')
     .select('raindrops_required')
@@ -72,7 +59,7 @@ export async function POST() {
 
   const newBalance = currentBalance - required
 
-  // 4) 빗방울 차감 + 레벨 증가
+  // 3) 빗방울 차감 + 레벨 증가
   const { error: updateErr } = await supabase
     .from('users')
     .update({ current_level: targetLevel, total_lp: newBalance })
@@ -83,7 +70,7 @@ export async function POST() {
     return NextResponse.json({ error: 'Update failed' }, { status: 500 })
   }
 
-  // 5) lp_transactions 기록
+  // 4) lp_transactions 기록
   await supabase.from('lp_transactions').insert({
     user_id: user.id,
     amount: -required,

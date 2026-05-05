@@ -1,17 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
-
-type BadgeLocale = 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW'
 
 interface RankData {
   level: number
-  route: string | null
-  names: Record<BadgeLocale, string> | null
-  emoji: string
-  isSpecial: boolean
-  needsBranchSelection: boolean
 }
 
 // 세션 단위 캐시 — 같은 userId 반복 조회 시 재요청 방지
@@ -19,8 +11,7 @@ const cache = new Map<string, RankData | null>()
 const pending = new Map<string, Promise<RankData | null>>()
 
 /**
- * 랭크 캐시 무효화 — 랭크업·분기 선택 등 current_level 또는 tech_tree_route
- * 가 바뀐 직후 반드시 호출해야 뱃지가 최신 값으로 재조회됨.
+ * 랭크 캐시 무효화 — 랭크업 등 current_level 이 바뀐 직후 호출.
  * userId 생략 시 전체 캐시 클리어.
  */
 export function invalidateRankCache(userId?: string) {
@@ -52,13 +43,6 @@ async function fetchRank(userId: string): Promise<RankData | null> {
   return p
 }
 
-function routeColor(route: string | null, level: number): string {
-  if (level <= 3 || route === null) return 'bg-emerald-100 text-emerald-700 border-emerald-200'
-  if (route === 'scholar') return 'bg-blue-100 text-blue-700 border-blue-200'
-  if (route === 'warrior') return 'bg-red-100 text-red-700 border-red-200'
-  return 'bg-slate-100 text-slate-700 border-slate-200'
-}
-
 interface Props {
   userId: string
   size?: 'sm' | 'md' | 'lg'
@@ -66,15 +50,16 @@ interface Props {
   className?: string
   /**
    * 값이 바뀌면 useEffect 가 재실행되어 재조회.
-   * 호출 측에서 invalidateRankCache(userId) 로 캐시를 먼저 비운 뒤 증가시키면
-   * 최신 데이터 확보 보장.
+   * 호출 측에서 invalidateRankCache(userId) 로 캐시를 비운 뒤 증가시키면 최신 데이터 보장.
    */
   refreshKey?: number | string
 }
 
-export function RankBadge({ userId, size = 'md', showName = true, className = '', refreshKey }: Props) {
-  const pathname = usePathname()
-  const locale = (pathname.split('/')[1] || 'ko') as BadgeLocale
+/**
+ * 단순 레벨 뱃지. scholar/warrior 분기 폐기 (2026-05) 후 직책 이름/이모지 없음.
+ * 'Lv N' 만 표시.
+ */
+export function RankBadge({ userId, size = 'md', showName: _showName = true, className = '', refreshKey }: Props) {
   const [rank, setRank] = useState<RankData | null>(() => cache.get(userId) ?? null)
   const [ready, setReady] = useState<boolean>(cache.has(userId))
 
@@ -92,47 +77,38 @@ export function RankBadge({ userId, size = 'md', showName = true, className = ''
   }, [userId, refreshKey])
 
   if (!ready) {
-    const h = size === 'sm' ? 'h-5 w-16' : size === 'lg' ? 'h-14 w-40' : 'h-6 w-20'
+    const h = size === 'sm' ? 'h-5 w-12' : size === 'lg' ? 'h-14 w-32' : 'h-6 w-16'
     return <span className={`inline-block animate-pulse rounded-full bg-slate-100 ${h} ${className}`} />
   }
 
   if (!rank) return null
 
-  const name = rank.names?.[locale] ?? rank.names?.en ?? ''
-  const specialRing = rank.isSpecial ? ' ring-2 ring-yellow-300 ring-offset-1' : ''
+  const baseColor = 'bg-mint-light text-mint-deep border-mint'
 
   if (size === 'sm') {
     return (
-      <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-black ${routeColor(rank.route, rank.level)}${specialRing} ${className}`}>
-        <span>{rank.emoji}</span>
-        {showName && name && <span className="truncate max-w-[80px]">{name}</span>}
+      <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-black ${baseColor} ${className}`}>
+        Lv {rank.level}
       </span>
     )
   }
 
   if (size === 'lg') {
-    // 대시보드·프로필 카드용 — 카드 형태
     return (
-      <div className={`rounded-2xl border-2 ${routeColor(rank.route, rank.level)}${specialRing} ${className}`}>
+      <div className={`rounded-2xl border-2 ${baseColor} ${className}`}>
         <div className="flex items-center gap-3 px-4 py-3">
-          <span className="text-4xl">{rank.emoji}</span>
           <div className="min-w-0 flex-1">
-            <p className="text-[10px] font-black opacity-70 uppercase tracking-widest">
-              Lv {rank.level} · {rank.route === 'common' ? 'Common' : rank.route === 'scholar' ? 'Scholar' : rank.route === 'warrior' ? 'Warrior' : '—'}
-            </p>
-            {name && <p className="text-base font-black truncate">{name}</p>}
-            {rank.isSpecial && <p className="text-[10px] font-black text-yellow-600 mt-0.5">✨ Special</p>}
+            <p className="text-[10px] font-black opacity-70 uppercase tracking-widest">Level</p>
+            <p className="text-xl font-black tabular-nums">{rank.level}</p>
           </div>
         </div>
       </div>
     )
   }
 
-  // md (default) — 커뮤니티 닉네임 옆 표준 뱃지
   return (
-    <span className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-black ${routeColor(rank.route, rank.level)}${specialRing} ${className}`}>
-      <span>{rank.emoji}</span>
-      {showName && name && <span>{name}</span>}
+    <span className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-black ${baseColor} ${className}`}>
+      Lv {rank.level}
     </span>
   )
 }

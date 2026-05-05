@@ -26,7 +26,6 @@ import { ZepBanner } from '@/components/features/quest/ZepBanner';
 import { SettingsSection, SettingsRow } from '@/components/features/mypage/SettingsSection';
 import { ProfileSettings } from '@/components/features/mypage/ProfileSettings';
 import { AccountDanger } from '@/components/features/mypage/AccountDanger';
-import { RankCard } from '@/components/features/dashboard/RankCard';
 import { LevelCard } from '@/components/features/dashboard/LevelCard';
 import { MyPlannerCard } from '@/components/features/mypage/MyPlannerCard';
 import { usePassStatus } from '@/hooks/usePassStatus';
@@ -36,13 +35,11 @@ import type { UserRankResult } from '@/lib/tiers/levels';
 interface MyPageClientProps {
   locale: string;
   initialRank?: UserRankResult | null;
-  /** server runtime 에서 평가한 NEXT_PUBLIC_AVATAR_SYSTEM === 'v2'. 빌드 타임 inline 의존 X. */
-  isV2?: boolean;
-  /** v2 flag 활성 시 server 에서 주입 — 다음 레벨 카테고리 slug (avatar.category.{slug}) */
+  /** 다음 레벨 카테고리 slug (avatar.category.{slug}) — LevelCard 미리보기용 */
   nextCategorySlug?: string | null;
 }
 
-export function MyPageClient({ locale, initialRank = null, isV2 = false, nextCategorySlug = null }: MyPageClientProps) {
+export function MyPageClient({ locale, initialRank = null, nextCategorySlug = null }: MyPageClientProps) {
   const t = useTranslations('mypage');
   const router = useRouter();
   const supabase = useRef(createClient()).current;
@@ -203,17 +200,13 @@ export function MyPageClient({ locale, initialRank = null, isV2 = false, nextCat
     <div className="flex-1 container max-w-6xl mx-auto px-4 py-8 md:py-12">
       {initialRank && (
         <div className="mb-8">
-          {isV2 ? (
-            <LevelCard
-              locale={locale}
-              level={initialRank.level}
-              raindrops={initialRank.raindrops}
-              isMaxLevel={initialRank.isMaxLevel}
-              nextCategorySlug={nextCategorySlug}
-            />
-          ) : (
-            <RankCard locale={locale} rank={initialRank} />
-          )}
+          <LevelCard
+            locale={locale}
+            level={initialRank.level}
+            raindrops={initialRank.raindrops}
+            isMaxLevel={initialRank.isMaxLevel}
+            nextCategorySlug={nextCategorySlug}
+          />
         </div>
       )}
       <div className="grid lg:grid-cols-[320px_1fr] gap-8">

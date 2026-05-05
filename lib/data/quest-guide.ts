@@ -152,7 +152,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     ],
     s6SpendTitle: '빗방울로 할 수 있는 것',
     s6SpendItems: [
-      '🎖️ 조선 직업 랭크업 (농민 → 선비 → 영의정!)',
+      '🎖️ 레벨 업 (1 → 10, 한국 문화 카테고리 해금)',
       '🎟️ 할인 쿠폰 교환 (10% / 20% / 30%)',
       '🏆 리더보드 순위 경쟁',
     ],
@@ -255,7 +255,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     ],
     s6SpendTitle: '雨粒でできること',
     s6SpendItems: [
-      '🎖️ 朝鮮職業ランクアップ (農民 → 士大夫 → 領議政!)',
+      '🎖️ レベルアップ (1 → 10、韓国文化カテゴリ解放)',
       '🎟️ 割引クーポン交換 (10% / 20% / 30%)',
       '🏆 リーダーボード順位競争',
     ],
@@ -358,7 +358,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     ],
     s6SpendTitle: 'What to spend Raindrops on',
     s6SpendItems: [
-      '🎖️ Joseon job rank-ups (Peasant → Scholar → Prime Minister!)',
+      '🎖️ Level up (1 → 10, unlock K-culture categories)',
       '🎟️ Discount coupons (10% / 20% / 30%)',
       '🏆 Leaderboard rankings',
     ],
@@ -461,7 +461,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     ],
     s6SpendTitle: '雨滴可以做什么',
     s6SpendItems: [
-      '🎖️ 朝鲜官职升级(农夫 → 士大夫 → 领议政!)',
+      '🎖️ 升级 (1 → 10, 解锁韩国文化分类)',
       '🎟️ 折扣券兑换 (10% / 20% / 30%)',
       '🏆 排行榜名次竞争',
     ],
@@ -564,7 +564,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     ],
     s6SpendTitle: '雨滴可以用來',
     s6SpendItems: [
-      '🎖️ 朝鮮官職升級(農夫 → 士大夫 → 領議政!)',
+      '🎖️ 升級 (1 → 10, 解鎖韓國文化分類)',
       '🎟️ 折扣券兌換 (10% / 20% / 30%)',
       '🏆 排行榜名次競爭',
     ],

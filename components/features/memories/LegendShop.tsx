@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { RankBadge, invalidateRankCache } from '@/components/features/rank/RankBadge'
-import { BranchSelectionModal } from '@/components/features/dashboard/BranchSelectionModal'
 import { RaindropIcon } from '@/components/shared/icons/RaindropIcon'
 
 type ShopLocale = 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW'
@@ -16,8 +15,6 @@ const UI: Record<ShopLocale, {
   rankUpBtn: string
   rankUpCost: (n: number) => string
   rankUpMax: string
-  needsRoute: string
-  chooseRoute: string
   insufficient: (d: number) => string
   success: (lv: number) => string
   couponsHeading: string
@@ -30,15 +27,13 @@ const UI: Record<ShopLocale, {
   ko: {
     balance: '내 빗방울',
     unit: '빗방울',
-    rankUpHeading: '⬆️ 조선 직업 랭크업',
+    rankUpHeading: '⬆️ 레벨 업',
     rankUpNow: '현재',
-    rankUpBtn: '랭크업',
+    rankUpBtn: '레벨 업',
     rankUpCost: (n) => `필요 ${n.toLocaleString()} 빗방울`,
-    rankUpMax: '최고 랭크 도달! 🏆',
-    needsRoute: 'Lv 4 이상은 길을 선택해야 합니다',
-    chooseRoute: '길 선택하기',
+    rankUpMax: '최고 레벨 도달! 🏆',
     insufficient: (d) => `빗방울이 ${d.toLocaleString()} 부족`,
-    success: (lv) => `🎉 Lv ${lv} 로 승급!`,
+    success: (lv) => `🎉 Lv ${lv} 도달!`,
     couponsHeading: '🎟️ 할인 쿠폰 교환',
     buyBtn: '구매',
     couponsMine: '📜 내 쿠폰',
@@ -49,15 +44,13 @@ const UI: Record<ShopLocale, {
   en: {
     balance: 'My Raindrops',
     unit: 'raindrops',
-    rankUpHeading: '⬆️ Joseon Rank Up',
+    rankUpHeading: '⬆️ Level Up',
     rankUpNow: 'Current',
-    rankUpBtn: 'Rank Up',
+    rankUpBtn: 'Level Up',
     rankUpCost: (n) => `Costs ${n.toLocaleString()} raindrops`,
-    rankUpMax: 'Max rank reached! 🏆',
-    needsRoute: 'Lv 4+ requires choosing a path',
-    chooseRoute: 'Choose Path',
+    rankUpMax: 'Max level reached! 🏆',
     insufficient: (d) => `Need ${d.toLocaleString()} more raindrops`,
-    success: (lv) => `🎉 Promoted to Lv ${lv}!`,
+    success: (lv) => `🎉 Reached Lv ${lv}!`,
     couponsHeading: '🎟️ Exchange Coupons',
     buyBtn: 'Buy',
     couponsMine: '📜 My Coupons',
@@ -68,15 +61,13 @@ const UI: Record<ShopLocale, {
   ja: {
     balance: '雨滴残高',
     unit: '雨滴',
-    rankUpHeading: '⬆️ 朝鮮職位ランクアップ',
+    rankUpHeading: '⬆️ レベルアップ',
     rankUpNow: '現在',
-    rankUpBtn: 'ランクアップ',
+    rankUpBtn: 'レベルアップ',
     rankUpCost: (n) => `必要 ${n.toLocaleString()} 雨滴`,
-    rankUpMax: '最高ランク到達！🏆',
-    needsRoute: 'Lv 4以上は道の選択が必要',
-    chooseRoute: '道を選ぶ',
+    rankUpMax: '最高レベル到達！🏆',
     insufficient: (d) => `雨滴が ${d.toLocaleString()} 不足`,
-    success: (lv) => `🎉 Lv ${lv} に昇格！`,
+    success: (lv) => `🎉 Lv ${lv} に到達！`,
     couponsHeading: '🎟️ 割引クーポン交換',
     buyBtn: '購入',
     couponsMine: '📜 保有クーポン',
@@ -87,15 +78,13 @@ const UI: Record<ShopLocale, {
   'zh-CN': {
     balance: '我的雨滴',
     unit: '雨滴',
-    rankUpHeading: '⬆️ 朝鲜职位升级',
+    rankUpHeading: '⬆️ 升级',
     rankUpNow: '当前',
     rankUpBtn: '升级',
     rankUpCost: (n) => `需要 ${n.toLocaleString()} 雨滴`,
     rankUpMax: '已达最高等级！🏆',
-    needsRoute: 'Lv 4 以上需选择道路',
-    chooseRoute: '选择道路',
     insufficient: (d) => `雨滴不足 ${d.toLocaleString()}`,
-    success: (lv) => `🎉 升级至 Lv ${lv}！`,
+    success: (lv) => `🎉 达到 Lv ${lv}！`,
     couponsHeading: '🎟️ 兑换优惠券',
     buyBtn: '购买',
     couponsMine: '📜 我的优惠券',
@@ -106,15 +95,13 @@ const UI: Record<ShopLocale, {
   'zh-TW': {
     balance: '我的雨滴',
     unit: '雨滴',
-    rankUpHeading: '⬆️ 朝鮮職位升級',
+    rankUpHeading: '⬆️ 升級',
     rankUpNow: '當前',
     rankUpBtn: '升級',
     rankUpCost: (n) => `需要 ${n.toLocaleString()} 雨滴`,
     rankUpMax: '已達最高等級！🏆',
-    needsRoute: 'Lv 4 以上需選擇道路',
-    chooseRoute: '選擇道路',
     insufficient: (d) => `雨滴不足 ${d.toLocaleString()}`,
-    success: (lv) => `🎉 升級至 Lv ${lv}！`,
+    success: (lv) => `🎉 達到 Lv ${lv}！`,
     couponsHeading: '🎟️ 兌換優惠券',
     buyBtn: '購買',
     couponsMine: '📜 我的優惠券',
@@ -142,7 +129,6 @@ interface UserState {
   id: string
   current_level: number
   total_lp: number
-  tech_tree_route: string | null
 }
 
 interface RankUpCostRow {
@@ -171,8 +157,7 @@ export function LegendShop({ locale }: Props) {
   const [loading, setLoading] = useState(true)
   const [busy, setBusy] = useState<null | 'rank-up' | number>(null)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
-  const [branchOpen, setBranchOpen] = useState(false)
-  // RankBadge 재조회 트리거 — 랭크업·분기 선택 후 증가시키면 뱃지가 최신 값으로 갱신.
+  // RankBadge 재조회 트리거 — 랭크업 후 증가시키면 뱃지가 최신 값으로 갱신.
   const [rankRefresh, setRankRefresh] = useState(0)
 
   const load = useCallback(async () => {
@@ -187,9 +172,9 @@ export function LegendShop({ locale }: Props) {
     const [{ data: userRow }, { data: costRows }, couponsRes] = await Promise.all([
       supabase
         .from('users')
-        .select('current_level, total_lp, tech_tree_route')
+        .select('current_level, total_lp')
         .eq('id', authUser.id)
-        .maybeSingle<{ current_level: number | null; total_lp: number | null; tech_tree_route: string | null }>(),
+        .maybeSingle<{ current_level: number | null; total_lp: number | null }>(),
       supabase.from('rank_up_costs').select('level, raindrops_required').returns<RankUpCostRow[]>(),
       fetch('/api/shop/coupons').then((r) => (r.ok ? r.json() : { success: false })),
     ])
@@ -199,7 +184,6 @@ export function LegendShop({ locale }: Props) {
         id: authUser.id,
         current_level: userRow.current_level ?? 1,
         total_lp: userRow.total_lp ?? 0,
-        tech_tree_route: userRow.tech_tree_route,
       })
     }
 
@@ -223,12 +207,6 @@ export function LegendShop({ locale }: Props) {
     const targetLevel = user.current_level + 1
     if (targetLevel > 10) return
 
-    // Lv 3 → 4 전환인데 route 미선택이면 분기 모달 먼저
-    if (targetLevel >= 4 && !user.tech_tree_route) {
-      setBranchOpen(true)
-      return
-    }
-
     const cost = costs[targetLevel] ?? 0
     if (user.total_lp < cost) {
       setMessage({ type: 'error', text: t.insufficient(cost - user.total_lp) })
@@ -241,11 +219,7 @@ export function LegendShop({ locale }: Props) {
       const res = await fetch('/api/shop/rank-up', { method: 'POST' })
       const json = await res.json()
       if (!res.ok) {
-        if (json.needsBranchSelection) {
-          setBranchOpen(true)
-        } else {
-          setMessage({ type: 'error', text: json.error || 'Failed' })
-        }
+        setMessage({ type: 'error', text: json.error || 'Failed' })
         return
       }
       setMessage({ type: 'success', text: t.success(json.newLevel) })
@@ -256,23 +230,6 @@ export function LegendShop({ locale }: Props) {
     } finally {
       setBusy(null)
     }
-  }
-
-  const handleBranchSelect = async (route: 'scholar' | 'warrior') => {
-    const res = await fetch('/api/user/select-route', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ route }),
-    })
-    if (!res.ok) {
-      setMessage({ type: 'error', text: 'Route selection failed' })
-      return
-    }
-    setBranchOpen(false)
-    // route 변경 시에도 뱃지 갱신 필요 (Lv 4+ 직책 이름이 route 에 따라 바뀜)
-    if (user) invalidateRankCache(user.id)
-    setRankRefresh((k) => k + 1)
-    await load()
   }
 
   const handleBuyCoupon = async (discountRate: number) => {
@@ -307,7 +264,6 @@ export function LegendShop({ locale }: Props) {
   const isMaxLevel = user.current_level >= 10
   const nextLevel = user.current_level + 1
   const nextCost = costs[nextLevel] ?? 0
-  const needsBranchForNext = nextLevel >= 4 && !user.tech_tree_route
   const canAfford = user.total_lp >= nextCost
 
   return (
@@ -344,17 +300,6 @@ export function LegendShop({ locale }: Props) {
         {isMaxLevel ? (
           <div className="rounded-2xl bg-yellow-50 border border-yellow-200 p-4 text-center">
             <p className="text-sm font-black text-yellow-700">{t.rankUpMax}</p>
-          </div>
-        ) : needsBranchForNext ? (
-          <div className="rounded-2xl bg-blue-50 border border-blue-200 p-4 space-y-3">
-            <p className="text-sm font-bold text-blue-700">{t.needsRoute}</p>
-            <button
-              type="button"
-              onClick={() => setBranchOpen(true)}
-              className="w-full py-2.5 rounded-full bg-blue-500 text-white font-black text-sm hover:bg-blue-600 transition-colors"
-            >
-              {t.chooseRoute}
-            </button>
           </div>
         ) : (
           <div className="rounded-2xl bg-cloud/40 border border-mist p-4 space-y-3">
@@ -425,13 +370,6 @@ export function LegendShop({ locale }: Props) {
         )}
       </section>
 
-      <BranchSelectionModal
-        isOpen={branchOpen}
-        onClose={() => setBranchOpen(false)}
-        onSelect={handleBranchSelect}
-        canClose={!needsBranchForNext}
-        locale={locale}
-      />
     </div>
   )
 }

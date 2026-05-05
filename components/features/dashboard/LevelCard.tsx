@@ -15,8 +15,7 @@ interface Props {
 }
 
 /**
- * v2 레벨 카드 — 단순 숫자 레벨 + 다음 카테고리 해금 미리보기.
- * v1 RankCard.tsx 의 무관/문관 분기 배지를 대체.
+ * 레벨 카드 — 숫자 레벨 + 다음 카테고리 해금 미리보기.
  */
 export function LevelCard({ locale, level, raindrops, isMaxLevel, nextCategorySlug }: Props) {
   const t = useTranslations('avatar')

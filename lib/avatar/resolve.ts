@@ -7,8 +7,7 @@
  *   2. 기존 avatar_url (Supabase / 외부 URL) — 자연 호환 fallback
  *   3. placeholder.svg
  *
- * 057 마이그레이션 적용 전 또는 NEXT_PUBLIC_AVATAR_SYSTEM 미설정 환경에서도
- * avatar_url 만으로 정상 동작 — 기존 사이트 깨지지 않음.
+ * 057 마이그레이션 적용 전 환경에서도 avatar_url 만으로 정상 동작.
  */
 
 export interface AvatarSource {
