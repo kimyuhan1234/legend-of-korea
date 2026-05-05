@@ -87,6 +87,7 @@
     "nicknameMax": "暱稱不可超過20個字元",
     "duplicateEmail": "此電子郵件已被使用",
     "loginFailed": "登入失敗，請再試一次。",
+    "emailVerifiedNotice": "信箱驗證完成。請登入。",
     "signupSuccess": "帳號建立成功",
     "loginSubmit": "登入",
     "loginSubmitting": "登入中...",
@@ -530,6 +531,10 @@
   },
   "mypage": {
     "title": "我的頁面",
+    "cancel": "取消",
+    "cancelButton": "取消",
+    "save": "儲存",
+    "linkCopied": "連結已複製",
     "profile": "個人資料",
     "orders": "訂單",
     "missionProgress": "任務進度",

@@ -30,7 +30,17 @@ export async function GET(
   const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code)
 
   if (exchangeError) {
-    return NextResponse.redirect(`${origin}/${locale}/auth/login?error=auth_failed`)
+    // 이메일 인증 링크는 한 번 사용 시 invalidated. 두 번째 클릭 / 다른 브라우저에서
+    // 클릭 시 exchangeError 가 발생해도 이메일 자체는 이미 검증된 상태일 수 있다.
+    //   - 이미 다른 탭에서 로그인된 사용자 → 그냥 홈으로
+    //   - 비로그인 상태 → "이메일 인증 완료, 로그인해주세요" 안내 (auth_failed 카피 부적절)
+    const {
+      data: { user: existingUser },
+    } = await supabase.auth.getUser()
+    if (existingUser) {
+      return NextResponse.redirect(`${origin}/${locale}${next === "/" ? "" : next}`)
+    }
+    return NextResponse.redirect(`${origin}/${locale}/auth/login?reason=emailVerified`)
   }
 
   // 세션 발급 성공 — birth_date 확인
@@ -39,7 +49,9 @@ export async function GET(
   } = await supabase.auth.getUser()
 
   if (!user) {
-    return NextResponse.redirect(`${origin}/${locale}/auth/login?error=auth_failed`)
+    // exchange 는 성공했지만 cookie writeback race 등으로 즉시 user 미확보.
+    // 이메일은 검증된 상태이므로 auth_failed 가 아닌 emailVerified 안내.
+    return NextResponse.redirect(`${origin}/${locale}/auth/login?reason=emailVerified`)
   }
 
   const { data: profile } = await supabase

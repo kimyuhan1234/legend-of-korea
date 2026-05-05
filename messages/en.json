@@ -87,6 +87,7 @@
     "nicknameMax": "Nickname must be 20 characters or less",
     "duplicateEmail": "This email is already in use",
     "loginFailed": "Login failed. Please try again.",
+    "emailVerifiedNotice": "Email verified. Please sign in.",
     "signupSuccess": "Account created successfully",
     "loginSubmit": "Sign In",
     "loginSubmitting": "Signing in...",
@@ -530,6 +531,10 @@
   },
   "mypage": {
     "title": "My Page",
+    "cancel": "Cancel",
+    "cancelButton": "Cancel",
+    "save": "Save",
+    "linkCopied": "Link copied",
     "profile": "Profile",
     "orders": "Orders",
     "missionProgress": "Mission Progress",

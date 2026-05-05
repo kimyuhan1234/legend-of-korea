@@ -20,6 +20,23 @@ async function BirthDateBlockedNotice({ locale }: { locale: string }) {
   )
 }
 
+/**
+ * 이메일 인증 콜백 후 (재방문 / 다른 브라우저 / cookie race 등으로
+ * 즉시 자동 로그인 안 된 경우) 표시되는 안내.
+ * auth.emailVerifiedNotice i18n 사용.
+ */
+async function EmailVerifiedNotice({ locale }: { locale: string }) {
+  const t = await getTranslations({ locale, namespace: 'auth' })
+  return (
+    <div
+      role="status"
+      className="px-4 py-3 rounded-lg bg-mint-light border border-mint text-mint-deep text-sm font-bold"
+    >
+      ✅ {t('emailVerifiedNotice')}
+    </div>
+  )
+}
+
 interface Props {
   params: { locale: string }
   searchParams: { error?: string; next?: string; reason?: string }
@@ -88,6 +105,11 @@ export default function LoginPage({ params, searchParams }: Props) {
             {/* P0F-3: birth_date deadline 초과로 강제 sign out 된 경우 안내 */}
             {searchParams.reason === "birthDateBlocked" && (
               <BirthDateBlockedNotice locale={locale} />
+            )}
+
+            {/* 이메일 인증 콜백 후 즉시 자동 로그인 안 된 경우 안내 */}
+            {searchParams.reason === "emailVerified" && (
+              <EmailVerifiedNotice locale={locale} />
             )}
 
             {/* 소셜 로그인 */}

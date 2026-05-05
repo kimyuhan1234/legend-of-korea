@@ -87,6 +87,7 @@
     "nicknameMax": "ニックネームは20文字以内にしてください",
     "duplicateEmail": "すでに使用されているメールアドレスです",
     "loginFailed": "ログインに失敗しました",
+    "emailVerifiedNotice": "メール認証が完了しました。ログインしてください。",
     "signupSuccess": "登録が完了しました",
     "loginSubmit": "ログイン",
     "loginSubmitting": "ログイン中...",
@@ -530,6 +531,10 @@
   },
   "mypage": {
     "title": "マイページ",
+    "cancel": "キャンセル",
+    "cancelButton": "キャンセル",
+    "save": "保存",
+    "linkCopied": "リンクをコピーしました",
     "profile": "プロフィール",
     "orders": "注文履歴",
     "missionProgress": "ミッション進捗",

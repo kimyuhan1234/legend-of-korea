@@ -87,6 +87,7 @@
     "nicknameMax": "昵称不能超过20个字符",
     "duplicateEmail": "该邮箱已被使用",
     "loginFailed": "登录失败，请重试。",
+    "emailVerifiedNotice": "邮箱验证完成。请登录。",
     "signupSuccess": "账号创建成功",
     "loginSubmit": "登录",
     "loginSubmitting": "登录中...",
@@ -530,6 +531,10 @@
   },
   "mypage": {
     "title": "我的页面",
+    "cancel": "取消",
+    "cancelButton": "取消",
+    "save": "保存",
+    "linkCopied": "链接已复制",
     "profile": "个人资料",
     "orders": "订单",
     "missionProgress": "任务进度",
