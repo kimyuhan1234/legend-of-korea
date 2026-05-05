@@ -270,19 +270,30 @@ export function MemoriesClient({ locale }: Props) {
     }
   }
 
-  // 좋아요 토글
+  // 좋아요 토글 — optimistic 후 server-truth 로 보정 (카운트 무한 증가 차단).
   const handleLike = async (item: PhotoItem) => {
-    // optimistic
     const wasLiked = item.liked
-    const updater = (p: PhotoItem) =>
+    const optimistic = (p: PhotoItem) =>
       p.postId === item.postId
         ? { ...p, liked: !wasLiked, likesCount: p.likesCount + (wasLiked ? -1 : 1) }
         : p
-    setPhotos((prev) => prev.map(updater))
-    if (lightbox?.postId === item.postId) setLightbox(updater(lightbox))
+    setPhotos((prev) => prev.map(optimistic))
+    if (lightbox?.postId === item.postId) setLightbox(optimistic(lightbox))
     try {
       const res = await fetch(`/api/community/posts/${item.postId}/like`, { method: 'POST' })
       if (!res.ok) throw new Error('like_failed')
+      const data = await res.json() as { action?: 'liked' | 'unliked'; likes_count?: number }
+      // server-truth 적용 — 트리거가 동기화한 likes_count + action 으로 정정
+      const truth = (p: PhotoItem) =>
+        p.postId === item.postId
+          ? {
+              ...p,
+              liked: data.action === 'liked',
+              likesCount: typeof data.likes_count === 'number' ? data.likes_count : p.likesCount,
+            }
+          : p
+      setPhotos((prev) => prev.map(truth))
+      if (lightbox?.postId === item.postId) setLightbox((prev) => (prev ? truth(prev) : prev))
     } catch {
       // 롤백
       const rollback = (p: PhotoItem) =>
@@ -290,7 +301,7 @@ export function MemoriesClient({ locale }: Props) {
           ? { ...p, liked: wasLiked, likesCount: p.likesCount + (wasLiked ? 1 : -1) }
           : p
       setPhotos((prev) => prev.map(rollback))
-      if (lightbox?.postId === item.postId) setLightbox(rollback(lightbox))
+      if (lightbox?.postId === item.postId) setLightbox((prev) => (prev ? rollback(prev) : prev))
       toast({ variant: 'destructive', title: photoUi.failed })
     }
   }
