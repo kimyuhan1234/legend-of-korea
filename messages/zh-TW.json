@@ -266,6 +266,15 @@
     "infoDuration": "소요시간",
     "infoMissions": "미션"
   },
+  "courses": {
+    "highlights": {
+      "routeGridTitle": "추천 동선 — 장소별 사진",
+      "imageLoading": "이미지 로드 중...",
+      "imageNotAvailable": "사진 준비 중",
+      "imageError": "이미지 로드 실패",
+      "foodSpotLabel": "현지 음식"
+    }
+  },
   "mission": {
     "missionCenter": "미션 센터",
     "scanQR": "QR 코드를 스캔하세요",
