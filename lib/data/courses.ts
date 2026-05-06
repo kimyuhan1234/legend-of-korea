@@ -272,7 +272,7 @@ export const courses: CourseData[] = [
     targetAudience: ['couple', 'family'],
     highlights: {
       recommendedRoute: {
-        ko: '효양산 (선녀 전설지) → 사기막골 도예촌 (관요 유적지) → 이천 도자기마을 → 스파플러스 (이천 온천) → 이천 쌀밥 정식',
+        ko: '효양산 (경기도 이천시 부발읍 마암리 산29-1, 선녀 전설지) → 사기막골 도예촌 (관요 유적지) → 이천 도자기마을 (경기도 이천시 경충대로2993번길 24) → 스파플러스 (이천 온천) → 이천 쌀밥 정식',
         ja: '孝養山（仙女伝説の地）→ サギマッコル陶芸村（官窯遺跡）→ 利川陶磁器マウル → スパプラス（利川温泉）→ 利川コメご飯定食',
         en: 'Hyoyangsan (fairy legend site) → Sagimakgol Pottery Village (royal kiln site) → Icheon Ceramics Village → Spaplus (Icheon hot spring) → Icheon Rice Course Meal',
         'zh-CN': '孝养山（仙女传说地）→ 沙器幕谷陶艺村（官窑遗址）→ 利川陶瓷村 → Spaplus（利川温泉）→ 利川米饭定食',
@@ -325,7 +325,7 @@ export const courses: CourseData[] = [
     targetAudience: ['family', 'history-lover'],
     highlights: {
       recommendedRoute: {
-        ko: '대릉원 (천마총) → 봉황대 → 첨성대 → 동궁과 월지 (안압지) → 황리단길 → (동해권) 감은사지 → 이견대 → 문무대왕릉 (만파식적 전설)',
+        ko: '대릉원 (천마총) → 봉황대 → 첨성대 → 동궁과 월지 (안압지) → 황리단길 → (동해권) 감은사지 (경주시 문무대왕면 용당리 55-1) → 이견대 (경주시 감포읍 대본리 661) → 문무대왕릉 (경주시 문무대왕면 봉길리 26 — 만파식적 전설)',
         ja: '大陵苑（天馬塚）→ 鳳凰台 → 瞻星台 → 東宮と月池（雁鴨池）→ 皇理団キル → （東海圏）感恩寺址 → 利見台 → 文武大王陵（萬波息笛伝説）',
         en: 'Daereungwon (Cheonmachong) → Bonghwangdae → Cheomseongdae → Donggung & Wolji → Hwangnidan-gil → (East Sea) Gameunsa Temple Site → Igyeondae → King Munmu Tomb (Manpasikjeok legend)',
         'zh-CN': '大陵苑（天马塚）→ 凤凰台 → 瞻星台 → 东宫月池（雁鸭池）→ 皇理团街 → （东海圈）感恩寺址 → 利见台 → 文武大王陵（万波息笛传说）',
@@ -378,11 +378,11 @@ export const courses: CourseData[] = [
     targetAudience: ['couple', 'mz'],
     highlights: {
       recommendedRoute: {
-        ko: '동백섬 누리마루 (황옥공주 인어상) → 해운대 백사장 → 광안리 → 자갈치시장 → 감천문화마을 → (확장) 해동용궁사',
-        ja: '冬柏島ヌリマル（黄玉王女の人魚像）→ 海雲台白砂浜 → 広安里 → チャガルチ市場 → 甘川文化村 →（拡張）海東龍宮寺',
-        en: 'Dongbaek Island Nurimaru (Princess Hwangok Mermaid Statue) → Haeundae Beach → Gwangalli → Jagalchi Market → Gamcheon Culture Village → (extension) Haedong Yonggungsa Temple',
-        'zh-CN': '冬柏岛努里玛鲁（黄玉公主美人鱼像）→ 海云台沙滩 → 广安里 → 扎嘎其市场 → 甘川文化村 →（延伸）海东龙宫寺',
-        'zh-TW': '冬柏島努里瑪魯（黃玉公主美人魚像）→ 海雲台沙灘 → 廣安里 → 札嘎其市場 → 甘川文化村 →（延伸）海東龍宮寺',
+        ko: '동백섬 인어상 (해운대 동백섬 순환 일주 도로 동쪽 — 황옥공주 전설 매개) → 해운대 백사장 → 광안리 → 자갈치시장 → 감천문화마을 → (확장) 해동용궁사',
+        ja: '冬柏島の人魚像（海雲台冬柏島循環道の東側 — 黄玉王女伝説の舞台）→ 海雲台白砂浜 → 広安里 → チャガルチ市場 → 甘川文化村 →（拡張）海東龍宮寺',
+        en: 'Dongbaek Island Mermaid Statue (east side of Haeundae Dongbaek-seom loop road — Princess Hwangok legend site) → Haeundae Beach → Gwangalli → Jagalchi Market → Gamcheon Culture Village → (extension) Haedong Yonggungsa Temple',
+        'zh-CN': '冬柏岛美人鱼像（海云台冬柏岛环岛公路东侧 — 黄玉公主传说舞台）→ 海云台沙滩 → 广安里 → 扎嘎其市场 → 甘川文化村 →（延伸）海东龙宫寺',
+        'zh-TW': '冬柏島美人魚像（海雲台冬柏島環島公路東側 — 黃玉公主傳說舞台）→ 海雲台沙灘 → 廣安里 → 札嘎其市場 → 甘川文化村 →（延伸）海東龍宮寺',
       },
       bestSeason: {
         ko: '1-2월 동백꽃 / 봄 벚꽃 (4월) / 가을 해변 산책 (10월)',
@@ -431,7 +431,7 @@ export const courses: CourseData[] = [
     targetAudience: ['family', 'foreigner'],
     highlights: {
       recommendedRoute: {
-        ko: '광화문 해치 동상 (수호신) → 경복궁 → 국립민속박물관 → 북촌한옥마을 → 인사동 → 청계천',
+        ko: '광화문 해치 동상 (서울 종로구 세종대로 172, 수호신) → 경복궁 → 국립민속박물관 → 북촌한옥마을 → 인사동 → 청계천',
         ja: '光化門ヘチ像（守護神）→ 景福宮 → 国立民俗博物館 → 北村韓屋村 → 仁寺洞 → 清渓川',
         en: 'Gwanghwamun Haechi statue (guardian) → Gyeongbokgung → National Folk Museum → Bukchon Hanok Village → Insadong → Cheonggyecheon',
         'zh-CN': '光化门獬豸像（守护神）→ 景福宫 → 国立民俗博物馆 → 北村韩屋村 → 仁寺洞 → 清溪川',
@@ -484,11 +484,11 @@ export const courses: CourseData[] = [
     targetAudience: ['family', 'nature-lover'],
     highlights: {
       recommendedRoute: {
-        ko: '한라산 어승생악 (설문대할망 발자국 전설) → 산방산 → 송악산 (사계해안도로) → 성산일출봉 → (1박) → 우도 또는 협재해변',
-        ja: '漢拏山オスンセンアク（ソルムンデハルマンの足跡伝説）→ 山房山 → 松岳山（沙渓海岸道路）→ 城山日出峰 →（1泊）→ 牛島または挟才海岸',
-        en: 'Hallasan Eoseungsaeng-ak (Seolmundae Halmang footprint legend) → Sanbangsan → Songaksan (Sagye coastal road) → Seongsan Ilchulbong → (1 night) → Udo Island or Hyeopjae Beach',
-        'zh-CN': '汉拿山御乘生岳（雪门大婆足迹传说）→ 山房山 → 松岳山（沙溪海岸路）→ 城山日出峰 →（住1晚）→ 牛岛或挟才海滩',
-        'zh-TW': '漢拏山御乘生岳（雪門大婆足跡傳說）→ 山房山 → 松岳山（沙溪海岸路）→ 城山日出峰 →（住1晚）→ 牛島或挾才海灘',
+        ko: '구좌읍 한동리/행원리 해안 (설문대할망 발자국 — 해안 용암 바위) → 산방산 (한라산 봉우리 조각 전설) → 송악산 (사계해안도로) → 성산일출봉 → (1박) → 우도 또는 협재해변',
+        ja: '旧左邑ハンドンリ/ヘンウォンリ海岸（ソルムンデハルマンの足跡 — 海岸の溶岩岩）→ 山房山（漢拏山の峰の破片伝説）→ 松岳山（沙渓海岸道路）→ 城山日出峰 →（1泊）→ 牛島または挟才海岸',
+        en: 'Gujwa-eup Handong-ri/Haengwon-ri Coast (Seolmundae Halmang footprint — coastal lava rocks) → Sanbangsan (legend: a piece of Hallasan peak) → Songaksan (Sagye coastal road) → Seongsan Ilchulbong → (1 night) → Udo Island or Hyeopjae Beach',
+        'zh-CN': '旧左邑汉东里/杏源里海岸（雪门大婆足迹 — 海岸熔岩石）→ 山房山（汉拿山山峰碎片传说）→ 松岳山（沙溪海岸路）→ 城山日出峰 →（住1晚）→ 牛岛或挟才海滩',
+        'zh-TW': '舊左邑漢東里/杏源里海岸（雪門大婆足跡 — 海岸熔岩石）→ 山房山（漢拏山山峰碎片傳說）→ 松岳山（沙溪海岸路）→ 城山日出峰 →（住1晚）→ 牛島或挾才海灘',
       },
       bestSeason: {
         ko: '봄 유채꽃 (3-4월) / 가을 억새 (10-11월) / 겨울 동백 (1-2월)',
