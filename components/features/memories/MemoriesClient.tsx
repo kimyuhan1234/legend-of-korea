@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
 import { Loader2, Share2, X, Trash2, Heart, MessageCircle, Camera, Send } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from '@/components/ui/use-toast'
@@ -90,6 +91,13 @@ const PHOTO_UI: Record<string, {
 
 type Tab = 'feed' | 'dashboard' | 'ranking' | 'achievements' | 'photos' | 'shop'
 
+const VALID_TABS: readonly Tab[] = ['feed', 'dashboard', 'ranking', 'achievements', 'photos', 'shop'] as const
+
+function parseTabParam(raw: string | null): Tab {
+  if (raw && (VALID_TABS as readonly string[]).includes(raw)) return raw as Tab
+  return 'feed'
+}
+
 function getI18n(field: Record<string, string> | null | undefined, locale: string): string {
   if (!field) return ''
   return field[locale] || field.en || field.ko || ''
@@ -106,9 +114,11 @@ const TABS: { id: Tab; icon: string; labelKey: string; requiresAuth: boolean }[]
 
 export function MemoriesClient({ locale }: Props) {
   const t = useTranslations('memories')
+  const searchParams = useSearchParams()
   const [userId, setUserId] = useState<string | null>(null)
   const [authLoading, setAuthLoading] = useState(true)
-  const [tab, setTab] = useState<Tab>('feed')
+  // ?tab=shop 등 URL query 로 초기 탭 결정 — /shop 라우트가 /memories?tab=shop 로 redirect
+  const [tab, setTab] = useState<Tab>(() => parseTabParam(searchParams.get('tab')))
   const [photos, setPhotos] = useState<PhotoItem[]>([])
   const [photosLoading, setPhotosLoading] = useState(false)
   const [lightbox, setLightbox] = useState<PhotoItem | null>(null)
