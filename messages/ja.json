@@ -266,6 +266,15 @@
     "infoDuration": "所要時間",
     "infoMissions": "ミッション"
   },
+  "courses": {
+    "highlights": {
+      "routeGridTitle": "おすすめルート — 場所ごとの写真",
+      "imageLoading": "画像を読み込み中...",
+      "imageNotAvailable": "写真準備中",
+      "imageError": "画像の読み込みに失敗しました",
+      "foodSpotLabel": "現地グルメ"
+    }
+  },
   "mission": {
     "missionCenter": "ミッションセンター",
     "scanQR": "QRコードをスキャンしてください",

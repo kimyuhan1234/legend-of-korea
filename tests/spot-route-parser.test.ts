@@ -156,6 +156,46 @@ describe('buildSearchKeyword — region prefix 보정', () => {
     expect(buildSearchKeyword('우도', 'jeju', 'ko')).toBe('제주 우도')
   })
 
+  it('Tier 2 — 효양산 / 봉황대 / 송악산 / 우도 5 locale 부착 검증', () => {
+    // 효양산 (icheon)
+    expect(buildSearchKeyword('효양산', 'icheon', 'ko')).toBe('이천 효양산')
+    expect(buildSearchKeyword('孝養山', 'icheon', 'ja')).toBe('利川孝養山')
+    expect(buildSearchKeyword('Hyoyangsan', 'icheon', 'en')).toBe('Icheon Hyoyangsan')
+    expect(buildSearchKeyword('孝养山', 'icheon', 'zh-CN')).toBe('利川孝养山')
+    // 봉황대 (gyeongju)
+    expect(buildSearchKeyword('鳳凰台', 'gyeongju', 'ja')).toBe('慶州鳳凰台')
+    expect(buildSearchKeyword('Bonghwangdae', 'gyeongju', 'en')).toBe('Gyeongju Bonghwangdae')
+    expect(buildSearchKeyword('凤凰台', 'gyeongju', 'zh-CN')).toBe('庆州凤凰台')
+    // 송악산 (jeju)
+    expect(buildSearchKeyword('松岳山', 'jeju', 'ja')).toBe('済州松岳山')
+    expect(buildSearchKeyword('Songaksan', 'jeju', 'en')).toBe('Jeju Songaksan')
+    // 우도 (jeju)
+    expect(buildSearchKeyword('牛島', 'jeju', 'ja')).toBe('済州牛島')
+    expect(buildSearchKeyword('Udo Island', 'jeju', 'en')).toBe('Jeju Udo Island')
+    expect(buildSearchKeyword('牛岛', 'jeju', 'zh-CN')).toBe('济州牛岛')
+  })
+
+  it('비-BOOST spot — 정확 매칭 표본 (보정 X 검증)', () => {
+    // jeonju 비-BOOST
+    expect(buildSearchKeyword('경기전', 'jeonju', 'ko')).toBe('경기전')
+    expect(buildSearchKeyword('풍남문', 'jeonju', 'ko')).toBe('풍남문')
+    // gyeongju 비-BOOST
+    expect(buildSearchKeyword('첨성대', 'gyeongju', 'ko')).toBe('첨성대')
+    expect(buildSearchKeyword('대릉원', 'gyeongju', 'ko')).toBe('대릉원')
+    expect(buildSearchKeyword('동궁과 월지', 'gyeongju', 'ko')).toBe('동궁과 월지')
+    expect(buildSearchKeyword('감은사지', 'gyeongju', 'ko')).toBe('감은사지')
+    // seoul 비-BOOST
+    expect(buildSearchKeyword('경복궁', 'seoul', 'ko')).toBe('경복궁')
+    expect(buildSearchKeyword('인사동', 'seoul', 'ko')).toBe('인사동')
+    expect(buildSearchKeyword('청계천', 'seoul', 'ko')).toBe('청계천')
+    // jeju 비-BOOST
+    expect(buildSearchKeyword('성산일출봉', 'jeju', 'ko')).toBe('성산일출봉')
+    expect(buildSearchKeyword('산방산', 'jeju', 'ko')).toBe('산방산')
+    // busan 비-BOOST
+    expect(buildSearchKeyword('해동용궁사', 'busan', 'ko')).toBe('해동용궁사')
+    expect(buildSearchKeyword('감천문화마을', 'busan', 'ko')).toBe('감천문화마을')
+  })
+
   it('Tier 2 — 한옥마을 골목길 (jeonju) prefix 부착', () => {
     expect(buildSearchKeyword('한옥마을 골목길', 'jeonju', 'ko')).toBe('전주 한옥마을 골목길')
     expect(buildSearchKeyword('Hanok Village alleys', 'jeonju', 'en')).toBe(

@@ -266,6 +266,15 @@
     "infoDuration": "Duration",
     "infoMissions": "Missions"
   },
+  "courses": {
+    "highlights": {
+      "routeGridTitle": "Recommended route — photos by spot",
+      "imageLoading": "Loading image...",
+      "imageNotAvailable": "Photo coming soon",
+      "imageError": "Failed to load image",
+      "foodSpotLabel": "Local food"
+    }
+  },
   "mission": {
     "missionCenter": "Mission Center",
     "scanQR": "Scan a QR Code",

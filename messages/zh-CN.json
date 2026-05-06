@@ -266,6 +266,15 @@
     "infoDuration": "时长",
     "infoMissions": "任务"
   },
+  "courses": {
+    "highlights": {
+      "routeGridTitle": "推荐路线 — 各地点照片",
+      "imageLoading": "图片加载中...",
+      "imageNotAvailable": "照片准备中",
+      "imageError": "图片加载失败",
+      "foodSpotLabel": "当地美食"
+    }
+  },
   "mission": {
     "missionCenter": "任务中心",
     "scanQR": "扫描QR码",

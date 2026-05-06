@@ -11,7 +11,9 @@ import { QuestReviews } from "@/components/features/quest/QuestReviews"
 import { QuestFAQ } from "@/components/features/quest/QuestFAQ"
 import { QuestHighlights } from "@/components/features/quest/QuestHighlights"
 import { QuestExternalLink } from "@/components/features/quest/QuestExternalLink"
+import { HighlightsRouteGrid } from "@/components/features/courses/HighlightsRouteGrid"
 import { courses as staticCourses } from "@/lib/data/courses"
+import type { Locale } from "@/lib/data/parseRouteSpots"
 import { QuestPartySection } from "@/components/features/quest/QuestPartySection"
 import { AddToPlannerButton } from "@/components/features/planner/AddToPlannerButton"
 import { ZepMeetingButton } from "@/components/features/quest/ZepMeetingButton"
@@ -262,6 +264,9 @@ export default async function CourseDetailPage({ params }: Props) {
       {(() => {
         const staticData = staticCourses.find((c) => c.id === courseId)
         if (!staticData) return null
+        const routeText =
+          staticData.highlights?.recommendedRoute?.[locale as keyof typeof staticData.highlights.recommendedRoute] ??
+          staticData.highlights?.recommendedRoute?.ko
         return (
           <>
             {staticData.highlights && (
@@ -270,6 +275,14 @@ export default async function CourseDetailPage({ params }: Props) {
                 locale={locale}
                 difficulty={course.difficulty as 'easy' | 'medium' | 'hard' | null}
                 duration={durationText}
+              />
+            )}
+            {/* 8-2. spot별 사진 그리드 (Phase 2-B) — recommendedRoute 분해 + TourAPI 매칭 */}
+            {routeText && (
+              <HighlightsRouteGrid
+                courseRegionId={staticData.region}
+                recommendedRouteText={routeText}
+                locale={locale as Locale}
               />
             )}
             {staticData.externalCourseUrl && staticData.externalCourseSource && (
