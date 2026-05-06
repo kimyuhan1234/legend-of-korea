@@ -11,27 +11,14 @@ import { NextRequest, NextResponse } from 'next/server';
  */
 
 // Supabase 에러는 Error 클래스 아닌 { message, code, details, hint } 일반 객체.
-// String(err) → "[object Object]" 되는 직렬화 버그 방지.
+// String(err) → "[object Object]" 되는 직렬화 버그 방지 — 서버 log 로 전체 err 객체를
+// 보존하고, 클라이언트 응답은 generic 에러 코드만 노출 (DB 컬럼명/stack/Supabase 내부
+// 객체가 사용자에게 새지 않도록).
 function buildErrorResponse(err: unknown, label: string) {
   console.error(label, err);
-  let detail = 'Unknown error';
-  let code: string | undefined;
-  if (err instanceof Error) {
-    detail = err.message;
-  } else if (err && typeof err === 'object') {
-    const e = err as Record<string, unknown>;
-    detail = typeof e.message === 'string' ? e.message : JSON.stringify(err);
-    code = typeof e.code === 'string' ? e.code : undefined;
-  } else {
-    detail = String(err);
-  }
   return NextResponse.json({
     success: false,
     error: 'INTERNAL_ERROR',
-    detail,
-    code,
-    stack: err instanceof Error ? err.stack : undefined,
-    raw: err, // 디버깅 임시 — fix 후 제거
   }, { status: 500 });
 }
 
