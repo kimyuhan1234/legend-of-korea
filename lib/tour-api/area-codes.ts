@@ -91,3 +91,51 @@ export const PROVINCE_AREA_CODES: Record<string, { areaCode: number; nameKo: str
   jeonnam:   { areaCode: 38, nameKo: '전라남도' },
   jeju:      { areaCode: 39, nameKo: '제주도' },
 }
+
+/**
+ * TourAPI areaCode → 광역 region slug 역매핑.
+ * 응답 item.areacode 로 region 결정 시 사용.
+ */
+const AREA_CODE_TO_REGION: Record<string, string> = (() => {
+  const map: Record<string, string> = {}
+  for (const [region, info] of Object.entries(PROVINCE_AREA_CODES)) {
+    map[String(info.areaCode)] = region
+  }
+  return map
+})()
+
+/**
+ * lDongRegnCd (KS X 1062 행정구역 코드, 2자리) → 광역 region slug 매핑.
+ * TourAPI 4.0 응답에서 areacode 가 빈 문자열인 경우 lDongRegnCd 로 region 결정.
+ */
+const LDONG_REGN_TO_REGION: Record<string, string> = {
+  '11': 'seoul',
+  '26': 'busan',
+  '27': 'daegu',
+  '28': 'incheon',
+  '29': 'gwangju',
+  '30': 'daejeon',
+  '31': 'ulsan',
+  '36': 'sejong',
+  '41': 'gyeonggi',
+  '43': 'chungbuk',
+  '44': 'chungnam',
+  '46': 'jeonnam',
+  '47': 'gyeongbuk',
+  '48': 'gyeongnam',
+  '50': 'jeju',
+  '51': 'gangwon',
+  '52': 'jeonbuk',
+}
+
+/**
+ * 응답 item 의 areacode / lDongRegnCd 로 광역 region 결정.
+ * 두 필드 모두 비어있으면 fallback ('national').
+ */
+export function resolveRegionFromItem(item: { areacode?: string; lDongRegnCd?: string }): string {
+  const areaCode = item.areacode?.trim()
+  if (areaCode && AREA_CODE_TO_REGION[areaCode]) return AREA_CODE_TO_REGION[areaCode]
+  const lDong = item.lDongRegnCd?.trim()
+  if (lDong && LDONG_REGN_TO_REGION[lDong]) return LDONG_REGN_TO_REGION[lDong]
+  return 'national'
+}

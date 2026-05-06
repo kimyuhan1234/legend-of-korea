@@ -1,5 +1,5 @@
 import { SIGHTS, type Sight } from '@/lib/data/sights'
-import { PROVINCE_AREA_CODES, CONTENT_TYPES } from './area-codes'
+import { PROVINCE_AREA_CODES, CONTENT_TYPES, resolveRegionFromItem } from './area-codes'
 import { fetchTourSpots, fetchCurrentFestivals } from './client'
 import { NormalizedSpot, SpotCategory, TourAPIItem, I18nString } from './types'
 
@@ -160,28 +160,33 @@ export async function getAllSpots(locale: Locale = 'ko'): Promise<NormalizedSpot
     all.push(normalizeStaticSight(s))
   }
 
-  // 전국 17개 광역시도 순회 — 각 지역당 4 contentType (관광지/문화시설/여행코스/레저) × 30 entries + 축제
-  // 결과: 17 × 30 × 4 + 축제 ≈ 2,040 + N entries. 첫 방문 SSR ~3-5초, revalidate 3600s 후 캐싱.
+  // 전국 17개 광역시도 순회 — 각 지역당 4 contentType (관광지/문화시설/여행코스/레저) × 30 entries.
+  // 축제는 areaCode 필터 시 응답 row 의 areacode 가 빈 문자열이라 누락 다수 → 전국 일괄 1회 호출로 분리 (아래).
   const provinceEntries = Object.entries(PROVINCE_AREA_CODES)
   const tourFetches = provinceEntries.map(async ([region, codes]) => {
-    const [tourists, cultures, courses, leisures, festivals] = await Promise.all([
+    const [tourists, cultures, courses, leisures] = await Promise.all([
       fetchTourSpots({ areaCode: codes.areaCode, contentTypeId: CONTENT_TYPES.tourist, numOfRows: 30, locale }),
       fetchTourSpots({ areaCode: codes.areaCode, contentTypeId: CONTENT_TYPES.culture, numOfRows: 30, locale }),
       fetchTourSpots({ areaCode: codes.areaCode, contentTypeId: CONTENT_TYPES.course,  numOfRows: 30, locale }),
       fetchTourSpots({ areaCode: codes.areaCode, contentTypeId: CONTENT_TYPES.leisure, numOfRows: 30, locale }),
-      fetchCurrentFestivals(codes.areaCode, locale),
     ])
     const items: NormalizedSpot[] = []
     for (const it of tourists) items.push(normalizeTourItem(it, region, locale))
     for (const it of cultures) items.push(normalizeTourItem(it, region, locale))
     for (const it of courses)  items.push(normalizeTourItem(it, region, locale))
     for (const it of leisures) items.push(normalizeTourItem(it, region, locale))
-    for (const it of festivals) items.push(normalizeTourItem(it, region, locale))
     return items
   })
 
   const results = await Promise.all(tourFetches)
   for (const arr of results) all.push(...arr)
+
+  // 축제 — 전국 일괄 1회 (페이지네이션 포함). 응답 item 의 lDongRegnCd / areacode 로 region 결정.
+  const festivals = await fetchCurrentFestivals(locale)
+  for (const it of festivals) {
+    const region = resolveRegionFromItem(it)
+    all.push(normalizeTourItem(it, region, locale))
+  }
 
   // 중복 제거 (이름 + 지역 기준)
   const seen = new Set<string>()

@@ -16,6 +16,9 @@ export interface TourAPIItem {
   cat3?: string
   eventstartdate?: string
   eventenddate?: string
+  // TourAPI 4.0 행정구역 코드 — areacode 가 비어있을 때 광역 결정용 (KS X 1062)
+  lDongRegnCd?: string
+  lDongSignguCd?: string
 }
 
 export type SpotCategory = 'hotspot' | 'landmark' | 'festival'
