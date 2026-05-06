@@ -1637,6 +1637,14 @@
       "q5": "키트 없이 미션만 가능한가요?",
       "a5": "키트에 미션 카드, 지도, 힌트가 포함되어 있어 키트 구매가 필요합니다."
     },
+    "highlights": {
+      "title": "이 코스의 하이라이트",
+      "recommendedRoute": "추천 동선",
+      "duration": "소요 시간",
+      "difficulty": "난이도",
+      "bestSeason": "추천 계절",
+      "companionSpots": "함께 가면 좋은 곳"
+    },
     "sticky": {
       "buy": "지금 구매하기"
     },
