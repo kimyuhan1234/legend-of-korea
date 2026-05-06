@@ -1645,6 +1645,14 @@
       "bestSeason": "추천 계절",
       "companionSpots": "함께 가면 좋은 곳"
     },
+    "externalLink": {
+      "title": "공식 코스 정보",
+      "cta": "공식 페이지 보기",
+      "source": {
+        "visitkorea": "한국관광공사 VisitKorea",
+        "koreanfolk": "한국민속촌"
+      }
+    },
     "sticky": {
       "buy": "지금 구매하기"
     },
