@@ -971,8 +971,14 @@
     },
     "festival": {
       "title": "フェスティバルカレンダー",
-      "noFestival": "今月のフェスティバルはありません",
-      "tourApiHint": "TourAPI接続でリアルタイムフェスティバル情報",
+      "empty": {
+        "titleRegion": "{region}の{month}に登録されているお祭りはありません",
+        "titleThisMonth": "今月に登録されているお祭りはありません",
+        "titleOtherMonth": "{month}に登録されているお祭りはありません",
+        "hint": "他の月や地域もご確認ください",
+        "actionAllRegions": "すべての地域を見る",
+        "actionThisMonth": "今月を見る"
+      },
       "ended": "終了",
       "ongoing": "開催中",
       "upcoming": "予定"

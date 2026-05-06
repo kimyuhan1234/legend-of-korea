@@ -971,8 +971,14 @@
     },
     "festival": {
       "title": "節日日曆",
-      "noFestival": "本月沒有節日",
-      "tourApiHint": "連接TourAPI後顯示即時節日資訊",
+      "empty": {
+        "titleRegion": "{region}的{month}暫無登記的節慶活動",
+        "titleThisMonth": "本月暫無登記的節慶活動",
+        "titleOtherMonth": "{month}暫無登記的節慶活動",
+        "hint": "請查看其他月份或地區",
+        "actionAllRegions": "查看全部地區",
+        "actionThisMonth": "查看本月"
+      },
       "ended": "已結束",
       "ongoing": "進行中",
       "upcoming": "即將開始"

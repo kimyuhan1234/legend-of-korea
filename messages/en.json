@@ -971,8 +971,14 @@
     },
     "festival": {
       "title": "Festival Calendar",
-      "noFestival": "No festivals this month",
-      "tourApiHint": "Real-time festival info with TourAPI connection",
+      "empty": {
+        "titleRegion": "No festivals registered for {region} in {month}",
+        "titleThisMonth": "No festivals registered for this month",
+        "titleOtherMonth": "No festivals registered for {month}",
+        "hint": "Try another month or region",
+        "actionAllRegions": "Show all regions",
+        "actionThisMonth": "Go to this month"
+      },
       "ended": "Ended",
       "ongoing": "Ongoing",
       "upcoming": "Upcoming"

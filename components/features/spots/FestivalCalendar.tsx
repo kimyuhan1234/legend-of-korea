@@ -170,13 +170,62 @@ export function FestivalCalendar({ spots, locale, onSpotClick }: Props) {
       </div>
 
       {/* 축제 그리드 — 정사각형 카드 (모바일 2-col / 데스크톱 3-col, 도시별 탭과 시각적 일관성) */}
-      {festivals.length === 0 ? (
-        <div className="text-center py-16 space-y-2">
-          <div className="text-5xl mb-2">📭</div>
-          <p className="text-sm font-bold text-slate-500">{t('festival.noFestival')}</p>
-          <p className="text-xs text-slate-500">{t('festival.tourApiHint')}</p>
-        </div>
-      ) : (
+      {festivals.length === 0 ? (() => {
+        // 빈 상태 분기:
+        //  - 광역 chip 적용 시 → "{region}" 카피 + "전체 지역 보기" 액션
+        //  - 현재 월 + 결과 0 → "이번 달" 카피 + 다른 달 안내
+        //  - 과거/미래 월 + 결과 0 → "{month} 월" 카피 + "이번 달 보기" 액션
+        const isCurrentMonth = year === now.getFullYear() && month === now.getMonth() + 1
+        const regionName = region ? getCityName(region, locale) : ''
+
+        let titleKey: string
+        let titleVars: Record<string, string | number> | undefined
+        if (region) {
+          titleKey = 'festival.empty.titleRegion'
+          titleVars = { region: regionName, month: monthLabel }
+        } else if (isCurrentMonth) {
+          titleKey = 'festival.empty.titleThisMonth'
+        } else {
+          titleKey = 'festival.empty.titleOtherMonth'
+          titleVars = { month: monthLabel }
+        }
+
+        const goCurrentMonth = () => {
+          setYear(now.getFullYear())
+          setMonth(now.getMonth() + 1)
+        }
+        const clearRegion = () => setRegion('')
+
+        return (
+          <div className="text-center py-16 space-y-3">
+            <div className="text-5xl mb-2">📭</div>
+            <p className="text-sm font-bold text-slate-700">
+              {t(titleKey, titleVars)}
+            </p>
+            <p className="text-xs text-slate-500">{t('festival.empty.hint')}</p>
+            <div className="flex flex-wrap gap-2 justify-center pt-2">
+              {region && (
+                <button
+                  type="button"
+                  onClick={clearRegion}
+                  className="px-4 py-2 rounded-full text-xs font-bold bg-mint-deep text-white hover:opacity-90 transition-opacity"
+                >
+                  {t('festival.empty.actionAllRegions')}
+                </button>
+              )}
+              {!isCurrentMonth && (
+                <button
+                  type="button"
+                  onClick={goCurrentMonth}
+                  className="px-4 py-2 rounded-full text-xs font-bold bg-white border border-mist text-slate-700 hover:border-mint transition-colors"
+                >
+                  {t('festival.empty.actionThisMonth')}
+                </button>
+              )}
+            </div>
+          </div>
+        )
+      })() : (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {festivals.map(({ spot, start, end }) => {
             const status = getStatus(start, end, now)

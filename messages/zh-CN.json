@@ -971,8 +971,14 @@
     },
     "festival": {
       "title": "节日日历",
-      "noFestival": "本月没有节日",
-      "tourApiHint": "连接TourAPI后显示实时节日信息",
+      "empty": {
+        "titleRegion": "{region}的{month}暂无登记的节庆活动",
+        "titleThisMonth": "本月暂无登记的节庆活动",
+        "titleOtherMonth": "{month}暂无登记的节庆活动",
+        "hint": "请查看其他月份或地区",
+        "actionAllRegions": "查看全部地区",
+        "actionThisMonth": "查看本月"
+      },
       "ended": "已结束",
       "ongoing": "进行中",
       "upcoming": "即将开始"

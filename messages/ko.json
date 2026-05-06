@@ -1110,8 +1110,14 @@
     },
     "festival": {
       "title": "축제 캘린더",
-      "noFestival": "이번 달에 등록된 축제가 없습니다",
-      "tourApiHint": "TourAPI 연결 시 실시간 축제 정보가 표시됩니다",
+      "empty": {
+        "titleRegion": "{region} 지역의 {month} 축제는 등록되지 않았습니다",
+        "titleThisMonth": "이번 달은 등록된 축제가 없습니다",
+        "titleOtherMonth": "{month}에 등록된 축제가 없습니다",
+        "hint": "다른 달이나 지역도 확인해 보세요",
+        "actionAllRegions": "전체 지역 보기",
+        "actionThisMonth": "이번 달 보기"
+      },
       "ended": "종료됨",
       "ongoing": "진행 중",
       "upcoming": "예정"
