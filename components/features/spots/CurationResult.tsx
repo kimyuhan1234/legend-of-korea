@@ -23,6 +23,7 @@ interface Props {
   preference: UserPreference
   locale: string
   onRetry: () => void
+  onSpotClick?: (spot: NormalizedSpot) => void
 }
 
 function cityName(code: string, locale: string): string {
@@ -84,6 +85,7 @@ function CityDetailCard({
   preference,
   locale,
   radarLabels,
+  onSpotClick,
 }: {
   city: string
   matchPercent: number
@@ -91,6 +93,7 @@ function CityDetailCard({
   preference: UserPreference
   locale: string
   radarLabels: RadarLabels
+  onSpotClick?: (spot: NormalizedSpot) => void
 }) {
   const t = useTranslations('spots')
 
@@ -204,7 +207,7 @@ function CityDetailCard({
           <div>
             <h3 className="text-sm font-black text-slate-700 mb-3">🔥 {t('category.hotspot')}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {hotspots.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
+              {hotspots.map(s => <SpotCard key={s.id} spot={s} locale={locale} onClick={onSpotClick} />)}
             </div>
           </div>
         )}
@@ -214,7 +217,7 @@ function CityDetailCard({
           <div>
             <h3 className="text-sm font-black text-slate-700 mb-3">🏛️ {t('category.landmark')}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {landmarks.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
+              {landmarks.map(s => <SpotCard key={s.id} spot={s} locale={locale} onClick={onSpotClick} />)}
             </div>
           </div>
         )}
@@ -224,7 +227,7 @@ function CityDetailCard({
           <div>
             <h3 className="text-sm font-black text-slate-700 mb-3">🎊 {t('category.festival')}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {festivals.map(f => <SpotCard key={f.id} spot={f} locale={locale} />)}
+              {festivals.map(f => <SpotCard key={f.id} spot={f} locale={locale} onClick={onSpotClick} />)}
             </div>
           </div>
         )}
@@ -249,7 +252,7 @@ function CityDetailCard({
   )
 }
 
-export function CurationResult({ cityScores, spots, preference, locale, onRetry }: Props) {
+export function CurationResult({ cityScores, spots, preference, locale, onRetry, onSpotClick }: Props) {
   const t = useTranslations('spots')
 
   const radarLabels: RadarLabels = {
@@ -297,6 +300,7 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
         preference={preference}
         locale={locale}
         radarLabels={radarLabels}
+        onSpotClick={onSpotClick}
       />
 
       {/* TOP 2 — 아코디언 (move 패스 필요) */}
@@ -357,6 +361,7 @@ export function CurationResult({ cityScores, spots, preference, locale, onRetry 
               preference={preference}
               locale={locale}
               radarLabels={radarLabels}
+              onSpotClick={onSpotClick}
             />
           )}
         </div>

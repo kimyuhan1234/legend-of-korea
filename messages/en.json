@@ -1029,7 +1029,32 @@
       "festival": "Festivals & Events"
     },
     "imagePreparing": "Image coming soon",
-    "source": "Source: Korea Tourism Organization"
+    "source": "Source: Korea Tourism Organization",
+    "detail": {
+      "openDetail": "View details",
+      "loading": "Loading details...",
+      "errorPartial": "Some details could not be loaded",
+      "staticHint": "Curated by our team",
+      "eventPeriod": "Period",
+      "playtime": "Hours",
+      "usetime": "Operating hours",
+      "restdate": "Closed",
+      "eventPlace": "Location",
+      "address": "Address",
+      "fee": "Admission",
+      "feeFree": "Free",
+      "sponsor": "Host",
+      "distance": "Distance",
+      "taketime": "Duration",
+      "schedule": "Schedule",
+      "tel": "Contact",
+      "program": "Program",
+      "overview": "About",
+      "openMap": "Open in map",
+      "homepage": "Website",
+      "call": "Call",
+      "source": "Source: Korea Tourism Organization"
+    }
   },
   "sights": {
     "title": "SPOT",

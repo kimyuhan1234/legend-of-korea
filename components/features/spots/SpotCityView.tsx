@@ -17,6 +17,7 @@ import type { NormalizedSpot } from '@/lib/tour-api/types'
 interface Props {
   spots: NormalizedSpot[]
   locale: string
+  onSpotClick?: (spot: NormalizedSpot) => void
 }
 
 /** 17 광역시도 — TourAPI PROVINCE_AREA_CODES 와 1:1 매칭. */
@@ -55,7 +56,7 @@ function cityCourseId(code: string): string | null {
 
 type ViewMode = 'card' | 'map'
 
-export function SpotCityView({ spots, locale }: Props) {
+export function SpotCityView({ spots, locale, onSpotClick }: Props) {
   const t = useTranslations('spots')
   const [selectedCity, setSelectedCity] = useState<string | null>(null)
   const [viewMode, setViewMode] = useState<ViewMode>('card')
@@ -229,7 +230,7 @@ export function SpotCityView({ spots, locale }: Props) {
               🔥 {t('category.hotspot')} <span className="text-xs text-slate-500 font-bold">({citySpots.hotspots.length})</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {citySpots.hotspots.map((s) => <SpotCard key={s.id} spot={s} locale={locale} />)}
+              {citySpots.hotspots.map((s) => <SpotCard key={s.id} spot={s} locale={locale} onClick={onSpotClick} />)}
             </div>
           </div>
         )}
@@ -240,7 +241,7 @@ export function SpotCityView({ spots, locale }: Props) {
               🏛️ {t('category.landmark')} <span className="text-xs text-slate-500 font-bold">({citySpots.landmarks.length})</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {citySpots.landmarks.map((s) => <SpotCard key={s.id} spot={s} locale={locale} />)}
+              {citySpots.landmarks.map((s) => <SpotCard key={s.id} spot={s} locale={locale} onClick={onSpotClick} />)}
             </div>
           </div>
         )}
@@ -251,7 +252,7 @@ export function SpotCityView({ spots, locale }: Props) {
               🎊 {t('category.festival')} <span className="text-xs text-slate-500 font-bold">({citySpots.festivals.length})</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {citySpots.festivals.map((s) => <SpotCard key={s.id} spot={s} locale={locale} />)}
+              {citySpots.festivals.map((s) => <SpotCard key={s.id} spot={s} locale={locale} onClick={onSpotClick} />)}
             </div>
           </div>
         )}

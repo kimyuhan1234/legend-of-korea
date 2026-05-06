@@ -1029,7 +1029,32 @@
       "festival": "節日活動"
     },
     "imagePreparing": "圖片準備中",
-    "source": "來源：韓國觀光公社"
+    "source": "來源：韓國觀光公社",
+    "detail": {
+      "openDetail": "查看詳情",
+      "loading": "載入中...",
+      "errorPartial": "部分資訊載入失敗",
+      "staticHint": "營運者精選景點",
+      "eventPeriod": "舉辦期間",
+      "playtime": "舉辦時間",
+      "usetime": "營業時間",
+      "restdate": "休息日",
+      "eventPlace": "場地",
+      "address": "地址",
+      "fee": "門票",
+      "feeFree": "免費",
+      "sponsor": "主辦",
+      "distance": "距離",
+      "taketime": "所需時間",
+      "schedule": "日程",
+      "tel": "聯絡方式",
+      "program": "活動節目",
+      "overview": "詳細介紹",
+      "openMap": "在地圖查看",
+      "homepage": "官網",
+      "call": "撥打電話",
+      "source": "來源：韓國觀光公社"
+    }
   },
   "sights": {
     "title": "SPOT",

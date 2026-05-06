@@ -1029,7 +1029,32 @@
       "festival": "フェスティバル"
     },
     "imagePreparing": "画像準備中",
-    "source": "出典：韓国観光公社"
+    "source": "出典：韓国観光公社",
+    "detail": {
+      "openDetail": "詳細情報を見る",
+      "loading": "情報を読み込んでいます...",
+      "errorPartial": "一部の情報を読み込めませんでした",
+      "staticHint": "運営者キュレーションスポットです",
+      "eventPeriod": "開催期間",
+      "playtime": "開催時間",
+      "usetime": "営業時間",
+      "restdate": "休業日",
+      "eventPlace": "場所",
+      "address": "住所",
+      "fee": "料金",
+      "feeFree": "無料",
+      "sponsor": "主催",
+      "distance": "距離",
+      "taketime": "所要時間",
+      "schedule": "スケジュール",
+      "tel": "連絡先",
+      "program": "イベントプログラム",
+      "overview": "詳細紹介",
+      "openMap": "地図で見る",
+      "homepage": "ホームページ",
+      "call": "電話",
+      "source": "出典：韓国観光公社"
+    }
   },
   "sights": {
     "title": "SPOT",

@@ -33,6 +33,7 @@ const PROVINCE_CITIES = CITIES.filter((c) => (PROVINCE_CODES as readonly string[
 interface Props {
   spots: NormalizedSpot[]
   locale: string
+  onSpotClick?: (spot: NormalizedSpot) => void
 }
 
 function getI18n(field: { [k: string]: string } | undefined, locale: string): string {
@@ -60,7 +61,7 @@ function getStatus(start: Date, end: Date, today: Date): FestivalStatus {
   return 'ongoing'
 }
 
-export function FestivalCalendar({ spots, locale }: Props) {
+export function FestivalCalendar({ spots, locale, onSpotClick }: Props) {
   const t = useTranslations('spots')
 
   const now = new Date()
@@ -186,9 +187,13 @@ export function FestivalCalendar({ spots, locale }: Props) {
             const hasImage = !!spot.image && !spot.image.includes('placeholder') && spot.image !== ''
 
             return (
-              <div
+              <button
                 key={spot.id}
-                className="group block relative overflow-hidden rounded-2xl bg-white border border-mist shadow-sm hover:shadow-lg hover:border-mint transition-all duration-300 hover:-translate-y-1 text-left"
+                type="button"
+                onClick={onSpotClick ? () => onSpotClick(spot) : undefined}
+                disabled={!onSpotClick}
+                className="group block relative overflow-hidden rounded-2xl bg-white border border-mist shadow-sm hover:shadow-lg hover:border-mint transition-all duration-300 hover:-translate-y-1 text-left disabled:cursor-default w-full"
+                aria-label={onSpotClick ? `${festivalName} ${t('detail.openDetail')}` : undefined}
               >
                 {/* 상단: 정사각형 이미지 */}
                 <div className="relative aspect-square bg-gradient-to-br from-mint-light to-blossom-light">
@@ -229,7 +234,7 @@ export function FestivalCalendar({ spots, locale }: Props) {
                     <span className="truncate">{dateRange}</span>
                   </div>
                 </div>
-              </div>
+              </button>
             )
           })}
         </div>

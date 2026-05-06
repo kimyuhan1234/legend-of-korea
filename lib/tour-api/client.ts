@@ -1,4 +1,4 @@
-import { TourAPIItem } from './types'
+import { TourAPIItem, TourAPIDetailCommon, TourAPIDetailIntro, TourAPIDetailResponse } from './types'
 
 type Locale = 'ko' | 'ja' | 'en' | 'zh-CN' | 'zh-TW'
 
@@ -21,7 +21,8 @@ function getKey(): string | null {
 export async function callTourApi<T = TourAPIItem>(
   locale: Locale,
   endpoint: string,
-  searchParams: Record<string, string>
+  searchParams: Record<string, string>,
+  revalidateSec: number = 3600,
 ): Promise<T[]> {
   const key = getKey()
   if (!key) return []
@@ -36,7 +37,7 @@ export async function callTourApi<T = TourAPIItem>(
   }
 
   try {
-    const res = await fetch(url.toString(), { next: { revalidate: 3600 } })
+    const res = await fetch(url.toString(), { next: { revalidate: revalidateSec } })
     if (!res.ok) return []
     const json = await res.json()
     const items = json?.response?.body?.items?.item
@@ -109,4 +110,32 @@ export async function fetchCurrentFestivals(locale: Locale = 'ko'): Promise<Tour
     if (items.length < pageSize) break
   }
   return all
+}
+
+/**
+ * SPOT 상세 조회 — detailCommon2 + detailIntro2 동시 호출.
+ *  - common: title/overview/homepage/tel/firstimage/addr/mapx/mapy 등 공통 필드
+ *  - intro: contentTypeId 별 운영시간/요금/주차/축제 일정 등
+ *
+ * 캐싱: 24시간 (상세 정보는 거의 변동 없음).
+ * 부분 응답 허용 — common 만 있고 intro null 이어도 OK.
+ * TourAPI 키 없으면 { common: null, intro: null } 반환 (graceful fallback).
+ */
+export async function fetchSpotDetail(
+  contentId: string,
+  contentTypeId: string,
+  locale: Locale = 'ko',
+): Promise<TourAPIDetailResponse> {
+  const params = {
+    contentId,
+    contentTypeId,
+  }
+  const [commons, intros] = await Promise.all([
+    callTourApi<TourAPIDetailCommon>(locale, 'detailCommon2', params, 86400),
+    callTourApi<TourAPIDetailIntro>(locale, 'detailIntro2', params, 86400),
+  ])
+  return {
+    common: commons[0] ?? null,
+    intro: intros[0] ?? null,
+  }
 }

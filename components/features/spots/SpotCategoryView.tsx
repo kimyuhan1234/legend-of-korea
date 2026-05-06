@@ -32,6 +32,7 @@ const PROVINCE_CITIES = CITIES.filter((c) => (PROVINCE_CODES as readonly string[
 interface Props {
   spots: NormalizedSpot[]
   locale: string
+  onSpotClick?: (spot: NormalizedSpot) => void
 }
 
 const CATEGORY_EMOJI: Record<SpotCategory, string> = {
@@ -40,7 +41,7 @@ const CATEGORY_EMOJI: Record<SpotCategory, string> = {
   festival: '🎊',
 }
 
-export function SpotCategoryView({ spots, locale }: Props) {
+export function SpotCategoryView({ spots, locale, onSpotClick }: Props) {
   const t = useTranslations('spots')
   const [category, setCategory] = useState<SpotCategory>('hotspot')
   const [region, setRegion] = useState<string>('')
@@ -115,7 +116,7 @@ export function SpotCategoryView({ spots, locale }: Props) {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filtered.map(s => <SpotCard key={s.id} spot={s} locale={locale} />)}
+          {filtered.map(s => <SpotCard key={s.id} spot={s} locale={locale} onClick={onSpotClick} />)}
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 import { Sparkles, Calendar, Folder, Building2 } from 'lucide-react'
 import { StyleSlider } from './StyleSlider'
@@ -8,6 +8,7 @@ import { CurationResult } from './CurationResult'
 import { SpotCategoryView } from './SpotCategoryView'
 import { SpotCityView } from './SpotCityView'
 import { FestivalCalendar } from './FestivalCalendar'
+import { SpotDetailModal } from './SpotDetailModal'
 import { calculateCityScores } from '@/lib/curation/scoring'
 import type { NormalizedSpot } from '@/lib/tour-api/types'
 import type { UserPreference } from '@/lib/curation/types'
@@ -35,11 +36,49 @@ export function SpotsClient({ initialSpots, locale }: Props) {
   const [activeTab, setActiveTab] = useState<TabId>('curation')
   const [phase, setPhase] = useState<CurationPhase>('swipe')
   const [preference, setPreference] = useState<UserPreference | null>(null)
+  const [selectedSpot, setSelectedSpot] = useState<NormalizedSpot | null>(null)
 
   const cityScores = useMemo(
     () => (preference ? calculateCityScores(preference) : []),
     [preference],
   )
+
+  // URL ?spot=... 쿼리 → 모달 오픈 (마운트 시 + popstate 시).
+  // 카드 클릭 시 history.replaceState 로 URL 만 동기화 (Next.js router 회피 — 풀 리렌더 방지).
+  useEffect(() => {
+    const syncFromUrl = () => {
+      if (typeof window === 'undefined') return
+      const params = new URLSearchParams(window.location.search)
+      const spotId = params.get('spot')
+      if (!spotId) {
+        setSelectedSpot(null)
+        return
+      }
+      const found = initialSpots.find((s) => s.id === spotId)
+      setSelectedSpot(found ?? null)
+    }
+    syncFromUrl()
+    window.addEventListener('popstate', syncFromUrl)
+    return () => window.removeEventListener('popstate', syncFromUrl)
+  }, [initialSpots])
+
+  const handleSpotClick = useCallback((spot: NormalizedSpot) => {
+    setSelectedSpot(spot)
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      url.searchParams.set('spot', spot.id)
+      window.history.pushState({}, '', url.toString())
+    }
+  }, [])
+
+  const handleSpotClose = useCallback(() => {
+    setSelectedSpot(null)
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      url.searchParams.delete('spot')
+      window.history.pushState({}, '', url.toString())
+    }
+  }, [])
 
   const handleComplete = (pref: UserPreference) => {
     setPreference(pref)
@@ -103,14 +142,17 @@ export function SpotsClient({ initialSpots, locale }: Props) {
               preference={preference}
               locale={locale}
               onRetry={handleRetry}
+              onSpotClick={handleSpotClick}
             />
           )}
         </>
       )}
 
-      {activeTab === 'festival' && <FestivalCalendar spots={initialSpots} locale={locale} />}
-      {activeTab === 'category' && <SpotCategoryView spots={initialSpots} locale={locale} />}
-      {activeTab === 'city' && <SpotCityView spots={initialSpots} locale={locale} />}
+      {activeTab === 'festival' && <FestivalCalendar spots={initialSpots} locale={locale} onSpotClick={handleSpotClick} />}
+      {activeTab === 'category' && <SpotCategoryView spots={initialSpots} locale={locale} onSpotClick={handleSpotClick} />}
+      {activeTab === 'city' && <SpotCityView spots={initialSpots} locale={locale} onSpotClick={handleSpotClick} />}
+
+      <SpotDetailModal spot={selectedSpot} locale={locale} onClose={handleSpotClose} />
     </div>
   )
 }

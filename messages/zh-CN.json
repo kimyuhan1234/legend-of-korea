@@ -1029,7 +1029,32 @@
       "festival": "节日活动"
     },
     "imagePreparing": "图片准备中",
-    "source": "来源：韩国观光公社"
+    "source": "来源：韩国观光公社",
+    "detail": {
+      "openDetail": "查看详情",
+      "loading": "加载中...",
+      "errorPartial": "部分信息加载失败",
+      "staticHint": "运营者精选景点",
+      "eventPeriod": "举办期间",
+      "playtime": "举办时间",
+      "usetime": "营业时间",
+      "restdate": "休息日",
+      "eventPlace": "场地",
+      "address": "地址",
+      "fee": "门票",
+      "feeFree": "免费",
+      "sponsor": "主办",
+      "distance": "距离",
+      "taketime": "所需时间",
+      "schedule": "日程",
+      "tel": "联系方式",
+      "program": "活动节目",
+      "overview": "详细介绍",
+      "openMap": "在地图查看",
+      "homepage": "官网",
+      "call": "拨打电话",
+      "source": "来源：韩国观光公社"
+    }
   },
   "sights": {
     "title": "SPOT",

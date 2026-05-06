@@ -107,6 +107,8 @@ function normalizeTourItem(item: TourAPIItem, region: string, locale: Locale): N
     startDate: item.eventstartdate,
     endDate: item.eventenddate,
     tags,
+    contentId: item.contentid,
+    contentTypeId: contentType,
   }
 }
 
