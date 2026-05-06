@@ -1516,6 +1516,14 @@
       "bestSeason": "Best season",
       "companionSpots": "Pair with"
     },
+    "externalLink": {
+      "title": "Official course info",
+      "cta": "View official page",
+      "source": {
+        "visitkorea": "Korea Tourism Organization (VisitKorea)",
+        "koreanfolk": "Korean Folk Village"
+      }
+    },
     "sticky": {
       "buy": "Buy Now"
     },

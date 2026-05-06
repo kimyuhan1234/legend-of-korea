@@ -1516,6 +1516,14 @@
       "bestSeason": "おすすめの季節",
       "companionSpots": "あわせて訪れたい場所"
     },
+    "externalLink": {
+      "title": "公式コース情報",
+      "cta": "公式ページを見る",
+      "source": {
+        "visitkorea": "韓国観光公社 VisitKorea",
+        "koreanfolk": "韓国民俗村"
+      }
+    },
     "sticky": {
       "buy": "今すぐ購入"
     },

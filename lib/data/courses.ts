@@ -31,6 +31,9 @@ export interface CourseData {
   japanConnection: I18n3;
   targetAudience: string[];
   highlights?: CourseHighlights;
+  // 외부 공식 코스 페이지 (VisitKorea / 한국민속촌 등). 운영자가 별도 명세 X 시 undefined.
+  externalCourseUrl?: string;
+  externalCourseSource?: 'visitkorea' | 'koreanfolk';
 }
 
 export const courses: CourseData[] = [
@@ -162,7 +165,30 @@ export const courses: CourseData[] = [
       'zh-CN': '等待与重逢的纯爱浪漫故事，令日本少女漫画粉丝产生共鸣。',
       'zh-TW': '等待與重逢的純愛浪漫故事，令日本少女漫畫粉絲產生共鳴。',
     },
-    targetAudience: ['couple']
+    targetAudience: ['couple'],
+    highlights: {
+      recommendedRoute: {
+        ko: '아라리오 갤러리 → 각원사 (능소가 무사 귀환을 빌던 절) → 천안 삼거리공원 (능수버들 전설) → 독립기념관 → 호두과자 거리',
+        ja: 'アラリオギャラリー → 覚願寺（ヌンソが無事の帰還を祈った寺）→ 天安三叉路公園（しだれ柳伝説）→ 独立記念館 → クルミ菓子通り',
+        en: 'Arario Gallery → Gakwonsa Temple (where Nungso prayed for safe return) → Cheonan Samgeori Park (willow legend) → Independence Hall → Walnut Cookie Street',
+        'zh-CN': '阿拉里奥美术馆 → 觉愿寺（凌霄祈祷平安归来之寺）→ 天安三岔路公园（垂柳传说）→ 独立纪念馆 → 核桃饼街',
+        'zh-TW': '阿拉里奧美術館 → 覺願寺（凌霄祈禱平安歸來之寺）→ 天安三叉路公園（垂柳傳說）→ 獨立紀念館 → 核桃餅街',
+      },
+      bestSeason: {
+        ko: '능수버들 푸름 (4-5월) / 가을 단풍 (10-11월)',
+        ja: 'しだれ柳の青々とした季節（4〜5月）/ 秋の紅葉（10〜11月）',
+        en: 'Lush willow season (Apr–May) / Autumn foliage (Oct–Nov)',
+        'zh-CN': '垂柳青翠季（4-5月）/ 秋季红叶（10-11月）',
+        'zh-TW': '垂柳青翠季（4-5月）/ 秋季紅葉（10-11月）',
+      },
+      companionSpots: {
+        ko: '천안박물관 / 태조산 청룡사 / 성성호수공원 (시내 당일 연계)',
+        ja: '天安博物館 / 太祖山青龍寺 / 星星湖水公園（市内日帰り連携）',
+        en: 'Cheonan Museum / Cheongryongsa at Taejosan / Seongseong Lake Park (in-city day extensions)',
+        'zh-CN': '天安博物馆 / 太祖山青龙寺 / 星星湖公园（市内一日游延伸）',
+        'zh-TW': '天安博物館 / 太祖山青龍寺 / 星星湖公園（市內一日遊延伸）',
+      },
+    },
   },
   {
     id: '11111111-1111-1111-1111-000000000004',
@@ -190,7 +216,32 @@ export const courses: CourseData[] = [
       'zh-CN': '可以一次性体验韩国民间故事的主题公园型课程。',
       'zh-TW': '可以一次性體驗韓國民間故事的主題公園型課程。',
     },
-    targetAudience: ['family']
+    targetAudience: ['family'],
+    highlights: {
+      recommendedRoute: {
+        ko: '한국민속촌 입구 → 콩쥐팥쥐 마당 → 흥부놀부 마당 → 혹부리영감 마당 → 선녀와 나무꾼 연못 → 금도끼 은도끼 마당 → 전통 공방 체험',
+        ja: '韓国民俗村入口 → コンジュパッジュの庭 → フンブノルブの庭 → コブトリ爺さんの庭 → 仙女と木こりの池 → 金の斧銀の斧の庭 → 伝統工房体験',
+        en: 'Korean Folk Village entrance → Kongjwi & Patjwi yard → Heungbu & Nolbu yard → Old Man Wart yard → Fairy & Woodcutter pond → Gold & Silver Axe yard → Traditional craft workshops',
+        'zh-CN': '韩国民俗村入口 → 豆娘与红娘院 → 兴夫与扭夫院 → 疙瘩老头院 → 仙女与樵夫池塘 → 金斧银斧院 → 传统工坊体验',
+        'zh-TW': '韓國民俗村入口 → 豆娘與紅娘院 → 興夫與扭夫院 → 疙瘩老頭院 → 仙女與樵夫池塘 → 金斧銀斧院 → 傳統工坊體驗',
+      },
+      bestSeason: {
+        ko: '봄 벚꽃 (4월) / 가을 단풍 + 야간 개장',
+        ja: '春の桜（4月）/ 秋の紅葉＋夜間開場',
+        en: 'Spring cherry blossoms (Apr) / Autumn foliage + night opening',
+        'zh-CN': '春季樱花（4月）/ 秋季红叶+夜间开放',
+        'zh-TW': '春季櫻花（4月）/ 秋季紅葉+夜間開放',
+      },
+      companionSpots: {
+        ko: '에버랜드 / 호암미술관 / 백남준 아트센터 (당일치기 연계)',
+        ja: 'エバーランド / ホアム美術館 / ナム・ジュン・パイクアートセンター（日帰り連携）',
+        en: 'Everland / Hoam Museum of Art / Nam June Paik Art Center (day-trip extensions)',
+        'zh-CN': '爱宝乐园 / 湖岩美术馆 / 白南准艺术中心（一日游延伸）',
+        'zh-TW': '愛寶樂園 / 湖岩美術館 / 白南準藝術中心（一日遊延伸）',
+      },
+    },
+    externalCourseUrl: 'https://www.koreanfolk.co.kr/home/promotion/event/29',
+    externalCourseSource: 'koreanfolk',
   },
   {
     id: '11111111-1111-1111-1111-000000000005',
@@ -218,7 +269,32 @@ export const courses: CourseData[] = [
       'zh-CN': '与日本羽衣传说结构几乎完全相同。',
       'zh-TW': '與日本羽衣傳說結構幾乎完全相同。',
     },
-    targetAudience: ['couple', 'family']
+    targetAudience: ['couple', 'family'],
+    highlights: {
+      recommendedRoute: {
+        ko: '효양산 (선녀 전설지) → 사기막골 도예촌 (관요 유적지) → 이천 도자기마을 → 스파플러스 (이천 온천) → 이천 쌀밥 정식',
+        ja: '孝養山（仙女伝説の地）→ サギマッコル陶芸村（官窯遺跡）→ 利川陶磁器マウル → スパプラス（利川温泉）→ 利川コメご飯定食',
+        en: 'Hyoyangsan (fairy legend site) → Sagimakgol Pottery Village (royal kiln site) → Icheon Ceramics Village → Spaplus (Icheon hot spring) → Icheon Rice Course Meal',
+        'zh-CN': '孝养山（仙女传说地）→ 沙器幕谷陶艺村（官窑遗址）→ 利川陶瓷村 → Spaplus（利川温泉）→ 利川米饭定食',
+        'zh-TW': '孝養山（仙女傳說地）→ 沙器幕谷陶藝村（官窯遺址）→ 利川陶瓷村 → Spaplus（利川溫泉）→ 利川米飯定食',
+      },
+      bestSeason: {
+        ko: '이른 봄 산수유 (3월) / 가을 도자기 축제 + 쌀 수확 (10월)',
+        ja: '早春のサンシュユ（3月）/ 秋の陶磁器祭＋米の収穫（10月）',
+        en: 'Early spring cornelian cherry blossoms (Mar) / Autumn ceramics festival + rice harvest (Oct)',
+        'zh-CN': '早春山茱萸（3月）/ 秋季陶瓷节+稻米收获（10月）',
+        'zh-TW': '早春山茱萸（3月）/ 秋季陶瓷節+稻米收穫（10月）',
+      },
+      companionSpots: {
+        ko: '여주 신륵사 / 안성 팜랜드 / 광주 곤지암 리조트 (광역 당일 연계)',
+        ja: '驪州神勒寺 / 安城ファームランド / 広州コンジアムリゾート（広域日帰り連携）',
+        en: 'Yeoju Silleuksa Temple / Anseong Farmland / Gwangju Konjiam Resort (regional day extensions)',
+        'zh-CN': '骊州神勒寺 / 安城农庄 / 广州昆池岩度假村（广域一日游延伸）',
+        'zh-TW': '驪州神勒寺 / 安城農莊 / 廣州崑池岩度假村（廣域一日遊延伸）',
+      },
+    },
+    externalCourseUrl: 'https://korean.visitkorea.or.kr/detail/cs_detail_cos.do?cotid=76a7e790-f2fa-4dfe-bf8c-77acf9f92d87&big_area=31',
+    externalCourseSource: 'visitkorea',
   },
   {
     id: '33333333-3333-3333-3333-000000000001',
@@ -246,7 +322,32 @@ export const courses: CourseData[] = [
       'zh-CN': '与三国时代新罗有深厚交流的日本历史渊源众多，是日本游客最喜爱的地区。',
       'zh-TW': '與三國時代新羅有深厚交流的日本歷史淵源眾多，是日本遊客最喜愛的地區。',
     },
-    targetAudience: ['family', 'history-lover']
+    targetAudience: ['family', 'history-lover'],
+    highlights: {
+      recommendedRoute: {
+        ko: '대릉원 (천마총) → 봉황대 → 첨성대 → 동궁과 월지 (안압지) → 황리단길 → (동해권) 감은사지 → 이견대 → 문무대왕릉 (만파식적 전설)',
+        ja: '大陵苑（天馬塚）→ 鳳凰台 → 瞻星台 → 東宮と月池（雁鴨池）→ 皇理団キル → （東海圏）感恩寺址 → 利見台 → 文武大王陵（萬波息笛伝説）',
+        en: 'Daereungwon (Cheonmachong) → Bonghwangdae → Cheomseongdae → Donggung & Wolji → Hwangnidan-gil → (East Sea) Gameunsa Temple Site → Igyeondae → King Munmu Tomb (Manpasikjeok legend)',
+        'zh-CN': '大陵苑（天马塚）→ 凤凰台 → 瞻星台 → 东宫月池（雁鸭池）→ 皇理团街 → （东海圈）感恩寺址 → 利见台 → 文武大王陵（万波息笛传说）',
+        'zh-TW': '大陵苑（天馬塚）→ 鳳凰台 → 瞻星台 → 東宮月池（雁鴨池）→ 皇理團街 → （東海圈）感恩寺址 → 利見台 → 文武大王陵（萬波息笛傳說）',
+      },
+      bestSeason: {
+        ko: '봄 벚꽃 (4월 보문호) / 가을 단풍 + 황리단길 야경 (10-11월)',
+        ja: '春の桜（4月 普門湖）/ 秋の紅葉＋皇理団キル夜景（10〜11月）',
+        en: 'Spring cherry blossoms (Apr, Bomun Lake) / Autumn foliage + Hwangnidan-gil night views (Oct–Nov)',
+        'zh-CN': '春季樱花（4月普门湖）/ 秋季红叶+皇理团街夜景（10-11月）',
+        'zh-TW': '春季櫻花（4月普門湖）/ 秋季紅葉+皇理團街夜景（10-11月）',
+      },
+      companionSpots: {
+        ko: '포항 호미곶 일출 / 영덕 강구항 / 울산 대왕암공원 (1박 광역 연계)',
+        ja: '浦項虎尾串の日の出 / 盈徳江口港 / 蔚山大王巖公園（1泊広域連携）',
+        en: 'Pohang Homigot sunrise / Yeongdeok Ganggu Port / Ulsan Daewangam Park (overnight regional extensions)',
+        'zh-CN': '浦项虎尾串日出 / 盈德江口港 / 蔚山大王岩公园（1晚广域延伸）',
+        'zh-TW': '浦項虎尾串日出 / 盈德江口港 / 蔚山大王巖公園（1晚廣域延伸）',
+      },
+    },
+    externalCourseUrl: 'https://korean.visitkorea.or.kr/detail/cs_detail_cos.do?cotid=9fabf808-f9d2-4625-86db-07d9007b5277&big_area=35',
+    externalCourseSource: 'visitkorea',
   },
   {
     id: '33333333-3333-3333-3333-000000000002',
@@ -274,7 +375,32 @@ export const courses: CourseData[] = [
       'zh-CN': '距日本最近的港口城市，汇聚了日本人最熟悉的韩国风貌。',
       'zh-TW': '距日本最近的港口城市，匯聚了日本人最熟悉的韓國風貌。',
     },
-    targetAudience: ['couple', 'mz']
+    targetAudience: ['couple', 'mz'],
+    highlights: {
+      recommendedRoute: {
+        ko: '동백섬 누리마루 (황옥공주 인어상) → 해운대 백사장 → 광안리 → 자갈치시장 → 감천문화마을 → (확장) 해동용궁사',
+        ja: '冬柏島ヌリマル（黄玉王女の人魚像）→ 海雲台白砂浜 → 広安里 → チャガルチ市場 → 甘川文化村 →（拡張）海東龍宮寺',
+        en: 'Dongbaek Island Nurimaru (Princess Hwangok Mermaid Statue) → Haeundae Beach → Gwangalli → Jagalchi Market → Gamcheon Culture Village → (extension) Haedong Yonggungsa Temple',
+        'zh-CN': '冬柏岛努里玛鲁（黄玉公主美人鱼像）→ 海云台沙滩 → 广安里 → 扎嘎其市场 → 甘川文化村 →（延伸）海东龙宫寺',
+        'zh-TW': '冬柏島努里瑪魯（黃玉公主美人魚像）→ 海雲台沙灘 → 廣安里 → 札嘎其市場 → 甘川文化村 →（延伸）海東龍宮寺',
+      },
+      bestSeason: {
+        ko: '1-2월 동백꽃 / 봄 벚꽃 (4월) / 가을 해변 산책 (10월)',
+        ja: '1〜2月の椿 / 春の桜（4月）/ 秋の海岸散歩（10月）',
+        en: 'Camellias (Jan–Feb) / Spring cherry blossoms (Apr) / Autumn beach walks (Oct)',
+        'zh-CN': '1-2月山茶花 / 春季樱花（4月）/ 秋季海边散步（10月）',
+        'zh-TW': '1-2月山茶花 / 春季櫻花（4月）/ 秋季海邊散步（10月）',
+      },
+      companionSpots: {
+        ko: '태종대 / 송도 케이블카 / 부산시민공원 / 영도 흰여울문화마을 (시내 당일 연계)',
+        ja: '太宗台 / 松島ケーブルカー / 釜山市民公園 / 影島フィニョウル文化村（市内日帰り連携）',
+        en: 'Taejongdae / Songdo Cable Car / Busan Citizens Park / Yeongdo Huinnyeoul Culture Village (in-city day extensions)',
+        'zh-CN': '太宗台 / 松岛缆车 / 釜山市民公园 / 影岛白浪文化村（市内一日游延伸）',
+        'zh-TW': '太宗台 / 松島纜車 / 釜山市民公園 / 影島白浪文化村（市內一日遊延伸）',
+      },
+    },
+    externalCourseUrl: 'https://korean.visitkorea.or.kr/detail/cs_detail_cos.do?cotid=18b0428b-3c0c-4b7d-961d-a1ba9da245fe&big_area=6',
+    externalCourseSource: 'visitkorea',
   },
   {
     id: '33333333-3333-3333-3333-000000000003',
@@ -302,7 +428,32 @@ export const courses: CourseData[] = [
       'zh-CN': '首尔象征獬豸与日本狛犬在守护神性质上有相似之处。',
       'zh-TW': '首爾象徵獬豸與日本狛犬在守護神性質上有相似之處。',
     },
-    targetAudience: ['family', 'foreigner']
+    targetAudience: ['family', 'foreigner'],
+    highlights: {
+      recommendedRoute: {
+        ko: '광화문 해치 동상 (수호신) → 경복궁 → 국립민속박물관 → 북촌한옥마을 → 인사동 → 청계천',
+        ja: '光化門ヘチ像（守護神）→ 景福宮 → 国立民俗博物館 → 北村韓屋村 → 仁寺洞 → 清渓川',
+        en: 'Gwanghwamun Haechi statue (guardian) → Gyeongbokgung → National Folk Museum → Bukchon Hanok Village → Insadong → Cheonggyecheon',
+        'zh-CN': '光化门獬豸像（守护神）→ 景福宫 → 国立民俗博物馆 → 北村韩屋村 → 仁寺洞 → 清溪川',
+        'zh-TW': '光化門獬豸像（守護神）→ 景福宮 → 國立民俗博物館 → 北村韓屋村 → 仁寺洞 → 清溪川',
+      },
+      bestSeason: {
+        ko: '봄 (4-5월 한옥 정원 꽃) / 가을 (10-11월 단풍 + 광화문 야경)',
+        ja: '春（4〜5月：韓屋庭園の花）/ 秋（10〜11月：紅葉＋光化門夜景）',
+        en: 'Spring (Apr–May, hanok garden blooms) / Autumn (Oct–Nov, foliage + Gwanghwamun night views)',
+        'zh-CN': '春季（4-5月韩屋庭园花开）/ 秋季（10-11月红叶+光化门夜景）',
+        'zh-TW': '春季（4-5月韓屋庭園花開）/ 秋季（10-11月紅葉+光化門夜景）',
+      },
+      companionSpots: {
+        ko: '창덕궁 후원 / 종묘 / 서촌 / 통인시장 (도보 연계)',
+        ja: '昌徳宮秘苑 / 宗廟 / 西村 / 通仁市場（徒歩連携）',
+        en: 'Changdeokgung Secret Garden / Jongmyo Shrine / Seochon / Tongin Market (walkable extensions)',
+        'zh-CN': '昌德宫后苑 / 宗庙 / 西村 / 通仁市场（步行延伸）',
+        'zh-TW': '昌德宮後苑 / 宗廟 / 西村 / 通仁市場（步行延伸）',
+      },
+    },
+    externalCourseUrl: 'https://korean.visitkorea.or.kr/detail/cs_detail_cos.do?cotid=8d6aa774-c134-4690-9328-ca6583cf9b6e',
+    externalCourseSource: 'visitkorea',
   },
   {
     id: '33333333-3333-3333-3333-000000000004',
@@ -330,6 +481,31 @@ export const courses: CourseData[] = [
       'zh-CN': '济州岛的海女文化与日本海女文化有着深厚的历史文化联系。',
       'zh-TW': '濟州島的海女文化與日本海女文化有著深厚的歷史文化聯繫。',
     },
-    targetAudience: ['family', 'nature-lover']
+    targetAudience: ['family', 'nature-lover'],
+    highlights: {
+      recommendedRoute: {
+        ko: '한라산 어승생악 (설문대할망 발자국 전설) → 산방산 → 송악산 (사계해안도로) → 성산일출봉 → (1박) → 우도 또는 협재해변',
+        ja: '漢拏山オスンセンアク（ソルムンデハルマンの足跡伝説）→ 山房山 → 松岳山（沙渓海岸道路）→ 城山日出峰 →（1泊）→ 牛島または挟才海岸',
+        en: 'Hallasan Eoseungsaeng-ak (Seolmundae Halmang footprint legend) → Sanbangsan → Songaksan (Sagye coastal road) → Seongsan Ilchulbong → (1 night) → Udo Island or Hyeopjae Beach',
+        'zh-CN': '汉拿山御乘生岳（雪门大婆足迹传说）→ 山房山 → 松岳山（沙溪海岸路）→ 城山日出峰 →（住1晚）→ 牛岛或挟才海滩',
+        'zh-TW': '漢拏山御乘生岳（雪門大婆足跡傳說）→ 山房山 → 松岳山（沙溪海岸路）→ 城山日出峰 →（住1晚）→ 牛島或挾才海灘',
+      },
+      bestSeason: {
+        ko: '봄 유채꽃 (3-4월) / 가을 억새 (10-11월) / 겨울 동백 (1-2월)',
+        ja: '春の菜の花（3〜4月）/ 秋のススキ（10〜11月）/ 冬の椿（1〜2月）',
+        en: 'Spring rapeseed flowers (Mar–Apr) / Autumn silver grass (Oct–Nov) / Winter camellias (Jan–Feb)',
+        'zh-CN': '春季油菜花（3-4月）/ 秋季芒草（10-11月）/ 冬季山茶花（1-2月）',
+        'zh-TW': '春季油菜花（3-4月）/ 秋季芒草（10-11月）/ 冬季山茶花（1-2月）',
+      },
+      companionSpots: {
+        ko: '우도 / 비양도 / 가파도 / 한림공원 (도내 섬·광역 연계)',
+        ja: '牛島 / 飛揚島 / 加波島 / 翰林公園（島内＋広域連携）',
+        en: 'Udo / Biyangdo / Gapado / Hallim Park (within-Jeju island & regional extensions)',
+        'zh-CN': '牛岛 / 飞扬岛 / 加波岛 / 翰林公园（济州岛内+广域延伸）',
+        'zh-TW': '牛島 / 飛揚島 / 加波島 / 翰林公園（濟州島內+廣域延伸）',
+      },
+    },
+    externalCourseUrl: 'https://korean.visitkorea.or.kr/detail/cs_detail_cos.do?cotid=72dbf4c1-fd3d-422f-8195-65a146f9fba8&big_area=39',
+    externalCourseSource: 'visitkorea',
   }
 ];

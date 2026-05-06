@@ -10,6 +10,7 @@ import { QuestStorySlider } from "@/components/features/quest/QuestStorySlider"
 import { QuestReviews } from "@/components/features/quest/QuestReviews"
 import { QuestFAQ } from "@/components/features/quest/QuestFAQ"
 import { QuestHighlights } from "@/components/features/quest/QuestHighlights"
+import { QuestExternalLink } from "@/components/features/quest/QuestExternalLink"
 import { courses as staticCourses } from "@/lib/data/courses"
 import { QuestPartySection } from "@/components/features/quest/QuestPartySection"
 import { AddToPlannerButton } from "@/components/features/planner/AddToPlannerButton"
@@ -257,17 +258,27 @@ export default async function CourseDetailPage({ params }: Props) {
       {/* 8. 외국인 체험 후기 */}
       <QuestReviews />
 
-      {/* 8-1. 코스 highlights — 큐레이션 영역 (lib/data/courses 정적 lookup, 미작성 코스는 자동 미노출) */}
+      {/* 8-1. 코스 highlights + 외부 공식 링크 — 큐레이션 영역 (정적 lookup, 미작성 코스 자동 미노출) */}
       {(() => {
         const staticData = staticCourses.find((c) => c.id === courseId)
-        if (!staticData?.highlights) return null
+        if (!staticData) return null
         return (
-          <QuestHighlights
-            highlights={staticData.highlights}
-            locale={locale}
-            difficulty={course.difficulty as 'easy' | 'medium' | 'hard' | null}
-            duration={durationText}
-          />
+          <>
+            {staticData.highlights && (
+              <QuestHighlights
+                highlights={staticData.highlights}
+                locale={locale}
+                difficulty={course.difficulty as 'easy' | 'medium' | 'hard' | null}
+                duration={durationText}
+              />
+            )}
+            {staticData.externalCourseUrl && staticData.externalCourseSource && (
+              <QuestExternalLink
+                url={staticData.externalCourseUrl}
+                source={staticData.externalCourseSource}
+              />
+            )}
+          </>
         )
       })()}
 
