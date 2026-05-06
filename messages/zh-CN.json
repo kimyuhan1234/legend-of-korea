@@ -1508,6 +1508,14 @@
       "q5": "没有工具包可以做任务吗？",
       "a5": "工具包包含任务卡、地图和提示——是体验的必需品。"
     },
+    "highlights": {
+      "title": "本路线亮点",
+      "recommendedRoute": "推荐路线",
+      "duration": "所需时间",
+      "difficulty": "难度",
+      "bestSeason": "推荐季节",
+      "companionSpots": "搭配推荐"
+    },
     "sticky": {
       "buy": "立即购买"
     },

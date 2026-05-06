@@ -1508,6 +1508,14 @@
       "q5": "沒有任務包也能完成任務嗎？",
       "a5": "任務包包含任務卡、地圖和提示——是體驗的必備品。"
     },
+    "highlights": {
+      "title": "本路線亮點",
+      "recommendedRoute": "推薦路線",
+      "duration": "所需時間",
+      "difficulty": "難度",
+      "bestSeason": "推薦季節",
+      "companionSpots": "搭配推薦"
+    },
     "sticky": {
       "buy": "立即購買"
     },

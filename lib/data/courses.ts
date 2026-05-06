@@ -1,5 +1,20 @@
 type I18n3 = { ko: string; ja: string; en: string; 'zh-CN'?: string; 'zh-TW'?: string };
 
+/**
+ * 코스별 차별화 정보 (큐레이션 영역).
+ *
+ * 기존 CourseData.difficulty / duration 과 중복 회피 — 신규 3 필드만 보유.
+ * QuestHighlights 컴포넌트는 difficulty / duration 을 별도 props 로 받아
+ * 5 항목 카드 형태로 통합 노출한다.
+ *
+ * 모든 필드 optional — 점진적 도입 (작성된 코스만 섹션 노출).
+ */
+export interface CourseHighlights {
+  recommendedRoute?: I18n3;
+  bestSeason?: I18n3;
+  companionSpots?: I18n3;
+}
+
 export interface CourseData {
   id: string;
   region: string;
@@ -15,6 +30,7 @@ export interface CourseData {
   food: string[];
   japanConnection: I18n3;
   targetAudience: string[];
+  highlights?: CourseHighlights;
 }
 
 export const courses: CourseData[] = [
@@ -44,7 +60,30 @@ export const courses: CourseData[] = [
       'zh-CN': '与日本的鬼相似，但韩国鬼怪更加顽皮亲切。',
       'zh-TW': '與日本的鬼相似，但韓國鬼怪更加頑皮親切。',
     },
-    targetAudience: ['family', 'couple', 'mz']
+    targetAudience: ['family', 'couple', 'mz'],
+    highlights: {
+      recommendedRoute: {
+        ko: '경기전 → 한옥마을 골목길 → 풍남문 → 남부시장 야시장',
+        ja: '慶基殿 → 韓屋村の路地 → 豊南門 → 南部市場の夜市',
+        en: 'Gyeonggijeon Shrine → Hanok Village alleys → Pungnammun Gate → Nambu Market night market',
+        'zh-CN': '庆基殿 → 韩屋村小巷 → 丰南门 → 南部市场夜市',
+        'zh-TW': '慶基殿 → 韓屋村小巷 → 豐南門 → 南部市場夜市',
+      },
+      bestSeason: {
+        ko: '봄 (4-5월 한옥 정원 꽃) / 가을 (10-11월 단풍)',
+        ja: '春（4〜5月：韓屋庭園の花）/ 秋（10〜11月：紅葉）',
+        en: 'Spring (Apr–May, hanok garden blooms) / Autumn (Oct–Nov, fall foliage)',
+        'zh-CN': '春季（4-5月韩屋庭园花开）/ 秋季（10-11月红叶）',
+        'zh-TW': '春季（4-5月韓屋庭園花開）/ 秋季（10-11月紅葉）',
+      },
+      companionSpots: {
+        ko: '덕진공원 연꽃 / 전주 동학혁명 기념관 / 오목대',
+        ja: '徳津公園の蓮 / 全州東学革命記念館 / オモクデ',
+        en: 'Deokjin Park lotus pond / Jeonju Donghak Revolution Memorial / Omokdae',
+        'zh-CN': '德津公园荷花 / 全州东学革命纪念馆 / 梧木台',
+        'zh-TW': '德津公園荷花 / 全州東學革命紀念館 / 梧木台',
+      },
+    },
   },
   {
     id: '11111111-1111-1111-1111-000000000002',
@@ -72,7 +111,30 @@ export const courses: CourseData[] = [
       'zh-CN': '与日本浦岛太郎类似，故事中出现了海底龙宫。',
       'zh-TW': '與日本浦島太郎類似，故事中出現了海底龍宮。',
     },
-    targetAudience: ['couple', 'mz']
+    targetAudience: ['couple', 'mz'],
+    highlights: {
+      recommendedRoute: {
+        ko: '동피랑 벽화마을 → 중앙시장 → 케이블카 (미륵산) → 강구안 (1박) → 한산도',
+        ja: 'トンピラン壁画村 → 中央市場 → ケーブルカー（弥勒山）→ 江口岸（1泊）→ 閑山島',
+        en: 'Dongpirang Mural Village → Jungang Market → Cable car (Mireuksan) → Gangguan (1 night) → Hansando Island',
+        'zh-CN': '东皮郎壁画村 → 中央市场 → 缆车（弥勒山）→ 江口岸（住1晚）→ 闲山岛',
+        'zh-TW': '東皮郎壁畫村 → 中央市場 → 纜車（彌勒山）→ 江口岸（住1晚）→ 閑山島',
+      },
+      bestSeason: {
+        ko: '늦봄~초여름 (5-6월 굴/멍게 제철) / 가을 (선선한 케이블카 전망)',
+        ja: '晩春〜初夏（5〜6月：牡蠣・ホヤの旬）/ 秋（涼しいケーブルカー展望）',
+        en: 'Late spring–early summer (May–Jun, oyster & sea pineapple season) / Autumn (cool cable-car views)',
+        'zh-CN': '晚春至初夏（5-6月牡蛎/海菠萝当季）/ 秋季（凉爽的缆车风景）',
+        'zh-TW': '晚春至初夏（5-6月牡蠣/海鳳梨當季）/ 秋季（涼爽的纜車風景）',
+      },
+      companionSpots: {
+        ko: '소매물도 등대섬 / 욕지도 / 거제 학동몽돌해변 (당일치기 연계)',
+        ja: '小毎勿島の灯台島 / 欲知島 / 巨済鶴洞モンドル海岸（日帰り連携）',
+        en: 'Somaemuldo Lighthouse Island / Yokjido / Geoje Hakdong Pebble Beach (day-trip extensions)',
+        'zh-CN': '小每勿岛灯塔岛 / 欲知岛 / 巨济鹤洞蒙石海滩（一日游延伸）',
+        'zh-TW': '小每勿島燈塔島 / 欲知島 / 巨濟鶴洞蒙石海灘（一日遊延伸）',
+      },
+    },
   },
   {
     id: '11111111-1111-1111-1111-000000000003',

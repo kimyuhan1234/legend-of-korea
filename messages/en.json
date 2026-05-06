@@ -1508,6 +1508,14 @@
       "q5": "Can I do missions without the kit?",
       "a5": "The kit contains mission cards, maps, and hints — it's essential for the experience."
     },
+    "highlights": {
+      "title": "Course Highlights",
+      "recommendedRoute": "Recommended route",
+      "duration": "Duration",
+      "difficulty": "Difficulty",
+      "bestSeason": "Best season",
+      "companionSpots": "Pair with"
+    },
     "sticky": {
       "buy": "Buy Now"
     },
