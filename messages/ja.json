@@ -1110,8 +1110,14 @@
     },
     "festival": {
       "title": "축제 캘린더",
-      "noFestival": "이번 달에 등록된 축제가 없습니다",
-      "tourApiHint": "TourAPI 연결 시 실시간 축제 정보가 표시됩니다",
+      "empty": {
+        "titleRegion": "{region} 지역의 {month} 축제는 등록되지 않았습니다",
+        "titleThisMonth": "이번 달은 등록된 축제가 없습니다",
+        "titleOtherMonth": "{month}에 등록된 축제가 없습니다",
+        "hint": "다른 달이나 지역도 확인해 보세요",
+        "actionAllRegions": "전체 지역 보기",
+        "actionThisMonth": "이번 달 보기"
+      },
       "ended": "종료됨",
       "ongoing": "진행 중",
       "upcoming": "예정"
@@ -1168,7 +1174,32 @@
       "festival": "축제 & 이벤트"
     },
     "imagePreparing": "이미지 준비 중",
-    "source": "출처: 한국관광공사"
+    "source": "출처: 한국관광공사",
+    "detail": {
+      "openDetail": "상세 정보 보기",
+      "loading": "정보를 불러오는 중...",
+      "errorPartial": "일부 정보를 불러오지 못했습니다",
+      "staticHint": "운영자 큐레이션 스팟입니다",
+      "eventPeriod": "진행 기간",
+      "playtime": "진행 시간",
+      "usetime": "운영 시간",
+      "restdate": "휴무일",
+      "eventPlace": "장소",
+      "address": "주소",
+      "fee": "이용 요금",
+      "feeFree": "무료",
+      "sponsor": "주최",
+      "distance": "거리",
+      "taketime": "소요 시간",
+      "schedule": "일정",
+      "tel": "연락처",
+      "program": "행사 프로그램",
+      "overview": "상세 소개",
+      "openMap": "지도에서 보기",
+      "homepage": "홈페이지",
+      "call": "전화",
+      "source": "출처: 한국관광공사"
+    }
   },
   "ootd": {
     "change": "변경 ▼",
