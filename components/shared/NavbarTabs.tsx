@@ -30,7 +30,7 @@ const SUB_MENUS: Record<string, SubMenuItem[]> = {
     { href: '/gallery', icon: '🖼️', label: { ko: 'GALLERY', ja: 'GALLERY', en: 'GALLERY', 'zh-CN': 'GALLERY', 'zh-TW': 'GALLERY' } },
   ],
   '/story': [
-    { href: '/story?tab=mission-kit', icon: '🗺️', label: { ko: '디지털 퀘스트', ja: 'デジタルクエスト', en: 'Digital Quests', 'zh-CN': '数字任务',     'zh-TW': '數位任務' } },
+    { href: '/story?tab=mission-pass', icon: '🗺️', label: { ko: '디지털 퀘스트', ja: 'デジタルクエスト', en: 'Digital Quests', 'zh-CN': '数字任务',     'zh-TW': '數位任務' } },
     { href: '/story?tab=special',     icon: '🚔', label: { ko: '스페셜 이벤트', ja: 'スペシャルイベント', en: 'Special Event', 'zh-CN': '特别活动',     'zh-TW': '特別活動' } },
   ],
   '/pass': [

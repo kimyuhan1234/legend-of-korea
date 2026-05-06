@@ -1,4 +1,4 @@
-// /courses → /story?tab=mission-kit 리다이렉트 (기존 링크 호환성 유지)
+// /courses → /story?tab=mission-pass 리다이렉트 (기존 링크 호환성 유지)
 import { redirect } from 'next/navigation'
 
 interface Props {
@@ -6,5 +6,5 @@ interface Props {
 }
 
 export default function CoursesRedirect({ params }: Props) {
-  redirect(`/${params.locale}/story?tab=mission-kit`)
+  redirect(`/${params.locale}/story?tab=mission-pass`)
 }

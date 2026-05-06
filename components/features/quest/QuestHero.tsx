@@ -44,7 +44,6 @@ export function QuestHero({ title, region, thumbnail, difficulty, duration, miss
         </p>
 
         <div className="flex gap-3 mt-8">
-          {/* PRD-PRICING-2026-001: scrollToKit 폐기 (#kit-purchase 영역 hotfix v5 에서 제거됨) → /pass 링크 */}
           <Link
             href={`/${locale}/pass`}
             className="px-6 py-3 rounded-full bg-gradient-to-br from-mint to-blossom text-ink text-sm font-bold hover:bg-[#7BC8BC] transition-colors"

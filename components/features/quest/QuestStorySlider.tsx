@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { useRouter, useParams } from 'next/navigation'
 import { getVideoUrl } from '@/lib/utils/storage'
 
 interface StoryCard {
@@ -29,6 +30,9 @@ interface QuestStorySliderProps {
 
 export function QuestStorySlider({ storyCards, region }: QuestStorySliderProps) {
   const t = useTranslations('quest')
+  const router = useRouter()
+  const params = useParams()
+  const locale = (typeof params?.locale === 'string' ? params.locale : 'ko')
   const [current, setCurrent] = useState(0)
   const touchStart = useRef(0)
 
@@ -48,8 +52,8 @@ export function QuestStorySlider({ storyCards, region }: QuestStorySliderProps) 
     }
   }
 
-  const scrollToKit = () => {
-    document.getElementById('kit-purchase')?.scrollIntoView({ behavior: 'smooth' })
+  const goToPass = () => {
+    router.push(`/${locale}/pass`)
   }
 
   const isLast = current === cards.length - 1
@@ -90,7 +94,7 @@ export function QuestStorySlider({ storyCards, region }: QuestStorySliderProps) 
                     {t('story.ctaCard')}
                   </h3>
                   <button
-                    onClick={scrollToKit}
+                    onClick={goToPass}
                     className="mt-4 px-8 py-3 rounded-full bg-gradient-to-br from-mint to-blossom text-ink font-bold hover:bg-[#7BC8BC] transition-colors"
                   >
                     {t('story.cta')}

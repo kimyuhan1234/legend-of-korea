@@ -291,7 +291,7 @@
     "boss": "Boss Mission",
     "photo": "Photo Mission",
     "quiz": "Quiz Mission",
-    "open": "Exploration Mission",
+    "open": "Free Mission",
     "back": "Back",
     "enterAnswer": "Enter your answer",
     "tryAgain": "Try again",
@@ -1460,7 +1460,7 @@
     "story": {
       "title": "The Legend Behind This Quest",
       "ctaCard": "Become the hero of this legend",
-      "cta": "Get Your Mission Kit →",
+      "cta": "Get Your Mission Pass →",
       "card1": "Long ago, a mysterious legend was passed down through this land.",
       "card2": "The hero of the legend set out to solve riddles and find hidden treasures.",
       "card3": "The people and places along the journey became eternal memories.",
@@ -1497,16 +1497,16 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
-      "q1": "Can I receive the kit outside Korea?",
-      "a1": "We deliver to your accommodation in Korea. It'll be at the front desk before check-in.",
+      "q1": "How do I use the Mission Pass?",
+      "a1": "Your pass activates instantly when you pay with Toss Payments. From the course page you can freely tackle the four mission types — quiz, photo, free, and boss. It's ready the moment you arrive in Korea, with no shipping or pickup needed.",
       "q2": "Do I need to speak Korean?",
-      "a2": "All mission cards are available in English, Japanese, and Korean.",
+      "a2": "All mission cards are available in five languages: Korean, Japanese, English, Simplified Chinese, and Traditional Chinese.",
       "q3": "Can I do it solo?",
       "a3": "Solo, couples, and families are all welcome.",
       "q4": "How do I receive mission rewards?",
-      "a4": "Complete missions in-app to instantly earn digital badges + partner discount coupons.",
-      "q5": "Can I do missions without the kit?",
-      "a5": "The kit contains mission cards, maps, and hints — it's essential for the experience."
+      "a4": "Completing missions earns you Raindrops. Spend them at the Legend Shop to level up and unlock Korean culture category photos. Boss missions reward you with a bigger payout.",
+      "q5": "Can I start missions right after payment?",
+      "a5": "Yes — your pass activates the moment payment clears, giving instant digital access to every course's mission cards, maps, and hints. There is no waiting for shipping."
     },
     "highlights": {
       "title": "Course Highlights",
@@ -1637,7 +1637,7 @@
       "ootd": "Outfit",
       "food": "Food",
       "stay": "Stay",
-      "quest": "Mission Kit",
+      "quest": "Mission Pass",
       "diy": "Workshop",
       "goods": "Goods",
       "transport": "Transport",
@@ -1686,7 +1686,7 @@
       "missingStay": "There are special stays in this city. Want to browse?",
       "missingFood": "There are hidden gems nearby. Want to see?",
       "missingDiy": "There are Korean craft workshops too. Want to take a look?",
-      "missingQuest": "Experience a richer trip with a mission kit. Want to check it out?",
+      "missingQuest": "Experience a richer trip with a Mission Pass. Want to check it out?",
       "goSee": "Take a look"
     },
     "transport": {
@@ -1714,7 +1714,7 @@
       "downloadPdfWithCost": "Download PDF (2 credits)",
       "estimatedLp": "Estimated Raindrops",
       "lpUnit": "Raindrops",
-      "missionIntegrated": "Mission kit course auto-included",
+      "missionIntegrated": "Mission Pass course auto-included",
       "lunch": "Lunch",
       "dinner": "Dinner",
       "night": "Night"

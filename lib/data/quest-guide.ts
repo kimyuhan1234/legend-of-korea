@@ -110,8 +110,8 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s3Tip: '💡 팁',
     s3TipItems: ['핀 근처에 도착하면 자동으로 알림이 와요', '순서 상관없이 원하는 미션부터 진행 가능!'],
 
-    s4Title: 'GPS 체크인',
-    s4Intro: '미션 장소에 도착하면 이렇게 동작해요:',
+    s4Title: 'GPS 기반 도착 체크인',
+    s4Intro: '미션 장소에 도착하면 GPS가 자동으로 체크인됩니다',
     s4Steps: [
       '📍 "현재 위치 확인 중..." 메시지가 표시돼요',
       '🔵 지도에 내 위치(파란 점)가 나타나요',
@@ -140,7 +140,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s5OpenBody: '자유롭게 감상을 작성하면 돼요. 형식 제한 없음!',
     s5BossTitle: '👑 보스 미션',
     s5BossQuote: '"최종 미션 — 여러 조건을 달성하세요!"',
-    s5BossBody: '코스의 마지막 특별 미션. 보상 빗방울이 3배!',
+    s5BossBody: '코스의 마지막 특별 미션. 더 큰 보상이 기다립니다!',
 
     s6Title: '보상',
     s6RewardTitle: '💧 빗방울 적립',
@@ -178,7 +178,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
       { q: '미션은 순서대로 해야 하나요?', a: '아니요! 원하는 미션부터 자유롭게 도전하세요.' },
       { q: '미션에 시간 제한이 있나요?', a: '없습니다. 나만의 속도로 여유롭게 즐기세요. 오늘 2개, 내일 3개 — 자유롭게!' },
       { q: '비가 오면 어떡하나요?', a: '실내 미션도 있어요! 날씨 좋은 날 야외 미션에 도전하세요.' },
-      { q: '체크인 버튼이 안 눌려요.', a: '미션 장소 200m 이내인지 확인하세요. GPS 신호가 약하면 잠시 기다린 후 다시 시도해 주세요. 건물 밖에서 시도하면 더 잘 됩니다.' },
+      { q: '체크인 버튼이 안 눌려요.', a: '미션 장소 200m 이내인지 확인하세요. GPS의 위치 신호가 약하면 잠시 기다린 후 다시 시도해 주세요. 건물 밖에서 시도하면 더 잘 됩니다.' },
       { q: '사진을 잘못 올렸어요.', a: '마이페이지에서 다시 업로드할 수 있어요.' },
       { q: '빗방울은 환불되나요?', a: '빗방울은 서비스 내 포인트로, 현금 환불은 불가합니다.' },
       { q: '외국어로도 이용 가능한가요?', a: '네! 한국어·영어·일본어·중국어(간체/번체) 5개 언어를 지원합니다.' },
@@ -213,8 +213,8 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s3Tip: '💡 ヒント',
     s3TipItems: ['ピン付近に着くと自動で通知が来ます', '順番に関係なく、好きなミッションから可能!'],
 
-    s4Title: 'GPSチェックイン',
-    s4Intro: 'ミッション場所に到着するとこう動きます:',
+    s4Title: 'GPSベース 到着チェックイン',
+    s4Intro: 'ミッション場所に到着するとGPSが自動でチェックインします',
     s4Steps: [
       '📍 「現在位置を確認中...」 のメッセージ',
       '🔵 地図に自分の位置(青い点)が表示',
@@ -243,7 +243,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s5OpenBody: '自由に感想を書いてください。形式の制限なし!',
     s5BossTitle: '👑 ボスミッション',
     s5BossQuote: '「最終ミッション — 複数の条件を達成せよ!」',
-    s5BossBody: 'コース最後の特別ミッション。報酬の雨粒は3倍!',
+    s5BossBody: 'コース最後の特別ミッション。より大きな報酬が待っています!',
 
     s6Title: 'ご褒美',
     s6RewardTitle: '💧 雨粒の獲得',
@@ -281,7 +281,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
       { q: 'ミッションは順番通りにやる必要がありますか?', a: 'いいえ! 好きなミッションから自由にチャレンジしてください。' },
       { q: 'ミッションに時間制限はありますか?', a: 'ありません。自分のペースで気楽にお楽しみください。今日2個、明日3個 — 自由に!' },
       { q: '雨が降ったらどうしますか?', a: '屋内ミッションもあります! 天気の良い日に屋外ミッションに挑戦してください。' },
-      { q: 'チェックインボタンが押せません。', a: 'ミッション場所から200m以内か確認してください。GPS信号が弱い場合は少し待ってから再度お試しください。屋外の方がうまくいきます。' },
+      { q: 'チェックインボタンが押せません。', a: 'ミッション場所から200m以内か確認してください。GPSの位置信号が弱い場合は少し待ってから再度お試しください。屋外の方がうまくいきます。' },
       { q: '写真を間違えてアップロードしました。', a: 'マイページから再アップロードできます。' },
       { q: '雨粒は払い戻しされますか?', a: '雨粒はサービス内ポイントで、現金払い戻しはできません。' },
       { q: '外国語でも利用できますか?', a: 'はい! 韓国語・英語・日本語・中国語(簡体/繁体)の5言語に対応。' },
@@ -316,8 +316,8 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s3Tip: '💡 Tip',
     s3TipItems: ['You get an auto-notification when you approach a pin', 'Missions can be done in any order!'],
 
-    s4Title: 'GPS Check-in',
-    s4Intro: 'When you reach a mission spot, here is what happens:',
+    s4Title: 'GPS-based Arrival Check-in',
+    s4Intro: 'When you arrive at the mission spot, GPS automatically checks you in',
     s4Steps: [
       '📍 "Checking your location..." appears',
       '🔵 Your location (blue dot) shows on the map',
@@ -341,12 +341,12 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s5PhotoTitle: '📸 Photo Mission',
     s5PhotoQuote: '"Take a commemorative photo at this spot!"',
     s5PhotoBody: 'Shoot with your camera and upload. Optionally auto-share to the community.',
-    s5OpenTitle: '✍️ Open Mission',
+    s5OpenTitle: '✍️ Free Mission',
     s5OpenQuote: '"Write what this place made you feel"',
     s5OpenBody: 'Free-form reflection — no format limits!',
     s5BossTitle: '👑 Boss Mission',
     s5BossQuote: '"Final mission — clear multiple conditions!"',
-    s5BossBody: 'The last special mission of a course. Triple reward Raindrops!',
+    s5BossBody: 'The last special mission of a course. A bigger reward awaits!',
 
     s6Title: 'Rewards',
     s6RewardTitle: '💧 Earning Raindrops',
@@ -384,7 +384,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
       { q: 'Do I have to do missions in order?', a: 'No! Tackle any mission you like in any order.' },
       { q: 'Is there a time limit?', a: 'None. Go at your own pace — two today, three tomorrow, whatever you like.' },
       { q: 'What if it rains?', a: 'We have indoor missions too! Save outdoor ones for better weather.' },
-      { q: 'My check-in button won\'t activate.', a: 'Make sure you\'re within 200 m of the spot. If GPS is weak, wait a moment and try again. Being outside works best.' },
+      { q: 'My check-in button won\'t activate.', a: 'Make sure you\'re within 200 m of the spot. If your GPS location signal is weak, wait a moment and try again. Being outside works best.' },
       { q: 'I uploaded the wrong photo.', a: 'You can re-upload from My Page.' },
       { q: 'Are Raindrops refundable?', a: 'Raindrops are in-service points — no cash refunds.' },
       { q: 'Is the service available in other languages?', a: 'Yes! Korean, English, Japanese, Chinese (Simplified/Traditional) — 5 languages supported.' },
@@ -419,8 +419,8 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s3Tip: '💡 小贴士',
     s3TipItems: ['靠近图钉会自动提醒', '不限顺序,随心挑选任务!'],
 
-    s4Title: 'GPS 签到',
-    s4Intro: '到达任务地点时,系统会这样运行:',
+    s4Title: '基于GPS的到达签到',
+    s4Intro: '到达任务地点后,GPS将自动签到',
     s4Steps: [
       '📍 显示"正在确认当前位置..."',
       '🔵 地图上显示你的位置(蓝色点)',
@@ -449,7 +449,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s5OpenBody: '自由书写感想,无格式限制!',
     s5BossTitle: '👑 首领任务',
     s5BossQuote: '"最终任务 — 达成多项条件!"',
-    s5BossBody: '课程最后的特别任务,奖励雨滴 3 倍!',
+    s5BossBody: '课程最后的特别任务,更大的奖励等着您!',
 
     s6Title: '奖励',
     s6RewardTitle: '💧 雨滴积累',
@@ -487,7 +487,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
       { q: '任务必须按顺序吗?', a: '不用! 想做哪个就做哪个。' },
       { q: '任务有时间限制吗?', a: '没有。按自己的节奏享受即可 — 今天 2 个、明天 3 个都行!' },
       { q: '下雨怎么办?', a: '也有室内任务! 好天气时再挑战户外任务。' },
-      { q: '签到按钮不能点。', a: '请确认距离任务地点 200 米以内。若 GPS 信号弱,稍等片刻再试。户外效果更好。' },
+      { q: '签到按钮不能点。', a: '请确认距离任务地点 200 米以内。若 GPS 位置信号弱,稍等片刻再试。户外效果更好。' },
       { q: '上传错了照片。', a: '可在"我的"页面重新上传。' },
       { q: '雨滴可以退款吗?', a: '雨滴是服务内积分,不支持现金退款。' },
       { q: '支持外语吗?', a: '支持! 提供韩语·英语·日语·中文(简体/繁体)五种语言。' },
@@ -522,8 +522,8 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s3Tip: '💡 小提示',
     s3TipItems: ['靠近圖釘會自動提醒', '不限順序,隨心挑選任務!'],
 
-    s4Title: 'GPS 簽到',
-    s4Intro: '到達任務地點時,系統會這樣運作:',
+    s4Title: '基於GPS的到達簽到',
+    s4Intro: '到達任務地點後,GPS將自動簽到',
     s4Steps: [
       '📍 顯示「正在確認目前位置...」',
       '🔵 地圖上顯示你的位置(藍色點)',
@@ -552,7 +552,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
     s5OpenBody: '自由書寫感想,無格式限制!',
     s5BossTitle: '👑 首領任務',
     s5BossQuote: '「最終任務 — 達成多項條件!」',
-    s5BossBody: '課程最後的特別任務,獎勵雨滴 3 倍!',
+    s5BossBody: '課程最後的特別任務,更大的獎勵等著您!',
 
     s6Title: '獎勵',
     s6RewardTitle: '💧 雨滴累積',
@@ -590,7 +590,7 @@ export const QUEST_GUIDE: Record<Lang, GuideContent> = {
       { q: '任務必須按順序嗎?', a: '不用! 想做哪個就做哪個。' },
       { q: '任務有時間限制嗎?', a: '沒有。按自己的節奏享受即可 — 今天 2 個、明天 3 個都行!' },
       { q: '下雨怎麼辦?', a: '也有室內任務! 好天氣時再挑戰戶外任務。' },
-      { q: '簽到按鈕不能點。', a: '請確認距離任務地點 200 公尺以內。若 GPS 訊號弱,稍等片刻再試。戶外效果更好。' },
+      { q: '簽到按鈕不能點。', a: '請確認距離任務地點 200 公尺以內。若 GPS 位置訊號弱,稍等片刻再試。戶外效果更好。' },
       { q: '上傳錯了照片。', a: '可在「我的」頁面重新上傳。' },
       { q: '雨滴可以退款嗎?', a: '雨滴是服務內積分,不支援現金退款。' },
       { q: '支援外語嗎?', a: '支援! 提供韓語·英語·日語·中文(簡體/繁體)五種語言。' },

@@ -39,12 +39,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function StoryPage({ params, searchParams }: Props) {
   const { locale } = params
-  const activeTab = searchParams.tab || 'mission-kit'
+  const activeTab = searchParams.tab || 'mission-pass'
 
   const t = await getTranslations({ locale, namespace: 'story' })
 
   const tabs = [
-    { id: 'mission-kit', label: t('tabMissionKit') },
+    { id: 'mission-pass', label: t('tabMissionKit') },
     { id: 'special',     label: t('tabSpecial') },
   ]
 
@@ -61,7 +61,7 @@ export default async function StoryPage({ params, searchParams }: Props) {
 
       {/* 탭 콘텐츠 (서버) */}
       <div className="max-w-5xl mx-auto px-8 md:px-10 py-20 md:py-28">
-        {activeTab === 'mission-kit' && <CoursesTab locale={locale} />}
+        {activeTab === 'mission-pass' && <CoursesTab locale={locale} />}
         {activeTab === 'special'     && <SpecialEventTab locale={locale} />}
       </div>
     </div>
